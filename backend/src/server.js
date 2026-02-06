@@ -1,0 +1,1173 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { ethers } from 'ethers';
+import jwt from 'jsonwebtoken';
+import { poseidon1, poseidon2 } from 'poseidon-lite';
+import { randomBytes } from 'crypto';
+import fs from 'fs';
+import path from 'path';
+
+dotenv.config();
+
+// JWT Configuration
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production-min-32-characters';
+const JWT_EXPIRY = '30d'; // Token valid for 30 days
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Pinata IPFS configuration
+const PINATA_API_KEY = process.env.PINATA_API_KEY;
+const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY;
+const PINATA_GATEWAY = process.env.PINATA_GATEWAY || 'gateway.pinata.cloud';
+
+// Helper function to upload JSON to IPFS via Pinata
+async function uploadToIPFS(jsonData) {
+  if (!PINATA_API_KEY || !PINATA_SECRET_KEY) {
+    console.warn('Pinata credentials not set - using in-memory storage');
+    // Fallback to fake IPFS hash
+    const fakeHash = 'Qm' + Math.random().toString(36).substring(2, 48);
+    return fakeHash;
+  }
+
+  try {
+    const response = await fetch('https://api.pinata.cloud/pinning/pinJSONToIPFS', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'pinata_api_key': PINATA_API_KEY,
+        'pinata_secret_api_key': PINATA_SECRET_KEY
+      },
+      body: JSON.stringify({
+        pinataContent: jsonData,
+        pinataMetadata: {
+          name: `petition-${jsonData.petitionId}`
+        }
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(`Pinata error: ${result.error || 'Unknown error'}`);
+    }
+
+    console.log('Uploaded to IPFS:', result.IpfsHash);
+    return result.IpfsHash;
+  } catch (error) {
+    console.error('IPFS upload error:', error);
+    throw error;
+  }
+}
+
+// Helper function to fetch from IPFS via Pinata gateway
+async function fetchFromIPFS(ipfsHash) {
+  try {
+    const response = await fetch(`https://${PINATA_GATEWAY}/ipfs/${ipfsHash}`);
+
+    if (!response.ok) {
+      throw new Error(`IPFS fetch error: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('IPFS fetch error:', error);
+    throw error;
+  }
+}
+
+// In-memory fallback storage (if Pinata not configured)
+const petitionMetadata = new Map();
+
+// Email verification storage
+// In production: use Redis or database
+const verificationCodes = new Map(); // email -> { code, expiry, verified }
+const verifiedEmails = new Set(); // Set of verified email addresses
+
+// Comment storage
+// Maps commentHash -> comment data
+const commentStorage = new Map(); // commentHash -> { text, timestamp, petitionId, approved, email, confidence }
+
+// =============================================================================
+// M2 STRONG PRIVACY - MEMBER SECRET & MERKLE TREE
+// =============================================================================
+
+// Map: email -> memberSecret (BigInt as string for JSON serialization)
+const memberSecrets = new Map();
+
+// ============================
+// Dev/Testnet persistence
+// ============================
+const DATA_DIR = path.join(process.cwd(), 'data');
+const STATE_FILE = path.join(DATA_DIR, 'state.json');
+
+try {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+} catch (err) {
+  console.warn('Failed to create DATA_DIR for persistence:', err.message);
+}
+
+function loadState() {
+  try {
+    if (!fs.existsSync(STATE_FILE)) return;
+
+    const raw = fs.readFileSync(STATE_FILE, 'utf8');
+    const parsed = JSON.parse(raw);
+
+    if (Array.isArray(parsed.verifiedEmails)) {
+      parsed.verifiedEmails.forEach((e) =>
+        verifiedEmails.add(String(e).trim().toLowerCase())
+      );
+    }
+
+    if (parsed.memberSecrets && typeof parsed.memberSecrets === 'object') {
+      for (const [email, secretStr] of Object.entries(parsed.memberSecrets)) {
+        memberSecrets.set(String(email).trim().toLowerCase(), String(secretStr));
+      }
+    }
+
+    console.log(
+      `Loaded state: ${verifiedEmails.size} verified emails, ${memberSecrets.size} memberSecrets`
+    );
+  } catch (err) {
+    console.warn(
+      'Failed to load persisted state (continuing with empty state):',
+      err.message
+    );
+  }
+}
+
+function persistState() {
+  try {
+    const payload = {
+      verifiedEmails: Array.from(verifiedEmails),
+      memberSecrets: Object.fromEntries(memberSecrets.entries()),
+      savedAt: new Date().toISOString()
+    };
+    fs.writeFileSync(STATE_FILE, JSON.stringify(payload, null, 2));
+  } catch (err) {
+    console.warn('Failed to persist state:', err.message);
+  }
+}
+
+// Map: memberLeaf (hash) -> email (for reverse lookup)
+const leafToEmail = new Map();
+
+// Merkle tree storage
+let merkleTree = {
+  leaves: [],      // Array of leaf hashes
+  root: null,      // Current root
+  depth: 10,       // Supports 1024 members
+  lastUpdated: null
+};
+
+// Map: petitionId -> Set of used nullifiers
+const usedNullifiers = new Map();
+
+
+function normalizeEmail(email) {
+  return String(email || '').trim().toLowerCase();
+}
+
+function generateMemberSecret(email) {
+  const normEmail = normalizeEmail(email);
+
+  // Check if already exists (stable key)
+  if (memberSecrets.has(normEmail)) {
+    return memberSecrets.get(normEmail);
+  }
+
+  // Generate 31-byte random value (safe for BN254 field)
+  const randomValue = randomBytes(31);
+  const secret = BigInt('0x' + randomValue.toString('hex'));
+
+  // Store (normalized key)
+  memberSecrets.set(normEmail, secret.toString());
+  persistState();
+
+  // Compute and store leaf
+  const leaf = poseidon1([secret]);
+  leafToEmail.set(leaf.toString(), normEmail);
+
+  console.log('Generated memberSecret for:', normEmail);
+
+  // Trigger tree rebuild
+  rebuildMerkleTree();
+
+  return secret.toString();
+}
+
+
+/**
+ * Build Merkle tree from all member secrets
+ */
+function rebuildMerkleTree() {
+  const leaves = [];
+
+  // Compute leaf for each verified member
+  for (const [email, secretStr] of memberSecrets.entries()) {
+    if (verifiedEmails.has(email)) {
+      const secret = BigInt(secretStr);
+      const leaf = poseidon1([secret]);
+      leaves.push(leaf);
+    }
+  }
+
+  // Pad to next power of 2
+  const targetSize = Math.pow(2, merkleTree.depth);
+  while (leaves.length < targetSize) {
+    leaves.push(BigInt(0)); // Empty leaves
+  }
+
+  merkleTree.leaves = leaves;
+  merkleTree.root = computeMerkleRoot(leaves);
+  merkleTree.lastUpdated = new Date().toISOString();
+
+  console.log(`Merkle tree rebuilt: ${leaves.filter(l => l !== BigInt(0)).length} members, root: ${merkleTree.root}`);
+}
+
+/**
+ * Compute Merkle root from leaves
+ * @param {BigInt[]} leaves
+ * @returns {BigInt} root
+ */
+function computeMerkleRoot(leaves) {
+  let currentLevel = [...leaves];
+
+  for (let level = 0; level < merkleTree.depth; level++) {
+    const nextLevel = [];
+
+    for (let i = 0; i < currentLevel.length; i += 2) {
+      const left = currentLevel[i];
+      const right = currentLevel[i + 1] || BigInt(0);
+      const parent = poseidon2([left, right]);
+      nextLevel.push(parent);
+    }
+
+    currentLevel = nextLevel;
+  }
+
+  return currentLevel[0];
+}
+
+/**
+ * Generate Merkle proof for a member
+ * @param {string} email
+ * @returns {object} { path, indices, root } or null
+ */
+function getMerkleProof(email) {
+  const secretStr = memberSecrets.get(email);
+  if (!secretStr) return null;
+
+  const secret = BigInt(secretStr);
+  const leaf = poseidon1([secret]);
+
+  // Find leaf index
+  const leafIndex = merkleTree.leaves.findIndex(l => l === leaf);
+  if (leafIndex === -1) {
+    console.error('Leaf not found in tree for:', email);
+    return null;
+  }
+
+  // Build proof
+  const path = [];
+  const indices = [];
+  let index = leafIndex;
+  let currentLevel = [...merkleTree.leaves];
+
+  for (let level = 0; level < merkleTree.depth; level++) {
+    const isLeft = index % 2 === 0;
+    const siblingIndex = isLeft ? index + 1 : index - 1;
+    const sibling = currentLevel[siblingIndex] || BigInt(0);
+
+    path.push(sibling.toString());
+    indices.push(isLeft ? 0 : 1); // 0 = left, 1 = right
+
+    // Move to parent level
+    const nextLevel = [];
+    for (let i = 0; i < currentLevel.length; i += 2) {
+      const left = currentLevel[i];
+      const right = currentLevel[i + 1] || BigInt(0);
+      nextLevel.push(poseidon2([left, right]));
+    }
+
+    currentLevel = nextLevel;
+    index = Math.floor(index / 2);
+  }
+
+  return {
+    memberSecret: secretStr,
+    membershipPath: path,
+    membershipIndices: indices.map(i => i.toString()),
+    membershipRoot: merkleTree.root.toString()
+  };
+}
+
+/**
+ * Check if nullifier has been used for a petition
+ */
+function isNullifierUsed(petitionId, nullifier) {
+  const nullifierSet = usedNullifiers.get(petitionId);
+  return nullifierSet ? nullifierSet.has(nullifier) : false;
+}
+
+/**
+ * Mark nullifier as used
+ */
+function markNullifierUsed(petitionId, nullifier) {
+  if (!usedNullifiers.has(petitionId)) {
+    usedNullifiers.set(petitionId, new Set());
+  }
+  usedNullifiers.get(petitionId).add(nullifier);
+}
+
+// =============================================================================
+// END M2 ADDITIONS
+// =============================================================================
+
+// Helper to generate 6-digit verification code
+function generateVerificationCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// Helper to send verification email
+async function sendVerificationEmail(email, code) {
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+  if (!RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not set - verification emails disabled');
+    // For testing: auto-verify
+    verifiedEmails.add(email);
+    persistState();
+    return true;
+  }
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        from: 'Speak Up <onboarding@resend.dev>', // Use your verified domain in production
+        to: email,
+        subject: 'Your Speak Up Verification Code',
+        html: `
+          <h2>Welcome to Speak Up!</h2>
+          <p>Your verification code is:</p>
+          <h1 style="font-size: 32px; letter-spacing: 8px; font-family: monospace;">${code}</h1>
+          <p>This code will expire in 10 minutes.</p>
+          <p>If you didn't request this code, please ignore this email.</p>
+        `
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(`Resend error: ${result.message || 'Unknown error'}`);
+    }
+
+    console.log('Verification email sent to:', email);
+    return true;
+  } catch (error) {
+    console.error('Email send error:', error);
+    throw error;
+  }
+}
+
+// Configuration
+const ATTESTER_PRIVATE_KEY = process.env.ATTESTER_PRIVATE_KEY;
+const REGISTRY_ADDRESS = process.env.REGISTRY_PROXY;
+const CHAIN_ID = process.env.CHAIN_ID || 1313161555; // Aurora testnet
+
+if (!ATTESTER_PRIVATE_KEY) {
+  console.error('ERROR: ATTESTER_PRIVATE_KEY not set in .env');
+  process.exit(1);
+}
+
+const attesterWallet = new ethers.Wallet(ATTESTER_PRIVATE_KEY);
+console.log('Attester address:', attesterWallet.address);
+
+// EIP-712 Domain
+const domain = {
+  name: 'SpeakUpV3',
+  version: '1',
+  chainId: CHAIN_ID,
+  verifyingContract: REGISTRY_ADDRESS
+};
+
+// EIP-712 Types
+const signPermitType = {
+  SignPermit: [
+    { name: 'action', type: 'bytes32' },
+    { name: 'petitionId', type: 'uint256' },
+    { name: 'nullifier', type: 'bytes32' },
+    { name: 'expiry', type: 'uint256' }
+  ]
+};
+
+const commentPermitType = {
+  CommentPermit: [
+    { name: 'action', type: 'bytes32' },
+    { name: 'petitionId', type: 'uint256' },
+    { name: 'nullifier', type: 'bytes32' },
+    { name: 'commentHash', type: 'bytes32' },
+    { name: 'expiry', type: 'uint256' }
+  ]
+};
+
+// Action constants
+const SIGN_ACTION = ethers.keccak256(ethers.toUtf8Bytes('SIGN'));
+const COMMENT_ACTION = ethers.keccak256(ethers.toUtf8Bytes('COMMENT'));
+
+// Routes
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', attester: attesterWallet.address });
+});
+
+// POST /api/auth/request-verification - Request email verification code
+app.post('/api/auth/request-verification', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ error: 'Invalid email address' });
+    }
+
+    // Generate code
+    const code = generateVerificationCode();
+    const expiry = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+    // Store code
+    verificationCodes.set(email, { code, expiry, verified: false });
+
+    // Send email
+    try {
+      await sendVerificationEmail(email, code);
+
+      res.json({
+        success: true,
+        message: 'Verification code sent to your email',
+        // For testing only - remove in production!
+        debugCode: process.env.NODE_ENV === 'development' ? code : undefined
+      });
+    } catch (emailError) {
+      console.error('Failed to send email:', emailError);
+      res.status(500).json({
+        error: 'Failed to send verification email',
+        details: emailError.message
+      });
+    }
+  } catch (error) {
+    console.error('Error requesting verification:', error);
+    res.status(500).json({ error: 'Failed to request verification' });
+  }
+});
+
+// POST /api/auth/verify-code - Verify the email code and issue JWT
+// MODIFIED FOR M2: Now generates memberSecret
+app.post('/api/auth/verify-code', (req, res) => {
+  try {
+    const { email, code, walletAddress } = req.body;
+
+    if (!email || !code) {
+      return res.status(400).json({ error: 'Email and code required' });
+    }
+
+    const stored = verificationCodes.get(email);
+
+    if (!stored) {
+      return res.status(400).json({ error: 'No verification request found' });
+    }
+
+    if (Date.now() > stored.expiry) {
+      verificationCodes.delete(email);
+      return res.status(400).json({ error: 'Verification code expired' });
+    }
+
+    if (stored.code !== code) {
+      return res.status(400).json({ error: 'Invalid verification code' });
+    }
+
+    // Mark as verified
+    stored.verified = true;
+    verifiedEmails.add(email);
+    persistState();
+
+    // === M2 ADDITION: Generate memberSecret ===
+    const memberSecret = generateMemberSecret(email);
+
+    // Generate JWT token
+    const token = jwt.sign(
+      {
+        email,
+        walletAddress: walletAddress || null,
+        verified: true,
+        verifiedAt: Date.now(),
+        hasMemberSecret: true  // Flag for M2 support
+      },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRY }
+    );
+
+    console.log('Email verified, JWT + memberSecret issued:', email);
+
+    res.json({
+      success: true,
+      message: 'Email verified successfully',
+      token,
+      // DO NOT send memberSecret to frontend!
+      // Frontend will request Merkle proof when needed
+      m2Enabled: true  // Signal that M2 Strong Privacy is available
+    });
+  } catch (error) {
+    console.error('Error verifying code:', error);
+    res.status(500).json({ error: 'Failed to verify code' });
+  }
+});
+
+// GET /api/auth/check-verification - Check if email is verified
+app.get('/api/auth/check-verification', (req, res) => {
+  const { email } = req.query;
+
+  if (!email) {
+    return res.status(400).json({ error: 'Email parameter required' });
+  }
+
+  const verified = verifiedEmails.has(email);
+
+  res.json({ verified });
+});
+
+// Middleware to verify JWT token
+function verifyToken(req, res, next) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+
+  const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded; // Attach decoded token data to request
+    next();
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: 'Token expired' });
+    }
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+}
+
+// POST /api/auth/verify-token - Verify token validity
+app.post('/api/auth/verify-token', verifyToken, (req, res) => {
+  res.json({
+    valid: true,
+    user: {
+      email: req.user.email,
+      verified: req.user.verified,
+      verifiedAt: req.user.verifiedAt
+    }
+  });
+});
+
+// =============================================================================
+// M2 API ENDPOINTS
+// =============================================================================
+
+// GET /api/m2/merkle-proof - Get Merkle proof for ZK proof generation
+app.get('/api/m2/merkle-proof', verifyToken, (req, res) => {
+  try {
+    const email = req.user.email;
+
+    if (!verifiedEmails.has(email)) {
+      return res.status(403).json({ error: 'Email not verified' });
+    }
+
+    const proof = getMerkleProof(email);
+
+    if (!proof) {
+      return res.status(404).json({ error: 'Membership proof not found' });
+    }
+
+    res.json({
+      success: true,
+      proof: {
+        memberSecret: proof.memberSecret,
+        membershipPath: proof.membershipPath,
+        membershipIndices: proof.membershipIndices,
+        membershipRoot: proof.membershipRoot
+      },
+      treeInfo: {
+        depth: merkleTree.depth,
+        totalMembers: merkleTree.leaves.filter(l => l !== BigInt(0)).length,
+        lastUpdated: merkleTree.lastUpdated
+      }
+    });
+  } catch (error) {
+    console.error('Error getting Merkle proof:', error);
+    res.status(500).json({ error: 'Failed to generate Merkle proof' });
+  }
+});
+
+// Lightweight endpoint for UI state checks (no path/indices)
+app.get('/api/m2/member-secret', verifyToken, (req, res) => {
+  try {
+    const email = String(req.user.email || '').trim().toLowerCase();
+
+    if (!req.user.verified) {
+      return res.status(403).json({ error: 'Email not verified' });
+    }
+
+    // Persist verified email (normalized)
+    if (!verifiedEmails.has(email)) {
+      verifiedEmails.add(email);
+      persistState();
+    }
+
+    // Get or create stable secret (generateMemberSecret must normalize + cache)
+    let memberSecret = memberSecrets.get(email);
+    if (!memberSecret) {
+      memberSecret = generateMemberSecret(email); // persists + rebuilds tree inside
+    } else {
+      // Secret already exists; just ensure tree/root exists (don't rebuild every time)
+      if (!merkleTree.root) {
+        rebuildMerkleTree();
+      }
+    }
+
+    return res.json({
+      memberSecret,
+      membershipRoot: merkleTree.root ? merkleTree.root.toString() : null
+    });
+  } catch (e) {
+    console.error('Error fetching member secret:', e);
+    return res.status(500).json({ error: e.message });
+  }
+});
+
+
+// GET /api/m2/merkle-root - Get Merkle root (for contract verification)
+app.get('/api/m2/merkle-root', (req, res) => {
+  res.json({
+    root: merkleTree.root ? merkleTree.root.toString() : null,
+    totalMembers: merkleTree.leaves.filter(l => l !== BigInt(0)).length,
+    lastUpdated: merkleTree.lastUpdated
+  });
+});
+
+// POST /api/m2/check-nullifier - Check if nullifier is used
+app.post('/api/m2/check-nullifier', verifyToken, (req, res) => {
+  try {
+    const { petitionId, nullifier } = req.body;
+
+    if (!petitionId || !nullifier) {
+      return res.status(400).json({ error: 'petitionId and nullifier required' });
+    }
+
+    const used = isNullifierUsed(parseInt(petitionId), nullifier);
+
+    res.json({ used });
+  } catch (error) {
+    console.error('Error checking nullifier:', error);
+    res.status(500).json({ error: 'Failed to check nullifier' });
+  }
+});
+
+// POST /api/m2/record-signature - Record nullifier after on-chain signature
+app.post('/api/m2/record-signature', verifyToken, (req, res) => {
+  try {
+    const { petitionId, nullifier, txHash } = req.body;
+
+    if (!petitionId || !nullifier) {
+      return res.status(400).json({ error: 'petitionId and nullifier required' });
+    }
+
+    // Check if already used
+    if (isNullifierUsed(parseInt(petitionId), nullifier)) {
+      return res.status(409).json({ error: 'Nullifier already used' });
+    }
+
+    // Mark as used
+    markNullifierUsed(parseInt(petitionId), nullifier);
+
+    console.log(`Nullifier recorded: petition ${petitionId}, tx ${txHash}`);
+
+    res.json({
+      success: true,
+      message: 'Signature recorded'
+    });
+  } catch (error) {
+    console.error('Error recording signature:', error);
+    res.status(500).json({ error: 'Failed to record signature' });
+  }
+});
+
+// POST /api/m2/admin/rebuild-tree - Rebuild Merkle tree (admin only)
+app.post('/api/m2/admin/rebuild-tree', (req, res) => {
+  // TODO: Add admin authentication
+  try {
+    rebuildMerkleTree();
+
+    res.json({
+      success: true,
+      root: merkleTree.root.toString(),
+      members: merkleTree.leaves.filter(l => l !== BigInt(0)).length
+    });
+  } catch (error) {
+    console.error('Error rebuilding tree:', error);
+    res.status(500).json({ error: 'Failed to rebuild tree' });
+  }
+});
+
+// =============================================================================
+// END M2 API ENDPOINTS
+// =============================================================================
+
+// GET /api/comments/:commentHash - Get comment by hash
+app.get('/api/comments/:commentHash', (req, res) => {
+  const { commentHash } = req.params;
+
+  const comment = commentStorage.get(commentHash);
+
+  if (!comment) {
+    return res.status(404).json({ error: 'Comment not found' });
+  }
+
+  // Return comment without email (privacy)
+  res.json({
+    text: comment.text,
+    timestamp: comment.timestamp,
+    petitionId: comment.petitionId,
+    approved: comment.approved
+  });
+});
+
+// GET /api/petition/:id/comments - Get all comments for a petition
+app.get('/api/petition/:id/comments', (req, res) => {
+  const petitionId = parseInt(req.params.id);
+
+  // Filter comments for this petition
+  const petitionComments = [];
+
+  for (const [hash, comment] of commentStorage.entries()) {
+    if (comment.petitionId === petitionId && comment.approved) {
+      petitionComments.push({
+        hash,
+        text: comment.text,
+        timestamp: comment.timestamp
+      });
+    }
+  }
+
+  // Sort by timestamp (newest first)
+  petitionComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+  res.json({ comments: petitionComments });
+});
+
+// GET /api/petition/:id - Get petition metadata from IPFS
+app.get('/api/petition/:id', async (req, res) => {
+  try {
+    const petitionId = parseInt(req.params.id);
+
+    // First check in-memory fallback
+    const cachedMetadata = petitionMetadata.get(petitionId);
+
+    if (cachedMetadata) {
+      // If we have IPFS hash, fetch from IPFS
+      if (cachedMetadata.ipfsHash && PINATA_API_KEY) {
+        try {
+          const ipfsData = await fetchFromIPFS(cachedMetadata.ipfsHash);
+          return res.json(ipfsData);
+        } catch (error) {
+          console.error('IPFS fetch failed, using cached data:', error);
+          return res.json(cachedMetadata);
+        }
+      }
+
+      return res.json(cachedMetadata);
+    }
+
+    return res.status(404).json({ error: 'Petition not found' });
+  } catch (error) {
+    console.error('Error fetching petition:', error);
+    res.status(500).json({ error: 'Failed to fetch petition metadata' });
+  }
+});
+
+// POST /api/petition/metadata - Store petition metadata
+
+// POST /api/petition/create - Complete petition creation flow
+app.post('/api/petition/create', async (req, res) => {
+  try {
+    const { title, description, category, goalSignatures } = req.body;
+
+    if (!title || !description) {
+      return res.status(400).json({ error: 'Title and description required' });
+    }
+
+    // 1. Create petition on-chain
+    const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, attesterWallet);
+
+    // First upload metadata to get IPFS hash
+    const tempMetadata = {
+      title,
+      description,
+      category: category || 'General',
+      goalSignatures: goalSignatures || 100,
+      createdAt: new Date().toISOString()
+    };
+
+    const ipfsHash = await uploadToIPFS(tempMetadata);
+    const metadataURI = `ipfs://${ipfsHash}`;
+
+    // Create petition on-chain with IPFS URI
+    const tx = await registry.createPetition(metadataURI, { gasLimit: 200000 });
+    const receipt = await tx.wait();
+
+    // Get petitionId from event
+    const event = receipt.logs.find(log => {
+      try {
+        const parsed = registry.interface.parseLog(log);
+        return parsed.name === 'PetitionCreated';
+      } catch {
+        return false;
+      }
+    });
+
+    if (!event) {
+      throw new Error('PetitionCreated event not found');
+    }
+
+    const parsedEvent = registry.interface.parseLog(event);
+    const petitionId = Number(parsedEvent.args.petitionId);
+
+    // Store complete metadata
+    const fullMetadata = {
+      petitionId,
+      ...tempMetadata,
+      ipfsHash,
+      metadataURI
+    };
+
+    petitionMetadata.set(petitionId, fullMetadata);
+
+    console.log(`✅ Petition ${petitionId} created: ${metadataURI}`);
+
+    res.json({
+      success: true,
+      petitionId,
+      metadataURI,
+      ipfsHash,
+      txHash: tx.hash
+    });
+
+  } catch (error) {
+    console.error('Error creating petition:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/petition/metadata', async (req, res) => {
+  try {
+    const {
+      petitionId,
+      title,
+      description,
+      category,
+      goalSignatures,
+      createdBy
+    } = req.body;
+
+    if (!petitionId || !title || !description) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const metadata = {
+      petitionId,
+      title,
+      description,
+      category: category || 'General',
+      createdBy: createdBy || 'Anonymous',
+      goalSignatures: goalSignatures || 100,
+      createdAt: new Date().toISOString()
+    };
+
+    // Upload to IPFS via Pinata
+    let ipfsHash;
+    let metadataURI;
+
+    try {
+      ipfsHash = await uploadToIPFS(metadata);
+      metadataURI = `ipfs://${ipfsHash}`;
+
+      // Store in cache with IPFS hash
+      petitionMetadata.set(parseInt(petitionId), {
+        ...metadata,
+        ipfsHash,
+        metadataURI
+      });
+
+      console.log(`Petition ${petitionId} uploaded to IPFS: ${ipfsHash}`);
+
+      res.json({
+        success: true,
+        metadata,
+        ipfsHash,
+        metadataURI,
+        gatewayUrl: `https://${PINATA_GATEWAY}/ipfs/${ipfsHash}`
+      });
+
+    } catch (ipfsError) {
+      console.error('IPFS upload failed, using in-memory fallback:', ipfsError);
+
+      // Fallback to fake IPFS hash
+      const fakeHash = 'Qm' + Math.random().toString(36).substring(2, 48);
+      metadataURI = `ipfs://${fakeHash}`;
+
+      petitionMetadata.set(parseInt(petitionId), {
+        ...metadata,
+        metadataURI,
+        ipfsHash: null // Indicates this is in-memory only
+      });
+
+      res.json({
+        success: true,
+        metadata,
+        metadataURI,
+        warning: 'IPFS upload failed, using in-memory storage'
+      });
+    }
+
+  } catch (error) {
+    console.error('Error storing petition metadata:', error);
+    res.status(500).json({ error: 'Failed to store metadata' });
+  }
+});
+
+// POST /api/petition/sign-permit
+app.post('/api/petition/sign-permit', async (req, res) => {
+  try {
+    const { petitionId, nullifier, email } = req.body;
+
+    if (!petitionId || !nullifier) {
+      return res.status(400).json({ error: 'Missing petitionId or nullifier' });
+    }
+
+    // Verify user membership (email verification)
+    if (!email) {
+      return res.status(400).json({ error: 'Email required for verification' });
+    }
+
+    if (!verifiedEmails.has(email)) {
+      return res.status(403).json({
+        error: 'Email not verified',
+        message: 'Please verify your email first'
+      });
+    }
+
+    const expiry = Math.floor(Date.now() / 1000) + 3600; // 1 hour
+
+    const message = {
+      action: SIGN_ACTION,
+      petitionId: Number(petitionId),
+      nullifier: nullifier,
+      expiry: expiry
+    };
+
+    // Sign with EIP-712
+    const signature = await attesterWallet.signTypedData(domain, signPermitType, message);
+    const sig = ethers.Signature.from(signature);
+
+    // Encode authData for contract
+    const authData = ethers.AbiCoder.defaultAbiCoder().encode(
+      ['uint256', 'uint8', 'bytes32', 'bytes32'],
+      [expiry, sig.v, sig.r, sig.s]
+    );
+
+    res.json({
+      authData,
+      expiry
+    });
+  } catch (error) {
+    console.error('Error generating sign permit:', error);
+    res.status(500).json({ error: 'Failed to generate permit' });
+  }
+});
+
+// POST /api/petition/comment
+app.post('/api/petition/comment', async (req, res) => {
+  try {
+    const { petitionId, nullifier, commentText, email } = req.body;
+
+    if (!petitionId || !nullifier || !commentText) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // Verify user membership (email verification)
+    if (!email) {
+      return res.status(400).json({ error: 'Email required for verification' });
+    }
+
+    if (!verifiedEmails.has(email)) {
+      return res.status(403).json({
+        error: 'Email not verified',
+        message: 'Please verify your email first'
+      });
+    }
+
+    // Moderation with OpenAI GPT-4 (nuanced judgment with confidence scores)
+    let approved = true;
+    let moderationReason = '';
+    let confidence = 1.0;
+
+    // Test trigger for manual review
+    if (commentText.includes('buckleyourseatbeltdorothy')) {
+      console.log('Test phrase detected - flagged for manual review');
+      return res.json({
+        approved: true,
+        reason: 'Test phrase detected - flagged for manual review',
+        confidence: 0.5,
+        needsReview: true
+      });
+    }
+
+    if (process.env.OPENAI_API_KEY) {
+      try {
+        const prompt = `
+You are moderating comments on a public petition platform.
+Review this comment for hate speech, violence, or illegal content.
+
+Comment: "${commentText}"
+
+Respond with JSON only:
+{
+  "approved": true/false,
+  "reason": "brief explanation",
+  "confidence": 0.0-1.0
+}
+
+Be PERMISSIVE - allow strong political speech, criticism, profanity.
+Only reject clear hate speech, violence, or illegal content.
+`;
+
+        const moderationResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: 'gpt-4',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.3
+          })
+        });
+
+        const moderationData = await moderationResponse.json();
+        const content = moderationData.choices[0]?.message?.content;
+
+        if (!content) {
+          throw new Error('No response from OpenAI');
+        }
+
+        // Parse GPT-4 response
+        const result = JSON.parse(content);
+        approved = result.approved;
+        moderationReason = result.reason;
+        confidence = result.confidence;
+
+        console.log('Moderation result:', { approved, reason: moderationReason, confidence });
+
+        // Flag for manual review if confidence is borderline (0.3-0.7)
+        if (confidence > 0.3 && confidence < 0.7) {
+          console.log('Borderline confidence - flagging for manual review');
+          // For now, we approve but flag it
+          // TODO: Store in "pending review" queue
+        }
+
+      } catch (moderationError) {
+        console.error('Moderation API error:', moderationError);
+        // Fail closed - reject on error
+        approved = false;
+        moderationReason = 'Moderation service error';
+        confidence = 0;
+      }
+    } else {
+      console.warn('OPENAI_API_KEY not set - skipping moderation');
+    }
+
+    if (!approved) {
+      return res.status(400).json({
+        error: 'Comment rejected by moderation',
+        reason: moderationReason,
+        confidence: confidence
+      });
+    }
+
+    // Compute comment hash
+    const commentHash = ethers.keccak256(ethers.toUtf8Bytes(commentText));
+
+    const expiry = Math.floor(Date.now() / 1000) + 3600; // 1 hour
+
+    const message = {
+      action: COMMENT_ACTION,
+      petitionId: Number(petitionId),
+      nullifier: nullifier,
+      commentHash: commentHash,
+      expiry: expiry
+    };
+
+    // Sign with EIP-712
+    const signature = await attesterWallet.signTypedData(domain, commentPermitType, message);
+    const sig = ethers.Signature.from(signature);
+
+    // Encode authData for contract
+    const authData = ethers.AbiCoder.defaultAbiCoder().encode(
+      ['uint256', 'uint8', 'bytes32', 'bytes32'],
+      [expiry, sig.v, sig.r, sig.s]
+    );
+
+    // Store comment in database with commentHash as key
+    commentStorage.set(commentHash, {
+      text: commentText,
+      timestamp: new Date().toISOString(),
+      petitionId: Number(petitionId),
+      approved: true,
+      email: email,
+      confidence: confidence,
+      moderationReason: moderationReason
+    });
+
+    console.log('Comment stored:', commentHash.slice(0, 10) + '...', 'for petition', petitionId);
+
+    res.json({
+      approved: true,
+      commentHash,
+      authData,
+      expiry
+    });
+  } catch (error) {
+    console.error('Error processing comment:', error);
+    res.status(500).json({ error: 'Failed to process comment' });
+  }
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`\n🚀 Speak Up Backend running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`Chain ID: ${CHAIN_ID}`);
+  console.log(`Registry: ${REGISTRY_ADDRESS || 'Not set'}`);
+  console.log(`M2 Strong Privacy: ENABLED ✅`);
+});

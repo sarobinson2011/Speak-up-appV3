@@ -1,0 +1,14 @@
+# Large ceremony files (download from Hermez)
+keys/powersOfTau28_hez_final_21.ptau
+
+# Build artifacts (regenerate with circom)
+build/
+
+# Node modules
+node_modules/
+
+# Proving keys (large, regenerate from ceremony)
+keys/*.zkey
+
+# Keep only these small files:
+!keys/verification_key.json

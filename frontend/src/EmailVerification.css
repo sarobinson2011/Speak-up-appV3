@@ -1,0 +1,127 @@
+/* Email Verification - Industrial Metal Theme */
+.email-verification {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: var(--space-xl);
+  background: var(--bg-secondary);
+  background-image: var(--texture-panel);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.email-verification h2 {
+  margin-top: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: var(--space-md);
+}
+
+.email-verification p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.email-verification input {
+  width: 100%;
+  padding: var(--space-md);
+  font-size: 1rem;
+  margin-bottom: var(--space-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.email-verification input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 10px rgba(107, 155, 209, 0.3);
+  background: var(--bg-secondary);
+}
+
+.email-verification input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Code input special styling */
+.email-verification input.code-input {
+  font-size: 1.75rem;
+  text-align: center;
+  letter-spacing: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border: 2px solid var(--accent-blue);
+  background: var(--bg-primary);
+}
+
+.email-verification .btn-primary {
+  width: 100%;
+  padding: var(--space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.email-verification .btn-primary:hover:not(:disabled) {
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.email-verification .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.email-verification .btn-secondary {
+  width: 100%;
+  padding: var(--space-sm);
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.email-verification .btn-secondary:hover {
+  background: rgba(107, 155, 209, 0.1);
+}
+
+.email-verification .sent-badge {
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm);
+  background: rgba(107, 155, 209, 0.1);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--accent-blue);
+}
+
+.email-verification .error {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(220, 53, 69, 0.1);
+  color: #ff6b6b;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  font-size: 0.9rem;
+}

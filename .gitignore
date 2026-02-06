@@ -1,0 +1,43 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependencies
+**/node_modules/
+
+# Frontend/backend build outputs
+**/dist/
+**/build/
+**/.cache/
+**/coverage/
+**/.nyc_output/
+
+# Foundry (scoped to contracts)
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/lib/
+contracts/flattened/
+
+# Optional: if you generate these
+contracts/.forge/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temp
+temp/
+tmp/

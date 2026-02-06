@@ -1,0 +1,321 @@
+/* Import theme */
+@import './theme.css';
+
+.App {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+/* Header with professional layout */
+header {
+  background: var(--bg-secondary);
+  background-image: var(--texture-panel);
+  border-bottom: 2px solid var(--border-color);
+  padding: var(--space-lg) 0;
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-blue),
+    transparent
+  );
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  flex-shrink: 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+  margin: 0.5rem 0 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Aurora Network Badge - Professional transparent box */
+.network-badge-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(44, 44, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(107, 155, 209, 0.2);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.built-on-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.network-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.network-env {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.aurora-logo {
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(93, 235, 90, 0.6));
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md) var(--space-xl);
+}
+
+.connect-wallet {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.connect-wallet .btn-primary {
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1.1rem;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.connect-wallet .btn-primary:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dashboard {
+  animation: fadeIn 0.3s ease;
+}
+
+.dashboard-header {
+  margin-bottom: var(--space-xl);
+}
+
+.account-info {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  display: inline-block;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  cursor: help;
+  transition: all 0.2s ease;
+}
+
+.account-info:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 10px rgba(107, 155, 209, 0.2);
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: var(--space-xl);
+}
+
+.nav-tab {
+  padding: var(--space-md) var(--space-lg);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--accent-steel);
+  transform: none;
+  box-shadow: none;
+}
+
+.nav-tab.active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+  box-shadow: 0 0 10px rgba(107, 155, 209, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  
+  .network-badge-header {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* Landing Header - Sticky with Connect Wallet */
+.landing-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  background-image: var(--texture-panel);
+  border-bottom: 2px solid var(--border-color);
+  padding: var(--space-lg) 0;
+  box-shadow: var(--shadow-md);
+}
+
+.landing-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-blue),
+    transparent
+  );
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.connect-wallet-btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(107, 155, 209, 0.4);
+  white-space: nowrap;
+}
+
+.connect-wallet-btn:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(107, 155, 209, 0.6);
+}
+
+.wallet-status {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-mono);
+}
+
+.wallet-address {
+  color: var(--accent-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Mobile responsive for landing header */
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+  
+  .connect-wallet-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .network-badge-header {
+    justify-content: center;
+  }
+}
+/* Clickable Logo */
+.clickable-logo {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.clickable-logo:hover {
+  color: var(--accent-blue);
+  transform: scale(1.02);
+}
+
+.clickable-logo:active {
+  transform: scale(0.98);
+}
