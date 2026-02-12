@@ -132,7 +132,7 @@ export default function HomePage({ onGetStarted }) {
           <h2>The Technology Behind Freedom</h2>
           <div className="tech-explainer">
             <div className="tech-item">
-              <h3>🔬 Zero-Knowledge Proofs (Noir + UltraHonk)</h3>
+              <h3>🔬 Zero-Knowledge Proofs (Groth16)</h3>
               <p>
                 When you sign a petition, our ZK circuit generates a cryptographic proof that
                 you're a verified user - <strong>without revealing your identity, email, or wallet
@@ -141,7 +141,7 @@ export default function HomePage({ onGetStarted }) {
             </div>
 
             <div className="tech-item">
-              <h3>⛓️ Aurora Blockchain (Ethereum-compatible)</h3>
+              <h3>⛓️ Aurora Blockchain </h3>
               <p>
                 Signatures are stored on Aurora, an ultra-fast Layer 2 built on NEAR Protocol.
                 <strong> 1-2 second finality</strong>, <strong>virtually-zero gas fees</strong>, and
