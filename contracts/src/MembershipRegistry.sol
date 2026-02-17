@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
-/// @notice External Poseidon hasher interface.
-/// Your deployed hasher must implement poseidon([left,right]) -> uint256.
-interface IPoseidon2 {
-    function poseidon(uint256[2] calldata input) external pure returns (uint256);
-}
+import {IPoseidon2} from "./poseidon/IPoseidon2.sol";
 
 /**
  * MembershipRegistry
@@ -16,8 +12,8 @@ interface IPoseidon2 {
  */
 contract MembershipRegistry {
     // ======== Locked baseline params (per STATE) ========
-    uint8 public constant DEPTH = 16;               // 2^16 leaves
-    uint8 public constant ROOT_HISTORY_SIZE = 16;   // last N roots
+    uint8 public constant DEPTH = 16; // 2^16 leaves
+    uint8 public constant ROOT_HISTORY_SIZE = 16; // last N roots
 
     // BN254 scalar field (optional guard for sanity; not strictly required)
     // uint256 public constant SNARK_FIELD =
@@ -27,15 +23,15 @@ contract MembershipRegistry {
     address public immutable hasher;
 
     // ======== Tree state ========
-    uint32 public nextIndex;                 // next leaf index
-    uint256 public currentRootU256;          // root as uint256 (field element)
+    uint32 public nextIndex; // next leaf index
+    uint256 public currentRootU256; // root as uint256 (field element)
 
-    uint256[DEPTH] public zeroes;            // zero values per level
-    uint256[DEPTH] public filledSubtrees;    // incremental insert helpers
+    uint256[DEPTH] public zeroes; // zero values per level
+    uint256[DEPTH] public filledSubtrees; // incremental insert helpers
 
     // ======== Root validity (last N) ========
     bytes32[ROOT_HISTORY_SIZE] public rootHistory;
-    uint256 public rootHistoryIndex;             // ring pointer
+    uint256 public rootHistoryIndex; // ring pointer
     mapping(bytes32 => bool) public isKnownRoot; // membership check
 
     // ======== Membership mapping (baseline: 1 leaf per wallet) ========
@@ -43,8 +39,8 @@ contract MembershipRegistry {
     mapping(address => uint256) public leafOf; // leaf as uint256
 
     // ======== Minimal refundable bond (baseline) ========
-    uint256 public registerBondWei;     // exact amount required to register
-    uint64 public bondLockSeconds;      // lock duration
+    uint256 public registerBondWei; // exact amount required to register
+    uint64 public bondLockSeconds; // lock duration
     mapping(address => uint256) public bonded;
     mapping(address => uint64) public unlockAt;
 
@@ -113,7 +109,7 @@ contract MembershipRegistry {
         bonded[msg.sender] = 0;
         unlockAt[msg.sender] = 0;
 
-        (bool ok, ) = msg.sender.call{value: amt}("");
+        (bool ok,) = msg.sender.call{value: amt}("");
         require(ok, "transfer failed");
 
         emit BondWithdrawn(msg.sender, amt);
