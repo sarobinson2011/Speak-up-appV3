@@ -463,3 +463,26 @@ ATTESTER_PRIVATE_KEY=0x...
 
 **Last Updated:** January 22, 2025  
 **All commands tested and working on Aurora Testnet**
+
+
+## Membership (Aurora testnet) — deploy/verify
+
+Prereqs:
+- .env exists at repo root OR contracts/.env (ops.sh auto-detects)
+- Foundry account: dev-deployer (keystore)
+- RPC: https://testnet.aurora.dev
+- ChainId: 1313161555
+
+
+
+### Deploy - added 18/02-26
+cd /home/oem/Documents/Coding/Speak-up-appV3
+./contracts/ops.sh membership:deploy
+
+### Verify (paste addresses from deploy output)
+./contracts/ops.sh membership:verify <POSEIDON2_ADDR> <MEMBERSHIP_REGISTRY_ADDR>
+
+### One-off manual verify (if needed)
+cd contracts
+forge verify-contract <ADDR> src/poseidon/Poseidon2.sol:Poseidon2 --chain-id 1313161555 --verifier blockscout --verifier-url https://explorer.testnet.aurora.dev/api/v1/
+forge verify-contract <ADDR> src/MembershipRegistry.sol:MembershipRegistry --chain-id 1313161555 --verifier blockscout --verifier-url https://explorer.testnet.aurora.dev/api/v1/

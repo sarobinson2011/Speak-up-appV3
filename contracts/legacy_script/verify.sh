@@ -1,7 +1,7 @@
 #!/bin/bash
 # Auto-load env and verify contract
 
-source ../.env
+source ./.env
 
 forge verify-contract \
   "$1" \

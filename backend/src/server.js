@@ -8,11 +8,17 @@ import { randomBytes } from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
+import { MembershipIndexer } from "./membership/indexer.js";
+import { makeMembershipRouter } from "./route/membership.js";
+
 dotenv.config();
 
 // JWT Configuration
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production-min-32-characters';
 const JWT_EXPIRY = '30d'; // Token valid for 30 days
+
+const registeredWallets = new Set();   // wallet strings
+const walletLeaves = new Map();        // wallet -> leaf string
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,6 +31,23 @@ app.use(express.json());
 const PINATA_API_KEY = process.env.PINATA_API_KEY;
 const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY;
 const PINATA_GATEWAY = process.env.PINATA_GATEWAY || 'gateway.pinata.cloud';
+
+// Membership Indexer Configuration
+const RPC_URL = process.env.AURORA_TESTNET_RPC || "https://testnet.aurora.dev";
+const MEMBERSHIP = process.env.MEMBERSHIP_REGISTRY_ADDRESS; // set this
+const DEPTH = 16;
+
+if (!MEMBERSHIP) {
+  console.error("Missing env MEMBERSHIP_REGISTRY_ADDRESS");
+  process.exit(1);
+}
+
+function membershipMessage(chainId, wallet) {
+  return `SpeakUp membership key v1
+chainId=${chainId}
+wallet=${wallet.toLowerCase()}
+purpose=derive-memberSecret`;
+}
 
 // Helper function to upload JSON to IPFS via Pinata
 async function uploadToIPFS(jsonData) {
@@ -583,6 +606,42 @@ app.post('/api/auth/verify-token', verifyToken, (req, res) => {
 // =============================================================================
 // M2 API ENDPOINTS
 // =============================================================================
+
+app.post("/api/m2/register", async (req, res) => {
+  try {
+    const { walletAddress, chainId, signature, leaf } = req.body;
+
+    if (!walletAddress || !chainId || !signature || !leaf) {
+      return res.status(400).json({ error: "Missing walletAddress/chainId/signature/leaf" });
+    }
+
+    const wallet = String(walletAddress).trim().toLowerCase();
+    const msg = membershipMessage(Number(chainId), wallet);
+
+    const recovered = ethers.verifyMessage(msg, signature).toLowerCase();
+    if (recovered !== wallet) {
+      return res.status(401).json({ error: "Bad signature" });
+    }
+
+    registeredWallets.add(wallet);
+    walletLeaves.set(wallet, String(leaf));
+
+    // IMPORTANT: you must rebuild the merkle tree from walletLeaves
+    rebuildMerkleTreeFromLeaves(); // you will implement or adapt this (see below)
+
+    persistState(); // must save registeredWallets + walletLeaves
+
+    return res.json({
+      success: true,
+      wallet,
+      membershipRoot: merkleTree.root ? merkleTree.root.toString() : null
+    });
+  } catch (e) {
+    console.error("register failed:", e);
+    return res.status(500).json({ error: e.message });
+  }
+});
+
 
 // GET /api/m2/merkle-proof - Get Merkle proof for ZK proof generation
 app.get('/api/m2/merkle-proof', verifyToken, (req, res) => {
@@ -1162,6 +1221,19 @@ Only reject clear hate speech, violence, or illegal content.
     res.status(500).json({ error: 'Failed to process comment' });
   }
 });
+
+// Membership Indexer Initialization
+const indexer = new MembershipIndexer({
+  rpcUrl: RPC_URL,
+  membershipAddress: MEMBERSHIP,
+  depth: DEPTH
+});
+
+// optional: sync at startup
+const START_BLOCK = Number(process.env.MEMBERSHIP_DEPLOY_BLOCK || 0);
+indexer.sync(START_BLOCK).then((r) => console.log("membership sync:", r)).catch(console.error);
+
+app.use("/api/membership", makeMembershipRouter(indexer));
 
 // Start server
 app.listen(PORT, () => {

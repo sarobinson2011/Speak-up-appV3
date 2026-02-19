@@ -1,0 +1,59 @@
+SpeakUp membership key v1
+chainId=1313161555
+wallet=0xF8f8269488f73fab3935555FCDdD6035699deE25
+purpose=register-leaf
+
+
+CORE LOOP (0–5) — Speak-up-appV3
+
+0) Start of session (project root)
+   git status
+   git pull
+   git rev-parse --short HEAD
+
+1) If STATE.md changed, commit it first (STATE is law)
+   git add STATE.md
+   git commit -m "chore(state): <what changed>"
+   git push
+
+2) Define ONE slice (goal + done checks + test commands)
+   (no commands here — write it down, then implement)
+
+3) Implement the slice (coder or manual)    
+   (no commands here — code changes)
+
+4) Test immediately
+   # backend
+   cd backend && npm run dev
+   # frontend
+   cd ../frontend && npm run dev
+   # or contracts/tests
+   forge test -vv
+
+5) Commit + push the slice
+   git status
+   git add -A
+   git commit -m "feat: <slice summary>"
+   git push
+
+
+Quick mental model
+
+Root (0x2571...) is the Merkle root after inserting your leaf.
+Leaf (0x15e5...) is your member leaf at index 0.
+Proof generation is just “give me siblings for index 0 under the current root” — fast.
+
+
+
+
+
+engineering[1] prompt:
+
+
+
+
+
+
+
+
+

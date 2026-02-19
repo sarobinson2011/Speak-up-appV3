@@ -4,10 +4,14 @@ pragma solidity ^0.8.22;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {IPoseidon2} from "./poseidon/IPoseidon2.sol";
 
 interface IAuthorizer {
     function authorizeSign(uint256 petitionId, bytes32 nullifier, bytes calldata authData) external view returns (bool);
-    function authorizeComment(uint256 petitionId, bytes32 nullifier, bytes32 commentHash, bytes calldata authData) external view returns (bool);
+    function authorizeComment(uint256 petitionId, bytes32 nullifier, bytes32 commentHash, bytes calldata authData)
+        external
+        view
+        returns (bool);
 }
 
 interface IGroth16Verifier {
@@ -46,6 +50,7 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     event PetitionCommented(uint256 indexed petitionId, bytes32 indexed nullifier, bytes32 commentHash);
     event AuthorizerUpdated(address indexed oldAuthorizer, address indexed newAuthorizer);
     event Groth16VerifierUpdated(address indexed oldVerifier, address indexed newVerifier);
+    event Poseidon2Updated(address indexed oldPoseidon2, address indexed newPoseidon2);
 
     /*//////////////////////////////////////////////////////////////
                             STATE VARIABLES
@@ -54,6 +59,7 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     uint256 public petitionCount;
     IAuthorizer public authorizer;
     IGroth16Verifier public groth16Verifier;
+    IPoseidon2 public poseidon2;
 
     /*//////////////////////////////////////////////////////////////
                         STABLE STATE MODEL
@@ -82,13 +88,17 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     /**
      * @notice Initialize the contract (replaces constructor for upgradeable)
      * @param _authorizer Initial authorizer (AttestationAuthorizer for M1)
+     * @param _poseidon2 Initial Poseidon2 hasher address
      */
-    function initialize(address _authorizer) public initializer {
+    function initialize(address _authorizer, address _poseidon2) public initializer {
         __Ownable_init(msg.sender);
-        __UUPSUpgradeable_init();
-        
+        // NOTE: UUPSUpgradeable doesn't require an initializer call for our use case.
+
         if (_authorizer == address(0)) revert InvalidAuthorizer();
         authorizer = IAuthorizer(_authorizer);
+
+        if (_poseidon2 == address(0)) revert InvalidAuthorizer(); // maybe add a new error, but reuse for now
+        poseidon2 = IPoseidon2(_poseidon2);
     }
 
     /*//////////////////////////////////////////////////////////////
@@ -97,13 +107,9 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
 
     function createPetition(string calldata metadataURI) external returns (uint256 petitionId) {
         petitionId = ++petitionCount;
-        
-        petitions[petitionId] = Petition({
-            creator: msg.sender,
-            createdAt: block.timestamp,
-            metadataURI: metadataURI,
-            exists: true
-        });
+
+        petitions[petitionId] =
+            Petition({creator: msg.sender, createdAt: block.timestamp, metadataURI: metadataURI, exists: true});
 
         emit PetitionCreated(petitionId, msg.sender, metadataURI);
     }
@@ -141,27 +147,24 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     ) external {
         if (!petitions[petitionId].exists) revert PetitionDoesNotExist();
         if (usedSignNullifier[petitionId][nullifier]) revert NullifierAlreadyUsed();
-        
+
         // Verify ZK proof
         if (address(groth16Verifier) == address(0)) revert InvalidVerifier();
         if (!groth16Verifier.verifyProof(pA, pB, pC, pubSignals)) revert InvalidZKProof();
-        
+
         // Verify public signals match
         if (uint256(nullifier) != pubSignals[0]) revert InvalidZKProof();
         if (petitionId != pubSignals[1]) revert InvalidZKProof();
         // pubSignals[2] is membershipRoot - verified by circuit
-        
+
         // Mark nullifier as used and emit event
         usedSignNullifier[petitionId][nullifier] = true;
         emit PetitionSigned(petitionId, nullifier);
     }
 
-    function commentOnPetition(
-        uint256 petitionId,
-        bytes32 nullifier,
-        bytes32 commentHash,
-        bytes calldata authData
-    ) external {
+    function commentOnPetition(uint256 petitionId, bytes32 nullifier, bytes32 commentHash, bytes calldata authData)
+        external
+    {
         if (!petitions[petitionId].exists) revert PetitionDoesNotExist();
         if (usedCommentNullifier[petitionId][nullifier]) revert NullifierAlreadyUsed();
         if (!authorizer.authorizeComment(petitionId, nullifier, commentHash, authData)) revert Unauthorized();
@@ -176,20 +179,29 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
 
     function setAuthorizer(address newAuthorizer) external onlyOwner {
         if (newAuthorizer == address(0)) revert InvalidAuthorizer();
-        
+
         address oldAuthorizer = address(authorizer);
         authorizer = IAuthorizer(newAuthorizer);
-        
+
         emit AuthorizerUpdated(oldAuthorizer, newAuthorizer);
     }
 
     function setGroth16Verifier(address newVerifier) external onlyOwner {
         if (newVerifier == address(0)) revert InvalidVerifier();
-        
+
         address oldVerifier = address(groth16Verifier);
         groth16Verifier = IGroth16Verifier(newVerifier);
-        
+
         emit Groth16VerifierUpdated(oldVerifier, newVerifier);
+    }
+
+    function setPoseidon2(address newPoseidon2) external onlyOwner {
+        if (newPoseidon2 == address(0)) revert InvalidAuthorizer(); // reuse error
+
+        address oldPoseidon2 = address(poseidon2);
+        poseidon2 = IPoseidon2(newPoseidon2);
+
+        emit Poseidon2Updated(oldPoseidon2, newPoseidon2);
     }
 
     /*//////////////////////////////////////////////////////////////

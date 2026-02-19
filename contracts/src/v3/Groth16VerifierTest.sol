@@ -10,56 +10,52 @@ import "../v3/Groth16Verifier.sol";
  */
 contract Groth16VerifierTest {
     Groth16Verifier public verifier;
-    
+
     // Track successful verifications
     uint256 public successfulVerifications;
-    
-    event ProofVerified(
-        address indexed caller,
-        uint256[3] publicSignals,
-        bool result
-    );
-    
+
+    event ProofVerified(address indexed caller, uint256[3] publicSignals, bool result);
+
     constructor(address _verifier) {
         verifier = Groth16Verifier(_verifier);
     }
-    
+
     /**
      * @notice Test the golden proof from Phase 1
      * @dev Uses the exact calldata from golden-proof.json
      */
     function testGoldenProof(
-        uint[2] calldata _pA,
-        uint[2][2] calldata _pB,
-        uint[2] calldata _pC,
-        uint[3] calldata _pubSignals
+        uint256[2] calldata _pA,
+        uint256[2][2] calldata _pB,
+        uint256[2] calldata _pC,
+        uint256[3] calldata _pubSignals
     ) external returns (bool) {
         bool result = verifier.verifyProof(_pA, _pB, _pC, _pubSignals);
-        
+
         if (result) {
             successfulVerifications++;
         }
-        
+
         emit ProofVerified(msg.sender, _pubSignals, result);
-        
+
         require(result, "Proof verification failed");
-        
+
         return result;
     }
-    
+
     /**
      * @notice Direct passthrough to verifier (view function)
      * @dev For read-only testing without state changes
      */
     function verifyProof(
-        uint[2] calldata _pA,
-        uint[2][2] calldata _pB,
-        uint[2] calldata _pC,
-        uint[3] calldata _pubSignals
+        uint256[2] calldata _pA,
+        uint256[2][2] calldata _pB,
+        uint256[2] calldata _pC,
+        uint256[3] calldata _pubSignals
     ) external view returns (bool) {
         return verifier.verifyProof(_pA, _pB, _pC, _pubSignals);
     }
-    
+
     /**
      * @notice Get the verifier address
      */
