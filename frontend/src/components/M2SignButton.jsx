@@ -1,136 +1,220 @@
-// frontend/src/components/M2SignButton.jsx
+// frontend/src/components/M2SignButton.jsx (M2-only)
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import { useZKProof } from '../hooks/useZKProof';
+import { REGISTRY_ADDRESS } from '../config';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-const REGISTRY_ADDRESS = '0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD';
+// Optional: if you want this configurable, set VITE_VERIFIER_ADDRESS in frontend .env
+const VERIFIER_ADDRESS =
+  import.meta.env.VITE_VERIFIER_ADDRESS || '0xE70E2cFA4a4272B39918A45BA1F067676CCf8c11';
 
-export function M2SignButton({ petitionId, disabled = false, onSuccess, onError }) {
+const DISABLE_PREFLIGHT =
+  (import.meta.env.VITE_DISABLE_PREFLIGHT || '').toString().toLowerCase() === 'true';
+
+const VERIFIER_ABI = [
+  'function verifyProof(uint256[2],uint256[2][2],uint256[2],uint256[3]) external view returns (bool)'
+];
+
+const REGISTRY_SIGN_ABI = [
+  'function signPetitionWithZKProof(uint256 petitionId, bytes32 nullifier, uint256[2] pA, uint256[2][2] pB, uint256[2] pC, uint256[3] pubSignals) external'
+];
+
+// Best-effort: common verifier getter names some registries expose
+const REGISTRY_VERIFIER_PROBE_ABI = [
+  'function verifier() view returns (address)',
+  'function zkVerifier() view returns (address)',
+  'function groth16Verifier() view returns (address)',
+  'function proofVerifier() view returns (address)'
+];
+
+function isHexString(s) {
+  return typeof s === 'string' && /^0x[0-9a-fA-F]+$/.test(s);
+}
+function isDecString(s) {
+  return typeof s === 'string' && /^[0-9]+$/.test(s);
+}
+
+function normalizePublicSignals(ps) {
+  if (!Array.isArray(ps) || ps.length !== 3) return null;
+  for (const x of ps) {
+    if (typeof x !== 'string') return null;
+    if (!isDecString(x) && !isHexString(x)) return null;
+  }
+  return ps;
+}
+
+function permute3(ps) {
+  const [a, b, c] = ps;
+  return [
+    { name: 'as-is [0,1,2]', inputs: [a, b, c] },
+    { name: '[0,2,1]', inputs: [a, c, b] },
+    { name: '[1,0,2]', inputs: [b, a, c] },
+    { name: '[1,2,0]', inputs: [b, c, a] },
+    { name: '[2,0,1]', inputs: [c, a, b] },
+    { name: '[2,1,0]', inputs: [c, b, a] }
+  ];
+}
+
+async function probeRegistryVerifier(provider) {
+  // Try several common getter names; return first that works.
+  const probe = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_VERIFIER_PROBE_ABI, provider);
+  const candidates = ['verifier', 'zkVerifier', 'groth16Verifier', 'proofVerifier'];
+
+  for (const fn of candidates) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const addr = await probe[fn]();
+      if (addr && typeof addr === 'string' && addr.startsWith('0x') && addr.length === 42) {
+        return { fn, addr };
+      }
+    } catch {
+      // ignore
+    }
+  }
+  return null;
+}
+
+export function M2SignButton({
+  petitionId,
+  membershipPath,
+  memberSecret,
+  disabled = false,
+  onSuccess,
+  onError,
+  onPreflight
+}) {
   const [status, setStatus] = useState('idle');
   const { generateProof } = useZKProof();
 
   async function handleM2Sign() {
     try {
-      // Use the petitionId provided by the page/list (must match on-chain ID)
-      const pid = Number(petitionId);
-      if (!Number.isFinite(pid) || pid <= 0) {
+      let pidBI;
+      try {
+        pidBI = BigInt(petitionId);
+      } catch {
         throw new Error(`Invalid petitionId: ${petitionId}`);
       }
-      
-      setStatus('fetching-proof');
+      if (pidBI <= 0n) throw new Error(`Invalid petitionId: ${petitionId}`);
 
-      const token = localStorage.getItem('authToken');
-      if (!token) {
-        throw new Error('Please log in first');
+      if (!window.ethereum) throw new Error('MetaMask not found');
+      if (!membershipPath) throw new Error('Membership path not loaded yet');
+
+      if (
+        !memberSecret ||
+        typeof memberSecret !== 'string' ||
+        (!isHexString(memberSecret) && !isDecString(memberSecret))
+      ) {
+        throw new Error('memberSecret missing/invalid (expected hex 0x… or decimal string)');
       }
 
-      // Fetch Merkle proof
-      console.log('📡 Fetching Merkle proof...');
-      const proofResponse = await fetch(`${API_URL}/api/m2/merkle-proof`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-
-      if (!proofResponse.ok) {
-        const error = await proofResponse.json();
-        throw new Error(error.error || 'Failed to fetch Merkle proof');
-      }
-
-      const { proof: merkleProof } = await proofResponse.json();
-      console.log('✅ Merkle proof received');
-
-      // Generate ZK proof for this petition ID
       setStatus('generating-zk');
-      console.log('🔐 Generating ZK proof...');
 
-      const zkProof = await generateProof(merkleProof, pid);
-      console.log('✅ ZK proof generated');
-
-      // Check nullifier
-      const nullifierCheck = await fetch(`${API_URL}/api/m2/check-nullifier`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          petitionId: pid,
-          nullifier: zkProof.nullifier
-        })
-      });
-
-      const { used } = await nullifierCheck.json();
-      if (used) {
-        throw new Error('Already signed with Strong Privacy');
+      const zkProof = await generateProof(membershipPath, pidBI.toString(), memberSecret);
+      if (!zkProof?.nullifier || !zkProof?.proof) {
+        throw new Error('ZK proof generation returned unexpected shape');
       }
 
-      // Submit to blockchain
+      const { pA, pB, pC, publicSignals } = zkProof.proof;
+      if (!pA || !pB || !pC || !publicSignals) {
+        throw new Error('ZK proof missing fields (pA/pB/pC/publicSignals)');
+      }
+
+      const psNorm = normalizePublicSignals(publicSignals);
+      if (!psNorm) {
+        throw new Error('publicSignals invalid (expected array of 3 uint256 strings)');
+      }
+
       setStatus('submitting');
-      console.log('📤 Submitting...');
 
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
 
-      // === PREFLIGHT TEST ===
-      const VERIFIER_ADDRESS = '0xE70E2cFA4a4272B39918A45BA1F067676CCf8c11';
-      const VERIFIER_ABI = ['function verifyProof(uint256[2],uint256[2][2],uint256[2],uint256[3]) external view returns (bool)'];
-      const verifier = new ethers.Contract(VERIFIER_ADDRESS, VERIFIER_ABI, provider);
-      
-      const preflightOk = await verifier.verifyProof(
-        zkProof.proof.pA,
-        zkProof.proof.pB,
-        zkProof.proof.pC,
-        zkProof.proof.publicSignals
-      );
-      
-      console.log('🔍 PREFLIGHT VERIFIER:', preflightOk);
-      
-      if (!preflightOk) {
-        throw new Error('PREFLIGHT FAILED: Proof invalid on-chain!');
+      // --- Debug: confirm chain + code presence (super low risk) ---
+      const net = await provider.getNetwork();
+      console.log('[M2] chainId', net.chainId?.toString?.() || String(net.chainId));
+
+      const [verifierCode, registryCode] = await Promise.all([
+        provider.getCode(VERIFIER_ADDRESS),
+        provider.getCode(REGISTRY_ADDRESS)
+      ]);
+      console.log('[M2] verifier code empty?', verifierCode === '0x', VERIFIER_ADDRESS);
+      console.log('[M2] registry  code empty?', registryCode === '0x', REGISTRY_ADDRESS);
+
+      const probe = await probeRegistryVerifier(provider);
+      if (probe) {
+        console.log('[M2] registry exposes verifier via', probe.fn, '=>', probe.addr);
+        if (probe.addr.toLowerCase() !== VERIFIER_ADDRESS.toLowerCase()) {
+          console.warn(
+            '[M2] WARNING: VERIFIER_ADDRESS differs from registry verifier',
+            { envVerifier: VERIFIER_ADDRESS, registryVerifier: probe.addr }
+          );
+        }
+      } else {
+        console.log('[M2] registry verifier address not discoverable via common getters (ok)');
       }
-      
-      console.log('✅ Preflight passed!');
-      // === END PREFLIGHT ===
 
-      const REGISTRY_ABI = [
-        'function signPetitionWithZKProof(uint256 petitionId, bytes32 nullifier, uint256[2] calldata pA, uint256[2][2] calldata pB, uint256[2] calldata pC, uint256[3] calldata pubSignals) external'
-      ];
+      try {
+        onPreflight?.();
+      } catch {
+        // ignore
+      }
 
-      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, signer);
+      // --- Preflight against VERIFIER_ADDRESS (view call) ---
+      let pubSignalsForChain = psNorm;
+
+      if (!DISABLE_PREFLIGHT && VERIFIER_ADDRESS) {
+        const verifier = new ethers.Contract(VERIFIER_ADDRESS, VERIFIER_ABI, provider);
+
+        const candidates = permute3(psNorm);
+        let accepted = null;
+
+        for (const c of candidates) {
+          try {
+            // eslint-disable-next-line no-await-in-loop
+            const ok = await verifier.verifyProof(pA, pB, pC, c.inputs);
+            console.log('[M2_PREFLIGHT] verifyProof order:', c.name, '=>', ok);
+            if (ok) {
+              accepted = c;
+              break;
+            }
+          } catch (e) {
+            console.log(
+              '[M2_PREFLIGHT] verifyProof order reverted:',
+              c.name,
+              e?.reason || e?.message || String(e)
+            );
+          }
+        }
+
+        if (!accepted) {
+          throw new Error(
+            'Preflight failed: proof invalid on-chain (all publicSignals orders failed). ' +
+            'Likely wrong verifier address or wrong verifier/circuit key.'
+          );
+        }
+
+        console.log('[M2_PREFLIGHT] accepted publicSignals order:', accepted.name);
+        pubSignalsForChain = accepted.inputs;
+      }
+
+      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_SIGN_ABI, signer);
 
       const tx = await registry.signPetitionWithZKProof(
-        pid,
+        pidBI,
         zkProof.nullifier,
-        zkProof.proof.pA,
-        zkProof.proof.pB,
-        zkProof.proof.pC,
-        zkProof.proof.publicSignals,
+        pA,
+        pB,
+        pC,
+        pubSignalsForChain,
         { gasLimit: 500000 }
       );
 
-      console.log('Transaction sent:', tx.hash);
       await tx.wait();
-      console.log('✅ Confirmed!');
-
-      // Record nullifier
-      await fetch(`${API_URL}/api/m2/record-signature`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          petitionId: pid,
-          nullifier: zkProof.nullifier,
-          txHash: tx.hash
-        })
-      });
 
       setStatus('success');
       onSuccess?.({ txHash: tx.hash, nullifier: zkProof.nullifier });
-
     } catch (error) {
-      console.error('M2 error:', error);
+      console.error('M2SignButton error:', error);
       setStatus('idle');
       onError?.(error);
     }
@@ -140,11 +224,10 @@ export function M2SignButton({ petitionId, disabled = false, onSuccess, onError 
     ? 'Already signed (Strong Privacy)'
     : ({
         idle: 'Sign with Strong Privacy (ZK)',
-        'fetching-proof': 'Fetching proof...',
-        'generating-zk': 'Generating ZK proof (5-10s)...',
+        'generating-zk': 'Generating ZK proof...',
         submitting: 'Submitting...',
         success: 'Signed anonymously'
-      }[status]);
+      }[status] || 'Sign with Strong Privacy (ZK)');
 
   const isLoading = status !== 'idle' && status !== 'success';
 
@@ -160,8 +243,8 @@ export function M2SignButton({ petitionId, disabled = false, onSuccess, onError 
         borderRadius: '8px',
         fontSize: '16px',
         fontWeight: '600',
-        cursor: (disabled || status === 'success') ? 'not-allowed' : (isLoading ? 'wait' : 'pointer'),
-        opacity: (disabled || isLoading || status === 'success') ? 0.7 : 1
+        cursor: disabled || status === 'success' ? 'not-allowed' : isLoading ? 'wait' : 'pointer',
+        opacity: disabled || isLoading || status === 'success' ? 0.7 : 1
       }}
     >
       {buttonText}

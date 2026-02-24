@@ -1,7 +1,9 @@
 #!/bin/bash
+set -euo pipefail
 # Phase 0: Freeze V3 artifacts before testing
 
-cd /home/oem/Documents/Coding/Speak-up-appV3/zk/v3-groth16
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 echo "📦 V3 Groth16 Artifact Freeze"
 echo "=============================="
@@ -19,32 +21,26 @@ sha256sum contracts/Groth16Verifier.sol
 echo ""
 
 # Save metadata
-cat > ARTIFACTS.md << 'EOFMD'
+cat > ARTIFACTS.md << EOFMD
 # V3 Groth16 Artifacts (FROZEN)
 
 **Date:** $(date)
-**Circuit:** sign_petition.circom (depth 10)
+**Circuit:** sign_petition.circom (depth 16)
 
 ## File Hashes (SHA256)
-```
+\`\`\`
 $(sha256sum build/sign_petition.r1cs)
 $(sha256sum keys/sign_petition_final.zkey)
 $(sha256sum keys/verification_key.json)
 $(sha256sum contracts/Groth16Verifier.sol)
-```
-
-## Circuit Statistics
-- Constraints: 6,220
-- Private Inputs: 21
-- Public Inputs: 2 (petitionId, membershipRoot)
-- Outputs: 1 (nullifier)
+\`\`\`
 
 ## Public Input Order (CRITICAL)
-1. `petitionId` (Field)
-2. `membershipRoot` (Field)
+1. \`petitionId\` (Field)
+2. \`membershipRoot\` (Field)
 
 Output:
-- `nullifier` (Field)
+- \`nullifier\` (Field)
 
 ## DO NOT MODIFY
 If any hash changes, regenerate ALL artifacts:

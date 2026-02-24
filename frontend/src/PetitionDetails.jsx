@@ -1,365 +1,206 @@
-import { useState, useEffect } from 'react';
+// frontend/src/PetitionDetails.jsx (M2-only)
+import { useEffect, useMemo, useState } from 'react';
 import { ethers } from 'ethers';
-import { poseidon3 } from 'poseidon-lite';
-import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL, BACKEND_URL } from './config';
+import { poseidon1, poseidon3 } from 'poseidon-lite';
+
+import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL } from './config';
 import { M2SignButton } from './components/M2SignButton';
 import './PetitionDetails.css';
 
-const SIGN_DOMAIN = 0x5349474en; // BigInt for "SIGN" (must match circuit)
+const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
 
-function computeM2NullifierBytes32(memberSecretDecStr, petitionId) {
-  const ms = BigInt(memberSecretDecStr);
-  const pid = BigInt(petitionId);
-  const n = poseidon3([ms, pid, SIGN_DOMAIN]);
-  return ethers.toBeHex(n, 32);
+function toBigIntFromHex32(hex) {
+  if (!hex || typeof hex !== 'string' || !hex.startsWith('0x')) return null;
+  try {
+    return BigInt(hex);
+  } catch {
+    return null;
+  }
 }
 
-export default function PetitionDetails({ petitionId, signer, verifiedEmail, memberSecret, onBack }) {
+function bigIntToHex32(v) {
+  const hex = v.toString(16);
+  return '0x' + hex.padStart(64, '0');
+}
+
+export default function PetitionDetails({
+  petitionId,
+  signer, // kept for consistency; M2SignButton uses window.ethereum
+  memberSecret, // hex bytes32 stored locally
+  membershipPath, // REQUIRED for M2 proof generation (from backend /api/membership/path)
+  onBack
+}) {
   const [petition, setPetition] = useState(null);
   const [metadata, setMetadata] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [userSigned, setUserSigned] = useState(false);
+
   const [signatureCount, setSignatureCount] = useState(0);
+
+  const [comments, setComments] = useState([]);
+  const [commentsAvailable, setCommentsAvailable] = useState(false);
+
   const [hasSignedM2, setHasSignedM2] = useState(false);
   const [m2Nullifier, setM2Nullifier] = useState(null);
-  const [jwt, setJwt] = useState(null);
-  const [m2MemberSecret, setM2MemberSecret] = useState(null);
   const [m2CheckLoading, setM2CheckLoading] = useState(false);
+
+  const memberSecretBI = useMemo(() => toBigIntFromHex32(memberSecret), [memberSecret]);
+
+  // --- PRE-FLIGHT (M2) ---
+  const uiLeafHex = useMemo(() => {
+    if (!memberSecretBI) return null;
+    try {
+      const leaf = poseidon1([memberSecretBI]);
+      return bigIntToHex32(leaf);
+    } catch {
+      return null;
+    }
+  }, [memberSecretBI]);
+
+  function logM2Preflight(tag = 'M2_PREFLIGHT') {
+    try {
+      console.log(`[${tag}]`, {
+        petitionId,
+        memberSecretPresent: Boolean(memberSecretBI),
+        memberSecretPreview:
+          typeof memberSecret === 'string' && memberSecret.startsWith('0x') && memberSecret.length > 20
+            ? `${memberSecret.slice(0, 10)}…${memberSecret.slice(-10)}`
+            : '(none)',
+        uiLeafHex,
+        pathWallet: membershipPath?.wallet,
+        pathLeaf: membershipPath?.leaf,
+        root: membershipPath?.root,
+        index: membershipPath?.index,
+        siblingsLen: membershipPath?.siblings?.length,
+        pathBitsLen: membershipPath?.pathBits?.length,
+        leafMatches: Boolean(uiLeafHex && membershipPath?.leaf && uiLeafHex.toLowerCase() === String(membershipPath.leaf).toLowerCase())
+      });
+    } catch (e) {
+      console.warn('[M2_PREFLIGHT] failed to log', e);
+    }
+  }
 
   useEffect(() => {
     let cancelled = false;
 
     (async () => {
-      // 1) Always load petition details
-      await loadPetitionDetails();
-
-      // 2) Fetch M2 member secret (best-effort)
-      try {
-        const token = localStorage.getItem('jwt');
-        if (cancelled) return;
-
-        setJwt(token);
-
-        if (!token) {
-          setM2MemberSecret(null);
-          return;
-        }
-
-        const res = await fetch(`${BACKEND_URL}/api/m2/member-secret`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-
-        if (cancelled) return;
-
-        if (!res.ok) {
-          // Don’t hard-fail the whole page; just clear M2 secret
-          setM2MemberSecret(null);
-          return;
-        }
-
-        const data = await res.json().catch(() => null);
-        if (!data || !data.memberSecret) {
-          setM2MemberSecret(null);
-          return;
-        }
-
-        // data.memberSecret is a decimal string
-        setM2MemberSecret(String(data.memberSecret));
-      } catch (e) {
-        if (!cancelled) setM2MemberSecret(null);
-      }
+      await loadPetitionDetails(() => cancelled);
     })();
 
     return () => {
       cancelled = true;
     };
-  }, [petitionId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petitionId, memberSecret, membershipPath]);
 
-  // If other code calls this directly (e.g. M2SignButton flow), keep a function too:
-  async function fetchM2MemberSecret() {
-    const token = localStorage.getItem('jwt');
-    setJwt(token);
+  // Log whenever critical M2 inputs change (helps confirm pipe integrity before clicking Sign)
+  useEffect(() => {
+    logM2Preflight('M2_PREFLIGHT');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petitionId, memberSecret, membershipPath]);
 
-    if (!token) {
-      setM2MemberSecret(null);
-      return null;
-    }
-
-    const res = await fetch(`${BACKEND_URL}/api/m2/member-secret`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-
-    if (!res.ok) {
-      setM2MemberSecret(null);
-      return null;
-    }
-
-    const data = await res.json().catch(() => null);
-    if (!data || !data.memberSecret) {
-      setM2MemberSecret(null);
-      return null;
-    }
-
-    setM2MemberSecret(String(data.memberSecret));
-    return String(data.memberSecret);
-  }
-
-
-  async function loadPetitionDetails() {
+  async function loadPetitionDetails(isCancelled) {
     try {
       const provider = new ethers.JsonRpcProvider(RPC_URL);
       const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
 
-      // Ensure we have the M2 secret (needed to compute the nullifier deterministically)
-      let ms = null;
-      try {
-        ms = await fetchM2MemberSecret();
-      } catch (e) {
-        console.warn('M2 member secret not available:', e.message);
-        ms = null;
-      }
+      // 1) Signed state (M2)
+      await refreshM2SignedState(registry, petitionId, isCancelled);
 
-      // Strong-privacy (M2) signed-state check (Poseidon nullifier)
-      await refreshM2SignedState(registry, petitionId);
-
-      // Load petition data from blockchain
+      // 2) Petition data (on-chain)
       const petitionData = await registry.getPetition(petitionId);
+      if (isCancelled()) return;
       setPetition(petitionData);
 
-      // Load metadata from backend/IPFS
-      try {
-        const metadataResponse = await fetch(`${BACKEND_URL}/api/petition/${petitionId}`);
-        if (metadataResponse.ok) {
-          const metadataData = await metadataResponse.json();
-          setMetadata(metadataData);
-        } else {
-          // 404 is normal for legacy petitions. Don't spam console.
-          setMetadata({
-            petitionId: petitionId,
-            title: `Petition #${petitionId}`,
-            description: 'No description available (petition created before metadata storage was implemented)',
-            category: 'Unknown',
-            target: 'Unknown',
-            goalSignatures: 100,
-            createdAt: new Date(Number(petitionData.createdAt) * 1000).toISOString()
-          });
-        }
-      } catch (metadataError) {
-        console.error('Error loading metadata:', metadataError);
-        // Fallback for old petitions
-        setMetadata({
-          petitionId: petitionId,
-          title: `Petition #${petitionId}`,
-          description: 'No description available',
-          category: 'Unknown',
-          target: 'Unknown',
-          goalSignatures: 100,
-          createdAt: new Date(Number(petitionData.createdAt) * 1000).toISOString()
-        });
-      }
+      // 3) Metadata (M2-only MVP)
+      // Backend legacy metadata endpoints are deprecated (410 Gone). Keep UI stable with a safe fallback.
+      const createdAtISO = petitionData?.createdAt
+        ? new Date(Number(petitionData.createdAt) * 1000).toISOString()
+        : new Date().toISOString();
 
-      // Load signature count
+      const metadataURI =
+        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) ||
+        '';
+
+      setMetadata({
+        petitionId,
+        title: `Petition #${petitionId}`,
+        description: metadataURI
+          ? `Metadata URI: ${metadataURI}`
+          : 'No description available (metadata not loaded in M2-only MVP)',
+        category: 'Unknown',
+        target: 'Public',
+        goalSignatures: 100,
+        createdAt: createdAtISO
+      });
+
+      // 4) Signature count (events)
       const filter = registry.filters.PetitionSigned(petitionId);
       const events = await registry.queryFilter(filter);
-      setSignatureCount(events.length);
+      if (!isCancelled()) setSignatureCount(events.length);
 
-      // Check if user signed
-      if (memberSecret) {
-        const nullifier = ethers.keccak256(
-          ethers.solidityPacked(
-            ['bytes32', 'uint256', 'string'],
-            [memberSecret, petitionId, 'SIGN']
-          )
-        );
-        const signed = await registry.hasSignedPetition(petitionId, nullifier);
-        setUserSigned(signed);
-      }
-
-      // Load comments
-      loadComments();
+      // 5) Comments are disabled in M2-only MVP (read-only UI placeholder)
+      setCommentsAvailable(false);
+      setComments([]);
     } catch (error) {
       console.error('Error loading petition details:', error);
     }
   }
 
-  async function loadComments() {
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/petition/${petitionId}/comments`);
-      const data = await response.json();
-      setComments(data.comments || []);
-    } catch (error) {
-      console.error('Error loading comments:', error);
-    }
-  }
-
-  async function refreshM2SignedState(registry, pid) {
+  async function refreshM2SignedState(registry, pid, isCancelled = () => false) {
     setM2CheckLoading(true);
     try {
-      // For M2, ONLY use the M2 member secret (the one used to generate the proof/nullifier).
-      if (!m2MemberSecret) {
+      if (!memberSecretBI) {
         setHasSignedM2(false);
         setM2Nullifier(null);
         return;
       }
 
-      const ms = BigInt(m2MemberSecret);
       const petitionIdBI = BigInt(pid);
 
-      // Must match circuit: Poseidon3([memberSecret, petitionId, 0x5349474e])
-      const n = poseidon3([ms, petitionIdBI, SIGN_DOMAIN]);
-      const nullifierBytes32 = ethers.toBeHex(n, 32);
+      // Must match circuit: Poseidon3([memberSecret, petitionId, SIGN_DOMAIN])
+      const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
+      const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
 
-      setM2Nullifier(nullifierBytes32);
-
-      // Minimal ABI so we don't depend on REGISTRY_ABI containing the mapping getter
-      const runner = registry.runner || registry.provider; // ethers v6
-      const checker = new ethers.Contract(
-        REGISTRY_ADDRESS,
-        ["function usedSignNullifier(uint256,bytes32) view returns (bool)"],
-        runner
-      );
-
-      const signed = await checker.usedSignNullifier(pid, nullifierBytes32);
-
-      console.log("M2 signed-check", { pid, nullifierBytes32, signed });
+      const signed = await registry.hasSignedPetition(petitionIdBI, nullifierHex);
+      if (isCancelled()) return;
 
       setHasSignedM2(Boolean(signed));
-    } catch (e) {
-      console.error("refreshM2SignedState failed:", e);
-      setHasSignedM2(false);
-      setM2Nullifier(null);
+      setM2Nullifier(nullifierHex);
+    } catch (error) {
+      if (!isCancelled()) {
+        console.warn('Failed to refresh M2 signed state:', error);
+        setHasSignedM2(false);
+        setM2Nullifier(null);
+      }
     } finally {
-      setM2CheckLoading(false);
+      if (!isCancelled()) setM2CheckLoading(false);
     }
-  }
-
-
-  async function signPetition() {
-    setLoading(true);
-    try {
-      const nullifier = ethers.keccak256(
-        ethers.solidityPacked(
-          ['bytes32', 'uint256', 'string'],
-          [memberSecret, petitionId, 'SIGN']
-        )
-      );
-
-      const response = await fetch(`${BACKEND_URL}/api/petition/sign-permit`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ petitionId, nullifier, email: verifiedEmail })
-      });
-
-      const { authData } = await response.json();
-
-      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, signer);
-      const tx = await registry.signPetition(petitionId, nullifier, authData, {
-        gasLimit: 100000
-      });
-      await tx.wait();
-
-      alert('Petition signed anonymously!');
-      loadPetitionDetails();
-    } catch (error) {
-      console.error('Error signing petition:', error);
-      if (error.message.includes('NullifierAlreadyUsed')) {
-        alert('You already signed this petition!');
-      } else {
-        alert('Failed to sign petition: ' + error.message);
-      }
-    }
-    setLoading(false);
-  }
-
-  async function postComment() {
-    if (!newComment.trim()) {
-      alert('Please enter a comment');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const nullifier = ethers.keccak256(
-        ethers.solidityPacked(
-          ['bytes32', 'uint256', 'string'],
-          [memberSecret, petitionId, 'COMMENT']
-        )
-      );
-
-      const response = await fetch(`${BACKEND_URL}/api/petition/comment`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          petitionId,
-          nullifier,
-          commentText: newComment,
-          email: verifiedEmail
-        })
-      });
-
-      const data = await response.json();
-
-      if (!data.approved) {
-        alert(`Comment rejected: ${data.reason}`);
-        setLoading(false);
-        return;
-      }
-
-      const { commentHash, authData } = data;
-
-      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, signer);
-      const tx = await registry.commentOnPetition(petitionId, nullifier, commentHash, authData, {
-        gasLimit: 250000
-      });
-      await tx.wait();
-
-      alert('Comment posted anonymously!');
-      setNewComment('');
-      loadComments();
-    } catch (error) {
-      console.error('Error posting comment:', error);
-      if (error.message.includes('NullifierAlreadyUsed')) {
-        alert('You already commented on this petition!');
-      } else {
-        alert('Failed to post comment: ' + error.message);
-      }
-    }
-    setLoading(false);
   }
 
   if (!petition || !metadata) {
     return (
       <div style={{ textAlign: 'center', padding: '3rem' }}>
-        <div>⏳ Loading petition details...</div>
+        <div>Loading petition details...</div>
       </div>
     );
   }
 
-  const progress = metadata.goalSignatures > 0
-    ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100)
-    : 0;
+  const progress =
+    metadata.goalSignatures > 0
+      ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100)
+      : 0;
+
+  const canM2Sign = Boolean(membershipPath && memberSecret && !m2CheckLoading && !hasSignedM2);
 
   return (
     <div>
-      {/* Back Button */}
-      <button
-        onClick={onBack}
-        className="back-button"
-      >
+      <button onClick={onBack} className="back-button">
         ← Back to All Petitions
       </button>
 
-      {/* Petition Header */}
       <div className="petition-detail-header">
         <div className="detail-title-row">
           <h2 className="detail-title">{metadata.title}</h2>
-          {(userSigned || hasSignedM2) && (
-            <span className="signed-badge">
-              ✓ You signed this{hasSignedM2 && !userSigned ? ' (strong privacy)' : ''}
-            </span>
-          )}
+          {hasSignedM2 && <span className="signed-badge">✓ You signed this (strong privacy)</span>}
         </div>
 
         <div className="meta-grid">
@@ -373,9 +214,7 @@ export default function PetitionDetails({ petitionId, signer, verifiedEmail, mem
           </div>
           <div className="meta-item">
             <small className="meta-label">Created</small>
-            <div className="meta-value">
-              {new Date(metadata.createdAt).toLocaleDateString()}
-            </div>
+            <div className="meta-value">{new Date(metadata.createdAt).toLocaleDateString()}</div>
           </div>
           <div className="meta-item">
             <small className="meta-label">Creator</small>
@@ -387,79 +226,53 @@ export default function PetitionDetails({ petitionId, signer, verifiedEmail, mem
 
         <div className="description-section">
           <h3>Description</h3>
-          <p className="description-text">
-            {metadata.description}
-          </p>
+          <p className="description-text">{metadata.description}</p>
         </div>
 
-        {/* Progress Bar */}
+        {/* Progress */}
         <div style={{ marginBottom: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <strong style={{ fontSize: '1.3rem', color: '#667eea' }}>
               {signatureCount.toLocaleString()} signatures
             </strong>
-            <span style={{ color: '#666' }}>
-              Goal: {metadata.goalSignatures.toLocaleString()}
-            </span>
+            <span style={{ color: '#666' }}>Goal: {metadata.goalSignatures.toLocaleString()}</span>
           </div>
-          <div style={{
-            width: '100%',
-            height: '20px',
-            background: '#e0e0e0',
-            borderRadius: '10px',
-            overflow: 'hidden'
-          }}>
-            <div style={{
-              width: `${progress}%`,
-              height: '100%',
-              background: progress >= 100 ? '#4CAF50' : '#667eea',
-              transition: 'width 0.3s ease'
-            }} />
-          </div>
-          <small style={{ color: '#666' }}>
-            {progress.toFixed(1)}% of goal reached
-          </small>
-        </div>
 
-        {/* Sign Buttons - M2 INTEGRATION */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px',
-          marginTop: '24px'
-        }}>
-          {/* Standard Privacy Button */}
-          <button
-            onClick={signPetition}
-            disabled={loading || userSigned}
+          <div
             style={{
-              padding: '16px 32px',
-              fontSize: '18px',
-              fontWeight: 'bold',
-              border: 'none',
-              borderRadius: '8px',
-              background: userSigned ? '#ccc' : '#667eea',
-              color: 'white',
-              cursor: userSigned ? 'not-allowed' : 'pointer',
-              transition: 'background 0.3s'
+              width: '100%',
+              height: '20px',
+              background: '#e0e0e0',
+              borderRadius: '10px',
+              overflow: 'hidden'
             }}
           >
-            {userSigned ? '✓ Already Signed' : '📝 Sign This Petition (Standard)'}
-          </button>
+            <div
+              style={{
+                width: `${progress}%`,
+                height: '100%',
+                background: progress >= 100 ? '#4CAF50' : '#667eea',
+                transition: 'width 0.3s ease'
+              }}
+            />
+          </div>
 
-          {/* M2 Strong Privacy Button */}
+          <small style={{ color: '#666' }}>{progress.toFixed(1)}% of goal reached</small>
+        </div>
+
+        {/* M2-only signing */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
           <M2SignButton
             petitionId={petitionId}
-            // Disable if:
-            // - we're still checking signed-state, OR
-            // - we've confirmed signed, OR
-            // - we don't yet have the M2 secret (can't compute correct nullifier / can't sign)
-            disabled={m2CheckLoading || hasSignedM2 || !m2MemberSecret}
-            onSuccess={async (result) => {
-              console.log('M2 signature successful:', result);
-              alert(`Signed anonymously with ZK proof!\nTransaction: ${result.txHash.slice(0, 10)}...`);
+            membershipPath={membershipPath}
+            memberSecret={memberSecret}
+            disabled={!canM2Sign}
+            // Optional: if M2SignButton calls this on click, you'll get a clean "just before prove" dump.
+            onPreflight={() => logM2Preflight('M2_CLICK_PREFLIGHT')}
+            onSuccess={async ({ txHash }) => {
+              console.log('M2 signature successful:', { txHash });
+              alert(`Signed anonymously with ZK proof!\nTransaction: ${txHash.slice(0, 10)}...`);
 
-              // Refresh strong-privacy signed state without reloading everything
               try {
                 const provider = new ethers.JsonRpcProvider(RPC_URL);
                 const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
@@ -469,79 +282,90 @@ export default function PetitionDetails({ petitionId, signer, verifiedEmail, mem
               }
             }}
             onError={(error) => {
-              alert('M2 signing failed: ' + error.message);
+              alert('M2 signing failed: ' + (error?.message || String(error)));
             }}
           />
 
-
-          {/* Privacy Info */}
-          <div style={{
-            fontSize: '14px',
-            color: '#666',
-            marginTop: '8px',
-            padding: '12px',
-            background: '#f3f4f6',
-            borderRadius: '6px'
-          }}>
-            <strong>🔐 Strong Privacy Mode:</strong> Uses zero-knowledge proofs to sign anonymously.
-            Your signature is completely private - even we can't link it to you!
+          <div
+            style={{
+              fontSize: '14px',
+              color: '#666',
+              marginTop: '8px',
+              padding: '12px',
+              background: '#f3f4f6',
+              borderRadius: '6px'
+            }}
+          >
+            <strong>Strong Privacy (M2):</strong> Signs with a zero-knowledge proof. No email, no
+            JWT, no attester.
+            {m2Nullifier ? (
+              <div style={{ marginTop: 8, fontFamily: 'monospace', fontSize: 12 }}>
+                nullifier: {m2Nullifier.slice(0, 10)}...{m2Nullifier.slice(-8)}
+              </div>
+            ) : null}
           </div>
+
+          {!membershipPath && (
+            <div
+              style={{
+                fontSize: 13,
+                color: '#a16207',
+                background: '#fffbeb',
+                padding: 10,
+                borderRadius: 6
+              }}
+            >
+              Membership path not loaded yet. Ensure the backend is running and your wallet is
+              registered in the membership registry.
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Comments Section */}
+      {/* Comments: read-only placeholder (disabled in MVP) */}
       <div className="comments-card">
-        <h3 className="comments-title">
-          Comments ({comments.length})
-        </h3>
+        <h3 className="comments-title">Comments ({comments.length})</h3>
 
-        {/* Comment Input */}
-        <div className="comment-input-section">
-          <textarea
-            placeholder="Share your thoughts on this petition..."
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            className="comment-textarea"
-          />
-          <button
-            onClick={postComment}
-            disabled={loading}
-            className="post-comment-button btn-primary"
-          >
-            {loading ? 'Posting...' : 'Post Comment Anonymously'}
-          </button>
-        </div>
+        {!commentsAvailable && (
+          <p style={{ color: '#999', fontStyle: 'italic', padding: '1rem 0' }}>
+            Comments are disabled in M2-only MVP.
+          </p>
+        )}
 
-        {/* Comments List */}
-        <div>
-          {comments.length > 0 ? (
-            comments.map((comment, idx) => (
-              <div key={idx} style={{
-                background: '#f9f9f9',
-                padding: '1.5rem',
-                marginBottom: '1rem',
-                borderRadius: '4px',
-                borderLeft: '4px solid #667eea'
-              }}>
-                <p style={{ margin: '0 0 0.75rem 0', lineHeight: '1.6' }}>
-                  {comment.text}
-                </p>
-                <small style={{ color: '#666' }}>
-                  Posted {new Date(comment.timestamp).toLocaleString()}
-                </small>
-              </div>
-            ))
-          ) : (
-            <p style={{
-              textAlign: 'center',
-              color: '#999',
-              fontStyle: 'italic',
-              padding: '2rem'
-            }}>
-              No comments yet. Be the first to share your thoughts!
-            </p>
-          )}
-        </div>
+        {commentsAvailable && (
+          <div>
+            {comments.length > 0 ? (
+              comments.map((comment, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: '#f9f9f9',
+                    padding: '1.5rem',
+                    marginBottom: '1rem',
+                    borderRadius: '4px',
+                    borderLeft: '4px solid #667eea'
+                  }}
+                >
+                  <p style={{ margin: '0 0 0.75rem 0', lineHeight: '1.6' }}>{comment.text}</p>
+                  <small style={{ color: '#666' }}>
+                    Posted {new Date(comment.timestamp).toLocaleString()}
+                  </small>
+                </div>
+              ))
+            ) : (
+              <p
+                style={{
+                  textAlign: 'center',
+                  color: '#999',
+                  fontStyle: 'italic',
+                  padding: '2rem'
+                }}
+              >
+                No comments.
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

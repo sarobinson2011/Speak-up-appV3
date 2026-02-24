@@ -85,4 +85,4 @@ template SignPetition(nLevels) {
 
 // Depth 10 for testing (1K members)
 // Change to 20 for production (1M members)
-component main {public [petitionId, membershipRoot]} = SignPetition(10);
+component main {public [petitionId, membershipRoot]} = SignPetition(16);
