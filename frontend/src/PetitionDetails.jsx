@@ -6,17 +6,17 @@ import { poseidon1, poseidon3 } from 'poseidon-lite';
 import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL } from './config';
 import { M2SignButton } from './components/M2SignButton';
 import './PetitionDetails.css';
+import { loadMemberSecret } from './m2Identity';
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
 
-function toBigIntFromHex32(hex) {
-  if (!hex || typeof hex !== 'string' || !hex.startsWith('0x')) return null;
-  try {
-    return BigInt(hex);
-  } catch {
-    return null;
-  }
-}
+// MembershipRegistry (Aurora testnet)
+const MEMBERSHIP_REGISTRY_ADDRESS = '0x7C329B70Da1Dc94d5655a0DB907637bc4530991f';
+const MEMBERSHIP_REGISTRY_ABI = [
+  'function registerBondWei() view returns (uint256)',
+  'function registerLeaf(uint256 leaf) payable',
+  'function isRegistered(address) view returns (bool)'
+];
 
 function bigIntToHex32(v) {
   const hex = v.toString(16);
@@ -26,8 +26,9 @@ function bigIntToHex32(v) {
 export default function PetitionDetails({
   petitionId,
   signer, // kept for consistency; M2SignButton uses window.ethereum
-  memberSecret, // hex bytes32 stored locally
-  membershipPath, // REQUIRED for M2 proof generation (from backend /api/membership/path)
+  account,
+  memberSecret: _memberSecretProp, // deprecated: ignore prop, derive locally
+  membershipPath, // from backend /api/membership/path
   onBack
 }) {
   const [petition, setPetition] = useState(null);
@@ -42,7 +43,13 @@ export default function PetitionDetails({
   const [m2Nullifier, setM2Nullifier] = useState(null);
   const [m2CheckLoading, setM2CheckLoading] = useState(false);
 
-  const memberSecretBI = useMemo(() => toBigIntFromHex32(memberSecret), [memberSecret]);
+  // Enrollment UX state
+  const [enrolling, setEnrolling] = useState(false);
+  const [enrollError, setEnrollError] = useState('');
+
+  // Identity: localStorage-only
+  const memberSecretBI = useMemo(() => loadMemberSecret(account), [account]);
+  const secretPresent = Boolean(memberSecretBI);
 
   // --- PRE-FLIGHT (M2) ---
   const uiLeafHex = useMemo(() => {
@@ -55,15 +62,24 @@ export default function PetitionDetails({
     }
   }, [memberSecretBI]);
 
+  const leafMatches = useMemo(() => {
+    if (!membershipPath || !memberSecretBI) return false;
+    try {
+      const computed = poseidon1([memberSecretBI]);
+      const onchainLeaf = BigInt(membershipPath.leaf); // membershipPath.leaf is 0x...
+      return computed === onchainLeaf;
+    } catch {
+      return false;
+    }
+  }, [membershipPath, memberSecretBI]);
+
   function logM2Preflight(tag = 'M2_PREFLIGHT') {
     try {
       console.log(`[${tag}]`, {
         petitionId,
+        secretPresent,
         memberSecretPresent: Boolean(memberSecretBI),
-        memberSecretPreview:
-          typeof memberSecret === 'string' && memberSecret.startsWith('0x') && memberSecret.length > 20
-            ? `${memberSecret.slice(0, 10)}…${memberSecret.slice(-10)}`
-            : '(none)',
+        memberSecretPreview: memberSecretBI ? `${memberSecretBI.toString().slice(0, 8)}…` : '(none)',
         uiLeafHex,
         pathWallet: membershipPath?.wallet,
         pathLeaf: membershipPath?.leaf,
@@ -71,31 +87,33 @@ export default function PetitionDetails({
         index: membershipPath?.index,
         siblingsLen: membershipPath?.siblings?.length,
         pathBitsLen: membershipPath?.pathBits?.length,
-        leafMatches: Boolean(uiLeafHex && membershipPath?.leaf && uiLeafHex.toLowerCase() === String(membershipPath.leaf).toLowerCase())
+        leafMatches
       });
     } catch (e) {
       console.warn('[M2_PREFLIGHT] failed to log', e);
     }
   }
 
+  // Load petition + signed state whenever core inputs change
   useEffect(() => {
     let cancelled = false;
+    const isCancelled = () => cancelled;
 
     (async () => {
-      await loadPetitionDetails(() => cancelled);
+      await loadPetitionDetails(isCancelled);
     })();
 
     return () => {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [petitionId, memberSecret, membershipPath]);
+  }, [petitionId, membershipPath, memberSecretBI]);
 
-  // Log whenever critical M2 inputs change (helps confirm pipe integrity before clicking Sign)
+  // Log whenever critical M2 inputs change
   useEffect(() => {
     logM2Preflight('M2_PREFLIGHT');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [petitionId, memberSecret, membershipPath]);
+  }, [petitionId, membershipPath, memberSecretBI, leafMatches]);
 
   async function loadPetitionDetails(isCancelled) {
     try {
@@ -110,15 +128,13 @@ export default function PetitionDetails({
       if (isCancelled()) return;
       setPetition(petitionData);
 
-      // 3) Metadata (M2-only MVP)
-      // Backend legacy metadata endpoints are deprecated (410 Gone). Keep UI stable with a safe fallback.
+      // 3) Metadata (M2-only MVP): safe fallback (show URI)
       const createdAtISO = petitionData?.createdAt
         ? new Date(Number(petitionData.createdAt) * 1000).toISOString()
         : new Date().toISOString();
 
       const metadataURI =
-        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) ||
-        '';
+        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) || '';
 
       setMetadata({
         petitionId,
@@ -137,7 +153,7 @@ export default function PetitionDetails({
       const events = await registry.queryFilter(filter);
       if (!isCancelled()) setSignatureCount(events.length);
 
-      // 5) Comments are disabled in M2-only MVP (read-only UI placeholder)
+      // 5) Comments disabled in MVP
       setCommentsAvailable(false);
       setComments([]);
     } catch (error) {
@@ -176,6 +192,40 @@ export default function PetitionDetails({
     }
   }
 
+  // Option B: enroll from UI when membershipPath is missing
+  async function enrollMembershipOnce() {
+    setEnrollError('');
+    setEnrolling(true);
+
+    try {
+      if (!window.ethereum) throw new Error('MetaMask not found');
+      if (!account) throw new Error('Wallet not connected');
+      if (!memberSecretBI) throw new Error('Secret missing for this wallet');
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const s = await provider.getSigner();
+
+      const reg = new ethers.Contract(
+        MEMBERSHIP_REGISTRY_ADDRESS,
+        MEMBERSHIP_REGISTRY_ABI,
+        s
+      );
+
+      const leaf = poseidon1([memberSecretBI]);
+      const bond = await reg.registerBondWei();
+
+      const tx = await reg.registerLeaf(leaf, { value: bond });
+      await tx.wait();
+
+      // MVP-simple: reload so parent refetch sees membershipPath cleanly
+      window.location.reload();
+    } catch (e) {
+      setEnrollError(e?.message || String(e));
+    } finally {
+      setEnrolling(false);
+    }
+  }
+
   if (!petition || !metadata) {
     return (
       <div style={{ textAlign: 'center', padding: '3rem' }}>
@@ -185,11 +235,11 @@ export default function PetitionDetails({
   }
 
   const progress =
-    metadata.goalSignatures > 0
-      ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100)
-      : 0;
+    metadata.goalSignatures > 0 ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100) : 0;
 
-  const canM2Sign = Boolean(membershipPath && memberSecret && !m2CheckLoading && !hasSignedM2);
+  // "ready to sign" (do NOT confuse with "already signed")
+  const hasM2Inputs = Boolean(secretPresent && membershipPath && leafMatches);
+  const canM2Sign = Boolean(hasM2Inputs && !m2CheckLoading && !hasSignedM2);
 
   return (
     <div>
@@ -262,12 +312,77 @@ export default function PetitionDetails({
 
         {/* M2-only signing */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
+          {(!canM2Sign || (!membershipPath && secretPresent && !hasSignedM2)) && (
+            <div
+              style={{
+                fontSize: 13,
+                color: '#a16207',
+                background: '#fffbeb',
+                padding: 10,
+                borderRadius: 6,
+                border: '1px solid #fde68a'
+              }}
+            >
+              <strong>Strong Privacy (M2) status:</strong>
+              <div style={{ marginTop: 6, opacity: 0.9 }}>
+                {hasSignedM2 ? (
+                  <div>Already signed.</div>
+                ) : m2CheckLoading ? (
+                  <div>Checking signed state…</div>
+                ) : !secretPresent ? (
+                  <div>Secret missing for this wallet (cannot sign from this device).</div>
+                ) : !membershipPath ? (
+                  <>
+                    <div>Not enrolled for this wallet.</div>
+                    <div style={{ marginTop: 6 }}>
+                      Enrollment is one-time and requires a refundable bond (0.001 ETH on Aurora testnet).
+                    </div>
+
+                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <button
+                        onClick={enrollMembershipOnce}
+                        disabled={enrolling || !secretPresent || hasSignedM2}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: enrolling ? '#f3f4f6' : '#111827',
+                          color: enrolling ? '#6b7280' : '#ffffff',
+                          cursor: enrolling ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        {enrolling ? 'Enrolling…' : 'Enroll (one-time)'}
+                      </button>
+
+                      {enrollError ? (
+                        <div style={{ color: '#b91c1c' }}>Enroll failed: {enrollError}</div>
+                      ) : null}
+                    </div>
+                  </>
+                ) : !leafMatches ? (
+                  <div>
+                    Secret mismatch (wallet enrolled with different secret). Use original device/restore secret.
+                  </div>
+                ) : (
+                  <div>Ready.</div>
+                )}
+              </div>
+            </div>
+          )}
+
           <M2SignButton
             petitionId={petitionId}
             membershipPath={membershipPath}
-            memberSecret={memberSecret}
-            disabled={!canM2Sign}
-            // Optional: if M2SignButton calls this on click, you'll get a clean "just before prove" dump.
+            memberSecret={memberSecretBI ? memberSecretBI.toString() : ''}
+            disabled={
+              hasSignedM2 ||
+              m2CheckLoading ||
+              !secretPresent ||
+              !membershipPath ||
+              !leafMatches ||
+              enrolling
+            }
             onPreflight={() => logM2Preflight('M2_CLICK_PREFLIGHT')}
             onSuccess={async ({ txHash }) => {
               console.log('M2 signature successful:', { txHash });
@@ -286,39 +401,21 @@ export default function PetitionDetails({
             }}
           />
 
-          <div
-            style={{
-              fontSize: '14px',
-              color: '#666',
-              marginTop: '8px',
-              padding: '12px',
-              background: '#f3f4f6',
-              borderRadius: '6px'
-            }}
-          >
-            <strong>Strong Privacy (M2):</strong> Signs with a zero-knowledge proof. No email, no
-            JWT, no attester.
-            {m2Nullifier ? (
-              <div style={{ marginTop: 8, fontFamily: 'monospace', fontSize: 12 }}>
-                nullifier: {m2Nullifier.slice(0, 10)}...{m2Nullifier.slice(-8)}
-              </div>
-            ) : null}
-          </div>
-
-          {!membershipPath && (
+          {m2Nullifier ? (
             <div
               style={{
-                fontSize: 13,
-                color: '#a16207',
-                background: '#fffbeb',
-                padding: 10,
-                borderRadius: 6
+                fontSize: '12px',
+                color: '#666',
+                marginTop: '8px',
+                padding: '10px',
+                background: '#f3f4f6',
+                borderRadius: '6px',
+                fontFamily: 'monospace'
               }}
             >
-              Membership path not loaded yet. Ensure the backend is running and your wallet is
-              registered in the membership registry.
+              nullifier: {m2Nullifier.slice(0, 10)}...{m2Nullifier.slice(-8)}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 

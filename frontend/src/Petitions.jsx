@@ -9,6 +9,43 @@ import './Petitions.css';
 
 const SECRET_PREFIX = 'su_memberSecret_v1:wallet:'; // per-wallet key
 
+// Petition registry ABI (create only)
+const REGISTRY_PETITION_ABI = [
+  'function createPetition(string metadataURI) external returns (uint256 petitionId)'
+];
+
+// --- Env knobs (dev-safe defaults) ---
+const REQUIRED_CHAIN_ID = BigInt(import.meta.env.VITE_REQUIRED_CHAIN_ID || '1313161555');
+const ADMIN_WALLET = (import.meta.env.VITE_ADMIN_WALLET || '').toLowerCase();
+const DEBUG = (import.meta.env.VITE_DEBUG || '').toString().toLowerCase() === 'true';
+
+function dlog(...args) {
+  if (DEBUG) console.log(...args);
+}
+function dwarn(...args) {
+  if (DEBUG) console.warn(...args);
+}
+
+// --- Safe base64 for UTF-8 (NO deprecated unescape) ---
+function utf8ToBase64(str) {
+  // TextEncoder is standard in modern browsers
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+function buildMetadataDataUri({ title, description }) {
+  const obj = {
+    title: (title || '').trim(),
+    description: (description || '').trim(),
+    createdAt: new Date().toISOString(),
+    schema: 'speakup.petition.v1'
+  };
+  const json = JSON.stringify(obj);
+  return `data:application/json;base64,${utf8ToBase64(json)}`;
+}
+
 function walletSecretKey(wallet) {
   return `${SECRET_PREFIX}${String(wallet || '').toLowerCase()}`;
 }
@@ -69,7 +106,17 @@ export default function Petitions({ signer, account }) {
   const [enrollStatus, setEnrollStatus] = useState('idle'); // idle | registering | done | error
   const [enrollError, setEnrollError] = useState('');
 
+  // Create petition UI state
+  const [newTitle, setNewTitle] = useState('');
+  const [newDesc, setNewDesc] = useState('');
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState('');
+
   const currentWalletKey = useMemo(() => walletSecretKey(account), [account]);
+  const isAdminWallet = useMemo(() => {
+    if (!ADMIN_WALLET) return false;
+    return String(account || '').toLowerCase() === ADMIN_WALLET;
+  }, [account]);
 
   // Load secret for the currently connected wallet (never auto-generate)
   useEffect(() => {
@@ -131,68 +178,114 @@ export default function Petitions({ signer, account }) {
   }
 
   async function handleEnroll() {
-  console.log('[ENROLL] click', { account, memberSecretPreview: String(memberSecret).slice(0, 10) });
+    dlog('[ENROLL] click', { account, memberSecretPreview: String(memberSecret).slice(0, 10) });
 
-  try {
-    setEnrollError('');
-    setEnrollStatus('registering');
-    console.log('[ENROLL] status=registering');
+    try {
+      setEnrollError('');
+      setEnrollStatus('registering');
 
-    if (!account) throw new Error('Connect a wallet first.');
-    if (!window.ethereum) throw new Error('MetaMask not found.');
-    if (!isHex32(memberSecret)) throw new Error('Generate (or restore) your member secret first.');
-    console.log('[ENROLL] prechecks OK');
+      if (!account) throw new Error('Connect a wallet first.');
+      if (!window.ethereum) throw new Error('MetaMask not found.');
+      if (!isHex32(memberSecret)) throw new Error('Generate (or restore) your member secret first.');
 
-    // compute leaf
-    const secretBI = hex32ToBigInt(memberSecret);
-    const leafBI = poseidon1([secretBI]);
-    console.log('[ENROLL] leaf computed');
+      // compute leaf
+      const secretBI = hex32ToBigInt(memberSecret);
+      const leafBI = poseidon1([secretBI]);
 
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const net = await provider.getNetwork();
-    console.log('[ENROLL] chainId', net.chainId.toString());
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const net = await provider.getNetwork();
 
-    const mmSigner = await provider.getSigner();
-    const wallet = (await mmSigner.getAddress()).toLowerCase();
-    console.log('[ENROLL] signer wallet', wallet);
+      if (REQUIRED_CHAIN_ID && BigInt(net.chainId) !== REQUIRED_CHAIN_ID) {
+        throw new Error(`Wrong network. Expected chainId ${REQUIRED_CHAIN_ID.toString()}`);
+      }
 
-    if (wallet !== String(account).toLowerCase()) {
-      throw new Error(`Wallet mismatch: UI=${account} MetaMask=${wallet}`);
+      const mmSigner = await provider.getSigner();
+      const wallet = (await mmSigner.getAddress()).toLowerCase();
+
+      if (wallet !== String(account).toLowerCase()) {
+        throw new Error(`Wallet mismatch: UI=${account} MetaMask=${wallet}`);
+      }
+
+      const code = await provider.getCode(MEMBERSHIP_ADDRESS);
+      dwarn('[ENROLL] membership addr', MEMBERSHIP_ADDRESS, 'codeIsEmpty', code === '0x');
+
+      const membership = new ethers.Contract(MEMBERSHIP_ADDRESS, MEMBERSHIP_ABI, mmSigner);
+
+      const already = await membership.isRegistered(wallet);
+      if (already) {
+        // Minimal: allow re-enroll to rotate leaf to the current secret.
+        dlog('[ENROLL] wallet already registered; re-registering leaf to match current secret');
+      }
+
+      const bondWei = await membership.registerBondWei();
+      dlog('[ENROLL] bondWei', bondWei.toString());
+
+      const tx = await membership.registerLeaf(leafBI, { value: bondWei });
+      dlog('[ENROLL] tx sent', tx.hash);
+
+      await tx.wait();
+      dlog('[ENROLL] tx confirmed');
+
+      await fetchMembershipPath(wallet);
+      setEnrollStatus('done');
+    } catch (e) {
+      console.error('[ENROLL] error', e);
+      setEnrollStatus('error');
+      setEnrollError(e?.message || String(e));
     }
-
-    const code = await provider.getCode(MEMBERSHIP_ADDRESS);
-    console.log('[ENROLL] membership addr', MEMBERSHIP_ADDRESS, 'codeIsEmpty', code === '0x');
-
-    const membership = new ethers.Contract(MEMBERSHIP_ADDRESS, MEMBERSHIP_ABI, mmSigner);
-
-    const already = await membership.isRegistered(wallet);
-
-    if (already) {
-    // Minimal: allow re-enroll to rotate leaf to the current secret.
-    // No redesign: just don't early-return.
-    console.log('[ENROLL] wallet already registered; re-registering leaf to match current secret');
-    }
-
-    const bondWei = await membership.registerBondWei();
-    console.log('[ENROLL] bondWei', bondWei.toString());
-
-    const tx = await membership.registerLeaf(leafBI, { value: bondWei });
-    console.log('[ENROLL] tx sent', tx.hash);
-
-    await tx.wait();
-    console.log('[ENROLL] tx confirmed');
-
-    await fetchMembershipPath(wallet);
-    setEnrollStatus('done');
-    console.log('[ENROLL] done');
-  } catch (e) {
-    console.error('[ENROLL] error', e);
-    setEnrollStatus('error');
-    setEnrollError(e?.message || String(e));
-  } finally {
-    console.log('[ENROLL] finally; enrollStatus will be', enrollStatus);
   }
-}
+
+  // -----------------------------
+  // CREATE PETITION (wallet-only, no JWT, no Pinata)
+  // metadataURI is a data:application/json;base64,... URI
+  // -----------------------------
+  async function handleCreatePetition() {
+    try {
+      setCreateError('');
+      if (!account) throw new Error('Connect a wallet first.');
+      if (!window.ethereum) throw new Error('MetaMask not found.');
+
+      const title = newTitle.trim();
+      const description = newDesc.trim();
+      if (!title) throw new Error('Title is required.');
+      if (!description) throw new Error('Description is required.');
+
+      setCreating(true);
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const net = await provider.getNetwork();
+
+      if (REQUIRED_CHAIN_ID && BigInt(net.chainId) !== REQUIRED_CHAIN_ID) {
+        throw new Error(`Wrong network. Expected chainId ${REQUIRED_CHAIN_ID.toString()}`);
+      }
+
+      const mmSigner = await provider.getSigner();
+      const wallet = (await mmSigner.getAddress()).toLowerCase();
+
+      if (wallet !== String(account).toLowerCase()) {
+        throw new Error(`Wallet mismatch: UI=${account} MetaMask=${wallet}`);
+      }
+
+      const metadataURI = buildMetadataDataUri({ title, description });
+
+      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_PETITION_ABI, mmSigner);
+
+      const tx = await registry.createPetition(metadataURI, { gasLimit: 500000 });
+      dlog('[CREATE] tx sent', tx.hash);
+
+      await tx.wait();
+      dlog('[CREATE] tx confirmed');
+
+      setNewTitle('');
+      setNewDesc('');
+      await loadPetitions();
+    } catch (e) {
+      console.error('[CREATE] error', e);
+      setCreateError(e?.message || String(e));
+    } finally {
+      setCreating(false);
+    }
+  }
 
   // -----------------------------
   // PETITIONS LIST
@@ -257,6 +350,7 @@ export default function Petitions({ signer, account }) {
         <PetitionDetails
           petitionId={viewingPetitionId}
           signer={signer}
+          account={account}
           memberSecret={memberSecret}
           membershipPath={membershipPath}
           onBack={() => setViewingPetitionId(null)}
@@ -265,53 +359,45 @@ export default function Petitions({ signer, account }) {
         <>
           <h2>Petitions</h2>
 
-          {/* --- M2 Identity / Enrollment --- */}
+          {/* --- Create Petition (wallet-only, metadataURI as data: URI) --- */}
           <div style={{ margin: '16px 0', padding: 12, border: '1px solid #e5e7eb', borderRadius: 8 }}>
             <div style={{ fontSize: 14, marginBottom: 8 }}>
-              <strong>M2 Identity (local)</strong>
+              <strong>Create petition</strong>
               <div style={{ opacity: 0.8, marginTop: 4 }}>
-                Wallet: <span style={{ fontFamily: 'monospace' }}>{account || '(not connected)'}</span>
-              </div>
-              <div style={{ opacity: 0.8, marginTop: 4 }}>
-                Secret: <span style={{ fontFamily: 'monospace' }}>{secretPreview}</span>
-              </div>
-              <div style={{ opacity: 0.8, marginTop: 4 }}>
-                Leaf: <span style={{ fontFamily: 'monospace' }}>{memberLeafHex || '(n/a)'}</span>
+                Stored as <code>data:application/json;base64,...</code> in <code>metadataURI</code> (no JWT/Pinata).
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <button className="btn-outline" onClick={handleGenerateSecret} disabled={!account || enrollStatus === 'registering'}>
-                Generate Secret (this wallet)
-              </button>
+            <input
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+              placeholder="Title"
+              style={{ width: '100%', padding: 10, marginBottom: 8, borderRadius: 6, border: '1px solid #ddd' }}
+            />
 
-              <button
-                className="btn-outline"
-                onClick={handleEnroll}
-                disabled={!account || !isHex32(memberSecret) || enrollStatus === 'registering'}
-              >
-                {enrollStatus === 'registering' ? 'Enrolling…' : 'Enroll / Refresh Membership'}
+            <textarea
+              value={newDesc}
+              onChange={(e) => setNewDesc(e.target.value)}
+              placeholder="Description"
+              rows={4}
+              style={{ width: '100%', padding: 10, marginBottom: 8, borderRadius: 6, border: '1px solid #ddd' }}
+            />
+
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+              <button className="btn-outline" onClick={handleCreatePetition} disabled={!account || creating}>
+                {creating ? 'Creating…' : 'Create petition'}
+              </button>
+              <button className="btn-outline" onClick={loadPetitions} disabled={loadingPetitions}>
+                Refresh list
               </button>
             </div>
 
-            {enrollStatus === 'done' && (
-              <div style={{ marginTop: 10, fontSize: 13, color: '#065f46' }}>
-                Membership OK. Backend path refreshed.
-              </div>
-            )}
-
-            {enrollStatus === 'error' && (
-              <div style={{ marginTop: 10, fontSize: 13, color: '#b91c1c' }}>
-                {enrollError || 'Enrollment failed.'}
-              </div>
-            )}
-
-            {!membershipPath && (
-              <div style={{ marginTop: 10, fontSize: 13, color: '#a16207', background: '#fffbeb', padding: 10, borderRadius: 6 }}>
-                Membership path not loaded yet. Click “Enroll / Refresh Membership” after generating your secret.
-              </div>
-            )}
+            {createError ? (
+              <div style={{ marginTop: 10, fontSize: 13, color: '#b91c1c' }}>{createError}</div>
+            ) : null}
           </div>
+
+          
 
           <div>
             <h3>All Petitions ({petitions.length})</h3>
@@ -319,9 +405,7 @@ export default function Petitions({ signer, account }) {
             {loadingPetitions ? (
               <div style={{ textAlign: 'center', padding: '3rem', color: '#667eea', fontSize: '1.2rem' }}>
                 <div>Loading petitions...</div>
-                <div style={{ fontSize: '0.9rem', color: '#999', marginTop: '0.5rem' }}>
-                  Fetching data from blockchain
-                </div>
+                <div style={{ fontSize: '0.9rem', color: '#999', marginTop: '0.5rem' }}>Fetching data from blockchain</div>
               </div>
             ) : petitions.length === 0 ? (
               <p style={{ textAlign: 'center', color: '#999', padding: '2rem' }}>No petitions yet.</p>
@@ -370,7 +454,16 @@ export default function Petitions({ signer, account }) {
                         </div>
 
                         {!membershipPath && (
-                          <div style={{ marginTop: 12, fontSize: 13, color: '#a16207', background: '#fffbeb', padding: 10, borderRadius: 6 }}>
+                          <div
+                            style={{
+                              marginTop: 12,
+                              fontSize: 13,
+                              color: '#a16207',
+                              background: '#fffbeb',
+                              padding: 10,
+                              borderRadius: 6
+                            }}
+                          >
                             Membership path not loaded yet. Ensure backend is running and you are enrolled for this wallet.
                           </div>
                         )}

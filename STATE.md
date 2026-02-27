@@ -3,278 +3,185 @@
 
 STATE.md — Speak-up-appV3
 
-Last updated: 2026-02-15 (Europe/London)
+Last updated: 2026-02-27 (Europe/London)
 
-This file is the canonical “source of truth” for current architecture decisions, invariants, versions, and the next concrete steps. When something changes in design or build/toolchain, update this file and commit it.
+This file is the canonical “source of truth” for architecture decisions, invariants, deployed addresses, and the current MVP baseline. Any design change must be reflected here before implementation.
 
-1) Project goal
+---
 
-Build a privacy-preserving petition signing system (with optional commenting) that supports:
+## 1) Project goal (M2-only MVP)
 
-Client-side ZK proof generation
+Build a privacy-preserving petition platform where users can:
 
-On-chain verification (EVM)
+- Create petitions (wallet-authenticated; not private in MVP)
+- Sign petitions with **Strong Privacy (M2)**:
+  - proof is generated client-side
+  - on-chain verification is authoritative
+  - uniqueness is enforced via a nullifier (not via wallet address)
+- (Comments are explicitly **disabled** in MVP baseline)
 
-Minimal trust assumptions and strong privacy defaults
+---
 
-2) Core product rules (invariants)
+## 2) Core product rules (invariants)
 
-Uniqueness rule: One sign (+ optional comment) per petition per user, enforced via nullifier, not via wallet address.
+Locked for MVP:
 
-Privacy rule: Users prove eligibility/membership without revealing identity.
+1. **Uniqueness:** max 1 signature per (petitionId, member) enforced via **nullifier**, not wallet.
+2. **Privacy:** signer proves membership without revealing which member they are.
+3. **On-chain authority:** chain verifies proof + root validity + nullifier uniqueness.
+4. **No trusted gatekeeper (baseline):** membership is permissionless on-chain; backend is non-authoritative convenience only.
+5. **M2-only mode:** no email verification, no JWT, no attestations, no M1 routes/UI.
 
-Verification rule: On-chain verification is the authority; the chain verifies proofs and checks nullifiers.
+---
 
-No trusted gatekeeper (baseline): membership does not require email/SSO or any trusted issuer. Membership is permissionless via an on-chain registration transaction. Backend is non-authoritative.
+## 3) ZK stack (current)
 
-3) ZK stack (current)
+- Circuit framework: **Circom**
+- Prover/verifier: **Groth16 (BN254)**
+- Proof tooling: **snarkjs**
+- Hashing: **Poseidon**
+  - leaf: Poseidon1
+  - merkle node: Poseidon2(left, right)
+  - nullifier: Poseidon3
 
-Circuit framework: Circom
+---
 
-Proof system: Groth16
+## 4) Membership model (baseline)
 
-Tooling: snarkjs
+### 4.1 Identity material (client-side)
 
-Hashing (in-circuit): Poseidon (SNARK-friendly)
+- Client stores one secret per wallet in localStorage:
 
-Notes:
+  - key: `su_memberSecret_v1:wallet:<walletLowercase>`
+  - value: decimal string representing a BigInt field element
 
-Groth16 proof size is constant w.r.t. circuit size; proving time increases with circuit constraints.
+- **MVP rule:** if a wallet is enrolled and you lose its secret on that device, that wallet is dead for signing on that device.
 
-Merkle inclusion proof length scales as log2(n) (tree depth).
+### 4.2 Leaf definition (locked)
 
-4) Membership + Merkle tree model (Baseline: Model A + 1A + 2B + DEPTH=16)
-4.1 Membership identity material
+- `leaf = Poseidon1(memberSecret)`
 
-Client generates: memberSecret locally (random 31-byte value; interpreted as a BN254 field element). Never leaves device.
+### 4.3 Tree parameters (locked)
 
-Leaf definition (locked): leaf = Poseidon1(memberSecret).
+- DEPTH = 16 (≈ 65,536 leaves)
+- Root history window N = 16 (contract retains last 16 roots as valid)
 
-4.2 Registration (permissionless; on-chain; no gatekeeper)
+### 4.4 Registration (permissionless; on-chain)
 
-User becomes a member by calling the membership contract:
+- Wallet registers its leaf on-chain once (baseline: **one leaf per wallet**).
 
-Function (locked): registerLeaf(leaf) (exact type bytes32 or uint256, but consistent across stack)
+Sybil friction (baseline iteration 1):
+- registration requires a **refundable bond** (exact amount read from chain)
+- bond is locked for a time window
 
-Sybil friction (locked, iteration 1): registration requires a refundable bond (see §6)
+### 4.5 Deployed membership contract (Aurora testnet)
 
-Wallet anchoring (locked for iteration 1): one active leaf per wallet (prevents one wallet registering many leaves cheaply)
+- Chain: Aurora testnet (chainId 1313161555)
+- MembershipRegistry: `0x7C329B70Da1Dc94d5655a0DB907637bc4530991f`
+- `registerBondWei()` = `1e15` (0.001 ETH)
+- `bondLockSeconds()` = `3600` (1 hour)
 
-Contract must:
+(Values above are from on-chain reads during MVP test session.)
 
-record the wallet→leaf association for the active membership
+---
 
-incorporate the leaf into membership set / root update
+## 5) Nullifier model (anti double-signing)
 
-emit registration + root update events
+Locked:
 
-4.3 Tree depth (locked)
+- `SIGN_DOMAIN = 0x5349474e` (ASCII "SIGN" as a field element)
+- `nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)`
 
-Merkle depth: DEPTH = 16 (≈ 65,536 leaves)
+On-chain:
+- store nullifier per petition and reject duplicates.
 
-4.4 Root validity model (locked: 1A, last N roots)
+---
 
-Merkle root changes as new leaves register/unregister. Proofs must not be flaky due to root churn.
+## 6) Backend role (non-authoritative, MVP)
 
-Baseline rule: proofs are valid if the public input membershipRoot is in the contract’s valid root set.
+Backend is a **convenience indexer**:
 
-Implementation (locked): contract stores the last N roots in a ring-buffer/set.
+- mirrors on-chain membership events
+- rebuilds the Merkle tree
+- serves Merkle paths to clients
 
-N = 16 (baseline; adjustable later)
+Backend MUST NOT:
+- gate membership
+- gate signing
+- store member secrets
 
-On root update: add new root; evict oldest if ring-buffer full
+### 6.1 Required endpoint (MVP)
 
-Contract exposes either:
+- `GET /api/membership/path?wallet=<address>`
 
-isValidRoot(root) -> bool, or
+Returns:
+- `wallet`, `leaf`, `index`, `root`
+- `siblings[]` (length = DEPTH)
+- `pathBits[]` (length = DEPTH)
 
-validRoots(root) -> bool mapping getter
+If wallet not enrolled, returns 404 with `wallet not found in membership index`.
 
-4.5 Merkle path distribution model (locked: 2B, backend convenience)
+---
 
-Client needs membership path (siblings + indices) to generate proof.
+## 7) Frontend UX (MVP baseline)
 
-Baseline: backend provides convenience endpoints returning Merkle path data for a given wallet/leaf.
+### 7.1 Wallet connect
 
-Backend is dumb / non-authoritative: it mirrors on-chain events, rebuilds the tree, and serves:
+- User connects MetaMask.
+- App ensures secret exists via `ensureMemberSecret(account)` on wallet connect and on `accountsChanged`.
 
-current root + recent roots
+### 7.2 Petition details: M2 signing preflight
 
-membershipPath[], membershipIndices[], and leafIndex for the wallet’s leaf
+A petition can be signed if ALL are true:
 
-Safety: client must only prove against a root accepted by the contract (membershipRoot ∈ validRoots).
+- `memberSecret` present locally
+- `membershipPath` loaded from backend
+- `leafMatches`:
+  - computed leaf from local secret equals backend leaf for wallet
+- not already signed (checked via on-chain `hasSignedPetition(petitionId, nullifier)`)
 
-5) Nullifier model (anti double-signing)
+### 7.3 Enrollment UX (Option B: “proper”)
 
-Concept: a per-(user, petition) unique value revealed publicly, without revealing identity.
+If secret is present but membership path is missing:
 
-Baseline form (locked, domain-separated):
+- show **Enroll (one-time)** button
+- clicking enroll:
+  - computes leaf from local secret
+  - reads `registerBondWei()` from MembershipRegistry
+  - calls `registerLeaf(leaf)` with `{ value: bond }`
+  - after tx confirms, UI refreshes and backend path should become available
 
-nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)
+This is the deterministic “plumbing” baseline that makes new wallets work.
 
-SIGN_DOMAIN = 0x5349474e (ASCII "SIGN") as a constant field element
+---
 
-On-chain: store nullifier in a mapping/set; reject if already seen for that petition.
+## 8) Known limitations (explicitly accepted for MVP)
 
-Example: usedSignNullifier[petitionId][nullifier] = true
+- Losing localStorage secret breaks signing for that wallet on that device.
+- No comment flow (UI placeholder only).
+- No metadata fetching from IPFS beyond showing URI.
+- Backend is required for path distribution in MVP (can be decentralized later).
 
-Planned decision points (TBD but must be made before circuit/contract freeze):
+---
 
-petitionId encoding (u32/u64) and field packing rules (must match circuit + Solidity types exactly).
+## 9) MVP acceptance checklist (must all pass)
 
-6) Sybil / spam / DDOS posture (minimal baseline, iteration 1 locked)
+- New wallet:
+  - connect → secret created → enroll (one-time) → membership path loads → sign succeeds
+- Returning wallet:
+  - connect → secret persists → membership path loads → sign button enabled (if not signed)
+- Already-signed wallet:
+  - connect → sign is blocked via on-chain nullifier check
+- Leaf mismatch:
+  - UI blocks signing and explains “secret mismatch”
+- Backend down:
+  - UI shows “membership not loaded” and blocks signing
 
-Problem:
+---
 
-Permissionless membership is Sybil-prone (cheap wallet creation).
+## 10) Next steps (after baseline)
 
-Baseline mechanism (locked, iteration 1):
-
-Refundable membership bond (Option 1):
-
-User must post a bond when registering a leaf: registerLeaf(leaf) is payable and requires exact bond amount.
-
-Refund is only possible via unregister: user calls unregisterAndRefund() which removes/deactivates membership and returns the bond.
-
-This preserves friction while avoiding a permanent paywall.
-
-Contract requirements:
-
-store bond balance per wallet (or fixed-bond flag)
-
-enforce one active leaf per wallet
-
-unregisterAndRefund() updates membership state + root, then refunds bond
-
-Future iterations (explicitly allowed; do not bake in now):
-
-adjust bond amount dynamically
-
-add client-side PoW to registration
-
-add rate limiting / per-epoch membership
-
-optional issuer/SSO mode as a separate product mode (not baseline)
-
-7) Client performance assumptions
-
-Main cost drivers for client-side proving:
-
-total circuit constraints
-
-Merkle depth × Poseidon hash cost
-
-Merkle scaling is favorable: each doubling of members adds ~1 hash level.
-
-Target UX: “smooth enough” for typical laptops; mobile later.
-
-8) Implementation skeleton (high level)
-Client
-
-Generate and store memberSecret locally
-
-Compute leaf = Poseidon(memberSecret)
-
-Register leaf on-chain with bond
-
-Fetch current valid root(s) (contract and/or backend convenience)
-
-Fetch Merkle path from backend (convenience)
-
-Build witness: (memberSecret, petitionId, membershipRoot, membershipPath, membershipIndices, …)
-
-Generate Groth16 proof in browser
-
-Submit: proof + public inputs (petitionId, membershipRoot, nullifier, …)
-
-On-chain
-
-Membership contract:
-
-accept registerLeaf(leaf) with bond
-
-accept unregisterAndRefund()
-
-maintain Merkle root + last N roots
-
-emit events for indexing
-
-Petition/registry contract (or combined contract):
-
-verify Groth16 proof
-
-check membershipRoot is valid
-
-check nullifier unused; mark used
-
-emit PetitionSigned event
-
-Backend (dumb / non-authoritative)
-
-Mirror on-chain events (LeafRegistered, LeafUnregistered, RootAdded, PetitionSigned)
-
-Rebuild Merkle tree and serve membership paths + convenience metadata
-
-Must not gate membership or signing
-
-9) Build / toolchain thread (placeholders)
-
-Fill these in as you lock them down:
-
-Repo path(s): ________________________________
-
-Node version: ________________________________
-
-Circom version: ________________________________
-
-snarkjs version: ________________________________
-
-Powers of Tau ceremony file: ________________________________
-
-zkey / verification key locations: ________________________________
-
-Solidity verifier generation steps: ________________________________
-
-Deployment network + addresses: ________________________________
-
-10) Current focus + next steps
-
-Current focus:
-
-Implement the baseline membership model cleanly: on-chain leaf registration w/ refundable bond, last-N root validity, backend-served Merkle paths.
-
-Next concrete steps:
-
- Finalize minimal membership contract interface:
-
-registerLeaf(leaf) payable
-
-unregisterAndRefund()
-
-isValidRoot(root) (or validRoots[root])
-
-events: LeafRegistered, LeafUnregistered, RootAdded, BondRefunded
-
- Finalize minimal petition signing interface:
-
-verifyAndSign(petitionId, membershipRoot, nullifier, proof, publicSignals)
-
-event: PetitionSigned(petitionId, nullifier, ...)
-
- Define exact petitionId encoding rules and match across circuit/Solidity/frontend.
-
- Backend: index leaf/root events → serve {root(s), path, indices, leafIndex}.
-
- Client: generate/store secret, register, fetch path, prove, submit.
-
-11) Notes (personal / operating constraints)
-
-Sleep quality matters for productivity; avoid late stimulants.
-
-Bedtime black tea swapped to milk; alcohol timing reduction improved sleep and reduced “full wake” on night bathroom trips.
-
-12) Changelog
-
-2026-02-14: Initial STATE.md created. Captures core ZK stack (Circom/snarkjs/Groth16/Poseidon), Merkle membership concept, nullifier uniqueness model, and anti-sybil options.
-
-2026-02-15: Baseline locked: permissionless on-chain membership (leaf = Poseidon(memberSecret)), DEPTH=16, root validity = last N roots (N=16), backend as dumb convenience for paths/metadata, and Sybil friction iteration 1 = refundable membership bond with refund only via unregister.
+1. Update docs (this file + ZK_CIRCUIT_SPEC.md) and commit MVP baseline.
+2. Cleanup / delete M1 artifacts and dead code paths.
+3. Add explicit export/import secret flow (NOT MVP).
+4. Add comments + moderation pipeline (post-MVP).

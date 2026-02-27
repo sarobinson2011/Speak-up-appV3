@@ -1,9 +1,4 @@
 export const REGISTRY_ADDRESS = '0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD';
-/**
- * Legacy (M1) address — kept only to avoid breaking old imports during the M2-only transition.
- * Safe to remove once no frontend code imports it.
- */
-export const AUTHORIZER_ADDRESS = '0xf4FDc4a107f13b4C4d7C8be7dc0088026D201b37';
 
 export const BACKEND_URL = 'http://localhost:3001';
 export const RPC_URL = 'https://testnet.aurora.dev';
