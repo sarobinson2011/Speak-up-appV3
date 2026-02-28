@@ -3,13 +3,13 @@ import './HomePage.css';
 export default function HomePage({ onGetStarted }) {
   return (
     <div className="homepage">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">Speak Up</h1>
-          <p className="hero-tagline">Your Voice. Your Privacy. Your Power.</p>
+          <p className="hero-tagline">Anonymous petitions with on-chain verification.</p>
           <p className="hero-subtitle">
-            Anonymous petitions for <span className="highlight">EVERYONE</span>
+            Strong privacy by default, enforced by <span className="highlight">zero-knowledge proofs</span>.
           </p>
           <button className="cta-button" onClick={onGetStarted}>
             Get Started →
@@ -17,103 +17,59 @@ export default function HomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* Mission Statement */}
+      {/* Mission */}
       <section className="mission">
         <div className="container">
           <h2>Free Speech Without Fear</h2>
           <p className="lead">
-            In a world where speaking truth can cost you everything - your job, your safety,
-            your freedom - we believe <strong>every human deserves to be heard</strong>.
+            Speak Up is a petition platform designed for situations where attaching your identity to your speech
+            creates real risk.
           </p>
           <p>
-            Speak Up combines <strong>zero-knowledge cryptography</strong> with <strong>blockchain
-              technology</strong> to create a truly anonymous petition platform.
-            No government can silence you. No corporation can censor you. No one can trace you.
+            Signatures are generated with <strong>client-side zero-knowledge proofs</strong> and verified
+            <strong> on-chain</strong>. The chain enforces <strong>one signature per member per petition</strong>
+            using a <strong>nullifier</strong>, not a wallet address.
           </p>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How it works */}
       <section className="how-it-works">
         <div className="container">
           <h2>How It Works</h2>
+
           <div className="features-grid">
             <div className="feature">
-              <div className="feature-icon">🔐</div>
-              <h3>Zero-Knowledge Proofs</h3>
+              <h3>Strong Privacy Signatures</h3>
               <p>
-                Sign petitions <strong>completely anonymously</strong>. Our ZK technology
-                proves you're a verified human without revealing who you are... not even to us.
+                You generate a ZK proof locally in the browser. The proof shows you are an eligible member,
+                without revealing which member you are.
               </p>
             </div>
 
             <div className="feature">
-              <div className="feature-icon">⛓️</div>
-              <h3>Blockchain Permanence</h3>
+              <h3>On-Chain Enforcement</h3>
               <p>
-                Every signature is recorded on <strong>Aurora blockchain</strong>. Once published,
-                your voice cannot be deleted, altered, or censored by any authority.
+                The smart contract verifies the proof and enforces uniqueness using a nullifier.
+                Once signed, you cannot sign the same petition again.
               </p>
             </div>
 
             <div className="feature">
-              <div className="feature-icon">🌍</div>
-              <h3>Globally Accessible</h3>
+              <h3>Permissionless Enrollment</h3>
               <p>
-                No ID required. No location restrictions. If you can access the internet,
-                you can make your voice heard in safety.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="feature-icon">🤖</div>
-              <h3>AI-Powered Moderation</h3>
-              <p>
-                Advanced content filtering keeps spam out while protecting legitimate speech.
-                We remove bots and abuse, not dissent.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="feature-icon">✉️</div>
-              <h3>Verified Humans Only</h3>
-              <p>
-                Email verification ensures one person = one signature, preventing manipulation
-                while maintaining complete anonymity.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="feature-icon">🔓</div>
-              <h3>Open Source</h3>
-              <p>
-                Our code is public and auditable. Trust is built through transparency,
-                not promises. Verify everything yourself.
+                Membership enrollment is on-chain and requires a small <strong>refundable bond</strong>.
+                This is the MVP anti-sybil baseline and will evolve in later versions.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why It Matters */}
+      {/* Quote (kept) */}
       <section className="why-matters">
         <div className="container">
-          <h2>Why This Matters</h2>
-          <div className="stats-grid">
-            <div className="stat">
-              <div className="stat-number">3.5B</div>
-              <div className="stat-label">People live under authoritarian regimes</div>
-            </div>
-            <div className="stat">
-              <div className="stat-number">180+</div>
-              <div className="stat-label">Countries restrict freedom of speech</div>
-            </div>
-            <div className="stat">
-              <div className="stat-number">∞</div>
-              <div className="stat-label">Voices that deserve to be heard</div>
-            </div>
-          </div>
-
+          <h2>On Liberty</h2>
           <div className="quote">
             <p>
               "The peculiar evil of silencing the expression of an opinion is that it robs
@@ -126,95 +82,55 @@ export default function HomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* Technical Innovation */}
+      {/* Tech stack */}
       <section className="technical">
         <div className="container">
-          <h2>The Technology Behind Freedom</h2>
+          <h2>Technology</h2>
           <div className="tech-explainer">
             <div className="tech-item">
-              <h3>🔬 Zero-Knowledge Proofs (Groth16)</h3>
+              <h3>Zero-Knowledge (Groth16)</h3>
               <p>
-                When you sign a petition, our ZK circuit generates a cryptographic proof that
-                you're a verified user - <strong>without revealing your identity, email, or wallet
-                  address</strong>. Even the blockchain can't see who you are.
+                Proofs are generated in the browser and verified on-chain. No email, no JWT, no attesters.
+                Membership is proven without revealing identity.
               </p>
             </div>
 
             <div className="tech-item">
-              <h3>⛓️ Aurora Blockchain </h3>
+              <h3>Poseidon + Merkle Membership</h3>
               <p>
-                Signatures are stored on Aurora, an ultra-fast Layer 2 built on NEAR Protocol.
-                <strong> 1-2 second finality</strong>, <strong>virtually-zero gas fees</strong>, and
-                <strong> MEV protection</strong> built-in. Your petition cannot be frontrun or censored.
+                Membership uses Poseidon hashing and a Merkle tree. The backend serves Merkle paths as a
+                convenience indexer; it is not authoritative.
               </p>
             </div>
 
             <div className="tech-item">
-              <h3>📦 IPFS Decentralized Storage</h3>
+              <h3>Aurora Testnet</h3>
               <p>
-                Petition content lives on IPFS - a <strong>peer-to-peer network</strong> that
-                can't be taken down by any single authority. If one node goes offline, thousands
-                of others keep your voice alive.
+                Smart contracts run on Aurora testnet for the MVP. Proof verification and signature uniqueness
+                are enforced by the chain.
               </p>
             </div>
 
             <div className="tech-item">
-              <h3>🧠 GPT-4 Content Moderation</h3>
+              <h3>Metadata</h3>
               <p>
-                AI analyzes petition content to filter spam, abuse, and illegal content - while
-                <strong> protecting legitimate dissent</strong>. Controversial no longer means prohibited.
+                Petitions reference a metadata URI (e.g., IPFS). In the MVP baseline, the UI displays the URI
+                directly (no heavy metadata pipeline yet).
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="use-cases">
-        <div className="container">
-          <h2>Who Uses Speak Up?</h2>
-          <div className="use-case-grid">
-            <div className="use-case">
-              <h3>🗳️ Activists</h3>
-              <p>Organize movements without exposing supporters to retaliation</p>
-            </div>
-            <div className="use-case">
-              <h3>💼 Whistleblowers</h3>
-              <p>Expose corruption while protecting your career and safety</p>
-            </div>
-            <div className="use-case">
-              <h3>🏛️ Dissidents</h3>
-              <p>Challenge oppressive governments without risking imprisonment</p>
-            </div>
-            <div className="use-case">
-              <h3>👥 Communities</h3>
-              <p>Rally support for local causes without fear of harassment</p>
-            </div>
-            <div className="use-case">
-              <h3>🌐 Global Citizens</h3>
-              <p>Sign international petitions regardless of your location</p>
-            </div>
-            <div className="use-case">
-              <h3>🔬 Researchers</h3>
-              <p>Study public opinion with privacy-preserving cryptography</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
+      {/* CTA */}
       <section className="final-cta">
         <div className="container">
-          <h2>Your Voice Matters</h2>
-          <p>
-            Join thousands using cryptography to protect their right to speak freely.
-          </p>
+          <h2>Start a Petition. Sign with Strong Privacy.</h2>
+          <p>Connect a wallet, enroll once, and sign with a ZK proof.</p>
           <button className="cta-button large" onClick={onGetStarted}>
-            Start Speaking Up →
+            Open the App →
           </button>
-          <p className="footnote">
-            Built on Aurora • Powered by Zero-Knowledge • Free Forever
-          </p>
+          <p className="footnote">M2-only MVP • Groth16 • Poseidon • Aurora</p>
         </div>
       </section>
     </div>

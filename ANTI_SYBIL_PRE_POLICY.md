@@ -1,4 +1,7 @@
-ANTI_SYBIL_POLICY_V2.md
+
+## THIS IS NOT POLICY (this doc is pre-policy work, per the document name) - NEEDS FURTHER WORK TO COMPLETETION - this is a ToDo: define, update and baseline this policy doc (which will inform the implementation).
+
+ANTI_SYBIL_POLICY.md
 0) Purpose
 
 Define a plug-and-play “Access Policy / Anti-Sybil” module for Speak-up-appV3 that determines whether a user action (sign/comment) is allowed and under what friction:

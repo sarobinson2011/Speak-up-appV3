@@ -1,15 +1,27 @@
 // frontend/src/components/M2SignButton.jsx (M2-only)
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ethers } from 'ethers';
 import { useZKProof } from '../hooks/useZKProof';
 import { REGISTRY_ADDRESS } from '../config';
 
-// Optional: if you want this configurable, set VITE_VERIFIER_ADDRESS in frontend .env
-const VERIFIER_ADDRESS =
-  import.meta.env.VITE_VERIFIER_ADDRESS || '0xE70E2cFA4a4272B39918A45BA1F067676CCf8c11';
+// Verifier MUST be provided via env (prevents accidental fallback to an old address)
+const VERIFIER_ADDRESS = import.meta.env.VITE_VERIFIER_ADDRESS;
 
+// Preflight is ON by default; disable only if explicitly set to "true"
 const DISABLE_PREFLIGHT =
   (import.meta.env.VITE_DISABLE_PREFLIGHT || '').toString().toLowerCase() === 'true';
+
+// Debug logs OFF by default; enable with VITE_DEBUG=true
+const DEBUG = (import.meta.env.VITE_DEBUG || '').toString().toLowerCase() === 'true';
+
+const REQUIRED_CHAIN_ID = (import.meta.env.VITE_REQUIRED_CHAIN_ID || '').toString().trim(); // e.g. "1313161555"
+
+function dlog(...args) {
+  if (DEBUG) console.log(...args);
+}
+function dwarn(...args) {
+  if (DEBUG) console.warn(...args);
+}
 
 const VERIFIER_ABI = [
   'function verifyProof(uint256[2],uint256[2][2],uint256[2],uint256[3]) external view returns (bool)'
@@ -17,6 +29,10 @@ const VERIFIER_ABI = [
 
 const REGISTRY_SIGN_ABI = [
   'function signPetitionWithZKProof(uint256 petitionId, bytes32 nullifier, uint256[2] pA, uint256[2][2] pB, uint256[2] pC, uint256[3] pubSignals) external'
+];
+
+const REGISTRY_VIEW_ABI = [
+  'function hasSignedPetition(uint256 petitionId, bytes32 nullifier) external view returns (bool)'
 ];
 
 // Best-effort: common verifier getter names some registries expose
@@ -32,6 +48,9 @@ function isHexString(s) {
 }
 function isDecString(s) {
   return typeof s === 'string' && /^[0-9]+$/.test(s);
+}
+function isHex32(s) {
+  return typeof s === 'string' && /^0x[0-9a-fA-F]{64}$/.test(s);
 }
 
 function normalizePublicSignals(ps) {
@@ -56,7 +75,6 @@ function permute3(ps) {
 }
 
 async function probeRegistryVerifier(provider) {
-  // Try several common getter names; return first that works.
   const probe = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_VERIFIER_PROBE_ABI, provider);
   const candidates = ['verifier', 'zkVerifier', 'groth16Verifier', 'proofVerifier'];
 
@@ -74,6 +92,17 @@ async function probeRegistryVerifier(provider) {
   return null;
 }
 
+function chainIdMatches(required, actualChainId) {
+  if (!required) return true; // not enforced
+  try {
+    const req = BigInt(required);
+    const act = BigInt(actualChainId);
+    return req === act;
+  } catch {
+    return true; // if parsing fails, don't hard-fail; just skip enforcement
+  }
+}
+
 export function M2SignButton({
   petitionId,
   membershipPath,
@@ -84,10 +113,33 @@ export function M2SignButton({
   onPreflight
 }) {
   const [status, setStatus] = useState('idle');
+  const [alreadySigned, setAlreadySigned] = useState(false);
+
   const { generateProof } = useZKProof();
+
+  const isLoading = status !== 'idle' && status !== 'success' && status !== 'already-signed';
+
+  const buttonText = useMemo(() => {
+    if (disabled) return 'Already signed (Strong Privacy)';
+    if (alreadySigned) return 'Already signed (Strong Privacy)';
+    return (
+      {
+        idle: 'Sign with Strong Privacy (ZK)',
+        'generating-zk': 'Generating ZK proof…',
+        checking: 'Checking…',
+        submitting: 'Submitting…',
+        success: 'Signed anonymously',
+        'already-signed': 'Already signed (Strong Privacy)'
+      }[status] || 'Sign with Strong Privacy (ZK)'
+    );
+  }, [disabled, alreadySigned, status]);
 
   async function handleM2Sign() {
     try {
+      if (!VERIFIER_ADDRESS || typeof VERIFIER_ADDRESS !== 'string' || VERIFIER_ADDRESS.length !== 42) {
+        throw new Error('Missing VITE_VERIFIER_ADDRESS in .env/.env.local');
+      }
+
       let pidBI;
       try {
         pidBI = BigInt(petitionId);
@@ -107,12 +159,24 @@ export function M2SignButton({
         throw new Error('memberSecret missing/invalid (expected hex 0x… or decimal string)');
       }
 
+      setAlreadySigned(false);
       setStatus('generating-zk');
 
       const zkProof = await generateProof(membershipPath, pidBI.toString(), memberSecret);
       if (!zkProof?.nullifier || !zkProof?.proof) {
         throw new Error('ZK proof generation returned unexpected shape');
       }
+
+      // Nullifier must be bytes32 for contract call
+      const nullifierBytes32 = (() => {
+        const n = zkProof.nullifier;
+        if (isHex32(n)) return n;
+        // sometimes it’s decimal; convert safely
+        if (typeof n === 'string' && isDecString(n)) return ethers.toBeHex(BigInt(n), 32);
+        // sometimes it’s BigInt
+        if (typeof n === 'bigint') return ethers.toBeHex(n, 32);
+        throw new Error('Unexpected nullifier format from ZK proof (expected bytes32 hex or decimal string)');
+      })();
 
       const { pA, pB, pC, publicSignals } = zkProof.proof;
       if (!pA || !pB || !pC || !publicSignals) {
@@ -124,33 +188,49 @@ export function M2SignButton({
         throw new Error('publicSignals invalid (expected array of 3 uint256 strings)');
       }
 
-      setStatus('submitting');
-
       const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-
-      // --- Debug: confirm chain + code presence (super low risk) ---
       const net = await provider.getNetwork();
-      console.log('[M2] chainId', net.chainId?.toString?.() || String(net.chainId));
 
-      const [verifierCode, registryCode] = await Promise.all([
-        provider.getCode(VERIFIER_ADDRESS),
-        provider.getCode(REGISTRY_ADDRESS)
-      ]);
-      console.log('[M2] verifier code empty?', verifierCode === '0x', VERIFIER_ADDRESS);
-      console.log('[M2] registry  code empty?', registryCode === '0x', REGISTRY_ADDRESS);
+      dlog('[M2] chainId', net.chainId?.toString?.() || String(net.chainId));
 
-      const probe = await probeRegistryVerifier(provider);
-      if (probe) {
-        console.log('[M2] registry exposes verifier via', probe.fn, '=>', probe.addr);
-        if (probe.addr.toLowerCase() !== VERIFIER_ADDRESS.toLowerCase()) {
-          console.warn(
-            '[M2] WARNING: VERIFIER_ADDRESS differs from registry verifier',
-            { envVerifier: VERIFIER_ADDRESS, registryVerifier: probe.addr }
-          );
+      if (!chainIdMatches(REQUIRED_CHAIN_ID, net.chainId)) {
+        throw new Error(
+          `Wrong network. Required chainId=${REQUIRED_CHAIN_ID}, got ${net.chainId?.toString?.() || String(net.chainId)}`
+        );
+      }
+
+      // --- IMPORTANT: authoritative per-(petitionId,nullifier) check ---
+      setStatus('checking');
+      const registryView = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_VIEW_ABI, provider);
+      const has = await registryView.hasSignedPetition(pidBI, nullifierBytes32);
+      dlog('[M2] hasSignedPetition', { petitionId: pidBI.toString(), nullifierBytes32, has });
+
+      if (has) {
+        setAlreadySigned(true);
+        setStatus('already-signed');
+        onSuccess?.({ alreadySigned: true, nullifier: nullifierBytes32 });
+        return;
+      }
+
+      // --- Low-risk debug checks (only when DEBUG) ---
+      if (DEBUG) {
+        const [verifierCode, registryCode] = await Promise.all([
+          provider.getCode(VERIFIER_ADDRESS),
+          provider.getCode(REGISTRY_ADDRESS)
+        ]);
+        dlog('[M2] verifier code empty?', verifierCode === '0x', VERIFIER_ADDRESS);
+        dlog('[M2] registry  code empty?', registryCode === '0x', REGISTRY_ADDRESS);
+
+        const probe = await probeRegistryVerifier(provider);
+        if (probe) {
+          dlog('[M2] registry exposes verifier via', probe.fn, '=>', probe.addr);
+          if (probe.addr.toLowerCase() !== VERIFIER_ADDRESS.toLowerCase()) {
+            dwarn('[M2] WARNING: VERIFIER_ADDRESS differs from registry verifier', {
+              envVerifier: VERIFIER_ADDRESS,
+              registryVerifier: probe.addr
+            });
+          }
         }
-      } else {
-        console.log('[M2] registry verifier address not discoverable via common getters (ok)');
       }
 
       try {
@@ -172,13 +252,13 @@ export function M2SignButton({
           try {
             // eslint-disable-next-line no-await-in-loop
             const ok = await verifier.verifyProof(pA, pB, pC, c.inputs);
-            console.log('[M2_PREFLIGHT] verifyProof order:', c.name, '=>', ok);
+            dlog('[M2_PREFLIGHT] verifyProof order:', c.name, '=>', ok);
             if (ok) {
               accepted = c;
               break;
             }
           } catch (e) {
-            console.log(
+            dlog(
               '[M2_PREFLIGHT] verifyProof order reverted:',
               c.name,
               e?.reason || e?.message || String(e)
@@ -189,30 +269,50 @@ export function M2SignButton({
         if (!accepted) {
           throw new Error(
             'Preflight failed: proof invalid on-chain (all publicSignals orders failed). ' +
-            'Likely wrong verifier address or wrong verifier/circuit key.'
+              'Likely wrong verifier address or wrong verifier/circuit key.'
           );
         }
 
-        console.log('[M2_PREFLIGHT] accepted publicSignals order:', accepted.name);
+        dlog('[M2_PREFLIGHT] accepted publicSignals order:', accepted.name);
         pubSignalsForChain = accepted.inputs;
       }
 
+      // --- Submit tx ---
+      setStatus('submitting');
+      const signer = await provider.getSigner();
       const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_SIGN_ABI, signer);
+
+      // Try estimateGas first; fallback to a safe cap
+      let gasLimit = 500000n;
+      try {
+        const est = await registry.signPetitionWithZKProof.estimateGas(
+          pidBI,
+          nullifierBytes32,
+          pA,
+          pB,
+          pC,
+          pubSignalsForChain
+        );
+        gasLimit = (est * 12n) / 10n; // +20%
+      } catch {
+        // keep fallback
+      }
 
       const tx = await registry.signPetitionWithZKProof(
         pidBI,
-        zkProof.nullifier,
+        nullifierBytes32,
         pA,
         pB,
         pC,
         pubSignalsForChain,
-        { gasLimit: 500000 }
+        { gasLimit }
       );
 
       await tx.wait();
 
       setStatus('success');
-      onSuccess?.({ txHash: tx.hash, nullifier: zkProof.nullifier });
+      setAlreadySigned(true); // now true for this petition+nullifier
+      onSuccess?.({ txHash: tx.hash, nullifier: nullifierBytes32 });
     } catch (error) {
       console.error('M2SignButton error:', error);
       setStatus('idle');
@@ -220,21 +320,10 @@ export function M2SignButton({
     }
   }
 
-  const buttonText = disabled
-    ? 'Already signed (Strong Privacy)'
-    : ({
-        idle: 'Sign with Strong Privacy (ZK)',
-        'generating-zk': 'Generating ZK proof...',
-        submitting: 'Submitting...',
-        success: 'Signed anonymously'
-      }[status] || 'Sign with Strong Privacy (ZK)');
-
-  const isLoading = status !== 'idle' && status !== 'success';
-
   return (
     <button
       onClick={handleM2Sign}
-      disabled={disabled || isLoading || status === 'success'}
+      disabled={disabled || alreadySigned || isLoading || status === 'success' || status === 'already-signed'}
       style={{
         padding: '12px 24px',
         backgroundColor: status === 'success' ? '#10b981' : '#8b5cf6',
@@ -243,8 +332,12 @@ export function M2SignButton({
         borderRadius: '8px',
         fontSize: '16px',
         fontWeight: '600',
-        cursor: disabled || status === 'success' ? 'not-allowed' : isLoading ? 'wait' : 'pointer',
-        opacity: disabled || isLoading || status === 'success' ? 0.7 : 1
+        cursor: disabled || alreadySigned || status === 'success' || status === 'already-signed'
+          ? 'not-allowed'
+          : isLoading
+          ? 'wait'
+          : 'pointer',
+        opacity: disabled || alreadySigned || isLoading || status === 'success' || status === 'already-signed' ? 0.7 : 1
       }}
     >
       {buttonText}

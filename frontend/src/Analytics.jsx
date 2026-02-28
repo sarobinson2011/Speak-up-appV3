@@ -15,10 +15,6 @@ export default function Analytics() {
   const [loading, setLoading] = useState(true);
   const [petitionData, setPetitionData] = useState([]);
 
-  useEffect(() => {
-    loadAnalytics();
-  }, []);
-
   async function loadAnalytics() {
     setLoading(true);
     try {
@@ -107,6 +103,11 @@ export default function Analytics() {
     }
     setLoading(false);
   }
+
+  useEffect(() => {
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  loadAnalytics();
+  }, []);
 
   function exportToCSV() {
     if (petitionData.length === 0) {
