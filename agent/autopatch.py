@@ -150,96 +150,77 @@ def main():
         ),
     }
 
-    def write_and_check_patch(text: str, attempt: int) -> pathlib.Path:
-        t = text.strip("\n")
-        if not t.startswith("diff --git "):
-            t2 = t.lstrip()
-            if t2.startswith("diff --git "):
-                t = t2
-            else:
-                raise RuntimeError("model_output_not_unified_diff")
+    # --- JSON edit mode: model returns full file contents, we write them ---
+    edit_system = {
+        "role": "system",
+        "content": textwrap.dedent(
+            """
+            You are an engineering agent operating inside a git repo.
 
-        patch_path = run_dir / f"patch.attempt{attempt}.diff"
-        patch_path.write_text(t + "\n", encoding="utf-8")
+            OUTPUT FORMAT (STRICT):
+            - Output MUST be valid JSON and NOTHING ELSE.
 
-        chk = sh(
-            ["git", "apply", "--check", str(patch_path)], capture=True, check=False
-        )
-        (run_dir / f"apply_check.attempt{attempt}.log").write_text(
-            chk or "", encoding="utf-8"
-        )
-        if chk.strip():
-            raise RuntimeError("git_apply_check_failed")
+            JSON SCHEMA:
+            {
+              "files": {
+                "backend/src/membership/indexer.js": "<FULL updated file content as a string>",
+                "backend/src/routes/membership.js": "<FULL updated file content as a string>"
+              }
+            }
 
-        return patch_path
+            HARD RULES:
+            - Modify ONLY these two files.
+            - Backend change only. No circuit changes. No contract changes.
+            - Implement leaf query support for GET /api/membership/path?leaf=0x...
+              - Prefer leaf if both wallet and leaf exist.
+              - 400 if neither provided.
+              - If leaf used, wallet in response must be null or omitted (prefer null).
+            - Keep existing behavior for wallet-based requests.
+            - Keep changes minimal and reversible.
+            """
+        ).strip(),
+    }
 
     last_err = ""
-    patch_path = None
-
     for attempt in (1, 2, 3):
         extra = ""
         if attempt > 1:
-            extra = textwrap.dedent(
-                f"""
-                Your previous output failed `git apply --check` (malformed/unapplicable patch).
-                Output MUST be a valid unified diff that applies cleanly with `git apply`.
-
-                HARD RULES:
-                - Output ONLY the diff. No prose, no markdown, no code fences.
-                - Diff must start with: diff --git a/... b/...
-                - Only modify these files:
-                  - backend/src/membership/indexer.js
-                  - backend/src/routes/membership.js
-                - Use standard unified diff hunks with correct @@ headers.
-                - Do not use emoji or decorative unicode in context lines or comments.
-
-                Previous error: {last_err}
-                """
-            ).strip()
+            extra = f"\n\nPrevious error: {last_err}\nReturn STRICT JSON only."
 
         sys_msg = {
             "role": "system",
-            "content": system["content"] + ("\n\n" + extra if extra else ""),
+            "content": edit_system["content"] + extra,
         }
 
         try:
-            diff_text = call_model([sys_msg, user])
-            patch_path = write_and_check_patch(diff_text, attempt)
-
-            out = sh(
-                ["git", "apply", "--whitespace=fix", str(patch_path)],
-                capture=True,
-                check=False,
-            )
-            (run_dir / f"apply.attempt{attempt}.log").write_text(
-                out or "", encoding="utf-8"
+            raw = call_model([sys_msg, user])
+            (run_dir / f"model_output.attempt{attempt}.json").write_text(
+                raw + "\n", encoding="utf-8"
             )
 
-            (run_dir / "patch.used").write_text(
-                patch_path.name + "\n", encoding="utf-8"
-            )
+            data = json.loads(raw)
+            files = data.get("files") or {}
+            if not isinstance(files, dict):
+                raise RuntimeError("bad_json_schema_files")
+
+            allowed = {
+                "backend/src/membership/indexer.js",
+                "backend/src/routes/membership.js",
+            }
+            bad = set(files.keys()) - allowed
+            if bad:
+                raise RuntimeError(f"disallowed_files: {sorted(bad)}")
+
+            for rel, content in files.items():
+                if not isinstance(content, str) or not content.strip():
+                    raise RuntimeError(f"empty_content_for: {rel}")
+                (REPO_ROOT / rel).write_text(content, encoding="utf-8")
+
             break
         except Exception as e:
             last_err = str(e)
             if attempt == 3:
-                die(
-                    "Patch does not apply cleanly after retries. See logs in: "
-                    + str(run_dir)
-                )
-
-    sh(["git", "add", "-A"], capture=True)
-
-    check_out = sh(["./agent/check"], capture=True, check=False)
-    (run_dir / "check.log").write_text(check_out, encoding="utf-8")
-    if "[check] Running repo checks..." not in check_out:
-        die("agent/check failed. See: " + str(run_dir))
-
-    staged = sh(["git", "diff", "--cached"], capture=True)
-    (run_dir / "staged.diff").write_text(staged, encoding="utf-8")
-
-    print(f"OK: patch applied + staged on {branch}")
-    print("Review: git diff --cached")
-    print(f"Logs: {run_dir}")
+                die("JSON edit mode failed after retries. See logs in: " + str(run_dir))
 
 
 if __name__ == "__main__":
