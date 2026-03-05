@@ -36,7 +36,8 @@ export class MembershipIndexer {
     // wallet -> { leaf: bigint, index: number }
     this.byWallet = new Map();
 
-    // leaf -> { leaf: bigint, index: number, wallet: string }
+    // leaf (0x32) -> { leaf: bigint, index: number }
+    // NOTE: intentionally does NOT store wallet to avoid leaf->wallet correlation.
     this.byLeaf = new Map();
 
     // wallet -> bigint leaf override (DEV ONLY)
@@ -73,7 +74,6 @@ export class MembershipIndexer {
 
     // 2️⃣ Apply overrides (replace or insert)
     for (const [wallet, overrideLeaf] of this.manualOverrides.entries()) {
-
       if (newMap.has(wallet)) {
         // Replace leaf at same index
         const entry = newMap.get(wallet);
@@ -93,7 +93,7 @@ export class MembershipIndexer {
       const idx = finalTree.insert(leaf);
       const leafKey = to0x32(leaf);
       finalMap.set(wallet, { leaf, index: idx });
-      finalLeafMap.set(leafKey, { leaf, index: idx, wallet });
+      finalLeafMap.set(leafKey, { leaf, index: idx });
     }
 
     this.tree = finalTree;
