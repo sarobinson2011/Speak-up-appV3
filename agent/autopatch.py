@@ -209,10 +209,15 @@ def main():
             if not isinstance(files, dict):
                 raise RuntimeError("bad_json_schema_files")
 
-            allowed = {
-                "backend/src/membership/indexer.js",
-                "backend/src/routes/membership.js",
-            }
+            allowed_env = os.environ.get("AGENT_ALLOWED_FILES", "").strip()
+            if allowed_env:
+                allowed = {p.strip() for p in allowed_env.split(",") if p.strip()}
+            else:
+                allowed = {
+                    "backend/src/membership/indexer.js",
+                    "backend/src/routes/membership.js",
+                }
+
             bad = set(files.keys()) - allowed
             if bad:
                 raise RuntimeError(f"disallowed_files: {sorted(bad)}")
