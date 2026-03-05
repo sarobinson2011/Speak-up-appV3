@@ -72,12 +72,18 @@ def gather_context() -> Dict[str, Any]:
 def call_model(messages: List[Dict[str, Any]]) -> str:
     from openai import OpenAI
 
-    client = OpenAI()
+    # hard limits so the agent never "hangs" indefinitely
+    timeout_s = float(os.environ.get("AGENT_TIMEOUT_S", "90"))
+    max_retries = int(os.environ.get("AGENT_MAX_RETRIES", "0"))
+
+    client = OpenAI(timeout=timeout_s, max_retries=max_retries)
+
     resp = client.responses.create(
         model=MODEL,
         reasoning={"effort": REASONING_EFFORT},
         input=messages,
     )
+
     out = []
     for item in resp.output:
         if item.type == "message":
