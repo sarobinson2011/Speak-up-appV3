@@ -1,16 +1,27 @@
 #!/usr/bin/env python3
-import json, os, subprocess, sys, textwrap, pathlib, datetime
-from typing import List, Dict, Any
+import datetime
+import json
+import os
+import pathlib
+import subprocess
+import sys
+import textwrap
+from typing import Any, Dict, List, Set
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 LOG_DIR = pathlib.Path.home() / "ws" / "notes" / "agent" / "logs" / "autopatch"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 MODEL = os.environ.get("AGENT_MODEL", "gpt-5.2-codex")
-REASONING_EFFORT = os.environ.get("AGENT_REASONING", "high")
+REASONING_EFFORT = os.environ.get("AGENT_REASONING", "medium")
 
 
-def sh(cmd: List[str], check=True, capture=True, cwd=REPO_ROOT) -> str:
+def sh(
+    cmd: List[str],
+    check: bool = True,
+    capture: bool = True,
+    cwd: pathlib.Path = REPO_ROOT,
+) -> str:
     p = subprocess.run(
         cmd,
         cwd=str(cwd),
@@ -22,8 +33,10 @@ def sh(cmd: List[str], check=True, capture=True, cwd=REPO_ROOT) -> str:
     return p.stdout or ""
 
 
-def now() -> str:
-    return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+def now_utc_compact() -> str:
+    # e.g. 20260305T105817Z0000
+    ts = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    return ts.replace("-", "").replace(":", "").replace("+", "Z")
 
 
 def die(msg: str) -> None:
@@ -50,19 +63,28 @@ def assert_clean_worktree() -> None:
         die("Working tree not clean. Commit/stash/discard first.")
 
 
-def gather_context() -> Dict[str, Any]:
-    files = [
-        "docs/iter-0001-path-privacy-v1.md",
+def parse_allowed_files() -> Set[str]:
+    raw = os.environ.get("AGENT_ALLOWED_FILES", "").strip()
+    if not raw:
+        return set()
+    return {p.strip() for p in raw.split(",") if p.strip()}
+
+
+def gather_context(allowed_files: Set[str]) -> Dict[str, Any]:
+    base_files = [
+        # keep these always
         "AGENT_POLICY.md",
         "AGENT_TASK.md",
-        "backend/src/routes/membership.js",
-        "backend/src/membership/indexer.js",
+        "docs/iter-0001-path-privacy-v1.md",
     ]
+    files = base_files + sorted(list(allowed_files))
+
     ctx: Dict[str, Any] = {"files": {}, "git": {}}
     for f in files:
         p = REPO_ROOT / f
         if p.exists():
             ctx["files"][f] = read_file(p)
+
     ctx["git"]["branch"] = git_branch()
     ctx["git"]["head"] = sh(["git", "rev-parse", "HEAD"]).strip()
     ctx["git"]["status_sb"] = sh(["git", "status", "-sb"])
@@ -72,10 +94,10 @@ def gather_context() -> Dict[str, Any]:
 def call_model(messages: List[Dict[str, Any]]) -> str:
     from openai import OpenAI
 
-    # hard limits so the agent never "hangs" indefinitely
     timeout_s = float(os.environ.get("AGENT_TIMEOUT_S", "90"))
     max_retries = int(os.environ.get("AGENT_MAX_RETRIES", "0"))
 
+    # hard limits so the agent never hangs indefinitely
     client = OpenAI(timeout=timeout_s, max_retries=max_retries)
 
     resp = client.responses.create(
@@ -84,7 +106,7 @@ def call_model(messages: List[Dict[str, Any]]) -> str:
         input=messages,
     )
 
-    out = []
+    out: List[str] = []
     for item in resp.output:
         if item.type == "message":
             for c in item.content:
@@ -93,7 +115,7 @@ def call_model(messages: List[Dict[str, Any]]) -> str:
     return "\n".join(out).strip()
 
 
-def main():
+def main() -> None:
     branch = git_branch()
     assert_not_main(branch)
     assert_clean_worktree()
@@ -101,36 +123,49 @@ def main():
     if not os.environ.get("OPENAI_API_KEY"):
         die("OPENAI_API_KEY not set in environment.")
 
-    wp = REPO_ROOT / "docs/iter-0001-path-privacy-v1.md"
-    if not wp.exists():
-        die("Missing work package doc: docs/iter-0001-path-privacy-v1.md")
+    allowed_files = parse_allowed_files()
+    if not allowed_files:
+        die(
+            "AGENT_ALLOWED_FILES is required (comma-separated paths). Example: frontend/src/Petitions.jsx"
+        )
 
-    ctx = gather_context()
+    # Basic existence check: fail fast if user points to nonsense paths
+    for p in sorted(allowed_files):
+        if not (REPO_ROOT / p).exists():
+            die(f"Allowed file does not exist: {p}")
 
-    run_id = (
-        f"{now().replace(':','').replace('+','Z').replace('-','')}-"
-        f"{branch.replace('/','_')}"
-    )
+    ctx = gather_context(allowed_files)
+
+    run_id = f"{now_utc_compact()}0000-{branch.replace('/', '_')}"
     run_dir = LOG_DIR / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
 
     (run_dir / "context.json").write_text(json.dumps(ctx, indent=2), encoding="utf-8")
 
+    allowed_list = "\n".join(f"- {p}" for p in sorted(allowed_files))
+
     system = {
         "role": "system",
         "content": textwrap.dedent(
-            """
+            f"""
             You are a patch-generating engineering agent operating inside a git repo.
-            Output ONLY a unified diff (git-style) that applies cleanly with `git apply`.
-            Do not include explanations, markdown, or code fences.
 
-            Constraints for this iteration:
-            - Backend change only.
-            - No circuit changes.
-            - No contract changes.
-            - Keep old wallet query temporarily, but prefer leaf.
-            - 400 if neither wallet nor leaf provided.
-            - Return payload unchanged except wallet should be optional/null for leaf-based requests.
+            OUTPUT FORMAT (strict):
+            Return ONLY valid JSON with this shape:
+              {{
+                "files": {{
+                  "<path>": "<entire updated file contents as a single string>"
+                }}
+              }}
+
+            HARD RULES:
+            - Do NOT output unified diffs.
+            - Do NOT include prose, markdown, code fences, or extra keys.
+            - You may ONLY modify/output these files:
+            {allowed_list}
+            - The JSON "files" object MUST NOT contain any other paths.
+            - Keep changes minimal and consistent with AGENT_TASK + work package.
+            - If you cannot comply, return: {{"files": {{}}}}
             """
         ).strip(),
     }
@@ -139,64 +174,30 @@ def main():
         "role": "user",
         "content": json.dumps(
             {
-                "task": (
-                    "iter-0001 backend: add leaf query support to /api/membership/path "
-                    "(prefer leaf over wallet) with minimal reversible changes."
-                ),
+                "task": "Apply the current work package using JSON edit mode and only the allowed files.",
                 "work_package": ctx["files"].get(
                     "docs/iter-0001-path-privacy-v1.md", ""
                 ),
-                "current_membership_route": ctx["files"].get(
-                    "backend/src/routes/membership.js", ""
-                ),
-                "current_indexer": ctx["files"].get(
-                    "backend/src/membership/indexer.js", ""
-                ),
-            }
+                "policy": ctx["files"].get("AGENT_POLICY.md", ""),
+                "agent_task": ctx["files"].get("AGENT_TASK.md", ""),
+                "allowed_files": sorted(list(allowed_files)),
+                "current_files": {
+                    p: ctx["files"].get(p, "") for p in sorted(list(allowed_files))
+                },
+            },
+            indent=2,
         ),
     }
 
-    # --- JSON edit mode: model returns full file contents, we write them ---
-    edit_system = {
-        "role": "system",
-        "content": textwrap.dedent(
-            """
-            You are an engineering agent operating inside a git repo.
-
-            OUTPUT FORMAT (STRICT):
-            - Output MUST be valid JSON and NOTHING ELSE.
-
-            JSON SCHEMA:
-            {
-              "files": {
-                "backend/src/membership/indexer.js": "<FULL updated file content as a string>",
-                "backend/src/routes/membership.js": "<FULL updated file content as a string>"
-              }
-            }
-
-            HARD RULES:
-            - Modify ONLY these two files.
-            - Backend change only. No circuit changes. No contract changes.
-            - Implement leaf query support for GET /api/membership/path?leaf=0x...
-              - Prefer leaf if both wallet and leaf exist.
-              - 400 if neither provided.
-              - If leaf used, wallet in response must be null or omitted (prefer null).
-            - Keep existing behavior for wallet-based requests.
-            - Keep changes minimal and reversible.
-            """
-        ).strip(),
-    }
-
     last_err = ""
-    for attempt in (1, 2, 3):
+    hard_tries = int(os.environ.get("AGENT_HARD_TRIES", "3"))
+
+    for attempt in range(1, hard_tries + 1):
         extra = ""
         if attempt > 1:
-            extra = f"\n\nPrevious error: {last_err}\nReturn STRICT JSON only."
+            extra = f"\n\nPrevious error: {last_err}\nReturn STRICT JSON only, with only allowed files."
 
-        sys_msg = {
-            "role": "system",
-            "content": edit_system["content"] + extra,
-        }
+        sys_msg = {"role": "system", "content": system["content"] + extra}
 
         try:
             raw = call_model([sys_msg, user])
@@ -205,33 +206,48 @@ def main():
             )
 
             data = json.loads(raw)
-            files = data.get("files") or {}
-            if not isinstance(files, dict):
-                raise RuntimeError("bad_json_schema_files")
+            files_obj = data.get("files", {})
+            if not isinstance(files_obj, dict):
+                raise RuntimeError("bad_json_shape_files_not_object")
 
-            allowed_env = os.environ.get("AGENT_ALLOWED_FILES", "").strip()
-            if allowed_env:
-                allowed = {p.strip() for p in allowed_env.split(",") if p.strip()}
-            else:
-                allowed = {
-                    "backend/src/membership/indexer.js",
-                    "backend/src/routes/membership.js",
-                }
-
-            bad = set(files.keys()) - allowed
+            out_files = set(files_obj.keys())
+            bad = sorted(out_files - allowed_files)
             if bad:
-                raise RuntimeError(f"disallowed_files: {sorted(bad)}")
+                raise RuntimeError(
+                    "output_contains_disallowed_files: " + ", ".join(bad)
+                )
 
-            for rel, content in files.items():
-                if not isinstance(content, str) or not content.strip():
-                    raise RuntimeError(f"empty_content_for: {rel}")
-                (REPO_ROOT / rel).write_text(content, encoding="utf-8")
+            # Empty output means model refused / couldn't comply
+            if not files_obj:
+                raise RuntimeError("model_returned_empty_files")
 
+            for rel_path, new_text in files_obj.items():
+                if not isinstance(new_text, str) or not new_text.strip():
+                    raise RuntimeError(f"empty_or_nonstring_content_for: {rel_path}")
+                (REPO_ROOT / rel_path).write_text(new_text, encoding="utf-8")
+
+            # Apply succeeded: break out
             break
+
         except Exception as e:
             last_err = str(e)
-            if attempt == 3:
+            if attempt == hard_tries:
                 die("JSON edit mode failed after retries. See logs in: " + str(run_dir))
+
+    # Stage + check
+    sh(["git", "add", "-A"], capture=True)
+
+    check_out = sh(["./agent/check"], check=False, capture=True)
+    (run_dir / "check.log").write_text(check_out, encoding="utf-8")
+    if "[check] Running repo checks..." not in check_out:
+        die("agent/check failed. See: " + str(run_dir))
+
+    staged = sh(["git", "diff", "--cached"], capture=True)
+    (run_dir / "staged.diff").write_text(staged, encoding="utf-8")
+
+    print(f"OK: patch applied + staged on {branch}")
+    print("Review: git diff --cached")
+    print(f"Logs: {run_dir}")
 
 
 if __name__ == "__main__":
