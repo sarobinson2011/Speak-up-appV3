@@ -146,7 +146,12 @@ export default function Petitions({ signer, account }) {
 
   async function fetchMembershipPath(wallet) {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/membership/path?wallet=${wallet}`);
+      const url = leafHex
+        ? `${BACKEND_URL}/api/membership/path?leaf=${leafHex}`
+        : `${BACKEND_URL}/api/membership/path?wallet=${wallet}`;
+
+      const res = await fetch(url);
+      
       if (!res.ok) {
         setMembershipPath(null);
         return;
