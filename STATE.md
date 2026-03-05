@@ -1,187 +1,275 @@
-“When in doubt, STATE.md wins.”
-“Changes must be recorded here before implementation.”
-
-STATE.md — Speak-up-appV3
+# STATE.md — Speak-up-appV3
 
 Last updated: 2026-02-27 (Europe/London)
 
-This file is the canonical “source of truth” for architecture decisions, invariants, deployed addresses, and the current MVP baseline. Any design change must be reflected here before implementation.
+This file is the canonical source of truth for:
+
+- Architecture decisions
+- Invariants
+- Deployed addresses
+- ZK stack configuration
+- Development governance model
+
+When in doubt, STATE.md wins.
+Changes must be recorded here before implementation.
 
 ---
 
-## 1) Project goal (M2-only MVP)
+# 0) Development Governance Model (Locked)
+
+Baseline anchor (ground truth):
+
+- Tag: baseline-v0
+- Commit: e02aacdc0f10e6919d8a759d8829758b58e0367e
+
+Current main includes baseline via merge commit:
+
+- 0ecd367 on origin/main
+
+Two-track development model:
+
+## Human Track (main)
+
+- Only Steve (human) develops on main
+- Assisted by GPT in Engineering[5]
+- Slow, deterministic, minimal diffs
+- No speculative expansion
+- Cryptographic correctness is paramount
+- STATE.md must be updated before architectural changes
+
+## Agent Track (separate machine)
+
+- Agent NEVER checks out or commits to main
+- One branch per iteration
+- Branches created fresh from baseline-v0 (preferred)
+- Naming convention:
+  - agent/iter-0001-<desc>
+  - agent/iter-0002-<desc>
+- Human reviews before merge
+- No automatic merges
+- No silent merges
+
+This separation is non-negotiable.
+
+---
+
+# 1) Project Goal (M2-only MVP)
 
 Build a privacy-preserving petition platform where users can:
 
 - Create petitions (wallet-authenticated; not private in MVP)
-- Sign petitions with **Strong Privacy (M2)**:
-  - proof is generated client-side
-  - on-chain verification is authoritative
-  - uniqueness is enforced via a nullifier (not via wallet address)
-- (Comments are explicitly **disabled** in MVP baseline)
+- Sign petitions with Strong Privacy (M2):
+  - proof generated client-side
+  - on-chain verification authoritative
+  - uniqueness enforced via nullifier (not wallet address)
+
+Comments are disabled in MVP.
 
 ---
 
-## 2) Core product rules (invariants)
+# 2) Core Product Invariants (Locked)
 
-Locked for MVP:
+1) Uniqueness:
+- Max 1 signature per (petitionId, member)
+- Enforced via nullifier
+- Not wallet-based
 
-1. **Uniqueness:** max 1 signature per (petitionId, member) enforced via **nullifier**, not wallet.
-2. **Privacy:** signer proves membership without revealing which member they are.
-3. **On-chain authority:** chain verifies proof + root validity + nullifier uniqueness.
-4. **No trusted gatekeeper (baseline):** membership is permissionless on-chain; backend is non-authoritative convenience only.
-5. **M2-only mode:** no email verification, no JWT, no attestations, no M1 routes/UI.
+2) Privacy:
+- Signer proves membership without revealing identity
 
----
+3) On-chain authority:
+- Chain verifies proof validity
+- Chain validates root validity
+- Chain enforces nullifier uniqueness
 
-## 3) ZK stack (current)
+4) No trusted gatekeeper:
+- Membership is permissionless on-chain
+- Backend is non-authoritative convenience only
 
-- Circuit framework: **Circom**
-- Prover/verifier: **Groth16 (BN254)**
-- Proof tooling: **snarkjs**
-- Hashing: **Poseidon**
-  - leaf: Poseidon1
-  - merkle node: Poseidon2(left, right)
-  - nullifier: Poseidon3
-
----
-
-## 4) Membership model (baseline)
-
-### 4.1 Identity material (client-side)
-
-- Client stores one secret per wallet in localStorage:
-
-  - key: `su_memberSecret_v1:wallet:<walletLowercase>`
-  - value: decimal string representing a BigInt field element
-
-- **MVP rule:** if a wallet is enrolled and you lose its secret on that device, that wallet is dead for signing on that device.
-
-### 4.2 Leaf definition (locked)
-
-- `leaf = Poseidon1(memberSecret)`
-
-### 4.3 Tree parameters (locked)
-
-- DEPTH = 16 (≈ 65,536 leaves)
-- Root history window N = 16 (contract retains last 16 roots as valid)
-
-### 4.4 Registration (permissionless; on-chain)
-
-- Wallet registers its leaf on-chain once (baseline: **one leaf per wallet**).
-
-Sybil friction (baseline iteration 1):
-- registration requires a **refundable bond** (exact amount read from chain)
-- bond is locked for a time window
-
-### 4.5 Deployed membership contract (Aurora testnet)
-
-- Chain: Aurora testnet (chainId 1313161555)
-- MembershipRegistry: `0x7C329B70Da1Dc94d5655a0DB907637bc4530991f`
-- `registerBondWei()` = `1e15` (0.001 ETH)
-- `bondLockSeconds()` = `3600` (1 hour)
-
-(Values above are from on-chain reads during MVP test session.)
+5) M2-only mode:
+- No email verification
+- No JWT
+- No attestations
+- No M1 routes/UI
 
 ---
 
-## 5) Nullifier model (anti double-signing)
+# 3) ZK Stack (Current, Locked)
 
-Locked:
+Circuit framework: Circom
+Prover/verifier: Groth16 (BN254)
+Tooling: snarkjs
 
-- `SIGN_DOMAIN = 0x5349474e` (ASCII "SIGN" as a field element)
-- `nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)`
+Hashing: Poseidon
+- leaf: Poseidon1
+- merkle node: Poseidon2
+- nullifier: Poseidon3
+
+SIGN_DOMAIN:
+0x5349474e  // ASCII "SIGN"
+
+Tree depth:
+DEPTH = 16
+
+Root history window:
+N = 16
+
+Full implementation spec:
+See ZK_CIRCUIT_SPEC.md
+
+---
+
+# 4) ZK Artifact Integrity (Engineering[5])
+
+Artifact reproducibility and tamper detection are mandatory.
+
+Specification:
+docs/ZK_ARTIFACT_PROVENANCE.md
+
+This document defines:
+
+- ZK_ARTIFACTS_MANIFEST.json
+- Required pinned artifacts
+- SHA-256 hashing rules
+- Golden proof requirement
+- CI enforcement rules
+- Public input order lock
+
+Public input order (locked):
+1. petitionId
+2. nullifier
+3. membershipRoot
+
+No circuit, key, verifier, or encoding change is allowed without:
+- Regeneration
+- Manifest update
+- Explicit commit
+- Golden proof passing
+
+---
+
+# 4.6) Network Endpoints + Deployed Contracts
+
+Chain: Aurora Testnet
+chainId: 1313161555
+RPC_URL: https://testnet.aurora.dev
+
+Deployed contracts:
+
+- MembershipRegistry (membership tree / LeafRegistered): 0x7C329B70Da1Dc94d5655a0DB907637bc4530991f
+- PetitionRegistry (proof verification entrypoint): 0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD
+- Groth16Verifier (ZK verifier): 0x25C9A59DC47Ba0869229f02f8d80CC22860bFFBa
+- Poseidon2 (hash contract/library): 0xEFbb2780fA51c9D2f0375B226BEB03a897b0D9CF
+
+---
+
+# 5) Membership Model (Baseline)
+
+Client stores one secret per wallet in localStorage.
+
+Storage key:
+su_memberSecret_v1:wallet:<walletLowercase>
+
+Leaf definition:
+leaf = Poseidon1(memberSecret)
+
+Enrollment:
+- One leaf per wallet
+- Refundable bond required
+
+Bond parameters:
+registerBondWei() = 1e15 (0.001 ETH)
+bondLockSeconds() = 3600
+
+---
+
+# 6) Nullifier Model (Locked)
+
+nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)
 
 On-chain:
-- store nullifier per petition and reject duplicates.
+- nullifier stored per petition
+- duplicates rejected
+
+This enforces one signature per petition per member.
 
 ---
 
-## 6) Backend role (non-authoritative, MVP)
+# 7) Backend Role (MVP)
 
-Backend is a **convenience indexer**:
+Backend is non-authoritative.
 
-- mirrors on-chain membership events
-- rebuilds the Merkle tree
-- serves Merkle paths to clients
+Responsibilities:
+- Mirror membership events
+- Rebuild Merkle tree
+- Serve membership paths
 
-Backend MUST NOT:
-- gate membership
-- gate signing
-- store member secrets
-
-### 6.1 Required endpoint (MVP)
-
-- `GET /api/membership/path?wallet=<address>`
-
-Returns:
-- `wallet`, `leaf`, `index`, `root`
-- `siblings[]` (length = DEPTH)
-- `pathBits[]` (length = DEPTH)
-
-If wallet not enrolled, returns 404 with `wallet not found in membership index`.
+Must NOT:
+- Gate membership
+- Gate signing
+- Store secrets
 
 ---
 
-## 7) Frontend UX (MVP baseline)
+# 8) Path Privacy Hardening (Agent Track)
 
-### 7.1 Wallet connect
+Goal:
+Remove wallet address from membership path requests.
 
-- User connects MetaMask.
-- App ensures secret exists via `ensureMemberSecret(account)` on wallet connect and on `accountsChanged`.
+Replace:
+GET /api/membership/path?wallet=<address>
 
-### 7.2 Petition details: M2 signing preflight
+With:
+GET /api/membership/path?leaf=<hex>
 
-A petition can be signed if ALL are true:
+This reduces direct deanonymization risk.
 
-- `memberSecret` present locally
-- `membershipPath` loaded from backend
-- `leafMatches`:
-  - computed leaf from local secret equals backend leaf for wallet
-- not already signed (checked via on-chain `hasSignedPetition(petitionId, nullifier)`)
+Work package:
+AGENT_WORK_PACKAGE_PATH_PRIVACY_V1.md
 
-### 7.3 Enrollment UX (Option B: “proper”)
-
-If secret is present but membership path is missing:
-
-- show **Enroll (one-time)** button
-- clicking enroll:
-  - computes leaf from local secret
-  - reads `registerBondWei()` from MembershipRegistry
-  - calls `registerLeaf(leaf)` with `{ value: bond }`
-  - after tx confirms, UI refreshes and backend path should become available
-
-This is the deterministic “plumbing” baseline that makes new wallets work.
+No circuit or contract changes required.
 
 ---
 
-## 8) Known limitations (explicitly accepted for MVP)
+# 9) Relayer Signing (Design Phase — Not Implemented)
 
-- Losing localStorage secret breaks signing for that wallet on that device.
-- No comment flow (UI placeholder only).
-- No metadata fetching from IPFS beyond showing URI.
-- Backend is required for path distribution in MVP (can be decentralized later).
+Goal:
+Decouple proof submission from wallet tx sender.
 
----
+Spec:
+docs/RELAYER_SIGNING_SPEC.md
 
-## 9) MVP acceptance checklist (must all pass)
-
-- New wallet:
-  - connect → secret created → enroll (one-time) → membership path loads → sign succeeds
-- Returning wallet:
-  - connect → secret persists → membership path loads → sign button enabled (if not signed)
-- Already-signed wallet:
-  - connect → sign is blocked via on-chain nullifier check
-- Leaf mismatch:
-  - UI blocks signing and explains “secret mismatch”
-- Backend down:
-  - UI shows “membership not loaded” and blocks signing
+This is additive.
+Direct path remains baseline.
+No circuit changes required.
 
 ---
 
-## 10) Next steps (after baseline)
+# 10) Known MVP Limitations
 
-1. Update docs (this file + ZK_CIRCUIT_SPEC.md) and commit MVP baseline.
-2. Cleanup / delete M1 artifacts and dead code paths.
-3. Add explicit export/import secret flow (NOT MVP).
-4. Add comments + moderation pipeline (post-MVP).
+- Enrollment publicly tied to wallet
+- No unlinkable membership acquisition
+- No relayer path yet
+- Backend required for path distribution
+- Secret loss breaks signing on that device
+
+---
+
+# 11) Next Strategic Layer (Post-MVP)
+
+Long-term Tornado-grade privacy requires:
+
+- Unlinkable enrollment model
+- Relayed/meta-tx signing path
+- Strong artifact provenance enforcement
+- Larger anonymity sets (with performance gating)
+
+Design must precede implementation.
+All changes must be reflected here first.
+
+---
+
+STATE.md remains canonical.
+
+If any conflict arises between code and documentation:
+STATE.md governs.
