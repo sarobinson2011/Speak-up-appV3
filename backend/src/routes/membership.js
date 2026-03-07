@@ -31,17 +31,47 @@ export function makeMembershipRouter(indexer) {
   });
 
   // ---------------------------
-  // Wallet -> Merkle path
+  // Wallet/Leaf -> Merkle path
   // ---------------------------
   router.get("/path", async (req, res) => {
     try {
+      const leaf = String(req.query.leaf || "").trim();
       const wallet = String(req.query.wallet || "").trim();
-      if (!wallet || !wallet.startsWith("0x") || wallet.length < 10) {
-        return res.status(400).json({ error: "bad wallet" });
+
+      if (!leaf && !wallet) {
+        return res.status(400).json({ error: "wallet or leaf required" });
       }
 
       // initial sync if we haven't synced yet
       if (!indexer.synced) await indexer.sync(0);
+
+      if (leaf) {
+        if (!leaf.startsWith("0x") || !/^0x[0-9a-fA-F]+$/.test(leaf) || leaf.length > 66) {
+          return res.status(400).json({ error: "bad leaf" });
+        }
+
+        // try from current index
+        let path = await indexer.getPathByLeaf(leaf);
+
+        // minimal patch: if missing, resync once and try again
+        if (!path) {
+          await indexer.sync(0);
+          path = await indexer.getPathByLeaf(leaf);
+        }
+
+        if (!path) {
+          return res.status(404).json({
+            error: "not_found",
+            details: "leaf not found in membership index"
+          });
+        }
+
+        return res.json(path);
+      }
+
+      if (!wallet || !wallet.startsWith("0x") || wallet.length < 10) {
+        return res.status(400).json({ error: "bad wallet" });
+      }
 
       const walletLower = wallet.toLowerCase();
 

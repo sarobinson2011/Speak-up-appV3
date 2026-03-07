@@ -36,6 +36,10 @@ export class MembershipIndexer {
     // wallet -> { leaf: bigint, index: number }
     this.byWallet = new Map();
 
+    // leaf (0x32) -> { leaf: bigint, index: number }
+    // NOTE: intentionally does NOT store wallet to avoid leaf->wallet correlation.
+    this.byLeaf = new Map();
+
     // wallet -> bigint leaf override (DEV ONLY)
     this.manualOverrides = new Map();
 
@@ -70,7 +74,6 @@ export class MembershipIndexer {
 
     // 2️⃣ Apply overrides (replace or insert)
     for (const [wallet, overrideLeaf] of this.manualOverrides.entries()) {
-
       if (newMap.has(wallet)) {
         // Replace leaf at same index
         const entry = newMap.get(wallet);
@@ -84,14 +87,18 @@ export class MembershipIndexer {
     // 3️⃣ Rebuild final tree from final leaf set
     const finalTree = new IncrementalBinaryTree(this.depth);
     const finalMap = new Map();
+    const finalLeafMap = new Map();
 
     for (const [wallet, { leaf }] of newMap.entries()) {
       const idx = finalTree.insert(leaf);
+      const leafKey = to0x32(leaf);
       finalMap.set(wallet, { leaf, index: idx });
+      finalLeafMap.set(leafKey, { leaf, index: idx });
     }
 
     this.tree = finalTree;
     this.byWallet = finalMap;
+    this.byLeaf = finalLeafMap;
     this.lastBlock = latest;
     this.synced = true;
   }
@@ -139,6 +146,31 @@ export class MembershipIndexer {
     return {
       wallet: key,
       leaf: to0x32(leaf),
+      index,
+      root,
+      siblings: siblings.map(to0x32),
+      pathBits: pathIndices
+    };
+  }
+
+  // -----------------------------------
+  // PATH BY LEAF
+  // -----------------------------------
+  async getPathByLeaf(leafHex) {
+    if (!this.synced) throw new Error("INDEXER_NOT_SYNCED");
+
+    const leaf = BigInt(leafHex);
+    const leafKey = to0x32(leaf);
+    const entry = this.byLeaf.get(leafKey);
+    if (!entry) return null;
+
+    const { index } = entry;
+    const { siblings, pathIndices } = this.tree.path(index);
+    const root = await this.contract.currentRoot();
+
+    return {
+      wallet: null,
+      leaf: leafKey,
       index,
       root,
       siblings: siblings.map(to0x32),

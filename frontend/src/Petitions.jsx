@@ -139,14 +139,21 @@ export default function Petitions({ signer, account }) {
   }, []);
 
   useEffect(() => {
-    if (!account) return;
-    fetchMembershipPath(account);
+    if (!account || !memberLeafHex) return;
+    fetchMembershipPath(memberLeafHex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, [account, memberLeafHex]);
 
-  async function fetchMembershipPath(wallet) {
+  async function fetchMembershipPath(leafHex) {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/membership/path?wallet=${wallet}`);
+      if (!leafHex) {
+        setMembershipPath(null);
+        return;
+      }
+      const url = `${BACKEND_URL}/api/membership/path?leaf=${leafHex}`;
+
+      const res = await fetch(url);
+      
       if (!res.ok) {
         setMembershipPath(null);
         return;
@@ -226,7 +233,7 @@ export default function Petitions({ signer, account }) {
       await tx.wait();
       dlog('[ENROLL] tx confirmed');
 
-      await fetchMembershipPath(wallet);
+      await fetchMembershipPath(bigIntToHex32(leafBI));
       setEnrollStatus('done');
     } catch (e) {
       console.error('[ENROLL] error', e);
