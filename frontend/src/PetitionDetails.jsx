@@ -162,35 +162,40 @@ export default function PetitionDetails({
   }
 
   async function refreshM2SignedState(registry, pid, isCancelled = () => false) {
-    setM2CheckLoading(true);
-    try {
-      if (!memberSecretBI) {
-        setHasSignedM2(false);
-        setM2Nullifier(null);
-        return;
-      }
+  setM2CheckLoading(true);
 
-      const petitionIdBI = BigInt(pid);
-
-      // Must match circuit: Poseidon3([memberSecret, petitionId, SIGN_DOMAIN])
-      const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
-      const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
-
-      const signed = await registry.hasSignedPetition(petitionIdBI, nullifierHex);
-      if (isCancelled()) return;
-
-      setHasSignedM2(Boolean(signed));
-      setM2Nullifier(nullifierHex);
-    } catch (error) {
-      if (!isCancelled()) {
-        console.warn('Failed to refresh M2 signed state:', error);
-        setHasSignedM2(false);
-        setM2Nullifier(null);
-      }
-    } finally {
-      if (!isCancelled()) setM2CheckLoading(false);
-    }
+  // Reset stale state immediately when petition/secret context changes
+  if (!isCancelled()) {
+    setHasSignedM2(false);
+    setM2Nullifier(null);
   }
+
+  try {
+    if (!memberSecretBI) {
+      return;
+    }
+
+    const petitionIdBI = BigInt(pid);
+
+    // Must match circuit: Poseidon3([memberSecret, petitionId, SIGN_DOMAIN])
+    const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
+    const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
+
+    const signed = await registry.hasSignedPetition(petitionIdBI, nullifierHex);
+    if (isCancelled()) return;
+
+    setHasSignedM2(Boolean(signed));
+    setM2Nullifier(nullifierHex);
+  } catch (error) {
+    if (!isCancelled()) {
+      console.warn('Failed to refresh M2 signed state:', error);
+      setHasSignedM2(false);
+      setM2Nullifier(null);
+    }
+  } finally {
+    if (!isCancelled()) setM2CheckLoading(false);
+  }
+}
 
   // Option B: enroll from UI when membershipPath is missing
   async function enrollMembershipOnce() {
@@ -250,9 +255,8 @@ export default function PetitionDetails({
       <div className="petition-detail-header">
         <div className="detail-title-row">
           <h2 className="detail-title">{metadata.title}</h2>
-          {hasSignedM2 && <span className="signed-badge">✓ You signed this (strong privacy)</span>}
+          {hasSignedM2 && hasM2Inputs && (<span className="signed-badge">✓ You signed this (strong privacy)</span>)}
         </div>
-
         <div className="meta-grid">
           <div className="meta-item">
             <small className="meta-label">Category</small>
@@ -325,7 +329,7 @@ export default function PetitionDetails({
             >
               <strong>Strong Privacy (M2) status:</strong>
               <div style={{ marginTop: 6, opacity: 0.9 }}>
-                {hasSignedM2 ? (
+                {hasSignedM2 && hasM2Inputs ? (
                   <div>Already signed.</div>
                 ) : m2CheckLoading ? (
                   <div>Checking signed state…</div>
