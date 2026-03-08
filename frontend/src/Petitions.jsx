@@ -118,6 +118,16 @@ export default function Petitions({ signer, account }) {
     return String(account || '').toLowerCase() === ADMIN_WALLET;
   }, [account]);
 
+  // -----------------------------
+  // SECRET + ENROLL (M2)
+  // -----------------------------
+  const memberLeafHex = useMemo(() => {
+    if (!isHex32(memberSecret)) return null;
+    const secretBI = hex32ToBigInt(memberSecret);
+    const leafBI = poseidon1([secretBI]);
+    return bigIntToHex32(leafBI);
+  }, [memberSecret]);
+
   // Load secret for the currently connected wallet (never auto-generate)
   useEffect(() => {
     setEnrollStatus('idle');
@@ -164,16 +174,6 @@ export default function Petitions({ signer, account }) {
       setMembershipPath(null);
     }
   }
-
-  // -----------------------------
-  // SECRET + ENROLL (M2)
-  // -----------------------------
-  const memberLeafHex = useMemo(() => {
-    if (!isHex32(memberSecret)) return null;
-    const secretBI = hex32ToBigInt(memberSecret);
-    const leafBI = poseidon1([secretBI]);
-    return bigIntToHex32(leafBI);
-  }, [memberSecret]);
 
   async function handleGenerateSecret() {
     if (!account) return;
