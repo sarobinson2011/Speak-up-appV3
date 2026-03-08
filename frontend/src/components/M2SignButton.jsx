@@ -120,8 +120,8 @@ export function M2SignButton({
   const isLoading = status !== 'idle' && status !== 'success' && status !== 'already-signed';
 
   const buttonText = useMemo(() => {
-    if (disabled) return 'Already signed (Strong Privacy)';
     if (alreadySigned) return 'Already signed (Strong Privacy)';
+    if (disabled) return 'Sign with Strong Privacy (ZK)';
     return (
       {
         idle: 'Sign with Strong Privacy (ZK)',

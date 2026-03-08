@@ -1,22 +1,25 @@
-// frontend/src/PetitionDetails.jsx (M2-only)
 import { useEffect, useMemo, useState } from 'react';
 import { ethers } from 'ethers';
 import { poseidon1, poseidon3 } from 'poseidon-lite';
-
-import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL } from './config';
-import { M2SignButton } from './components/M2SignButton';
+import M2SignButton from './components/M2SignButton';
+import {
+  REGISTRY_ADDRESS,
+  REGISTRY_ABI,
+  RPC_URL,
+  MEMBERSHIP_REGISTRY_ADDRESS,
+  MEMBERSHIP_REGISTRY_ABI
+} from './config';
 import './PetitionDetails.css';
-import { loadMemberSecret } from './m2Identity';
 
-const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
+const SIGN_DOMAIN = 0x5349474e;
 
-// MembershipRegistry (Aurora testnet)
-const MEMBERSHIP_REGISTRY_ADDRESS = '0x7C329B70Da1Dc94d5655a0DB907637bc4530991f';
-const MEMBERSHIP_REGISTRY_ABI = [
-  'function registerBondWei() view returns (uint256)',
-  'function registerLeaf(uint256 leaf) payable',
-  'function isRegistered(address) view returns (bool)'
-];
+function isHex32(x) {
+  return typeof x === 'string' && /^0x[0-9a-fA-F]{64}$/.test(x);
+}
+
+function hex32ToBigInt(hex32) {
+  return BigInt(hex32);
+}
 
 function bigIntToHex32(v) {
   const hex = v.toString(16);
@@ -25,33 +28,37 @@ function bigIntToHex32(v) {
 
 export default function PetitionDetails({
   petitionId,
-  signer, // kept for consistency; M2SignButton uses window.ethereum
+  signer,
   account,
-  memberSecret: _memberSecretProp, // deprecated: ignore prop, derive locally
-  membershipPath, // from backend /api/membership/path
+  membershipPath,
+  memberSecret,
   onBack
 }) {
   const [petition, setPetition] = useState(null);
   const [metadata, setMetadata] = useState(null);
-
   const [signatureCount, setSignatureCount] = useState(0);
 
-  const [comments, setComments] = useState([]);
   const [commentsAvailable, setCommentsAvailable] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const [hasSignedM2, setHasSignedM2] = useState(false);
   const [m2Nullifier, setM2Nullifier] = useState(null);
   const [m2CheckLoading, setM2CheckLoading] = useState(false);
 
-  // Enrollment UX state
   const [enrolling, setEnrolling] = useState(false);
   const [enrollError, setEnrollError] = useState('');
 
-  // Identity: localStorage-only
-  const memberSecretBI = useMemo(() => loadMemberSecret(account), [account]);
-  const secretPresent = Boolean(memberSecretBI);
+  const secretPresent = Boolean(memberSecret && isHex32(memberSecret));
 
-  // --- PRE-FLIGHT (M2) ---
+  const memberSecretBI = useMemo(() => {
+    if (!secretPresent) return null;
+    try {
+      return hex32ToBigInt(memberSecret);
+    } catch {
+      return null;
+    }
+  }, [memberSecret, secretPresent]);
+
   const uiLeafHex = useMemo(() => {
     if (!memberSecretBI) return null;
     try {
@@ -63,15 +70,9 @@ export default function PetitionDetails({
   }, [memberSecretBI]);
 
   const leafMatches = useMemo(() => {
-    if (!membershipPath || !memberSecretBI) return false;
-    try {
-      const computed = poseidon1([memberSecretBI]);
-      const onchainLeaf = BigInt(membershipPath.leaf); // membershipPath.leaf is 0x...
-      return computed === onchainLeaf;
-    } catch {
-      return false;
-    }
-  }, [membershipPath, memberSecretBI]);
+    if (!uiLeafHex || !membershipPath?.leaf) return false;
+    return String(uiLeafHex).toLowerCase() === String(membershipPath.leaf).toLowerCase();
+  }, [uiLeafHex, membershipPath]);
 
   function logM2Preflight(tag = 'M2_PREFLIGHT') {
     try {
@@ -94,7 +95,6 @@ export default function PetitionDetails({
     }
   }
 
-  // Load petition + signed state whenever core inputs change
   useEffect(() => {
     let cancelled = false;
     const isCancelled = () => cancelled;
@@ -109,7 +109,6 @@ export default function PetitionDetails({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [petitionId, membershipPath, memberSecretBI]);
 
-  // Log whenever critical M2 inputs change
   useEffect(() => {
     logM2Preflight('M2_PREFLIGHT');
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -120,15 +119,12 @@ export default function PetitionDetails({
       const provider = new ethers.JsonRpcProvider(RPC_URL);
       const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
 
-      // 1) Signed state (M2)
       await refreshM2SignedState(registry, petitionId, isCancelled);
 
-      // 2) Petition data (on-chain)
       const petitionData = await registry.getPetition(petitionId);
       if (isCancelled()) return;
       setPetition(petitionData);
 
-      // 3) Metadata (M2-only MVP): safe fallback (show URI)
       const createdAtISO = petitionData?.createdAt
         ? new Date(Number(petitionData.createdAt) * 1000).toISOString()
         : new Date().toISOString();
@@ -148,12 +144,10 @@ export default function PetitionDetails({
         createdAt: createdAtISO
       });
 
-      // 4) Signature count (events)
       const filter = registry.filters.PetitionSigned(petitionId);
       const events = await registry.queryFilter(filter);
       if (!isCancelled()) setSignatureCount(events.length);
 
-      // 5) Comments disabled in MVP
       setCommentsAvailable(false);
       setComments([]);
     } catch (error) {
@@ -162,42 +156,38 @@ export default function PetitionDetails({
   }
 
   async function refreshM2SignedState(registry, pid, isCancelled = () => false) {
-  setM2CheckLoading(true);
+    setM2CheckLoading(true);
 
-  // Reset stale state immediately when petition/secret context changes
-  if (!isCancelled()) {
-    setHasSignedM2(false);
-    setM2Nullifier(null);
-  }
-
-  try {
-    if (!memberSecretBI) {
-      return;
-    }
-
-    const petitionIdBI = BigInt(pid);
-
-    // Must match circuit: Poseidon3([memberSecret, petitionId, SIGN_DOMAIN])
-    const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
-    const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
-
-    const signed = await registry.hasSignedPetition(petitionIdBI, nullifierHex);
-    if (isCancelled()) return;
-
-    setHasSignedM2(Boolean(signed));
-    setM2Nullifier(nullifierHex);
-  } catch (error) {
     if (!isCancelled()) {
-      console.warn('Failed to refresh M2 signed state:', error);
       setHasSignedM2(false);
       setM2Nullifier(null);
     }
-  } finally {
-    if (!isCancelled()) setM2CheckLoading(false);
-  }
-}
 
-  // Option B: enroll from UI when membershipPath is missing
+    try {
+      if (!memberSecretBI) {
+        return;
+      }
+
+      const petitionIdBI = BigInt(pid);
+      const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
+      const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
+
+      const signed = await registry.hasSignedPetition(petitionIdBI, nullifierHex);
+      if (isCancelled()) return;
+
+      setHasSignedM2(Boolean(signed));
+      setM2Nullifier(nullifierHex);
+    } catch (error) {
+      if (!isCancelled()) {
+        console.warn('Failed to refresh M2 signed state:', error);
+        setHasSignedM2(false);
+        setM2Nullifier(null);
+      }
+    } finally {
+      if (!isCancelled()) setM2CheckLoading(false);
+    }
+  }
+
   async function enrollMembershipOnce() {
     setEnrollError('');
     setEnrolling(true);
@@ -222,7 +212,6 @@ export default function PetitionDetails({
       const tx = await reg.registerLeaf(leaf, { value: bond });
       await tx.wait();
 
-      // MVP-simple: reload so parent refetch sees membershipPath cleanly
       window.location.reload();
     } catch (e) {
       setEnrollError(e?.message || String(e));
@@ -242,9 +231,9 @@ export default function PetitionDetails({
   const progress =
     metadata.goalSignatures > 0 ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100) : 0;
 
-  // "ready to sign" (do NOT confuse with "already signed")
   const hasM2Inputs = Boolean(secretPresent && membershipPath && leafMatches);
-  const canM2Sign = Boolean(hasM2Inputs && !m2CheckLoading && !hasSignedM2);
+  const resolvedHasSignedM2 = Boolean(hasM2Inputs && hasSignedM2);
+  const canM2Sign = Boolean(hasM2Inputs && !m2CheckLoading && !resolvedHasSignedM2);
 
   return (
     <div>
@@ -255,8 +244,11 @@ export default function PetitionDetails({
       <div className="petition-detail-header">
         <div className="detail-title-row">
           <h2 className="detail-title">{metadata.title}</h2>
-          {hasSignedM2 && hasM2Inputs && (<span className="signed-badge">✓ You signed this (strong privacy)</span>)}
+          {resolvedHasSignedM2 && (
+            <span className="signed-badge">✓ You signed this (strong privacy)</span>
+          )}
         </div>
+
         <div className="meta-grid">
           <div className="meta-item">
             <small className="meta-label">Category</small>
@@ -283,7 +275,6 @@ export default function PetitionDetails({
           <p className="description-text">{metadata.description}</p>
         </div>
 
-        {/* Progress */}
         <div style={{ marginBottom: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <strong style={{ fontSize: '1.3rem', color: '#667eea' }}>
@@ -314,9 +305,8 @@ export default function PetitionDetails({
           <small style={{ color: '#666' }}>{progress.toFixed(1)}% of goal reached</small>
         </div>
 
-        {/* M2-only signing */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
-          {(!canM2Sign || (!membershipPath && secretPresent && !hasSignedM2)) && (
+          {(!canM2Sign || (!membershipPath && secretPresent && !resolvedHasSignedM2)) && (
             <div
               style={{
                 fontSize: 13,
@@ -329,7 +319,7 @@ export default function PetitionDetails({
             >
               <strong>Strong Privacy (M2) status:</strong>
               <div style={{ marginTop: 6, opacity: 0.9 }}>
-                {hasSignedM2 && hasM2Inputs ? (
+                {resolvedHasSignedM2 ? (
                   <div>Already signed.</div>
                 ) : m2CheckLoading ? (
                   <div>Checking signed state…</div>
@@ -345,7 +335,7 @@ export default function PetitionDetails({
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <button
                         onClick={enrollMembershipOnce}
-                        disabled={enrolling || !secretPresent || hasSignedM2}
+                        disabled={enrolling || !secretPresent || resolvedHasSignedM2}
                         style={{
                           padding: '10px 12px',
                           borderRadius: 8,
@@ -380,7 +370,7 @@ export default function PetitionDetails({
             membershipPath={membershipPath}
             memberSecret={memberSecretBI ? memberSecretBI.toString() : ''}
             disabled={
-              hasSignedM2 ||
+              resolvedHasSignedM2 ||
               m2CheckLoading ||
               !secretPresent ||
               !membershipPath ||
@@ -421,52 +411,6 @@ export default function PetitionDetails({
             </div>
           ) : null}
         </div>
-      </div>
-
-      {/* Comments: read-only placeholder (disabled in MVP) */}
-      <div className="comments-card">
-        <h3 className="comments-title">Comments ({comments.length})</h3>
-
-        {!commentsAvailable && (
-          <p style={{ color: '#999', fontStyle: 'italic', padding: '1rem 0' }}>
-            Comments are disabled in M2-only MVP.
-          </p>
-        )}
-
-        {commentsAvailable && (
-          <div>
-            {comments.length > 0 ? (
-              comments.map((comment, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: '#f9f9f9',
-                    padding: '1.5rem',
-                    marginBottom: '1rem',
-                    borderRadius: '4px',
-                    borderLeft: '4px solid #667eea'
-                  }}
-                >
-                  <p style={{ margin: '0 0 0.75rem 0', lineHeight: '1.6' }}>{comment.text}</p>
-                  <small style={{ color: '#666' }}>
-                    Posted {new Date(comment.timestamp).toLocaleString()}
-                  </small>
-                </div>
-              ))
-            ) : (
-              <p
-                style={{
-                  textAlign: 'center',
-                  color: '#999',
-                  fontStyle: 'italic',
-                  padding: '2rem'
-                }}
-              >
-                No comments.
-              </p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
