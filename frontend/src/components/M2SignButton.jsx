@@ -107,20 +107,22 @@ export function M2SignButton({
   petitionId,
   membershipPath,
   memberSecret,
+  alreadySigned = false,
   disabled = false,
   onSuccess,
   onError,
   onPreflight
 }) {
   const [status, setStatus] = useState('idle');
-  const [alreadySigned, setAlreadySigned] = useState(false);
+  const [alreadySignedLocal, setAlreadySignedLocal] = useState(false);
 
   const { generateProof } = useZKProof();
 
   const isLoading = status !== 'idle' && status !== 'success' && status !== 'already-signed';
+  const effectiveAlreadySigned = alreadySigned || alreadySignedLocal;
 
   const buttonText = useMemo(() => {
-    if (alreadySigned) return 'Already signed (Strong Privacy)';
+    if (effectiveAlreadySigned) return 'Already signed (Strong Privacy)';
     if (disabled) return 'Sign with Strong Privacy (ZK)';
     return (
       {
@@ -132,7 +134,7 @@ export function M2SignButton({
         'already-signed': 'Already signed (Strong Privacy)'
       }[status] || 'Sign with Strong Privacy (ZK)'
     );
-  }, [disabled, alreadySigned, status]);
+  }, [disabled, effectiveAlreadySigned, status]);
 
   async function handleM2Sign() {
     try {
@@ -159,7 +161,7 @@ export function M2SignButton({
         throw new Error('memberSecret missing/invalid (expected hex 0x… or decimal string)');
       }
 
-      setAlreadySigned(false);
+      setAlreadySignedLocal(false);
       setStatus('generating-zk');
 
       const zkProof = await generateProof(membershipPath, pidBI.toString(), memberSecret);
@@ -206,7 +208,7 @@ export function M2SignButton({
       dlog('[M2] hasSignedPetition', { petitionId: pidBI.toString(), nullifierBytes32, has });
 
       if (has) {
-        setAlreadySigned(true);
+        setAlreadySignedLocal(true);
         setStatus('already-signed');
         onSuccess?.({ alreadySigned: true, nullifier: nullifierBytes32 });
         return;
@@ -311,7 +313,7 @@ export function M2SignButton({
       await tx.wait();
 
       setStatus('success');
-      setAlreadySigned(true); // now true for this petition+nullifier
+      setAlreadySignedLocal(true); // now true for this petition+nullifier
       onSuccess?.({ txHash: tx.hash, nullifier: nullifierBytes32 });
     } catch (error) {
       console.error('M2SignButton error:', error);
@@ -323,7 +325,7 @@ export function M2SignButton({
   return (
     <button
       onClick={handleM2Sign}
-      disabled={disabled || alreadySigned || isLoading || status === 'success' || status === 'already-signed'}
+      disabled={disabled || effectiveAlreadySigned || isLoading || status === 'success' || status === 'already-signed'}
       style={{
         padding: '12px 24px',
         backgroundColor: status === 'success' ? '#10b981' : '#8b5cf6',
@@ -332,12 +334,12 @@ export function M2SignButton({
         borderRadius: '8px',
         fontSize: '16px',
         fontWeight: '600',
-        cursor: disabled || alreadySigned || status === 'success' || status === 'already-signed'
+        cursor: disabled || effectiveAlreadySigned || status === 'success' || status === 'already-signed'
           ? 'not-allowed'
           : isLoading
           ? 'wait'
           : 'pointer',
-        opacity: disabled || alreadySigned || isLoading || status === 'success' || status === 'already-signed' ? 0.7 : 1
+        opacity: disabled || effectiveAlreadySigned || isLoading || status === 'success' || status === 'already-signed' ? 0.7 : 1
       }}
     >
       {buttonText}

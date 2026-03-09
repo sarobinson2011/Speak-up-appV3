@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ethers } from 'ethers';
 import { poseidon1, poseidon3 } from 'poseidon-lite';
 
-import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL } from './config';
+import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL, BACKEND_URL } from './config';
 import { M2SignButton } from './components/M2SignButton';
 import './PetitionDetails.css';
 import { loadMemberSecret } from './m2Identity';
@@ -28,7 +28,7 @@ export default function PetitionDetails({
   signer, // kept for consistency; M2SignButton uses window.ethereum
   account,
   memberSecret: _memberSecretProp, // deprecated: ignore prop, derive locally
-  membershipPath, // from backend /api/membership/path
+  membershipPath: _membershipPathProp, // deprecated: fetch locally here
   onBack
 }) {
   const [petition, setPetition] = useState(null);
@@ -43,15 +43,17 @@ export default function PetitionDetails({
   const [m2Nullifier, setM2Nullifier] = useState(null);
   const [m2CheckLoading, setM2CheckLoading] = useState(false);
 
-  // Enrollment UX state
   const [enrolling, setEnrolling] = useState(false);
   const [enrollError, setEnrollError] = useState('');
+
+  // Local membership path state — source of truth inside this page
+  const [membershipPath, setMembershipPath] = useState(null);
+  const [membershipPathLoading, setMembershipPathLoading] = useState(false);
 
   // Identity: localStorage-only
   const memberSecretBI = useMemo(() => loadMemberSecret(account), [account]);
   const secretPresent = Boolean(memberSecretBI);
 
-  // --- PRE-FLIGHT (M2) ---
   const uiLeafHex = useMemo(() => {
     if (!memberSecretBI) return null;
     try {
@@ -66,8 +68,8 @@ export default function PetitionDetails({
     if (!membershipPath || !memberSecretBI) return false;
     try {
       const computed = poseidon1([memberSecretBI]);
-      const onchainLeaf = BigInt(membershipPath.leaf); // membershipPath.leaf is 0x...
-      return computed === onchainLeaf;
+      const pathLeaf = BigInt(membershipPath.leaf);
+      return computed === pathLeaf;
     } catch {
       return false;
     }
@@ -93,6 +95,44 @@ export default function PetitionDetails({
       console.warn('[M2_PREFLIGHT] failed to log', e);
     }
   }
+
+  async function fetchMembershipPathByLeaf(leafHex) {
+    try {
+      if (!leafHex) {
+        setMembershipPath(null);
+        return;
+      }
+
+      setMembershipPathLoading(true);
+
+      const url = `${BACKEND_URL}/api/membership/path?leaf=${leafHex}`;
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        setMembershipPath(null);
+        return;
+      }
+
+      const data = await res.json();
+      setMembershipPath(data);
+    } catch (e) {
+      console.warn('Failed to fetch membership path by leaf:', e);
+      setMembershipPath(null);
+    } finally {
+      setMembershipPathLoading(false);
+    }
+  }
+
+  // Fetch membership path locally by current leaf
+  useEffect(() => {
+    if (!account || !uiLeafHex) {
+      setMembershipPath(null);
+      return;
+    }
+
+    fetchMembershipPathByLeaf(uiLeafHex);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account, uiLeafHex]);
 
   // Load petition + signed state whenever core inputs change
   useEffect(() => {
@@ -120,15 +160,12 @@ export default function PetitionDetails({
       const provider = new ethers.JsonRpcProvider(RPC_URL);
       const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
 
-      // 1) Signed state (M2)
       await refreshM2SignedState(registry, petitionId, isCancelled);
 
-      // 2) Petition data (on-chain)
       const petitionData = await registry.getPetition(petitionId);
       if (isCancelled()) return;
       setPetition(petitionData);
 
-      // 3) Metadata (M2-only MVP): safe fallback (show URI)
       const createdAtISO = petitionData?.createdAt
         ? new Date(Number(petitionData.createdAt) * 1000).toISOString()
         : new Date().toISOString();
@@ -148,12 +185,10 @@ export default function PetitionDetails({
         createdAt: createdAtISO
       });
 
-      // 4) Signature count (events)
       const filter = registry.filters.PetitionSigned(petitionId);
       const events = await registry.queryFilter(filter);
       if (!isCancelled()) setSignatureCount(events.length);
 
-      // 5) Comments disabled in MVP
       setCommentsAvailable(false);
       setComments([]);
     } catch (error) {
@@ -164,20 +199,15 @@ export default function PetitionDetails({
   async function refreshM2SignedState(registry, pid, isCancelled = () => false) {
     setM2CheckLoading(true);
 
-    // Reset stale state immediately when petition/secret context changes
     if (!isCancelled()) {
       setHasSignedM2(false);
       setM2Nullifier(null);
     }
 
     try {
-      if (!memberSecretBI) {
-        return;
-      }
+      if (!memberSecretBI) return;
 
       const petitionIdBI = BigInt(pid);
-
-      // Must match circuit: Poseidon3([memberSecret, petitionId, SIGN_DOMAIN])
       const n = poseidon3([memberSecretBI, petitionIdBI, SIGN_DOMAIN]);
       const nullifierHex = '0x' + n.toString(16).padStart(64, '0');
 
@@ -197,7 +227,6 @@ export default function PetitionDetails({
     }
   }
 
-  // Option B: enroll from UI when membershipPath is missing
   async function enrollMembershipOnce() {
     setEnrollError('');
     setEnrolling(true);
@@ -222,8 +251,7 @@ export default function PetitionDetails({
       const tx = await reg.registerLeaf(leaf, { value: bond });
       await tx.wait();
 
-      // MVP-simple: reload so parent refetch sees membershipPath cleanly
-      window.location.reload();
+      await fetchMembershipPathByLeaf(bigIntToHex32(leaf));
     } catch (e) {
       setEnrollError(e?.message || String(e));
     } finally {
@@ -242,9 +270,8 @@ export default function PetitionDetails({
   const progress =
     metadata.goalSignatures > 0 ? Math.min((signatureCount / metadata.goalSignatures) * 100, 100) : 0;
 
-  // "ready to sign" (do NOT confuse with "already signed")
   const hasM2Inputs = Boolean(secretPresent && membershipPath && leafMatches);
-  const resolvedHasSignedM2 = Boolean(hasM2Inputs && hasSignedM2);
+  const resolvedHasSignedM2 = Boolean(hasSignedM2);
   const canM2Sign = Boolean(hasM2Inputs && !m2CheckLoading && !resolvedHasSignedM2);
 
   return (
@@ -287,7 +314,6 @@ export default function PetitionDetails({
           <p className="description-text">{metadata.description}</p>
         </div>
 
-        {/* Progress */}
         <div style={{ marginBottom: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <strong style={{ fontSize: '1.3rem', color: '#667eea' }}>
@@ -318,7 +344,6 @@ export default function PetitionDetails({
           <small style={{ color: '#666' }}>{progress.toFixed(1)}% of goal reached</small>
         </div>
 
-        {/* M2-only signing */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
           {(!canM2Sign || (!membershipPath && secretPresent && !resolvedHasSignedM2)) && (
             <div
@@ -337,6 +362,8 @@ export default function PetitionDetails({
                   <div>Already signed.</div>
                 ) : m2CheckLoading ? (
                   <div>Checking signed state…</div>
+                ) : membershipPathLoading ? (
+                  <div>Loading membership path…</div>
                 ) : !secretPresent ? (
                   <div>Secret missing for this wallet (cannot sign from this device).</div>
                 ) : !membershipPath ? (
@@ -369,9 +396,7 @@ export default function PetitionDetails({
                     </div>
                   </>
                 ) : !leafMatches ? (
-                  <div>
-                    Secret mismatch (wallet enrolled with different secret). Use original device/restore secret.
-                  </div>
+                  <div>Secret mismatch (wallet enrolled with different secret). Use original device/restore secret.</div>
                 ) : (
                   <div>Ready.</div>
                 )}
@@ -383,9 +408,11 @@ export default function PetitionDetails({
             petitionId={petitionId}
             membershipPath={membershipPath}
             memberSecret={memberSecretBI ? memberSecretBI.toString() : ''}
+            alreadySigned={resolvedHasSignedM2}
             disabled={
               resolvedHasSignedM2 ||
               m2CheckLoading ||
+              membershipPathLoading ||
               !secretPresent ||
               !membershipPath ||
               !leafMatches ||
@@ -400,6 +427,7 @@ export default function PetitionDetails({
                 const provider = new ethers.JsonRpcProvider(RPC_URL);
                 const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
                 await refreshM2SignedState(registry, petitionId);
+                await fetchMembershipPathByLeaf(uiLeafHex);
               } catch (e) {
                 console.warn('Failed to refresh M2 state:', e);
               }
@@ -427,7 +455,6 @@ export default function PetitionDetails({
         </div>
       </div>
 
-      {/* Comments: read-only placeholder (disabled in MVP) */}
       <div className="comments-card">
         <h3 className="comments-title">Comments ({comments.length})</h3>
 
