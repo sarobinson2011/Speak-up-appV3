@@ -29,7 +29,8 @@ export default function PetitionDetails({
   account,
   memberSecret: _memberSecretProp, // deprecated: ignore prop, derive locally
   membershipPath: _membershipPathProp, // deprecated: fetch locally here
-  onBack
+  onBack,
+  onSigned
 }) {
   const [petition, setPetition] = useState(null);
   const [metadata, setMetadata] = useState(null);
@@ -432,7 +433,10 @@ export default function PetitionDetails({
 
                 const filter = registry.filters.PetitionSigned(petitionId);
                 const events = await registry.queryFilter(filter);
-                setSignatureCount(events.length);
+                const newCount = events.length;
+
+                setSignatureCount(newCount);
+                onSigned?.(petitionId, newCount);
               } catch (e) {
                 console.warn('Failed to refresh M2 state:', e);
               }
