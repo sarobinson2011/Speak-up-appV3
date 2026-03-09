@@ -361,6 +361,9 @@ export default function Petitions({ signer, account }) {
           memberSecret={memberSecret}
           membershipPath={membershipPath}
           onBack={() => setViewingPetitionId(null)}
+          onSigned={async () => {
+            await loadPetitions(); // refresh petition list counts after signing
+          }}
         />
       ) : (
         <>
