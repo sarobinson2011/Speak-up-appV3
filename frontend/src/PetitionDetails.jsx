@@ -426,8 +426,13 @@ export default function PetitionDetails({
               try {
                 const provider = new ethers.JsonRpcProvider(RPC_URL);
                 const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
+
                 await refreshM2SignedState(registry, petitionId);
                 await fetchMembershipPathByLeaf(uiLeafHex);
+
+                const filter = registry.filters.PetitionSigned(petitionId);
+                const events = await registry.queryFilter(filter);
+                setSignatureCount(events.length);
               } catch (e) {
                 console.warn('Failed to refresh M2 state:', e);
               }
