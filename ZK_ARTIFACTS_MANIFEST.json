@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "project": "Speak-up-appV3",
+  "status": "live",
+  "last_updated": "2026-03-10",
+  "milestone_tag": "m2-leaf-path-stable",
+  "baseline_anchor_tag": "baseline-v0",
+  "baseline_anchor_commit": "e02aacdc0f10e6919d8a759d8829758b58e0367e",
+  "hash_algorithm": "sha256",
+  "chain": {
+    "name": "Aurora Testnet",
+    "chain_id": 1313161555
+  },
+  "contracts": {
+    "petition_registry": "0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD",
+    "membership_registry": "0x7C329B70Da1Dc94d5655a0DB907637bc4530991f",
+    "groth16_verifier": "0x25C9A59DC47Ba0869229f02f8d80CC22860bFFBa",
+    "poseidon2": "0xEFbb2780fA51c9D2f0375B226BEB03a897b0D9CF"
+  },
+  "toolchain": {
+    "circuit_framework": "circom",
+    "prover_verifier": "groth16",
+    "curve": "bn254",
+    "frontend_snarkjs_package": "frontend/package-lock.json",
+    "zk_snarkjs_package": "zk/v3-groth16/package-lock.json"
+  },
+  "public_inputs": {
+    "locked_order": [
+      "petitionId",
+      "nullifier",
+      "membershipRoot"
+    ],
+    "sign_domain_hex": "0x5349474e",
+    "tree_depth": 16,
+    "root_history_window": 16
+  },
+  "artifacts": [
+    {
+      "id": "r1cs_canonical",
+      "path": "zk/v3-groth16/build/sign_petition.r1cs",
+      "role": "canonical_r1cs",
+      "sha256": "ae963d20454fdefef6d5f88fe0f5831923ebe0900df9e472b10386cf025f7677"
+    },
+    {
+      "id": "wasm_canonical",
+      "path": "zk/v3-groth16/build/sign_petition_js/sign_petition.wasm",
+      "role": "canonical_wasm",
+      "sha256": "996ad4bcf08548125ae15fbf98a9748170647d8609bdbade16003c3cd351dcb3"
+    },
+    {
+      "id": "zkey_canonical",
+      "path": "zk/v3-groth16/keys/sign_petition_final.zkey",
+      "role": "canonical_proving_key",
+      "sha256": "762433cb44fc19ff7ebf575b71f56af75f17b161f87102517a6259086b9b99f1"
+    },
+    {
+      "id": "vkey_canonical",
+      "path": "zk/v3-groth16/keys/verification_key.json",
+      "role": "canonical_verification_key",
+      "sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c"
+    },
+    {
+      "id": "golden_proof",
+      "path": "zk/v3-groth16/golden-proof.json",
+      "role": "golden_proof_vector",
+      "sha256": "7d81531f80ad85682f2673bd0abce43becfd9a416d240d6eba430a2362d2f6fa"
+    },
+    {
+      "id": "verifier_source",
+      "path": "contracts/src/v3/Groth16Verifier.sol",
+      "role": "solidity_verifier_source",
+      "sha256": "b1216366353f3dbf478e1e03add31077bbe4bc76d5a4e40aaba574cd5841bd87"
+    },
+    {
+      "id": "frontend_wasm_runtime",
+      "path": "frontend/public/zk/sign_petition.wasm",
+      "role": "frontend_runtime_wasm",
+      "sha256": "996ad4bcf08548125ae15fbf98a9748170647d8609bdbade16003c3cd351dcb3"
+    },
+    {
+      "id": "frontend_zkey_runtime",
+      "path": "frontend/public/zk/sign_petition_final.zkey",
+      "role": "frontend_runtime_zkey",
+      "sha256": "762433cb44fc19ff7ebf575b71f56af75f17b161f87102517a6259086b9b99f1"
+    },
+    {
+      "id": "frontend_vkey_runtime",
+      "path": "frontend/public/zk/verification_key.json",
+      "role": "frontend_runtime_verification_key",
+      "sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c"
+    },
+    {
+      "id": "frontend_proof_hook",
+      "path": "frontend/src/hooks/useZKProof.js",
+      "role": "frontend_proof_generation_logic",
+      "sha256": "e2620d78620e2b0b8fe7a9f316c057747ce695e9a04d37f4e1c455e25609d61f"
+    },
+    {
+      "id": "frontend_sign_button",
+      "path": "frontend/src/components/M2SignButton.jsx",
+      "role": "frontend_submission_logic",
+      "sha256": "1b0df4df7706acbcde2adb76fb4b86a9991d9eb1305d0cc41084248204704189"
+    },
+    {
+      "id": "frontend_config",
+      "path": "frontend/src/config.js",
+      "role": "frontend_contract_and_rpc_config",
+      "sha256": "165471f0585cdd3b62123bd99fd0c678e01097f65d8d6c4983f6ed4bbb82033f"
+    }
+  ],
+  "consistency_checks": [
+    {
+      "name": "frontend_runtime_wasm_matches_canonical_wasm",
+      "left": "zk/v3-groth16/build/sign_petition_js/sign_petition.wasm",
+      "right": "frontend/public/zk/sign_petition.wasm"
+    },
+    {
+      "name": "frontend_runtime_zkey_matches_canonical_zkey",
+      "left": "zk/v3-groth16/keys/sign_petition_final.zkey",
+      "right": "frontend/public/zk/sign_petition_final.zkey"
+    },
+    {
+      "name": "frontend_runtime_vkey_matches_canonical_vkey",
+      "left": "zk/v3-groth16/keys/verification_key.json",
+      "right": "frontend/public/zk/verification_key.json"
+    }
+  ],
+  "notes": [
+    "Fill all sha256 fields using scripts/zk/verify_manifest.sh --write.",
+    "Canonical artifact source is zk/v3-groth16/.",
+    "Frontend runtime artifacts must remain byte-for-byte identical to canonical copies.",
+    "Any circuit/key/verifier/frontend-proof-logic drift requires explicit manifest update and commit."
+  ]
+}
