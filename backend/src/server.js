@@ -6,6 +6,7 @@ import cors from "cors";
 
 import { MembershipIndexer } from "./membership/indexer.js";
 import { makeMembershipRouter } from "./routes/membership.js";
+import { makeRelayRouter } from "./routes/relay.js";
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,12 @@ const RPC_URL =
 // Accept either MEMBERSHIP_ADDRESS or MEMBERSHIP_REGISTRY_ADDRESS
 const MEMBERSHIP_ADDRESS =
   process.env.MEMBERSHIP_ADDRESS || process.env.MEMBERSHIP_REGISTRY_ADDRESS;
+
+const PETITION_REGISTRY_ADDRESS = process.env.PETITION_REGISTRY_ADDRESS;
+
+if (!PETITION_REGISTRY_ADDRESS) {
+  throw new Error("PETITION_REGISTRY_ADDRESS missing");
+}
 
 const MEMBERSHIP_DEPTH = process.env.MEMBERSHIP_DEPTH
   ? Number(process.env.MEMBERSHIP_DEPTH)
@@ -60,6 +67,15 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/membership", makeMembershipRouter(indexer));
+
+app.use(
+  "/api/relay",
+  makeRelayRouter({
+    rpcUrl: RPC_URL,
+    registryAddress: PETITION_REGISTRY_ADDRESS,
+    chainId: CHAIN_ID
+  })
+);
 
 // Explicitly disable legacy M1 routes (clear failures, no surprises)
 app.use("/api/auth", (req, res) => {
