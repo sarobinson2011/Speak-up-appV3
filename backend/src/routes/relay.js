@@ -7,6 +7,9 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
 
   const router = express.Router();
 
+  // ---------------------------
+  // Status
+  // ---------------------------
   router.get("/status", async (req, res) => {
     try {
       return res.json({
@@ -19,6 +22,92 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     } catch (e) {
       return res.status(500).json({
         ok: false,
+        error: "internal",
+        details: e?.message || String(e)
+      });
+    }
+  });
+
+  // ---------------------------
+  // Relay sign (validation only)
+  // ---------------------------
+  router.post("/sign", async (req, res) => {
+    try {
+      const {
+        petitionId,
+        nullifier,
+        pA,
+        pB,
+        pC,
+        pubSignals
+      } = req.body || {};
+
+      // ---------------------------
+      // Validate petitionId
+      // ---------------------------
+      if (petitionId === undefined) {
+        return res.status(400).json({ error: "missing petitionId" });
+      }
+
+      try {
+        BigInt(petitionId);
+      } catch {
+        return res.status(400).json({ error: "invalid petitionId" });
+      }
+
+      // ---------------------------
+      // Validate nullifier
+      // ---------------------------
+      if (
+        typeof nullifier !== "string" ||
+        !/^0x[0-9a-fA-F]{64}$/.test(nullifier)
+      ) {
+        return res.status(400).json({ error: "invalid nullifier" });
+      }
+
+      // ---------------------------
+      // Validate proof arrays
+      // ---------------------------
+      const isHex = (v) => typeof v === "string" && /^0x[0-9a-fA-F]+$/.test(v);
+
+      if (!Array.isArray(pA) || pA.length !== 2 || !pA.every(isHex)) {
+        return res.status(400).json({ error: "invalid pA" });
+      }
+
+      if (
+        !Array.isArray(pB) ||
+        pB.length !== 2 ||
+        !Array.isArray(pB[0]) ||
+        !Array.isArray(pB[1]) ||
+        pB[0].length !== 2 ||
+        pB[1].length !== 2 ||
+        !pB.flat().every(isHex)
+      ) {
+        return res.status(400).json({ error: "invalid pB" });
+      }
+
+      if (!Array.isArray(pC) || pC.length !== 2 || !pC.every(isHex)) {
+        return res.status(400).json({ error: "invalid pC" });
+      }
+
+      if (
+        !Array.isArray(pubSignals) ||
+        pubSignals.length !== 3 ||
+        !pubSignals.every(isHex)
+      ) {
+        return res.status(400).json({ error: "invalid pubSignals" });
+      }
+
+      // ---------------------------
+      // Validation passed
+      // ---------------------------
+      return res.json({
+        ok: true,
+        validated: true
+      });
+
+    } catch (e) {
+      return res.status(500).json({
         error: "internal",
         details: e?.message || String(e)
       });
