@@ -1,9 +1,30 @@
 // backend/src/routes/relay.js
 import express from "express";
+import { ethers } from "ethers";
 
 export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   if (!rpcUrl) throw new Error("makeRelayRouter requires rpcUrl");
   if (!registryAddress) throw new Error("makeRelayRouter requires registryAddress");
+
+  const RELAYER_PRIVATE_KEY = process.env.RELAYER_PRIVATE_KEY;
+
+  if (!RELAYER_PRIVATE_KEY) {
+    throw new Error("RELAYER_PRIVATE_KEY missing");
+  }
+
+  const provider = new ethers.JsonRpcProvider(rpcUrl);
+  const wallet = new ethers.Wallet(RELAYER_PRIVATE_KEY, provider);
+
+  const registryAbi = [
+    "function hasSignedPetition(uint256,bytes32) view returns (bool)",
+    "function signPetitionWithZKProof(uint256,bytes32,uint256[2],uint256[2][2],uint256[2],uint256[3])"
+  ];
+
+  const registry = new ethers.Contract(
+    registryAddress,
+    registryAbi,
+    wallet
+  );
 
   const router = express.Router();
 
@@ -17,7 +38,8 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         mode: "relay-v0-skeleton",
         rpcUrl,
         registryAddress,
-        chainId
+        chainId,
+        relayerAddress: wallet.address
       });
     } catch (e) {
       return res.status(500).json({
@@ -29,7 +51,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   });
 
   // ---------------------------
-  // Relay sign (validation only)
+  // Relay sign
   // ---------------------------
   router.post("/sign", async (req, res) => {
     try {
@@ -99,13 +121,56 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       }
 
       // ---------------------------
-      // Validation passed
+      // Canonical consistency checks
+      // Contract expects:
+      // pubSignals = [nullifier, petitionId, membershipRoot]
       // ---------------------------
+      if (
+        String(pubSignals[0]).toLowerCase() !== String(nullifier).toLowerCase()
+      ) {
+        return res.status(400).json({
+          error: "nullifier mismatch with pubSignals[0]"
+        });
+      }
+
+      if (BigInt(petitionId) !== BigInt(pubSignals[1])) {
+        return res.status(400).json({
+          error: "petitionId mismatch with pubSignals[1]"
+        });
+      }
+
+      // ---------------------------
+      // Signed-state precheck
+      // ---------------------------
+      const alreadySigned = await registry.hasSignedPetition(
+        BigInt(petitionId),
+        nullifier
+      );
+
+      if (alreadySigned) {
+        return res.json({
+          ok: true,
+          alreadySigned: true
+        });
+      }
+
+      // ---------------------------
+      // Relay transaction submit
+      // ---------------------------
+      const tx = await registry.signPetitionWithZKProof(
+        BigInt(petitionId),
+        nullifier,
+        pA,
+        pB,
+        pC,
+        pubSignals
+      );
+
       return res.json({
         ok: true,
-        validated: true
+        alreadySigned: false,
+        txHash: tx.hash
       });
-
     } catch (e) {
       return res.status(500).json({
         error: "internal",

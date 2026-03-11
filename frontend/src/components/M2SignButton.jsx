@@ -279,42 +279,46 @@ export function M2SignButton({
         pubSignalsForChain = accepted.inputs;
       }
 
-      // --- Submit tx ---
+      // --- Relay submit ---
       setStatus('submitting');
-      const signer = await provider.getSigner();
-      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_SIGN_ABI, signer);
 
-      // Try estimateGas first; fallback to a safe cap
-      let gasLimit = 500000n;
-      try {
-        const est = await registry.signPetitionWithZKProof.estimateGas(
-          pidBI,
-          nullifierBytes32,
-          pA,
-          pB,
-          pC,
-          pubSignalsForChain
-        );
-        gasLimit = (est * 12n) / 10n; // +20%
-      } catch {
-        // keep fallback
-      }
-
-      const tx = await registry.signPetitionWithZKProof(
-        pidBI,
-        nullifierBytes32,
+      const relayPayload = {
+        petitionId: pidBI.toString(),
+        nullifier: nullifierBytes32,
         pA,
         pB,
         pC,
-        pubSignalsForChain,
-        { gasLimit }
-      );
+        pubSignals: pubSignalsForChain
+      };
 
-      await tx.wait();
+      const resp = await fetch("http://localhost:3001/api/relay/sign", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(relayPayload)
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        throw new Error(data?.details || data?.error || "Relay request failed");
+      }
+
+      if (data.alreadySigned) {
+        setStatus('success');
+        setAlreadySignedLocal(true);
+        onSuccess?.({ alreadySigned: true, nullifier: nullifierBytes32 });
+        return;
+      }
+
+      if (!data.txHash) {
+        throw new Error("Relay did not return txHash");
+      }
 
       setStatus('success');
       setAlreadySignedLocal(true); // now true for this petition+nullifier
-      onSuccess?.({ txHash: tx.hash, nullifier: nullifierBytes32 });
+      onSuccess?.({ txHash: data.txHash, nullifier: nullifierBytes32 });
     } catch (error) {
       console.error('M2SignButton error:', error);
       setStatus('idle');
