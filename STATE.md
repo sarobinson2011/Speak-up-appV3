@@ -408,12 +408,20 @@ Long-term Tornado-grade privacy requires:
 * Strong artifact provenance enforcement
 * Larger anonymity sets
 
-Design must precede implementation.
-All architectural changes must be recorded in STATE.md first.
+The next architectural evolution focuses on **breaking the public wallet → membership link** while preserving economic admission friction and compatibility with the current ZK signing model.
+
+Current design study:
+
+docs/UNLINKABLE_ENROLLMENT_DESIGN_V0.md
+
+This document explores candidate approaches for unlinkable membership admission and evaluates **relayed commitment enrollment with bonded admission** as the leading direction.
+
+Design must precede implementation.  
+All architectural changes must be recorded in `STATE.md` first.
 
 ---
 
 STATE.md remains canonical.
 
-If any conflict arises between code and documentation:
+If any conflict arises between code and documentation:  
 STATE.md governs.
