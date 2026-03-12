@@ -1,17 +1,39 @@
 # STATE.md — Speak-up-appV3
 
-Last updated: 2026-03-10 (Europe/London)
+Last updated: 2026-03-11 (Europe/London)
 
 This file is the canonical source of truth for:
 
-- Architecture decisions
-- Invariants
-- Deployed addresses
-- ZK stack configuration
-- Development governance model
+* Architecture decisions
+* Invariants
+* Deployed addresses
+* ZK stack configuration
+* Development governance model
 
-When in doubt, STATE.md wins.  
+When in doubt, STATE.md wins.
 Changes must be recorded here before implementation.
+
+---
+
+## Documentation rules
+
+`STATE.md` is the canonical source of truth for the current architecture, invariants, deployed addresses, development governance, and the next concrete implementation steps.
+
+All other project markdown documentation lives under the `/docs` directory and is considered **supporting documentation only**.
+
+Rules:
+
+* If any document in `/docs` conflicts with `STATE.md`, **`STATE.md` wins**.
+* Documents in `/docs` may expand on a single bounded topic (for example: ZK circuit specification, artifact provenance, relayer implementation, privacy threat model, operational commands), but must not redefine project-wide architecture.
+* New project documentation should be placed under `/docs` unless there is a strong reason for it to live elsewhere.
+* To avoid documentation drift, `/docs` files should reference `STATE.md` for global architecture rather than duplicating it.
+
+Purpose of `/docs`:
+
+* `/docs/ZK_*` → ZK system specification and artifact integrity
+* `/docs/RELAYER_*` → relayer architecture and evolution
+* `/docs/PRIVACY_*` → threat model and anonymity roadmap
+* `/docs/dev/` → developer operational notes and commands
 
 ---
 
@@ -19,23 +41,23 @@ Changes must be recorded here before implementation.
 
 Baseline anchor (ground truth):
 
-- Tag: baseline-v0
-- Commit: e02aacdc0f10e6919d8a759d8829758b58e0367e
+* Tag: baseline-v0
+* Commit: e02aacdc0f10e6919d8a759d8829758b58e0367e
 
 Current main includes baseline via merge commit:
 
-- 0ecd367 on origin/main
+* 0ecd367 on origin/main
 
 Two-track development model:
 
 ## Human Track (main)
 
-- Only Steve (human) develops on main
-- Assisted by GPT in Engineering[n] chats
-- Slow, deterministic, minimal diffs
-- No speculative expansion
-- Cryptographic correctness is paramount
-- STATE.md must be updated before architectural changes
+* Only Steve (human) develops on main
+* Assisted by GPT in Engineering[n] chats
+* Slow, deterministic, minimal diffs
+* No speculative expansion
+* Cryptographic correctness is paramount
+* STATE.md must be updated before architectural changes
 
 Engineering chat convention:
 
@@ -47,20 +69,21 @@ When a chat becomes too long or unwieldy, development continues in the next chat
 
 Engineering[n+1]
 
-The current engineering chat number therefore increases over time.  
+The current engineering chat number therefore increases over time.
 STATE.md references use the generic form Engineering[n].
 
 ## Agent Track (separate machine)
 
-- Agent NEVER checks out or commits to main
-- One branch per iteration
-- Branches created fresh from baseline-v0 (preferred)
-- Naming convention:
-  - agent/iter-0001-<desc>
-  - agent/iter-0002-<desc>
-- Human reviews before merge
-- No automatic merges
-- No silent merges
+* Agent NEVER checks out or commits to main
+* One branch per iteration
+* Branches created fresh from baseline-v0 (preferred)
+* Naming convention:
+
+  * agent/iter-0001-<desc>
+  * agent/iter-0002-<desc>
+* Human reviews before merge
+* No automatic merges
+* No silent merges
 
 This separation is non-negotiable.
 
@@ -70,11 +93,12 @@ This separation is non-negotiable.
 
 Build a privacy-preserving petition platform where users can:
 
-- Create petitions (wallet-authenticated; not private in MVP)
-- Sign petitions with Strong Privacy (M2):
-  - proof generated client-side
-  - on-chain verification authoritative
-  - uniqueness enforced via nullifier (not wallet address)
+* Create petitions (wallet-authenticated; not private in MVP)
+* Sign petitions with Strong Privacy (M2):
+
+  * proof generated client-side
+  * on-chain verification authoritative
+  * uniqueness enforced via nullifier (not wallet address)
 
 Comments are disabled in MVP.
 
@@ -82,42 +106,47 @@ Comments are disabled in MVP.
 
 # 2) Core Product Invariants (Locked)
 
-1) Uniqueness:
-- Max 1 signature per (petitionId, member)
-- Enforced via nullifier
-- Not wallet-based
+1. Uniqueness:
 
-2) Privacy:
-- Signer proves membership without revealing identity
+* Max 1 signature per (petitionId, member)
+* Enforced via nullifier
+* Not wallet-based
 
-3) On-chain authority:
-- Chain verifies proof validity
-- Chain validates root validity
-- Chain enforces nullifier uniqueness
+2. Privacy:
 
-4) No trusted gatekeeper:
-- Membership is permissionless on-chain
-- Backend is non-authoritative convenience only
+* Signer proves membership without revealing identity
 
-5) M2-only mode:
-- No email verification
-- No JWT
-- No attestations
-- No M1 routes/UI
+3. On-chain authority:
+
+* Chain verifies proof validity
+* Chain validates root validity
+* Chain enforces nullifier uniqueness
+
+4. No trusted gatekeeper:
+
+* Membership is permissionless on-chain
+* Backend is non-authoritative convenience only
+
+5. M2-only mode:
+
+* No email verification
+* No JWT
+* No attestations
+* No M1 routes/UI
 
 ---
 
 # 3) ZK Stack (Current, Locked)
 
-Circuit framework: Circom  
-Prover/verifier: Groth16 (BN254)  
+Circuit framework: Circom
+Prover/verifier: Groth16 (BN254)
 Tooling: snarkjs
 
 Hashing: Poseidon
 
-- leaf: Poseidon1
-- merkle node: Poseidon2
-- nullifier: Poseidon3
+* leaf: Poseidon1
+* merkle node: Poseidon2
+* nullifier: Poseidon3
 
 SIGN_DOMAIN:
 
@@ -131,8 +160,8 @@ Root history window:
 
 N = 16
 
-Full implementation spec:  
-See ZK_CIRCUIT_SPEC.md
+Full implementation spec:
+See docs/ZK_CIRCUIT_SPEC.md
 
 ---
 
@@ -140,17 +169,17 @@ See ZK_CIRCUIT_SPEC.md
 
 Artifact reproducibility and tamper detection are mandatory.
 
-Specification:  
+Specification:
 docs/ZK_ARTIFACT_PROVENANCE.md
 
 This document defines:
 
-- ZK_ARTIFACTS_MANIFEST.json
-- Required pinned artifacts
-- SHA-256 hashing rules
-- Golden proof requirement
-- CI enforcement rules
-- Public input order lock
+* ZK_ARTIFACTS_MANIFEST.json
+* Required pinned artifacts
+* SHA-256 hashing rules
+* Golden proof requirement
+* CI enforcement rules
+* Public input order lock
 
 Public input order (locked):
 
@@ -160,31 +189,31 @@ Public input order (locked):
 
 No circuit, key, verifier, or encoding change is allowed without:
 
-- Regeneration
-- Manifest update
-- Explicit commit
-- Golden proof passing
+* Regeneration
+* Manifest update
+* Explicit commit
+* Golden proof passing
 
 ---
 
 # 4.6) Network Endpoints + Deployed Contracts
 
-Chain: Aurora Testnet  
-chainId: 1313161555  
+Chain: Aurora Testnet
+chainId: 1313161555
 RPC_URL: https://testnet.aurora.dev
 
 Deployed contracts:
 
-- MembershipRegistry (membership tree / LeafRegistered):  
+* MembershipRegistry (membership tree / LeafRegistered):
   0x7C329B70Da1Dc94d5655a0DB907637bc4530991f
 
-- PetitionRegistry (proof verification entrypoint):  
+* PetitionRegistry (proof verification entrypoint):
   0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD
 
-- Groth16Verifier (ZK verifier):  
+* Groth16Verifier (ZK verifier):
   0x25C9A59DC47Ba0869229f02f8d80CC22860bFFBa
 
-- Poseidon2 (hash contract/library):  
+* Poseidon2 (hash contract/library):
   0xEFbb2780fA51c9D2f0375B226BEB03a897b0D9CF
 
 ---
@@ -203,12 +232,12 @@ leaf = Poseidon1(memberSecret)
 
 Enrollment:
 
-- One leaf per wallet
-- Refundable bond required
+* One leaf per wallet
+* Refundable bond required
 
 Bond parameters:
 
-registerBondWei() = 1e15 (0.001 ETH)  
+registerBondWei() = 1e15 (0.001 ETH)
 bondLockSeconds() = 3600
 
 ---
@@ -219,8 +248,8 @@ nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)
 
 On-chain:
 
-- nullifier stored per petition
-- duplicates rejected
+* nullifier stored per petition
+* duplicates rejected
 
 This enforces one signature per petition per member.
 
@@ -232,15 +261,16 @@ Backend is non-authoritative.
 
 Responsibilities:
 
-- Mirror membership events
-- Rebuild Merkle tree
-- Serve membership paths
+* Mirror membership events
+* Rebuild Merkle tree
+* Serve membership paths
+* Relay ZK proof signing transactions
 
 Must NOT:
 
-- Gate membership
-- Gate signing
-- Store secrets
+* Gate membership
+* Gate signing
+* Store secrets
 
 ---
 
@@ -268,37 +298,79 @@ This removes direct wallet identifiers from path distribution requests and reduc
 
 Implementation notes:
 
-- Backend supports both wallet and leaf lookup during transition.
-- Frontend now uses leaf-based lookup exclusively.
-- Verified operational in milestone tag: m2-leaf-path-stable.
+* Backend supports both wallet and leaf lookup during transition.
+* Frontend now uses leaf-based lookup exclusively.
+* Verified operational in milestone tag: m2-leaf-path-stable.
 
 No circuit or contract changes required.
 
 ---
 
-# 9) Relayer Signing (Design Phase — Not Implemented)
+# 9) Relayer Signing (Implemented)
 
 Goal:
 
-Decouple proof submission from wallet tx sender.
+Decouple proof submission from the wallet that sends the on-chain transaction.
 
-Spec:
+Previous flow (prototype):
 
-docs/RELAYER_SIGNING_SPEC.md
+frontend → wallet → contract
 
-This is additive.  
-Direct path remains baseline.  
-No circuit changes required.
+The user's wallet directly submitted the transaction calling:
+
+signPetitionWithZKProof(...)
+
+This exposed the wallet address as the transaction sender and created a metadata link between the wallet and the petition signing event.
+
+Current flow (implemented):
+
+frontend → backend relayer → contract
+
+Frontend sends the ZK proof payload to:
+
+POST /api/relay/sign
+
+Backend:
+
+1. Validates payload structure
+2. Checks nullifier status
+3. Submits transaction via relayer wallet
+
+Contract interface remains unchanged:
+
+signPetitionWithZKProof(
+petitionId,
+nullifier,
+pA,
+pB,
+pC,
+pubSignals
+)
+
+Privacy result:
+
+* On-chain sender is now the **relayer wallet**
+* User wallet is not exposed during signing
+* Identity remains protected by the ZK proof and nullifier
+
+Design docs:
+
+docs/RELAYER_IMPLEMENTATION_PLAN.md
+docs/RELAYER_PROTOCOL_DESIGN.md
 
 ---
 
 # 10) Known MVP Limitations
 
-- Enrollment publicly tied to wallet
-- No unlinkable membership acquisition
-- No relayer path yet
-- Backend required for path distribution
-- Secret loss breaks signing on that device
+* Enrollment publicly tied to wallet
+* Backend relayer can observe submissions
+* Network metadata (IP / timing) may leak correlations
+* Backend required for membership path distribution
+* Secret loss breaks signing on that device
+
+Full privacy analysis:
+
+docs/PRIVACY_THREAT_MODEL.md
 
 ---
 
@@ -312,17 +384,18 @@ This milestone represents a fully working M2-only baseline with:
 
 Verified flows:
 
-- Existing enrolled wallet signing
-- Fresh wallet enrollment → signing
-- Petition creation
-- Petition create + sign
-- Signature persistence across refresh
-- Petition list signature counts updating correctly
-- Leaf-based membership path lookup operational
+* Existing enrolled wallet signing
+* Fresh wallet enrollment → signing
+* Petition creation
+* Petition create + sign
+* Signature persistence across refresh
+* Petition list signature counts updating correctly
+* Leaf-based membership path lookup operational
+* Relayed ZK signing operational
 
 Frontend / backend loop is considered stable at this milestone.
 
-This serves as the new recovery point before further ZK / protocol evolution.
+This serves as the recovery point before further protocol evolution.
 
 ---
 
@@ -330,17 +403,17 @@ This serves as the new recovery point before further ZK / protocol evolution.
 
 Long-term Tornado-grade privacy requires:
 
-- Unlinkable enrollment model
-- Relayed/meta-tx signing path
-- Strong artifact provenance enforcement
-- Larger anonymity sets (with performance gating)
+* Unlinkable enrollment model
+* Multi-relayer infrastructure
+* Strong artifact provenance enforcement
+* Larger anonymity sets
 
-Design must precede implementation.  
-All changes must be reflected here first.
+Design must precede implementation.
+All architectural changes must be recorded in STATE.md first.
 
 ---
 
 STATE.md remains canonical.
 
-If any conflict arises between code and documentation:  
+If any conflict arises between code and documentation:
 STATE.md governs.

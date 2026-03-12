@@ -2,6 +2,64 @@
 import express from "express";
 import { ethers } from "ethers";
 
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const SIGN_MAX_REQUESTS_PER_WINDOW = 10;
+const STATUS_MAX_REQUESTS_PER_WINDOW = 30;
+const HEALTH_MAX_REQUESTS_PER_WINDOW = 30;
+
+function getClientIp(req) {
+  const xff = req.headers["x-forwarded-for"];
+  if (typeof xff === "string" && xff.trim()) {
+    return xff.split(",")[0].trim();
+  }
+  return req.ip || req.socket?.remoteAddress || "unknown";
+}
+
+function createInMemoryRateLimiter({ windowMs, maxRequests, label }) {
+  const hits = new Map();
+
+  return function rateLimit(req, res, next) {
+    const now = Date.now();
+    const ip = getClientIp(req);
+    const key = `${label}:${ip}`;
+
+    const entry = hits.get(key);
+
+    if (!entry || now >= entry.resetAt) {
+      hits.set(key, {
+        count: 1,
+        resetAt: now + windowMs
+      });
+      return next();
+    }
+
+    if (entry.count >= maxRequests) {
+      const retryAfterSec = Math.max(
+        1,
+        Math.ceil((entry.resetAt - now) / 1000)
+      );
+
+      return res.status(429).json({
+        error: "rate limit exceeded",
+        route: label,
+        retryAfterSec
+      });
+    }
+
+    entry.count += 1;
+    return next();
+  };
+}
+
+function logRelayEvent(event, data) {
+  const payload = {
+    ts: new Date().toISOString(),
+    event,
+    ...data
+  };
+  console.log("[relay]", JSON.stringify(payload));
+}
+
 export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   if (!rpcUrl) throw new Error("makeRelayRouter requires rpcUrl");
   if (!registryAddress) throw new Error("makeRelayRouter requires registryAddress");
@@ -26,16 +84,34 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     wallet
   );
 
+  const statusRateLimit = createInMemoryRateLimiter({
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    maxRequests: STATUS_MAX_REQUESTS_PER_WINDOW,
+    label: "relay-status"
+  });
+
+  const healthRateLimit = createInMemoryRateLimiter({
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    maxRequests: HEALTH_MAX_REQUESTS_PER_WINDOW,
+    label: "relay-health"
+  });
+
+  const signRateLimit = createInMemoryRateLimiter({
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    maxRequests: SIGN_MAX_REQUESTS_PER_WINDOW,
+    label: "relay-sign"
+  });
+
   const router = express.Router();
 
   // ---------------------------
   // Status
   // ---------------------------
-  router.get("/status", async (req, res) => {
+  router.get("/status", statusRateLimit, async (req, res) => {
     try {
       return res.json({
         ok: true,
-        mode: "relay-v0-skeleton",
+        mode: "relay-v1-live",
         rpcUrl,
         registryAddress,
         chainId,
@@ -51,9 +127,41 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   });
 
   // ---------------------------
+  // Health
+  // ---------------------------
+  router.get("/health", healthRateLimit, async (req, res) => {
+    try {
+      const [latestBlock, balanceWei] = await Promise.all([
+        provider.getBlockNumber(),
+        provider.getBalance(wallet.address)
+      ]);
+
+      return res.json({
+        ok: true,
+        mode: "relay-v1-live",
+        rpcUrl,
+        registryAddress,
+        chainId,
+        relayerAddress: wallet.address,
+        relayerBalanceWei: balanceWei.toString(),
+        latestBlock
+      });
+    } catch (e) {
+      return res.status(500).json({
+        ok: false,
+        error: "internal",
+        details: e?.message || String(e)
+      });
+    }
+  });
+
+  // ---------------------------
   // Relay sign
   // ---------------------------
-  router.post("/sign", async (req, res) => {
+  router.post("/sign", signRateLimit, async (req, res) => {
+    let petitionIdForLog = null;
+    let nullifierForLog = null;
+
     try {
       const {
         petitionId,
@@ -64,9 +172,9 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         pubSignals
       } = req.body || {};
 
-      // ---------------------------
-      // Validate petitionId
-      // ---------------------------
+      petitionIdForLog = petitionId ?? null;
+      nullifierForLog = nullifier ?? null;
+
       if (petitionId === undefined) {
         return res.status(400).json({ error: "missing petitionId" });
       }
@@ -77,9 +185,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         return res.status(400).json({ error: "invalid petitionId" });
       }
 
-      // ---------------------------
-      // Validate nullifier
-      // ---------------------------
       if (
         typeof nullifier !== "string" ||
         !/^0x[0-9a-fA-F]{64}$/.test(nullifier)
@@ -87,9 +192,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         return res.status(400).json({ error: "invalid nullifier" });
       }
 
-      // ---------------------------
-      // Validate proof arrays
-      // ---------------------------
       const isHex = (v) => typeof v === "string" && /^0x[0-9a-fA-F]+$/.test(v);
 
       if (!Array.isArray(pA) || pA.length !== 2 || !pA.every(isHex)) {
@@ -120,11 +222,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         return res.status(400).json({ error: "invalid pubSignals" });
       }
 
-      // ---------------------------
-      // Canonical consistency checks
-      // Contract expects:
-      // pubSignals = [nullifier, petitionId, membershipRoot]
-      // ---------------------------
       if (
         String(pubSignals[0]).toLowerCase() !== String(nullifier).toLowerCase()
       ) {
@@ -139,24 +236,23 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         });
       }
 
-      // ---------------------------
-      // Signed-state precheck
-      // ---------------------------
       const alreadySigned = await registry.hasSignedPetition(
         BigInt(petitionId),
         nullifier
       );
 
       if (alreadySigned) {
+        logRelayEvent("already-signed", {
+          petitionId: String(petitionId),
+          nullifier
+        });
+
         return res.json({
           ok: true,
           alreadySigned: true
         });
       }
 
-      // ---------------------------
-      // Relay transaction submit
-      // ---------------------------
       const tx = await registry.signPetitionWithZKProof(
         BigInt(petitionId),
         nullifier,
@@ -166,12 +262,24 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         pubSignals
       );
 
+      logRelayEvent("submit-ok", {
+        petitionId: String(petitionId),
+        nullifier,
+        txHash: tx.hash
+      });
+
       return res.json({
         ok: true,
         alreadySigned: false,
         txHash: tx.hash
       });
     } catch (e) {
+      logRelayEvent("submit-error", {
+        petitionId: petitionIdForLog != null ? String(petitionIdForLog) : null,
+        nullifier: nullifierForLog,
+        error: e?.message || String(e)
+      });
+
       return res.status(500).json({
         error: "internal",
         details: e?.message || String(e)
