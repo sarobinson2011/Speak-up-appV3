@@ -408,9 +408,23 @@ Long-term Tornado-grade privacy requires:
 * Strong artifact provenance enforcement
 * Larger anonymity sets
 
+Speak-Up is evolving toward a **privacy participation engine** that allows valid actions to be publicly verified while preserving ambiguity about which participant performed them.
+
+Core design rule:
+
+**Private actors, public actions.**
+
+The verifier proves validity; the architecture must preserve ambiguity.
+
+Definition of the core privacy primitive:
+
+docs/PRIVACY_ENGINE_DEFINITION.md
+
+This document defines the minimal privacy engine that applications (petitions, coordination signals, funding systems, etc.) can build on top of.
+
 The next architectural evolution focuses on **breaking the public wallet → membership link** while preserving economic admission friction and compatibility with the current ZK signing model.
 
-Current design study:
+Current enrollment design study:
 
 docs/UNLINKABLE_ENROLLMENT_DESIGN_V0.md
 
