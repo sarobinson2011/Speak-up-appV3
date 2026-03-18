@@ -426,6 +426,33 @@ The next architectural evolution focuses on **breaking the public wallet → mem
 
 Current enrollment design study:
 
+Active V0 enrollment direction:
+
+**Public bonded admission right + relayed private commitment activation**
+
+This uses a two-secret model:
+
+* `admissionSecret -> admissionCommitment` for the public funded admission right
+* `memberSecret -> leaf` for anonymous membership used by the existing ZK signing flow
+
+Current V0 design decisions:
+
+* Funded rights are keyed by `admissionCommitment`, not wallet address
+* One funded right may activate exactly one membership leaf
+* Activation consumes the right permanently
+* Activated rights are not refundable
+* Unused rights are refundable after lock expiry
+* Activation does not require authorization from the original funding wallet
+* Multiple funded rights per wallet are allowed
+* No expiry model in V0 beyond lock-then-refundable semantics
+* AdmissionRegistry and MembershipRegistry are conceptually separate
+* V0 assumes direct AdmissionRegistry -> MembershipRegistry interaction
+* Signing flow should remain unchanged if possible
+
+Supporting design doc:
+
+`docs/ADMISSION_RIGHT_MODEL_V0.md`
+
 docs/UNLINKABLE_ENROLLMENT_DESIGN_V0.md
 
 This document explores candidate approaches for unlinkable membership admission and evaluates **relayed commitment enrollment with bonded admission** as the leading direction.
