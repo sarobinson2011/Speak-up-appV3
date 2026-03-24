@@ -399,6 +399,68 @@ This serves as the recovery point before further protocol evolution.
 
 ---
 
+# 10.6) Aurora Admission Stack Deployment + Validation (Milestone)
+
+This milestone records the first successful deployment, verification, and live functional validation of the admission-backed anonymous membership stack on Aurora testnet.
+
+Canonical validated Aurora testnet deployment:
+
+* `POSEIDON1_ADDRESS = 0x358730D22814c9f5c02A282671b9892E28AC88A2`
+* `POSEIDON2_ADDRESS = 0x24120c6ffe7A19a675B5C63d8A2a4b135D641A5d`
+* `ANON_MEMBERSHIP_LOGIC_ADDRESS = 0x32A0f3db8ed95C693C802Eb0A037b7c8e19c8c39`
+* `ANON_MEMBERSHIP_PROXY_ADDRESS = 0xe3A5cAab30DfF154e6Dff35cB35Ba41326C76821`
+* `ADMISSION_LOGIC_ADDRESS = 0xff6f693Ce5975F996AF27b002e017f34d599Aac5`
+* `ADMISSION_PROXY_ADDRESS = 0x36c22227098B24E5aCE48dEa3988327256481F0e`
+
+Deployment discipline locked:
+
+* repo-root `.env` is the single source of truth
+* Solidity `.s.sol` files are deployment primitives
+* shell `.sh` wrappers are the canonical operator entrypoints
+* direct `forge script` runs must reload repo-root env into the active shell before execution:
+  * `set -a`
+  * `source ../.env`
+  * `set +a`
+
+Atomicity distinction locked:
+
+* full-stack deployment is not globally atomic
+* each proxy deployment + initialization is atomic because initializer calldata is passed into the proxy constructor
+* the only intentional inter-stage gap is final linkage:
+  * `AnonymousMembershipRegistry.setAdmissionRegistry(admissionProxy)`
+* this intermediate state is acceptable because membership registration remains gated until linkage
+
+Verification status:
+
+* wrapper-based Aurora deployment completed successfully
+* `verify-admission-stack.sh` completed successfully against the canonical deployment
+* live Aurora admission → membership validation completed successfully on the canonical deployment
+
+Live validation result:
+
+* `admissionCommitment = Poseidon1(admissionSecret)`
+* `leaf = Poseidon1(memberSecret)`
+
+Observed canonical live validation state transition:
+
+* pre-state:
+  * `leafCount = 0`
+  * `isKnownLeaf(leaf) = false`
+  * `status = 0`
+* post-state:
+  * `leafCount = 1`
+  * `isKnownLeaf(leaf) = true`
+  * `status = 2`
+
+Operational conclusion:
+
+The admission-backed anonymous membership path is now live and validated on Aurora testnet.
+This checkpoint establishes the deployment and verification discipline for future iterations and provides the recovery point for subsequent integration into the M2 privacy flow.
+
+Refund-path validation remains a separate time-based check because it depends on lock expiry.
+
+---
+
 # 11) Next Strategic Layer (Post-MVP)
 
 Long-term Tornado-grade privacy requires:
@@ -433,7 +495,7 @@ Active V0 enrollment direction:
 This uses a two-secret model:
 
 * `admissionSecret -> admissionCommitment` for the public funded admission right
-* `memberSecret -> leaf` for anonymous membership used by the existing ZK signing flow
+* `memberSecret -> Poseidon1(memberSecret) -> leaf` for anonymous membership used by the existing ZK signing flow
 
 Current V0 design decisions:
 
@@ -445,8 +507,8 @@ Current V0 design decisions:
 * Activation does not require authorization from the original funding wallet
 * Multiple funded rights per wallet are allowed
 * No expiry model in V0 beyond lock-then-refundable semantics
-* AdmissionRegistry and MembershipRegistry are conceptually separate
-* V0 assumes direct AdmissionRegistry -> MembershipRegistry interaction
+* AdmissionRegistry and AnonymousMembershipRegistry are conceptually separate
+* V0 assumes direct AdmissionRegistry -> AnonymousMembershipRegistry interaction
 * Signing flow should remain unchanged if possible
 
 Supporting design doc:
@@ -459,6 +521,10 @@ This document explores candidate approaches for unlinkable membership admission 
 
 Design must precede implementation.  
 All architectural changes must be recorded in `STATE.md` first.
+
+docs/ADMISSION_DEPLOYMENT_FLOW_V0.md
+
+This document defines the V0 deployment and initialization order for Poseidon1, Poseidon2, AnonymousMembershipRegistry, and AdmissionRegistry, including proxy wiring and post-deploy linkage.
 
 ---
 
