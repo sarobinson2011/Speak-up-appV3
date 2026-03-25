@@ -434,7 +434,7 @@ Verification status:
 
 * wrapper-based Aurora deployment completed successfully
 * `verify-admission-stack.sh` completed successfully against the canonical deployment
-* live Aurora admission → membership validation completed successfully on the canonical deployment
+* live admission → membership validation completed successfully on Aurora against the canonical deployment
 
 Live validation result:
 
@@ -452,12 +452,33 @@ Observed canonical live validation state transition:
   * `isKnownLeaf(leaf) = true`
   * `status = 2`
 
-Operational conclusion:
+Operational conclusion (locked):
 
 The admission-backed anonymous membership path is now live and validated on Aurora testnet.
 This checkpoint establishes the deployment and verification discipline for future iterations and provides the recovery point for subsequent integration into the M2 privacy flow.
 
 Refund-path validation remains a separate time-based check because it depends on lock expiry.
+
+A separate short-lock Aurora test deployment was executed with:
+
+* `ADMISSION_LOCK_SECONDS = 120`
+
+This was used only to validate refund logic without waiting for the canonical 7-day lock.
+
+Observed refund-path state transition:
+
+* pre-refund:
+  * `status = 1`
+  * `amount = 1000000000000000000`
+* post-refund:
+  * `status = 3`
+  * `amount = 0`
+
+Conclusion:
+
+* `refundAdmissionRight(admissionSecret, recipient)` behaves correctly after lock expiry
+* refund logic is validated on Aurora
+* the canonical 7-day refund test remains a passive long-lock confirmation, but is no longer a blocker for correctness
 
 ---
 
