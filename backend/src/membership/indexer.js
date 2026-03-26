@@ -1,9 +1,9 @@
 // backend/src/membership/indexer.js
-import { ethers } from "ethers";
+import { ethers, AbiCoder, keccak256, toUtf8Bytes } from "ethers";
 import { IncrementalBinaryTree, to0x32 } from "./tree.js";
 
 const MEMBERSHIP_ABI = [
-  "event LeafRegistered(address indexed wallet, uint256 leaf, uint32 index, bytes32 newRoot)",
+  "event LeafRegistered(bytes32 indexed leaf, uint256 leafIndex, bytes32 newRoot)",
   "function currentRoot() view returns (bytes32)",
   "function isValidRoot(bytes32) view returns (bool)"
 ];
@@ -30,18 +30,10 @@ export class MembershipIndexer {
     );
 
     this.depth = depth;
-
     this.tree = new IncrementalBinaryTree(depth);
 
-    // wallet -> { leaf: bigint, index: number }
-    this.byWallet = new Map();
-
-    // leaf (0x32) -> { leaf: bigint, index: number }
-    // NOTE: intentionally does NOT store wallet to avoid leaf->wallet correlation.
+    // Leaf-indexed only; no wallet-based correlation is stored.
     this.byLeaf = new Map();
-
-    // wallet -> bigint leaf override (DEV ONLY)
-    this.manualOverrides = new Map();
 
     this.synced = false;
     this.lastBlock = 0;
@@ -52,52 +44,48 @@ export class MembershipIndexer {
   // -----------------------------------
   async rebuildFromChainAndOverrides(fromBlock = 0) {
     const latest = await this.provider.getBlockNumber();
-    const filter = this.contract.filters.LeafRegistered();
-    const logs = await this.contract.queryFilter(filter, fromBlock, latest);
 
-    const newTree = new IncrementalBinaryTree(this.depth);
-    const newMap = new Map();
+    const leafRegisteredTopic = keccak256(
+      toUtf8Bytes("LeafRegistered(bytes32,uint256,bytes32)")
+    );
 
-    // 1️⃣ Replay on-chain events
-    for (const ev of logs) {
-      const wallet = ev.args.wallet.toLowerCase();
-      const leaf = BigInt(ev.args.leaf.toString());
-      const index = Number(ev.args.index);
+    const logs = await this.provider.getLogs({
+      address: this.membershipAddress,
+      fromBlock,
+      toBlock: latest,
+      topics: [leafRegisteredTopic]
+    });
 
-      const inserted = newTree.insert(leaf);
+    const coder = AbiCoder.defaultAbiCoder();
+
+    const finalTree = new IncrementalBinaryTree(this.depth);
+    const finalLeafMap = new Map();
+
+    for (const log of logs) {
+      if (!log.topics || log.topics.length < 2) {
+        throw new Error("LeafRegistered log missing indexed leaf topic");
+      }
+
+      const leafHex = log.topics[1];
+      const leaf = BigInt(leafHex);
+
+      const [leafIndex, _newRoot] = coder.decode(
+        ["uint256", "bytes32"],
+        log.data
+      );
+
+      const index = Number(leafIndex);
+
+      const inserted = finalTree.insert(leaf);
       if (inserted !== index) {
         throw new Error(`index mismatch: chain=${index} local=${inserted}`);
       }
 
-      newMap.set(wallet, { leaf, index });
-    }
-
-    // 2️⃣ Apply overrides (replace or insert)
-    for (const [wallet, overrideLeaf] of this.manualOverrides.entries()) {
-      if (newMap.has(wallet)) {
-        // Replace leaf at same index
-        const entry = newMap.get(wallet);
-        entry.leaf = overrideLeaf;
-      } else {
-        const index = newTree.insert(overrideLeaf);
-        newMap.set(wallet, { leaf: overrideLeaf, index });
-      }
-    }
-
-    // 3️⃣ Rebuild final tree from final leaf set
-    const finalTree = new IncrementalBinaryTree(this.depth);
-    const finalMap = new Map();
-    const finalLeafMap = new Map();
-
-    for (const [wallet, { leaf }] of newMap.entries()) {
-      const idx = finalTree.insert(leaf);
       const leafKey = to0x32(leaf);
-      finalMap.set(wallet, { leaf, index: idx });
-      finalLeafMap.set(leafKey, { leaf, index: idx });
+      finalLeafMap.set(leafKey, { leaf, index });
     }
 
     this.tree = finalTree;
-    this.byWallet = finalMap;
     this.byLeaf = finalLeafMap;
     this.lastBlock = latest;
     this.synced = true;
@@ -109,48 +97,6 @@ export class MembershipIndexer {
   async sync(fromBlock = 0) {
     await this.rebuildFromChainAndOverrides(fromBlock);
     return { fromBlock, toBlock: this.lastBlock };
-  }
-
-  // -----------------------------------
-  // MANUAL ENROLL / REPLACE
-  // -----------------------------------
-  async addManualMember(wallet, leafHex) {
-    const key = wallet.toLowerCase();
-
-    if (!leafHex.startsWith("0x") || leafHex.length !== 66) {
-      throw new Error("leaf must be 32-byte hex");
-    }
-
-    const leaf = BigInt(leafHex);
-
-    this.manualOverrides.set(key, leaf);
-
-    await this.rebuildFromChainAndOverrides(0);
-  }
-
-  // -----------------------------------
-  // PATH BY WALLET
-  // -----------------------------------
-  async getPath(wallet) {
-    if (!this.synced) throw new Error("INDEXER_NOT_SYNCED");
-
-    const key = wallet.toLowerCase();
-    const entry = this.byWallet.get(key);
-    if (!entry) return null;
-
-    const { leaf, index } = entry;
-    const { siblings, pathIndices } = this.tree.path(index);
-
-    const root = await this.contract.currentRoot();
-
-    return {
-      wallet: key,
-      leaf: to0x32(leaf),
-      index,
-      root,
-      siblings: siblings.map(to0x32),
-      pathBits: pathIndices
-    };
   }
 
   // -----------------------------------
@@ -169,7 +115,6 @@ export class MembershipIndexer {
     const root = await this.contract.currentRoot();
 
     return {
-      wallet: null,
       leaf: leafKey,
       index,
       root,

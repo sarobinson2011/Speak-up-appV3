@@ -549,6 +549,36 @@ This document defines the V0 deployment and initialization order for Poseidon1, 
 
 ---
 
+## Admission-backed M2 integration status
+
+Frontend and backend integration has been validated against the canonical Aurora deployment.
+
+Integrated flow now proven:
+
+* explicit enrollment is owned by `PetitionDetails.jsx`
+* enrollment no longer executes from `Petitions.jsx`
+* frontend enrollment uses:
+  * `fundAdmissionRight(admissionCommitment)`
+  * `activateMembership(admissionCommitment, admissionSecret, leaf)`
+* `leaf = Poseidon1(memberSecret)` remains unchanged
+* backend membership indexing is aligned to `AnonymousMembershipRegistry`
+* backend path lookup remains leaf-based:
+  * `/api/membership/path?leaf=...`
+
+End-to-end result validated on Aurora:
+
+* non-enrolled wallet completed explicit admission-backed enrollment
+* backend returned a valid Merkle path for the newly inserted leaf
+* M2 proof generation succeeded unchanged
+* relayed petition signing succeeded unchanged
+* signed-state UI updated correctly after signing
+
+Operational conclusion:
+
+The admission-backed enrollment model is integrated into the existing M2 privacy flow without modification to the ZK proof system.
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  

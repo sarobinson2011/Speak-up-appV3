@@ -10,13 +10,50 @@ import { loadMemberSecret } from './m2Identity';
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
 
-// MembershipRegistry (Aurora testnet)
-const MEMBERSHIP_REGISTRY_ADDRESS = '0x7C329B70Da1Dc94d5655a0DB907637bc4530991f';
-const MEMBERSHIP_REGISTRY_ABI = [
-  'function registerBondWei() view returns (uint256)',
-  'function registerLeaf(uint256 leaf) payable',
-  'function isRegistered(address) view returns (bool)'
+// AdmissionRegistry (canonical Aurora testnet deployment)
+const ADMISSION_REGISTRY_ADDRESS =
+  import.meta.env.VITE_ADMISSION_PROXY_ADDRESS || '0x36c22227098B24E5aCE48dEa3988327256481F0e';
+
+const ADMISSION_REGISTRY_ABI = [
+  'function admissionBond() view returns (uint256)',
+  'function fundAdmissionRight(bytes32 admissionCommitment) payable',
+  'function activateMembership(bytes32 admissionCommitment, bytes32 admissionSecret, bytes32 leaf)',
+  'function getStatus(bytes32 admissionCommitment) view returns (uint8)'
 ];
+
+const PENDING_ADMISSION_PREFIX = 'su_pendingAdmissionSecret_v1:wallet:';
+
+function pendingAdmissionKey(wallet) {
+  return `${PENDING_ADMISSION_PREFIX}${String(wallet || '').toLowerCase()}`;
+}
+
+function safeGetLocalStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
+
+function safeRemoveLocalStorage(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // ignore
+  }
+}
+
+function isHex32(value) {
+  return /^0x[0-9a-fA-F]{64}$/.test(String(value || ''));
+}
 
 function bigIntToHex32(v) {
   const hex = v.toString(16);
@@ -54,6 +91,11 @@ export default function PetitionDetails({
   // Identity: localStorage-only
   const memberSecretBI = useMemo(() => loadMemberSecret(account), [account]);
   const secretPresent = Boolean(memberSecretBI);
+
+  const currentPendingAdmissionKey = useMemo(
+    () => pendingAdmissionKey(account),
+    [account]
+  );
 
   const uiLeafHex = useMemo(() => {
     if (!memberSecretBI) return null;
@@ -236,23 +278,72 @@ export default function PetitionDetails({
       if (!window.ethereum) throw new Error('MetaMask not found');
       if (!account) throw new Error('Wallet not connected');
       if (!memberSecretBI) throw new Error('Secret missing for this wallet');
+      if (!uiLeafHex) throw new Error('Failed to derive membership leaf for this wallet');
 
       const provider = new ethers.BrowserProvider(window.ethereum);
       const s = await provider.getSigner();
+      const wallet = (await s.getAddress()).toLowerCase();
 
-      const reg = new ethers.Contract(
-        MEMBERSHIP_REGISTRY_ADDRESS,
-        MEMBERSHIP_REGISTRY_ABI,
+      if (wallet !== String(account).toLowerCase()) {
+        throw new Error(`Wallet mismatch: UI=${account} MetaMask=${wallet}`);
+      }
+
+      const admission = new ethers.Contract(
+        ADMISSION_REGISTRY_ADDRESS,
+        ADMISSION_REGISTRY_ABI,
         s
       );
 
-      const leaf = poseidon1([memberSecretBI]);
-      const bond = await reg.registerBondWei();
+      // Reuse a pending admission secret if one already exists for this wallet.
+      // This makes the flow recoverable if funding succeeded but activation did not.
+      let admissionSecret = safeGetLocalStorage(currentPendingAdmissionKey);
 
-      const tx = await reg.registerLeaf(leaf, { value: bond });
-      await tx.wait();
+      if (!isHex32(admissionSecret)) {
+        admissionSecret = ethers.hexlify(ethers.randomBytes(32));
+        safeSetLocalStorage(currentPendingAdmissionKey, admissionSecret);
+      }
 
-      await fetchMembershipPathByLeaf(bigIntToHex32(leaf));
+      const admissionCommitment = bigIntToHex32(
+        poseidon1([BigInt(admissionSecret)])
+      );
+
+      const status = Number(await admission.getStatus(admissionCommitment));
+
+      // Status enum:
+      // 0 = None
+      // 1 = Funded
+      // 2 = Activated
+      // 3 = Refunded
+
+      if (status === 0) {
+        const bond = await admission.admissionBond();
+        const fundTx = await admission.fundAdmissionRight(admissionCommitment, {
+          value: bond
+        });
+        await fundTx.wait();
+      }
+
+      if (status === 2) {
+        safeRemoveLocalStorage(currentPendingAdmissionKey);
+        await fetchMembershipPathByLeaf(uiLeafHex);
+        return;
+      }
+
+      if (status === 3) {
+        throw new Error(
+          'Pending admission right was already refunded. Please click Enroll again to start a fresh admission.'
+        );
+      }
+
+      const activateTx = await admission.activateMembership(
+        admissionCommitment,
+        admissionSecret,
+        uiLeafHex
+      );
+      await activateTx.wait();
+
+      safeRemoveLocalStorage(currentPendingAdmissionKey);
+      await fetchMembershipPathByLeaf(uiLeafHex);
     } catch (e) {
       setEnrollError(e?.message || String(e));
     } finally {

@@ -22,9 +22,11 @@ const RPC_URL =
   process.env.AURORA_TESTNET_RPC ||
   "https://testnet.aurora.dev";
 
-// Accept either MEMBERSHIP_ADDRESS or MEMBERSHIP_REGISTRY_ADDRESS
+// Prefer the new anonymous membership env name, then fall back to older names.
 const MEMBERSHIP_ADDRESS =
-  process.env.MEMBERSHIP_ADDRESS || process.env.MEMBERSHIP_REGISTRY_ADDRESS;
+  process.env.ANON_MEMBERSHIP_PROXY_ADDRESS ||
+  process.env.MEMBERSHIP_ADDRESS ||
+  process.env.MEMBERSHIP_REGISTRY_ADDRESS;
 
 const PETITION_REGISTRY_ADDRESS = process.env.PETITION_REGISTRY_ADDRESS;
 
@@ -93,5 +95,5 @@ app.listen(PORT, () => {
   console.log(`Health: http://localhost:${PORT}/health`);
   console.log(`Chain ID: ${CHAIN_ID}`);
   console.log(`Mode: M2_ONLY`);
-  console.log(`MembershipRegistry: ${MEMBERSHIP_ADDRESS}`);
+  console.log(`AnonymousMembershipRegistry: ${MEMBERSHIP_ADDRESS}`);
 });

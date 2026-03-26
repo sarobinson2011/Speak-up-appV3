@@ -79,16 +79,6 @@ function bigIntToHex32(v) {
   return '0x' + hex.padStart(64, '0');
 }
 
-// Membership Registry (on Aurora testnet)
-const MEMBERSHIP_ADDRESS =
-  import.meta.env.VITE_MEMBERSHIP_ADDRESS || '0x7C329B70Da1Dc94d5655a0DB907637bc4530991f';
-
-const MEMBERSHIP_ABI = [
-  'function registerBondWei() view returns (uint256)',
-  'function isRegistered(address) view returns (bool)',
-  'function registerLeaf(uint256 leaf) payable returns (uint32 index, bytes32 newRoot)'
-];
-
 export default function Petitions({ signer, account }) {
   const [petitions, setPetitions] = useState([]);
   const [loadingPetitions, setLoadingPetitions] = useState(true);
@@ -101,10 +91,6 @@ export default function Petitions({ signer, account }) {
 
   const [viewingPetitionId, setViewingPetitionId] = useState(null);
   const [expandedPetition, setExpandedPetition] = useState(null);
-
-  // Enrollment UI state
-  const [enrollStatus, setEnrollStatus] = useState('idle'); // idle | registering | done | error
-  const [enrollError, setEnrollError] = useState('');
 
   // Create petition UI state
   const [newTitle, setNewTitle] = useState('');
@@ -128,10 +114,9 @@ export default function Petitions({ signer, account }) {
     return bigIntToHex32(leafBI);
   }, [memberSecret]);
 
-  // Load secret for the currently connected wallet (never auto-generate)
+  // Load the stored member secret for the currently connected wallet.
+  // Never auto-generate here; secret creation remains an explicit user action.
   useEffect(() => {
-    setEnrollStatus('idle');
-    setEnrollError('');
     setMembershipPath(null);
 
     if (!account) {
@@ -180,66 +165,6 @@ export default function Petitions({ signer, account }) {
     const secret = ethers.hexlify(ethers.randomBytes(32)); // 0x + 64 hex chars
     safeSetLocalStorage(currentWalletKey, secret);
     setMemberSecret(secret);
-    setEnrollStatus('idle');
-    setEnrollError('');
-  }
-
-  async function handleEnroll() {
-    dlog('[ENROLL] click', { account, memberSecretPreview: String(memberSecret).slice(0, 10) });
-
-    try {
-      setEnrollError('');
-      setEnrollStatus('registering');
-
-      if (!account) throw new Error('Connect a wallet first.');
-      if (!window.ethereum) throw new Error('MetaMask not found.');
-      if (!isHex32(memberSecret)) throw new Error('Generate (or restore) your member secret first.');
-
-      // compute leaf
-      const secretBI = hex32ToBigInt(memberSecret);
-      const leafBI = poseidon1([secretBI]);
-
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const net = await provider.getNetwork();
-
-      if (REQUIRED_CHAIN_ID && BigInt(net.chainId) !== REQUIRED_CHAIN_ID) {
-        throw new Error(`Wrong network. Expected chainId ${REQUIRED_CHAIN_ID.toString()}`);
-      }
-
-      const mmSigner = await provider.getSigner();
-      const wallet = (await mmSigner.getAddress()).toLowerCase();
-
-      if (wallet !== String(account).toLowerCase()) {
-        throw new Error(`Wallet mismatch: UI=${account} MetaMask=${wallet}`);
-      }
-
-      const code = await provider.getCode(MEMBERSHIP_ADDRESS);
-      dwarn('[ENROLL] membership addr', MEMBERSHIP_ADDRESS, 'codeIsEmpty', code === '0x');
-
-      const membership = new ethers.Contract(MEMBERSHIP_ADDRESS, MEMBERSHIP_ABI, mmSigner);
-
-      const already = await membership.isRegistered(wallet);
-      if (already) {
-        // Minimal: allow re-enroll to rotate leaf to the current secret.
-        dlog('[ENROLL] wallet already registered; re-registering leaf to match current secret');
-      }
-
-      const bondWei = await membership.registerBondWei();
-      dlog('[ENROLL] bondWei', bondWei.toString());
-
-      const tx = await membership.registerLeaf(leafBI, { value: bondWei });
-      dlog('[ENROLL] tx sent', tx.hash);
-
-      await tx.wait();
-      dlog('[ENROLL] tx confirmed');
-
-      await fetchMembershipPath(bigIntToHex32(leafBI));
-      setEnrollStatus('done');
-    } catch (e) {
-      console.error('[ENROLL] error', e);
-      setEnrollStatus('error');
-      setEnrollError(e?.message || String(e));
-    }
   }
 
   // -----------------------------
