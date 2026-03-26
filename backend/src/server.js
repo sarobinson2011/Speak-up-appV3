@@ -22,11 +22,15 @@ const RPC_URL =
   process.env.AURORA_TESTNET_RPC ||
   "https://testnet.aurora.dev";
 
-// Prefer the new anonymous membership env name, then fall back to older names.
-const MEMBERSHIP_ADDRESS =
+// Canonical env name first, legacy aliases only as temporary fallback.
+const anonMembershipRegistryAddress =
   process.env.ANON_MEMBERSHIP_PROXY_ADDRESS ||
-  process.env.MEMBERSHIP_ADDRESS ||
-  process.env.MEMBERSHIP_REGISTRY_ADDRESS;
+  process.env.MEMBERSHIP_REGISTRY_ADDRESS ||
+  process.env.MEMBERSHIP_ADDRESS;
+
+const usingLegacyMembershipEnv =
+  !process.env.ANON_MEMBERSHIP_PROXY_ADDRESS &&
+  (process.env.MEMBERSHIP_REGISTRY_ADDRESS || process.env.MEMBERSHIP_ADDRESS);
 
 const PETITION_REGISTRY_ADDRESS = process.env.PETITION_REGISTRY_ADDRESS;
 
@@ -39,14 +43,22 @@ const MEMBERSHIP_DEPTH = process.env.MEMBERSHIP_DEPTH
   : 16;
 
 if (!RPC_URL) throw new Error("RPC_URL missing");
-if (!MEMBERSHIP_ADDRESS) {
-  throw new Error("MEMBERSHIP_ADDRESS (or MEMBERSHIP_REGISTRY_ADDRESS) missing");
+if (!anonMembershipRegistryAddress) {
+  throw new Error(
+    "ANON_MEMBERSHIP_PROXY_ADDRESS missing (legacy aliases: MEMBERSHIP_REGISTRY_ADDRESS, MEMBERSHIP_ADDRESS)"
+  );
+}
+
+if (usingLegacyMembershipEnv) {
+  console.warn(
+    "[deprecated] Using legacy membership env var. Please migrate to ANON_MEMBERSHIP_PROXY_ADDRESS."
+  );
 }
 
 // ===== Indexer boot =====
 const indexer = new MembershipIndexer({
   rpcUrl: RPC_URL,
-  membershipAddress: MEMBERSHIP_ADDRESS,
+  membershipAddress: anonMembershipRegistryAddress,
   depth: MEMBERSHIP_DEPTH,
 });
 
@@ -63,7 +75,7 @@ app.get("/health", (req, res) => {
     mode: "M2_ONLY",
     chainId: CHAIN_ID,
     rpcUrl: RPC_URL,
-    membershipAddress: MEMBERSHIP_ADDRESS,
+    membershipAddress: anonMembershipRegistryAddress,
     ts: new Date().toISOString(),
   });
 });
@@ -75,7 +87,7 @@ app.use(
   makeRelayRouter({
     rpcUrl: RPC_URL,
     registryAddress: PETITION_REGISTRY_ADDRESS,
-    chainId: CHAIN_ID
+    chainId: CHAIN_ID,
   })
 );
 
@@ -95,5 +107,5 @@ app.listen(PORT, () => {
   console.log(`Health: http://localhost:${PORT}/health`);
   console.log(`Chain ID: ${CHAIN_ID}`);
   console.log(`Mode: M2_ONLY`);
-  console.log(`AnonymousMembershipRegistry: ${MEMBERSHIP_ADDRESS}`);
+  console.log(`AnonymousMembershipRegistry: ${anonMembershipRegistryAddress}`);
 });
