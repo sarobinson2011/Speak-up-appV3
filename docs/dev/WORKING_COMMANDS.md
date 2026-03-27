@@ -5,12 +5,10 @@
 ## Environment Setup
 
 ```bash
-# Load environment variables
-cd /home/oem/Documents/Coding/Speak-up-appV3
-source .env
-
-# Aurora API key should already be in .env
-# AURORA_API_KEY=placeholder
+# Load repo root environment variables (root/.env) into the prcoess shell
+set -a
+source ../.env
+set +a
 ```
 
 ## Helper Scripts
