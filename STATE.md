@@ -653,6 +653,65 @@ Detailed Phase A design is defined in:
 
 ---
 
+## REFLECT Phase A (path-layer design locked)
+
+The Phase A distributed mirror path layer is now locked under the name **REFLECT**.
+
+REFLECT is the path/witness-data layer of the privacy engine.  
+It is not the enrollment layer and not the execution/submission layer.
+
+Phase A REFLECT baseline:
+
+* fixed 7-mirror set (**REFLECT**)
+* distributed multi-source publication model
+* client-verifiable subtree-chunk data model
+* fixed subtree chunks
+* medium subtree size policy
+* single connector object per root
+* hybrid discovery
+* 3 chunk interests per action:
+  * 1 required chunk
+  * 2 deterministic cover chunks
+* symmetric deterministic cover offsets derived from the action seed
+* chunk interests split across mirrors
+* mirror roles derived by deterministic per-action permutation
+* connector object fetched from a separately selected REFLECT mirror
+* connector separation enforced
+* 2 fallback mirrors per object
+* bounded recent publication window
+* deterministic state targeting:
+  * highest recent valid publication state
+* integrity + coherence verification required across all selected objects
+* no cross-state mixing
+* no global reshuffle during fallback
+
+REFLECT Phase A is intended to improve:
+
+* path-layer privacy
+* robustness under mirror skew or mild staleness
+* resistance to centralized path-oracle observation
+* future scalability for larger tree depth / anonymity-set growth
+
+REFLECT Phase A does **not** by itself solve:
+
+* wallet-funded enrollment linkage
+* network-level metadata leakage
+* mirror collusion
+* total elimination of chunk access-pattern leakage
+
+Detailed Phase A design is defined in:
+
+* `docs/reflect/REFLECT_OVERVIEW_V1.md`
+* `docs/reflect/REFLECT_OBJECT_MODEL_V1.md`
+* `docs/reflect/REFLECT_PUBLICATION_WINDOW_V1.md`
+* `docs/reflect/REFLECT_STATE_VALIDITY_V1.md`
+* `docs/reflect/REFLECT_MIRROR_SELECTION_V1.md`
+* `docs/reflect/REFLECT_FETCH_POLICY_V1.md`
+* `docs/reflect/REFLECT_FAILURE_AND_FALLBACK_V1.md`
+* `docs/reflect/REFLECT_SELECTION_POLICY_V1.md`
+
+---
+
 ### Engineering[9] consolidation checkpoint
 
 Backend env/config naming has been normalized around:
@@ -670,7 +729,13 @@ Runtime behavior is unchanged:
 * path lookup remains `/api/membership/path?leaf=...`
 * ZK proof generation, relay signing, and on-chain verification are unchanged
 
-Engineering[9] also locked the Phase A TEMPEST execution-layer design and added the initial supporting TEMPEST architecture documents under `docs/tempest/`.
+Engineering[9] also locked:
+* the Phase A TEMPEST execution-layer design under `docs/tempest/`
+* the Phase A REFLECT path-layer design under `docs/reflect/`
+
+Together these establish the first two bounded infrastructure layers of the privacy engine:
+* TEMPEST = execution / submission
+* REFLECT = path / witness-data publication
 
 ---
 
