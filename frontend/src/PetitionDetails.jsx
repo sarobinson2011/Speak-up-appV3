@@ -312,7 +312,7 @@ export default function PetitionDetails({
       // Status enum:
       // 0 = None
       // 1 = Funded
-      // 2 = Activated
+      // 2 = Consumed
       // 3 = Refunded
 
       if (status === 0) {
