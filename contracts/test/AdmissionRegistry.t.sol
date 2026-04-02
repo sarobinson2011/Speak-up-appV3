@@ -94,7 +94,7 @@ contract AdmissionRegistryTest is Test {
         admission.activateMembership(commitment, admissionSecret, leaf);
 
         (, , , uint8 status) = admission.rights(commitment);
-        assertEq(status, uint8(AdmissionRegistry.Status.Activated));
+        assertEq(status, uint8(AdmissionRegistry.Status.Consumed));
         assertTrue(anon.knownLeaves(leaf));
         assertEq(anon.leafCount(), 1);
     }

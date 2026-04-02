@@ -349,7 +349,7 @@ Must satisfy:
 
 - One funded right → exactly one membership leaf
 - Activation consumes the right permanently
-- Activated rights are not refundable
+- Consumed rights are not refundable
 - Unused rights remain refundable after lock expiry
 
 However:

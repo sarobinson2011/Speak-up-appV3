@@ -4,11 +4,16 @@ pragma solidity ^0.8.22;
 /*
     AdmissionRegistry.sol
 
-    V0 skeleton only.
+    Enrollment Layer V1:
     - Upgradeable
-    - Public bonded admission right
-    - Relayed private commitment activation
+    - Public bonded admission rights
+    - Identity-agnostic economic rights keyed by admissionCommitment
+    - Sponsored / non-funder activation permitted
+    - Accounting-real right consumption
     - Direct AdmissionRegistry -> AnonymousMembershipRegistry interaction
+
+    AdmissionRegistry is an economic rights ledger.
+    It is not a participant identity layer.
 */
 
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -25,7 +30,7 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     enum Status {
         None,
         Funded,
-        Activated,
+        Consumed,
         Refunded
     }
 
@@ -69,9 +74,8 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
         uint256 unlockAt
     );
 
-    event AdmissionRightActivated(
-        bytes32 indexed admissionCommitment,
-        bytes32 indexed leaf
+    event AdmissionRightConsumed(
+        bytes32 indexed admissionCommitment
     );
 
     event AdmissionRightRefunded(
@@ -172,12 +176,15 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     }
 
     /*
-        Confirmed Option B shape:
+        V1 enrollment semantics:
         - caller supplies commitment
         - caller supplies secret
         - contract verifies secret opens commitment
-        - contract consumes the right
-        - contract registers leaf directly in AnonymousMembershipRegistry
+        - contract consumes the funded admission right
+        - contract requests registration of exactly one leaf in AnonymousMembershipRegistry
+
+        AdmissionRegistry accounts for right consumption only.
+        It does not publicly narrate participant creation or participant readiness.
     */
     function activateMembership(
         bytes32 admissionCommitment,
@@ -199,11 +206,11 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
             revert LeafAlreadyRegistered();
         }
 
-        right.status = uint8(Status.Activated);
+        right.status = uint8(Status.Consumed);
 
         IAnonymousMembershipRegistry(anonymousMembershipRegistry).registerLeaf(leaf);
 
-        emit AdmissionRightActivated(admissionCommitment, leaf);
+        emit AdmissionRightConsumed(admissionCommitment);
     }
 
     function refundAdmissionRight(
