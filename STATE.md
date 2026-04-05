@@ -438,6 +438,133 @@ This enrollment change does **not** attempt to solve:
 
 These remain later-phase concerns.
 
+## 7.7 Incentive Settlement — Invariants (V1)
+
+This section defines the invariant rules governing the incentive settlement layer.
+These rules constrain all implementations and must hold across all contract and
+off-chain policy designs.
+
+#### Lifecycle invariants
+
+1. **Single terminal path per right**  
+   A funded admission right may resolve through exactly one terminal economic path:
+   - unused-right refund, or
+   - consumed-right incentive refund
+
+   A right must never complete both paths.
+
+2. **Consumed-only eligibility**  
+   Only rights in the `Consumed` state are eligible for incentive settlement.
+
+   Incentive outcomes are earned by the anonymous action that consumes the right,
+   not by funding or readiness state.
+
+3. **Single band assignment**  
+   Each consumed right may receive at most one refund band assignment.
+
+   Band assignments are immutable once recorded.
+
+4. **Single settlement**  
+   Each assigned band may be claimed at most once.
+
+   No re-entrancy or replay may result in multiple payouts for the same right.
+
+5. **Accounting-only consumption**  
+   The `Consumed` state remains accounting-only and must not become a participant,
+   cohort, or readiness signal.
+
+#### Economic invariants
+
+6. **Bounded payout**  
+   The total refund paid for a consumed right must not exceed the allowed bound
+   implied by the bond and configured band schedule.
+
+7. **No value creation**  
+   Incentive settlement must not create net new value. Total payouts across all
+   terminal paths for a right must not exceed the value committed for that right.
+
+8. **Finite coarse band set**  
+   Refund outcomes are restricted to exactly three coarse bands:
+   - reduced
+   - standard
+   - enhanced
+
+   No additional implicit or derived bands may exist.
+
+9. **Anti-farming constraint**  
+   The enhanced refund band must remain economically conservative such that:
+
+   > the additional refund available from enhanced outcomes is strictly less than
+   > the economic cost required to manufacture the conditions that would trigger
+   > those outcomes.
+
+   This ensures that shared anonymity cannot be profitably fabricated.
+
+#### Authority invariants
+
+10. **Authorized band assignment only**  
+    Refund bands may only be assigned by the designated policy authority
+    (V1: single replaceable signer).
+
+11. **Consequence without explanation**  
+    The policy authority assigns only a coarse consequence.
+
+    No explanation, score, threshold, window metadata, or reason codes may be
+    required or persisted on-chain.
+
+12. **Replaceable authority**  
+    The policy authority must be replaceable without altering admission semantics
+    or historical right states.
+
+#### Separation-of-concerns invariants
+
+13. **AdmissionRegistry scope**  
+    The AdmissionRegistry owns:
+    - bond custody
+    - admission-right lifecycle
+    - unused-right refund path
+    - authorized payout execution
+
+    It must not:
+    - compute incentive outcomes
+    - store refund bands
+    - store or infer anonymity-related metrics
+
+14. **IncentiveSettlement scope**  
+    The IncentiveSettlement module owns:
+    - coarse refund band assignment
+    - policy signature verification
+    - refund amount derivation from band
+    - triggering authorized payout
+
+    It must not:
+    - hold primary bond custody
+    - store cross-layer traces
+    - act as a provenance or identity oracle
+
+15. **No cross-layer trace persistence**  
+    No backend, relay, mirror, or preparation-path data may be persisted on-chain
+    as part of incentive evaluation or settlement.
+
+#### Event surface invariants
+
+16. **Accounting-only events**  
+    Public events must remain limited to:
+    - band assignment (coarse only)
+    - refund claim / payout
+
+    Events must not expose:
+    - privacy scores
+    - execution window data
+    - density or sparsity metrics
+    - threshold conditions
+    - participant or cohort labels
+
+#### Core design rule
+
+> On-chain state records and settles only the coarse economic consequence.  
+> It must never expose or reconstruct the hidden evaluation function.
+
 Supporting design docs:
 
 - `docs/ADMISSION_RIGHT_MODEL_V0.md`
@@ -447,6 +574,95 @@ Supporting design docs:
 
 These documents remain supporting material only.  
 If any conflict exists, STATE.md wins.
+
+## 7.8 Engineering[11] fallout / active-source leakage pass
+
+After the AdmissionRegistry semantic hardening milestone:
+
+- `Status.Activated` -> `Status.Consumed`
+- `AdmissionRightActivated(...)` -> `AdmissionRightConsumed(...)`
+- public right -> leaf bridge removed from the AdmissionRegistry event surface
+
+Engineering[11] performed a bounded fallout / alignment pass across active source (`contracts`, `frontend/src`, `backend`) to confirm that no active runtime surface or source-language artifact still depended on the old participant-oriented admission semantics.
+
+Result:
+
+- no active runtime dependency on `AdmissionRightActivated`
+- no active runtime dependency on `Status.Activated`
+- no active frontend/backend event consumer relying on the old activation event
+- no active source-language artifact remained that reintroduced the forbidden public activation bridge
+- one stale frontend enum comment was corrected from `Activated` to `Consumed`
+
+Deferred:
+
+- stale references remain in supporting V0 admission docs only
+- these are documentation-hygiene items and do not alter the canonical architecture
+- if any conflict exists, `STATE.md` remains authoritative
+
+Locked interpretation:
+
+- right `Consumed` state is accounting-only
+- it must not be interpreted as participant creation, participant readiness, or a public right -> participant mapping
+
+
+## 7.9 Incentive Settlement implementation checkpoint
+
+The V1 incentive settlement contract shape is now implemented and test-covered as a modular block separate from `AdmissionRegistry`.
+
+Locked implementation shape:
+
+- `AdmissionRegistry` remains the economic rights ledger and bond custodian
+- `IncentiveSettlement` is a separate module
+- coarse refund consequences are restricted to exactly three bands:
+  - `Reduced`
+  - `Standard`
+  - `Enhanced`
+- band assignment is signer-authorized (V1: single replaceable signer)
+- the hidden evaluation function is not computed on-chain
+- on-chain state records and settles only the coarse economic consequence
+- consumed-right refunds are paid through a narrow authorized payout hook in `AdmissionRegistry`
+
+Implemented contract responsibilities:
+
+### AdmissionRegistry
+
+Owns:
+- bond custody
+- admission-right lifecycle
+- unused-right refund path
+- authorized payout execution for consumed-right incentive refunds
+
+Does not own:
+- refund-band assignment
+- signer verification
+- incentive interpretation
+
+### IncentiveSettlement
+
+Owns:
+- policy signer
+- linked `AdmissionRegistry`
+- refund schedule for the three coarse bands
+- signer-authorized band assignment
+- consumed-right refund claim flow
+
+Does not own:
+- primary bond custody
+- hidden-function computation on-chain
+- cross-layer trace persistence
+
+Test-covered properties:
+
+- unauthorized payout rejected
+- consumed-only payout path enforced
+- consumed-right payout is one-shot
+- refund schedule admin/config guards enforced
+- band assignment is consumed-only and one-shot
+- invalid signatures rejected
+- signer rotation enforced correctly
+- refund claim is one-shot
+- unused-right refund path and consumed-right refund path remain mutually exclusive
+- total terminal payout for one right does not exceed committed value
 
 ---
 

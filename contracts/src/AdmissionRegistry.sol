@@ -49,6 +49,7 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     error InvalidBondAmount();
     error RightAlreadyExists();
     error RightNotFunded();
+    error RightNotConsumed();
     error RefundTooEarly();
     error InvalidRecipient();
     error InvalidCommitment();
@@ -58,6 +59,9 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     error AdmissionHasherNotSet();
     error SecretDoesNotMatchCommitment();
     error RefundTransferFailed();
+    error UnauthorizedSettlementModule();
+    error ConsumedRefundAlreadyPaid();
+    error InvalidRefundAmount();
 
     // ============================================================
     // Events
@@ -67,6 +71,7 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     event AdmissionHasherSet(address indexed admissionHasher);
     event AdmissionBondSet(uint256 admissionBond);
     event LockPeriodSet(uint256 lockPeriod);
+    event IncentiveSettlementSet(address indexed incentiveSettlement);
 
     event AdmissionRightFunded(
         bytes32 indexed admissionCommitment,
@@ -74,11 +79,15 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
         uint256 unlockAt
     );
 
-    event AdmissionRightConsumed(
-        bytes32 indexed admissionCommitment
-    );
+    event AdmissionRightConsumed(bytes32 indexed admissionCommitment);
 
     event AdmissionRightRefunded(
+        bytes32 indexed admissionCommitment,
+        address indexed recipient,
+        uint256 amount
+    );
+
+    event ConsumedRightRefundPaid(
         bytes32 indexed admissionCommitment,
         address indexed recipient,
         uint256 amount
@@ -93,8 +102,19 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
 
     address public anonymousMembershipRegistry;
     address public admissionHasher;
+    address public incentiveSettlement;
 
     mapping(bytes32 => AdmissionRight) public rights;
+    mapping(bytes32 => bool) public consumedRefundPaid;
+
+    // ============================================================
+    // Modifiers
+    // ============================================================
+
+    modifier onlyIncentiveSettlement() {
+        if (msg.sender != incentiveSettlement) revert UnauthorizedSettlementModule();
+        _;
+    }
 
     // ============================================================
     // Initializer
@@ -150,6 +170,13 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     function setLockPeriod(uint256 newLockPeriod) external onlyOwner {
         lockPeriod = newLockPeriod;
         emit LockPeriodSet(newLockPeriod);
+    }
+
+    function setIncentiveSettlement(address newIncentiveSettlement) external onlyOwner {
+        if (newIncentiveSettlement == address(0)) revert ZeroAddress();
+
+        incentiveSettlement = newIncentiveSettlement;
+        emit IncentiveSettlementSet(newIncentiveSettlement);
     }
 
     // ============================================================
@@ -237,6 +264,34 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
         emit AdmissionRightRefunded(admissionCommitment, recipient, amount);
     }
 
+    /*
+        Narrow payout hook for consumed-right incentive refunds.
+
+        This function performs no incentive interpretation.
+        It only executes an authorized payout for a right that is already in
+        the Consumed state and has not already received a consumed-right refund.
+    */
+    function settleConsumedRightRefund(
+        bytes32 admissionCommitment,
+        address recipient,
+        uint256 amount
+    ) external onlyIncentiveSettlement nonReentrant {
+        if (recipient == address(0)) revert InvalidRecipient();
+
+        AdmissionRight storage right = rights[admissionCommitment];
+
+        if (Status(right.status) != Status.Consumed) revert RightNotConsumed();
+        if (consumedRefundPaid[admissionCommitment]) revert ConsumedRefundAlreadyPaid();
+        if (amount == 0 || amount > right.amount) revert InvalidRefundAmount();
+
+        consumedRefundPaid[admissionCommitment] = true;
+
+        (bool ok, ) = recipient.call{value: amount}("");
+        if (!ok) revert RefundTransferFailed();
+
+        emit ConsumedRightRefundPaid(admissionCommitment, recipient, amount);
+    }
+
     // ============================================================
     // Views
     // ============================================================
@@ -265,5 +320,5 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     // Storage gap
     // ============================================================
 
-    uint256[43] private __gap;
+    uint256[40] private __gap;
 }
