@@ -666,6 +666,231 @@ Test-covered properties:
 
 ---
 
+## 7.10 Settlement Routing via Anonymous Public Action (V1)
+
+### Purpose
+
+This section defines the minimal routing mechanism that connects an accepted anonymous public action to the consumed admission right that may later receive incentive settlement.
+
+This is a **routing-only extension** of the V1 incentive system. It does not alter:
+
+- anonymous membership semantics
+- ZK proof/nullifier model
+- epoch classification or hidden-function policy
+- band assignment or payout logic
+
+The action earns consequence. The right only receives settlement.
+
+---
+
+### Core Principle
+
+An accepted anonymous public action may carry a **routing-only settlement reference**:
+
+- `admissionCommitment`
+
+This reference:
+
+- identifies the consumed right that will receive settlement **if** later authorized
+- is **not** used in anonymity evaluation
+- is **not** part of the ZK proof model
+- does **not** imply participant identity, origin, or readiness
+- does **not** imply settlement outcome at action time
+
+It is a **routing association only**, not a provenance bridge.
+
+---
+
+### Action-Level Integration
+
+The petition-sign action path is extended to include:
+
+- `admissionCommitment` as a routing-only field
+
+Action acceptance follows a strict atomic sequence:
+
+1. validate anonymous public action (proof, root, nullifier)
+2. validate-and-record right-side linkage integrity via AdmissionRegistry
+3. record accepted action
+4. emit accepted-action event including `admissionCommitment`
+
+If any step fails:
+- the entire transaction reverts
+- no partial action or linkage state is recorded
+
+There are no intermediate states.
+
+---
+
+### Event Surface Policy
+
+The accepted anonymous public action event is extended:
+
+- add exactly one new field:
+  - `admissionCommitment`
+
+Constraints:
+
+- no new standalone linkage event family
+- no epoch, band, or settlement metadata
+- no explanatory or provenance fields
+- no language implying:
+  - participant origin
+  - right realization
+  - reward qualification
+
+The event remains **action-centered**.
+
+---
+
+### Storage Policy
+
+#### PetitionRegistry
+
+Stores:
+
+- accepted anonymous public action records
+- embedded routing-only `admissionCommitment` (if required)
+
+Does not store:
+
+- standalone right-link registries
+- epoch or settlement metadata
+- provenance or explanatory linkage structures
+
+Remains **action-centered**.
+
+---
+
+#### AdmissionRegistry
+
+Stores:
+
+- one minimal integrity marker per right indicating:
+  - the consumed right has already been action-linked once
+
+This marker:
+
+- enforces one-to-one routing integrity
+- does not imply settlement outcome
+- does not encode action history
+
+Does not store:
+
+- action metadata
+- petition/nullifier linkage history
+- epoch/band/context data
+- provenance semantics
+
+Remains **right-centered**.
+
+---
+
+### Authority Split
+
+- **PetitionRegistry**
+  - validates anonymous action
+  - initiates routing association
+  - emits accepted-action event
+
+- **AdmissionRegistry**
+  - validates right existence and lifecycle compatibility
+  - enforces one-time action linkage integrity
+  - records minimal linkage marker
+
+- **IncentiveSettlement**
+  - unchanged
+  - performs band assignment and payout downstream
+
+No circular dependencies.
+
+---
+
+### Interface Constraint
+
+AdmissionRegistry exposes a single narrow procedural interface:
+
+- accepts only `admissionCommitment`
+- validates and records one-time linkage atomically
+- callable only by PetitionRegistry
+- does not expose descriptive right-state getters
+
+No multi-call inspection or query-style interface is introduced.
+
+---
+
+### Observability Policy
+
+New linkage-integrity state is **not exposed via public getters**.
+
+Allowed observability:
+
+- accepted-action event including `admissionCommitment`
+- existing settlement-layer outputs
+
+Not allowed:
+
+- linkage convenience getters
+- right introspection APIs for linkage state
+- action-to-right query helpers
+- descriptive revert or diagnostic surfaces
+
+Minimal storage must not become a queryable bridge.
+
+---
+
+### Naming & Documentation Constraint
+
+All implementation surfaces must treat language as part of the privacy boundary.
+
+Allowed framing:
+
+- "routing-only settlement reference"
+- "consumed-right settlement target"
+- "linkage integrity"
+
+Forbidden framing:
+
+- participant origin / identity
+- actor/source right
+- reward qualification / eligibility
+- "right used by signer"
+- any narrative reconstructing actor from right
+
+Applies to:
+
+- code
+- comments
+- tests
+- docs
+- logs
+
+---
+
+### Non-Goals (Explicit)
+
+This routing layer does not:
+
+- create a participant identity bridge
+- expose action-to-identity mapping
+- evaluate anonymity quality
+- determine settlement outcome at action time
+- introduce new lifecycle states for rights
+- modify ZK or nullifier semantics
+
+---
+
+### Invariant Summary
+
+- one anonymous action → one consumed right (routing-only)
+- one consumed right → at most one action linkage
+- action acceptance and linkage are atomic
+- no partial or deferred linkage states
+- no explanatory metadata stored or exposed
+- settlement outcome remains downstream and coarse
+
+---
+
 # 8) Anonymous Membership Layer (Current Canonical Model)
 
 ## Identity model
