@@ -1378,6 +1378,308 @@ All architectural changes must be recorded in `STATE.md` first.
 
 ---
 
+# 21) Position A — Anti-Abuse Objective & Secret Continuity Discipline (Locked)
+
+This section defines the bounded anti-abuse model and secret continuity rules for the M2 privacy system.
+
+It does not modify:
+
+- ZK circuit
+- nullifier model
+- leaf derivation
+- contract interfaces
+- backend role
+
+It clarifies **what the system guarantees**, **what it does not guarantee**, and **how identity continuity is handled operationally**.
+
+---
+
+## 21.1 Anti-Abuse Objective (Position A)
+
+The system guarantees:
+
+> one sign per anonymous member per petition via nullifier enforcement
+
+This guarantee is:
+
+- enforced on-chain
+- independent of frontend or client
+- derived from the nullifier model:
+  - `nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)`
+
+---
+
+### Explicit non-goals
+
+The system does **not** guarantee:
+
+- one identity per wallet
+- one identity per human
+- prevention of all Sybil behavior
+- recovery of anonymous identity without the original secret
+- wallet-level uniqueness hidden behind anonymity
+
+---
+
+### Abuse resistance model
+
+Resistance to repeated participation is provided by:
+
+1. **Economic admission friction**
+   - funded admission rights
+   - one-time activation → one membership leaf
+   - cost / lock / refund structure
+
+2. **Secret continuity discipline**
+   - preventing accidental identity replacement
+   - preventing silent re-enrollment after secret loss
+
+The system must not rely on:
+
+- wallet binding
+- backend memory
+- heuristic identity reconstruction
+
+---
+
+## 21.2 Identity Model Clarification
+
+Anonymous identity is defined strictly as:
+
+> possession of `memberSecret` → derivation of `leaf` → membership inclusion
+
+Canonical:
+
+- `leaf = Poseidon1(memberSecret)`
+
+The leaf is the sole anonymous identity primitive.
+
+---
+
+### Continuity rule
+
+> continuity of identity = possession of the same `memberSecret`
+
+Anything else is a different identity.
+
+---
+
+## 21.3 Secret Continuity Invariants
+
+The following invariants are locked:
+
+### (1) Secret-possession continuity
+
+Possession of the original `memberSecret` is the only valid basis for identity continuity.
+
+---
+
+### (2) Restoration-only-by-secret
+
+Identity restoration is possible only by reintroducing the original secret.
+
+No wallet, backend, or heuristic recovery is allowed.
+
+---
+
+### (3) New-secret-new-identity
+
+Any different `memberSecret` defines a different anonymous identity.
+
+---
+
+### (4) Enrollment-attaches-to-present-secret
+
+Enrollment always applies only to the currently active secret.
+
+It must never imply restoration.
+
+---
+
+### (5) Observable-state-only behavior
+
+System behavior must depend only on:
+
+- secret present / absent
+- derived leaf in tree or not
+- nullifier usage
+
+No lifecycle inference is allowed.
+
+---
+
+### (6) No silent identity replacement
+
+The system must not silently convert:
+
+lost identity → new identity
+
+without explicit operator action.
+
+---
+
+## 21.4 Minimal Secret Continuity Toolkit
+
+The system supports exactly four identity-management operations:
+
+### 1. Export
+
+- copies `memberSecret` to operator custody
+- preserves identity continuity
+- does not modify identity
+
+---
+
+### 2. Import
+
+- sets the active secret to supplied material
+- may restore identity **only if** the original secret is provided
+- never proves continuity beyond present possession
+
+---
+
+### 3. Create
+
+- generates new `memberSecret`
+- establishes new candidate identity
+- never implies recovery or continuation
+
+---
+
+### 4. Enroll
+
+- converts current secret-derived leaf into an enrolled identity
+- valid only when leaf is not already in tree
+- always creates an identity for the present secret
+- never restores prior identity
+
+---
+
+## 21.5 Operator Flow Rules
+
+The system exposes only the following flows:
+
+- export
+- import
+- create
+- enroll
+- sign
+
+---
+
+### State-based rules
+
+#### O0 — no secret present
+
+Allowed:
+- import
+- create
+
+Blocked:
+- export
+- enroll
+- sign
+
+---
+
+#### O1 — secret present, leaf not in tree
+
+Allowed:
+- export
+- import (replaces active secret)
+- create (replaces active secret)
+- enroll
+
+Blocked:
+- sign
+
+---
+
+#### O2 — secret present, leaf in tree
+
+Allowed:
+- export
+- import/create (explicit replacement only)
+- sign (if nullifier unused)
+
+Blocked:
+- enroll
+
+---
+
+### Signing constraint
+
+Signing is allowed only when:
+
+- secret present
+- leaf in tree
+- nullifier unused for petition
+
+---
+
+## 21.6 Hard Constraints
+
+The following are strictly forbidden:
+
+### (1) No implicit secret creation
+Secrets must never be generated as a side-effect of normal actions.
+
+---
+
+### (2) No implicit enrollment
+Enrollment must always be an explicit operator action.
+
+---
+
+### (3) No hidden secret replacement
+Active secret material must not change invisibly.
+
+---
+
+### (4) No recovery-by-enrollment
+Enrollment must never be framed or treated as identity recovery.
+
+---
+
+### (5) No wallet-based continuity
+Wallet identity must not be used to infer or reconstruct anonymous identity.
+
+---
+
+## 21.7 Identity Boundary Principle
+
+The system supports exactly two identity outcomes:
+
+1. **Continue existing identity**
+   - only by possessing the same secret
+
+2. **Create new identity**
+   - by using a different secret and enrolling it
+
+The system must never blur these outcomes.
+
+---
+
+## 21.8 Privacy Preservation Constraint
+
+All hardening measures must:
+
+- avoid creating new linkage surfaces
+- avoid cross-layer join keys
+- avoid backend identity inference
+- avoid persistent operator provenance
+
+---
+
+## 21.9 Summary
+
+- One sign per anonymous member is enforced cryptographically.  
+- Repeated participation is constrained economically and operationally.  
+- Identity continuity is defined solely by secret possession.  
+- The system must not infer, reconstruct, or simulate identity continuity.
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
