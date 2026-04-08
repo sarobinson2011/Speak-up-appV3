@@ -28,7 +28,7 @@ const VERIFIER_ABI = [
 ];
 
 const REGISTRY_SIGN_ABI = [
-  'function signPetitionWithZKProof(uint256 petitionId, bytes32 nullifier, uint256[2] pA, uint256[2][2] pB, uint256[2] pC, uint256[3] pubSignals) external'
+  'function signPetitionWithZKProof(uint256 petitionId, bytes32 nullifier, bytes32 admissionCommitment, uint256[2] pA, uint256[2][2] pB, uint256[2] pC, uint256[3] pubSignals) external'
 ];
 
 const REGISTRY_VIEW_ABI = [
@@ -107,6 +107,7 @@ export function M2SignButton({
   petitionId,
   membershipPath,
   memberSecret,
+  admissionCommitment,
   alreadySigned = false,
   disabled = false,
   onSuccess,
@@ -159,6 +160,10 @@ export function M2SignButton({
         (!isHexString(memberSecret) && !isDecString(memberSecret))
       ) {
         throw new Error('memberSecret missing/invalid (expected hex 0x… or decimal string)');
+      }
+
+      if (!isHex32(admissionCommitment)) {
+        throw new Error('admissionCommitment missing/invalid (expected bytes32 hex)');
       }
 
       setAlreadySignedLocal(false);
@@ -285,6 +290,7 @@ export function M2SignButton({
       const relayPayload = {
         petitionId: pidBI.toString(),
         nullifier: nullifierBytes32,
+        admissionCommitment,
         pA,
         pB,
         pC,
@@ -317,7 +323,7 @@ export function M2SignButton({
       }
 
       setStatus('success');
-      setAlreadySignedLocal(true); // now true for this petition+nullifier
+      setAlreadySignedLocal(true);
       onSuccess?.({ txHash: data.txHash, nullifier: nullifierBytes32 });
     } catch (error) {
       console.error('M2SignButton error:', error);

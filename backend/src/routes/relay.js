@@ -75,7 +75,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
 
   const registryAbi = [
     "function hasSignedPetition(uint256,bytes32) view returns (bool)",
-    "function signPetitionWithZKProof(uint256,bytes32,uint256[2],uint256[2][2],uint256[2],uint256[3])"
+    "function signPetitionWithZKProof(uint256,bytes32,bytes32,uint256[2],uint256[2][2],uint256[2],uint256[3])"
   ];
 
   const registry = new ethers.Contract(
@@ -166,6 +166,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       const {
         petitionId,
         nullifier,
+        admissionCommitment,
         pA,
         pB,
         pC,
@@ -190,6 +191,13 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         !/^0x[0-9a-fA-F]{64}$/.test(nullifier)
       ) {
         return res.status(400).json({ error: "invalid nullifier" });
+      }
+
+      if (
+        typeof admissionCommitment !== "string" ||
+        !/^0x[0-9a-fA-F]{64}$/.test(admissionCommitment)
+      ) {
+        return res.status(400).json({ error: "invalid admissionCommitment" });
       }
 
       const isHex = (v) => typeof v === "string" && /^0x[0-9a-fA-F]+$/.test(v);
@@ -256,6 +264,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       const tx = await registry.signPetitionWithZKProof(
         BigInt(petitionId),
         nullifier,
+        admissionCommitment,
         pA,
         pB,
         pC,

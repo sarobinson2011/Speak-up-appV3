@@ -97,6 +97,17 @@ export default function PetitionDetails({
     [account]
   );
 
+  const currentAdmissionCommitment = useMemo(() => {
+    const pendingAdmissionSecret = safeGetLocalStorage(currentPendingAdmissionKey);
+    if (!isHex32(pendingAdmissionSecret)) return null;
+
+    try {
+      return bigIntToHex32(poseidon1([BigInt(pendingAdmissionSecret)]));
+    } catch {
+      return null;
+    }
+  }, [currentPendingAdmissionKey]);
+
   const uiLeafHex = useMemo(() => {
     if (!memberSecretBI) return null;
     try {
@@ -500,6 +511,7 @@ export default function PetitionDetails({
             petitionId={petitionId}
             membershipPath={membershipPath}
             memberSecret={memberSecretBI ? memberSecretBI.toString() : ''}
+            admissionCommitment={currentAdmissionCommitment}
             alreadySigned={resolvedHasSignedM2}
             disabled={
               resolvedHasSignedM2 ||
