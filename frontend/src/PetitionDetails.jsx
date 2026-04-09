@@ -6,7 +6,12 @@ import { poseidon1, poseidon3 } from 'poseidon-lite';
 import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL, BACKEND_URL } from './config';
 import { M2SignButton } from './components/M2SignButton';
 import './PetitionDetails.css';
-import { loadMemberSecret } from './m2Identity';
+import {
+  loadMemberSecret,
+  createMemberSecret,
+  importMemberSecret,
+  exportMemberSecret
+} from './m2Identity';
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
 
@@ -88,14 +93,22 @@ export default function PetitionDetails({
   const [membershipPath, setMembershipPath] = useState(null);
   const [membershipPathLoading, setMembershipPathLoading] = useState(false);
 
-  // Identity: localStorage-only
-  const memberSecretBI = useMemo(() => loadMemberSecret(account), [account]);
+  // Identity / operator actions
+  const [identityVersion, setIdentityVersion] = useState(0);
+  const [secretActionError, setSecretActionError] = useState('');
+  const [secretImportText, setSecretImportText] = useState('');
+  const [secretExportText, setSecretExportText] = useState('');
+
+  // Admission bond safety
+  const [admissionBondWei, setAdmissionBondWei] = useState(null);
+  const [admissionBondEth, setAdmissionBondEth] = useState('');
+  const [bondSafetyError, setBondSafetyError] = useState('');
+
+  // Identity: localStorage-only, wallet-agnostic
+  const memberSecretBI = useMemo(() => loadMemberSecret(), [identityVersion, account]);
   const secretPresent = Boolean(memberSecretBI);
 
-  const currentPendingAdmissionKey = useMemo(
-    () => pendingAdmissionKey(account),
-    [account]
-  );
+  const currentPendingAdmissionKey = useMemo(() => pendingAdmissionKey(account), [account]);
 
   const currentAdmissionCommitment = useMemo(() => {
     const pendingAdmissionSecret = safeGetLocalStorage(currentPendingAdmissionKey);
@@ -129,6 +142,49 @@ export default function PetitionDetails({
     }
   }, [membershipPath, memberSecretBI]);
 
+  function refreshIdentity() {
+    setIdentityVersion((v) => v + 1);
+  }
+
+  function handleCreateSecret() {
+    setSecretActionError('');
+    setSecretExportText('');
+
+    try {
+      createMemberSecret();
+      setMembershipPath(null);
+      refreshIdentity();
+    } catch (e) {
+      setSecretActionError(e?.message || String(e));
+    }
+  }
+
+  function handleImportSecret() {
+    setSecretActionError('');
+    setSecretExportText('');
+
+    try {
+      importMemberSecret(secretImportText);
+      setSecretImportText('');
+      setMembershipPath(null);
+      refreshIdentity();
+    } catch (e) {
+      setSecretActionError(e?.message || String(e));
+    }
+  }
+
+  function handleExportSecret() {
+    setSecretActionError('');
+
+    try {
+      const exported = exportMemberSecret();
+      if (!exported) throw new Error('No active secret to export.');
+      setSecretExportText(exported);
+    } catch (e) {
+      setSecretActionError(e?.message || String(e));
+    }
+  }
+
   function logM2Preflight(tag = 'M2_PREFLIGHT') {
     try {
       console.log(`[${tag}]`, {
@@ -143,7 +199,10 @@ export default function PetitionDetails({
         index: membershipPath?.index,
         siblingsLen: membershipPath?.siblings?.length,
         pathBitsLen: membershipPath?.pathBits?.length,
-        leafMatches
+        leafMatches,
+        admissionBondWei: admissionBondWei ? admissionBondWei.toString() : null,
+        admissionBondEth,
+        bondSafetyError
       });
     } catch (e) {
       console.warn('[M2_PREFLIGHT] failed to log', e);
@@ -177,16 +236,57 @@ export default function PetitionDetails({
     }
   }
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadAdmissionBond() {
+      try {
+        const provider = new ethers.JsonRpcProvider(RPC_URL);
+        const admission = new ethers.Contract(
+          ADMISSION_REGISTRY_ADDRESS,
+          ADMISSION_REGISTRY_ABI,
+          provider
+        );
+        const bond = await admission.admissionBond();
+
+        if (cancelled) return;
+
+        setAdmissionBondWei(bond);
+        setAdmissionBondEth(ethers.formatEther(bond));
+
+        const maxExpectedWei = ethers.parseEther('0.01');
+        if (bond > maxExpectedWei) {
+          setBondSafetyError(
+            `Enrollment blocked: live on-chain bond is ${ethers.formatEther(
+              bond
+            )} ETH, which exceeds the current safe frontend threshold.`
+          );
+        } else {
+          setBondSafetyError('');
+        }
+      } catch (e) {
+        if (cancelled) return;
+        setBondSafetyError(`Failed to load live admission bond: ${e?.message || String(e)}`);
+      }
+    }
+
+    loadAdmissionBond();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Fetch membership path locally by current leaf
   useEffect(() => {
-    if (!account || !uiLeafHex) {
+    if (!uiLeafHex) {
       setMembershipPath(null);
       return;
     }
 
     fetchMembershipPathByLeaf(uiLeafHex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account, uiLeafHex]);
+  }, [uiLeafHex]);
 
   // Load petition + signed state whenever core inputs change
   useEffect(() => {
@@ -207,7 +307,15 @@ export default function PetitionDetails({
   useEffect(() => {
     logM2Preflight('M2_PREFLIGHT');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [petitionId, membershipPath, memberSecretBI, leafMatches]);
+  }, [
+    petitionId,
+    membershipPath,
+    memberSecretBI,
+    leafMatches,
+    admissionBondWei,
+    admissionBondEth,
+    bondSafetyError
+  ]);
 
   async function loadPetitionDetails(isCancelled) {
     try {
@@ -225,7 +333,8 @@ export default function PetitionDetails({
         : new Date().toISOString();
 
       const metadataURI =
-        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) || '';
+        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) ||
+        '';
 
       setMetadata({
         petitionId,
@@ -288,8 +397,8 @@ export default function PetitionDetails({
     try {
       if (!window.ethereum) throw new Error('MetaMask not found');
       if (!account) throw new Error('Wallet not connected');
-      if (!memberSecretBI) throw new Error('Secret missing for this wallet');
-      if (!uiLeafHex) throw new Error('Failed to derive membership leaf for this wallet');
+      if (!memberSecretBI) throw new Error('No active secret on this device/browser');
+      if (!uiLeafHex) throw new Error('Failed to derive membership leaf from the active secret');
 
       const provider = new ethers.BrowserProvider(window.ethereum);
       const s = await provider.getSigner();
@@ -314,9 +423,7 @@ export default function PetitionDetails({
         safeSetLocalStorage(currentPendingAdmissionKey, admissionSecret);
       }
 
-      const admissionCommitment = bigIntToHex32(
-        poseidon1([BigInt(admissionSecret)])
-      );
+      const admissionCommitment = bigIntToHex32(poseidon1([BigInt(admissionSecret)]));
 
       const status = Number(await admission.getStatus(admissionCommitment));
 
@@ -328,6 +435,16 @@ export default function PetitionDetails({
 
       if (status === 0) {
         const bond = await admission.admissionBond();
+
+        const maxExpectedWei = ethers.parseEther('0.01');
+        if (bond > maxExpectedWei) {
+          throw new Error(
+            `Enrollment blocked for safety: live on-chain bond is ${ethers.formatEther(
+              bond
+            )} ETH, above allowed frontend threshold.`
+          );
+        }
+
         const fundTx = await admission.fundAdmissionRight(admissionCommitment, {
           value: bond
         });
@@ -468,38 +585,141 @@ export default function PetitionDetails({
                 ) : membershipPathLoading ? (
                   <div>Loading membership path…</div>
                 ) : !secretPresent ? (
-                  <div>Secret missing for this wallet (cannot sign from this device).</div>
-                ) : !membershipPath ? (
                   <>
-                    <div>Not enrolled for this wallet.</div>
-                    <div style={{ marginTop: 6 }}>
-                      Enrollment is one-time and requires a refundable bond (0.001 ETH on Aurora testnet).
-                    </div>
+                    <div>No active secret on this device/browser.</div>
 
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <button
-                        onClick={enrollMembershipOnce}
-                        disabled={enrolling || !secretPresent || resolvedHasSignedM2}
+                        onClick={handleCreateSecret}
                         style={{
                           padding: '10px 12px',
                           borderRadius: 8,
                           border: '1px solid #e5e7eb',
-                          background: enrolling ? '#f3f4f6' : '#111827',
-                          color: enrolling ? '#6b7280' : '#ffffff',
-                          cursor: enrolling ? 'not-allowed' : 'pointer',
+                          background: '#111827',
+                          color: '#ffffff',
+                          cursor: 'pointer',
                           fontWeight: 600
                         }}
                       >
-                        {enrolling ? 'Enrolling…' : 'Enroll (one-time)'}
+                        Create new secret
+                      </button>
+
+                      <textarea
+                        value={secretImportText}
+                        onChange={(e) => setSecretImportText(e.target.value)}
+                        placeholder="Paste existing secret to import"
+                        rows={3}
+                        style={{
+                          width: '100%',
+                          padding: 10,
+                          borderRadius: 8,
+                          border: '1px solid #d1d5db',
+                          fontFamily: 'monospace'
+                        }}
+                      />
+
+                      <button
+                        onClick={handleImportSecret}
+                        disabled={!secretImportText.trim()}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
+                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
+                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Import secret
+                      </button>
+
+                      {secretActionError ? (
+                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
+                      ) : null}
+                    </div>
+                  </>
+                ) : !membershipPath ? (
+                  <>
+                    <div>Current secret is not enrolled.</div>
+                    <div style={{ marginTop: 6 }}>
+                      Enrolling this secret creates a new anonymous identity for this secret only.
+                    </div>
+                    <div style={{ marginTop: 6 }}>
+                      Enrollment is one-time and requires a refundable on-chain bond.
+                    </div>
+                    {admissionBondEth ? (
+                      <div style={{ marginTop: 6 }}>
+                        Live bond from contract: <strong>{admissionBondEth} ETH</strong>
+                      </div>
+                    ) : null}
+                    {bondSafetyError ? (
+                      <div style={{ marginTop: 6, color: '#b91c1c' }}>{bondSafetyError}</div>
+                    ) : null}
+
+                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <button
+                        onClick={handleExportSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#ffffff',
+                          color: '#111827',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Export current secret
+                      </button>
+
+                      {secretExportText ? (
+                        <textarea
+                          readOnly
+                          value={secretExportText}
+                          rows={3}
+                          style={{
+                            width: '100%',
+                            padding: 10,
+                            borderRadius: 8,
+                            border: '1px solid #d1d5db',
+                            fontFamily: 'monospace'
+                          }}
+                        />
+                      ) : null}
+
+                      <button
+                        onClick={enrollMembershipOnce}
+                        disabled={
+                          enrolling ||
+                          !secretPresent ||
+                          resolvedHasSignedM2 ||
+                          Boolean(bondSafetyError)
+                        }
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: enrolling || bondSafetyError ? '#f3f4f6' : '#111827',
+                          color: enrolling || bondSafetyError ? '#6b7280' : '#ffffff',
+                          cursor: enrolling || bondSafetyError ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        {enrolling ? 'Enrolling…' : 'Enroll current secret'}
                       </button>
 
                       {enrollError ? (
                         <div style={{ color: '#b91c1c' }}>Enroll failed: {enrollError}</div>
                       ) : null}
+
+                      {secretActionError ? (
+                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
+                      ) : null}
                     </div>
                   </>
                 ) : !leafMatches ? (
-                  <div>Secret mismatch (wallet enrolled with different secret). Use original device/restore secret.</div>
+                  <div>Active secret does not match the enrolled leaf. Restore/import the original secret.</div>
                 ) : (
                   <div>Ready.</div>
                 )}
@@ -548,6 +768,40 @@ export default function PetitionDetails({
               alert('M2 signing failed: ' + (error?.message || String(error)));
             }}
           />
+
+          {secretPresent ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 8 }}>
+              <button
+                onClick={handleExportSecret}
+                style={{
+                  padding: '10px 12px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#ffffff',
+                  color: '#111827',
+                  cursor: 'pointer',
+                  fontWeight: 600
+                }}
+              >
+                Export active secret
+              </button>
+
+              {secretExportText ? (
+                <textarea
+                  readOnly
+                  value={secretExportText}
+                  rows={3}
+                  style={{
+                    width: '100%',
+                    padding: 10,
+                    borderRadius: 8,
+                    border: '1px solid #d1d5db',
+                    fontFamily: 'monospace'
+                  }}
+                />
+              ) : null}
+            </div>
+          ) : null}
 
           {m2Nullifier ? (
             <div

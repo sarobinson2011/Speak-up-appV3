@@ -1,7 +1,6 @@
 // frontend/src/App.jsx (M2-only)
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { ensureMemberSecret } from './m2Identity';
 import Petitions from './Petitions';
 import Analytics from './Analytics';
 import HomePage from './HomePage';
@@ -43,11 +42,6 @@ function App() {
     setSigner(null);
     // M2-only: no verifiedEmail/JWT to preserve
   }
-
-  useEffect(() => {
-    if (!account) return;
-    ensureMemberSecret(account);
-  }, [account]);
 
   // Keep account in sync if user changes accounts in MetaMask
   useEffect(() => {

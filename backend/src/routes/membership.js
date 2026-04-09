@@ -113,43 +113,5 @@ export function makeMembershipRouter(indexer) {
     }
   });
 
-  // ---------------------------
-  // Manual enrollment (DEV / MVP ONLY)
-  // ---------------------------
-  router.post("/enroll", async (req, res) => {
-    try {
-      const { wallet, leaf } = req.body || {};
-
-      if (!wallet || !leaf) {
-        return res.status(400).json({ error: "wallet and leaf required" });
-      }
-
-      if (!wallet.startsWith("0x") || wallet.length < 10) {
-        return res.status(400).json({ error: "invalid wallet" });
-      }
-
-      if (!leaf.startsWith("0x") || leaf.length !== 66) {
-        return res.status(400).json({ error: "invalid leaf (must be 32-byte hex)" });
-      }
-
-      const walletLower = wallet.toLowerCase();
-
-      await indexer.addManualMember(walletLower, leaf);
-
-      return res.json({
-        success: true,
-        wallet: walletLower,
-        leaf,
-        root: indexer.root
-      });
-    } catch (e) {
-      console.error("Enroll error:", e);
-      return res.status(500).json({
-        error: "internal",
-        details: e?.message || String(e)
-      });
-    }
-  });
-
   return router;
 }
