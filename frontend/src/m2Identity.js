@@ -73,9 +73,11 @@ export function hasMemberSecret() {
   return loadMemberSecret() !== null;
 }
 
-export function createMemberSecret() {
+export function createMemberSecret(options = {}) {
+  const { replaceExisting = false } = options;
   const existing = loadMemberSecret();
-  if (existing !== null) {
+
+  if (existing !== null && !replaceExisting) {
     throw new Error('Active secret already exists. Creating a new one would replace the current anonymous identity.');
   }
 

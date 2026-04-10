@@ -151,7 +151,18 @@ export default function PetitionDetails({
     setSecretExportText('');
 
     try {
-      createMemberSecret();
+      if (secretPresent) {
+        const confirmed = window.confirm(
+          'Create a new secret and replace the current anonymous identity on this device? This will switch you away from the current identity until you restore the original secret.'
+        );
+
+        if (!confirmed) return;
+
+        createMemberSecret({ replaceExisting: true });
+      } else {
+        createMemberSecret();
+      }
+
       setMembershipPath(null);
       refreshIdentity();
     } catch (e) {
@@ -565,7 +576,7 @@ export default function PetitionDetails({
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
-          {(!canM2Sign || (!membershipPath && secretPresent && !resolvedHasSignedM2)) && (
+          {(
             <div
               style={{
                 fontSize: 13,
@@ -586,7 +597,7 @@ export default function PetitionDetails({
                   <div>Loading membership path…</div>
                 ) : !secretPresent ? (
                   <>
-                    <div>No active secret on this device/browser.</div>
+                    <div>No identity present.</div>
 
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <button
@@ -641,7 +652,7 @@ export default function PetitionDetails({
                   </>
                 ) : !membershipPath ? (
                   <>
-                    <div>Current secret is not enrolled.</div>
+                    <div>Identity present, not enrolled.</div>
                     <div style={{ marginTop: 6 }}>
                       Enrolling this secret creates a new anonymous identity for this secret only.
                     </div>
@@ -658,6 +669,51 @@ export default function PetitionDetails({
                     ) : null}
 
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <button
+                        onClick={handleCreateSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#111827',
+                          color: '#ffffff',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Create new secret
+                      </button>
+
+                      <textarea
+                        value={secretImportText}
+                        onChange={(e) => setSecretImportText(e.target.value)}
+                        placeholder="Paste existing secret to import"
+                        rows={3}
+                        style={{
+                          width: '100%',
+                          padding: 10,
+                          borderRadius: 8,
+                          border: '1px solid #d1d5db',
+                          fontFamily: 'monospace'
+                        }}
+                      />
+
+                      <button
+                        onClick={handleImportSecret}
+                        disabled={!secretImportText.trim()}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
+                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
+                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Import secret
+                      </button>
+
                       <button
                         onClick={handleExportSecret}
                         style={{
@@ -719,9 +775,175 @@ export default function PetitionDetails({
                     </div>
                   </>
                 ) : !leafMatches ? (
-                  <div>Active secret does not match the enrolled leaf. Restore/import the original secret.</div>
+                  <>
+                    <div>Active secret does not match the enrolled leaf. Restore/import the original secret.</div>
+
+                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <button
+                        onClick={handleCreateSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#111827',
+                          color: '#ffffff',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Create new secret
+                      </button>
+
+                      <textarea
+                        value={secretImportText}
+                        onChange={(e) => setSecretImportText(e.target.value)}
+                        placeholder="Paste existing secret to import"
+                        rows={3}
+                        style={{
+                          width: '100%',
+                          padding: 10,
+                          borderRadius: 8,
+                          border: '1px solid #d1d5db',
+                          fontFamily: 'monospace'
+                        }}
+                      />
+
+                      <button
+                        onClick={handleImportSecret}
+                        disabled={!secretImportText.trim()}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
+                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
+                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Import secret
+                      </button>
+
+                      <button
+                        onClick={handleExportSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#ffffff',
+                          color: '#111827',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Export current secret
+                      </button>
+
+                      {secretExportText ? (
+                        <textarea
+                          readOnly
+                          value={secretExportText}
+                          rows={3}
+                          style={{
+                            width: '100%',
+                            padding: 10,
+                            borderRadius: 8,
+                            border: '1px solid #d1d5db',
+                            fontFamily: 'monospace'
+                          }}
+                        />
+                      ) : null}
+
+                      {secretActionError ? (
+                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
+                      ) : null}
+                    </div>
+                  </>
                 ) : (
-                  <div>Ready.</div>
+                  <>
+                    <div>Identity enrolled and usable.</div>
+
+                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <button
+                        onClick={handleCreateSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#111827',
+                          color: '#ffffff',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Create new secret
+                      </button>
+
+                      <textarea
+                        value={secretImportText}
+                        onChange={(e) => setSecretImportText(e.target.value)}
+                        placeholder="Paste existing secret to import"
+                        rows={3}
+                        style={{
+                          width: '100%',
+                          padding: 10,
+                          borderRadius: 8,
+                          border: '1px solid #d1d5db',
+                          fontFamily: 'monospace'
+                        }}
+                      />
+
+                      <button
+                        onClick={handleImportSecret}
+                        disabled={!secretImportText.trim()}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
+                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
+                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Import secret
+                      </button>
+
+                      <button
+                        onClick={handleExportSecret}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '1px solid #e5e7eb',
+                          background: '#ffffff',
+                          color: '#111827',
+                          cursor: 'pointer',
+                          fontWeight: 600
+                        }}
+                      >
+                        Export current secret
+                      </button>
+
+                      {secretExportText ? (
+                        <textarea
+                          readOnly
+                          value={secretExportText}
+                          rows={3}
+                          style={{
+                            width: '100%',
+                            padding: 10,
+                            borderRadius: 8,
+                            border: '1px solid #d1d5db',
+                            fontFamily: 'monospace'
+                          }}
+                        />
+                      ) : null}
+
+                      {secretActionError ? (
+                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
+                      ) : null}
+                    </div>
+                  </>
                 )}
               </div>
             </div>
@@ -768,40 +990,6 @@ export default function PetitionDetails({
               alert('M2 signing failed: ' + (error?.message || String(error)));
             }}
           />
-
-          {secretPresent ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 8 }}>
-              <button
-                onClick={handleExportSecret}
-                style={{
-                  padding: '10px 12px',
-                  borderRadius: 8,
-                  border: '1px solid #e5e7eb',
-                  background: '#ffffff',
-                  color: '#111827',
-                  cursor: 'pointer',
-                  fontWeight: 600
-                }}
-              >
-                Export active secret
-              </button>
-
-              {secretExportText ? (
-                <textarea
-                  readOnly
-                  value={secretExportText}
-                  rows={3}
-                  style={{
-                    width: '100%',
-                    padding: 10,
-                    borderRadius: 8,
-                    border: '1px solid #d1d5db',
-                    fontFamily: 'monospace'
-                  }}
-                />
-              ) : null}
-            </div>
-          ) : null}
 
           {m2Nullifier ? (
             <div

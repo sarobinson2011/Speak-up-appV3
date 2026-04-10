@@ -65,6 +65,7 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     error InvalidRefundAmount();
     error NotPetitionRegistry();
     error RightAlreadyActionLinked();
+    error InvalidLockPeriod();
 
     // ============================================================
     // Events
@@ -156,11 +157,13 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
     }
 
     function setAdmissionBond(uint256 newAdmissionBond) external onlyOwner {
+        if (newAdmissionBond == 0) revert InvalidBondAmount();
         admissionBond = newAdmissionBond;
         emit AdmissionBondSet(newAdmissionBond);
     }
 
     function setLockPeriod(uint256 newLockPeriod) external onlyOwner {
+        if (newLockPeriod == 0) revert InvalidLockPeriod();
         lockPeriod = newLockPeriod;
         emit LockPeriodSet(newLockPeriod);
     }

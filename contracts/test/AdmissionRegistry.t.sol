@@ -175,4 +175,94 @@ contract AdmissionRegistryTest is Test {
         vm.expectRevert(AdmissionRegistry.RightNotFunded.selector);
         admission.refundAdmissionRight(secret, recipient);
     }
+
+function testSetAdmissionBond_RevertsForNonOwner() public {
+    vm.prank(user);
+    vm.expectRevert();
+    admission.setAdmissionBond(2 ether);
+}
+
+function testSetAdmissionBond_RevertsForZero() public {
+    vm.expectRevert(AdmissionRegistry.InvalidBondAmount.selector);
+    admission.setAdmissionBond(0);
+}
+
+function testSetAdmissionBond_Succeeds() public {
+    uint256 newBond = 2 ether;
+
+    admission.setAdmissionBond(newBond);
+
+    assertEq(admission.admissionBond(), newBond);
+}
+
+function testSetAdmissionBond_AffectsOnlyFutureRights() public {
+    bytes32 secret1 = bytes32(uint256(111));
+    bytes32 secret2 = bytes32(uint256(222));
+    bytes32 commitment1 = _commit(secret1);
+    bytes32 commitment2 = _commit(secret2);
+
+    uint256 oldBond = BOND;
+    uint256 newBond = 2 ether;
+
+    vm.prank(user);
+    admission.fundAdmissionRight{value: oldBond}(commitment1);
+
+    admission.setAdmissionBond(newBond);
+
+    vm.prank(user);
+    admission.fundAdmissionRight{value: newBond}(commitment2);
+
+    (uint256 amount1,,,) = admission.rights(commitment1);
+    (uint256 amount2,,,) = admission.rights(commitment2);
+
+    assertEq(amount1, oldBond);
+    assertEq(amount2, newBond);
+}
+
+function testSetLockPeriod_RevertsForNonOwner() public {
+    vm.prank(user);
+    vm.expectRevert();
+    admission.setLockPeriod(1 days);
+}
+
+function testSetLockPeriod_RevertsForZero() public {
+    vm.expectRevert(AdmissionRegistry.InvalidLockPeriod.selector);
+    admission.setLockPeriod(0);
+}
+
+function testSetLockPeriod_Succeeds() public {
+    uint256 newLockPeriod = 3 days;
+
+    admission.setLockPeriod(newLockPeriod);
+
+    assertEq(admission.lockPeriod(), newLockPeriod);
+}
+
+function testSetLockPeriod_AffectsOnlyFutureRights() public {
+    bytes32 secret1 = bytes32(uint256(111));
+    bytes32 secret2 = bytes32(uint256(222));
+    bytes32 commitment1 = _commit(secret1);
+    bytes32 commitment2 = _commit(secret2);
+
+    uint256 oldLockPeriod = LOCK_PERIOD;
+    uint256 newLockPeriod = 3 days;
+
+    vm.prank(user);
+    admission.fundAdmissionRight{value: BOND}(commitment1);
+
+    (, uint256 fundedAt1, uint256 unlockAt1,) = admission.rights(commitment1);
+    assertEq(unlockAt1, fundedAt1 + oldLockPeriod);
+
+    admission.setLockPeriod(newLockPeriod);
+
+    vm.prank(user);
+    admission.fundAdmissionRight{value: BOND}(commitment2);
+
+    (, uint256 fundedAt2, uint256 unlockAt2,) = admission.rights(commitment2);
+    assertEq(unlockAt2, fundedAt2 + newLockPeriod);
+
+    (, , uint256 unlockAt1After,) = admission.rights(commitment1);
+    assertEq(unlockAt1After, unlockAt1);
+}
+
 }
