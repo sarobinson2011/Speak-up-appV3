@@ -659,6 +659,9 @@ export default function PetitionDetails({
                     <div style={{ marginTop: 6 }}>
                       Enrollment is one-time and requires a refundable on-chain bond.
                     </div>
+                    <div style={{ marginTop: 6 }}>
+                      Creating a new secret replaces the active identity on this device.
+                    </div> 
                     {admissionBondEth ? (
                       <div style={{ marginTop: 6 }}>
                         Live bond from contract: <strong>{admissionBondEth} ETH</strong>
@@ -863,6 +866,10 @@ export default function PetitionDetails({
                   <>
                     <div>Identity enrolled and usable.</div>
 
+                    <div style={{ marginTop: 6 }}>
+                      Creating a new secret replaces the active identity on this device.
+                    </div>
+
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <button
                         onClick={handleCreateSecret}
@@ -948,6 +955,36 @@ export default function PetitionDetails({
               </div>
             </div>
           )}
+
+          {secretPresent && !membershipPath && !resolvedHasSignedM2 ? (
+            <div
+              style={{
+                fontSize: 13,
+                color: '#92400e',
+                background: '#fff7ed',
+                padding: 10,
+                borderRadius: 6,
+                border: '1px solid #fed7aa'
+              }}
+            >
+              Signing is unavailable until this identity is enrolled.
+            </div>
+          ) : null}
+
+          {secretPresent && membershipPath && !leafMatches && !resolvedHasSignedM2 ? (
+            <div
+              style={{
+                fontSize: 13,
+                color: '#92400e',
+                background: '#fff7ed',
+                padding: 10,
+                borderRadius: 6,
+                border: '1px solid #fed7aa'
+              }}
+            >
+              Signing is unavailable until you restore an enrolled identity.
+            </div>
+          ) : null}
 
           <M2SignButton
             petitionId={petitionId}
