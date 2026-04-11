@@ -1680,6 +1680,125 @@ All hardening measures must:
 
 ---
 
+## Engineering[14] — Identity Lifecycle & Admission Hardening (COMPLETED)
+
+### Summary
+
+Engineering[14] completed a bounded hardening and operator-surface alignment pass.  
+No architectural, cryptographic, or identity-model changes were introduced.
+
+The goal was to ensure that the implemented system matches the locked M2 identity semantics and is safe against operator/configuration errors.
+
+---
+
+### Identity lifecycle (Position A) — CONFIRMED
+
+The system now behaves as:
+
+- Identity is defined solely by `memberSecret`
+- `memberSecret -> leaf -> nullifier` remains the only identity path
+- Identity is NOT wallet-bound
+- Identity continuity is NOT inferred
+
+#### Manual validation completed:
+
+- O2 → Export secret
+- O2 → Create new secret → transition to O1
+- O1 → Import original secret → restore O2
+- New secret produces new leaf and fails membership lookup (404)
+- Restoration via original secret re-establishes identity and signing ability
+
+#### Operator model now explicit:
+
+- Create → creates or replaces active identity (with confirmation)
+- Import → restores identity via secret
+- Export → allows persistence outside browser
+- Enroll → binds current secret to membership tree
+- Sign → requires valid secret + membership + unused nullifier
+
+---
+
+### UI / operator surface alignment — COMPLETED
+
+`PetitionDetails.jsx` now correctly reflects observable state:
+
+| State | Meaning |
+|------|--------|
+| O0 | No identity present |
+| O1 | Identity present, not enrolled |
+| O2 | Identity enrolled and usable |
+
+#### Changes:
+
+- Identity controls (create/import/export) are always reachable in valid states
+- Explicit replacement flow added (no silent overwrite)
+- Disabled-action messaging added:
+  - signing unavailable when not enrolled
+  - recovery guidance for mismatch state
+- Status panel is always rendered (no hidden identity state)
+
+---
+
+### AdmissionRegistry hardening — COMPLETED
+
+#### Setter validation added:
+
+- `setAdmissionBond` rejects invalid values
+- `setLockPeriod` rejects invalid values
+
+#### Verified properties:
+
+- Existing rights store `amount` and `unlockAt`
+- Changing config affects only future rights
+- Refunds use stored `amount`, not global bond
+- No retroactive economic effects
+
+#### Tests added and passing:
+
+- setter validation (owner / non-owner / invalid input)
+- non-retroactivity of:
+  - bond → `amount`
+  - lockPeriod → `unlockAt`
+
+---
+
+### Invariants preserved
+
+No changes to:
+
+- ZK circuit
+- Poseidon usage
+- leaf derivation
+- nullifier model
+- membership tree semantics
+- relayer flow
+
+---
+
+### Resulting system state
+
+The system is now:
+
+- cryptographically unchanged
+- economically safer (config hardening)
+- operationally explicit (identity lifecycle)
+- deterministic under manual testing
+
+This closes the identity/operator-surface gap between design and implementation.
+
+---
+
+### Engineering[14] status
+
+**CLOSED — checkpoint complete**
+
+Further work must treat:
+
+- identity lifecycle semantics as locked
+- admission config behavior as stable
+
+No reopening of Position A or secret semantics without explicit STATE.md change.
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
