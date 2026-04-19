@@ -7,6 +7,7 @@ import cors from "cors";
 import { MembershipIndexer } from "./membership/indexer.js";
 import { makeMembershipRouter } from "./routes/membership.js";
 import { makeRelayRouter } from "./routes/relay.js";
+import { makePetitionsRouter } from "./routes/petitions.js";
 
 const app = express();
 app.use(cors());
@@ -57,14 +58,12 @@ if (usingLegacyMembershipEnv) {
 
 // ===== Indexer boot =====
 const indexer = new MembershipIndexer({
-  rpcUrl: RPC_URL,
-  membershipAddress: anonMembershipRegistryAddress,
   depth: MEMBERSHIP_DEPTH,
 });
 
 // Kick off sync once at boot (non-fatal)
 indexer
-  .sync(0)
+  .sync()
   .then((r) => console.log("membership sync:", r))
   .catch((e) => console.warn("membership sync failed:", e?.message || e));
 
@@ -81,6 +80,8 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/membership", makeMembershipRouter(indexer));
+
+app.use("/api/petitions", makePetitionsRouter());
 
 app.use(
   "/api/relay",
