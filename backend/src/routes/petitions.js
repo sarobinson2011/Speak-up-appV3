@@ -4,6 +4,7 @@ import {
   getPetitionByIdWithCount,
   getPetitionSignatureCount,
 } from "../db/repositories/petitions.js";
+import { decodePetitionMetadata } from "../utils/decodePetitionMetadata.js";
 
 export function makePetitionsRouter() {
   const router = express.Router();
@@ -21,6 +22,7 @@ export function makePetitionsRouter() {
           petitionId: p.petition_id,
           creator: p.creator,
           metadataURI: p.metadata_uri,
+          metadata: decodePetitionMetadata(p.metadata_uri),
           createdAt: p.created_at,
           signatureCount: p.signature_count,
         })),
@@ -57,6 +59,7 @@ export function makePetitionsRouter() {
           petitionId: petition.petition_id,
           creator: petition.creator,
           metadataURI: petition.metadata_uri,
+          metadata: decodePetitionMetadata(petition.metadata_uri),
           createdAt: petition.created_at,
           signatureCount: petition.signature_count,
         },
