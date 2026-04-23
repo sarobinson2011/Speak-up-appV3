@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ethers } from 'ethers';
 import { poseidon1 } from 'poseidon-lite';
-import { REGISTRY_ADDRESS, REGISTRY_ABI, RPC_URL, BACKEND_URL } from './config';
+import { REGISTRY_ADDRESS, BACKEND_URL } from './config';
 import PetitionDetails from './PetitionDetails';
 import './Petitions.css';
 
@@ -224,47 +224,33 @@ export default function Petitions({ signer, account }) {
   // -----------------------------
   async function loadPetitions() {
     setLoadingPetitions(true);
-    try {
-      const provider = new ethers.JsonRpcProvider(RPC_URL);
-      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
 
-      const count = await registry.petitionCount();
-      if (Number(count) === 0) {
-        setPetitions([]);
-        return;
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/petitions`);
+
+      if (!res.ok) {
+        throw new Error(`Failed to load petitions: ${res.status}`);
       }
 
-      const petitionIds = Array.from({ length: Number(count) }, (_, i) => i + 1);
+      const data = await res.json();
 
-      const [petitionDataArray, eventArrays] = await Promise.all([
-        Promise.all(petitionIds.map((id) => registry.getPetition(id))),
-        Promise.all(
-          petitionIds.map((id) => {
-            const filter = registry.filters.PetitionSigned(id);
-            return registry.queryFilter(filter);
-          })
-        )
-      ]);
+      if (!data?.ok || !Array.isArray(data.petitions)) {
+        throw new Error('Invalid petitions response');
+      }
 
-      const list = petitionIds
-        .map((id, idx) => {
-          const petition = petitionDataArray[idx];
-          const events = eventArrays[idx];
-
-          return {
-            petitionId: id,
-            creator: petition.creator,
-            metadataURI: petition.metadataURI,
-            createdAt: new Date(Number(petition.createdAt) * 1000).toLocaleDateString(),
-            signatureCount: events.length,
-            exists: Boolean(petition.exists)
-          };
-        })
-        .filter((p) => p.exists);
+      const list = data.petitions.map((petition) => ({
+        petitionId: petition.petitionId,
+        creator: petition.creator,
+        metadataURI: petition.metadataURI,
+        metadata: petition.metadata || null,
+        createdAt: petition.createdAt,
+        signatureCount: petition.signatureCount
+      }));
 
       setPetitions(list);
     } catch (e) {
       console.error('Error loading petitions:', e);
+      setPetitions([]);
     } finally {
       setLoadingPetitions(false);
     }
@@ -355,9 +341,11 @@ export default function Petitions({ signer, account }) {
                       onClick={() => setExpandedPetition(isExpanded ? null : petition.petitionId)}
                     >
                       <div className="petition-preview-left">
-                        <h4 className="petition-compact-title">Petition #{petition.petitionId}</h4>
+                        <h4 className="petition-compact-title">
+                          {petition.metadata?.title || `Petition #${petition.petitionId}`}
+                        </h4>
                         <div className="petition-compact-meta">
-                          Created {petition.createdAt} · {petition.creator.slice(0, 10)}...
+                          Created {new Date(Number(petition.createdAt) * 1000).toLocaleDateString()} · {petition.creator.slice(0, 10)}...
                         </div>
                       </div>
 
@@ -369,12 +357,21 @@ export default function Petitions({ signer, account }) {
 
                     {isExpanded && (
                       <div className="petition-expanded-content">
-                        <p className="petition-meta">
-                          <strong>Metadata:</strong> {petition.metadataURI}
-                        </p>
+                        {petition.metadata?.description ? (
+                          <p className="petition-meta">
+                            <strong>Description:</strong> {petition.metadata.description}
+                          </p>
+                        ) : null}
+
                         <p className="petition-meta">
                           <strong>Creator:</strong> {petition.creator}
                         </p>
+
+                        {petition.metadataURI ? (
+                          <p className="petition-meta">
+                            <strong>Metadata URI:</strong> {petition.metadataURI}
+                          </p>
+                        ) : null}
 
                         <div className="petition-actions">
                           <button

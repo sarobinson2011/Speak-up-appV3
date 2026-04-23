@@ -335,33 +335,44 @@ export default function PetitionDetails({
 
       await refreshM2SignedState(registry, petitionId, isCancelled);
 
-      const petitionData = await registry.getPetition(petitionId);
-      if (isCancelled()) return;
-      setPetition(petitionData);
+      const petitionRes = await fetch(`${BACKEND_URL}/api/petitions/${petitionId}`);
+      if (!petitionRes.ok) {
+        throw new Error(`Failed to load petition detail: ${petitionRes.status}`);
+      }
 
-      const createdAtISO = petitionData?.createdAt
-        ? new Date(Number(petitionData.createdAt) * 1000).toISOString()
+      const petitionJson = await petitionRes.json();
+      const backendPetition = petitionJson?.petition;
+
+      if (!backendPetition) {
+        throw new Error('Invalid petition detail response');
+      }
+
+      if (isCancelled()) return;
+
+      setPetition({
+        petitionId: backendPetition.petitionId,
+        creator: backendPetition.creator,
+        metadataURI: backendPetition.metadataURI,
+        createdAt: backendPetition.createdAt,
+        signatureCount: backendPetition.signatureCount
+      });
+
+      const createdAtISO = backendPetition?.createdAt
+        ? new Date(Number(backendPetition.createdAt) * 1000).toISOString()
         : new Date().toISOString();
 
-      const metadataURI =
-        (petitionData && typeof petitionData.metadataURI === 'string' && petitionData.metadataURI) ||
-        '';
-
       setMetadata({
-        petitionId,
-        title: `Petition #${petitionId}`,
-        description: metadataURI
-          ? `Metadata URI: ${metadataURI}`
-          : 'No description available (metadata not loaded in M2-only MVP)',
+        petitionId: backendPetition.petitionId,
+        title: backendPetition.metadata?.title || `Petition #${petitionId}`,
+        description:
+          backendPetition.metadata?.description || 'No description available.',
         category: 'Unknown',
         target: 'Public',
         goalSignatures: 100,
         createdAt: createdAtISO
       });
 
-      const filter = registry.filters.PetitionSigned(petitionId);
-      const events = await registry.queryFilter(filter);
-      if (!isCancelled()) setSignatureCount(events.length);
+      setSignatureCount(Number(backendPetition.signatureCount || 0));
 
       setCommentsAvailable(false);
       setComments([]);
