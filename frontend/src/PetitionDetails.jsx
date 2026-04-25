@@ -12,6 +12,8 @@ import {
   importMemberSecret,
   exportMemberSecret
 } from './m2Identity';
+import { M2IdentityControls } from './components/M2IdentityControls';
+
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
 
@@ -551,56 +553,16 @@ export default function PetitionDetails({
                   <>
                     <div>No identity present.</div>
 
-                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <button
-                        onClick={handleCreateSecret}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: '#111827',
-                          color: '#ffffff',
-                          cursor: 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Create new secret
-                      </button>
-
-                      <textarea
-                        value={secretImportText}
-                        onChange={(e) => setSecretImportText(e.target.value)}
-                        placeholder="Paste existing secret to import"
-                        rows={3}
-                        style={{
-                          width: '100%',
-                          padding: 10,
-                          borderRadius: 8,
-                          border: '1px solid #d1d5db',
-                          fontFamily: 'monospace'
-                        }}
-                      />
-
-                      <button
-                        onClick={handleImportSecret}
-                        disabled={!secretImportText.trim()}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
-                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
-                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Import secret
-                      </button>
-
-                      {secretActionError ? (
-                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
-                      ) : null}
-                    </div>
+                    <M2IdentityControls
+                      secretImportText={secretImportText}
+                      setSecretImportText={setSecretImportText}
+                      handleCreateSecret={handleCreateSecret}
+                      handleImportSecret={handleImportSecret}
+                      handleExportSecret={handleExportSecret}
+                      secretExportText={secretExportText}
+                      secretActionError={secretActionError}
+                      showExport={false}
+                    />
                   </>
                 ) : !membershipPath ? (
                   <>
@@ -624,80 +586,16 @@ export default function PetitionDetails({
                     ) : null}
 
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <button
-                        onClick={handleCreateSecret}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: '#111827',
-                          color: '#ffffff',
-                          cursor: 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Create new secret
-                      </button>
-
-                      <textarea
-                        value={secretImportText}
-                        onChange={(e) => setSecretImportText(e.target.value)}
-                        placeholder="Paste existing secret to import"
-                        rows={3}
-                        style={{
-                          width: '100%',
-                          padding: 10,
-                          borderRadius: 8,
-                          border: '1px solid #d1d5db',
-                          fontFamily: 'monospace'
-                        }}
+                      <M2IdentityControls
+                        secretImportText={secretImportText}
+                        setSecretImportText={setSecretImportText}
+                        handleCreateSecret={handleCreateSecret}
+                        handleImportSecret={handleImportSecret}
+                        handleExportSecret={handleExportSecret}
+                        secretExportText={secretExportText}
+                        secretActionError={secretActionError}
+                        showExport={true}
                       />
-
-                      <button
-                        onClick={handleImportSecret}
-                        disabled={!secretImportText.trim()}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
-                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
-                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Import secret
-                      </button>
-
-                      <button
-                        onClick={handleExportSecret}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: '#ffffff',
-                          color: '#111827',
-                          cursor: 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Export current secret
-                      </button>
-
-                      {secretExportText ? (
-                        <textarea
-                          readOnly
-                          value={secretExportText}
-                          rows={3}
-                          style={{
-                            width: '100%',
-                            padding: 10,
-                            borderRadius: 8,
-                            border: '1px solid #d1d5db',
-                            fontFamily: 'monospace'
-                          }}
-                        />
-                      ) : null}
 
                       <button
                         onClick={enrollMembershipOnce}
@@ -722,10 +620,6 @@ export default function PetitionDetails({
 
                       {enrollError ? (
                         <div style={{ color: '#b91c1c' }}>Enroll failed: {enrollError}</div>
-                      ) : null}
-
-                      {secretActionError ? (
-                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
                       ) : null}
                     </div>
                   </>
@@ -822,86 +716,16 @@ export default function PetitionDetails({
                       Creating a new secret replaces the active identity on this device.
                     </div>
 
-                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <button
-                        onClick={handleCreateSecret}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: '#111827',
-                          color: '#ffffff',
-                          cursor: 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Create new secret
-                      </button>
-
-                      <textarea
-                        value={secretImportText}
-                        onChange={(e) => setSecretImportText(e.target.value)}
-                        placeholder="Paste existing secret to import"
-                        rows={3}
-                        style={{
-                          width: '100%',
-                          padding: 10,
-                          borderRadius: 8,
-                          border: '1px solid #d1d5db',
-                          fontFamily: 'monospace'
-                        }}
-                      />
-
-                      <button
-                        onClick={handleImportSecret}
-                        disabled={!secretImportText.trim()}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: !secretImportText.trim() ? '#f3f4f6' : '#111827',
-                          color: !secretImportText.trim() ? '#6b7280' : '#ffffff',
-                          cursor: !secretImportText.trim() ? 'not-allowed' : 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Import secret
-                      </button>
-
-                      <button
-                        onClick={handleExportSecret}
-                        style={{
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          border: '1px solid #e5e7eb',
-                          background: '#ffffff',
-                          color: '#111827',
-                          cursor: 'pointer',
-                          fontWeight: 600
-                        }}
-                      >
-                        Export current secret
-                      </button>
-
-                      {secretExportText ? (
-                        <textarea
-                          readOnly
-                          value={secretExportText}
-                          rows={3}
-                          style={{
-                            width: '100%',
-                            padding: 10,
-                            borderRadius: 8,
-                            border: '1px solid #d1d5db',
-                            fontFamily: 'monospace'
-                          }}
-                        />
-                      ) : null}
-
-                      {secretActionError ? (
-                        <div style={{ color: '#b91c1c' }}>{secretActionError}</div>
-                      ) : null}
-                    </div>
+                    <M2IdentityControls
+                      secretImportText={secretImportText}
+                      setSecretImportText={setSecretImportText}
+                      handleCreateSecret={handleCreateSecret}
+                      handleImportSecret={handleImportSecret}
+                      handleExportSecret={handleExportSecret}
+                      secretExportText={secretExportText}
+                      secretActionError={secretActionError}
+                      showExport={true}
+                    />
                   </>
                 )}
               </div>
