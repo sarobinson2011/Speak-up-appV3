@@ -320,9 +320,20 @@ export default function PetitionDetails({
       return;
     }
 
-    fetchMembershipStatus(uiLeafHex);      // NEW
-    fetchMembershipPathByLeaf(uiLeafHex);  // existing
+    setMembershipPath(null);
+    fetchMembershipStatus(uiLeafHex);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uiLeafHex]);
+
+  useEffect(() => {
+    if (!uiLeafHex || membershipExists !== true) {
+      setMembershipPath(null);
+      return;
+    }
+
+    fetchMembershipPathByLeaf(uiLeafHex);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uiLeafHex, membershipExists]);
 
   // Load petition + signed state whenever core inputs change
   useEffect(() => {
