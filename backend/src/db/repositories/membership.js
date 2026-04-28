@@ -45,3 +45,13 @@ export function getAllMembershipLeavesOrdered() {
 
   return stmt.all();
 }
+
+export function getMembershipLeafByLeaf(leaf) {
+  const stmt = db.prepare(`
+    SELECT leaf, leaf_index
+    FROM membership_leaves
+    WHERE leaf = ?
+  `);
+
+  return stmt.get(leaf) ?? null;
+}

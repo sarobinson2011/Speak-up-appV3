@@ -89,6 +89,8 @@ export default function PetitionDetails({
   const [enrolling, setEnrolling] = useState(false);
   const [enrollError, setEnrollError] = useState('');
 
+  const [membershipExists, setMembershipExists] = useState(null);
+
   // Local membership path state — source of truth inside this page
   const [membershipPath, setMembershipPath] = useState(null);
   const [membershipPathLoading, setMembershipPathLoading] = useState(false);
@@ -220,6 +222,28 @@ export default function PetitionDetails({
     }
   }
 
+  async function fetchMembershipStatus(leafHex) {
+    try {
+      if (!leafHex) {
+        setMembershipExists(null);
+        return;
+      }
+
+      const url = `${BACKEND_URL}/api/membership/leaf-status?leaf=${leafHex}`;
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        setMembershipExists(null);
+        return;
+      }
+
+      const data = await res.json();
+      setMembershipExists(Boolean(data.exists));
+    } catch {
+      setMembershipExists(null);
+    }
+  }
+
   async function fetchMembershipPathByLeaf(leafHex) {
     try {
       if (!leafHex) {
@@ -292,11 +316,12 @@ export default function PetitionDetails({
   useEffect(() => {
     if (!uiLeafHex) {
       setMembershipPath(null);
+      setMembershipExists(null);
       return;
     }
 
-    fetchMembershipPathByLeaf(uiLeafHex);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchMembershipStatus(uiLeafHex);      // NEW
+    fetchMembershipPathByLeaf(uiLeafHex);  // existing
   }, [uiLeafHex]);
 
   // Load petition + signed state whenever core inputs change
@@ -555,6 +580,7 @@ export default function PetitionDetails({
         setSignatureCount={setSignatureCount}
         onSigned={onSigned}
         m2Nullifier={m2Nullifier}
+        membershipExists={membershipExists}
       />
 
       <div className="comments-card">

@@ -7,6 +7,7 @@ import { M2IdentityControls } from './M2IdentityControls';
 export function M2StatusSection({
   petitionId,
   membershipPath,
+  membershipExists,
   memberSecretBI,
   currentAdmissionCommitment,
   resolvedHasSignedM2,
@@ -70,7 +71,7 @@ export function M2StatusSection({
                   showExport={false}
                 />
               </>
-            ) : !membershipPath ? (
+            ) : membershipExists === false ? (
               <>
                 <div>Identity present, not enrolled.</div>
                 <div style={{ marginTop: 6 }}>

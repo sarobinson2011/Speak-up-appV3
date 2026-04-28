@@ -1,5 +1,6 @@
 // backend/src/routes/membership.js
 import express from "express";
+import { getMembershipLeafByLeaf } from "../db/repositories/membership.js";
 
 export function makeMembershipRouter(indexer) {
   if (!indexer) throw new Error("makeMembershipRouter requires indexer");
@@ -29,6 +30,47 @@ export function makeMembershipRouter(indexer) {
       });
     }
   });
+  
+
+  // ---------------------------
+  // Leaf -> coarse membership existence
+  // ---------------------------
+  router.get("/leaf-status", async (req, res) => {
+    try {
+      const leaf = String(req.query.leaf || "").trim().toLowerCase();
+
+      if (!leaf) {
+        return res.status(400).json({ error: "leaf required" });
+      }
+
+      if (!leaf.startsWith("0x") || !/^0x[0-9a-fA-F]+$/.test(leaf) || leaf.length > 66) {
+        return res.status(400).json({ error: "bad leaf" });
+      }
+
+      // initial sync if we haven't synced yet
+      if (!indexer.synced) await indexer.sync(0);
+
+      let row = getMembershipLeafByLeaf(leaf);
+
+      // minimal consistency patch: if missing, resync once and try again
+      if (!row) {
+        await indexer.sync(0);
+        row = getMembershipLeafByLeaf(leaf);
+      }
+
+      return res.json({
+        ok: true,
+        exists: Boolean(row),
+      });
+    } catch (e) {
+      return res.status(500).json({
+        ok: false,
+        error: "internal",
+        details: e?.message || String(e),
+      });
+    }
+  });  
+
 
   // ---------------------------
   // Leaf -> Merkle path
