@@ -1799,6 +1799,256 @@ Further work must treat:
 
 No reopening of Position A or secret semantics without explicit STATE.md change.
 
+---
+
+---
+
+## Engineering[16] — Petition Indexer + Read Layer Stabilization (COMPLETED)
+
+### Summary
+
+Engineering[16] established a canonical backend indexer and read-layer for petition data, aligned frontend consumption to that layer, and removed implicit coupling between frontend state and chain-derived data.
+
+No architectural changes were introduced. This is a read-path stabilization milestone.
+
+---
+
+### Petition Indexer V0 — IMPLEMENTED
+
+A ground-truth indexer for `PetitionRegistry` is now implemented.
+
+#### Indexed events
+
+- `PetitionCreated`
+- `PetitionSigned`
+
+#### Data persistence: SQLite
+
+- `petitions`
+- `petition_signatures`
+- `petition_signature_counts`
+- `indexer_sync_state`
+
+#### Properties
+
+- deterministic block-range sync
+- stable ordering: `(blockNumber, transactionIndex, logIndex)`
+- resumable via `indexer_sync_state`
+- canonical source of truth for petition data
+
+---
+
+### Canonical Petition Read Surface — LOCKED
+
+Backend endpoint:
+
+`GET /api/petitions`
+
+Now returns:
+
+- `petitionId`
+- `creator`
+- `metadataURI`
+- decoded `metadata` when possible
+- `createdAt` as chain timestamp
+- `signatureCount` aggregated from indexed events
+
+#### Invariant
+
+The frontend must treat `/api/petitions` as the canonical petition state.
+
+Frontend must not derive:
+
+- signature counts from chain queries
+- petition ordering from local state
+
+---
+
+### Metadata Decode Layer — IMPLEMENTED
+
+Backend now decodes:
+
+`data:application/json;base64,...`
+
+into:
+
+`metadata: { title, description }`
+
+#### Result
+
+- frontend no longer decodes base64 metadata
+- metadata presentation is consistent and centralized
+
+---
+
+### Deployment Reality Alignment — CONFIRMED
+
+Observed state:
+
+- PetitionRegistry at canonical address contains `PetitionCreated` events
+- PetitionRegistry at canonical address contains no `PetitionSigned` events
+
+Result:
+
+- `signatureCount = 0` for all current petitions is correct
+- no indexer bug exists
+- no aggregation bug exists
+
+#### Locked interpretation
+
+Signature counts reflect current contract history, not historical testing memory.
+
+---
+
+### Membership Path Behavior — CLARIFIED
+
+Endpoint:
+
+`GET /api/membership/path?leaf=...`
+
+Returns:
+
+- `200` when a path exists
+- `404` when the leaf is not found / not enrolled
+
+#### Locked interpretation
+
+`404` is a valid state for an unenrolled leaf, not a protocol error.
+
+Frontend behavior updated:
+
+- no longer treats unenrolled-leaf path absence as exceptional
+- reflects correct O0 / O1 / O2 identity states
+
+---
+
+### Membership Leaf Status Endpoint — IMPLEMENTED
+
+Endpoint:
+
+`GET /api/membership/leaf-status?leaf=...`
+
+Returns:
+
+`{ "exists": true | false }`
+
+#### Purpose
+
+- lightweight leaf existence check
+- avoids path-fetch misuse for state probing
+- avoids unnecessary `/path` requests for known unenrolled leaves
+
+---
+
+### Frontend Structural Refactor — IMPLEMENTED
+
+#### Extracted components
+
+1. `PetitionDisplaySection`
+   - petition metadata
+   - creator
+   - description
+   - signature count
+   - progress bar
+
+2. `M2IdentityControls`
+   - create secret
+   - import secret
+   - export secret
+   - reused across identity states
+
+3. `M2StatusSection`
+   - M2 status rendering
+   - identity-state UI branching
+   - signing availability messaging
+   - M2 sign button placement
+
+#### Results
+
+- duplicated JSX removed
+- `PetitionDetails.jsx` reduced substantially
+- display concerns separated from M2 state rendering
+- identity controls reused consistently across states
+- frontend structure is easier to reason about before future work
+
+---
+
+### Identity UI Alignment — PRESERVED
+
+All changes preserve Position A invariants:
+
+- no implicit identity creation
+- no implicit enrollment
+- no silent identity replacement
+- no wallet-based continuity inference
+
+UI continues to correctly reflect:
+
+- O0: no secret present
+- O1: secret present, leaf not enrolled
+- O2: secret present, leaf enrolled and usable
+
+---
+
+### Backend Role — UNCHANGED
+
+Backend remains:
+
+- non-authoritative
+- event-indexing
+- path-distribution
+- relayer-supporting
+
+Backend does not:
+
+- gate identity
+- infer identity
+- store secrets
+- become an enrollment provenance oracle
+
+---
+
+### Invariants preserved
+
+No changes to:
+
+- ZK circuit
+- nullifier model
+- leaf derivation
+- contract interfaces
+- admission semantics
+- relayer flow
+
+---
+
+### Resulting system state
+
+The system now has:
+
+- deterministic petition state reconstruction
+- canonical petition read surface
+- decoded petition metadata presentation
+- correct handling of empty signature sets
+- explicit membership leaf existence signal
+- stable identity UI aligned with backend truth
+- reduced frontend structural complexity
+
+---
+
+### Engineering[16] status
+
+**CLOSED — checkpoint complete**
+
+Next work should build on:
+
+- stable indexer substrate
+- canonical read layer
+- clean frontend component structure
+
+No redesign required.
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
