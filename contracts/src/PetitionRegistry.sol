@@ -67,8 +67,6 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     uint256 public petitionCount;
     IAuthorizer public authorizer;
     IGroth16Verifier public groth16Verifier;
-    IPoseidon2 public poseidon2;
-    address public admissionRegistry;
 
     // ============================================================
     // STABLE STATE MODEL
@@ -84,6 +82,11 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
     mapping(uint256 => Petition) public petitions;
     mapping(uint256 => mapping(bytes32 => bool)) public usedSignNullifier;
     mapping(uint256 => mapping(bytes32 => bool)) public usedCommentNullifier;
+
+    // Appended storage for upgrade compatibility.
+    // Do not insert new state variables above existing storage.
+    IPoseidon2 public poseidon2;
+    address public admissionRegistry;
 
     // ============================================================
     // CONSTRUCTOR

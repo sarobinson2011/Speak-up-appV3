@@ -260,6 +260,9 @@ No circuit, key, verifier, or encoding change is allowed without:
 
 # 6) Network Endpoints + Deployed Contracts
 
+NOTE: Current implementation addresses may evolve via upgrade.
+Always refer to the latest Engineering[n] section for current live implementations.
+
 Chain: Aurora Testnet  
 `chainId = 1313161555`  
 `RPC_URL = https://testnet.aurora.dev`
@@ -1107,6 +1110,16 @@ This serves as the recovery point before further protocol evolution.
 
 # 15) Aurora Admission Stack Deployment + Validation (Milestone)
 
+### Deployment Record Interpretation
+
+Deployment sections record historical deployment milestones.
+
+For current live implementation addresses, linkage state, and post-upgrade operational truth, the latest completed Engineering[n] checkpoint governs.
+
+Proxy addresses are stable canonical entrypoints unless explicitly superseded.
+
+Implementation addresses are mutable through upgrades and must be read from the latest Engineering[n] checkpoint or directly from the proxy implementation slot.
+
 This milestone records the first successful deployment, verification, and live functional validation of the admission-backed anonymous membership stack on Aurora testnet.
 
 Canonical validated Aurora testnet deployment:
@@ -1115,7 +1128,8 @@ Canonical validated Aurora testnet deployment:
 - `POSEIDON2_ADDRESS = 0x24120c6ffe7A19a675B5C63d8A2a4b135D641A5d`
 - `ANON_MEMBERSHIP_LOGIC_ADDRESS = 0x32A0f3db8ed95C693C802Eb0A037b7c8e19c8c39`
 - `ANON_MEMBERSHIP_PROXY_ADDRESS = 0xe3A5cAab30DfF154e6Dff35cB35Ba41326C76821`
-- `ADMISSION_LOGIC_ADDRESS = 0xff6f693Ce5975F996AF27b002e017f34d599Aac5`
+- `ADMISSION_LOGIC_ADDRESS (initial deployment) = 0xff6f693Ce5975F996AF27b002e017f34d599Aac5`
+- 'Current implementation: see Engineering[17] “Current Deployed State”'
 - `ADMISSION_PROXY_ADDRESS = 0x36c22227098B24E5aCE48dEa3988327256481F0e`
 
 Deployment discipline locked:
@@ -2046,6 +2060,169 @@ Next work should build on:
 - clean frontend component structure
 
 No redesign required.
+
+---
+
+## Engineering[17] — End-to-End Petition Signing Validation (M2)
+
+### Outcome
+
+Engineering[17] successfully achieved a full end-to-end validation of the M2 Strong Privacy signing path:
+
+- ZK proof generation (client): ✅
+- Membership enrollment (Admission → AnonymousMembershipRegistry): ✅
+- Relayed signing transaction: ✅
+- On-chain `PetitionSigned` event: ✅
+- Indexer ingestion → DB persistence: ✅
+- API surface → frontend reflection: ✅
+- UI duplicate prevention via nullifier: ✅
+
+Concrete validation:
+
+- Petition ID: 11
+- Signature count: 1
+- Transaction hash:
+  `0x38a2ac41112c6959be823137ea015a72c06b16213ee99eb48370affa8208ecd1`
+
+System is now functionally correct across the full pipeline.
+
+---
+
+### Critical Incident — Upgrade Safety Failure (Resolved)
+
+During Engineering[17], a critical upgrade-safety failure was encountered and resolved.
+
+#### Root Cause
+
+The AdmissionRegistry was upgraded using a **newer source layout** instead of the **actual deployed baseline layout**.
+
+Deployed baseline (on-chain implementation):
+- Corresponds to commit: `b6997d5`
+
+This baseline has storage:
+
+slot 0 → admissionBond  
+slot 1 → lockPeriod  
+slot 2 → anonymousMembershipRegistry  
+slot 3 → admissionHasher  
+slot 4 → rights (mapping)
+
+Later versions introduced new fields:
+
+- incentiveSettlement
+- consumedRefundPaid
+- petitionRegistry
+- _actionLinked
+
+These were incorrectly assumed in upgrade planning and **inserted before the existing mapping**, causing:
+
+- storage slot shift  
+- `rights` mapping read from wrong slot  
+- `getStatus()` returning `0` (None) for valid commitments  
+- complete logical failure of admission validation  
+
+#### Resolution
+
+The correct fix was:
+
+1. Identify deployed baseline (`b6997d5`)  
+2. Reconstruct true storage layout from that baseline  
+3. Rebuild AdmissionRegistry storage as **strict append-only from baseline**  
+4. Verify via `forge inspect storage-layout`  
+5. Re-upgrade implementation  
+6. Validate live state invariants (existing commitment returns status `2`)  
+7. Re-link PetitionRegistry ↔ AdmissionRegistry  
+8. Resume signing flow  
+
+Final correct storage layout:
+
+slot 0 → admissionBond  
+slot 1 → lockPeriod  
+slot 2 → anonymousMembershipRegistry  
+slot 3 → admissionHasher  
+slot 4 → rights  
+
+slot 5 → incentiveSettlement  
+slot 6 → consumedRefundPaid  
+slot 7 → petitionRegistry  
+slot 8 → _actionLinked  
+slot 9+ → __gap  
+
+---
+
+### Upgrade Safety Invariant (MANDATORY)
+
+All future upgrades MUST follow this process:
+
+1. **Canonical baseline = deployed implementation on-chain**  
+   - NOT latest local code  
+   - Extract via proxy implementation slot  
+
+2. **Storage must be append-only**  
+   - No insertion before existing variables  
+   - No reordering  
+   - No struct layout changes  
+   - No inherited storage changes  
+
+3. **Pre-upgrade validation**  
+   - Identify baseline commit or reconstruct layout  
+   - `forge inspect storage-layout` (old vs new)  
+   - Confirm slot alignment  
+
+4. **Post-upgrade gate (hard requirement)**  
+   - Read known live state (e.g. admissionCommitment)  
+   - Must match pre-upgrade values exactly  
+
+5. **If any mismatch**  
+   - STOP  
+   - rollback immediately  
+   - do not proceed  
+
+---
+
+### System Version Alignment Rule
+
+The system is **version-coupled**:
+
+PetitionRegistry ↔ AdmissionRegistry  
+
+Therefore:
+
+- Contracts must be treated as a **coordinated version set**  
+- Upgrades must preserve **cross-contract compatibility**  
+- Do not upgrade one contract assuming the other remains valid  
+
+---
+
+### Current Deployed State
+
+PetitionRegistry:
+- Proxy: `0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD`
+- Implementation: `0xd7CAB0205889d0e308f4809e80a3Fc3C7e21F820`
+
+AdmissionRegistry:
+- Proxy: `0x36c22227098B24E5aCE48dEa3988327256481F0e`
+- Implementation: `0xF2996875492829a2Dd263EdEbcb49C501E75C504`
+
+Linkage:
+
+- `PetitionRegistry.admissionRegistry` → AdmissionRegistry proxy ✅  
+- `AdmissionRegistry.petitionRegistry` → PetitionRegistry proxy ✅  
+
+---
+
+### Known Follow-Up
+
+Admission bond value is currently:
+
+1.0 ETH  
+
+This is incorrect for intended UX/economic model.
+
+Fix required in future iteration:
+- reduce bond magnitude  
+- redeploy or upgrade safely (following invariant above)  
+- ensure frontend safety threshold aligns with contract value  
 
 ---
 

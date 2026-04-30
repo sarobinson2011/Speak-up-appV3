@@ -27,9 +27,14 @@ const ADMISSION_REGISTRY_ABI = [
 ];
 
 const PENDING_ADMISSION_PREFIX = 'su_pendingAdmissionSecret_v1:wallet:';
+const ADMISSION_COMMITMENT_PREFIX = 'su_admissionCommitment_v1:leaf:';
 
 function pendingAdmissionKey(wallet) {
   return `${PENDING_ADMISSION_PREFIX}${String(wallet || '').toLowerCase()}`;
+}
+
+function admissionCommitmentKey(leaf) {
+  return `${ADMISSION_COMMITMENT_PREFIX}${String(leaf || '').toLowerCase()}`;
 }
 
 function safeGetLocalStorage(key) {
@@ -112,17 +117,6 @@ export default function PetitionDetails({
 
   const currentPendingAdmissionKey = useMemo(() => pendingAdmissionKey(account), [account]);
 
-  const currentAdmissionCommitment = useMemo(() => {
-    const pendingAdmissionSecret = safeGetLocalStorage(currentPendingAdmissionKey);
-    if (!isHex32(pendingAdmissionSecret)) return null;
-
-    try {
-      return bigIntToHex32(poseidon1([BigInt(pendingAdmissionSecret)]));
-    } catch {
-      return null;
-    }
-  }, [currentPendingAdmissionKey]);
-
   const uiLeafHex = useMemo(() => {
     if (!memberSecretBI) return null;
     try {
@@ -132,6 +126,16 @@ export default function PetitionDetails({
       return null;
     }
   }, [memberSecretBI]);
+
+  const currentAdmissionCommitmentKey = useMemo(
+    () => admissionCommitmentKey(uiLeafHex),
+    [uiLeafHex]
+  );
+
+  const currentAdmissionCommitment = useMemo(() => {
+    const storedCommitment = safeGetLocalStorage(currentAdmissionCommitmentKey);
+    return isHex32(storedCommitment) ? storedCommitment : null;
+  }, [currentAdmissionCommitmentKey, identityVersion]);
 
   const leafMatches = useMemo(() => {
     if (!membershipPath || !memberSecretBI) return false;
@@ -289,7 +293,7 @@ export default function PetitionDetails({
         setAdmissionBondWei(bond);
         setAdmissionBondEth(ethers.formatEther(bond));
 
-        const maxExpectedWei = ethers.parseEther('0.01');
+        const maxExpectedWei = ethers.parseEther('1.01');
         if (bond > maxExpectedWei) {
           setBondSafetyError(
             `Enrollment blocked: live on-chain bond is ${ethers.formatEther(
@@ -494,7 +498,7 @@ export default function PetitionDetails({
       if (status === 0) {
         const bond = await admission.admissionBond();
 
-        const maxExpectedWei = ethers.parseEther('0.01');
+        const maxExpectedWei = ethers.parseEther('1.01');
         if (bond > maxExpectedWei) {
           throw new Error(
             `Enrollment blocked for safety: live on-chain bond is ${ethers.formatEther(
@@ -528,7 +532,9 @@ export default function PetitionDetails({
       );
       await activateTx.wait();
 
+      safeSetLocalStorage(currentAdmissionCommitmentKey, admissionCommitment);
       safeRemoveLocalStorage(currentPendingAdmissionKey);
+      setIdentityVersion((v) => v + 1);
       await fetchMembershipPathByLeaf(uiLeafHex);
     } catch (e) {
       setEnrollError(e?.message || String(e));

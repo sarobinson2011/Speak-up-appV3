@@ -94,11 +94,14 @@ contract AdmissionRegistry is Initializable, OwnableUpgradeable, ReentrancyGuard
 
     address public anonymousMembershipRegistry;
     address public admissionHasher;
-    address public incentiveSettlement;
-    address public petitionRegistry;
 
     mapping(bytes32 => AdmissionRight) public rights;
+
+    // Appended storage for upgrade compatibility from deployed b6997d5 baseline.
+    // Do not insert new state variables above existing storage.
+    address public incentiveSettlement;
     mapping(bytes32 => bool) public consumedRefundPaid;
+    address public petitionRegistry;
     mapping(bytes32 => bool) private _actionLinked;
 
     // ============================================================
