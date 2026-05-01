@@ -669,7 +669,23 @@ Test-covered properties:
 
 ---
 
-## 7.10 Settlement Routing via Anonymous Public Action (V1)
+## 7.10 Settlement Routing via Anonymous Public Action (V1) — SUPERSEDED
+
+> Engineering[18] correction:
+> This section is retained as historical design context only.
+> It has been superseded for the active M2 petition-signing path.
+>
+> Active rule:
+> - petition signing must not mutate AdmissionRegistry state
+> - petition signing must not call `recordActionLink`
+> - `admissionCommitment` must not be emitted as a reusable public cross-petition tag
+> - nullifier uniqueness remains the only action-layer uniqueness rule
+>
+> Reason:
+> the original one-right-to-one-action linkage model conflicted with reusable anonymous membership
+> and introduced a public correlation surface across petition actions.
+
+## 7.10 Historical Superseded Design — Settlement Routing via Anonymous Public Action (V1)
 
 ### Purpose
 
