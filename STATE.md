@@ -2266,6 +2266,48 @@ Engineering[18] status:
 
 ---
 
+## Engineering[18] — Action-Linking Architecture Bug Identified
+
+During post-bond-correction smoke testing, signing a second petition with the same enrolled M2 identity failed.
+
+Observed revert:
+
+`RightAlreadyActionLinked()`
+
+Root cause:
+
+- `PetitionRegistry.signPetitionWithZKProof(...)` calls `AdmissionRegistry.recordActionLink(admissionCommitment)`
+- `AdmissionRegistry.recordActionLink(...)` enforces one global action link per `admissionCommitment`
+- this makes one consumed admission right usable for only one petition action total
+
+This conflicts with the core petition product invariant:
+
+- one anonymous member may sign many different petitions
+- uniqueness is per `(petitionId, member)`
+- uniqueness is enforced by the nullifier
+
+Correct interpretation:
+
+- reusable anonymous membership is canonical
+- `memberSecret -> leaf -> nullifier` remains the identity path
+- `nullifier = Poseidon3(memberSecret, petitionId, SIGN_DOMAIN)` enforces one signature per petition
+- an admission right creates membership; it must not limit the member to one petition action total
+
+Privacy correction:
+
+- `admissionCommitment` must not become a reusable public cross-petition correlation tag
+- emitting or requiring the same `admissionCommitment` on every petition signature is unsafe because it links actions across petitions
+- settlement routing through public `admissionCommitment` is deferred until redesigned
+
+Immediate implementation direction:
+
+- remove the global action-link requirement from the petition signing path
+- preserve nullifier-based duplicate prevention
+- do not alter ZK circuit, leaf model, membership tree, or nullifier model
+- perform upgrade only after storage-layout review and pre/post live-state gate
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
