@@ -2226,6 +2226,38 @@ Fix required in future iteration:
 
 ---
 
+## Engineering[18] — Admission Bond Correction
+
+Live admission bond corrected without upgrade.
+
+- Previous live bond: `1.0 ETH`
+- New live bond: `0.01 ETH`
+- Method: `AdmissionRegistry.setAdmissionBond(10000000000000000)`
+- No proxy upgrade performed
+- Existing right non-retroactivity validated:
+  - commitment: `0x0c61c6c3b7ba331900a3fe814bfa8494e51b53fb8e531c140664b38179b16c66`
+  - stored amount remained `1000000000000000000`
+  - status remained `2`
+- New right funding validated:
+  - commitment: `0x1b0e294500b3af4a904812280e777796062dcd9ea960e980122c5980322607b3`
+  - stored amount: `10000000000000000`
+  - status: `1`
+- Frontend temporary `1.01 ETH` ceiling replaced with `0.02 ETH`
+- Frontend production build passes
+
+No changes to:
+- ZK
+- PetitionRegistry
+- relay
+- membership semantics
+- nullifier model
+
+Engineering[18] status:
+
+**CLOSED — admission bond correction complete**
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  

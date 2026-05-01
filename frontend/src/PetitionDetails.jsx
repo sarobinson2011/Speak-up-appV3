@@ -293,7 +293,7 @@ export default function PetitionDetails({
         setAdmissionBondWei(bond);
         setAdmissionBondEth(ethers.formatEther(bond));
 
-        const maxExpectedWei = ethers.parseEther('1.01');
+        const maxExpectedWei = ethers.parseEther('0.02');
         if (bond > maxExpectedWei) {
           setBondSafetyError(
             `Enrollment blocked: live on-chain bond is ${ethers.formatEther(
@@ -498,7 +498,7 @@ export default function PetitionDetails({
       if (status === 0) {
         const bond = await admission.admissionBond();
 
-        const maxExpectedWei = ethers.parseEther('1.01');
+        const maxExpectedWei = ethers.parseEther('0.02');
         if (bond > maxExpectedWei) {
           throw new Error(
             `Enrollment blocked for safety: live on-chain bond is ${ethers.formatEther(
