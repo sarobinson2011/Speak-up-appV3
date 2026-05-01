@@ -2324,6 +2324,45 @@ Immediate implementation direction:
 
 ---
 
+## Engineering[18] — PetitionRegistry Action-Linking Fix Deployed
+
+PetitionRegistry was upgraded to remove action-linking from the M2 signing path.
+
+Deployment:
+
+- PetitionRegistry proxy: `0x3fAfFFfA917b48Eff74EAAD48C3DF9DA44560eeD`
+- New PetitionRegistry implementation: `0x6479Bea64CA55f2E5745b73A41d22089cBA1a3Db`
+
+Reason:
+
+- M2 signing previously called `AdmissionRegistry.recordActionLink(admissionCommitment)`
+- this incorrectly limited one consumed admission right to one petition action total
+- it also risked turning `admissionCommitment` into a public cross-petition correlation tag
+
+Active rule:
+
+- M2 petition signing does not mutate AdmissionRegistry state
+- `admissionCommitment` is ignored in the signing path and emitted as `bytes32(0)`
+- nullifier remains the only action-layer duplicate-prevention mechanism
+
+Validation:
+
+- pre-upgrade PetitionRegistry gate passed
+- `forge test` passed: 93 tests
+- UUPS upgrade completed successfully
+- post-upgrade PetitionRegistry gate passed
+- post-upgrade `forge test` passed: 93 tests
+
+No changes to:
+
+- ZK circuit
+- membership tree
+- nullifier derivation
+- AdmissionRegistry storage
+- relay API shape
+
+---
+
 STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
