@@ -50,7 +50,7 @@ contract MockAdmissionRegistryActionLink {
     }
 }
 
-contract PetitionRegistrySettlementReferenceTest is Test {
+contract PetitionRegistryZKSigningCorrelationTest is Test {
     PetitionRegistry internal registry;
     MockAuthorizer internal authorizer;
     MockVerifier internal verifier;
@@ -92,7 +92,7 @@ contract PetitionRegistrySettlementReferenceTest is Test {
         pC = [uint256(7), uint256(8)];
     }
 
-    function testSignPetitionWithZKProof_SucceedsWithAdmissionCommitment() public {
+    function testSignPetitionWithZKProof_SucceedsWithoutEmittingAdmissionCommitment() public {
         bytes32 nullifier = bytes32(uint256(111));
         bytes32 admissionCommitment = bytes32(uint256(222));
 
@@ -100,16 +100,16 @@ contract PetitionRegistrySettlementReferenceTest is Test {
         uint256[3] memory pubSignals = [uint256(nullifier), uint256(1), uint256(999)];
 
         vm.expectEmit(true, true, false, true);
-        emit PetitionRegistry.PetitionSigned(1, nullifier, admissionCommitment);
+        emit PetitionRegistry.PetitionSigned(1, nullifier, bytes32(0));
 
         registry.signPetitionWithZKProof(1, nullifier, admissionCommitment, pA, pB, pC, pubSignals);
 
-        assertEq(admission.callCount(), 1);
-        assertEq(admission.lastAdmissionCommitment(), admissionCommitment);
+        assertEq(admission.callCount(), 0);
+        assertEq(admission.lastAdmissionCommitment(), bytes32(0));
         assertTrue(registry.hasSignedPetition(1, nullifier));
     }
 
-    function testSignPetitionWithZKProof_RevertsWithoutConsumingLinkOnInvalidProof() public {
+    function testSignPetitionWithZKProof_RevertsWithoutRecordingSignatureOnInvalidProof() public {
         bytes32 nullifier = bytes32(uint256(111));
         bytes32 admissionCommitment = bytes32(uint256(222));
 
@@ -125,7 +125,7 @@ contract PetitionRegistrySettlementReferenceTest is Test {
         assertFalse(registry.hasSignedPetition(1, nullifier));
     }
 
-    function testSignPetitionWithZKProof_RevertsIfActionLinkFails() public {
+    function testSignPetitionWithZKProof_DoesNotCallActionLinkRegistry() public {
         bytes32 nullifier = bytes32(uint256(111));
         bytes32 admissionCommitment = bytes32(uint256(222));
 
@@ -134,13 +134,30 @@ contract PetitionRegistrySettlementReferenceTest is Test {
         (uint256[2] memory pA, uint256[2][2] memory pB, uint256[2] memory pC) = _proof();
         uint256[3] memory pubSignals = [uint256(nullifier), uint256(1), uint256(999)];
 
-        vm.expectRevert(MockAdmissionRegistryActionLink.MockLinkRevert.selector);
         registry.signPetitionWithZKProof(1, nullifier, admissionCommitment, pA, pB, pC, pubSignals);
 
-        assertFalse(registry.hasSignedPetition(1, nullifier));
+        assertEq(admission.callCount(), 0);
+        assertTrue(registry.hasSignedPetition(1, nullifier));
     }
 
-    function testSignPetitionWithZKProof_RevertsOnDuplicateNullifierBeforeLinkCall() public {
+    function testSignPetitionWithZKProof_DoesNotMutateAdmissionRegistry() public {
+        bytes32 nullifier = bytes32(uint256(444));
+        bytes32 admissionCommitment = bytes32(uint256(555));
+
+        bytes32 lastCommitmentBefore = admission.lastAdmissionCommitment();
+        uint256 callCountBefore = admission.callCount();
+
+        (uint256[2] memory pA, uint256[2][2] memory pB, uint256[2] memory pC) = _proof();
+        uint256[3] memory pubSignals = [uint256(nullifier), uint256(1), uint256(999)];
+
+        registry.signPetitionWithZKProof(1, nullifier, admissionCommitment, pA, pB, pC, pubSignals);
+
+        assertEq(admission.callCount(), callCountBefore);
+        assertEq(admission.lastAdmissionCommitment(), lastCommitmentBefore);
+        assertTrue(registry.hasSignedPetition(1, nullifier));
+    }
+
+    function testSignPetitionWithZKProof_RevertsOnDuplicateNullifier() public {
         bytes32 nullifier = bytes32(uint256(111));
         bytes32 admissionCommitment1 = bytes32(uint256(222));
         bytes32 admissionCommitment2 = bytes32(uint256(333));
@@ -153,6 +170,6 @@ contract PetitionRegistrySettlementReferenceTest is Test {
         vm.expectRevert(PetitionRegistry.NullifierAlreadyUsed.selector);
         registry.signPetitionWithZKProof(1, nullifier, admissionCommitment2, pA, pB, pC, pubSignals);
 
-        assertEq(admission.callCount(), 1);
+        assertEq(admission.callCount(), 0);
     }
 }

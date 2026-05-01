@@ -24,16 +24,11 @@ interface IGroth16Verifier {
     ) external view returns (bool);
 }
 
-interface IAdmissionRegistryActionLink {
-    function recordActionLink(bytes32 admissionCommitment) external;
-}
-
 /**
  * @title PetitionRegistry
  * @notice Core petition platform contract for Speak-Up V3 (UUPS Upgradeable)
  * @dev State model remains action-centered.
- *      The anonymous public action event surface is extended only to carry a
- *      routing-only settlement reference for the ZK signing path.
+ *      M2 signing uniqueness is enforced per petition by nullifier.
  */
 contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     // ============================================================
@@ -144,11 +139,12 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
 
     /**
      * @notice Sign petition with ZK proof (M2 Strong Privacy)
-     * @dev Verifies Groth16 proof that user is a verified member without revealing identity.
-     *      The admissionCommitment field is a routing-only settlement reference.
+     * @dev Verifies Groth16 proof that user is a member without revealing identity.
+     *      The admissionCommitment parameter is retained for ABI compatibility only.
+     *      It must not be used as a public cross-petition correlation tag.
      * @param petitionId The petition to sign
      * @param nullifier User's unique nullifier for this petition
-     * @param admissionCommitment Routing-only settlement reference
+     * @param admissionCommitment Deprecated/ignored. Retained for ABI compatibility.
      * @param pA Groth16 proof component A
      * @param pB Groth16 proof component B
      * @param pC Groth16 proof component C
@@ -173,11 +169,8 @@ contract PetitionRegistry is Initializable, UUPSUpgradeable, OwnableUpgradeable 
         if (petitionId != pubSignals[1]) revert InvalidZKProof();
         // pubSignals[2] is membershipRoot - verified by circuit
 
-        if (admissionRegistry == address(0)) revert InvalidAdmissionRegistry();
-        IAdmissionRegistryActionLink(admissionRegistry).recordActionLink(admissionCommitment);
-
         usedSignNullifier[petitionId][nullifier] = true;
-        emit PetitionSigned(petitionId, nullifier, admissionCommitment);
+        emit PetitionSigned(petitionId, nullifier, bytes32(0));
     }
 
     function commentOnPetition(uint256 petitionId, bytes32 nullifier, bytes32 commentHash, bytes calldata authData)
