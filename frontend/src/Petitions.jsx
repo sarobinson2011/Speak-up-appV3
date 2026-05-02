@@ -129,9 +129,25 @@ export default function Petitions({ signer, account }) {
   }, [account, currentWalletKey]);
 
   useEffect(() => {
-    loadPetitions();
+    if (viewingPetitionId) return;
+
+    let cancelled = false;
+
+    async function refreshList() {
+      if (cancelled) return;
+      await loadPetitions();
+    }
+
+    refreshList();
+
+    const interval = setInterval(refreshList, 5000);
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [viewingPetitionId]);
 
   useEffect(() => {
     if (!account || !memberLeafHex) return;

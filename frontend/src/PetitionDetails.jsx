@@ -354,6 +354,42 @@ export default function PetitionDetails({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [petitionId, membershipPath, memberSecretBI]);
 
+  // Poll backend read model so signature counts reflect indexer updates without manual refresh.
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refreshSignatureCount() {
+      try {
+        const petitionRes = await fetch(`${BACKEND_URL}/api/petitions/${petitionId}`);
+        if (!petitionRes.ok) return;
+
+        const petitionJson = await petitionRes.json();
+        const backendPetition = petitionJson?.petition;
+        if (!backendPetition || cancelled) return;
+
+        const nextSignatureCount = Number(backendPetition.signatureCount || 0);
+        setSignatureCount(nextSignatureCount);
+        setPetition((prev) =>
+          prev
+            ? {
+                ...prev,
+                signatureCount: nextSignatureCount
+              }
+            : prev
+        );
+      } catch (error) {
+        console.error('Error refreshing signature count:', error);
+      }
+    }
+
+    const interval = setInterval(refreshSignatureCount, 5000);
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [petitionId]);
+
   // Log whenever critical M2 inputs change
   useEffect(() => {
     logM2Preflight('M2_PREFLIGHT');
