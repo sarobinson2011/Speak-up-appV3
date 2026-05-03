@@ -177,6 +177,8 @@ No layer should leak or infer the responsibility of another.
 2. Privacy
 
 - Signer proves membership without revealing identity
+- Anonymous actions must not be linkable across petitions by any reusable public identifier
+- Admission-layer identifiers must not be carried, stored, logged, or emitted as action-layer correlation tags
 
 3. On-chain authority
 
