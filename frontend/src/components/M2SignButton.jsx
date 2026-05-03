@@ -107,7 +107,6 @@ export function M2SignButton({
   petitionId,
   membershipPath,
   memberSecret,
-  admissionCommitment,
   alreadySigned = false,
   disabled = false,
   onSuccess,
@@ -160,10 +159,6 @@ export function M2SignButton({
         (!isHexString(memberSecret) && !isDecString(memberSecret))
       ) {
         throw new Error('memberSecret missing/invalid (expected hex 0x… or decimal string)');
-      }
-
-      if (!isHex32(admissionCommitment)) {
-        throw new Error('admissionCommitment missing/invalid (expected bytes32 hex)');
       }
 
       setAlreadySignedLocal(false);
@@ -290,7 +285,6 @@ export function M2SignButton({
       const relayPayload = {
         petitionId: pidBI.toString(),
         nullifier: nullifierBytes32,
-        admissionCommitment,
         pA,
         pB,
         pC,

@@ -2,6 +2,8 @@
 import express from "express";
 import { ethers } from "ethers";
 
+const ZERO_ADMISSION_COMMITMENT = "0x0000000000000000000000000000000000000000000000000000000000000000";
+
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
 const SIGN_MAX_REQUESTS_PER_WINDOW = 10;
 const STATUS_MAX_REQUESTS_PER_WINDOW = 30;
@@ -166,7 +168,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       const {
         petitionId,
         nullifier,
-        admissionCommitment,
         pA,
         pB,
         pC,
@@ -191,13 +192,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         !/^0x[0-9a-fA-F]{64}$/.test(nullifier)
       ) {
         return res.status(400).json({ error: "invalid nullifier" });
-      }
-
-      if (
-        typeof admissionCommitment !== "string" ||
-        !/^0x[0-9a-fA-F]{64}$/.test(admissionCommitment)
-      ) {
-        return res.status(400).json({ error: "invalid admissionCommitment" });
       }
 
       const isHex = (v) => typeof v === "string" && /^0x[0-9a-fA-F]+$/.test(v);
@@ -264,7 +258,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       const tx = await registry.signPetitionWithZKProof(
         BigInt(petitionId),
         nullifier,
-        admissionCommitment,
+        ZERO_ADMISSION_COMMITMENT,
         pA,
         pB,
         pC,

@@ -36,7 +36,6 @@ function normalizeEvent(log, parsed, timestamp) {
       eventName: "PetitionSigned",
       petitionId: parsed.args.petitionId.toString(),
       nullifier: parsed.args.nullifier,
-      admissionCommitment: parsed.args.admissionCommitment,
     };
   }
 

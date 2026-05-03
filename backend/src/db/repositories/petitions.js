@@ -20,7 +20,7 @@ export function insertPetition({
       created_log_index,
       created_tx_hash,
       created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
   `);
 
   const result = stmt.run(
@@ -57,7 +57,6 @@ export function ensurePetitionSignatureCountRow(petitionId) {
 export function insertPetitionSignature({
   petitionId,
   nullifier,
-  admissionCommitment,
   blockNumber,
   transactionIndex,
   logIndex,
@@ -68,19 +67,17 @@ export function insertPetitionSignature({
     INSERT OR IGNORE INTO petition_signatures (
       petition_id,
       nullifier,
-      admission_commitment,
       block_number,
       transaction_index,
       log_index,
       tx_hash,
       signed_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
   `);
 
   const result = stmt.run(
     petitionId,
     nullifier,
-    admissionCommitment,
     blockNumber,
     transactionIndex,
     logIndex,

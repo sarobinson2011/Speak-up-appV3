@@ -35,7 +35,6 @@ CREATE INDEX IF NOT EXISTS idx_petitions_created_order
 CREATE TABLE IF NOT EXISTS petition_signatures (
     petition_id INTEGER NOT NULL,
     nullifier TEXT NOT NULL,
-    admission_commitment TEXT NOT NULL,
 
     block_number INTEGER NOT NULL,
     transaction_index INTEGER NOT NULL,
@@ -62,9 +61,6 @@ CREATE INDEX IF NOT EXISTS idx_petition_signatures_order
 
 CREATE INDEX IF NOT EXISTS idx_petition_signatures_nullifier
     ON petition_signatures (nullifier);
-
-CREATE INDEX IF NOT EXISTS idx_petition_signatures_admission_commitment
-    ON petition_signatures (admission_commitment);
 
 
 -- ------------------------------------------------------------

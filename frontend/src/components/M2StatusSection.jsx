@@ -204,7 +204,6 @@ export function M2StatusSection({
           petitionId={petitionId}
           membershipPath={membershipPath}
           memberSecret={memberSecretBI ? memberSecretBI.toString() : ''}
-          admissionCommitment={currentAdmissionCommitment}
           alreadySigned={resolvedHasSignedM2}
           disabled={
             resolvedHasSignedM2 ||

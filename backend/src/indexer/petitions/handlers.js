@@ -66,7 +66,6 @@ export const handlePetitionSigned = db.transaction((event) => {
   const {
     petitionId,
     nullifier,
-    admissionCommitment,
     blockNumber,
     transactionIndex,
     logIndex,
@@ -76,7 +75,6 @@ export const handlePetitionSigned = db.transaction((event) => {
 
   assertPresent(petitionId, "petitionId");
   assertPresent(nullifier, "nullifier");
-  assertPresent(admissionCommitment, "admissionCommitment");
   assertPresent(blockNumber, "blockNumber");
   assertPresent(transactionIndex, "transactionIndex");
   assertPresent(logIndex, "logIndex");
@@ -86,7 +84,6 @@ export const handlePetitionSigned = db.transaction((event) => {
   const signatureResult = insertPetitionSignature({
     petitionId,
     nullifier,
-    admissionCommitment,
     blockNumber,
     transactionIndex,
     logIndex,
