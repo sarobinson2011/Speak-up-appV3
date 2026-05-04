@@ -382,6 +382,8 @@ export default function PetitionDetails({
       }
     }
 
+    refreshSignatureCount();
+
     const interval = setInterval(refreshSignatureCount, 5000);
 
     return () => {

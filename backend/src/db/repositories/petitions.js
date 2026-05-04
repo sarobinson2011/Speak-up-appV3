@@ -20,7 +20,7 @@ export function insertPetition({
       created_log_index,
       created_tx_hash,
       created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   const result = stmt.run(
@@ -135,6 +135,7 @@ export function getPetitionsWithCounts() {
     FROM petitions p
     LEFT JOIN petition_signature_counts psc
       ON p.petition_id = psc.petition_id
+    WHERE p.is_active = 1
     ORDER BY
       p.created_block_number DESC,
       p.created_transaction_index DESC,
@@ -156,6 +157,7 @@ export function getPetitionByIdWithCount(petitionId) {
     LEFT JOIN petition_signature_counts psc
       ON p.petition_id = psc.petition_id
     WHERE p.petition_id = ?
+      AND p.is_active = 1
   `);
 
   return stmt.get(petitionId) ?? null;
@@ -170,7 +172,29 @@ export function getPetitionSignatureCount(petitionId) {
     LEFT JOIN petition_signature_counts psc
       ON p.petition_id = psc.petition_id
     WHERE p.petition_id = ?
+      AND p.is_active = 1
   `);
 
   return stmt.get(petitionId) ?? null;
 }
+
+export function getAllPetitionIds() {
+  const stmt = db.prepare(`
+    SELECT petition_id
+    FROM petitions
+    ORDER BY petition_id
+  `);
+
+  return stmt.all();
+}
+
+export function setPetitionActive(petitionId, isActive) {
+  const stmt = db.prepare(`
+    UPDATE petitions
+    SET is_active = ?
+    WHERE petition_id = ?
+  `);
+
+  return stmt.run(isActive ? 1 : 0, petitionId);
+}
+
