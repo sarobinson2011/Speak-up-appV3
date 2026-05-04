@@ -23,20 +23,25 @@ export function updateSyncCursor(
   updatedAt
 ) {
   const stmt = db.prepare(`
-    UPDATE indexer_sync_state
-    SET
-      last_processed_block = ?,
-      last_processed_transaction_index = ?,
-      last_processed_log_index = ?,
-      updated_at = ?
-    WHERE contract_name = ?
+    INSERT INTO indexer_sync_state (
+      contract_name,
+      last_processed_block,
+      last_processed_transaction_index,
+      last_processed_log_index,
+      updated_at
+    ) VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(contract_name) DO UPDATE SET
+      last_processed_block = excluded.last_processed_block,
+      last_processed_transaction_index = excluded.last_processed_transaction_index,
+      last_processed_log_index = excluded.last_processed_log_index,
+      updated_at = excluded.updated_at
   `);
 
   return stmt.run(
+    contractName,
     lastProcessedBlock,
     lastProcessedTransactionIndex,
     lastProcessedLogIndex,
-    updatedAt,
-    contractName
+    updatedAt
   );
 }

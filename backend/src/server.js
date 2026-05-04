@@ -9,6 +9,7 @@ import { makeMembershipRouter } from "./routes/membership.js";
 import { makeRelayRouter } from "./routes/relay.js";
 import { makePetitionsRouter } from "./routes/petitions.js";
 import { makeAdmissionRouter } from "./routes/admission.js";
+import { makeIndexerRouter } from "./routes/indexer.js";
 
 const app = express();
 app.use(cors());
@@ -84,6 +85,13 @@ app.get("/health", (req, res) => {
 app.use("/api/membership", makeMembershipRouter(indexer));
 
 app.use("/api/petitions", makePetitionsRouter());
+
+app.use(
+  "/api/indexer",
+  makeIndexerRouter({
+    rpcUrl: RPC_URL,
+  })
+);
 
 app.use(
   "/api/relay",
