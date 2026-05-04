@@ -1894,6 +1894,13 @@ Frontend must not derive:
 - signature counts from chain queries
 - petition ordering from local state
 
+Read-model exposure rule:
+
+- indexed `PetitionCreated` events create candidate petition rows
+- backend API exposure requires current live contract existence
+- petitions with `exists == false` in `PetitionRegistry.petitions(id)` must not be exposed through product read APIs
+- historical rows may remain in SQLite for audit/reconciliation, but inactive rows are hidden from frontend consumption
+
 ---
 
 ### Metadata Decode Layer — IMPLEMENTED
