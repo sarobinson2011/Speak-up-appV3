@@ -136,6 +136,16 @@ export default function Petitions({ signer, account }) {
     async function refreshList() {
       if (cancelled) return;
       await loadPetitions();
+
+      try {
+        const indexerRes = await fetch(`${BACKEND_URL}/api/indexer/status`);
+        if (!indexerRes.ok || cancelled) return;
+
+        const indexerJson = await indexerRes.json();
+        setIndexerLagBlocks(indexerJson?.petitionIndexer?.lagBlocks ?? null);
+      } catch {
+        if (!cancelled) setIndexerLagBlocks(null);
+      }
     }
 
     refreshList();
@@ -338,6 +348,11 @@ export default function Petitions({ signer, account }) {
 
           <div>
             <h3>All Petitions ({petitions.length})</h3>
+            {indexerLagBlocks > 0 && (
+              <div style={{ color: '#999', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                Updating read model… {indexerLagBlocks} block{indexerLagBlocks === 1 ? '' : 's'} behind
+              </div>
+            )}
 
             {loadingPetitions ? (
               <div style={{ textAlign: 'center', padding: '3rem', color: '#667eea', fontSize: '1.2rem' }}>

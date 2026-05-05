@@ -2,7 +2,8 @@ export function PetitionDisplaySection({
   metadata,
   petition,
   signatureCount,
-  resolvedHasSignedM2
+  resolvedHasSignedM2,
+  indexerLagBlocks = null
 }) {
   const progress =
     metadata.goalSignatures > 0
@@ -46,9 +47,16 @@ export function PetitionDisplaySection({
 
       <div style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-          <strong style={{ fontSize: '1.3rem', color: '#667eea' }}>
-            {signatureCount.toLocaleString()} signatures
-          </strong>
+          <div>
+            <strong style={{ fontSize: '1.3rem', color: '#667eea' }}>
+              {signatureCount.toLocaleString()} signatures
+            </strong>
+            {indexerLagBlocks > 0 && (
+              <div style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.2rem' }}>
+                Updating read model… {indexerLagBlocks} block{indexerLagBlocks === 1 ? '' : 's'} behind
+              </div>
+            )}
+          </div>
           <span style={{ color: '#666' }}>Goal: {metadata.goalSignatures.toLocaleString()}</span>
         </div>
 

@@ -83,6 +83,7 @@ export default function PetitionDetails({
   const [metadata, setMetadata] = useState(null);
 
   const [signatureCount, setSignatureCount] = useState(0);
+  const [indexerLagBlocks, setIndexerLagBlocks] = useState(null);
 
   const [comments, setComments] = useState([]);
   const [commentsAvailable, setCommentsAvailable] = useState(false);
@@ -360,7 +361,18 @@ export default function PetitionDetails({
 
     async function refreshSignatureCount() {
       try {
-        const petitionRes = await fetch(`${BACKEND_URL}/api/petitions/${petitionId}`);
+        const [petitionRes, indexerRes] = await Promise.all([
+          fetch(`${BACKEND_URL}/api/petitions/${petitionId}`),
+          fetch(`${BACKEND_URL}/api/indexer/status`)
+        ]);
+
+        if (indexerRes.ok) {
+          const indexerJson = await indexerRes.json();
+          if (!cancelled) {
+            setIndexerLagBlocks(indexerJson?.petitionIndexer?.lagBlocks ?? null);
+          }
+        }
+
         if (!petitionRes.ok) return;
 
         const petitionJson = await petitionRes.json();
@@ -604,6 +616,7 @@ export default function PetitionDetails({
         petition={petition}
         signatureCount={signatureCount}
         resolvedHasSignedM2={resolvedHasSignedM2}
+        indexerLagBlocks={indexerLagBlocks}
       />
 
       <M2StatusSection
