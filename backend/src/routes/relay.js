@@ -2,6 +2,7 @@
 import express from "express";
 import { ethers } from "ethers";
 import { getPetitionIndexerFreshness } from "../services/indexerFreshness.js";
+import { executeRelaySubmission } from "../services/relayExecution.js";
 
 const ZERO_ADMISSION_COMMITMENT = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -273,26 +274,27 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         });
       }
 
-      const tx = await registry.signPetitionWithZKProof(
-        BigInt(petitionId),
+      const submission = await executeRelaySubmission({
+        registry,
+        petitionId,
         nullifier,
-        ZERO_ADMISSION_COMMITMENT,
+        admissionCommitment: ZERO_ADMISSION_COMMITMENT,
         pA,
         pB,
         pC,
         pubSignals
-      );
+      });
 
       logRelayEvent("submit-ok", {
         petitionId: String(petitionId),
         nullifier,
-        txHash: tx.hash
+        txHash: submission.txHash
       });
 
       return res.json({
         ok: true,
         alreadySigned: false,
-        txHash: tx.hash
+        txHash: submission.txHash
       });
     } catch (e) {
       logRelayEvent("submit-error", {
