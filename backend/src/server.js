@@ -10,6 +10,7 @@ import { makeRelayRouter } from "./routes/relay.js";
 import { makePetitionsRouter } from "./routes/petitions.js";
 import { makeAdmissionRouter } from "./routes/admission.js";
 import { makeIndexerRouter } from "./routes/indexer.js";
+import { getPetitionIndexerFreshness } from "./services/indexerFreshness.js";
 
 const app = express();
 app.use(cors());
@@ -71,15 +72,32 @@ indexer
   .catch((e) => console.warn("membership sync failed:", e?.message || e));
 
 // ===== Routes =====
-app.get("/health", (req, res) => {
-  res.json({
-    ok: true,
-    mode: "M2_ONLY",
-    chainId: CHAIN_ID,
-    rpcUrl: RPC_URL,
-    membershipAddress: anonMembershipRegistryAddress,
-    ts: new Date().toISOString(),
-  });
+app.get("/health", async (req, res) => {
+  try {
+    const petitionIndexer = await getPetitionIndexerFreshness({
+      rpcUrl: RPC_URL,
+    });
+
+    res.json({
+      ok: true,
+      mode: "M2_ONLY",
+      chainId: CHAIN_ID,
+      rpcUrl: RPC_URL,
+      membershipAddress: anonMembershipRegistryAddress,
+      indexer: {
+        petition: petitionIndexer,
+      },
+      ts: new Date().toISOString(),
+    });
+  } catch (e) {
+    res.status(500).json({
+      ok: false,
+      mode: "M2_ONLY",
+      error: "health check failed",
+      details: e?.message || String(e),
+      ts: new Date().toISOString(),
+    });
+  }
 });
 
 app.use("/api/membership", makeMembershipRouter(indexer));
