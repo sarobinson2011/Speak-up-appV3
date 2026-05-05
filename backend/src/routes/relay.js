@@ -1,6 +1,7 @@
 // backend/src/routes/relay.js
 import express from "express";
 import { ethers } from "ethers";
+import { getPetitionIndexerFreshness } from "../services/indexerFreshness.js";
 
 const ZERO_ADMISSION_COMMITMENT = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -235,6 +236,23 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       if (BigInt(petitionId) !== BigInt(pubSignals[1])) {
         return res.status(400).json({
           error: "petitionId mismatch with pubSignals[1]"
+        });
+      }
+
+      const freshness = await getPetitionIndexerFreshness({ rpcUrl });
+
+      if (freshness.status !== "healthy") {
+        logRelayEvent("indexer-not-healthy", {
+          petitionId: String(petitionId),
+          nullifier,
+          indexerStatus: freshness.status,
+          lagBlocks: freshness.lagBlocks,
+          maxAllowedLagBlocks: freshness.maxAllowedLagBlocks
+        });
+
+        return res.status(503).json({
+          error: "indexer not healthy",
+          indexer: freshness
         });
       }
 
