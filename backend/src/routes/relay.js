@@ -274,27 +274,33 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         });
       }
 
-      const submission = await executeRelaySubmission({
-        registry,
+      const relaySubmission = {
         petitionId,
         nullifier,
-        admissionCommitment: ZERO_ADMISSION_COMMITMENT,
-        pA,
-        pB,
-        pC,
-        pubSignals
+        proof: {
+          pA,
+          pB,
+          pC
+        },
+        pubSignals,
+        admissionCommitment: ZERO_ADMISSION_COMMITMENT
+      };
+
+      const executionResult = await executeRelaySubmission({
+        registry,
+        submission: relaySubmission
       });
 
       logRelayEvent("submit-ok", {
         petitionId: String(petitionId),
         nullifier,
-        txHash: submission.txHash
+        txHash: executionResult.txHash
       });
 
       return res.json({
         ok: true,
         alreadySigned: false,
-        txHash: submission.txHash
+        txHash: executionResult.txHash
       });
     } catch (e) {
       logRelayEvent("submit-error", {
