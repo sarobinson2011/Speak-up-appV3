@@ -68,13 +68,13 @@ function makeFailingExecutor() {
   };
 }
 
-function createTempestExecutors({ registry }) {
+function createTempestExecutors({ registry, secondaryRegistry }) {
   return {
     group0Executor: registry,
     group1Executor:
       process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
         ? makeFailingExecutor()
-        : registry,
+        : secondaryRegistry,
   };
 }
 
@@ -88,6 +88,7 @@ function selectExecutorForSlot({
 
 async function dispatchRelayExecution({
   registry,
+  secondaryRegistry,
   submission,
 }) {
   const seed = deriveTempestSeed(submission);
@@ -104,7 +105,7 @@ async function dispatchRelayExecution({
     admissionCommitment,
   } = submission;
 
-  const { group0Executor, group1Executor } = createTempestExecutors({ registry });
+  const { group0Executor, group1Executor } = createTempestExecutors({ registry, secondaryRegistry });
 
   let lastError = null;
 
@@ -142,6 +143,7 @@ async function dispatchRelayExecution({
 
 export async function executeRelaySubmission({
   registry,
+  secondaryRegistry,
   submission,
 }) {
   Object.freeze(submission);
@@ -149,6 +151,7 @@ export async function executeRelaySubmission({
 
   return dispatchRelayExecution({
     registry,
+    secondaryRegistry,
     submission,
   });
 }

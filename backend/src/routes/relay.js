@@ -88,6 +88,12 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     wallet
   );
 
+  const secondaryRegistry = new ethers.Contract(
+    registryAddress,
+    registryAbi,
+    wallet
+  );
+
   const statusRateLimit = createInMemoryRateLimiter({
     windowMs: RATE_LIMIT_WINDOW_MS,
     maxRequests: STATUS_MAX_REQUESTS_PER_WINDOW,
