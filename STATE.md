@@ -2543,3 +2543,37 @@ TEMPEST Phase A now has validated deterministic fallback behavior in single-rela
 
 This does not yet constitute real multi-relayer dispersion.
 
+
+---
+
+## Engineering[20] — TEMPEST Dual Execution Surface Validation
+
+TEMPEST was extended from logical executor groups to distinct local execution handles.
+
+Implementation:
+
+- `backend/src/routes/relay.js` now constructs:
+  - primary `registry`
+  - secondary `secondaryRegistry`
+- both point to the same PetitionRegistry address, wallet, and RPC provider
+- `backend/src/services/relayExecution.js` accepts both execution handles
+- slot-to-executor mapping remains deterministic
+- controlled failure mode remains available through `TEMPEST_FAIL_EXECUTOR_B=true`
+
+Validation:
+
+- backend started successfully with controlled executor-B failure enabled
+- `/api/relay/status` remained healthy
+- `/api/indexer/status` remained healthy
+- a fresh M2 signing flow succeeded through the UI
+- signature count updated correctly after signing
+- no seed, permutation, slot, or executor identity was exposed to frontend or logs
+
+Locked interpretation:
+
+TEMPEST Phase A now supports distinct local execution surfaces and validated deterministic fallback across those surfaces.
+
+This remains single-relayer/local-executor mode.
+
+No external relay endpoints or true network dispersion are active yet.
+
