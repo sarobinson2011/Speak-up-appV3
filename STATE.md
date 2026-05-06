@@ -2376,3 +2376,139 @@ STATE.md remains canonical.
 
 If any conflict arises between code and documentation:  
 STATE.md governs.
+---
+
+## 12. TEMPEST — Execution Layer (Phase A Scaffold)
+
+Status: **IMPLEMENTED (Engineering[20]) — single-relay mode only**
+
+### 12.1 Purpose
+
+TEMPEST introduces a deterministic execution-layer abstraction to remove correlation and observability from the submission path, without modifying action semantics, identity model, or read model.
+
+Phase A establishes the structural scaffold only. No real dispersion is active yet.
+
+### 12.2 Core Properties (Phase A)
+
+The execution path is now:
+
+client  
+→ validated relay route  
+→ canonical submission (frozen)  
+→ deterministic seed (internal only)  
+→ deterministic permutation (7 slots)  
+→ sequential attempt over slots  
+→ executor (currently identical)  
+→ chain
+
+The system remains behaviorally identical to pre-TEMPEST.
+
+### 12.3 Canonical Submission Payload
+
+All execution is now driven by a canonical, immutable payload:
+
+- petitionId
+- nullifier
+- proof (pA, pB, pC)
+- pubSignals (ordered)
+- admissionCommitment (fixed zero)
+
+This payload:
+
+- is frozen at execution boundary
+- contains no identity-layer material
+- contains no request metadata
+- contains no correlation surface beyond nullifier semantics
+
+### 12.4 Execution Boundary
+
+A strict boundary is enforced:
+
+`executeRelaySubmission({ registry, submission })`
+
+Properties:
+
+- no access to HTTP request/response
+- no access to client metadata
+- no access to identity/admission state
+- no logging inside boundary
+- submission is immutable
+
+### 12.5 Deterministic Seed
+
+Seed is derived as:
+
+`keccak256(abi.encode(petitionId, nullifier, admissionCommitment, pA, pB, pC, pubSignals))`
+
+Properties:
+
+- deterministic per action
+- derived only from canonical submission
+- not logged, stored, or exposed
+- not used outside execution layer
+
+### 12.6 Deterministic Permutation
+
+A fixed 7-slot permutation is derived from the seed.
+
+Properties:
+
+- stable per action
+- bounded (no unbounded retries)
+- not observable externally
+- defines execution order
+
+### 12.7 Relay Slots (Abstract)
+
+Seven relay slots exist:
+
+- slots 0–6
+- currently all bound to same executor
+- executor binding occurs at dispatch time
+- no relay identity is exposed or persisted
+
+### 12.8 Sequential Execution (Deterministic Fallback)
+
+Execution attempts follow permutation order:
+
+- sequential only
+- no parallel execution
+- first success returns
+- failure falls through deterministically
+- no reshuffle or randomness
+
+### 12.9 Phase A Constraints
+
+Phase A explicitly does NOT include:
+
+- multiple real relayers
+- network-level dispersion
+- routing over external infrastructure
+- relay identity persistence
+- correlation caches
+- retry amplification
+- timing randomization
+
+### 12.10 Invariants Preserved
+
+TEMPEST Phase A does not modify:
+
+- nullifier uniqueness model
+- ZK proof structure or verification
+- petition contract interface
+- read model authority (indexer)
+- relay freshness gating
+- frontend behavior or semantics
+- admission model separation
+
+### 12.11 Next Phase (Not Implemented)
+
+Future phases will introduce:
+
+- real multi-relayer execution
+- deterministic mapping of slots → relayer endpoints
+- bounded failure handling across independent executors
+- path-layer obfuscation (REFLECT)
+
+These must preserve all invariants defined above.
+
