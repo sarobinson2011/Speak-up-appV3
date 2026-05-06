@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import {
   TEMPEST_CONTROLLED_FAILURE_ENV,
-  TEMPEST_GROUP0_MAX_SLOT,
+  TEMPEST_PRIMARY_DOMAIN_MAX_SLOT,
   TEMPEST_PERMUTATION_INCREMENT,
   TEMPEST_PERMUTATION_MASK,
   TEMPEST_PERMUTATION_MULTIPLIER,
@@ -59,30 +59,36 @@ function deriveTempestPermutation(seedBI) {
   return indices;
 }
 
-function makeFailingExecutor() {
+function makeFailingDomainHandle() {
   return {
     async signPetitionWithZKProof() {
-      throw new Error("TEMPEST controlled executor failure");
+      throw new Error("TEMPEST controlled execution failure");
     },
   };
 }
 
-function createTempestExecutors({ registry, secondaryRegistry }) {
-  return {
-    group0Executor: registry,
-    group1Executor:
-      process.env[TEMPEST_CONTROLLED_FAILURE_ENV] === "true"
-        ? makeFailingExecutor()
-        : secondaryRegistry,
-  };
+function createTempestExecutionDomains({ registry, secondaryRegistry }) {
+  return [
+    {
+      handle: registry,
+    },
+    {
+      handle:
+        process.env[TEMPEST_CONTROLLED_FAILURE_ENV] === "true"
+          ? makeFailingDomainHandle()
+          : secondaryRegistry,
+    },
+  ];
 }
 
-function selectExecutorForSlot({
+function selectDomainHandleForSlot({
   selectedIndex,
-  group0Executor,
-  group1Executor,
+  executionDomains,
 }) {
-  return selectedIndex <= TEMPEST_GROUP0_MAX_SLOT ? group0Executor : group1Executor;
+  const domainIndex =
+    selectedIndex <= TEMPEST_PRIMARY_DOMAIN_MAX_SLOT ? 0 : 1;
+
+  return executionDomains[domainIndex].handle;
 }
 
 async function dispatchRelayExecution({
@@ -92,9 +98,7 @@ async function dispatchRelayExecution({
 }) {
   const seed = deriveTempestSeed(submission);
   const seedBI = BigInt(seed);
-  const index = Number(seedBI % 7n);
   const permutation = deriveTempestPermutation(seedBI);
-  void index;
 
   const {
     petitionId,
@@ -104,22 +108,24 @@ async function dispatchRelayExecution({
     admissionCommitment,
   } = submission;
 
-  const { group0Executor, group1Executor } = createTempestExecutors({ registry, secondaryRegistry });
+  const executionDomains = createTempestExecutionDomains({
+    registry,
+    secondaryRegistry,
+  });
 
   let lastError = null;
 
   for (const selectedIndex of permutation) {
     const relay = {
       ...TEMPEST_RELAY_SLOTS[selectedIndex],
-      executor: selectExecutorForSlot({
+      domainHandle: selectDomainHandleForSlot({
         selectedIndex,
-        group0Executor,
-        group1Executor,
+        executionDomains,
       }),
     };
 
     try {
-      const tx = await relay.executor.signPetitionWithZKProof(
+      const tx = await relay.domainHandle.signPetitionWithZKProof(
         BigInt(petitionId),
         nullifier,
         admissionCommitment,

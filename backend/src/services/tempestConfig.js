@@ -10,8 +10,10 @@ export const TEMPEST_RELAY_SLOTS = [
   { id: 6, type: "primary" },
 ];
 
-export const TEMPEST_GROUP0_MAX_SLOT = 3;
+export const TEMPEST_PRIMARY_DOMAIN_MAX_SLOT = 3;
 
+// Keep existing env name for compatibility.
+// Do not expose this terminology outside internal simulation config.
 export const TEMPEST_CONTROLLED_FAILURE_ENV = "TEMPEST_FAIL_EXECUTOR_B";
 
 export const TEMPEST_PERMUTATION_MULTIPLIER = 1103515245n;

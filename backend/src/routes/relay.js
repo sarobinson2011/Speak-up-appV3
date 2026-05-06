@@ -250,11 +250,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
 
       if (freshness.status !== "healthy") {
         logRelayEvent("indexer-not-healthy", {
-          petitionId: String(petitionId),
-          nullifier,
-          indexerStatus: freshness.status,
-          lagBlocks: freshness.lagBlocks,
-          maxAllowedLagBlocks: freshness.maxAllowedLagBlocks
+          indexerStatus: freshness.status
         });
 
         return res.status(503).json({
@@ -269,10 +265,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       );
 
       if (alreadySigned) {
-        logRelayEvent("already-signed", {
-          petitionId: String(petitionId),
-          nullifier
-        });
+        logRelayEvent("already-signed", {});
 
         return res.json({
           ok: true,
@@ -297,11 +290,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         submission: relaySubmission
       });
 
-      logRelayEvent("submit-ok", {
-        petitionId: String(petitionId),
-        nullifier,
-        txHash: executionResult.txHash
-      });
+      logRelayEvent("submit-ok", {});
 
       return res.json({
         ok: true,
@@ -310,9 +299,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       });
     } catch (e) {
       logRelayEvent("submit-error", {
-        petitionId: petitionIdForLog != null ? String(petitionIdForLog) : null,
-        nullifier: nullifierForLog,
-        error: e?.message || String(e)
+        error: "internal"
       });
 
       return res.status(500).json({
