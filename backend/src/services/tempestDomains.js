@@ -1,10 +1,15 @@
 import { ethers } from "ethers";
 
 export function buildTempestExecutionDomains({
+  rpcUrl,
   registryAddress,
   registryAbi,
   wallet,
 }) {
+  if (!rpcUrl) {
+    throw new Error("buildTempestExecutionDomains requires rpcUrl");
+  }
+
   if (!registryAddress) {
     throw new Error("buildTempestExecutionDomains requires registryAddress");
   }
@@ -31,9 +36,15 @@ export function buildTempestExecutionDomains({
 
   return [
     {
+      rpcUrl,
+      registryAddress,
+      wallet,
       handle: primaryDomainHandle,
     },
     {
+      rpcUrl,
+      registryAddress,
+      wallet,
       handle: secondaryDomainHandle,
     },
   ];

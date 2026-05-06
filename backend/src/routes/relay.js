@@ -84,6 +84,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   ];
 
   const executionDomains = buildTempestExecutionDomains({
+    rpcUrl,
     registryAddress,
     registryAbi,
     wallet,
