@@ -68,6 +68,16 @@ function makeFailingExecutor() {
   };
 }
 
+function createTempestExecutors({ registry }) {
+  return {
+    executorA: registry,
+    executorB:
+      process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
+        ? makeFailingExecutor()
+        : registry,
+  };
+}
+
 async function dispatchRelayExecution({
   registry,
   submission,
@@ -86,11 +96,7 @@ async function dispatchRelayExecution({
     admissionCommitment,
   } = submission;
 
-  const executorA = registry;
-  const executorB =
-    process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
-      ? makeFailingExecutor()
-      : registry;
+  const { executorA, executorB } = createTempestExecutors({ registry });
 
   let lastError = null;
 
