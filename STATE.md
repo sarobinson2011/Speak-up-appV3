@@ -2512,3 +2512,34 @@ Future phases will introduce:
 
 These must preserve all invariants defined above.
 
+
+---
+
+## Engineering[20] — TEMPEST Controlled Fallback Validation
+
+A controlled fallback simulation was implemented and validated.
+
+Implementation:
+
+- `TEMPEST_FAIL_EXECUTOR_B=true` enables deterministic failure of logical executor B
+- executor A and executor B remain local logical executors only
+- no external relayers were introduced
+- no frontend/API response shape changed
+- no relay slot, seed, permutation, or executor identity is logged or exposed
+
+Validation:
+
+- backend started successfully with `TEMPEST_FAIL_EXECUTOR_B=true`
+- relay status remained healthy
+- petition indexer remained healthy
+- a fresh M2 identity was enrolled
+- ZK signing succeeded through the UI
+- frontend reflected the correct signed state after submission
+- deterministic fallback did not alter user-visible semantics
+
+Locked interpretation:
+
+TEMPEST Phase A now has validated deterministic fallback behavior in single-relay/local-executor mode.
+
+This does not yet constitute real multi-relayer dispersion.
+
