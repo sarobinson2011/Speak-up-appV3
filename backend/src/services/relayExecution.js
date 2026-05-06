@@ -1,14 +1,13 @@
 import { ethers } from "ethers";
-
-const TEMPEST_RELAY_SLOTS = [
-  { id: 0, type: "primary" },
-  { id: 1, type: "primary" },
-  { id: 2, type: "primary" },
-  { id: 3, type: "primary" },
-  { id: 4, type: "primary" },
-  { id: 5, type: "primary" },
-  { id: 6, type: "primary" },
-];
+import {
+  TEMPEST_CONTROLLED_FAILURE_ENV,
+  TEMPEST_GROUP0_MAX_SLOT,
+  TEMPEST_PERMUTATION_INCREMENT,
+  TEMPEST_PERMUTATION_MASK,
+  TEMPEST_PERMUTATION_MULTIPLIER,
+  TEMPEST_RELAY_SLOTS,
+  TEMPEST_SLOT_COUNT,
+} from "./tempestConfig.js";
 
 function encodeTempestSeedPreimage(submission) {
   const {
@@ -46,13 +45,13 @@ export function deriveTempestSeed(submission) {
 }
 
 function deriveTempestPermutation(seedBI) {
-  const n = 7;
+  const n = TEMPEST_SLOT_COUNT;
   const indices = Array.from({ length: n }, (_, i) => i);
 
   let state = seedBI;
 
   for (let i = n - 1; i > 0; i -= 1) {
-    state = (state * 1103515245n + 12345n) & ((1n << 64n) - 1n);
+    state = (state * TEMPEST_PERMUTATION_MULTIPLIER + TEMPEST_PERMUTATION_INCREMENT) & TEMPEST_PERMUTATION_MASK;
     const j = Number(state % BigInt(i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
@@ -72,7 +71,7 @@ function createTempestExecutors({ registry, secondaryRegistry }) {
   return {
     group0Executor: registry,
     group1Executor:
-      process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
+      process.env[TEMPEST_CONTROLLED_FAILURE_ENV] === "true"
         ? makeFailingExecutor()
         : secondaryRegistry,
   };
@@ -83,7 +82,7 @@ function selectExecutorForSlot({
   group0Executor,
   group1Executor,
 }) {
-  return selectedIndex < 4 ? group0Executor : group1Executor;
+  return selectedIndex <= TEMPEST_GROUP0_MAX_SLOT ? group0Executor : group1Executor;
 }
 
 async function dispatchRelayExecution({
