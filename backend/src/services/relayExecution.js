@@ -70,8 +70,8 @@ function makeFailingExecutor() {
 
 function createTempestExecutors({ registry }) {
   return {
-    executorA: registry,
-    executorB:
+    group0Executor: registry,
+    group1Executor:
       process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
         ? makeFailingExecutor()
         : registry,
@@ -96,14 +96,14 @@ async function dispatchRelayExecution({
     admissionCommitment,
   } = submission;
 
-  const { executorA, executorB } = createTempestExecutors({ registry });
+  const { group0Executor, group1Executor } = createTempestExecutors({ registry });
 
   let lastError = null;
 
   for (const selectedIndex of permutation) {
     const relay = {
       ...TEMPEST_RELAY_SLOTS[selectedIndex],
-      executor: selectedIndex < 4 ? executorA : executorB,
+      executor: selectedIndex < 4 ? group0Executor : group1Executor,
     };
 
     try {
