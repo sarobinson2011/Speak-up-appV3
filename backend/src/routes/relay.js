@@ -3,6 +3,7 @@ import express from "express";
 import { ethers } from "ethers";
 import { getPetitionIndexerFreshness } from "../services/indexerFreshness.js";
 import { executeRelaySubmission } from "../services/relayExecution.js";
+import { buildTempestExecutionDomains } from "../services/tempestDomains.js";
 
 const ZERO_ADMISSION_COMMITMENT = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -82,17 +83,13 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     "function signPetitionWithZKProof(uint256,bytes32,bytes32,uint256[2],uint256[2][2],uint256[2],uint256[3])"
   ];
 
-  const registry = new ethers.Contract(
+  const executionDomains = buildTempestExecutionDomains({
     registryAddress,
     registryAbi,
-    wallet
-  );
+    wallet,
+  });
 
-  const secondaryRegistry = new ethers.Contract(
-    registryAddress,
-    registryAbi,
-    wallet
-  );
+  const registry = executionDomains[0].handle;
 
   const statusRateLimit = createInMemoryRateLimiter({
     windowMs: RATE_LIMIT_WINDOW_MS,
@@ -286,7 +283,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       };
 
       const executionResult = await executeRelaySubmission({
-        registry,
+        executionDomains,
         submission: relaySubmission
       });
 

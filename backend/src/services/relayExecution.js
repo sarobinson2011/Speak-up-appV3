@@ -67,16 +67,15 @@ function makeFailingDomainHandle() {
   };
 }
 
-function createTempestExecutionDomains({ registry, secondaryRegistry }) {
+function applyControlledDomainFailure(executionDomains) {
+  if (process.env[TEMPEST_CONTROLLED_FAILURE_ENV] !== "true") {
+    return executionDomains;
+  }
+
   return [
+    executionDomains[0],
     {
-      handle: registry,
-    },
-    {
-      handle:
-        process.env[TEMPEST_CONTROLLED_FAILURE_ENV] === "true"
-          ? makeFailingDomainHandle()
-          : secondaryRegistry,
+      handle: makeFailingDomainHandle(),
     },
   ];
 }
@@ -92,8 +91,7 @@ function selectDomainHandleForSlot({
 }
 
 async function dispatchRelayExecution({
-  registry,
-  secondaryRegistry,
+  executionDomains,
   submission,
 }) {
   const seed = deriveTempestSeed(submission);
@@ -108,10 +106,7 @@ async function dispatchRelayExecution({
     admissionCommitment,
   } = submission;
 
-  const executionDomains = createTempestExecutionDomains({
-    registry,
-    secondaryRegistry,
-  });
+  const activeExecutionDomains = applyControlledDomainFailure(executionDomains);
 
   let lastError = null;
 
@@ -120,7 +115,7 @@ async function dispatchRelayExecution({
       ...TEMPEST_RELAY_SLOTS[selectedIndex],
       domainHandle: selectDomainHandleForSlot({
         selectedIndex,
-        executionDomains,
+        executionDomains: activeExecutionDomains,
       }),
     };
 
@@ -147,16 +142,14 @@ async function dispatchRelayExecution({
 }
 
 export async function executeRelaySubmission({
-  registry,
-  secondaryRegistry,
+  executionDomains,
   submission,
 }) {
   Object.freeze(submission);
   Object.freeze(submission.proof);
 
   return dispatchRelayExecution({
-    registry,
-    secondaryRegistry,
+    executionDomains,
     submission,
   });
 }
