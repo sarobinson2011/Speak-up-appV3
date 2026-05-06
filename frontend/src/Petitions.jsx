@@ -82,6 +82,7 @@ function bigIntToHex32(v) {
 export default function Petitions({ signer, account }) {
   const [petitions, setPetitions] = useState([]);
   const [loadingPetitions, setLoadingPetitions] = useState(true);
+  const [indexerLagBlocks, setIndexerLagBlocks] = useState(null);
 
   // M2-only local secret (PER WALLET)
   const [memberSecret, setMemberSecret] = useState('');
