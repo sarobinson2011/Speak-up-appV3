@@ -78,6 +78,14 @@ function createTempestExecutors({ registry }) {
   };
 }
 
+function selectExecutorForSlot({
+  selectedIndex,
+  group0Executor,
+  group1Executor,
+}) {
+  return selectedIndex < 4 ? group0Executor : group1Executor;
+}
+
 async function dispatchRelayExecution({
   registry,
   submission,
@@ -103,7 +111,11 @@ async function dispatchRelayExecution({
   for (const selectedIndex of permutation) {
     const relay = {
       ...TEMPEST_RELAY_SLOTS[selectedIndex],
-      executor: selectedIndex < 4 ? group0Executor : group1Executor,
+      executor: selectExecutorForSlot({
+        selectedIndex,
+        group0Executor,
+        group1Executor,
+      }),
     };
 
     try {
