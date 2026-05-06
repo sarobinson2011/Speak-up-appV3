@@ -60,6 +60,14 @@ function deriveTempestPermutation(seedBI) {
   return indices;
 }
 
+function makeFailingExecutor() {
+  return {
+    async signPetitionWithZKProof() {
+      throw new Error("TEMPEST controlled executor failure");
+    },
+  };
+}
+
 async function dispatchRelayExecution({
   registry,
   submission,
@@ -69,7 +77,6 @@ async function dispatchRelayExecution({
   const index = Number(seedBI % 7n);
   const permutation = deriveTempestPermutation(seedBI);
   void index;
-  void permutation;
 
   const {
     petitionId,
@@ -80,7 +87,10 @@ async function dispatchRelayExecution({
   } = submission;
 
   const executorA = registry;
-  const executorB = registry;
+  const executorB =
+    process.env.TEMPEST_FAIL_EXECUTOR_B === "true"
+      ? makeFailingExecutor()
+      : registry;
 
   let lastError = null;
 
