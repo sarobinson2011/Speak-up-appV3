@@ -75,6 +75,7 @@ function applyControlledDomainFailure(executionDomains) {
   return [
     executionDomains[0],
     {
+      ...executionDomains[1],
       handle: makeFailingDomainHandle(),
     },
   ];

@@ -87,7 +87,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     rpcUrl,
     registryAddress,
     registryAbi,
-    wallet,
+    relayerPrivateKey: RELAYER_PRIVATE_KEY,
   });
 
   const registry = executionDomains[0].handle;
