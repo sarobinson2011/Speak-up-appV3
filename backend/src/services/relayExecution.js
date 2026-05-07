@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import {
   TEMPEST_CONTROLLED_FAILURE_ENV,
-  TEMPEST_PRIMARY_DOMAIN_MAX_SLOT,
+  getTempestDomainIndexForSlot,
   TEMPEST_PERMUTATION_INCREMENT,
   TEMPEST_PERMUTATION_MASK,
   TEMPEST_PERMUTATION_MULTIPLIER,
@@ -84,8 +84,7 @@ function selectDomainHandleForSlot({
   selectedIndex,
   executionDomains,
 }) {
-  const domainIndex =
-    selectedIndex <= TEMPEST_PRIMARY_DOMAIN_MAX_SLOT ? 0 : 1;
+  const domainIndex = getTempestDomainIndexForSlot(selectedIndex);
 
   return executionDomains[domainIndex].handle;
 }

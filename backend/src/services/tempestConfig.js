@@ -12,6 +12,10 @@ export const TEMPEST_RELAY_SLOTS = [
 
 export const TEMPEST_PRIMARY_DOMAIN_MAX_SLOT = 3;
 
+export function getTempestDomainIndexForSlot(slotIndex) {
+  return slotIndex <= TEMPEST_PRIMARY_DOMAIN_MAX_SLOT ? 0 : 1;
+}
+
 // Keep existing env name for compatibility.
 // Do not expose this terminology outside internal simulation config.
 export const TEMPEST_CONTROLLED_FAILURE_ENV = "TEMPEST_FAIL_EXECUTOR_B";
