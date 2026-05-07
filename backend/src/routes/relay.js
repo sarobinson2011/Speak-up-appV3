@@ -70,6 +70,10 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   if (!registryAddress) throw new Error("makeRelayRouter requires registryAddress");
 
   const RELAYER_PRIVATE_KEY = process.env.RELAYER_PRIVATE_KEY;
+  const TEMPEST_DOMAIN_B_PRIVATE_KEY =
+    process.env.TEMPEST_DOMAIN_B_PRIVATE_KEY || RELAYER_PRIVATE_KEY;
+  const TEMPEST_DOMAIN_B_RPC_URL =
+    process.env.TEMPEST_DOMAIN_B_RPC_URL || rpcUrl;
 
   if (!RELAYER_PRIVATE_KEY) {
     throw new Error("RELAYER_PRIVATE_KEY missing");
@@ -91,10 +95,10 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       relayerPrivateKey: RELAYER_PRIVATE_KEY,
     },
     {
-      rpcUrl,
+      rpcUrl: TEMPEST_DOMAIN_B_RPC_URL,
       registryAddress,
       registryAbi,
-      relayerPrivateKey: RELAYER_PRIVATE_KEY,
+      relayerPrivateKey: TEMPEST_DOMAIN_B_PRIVATE_KEY,
     },
   ];
 
