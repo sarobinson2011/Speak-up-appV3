@@ -24,40 +24,10 @@ function buildDomain({
   };
 }
 
-export function buildTempestExecutionDomains({
-  rpcUrl,
-  registryAddress,
-  registryAbi,
-  relayerPrivateKey,
-}) {
-  if (!rpcUrl) {
-    throw new Error("buildTempestExecutionDomains requires rpcUrl");
+export function buildTempestExecutionDomains({ domainConfigs }) {
+  if (!Array.isArray(domainConfigs) || domainConfigs.length === 0) {
+    throw new Error("buildTempestExecutionDomains requires domainConfigs");
   }
 
-  if (!registryAddress) {
-    throw new Error("buildTempestExecutionDomains requires registryAddress");
-  }
-
-  if (!registryAbi) {
-    throw new Error("buildTempestExecutionDomains requires registryAbi");
-  }
-
-  if (!relayerPrivateKey) {
-    throw new Error("buildTempestExecutionDomains requires relayerPrivateKey");
-  }
-
-  return [
-    buildDomain({
-      rpcUrl,
-      registryAddress,
-      registryAbi,
-      relayerPrivateKey,
-    }),
-    buildDomain({
-      rpcUrl,
-      registryAddress,
-      registryAbi,
-      relayerPrivateKey,
-    }),
-  ];
+  return domainConfigs.map((domainConfig) => buildDomain(domainConfig));
 }

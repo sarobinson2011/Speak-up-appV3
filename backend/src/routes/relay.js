@@ -83,11 +83,23 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
     "function signPetitionWithZKProof(uint256,bytes32,bytes32,uint256[2],uint256[2][2],uint256[2],uint256[3])"
   ];
 
+  const domainConfigs = [
+    {
+      rpcUrl,
+      registryAddress,
+      registryAbi,
+      relayerPrivateKey: RELAYER_PRIVATE_KEY,
+    },
+    {
+      rpcUrl,
+      registryAddress,
+      registryAbi,
+      relayerPrivateKey: RELAYER_PRIVATE_KEY,
+    },
+  ];
+
   const executionDomains = buildTempestExecutionDomains({
-    rpcUrl,
-    registryAddress,
-    registryAbi,
-    relayerPrivateKey: RELAYER_PRIVATE_KEY,
+    domainConfigs,
   });
 
   const registry = executionDomains[0].handle;
