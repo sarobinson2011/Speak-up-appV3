@@ -1,5 +1,20 @@
 import { ethers } from "ethers";
 
+function assertDomainConfig(domainConfig) {
+  if (!domainConfig || typeof domainConfig !== "object") {
+    throw new Error("Invalid TEMPEST domain configuration");
+  }
+
+  if (
+    !domainConfig.rpcUrl ||
+    !domainConfig.registryAddress ||
+    !domainConfig.registryAbi ||
+    !domainConfig.relayerPrivateKey
+  ) {
+    throw new Error("Invalid TEMPEST domain configuration");
+  }
+}
+
 function buildDomain({
   rpcUrl,
   registryAddress,
@@ -25,9 +40,11 @@ function buildDomain({
 }
 
 export function buildTempestExecutionDomains({ domainConfigs }) {
-  if (!Array.isArray(domainConfigs) || domainConfigs.length === 0) {
-    throw new Error("buildTempestExecutionDomains requires domainConfigs");
+  if (!Array.isArray(domainConfigs) || domainConfigs.length < 2) {
+    throw new Error("Invalid TEMPEST domain configuration");
   }
+
+  domainConfigs.forEach(assertDomainConfig);
 
   return domainConfigs.map((domainConfig) => buildDomain(domainConfig));
 }
