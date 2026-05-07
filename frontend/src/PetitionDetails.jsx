@@ -113,7 +113,7 @@ export default function PetitionDetails({
   const [bondSafetyError, setBondSafetyError] = useState('');
 
   // Identity: localStorage-only, wallet-agnostic
-  const memberSecretBI = useMemo(() => loadMemberSecret(), [identityVersion, account]);
+  const memberSecretBI = useMemo(() => loadMemberSecret(account), [identityVersion, account]);
   const secretPresent = Boolean(memberSecretBI);
 
   const currentPendingAdmissionKey = useMemo(() => pendingAdmissionKey(account), [account]);
@@ -165,9 +165,9 @@ export default function PetitionDetails({
 
         if (!confirmed) return;
 
-        createMemberSecret({ replaceExisting: true });
+        createMemberSecret(account, { replaceExisting: true });
       } else {
-        createMemberSecret();
+        createMemberSecret(account);
       }
 
       setMembershipPath(null);
@@ -182,7 +182,7 @@ export default function PetitionDetails({
     setSecretExportText('');
 
     try {
-      importMemberSecret(secretImportText);
+      importMemberSecret(account, secretImportText);
       setSecretImportText('');
       setMembershipPath(null);
       refreshIdentity();
@@ -195,7 +195,7 @@ export default function PetitionDetails({
     setSecretActionError('');
 
     try {
-      const exported = exportMemberSecret();
+      const exported = exportMemberSecret(account);
       if (!exported) throw new Error('No active secret to export.');
       setSecretExportText(exported);
     } catch (e) {
