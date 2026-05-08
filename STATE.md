@@ -2779,3 +2779,44 @@ TEMPEST Phase A remains a live deterministic multi-relayer execution substrate w
 
 Engineering[22] strengthened the current substrate without expanding trust boundaries.
 
+
+### Engineering[22] — Relay Observability Reduction Addendum
+
+Engineering[22] also reduced legacy relay status/health observability.
+
+Public relay status is now coarse only:
+
+- `ok`
+- `mode`
+- `chainId`
+
+Public relay health is now coarse only:
+
+- `ok`
+- `mode`
+- `chainId`
+- `chainReachable`
+
+Removed from public relay status/health surfaces:
+
+- RPC URL
+- registry address
+- relayer address
+- relayer balance
+- latest block
+
+This change did not alter:
+
+- relay execution behavior
+- deterministic TEMPEST traversal
+- fallback semantics
+- frontend behavior
+- API consumers
+- ZK semantics
+- petition semantics
+- indexer/read-model semantics
+
+Locked interpretation:
+
+Relay health/status must remain coarse and must not expose relay topology, relayer identity, domain state, fallback path, or infrastructure-specific details.
+
