@@ -1,17 +1,39 @@
 import { ethers } from "ethers";
 
+function isNonEmptyString(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isPrivateKey(value) {
+  return typeof value === "string" && /^0x[0-9a-fA-F]{64}$/.test(value);
+}
+
 function assertDomainConfig(domainConfig) {
   if (!domainConfig || typeof domainConfig !== "object") {
-    throw new Error("Invalid TEMPEST domain configuration");
+    throw new Error("Invalid TEMPEST execution configuration");
   }
 
-  if (
-    !domainConfig.rpcUrl ||
-    !domainConfig.registryAddress ||
-    !domainConfig.registryAbi ||
-    !domainConfig.relayerPrivateKey
-  ) {
-    throw new Error("Invalid TEMPEST domain configuration");
+  const {
+    rpcUrl,
+    registryAddress,
+    registryAbi,
+    relayerPrivateKey,
+  } = domainConfig;
+
+  if (!isNonEmptyString(rpcUrl)) {
+    throw new Error("Invalid TEMPEST execution RPC configuration");
+  }
+
+  if (!ethers.isAddress(registryAddress)) {
+    throw new Error("Invalid TEMPEST execution registry configuration");
+  }
+
+  if (!Array.isArray(registryAbi) || registryAbi.length === 0) {
+    throw new Error("Invalid TEMPEST execution ABI configuration");
+  }
+
+  if (!isPrivateKey(relayerPrivateKey)) {
+    throw new Error("Invalid TEMPEST execution signer configuration");
   }
 }
 
@@ -36,12 +58,15 @@ function buildDomain({
     provider,
     wallet,
     handle,
+    health: {
+      usable: true,
+    },
   };
 }
 
 export function buildTempestExecutionDomains({ domainConfigs }) {
   if (!Array.isArray(domainConfigs) || domainConfigs.length < 2) {
-    throw new Error("Invalid TEMPEST domain configuration");
+    throw new Error("Invalid TEMPEST execution configuration");
   }
 
   domainConfigs.forEach(assertDomainConfig);
