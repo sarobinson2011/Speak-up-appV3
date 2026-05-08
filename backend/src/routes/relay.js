@@ -152,20 +152,13 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   // ---------------------------
   router.get("/health", healthRateLimit, async (req, res) => {
     try {
-      const [latestBlock, balanceWei] = await Promise.all([
-        provider.getBlockNumber(),
-        provider.getBalance(wallet.address)
-      ]);
+      await provider.getBlockNumber();
 
       return res.json({
         ok: true,
         mode: "relay-v1-live",
-        rpcUrl,
-        registryAddress,
         chainId,
-        relayerAddress: wallet.address,
-        relayerBalanceWei: balanceWei.toString(),
-        latestBlock
+        chainReachable: true
       });
     } catch (e) {
       return res.status(500).json({
