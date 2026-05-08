@@ -141,12 +141,25 @@ async function dispatchRelayExecution({
   throw lastError || new Error("relay execution failed");
 }
 
+function freezeRelaySubmission(submission) {
+  Object.freeze(submission.proof.pA);
+  Object.freeze(submission.proof.pB[0]);
+  Object.freeze(submission.proof.pB[1]);
+  Object.freeze(submission.proof.pB);
+  Object.freeze(submission.proof.pC);
+  Object.freeze(submission.proof);
+  Object.freeze(submission.pubSignals);
+  Object.freeze(submission);
+
+  return submission;
+}
+
 export async function executeRelaySubmission({
   executionDomains,
   submission,
 }) {
-  Object.freeze(submission);
-  Object.freeze(submission.proof);
+  freezeRelaySubmission(submission);
+  Object.freeze(executionDomains);
 
   return dispatchRelayExecution({
     executionDomains,
