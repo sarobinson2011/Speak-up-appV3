@@ -64,6 +64,32 @@ function buildDomain({
   };
 }
 
+function isUsableExecutionDomain(domain) {
+  return Boolean(
+    domain &&
+    domain.provider &&
+    domain.wallet &&
+    domain.handle &&
+    typeof domain.handle.signPetitionWithZKProof === "function"
+  );
+}
+
+export function getTempestExecutionReadiness(executionDomains) {
+  if (!Array.isArray(executionDomains) || executionDomains.length < 2) {
+    return {
+      usable: false,
+      usableCount: 0,
+    };
+  }
+
+  const usableCount = executionDomains.filter(isUsableExecutionDomain).length;
+
+  return {
+    usable: usableCount >= 1,
+    usableCount,
+  };
+}
+
 export function buildTempestExecutionDomains({ domainConfigs }) {
   if (!Array.isArray(domainConfigs) || domainConfigs.length < 2) {
     throw new Error("Invalid TEMPEST execution configuration");
