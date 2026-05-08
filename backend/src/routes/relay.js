@@ -183,9 +183,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
   // Relay sign
   // ---------------------------
   router.post("/sign", signRateLimit, async (req, res) => {
-    let petitionIdForLog = null;
-    let nullifierForLog = null;
-
     try {
       const {
         petitionId,
@@ -195,9 +192,6 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
         pC,
         pubSignals
       } = req.body || {};
-
-      petitionIdForLog = petitionId ?? null;
-      nullifierForLog = nullifier ?? null;
 
       if (petitionId === undefined) {
         return res.status(400).json({ error: "missing petitionId" });
