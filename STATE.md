@@ -2577,3 +2577,59 @@ This remains single-relayer/local-executor mode.
 
 No external relay endpoints or true network dispersion are active yet.
 
+---
+
+## Engineering[21] — TEMPEST Live Multi-Relayer Execution Validation
+
+TEMPEST Phase A was extended from distinct local execution surfaces into validated multi-relayer execution using separate live relayer wallets on Aurora testnet.
+
+The execution substrate now supports:
+
+- explicit domain configuration
+- per-domain provider construction
+- per-domain wallet construction
+- per-domain contract execution handles
+- deterministic slot → domain mapping
+- deterministic permutation traversal
+- deterministic fallback behavior
+
+The current implementation preserves:
+
+- identical frontend behavior
+- identical relay API shape
+- identical petition semantics
+- identical nullifier semantics
+- identical read-model/indexer behavior
+
+No relay topology information is exposed externally.
+
+The frontend remains unaware of:
+
+- selected relay slot
+- selected execution domain
+- relayer wallet identity
+- fallback traversal behavior
+- domain-specific infrastructure state
+
+Controlled fallback validation remains available through:
+
+- `TEMPEST_FAIL_EXECUTOR_B=true`
+
+Optional infrastructure divergence is now supported through:
+
+- `TEMPEST_DOMAIN_B_PRIVATE_KEY`
+- `TEMPEST_DOMAIN_B_RPC_URL`
+
+while preserving default single-config compatibility.
+
+Engineering[21] validated:
+
+- successful live petition signing through multiple distinct relayer wallets
+- successful deterministic fallback behavior
+- successful indexer reconciliation after multi-relayer execution
+- unchanged frontend and API behavior during relay-domain divergence
+
+This establishes TEMPEST Phase A as a live deterministic multi-relayer execution substrate while remaining within a single backend orchestration process.
+
+No relay federation, distributed coordination, remote relay trust, or inter-relayer communication has been introduced.
+
