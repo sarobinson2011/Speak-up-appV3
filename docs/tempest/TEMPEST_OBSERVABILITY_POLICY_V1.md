@@ -65,14 +65,29 @@ Relayers must not retain identity or correlation state:
 
 ## Health Visibility
 
-Allowed:
+Public relay observability must remain coarse only.
 
-- online / degraded / offline
-- gas sufficient / low
-- heartbeat freshness
+Allowed public visibility:
+
+- coarse online/reachable state
+- coarse mode classification
+- chain reachability
+
+Allowed internal-only operational awareness:
+
+- signer balance awareness
+- bounded execution readiness
+- bounded startup validation
 
 Not allowed:
 
+- relay slot visibility
+- execution-domain visibility
+- fallback traversal visibility
 - per-request telemetry
 - per-user metrics
+- nullifier-linked telemetry
+- petition-linked telemetry
+- relay reputation state
 - correlation signals
+- infrastructure-specific exposure
