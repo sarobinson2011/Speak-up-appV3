@@ -136,10 +136,7 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
       return res.json({
         ok: true,
         mode: "relay-v1-live",
-        rpcUrl,
-        registryAddress,
-        chainId,
-        relayerAddress: wallet.address
+        chainId
       });
     } catch (e) {
       return res.status(500).json({
