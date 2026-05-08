@@ -1,14 +1,14 @@
 export const TEMPEST_SLOT_COUNT = 7;
 
-export const TEMPEST_RELAY_SLOTS = [
-  { id: 0, type: "primary" },
-  { id: 1, type: "primary" },
-  { id: 2, type: "primary" },
-  { id: 3, type: "primary" },
-  { id: 4, type: "primary" },
-  { id: 5, type: "primary" },
-  { id: 6, type: "primary" },
-];
+export const TEMPEST_RELAY_SLOTS = Object.freeze([
+  Object.freeze({ id: 0, type: "primary" }),
+  Object.freeze({ id: 1, type: "primary" }),
+  Object.freeze({ id: 2, type: "primary" }),
+  Object.freeze({ id: 3, type: "primary" }),
+  Object.freeze({ id: 4, type: "primary" }),
+  Object.freeze({ id: 5, type: "primary" }),
+  Object.freeze({ id: 6, type: "primary" }),
+]);
 
 export const TEMPEST_PRIMARY_DOMAIN_MAX_SLOT = 3;
 
