@@ -2633,3 +2633,149 @@ This establishes TEMPEST Phase A as a live deterministic multi-relayer execution
 
 No relay federation, distributed coordination, remote relay trust, or inter-relayer communication has been introduced.
 
+---
+
+## Engineering[22] — TEMPEST Operational Hardening Checkpoint
+
+Engineering[22] performed a bounded operational-hardening pass on the live TEMPEST Phase A multi-relayer execution substrate.
+
+No architectural expansion was introduced.
+
+The system remains:
+
+- M2-only
+- single-backend orchestrated
+- deterministic
+- topology-hidden
+- frontend/API compatible
+- read-model/indexer compatible
+
+No changes were made to:
+
+- ZK proof semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- indexer/read-model semantics
+- frontend behavior
+
+### Hardening completed
+
+Implemented:
+
+- field-specific TEMPEST execution configuration validation
+- internal execution readiness classification
+- deeper relay submission immutability at the execution boundary
+- immutable static relay-slot configuration
+
+### Configuration validation
+
+TEMPEST execution configuration now fails earlier and more explicitly when required internal execution configuration is malformed.
+
+Validated configuration surfaces include:
+
+- execution RPC configuration
+- execution registry configuration
+- execution ABI configuration
+- execution signer configuration
+
+This is startup/operator hardening only.
+
+It does not expose relay topology, selected execution path, fallback traversal, or execution-domain details.
+
+### Internal readiness classification
+
+An internal readiness helper now classifies constructed execution handles by coarse usability.
+
+This helper is internal-only.
+
+It must not become:
+
+- a public topology surface
+- a per-domain health API
+- a relay reputation system
+- a correlation cache
+- a petition/nullifier/domain history store
+
+### Execution-boundary immutability
+
+Relay submissions are now frozen more deeply at the execution boundary.
+
+Frozen surfaces include:
+
+- proof arrays
+- nested proof arrays
+- public signals
+- proof object
+- submission object
+- execution-domain array reference
+
+This hardens the canonical submission boundary without changing submission content or execution semantics.
+
+### Static relay-slot immutability
+
+The static TEMPEST relay-slot configuration is now frozen.
+
+This prevents accidental runtime mutation of the abstract slot set.
+
+It does not alter:
+
+- slot count
+- deterministic permutation
+- slot-to-domain mapping
+- deterministic fallback traversal
+
+### Validation
+
+Checkpoint tag:
+
+`tempest-hardening-v1`
+
+Runtime validation after this checkpoint confirmed:
+
+- backend booted cleanly
+- relay status remained healthy
+- relay health remained healthy
+- petition indexer remained healthy
+- working tree was clean before push
+
+### Leakage / observability position
+
+This checkpoint introduced no new external observability.
+
+No new public surface exposes:
+
+- selected relay slot
+- permutation order
+- execution domain
+- relayer wallet identity beyond pre-existing relay health/status behavior
+- fallback traversal path
+- nullifier-linked relay history
+- petition-linked relay topology
+- domain health detail
+
+Existing relay status/health surfaces remain coarse and unchanged.
+
+### Explicit non-changes
+
+Engineering[22] did not introduce:
+
+- relay federation
+- remote relay APIs
+- relay mesh coordination
+- distributed consensus
+- inter-relayer communication
+- public relay participation
+- dynamic topology discovery
+- adaptive routing
+- relay reputation
+- retry amplification
+- timing randomization
+- per-action execution telemetry
+
+Locked interpretation:
+
+TEMPEST Phase A remains a live deterministic multi-relayer execution substrate within a single backend orchestration process.
+
+Engineering[22] strengthened the current substrate without expanding trust boundaries.
+
