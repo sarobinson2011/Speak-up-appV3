@@ -2942,3 +2942,72 @@ while preserving all locked M2, ZK, petition, admission, read-model, and TEMPEST
 
 Future REFLECT work must continue from this boundary and must not introduce hidden observability, request tracking, correlation state, or naming surfaces that imply identity, origin, signer, linkage, or provenance.
 
+
+---
+
+## Engineering[23] — REFLECT Readiness Observability Reduction
+
+Engineering[23] continued with a bounded REFLECT observability-reduction slice.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- nullifier semantics
+- ZK proof semantics
+- petition semantics
+- admission semantics
+- TEMPEST execution semantics
+- frontend behavior
+- path response shape
+
+### Membership readiness surface reduced
+
+The public membership status endpoint was reduced to a coarse readiness surface.
+
+Current public response shape:
+
+- `ok`
+- `ready`
+- `depth`
+
+Removed from the public membership status response:
+
+- membership contract address
+- RPC URL
+- latest synced block
+- indexer internals
+- root / tree state details
+
+This aligns the membership/path surface with the REFLECT privacy boundary.
+
+### Preserved behavior
+
+Validated behavior remains:
+
+- absent leaf status returns:
+  - `{ "ok": true, "exists": false }`
+- absent path returns:
+  - `404`
+  - `{ "error": "not_found", "details": "leaf not found" }`
+- real frontend ZK signing flow completed successfully
+- signature count updated correctly
+- backend relay submission completed normally
+
+Observed relay success log:
+
+- `[relay] {"event":"submit-ok"}`
+
+### Checkpoint tag
+
+Stable recovery tag:
+
+- `reflect-readiness-observability-reduced-v1`
+
+### Locked interpretation
+
+REFLECT path readiness must remain coarse.
+
+Public path-layer surfaces must not expose infrastructure details, tree internals, root freshness details, mirror topology, request history, or any state that can become a correlation aid.
+
