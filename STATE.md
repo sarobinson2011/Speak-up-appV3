@@ -2521,8 +2521,8 @@ A controlled fallback simulation was implemented and validated.
 
 Implementation:
 
-- `TEMPEST_FAIL_EXECUTOR_B=true` enables deterministic failure of logical executor B
-- executor A and executor B remain local logical executors only
+- `TEMPEST_FAIL_EXECUTOR_B=true` enables deterministic failure of execution domain B
+- execution domains remained locally orchestrated during this validation phase
 - no external relayers were introduced
 - no frontend/API response shape changed
 - no relay slot, seed, permutation, or executor identity is logged or exposed
@@ -2548,7 +2548,7 @@ This does not yet constitute real multi-relayer dispersion.
 
 ## Engineering[20] — TEMPEST Dual Execution Surface Validation
 
-TEMPEST was extended from logical executor groups to distinct local execution handles.
+TEMPEST was extended from abstract execution grouping into distinct execution handles.
 
 Implementation:
 
