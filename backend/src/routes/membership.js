@@ -1,10 +1,10 @@
 // backend/src/routes/membership.js
 import express from "express";
 import {
-  getPathObjectByIndex,
-  getPathObjectByLeaf,
-  getPathObjectStatus,
-} from "../services/reflect/pathObjects.js";
+  getPreparedPathByIndex,
+  getPreparedPathByLeaf,
+  getPreparedPathStatus,
+} from "../services/reflect/preparedPaths.js";
 
 export function makeMembershipRouter(indexer) {
   if (!indexer) throw new Error("makeMembershipRouter requires indexer");
@@ -41,7 +41,7 @@ export function makeMembershipRouter(indexer) {
   // ---------------------------
   router.get("/leaf-status", async (req, res) => {
     try {
-      const result = await getPathObjectStatus({
+      const result = await getPreparedPathStatus({
         indexer,
         leaf: req.query.leaf,
       });
@@ -62,7 +62,7 @@ export function makeMembershipRouter(indexer) {
   // ---------------------------
   router.get("/path", async (req, res) => {
     try {
-      const result = await getPathObjectByLeaf({
+      const result = await getPreparedPathByLeaf({
         indexer,
         leaf: req.query.leaf,
       });
@@ -81,7 +81,7 @@ export function makeMembershipRouter(indexer) {
   // ---------------------------
   router.get("/pathByIndex", async (req, res) => {
     try {
-      const result = await getPathObjectByIndex({
+      const result = await getPreparedPathByIndex({
         indexer,
         index: req.query.index,
       });
