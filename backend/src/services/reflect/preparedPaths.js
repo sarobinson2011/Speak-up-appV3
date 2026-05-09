@@ -2,9 +2,12 @@ import { createHash } from "crypto";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
-const PREPARED_PATH_KIND = "prepared-path";
-const PREPARED_PATH_VERSION = 1;
-const PREPARED_PATH_DIGEST = "sha256";
+const REFLECT_ENVELOPE_VERSION = 1;
+const REFLECT_DIGEST_ALGORITHM = "sha256";
+
+const REFLECT_TYPES = freezePlain({
+  PREPARED_PATH: "prepared-path",
+});
 
 function normalizeLeafInput(rawLeaf) {
   const leaf = String(rawLeaf || "").trim().toLowerCase();
@@ -136,7 +139,7 @@ function canonicalString(value) {
 }
 
 function digestPreparedMaterial(material) {
-  return createHash(PREPARED_PATH_DIGEST)
+  return createHash(REFLECT_DIGEST_ALGORITHM)
     .update(canonicalString(material))
     .digest("hex");
 }
@@ -149,25 +152,35 @@ function describePreparedMaterial(material) {
   });
 }
 
-function preparePathEnvelope(path) {
-  const material = normalizePreparedPathMaterial(path);
-  if (!material) return null;
+function buildReflectEnvelope({ type, material, coherence }) {
+  if (!type || !material || !coherence) return null;
 
   return freezePlain({
-    kind: PREPARED_PATH_KIND,
-    version: PREPARED_PATH_VERSION,
+    type,
+    version: REFLECT_ENVELOPE_VERSION,
     digest: {
-      algorithm: PREPARED_PATH_DIGEST,
+      algorithm: REFLECT_DIGEST_ALGORITHM,
       value: digestPreparedMaterial(material),
     },
-    coherence: describePreparedMaterial(material),
+    coherence,
     material,
   });
 }
 
+function preparePathEnvelope(path) {
+  const material = normalizePreparedPathMaterial(path);
+  if (!material) return null;
+
+  return buildReflectEnvelope({
+    type: REFLECT_TYPES.PREPARED_PATH,
+    material,
+    coherence: describePreparedMaterial(material),
+  });
+}
+
 function preparedPathBody(envelope) {
-  if (!envelope || envelope.kind !== PREPARED_PATH_KIND) return null;
-  if (envelope.version !== PREPARED_PATH_VERSION) return null;
+  if (!envelope || envelope.type !== REFLECT_TYPES.PREPARED_PATH) return null;
+  if (envelope.version !== REFLECT_ENVELOPE_VERSION) return null;
 
   return envelope.material;
 }
