@@ -3011,3 +3011,131 @@ REFLECT path readiness must remain coarse.
 
 Public path-layer surfaces must not expose infrastructure details, tree internals, root freshness details, mirror topology, request history, or any state that can become a correlation aid.
 
+
+---
+
+## Engineering[23] — REFLECT Internal Envelope Language Checkpoint
+
+Engineering[23] completed the local/internal REFLECT structural phase.
+
+This checkpoint records the transition from a simple prepared-path boundary to a deterministic internal REFLECT object language.
+
+No distributed REFLECT behavior was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- public path response shape
+- SQLite petition read-model authority
+
+### Internal prepared-path envelope
+
+REFLECT now wraps prepared path material in an internal envelope before returning the legacy public path body to the membership route layer.
+
+The envelope is internal-only.
+
+It is not exposed to the frontend.
+
+The public membership path endpoint continues to return the same proof-compatible path material expected by the frontend.
+
+### Envelope integrity and coherence metadata
+
+The internal prepared-path envelope now includes deterministic metadata sufficient to support future REFLECT object evolution.
+
+This includes:
+
+- stable internal envelope versioning
+- deterministic object typing
+- digest algorithm declaration
+- deterministic digest material
+- coherence metadata for prepared path material
+
+This metadata is used only inside the REFLECT preparation layer.
+
+It does not introduce request tracking, persistence, telemetry, mirrors, chunks, publication, or distributed fetch behavior.
+
+### Internal object language
+
+Engineering[23] established the first internal REFLECT object language primitives:
+
+- envelope version constant
+- digest algorithm constant
+- internal type registry
+- generic internal envelope builder
+- prepared-path as the first REFLECT internal object type
+
+This prepares future REFLECT work to add connector/chunk/publication semantics without changing:
+
+- frontend API shape
+- proof-generation inputs
+- route semantics
+- membership indexer authority
+
+### Explicit non-changes
+
+Engineering[23] did not introduce:
+
+- REFLECT mirrors
+- distributed publication
+- subtree chunking
+- connector objects
+- cover fetches
+- mirror fallback
+- adaptive routing
+- timing randomization
+- request persistence
+- path-request history
+- path telemetry
+- identity tracking
+- petition-linked path tracking
+- topology discovery
+
+### Validation
+
+Validated during Engineering[23]:
+
+- backend booted cleanly
+- `node --check` passed for REFLECT service changes
+- forbidden naming / observability searches returned cleanly
+- membership readiness endpoint remained coarse
+- absent-leaf status endpoint returned expected response
+- absent-leaf path endpoint returned expected 404 response
+- real frontend ZK signing flow completed successfully after each slice
+- signature count updated correctly
+- backend relay submission completed normally
+
+Observed relay success logs remained limited to coarse relay success events.
+
+### Checkpoint tags
+
+Stable recovery tags established during Engineering[23]:
+
+- `reflect-path-boundary-v1`
+- `reflect-prepared-path-boundary-v1`
+- `reflect-readiness-observability-reduced-v1`
+- `reflect-prepared-path-envelope-v1`
+- `reflect-prepared-path-integrity-v1`
+- `reflect-envelope-language-v1`
+
+### Locked interpretation
+
+Engineering[23] completed local/internal REFLECT semantics.
+
+The system now has:
+
+- TEMPEST execution boundary
+- REFLECT prepared-path boundary
+- REFLECT internal envelope language
+
+This is the natural stopping point before distributed REFLECT semantics.
+
+Future work should treat Engineering[24] as the beginning of distributed REFLECT design/implementation, starting from the internal envelope language established here.
+
