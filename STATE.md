@@ -2820,3 +2820,125 @@ Locked interpretation:
 
 Relay health/status must remain coarse and must not expose relay topology, relayer identity, domain state, fallback path, or infrastructure-specific details.
 
+
+---
+
+## Engineering[23] — REFLECT Phase A Prepared Path Boundary Checkpoint
+
+Engineering[23] began REFLECT Phase A implementation with a bounded scaffold and boundary-hardening pass.
+
+REFLECT remains the path / witness-data layer.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- SQLite petition read-model authority
+
+### REFLECT path boundary scaffold
+
+A backend REFLECT service boundary was introduced between membership HTTP routes and direct membership path preparation.
+
+The membership route layer now delegates path preparation through:
+
+- `backend/src/services/reflect/preparedPaths.js`
+
+The existing public membership APIs remain unchanged:
+
+- `GET /api/membership/leaf-status?leaf=...`
+- `GET /api/membership/path?leaf=...`
+- `GET /api/membership/pathByIndex?index=...`
+
+API response semantics were preserved.
+
+Observed behavior remains:
+
+- unenrolled / unknown leaf status returns:
+  - `{ "ok": true, "exists": false }`
+- missing path returns:
+  - `404`
+  - `{ "error": "not_found", "details": "leaf not found" }`
+
+### Prepared path boundary hardening
+
+The first REFLECT boundary-hardening slice established a prepared-path layer without introducing distributed behavior.
+
+The prepared-path layer:
+
+- validates path request inputs
+- performs bounded indexer sync / retry behavior
+- obtains Merkle paths from the existing membership indexer
+- normalizes returned path material
+- freezes prepared path material before returning it to the route layer
+
+This prevents the HTTP route layer from directly owning path preparation semantics.
+
+### Explicit non-changes
+
+Engineering[23] did not introduce:
+
+- REFLECT mirrors
+- chunking
+- connector objects
+- cover fetches
+- mirror fallback
+- distributed publication
+- adaptive routing
+- timing randomization
+- request persistence
+- path-request history
+- path telemetry
+- identity tracking
+- petition-linked path tracking
+- topology discovery
+
+### Validation
+
+Validated during Engineering[23]:
+
+- backend booted cleanly
+- `node --check` passed for updated membership route and REFLECT service file
+- absent-leaf status endpoint returned expected response
+- absent-leaf path endpoint returned expected 404 response
+- real ZK signing flow completed successfully through frontend
+- signature count incremented correctly
+- backend relay submission completed normally
+
+Observed relay success log:
+
+- `[relay] {"event":"submit-ok"}`
+
+### Checkpoint tags
+
+Stable recovery tags:
+
+- `reflect-path-boundary-v1`
+- `reflect-prepared-path-boundary-v1`
+
+### Locked interpretation
+
+Engineering[23] established the first REFLECT implementation boundary.
+
+The system now has:
+
+- TEMPEST execution boundary
+- REFLECT prepared-path boundary
+
+This creates architectural separation between:
+
+- path / witness-data preparation
+- execution / submission
+
+while preserving all locked M2, ZK, petition, admission, read-model, and TEMPEST invariants.
+
+Future REFLECT work must continue from this boundary and must not introduce hidden observability, request tracking, correlation state, or naming surfaces that imply identity, origin, signer, linkage, or provenance.
+
