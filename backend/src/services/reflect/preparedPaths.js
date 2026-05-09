@@ -1,5 +1,8 @@
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
+const PREPARED_PATH_KIND = "prepared-path";
+const PREPARED_PATH_VERSION = 1;
+
 function normalizeLeafInput(rawLeaf) {
   const leaf = String(rawLeaf || "").trim().toLowerCase();
 
@@ -50,18 +53,81 @@ function freezePlain(value) {
   return value;
 }
 
-function preparePath(path) {
+function isHexString(value) {
+  return typeof value === "string" && /^0x[0-9a-fA-F]+$/.test(value);
+}
+
+function normalizeHexValue(value) {
+  if (!isHexString(value)) return null;
+  return value.toLowerCase();
+}
+
+function normalizePathBits(pathBits) {
+  if (!Array.isArray(pathBits)) return null;
+
+  const normalized = [];
+
+  for (const bit of pathBits) {
+    if (bit !== 0 && bit !== 1) return null;
+    normalized.push(bit);
+  }
+
+  return normalized;
+}
+
+function normalizeSiblingValues(siblings) {
+  if (!Array.isArray(siblings)) return null;
+
+  const normalized = [];
+
+  for (const sibling of siblings) {
+    const value = normalizeHexValue(sibling);
+    if (!value) return null;
+    normalized.push(value);
+  }
+
+  return normalized;
+}
+
+function normalizePreparedPathMaterial(path) {
   if (!path || typeof path !== "object") return null;
 
-  const prepared = {
-    leaf: path.leaf,
-    index: path.index,
-    root: path.root,
-    siblings: Array.isArray(path.siblings) ? [...path.siblings] : [],
-    pathBits: Array.isArray(path.pathBits) ? [...path.pathBits] : [],
-  };
+  const leaf = normalizeHexValue(path.leaf);
+  const root = normalizeHexValue(path.root);
+  const index = Number(path.index);
+  const siblings = normalizeSiblingValues(path.siblings);
+  const pathBits = normalizePathBits(path.pathBits);
 
-  return freezePlain(prepared);
+  if (!leaf || !root) return null;
+  if (!Number.isInteger(index) || index < 0) return null;
+  if (!siblings || !pathBits) return null;
+  if (siblings.length !== pathBits.length) return null;
+
+  return freezePlain({
+    leaf,
+    index,
+    root,
+    siblings,
+    pathBits,
+  });
+}
+
+function preparePathEnvelope(path) {
+  const material = normalizePreparedPathMaterial(path);
+  if (!material) return null;
+
+  return freezePlain({
+    kind: PREPARED_PATH_KIND,
+    version: PREPARED_PATH_VERSION,
+    material,
+  });
+}
+
+function preparedPathBody(envelope) {
+  if (!envelope || envelope.kind !== PREPARED_PATH_KIND) return null;
+  if (envelope.version !== PREPARED_PATH_VERSION) return null;
+
+  return envelope.material;
 }
 
 function ok(body) {
@@ -82,7 +148,6 @@ function notFound(details) {
     },
   });
 }
-
 
 export async function getPreparedPathReadiness({ indexer }) {
   if (!indexer.synced) {
@@ -132,13 +197,13 @@ export async function getPreparedPathByLeaf({ indexer, leaf: rawLeaf }) {
     path = await indexer.getPathByLeaf(leaf);
   }
 
-  const prepared = preparePath(path);
+  const body = preparedPathBody(preparePathEnvelope(path));
 
-  if (!prepared) {
+  if (!body) {
     return notFound("leaf not found");
   }
 
-  return ok(prepared);
+  return ok(body);
 }
 
 export async function getPreparedPathByIndex({ indexer, index: rawIndex }) {
@@ -156,11 +221,11 @@ export async function getPreparedPathByIndex({ indexer, index: rawIndex }) {
     path = await indexer.getPathByIndex(index);
   }
 
-  const prepared = preparePath(path);
+  const body = preparedPathBody(preparePathEnvelope(path));
 
-  if (!prepared) {
+  if (!body) {
     return notFound("index out of range or leaf missing");
   }
 
-  return ok(prepared);
+  return ok(body);
 }
