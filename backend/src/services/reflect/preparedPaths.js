@@ -83,6 +83,19 @@ function notFound(details) {
   });
 }
 
+
+export async function getPreparedPathReadiness({ indexer }) {
+  if (!indexer.synced) {
+    await indexer.sync(0);
+  }
+
+  return ok({
+    ok: true,
+    ready: Boolean(indexer.synced),
+    depth: indexer.depth,
+  });
+}
+
 export async function getPreparedPathStatus({ indexer, leaf: rawLeaf }) {
   const normalized = normalizeLeafInput(rawLeaf);
   if (!normalized.ok) return freezePlain(normalized);

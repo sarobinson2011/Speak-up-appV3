@@ -3,6 +3,7 @@ import express from "express";
 import {
   getPreparedPathByIndex,
   getPreparedPathByLeaf,
+  getPreparedPathReadiness,
   getPreparedPathStatus,
 } from "../services/reflect/preparedPaths.js";
 
@@ -16,18 +17,11 @@ export function makeMembershipRouter(indexer) {
   // ---------------------------
   router.get("/status", async (req, res) => {
     try {
-      const s = await indexer.getStatus();
-      res.json({
-        ok: true,
-        membershipAddress: indexer.membershipAddress,
-        rpcUrl: indexer.rpcUrl,
-        depth: indexer.depth,
-        lastSyncedBlock: indexer.lastBlock || null,
-        synced: Boolean(indexer.synced),
-        ...s
-      });
+      const result = await getPreparedPathReadiness({ indexer });
+
+      return res.status(result.status).json(result.body);
     } catch (e) {
-      res.status(500).json({
+      return res.status(500).json({
         ok: false,
         error: "internal",
         details: e?.message || String(e)
