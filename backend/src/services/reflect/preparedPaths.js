@@ -1,7 +1,10 @@
+import { createHash } from "crypto";
+
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
 const PREPARED_PATH_KIND = "prepared-path";
 const PREPARED_PATH_VERSION = 1;
+const PREPARED_PATH_DIGEST = "sha256";
 
 function normalizeLeafInput(rawLeaf) {
   const leaf = String(rawLeaf || "").trim().toLowerCase();
@@ -112,6 +115,40 @@ function normalizePreparedPathMaterial(path) {
   });
 }
 
+function canonicalValue(value) {
+  if (Array.isArray(value)) {
+    return value.map(canonicalValue);
+  }
+
+  if (value && typeof value === "object") {
+    const out = {};
+    for (const key of Object.keys(value).sort()) {
+      out[key] = canonicalValue(value[key]);
+    }
+    return out;
+  }
+
+  return value;
+}
+
+function canonicalString(value) {
+  return JSON.stringify(canonicalValue(value));
+}
+
+function digestPreparedMaterial(material) {
+  return createHash(PREPARED_PATH_DIGEST)
+    .update(canonicalString(material))
+    .digest("hex");
+}
+
+function describePreparedMaterial(material) {
+  return freezePlain({
+    depth: material.siblings.length,
+    siblingCount: material.siblings.length,
+    bitCount: material.pathBits.length,
+  });
+}
+
 function preparePathEnvelope(path) {
   const material = normalizePreparedPathMaterial(path);
   if (!material) return null;
@@ -119,6 +156,11 @@ function preparePathEnvelope(path) {
   return freezePlain({
     kind: PREPARED_PATH_KIND,
     version: PREPARED_PATH_VERSION,
+    digest: {
+      algorithm: PREPARED_PATH_DIGEST,
+      value: digestPreparedMaterial(material),
+    },
+    coherence: describePreparedMaterial(material),
     material,
   });
 }
