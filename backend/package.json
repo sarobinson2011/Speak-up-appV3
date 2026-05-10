@@ -12,7 +12,8 @@
     "index:membership": "node src/indexer/runMembershipSync.js",
     "index:admission": "node src/indexer/runAdmissionSync.js",
     "index:petitions:loop": "node src/indexer/runPetitionSyncLoop.js",
-    "reconcile:petitions": "node src/indexer/reconcilePetitionExistence.js"
+    "reconcile:petitions": "node src/indexer/reconcilePetitionExistence.js",
+    "reflect:publication:test": "node src/services/reflect/publicationObjects.test.js"
   },
   "dependencies": {
     "@noble/hashes": "^2.0.1",
