@@ -3139,3 +3139,110 @@ This is the natural stopping point before distributed REFLECT semantics.
 
 Future work should treat Engineering[24] as the beginning of distributed REFLECT design/implementation, starting from the internal envelope language established here.
 
+
+---
+
+## Engineering[24] — REFLECT Local Publication Object Checkpoint
+
+Engineering[24] began the transition from internal REFLECT prepared-path semantics toward publication-ready REFLECT object semantics.
+
+This checkpoint remains local/offline only.
+
+No distributed behavior was introduced.
+
+### Implemented
+
+REFLECT object-language helpers were separated from prepared-path preparation into:
+
+- `backend/src/services/reflect/objectModel.js`
+
+REFLECT object types now include:
+
+- `prepared-path`
+- `connector`
+- `chunk`
+
+A local publication-object layer was added:
+
+- `backend/src/services/reflect/publicationObjects.js`
+
+This layer supports:
+
+- deterministic chunk envelope construction
+- deterministic connector envelope construction
+- deterministic local publication object sets
+- digest verification across connector/chunk objects
+- reconstruction of proof-compatible path material from local publication objects
+
+Canonical prepared-path material normalization was shared through:
+
+- `backend/src/services/reflect/materials.js`
+
+A local validation command was added:
+
+- `npm --prefix backend run reflect:publication:test`
+
+### Checkpoint tags
+
+Stable recovery tags:
+
+- `reflect-object-model-seam-v1`
+- `reflect-publication-types-v1`
+- `reflect-local-publication-objects-v1`
+- `reflect-material-normalization-v1`
+- `reflect-publication-validation-script-v1`
+- `reflect-publication-verification-test-v1`
+
+### Preserved behavior
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- SQLite petition read-model authority
+- public membership API response shape
+
+The frontend still receives the same proof-compatible prepared-path material.
+
+### Explicit non-changes
+
+Engineering[24] has not introduced:
+
+- REFLECT mirrors
+- networking
+- distributed fetches
+- chunk publication
+- connector publication
+- cover retrieval
+- mirror fallback
+- publication persistence
+- request persistence
+- request telemetry
+- topology discovery
+- adaptive routing
+- timing randomization
+- identity tracking
+- petition-linked path tracking
+- correlation state
+
+### Locked interpretation
+
+This checkpoint defines local publication-ready REFLECT object semantics before distribution exists.
+
+The current progression is:
+
+internal prepared-path envelope
+→ generic REFLECT object model
+→ local connector/chunk object semantics
+→ local integrity verification
+→ proof-compatible path reconstruction
+
+Future REFLECT work may integrate these local objects into preparation/publication seams, but must not introduce mirrors, networking, persistence, request tracking, or topology semantics without a separate bounded checkpoint.
+
