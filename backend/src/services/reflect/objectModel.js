@@ -5,6 +5,8 @@ export const REFLECT_DIGEST_ALGORITHM = "sha256";
 
 export const REFLECT_TYPES = freezePlain({
   PREPARED_PATH: "prepared-path",
+  CONNECTOR: "connector",
+  CHUNK: "chunk",
 });
 
 export function freezePlain(value) {
