@@ -7,6 +7,10 @@ import {
 import {
   normalizePreparedPathMaterial,
 } from "./materials.js";
+import {
+  buildLocalPublicationObjects,
+  reconstructPreparedPathMaterial,
+} from "./publicationObjects.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
@@ -46,6 +50,8 @@ async function refreshOnce(indexer) {
   await indexer.sync(0);
 }
 
+const LOCAL_PUBLICATION_CHUNK_SIZE = 4;
+
 function describePreparedMaterial(material) {
   return freezePlain({
     depth: material.siblings.length,
@@ -68,6 +74,26 @@ function preparePathEnvelope(path) {
 function preparedPathBody(envelope) {
   if (!envelope || envelope.type !== REFLECT_TYPES.PREPARED_PATH) return null;
   if (envelope.version !== REFLECT_ENVELOPE_VERSION) return null;
+
+  const publication = buildLocalPublicationObjects({
+    material: envelope.material,
+    chunkSize: LOCAL_PUBLICATION_CHUNK_SIZE,
+  });
+
+  if (!publication) return null;
+
+  const reconstructed = reconstructPreparedPathMaterial(publication);
+
+  if (!reconstructed) return null;
+  if (reconstructed.root !== envelope.material.root) return null;
+  if (reconstructed.depth !== envelope.material.siblings.length) return null;
+  if (reconstructed.siblings.length !== envelope.material.siblings.length) return null;
+  if (reconstructed.pathBits.length !== envelope.material.pathBits.length) return null;
+
+  for (let i = 0; i < envelope.material.siblings.length; i++) {
+    if (reconstructed.siblings[i] !== envelope.material.siblings[i]) return null;
+    if (reconstructed.pathBits[i] !== envelope.material.pathBits[i]) return null;
+  }
 
   return envelope.material;
 }
