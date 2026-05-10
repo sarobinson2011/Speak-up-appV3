@@ -2,6 +2,8 @@ import assert from "assert";
 
 import {
   buildLocalPublicationObjects,
+  reconstructPreparedPathMaterial,
+  verifyLocalPublicationObjects,
 } from "./publicationObjects.js";
 
 const material = {
@@ -79,5 +81,18 @@ assert.deepStrictEqual(
   publication,
   publicationAgain,
 );
+
+assert.strictEqual(
+  verifyLocalPublicationObjects(publication),
+  true,
+);
+
+const reconstructed = reconstructPreparedPathMaterial(publication);
+
+assert(reconstructed);
+assert.strictEqual(reconstructed.root, material.root);
+assert.strictEqual(reconstructed.depth, material.siblings.length);
+assert.deepStrictEqual(reconstructed.siblings, material.siblings);
+assert.deepStrictEqual(reconstructed.pathBits, material.pathBits);
 
 console.log("reflect publication object validation ok");
