@@ -1,13 +1,11 @@
-import { createHash } from "crypto";
+import {
+  REFLECT_ENVELOPE_VERSION,
+  REFLECT_TYPES,
+  buildReflectEnvelope,
+  freezePlain,
+} from "./objectModel.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
-
-const REFLECT_ENVELOPE_VERSION = 1;
-const REFLECT_DIGEST_ALGORITHM = "sha256";
-
-const REFLECT_TYPES = freezePlain({
-  PREPARED_PATH: "prepared-path",
-});
 
 function normalizeLeafInput(rawLeaf) {
   const leaf = String(rawLeaf || "").trim().toLowerCase();
@@ -43,20 +41,6 @@ async function ensureCurrent(indexer) {
 
 async function refreshOnce(indexer) {
   await indexer.sync(0);
-}
-
-function freezePlain(value) {
-  if (Array.isArray(value)) {
-    for (const item of value) freezePlain(item);
-    return Object.freeze(value);
-  }
-
-  if (value && typeof value === "object") {
-    for (const item of Object.values(value)) freezePlain(item);
-    return Object.freeze(value);
-  }
-
-  return value;
 }
 
 function isHexString(value) {
@@ -118,52 +102,11 @@ function normalizePreparedPathMaterial(path) {
   });
 }
 
-function canonicalValue(value) {
-  if (Array.isArray(value)) {
-    return value.map(canonicalValue);
-  }
-
-  if (value && typeof value === "object") {
-    const out = {};
-    for (const key of Object.keys(value).sort()) {
-      out[key] = canonicalValue(value[key]);
-    }
-    return out;
-  }
-
-  return value;
-}
-
-function canonicalString(value) {
-  return JSON.stringify(canonicalValue(value));
-}
-
-function digestPreparedMaterial(material) {
-  return createHash(REFLECT_DIGEST_ALGORITHM)
-    .update(canonicalString(material))
-    .digest("hex");
-}
-
 function describePreparedMaterial(material) {
   return freezePlain({
     depth: material.siblings.length,
     siblingCount: material.siblings.length,
     bitCount: material.pathBits.length,
-  });
-}
-
-function buildReflectEnvelope({ type, material, coherence }) {
-  if (!type || !material || !coherence) return null;
-
-  return freezePlain({
-    type,
-    version: REFLECT_ENVELOPE_VERSION,
-    digest: {
-      algorithm: REFLECT_DIGEST_ALGORITHM,
-      value: digestPreparedMaterial(material),
-    },
-    coherence,
-    material,
   });
 }
 
