@@ -1,6 +1,11 @@
 import assert from "assert";
 
 import {
+  parseReflectObject,
+  serializeReflectObject,
+} from "./objectModel.js";
+
+import {
   buildLocalPublicationObjects,
   reconstructPreparedPathMaterial,
   verifyLocalPublicationObjects,
@@ -87,7 +92,23 @@ assert.strictEqual(
   true,
 );
 
-const reconstructed = reconstructPreparedPathMaterial(publication);
+const serializedConnector = serializeReflectObject(publication.connector);
+const serializedChunks = publication.chunks.map(serializeReflectObject);
+
+assert(serializedConnector);
+assert(serializedChunks.every(Boolean));
+
+const parsedPublication = {
+  connector: parseReflectObject(serializedConnector),
+  chunks: serializedChunks.map(parseReflectObject),
+};
+
+assert.strictEqual(
+  verifyLocalPublicationObjects(parsedPublication),
+  true,
+);
+
+const reconstructed = reconstructPreparedPathMaterial(parsedPublication);
 
 assert(reconstructed);
 assert.strictEqual(reconstructed.root, material.root);

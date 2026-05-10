@@ -63,3 +63,19 @@ export function buildReflectEnvelope({ type, material, coherence }) {
     material,
   });
 }
+
+export function serializeReflectObject(envelope) {
+  if (!envelope || typeof envelope !== "object") return null;
+
+  return canonicalString(envelope);
+}
+
+export function parseReflectObject(serialized) {
+  if (typeof serialized !== "string" || serialized.length === 0) return null;
+
+  try {
+    return freezePlain(JSON.parse(serialized));
+  } catch {
+    return null;
+  }
+}
