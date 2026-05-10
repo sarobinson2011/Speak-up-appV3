@@ -4,6 +4,9 @@ import {
   buildReflectEnvelope,
   freezePlain,
 } from "./objectModel.js";
+import {
+  normalizePreparedPathMaterial,
+} from "./materials.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
@@ -41,65 +44,6 @@ async function ensureCurrent(indexer) {
 
 async function refreshOnce(indexer) {
   await indexer.sync(0);
-}
-
-function isHexString(value) {
-  return typeof value === "string" && /^0x[0-9a-fA-F]+$/.test(value);
-}
-
-function normalizeHexValue(value) {
-  if (!isHexString(value)) return null;
-  return value.toLowerCase();
-}
-
-function normalizePathBits(pathBits) {
-  if (!Array.isArray(pathBits)) return null;
-
-  const normalized = [];
-
-  for (const bit of pathBits) {
-    if (bit !== 0 && bit !== 1) return null;
-    normalized.push(bit);
-  }
-
-  return normalized;
-}
-
-function normalizeSiblingValues(siblings) {
-  if (!Array.isArray(siblings)) return null;
-
-  const normalized = [];
-
-  for (const sibling of siblings) {
-    const value = normalizeHexValue(sibling);
-    if (!value) return null;
-    normalized.push(value);
-  }
-
-  return normalized;
-}
-
-function normalizePreparedPathMaterial(path) {
-  if (!path || typeof path !== "object") return null;
-
-  const leaf = normalizeHexValue(path.leaf);
-  const root = normalizeHexValue(path.root);
-  const index = Number(path.index);
-  const siblings = normalizeSiblingValues(path.siblings);
-  const pathBits = normalizePathBits(path.pathBits);
-
-  if (!leaf || !root) return null;
-  if (!Number.isInteger(index) || index < 0) return null;
-  if (!siblings || !pathBits) return null;
-  if (siblings.length !== pathBits.length) return null;
-
-  return freezePlain({
-    leaf,
-    index,
-    root,
-    siblings,
-    pathBits,
-  });
 }
 
 function describePreparedMaterial(material) {

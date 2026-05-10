@@ -4,68 +4,12 @@ import {
   digestReflectMaterial,
   freezePlain,
 } from "./objectModel.js";
+import {
+  normalizePreparedPathMaterial,
+} from "./materials.js";
 
 function isNonNegativeInteger(value) {
   return Number.isInteger(value) && value >= 0;
-}
-
-function isHexString(value) {
-  return typeof value === "string" && /^0x[0-9a-fA-F]+$/.test(value);
-}
-
-function normalizeHexValue(value) {
-  if (!isHexString(value)) return null;
-  return value.toLowerCase();
-}
-
-function normalizePathBits(pathBits) {
-  if (!Array.isArray(pathBits)) return null;
-
-  const normalized = [];
-
-  for (const bit of pathBits) {
-    if (bit !== 0 && bit !== 1) return null;
-    normalized.push(bit);
-  }
-
-  return normalized;
-}
-
-function normalizeSiblingValues(siblings) {
-  if (!Array.isArray(siblings)) return null;
-
-  const normalized = [];
-
-  for (const sibling of siblings) {
-    const value = normalizeHexValue(sibling);
-    if (!value) return null;
-    normalized.push(value);
-  }
-
-  return normalized;
-}
-
-function normalizePreparedPathMaterial(material) {
-  if (!material || typeof material !== "object") return null;
-
-  const leaf = normalizeHexValue(material.leaf);
-  const root = normalizeHexValue(material.root);
-  const index = Number(material.index);
-  const siblings = normalizeSiblingValues(material.siblings);
-  const pathBits = normalizePathBits(material.pathBits);
-
-  if (!leaf || !root) return null;
-  if (!isNonNegativeInteger(index)) return null;
-  if (!siblings || !pathBits) return null;
-  if (siblings.length !== pathBits.length) return null;
-
-  return freezePlain({
-    leaf,
-    index,
-    root,
-    siblings,
-    pathBits,
-  });
 }
 
 function normalizeChunkSize(rawSize) {
@@ -202,5 +146,63 @@ export function buildLocalPublicationObjects({ material, chunkSize }) {
   return freezePlain({
     connector,
     chunks,
+  });
+}
+
+function digestMatches(envelope) {
+  if (!envelope || !envelope.digest || !envelope.material) return false;
+
+  return envelope.digest.value === digestReflectMaterial(envelope.material);
+}
+
+export function verifyLocalPublicationObjects({ connector, chunks }) {
+  if (!connector || !Array.isArray(chunks)) return false;
+  if (connector.type !== REFLECT_TYPES.CONNECTOR) return false;
+  if (!digestMatches(connector)) return false;
+
+  const entries = connector.material?.chunks;
+  if (!Array.isArray(entries)) return false;
+  if (entries.length !== chunks.length) return false;
+
+  for (let i = 0; i < chunks.length; i++) {
+    const chunk = chunks[i];
+    const entry = entries[i];
+
+    if (!chunk || chunk.type !== REFLECT_TYPES.CHUNK) return false;
+    if (!digestMatches(chunk)) return false;
+    if (!entry?.digest?.value) return false;
+    if (chunk.digest.value !== entry.digest.value) return false;
+    if (chunk.material.offset !== entry.offset) return false;
+    if (chunk.material.size !== entry.size) return false;
+  }
+
+  return true;
+}
+
+export function reconstructPreparedPathMaterial({ connector, chunks }) {
+  if (!verifyLocalPublicationObjects({ connector, chunks })) return null;
+
+  const root = connector.material.root;
+  const depth = connector.material.depth;
+  const sortedChunks = [...chunks].sort(
+    (a, b) => a.material.offset - b.material.offset,
+  );
+
+  const siblings = [];
+  const pathBits = [];
+
+  for (const chunk of sortedChunks) {
+    siblings.push(...chunk.material.siblings);
+    pathBits.push(...chunk.material.pathBits);
+  }
+
+  if (siblings.length !== depth) return null;
+  if (pathBits.length !== depth) return null;
+
+  return freezePlain({
+    root,
+    depth,
+    siblings,
+    pathBits,
   });
 }
