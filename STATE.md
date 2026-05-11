@@ -3302,3 +3302,150 @@ No distributed behavior exists yet.
 
 Future Engineering work may begin from this stable local publication boundary, but must introduce mirror-facing, publication, fetch, cover, or topology behavior only as separate bounded checkpoints.
 
+
+---
+
+## Engineering[25] — REFLECT Local Publication State Checkpoint
+
+Engineering[25] began the publication-facing / mirror-facing seam preparation phase for REFLECT.
+
+This checkpoint remains local-only.
+
+No distributed behavior was introduced.
+
+### Implemented
+
+REFLECT local publication semantics were extended from local connector/chunk object sets into a layered local publication model:
+
+- local publication descriptor
+- local publication group
+- descriptor-aware local publication verification
+- local publication group verification
+- local publication state
+
+The resulting local semantic chain is:
+
+prepared path  
+→ publication objects  
+→ descriptor  
+→ publication group  
+→ publication group verification  
+→ publication state
+
+### Publication descriptor
+
+A local publication descriptor now summarizes a deterministic publication group using:
+
+- envelope version
+- root
+- depth
+- connector digest
+- chunk count
+- chunk digests
+- deterministic content digest
+
+The descriptor is local and integrity-oriented.
+
+It does not expose or imply:
+
+- source
+- origin
+- ownership
+- requester
+- topology
+- transport route
+- persistence location
+
+### Publication group
+
+A local publication group now binds:
+
+- descriptor
+- connector
+- chunks
+
+as one deterministic local publication unit.
+
+This creates a future insertion seam while preserving current local behavior.
+
+### Publication state
+
+A local publication state now summarizes one or more local publication groups through deterministic entries and a state-level content digest.
+
+This state is:
+
+- local
+- deterministic
+- non-persistent
+- non-networked
+- topology-agnostic
+
+It does not introduce mirrors, fetch behavior, routing behavior, publication storage, request history, or observability expansion.
+
+### Verification
+
+Descriptor-aware verification was added so that when a descriptor is present it must match the connector/chunk material.
+
+A local publication group verifier was added as the explicit validation boundary for grouped publication material.
+
+Existing reconstruction semantics remain compatible with connector/chunk verification.
+
+### Invariants preserved
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- public membership API response shape
+- SQLite/read-model authority
+
+### Explicit non-changes
+
+Engineering[25] did not introduce:
+
+- live mirrors
+- distributed fetches
+- network transport
+- adaptive routing
+- timing randomization
+- peer discovery
+- gossip protocols
+- reputation systems
+- distributed consensus
+- persistent request history
+- identity-linked telemetry
+- petition-linked fetch tracking
+- topology exposure
+- long-lived correlation state
+
+### Privacy-language discipline
+
+No origin/source/ownership/provenance/requester naming was introduced.
+
+Current neutral REFLECT naming remains centered on:
+
+- material
+- object
+- descriptor
+- connector
+- chunk
+- group
+- state
+- coherence
+- envelope
+
+Locked interpretation:
+
+Engineering[25] has established local publication-state semantics as the next REFLECT seam after Engineering[24]'s local publication object semantics.
+
+This is a preparation layer only.
+
+Future mirror-facing work must build on this seam without introducing networking, persistence, topology semantics, request telemetry, or correlation state prematurely.
+
