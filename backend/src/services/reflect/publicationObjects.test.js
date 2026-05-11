@@ -9,6 +9,7 @@ import {
   buildLocalPublicationObjects,
   reconstructPreparedPathMaterial,
   verifyLocalPublicationObjects,
+  verifyLocalPublicationGroup,
 } from "./publicationObjects.js";
 
 const material = {
@@ -110,6 +111,11 @@ assert.deepStrictEqual(
 
 assert.strictEqual(
   verifyLocalPublicationObjects(publication),
+  true,
+);
+
+assert.strictEqual(
+  verifyLocalPublicationGroup(publication),
   true,
 );
 

@@ -249,6 +249,16 @@ export function verifyLocalPublicationObjects({ descriptor, connector, chunks })
   return true;
 }
 
+export function verifyLocalPublicationGroup(publication) {
+  if (!publication || typeof publication !== "object") return false;
+
+  return verifyLocalPublicationObjects({
+    descriptor: publication.descriptor,
+    connector: publication.connector,
+    chunks: publication.chunks,
+  });
+}
+
 export function reconstructPreparedPathMaterial({ connector, chunks }) {
   if (!verifyLocalPublicationObjects({ connector, chunks })) return null;
 
