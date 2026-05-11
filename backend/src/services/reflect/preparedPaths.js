@@ -9,8 +9,13 @@ import {
 } from "./materials.js";
 import {
   buildLocalPublicationObjects,
+  buildLocalPublicationState,
   reconstructPreparedPathMaterial,
 } from "./publicationObjects.js";
+import {
+  buildLocalPublicationWindow,
+  selectLocalPublicationState,
+} from "./publicationWindows.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
 
@@ -51,6 +56,7 @@ async function refreshOnce(indexer) {
 }
 
 const LOCAL_PUBLICATION_CHUNK_SIZE = 4;
+const LOCAL_PUBLICATION_WINDOW_LIMIT = 4;
 
 function describePreparedMaterial(material) {
   return freezePlain({
@@ -81,6 +87,29 @@ function preparedPathBody(envelope) {
   });
 
   if (!publication) return null;
+
+  const publicationState = buildLocalPublicationState({
+    groups: [publication],
+  });
+
+  if (!publicationState) return null;
+
+  const publicationWindow = buildLocalPublicationWindow({
+    states: [publicationState],
+    limit: LOCAL_PUBLICATION_WINDOW_LIMIT,
+  });
+
+  const selectedPublicationState =
+    selectLocalPublicationState(publicationWindow);
+
+  if (!selectedPublicationState) return null;
+  if (selectedPublicationState.groupCount !== 1) return null;
+  if (
+    selectedPublicationState.entries[0]?.contentDigest?.value !==
+    publication.descriptor.contentDigest.value
+  ) {
+    return null;
+  }
 
   const reconstructed = reconstructPreparedPathMaterial(publication);
 
