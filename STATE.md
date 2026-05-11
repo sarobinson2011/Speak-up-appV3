@@ -3449,3 +3449,163 @@ This is a preparation layer only.
 
 Future mirror-facing work must build on this seam without introducing networking, persistence, topology semantics, request telemetry, or correlation state prematurely.
 
+
+---
+
+## Engineering[25] — REFLECT Local Publication Acceptance Closeout
+
+Engineering[25] completed the local publication-facing seam stack for REFLECT.
+
+This closes the Engineering[25] phase.
+
+### Final Engineering[25] scope
+
+Engineering[25] remained strictly local and deterministic.
+
+It extended REFLECT from Engineering[24]'s local publication object semantics into a complete local publication seam model:
+
+prepared path  
+→ publication objects  
+→ descriptor  
+→ publication group  
+→ group verification  
+→ publication state  
+→ publication state acceptance boundary
+
+### Final implemented seam
+
+A local publication state acceptance boundary was added.
+
+This boundary validates and accepts local publication state shape without introducing runtime distribution.
+
+It is:
+
+- local
+- deterministic
+- non-persistent
+- non-networked
+- topology-neutral
+- mirror-neutral
+- fetch-neutral
+
+### Locked Engineering[25] interpretation
+
+Engineering[25] did not implement mirrors.
+
+Engineering[25] prepared the semantic boundary that future mirror/publication runtime behavior may later use.
+
+The accepted state is a local semantic object only.
+
+It must not be interpreted as:
+
+- published network state
+- mirror-held state
+- persisted state
+- fetchable state
+- topology state
+- request history
+- transport metadata
+
+### Engineering[25] tags
+
+Stable recovery tags added during Engineering[25]:
+
+- reflect-local-publication-descriptor-v1
+- reflect-local-publication-group-v1
+- reflect-local-publication-group-verification-v1
+- reflect-local-publication-state-v1
+- reflect-local-publication-state-acceptance-v1
+- engineering25-reflect-local-publication-state-checkpoint
+
+### Invariants preserved
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- public membership API response shape
+- SQLite/read-model authority
+
+### Explicit non-changes
+
+Engineering[25] did not introduce:
+
+- live mirrors
+- runtime mirror behavior
+- distributed fetches
+- network transport
+- adaptive routing
+- timing randomization
+- peer discovery
+- gossip protocols
+- reputation systems
+- distributed consensus
+- persistent publication state
+- persistent request history
+- identity-linked telemetry
+- petition-linked fetch tracking
+- topology exposure
+- long-lived correlation state
+
+### Naming / privacy-language discipline
+
+Engineering[25] preserved neutral REFLECT naming.
+
+No origin/source/ownership/provenance/requester terminology was introduced.
+
+Future work must continue treating naming as part of the privacy boundary.
+
+Forbidden naming surfaces include language implying:
+
+- identity
+- origin
+- source attribution
+- ownership
+- provenance
+- requester identity
+- tracking
+- linkage
+- user affinity
+
+This applies to:
+
+- variables
+- helper names
+- comments
+- tests
+- docs
+- logs
+- serialization fields
+- route names
+
+### Engineering[26] boundary
+
+Engineering[26] should begin only after this local semantic seam.
+
+The next category of work is no longer local object semantics.
+
+The next category is likely:
+
+- bounded runtime publication simulation
+- local publication-window semantics
+- deterministic state selection
+- stale-state rejection
+- coherence targeting
+
+But Engineering[26] must still begin with observation only.
+
+Engineering[26] must not immediately introduce real mirrors, networking, persistence, topology, request telemetry, or distributed fetch behavior.
+
+Locked interpretation:
+
+Engineering[25] closed the local REFLECT publication seam phase.
+
+Engineering[26] begins only if moving from local publication-state semantics toward bounded runtime publication/window simulation.
+
