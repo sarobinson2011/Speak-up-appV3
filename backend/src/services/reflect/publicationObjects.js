@@ -284,6 +284,32 @@ export function buildLocalPublicationState({ groups }) {
   });
 }
 
+export function acceptLocalPublicationState(state) {
+  if (!state || typeof state !== "object") return null;
+
+  if (!Number.isInteger(state.version) || state.version <= 0) {
+    return null;
+  }
+
+  if (!Number.isInteger(state.groupCount) || state.groupCount <= 0) {
+    return null;
+  }
+
+  if (!Array.isArray(state.entries)) {
+    return null;
+  }
+
+  if (state.entries.length !== state.groupCount) {
+    return null;
+  }
+
+  if (!state.contentDigest?.value) {
+    return null;
+  }
+
+  return freezePlain(state);
+}
+
 export function reconstructPreparedPathMaterial({ connector, chunks }) {
   if (!verifyLocalPublicationObjects({ connector, chunks })) return null;
 

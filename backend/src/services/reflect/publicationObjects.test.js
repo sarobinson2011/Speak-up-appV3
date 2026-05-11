@@ -6,6 +6,7 @@ import {
 } from "./objectModel.js";
 
 import {
+  acceptLocalPublicationState,
   buildLocalPublicationObjects,
   buildLocalPublicationState,
   reconstructPreparedPathMaterial,
@@ -128,6 +129,23 @@ assert.deepStrictEqual(
 );
 assert(publicationState.contentDigest);
 assert(publicationState.contentDigest.value);
+
+const acceptedPublicationState =
+  acceptLocalPublicationState(publicationState);
+
+assert(acceptedPublicationState);
+assert.deepStrictEqual(
+  acceptedPublicationState,
+  publicationState,
+);
+
+assert.strictEqual(
+  acceptLocalPublicationState({
+    ...publicationState,
+    groupCount: 2,
+  }),
+  null,
+);
 
 assert.strictEqual(
   verifyLocalPublicationObjects(publication),
