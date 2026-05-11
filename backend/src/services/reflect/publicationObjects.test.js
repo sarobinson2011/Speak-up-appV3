@@ -7,6 +7,7 @@ import {
 
 import {
   buildLocalPublicationObjects,
+  buildLocalPublicationState,
   reconstructPreparedPathMaterial,
   verifyLocalPublicationObjects,
   verifyLocalPublicationGroup,
@@ -108,6 +109,25 @@ assert.deepStrictEqual(
   publication.descriptor,
   publicationAgain.descriptor,
 );
+
+const publicationState = buildLocalPublicationState({
+  groups: [publication],
+});
+
+assert(publicationState);
+assert.strictEqual(publicationState.version, 1);
+assert.strictEqual(publicationState.groupCount, 1);
+assert.strictEqual(publicationState.entries.length, 1);
+assert.deepStrictEqual(
+  publicationState.entries[0].descriptor,
+  publication.descriptor,
+);
+assert.deepStrictEqual(
+  publicationState.entries[0].contentDigest,
+  publication.descriptor.contentDigest,
+);
+assert(publicationState.contentDigest);
+assert(publicationState.contentDigest.value);
 
 assert.strictEqual(
   verifyLocalPublicationObjects(publication),

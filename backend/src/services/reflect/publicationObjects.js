@@ -259,6 +259,31 @@ export function verifyLocalPublicationGroup(publication) {
   });
 }
 
+export function buildLocalPublicationState({ groups }) {
+  if (!Array.isArray(groups) || groups.length === 0) return null;
+
+  const entries = groups.map((group) => {
+    if (!verifyLocalPublicationGroup(group)) return null;
+
+    return freezePlain({
+      descriptor: group.descriptor,
+      contentDigest: group.descriptor.contentDigest,
+    });
+  });
+
+  if (entries.some((entry) => !entry)) return null;
+
+  return freezePlain({
+    version: 1,
+    groupCount: entries.length,
+    entries,
+    contentDigest: {
+      algorithm: entries[0].contentDigest.algorithm,
+      value: digestReflectMaterial(entries),
+    },
+  });
+}
+
 export function reconstructPreparedPathMaterial({ connector, chunks }) {
   if (!verifyLocalPublicationObjects({ connector, chunks })) return null;
 
