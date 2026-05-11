@@ -141,6 +141,22 @@ function buildPublicationDescriptor({ connector, chunks }) {
   });
 }
 
+function buildLocalPublicationGroup({
+  descriptor,
+  connector,
+  chunks,
+}) {
+  if (!descriptor || !connector || !Array.isArray(chunks)) {
+    return null;
+  }
+
+  return freezePlain({
+    descriptor,
+    connector,
+    chunks,
+  });
+}
+
 export function buildLocalPublicationObjects({ material, chunkSize }) {
   const normalized = normalizePreparedPathMaterial(material);
   const size = normalizeChunkSize(chunkSize);
@@ -175,7 +191,7 @@ export function buildLocalPublicationObjects({ material, chunkSize }) {
 
   if (!descriptor) return null;
 
-  return freezePlain({
+  return buildLocalPublicationGroup({
     descriptor,
     connector,
     chunks,
@@ -188,7 +204,27 @@ function digestMatches(envelope) {
   return envelope.digest.value === digestReflectMaterial(envelope.material);
 }
 
-export function verifyLocalPublicationObjects({ connector, chunks }) {
+function descriptorMatches({ descriptor, connector, chunks }) {
+  if (!descriptor) return true;
+
+  if (descriptor.version !== connector.version) return false;
+  if (descriptor.root !== connector.material.root) return false;
+  if (descriptor.depth !== connector.material.depth) return false;
+  if (descriptor.chunkCount !== chunks.length) return false;
+  if (descriptor.connectorDigest?.value !== connector.digest.value) return false;
+  if (!Array.isArray(descriptor.chunkDigests)) return false;
+  if (descriptor.chunkDigests.length !== chunks.length) return false;
+
+  for (let i = 0; i < chunks.length; i++) {
+    if (descriptor.chunkDigests[i]?.value !== chunks[i]?.digest?.value) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+export function verifyLocalPublicationObjects({ descriptor, connector, chunks }) {
   if (!connector || !Array.isArray(chunks)) return false;
   if (connector.type !== REFLECT_TYPES.CONNECTOR) return false;
   if (!digestMatches(connector)) return false;
@@ -196,6 +232,7 @@ export function verifyLocalPublicationObjects({ connector, chunks }) {
   const entries = connector.material?.chunks;
   if (!Array.isArray(entries)) return false;
   if (entries.length !== chunks.length) return false;
+  if (!descriptorMatches({ descriptor, connector, chunks })) return false;
 
   for (let i = 0; i < chunks.length; i++) {
     const chunk = chunks[i];
