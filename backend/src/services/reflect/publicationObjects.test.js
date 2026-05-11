@@ -39,10 +39,26 @@ const publication = buildLocalPublicationObjects({
 
 assert(publication);
 
+assert(publication.descriptor);
 assert(publication.connector);
 assert(Array.isArray(publication.chunks));
 
 assert.strictEqual(publication.chunks.length, 3);
+
+assert.strictEqual(publication.descriptor.version, publication.connector.version);
+assert.strictEqual(publication.descriptor.root, publication.connector.material.root);
+assert.strictEqual(publication.descriptor.depth, publication.connector.material.depth);
+assert.strictEqual(publication.descriptor.chunkCount, publication.chunks.length);
+assert.strictEqual(
+  publication.descriptor.connectorDigest.value,
+  publication.connector.digest.value,
+);
+assert.strictEqual(
+  publication.descriptor.chunkDigests.length,
+  publication.chunks.length,
+);
+assert(publication.descriptor.contentDigest);
+assert(publication.descriptor.contentDigest.value);
 
 for (const chunk of publication.chunks) {
   assert.strictEqual(chunk.type, "chunk");
@@ -85,6 +101,11 @@ const publicationAgain = buildLocalPublicationObjects({
 assert.deepStrictEqual(
   publication,
   publicationAgain,
+);
+
+assert.deepStrictEqual(
+  publication.descriptor,
+  publicationAgain.descriptor,
 );
 
 assert.strictEqual(

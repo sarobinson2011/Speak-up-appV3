@@ -116,6 +116,31 @@ export function buildConnectorEnvelope({ material, chunkSize }) {
   });
 }
 
+function buildPublicationDescriptor({ connector, chunks }) {
+  if (!connector || !Array.isArray(chunks)) return null;
+  if (connector.type !== REFLECT_TYPES.CONNECTOR) return null;
+
+  const chunkDigests = chunks.map((chunk) => chunk?.digest);
+
+  if (chunkDigests.some((digest) => !digest?.value)) return null;
+
+  return freezePlain({
+    version: connector.version,
+    root: connector.material.root,
+    depth: connector.material.depth,
+    connectorDigest: connector.digest,
+    chunkCount: chunks.length,
+    chunkDigests,
+    contentDigest: {
+      algorithm: connector.digest.algorithm,
+      value: digestReflectMaterial({
+        connector: connector.digest,
+        chunks: chunkDigests,
+      }),
+    },
+  });
+}
+
 export function buildLocalPublicationObjects({ material, chunkSize }) {
   const normalized = normalizePreparedPathMaterial(material);
   const size = normalizeChunkSize(chunkSize);
@@ -143,7 +168,15 @@ export function buildLocalPublicationObjects({ material, chunkSize }) {
 
   if (!connector) return null;
 
+  const descriptor = buildPublicationDescriptor({
+    connector,
+    chunks,
+  });
+
+  if (!descriptor) return null;
+
   return freezePlain({
+    descriptor,
     connector,
     chunks,
   });
