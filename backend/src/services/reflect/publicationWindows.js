@@ -42,3 +42,13 @@ export function selectLocalPublicationState(window) {
   if (!selected?.state) return null;
   return freezePlain(selected.state);
 }
+
+export function selectCoherentLocalPublicationState({ window, contentDigest }) {
+  const selected = selectLocalPublicationState(window);
+
+  if (!selected) return null;
+  if (!contentDigest?.value) return null;
+  if (selected.contentDigest?.value !== contentDigest.value) return null;
+
+  return freezePlain(selected);
+}

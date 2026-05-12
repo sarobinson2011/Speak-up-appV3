@@ -14,7 +14,7 @@ import {
 } from "./publicationObjects.js";
 import {
   buildLocalPublicationWindow,
-  selectLocalPublicationState,
+  selectCoherentLocalPublicationState,
 } from "./publicationWindows.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
@@ -100,7 +100,10 @@ function preparedPathBody(envelope) {
   });
 
   const selectedPublicationState =
-    selectLocalPublicationState(publicationWindow);
+    selectCoherentLocalPublicationState({
+      window: publicationWindow,
+      contentDigest: publication.descriptor.contentDigest,
+    });
 
   if (!selectedPublicationState) return null;
   if (selectedPublicationState.groupCount !== 1) return null;
