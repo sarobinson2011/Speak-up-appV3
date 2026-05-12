@@ -3609,3 +3609,120 @@ Engineering[25] closed the local REFLECT publication seam phase.
 
 Engineering[26] begins only if moving from local publication-state semantics toward bounded runtime publication/window simulation.
 
+
+
+---
+
+## Engineering[26] — REFLECT Local Publication Window Semantics
+
+Engineering[26] extended the local REFLECT publication seam with bounded runtime/window semantics.
+
+This checkpoint remains local-only and deterministic.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- memberSecret / leaf semantics
+- nullifier semantics
+- petition semantics
+- admission semantics
+- ZK circuit or proof inputs
+- TEMPEST execution semantics
+- relay API behavior
+- frontend behavior
+- public membership API response shape
+- SQLite/indexer authority
+
+### Implemented REFLECT local window semantics
+
+Engineering[26] added:
+
+- local publication window construction
+- bounded window limit validation
+- local publication state acceptance inside the window boundary
+- deterministic selected-state semantics
+- coherent-state targeting by content digest
+- explicit deterministic sequence validation
+- prepared-path internal routing through the local publication window
+- reconstruction validation after selected-state coherence checks
+
+Current internal REFLECT flow:
+
+prepared path  
+→ publication objects  
+→ descriptor  
+→ publication group  
+→ publication state  
+→ local publication window  
+→ deterministic selected state  
+→ coherent-state targeting  
+→ sequence validation  
+→ reconstruction validation  
+→ legacy proof-compatible prepared-path response
+
+### Public/runtime behavior preserved
+
+The frontend still receives the same legacy proof-compatible prepared-path object.
+
+There is still:
+
+- no public connector exposure
+- no public chunk exposure
+- no public descriptor exposure
+- no public group exposure
+- no public state exposure
+- no public window exposure
+- no mirror behavior
+- no distributed fetches
+- no publication persistence
+- no topology semantics
+- no request telemetry expansion
+
+### Explicit non-changes
+
+Engineering[26] did not introduce:
+
+- live mirrors
+- real distributed fetches
+- external network transport
+- adaptive routing
+- timing randomization
+- peer discovery
+- gossip protocols
+- reputation systems
+- distributed consensus
+- persistent request history
+- identity-linked telemetry
+- petition-linked fetch tracking
+- topology exposure
+- long-lived correlation state
+
+### Checkpoint tags
+
+Stable recovery tags:
+
+- `reflect-local-publication-window-v1`
+- `reflect-prepared-path-publication-window-v1`
+- `reflect-coherent-publication-selection-v1`
+- `reflect-publication-window-sequence-v1`
+
+### Locked interpretation
+
+Engineering[26] defines local runtime/window semantics before any distributed REFLECT infrastructure exists.
+
+The system now has a deterministic, bounded, local publication-window boundary that can reject malformed, incoherent, or sequence-invalid local states without exposing new public surfaces.
+
+Future REFLECT work must continue to preserve:
+
+- local/public API separation
+- neutral naming discipline
+- no identity/source/provenance/requester language
+- no hidden telemetry
+- no persistence before explicit design
+- no mirrors or network fetches before a separate bounded checkpoint
+
+Engineering[26] status:
+
+**CLOSED — local publication window semantics checkpoint complete**
