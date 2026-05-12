@@ -7,6 +7,7 @@ import {
 
 import {
   buildLocalPublicationWindow,
+  selectCoherentLocalPublicationState,
   selectLocalPublicationState,
 } from "./publicationWindows.js";
 
@@ -44,6 +45,38 @@ assert.strictEqual(window.limit, 4);
 assert.strictEqual(window.entryCount, 2);
 assert.strictEqual(window.entries.length, 2);
 assert.deepStrictEqual(selectLocalPublicationState(window), stateB);
+assert.strictEqual(window.entries[0].sequence, 1);
+assert.strictEqual(window.entries[1].sequence, 2);
+
+assert.deepStrictEqual(
+  selectCoherentLocalPublicationState({
+    window,
+    contentDigest: stateB.contentDigest,
+  }),
+  stateB,
+);
+
+assert.strictEqual(
+  selectCoherentLocalPublicationState({
+    window,
+    contentDigest: stateA.contentDigest,
+  }),
+  null,
+);
+
+assert.strictEqual(
+  selectLocalPublicationState({
+    ...window,
+    entries: [
+      window.entries[0],
+      {
+        ...window.entries[1],
+        sequence: 1,
+      },
+    ],
+  }),
+  null,
+);
 
 assert.strictEqual(
   buildLocalPublicationWindow({ states: [], limit: 4 }),
