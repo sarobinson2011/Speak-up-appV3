@@ -24,7 +24,12 @@ export function buildLocalPublicationWindow({ states, limit }) {
   const entries = states.map((state, position) => {
     const accepted = acceptLocalPublicationState(state);
     if (!accepted) return null;
-    return freezePlain({ position, state: accepted, contentDigest: accepted.contentDigest });
+    return freezePlain({
+      position,
+      sequence: position + 1,
+      state: accepted,
+      contentDigest: accepted.contentDigest,
+    });
   });
   if (entries.some((entry) => !entry)) return null;
   return freezePlain({ version: 1, limit: maxEntries, entryCount: entries.length, entries });
@@ -38,6 +43,14 @@ export function selectLocalPublicationState(window) {
   if (window.entries.length !== window.entryCount) return null;
   if (window.entries.length === 0) return null;
   if (window.entries.length > window.limit) return null;
+
+  for (let i = 0; i < window.entries.length; i++) {
+    const entry = window.entries[i];
+
+    if (!isPositiveInteger(entry?.sequence)) return null;
+    if (entry.sequence !== i + 1) return null;
+  }
+
   const selected = window.entries[window.entries.length - 1];
   if (!selected?.state) return null;
   return freezePlain(selected.state);
