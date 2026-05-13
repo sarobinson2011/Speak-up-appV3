@@ -3726,3 +3726,35 @@ Future REFLECT work must continue to preserve:
 Engineering[26] status:
 
 **CLOSED — local publication window semantics checkpoint complete**
+
+
+### Engineering[26] — REFLECT Window Selection Test Coverage Addendum
+
+After the Engineering[26] local publication-window checkpoint, a bounded test-hardening pass was completed.
+
+Additional validation now covers:
+
+- deterministic sequence assignment inside local publication windows
+- coherent selected-state success by content digest
+- coherent selected-state mismatch rejection
+- invalid sequence rejection during local state selection
+
+No runtime semantics changed.
+
+No changes were made to:
+
+- public API behavior
+- frontend behavior
+- persistence
+- networking
+- mirror semantics
+- topology semantics
+- request telemetry
+
+Checkpoint tag:
+
+- `reflect-publication-window-selection-tests-v1`
+
+Locked interpretation:
+
+The local REFLECT window boundary is now both implemented and test-covered for deterministic sequence validation and coherent selected-state targeting.
