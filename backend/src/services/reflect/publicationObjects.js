@@ -33,6 +33,7 @@ function buildChunkMaterial({ material, offset, size }) {
   const end = Math.min(start + length, normalized.siblings.length);
 
   return freezePlain({
+    leaf: normalized.leaf,
     root: normalized.root,
     depth: normalized.siblings.length,
     index: normalized.index,
@@ -315,6 +316,9 @@ export function reconstructPreparedPathMaterial({ connector, chunks }) {
 
   const root = connector.material.root;
   const depth = connector.material.depth;
+  const firstChunk = chunks.find((chunk) => chunk?.material?.offset === 0);
+  const leaf = firstChunk?.material?.leaf;
+  const index = firstChunk?.material?.index;
   const sortedChunks = [...chunks].sort(
     (a, b) => a.material.offset - b.material.offset,
   );
@@ -329,8 +333,12 @@ export function reconstructPreparedPathMaterial({ connector, chunks }) {
 
   if (siblings.length !== depth) return null;
   if (pathBits.length !== depth) return null;
+  if (!leaf) return null;
+  if (!Number.isInteger(index) || index < 0) return null;
 
   return freezePlain({
+    leaf,
+    index,
     root,
     depth,
     siblings,

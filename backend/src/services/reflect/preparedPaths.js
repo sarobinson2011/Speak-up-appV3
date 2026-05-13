@@ -102,7 +102,7 @@ function preparedPathBody(envelope) {
   const selectedPublicationState =
     selectCoherentLocalPublicationState({
       window: publicationWindow,
-      contentDigest: publication.descriptor.contentDigest,
+      contentDigest: publicationState.contentDigest,
     });
 
   if (!selectedPublicationState) return null;
@@ -117,6 +117,8 @@ function preparedPathBody(envelope) {
   const reconstructed = reconstructPreparedPathMaterial(publication);
 
   if (!reconstructed) return null;
+  if (reconstructed.leaf !== envelope.material.leaf) return null;
+  if (reconstructed.index !== envelope.material.index) return null;
   if (reconstructed.root !== envelope.material.root) return null;
   if (reconstructed.depth !== envelope.material.siblings.length) return null;
   if (reconstructed.siblings.length !== envelope.material.siblings.length) return null;
