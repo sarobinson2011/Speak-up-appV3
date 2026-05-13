@@ -35,7 +35,7 @@ export function buildLocalPublicationWindow({ states, limit }) {
   return freezePlain({ version: 1, limit: maxEntries, entryCount: entries.length, entries });
 }
 
-export function selectLocalPublicationState(window) {
+function acceptedWindowEntries(window) {
   if (!window || typeof window !== "object") return null;
   if (!Number.isInteger(window.version) || window.version <= 0) return null;
   if (!isPositiveInteger(window.limit)) return null;
@@ -49,19 +49,36 @@ export function selectLocalPublicationState(window) {
 
     if (!isPositiveInteger(entry?.sequence)) return null;
     if (entry.sequence !== i + 1) return null;
+    if (!entry?.state) return null;
+    if (!entry.contentDigest?.value) return null;
   }
 
-  const selected = window.entries[window.entries.length - 1];
-  if (!selected?.state) return null;
+  return window.entries;
+}
+
+export function selectLocalPublicationState(window) {
+  const entries = acceptedWindowEntries(window);
+
+  if (!entries) return null;
+
+  const selected = entries[entries.length - 1];
+
   return freezePlain(selected.state);
 }
 
 export function selectCoherentLocalPublicationState({ window, contentDigest }) {
-  const selected = selectLocalPublicationState(window);
+  const entries = acceptedWindowEntries(window);
 
-  if (!selected) return null;
+  if (!entries) return null;
   if (!contentDigest?.value) return null;
-  if (selected.contentDigest?.value !== contentDigest.value) return null;
 
-  return freezePlain(selected);
+  for (let i = entries.length - 1; i >= 0; i--) {
+    const entry = entries[i];
+
+    if (entry.contentDigest.value === contentDigest.value) {
+      return freezePlain(entry.state);
+    }
+  }
+
+  return null;
 }

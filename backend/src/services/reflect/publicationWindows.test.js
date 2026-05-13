@@ -56,10 +56,21 @@ assert.deepStrictEqual(
   stateB,
 );
 
-assert.strictEqual(
+assert.deepStrictEqual(
   selectCoherentLocalPublicationState({
     window,
     contentDigest: stateA.contentDigest,
+  }),
+  stateA,
+);
+
+assert.strictEqual(
+  selectCoherentLocalPublicationState({
+    window,
+    contentDigest: {
+      algorithm: stateA.contentDigest.algorithm,
+      value: "not-a-window-digest",
+    },
   }),
   null,
 );
