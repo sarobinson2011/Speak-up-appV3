@@ -3798,3 +3798,59 @@ Locked interpretation:
 REFLECT now has local multi-state window simulation semantics, but this must not be interpreted as distributed publication, mirror discovery, network ordering, source attribution, or persistence.
 
 Future work must continue to avoid names and structures implying origin, publisher, provider, requester, ownership, provenance, topology, or telemetry.
+
+
+### Engineering[26] — REFLECT Prepared-Path Reconstruction Fix Addendum
+
+During live end-to-end validation after local publication-window work, a regression was found in the membership path flow.
+
+Observed failure:
+
+- `GET /api/membership/leaf-status?leaf=...` returned `exists: true`
+- `GET /api/membership/path?leaf=...` returned `404`
+- frontend therefore treated an enrolled identity as not signable
+
+Root cause:
+
+- coherent window selection compared the requested target against the wrong digest layer
+- the code used publication descriptor / group content digest where publication-state content digest was required
+
+Correction:
+
+- coherent local state selection now targets the publication-state content digest
+- prepared-path reconstruction preserves the legacy proof-compatible fields:
+  - `leaf`
+  - `index`
+  - `root`
+  - `siblings`
+  - `pathBits`
+
+Validation:
+
+- membership path lookup returned the expected legacy-compatible response keys:
+  - `index`
+  - `leaf`
+  - `pathBits`
+  - `root`
+  - `siblings`
+- full live signing flow was revalidated with both enrolled test wallets
+- signature count updated correctly after both signatures
+- existing public API behavior remained unchanged
+
+Checkpoint tag:
+
+- `reflect-prepared-path-reconstruction-fix-v1`
+
+Locked lesson:
+
+REFLECT digest comparisons must explicitly respect layer boundaries.
+
+Do not compare across:
+
+- descriptor / group digest
+- publication-state digest
+- window-entry digest
+
+unless there is an explicit derivation rule and a test covering that comparison.
+
+This class of bug is now treated as a known REFLECT risk: semantic-layer digest confusion.
