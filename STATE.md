@@ -3758,3 +3758,43 @@ Checkpoint tag:
 Locked interpretation:
 
 The local REFLECT window boundary is now both implemented and test-covered for deterministic sequence validation and coherent selected-state targeting.
+
+---
+
+### Engineering[26] — REFLECT Multi-State Local Window Selection Addendum
+
+Engineering[26] added bounded local multi-state publication-window selection semantics.
+
+This is still local-only simulation.
+
+Additional semantics now implemented:
+
+- local publication windows may contain multiple valid accepted states
+- generic local selection returns the latest valid window state
+- coherent local selection searches backward through the window
+- coherent local selection returns the latest state matching the requested content digest
+- unmatched coherent targets are rejected
+- sequence validation remains enforced before selection
+
+This creates deterministic local state-contention behavior before any distributed REFLECT runtime exists.
+
+No changes were made to:
+
+- public API behavior
+- frontend behavior
+- membership path response shape
+- persistence
+- networking
+- mirror behavior
+- topology semantics
+- request telemetry
+
+Checkpoint tag:
+
+- `reflect-coherent-window-selection-v1`
+
+Locked interpretation:
+
+REFLECT now has local multi-state window simulation semantics, but this must not be interpreted as distributed publication, mirror discovery, network ordering, source attribution, or persistence.
+
+Future work must continue to avoid names and structures implying origin, publisher, provider, requester, ownership, provenance, topology, or telemetry.
