@@ -3854,3 +3854,49 @@ Do not compare across:
 unless there is an explicit derivation rule and a test covering that comparison.
 
 This class of bug is now treated as a known REFLECT risk: semantic-layer digest confusion.
+
+
+### Engineering[26] — REFLECT Digest-Layer Regression Coverage Addendum
+
+After the prepared-path reconstruction regression fix, Engineering[26] added explicit regression coverage for semantic-layer digest confusion.
+
+Additional validation now asserts:
+
+- publication group descriptor digest is not equivalent to publication-state digest
+- coherent local publication-state selection must target publication-state digest
+- descriptor/group digest must not satisfy publication-state coherent selection
+
+This specifically covers the regression class where:
+
+- membership leaf existence remained valid
+- but prepared-path reconstruction failed due to incorrect digest-layer targeting
+
+Validation remains local-only and deterministic.
+
+No changes were made to:
+
+- public API behavior
+- frontend behavior
+- membership path response shape
+- persistence
+- networking
+- mirrors
+- topology semantics
+- request telemetry
+
+Checkpoint tag:
+
+- `reflect-digest-layer-selection-regression-test-v1`
+
+Locked interpretation:
+
+Digest-layer boundaries are now treated as explicit REFLECT runtime invariants.
+
+Future REFLECT work must avoid implicit equivalence assumptions between:
+
+- descriptor/group digests
+- publication-state digests
+- window-entry digests
+
+unless an explicit derivation rule and regression coverage exist.
+
