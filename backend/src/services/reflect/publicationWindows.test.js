@@ -48,12 +48,25 @@ assert.deepStrictEqual(selectLocalPublicationState(window), stateB);
 assert.strictEqual(window.entries[0].sequence, 1);
 assert.strictEqual(window.entries[1].sequence, 2);
 
+assert.notStrictEqual(
+  groupB.descriptor.contentDigest.value,
+  stateB.contentDigest.value,
+);
+
 assert.deepStrictEqual(
   selectCoherentLocalPublicationState({
     window,
     contentDigest: stateB.contentDigest,
   }),
   stateB,
+);
+
+assert.strictEqual(
+  selectCoherentLocalPublicationState({
+    window,
+    contentDigest: groupB.descriptor.contentDigest,
+  }),
+  null,
 );
 
 assert.deepStrictEqual(
