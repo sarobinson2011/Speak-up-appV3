@@ -59,6 +59,42 @@ function deriveTempestPermutation(seedBI) {
   return indices;
 }
 
+function classifyRelayExecutionFailure(error) {
+  const message = error?.message || String(error || "");
+
+  if (message.includes("TEMPEST controlled execution failure")) {
+    return "execution_controlled_failure";
+  }
+
+  if (
+    error?.code === "CALL_EXCEPTION" ||
+    message.includes("execution reverted") ||
+    message.includes("missing revert data")
+  ) {
+    return "execution_reverted";
+  }
+
+  if (
+    error?.code === "NETWORK_ERROR" ||
+    error?.code === "SERVER_ERROR" ||
+    error?.code === "TIMEOUT" ||
+    message.includes("ECONNREFUSED") ||
+    message.includes("ETIMEDOUT") ||
+    message.includes("network")
+  ) {
+    return "execution_transport_failure";
+  }
+
+  return "execution_unclassified_failure";
+}
+
+function normalizeRelayExecutionFailure(error) {
+  return Object.freeze({
+    classification: classifyRelayExecutionFailure(error),
+    error,
+  });
+}
+
 function makeFailingDomainHandle() {
   return {
     async signPetitionWithZKProof() {
@@ -134,11 +170,15 @@ async function dispatchRelayExecution({
         txHash: tx.hash,
       };
     } catch (e) {
-      lastError = e;
+      lastError = normalizeRelayExecutionFailure(e);
     }
   }
 
-  throw lastError || new Error("relay execution failed");
+  if (lastError?.error) {
+    throw lastError.error;
+  }
+
+  throw new Error("relay execution failed");
 }
 
 function freezeRelaySubmission(submission) {

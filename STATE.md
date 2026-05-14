@@ -3900,3 +3900,114 @@ Future REFLECT work must avoid implicit equivalence assumptions between:
 
 unless an explicit derivation rule and regression coverage exist.
 
+
+---
+
+## Engineering[27] — TEMPEST Operational Determinism Hardening Checkpoint
+
+Engineering[27] returned to TEMPEST after the Engineering[26] REFLECT local runtime semantic checkpoint.
+
+This was an intentional bounded multiplexing step:
+
+- REFLECT remains the path / witness-data layer
+- TEMPEST remains the execution / submission layer
+- no simultaneous distributed expansion was introduced
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- ZK proof semantics
+- nullifier semantics
+- admission semantics
+- petition semantics
+- frontend behavior
+- public relay API shape
+- indexer/read-model semantics
+- REFLECT semantics
+
+### Hardening completed
+
+Implemented bounded TEMPEST operational-determinism hardening:
+
+- startup validation that every deterministic execution slot resolves to a usable execution domain
+- startup validation that configured execution domains target the same registry address
+- immutable execution-domain lifecycle objects
+- immutable execution-domain array returned from construction
+- internal normalized execution-failure classification seam
+- regression coverage for deterministic fallback continuation
+- regression coverage for invalid execution topology rejection
+- regression coverage for immutable execution-domain lifecycle objects
+
+### Naming / observability discipline
+
+This checkpoint preserved strict privacy-language discipline.
+
+No new public surface exposes:
+
+- selected relay slot
+- permutation order
+- execution domain
+- relayer wallet identity
+- fallback traversal path
+- topology details
+- per-action execution history
+- domain-specific health
+- request-linked execution metadata
+
+Implementation language remains coarse and operational.
+
+No actor, provenance, linkage, signer-origin, or correlation terminology was introduced.
+
+### Validation
+
+Validated during Engineering[27]:
+
+- backend source checks passed
+- TEMPEST regression script passed
+- backend booted cleanly
+- relay status remained coarse:
+  - ok
+  - mode
+  - chainId
+- relay health remained coarse:
+  - ok
+  - mode
+  - chainId
+  - chainReachable
+- petition indexer remained healthy
+- live UI signing flow succeeded
+- backend relay log remained coarse:
+  - submit-ok
+- no topology, slot, domain, relayer, fallback, permutation, or traversal detail appeared in public API output or relay logs
+
+### Locked interpretation
+
+TEMPEST Phase A remains:
+
+- deterministic
+- topology-hidden
+- single-backend orchestrated
+- live multi-relayer capable
+- operationally hardened
+- frontend/API compatible
+
+This checkpoint strengthens deterministic execution semantics before any future distributed operational expansion.
+
+It does not introduce:
+
+- relay federation
+- remote relay APIs
+- relay mesh coordination
+- inter-relayer communication
+- dynamic topology discovery
+- adaptive routing
+- relay reputation
+- timing randomization
+- public relay topology
+- per-action execution telemetry
+
+Engineering[27] status:
+
+**TEMPEST operational-determinism hardening checkpoint complete**

@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { TEMPEST_SLOT_COUNT, getTempestDomainIndexForSlot } from "./tempestConfig.js";
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -52,16 +53,16 @@ function buildDomain({
     wallet
   );
 
-  return {
+  return Object.freeze({
     rpcUrl,
     registryAddress,
     provider,
     wallet,
     handle,
-    health: {
+    health: Object.freeze({
       usable: true,
-    },
-  };
+    }),
+  });
 }
 
 function isUsableExecutionDomain(domain) {
@@ -90,6 +91,25 @@ export function getTempestExecutionReadiness(executionDomains) {
   };
 }
 
+export function assertTempestExecutionTopology(executionDomains) {
+  if (!Array.isArray(executionDomains) || executionDomains.length < 2) {
+    throw new Error("Invalid TEMPEST execution topology");
+  }
+
+  for (let slotIndex = 0; slotIndex < TEMPEST_SLOT_COUNT; slotIndex += 1) {
+    const domainIndex = getTempestDomainIndexForSlot(slotIndex);
+
+    if (
+      !Number.isInteger(domainIndex) ||
+      domainIndex < 0 ||
+      domainIndex >= executionDomains.length ||
+      !isUsableExecutionDomain(executionDomains[domainIndex])
+    ) {
+      throw new Error("Invalid TEMPEST execution topology");
+    }
+  }
+}
+
 export function buildTempestExecutionDomains({ domainConfigs }) {
   if (!Array.isArray(domainConfigs) || domainConfigs.length < 2) {
     throw new Error("Invalid TEMPEST execution configuration");
@@ -97,5 +117,17 @@ export function buildTempestExecutionDomains({ domainConfigs }) {
 
   domainConfigs.forEach(assertDomainConfig);
 
-  return domainConfigs.map((domainConfig) => buildDomain(domainConfig));
+  const registryAddress = domainConfigs[0].registryAddress.toLowerCase();
+
+  for (const domainConfig of domainConfigs) {
+    if (domainConfig.registryAddress.toLowerCase() !== registryAddress) {
+      throw new Error("Invalid TEMPEST execution registry equivalence");
+    }
+  }
+
+  const executionDomains = domainConfigs.map((domainConfig) => buildDomain(domainConfig));
+
+  assertTempestExecutionTopology(executionDomains);
+
+  return Object.freeze(executionDomains);
 }
