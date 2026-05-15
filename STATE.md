@@ -4343,3 +4343,39 @@ Engineering[28] status:
 
 **PARTIAL CHECKPOINT — secret continuity UX clarified; no recovery semantics introduced**
 
+
+### Engineering[28] — Secret Import / Export Ergonomics Addendum
+
+Engineering[28] completed a final bounded import/export ergonomics pass.
+
+Changes:
+
+- added clearer import/export labels
+- improved secret textarea readability
+- added explicit offline custody reminder after export
+- clarified invalid import error wording
+
+No changes were made to:
+
+- secret format
+- storage keys
+- import/export semantics
+- identity model
+- enrollment flow
+- signing flow
+- backend behavior
+- recovery semantics
+
+Checkpoint tag:
+
+- `secret-continuity-import-export-ergonomics-v1`
+
+Locked interpretation:
+
+This is an operator UX improvement only.  
+It does not introduce encrypted bundles, account recovery, wallet-based recovery, backend custody, or centralized continuity.
+
+Engineering[28] status:
+
+**CLOSED — secret continuity UX pass complete**
+
