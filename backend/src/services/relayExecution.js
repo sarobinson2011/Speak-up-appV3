@@ -133,6 +133,29 @@ function selectDomainHandleForSlot({
   return executionDomains[domainIndex].handle;
 }
 
+async function reconcileRelayExecutionState({
+  domainHandle,
+  petitionId,
+  nullifier,
+}) {
+  if (typeof domainHandle?.hasSignedPetition !== "function") {
+    return null;
+  }
+
+  const alreadyRecorded = await domainHandle.hasSignedPetition(
+    BigInt(petitionId),
+    nullifier,
+  );
+
+  if (alreadyRecorded) {
+    return Object.freeze({
+      txHash: null,
+    });
+  }
+
+  return null;
+}
+
 async function dispatchRelayExecution({
   executionDomains,
   submission,
@@ -181,6 +204,16 @@ async function dispatchRelayExecution({
 
       if (!shouldContinueRelayExecution(lastError)) {
         throw lastError.error;
+      }
+
+      const reconciled = await reconcileRelayExecutionState({
+        domainHandle: relay.domainHandle,
+        petitionId,
+        nullifier,
+      });
+
+      if (reconciled) {
+        return reconciled;
       }
     }
   }

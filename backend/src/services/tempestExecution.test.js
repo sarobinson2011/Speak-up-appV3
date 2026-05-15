@@ -61,6 +61,23 @@ function makeErrorHandle(label, calls, error) {
   };
 }
 
+
+function makeReconcilingFailureHandle(label, calls, alreadyRecorded) {
+  return {
+    async signPetitionWithZKProof() {
+      calls.push(`${label}:submit`);
+      throw Object.assign(new Error("network unavailable"), {
+        code: "NETWORK_ERROR",
+      });
+    },
+
+    async hasSignedPetition() {
+      calls.push(`${label}:reconcile`);
+      return alreadyRecorded;
+    },
+  };
+}
+
 function makeDomain(handle) {
   return Object.freeze({
     provider: {},
@@ -169,6 +186,42 @@ await assert.rejects(
 );
 
 assert.deepStrictEqual(unclassifiedCalls, ["unknown-a"]);
+
+
+
+
+const reconciledCalls = [];
+
+const reconciledResult = await executeRelaySubmission({
+  executionDomains: Object.freeze([
+    makeDomain(makeReconcilingFailureHandle("reconciled-a", reconciledCalls, true)),
+    makeDomain(makeWorkingHandle("reconciled-b", reconciledCalls)),
+  ]),
+  submission: makeSubmission(),
+});
+
+assert.deepStrictEqual(reconciledResult, { txHash: null });
+assert.deepStrictEqual(reconciledCalls, [
+  "reconciled-a:submit",
+  "reconciled-a:reconcile",
+]);
+
+const unreconciledCalls = [];
+
+const unreconciledResult = await executeRelaySubmission({
+  executionDomains: Object.freeze([
+    makeDomain(makeReconcilingFailureHandle("unreconciled-a", unreconciledCalls, false)),
+    makeDomain(makeWorkingHandle("unreconciled-b", unreconciledCalls)),
+  ]),
+  submission: makeSubmission(),
+});
+
+assert.strictEqual(unreconciledResult.txHash, `0x${"ab".repeat(32)}`);
+assert.deepStrictEqual(unreconciledCalls, [
+  "unreconciled-a:submit",
+  "unreconciled-a:reconcile",
+  "unreconciled-b",
+]);
 
 
 console.log("tempest execution validation ok");

@@ -4103,3 +4103,95 @@ This checkpoint preserves TEMPEST as a deterministic operational execution layer
 Engineering[27] status:
 
 **TEMPEST failure/fallback semantics alignment complete**
+
+---
+
+## Engineering[27] — TEMPEST Unknown-State Reconciliation Checkpoint
+
+Engineering[27] continued with a bounded TEMPEST unknown-state handling pass.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- ZK proof semantics
+- nullifier semantics
+- admission semantics
+- petition semantics
+- frontend behavior
+- public relay API shape
+- indexer/read-model semantics
+- REFLECT semantics
+
+### Issue addressed
+
+The TEMPEST failure/fallback design requires uncertain execution state to be reconciled before continuing fallback.
+
+Design rule:
+
+- if execution outcome is uncertain, check action state
+- if the nullifier is already recorded, treat the action as accepted
+- otherwise continue deterministic fallback
+
+### Runtime behavior implemented
+
+After retryable execution failure only:
+
+- TEMPEST checks `hasSignedPetition(petitionId, nullifier)` through the current execution handle
+- if already recorded, execution returns a success-shaped result with `txHash: null`
+- if not recorded, deterministic fallback traversal continues
+- terminal failures still hard-stop
+
+Fallback remains allowed only for:
+
+- controlled operational failure
+- transport failure
+
+Fallback remains disallowed for:
+
+- contract revert
+- semantic invalidity
+- unclassified execution failure
+
+### Regression coverage added
+
+TEMPEST regression coverage now verifies:
+
+- retryable failure plus recorded action returns success-shaped result
+- retryable failure plus unrecorded action continues traversal
+- terminal failure behavior remains unchanged
+
+### Observability preserved
+
+No new public or persistent observability was introduced.
+
+No public output or relay log exposes:
+
+- selected relay slot
+- permutation order
+- execution domain
+- relayer wallet identity
+- fallback traversal path
+- topology details
+- per-action execution history
+- domain-specific health
+- request-linked execution metadata
+
+Validation confirmed:
+
+- TEMPEST regression script passed
+- relay status remained coarse
+- relay health remained coarse
+- petition indexer remained healthy
+- frontend correctly remained governed by M2 identity state
+
+### Locked interpretation
+
+TEMPEST now handles uncertain execution state by reconciling action state, not by exposing or persisting execution-path state.
+
+This preserves deterministic fallback semantics while avoiding duplicate submission amplification.
+
+Engineering[27] status:
+
+**TEMPEST unknown-state reconciliation checkpoint complete**
