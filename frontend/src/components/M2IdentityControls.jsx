@@ -30,17 +30,23 @@ export function M2IdentityControls({
         Create new secret
       </button>
 
+      <label style={{ fontSize: 14, fontWeight: 600, color: '#111827' }}>
+        Import saved secret
+      </label>
+
       <textarea
         value={secretImportText}
         onChange={(e) => setSecretImportText(e.target.value)}
-        placeholder="Paste existing secret to import"
+        placeholder="Paste a previously exported secret"
         rows={3}
         style={{
           width: '100%',
-          padding: 10,
+          padding: 12,
           borderRadius: 8,
           border: '1px solid #d1d5db',
-          fontFamily: 'monospace'
+          fontFamily: 'monospace',
+          fontSize: 14,
+          lineHeight: 1.5
         }}
       />
 
@@ -78,18 +84,30 @@ export function M2IdentityControls({
           </button>
 
           {secretExportText ? (
-            <textarea
-              readOnly
-              value={secretExportText}
-              rows={3}
-              style={{
-                width: '100%',
-                padding: 10,
-                borderRadius: 8,
-                border: '1px solid #d1d5db',
-                fontFamily: 'monospace'
-              }}
-            />
+            <>
+              <label style={{ fontSize: 14, fontWeight: 600, color: '#111827' }}>
+                Exported secret
+              </label>
+
+              <textarea
+                readOnly
+                value={secretExportText}
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: 12,
+                  borderRadius: 8,
+                  border: '1px solid #d1d5db',
+                  fontFamily: 'monospace',
+                  fontSize: 14,
+                  lineHeight: 1.5
+                }}
+              />
+
+              <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
+                Save this secret securely offline. Anyone with this secret can continue the same anonymous membership.
+              </div>
+            </>
           ) : null}
         </>
       ) : null}

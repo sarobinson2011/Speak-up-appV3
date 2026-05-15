@@ -131,7 +131,7 @@ export function importMemberSecret(account, raw) {
 
   const normalized = normalizeSecret(raw);
   if (!normalized) {
-    throw new Error('Invalid secret format. Expected decimal string or 0x-prefixed hex.');
+    throw new Error('Invalid secret. Paste the exact decimal or 0x-prefixed hex secret that you previously exported.');
   }
 
   safeSet(key, normalized);
