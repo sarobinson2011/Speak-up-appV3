@@ -150,6 +150,50 @@
   font-family: var(--font-mono);
 }
 
+
+/* M2 Status / Continuity Panel */
+.m2-status-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.m2-status-panel {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  background-image: var(--texture-brushed);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-inset);
+}
+
+.m2-status-title {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.m2-status-body {
+  color: var(--text-secondary);
+}
+
+.m2-status-note {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  background-image: var(--texture-brushed);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-inset);
+}
+
 /* Sign Button */
 .sign-button {
   width: 100%;

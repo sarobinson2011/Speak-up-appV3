@@ -37,19 +37,10 @@ export function M2StatusSection({
 }) {
   return (
     <div className="petition-detail-header">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '24px' }}>
-        <div
-          style={{
-            fontSize: 13,
-            color: '#a16207',
-            background: '#fffbeb',
-            padding: 10,
-            borderRadius: 6,
-            border: '1px solid #fde68a'
-          }}
-        >
-          <strong>Strong Privacy (M2) status:</strong>
-          <div style={{ marginTop: 6, opacity: 0.9 }}>
+      <div className="m2-status-stack">
+        <div className="m2-status-panel">
+          <strong className="m2-status-title">Strong Privacy (M2) status:</strong>
+          <div className="m2-status-body">
             {resolvedHasSignedM2 ? (
               <div>Already signed.</div>
             ) : m2CheckLoading ? (
@@ -171,31 +162,13 @@ export function M2StatusSection({
         </div>
 
         {secretPresent && !membershipPath && !resolvedHasSignedM2 ? (
-          <div
-            style={{
-              fontSize: 13,
-              color: '#92400e',
-              background: '#fff7ed',
-              padding: 10,
-              borderRadius: 6,
-              border: '1px solid #fed7aa'
-            }}
-          >
+          <div className="m2-status-note">
             Signing is unavailable until this local secret is enrolled.
           </div>
         ) : null}
 
         {secretPresent && membershipPath && !leafMatches && !resolvedHasSignedM2 ? (
-          <div
-            style={{
-              fontSize: 13,
-              color: '#92400e',
-              background: '#fff7ed',
-              padding: 10,
-              borderRadius: 6,
-              border: '1px solid #fed7aa'
-            }}
-          >
+          <div className="m2-status-note">
             Signing is unavailable until you import the correct enrolled secret.
           </div>
         ) : null}
