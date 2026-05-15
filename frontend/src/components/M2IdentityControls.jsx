@@ -10,6 +10,11 @@ export function M2IdentityControls({
 }) {
   return (
     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
+        This secret exists only in local browser storage unless you export and save it elsewhere.
+        Losing browser storage without a saved secret prevents continuity restoration.
+      </div>
+
       <button
         onClick={handleCreateSecret}
         style={{

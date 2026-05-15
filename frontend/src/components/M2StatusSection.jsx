@@ -58,7 +58,7 @@ export function M2StatusSection({
               <div>Loading membership path…</div>
             ) : !secretPresent ? (
               <>
-                <div>No identity present.</div>
+                <div>No local secret present in this browser.</div>
 
                 <M2IdentityControls
                   secretImportText={secretImportText}
@@ -73,15 +73,15 @@ export function M2StatusSection({
               </>
             ) : membershipExists === false ? (
               <>
-                <div>Identity present, not enrolled.</div>
+                <div>Local secret present, not enrolled.</div>
                 <div style={{ marginTop: 6 }}>
-                  Enrolling this secret creates a new anonymous identity for this secret only.
+                  Enrolling this local secret creates a new anonymous membership for this secret only.
                 </div>
                 <div style={{ marginTop: 6 }}>
                   Enrollment is one-time and requires a refundable on-chain bond.
                 </div>
                 <div style={{ marginTop: 6 }}>
-                  Creating a new secret replaces the active identity on this device.
+                  Creating a new secret replaces the active local secret on this device.
                 </div>
 
                 {admissionBondEth ? (
@@ -134,7 +134,7 @@ export function M2StatusSection({
               </>
             ) : !leafMatches ? (
               <>
-                <div>Active secret does not match the enrolled leaf. Restore/import the original secret.</div>
+                <div>Active local secret does not match the loaded membership path. Import the correct saved secret.</div>
 
                 <M2IdentityControls
                   secretImportText={secretImportText}
@@ -149,10 +149,10 @@ export function M2StatusSection({
               </>
             ) : (
               <>
-                <div>Identity enrolled and usable.</div>
+                <div>Local secret enrolled and usable.</div>
 
                 <div style={{ marginTop: 6 }}>
-                  Creating a new secret replaces the active identity on this device.
+                  Creating a new secret replaces the active local secret on this device.
                 </div>
 
                 <M2IdentityControls
@@ -181,7 +181,7 @@ export function M2StatusSection({
               border: '1px solid #fed7aa'
             }}
           >
-            Signing is unavailable until this identity is enrolled.
+            Signing is unavailable until this local secret is enrolled.
           </div>
         ) : null}
 
@@ -196,7 +196,7 @@ export function M2StatusSection({
               border: '1px solid #fed7aa'
             }}
           >
-            Signing is unavailable until you restore an enrolled identity.
+            Signing is unavailable until you import the correct enrolled secret.
           </div>
         ) : null}
 
