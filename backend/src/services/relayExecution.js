@@ -95,6 +95,13 @@ function normalizeRelayExecutionFailure(error) {
   });
 }
 
+function shouldContinueRelayExecution(normalizedFailure) {
+  return (
+    normalizedFailure?.classification === "execution_controlled_failure" ||
+    normalizedFailure?.classification === "execution_transport_failure"
+  );
+}
+
 function makeFailingDomainHandle() {
   return {
     async signPetitionWithZKProof() {
@@ -171,6 +178,10 @@ async function dispatchRelayExecution({
       };
     } catch (e) {
       lastError = normalizeRelayExecutionFailure(e);
+
+      if (!shouldContinueRelayExecution(lastError)) {
+        throw lastError.error;
+      }
     }
   }
 

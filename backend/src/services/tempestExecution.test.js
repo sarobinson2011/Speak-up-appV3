@@ -51,6 +51,16 @@ function makeFailingHandle(label, calls) {
   };
 }
 
+
+function makeErrorHandle(label, calls, error) {
+  return {
+    async signPetitionWithZKProof() {
+      calls.push(label);
+      throw error;
+    },
+  };
+}
+
 function makeDomain(handle) {
   return Object.freeze({
     provider: {},
@@ -90,5 +100,75 @@ assert.throws(
 const builtDomain = makeDomain(makeWorkingHandle("frozen", []));
 assert(Object.isFrozen(builtDomain));
 assert(Object.isFrozen(builtDomain.health));
+
+
+
+const transportCalls = [];
+
+const transportResult = await executeRelaySubmission({
+  executionDomains: Object.freeze([
+    makeDomain(
+      makeErrorHandle(
+        "transport-a",
+        transportCalls,
+        Object.assign(new Error("network unavailable"), {
+          code: "NETWORK_ERROR",
+        }),
+      ),
+    ),
+    makeDomain(makeWorkingHandle("transport-b", transportCalls)),
+  ]),
+  submission: makeSubmission(),
+});
+
+assert.strictEqual(transportResult.txHash, `0x${"ab".repeat(32)}`);
+assert(transportCalls.length >= 2);
+
+const revertCalls = [];
+
+await assert.rejects(
+  () =>
+    executeRelaySubmission({
+      executionDomains: Object.freeze([
+        makeDomain(
+          makeErrorHandle(
+            "revert-a",
+            revertCalls,
+            Object.assign(new Error("execution reverted"), {
+              code: "CALL_EXCEPTION",
+            }),
+          ),
+        ),
+        makeDomain(makeWorkingHandle("revert-b", revertCalls)),
+      ]),
+      submission: makeSubmission(),
+    }),
+  /execution reverted/,
+);
+
+assert.deepStrictEqual(revertCalls, ["revert-a"]);
+
+const unclassifiedCalls = [];
+
+await assert.rejects(
+  () =>
+    executeRelaySubmission({
+      executionDomains: Object.freeze([
+        makeDomain(
+          makeErrorHandle(
+            "unknown-a",
+            unclassifiedCalls,
+            new Error("unexpected execution boundary failure"),
+          ),
+        ),
+        makeDomain(makeWorkingHandle("unknown-b", unclassifiedCalls)),
+      ]),
+      submission: makeSubmission(),
+    }),
+  /unexpected execution boundary failure/,
+);
+
+assert.deepStrictEqual(unclassifiedCalls, ["unknown-a"]);
+
 
 console.log("tempest execution validation ok");

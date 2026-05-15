@@ -4011,3 +4011,95 @@ It does not introduce:
 Engineering[27] status:
 
 **TEMPEST operational-determinism hardening checkpoint complete**
+
+---
+
+## Engineering[27] — TEMPEST Failure/Fallback Semantics Alignment
+
+Engineering[27] continued with a bounded TEMPEST failure/fallback semantics alignment pass.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- ZK proof semantics
+- nullifier semantics
+- admission semantics
+- petition semantics
+- frontend behavior
+- public relay API shape
+- indexer/read-model semantics
+- REFLECT semantics
+
+### Issue corrected
+
+The implementation previously classified execution failures but still continued fallback traversal for all thrown errors.
+
+This was too permissive relative to the TEMPEST failure/fallback design.
+
+Design rule restored:
+
+- fallback is for operational execution failure
+- fallback is not for semantic invalidity
+
+### Runtime behavior aligned
+
+Fallback now continues only for:
+
+- controlled operational failure
+- transport failure
+
+Fallback now hard-stops for:
+
+- contract revert
+- semantic invalidity
+- unclassified execution failure
+
+### Regression coverage added
+
+TEMPEST execution regression coverage now verifies:
+
+- transport failure continues traversal
+- controlled operational failure continues traversal
+- contract revert stops traversal
+- unclassified execution failure stops traversal
+- invalid execution topology is rejected
+- execution-domain lifecycle objects remain immutable
+
+### Observability preserved
+
+No new public or persistent observability was introduced.
+
+No public output or relay log exposes:
+
+- selected relay slot
+- permutation order
+- execution domain
+- relayer wallet identity
+- fallback traversal path
+- topology details
+- per-action execution history
+- domain-specific health
+- request-linked execution metadata
+
+Live validation confirmed:
+
+- sign loop still works
+- relay log remained coarse:
+  - submit-ok
+
+### Locked interpretation
+
+TEMPEST fallback semantics are now aligned across:
+
+- design documentation
+- runtime behavior
+- regression coverage
+- public observability policy
+
+This checkpoint preserves TEMPEST as a deterministic operational execution layer and avoids treating semantic invalidity as relay failure.
+
+Engineering[27] status:
+
+**TEMPEST failure/fallback semantics alignment complete**
