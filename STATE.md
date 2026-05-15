@@ -4269,3 +4269,77 @@ Public relay success remains protocol-level success, independent of internal exe
 Engineering[27] status:
 
 **TEMPEST response surface normalization complete**
+
+---
+
+## Engineering[28] — Secret Continuity UX Checkpoint
+
+Engineering[28] performed a bounded secret-continuity UX pass.
+
+No architectural, cryptographic, backend, relay, REFLECT, TEMPEST, storage-key, or recovery-semantics changes were introduced.
+
+### Continuity copy hardening
+
+Updated frontend M2 copy to distinguish:
+
+- local secret presence
+- enrolled membership state
+- browser-local continuity state
+
+from identity existence or account recovery.
+
+The UI now avoids language implying:
+
+- wallet-based identity
+- backend recovery
+- account recovery
+- centralized continuity authority
+- identity loss when browser storage is missing
+
+Locked interpretation preserved:
+
+- continuity = possession of the same `memberSecret`
+- browser storage loss is local continuity loss only
+- importing the original secret restores continuity
+- creating a new secret creates a different identity
+
+Checkpoint tag:
+
+- `secret-continuity-copy-v1`
+
+### M2 panel readability cleanup
+
+The M2 status / continuity panel styling was updated for readability:
+
+- improved contrast
+- larger text
+- cleaner spacing
+- theme-aligned panel styling
+- less warning-like yellow/orange presentation
+
+No copy semantics or runtime behavior changed.
+
+Checkpoint tag:
+
+- `secret-continuity-panel-readability-v1`
+
+### Invariants preserved
+
+No changes to:
+
+- Position A identity model
+- `memberSecret -> leaf -> nullifier`
+- O0 / O1 / O2 state semantics
+- localStorage key structure
+- import / export / create semantics
+- enrollment flow
+- signing flow
+- ZK circuit
+- backend path lookup
+- TEMPEST execution
+- REFLECT path boundary
+
+Engineering[28] status:
+
+**PARTIAL CHECKPOINT — secret continuity UX clarified; no recovery semantics introduced**
+
