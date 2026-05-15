@@ -4195,3 +4195,77 @@ This preserves deterministic fallback semantics while avoiding duplicate submiss
 Engineering[27] status:
 
 **TEMPEST unknown-state reconciliation checkpoint complete**
+
+---
+
+## Engineering[27] — TEMPEST Response Surface Normalization
+
+Engineering[27] performed a bounded TEMPEST response-surface normalization pass.
+
+No architectural expansion was introduced.
+
+No changes were made to:
+
+- M2 identity semantics
+- ZK proof semantics
+- nullifier semantics
+- admission semantics
+- petition semantics
+- frontend behavior
+- public relay status/health shape
+- indexer/read-model semantics
+- REFLECT semantics
+
+### Issue addressed
+
+Unknown-state reconciliation can internally return a success-shaped execution result without a transaction hash.
+
+The public relay response must not expose this as a distinct execution-path category.
+
+### Runtime behavior
+
+The relay sign route now returns:
+
+- `ok`
+- `alreadySigned`
+
+and includes:
+
+- `txHash`
+
+only when a transaction hash is present.
+
+No new public flag or status was introduced.
+
+Specifically, the route does not expose:
+
+- reconciled state
+- selected relay slot
+- permutation order
+- execution domain
+- relayer wallet identity
+- fallback traversal path
+- topology details
+- per-action execution history
+- domain-specific health
+- request-linked execution metadata
+
+### Validation
+
+Validated during Engineering[27]:
+
+- relay route syntax check passed
+- TEMPEST regression script passed
+- relay status remained coarse
+- relay health remained coarse
+- petition indexer remained healthy
+
+### Locked interpretation
+
+Internal execution uncertainty handling must not become a public semantic category.
+
+Public relay success remains protocol-level success, independent of internal execution-path detail.
+
+Engineering[27] status:
+
+**TEMPEST response surface normalization complete**

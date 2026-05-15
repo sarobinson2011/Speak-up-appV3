@@ -290,11 +290,16 @@ export function makeRelayRouter({ rpcUrl, registryAddress, chainId }) {
 
       logRelayEvent("submit-ok", {});
 
-      return res.json({
+      const responseBody = {
         ok: true,
         alreadySigned: false,
-        txHash: executionResult.txHash
-      });
+      };
+
+      if (executionResult.txHash) {
+        responseBody.txHash = executionResult.txHash;
+      }
+
+      return res.json(responseBody);
     } catch (e) {
       logRelayEvent("submit-error", {
         error: "internal"
