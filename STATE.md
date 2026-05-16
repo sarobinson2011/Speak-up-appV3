@@ -4379,3 +4379,128 @@ Engineering[28] status:
 
 **CLOSED — secret continuity UX pass complete**
 
+
+---
+
+## Engineering[29] — Encrypted Continuity Bundle Design
+
+Engineering[29] begins a design-only phase for encrypted portable continuity custody.
+
+No runtime implementation is introduced by this checkpoint.
+
+### Objective
+
+Introduce a future encrypted export/import format for operator-controlled custody of the M2 `memberSecret`, while preserving the locked Position A identity model:
+
+- continuity = possession of the same `memberSecret`
+- wallet ≠ identity
+- backend ≠ custodian
+- relay ≠ memory
+- encrypted custody ≠ account recovery
+
+### Bundle semantics
+
+An encrypted continuity bundle is only:
+
+- portable encrypted custody material
+- manually exported/imported by the operator
+- decrypted locally in the browser
+- useful only if the operator knows the bundle password
+
+It is not:
+
+- an account
+- a wallet backup
+- a recovery phrase
+- a cloud sync object
+- a backend-restorable identity
+- a continuity authority
+
+### Bundle contents
+
+The encrypted payload may contain:
+
+- `memberSecret`
+
+The plaintext envelope may contain only decryption-required fields:
+
+- format marker
+- format version
+- encryption algorithm
+- KDF algorithm/settings
+- salt
+- nonce/iv
+- ciphertext
+
+### Explicit non-contents
+
+The bundle must not contain:
+
+- wallet address
+- leaf
+- nullifier
+- petition IDs
+- petition history
+- enrollment status
+- admission commitment
+- admission secret
+- relay metadata
+- TEMPEST metadata
+- REFLECT metadata
+- timestamps unless strictly required
+- browser/device identifiers
+- request history
+- topology information
+
+### Metadata policy
+
+Default rule:
+
+- minimize plaintext metadata
+- include only fields required for deterministic local decryption
+- do not include operator, wallet, identity, device, petition, relay, mirror, or enrollment context
+
+### Cryptographic direction
+
+Future implementation should use browser-local Web Crypto only.
+
+Preferred initial shape:
+
+- password-derived key
+- random salt
+- random nonce/iv
+- authenticated encryption
+- encrypted JSON payload containing only `memberSecret`
+
+Exact KDF and parameter selection must be finalized before implementation.
+
+### Naming discipline
+
+Allowed framing:
+
+- encrypted continuity bundle
+- encrypted local custody
+- import encrypted bundle
+- export encrypted bundle
+- password-protected bundle
+
+Forbidden framing:
+
+- account recovery
+- wallet recovery
+- restore account
+- recovery phrase
+- seed phrase
+- cloud backup
+- identity provider
+- backend recovery
+- server custody
+
+### Implementation boundary
+
+Implementation is deferred until after this design checkpoint is reviewed.
+
+Future implementation must remain frontend-only unless STATE.md is explicitly updated.
+
+No backend route, relay behavior, contract behavior, ZK circuit, nullifier model, membership path model, TEMPEST behavior, or REFLECT behavior is changed by this design.
+
