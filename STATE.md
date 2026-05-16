@@ -4714,3 +4714,70 @@ No changes were made to:
 Engineering[30] status:
 
 **CLOSED — encrypted continuity UI integration complete**
+
+---
+
+## Engineering[31] — Continuity Custody Semantic Hardening
+
+Engineering[31] hardened M2 continuity and custody semantics without changing protocol behavior or runtime identity rules.
+
+This phase focused on:
+
+- continuity-language tightening
+- operator expectation hardening
+- anti-recovery semantic discipline
+- encrypted continuity bundle interpretation stability
+- prevention of accidental account-style framing
+
+Implemented:
+
+- tightened UI copy around local secret replacement semantics
+- removed “restore/recovery/restoration” continuity phrasing from active UX surfaces
+- clarified that continuity exists only with the same original `memberSecret`
+- clarified encrypted bundle semantics as encrypted local custody only
+- clarified that bundle import only sets the active local secret using existing import semantics
+- clarified replacement semantics around switching away from an active anonymous membership
+- tightened developer-facing mismatch diagnostics to avoid recovery framing
+- removed “recoverable” wording from pending admission flow comments
+- added `docs/CONTINUITY_CUSTODY_MODEL_V1.md` as the bounded continuity/custody supporting specification
+
+No changes were made to:
+
+- M2 cryptographic semantics
+- nullifier derivation
+- enrollment semantics
+- contract behavior
+- TEMPEST
+- REFLECT
+- relay behavior
+- backend authority model
+- wallet semantics
+
+Locked continuity interpretation remains:
+
+continuity = possession of the same original `memberSecret`
+
+The encrypted continuity bundle remains:
+
+portable encrypted custody
+
+NOT:
+
+- an account
+- a recovery phrase
+- a cloud backup
+- a synced identity
+- a backend authority
+- a continuity authority
+- a wallet recovery mechanism
+
+This phase further established wording and operator expectations as part of the privacy boundary.
+
+Checkpoint artifacts:
+
+- `docs/CONTINUITY_CUSTODY_MODEL_V1.md`
+
+Suggested checkpoint tag:
+
+- `continuity-custody-semantics-v1`
+

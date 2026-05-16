@@ -167,7 +167,7 @@ export function useZKProof() {
           `Member secret mismatch: backend leaf != Poseidon1(memberSecret).\n` +
             `backend leaf: ${leafFromBackend.toString()}\n` +
             `poseidon1(secret): ${leafCircuit.toString()}\n` +
-            `Fix: restore the original memberSecret for this wallet (localStorage) OR re-enroll membership using the currently stored memberSecret so the tree contains Poseidon1(secret).`
+            `Fix: re-import the same original memberSecret for this local context OR enroll the currently stored memberSecret so the tree contains Poseidon1(secret).`
         );
       }
 

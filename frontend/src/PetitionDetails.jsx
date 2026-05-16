@@ -168,7 +168,7 @@ export default function PetitionDetails({
     try {
       if (secretPresent) {
         const confirmed = window.confirm(
-          'Create a new secret and replace the current anonymous identity on this device? This will switch you away from the current identity until you restore the original secret.'
+          'Create a new secret and replace the active local secret on this device? This will switch you away from the current anonymous membership unless you later re-import the same original secret.'
         );
 
         if (!confirmed) return;
@@ -574,7 +574,7 @@ export default function PetitionDetails({
       );
 
       // Reuse a pending admission secret if one already exists for this wallet.
-      // This makes the flow recoverable if funding succeeded but activation did not.
+      // This preserves the pending admission flow if funding succeeded but activation did not.
       let admissionSecret = safeGetLocalStorage(currentPendingAdmissionKey);
 
       if (!isHex32(admissionSecret)) {

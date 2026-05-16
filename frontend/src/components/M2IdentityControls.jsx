@@ -21,7 +21,7 @@ export function M2IdentityControls({
     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
       <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
         This secret exists only in local browser storage unless you export and save it elsewhere.
-        Losing browser storage without a saved secret prevents continuity restoration.
+        Losing browser storage without a saved copy of this secret breaks continuity.
       </div>
 
       <button
@@ -141,7 +141,7 @@ export function M2IdentityControls({
         </button>
 
         <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
-          Importing a bundle sets the active local secret to the decrypted secret. Continuity is only possible if it is the same original secret.
+          Importing a bundle sets the active local secret to the decrypted secret. Continuity exists only when this is the same original secret.
         </div>
       </div>
 
@@ -184,7 +184,7 @@ export function M2IdentityControls({
               />
 
               <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
-                Save this secret securely offline. Anyone with this secret can continue the same anonymous membership.
+                Save this secret securely offline. Anyone with this exact secret can continue the same anonymous membership.
               </div>
 
               <div style={{ marginTop: 10, borderTop: '1px solid #e5e7eb', paddingTop: 10 }}>
@@ -249,7 +249,7 @@ export function M2IdentityControls({
                     />
 
                     <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
-                      Save this encrypted bundle securely. It contains only the current secret, protected by the password you entered.
+                      Save this encrypted bundle securely. It contains only the current secret, encrypted with the password you entered.
                     </div>
                   </>
                 ) : null}
