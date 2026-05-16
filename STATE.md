@@ -4589,3 +4589,67 @@ Implementation remains deferred.
 
 The next safe implementation slice, when chosen, should be a small frontend-only crypto helper with tests or browser-console validation before UI integration.
 
+
+---
+
+## Engineering[29] — Encrypted Continuity Helper Validation Checkpoint
+
+Engineering[29] implemented and manually validated an isolated frontend-only encrypted continuity bundle helper.
+
+Implementation file:
+
+- `frontend/src/continuityBundle.js`
+
+The helper provides:
+
+- `encryptContinuityBundle(memberSecret, password)`
+- `decryptContinuityBundle(bundleText, password)`
+
+Implementation properties:
+
+- frontend/browser only
+- WebCrypto only
+- PBKDF2-HMAC-SHA256
+- AES-GCM-256
+- fixed initial PBKDF2 iteration count: `400000`
+- random 16-byte salt
+- random 12-byte IV
+- JSON envelope
+- encrypted payload contains only normalized `memberSecret`
+- no localStorage mutation
+- no UI integration
+- no backend interaction
+- no wallet semantics
+
+Manual validation completed:
+
+- decimal secret encrypt/decrypt roundtrip succeeded
+- `0x` hex secret input normalized to decimal on decrypt
+- wrong password failed with bounded helper error
+- malformed JSON failed with bounded helper error
+- generated bundle envelope contained no wallet address, leaf, nullifier, petition history, enrollment status, relay metadata, TEMPEST metadata, REFLECT metadata, device identifier, or browser identifier
+
+Build validation:
+
+- `node --check frontend/src/continuityBundle.js` passed
+- `npm --prefix frontend run build` passed
+
+No changes were made to:
+
+- existing plaintext import/export UI
+- `m2Identity.js` localStorage behavior
+- backend routes
+- relay behavior
+- contract behavior
+- ZK circuit
+- nullifier model
+- membership path model
+- TEMPEST behavior
+- REFLECT behavior
+
+Locked interpretation:
+
+This checkpoint introduces an isolated crypto primitive only.
+
+Encrypted bundle UI wiring remains a separate future slice.
+
