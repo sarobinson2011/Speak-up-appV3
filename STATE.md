@@ -4653,3 +4653,64 @@ This checkpoint introduces an isolated crypto primitive only.
 
 Encrypted bundle UI wiring remains a separate future slice.
 
+
+---
+
+## Engineering[30] — Encrypted Continuity UI Integration
+
+Engineering[30] integrated encrypted continuity bundles into the existing M2 identity/operator UI.
+
+No architectural expansion was introduced.
+
+Implemented:
+
+- encrypted continuity bundle export UI
+- encrypted continuity bundle import UI
+- plaintext secret import/export preserved
+- existing O0/O1/O2 state semantics preserved
+- existing `m2Identity.js` storage semantics preserved
+- encrypted import decrypts first, then calls the existing `importMemberSecret(...)` path
+- encrypted export uses the existing `exportMemberSecret(...)` path before encryption
+
+Checkpoint tags:
+
+- `encrypted-continuity-export-ui-v1`
+- `encrypted-continuity-import-ui-v1`
+
+Validation:
+
+- frontend production build passed
+- manual encrypted export/import roundtrip completed
+- wrong-password import failure handled cleanly
+- working tree clean after commit/tag/push
+
+Locked interpretation:
+
+Encrypted continuity bundles are a password-protected custody format for the current `memberSecret`.
+
+They are not:
+
+- an account
+- a wallet backup
+- a recovery phrase
+- a cloud backup
+- a backend continuity service
+- an identity authority
+
+Continuity remains defined only as possession of the same original `memberSecret`.
+
+No changes were made to:
+
+- ZK circuits
+- proof semantics
+- nullifier semantics
+- membership semantics
+- enrollment semantics
+- backend routes
+- contracts
+- TEMPEST
+- REFLECT
+
+Engineering[30] status:
+
+**CLOSED — encrypted continuity UI integration complete**
