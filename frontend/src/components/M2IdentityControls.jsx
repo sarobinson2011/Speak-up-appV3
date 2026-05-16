@@ -4,6 +4,10 @@ export function M2IdentityControls({
   handleCreateSecret,
   handleImportSecret,
   handleExportSecret,
+  encryptedBundlePassword,
+  setEncryptedBundlePassword,
+  handleExportEncryptedBundle,
+  encryptedBundleText,
   secretExportText,
   secretActionError,
   showExport = false
@@ -106,6 +110,74 @@ export function M2IdentityControls({
 
               <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
                 Save this secret securely offline. Anyone with this secret can continue the same anonymous membership.
+              </div>
+
+              <div style={{ marginTop: 10, borderTop: '1px solid #e5e7eb', paddingTop: 10 }}>
+                <label style={{ fontSize: 14, fontWeight: 600, color: '#111827' }}>
+                  Encrypted continuity bundle password
+                </label>
+
+                <input
+                  type="password"
+                  value={encryptedBundlePassword}
+                  onChange={(e) => setEncryptedBundlePassword(e.target.value)}
+                  placeholder="Enter a password for the encrypted bundle"
+                  style={{
+                    width: '100%',
+                    marginTop: 6,
+                    padding: 12,
+                    borderRadius: 8,
+                    border: '1px solid #d1d5db',
+                    fontSize: 14,
+                    lineHeight: 1.5
+                  }}
+                />
+
+                <button
+                  onClick={handleExportEncryptedBundle}
+                  disabled={!encryptedBundlePassword.trim()}
+                  style={{
+                    width: '100%',
+                    marginTop: 8,
+                    padding: '10px 12px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    background: !encryptedBundlePassword.trim() ? '#f3f4f6' : '#111827',
+                    color: !encryptedBundlePassword.trim() ? '#6b7280' : '#ffffff',
+                    cursor: !encryptedBundlePassword.trim() ? 'not-allowed' : 'pointer',
+                    fontWeight: 600
+                  }}
+                >
+                  Export encrypted continuity bundle
+                </button>
+
+                {encryptedBundleText ? (
+                  <>
+                    <label style={{ display: 'block', marginTop: 10, fontSize: 14, fontWeight: 600, color: '#111827' }}>
+                      Encrypted continuity bundle
+                    </label>
+
+                    <textarea
+                      readOnly
+                      value={encryptedBundleText}
+                      rows={8}
+                      style={{
+                        width: '100%',
+                        marginTop: 6,
+                        padding: 12,
+                        borderRadius: 8,
+                        border: '1px solid #d1d5db',
+                        fontFamily: 'monospace',
+                        fontSize: 13,
+                        lineHeight: 1.5
+                      }}
+                    />
+
+                    <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
+                      Save this encrypted bundle securely. It contains only the current secret, protected by the password you entered.
+                    </div>
+                  </>
+                ) : null}
               </div>
             </>
           ) : null}

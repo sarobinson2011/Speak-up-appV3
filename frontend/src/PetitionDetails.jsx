@@ -11,6 +11,7 @@ import {
   importMemberSecret,
   exportMemberSecret
 } from './m2Identity';
+import { encryptContinuityBundle } from './continuityBundle';
 import { M2StatusSection } from './components/M2StatusSection';
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
@@ -106,6 +107,8 @@ export default function PetitionDetails({
   const [secretActionError, setSecretActionError] = useState('');
   const [secretImportText, setSecretImportText] = useState('');
   const [secretExportText, setSecretExportText] = useState('');
+  const [encryptedBundlePassword, setEncryptedBundlePassword] = useState('');
+  const [encryptedBundleText, setEncryptedBundleText] = useState('');
 
   // Admission bond safety
   const [admissionBondWei, setAdmissionBondWei] = useState(null);
@@ -156,6 +159,7 @@ export default function PetitionDetails({
   function handleCreateSecret() {
     setSecretActionError('');
     setSecretExportText('');
+    setEncryptedBundleText('');
 
     try {
       if (secretPresent) {
@@ -198,6 +202,21 @@ export default function PetitionDetails({
       const exported = exportMemberSecret(account);
       if (!exported) throw new Error('No active secret to export.');
       setSecretExportText(exported);
+    } catch (e) {
+      setSecretActionError(e?.message || String(e));
+    }
+  }
+
+  async function handleExportEncryptedBundle() {
+    setSecretActionError('');
+    setEncryptedBundleText('');
+
+    try {
+      const exported = exportMemberSecret(account);
+      if (!exported) throw new Error('No active secret to export.');
+
+      const bundle = await encryptContinuityBundle(exported, encryptedBundlePassword);
+      setEncryptedBundleText(bundle);
     } catch (e) {
       setSecretActionError(e?.message || String(e));
     }
@@ -638,6 +657,10 @@ export default function PetitionDetails({
         handleCreateSecret={handleCreateSecret}
         handleImportSecret={handleImportSecret}
         handleExportSecret={handleExportSecret}
+        encryptedBundlePassword={encryptedBundlePassword}
+        setEncryptedBundlePassword={setEncryptedBundlePassword}
+        handleExportEncryptedBundle={handleExportEncryptedBundle}
+        encryptedBundleText={encryptedBundleText}
         secretExportText={secretExportText}
         secretActionError={secretActionError}
         enrollMembershipOnce={enrollMembershipOnce}
