@@ -11,7 +11,7 @@ import {
   importMemberSecret,
   exportMemberSecret
 } from './m2Identity';
-import { encryptContinuityBundle } from './continuityBundle';
+import { encryptContinuityBundle, decryptContinuityBundle } from './continuityBundle';
 import { M2StatusSection } from './components/M2StatusSection';
 
 const SIGN_DOMAIN = 0x5349474en; // BigInt("SIGN") — must match circuit
@@ -109,6 +109,8 @@ export default function PetitionDetails({
   const [secretExportText, setSecretExportText] = useState('');
   const [encryptedBundlePassword, setEncryptedBundlePassword] = useState('');
   const [encryptedBundleText, setEncryptedBundleText] = useState('');
+  const [encryptedBundleImportText, setEncryptedBundleImportText] = useState('');
+  const [encryptedBundleImportPassword, setEncryptedBundleImportPassword] = useState('');
 
   // Admission bond safety
   const [admissionBondWei, setAdmissionBondWei] = useState(null);
@@ -160,6 +162,8 @@ export default function PetitionDetails({
     setSecretActionError('');
     setSecretExportText('');
     setEncryptedBundleText('');
+    setEncryptedBundleImportText('');
+    setEncryptedBundleImportPassword('');
 
     try {
       if (secretPresent) {
@@ -184,10 +188,34 @@ export default function PetitionDetails({
   function handleImportSecret() {
     setSecretActionError('');
     setSecretExportText('');
+    setEncryptedBundleText('');
+    setEncryptedBundleImportText('');
+    setEncryptedBundleImportPassword('');
 
     try {
       importMemberSecret(account, secretImportText);
       setSecretImportText('');
+      setMembershipPath(null);
+      refreshIdentity();
+    } catch (e) {
+      setSecretActionError(e?.message || String(e));
+    }
+  }
+
+  async function handleImportEncryptedBundle() {
+    setSecretActionError('');
+    setSecretExportText('');
+    setEncryptedBundleText('');
+
+    try {
+      const decrypted = await decryptContinuityBundle(
+        encryptedBundleImportText,
+        encryptedBundleImportPassword
+      );
+
+      importMemberSecret(account, decrypted.memberSecret);
+      setEncryptedBundleImportText('');
+      setEncryptedBundleImportPassword('');
       setMembershipPath(null);
       refreshIdentity();
     } catch (e) {
@@ -656,6 +684,11 @@ export default function PetitionDetails({
         setSecretImportText={setSecretImportText}
         handleCreateSecret={handleCreateSecret}
         handleImportSecret={handleImportSecret}
+        encryptedBundleImportText={encryptedBundleImportText}
+        setEncryptedBundleImportText={setEncryptedBundleImportText}
+        encryptedBundleImportPassword={encryptedBundleImportPassword}
+        setEncryptedBundleImportPassword={setEncryptedBundleImportPassword}
+        handleImportEncryptedBundle={handleImportEncryptedBundle}
         handleExportSecret={handleExportSecret}
         encryptedBundlePassword={encryptedBundlePassword}
         setEncryptedBundlePassword={setEncryptedBundlePassword}

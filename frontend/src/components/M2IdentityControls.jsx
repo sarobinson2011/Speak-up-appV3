@@ -3,6 +3,11 @@ export function M2IdentityControls({
   setSecretImportText,
   handleCreateSecret,
   handleImportSecret,
+  encryptedBundleImportText,
+  setEncryptedBundleImportText,
+  encryptedBundleImportPassword,
+  setEncryptedBundleImportPassword,
+  handleImportEncryptedBundle,
   handleExportSecret,
   encryptedBundlePassword,
   setEncryptedBundlePassword,
@@ -69,6 +74,76 @@ export function M2IdentityControls({
       >
         Import secret
       </button>
+
+      <div style={{ marginTop: 10, borderTop: '1px solid #e5e7eb', paddingTop: 10 }}>
+        <label style={{ fontSize: 14, fontWeight: 600, color: '#111827' }}>
+          Import encrypted continuity bundle
+        </label>
+
+        <textarea
+          value={encryptedBundleImportText}
+          onChange={(e) => setEncryptedBundleImportText(e.target.value)}
+          placeholder="Paste an encrypted continuity bundle"
+          rows={6}
+          style={{
+            width: '100%',
+            marginTop: 6,
+            padding: 12,
+            borderRadius: 8,
+            border: '1px solid #d1d5db',
+            fontFamily: 'monospace',
+            fontSize: 13,
+            lineHeight: 1.5
+          }}
+        />
+
+        <input
+          type="password"
+          value={encryptedBundleImportPassword}
+          onChange={(e) => setEncryptedBundleImportPassword(e.target.value)}
+          placeholder="Password for this encrypted bundle"
+          style={{
+            width: '100%',
+            marginTop: 8,
+            padding: 12,
+            borderRadius: 8,
+            border: '1px solid #d1d5db',
+            fontSize: 14,
+            lineHeight: 1.5
+          }}
+        />
+
+        <button
+          onClick={handleImportEncryptedBundle}
+          disabled={!encryptedBundleImportText.trim() || !encryptedBundleImportPassword.trim()}
+          style={{
+            width: '100%',
+            marginTop: 8,
+            padding: '10px 12px',
+            borderRadius: 8,
+            border: '1px solid #e5e7eb',
+            background:
+              !encryptedBundleImportText.trim() || !encryptedBundleImportPassword.trim()
+                ? '#f3f4f6'
+                : '#111827',
+            color:
+              !encryptedBundleImportText.trim() || !encryptedBundleImportPassword.trim()
+                ? '#6b7280'
+                : '#ffffff',
+            cursor:
+              !encryptedBundleImportText.trim() || !encryptedBundleImportPassword.trim()
+                ? 'not-allowed'
+                : 'pointer',
+            fontWeight: 600
+          }}
+        >
+          Import encrypted continuity bundle
+        </button>
+
+        <div style={{ fontSize: 13, lineHeight: 1.45, color: '#374151' }}>
+          Importing a bundle sets the active local secret to the decrypted secret. Continuity is only possible if it is the same original secret.
+        </div>
+      </div>
 
       {showExport ? (
         <>
