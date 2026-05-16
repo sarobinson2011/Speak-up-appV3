@@ -23,7 +23,16 @@ export function M2StatusSection({
   setSecretImportText,
   handleCreateSecret,
   handleImportSecret,
+  encryptedBundleImportText,
+  setEncryptedBundleImportText,
+  encryptedBundleImportPassword,
+  setEncryptedBundleImportPassword,
+  handleImportEncryptedBundle,
   handleExportSecret,
+  encryptedBundlePassword,
+  setEncryptedBundlePassword,
+  handleExportEncryptedBundle,
+  encryptedBundleText,
   secretExportText,
   secretActionError,
   enrollMembershipOnce,
@@ -56,7 +65,16 @@ export function M2StatusSection({
                   setSecretImportText={setSecretImportText}
                   handleCreateSecret={handleCreateSecret}
                   handleImportSecret={handleImportSecret}
+                  encryptedBundleImportText={encryptedBundleImportText}
+                  setEncryptedBundleImportText={setEncryptedBundleImportText}
+                  encryptedBundleImportPassword={encryptedBundleImportPassword}
+                  setEncryptedBundleImportPassword={setEncryptedBundleImportPassword}
+                  handleImportEncryptedBundle={handleImportEncryptedBundle}
                   handleExportSecret={handleExportSecret}
+                  encryptedBundlePassword={encryptedBundlePassword}
+                  setEncryptedBundlePassword={setEncryptedBundlePassword}
+                  handleExportEncryptedBundle={handleExportEncryptedBundle}
+                  encryptedBundleText={encryptedBundleText}
                   secretExportText={secretExportText}
                   secretActionError={secretActionError}
                   showExport={false}
@@ -91,7 +109,16 @@ export function M2StatusSection({
                     setSecretImportText={setSecretImportText}
                     handleCreateSecret={handleCreateSecret}
                     handleImportSecret={handleImportSecret}
+                    encryptedBundleImportText={encryptedBundleImportText}
+                    setEncryptedBundleImportText={setEncryptedBundleImportText}
+                    encryptedBundleImportPassword={encryptedBundleImportPassword}
+                    setEncryptedBundleImportPassword={setEncryptedBundleImportPassword}
+                    handleImportEncryptedBundle={handleImportEncryptedBundle}
                     handleExportSecret={handleExportSecret}
+                    encryptedBundlePassword={encryptedBundlePassword}
+                    setEncryptedBundlePassword={setEncryptedBundlePassword}
+                    handleExportEncryptedBundle={handleExportEncryptedBundle}
+                    encryptedBundleText={encryptedBundleText}
                     secretExportText={secretExportText}
                     secretActionError={secretActionError}
                     showExport={true}
@@ -132,7 +159,16 @@ export function M2StatusSection({
                   setSecretImportText={setSecretImportText}
                   handleCreateSecret={handleCreateSecret}
                   handleImportSecret={handleImportSecret}
+                  encryptedBundleImportText={encryptedBundleImportText}
+                  setEncryptedBundleImportText={setEncryptedBundleImportText}
+                  encryptedBundleImportPassword={encryptedBundleImportPassword}
+                  setEncryptedBundleImportPassword={setEncryptedBundleImportPassword}
+                  handleImportEncryptedBundle={handleImportEncryptedBundle}
                   handleExportSecret={handleExportSecret}
+                  encryptedBundlePassword={encryptedBundlePassword}
+                  setEncryptedBundlePassword={setEncryptedBundlePassword}
+                  handleExportEncryptedBundle={handleExportEncryptedBundle}
+                  encryptedBundleText={encryptedBundleText}
                   secretExportText={secretExportText}
                   secretActionError={secretActionError}
                   showExport={true}
@@ -151,7 +187,16 @@ export function M2StatusSection({
                   setSecretImportText={setSecretImportText}
                   handleCreateSecret={handleCreateSecret}
                   handleImportSecret={handleImportSecret}
+                  encryptedBundleImportText={encryptedBundleImportText}
+                  setEncryptedBundleImportText={setEncryptedBundleImportText}
+                  encryptedBundleImportPassword={encryptedBundleImportPassword}
+                  setEncryptedBundleImportPassword={setEncryptedBundleImportPassword}
+                  handleImportEncryptedBundle={handleImportEncryptedBundle}
                   handleExportSecret={handleExportSecret}
+                  encryptedBundlePassword={encryptedBundlePassword}
+                  setEncryptedBundlePassword={setEncryptedBundlePassword}
+                  handleExportEncryptedBundle={handleExportEncryptedBundle}
+                  encryptedBundleText={encryptedBundleText}
                   secretExportText={secretExportText}
                   secretActionError={secretActionError}
                   showExport={true}
