@@ -4504,3 +4504,88 @@ Future implementation must remain frontend-only unless STATE.md is explicitly up
 
 No backend route, relay behavior, contract behavior, ZK circuit, nullifier model, membership path model, TEMPEST behavior, or REFLECT behavior is changed by this design.
 
+
+---
+
+## Engineering[29] — Encrypted Continuity Bundle Cryptographic Profile
+
+Engineering[29] selected the initial cryptographic profile for future encrypted continuity bundles.
+
+This is still design-only. No runtime implementation is introduced by this checkpoint.
+
+### Threat model
+
+The encrypted continuity bundle defends against:
+
+- accidental exposure of exported custody material
+- theft or copying of an exported bundle file
+- offline password guessing attempts against that bundle
+
+It does not defend against:
+
+- compromised browser/runtime
+- malware/keyloggers
+- weak operator password choice
+- operator sharing the password
+- backend custody failure, because no backend custody exists
+- wallet compromise, because wallet is not the identity primitive
+
+### Initial cryptographic profile
+
+Future implementation should use:
+
+- KDF: PBKDF2-HMAC-SHA256
+- derived key size: 256 bits
+- encryption: AES-GCM-256
+- salt: random 16 bytes minimum
+- nonce/IV: random 12 bytes
+- initial PBKDF2 iteration target: fixed profile in the low-to-mid hundreds of thousands
+- preferred starting value for implementation review: `400000`
+
+### Iteration policy
+
+The PBKDF2 iteration count must be stored in the plaintext bundle envelope.
+
+The iteration count is not secret.
+
+The system must not rely on hiding KDF parameters.
+
+The implementation must not auto-tune iteration count per device or browser.
+
+Reason:
+
+- deterministic import/export behavior is preferred
+- bundle compatibility must remain stable
+- device-specific tuning risks inconsistent UX and fingerprint-like behavior
+- future parameter upgrades should be handled by explicit version/profile changes
+
+### Password policy
+
+Bundle security depends materially on operator password quality.
+
+The bundle format must not imply that encryption compensates for a weak password.
+
+UX copy should say password-protected custody, not recovery.
+
+### Envelope compatibility
+
+The plaintext envelope must include enough cryptographic metadata for deterministic local decryption:
+
+- format marker
+- version
+- KDF name
+- KDF hash
+- KDF iterations
+- salt
+- cipher name
+- IV/nonce
+- ciphertext
+
+Future changes to KDF, cipher, parameters, or payload encoding must be represented by explicit version/profile changes.
+
+### Implementation boundary
+
+Implementation remains deferred.
+
+The next safe implementation slice, when chosen, should be a small frontend-only crypto helper with tests or browser-console validation before UI integration.
+
