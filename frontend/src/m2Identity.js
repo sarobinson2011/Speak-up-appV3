@@ -1,8 +1,8 @@
 // frontend/src/m2Identity.js
-// Active anonymous identity: localStorage only.
+// Active local M2 secret: localStorage only.
 //
 // Rules:
-// - Secret is the identity primitive
+// - memberSecret is the M2 membership primitive
 // - Wallet-keyed storage is an MVP/browser convenience handle only
 // - Legacy active-key storage is supported as compatibility fallback
 // - Never derive identity from MetaMask signatures
@@ -92,7 +92,7 @@ export function loadMemberSecret(account) {
   try {
     const legacySecret = BigInt(legacyRaw);
 
-    // Compatibility bridge: preserve existing local identity while bringing the
+    // Compatibility bridge: preserve existing local secret continuity while bringing the
     // currently connected wallet onto the wallet-keyed runtime shape.
     if (key) {
       safeSet(key, legacySecret.toString(10));
@@ -116,7 +116,7 @@ export function createMemberSecret(account, options = {}) {
   const existing = loadMemberSecret(account);
 
   if (existing !== null && !replaceExisting) {
-    throw new Error('Active secret already exists. Creating a new one would replace the current anonymous identity.');
+    throw new Error('Active secret already exists. Creating a new one would replace the active local secret and switch away from the current anonymous membership.');
   }
 
   const fresh = generateSecretDecimal();

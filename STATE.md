@@ -4781,3 +4781,35 @@ Suggested checkpoint tag:
 
 - `continuity-custody-semantics-v1`
 
+
+---
+
+## Engineering[31] — M2 Local Secret Naming Tightening
+
+Engineering[31] performed a second bounded semantic-tightening pass on `frontend/src/m2Identity.js`.
+
+No runtime logic changed.
+
+The pass tightened source-level wording around the local M2 secret surface:
+
+- “active anonymous identity” was replaced with “active local M2 secret”
+- “secret is the identity primitive” was tightened to “memberSecret is the M2 membership primitive”
+- legacy compatibility comments now preserve “local secret continuity” rather than “local identity”
+- the duplicate-create error now says creating a new secret replaces the active local secret and switches away from the current anonymous membership
+
+This preserves the locked Position A interpretation:
+
+continuity = possession of the same original `memberSecret`
+
+No changes were made to:
+
+- localStorage key structure
+- import/export behavior
+- encrypted continuity bundles
+- O0/O1/O2 semantics
+- proof generation
+- nullifier semantics
+- backend behavior
+- TEMPEST
+- REFLECT
+
