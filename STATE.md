@@ -4813,3 +4813,24 @@ No changes were made to:
 - TEMPEST
 - REFLECT
 
+
+---
+
+## Engineering[31] — Legacy Petition List Copy Alignment
+
+Engineering[31] performed a final bounded copy/comment alignment pass on `frontend/src/Petitions.jsx`.
+
+No runtime logic changed.
+
+The pass corrected stale wording around the older petition-list M2 surface:
+
+- local secret storage is described as wallet-keyed MVP browser handling, not wallet-derived identity
+- membership path loading is described as derived-leaf based, not wallet based
+- membership-path unavailable copy now refers to the active local secret being enrolled, not enrollment “for this wallet”
+
+This preserves the locked M2 rule:
+
+`memberSecret -> leaf -> nullifier`
+
+and avoids reintroducing wallet-continuity semantics through legacy comments or fallback UI copy.
+

@@ -84,10 +84,10 @@ export default function Petitions({ signer, account }) {
   const [loadingPetitions, setLoadingPetitions] = useState(true);
   const [indexerLagBlocks, setIndexerLagBlocks] = useState(null);
 
-  // M2-only local secret (PER WALLET)
+  // M2-only local secret, stored under the connected wallet as an MVP browser handle
   const [memberSecret, setMemberSecret] = useState('');
 
-  // Merkle path fetched from backend by wallet
+  // Merkle path fetched from backend by derived leaf
   const [membershipPath, setMembershipPath] = useState(null);
 
   const [viewingPetitionId, setViewingPetitionId] = useState(null);
@@ -115,7 +115,7 @@ export default function Petitions({ signer, account }) {
     return bigIntToHex32(leafBI);
   }, [memberSecret]);
 
-  // Load the stored member secret for the currently connected wallet.
+  // Load the locally stored member secret for the currently connected wallet handle.
   // Never auto-generate here; secret creation remains an explicit user action.
   useEffect(() => {
     setMembershipPath(null);
@@ -428,7 +428,7 @@ export default function Petitions({ signer, account }) {
                               borderRadius: 6
                             }}
                           >
-                            Membership path not loaded yet. Ensure backend is running and you are enrolled for this wallet.
+                            Membership path not loaded yet. Ensure backend is running and the active local secret is enrolled.
                           </div>
                         )}
                       </div>
