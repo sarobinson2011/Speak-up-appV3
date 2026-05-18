@@ -1,5 +1,33 @@
 # ADMISSION_RIGHT_MODEL_V0.md
 
+
+Supporting historical V0 design document only.  
+If this document conflicts with `STATE.md`, **STATE.md wins**.
+
+This document reflects an earlier exploratory/stabilization phase of the enrollment architecture.
+
+It must not be interpreted as redefining current canonical:
+
+- M2 identity semantics
+- continuity semantics
+- Enrollment semantics
+- TEMPEST semantics
+- REFLECT semantics
+
+Current canonical identity continuity is defined in:
+
+- `STATE.md`
+- `docs/CONTINUITY_CUSTODY_MODEL_V1.md`
+
+Current locked interpretation:
+
+- `memberSecret -> leaf -> nullifier`
+- continuity = possession of the same original `memberSecret`
+- wallets are runtime convenience handles only
+- wallets are not identity, recovery, or continuity authorities
+
+---
+
 Status: Draft V0 design candidate  
 Scope: Design only; no implementation in this document
 
