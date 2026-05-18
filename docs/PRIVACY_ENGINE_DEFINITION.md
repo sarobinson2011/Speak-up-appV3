@@ -20,6 +20,35 @@ This document defines **what the privacy engine does**.
 
 ---
 
+## Terminology and Layer Boundary
+
+In this document, terms such as "member", "participant", and "actor" refer to anonymous membership/proof semantics.
+
+They must not be interpreted as:
+
+- human identity
+- account identity
+- wallet identity
+- profile identity
+- recovery authority
+- continuity authority
+
+Current layer ownership:
+
+- M2 owns identity / proof semantics
+- Enrollment owns economic admission / eligibility semantics
+- Custody owns local secret custody and portability semantics
+- TEMPEST owns execution / submission semantics
+- REFLECT owns path / publication semantics
+
+The current identity primitive remains:
+
+- `memberSecret -> leaf -> nullifier`
+
+Continuity is defined only by possession of the same original `memberSecret`.
+
+---
+
 # 1. Core Principle
 
 Speak-Up follows the rule:
