@@ -15,6 +15,28 @@ Architecture details remain in `STATE.md`.
 
 ---
 
+## Current Layer Status Note
+
+This document is a supporting threat-analysis document.
+
+Current implementation authority and active layer semantics remain governed by:
+
+- `STATE.md`
+- `docs/CONTINUITY_CUSTODY_MODEL_V1.md`
+- `docs/PRIVACY_ENGINE_DEFINITION.md`
+
+Current layer ownership:
+
+- M2 owns identity / proof semantics
+- Enrollment owns economic admission / eligibility semantics
+- TEMPEST owns execution / submission semantics
+- REFLECT owns path / publication semantics
+- Custody owns local secret portability semantics
+
+Some roadmap sections below are retained as historical/evolutionary privacy planning context and may not reflect the latest implementation status.
+
+---
+
 # 1. Privacy Goal
 
 Speak-up aims to allow users to sign petitions anonymously while ensuring:
@@ -279,6 +301,9 @@ This stage is the most important step toward Tornado-grade anonymity.
 ---
 
 ## Stage 5 — Multi-relayer infrastructure (future)
+
+Note: Current TEMPEST implementation status and relay semantics are governed by `STATE.md`.  
+This section is retained as roadmap/evolution history.
 
 Single-relayer infrastructure introduces trust assumptions.
 
