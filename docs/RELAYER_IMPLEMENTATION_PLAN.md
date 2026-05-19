@@ -6,6 +6,20 @@ Status: design locked for implementation planning
 
 ---
 
+Supporting historical implementation-planning document only.  
+If this document conflicts with `STATE.md`, **STATE.md wins**.
+
+This document reflects the original minimal-relayer implementation phase that later evolved into TEMPEST execution/submission semantics.
+
+Current relay, execution, submission, fallback, observability, and topology semantics are governed by:
+
+- `STATE.md`
+- `docs/tempest/*`
+
+This document remains useful as historical implementation-evolution context, but should not be interpreted as redefining current TEMPEST architecture authority.
+
+---
+
 # 1) Purpose
 
 This document defines the first implementation path for relayed petition signing in Speak-up-appV3.

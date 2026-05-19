@@ -5,6 +5,20 @@ Last updated: 2026-02-27 (Europe/London)
 
 ---
 
+Supporting historical relayer design document only.  
+If this document conflicts with `STATE.md`, **STATE.md wins**.
+
+This document reflects an earlier exploratory relayer-protocol phase predating the current TEMPEST execution/submission layer.
+
+Current relay, execution, submission, fallback, and topology semantics are governed by:
+
+- `STATE.md`
+- `docs/tempest/*`
+
+Exploratory concepts in this document — including relay authorization signatures, relayData/relaySig flows, replay nonce models, and contract-level relay authorization semantics — should be interpreted as historical design exploration unless explicitly reintroduced into canonical architecture.
+
+---
+
 ## 1. Purpose
 
 Allow petition signing without revealing the signer’s wallet address
