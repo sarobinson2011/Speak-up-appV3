@@ -4,7 +4,7 @@
 
 TEMPEST defines the execution-layer relay network for the Speak-Up privacy engine.
 
-It replaces the single relayer model with a fixed multi-relayer system to improve:
+It defines the transition from the earlier single-relayer model toward a fixed multi-relayer execution system to improve:
 
 - privacy
 - liveness
@@ -14,6 +14,27 @@ It replaces the single relayer model with a fixed multi-relayer system to improv
 TEMPEST is not specific to petitions.
 
 It is a reusable execution layer for private, ZK-authenticated actions.
+
+---
+
+## Current Implementation Status
+
+Current TEMPEST implementation authority is governed by `STATE.md`.
+
+TEMPEST currently defines the execution/submission layer semantics for private ZK-authenticated actions.
+
+Current Phase A implementation supports deterministic multi-relayer execution semantics within a single backend orchestration process.
+
+Current architecture does NOT introduce:
+
+- public relay federation
+- remote relay mesh coordination
+- inter-relayer consensus
+- public topology exposure
+- distributed relay governance
+- externally visible fallback traversal
+
+unless explicitly defined in `STATE.md`.
 
 ---
 
