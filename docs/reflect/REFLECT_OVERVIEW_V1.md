@@ -2,7 +2,7 @@
 
 ## Purpose
 
-REFLECT is a distributed mirror network responsible for publishing and serving structured, client-verifiable data required for witness construction.
+REFLECT defines the distributed path/publication model responsible for publishing and serving structured, client-verifiable data required for witness construction.
 
 It enables:
 
@@ -10,6 +10,33 @@ It enables:
 - decoupling from centralized path servers
 - fragmentation of observable request patterns
 - compatibility with deterministic privacy-preserving client behavior
+
+---
+
+## Current Implementation Status
+
+Current REFLECT implementation authority is governed by `STATE.md`.
+
+REFLECT currently defines the path/publication layer semantics for witness construction and publication-state coherence.
+
+Current implementation primarily covers:
+
+- prepared-path semantics
+- local publication semantics
+- publication-state coherence validation
+- deterministic reconstruction semantics
+
+Current architecture does NOT yet imply:
+
+- deployed distributed mirror federation
+- public mirror topology exposure
+- remote mirror governance
+- fully distributed publication infrastructure
+- externally visible mirror traversal semantics
+
+unless explicitly defined in `STATE.md`.
+
+Clients/frontends must not infer, expose, or depend upon infrastructure topology assumptions.
 
 ---
 
