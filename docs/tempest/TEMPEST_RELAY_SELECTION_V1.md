@@ -41,7 +41,13 @@ For each action:
 
 - relay health does NOT affect ordering
 - no runtime reshuffling
-- deterministic across clients
+- deterministic for canonical execution orchestration
+
+---
+
+Current orchestration semantics are governed by `STATE.md`.
+
+Clients/frontends must not infer, expose, or depend upon relay ordering or topology visibility.
 
 ---
 
