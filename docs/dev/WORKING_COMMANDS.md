@@ -1,5 +1,16 @@
 # Working Commands Reference - Speak-Up V3
 
+Supporting historical operational command reference only.  
+If this document conflicts with `STATE.md`, **STATE.md wins**.
+
+This document contains operational commands accumulated across multiple architecture phases.
+
+Current canonical implementation state, development governance, deployed-address interpretation, and architecture authority are defined in `STATE.md`.
+
+M1, attestation, `AttestationAuthorizer`, and older deployment references in this file are retained as historical operational context only unless explicitly reintroduced in `STATE.md`.
+
+---
+
 **All tested and working commands for Aurora Testnet deployment and verification**
 
 ## Environment Setup

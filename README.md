@@ -1,179 +1,161 @@
-# Speak-Up V3 🎤
+# Speak-up-appV3
 
-Anonymous petition platform with upgradeable smart contracts and modular authorization.
+Privacy-preserving petition system built around the rule:
 
-## Quick Start
+> Private actors, public actions.
 
-```bash
-# 1. Setup
-cd Speak-up-appV3
-cp .env.example .env
-# Edit .env with your keys
+The current project direction is an **M2-only Strong Privacy MVP**.
 
-# 2. Contracts
-cd contracts
-./install-deps.sh
-forge build
-forge test
+`STATE.md` is the canonical source of truth for architecture, invariants, deployed addresses, development governance, and current implementation status.
 
-# 3. Backend
-cd ../backend
-npm install
-npm run dev
-
-# 4. Frontend  
-cd ../frontend
-npm install
-npm run dev
-```
-
-**Full setup guide:** [SETUP.md](./SETUP.md)
-
-## Architecture
-
-### Smart Contracts (UUPS Upgradeable)
-
-- **PetitionRegistry** - Core contract with frozen state model
-- **AttestationAuthorizer** - M1: EIP-712 attestations (~50k gas)
-- **ZKAuthorizer** - M2: ZK proofs (~300k gas, future)
-
-### Authorization Flow
-
-```
-M1 (Standard Privacy):
-User → Backend (verify membership) → Issue attestation → Sign on-chain
-
-M2 (Strong Privacy):
-User → Generate ZK proof → Sign on-chain (no backend trust needed)
-```
-
-### Upgradeability
-
-All contracts use OpenZeppelin's UUPS pattern:
-
-```
-User → Proxy (state) → Implementation (logic)
-                           ↓ upgradeable
-                     New Implementation
-```
-
-Upgrade without losing state or events!
-
-## Project Structure
-
-```
-.
-├── contracts/      # Foundry smart contracts
-│   ├── src/       # Upgradeable contracts
-│   ├── script/    # Deploy + upgrade scripts
-│   └── test/      # Foundry tests
-├── backend/        # Node.js Express API
-│   └── src/       # Attestation service
-├── frontend/       # React + Vite
-│   └── src/       # UI components
-├── zk/             # Noir circuits (M2)
-└── docs/           # Documentation
-```
-
-## Key Features
-
-✅ **UUPS Upgradeable** - All contracts can be upgraded without state migration  
-✅ **Modular Auth** - Swap between attestations (M1) and ZK proofs (M2)  
-✅ **Frozen State** - Same storage/events across both modes  
-✅ **One Sign + One Comment** - Per petition, enforced by nullifiers  
-✅ **AI Moderation** - Comments filtered before on-chain anchoring  
-✅ **EIP-712 Attestations** - Secure, expiring, replay-protected permits  
-
-## Development
-
-### Contracts
-```bash
-cd contracts
-forge build          # Compile
-forge test           # Test
-forge test -vvv      # Verbose
-forge coverage       # Coverage
-```
-
-### Backend
-```bash
-cd backend
-npm run dev          # Development mode
-curl localhost:3001/health  # Test
-```
-
-### Frontend
-```bash
-cd frontend
-npm run dev          # Start on localhost:3000
-```
-
-## Deployment
-
-### Testnet (Aurora)
-
-```bash
-cd contracts
-
-# Deploy
-forge script script/Deploy.s.sol:DeployV3 \
-  --rpc-url https://testnet.aurora.dev \
-  --broadcast --verify
-
-# Save proxy addresses to .env
-```
-
-### Upgrade Contracts
-
-```bash
-# Upgrade PetitionRegistry
-forge script script/Deploy.s.sol:UpgradePetitionRegistry \
-  --rpc-url https://testnet.aurora.dev \
-  --broadcast
-
-# Proxy address stays the same!
-```
-
-## Documentation
-
-- [SETUP.md](./SETUP.md) - Complete setup guide
-- [Architecture Docs](./docs/) - Design decisions and specifications
-
-## Milestones
-
-### M1: Attestation-Based (Current) ✅
-- EIP-712 signed permits
-- Backend verification
-- Fast, cheap (~50k gas)
-- Social anonymity
-
-### M2: ZK Proof-Based (Future) 🔄
-- Noir circuits
-- UltraHonk verifier
-- Cryptographic privacy
-- No backend trust needed
-
-**Upgrade path:** `registry.setAuthorizer(zkAuthorizer)` - that's it!
-
-## Tech Stack
-
-- **Contracts:** Solidity 0.8.24, Foundry, OpenZeppelin UUPS
-- **Backend:** Node.js, Express, ethers.js
-- **Frontend:** React, Vite, ethers.js
-- **Network:** Aurora (EVM-compatible L2)
-
-## Security
-
-- UUPS upgradeable pattern (owner-controlled)
-- EIP-712 domain separation
-- Nullifier-based one-per-petition enforcement
-- Expiring attestations
-- Comment moderation
-
-## License
-
-MIT
+If this README or any supporting document conflicts with `STATE.md`, **STATE.md wins**.
 
 ---
 
-**Build anonymous petitions with confidence! 🚀**
+## Current Architecture
+
+The active system is organized into separate layers:
+
+- **M2** — identity / proof semantics
+- **Enrollment** — economic admission / eligibility semantics
+- **Custody** — local `memberSecret` custody and portability semantics
+- **TEMPEST** — execution / submission semantics
+- **REFLECT** — path / publication semantics
+- **Backend** — non-authoritative indexing, path distribution, and relay support
+
+Core identity path:
+
+    memberSecret -> leaf -> nullifier
+
+Continuity rule:
+
+    continuity = possession of the same original memberSecret
+
+Wallets are runtime convenience handles only.  
+Wallets are not identity, recovery, or continuity authorities.
+
+---
+
+## Current Privacy Model
+
+The system allows users to sign petitions with Strong Privacy:
+
+- proof generation happens client-side
+- on-chain verification is authoritative
+- uniqueness is enforced by nullifier
+- the user wallet is not the on-chain signing sender
+- backend services remain non-authoritative
+- comments are disabled in the MVP
+
+Current ZK stack:
+
+- Circom
+- Groth16
+- BN254
+- Poseidon
+- public input order locked in `STATE.md` and `docs/ZK_CIRCUIT_SPEC.md`
+
+---
+
+## Quick Start
+
+    # 1. Setup
+    cd Speak-up-appV3
+    cp .env.example .env
+    # Edit .env with your local values
+
+    # 2. Contracts
+    cd contracts
+    forge build
+    forge test
+
+    # 3. Backend
+    cd ../backend
+    npm install
+    npm run dev
+
+    # 4. Frontend
+    cd ../frontend
+    npm install
+    npm run dev
+
+---
+
+## Project Structure
+
+    .
+    ├── backend/        # Node/Express backend: indexer, path service, relay support
+    ├── contracts/      # Foundry smart contracts
+    ├── docs/           # Supporting documentation
+    ├── frontend/       # React + Vite frontend
+    ├── scripts/        # Project scripts
+    ├── zk/             # ZK circuits/artifacts
+    ├── STATE.md        # Canonical project truth
+    └── ZK_ARTIFACTS_MANIFEST.json
+
+---
+
+## Documentation Map
+
+Canonical authority:
+
+- `STATE.md`
+
+Current supporting docs:
+
+- `docs/CONTINUITY_CUSTODY_MODEL_V1.md`
+- `docs/PRIVACY_ENGINE_DEFINITION.md`
+- `docs/PRIVACY_THREAT_MODEL.md`
+- `docs/ZK_CIRCUIT_SPEC.md`
+- `docs/ZK_ARTIFACT_PROVENANCE.md`
+- `docs/tempest/*`
+- `docs/reflect/*`
+
+Historical/supporting docs may remain in `docs/`.
+
+Historical documents are useful context, but they must not be read as redefining current architecture if they conflict with `STATE.md`.
+
+---
+
+## Development Governance
+
+Active development currently happens through the human Steve + GPT `Engineering[n]` process on `main`.
+
+Development discipline:
+
+- observe before editing
+- make bounded changes
+- preserve layer boundaries
+- update `STATE.md` before architectural changes
+- validate deterministically
+- commit and tag clean checkpoints
+
+Historical autonomous-agent / second-laptop workflows are not the active development authority unless explicitly reintroduced in `STATE.md`.
+
+---
+
+## Tech Stack
+
+- **Contracts:** Solidity, Foundry, OpenZeppelin upgradeable patterns
+- **Backend:** Node.js, Express, ethers.js, SQLite indexing
+- **Frontend:** React, Vite, ethers.js
+- **ZK:** Circom, Groth16, snarkjs, Poseidon
+- **Network:** Aurora Testnet
+
+---
+
+## Security Notes
+
+The project is privacy-sensitive.
+
+Do not introduce wording, code, comments, logs, route names, or documentation that implies:
+
+- wallet-based identity
+- account recovery
+- backend custody
+- relay continuity
+- REFLECT continuity
+- identity reconstruction
+- hidden linkage semantics
+
+When in doubt, check `STATE.md`.

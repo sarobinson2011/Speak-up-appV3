@@ -101,6 +101,19 @@ This rolling continuity model will always be used unless I (Steve) explicitly st
 
 ## Agent Track (separate machine)
 
+Status: **historical / deprecated unless explicitly reintroduced**
+
+The earlier separate-machine autonomous-agent workflow is not the active development authority.
+
+Current active app development authority is:
+
+- Steve working on `main`
+- GPT-assisted `Engineering[n]` process
+- bounded human-reviewed changes
+- clean commit/tag checkpoints
+
+Historical `agent/iter-*` branch conventions are retained below as historical process context only.
+
 - Agent NEVER checks out or commits to `main`
 - One branch per iteration
 - Branches created fresh from `baseline-v0` (preferred)
