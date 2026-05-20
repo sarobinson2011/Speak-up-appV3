@@ -4847,3 +4847,68 @@ This preserves the locked M2 rule:
 
 and avoids reintroducing wallet-continuity semantics through legacy comments or fallback UI copy.
 
+---
+
+## Engineering[33] — REFLECT Publication-State Semantic Hardening
+
+Engineering[33] performed a bounded REFLECT documentation hardening pass focused on publication-state lifecycle semantics.
+
+No runtime behavior changed.
+
+No code changed.
+
+No REFLECT infrastructure expansion was introduced.
+
+No distributed mirror deployment semantics were introduced.
+
+### Hardened semantics
+
+The REFLECT docs now clarify that:
+
+- mirrors are replaceable publication surfaces, not authorities
+- publication-state validity is client-derived
+- a publication state is a coherent lifecycle boundary
+- connector/chunk coherence is required for object acceptance
+- fallback replaces mirror, not publication state
+- fallback must not trigger adaptive reselection
+- cross-state reconstruction remains forbidden
+- digest-layer boundaries remain explicit
+- topology-aware client behavior remains forbidden
+
+### Clarified authority boundary
+
+REFLECT validity now resolves through:
+
+`client-derived coherent publication-state verification`
+
+not:
+
+`mirror exposure, mirror freshness, mirror preference, routing authority, topology authority, or federation consensus`
+
+### Files updated
+
+- `docs/reflect/REFLECT_OVERVIEW_V1.md`
+- `docs/reflect/REFLECT_STATE_VALIDITY_V1.md`
+- `docs/reflect/REFLECT_SELECTION_POLICY_V1.md`
+- `docs/reflect/REFLECT_FAILURE_AND_FALLBACK_V1.md`
+- `docs/reflect/REFLECT_OBJECT_MODEL_V1.md`
+- `docs/reflect/REFLECT_PUBLICATION_WINDOW_V1.md`
+
+### Invariants preserved
+
+No changes to:
+
+- M2 identity semantics
+- memberSecret / leaf / nullifier semantics
+- ZK circuit
+- petition semantics
+- admission semantics
+- TEMPEST execution semantics
+- backend route behavior
+- frontend behavior
+- REFLECT runtime behavior
+
+Engineering[33] status:
+
+**REFLECT publication-state semantic hardening complete**
+

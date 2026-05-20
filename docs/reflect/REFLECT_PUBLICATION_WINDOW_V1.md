@@ -18,5 +18,6 @@ Client selects one state from a recent bounded set.
 ## Constraints
 
 - window is protocol-defined
-- mirrors must expose consistent recent states
+- publication-state acceptance is client-derived
+- mirrors are replaceable publication surfaces, not state authorities
 - older states are not considered live
