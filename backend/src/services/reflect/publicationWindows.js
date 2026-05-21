@@ -25,7 +25,6 @@ export function buildLocalPublicationWindow({ states, limit }) {
     const accepted = acceptLocalPublicationState(state);
     if (!accepted) return null;
     return freezePlain({
-      position,
       sequence: position + 1,
       state: accepted,
       contentDigest: accepted.contentDigest,
