@@ -181,4 +181,16 @@ assert.strictEqual(reconstructed.depth, material.siblings.length);
 assert.deepStrictEqual(reconstructed.siblings, material.siblings);
 assert.deepStrictEqual(reconstructed.pathBits, material.pathBits);
 
+
+assert.deepStrictEqual(
+  acceptLocalPublicationState({
+    ...publicationState,
+    contentDigest: {
+      ...publicationState.contentDigest,
+      value: "tampered-publication-state-digest",
+    },
+  }),
+  null,
+);
+
 console.log("reflect publication object validation ok");

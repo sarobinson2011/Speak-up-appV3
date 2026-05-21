@@ -4912,3 +4912,37 @@ Engineering[33] status:
 
 **REFLECT publication-state semantic hardening complete**
 
+---
+
+### Engineering[33] — REFLECT Publication-State Acceptance Runtime Alignment
+
+After the REFLECT publication-state semantic hardening checkpoint, Engineering[33] performed a bounded implementation-surface observation pass.
+
+A small runtime alignment was added to the local REFLECT publication-state acceptance boundary.
+
+Implemented:
+
+- `acceptLocalPublicationState(...)` now verifies that the publication-state content digest matches the digest recomputed from accepted state entries
+- state entries must carry descriptor-linked content digests
+- entry content digests must match descriptor content digests
+- malformed or tampered publication-state digests are rejected
+
+Regression coverage:
+
+- `publicationObjects.test.js` now rejects a tampered publication-state digest
+
+Validation:
+
+- `node --check backend/src/services/reflect/publicationObjects.js`
+- `node --check backend/src/services/reflect/publicationObjects.test.js`
+- `node backend/src/services/reflect/publicationObjects.test.js`
+- `node backend/src/services/reflect/publicationWindows.test.js`
+
+No infrastructure expansion was introduced.
+
+No mirrors, distributed fetches, topology behavior, adaptive routing, request telemetry, or public API changes were introduced.
+
+This aligns the local runtime acceptance boundary with the Engineering[33] rule:
+
+`publication-state validity is client-derived coherent verification, not object exposure`
+

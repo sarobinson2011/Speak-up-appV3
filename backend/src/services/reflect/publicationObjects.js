@@ -304,7 +304,23 @@ export function acceptLocalPublicationState(state) {
     return null;
   }
 
-  if (!state.contentDigest?.value) {
+  if (!state.contentDigest?.algorithm || !state.contentDigest?.value) {
+    return null;
+  }
+
+  for (const entry of state.entries) {
+    if (!entry?.descriptor) return null;
+    if (!entry?.contentDigest?.algorithm || !entry?.contentDigest?.value) {
+      return null;
+    }
+    if (entry.contentDigest.value !== entry.descriptor?.contentDigest?.value) {
+      return null;
+    }
+  }
+
+  const recomputedDigest = digestReflectMaterial(state.entries);
+
+  if (state.contentDigest.value !== recomputedDigest) {
     return null;
   }
 
