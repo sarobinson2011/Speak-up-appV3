@@ -102,6 +102,17 @@ assert.strictEqual(
   null,
 );
 
+
+const reversedWindow = {
+  ...window,
+  entries: [...window.entries].reverse(),
+};
+
+assert.strictEqual(
+  selectLocalPublicationState(reversedWindow),
+  null,
+);
+
 assert.strictEqual(
   buildLocalPublicationWindow({ states: [], limit: 4 }),
   null,

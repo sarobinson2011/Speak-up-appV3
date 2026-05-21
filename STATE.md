@@ -4946,3 +4946,35 @@ This aligns the local runtime acceptance boundary with the Engineering[33] rule:
 
 `publication-state validity is client-derived coherent verification, not object exposure`
 
+---
+
+### Engineering[33] — REFLECT Publication-Window Ordering Runtime Alignment
+
+Engineering[33] performed a bounded runtime hardening pass on local REFLECT publication-window selection semantics.
+
+Implemented:
+
+- `selectLocalPublicationState(...)` now selects by explicit highest deterministic sequence entry
+- selection no longer relies on implicit array-tail interpretation
+- existing sequence validation remains mandatory before selection
+- reversed or sequence-invalid windows are rejected before selection
+
+Regression coverage:
+
+- `publicationWindows.test.js` now asserts reversed window entry order is rejected
+
+Validation:
+
+- `node --check backend/src/services/reflect/publicationWindows.js`
+- `node --check backend/src/services/reflect/publicationWindows.test.js`
+- `node backend/src/services/reflect/publicationWindows.test.js`
+- `node backend/src/services/reflect/publicationObjects.test.js`
+
+No public API behavior changed.
+
+No mirrors, distributed fetches, topology behavior, adaptive routing, request telemetry, or infrastructure expansion were introduced.
+
+This aligns local runtime behavior with the Engineering[33] rule:
+
+`highest recent valid publication state = highest valid state by deterministic publication-window ordering`
+

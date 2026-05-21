@@ -56,12 +56,28 @@ function acceptedWindowEntries(window) {
   return window.entries;
 }
 
+function highestSequenceEntry(entries) {
+  if (!Array.isArray(entries) || entries.length === 0) return null;
+
+  let selected = entries[0];
+
+  for (const entry of entries) {
+    if (entry.sequence > selected.sequence) {
+      selected = entry;
+    }
+  }
+
+  return selected;
+}
+
 export function selectLocalPublicationState(window) {
   const entries = acceptedWindowEntries(window);
 
   if (!entries) return null;
 
-  const selected = entries[entries.length - 1];
+  const selected = highestSequenceEntry(entries);
+
+  if (!selected) return null;
 
   return freezePlain(selected.state);
 }
