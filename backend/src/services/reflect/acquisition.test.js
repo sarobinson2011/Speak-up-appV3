@@ -66,4 +66,32 @@ assert.strictEqual(
 assert.strictEqual(buildLocalAcquisitionPlan({ publicationState: null }), null);
 assert.strictEqual(acquireLocalPublicationGroup({ plan: null, publication }), null);
 
+
+assert.strictEqual(
+  acquireLocalPublicationGroup({
+    plan: {
+      ...plan,
+      objectCount: 2,
+    },
+    publication,
+  }),
+  null,
+);
+
+assert.strictEqual(
+  acquireLocalPublicationGroup({
+    plan: {
+      ...plan,
+      objects: [
+        {
+          ...plan.objects[0],
+          sequence: 2,
+        },
+      ],
+    },
+    publication,
+  }),
+  null,
+);
+
 console.log("reflect acquisition boundary validation ok");

@@ -7,6 +7,7 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   if (!publicationState.contentDigest?.value) return null;
 
   const objects = publicationState.entries.map((entry, index) => {
+    if (entry.sequence !== undefined) return null;
     if (!entry?.descriptor?.contentDigest?.value) return null;
     if (entry.contentDigest?.value !== entry.descriptor.contentDigest.value) return null;
 
@@ -30,9 +31,15 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
 export function acquireLocalPublicationGroup({ plan, publication }) {
   if (!plan || typeof plan !== "object") return null;
   if (!publication || typeof publication !== "object") return null;
+
+  if (!plan.selectedStateDigest?.value) return null;
+  if (!Array.isArray(plan.objects)) return null;
+  if (plan.objects.length !== plan.objectCount) return null;
   if (plan.objectCount !== 1) return null;
 
   const target = plan.objects?.[0];
+
+  if (target?.sequence !== 1) return null;
 
   if (!target?.contentDigest?.value) return null;
   if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
