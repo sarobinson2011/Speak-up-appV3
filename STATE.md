@@ -4978,3 +4978,74 @@ This aligns local runtime behavior with the Engineering[33] rule:
 
 `highest recent valid publication state = highest valid state by deterministic publication-window ordering`
 
+
+---
+
+### Engineering[35] — REFLECT Local Acquisition Boundary
+
+Engineering[35] introduced the first bounded REFLECT acquisition-boundary slice.
+
+This is a local/runtime boundary only.
+
+Implemented:
+
+- `backend/src/services/reflect/acquisition.js`
+- `backend/src/services/reflect/acquisition.test.js`
+- prepared-path flow now routes through:
+  - selected publication state
+  - local acquisition plan
+  - local publication acquisition
+  - reconstruction
+
+The implemented flow is now:
+
+`publication-state selection -> acquisition planning -> acquisition validation -> reconstruction`
+
+### Acquisition boundary semantics
+
+The acquisition plan records the selected publication-state digest before acquisition occurs.
+
+This preserves the rule:
+
+`acquisition may retrieve material for a selected state; it may not choose semantic truth`
+
+The acquisition layer now validates:
+
+- selected-state digest presence
+- object count consistency
+- acquisition object ordering
+- descriptor/content-digest coherence
+- mismatched publication material rejection
+
+### Explicit non-goals
+
+Engineering[35] did not introduce:
+
+- mirrors
+- network fetches
+- distributed retrieval
+- topology behavior
+- adaptive routing
+- fallback traversal
+- request telemetry
+- persistence
+- frontend/public API changes
+
+### Preserved invariants
+
+- selected publication-state identity remains fixed during acquisition
+- acquisition does not mutate state selection
+- acquisition does not trigger adaptive reselection
+- acquisition does not treat runtime availability as validity
+- reconstruction remains coherent-state-bound
+- cross-state reconstruction remains forbidden
+- mirrors remain future replaceable publication surfaces, not authorities
+
+### Checkpoint tags
+
+- `reflect-local-acquisition-boundary-v1`
+- `reflect-acquisition-plan-validation-v1`
+
+Engineering[35] status:
+
+**REFLECT local acquisition boundary established and acquisition-plan validation hardened**
