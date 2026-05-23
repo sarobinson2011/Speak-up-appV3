@@ -5168,3 +5168,44 @@ It does not define publication-state validity, does not mutate selected-state id
 ### Checkpoint tag
 
 - `reflect-acquisition-traversal-order-v1`
+
+---
+
+### Engineering[35] — REFLECT Acquisition Lifecycle Steps
+
+Engineering[35] added explicit deterministic lifecycle steps to the local REFLECT acquisition result surface.
+
+Implemented:
+
+- successful acquisition now records bounded completed steps
+- failed acquisition returns completed steps up to the failure point
+- acquisition lifecycle progression is deterministic and local-only
+
+Current successful local acquisition lifecycle:
+
+`plan-accepted -> publication-accepted -> selected-state-validated -> publication-acquired`
+
+This prepares future bounded traversal/fallback work by giving acquisition a deterministic continuation/stopping surface before any distributed runtime exists.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network fetches
+- distributed acquisition
+- fallback traversal
+- adaptive routing
+- topology exposure
+- request telemetry
+- frontend/public API changes
+
+### Preserved invariant
+
+Lifecycle steps describe runtime acquisition progress only.
+
+They do not define semantic validity, do not mutate selected publication-state identity, and do not grant acquisition/runtime behavior authority over publication-state selection.
+
+### Checkpoint tag
+
+- `reflect-acquisition-lifecycle-steps-v1`
