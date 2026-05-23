@@ -5049,3 +5049,85 @@ Engineering[35] did not introduce:
 Engineering[35] status:
 
 **REFLECT local acquisition boundary established and acquisition-plan validation hardened**
+
+---
+
+### Engineering[35] — REFLECT Acquisition Lifecycle Result Semantics
+
+Engineering[35] extended the local REFLECT acquisition boundary with explicit acquisition lifecycle result semantics.
+
+Implemented:
+
+- acquisition now returns explicit structured lifecycle results
+- acquisition success and acquisition failure are separated explicitly
+- acquisition failure reasons are deterministic and bounded
+- prepared-path reconstruction now consumes successful acquisition results only
+
+The acquisition lifecycle surface now distinguishes:
+
+`semantic acquisition failure`
+
+from:
+
+`coherent acquired publication material`
+
+### Acquisition result semantics
+
+`acquireLocalPublicationGroup(...)` now returns:
+
+- `{ ok: true, publication }`
+- `{ ok: false, reason }`
+
+Current bounded acquisition failure reasons include:
+
+- `invalid-plan`
+- `invalid-publication`
+- `invalid-selected-state`
+- `invalid-objects`
+- `object-count-mismatch`
+- `unsupported-object-count`
+- `invalid-sequence`
+- `invalid-target`
+- `content-digest-mismatch`
+
+### Architectural effect
+
+This establishes the first explicit REFLECT acquisition lifecycle boundary.
+
+The acquisition layer now has:
+
+- deterministic acquisition result semantics
+- bounded acquisition failure classification
+- explicit separation between acquisition/runtime failure and semantic reconstruction validity
+
+This prepares future bounded runtime traversal/fallback work without introducing topology authority or adaptive semantics.
+
+### Explicit non-goals
+
+Engineering[35] still did not introduce:
+
+- mirrors
+- network retrieval
+- distributed fetches
+- fallback traversal
+- adaptive routing
+- topology awareness
+- request telemetry
+- infrastructure orchestration
+- frontend/public API changes
+
+### Preserved invariants
+
+- acquisition does not mutate selected publication-state identity
+- acquisition failure does not trigger adaptive reselection
+- runtime acquisition availability does not define semantic validity
+- reconstruction remains coherent-state-bound
+- cross-state reconstruction remains forbidden
+
+### Checkpoint tag
+
+- `reflect-acquisition-result-shape-v1`
+
+Engineering[35] status:
+
+**REFLECT acquisition lifecycle result semantics established**
