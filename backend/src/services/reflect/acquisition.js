@@ -48,6 +48,41 @@ function acquisitionFailed({ reason, completedSteps }) {
 }
 
 
+function acquireTraversalTarget({
+  target,
+  traversalKey,
+  publication,
+  completedSteps,
+}) {
+  if (target?.acquisitionKey !== traversalKey) {
+    return acquisitionFailed({
+      reason: "invalid-traversal-order",
+      completedSteps,
+    });
+  }
+
+  if (!target?.contentDigest?.value) {
+    return acquisitionFailed({
+      reason: "invalid-target",
+      completedSteps,
+    });
+  }
+
+  if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
+    return acquisitionFailed({
+      reason: "content-digest-mismatch",
+      completedSteps,
+    });
+  }
+
+  return freezePlain({
+    ok: true,
+    step: `traversal-${traversalKey}-completed`,
+    publication,
+  });
+}
+
+
 
 export function acquirePreparedPathPublication({
   publication,
@@ -145,10 +180,13 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
 
   const target = plan.objects?.[0];
 
-  if (target?.sequence !== 1) return acquisitionFailed({
+  if (target?.sequence !== 1) {
+    return acquisitionFailed({
       reason: "invalid-sequence",
       completedSteps,
     });
+  }
+
   if (target?.acquisitionKey !== "group-1") {
     return acquisitionFailed({
       reason: "invalid-acquisition-key",
@@ -156,28 +194,20 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
     });
   }
 
-  if (plan.traversalOrder[0] !== target.acquisitionKey) {
-    return acquisitionFailed({
-      reason: "invalid-traversal-order",
-      completedSteps,
-    });
-  }
+  const traversalResult = acquireTraversalTarget({
+    target,
+    traversalKey: plan.traversalOrder[0],
+    publication,
+    completedSteps,
+  });
 
-  if (!target?.contentDigest?.value) return acquisitionFailed({
-      reason: "invalid-target",
-      completedSteps,
-    });
-  if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
-    return acquisitionFailed({
-      reason: "content-digest-mismatch",
-      completedSteps,
-    });
-  }
+  if (!traversalResult.ok) return traversalResult;
 
+  completedSteps.push(traversalResult.step);
   completedSteps.push("publication-acquired");
 
   return acquisitionOk({
-    publication,
+    publication: traversalResult.publication,
     completedSteps,
   });
 }

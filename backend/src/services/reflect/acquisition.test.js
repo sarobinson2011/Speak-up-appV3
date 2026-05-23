@@ -52,6 +52,7 @@ assert.deepStrictEqual(
     "plan-accepted",
     "publication-accepted",
     "selected-state-validated",
+    "traversal-group-1-completed",
     "publication-acquired",
   ],
 );
