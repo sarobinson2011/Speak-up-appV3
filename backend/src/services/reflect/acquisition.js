@@ -30,48 +30,109 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   });
 }
 
-function acquisitionOk(publication) {
+function acquisitionOk({ publication, completedSteps }) {
   return freezePlain({
     ok: true,
+    completedSteps,
     publication,
   });
 }
 
-function acquisitionFailed(reason) {
+function acquisitionFailed({ reason, completedSteps }) {
   return freezePlain({
     ok: false,
+    completedSteps,
     reason,
   });
 }
 
 export function acquireLocalPublicationGroup({ plan, publication }) {
-  if (!plan || typeof plan !== "object") return acquisitionFailed("invalid-plan");
-  if (!publication || typeof publication !== "object") return acquisitionFailed("invalid-publication");
+  const completedSteps = [];
 
-  if (!plan.selectedStateDigest?.value) return acquisitionFailed("invalid-selected-state");
-  if (!Array.isArray(plan.objects)) return acquisitionFailed("invalid-objects");
-  if (!Array.isArray(plan.traversalOrder)) return acquisitionFailed("invalid-traversal-order");
-  if (plan.objects.length !== plan.objectCount) return acquisitionFailed("object-count-mismatch");
-  if (plan.traversalOrder.length !== plan.objectCount) {
-    return acquisitionFailed("traversal-order-mismatch");
+  if (!plan || typeof plan !== "object") {
+    return acquisitionFailed({
+      reason: "invalid-plan",
+      completedSteps,
+    });
   }
-  if (plan.objectCount !== 1) return acquisitionFailed("unsupported-object-count");
+
+  completedSteps.push("plan-accepted");
+
+  if (!publication || typeof publication !== "object") {
+    return acquisitionFailed({
+      reason: "invalid-publication",
+      completedSteps,
+    });
+  }
+
+  completedSteps.push("publication-accepted");
+
+  if (!plan.selectedStateDigest?.value) {
+    return acquisitionFailed({
+      reason: "invalid-selected-state",
+      completedSteps,
+    });
+  }
+
+  completedSteps.push("selected-state-validated");
+  if (!Array.isArray(plan.objects)) return acquisitionFailed({
+      reason: "invalid-objects",
+      completedSteps,
+    });
+  if (!Array.isArray(plan.traversalOrder)) return acquisitionFailed({
+      reason: "invalid-traversal-order",
+      completedSteps,
+    });
+  if (plan.objects.length !== plan.objectCount) return acquisitionFailed({
+      reason: "object-count-mismatch",
+      completedSteps,
+    });
+  if (plan.traversalOrder.length !== plan.objectCount) {
+    return acquisitionFailed({
+      reason: "traversal-order-mismatch",
+      completedSteps,
+    });
+  }
+  if (plan.objectCount !== 1) return acquisitionFailed({
+      reason: "unsupported-object-count",
+      completedSteps,
+    });
 
   const target = plan.objects?.[0];
 
-  if (target?.sequence !== 1) return acquisitionFailed("invalid-sequence");
+  if (target?.sequence !== 1) return acquisitionFailed({
+      reason: "invalid-sequence",
+      completedSteps,
+    });
   if (target?.acquisitionKey !== "group-1") {
-    return acquisitionFailed("invalid-acquisition-key");
+    return acquisitionFailed({
+      reason: "invalid-acquisition-key",
+      completedSteps,
+    });
   }
 
   if (plan.traversalOrder[0] !== target.acquisitionKey) {
-    return acquisitionFailed("invalid-traversal-order");
+    return acquisitionFailed({
+      reason: "invalid-traversal-order",
+      completedSteps,
+    });
   }
 
-  if (!target?.contentDigest?.value) return acquisitionFailed("invalid-target");
+  if (!target?.contentDigest?.value) return acquisitionFailed({
+      reason: "invalid-target",
+      completedSteps,
+    });
   if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
-    return acquisitionFailed("content-digest-mismatch");
+    return acquisitionFailed({
+      reason: "content-digest-mismatch",
+      completedSteps,
+    });
   }
 
-  return acquisitionOk(publication);
+  completedSteps.push("publication-acquired");
+
+  return acquisitionOk({
+    publication,
+    completedSteps,
+  });
 }

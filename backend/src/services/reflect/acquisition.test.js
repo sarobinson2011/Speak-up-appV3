@@ -46,6 +46,15 @@ const acquired = acquireLocalPublicationGroup({
 });
 
 assert(acquired.ok);
+assert.deepStrictEqual(
+  acquired.completedSteps,
+  [
+    "plan-accepted",
+    "publication-accepted",
+    "selected-state-validated",
+    "publication-acquired",
+  ],
+);
 assert.deepStrictEqual(acquired.publication, publication);
 
 const wrongPublication = buildLocalPublicationObjects({
@@ -73,6 +82,14 @@ assert.strictEqual(
 assert.strictEqual(
   acquireLocalPublicationGroup({ plan, publication: null }).reason,
   "invalid-publication",
+);
+
+assert.deepStrictEqual(
+  acquireLocalPublicationGroup({
+    plan: null,
+    publication,
+  }).completedSteps,
+  [],
 );
 
 assert.strictEqual(
