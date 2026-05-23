@@ -34,6 +34,7 @@ assert(plan);
 assert.strictEqual(plan.version, 1);
 assert.deepStrictEqual(plan.selectedStateDigest, publicationState.contentDigest);
 assert.strictEqual(plan.objectCount, 1);
+assert.deepStrictEqual(plan.traversalOrder, ["group-1"]);
 assert.strictEqual(
   plan.objects[0].contentDigest.value,
   publication.descriptor.contentDigest.value,
@@ -74,7 +75,6 @@ assert.strictEqual(
   "invalid-publication",
 );
 
-
 assert.strictEqual(
   acquireLocalPublicationGroup({
     plan: {
@@ -100,6 +100,29 @@ assert.strictEqual(
     publication,
   }).reason,
   "invalid-sequence",
+);
+
+
+assert.strictEqual(
+  acquireLocalPublicationGroup({
+    plan: {
+      ...plan,
+      traversalOrder: [],
+    },
+    publication,
+  }).reason,
+  "traversal-order-mismatch",
+);
+
+assert.strictEqual(
+  acquireLocalPublicationGroup({
+    plan: {
+      ...plan,
+      traversalOrder: ["wrong-group"],
+    },
+    publication,
+  }).reason,
+  "invalid-traversal-order",
 );
 
 console.log("reflect acquisition boundary validation ok");

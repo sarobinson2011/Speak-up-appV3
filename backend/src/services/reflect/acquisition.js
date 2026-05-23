@@ -13,6 +13,7 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
 
     return freezePlain({
       sequence: index + 1,
+      acquisitionKey: `group-${index + 1}`,
       contentDigest: entry.contentDigest,
       descriptor: entry.descriptor,
     });
@@ -24,6 +25,7 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
     version: 1,
     selectedStateDigest: publicationState.contentDigest,
     objectCount: objects.length,
+    traversalOrder: objects.map((object) => object.acquisitionKey),
     objects,
   });
 }
@@ -48,12 +50,23 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
 
   if (!plan.selectedStateDigest?.value) return acquisitionFailed("invalid-selected-state");
   if (!Array.isArray(plan.objects)) return acquisitionFailed("invalid-objects");
+  if (!Array.isArray(plan.traversalOrder)) return acquisitionFailed("invalid-traversal-order");
   if (plan.objects.length !== plan.objectCount) return acquisitionFailed("object-count-mismatch");
+  if (plan.traversalOrder.length !== plan.objectCount) {
+    return acquisitionFailed("traversal-order-mismatch");
+  }
   if (plan.objectCount !== 1) return acquisitionFailed("unsupported-object-count");
 
   const target = plan.objects?.[0];
 
   if (target?.sequence !== 1) return acquisitionFailed("invalid-sequence");
+  if (target?.acquisitionKey !== "group-1") {
+    return acquisitionFailed("invalid-acquisition-key");
+  }
+
+  if (plan.traversalOrder[0] !== target.acquisitionKey) {
+    return acquisitionFailed("invalid-traversal-order");
+  }
 
   if (!target?.contentDigest?.value) return acquisitionFailed("invalid-target");
   if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
