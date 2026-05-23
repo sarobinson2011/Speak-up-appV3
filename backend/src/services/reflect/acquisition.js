@@ -28,23 +28,37 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   });
 }
 
-export function acquireLocalPublicationGroup({ plan, publication }) {
-  if (!plan || typeof plan !== "object") return null;
-  if (!publication || typeof publication !== "object") return null;
+function acquisitionOk(publication) {
+  return freezePlain({
+    ok: true,
+    publication,
+  });
+}
 
-  if (!plan.selectedStateDigest?.value) return null;
-  if (!Array.isArray(plan.objects)) return null;
-  if (plan.objects.length !== plan.objectCount) return null;
-  if (plan.objectCount !== 1) return null;
+function acquisitionFailed(reason) {
+  return freezePlain({
+    ok: false,
+    reason,
+  });
+}
+
+export function acquireLocalPublicationGroup({ plan, publication }) {
+  if (!plan || typeof plan !== "object") return acquisitionFailed("invalid-plan");
+  if (!publication || typeof publication !== "object") return acquisitionFailed("invalid-publication");
+
+  if (!plan.selectedStateDigest?.value) return acquisitionFailed("invalid-selected-state");
+  if (!Array.isArray(plan.objects)) return acquisitionFailed("invalid-objects");
+  if (plan.objects.length !== plan.objectCount) return acquisitionFailed("object-count-mismatch");
+  if (plan.objectCount !== 1) return acquisitionFailed("unsupported-object-count");
 
   const target = plan.objects?.[0];
 
-  if (target?.sequence !== 1) return null;
+  if (target?.sequence !== 1) return acquisitionFailed("invalid-sequence");
 
-  if (!target?.contentDigest?.value) return null;
+  if (!target?.contentDigest?.value) return acquisitionFailed("invalid-target");
   if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
-    return null;
+    return acquisitionFailed("content-digest-mismatch");
   }
 
-  return freezePlain(publication);
+  return acquisitionOk(publication);
 }

@@ -122,9 +122,9 @@ function preparedPathBody(envelope) {
     publication,
   });
 
-  if (!acquiredPublication) return null;
+  if (!acquiredPublication?.ok) return null;
 
-  const reconstructed = reconstructPreparedPathMaterial(acquiredPublication);
+  const reconstructed = reconstructPreparedPathMaterial(acquiredPublication.publication);
 
   if (!reconstructed) return null;
   if (reconstructed.leaf !== envelope.material.leaf) return null;

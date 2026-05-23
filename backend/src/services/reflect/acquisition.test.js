@@ -44,8 +44,8 @@ const acquired = acquireLocalPublicationGroup({
   publication,
 });
 
-assert(acquired);
-assert.deepStrictEqual(acquired, publication);
+assert(acquired.ok);
+assert.deepStrictEqual(acquired.publication, publication);
 
 const wrongPublication = buildLocalPublicationObjects({
   material: {
@@ -59,12 +59,20 @@ assert.strictEqual(
   acquireLocalPublicationGroup({
     plan,
     publication: wrongPublication,
-  }),
-  null,
+  }).reason,
+  "content-digest-mismatch",
 );
 
 assert.strictEqual(buildLocalAcquisitionPlan({ publicationState: null }), null);
-assert.strictEqual(acquireLocalPublicationGroup({ plan: null, publication }), null);
+assert.strictEqual(
+  acquireLocalPublicationGroup({ plan: null, publication }).reason,
+  "invalid-plan",
+);
+
+assert.strictEqual(
+  acquireLocalPublicationGroup({ plan, publication: null }).reason,
+  "invalid-publication",
+);
 
 
 assert.strictEqual(
@@ -74,8 +82,8 @@ assert.strictEqual(
       objectCount: 2,
     },
     publication,
-  }),
-  null,
+  }).reason,
+  "object-count-mismatch",
 );
 
 assert.strictEqual(
@@ -90,8 +98,8 @@ assert.strictEqual(
       ],
     },
     publication,
-  }),
-  null,
+  }).reason,
+  "invalid-sequence",
 );
 
 console.log("reflect acquisition boundary validation ok");
