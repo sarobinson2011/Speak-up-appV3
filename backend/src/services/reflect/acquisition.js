@@ -1,4 +1,5 @@
 import { freezePlain } from "./objectModel.js";
+import { selectCoherentLocalPublicationState } from "./publicationWindows.js";
 
 export function buildLocalAcquisitionPlan({ publicationState }) {
   if (!publicationState || typeof publicationState !== "object") return null;
@@ -43,6 +44,50 @@ function acquisitionFailed({ reason, completedSteps }) {
     ok: false,
     completedSteps,
     reason,
+  });
+}
+
+
+
+export function acquirePreparedPathPublication({
+  publication,
+  publicationState,
+  publicationWindow,
+}) {
+  const selectedPublicationState =
+    selectCoherentLocalPublicationState({
+      window: publicationWindow,
+      contentDigest: publicationState.contentDigest,
+    });
+
+  if (!selectedPublicationState) {
+    return acquisitionFailed({
+      reason: "publication-state-not-selected",
+      completedSteps: [],
+    });
+  }
+
+  if (selectedPublicationState.groupCount !== 1) {
+    return acquisitionFailed({
+      reason: "invalid-group-count",
+      completedSteps: [],
+    });
+  }
+
+  const acquisitionPlan = buildLocalAcquisitionPlan({
+    publicationState: selectedPublicationState,
+  });
+
+  if (!acquisitionPlan) {
+    return acquisitionFailed({
+      reason: "invalid-acquisition-plan",
+      completedSteps: [],
+    });
+  }
+
+  return acquireLocalPublicationGroup({
+    plan: acquisitionPlan,
+    publication,
   });
 }
 

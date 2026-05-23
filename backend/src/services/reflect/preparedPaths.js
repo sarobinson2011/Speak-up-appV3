@@ -14,11 +14,9 @@ import {
 } from "./publicationObjects.js";
 import {
   buildLocalPublicationWindow,
-  selectCoherentLocalPublicationState,
 } from "./publicationWindows.js";
 import {
-  acquireLocalPublicationGroup,
-  buildLocalAcquisitionPlan,
+  acquirePreparedPathPublication,
 } from "./acquisition.js";
 
 import { getMembershipLeafByLeaf } from "../../db/repositories/membership.js";
@@ -103,28 +101,16 @@ function preparedPathBody(envelope) {
     limit: LOCAL_PUBLICATION_WINDOW_LIMIT,
   });
 
-  const selectedPublicationState =
-    selectCoherentLocalPublicationState({
-      window: publicationWindow,
-      contentDigest: publicationState.contentDigest,
-    });
-
-  if (!selectedPublicationState) return null;
-  if (selectedPublicationState.groupCount !== 1) return null;
-  const acquisitionPlan = buildLocalAcquisitionPlan({
-    publicationState: selectedPublicationState,
-  });
-
-  if (!acquisitionPlan) return null;
-
-  const acquiredPublication = acquireLocalPublicationGroup({
-    plan: acquisitionPlan,
+  const acquiredPublication = acquirePreparedPathPublication({
     publication,
+    publicationState,
+    publicationWindow,
   });
 
   if (!acquiredPublication?.ok) return null;
 
-  const reconstructed = reconstructPreparedPathMaterial(acquiredPublication.publication);
+  const reconstructed =
+    reconstructPreparedPathMaterial(acquiredPublication.publication);
 
   if (!reconstructed) return null;
   if (reconstructed.leaf !== envelope.material.leaf) return null;
