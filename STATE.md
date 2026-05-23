@@ -5131,3 +5131,40 @@ Engineering[35] still did not introduce:
 Engineering[35] status:
 
 **REFLECT acquisition lifecycle result semantics established**
+
+---
+
+### Engineering[35] — REFLECT Acquisition Traversal Order
+
+Engineering[35] added explicit deterministic traversal ordering to the local REFLECT acquisition plan.
+
+Implemented:
+
+- acquisition objects now carry deterministic acquisition keys
+- acquisition plans now expose `traversalOrder`
+- traversal order is validated during local acquisition
+- malformed or mismatched traversal order is rejected
+
+This establishes a local traversal-order seam before any distributed runtime traversal exists.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network fetches
+- fallback traversal
+- distributed acquisition
+- topology behavior
+- adaptive routing
+- public API changes
+
+### Preserved invariant
+
+Traversal order is runtime acquisition structure only.
+
+It does not define publication-state validity, does not mutate selected-state identity, and does not grant acquisition/runtime behavior semantic authority.
+
+### Checkpoint tag
+
+- `reflect-acquisition-traversal-order-v1`
