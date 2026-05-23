@@ -5209,3 +5209,40 @@ They do not define semantic validity, do not mutate selected publication-state i
 ### Checkpoint tag
 
 - `reflect-acquisition-lifecycle-steps-v1`
+
+---
+
+### Engineering[35] — REFLECT Acquisition Orchestration Extraction
+
+Engineering[35] extracted local REFLECT acquisition orchestration out of prepared-path handling and into the acquisition layer.
+
+Implemented:
+
+- `acquirePreparedPathPublication(...)`
+- prepared-path flow now delegates publication-state selection, acquisition-plan construction, and local publication acquisition to the acquisition boundary
+- `preparedPaths.js` now remains focused on envelope preparation and reconstruction validation
+
+This creates a cleaner insertion point for future bounded traversal/fallback work.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network retrieval
+- distributed fetches
+- fallback traversal
+- adaptive routing
+- topology exposure
+- request telemetry
+- frontend/public API changes
+
+### Preserved invariant
+
+Acquisition orchestration remains local/runtime-only.
+
+It does not define semantic validity, does not mutate selected publication-state identity, and does not grant runtime acquisition behavior authority over publication-state selection.
+
+### Checkpoint tag
+
+- `reflect-acquisition-orchestration-v1`
