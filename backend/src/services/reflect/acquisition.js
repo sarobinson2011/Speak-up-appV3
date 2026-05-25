@@ -31,33 +31,45 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   });
 }
 
-function acquisitionOk({ publication, completedSteps }) {
+function acquisitionOk({ publication, completedSteps, attempts = [] }) {
   return freezePlain({
     ok: true,
     completedSteps,
+    attempts,
     publication,
   });
 }
 
-function acquisitionFailed({ reason, completedSteps }) {
+function acquisitionFailed({ reason, completedSteps, attempts = [] }) {
   return freezePlain({
     ok: false,
     completedSteps,
+    attempts,
     reason,
   });
 }
 
+
+function recordAttempt({ traversalKey, outcome }) {
+  return freezePlain({
+    traversalKey,
+    outcome,
+  });
+}
 
 function acquireTraversalTarget({
   target,
   traversalKey,
   publication,
   completedSteps,
+  attempts,
 }) {
+  attempts.push(recordAttempt({ traversalKey, outcome: "started" }));
   if (target?.acquisitionKey !== traversalKey) {
     return acquisitionFailed({
       reason: "invalid-traversal-order",
       completedSteps,
+      attempts,
     });
   }
 
@@ -65,6 +77,7 @@ function acquireTraversalTarget({
     return acquisitionFailed({
       reason: "invalid-target",
       completedSteps,
+      attempts,
     });
   }
 
@@ -72,11 +85,15 @@ function acquireTraversalTarget({
     return acquisitionFailed({
       reason: "content-digest-mismatch",
       completedSteps,
+      attempts,
     });
   }
 
+  attempts.push(recordAttempt({ traversalKey, outcome: "succeeded" }));
+
   return freezePlain({
     ok: true,
+    attempts,
     step: `traversal-${traversalKey}-completed`,
     publication,
   });
@@ -128,6 +145,7 @@ export function acquirePreparedPathPublication({
 
 export function acquireLocalPublicationGroup({ plan, publication }) {
   const completedSteps = [];
+  const attempts = [];
 
   if (!plan || typeof plan !== "object") {
     return acquisitionFailed({
@@ -162,6 +180,7 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
   if (!Array.isArray(plan.traversalOrder)) return acquisitionFailed({
       reason: "invalid-traversal-order",
       completedSteps,
+      attempts,
     });
   if (plan.objects.length !== plan.objectCount) return acquisitionFailed({
       reason: "object-count-mismatch",
@@ -199,6 +218,7 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
     traversalKey: plan.traversalOrder[0],
     publication,
     completedSteps,
+    attempts,
   });
 
   if (!traversalResult.ok) return traversalResult;
@@ -209,5 +229,6 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
   return acquisitionOk({
     publication: traversalResult.publication,
     completedSteps,
+    attempts: traversalResult.attempts,
   });
 }

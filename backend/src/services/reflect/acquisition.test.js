@@ -56,6 +56,16 @@ assert.deepStrictEqual(
     "publication-acquired",
   ],
 );
+assert.deepStrictEqual(acquired.attempts, [
+  {
+    traversalKey: "group-1",
+    outcome: "started",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "succeeded",
+  },
+]);
 assert.deepStrictEqual(acquired.publication, publication);
 
 const wrongPublication = buildLocalPublicationObjects({
