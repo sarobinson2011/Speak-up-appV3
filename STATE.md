@@ -5285,3 +5285,43 @@ It does not define publication-state validity, does not mutate selected publicat
 ### Checkpoint tag
 
 - `reflect-acquisition-traversal-seam-v1`
+
+---
+
+### Engineering[36] — REFLECT Traversal Attempt Records
+
+Engineering[36] added explicit deterministic traversal attempt records to the local REFLECT acquisition layer.
+
+Implemented:
+
+- acquisition results now include bounded traversal attempt records
+- traversal attempts record deterministic `traversalKey`
+- successful local traversal records:
+  - `started`
+  - `succeeded`
+- successful acquisition still remains local and single-target only
+
+This establishes a local attempt-record surface before any fallback continuation or distributed retrieval exists.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network retrieval
+- distributed fetches
+- fallback traversal
+- adaptive routing
+- topology exposure
+- request telemetry
+- frontend/public API changes
+
+### Preserved invariant
+
+Traversal attempts describe local runtime progress only.
+
+They do not define publication-state validity, do not mutate selected publication-state identity, and do not grant traversal or availability semantics authority over REFLECT selection.
+
+### Checkpoint tag
+
+- `reflect-traversal-attempt-records-v1`
