@@ -5246,3 +5246,42 @@ It does not define semantic validity, does not mutate selected publication-state
 ### Checkpoint tag
 
 - `reflect-acquisition-orchestration-v1`
+
+---
+
+### Engineering[35] — REFLECT Acquisition Traversal Seam
+
+Engineering[35] added the first explicit local traversal execution seam inside the REFLECT acquisition layer.
+
+Implemented:
+
+- `acquireTraversalTarget(...)`
+- traversal target validation separated from local publication acquisition
+- successful acquisition lifecycle now records:
+  - `traversal-group-1-completed`
+- acquisition still supports only the current local single-group path
+
+This creates a bounded insertion point for future traversal/fallback work without changing semantic validity rules.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network retrieval
+- distributed fetches
+- fallback traversal
+- adaptive routing
+- topology exposure
+- request telemetry
+- frontend/public API changes
+
+### Preserved invariant
+
+Traversal execution remains local/runtime-only.
+
+It does not define publication-state validity, does not mutate selected publication-state identity, and does not grant traversal behavior authority over semantic selection.
+
+### Checkpoint tag
+
+- `reflect-acquisition-traversal-seam-v1`
