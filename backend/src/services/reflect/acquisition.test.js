@@ -76,13 +76,27 @@ const wrongPublication = buildLocalPublicationObjects({
   chunkSize: 2,
 });
 
+const wrongPublicationResult = acquireLocalPublicationGroup({
+  plan,
+  publication: wrongPublication,
+});
+
 assert.strictEqual(
-  acquireLocalPublicationGroup({
-    plan,
-    publication: wrongPublication,
-  }).reason,
+  wrongPublicationResult.reason,
   "content-digest-mismatch",
 );
+
+assert.deepStrictEqual(wrongPublicationResult.attempts, [
+  {
+    traversalKey: "group-1",
+    outcome: "started",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "failed",
+    reason: "content-digest-mismatch",
+  },
+]);
 
 assert.strictEqual(buildLocalAcquisitionPlan({ publicationState: null }), null);
 assert.strictEqual(

@@ -50,11 +50,15 @@ function acquisitionFailed({ reason, completedSteps, attempts = [] }) {
 }
 
 
-function recordAttempt({ traversalKey, outcome }) {
-  return freezePlain({
+function recordAttempt({ traversalKey, outcome, reason }) {
+  const attempt = {
     traversalKey,
     outcome,
-  });
+  };
+
+  if (reason) attempt.reason = reason;
+
+  return freezePlain(attempt);
 }
 
 function acquireTraversalTarget({
@@ -66,6 +70,14 @@ function acquireTraversalTarget({
 }) {
   attempts.push(recordAttempt({ traversalKey, outcome: "started" }));
   if (target?.acquisitionKey !== traversalKey) {
+    attempts.push(
+      recordAttempt({
+        traversalKey,
+        outcome: "failed",
+        reason: "invalid-traversal-order",
+      }),
+    );
+
     return acquisitionFailed({
       reason: "invalid-traversal-order",
       completedSteps,
@@ -74,6 +86,14 @@ function acquireTraversalTarget({
   }
 
   if (!target?.contentDigest?.value) {
+    attempts.push(
+      recordAttempt({
+        traversalKey,
+        outcome: "failed",
+        reason: "invalid-target",
+      }),
+    );
+
     return acquisitionFailed({
       reason: "invalid-target",
       completedSteps,
@@ -82,6 +102,14 @@ function acquireTraversalTarget({
   }
 
   if (publication.descriptor?.contentDigest?.value !== target.contentDigest.value) {
+    attempts.push(
+      recordAttempt({
+        traversalKey,
+        outcome: "failed",
+        reason: "content-digest-mismatch",
+      }),
+    );
+
     return acquisitionFailed({
       reason: "content-digest-mismatch",
       completedSteps,
