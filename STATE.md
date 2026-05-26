@@ -5325,3 +5325,43 @@ They do not define publication-state validity, do not mutate selected publicatio
 ### Checkpoint tag
 
 - `reflect-traversal-attempt-records-v1`
+
+---
+
+### Engineering[36] — REFLECT Failed Traversal Attempt Records
+
+Engineering[36] extended local REFLECT traversal attempt records to include deterministic failed-attempt outcomes.
+
+Implemented:
+
+- traversal attempts now record failed outcomes
+- failed attempts include bounded failure reasons
+- content-digest mismatch now records:
+  - `started`
+  - `failed`
+- successful traversal attempt semantics remain unchanged
+
+This establishes deterministic local attempt outcome recording before any fallback continuation exists.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- mirrors
+- network retrieval
+- distributed fetches
+- fallback traversal
+- adaptive routing
+- topology exposure
+- request telemetry
+- frontend/public API changes
+
+### Preserved invariant
+
+Failed traversal attempts describe runtime acquisition progress only.
+
+They do not define publication-state validity, do not mutate selected publication-state identity, and do not grant traversal/fallback behavior authority over REFLECT selection.
+
+### Checkpoint tag
+
+- `reflect-failed-traversal-attempt-records-v1`
