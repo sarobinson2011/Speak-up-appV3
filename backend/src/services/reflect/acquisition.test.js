@@ -49,6 +49,11 @@ assert(acquired.ok);
 assert.strictEqual(acquired.terminal, true);
 assert.strictEqual(acquired.terminalReason, "terminal-success");
 assert.strictEqual(acquired.continuationEligible, false);
+assert.deepStrictEqual(acquired.continuation, {
+  eligible: false,
+  reason: null,
+  executed: false,
+});
 assert.deepStrictEqual(
   acquired.completedSteps,
   [
@@ -91,6 +96,11 @@ assert.strictEqual(
 assert.strictEqual(wrongPublicationResult.terminal, false);
 assert.strictEqual(wrongPublicationResult.terminalReason, null);
 assert.strictEqual(wrongPublicationResult.continuationEligible, true);
+assert.deepStrictEqual(wrongPublicationResult.continuation, {
+  eligible: true,
+  reason: "content-digest-mismatch",
+  executed: false,
+});
 
 assert.deepStrictEqual(wrongPublicationResult.attempts, [
   {
@@ -111,6 +121,11 @@ assert.strictEqual(invalidPlanResult.reason, "invalid-plan");
 assert.strictEqual(invalidPlanResult.terminal, true);
 assert.strictEqual(invalidPlanResult.terminalReason, "terminal-failure");
 assert.strictEqual(invalidPlanResult.continuationEligible, false);
+assert.deepStrictEqual(invalidPlanResult.continuation, {
+  eligible: false,
+  reason: null,
+  executed: false,
+});
 
 assert.strictEqual(
   acquireLocalPublicationGroup({ plan, publication: null }).reason,

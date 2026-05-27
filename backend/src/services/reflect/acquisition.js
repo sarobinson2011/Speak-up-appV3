@@ -31,12 +31,21 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   });
 }
 
+function buildContinuation({ eligible, reason }) {
+  return freezePlain({
+    eligible,
+    reason: eligible ? reason : null,
+    executed: false,
+  });
+}
+
 function acquisitionOk({ publication, completedSteps, attempts = [] }) {
   return freezePlain({
     ok: true,
     terminal: true,
     terminalReason: "terminal-success",
     continuationEligible: false,
+    continuation: buildContinuation({ eligible: false }),
     completedSteps,
     attempts,
     publication,
@@ -55,6 +64,10 @@ function acquisitionFailed({ reason, completedSteps, attempts = [] }) {
     terminal: !continuationEligible,
     terminalReason: continuationEligible ? null : "terminal-failure",
     continuationEligible,
+    continuation: buildContinuation({
+      eligible: continuationEligible,
+      reason,
+    }),
     completedSteps,
     attempts,
     reason,
