@@ -46,6 +46,9 @@ const acquired = acquireLocalPublicationGroup({
 });
 
 assert(acquired.ok);
+assert.strictEqual(acquired.terminal, true);
+assert.strictEqual(acquired.terminalReason, "terminal-success");
+assert.strictEqual(acquired.continuationEligible, false);
 assert.deepStrictEqual(
   acquired.completedSteps,
   [
@@ -85,6 +88,9 @@ assert.strictEqual(
   wrongPublicationResult.reason,
   "content-digest-mismatch",
 );
+assert.strictEqual(wrongPublicationResult.terminal, false);
+assert.strictEqual(wrongPublicationResult.terminalReason, null);
+assert.strictEqual(wrongPublicationResult.continuationEligible, true);
 
 assert.deepStrictEqual(wrongPublicationResult.attempts, [
   {
@@ -99,10 +105,12 @@ assert.deepStrictEqual(wrongPublicationResult.attempts, [
 ]);
 
 assert.strictEqual(buildLocalAcquisitionPlan({ publicationState: null }), null);
-assert.strictEqual(
-  acquireLocalPublicationGroup({ plan: null, publication }).reason,
-  "invalid-plan",
-);
+const invalidPlanResult = acquireLocalPublicationGroup({ plan: null, publication });
+
+assert.strictEqual(invalidPlanResult.reason, "invalid-plan");
+assert.strictEqual(invalidPlanResult.terminal, true);
+assert.strictEqual(invalidPlanResult.terminalReason, "terminal-failure");
+assert.strictEqual(invalidPlanResult.continuationEligible, false);
 
 assert.strictEqual(
   acquireLocalPublicationGroup({ plan, publication: null }).reason,

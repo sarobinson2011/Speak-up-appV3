@@ -34,15 +34,27 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
 function acquisitionOk({ publication, completedSteps, attempts = [] }) {
   return freezePlain({
     ok: true,
+    terminal: true,
+    terminalReason: "terminal-success",
+    continuationEligible: false,
     completedSteps,
     attempts,
     publication,
   });
 }
 
+function isContinuationEligible(reason) {
+  return reason === "content-digest-mismatch";
+}
+
 function acquisitionFailed({ reason, completedSteps, attempts = [] }) {
+  const continuationEligible = isContinuationEligible(reason);
+
   return freezePlain({
     ok: false,
+    terminal: !continuationEligible,
+    terminalReason: continuationEligible ? null : "terminal-failure",
+    continuationEligible,
     completedSteps,
     attempts,
     reason,
