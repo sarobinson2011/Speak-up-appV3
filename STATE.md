@@ -5472,3 +5472,43 @@ Checkpoint:
 Engineering[37] status:
 
 **REFLECT retrieval-substitution semantic hardening complete**
+
+---
+
+### Engineering[37] — REFLECT Fetch Policy Runtime Boundary
+
+Engineering[37] performed a bounded REFLECT fetch-policy semantic hardening pass.
+
+Implemented:
+
+- clarified that fetch execution is runtime retrieval structure only
+- clarified that fetch behavior remains subordinate to the selected publication state and acquisition plan
+- clarified that parallel retrieval does not define validity, priority, freshness, mirror preference, routing authority, topology authority, or adaptive selection authority
+- clarified that faster or more responsive mirrors do not become semantic authorities
+- clarified that fetch completion may only satisfy retrieval of already-selected objects
+- clarified that fetch failure may only trigger bounded deterministic retrieval substitution for the same selected object
+
+No runtime behavior changed.
+
+No distributed REFLECT implementation was introduced.
+
+No mirrors, network retrieval, topology behavior, adaptive routing, request telemetry, cache/replay systems, or frontend/public API changes were introduced.
+
+Preserved invariants:
+
+- publication-state validity remains client-derived
+- selected publication-state identity remains fixed during fetch/acquisition/fallback
+- acquisition plans remain the subordinate runtime boundary for retrieval
+- parallel fetch behavior does not define semantic priority
+- mirror responsiveness does not become state preference
+- runtime retrieval behavior does not define semantic validity
+- cross-state reconstruction remains forbidden
+- mirrors remain replaceable publication surfaces, not authorities
+
+Checkpoint:
+
+- `reflect-fetch-policy-runtime-boundary-v1`
+
+Engineering[37] status:
+
+**REFLECT fetch-policy runtime-boundary semantic hardening complete**
