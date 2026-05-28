@@ -36,7 +36,7 @@ A publication state is valid only if it is:
 
 - Coherent
 - Compatible
-- Available
+- Retrievable through bounded deterministic acquisition semantics
 - Integrity-verified
 - Within publication window
 - Root-valid
@@ -55,7 +55,7 @@ Validity is not derived from:
 - mirror assertion
 - mirror freshness claims
 - mirror preference
-- mirror availability alone
+- mirror availability or responsiveness alone
 - topology position
 - adaptive routing outcome
 - federation consensus
@@ -98,7 +98,7 @@ The selected state is the highest recent publication state that satisfies all va
 It does not mean:
 
 - latest object reported by a mirror
-- most available mirror response
+- most available or fastest mirror response
 - mirror-preferred state
 - adaptively selected state
 - cross-state reconstruction candidate
@@ -119,7 +119,7 @@ Fallback must not mutate:
 - selected object identity
 - deterministic state target
 
-Fallback is object retrieval substitution only.
+Fallback is bounded deterministic object-retrieval substitution only.
 
 It is not adaptive routing.
 

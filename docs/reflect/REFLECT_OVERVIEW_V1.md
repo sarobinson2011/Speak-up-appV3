@@ -84,7 +84,7 @@ Objects are usable only when accepted together as one coherent publication-state
 
 Cross-state reconstruction is forbidden.
 
-Fallback may retry retrieval of selected objects from deterministic fallback mirrors, but fallback must not alter publication-state selection.
+Fallback may perform bounded deterministic retrieval substitution for selected objects through deterministic fallback mirrors, but fallback must not alter publication-state selection.
 
 ---
 

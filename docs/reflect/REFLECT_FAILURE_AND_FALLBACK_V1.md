@@ -66,7 +66,7 @@ Each object has:
 - 1 primary mirror
 - 2 fallback mirrors
 
-Retries are bounded and deterministic.
+Retrieval substitutions are bounded and deterministic.
 
 Fallback mirrors are derived from the same deterministic selection context.
 
@@ -78,7 +78,7 @@ Fallback mirrors do not provide adaptive routing authority.
 
 Integrity failure or coherence failure invalidates the affected state/object path according to the client verification rules.
 
-Fallback may retry retrieval of the same selected object from an allowed fallback mirror.
+Fallback may perform bounded deterministic retrieval substitution for the same selected object through an allowed fallback mirror.
 
 Fallback must not be used to:
 
@@ -93,7 +93,7 @@ Fallback must not be used to:
 
 ## Hard Rule
 
-Fallback is object retrieval substitution only.
+Fallback is bounded deterministic object-retrieval substitution only.
 
 No cross-state recovery.
 
