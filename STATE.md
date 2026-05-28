@@ -5365,3 +5365,72 @@ They do not define publication-state validity, do not mutate selected publicatio
 ### Checkpoint tag
 
 - `reflect-failed-traversal-attempt-records-v1`
+
+---
+
+### Engineering[36] — REFLECT Bounded Local Continuation Execution
+
+Engineering[36] added the first bounded local continuation execution path inside the REFLECT acquisition layer.
+
+Implemented:
+
+- optional `continuationPublication` input
+- continuation execution only after a continuation-eligible local acquisition failure
+- continuation eligibility remains limited to:
+  - `content-digest-mismatch`
+- continuation performs exactly one additional local traversal attempt
+- continuation uses:
+  - the same acquisition plan
+  - the same selected publication-state
+  - the same traversal target
+  - the same traversal key
+- successful continuation records:
+  - `continuation-executed`
+  - `traversal-group-1-completed`
+  - `publication-acquired`
+- continuation result records:
+  - `eligible: true`
+  - original failure `reason`
+  - `executed: true`
+
+The continuation path was deliberately implemented by cloning lifecycle arrays before the continuation branch.
+
+This preserves acquisition-result immutability and prevents continuation execution from mutating already-finalized failure state.
+
+### Explicit non-goals
+
+This did not introduce:
+
+- live distributed mirrors
+- network retrieval
+- distributed fetches
+- adaptive fallback
+- selected publication-state reselection
+- topology-aware runtime behavior
+- mirror freshness authority
+- public acquisition APIs
+- frontend topology awareness
+- cache/replay systems
+- retry amplification
+- probabilistic retrieval
+
+### Preserved invariant
+
+Bounded continuation execution is local runtime behavior only.
+
+It does not define publication-state validity, does not mutate selected publication-state identity, and does not grant traversal/fallback behavior authority over REFLECT selection.
+
+Continuation execution remains:
+
+- deterministic
+- single-attempt
+- topology-neutral
+- selected-state-preserving
+- local-only
+
+Future distributed REFLECT work must attach to this boundary without changing these semantics unless STATE.md is explicitly updated first.
+
+### Checkpoint tag
+
+- `reflect-bounded-local-continuation-v1`
+

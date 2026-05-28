@@ -114,6 +114,53 @@ assert.deepStrictEqual(wrongPublicationResult.attempts, [
   },
 ]);
 
+const continuationResult = acquireLocalPublicationGroup({
+  plan,
+  publication: wrongPublication,
+  continuationPublication: publication,
+});
+
+assert(continuationResult.ok);
+assert.strictEqual(continuationResult.terminal, true);
+assert.strictEqual(continuationResult.terminalReason, "terminal-success");
+assert.strictEqual(continuationResult.continuationEligible, false);
+assert.deepStrictEqual(continuationResult.continuation, {
+  eligible: true,
+  reason: "content-digest-mismatch",
+  executed: true,
+});
+assert.deepStrictEqual(
+  continuationResult.completedSteps,
+  [
+    "plan-accepted",
+    "publication-accepted",
+    "selected-state-validated",
+    "continuation-executed",
+    "traversal-group-1-completed",
+    "publication-acquired",
+  ],
+);
+assert.deepStrictEqual(continuationResult.attempts, [
+  {
+    traversalKey: "group-1",
+    outcome: "started",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "failed",
+    reason: "content-digest-mismatch",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "started",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "succeeded",
+  },
+]);
+
+
 assert.strictEqual(buildLocalAcquisitionPlan({ publicationState: null }), null);
 const invalidPlanResult = acquireLocalPublicationGroup({ plan: null, publication });
 

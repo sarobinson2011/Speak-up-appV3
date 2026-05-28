@@ -31,21 +31,26 @@ export function buildLocalAcquisitionPlan({ publicationState }) {
   });
 }
 
-function buildContinuation({ eligible, reason }) {
+function buildContinuation({ eligible, reason, executed = false }) {
   return freezePlain({
     eligible,
     reason: eligible ? reason : null,
-    executed: false,
+    executed,
   });
 }
 
-function acquisitionOk({ publication, completedSteps, attempts = [] }) {
+function acquisitionOk({
+  publication,
+  completedSteps,
+  attempts = [],
+  continuation = buildContinuation({ eligible: false }),
+}) {
   return freezePlain({
     ok: true,
     terminal: true,
     terminalReason: "terminal-success",
     continuationEligible: false,
-    continuation: buildContinuation({ eligible: false }),
+    continuation,
     completedSteps,
     attempts,
     publication,
@@ -56,8 +61,13 @@ function isContinuationEligible(reason) {
   return reason === "content-digest-mismatch";
 }
 
-function acquisitionFailed({ reason, completedSteps, attempts = [] }) {
-  const continuationEligible = isContinuationEligible(reason);
+function acquisitionFailed({
+  reason,
+  completedSteps,
+  attempts = [],
+  allowContinuation = true,
+}) {
+  const continuationEligible = allowContinuation && isContinuationEligible(reason);
 
   return freezePlain({
     ok: false,
@@ -92,6 +102,7 @@ function acquireTraversalTarget({
   publication,
   completedSteps,
   attempts,
+  allowContinuation = true,
 }) {
   attempts.push(recordAttempt({ traversalKey, outcome: "started" }));
   if (target?.acquisitionKey !== traversalKey) {
@@ -107,6 +118,7 @@ function acquireTraversalTarget({
       reason: "invalid-traversal-order",
       completedSteps,
       attempts,
+      allowContinuation,
     });
   }
 
@@ -123,6 +135,7 @@ function acquireTraversalTarget({
       reason: "invalid-target",
       completedSteps,
       attempts,
+      allowContinuation,
     });
   }
 
@@ -139,6 +152,7 @@ function acquireTraversalTarget({
       reason: "content-digest-mismatch",
       completedSteps,
       attempts,
+      allowContinuation,
     });
   }
 
@@ -196,7 +210,11 @@ export function acquirePreparedPathPublication({
   });
 }
 
-export function acquireLocalPublicationGroup({ plan, publication }) {
+export function acquireLocalPublicationGroup({
+  plan,
+  publication,
+  continuationPublication,
+}) {
   const completedSteps = [];
   const attempts = [];
 
@@ -274,7 +292,49 @@ export function acquireLocalPublicationGroup({ plan, publication }) {
     attempts,
   });
 
-  if (!traversalResult.ok) return traversalResult;
+  if (!traversalResult.ok) {
+    if (!traversalResult.continuationEligible || !continuationPublication) {
+      return traversalResult;
+    }
+
+    if (!continuationPublication || typeof continuationPublication !== "object") {
+      return acquisitionFailed({
+        reason: "invalid-continuation-publication",
+        completedSteps,
+        attempts,
+        allowContinuation: false,
+      });
+    }
+
+    const continuationSteps = [...completedSteps];
+    const continuationAttempts = [...attempts];
+
+    const continuationResult = acquireTraversalTarget({
+      target,
+      traversalKey: plan.traversalOrder[0],
+      publication: continuationPublication,
+      completedSteps: continuationSteps,
+      attempts: continuationAttempts,
+      allowContinuation: false,
+    });
+
+    if (!continuationResult.ok) return continuationResult;
+
+    continuationSteps.push("continuation-executed");
+    continuationSteps.push(continuationResult.step);
+    continuationSteps.push("publication-acquired");
+
+    return acquisitionOk({
+      publication: continuationResult.publication,
+      completedSteps: continuationSteps,
+      attempts: continuationResult.attempts,
+      continuation: buildContinuation({
+        eligible: true,
+        reason: traversalResult.reason,
+        executed: true,
+      }),
+    });
+  }
 
   completedSteps.push(traversalResult.step);
   completedSteps.push("publication-acquired");
