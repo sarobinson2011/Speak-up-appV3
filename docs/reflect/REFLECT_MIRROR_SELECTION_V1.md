@@ -17,6 +17,41 @@ All must be distinct.
 
 ---
 
+## Interpretation Boundary
+
+Mirror assignment is deterministic publication-surface assignment.
+
+It exists to preserve bounded separation and fragmented observability.
+
+Mirror assignment does not define:
+
+- publication-state validity
+- publication-state priority
+- mirror trust
+- mirror preference
+- mirror capability ranking
+- routing authority
+- topology authority
+- adaptive retrieval authority
+
+A primary mirror is not a semantic authority.
+
+A fallback mirror is not a lower-priority publication state.
+
+Mirror roles are runtime retrieval surfaces only.
+
+Mirror roles must not be used to:
+
+- alter publication-state selection
+- infer object validity
+- infer state freshness
+- optimize toward fastest response
+- introduce adaptive routing
+- introduce probabilistic mirror choice
+- expose topology-aware client behavior
+
+---
+
 ## Derivation
 
 Roles are derived via deterministic permutation of the REFLECT pool using the action seed.
