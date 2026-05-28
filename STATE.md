@@ -5434,3 +5434,41 @@ Future distributed REFLECT work must attach to this boundary without changing th
 
 - `reflect-bounded-local-continuation-v1`
 
+
+---
+
+### Engineering[37] — REFLECT Retrieval Substitution Semantics
+
+Engineering[37] performed a bounded REFLECT mirror-facing semantic hardening pass.
+
+Implemented:
+
+- tightened `availability` wording in REFLECT state-validity semantics
+- replaced loose retry language with bounded deterministic retrieval-substitution language
+- clarified that fallback remains selected-state-preserving
+- clarified that mirror availability or responsiveness does not define semantic validity
+
+No runtime behavior changed.
+
+No distributed REFLECT implementation was introduced.
+
+No mirrors, network retrieval, topology behavior, adaptive routing, request telemetry, cache/replay systems, or frontend/public API changes were introduced.
+
+Preserved invariants:
+
+- publication-state validity remains client-derived
+- selected publication-state identity remains fixed during acquisition/fallback
+- fallback is bounded deterministic object-retrieval substitution only
+- mirror availability does not become semantic authority
+- mirror responsiveness does not become state preference
+- runtime acquisition behavior does not define semantic validity
+- cross-state reconstruction remains forbidden
+- mirrors remain replaceable publication surfaces, not authorities
+
+Checkpoint:
+
+- `reflect-retrieval-substitution-semantics-v1`
+
+Engineering[37] status:
+
+**REFLECT retrieval-substitution semantic hardening complete**
