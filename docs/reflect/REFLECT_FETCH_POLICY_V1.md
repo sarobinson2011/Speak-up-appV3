@@ -53,3 +53,40 @@ Fetch behavior must not:
 - no cross-object dependency
 - fallback is per-object
 - no global reshuffle
+
+---
+
+## Retrieval Provider Boundary
+
+A retrieval provider is a future runtime acquisition surface only.
+
+It may supply already-selected publication material to the acquisition layer.
+
+It must not:
+
+- select publication state
+- rank publication state
+- repair publication state
+- prefer faster or newer state
+- mutate traversal order
+- mutate continuation semantics
+- infer validity from availability
+- expose topology-aware behavior
+
+The acquisition layer validates retrieved material against the existing acquisition plan.
+
+The current local implementation passes publication material directly into traversal validation.
+
+This means `acquireTraversalTarget(...)` currently validates already-supplied material; it does not perform retrieval.
+
+Future retrieval providers must attach before traversal validation and remain subordinate to:
+
+- selected publication-state identity
+- acquisition plan
+- traversal order
+- object identity
+- bounded continuation rules
+
+Retrieval may obtain material.
+
+Retrieval may not choose truth.

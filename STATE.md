@@ -5552,3 +5552,31 @@ Checkpoint:
 Engineering[37] status:
 
 **REFLECT mirror-selection semantic hardening complete**
+
+---
+
+## Engineering[38] — REFLECT Retrieval Provider Boundary Clarification
+
+Engineering[38] performed a bounded REFLECT distributed-acquisition seam discipline pass.
+
+No distributed retrieval, live mirrors, networking, topology behavior, adaptive routing, cache/replay systems, public API changes, or frontend topology awareness were introduced.
+
+Clarified:
+
+- retrieval providers are future runtime acquisition surfaces only
+- retrieval providers may supply already-selected publication material to the acquisition layer
+- retrieval providers must not select, rank, repair, or prefer publication state
+- retrieval providers must not mutate traversal order or continuation semantics
+- retrieval availability must not define semantic validity
+- `acquireTraversalTarget(...)` currently validates already-supplied material and does not perform retrieval
+- future retrieval providers must attach before traversal validation
+- acquisition validation remains subordinate to the selected publication-state identity and acquisition plan
+
+Locked interpretation:
+
+`Retrieval may obtain material. Retrieval may not choose truth.`
+
+Checkpoint tag:
+
+- `reflect-retrieval-provider-boundary-v1`
+
