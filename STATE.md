@@ -5512,3 +5512,43 @@ Checkpoint:
 Engineering[37] status:
 
 **REFLECT fetch-policy runtime-boundary semantic hardening complete**
+
+---
+
+### Engineering[37] — REFLECT Mirror Selection Semantics
+
+Engineering[37] performed a bounded REFLECT mirror-selection semantic hardening pass.
+
+Implemented:
+
+- clarified that mirror assignment is deterministic publication-surface assignment
+- clarified that mirror assignment exists to preserve bounded separation and fragmented observability
+- clarified that mirror assignment does not define validity, priority, trust, preference, capability ranking, routing authority, topology authority, or adaptive retrieval authority
+- clarified that primary mirrors are not semantic authorities
+- clarified that fallback mirrors are not lower-priority publication states
+- clarified that mirror roles are runtime retrieval surfaces only
+
+No runtime behavior changed.
+
+No distributed REFLECT implementation was introduced.
+
+No mirrors, network retrieval, topology behavior, adaptive routing, request telemetry, cache/replay systems, or frontend/public API changes were introduced.
+
+Preserved invariants:
+
+- publication-state validity remains client-derived
+- selected publication-state identity remains fixed
+- mirror assignment fragments observability; it does not optimize semantic truth
+- mirror roles do not define object validity or state freshness
+- mirror selection does not introduce routing authority or topology authority
+- runtime retrieval behavior does not define semantic validity
+- cross-state reconstruction remains forbidden
+- mirrors remain replaceable publication surfaces, not authorities
+
+Checkpoint:
+
+- `reflect-mirror-selection-semantics-v1`
+
+Engineering[37] status:
+
+**REFLECT mirror-selection semantic hardening complete**
