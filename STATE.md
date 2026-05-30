@@ -5580,3 +5580,76 @@ Checkpoint tag:
 
 - `reflect-retrieval-provider-boundary-v1`
 
+Engineering[38] status:
+
+**REFLECT retrieval-provider boundary clarification complete**
+
+---
+
+## Engineering[39] — REFLECT Local Retrieval Provider Abstraction
+
+Engineering[39] introduced the first bounded local retrieval-provider abstraction.
+
+No distributed retrieval, live mirrors, networking, topology behavior, adaptive routing, cache/replay systems, public API changes, or frontend changes were introduced.
+
+Implemented:
+
+- local retrieval-provider module
+- provider seam inside local acquisition
+- explicit provider failure handling before traversal validation
+- regression coverage for missing provider material
+
+The provider seam attaches after acquisition-plan construction and before traversal validation.
+
+Current runtime shape:
+
+selected publication state
+→ acquisition plan
+→ local retrieval provider
+→ publication group
+→ traversal validation
+→ reconstruction
+
+The current local provider returns an already-supplied publication group.
+
+The retrieval unit is the publication group:
+
+- descriptor
+- connector
+- chunks
+
+Locked responsibilities:
+
+- selection chooses publication-state truth
+- retrieval supplies already-selected material
+- validation accepts or rejects retrieved material
+
+Retrieval-provider responsibility is limited to supplying selected publication material.
+
+A retrieval provider must not:
+
+- select publication state
+- rank publication state
+- prefer faster or newer state
+- mutate traversal order
+- mutate continuation semantics
+- validate truth
+- repair publication groups
+- infer validity from availability
+- expose topology-aware behavior
+
+Validation remains owned by acquisition/traversal and publication-object verification.
+
+Provider failure is now explicitly separated from validation failure:
+
+- `publication-not-retrieved`
+- `invalid-retrieval-provider`
+- `continuation-publication-not-retrieved`
+- `invalid-continuation-retrieval-provider`
+
+These are runtime acquisition failures only. They do not imply publication-state invalidity.
+
+Locked rule:
+
+`Retrieval obtains material. Selection chooses truth. Validation accepts or rejects material.`
+

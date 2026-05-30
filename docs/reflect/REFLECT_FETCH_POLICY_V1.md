@@ -75,11 +75,21 @@ It must not:
 
 The acquisition layer validates retrieved material against the existing acquisition plan.
 
-The current local implementation passes publication material directly into traversal validation.
+The previous local implementation passed publication material directly into traversal validation.
 
-This means `acquireTraversalTarget(...)` currently validates already-supplied material; it does not perform retrieval.
+This means `acquireTraversalTarget(...)` validates already-supplied material; it does not perform retrieval.
 
-Future retrieval providers must attach before traversal validation and remain subordinate to:
+The current local implementation introduces a local retrieval-provider abstraction before traversal validation.
+
+The local retrieval provider returns an already-supplied publication group.
+
+The retrieval unit is the publication group:
+
+- descriptor
+- connector
+- chunks
+
+Retrieval providers attach before traversal validation and remain subordinate to:
 
 - selected publication-state identity
 - acquisition plan
@@ -90,3 +100,5 @@ Future retrieval providers must attach before traversal validation and remain su
 Retrieval may obtain material.
 
 Retrieval may not choose truth.
+
+Validation accepts or rejects material.

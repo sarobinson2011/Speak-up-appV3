@@ -237,4 +237,19 @@ assert.strictEqual(
   "invalid-traversal-order",
 );
 
+
+const missingProviderResult = acquireLocalPublicationGroup({
+  plan,
+  publication,
+  retrievalProvider: {
+    version: 1,
+    getPublicationGroup() {
+      return null;
+    },
+  },
+});
+
+assert.strictEqual(missingProviderResult.ok, false);
+assert.strictEqual(missingProviderResult.reason, "publication-not-retrieved");
+
 console.log("reflect acquisition boundary validation ok");

@@ -1,4 +1,5 @@
 import { freezePlain } from "./objectModel.js";
+import { buildLocalRetrievalProvider } from "./retrievalProvider.js";
 import { selectCoherentLocalPublicationState } from "./publicationWindows.js";
 
 export function buildLocalAcquisitionPlan({ publicationState }) {
@@ -214,6 +215,10 @@ export function acquireLocalPublicationGroup({
   plan,
   publication,
   continuationPublication,
+  retrievalProvider = buildLocalRetrievalProvider({ publication }),
+  continuationRetrievalProvider = continuationPublication
+    ? buildLocalRetrievalProvider({ publication: continuationPublication })
+    : null,
 }) {
   const completedSteps = [];
   const attempts = [];
@@ -284,10 +289,28 @@ export function acquireLocalPublicationGroup({
     });
   }
 
+  if (!retrievalProvider || typeof retrievalProvider.getPublicationGroup !== "function") {
+    return acquisitionFailed({
+      reason: "invalid-retrieval-provider",
+      completedSteps,
+      attempts,
+    });
+  }
+
+  const retrievedPublication = retrievalProvider.getPublicationGroup({ target });
+
+  if (!retrievedPublication || typeof retrievedPublication !== "object") {
+    return acquisitionFailed({
+      reason: "publication-not-retrieved",
+      completedSteps,
+      attempts,
+    });
+  }
+
   const traversalResult = acquireTraversalTarget({
     target,
     traversalKey: plan.traversalOrder[0],
-    publication,
+    publication: retrievedPublication,
     completedSteps,
     attempts,
   });
@@ -309,10 +332,37 @@ export function acquireLocalPublicationGroup({
     const continuationSteps = [...completedSteps];
     const continuationAttempts = [...attempts];
 
+    if (
+      !continuationRetrievalProvider ||
+      typeof continuationRetrievalProvider.getPublicationGroup !== "function"
+    ) {
+      return acquisitionFailed({
+        reason: "invalid-continuation-retrieval-provider",
+        completedSteps,
+        attempts,
+        allowContinuation: false,
+      });
+    }
+
+    const retrievedContinuationPublication =
+      continuationRetrievalProvider.getPublicationGroup({ target });
+
+    if (
+      !retrievedContinuationPublication ||
+      typeof retrievedContinuationPublication !== "object"
+    ) {
+      return acquisitionFailed({
+        reason: "continuation-publication-not-retrieved",
+        completedSteps,
+        attempts,
+        allowContinuation: false,
+      });
+    }
+
     const continuationResult = acquireTraversalTarget({
       target,
       traversalKey: plan.traversalOrder[0],
-      publication: continuationPublication,
+      publication: retrievedContinuationPublication,
       completedSteps: continuationSteps,
       attempts: continuationAttempts,
       allowContinuation: false,
