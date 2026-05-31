@@ -5680,3 +5680,46 @@ Introducing a retrieval-request object is not currently justified and may only o
 - retrieval responsibility
 - validation authority
 
+---
+
+## Engineering[40] — REFLECT Retrieval Provider Evolution Constraints
+
+Engineering[40] performed a bounded semantic-hardening pass for future REFLECT retrieval-provider evolution.
+
+No runtime code was changed.
+
+No distributed retrieval, mirrors, networking, topology behavior, adaptive routing, cache/replay systems, request telemetry, public API changes, or frontend changes were introduced.
+
+Documented:
+
+- retrieval providers are acquisition surfaces only
+- provider evolution must preserve the authority split between selection, retrieval, and validation
+- the current retrieval identity surface remains the acquisition target
+- no separate retrieval-request object is currently justified
+- any future retrieval-request object must remain a derived, non-authoritative wrapper around the acquisition target
+- continuation and fallback remain acquisition-owned
+- providers must not decide continuation eligibility
+- providers must not mutate selected targets
+- providers must not substitute publication states
+- providers must not become topology, ranking, validity, cache, replay, or telemetry authority
+
+Locked interpretation:
+
+Selection chooses truth.
+
+Retrieval obtains material.
+
+Validation accepts or rejects material.
+
+Provider design test:
+
+A future provider extension is valid only if the provider could still be replaced by a dumb material fetcher without changing semantic truth.
+
+Supporting doc:
+
+- `docs/reflect/REFLECT_RETRIEVAL_PROVIDER_EVOLUTION_V1.md`
+
+Engineering[40] status:
+
+**REFLECT retrieval-provider evolution constraints documented**
+

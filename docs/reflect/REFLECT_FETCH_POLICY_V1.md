@@ -121,3 +121,7 @@ The acquisition plan remains the authority for:
 Retrieval providers remain subordinate to that authority.
 
 Future retrieval-provider evolution must preserve this separation.
+
+See also:
+
+- `docs/reflect/REFLECT_RETRIEVAL_PROVIDER_EVOLUTION_V1.md`
