@@ -5653,3 +5653,30 @@ Locked rule:
 
 `Retrieval obtains material. Selection chooses truth. Validation accepts or rejects material.`
 
+
+Current retrieval identity surface:
+
+- acquisition target
+
+The current local retrieval provider consumes acquisition targets directly.
+
+No separate retrieval-request object currently exists.
+
+This is intentional.
+
+The acquisition plan remains the authority for:
+
+- selected publication-state identity
+- traversal ordering
+- object identity
+
+Retrieval remains subordinate to the acquisition plan.
+
+Future retrieval-provider evolution must preserve this relationship.
+
+Introducing a retrieval-request object is not currently justified and may only occur if it preserves the existing separation between:
+
+- selection authority
+- retrieval responsibility
+- validation authority
+

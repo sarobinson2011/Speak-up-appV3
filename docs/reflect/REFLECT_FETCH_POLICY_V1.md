@@ -102,3 +102,22 @@ Retrieval may obtain material.
 Retrieval may not choose truth.
 
 Validation accepts or rejects material.
+
+
+Current retrieval identity surface:
+
+- acquisition target
+
+The local retrieval provider consumes acquisition targets directly.
+
+No separate retrieval-request abstraction currently exists.
+
+The acquisition plan remains the authority for:
+
+- selected publication-state identity
+- traversal ordering
+- object identity
+
+Retrieval providers remain subordinate to that authority.
+
+Future retrieval-provider evolution must preserve this separation.
