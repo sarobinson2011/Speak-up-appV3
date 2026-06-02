@@ -100,6 +100,21 @@ A provider must not substitute a different publication state.
 
 Fallback replaces acquisition surface, not truth.
 
+## Retrieval Minimality Principle
+
+A retrieval provider should receive only the minimum information required to identify the retrieval target.
+
+A retrieval provider should not receive:
+
+- publication-window state
+- alternative selected states
+- continuation history
+- attempt history
+- validity outcomes
+- selection rationale
+
+The acquisition layer remains the sole owner of those concerns.
+
 ## Retrieval Request Object
 
 Introducing a separate retrieval-request object is not currently justified.

@@ -5696,6 +5696,8 @@ Documented:
 - provider evolution must preserve the authority split between selection, retrieval, and validation
 - the current retrieval identity surface remains the acquisition target
 - no separate retrieval-request object is currently justified
+- retrieval providers should receive only the minimum information required to identify the retrieval target
+- providers should not receive publication-window state, alternative selected states, continuation history, attempt history, validity outcomes, or selection rationale
 - any future retrieval-request object must remain a derived, non-authoritative wrapper around the acquisition target
 - continuation and fallback remain acquisition-owned
 - providers must not decide continuation eligibility
