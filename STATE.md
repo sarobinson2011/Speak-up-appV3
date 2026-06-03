@@ -5725,3 +5725,65 @@ Engineering[40] status:
 
 **REFLECT retrieval-provider evolution constraints documented**
 
+---
+
+## Engineering[41] — REFLECT Minimum Retrieval Contract Surface
+
+Engineering[41] performed a bounded design-observation pass on future retrieval-provider evolution.
+
+No runtime code was changed.
+
+No distributed retrieval, mirrors, networking, topology behavior, adaptive routing, cache/replay systems, request telemetry, public API changes, or frontend changes were introduced.
+
+Documented:
+
+- the minimum distributed-capable retrieval-provider contract surface
+- retrieval-contract minimality constraints
+- continued use of the acquisition target as the retrieval identity surface
+- continuation ownership boundaries
+- fallback ownership boundaries
+- retrieval-request object justification constraints
+
+Observed implementation result:
+
+The current provider contract:
+
+    getPublicationGroup({ target })
+
+already satisfies the minimum distributed-capable retrieval-provider contract.
+
+Current implementation confirms:
+
+- retrieval consumes acquisition targets directly
+- continuation reuses the same selected target
+- providers do not receive continuation history
+- providers do not receive attempt history
+- providers do not receive validity outcomes
+- providers do not receive selection rationale
+
+Locked interpretation:
+
+The acquisition target remains the sole retrieval identity surface.
+
+Future distributed acquisition should evolve retrieval implementation behind the provider boundary rather than expanding provider authority.
+
+A separate retrieval-request object is not currently justified.
+
+If introduced in the future, it must remain a derived, non-authoritative wrapper around the acquisition target.
+
+Continuation remains acquisition-owned.
+
+Fallback remains acquisition-owned.
+
+Provider design test:
+
+A provider extension is valid only if the provider could still be replaced by a dumb material fetcher without changing semantic truth.
+
+Supporting doc:
+
+- `docs/reflect/REFLECT_MINIMUM_RETRIEVAL_CONTRACT_V1.md`
+
+Engineering[41] status:
+
+**REFLECT minimum retrieval contract surface documented**
+
