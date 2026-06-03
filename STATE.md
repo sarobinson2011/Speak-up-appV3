@@ -5787,3 +5787,74 @@ Engineering[41] status:
 
 **REFLECT minimum retrieval contract surface documented**
 
+---
+
+## Engineering[42] — REFLECT Minimum Distributed Acquisition Semantics
+
+Engineering[42] performed a bounded design-observation pass on future distributed acquisition evolution.
+
+No runtime code was changed.
+
+No distributed retrieval, mirrors, networking, topology behavior, adaptive routing, cache/replay systems, request telemetry, public API changes, or frontend changes were introduced.
+
+Documented:
+
+- minimum acquisition-owned distributed acquisition semantics
+- acquisition-owned retrieval-substitution boundaries
+- acquisition-owned continuation boundaries
+- acquisition-owned fallback boundaries
+- topology-neutral acquisition constraints
+- acquisition authority minimization rules
+
+Locked interpretation:
+
+Distributed acquisition may substitute acquisition surfaces.
+
+Distributed acquisition must not substitute semantic truth.
+
+Selection chooses truth.
+
+Retrieval obtains material.
+
+Validation accepts or rejects material.
+
+Acquisition orchestrates bounded retrieval of already-selected targets.
+
+Acquisition must not become hidden topology authority.
+
+Observed result:
+
+The minimum future distributed acquisition model is:
+
+    selected publication state
+    -> acquisition plan
+    -> deterministic acquisition-surface order
+    -> retrieval provider
+    -> publication group
+    -> traversal validation
+    -> reconstruction
+
+The selected publication-state identity remains fixed before distributed acquisition begins.
+
+Acquisition remains responsible for:
+
+- selected target preservation
+- traversal ordering
+- continuation eligibility
+- fallback eligibility
+- deterministic acquisition-surface substitution
+- runtime failure classification
+- lifecycle result construction
+
+Distributed acquisition may improve material availability.
+
+It must not become selection, validity, ranking, telemetry, topology, continuation, or fallback authority.
+
+Supporting doc:
+
+- `docs/reflect/REFLECT_MINIMUM_DISTRIBUTED_ACQUISITION_SEMANTICS_V1.md`
+
+Engineering[42] status:
+
+**REFLECT minimum distributed acquisition semantics documented**
+
