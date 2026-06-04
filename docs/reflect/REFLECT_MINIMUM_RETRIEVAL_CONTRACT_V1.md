@@ -138,6 +138,28 @@ A provider extension is valid only if this remains true:
 
 If replacing the provider changes selected truth, validity, continuation eligibility, or fallback semantics, the provider has become an authority surface and is invalid.
 
+## Local Runtime Realization
+
+The retrieval-provider boundary is now realized through a local publication registry.
+
+Current runtime shape:
+
+    acquisition target
+        ->
+    publication registry lookup
+        ->
+    publication material
+
+The registry remains:
+
+- local
+- non-authoritative
+- topology-neutral
+
+The registry exists only to resolve acquisition targets into publication material.
+
+Selection, validation, continuation, fallback, and truth determination remain acquisition-owned.
+
 ## Summary
 
 The minimum retrieval-provider contract is the current contract.
