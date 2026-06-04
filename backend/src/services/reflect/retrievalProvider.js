@@ -21,6 +21,21 @@ export function buildLocalPublicationRegistry({ publicationsByAcquisitionKey }) 
   });
 }
 
+export function buildLocalAcquisitionSurface({ publicationRegistry }) {
+  return freezePlain({
+    version: 1,
+
+    acquirePublicationGroup({ target }) {
+      if (!target?.acquisitionKey) return null;
+      if (!publicationRegistry || typeof publicationRegistry.get !== "function") {
+        return null;
+      }
+
+      return publicationRegistry.get(target.acquisitionKey);
+    },
+  });
+}
+
 export function buildLocalRetrievalProvider({
   publication,
   publicationRegistry = buildLocalPublicationRegistry({
@@ -30,15 +45,21 @@ export function buildLocalRetrievalProvider({
         }
       : {},
   }),
+  acquisitionSurface = buildLocalAcquisitionSurface({ publicationRegistry }),
 }) {
   return freezePlain({
     version: 1,
 
     getPublicationGroup({ target }) {
       if (!target?.acquisitionKey) return null;
-      if (!publicationRegistry || typeof publicationRegistry.get !== "function") return null;
+      if (
+        !acquisitionSurface ||
+        typeof acquisitionSurface.acquirePublicationGroup !== "function"
+      ) {
+        return null;
+      }
 
-      return publicationRegistry.get(target.acquisitionKey);
+      return acquisitionSurface.acquirePublicationGroup({ target });
     },
   });
 }

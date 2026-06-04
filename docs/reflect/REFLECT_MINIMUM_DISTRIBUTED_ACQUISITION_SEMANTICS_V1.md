@@ -116,6 +116,35 @@ Infrastructure behavior may affect whether material is obtained.
 
 Infrastructure behavior must not affect what counts as valid, selected, preferred, recent, or true.
 
+## Local Acquisition Surface Runtime Realization
+
+The local retrieval runtime now includes an explicit local acquisition surface.
+
+Current runtime shape:
+
+    acquisition target
+        ->
+    retrieval provider
+        ->
+    local acquisition surface
+        ->
+    publication registry
+        ->
+    publication material
+
+The local acquisition surface is an internal acquisition surface only.
+
+It remains:
+
+- local
+- deterministic
+- topology-neutral
+- non-authoritative
+
+It does not select publication state, validate material, rank surfaces, own continuation, own fallback, or infer truth from availability.
+
+Selection, validation, continuation, fallback, and lifecycle result construction remain acquisition-owned.
+
 ## Summary
 
 The smallest safe distributed acquisition model is deterministic acquisition-surface substitution for already-selected targets.
