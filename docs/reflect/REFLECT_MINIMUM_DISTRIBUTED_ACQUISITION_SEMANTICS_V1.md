@@ -145,6 +145,37 @@ It does not select publication state, validate material, rank surfaces, own cont
 
 Selection, validation, continuation, fallback, and lifecycle result construction remain acquisition-owned.
 
+## Local Acquisition Source Runtime Realization
+
+The local acquisition runtime now includes an explicit local acquisition source beneath the local acquisition surface.
+
+Current runtime shape:
+
+    acquisition target
+        ->
+    retrieval provider
+        ->
+    local acquisition surface
+        ->
+    local acquisition source
+        ->
+    publication registry
+        ->
+    publication material
+
+The local acquisition source remains:
+
+- local
+- deterministic
+- topology-neutral
+- non-authoritative
+
+It exists only to obtain publication material for an already-selected acquisition target.
+
+It does not select publication state, validate material, rank sources, own continuation, own fallback, or infer truth from availability.
+
+Selection, validation, continuation, fallback, and lifecycle result construction remain acquisition-owned.
+
 ## Summary
 
 The smallest safe distributed acquisition model is deterministic acquisition-surface substitution for already-selected targets.

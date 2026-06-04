@@ -2,6 +2,7 @@ import assert from "assert";
 
 import { buildLocalPublicationObjects } from "./publicationObjects.js";
 import {
+  buildLocalAcquisitionSource,
   buildLocalAcquisitionSurface,
   buildLocalPublicationRegistry,
   buildLocalRetrievalProvider,
@@ -31,8 +32,36 @@ assert.deepStrictEqual(registry.get("group-1"), publication);
 assert.strictEqual(registry.get("missing-group"), null);
 assert.strictEqual(registry.get(null), null);
 
-const acquisitionSurface = buildLocalAcquisitionSurface({
+const acquisitionSource = buildLocalAcquisitionSource({
   publicationRegistry: registry,
+});
+
+assert.strictEqual(acquisitionSource.version, 1);
+assert.deepStrictEqual(
+  acquisitionSource.acquire({
+    target: {
+      acquisitionKey: "group-1",
+    },
+  }),
+  publication,
+);
+assert.strictEqual(
+  acquisitionSource.acquire({
+    target: {
+      acquisitionKey: "missing-group",
+    },
+  }),
+  null,
+);
+assert.strictEqual(
+  acquisitionSource.acquire({
+    target: {},
+  }),
+  null,
+);
+
+const acquisitionSurface = buildLocalAcquisitionSurface({
+  acquisitionSource,
 });
 
 assert.strictEqual(acquisitionSurface.version, 1);
@@ -57,6 +86,19 @@ assert.strictEqual(
     target: {},
   }),
   null,
+);
+
+const surfaceCompatibility = buildLocalAcquisitionSurface({
+  publicationRegistry: registry,
+});
+
+assert.deepStrictEqual(
+  surfaceCompatibility.acquirePublicationGroup({
+    target: {
+      acquisitionKey: "group-1",
+    },
+  }),
+  publication,
 );
 
 const provider = buildLocalRetrievalProvider({

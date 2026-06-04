@@ -21,17 +21,39 @@ export function buildLocalPublicationRegistry({ publicationsByAcquisitionKey }) 
   });
 }
 
-export function buildLocalAcquisitionSurface({ publicationRegistry }) {
+export function buildLocalAcquisitionSource({ publicationRegistry }) {
   return freezePlain({
     version: 1,
 
-    acquirePublicationGroup({ target }) {
+    acquire({ target }) {
       if (!target?.acquisitionKey) return null;
       if (!publicationRegistry || typeof publicationRegistry.get !== "function") {
         return null;
       }
 
       return publicationRegistry.get(target.acquisitionKey);
+    },
+  });
+}
+
+export function buildLocalAcquisitionSurface({
+  acquisitionSource,
+  publicationRegistry,
+}) {
+  const source =
+    acquisitionSource ||
+    buildLocalAcquisitionSource({
+      publicationRegistry,
+    });
+
+  return freezePlain({
+    version: 1,
+
+    acquirePublicationGroup({ target }) {
+      if (!target?.acquisitionKey) return null;
+      if (!source || typeof source.acquire !== "function") return null;
+
+      return source.acquire({ target });
     },
   });
 }
