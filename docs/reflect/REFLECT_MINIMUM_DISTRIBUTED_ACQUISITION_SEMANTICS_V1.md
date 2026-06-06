@@ -183,3 +183,36 @@ The smallest safe distributed acquisition model is deterministic acquisition-sur
 Distributed acquisition may improve material availability.
 
 It must not become selection, validity, ranking, telemetry, topology, continuation, or fallback authority.
+
+## Acquisition-Surface Substitution
+
+Acquisition may traverse an ordered set of acquisition surfaces.
+
+Surface substitution is permitted only as material-acquisition substitution. It must not become truth substitution.
+
+During acquisition-surface substitution, the following must remain unchanged:
+
+- selected target
+- selected publication state
+- publication digest
+- validation semantics
+- validation outcome
+
+Surface ordering is acquisition-owned.
+
+Retrieval providers remain neutral material-acquisition adapters and must not own:
+
+- ordering
+- substitution
+- continuation
+- validation
+- truth selection
+
+A valid substitution proves:
+
+    surface A unavailable
+    surface B succeeds
+    selected target unchanged
+    selected state unchanged
+    publication digest unchanged
+    validation outcome unchanged

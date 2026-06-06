@@ -253,3 +253,87 @@ assert.strictEqual(missingProviderResult.ok, false);
 assert.strictEqual(missingProviderResult.reason, "publication-not-retrieved");
 
 console.log("reflect acquisition boundary validation ok");
+
+const unavailableSurface = {
+  surfaceKey: "surface-a",
+  acquirePublicationGroup() {
+    return null;
+  },
+};
+
+const availableSurface = {
+  surfaceKey: "surface-b",
+  acquirePublicationGroup({ target }) {
+    assert.deepStrictEqual(target, plan.objects[0]);
+    return publication;
+  },
+};
+
+const selectedTargetBeforeSurfaceSubstitution = plan.objects[0];
+const selectedStateDigestBeforeSurfaceSubstitution = plan.selectedStateDigest;
+
+const substitutedSurfaceResult = acquireLocalPublicationGroup({
+  plan,
+  publication,
+  acquisitionSurfaces: [unavailableSurface, availableSurface],
+});
+
+assert(substitutedSurfaceResult.ok);
+assert.strictEqual(substitutedSurfaceResult.terminal, true);
+assert.strictEqual(substitutedSurfaceResult.terminalReason, "terminal-success");
+assert.deepStrictEqual(
+  substitutedSurfaceResult.publication.descriptor.contentDigest,
+  publication.descriptor.contentDigest,
+);
+assert.deepStrictEqual(
+  plan.selectedStateDigest,
+  selectedStateDigestBeforeSurfaceSubstitution,
+);
+assert.deepStrictEqual(
+  plan.objects[0],
+  selectedTargetBeforeSurfaceSubstitution,
+);
+assert.deepStrictEqual(plan.selectedStateDigest, publicationState.contentDigest);
+assert.deepStrictEqual(
+  substitutedSurfaceResult.completedSteps,
+  [
+    "plan-accepted",
+    "publication-accepted",
+    "selected-state-validated",
+    "traversal-group-1-completed",
+    "publication-acquired",
+  ],
+);
+assert.deepStrictEqual(substitutedSurfaceResult.attempts, [
+  {
+    traversalKey: "group-1",
+    surfaceKey: "surface-a",
+    outcome: "surface-started",
+  },
+  {
+    traversalKey: "group-1",
+    surfaceKey: "surface-a",
+    outcome: "surface-failed",
+    reason: "publication-not-retrieved",
+  },
+  {
+    traversalKey: "group-1",
+    surfaceKey: "surface-b",
+    outcome: "surface-started",
+  },
+  {
+    traversalKey: "group-1",
+    surfaceKey: "surface-b",
+    outcome: "surface-succeeded",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "started",
+  },
+  {
+    traversalKey: "group-1",
+    outcome: "succeeded",
+  },
+]);
+
+console.log("reflect acquisition surface substitution validation ok");

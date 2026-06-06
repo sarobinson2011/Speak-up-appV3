@@ -86,15 +86,64 @@ function acquisitionFailed({
 }
 
 
-function recordAttempt({ traversalKey, outcome, reason }) {
+function recordAttempt({ traversalKey, outcome, reason, surfaceKey }) {
   const attempt = {
     traversalKey,
     outcome,
   };
 
+  if (surfaceKey) attempt.surfaceKey = surfaceKey;
   if (reason) attempt.reason = reason;
 
   return freezePlain(attempt);
+}
+
+function acquireFromOrderedSurfaces({ target, acquisitionSurfaces, attempts }) {
+  if (!Array.isArray(acquisitionSurfaces)) return null;
+
+  for (const surface of acquisitionSurfaces) {
+    if (
+      !surface ||
+      !surface.surfaceKey ||
+      typeof surface.acquirePublicationGroup !== "function"
+    ) {
+      continue;
+    }
+
+    attempts.push(
+      recordAttempt({
+        traversalKey: target.acquisitionKey,
+        surfaceKey: surface.surfaceKey,
+        outcome: "surface-started",
+      }),
+    );
+
+    const publication = surface.acquirePublicationGroup({ target });
+
+    if (!publication || typeof publication !== "object") {
+      attempts.push(
+        recordAttempt({
+          traversalKey: target.acquisitionKey,
+          surfaceKey: surface.surfaceKey,
+          outcome: "surface-failed",
+          reason: "publication-not-retrieved",
+        }),
+      );
+      continue;
+    }
+
+    attempts.push(
+      recordAttempt({
+        traversalKey: target.acquisitionKey,
+        surfaceKey: surface.surfaceKey,
+        outcome: "surface-succeeded",
+      }),
+    );
+
+    return publication;
+  }
+
+  return null;
 }
 
 function acquireTraversalTarget({
@@ -219,6 +268,7 @@ export function acquireLocalPublicationGroup({
   continuationRetrievalProvider = continuationPublication
     ? buildLocalRetrievalProvider({ publication: continuationPublication })
     : null,
+  acquisitionSurfaces,
 }) {
   const completedSteps = [];
   const attempts = [];
@@ -297,7 +347,13 @@ export function acquireLocalPublicationGroup({
     });
   }
 
-  const retrievedPublication = retrievalProvider.getPublicationGroup({ target });
+  const retrievedPublication = acquisitionSurfaces
+    ? acquireFromOrderedSurfaces({
+        target,
+        acquisitionSurfaces,
+        attempts,
+      })
+    : retrievalProvider.getPublicationGroup({ target });
 
   if (!retrievedPublication || typeof retrievedPublication !== "object") {
     return acquisitionFailed({
