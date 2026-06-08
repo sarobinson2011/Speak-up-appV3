@@ -5902,3 +5902,50 @@ Remaining risks are implementation-discipline risks, not current design-frontier
 Engineering[43] status:
 
 **REFLECT semantic convergence assessed — no further REFLECT design decomposition currently required**
+
+---
+
+## Engineering[48] — REFLECT Minimum Acquisition Target Contract
+
+Engineering[48] documented the minimum stable REFLECT acquisition target contract.
+
+Document added:
+
+- `docs/reflect/REFLECT_MINIMUM_ACQUISITION_TARGET_CONTRACT_V1.md`
+
+Locked interpretation:
+
+- the acquisition target is an acquisition identity object
+- the target describes what must be acquired
+- the target does not describe how acquisition occurs
+- target owns truth-preservation authority
+- acquisition machinery owns truth-acquisition behavior
+
+Required target authority classes:
+
+- acquisition authority
+- validation authority
+- traversal authority
+- state-coherence authority
+
+Forbidden target authority classes:
+
+- provider authority
+- surface authority
+- routing authority
+- fallback authority
+- topology authority
+- transport authority
+
+Evolution rule:
+
+- target may acquire additional truth-preservation coordinates
+- target must not acquire truth-acquisition coordinates
+- provider, surface, routing, fallback, topology, transport, or orchestration changes must not require target mutation
+
+No runtime changes were introduced.
+
+Engineering[48] status:
+
+**CLOSED — checkpoint complete**
+
