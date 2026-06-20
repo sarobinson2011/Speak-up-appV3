@@ -157,6 +157,42 @@ assert.strictEqual(
   true,
 );
 
+const materialB = {
+  ...material,
+  root:
+    "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  index: 10,
+};
+
+const publicationB = buildLocalPublicationObjects({
+  material: materialB,
+  chunkSize: 2,
+});
+
+assert(publicationB);
+
+assert.notStrictEqual(
+  publication.descriptor.contentDigest.value,
+  publicationB.descriptor.contentDigest.value,
+);
+
+assert.strictEqual(
+  verifyLocalPublicationObjects({
+    descriptor: publication.descriptor,
+    connector: publication.connector,
+    chunks: publicationB.chunks,
+  }),
+  false,
+);
+
+assert.strictEqual(
+  reconstructPreparedPathMaterial({
+    connector: publication.connector,
+    chunks: publicationB.chunks,
+  }),
+  null,
+);
+
 const serializedConnector = serializeReflectObject(publication.connector);
 const serializedChunks = publication.chunks.map(serializeReflectObject);
 
