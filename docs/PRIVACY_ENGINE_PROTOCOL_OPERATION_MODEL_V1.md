@@ -1,145 +1,107 @@
 # Privacy Engine Protocol Operation Model V1
 
-STATE.md remains canonical.  
+STATE.md remains canonical.
 This document is supporting documentation only.
 
 # 1. Purpose of Protocol Operations
 
-Protocol operations identify the published semantic invocations through which protocol state transitions may be requested.
+A protocol operation defines the published request by which a protocol transition is evaluated.
 
-They do not:
+Its purpose is to identify exactly one published transition for evaluation.
 
-- define protocol state
+It does not:
+
+- define protocol states
+- define protocol invariants
 - define transition semantics
-- bypass transition enforcement
-- directly mutate protocol state
-- create implementation authority
+- determine eligibility
+- perform enforcement
+- perform execution
 
 # 2. Definition of a Protocol Operation
 
-A protocol operation is a published semantic invocation that requests one published protocol state transition.
+A protocol operation is an immutable published protocol request identifying one published transition for evaluation.
 
-An operation identifies the transition being requested and the published semantics governing that request.
+It defines the request.
 
-It is not an implementation function, interface, transaction, or execution mechanism.
+It does not define the outcome.
 
-# 3. Operation Boundary
+# 3. Operation Identity
 
-A protocol operation begins at the published semantic request boundary.
+Operation identity is defined by the published operation itself.
 
-It ends with exactly one of two outcomes:
+It is independent of:
 
-- one valid protocol state transition
-- no protocol state transition
+- implementations
+- execution mechanisms
+- transport
+- invocation method
 
-No partial protocol outcome exists.
+Changing implementation does not change operation identity.
 
-# 4. Relationship to Transition Enforcement
+# 4. Operation Scope
 
-A protocol operation does not mutate protocol state.
+A protocol operation identifies:
 
-It invokes one published transition-enforcement boundary.
+- one published transition
+- the request for evaluation
 
-Transition enforcement determines whether the requested transition can derive exactly one valid successor state.
+It does not determine whether the transition may execute.
 
-The semantic sequence is:
+# 5. Relationship to Protocol Transitions
 
-    Operation
-        ->
-    Transition Enforcement
-        ->
-    Successor-State Derivation
-        ->
-    State Transition or No Transition
+A protocol operation requests evaluation of exactly one published transition.
 
-Direct mutation is forbidden:
+Given:
 
-    Operation -> Direct State Mutation
+    O = published protocol operation
 
-# 5. Operation Identity
+    T = published protocol transition
 
-A protocol operation is identified by its published semantic definition.
+the protocol defines:
 
-Its identity includes:
+    O ⇒ request(T)
 
-- the transition requested
-- the required source-state conditions
-- the published preconditions
-- the permitted semantic outcome
+Operations request transitions.
 
-Implementation details do not define operation identity.
+They do not redefine them.
 
-# 6. Operation Outcome
+# 6. Relationship to Transition Preconditions
 
-An operation succeeds only when transition enforcement derives exactly one valid successor state.
+Transition preconditions determine whether the requested transition is eligible.
 
-Success:
+Operations neither satisfy nor modify those preconditions.
 
-    Operation(S) -> S'
+# 7. Relationship to Enforcement
 
-Failure:
+Enforcement evaluates whether the requested transition satisfies its published preconditions.
 
-    Operation(S) -> S
+Enforcement is not part of the operation.
 
-Failure does not produce:
+# 8. Relationship to Execution
 
-    partial(S')
-    repaired(S')
-    inferred(S')
-    substituted(S')
+Execution realizes a published transition after successful evaluation.
 
-# 7. Operation Determinism
+Execution is not part of the operation.
 
-For the same valid source state and the same published operation semantics, the protocol outcome is deterministic.
+# 9. Implementation Independence
 
-The operation does not choose among multiple successor states.
+Operations remain identical across all implementations.
 
-If exactly one valid successor state cannot be derived, no transition occurs.
+Implementations may realize operations through different mechanisms without altering their published semantic identity.
 
-# 8. Operation Composition
+# 10. Protocol Authority
 
-Multiple protocol operations remain distinct semantic invocations.
+Operations are defined only by the published protocol generation.
 
-One operation must not silently introduce, merge, substitute, or complete another operation.
+Implementations may realize published operations.
 
-Any composed protocol behavior must preserve:
-
-- each operation's published identity
-- each transition boundary
-- deterministic successor-state derivation
-- all published protocol invariants
-
-Composition does not create a direct state-mutation path.
-
-# 9. Relationship to Protocol Authority
-
-Published protocol semantics determine:
-
-- which operations exist
-- what transition each operation requests
-- the operation's preconditions
-- the permitted outcome
-
-Implementations realize published operations.
-
-Applications and operators may request them.
-
-Neither implementations, applications, nor operators define their semantics.
-
-# 10. Relationship to Protocol Invariants
-
-Every successful protocol operation preserves all published protocol invariants.
-
-An operation cannot complete by weakening, bypassing, repairing, or redefining an invariant.
-
-If invariant preservation is impossible, the operation produces no protocol state transition.
+They never redefine them.
 
 # 11. Conclusion
 
-A Privacy Engine protocol operation is a published semantic invocation that requests one published protocol transition.
+A protocol operation is the immutable published request for evaluation of one published protocol transition.
 
-Operations never mutate protocol state directly.
+It identifies what is requested.
 
-They invoke transition enforcement, which derives exactly one valid successor state while preserving all published protocol invariants.
-
-If no valid successor state can be derived, the operation produces no protocol state transition.
+Eligibility, enforcement, execution, and resulting state remain distinct protocol concepts.
