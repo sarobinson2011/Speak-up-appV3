@@ -5,33 +5,29 @@ This document is supporting documentation only.
 
 # 1. Purpose of Protocol Enforcement
 
-Protocol enforcement determines whether a published protocol operation is eligible to realize its requested transition.
+Protocol enforcement determines whether a published protocol operation is eligible to realize its requested protocol transition.
 
-Its purpose is to evaluate published eligibility conditions.
+It evaluates published protocol rules only.
 
-It does not:
-
-- define protocol states
-- define protocol invariants
-- define protocol transitions
-- execute transitions
-- construct successor states
+It does not execute protocol behavior.
 
 # 2. Definition of Protocol Enforcement
 
-Protocol enforcement is the deterministic evaluation of one published protocol operation against the published preconditions of its requested transition.
+Protocol enforcement is the deterministic evaluation of a published protocol operation against the published transition preconditions governing its requested transition.
 
-It determines eligibility.
+Its result is an eligibility decision only.
 
-It does not determine execution.
+It does not modify protocol semantics.
 
 # 3. Enforcement Inputs
 
 Protocol enforcement evaluates:
 
-- one published protocol operation
-- one current protocol state
-- the published preconditions of the requested transition
+- the published protocol operation
+- the current protocol state
+- the published transition preconditions governing the requested transition
+
+No implementation-specific information forms part of protocol enforcement.
 
 # 4. Enforcement Result
 
@@ -40,74 +36,105 @@ Protocol enforcement produces exactly one result:
 - eligible
 - ineligible
 
-The result determines only whether execution may proceed.
+It does not:
+
+- execute transitions
+- modify operations
+- modify protocol state
+- construct successor states
 
 # 5. Relationship to Protocol Operations
 
-Protocol enforcement evaluates the published operation.
+Operations request protocol transitions.
 
-It does not modify the operation.
+Protocol enforcement evaluates whether the requested transition is currently eligible.
+
+Operation identity is independent of enforcement outcome.
 
 # 6. Relationship to Transition Preconditions
 
-Protocol enforcement evaluates the published preconditions governing the requested transition.
+Transition preconditions define the published conditions required for eligibility.
 
-It neither defines nor modifies those preconditions.
+Protocol enforcement evaluates those conditions.
+
+It does not redefine them.
 
 # 7. Relationship to Protocol Transitions
 
-Protocol enforcement determines whether the requested transition is eligible.
+Transitions define semantic state mappings.
 
-It does not redefine transition semantics.
+Protocol enforcement determines only whether those mappings may be realized.
+
+Transition semantics remain unchanged regardless of eligibility.
 
 # 8. Relationship to Execution
 
-Execution realizes an eligible transition.
+Execution realizes eligible protocol transitions.
 
-Protocol enforcement does not perform execution.
+Protocol enforcement never performs execution.
+
+Execution remains a separate protocol concept.
 
 # 9. Determinism
 
 Given:
 
-    O = published protocol operation
+    O   = published protocol operation
 
-    T = transition requested by O
+    T   = transition requested by O
 
-    S = current protocol state
+    S   = current protocol state
 
     P_T = published preconditions of T
 
 the protocol defines:
 
+    E(O, S) ∈ { eligible, ineligible }
+
+where
+
     E(O, S) = eligible    iff P_T(S, O) = true
 
-Otherwise:
+    E(O, S) = ineligible  otherwise
 
-    E(O, S) = ineligible
+Protocol enforcement is therefore a deterministic function.
 
-Enforcement evaluates.
-
-Execution realizes.
+No implementation discretion exists within protocol semantics.
 
 # 10. Implementation Independence
 
-Protocol enforcement remains identical across all implementations.
+Protocol enforcement is independent of:
 
-Different implementations may realize enforcement differently without altering its published semantic identity.
+- implementations
+- smart contracts
+- APIs
+- RPC interfaces
+- execution engines
+- wallets
+- transport
+- storage mechanisms
+
+Implementations realize protocol enforcement.
+
+They do not redefine it.
 
 # 11. Protocol Authority
 
-Protocol enforcement is defined only by the published protocol generation.
+Protocol enforcement evaluates only published protocol semantics.
 
-Implementations realize published enforcement semantics.
+It does not introduce:
 
-They never redefine them.
+- implementation policy
+- heuristic evaluation
+- external trust decisions
+- implementation-specific rules
+
+Protocol authority remains with the published protocol generation.
 
 # 12. Conclusion
 
-Protocol enforcement is the deterministic evaluation of one published protocol operation against the published preconditions of its requested transition.
+Protocol enforcement is the deterministic evaluation of protocol eligibility.
 
-It determines eligibility only.
+It determines only whether a published protocol operation satisfies the published transition preconditions governing its requested transition.
 
-Execution, state mutation, and successor-state construction remain distinct protocol concepts.
+Execution, state mutation, and successor-state construction remain separate protocol concepts.
