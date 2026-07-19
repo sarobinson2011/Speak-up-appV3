@@ -268,7 +268,50 @@ If an integration preserves these obligations, it may consume the Privacy Engine
 
 If it violates these obligations, it becomes protocol-breaking even if the API calls still succeed.
 
-## 13. Conclusion
+## 13. Protocol, Implementation, and Operations Boundary
+
+Protocol, implementation, and operations are separate concerns.
+
+The protocol specifies externally relied-upon semantics.
+
+The implementation realizes those semantics.
+
+Operations sustain an implementation that continues to realize them.
+
+A conforming integrator must preserve:
+
+- published protocol semantics
+- published protocol invariants
+- published interfaces
+- published observable behaviour
+- published failure semantics
+
+Preserving those properties is mandatory.
+
+Preserving any particular internal implementation structure is not.
+
+Implementation substitution is permitted provided the published protocol semantics, interfaces, observable behaviour, and failure semantics remain invariant.
+
+Operational mechanisms may vary provided the implementation continues to preserve the published protocol requirements.
+
+The protocol intentionally does not prescribe:
+
+- treasury architecture
+- relay funding model
+- signer custody
+- RPC provider selection
+- execution topology
+- deployment architecture
+- operational monitoring
+- infrastructure platform
+
+These remain implementation and operational concerns.
+
+They must not become protocol requirements merely because one implementation uses them.
+
+Protocol authority ends at the externally relied-upon semantics.
+
+## 14. Conclusion
 
 Integrator compatibility is not merely API compatibility.
 
@@ -282,6 +325,16 @@ The Privacy Engine owns privacy semantics.
 
 The application owns application semantics.
 
-The boundary between them is the integration contract.
+A conforming Privacy Engine integrator must preserve the published protocol semantics and observable behaviour.
+
+Implementation architecture and operational provisioning remain intentionally outside protocol authority.
+
+The protocol specifies what must be preserved.
+
+The implementation determines how it is realized.
+
+Operations sustain a conforming implementation over time.
+
+The boundary between protocol authority and implementation freedom is the integration contract.
 
 That boundary must remain explicit, preserved, and non-negotiable.
