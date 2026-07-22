@@ -5,103 +5,135 @@ This document is supporting documentation only.
 
 # 1. Purpose of Protocol Operations
 
-A protocol operation defines the published request by which a protocol transition is evaluated.
+A protocol operation identifies one bounded protocol capability that may be realized by the Privacy Engine.
 
-Its purpose is to identify exactly one published transition for evaluation.
+Its purpose is to define what the protocol is capable of doing.
 
 It does not:
 
-- define protocol states
-- define protocol invariants
-- define transition semantics
-- determine eligibility
-- perform enforcement
-- perform execution
+- define execution
+- define representation
+- define transport
+- define implementation
+- define deployment
+- define application behaviour
 
 # 2. Definition of a Protocol Operation
 
-A protocol operation is an immutable published protocol request identifying one published transition for evaluation.
+A protocol operation is the bounded protocol capability identified by one published Privacy Engine interface contract.
 
-It defines the request.
+A protocol operation defines capability.
 
-It does not define the outcome.
+It does not define realization.
 
-# 3. Operation Identity
+# 3. Operation Scope
 
-Operation identity is defined by the published operation itself.
+A protocol operation defines:
 
-It is independent of:
+- one bounded protocol capability
+- the protocol behaviour that may be realized
+- protocol-owned semantics
 
-- implementations
-- execution mechanisms
-- transport
-- invocation method
+A protocol operation does not define:
 
-Changing implementation does not change operation identity.
+- execution machinery
+- implementation strategy
+- application structures
+- transport protocols
+- persistence
+- operational infrastructure
 
-# 4. Operation Scope
+# 4. Relationship to Interface Contracts
 
-A protocol operation identifies:
+Published interface contracts identify protocol operations.
 
-- one published transition
-- the request for evaluation
+Interface contracts publish protocol capabilities.
 
-It does not determine whether the transition may execute.
+Protocol operations are protocol-owned.
 
-# 5. Relationship to Protocol Transitions
+# 5. Relationship to Protocol Execution
 
-A protocol operation requests evaluation of exactly one published transition.
+Protocol execution realizes one protocol operation.
 
-Given:
+Execution performs realization.
 
-    O = published protocol operation
+Operations define capability.
 
-    T = published protocol transition
+Execution does not redefine capability.
 
-the protocol defines:
+# 6. Relationship to Published Results
 
-    O ⇒ request(T)
+Successful realization of one protocol operation produces one published result.
 
-Operations request transitions.
+Operations define capability.
 
-They do not redefine them.
+Published results define semantic outcome.
 
-# 6. Relationship to Transition Preconditions
+Capability precedes realization.
 
-Transition preconditions determine whether the requested transition is eligible.
+Realization precedes outcome.
 
-Operations neither satisfy nor modify those preconditions.
+Semantic invariant:
 
-# 7. Relationship to Enforcement
+> realize(E, O) → R
 
-Enforcement evaluates whether the requested transition satisfies its published preconditions.
+> semantics(O) = semantics(R)
 
-Enforcement is not part of the operation.
+# 7. Capability Identity
 
-# 8. Relationship to Execution
+A protocol operation has stable semantic identity independent of:
 
-Execution realizes a published transition after successful evaluation.
+- execution
+- representation
+- implementation
+- deployment
 
-Execution is not part of the operation.
+Its identity is defined solely by the published interface contract.
 
-# 9. Implementation Independence
+# 8. Compatibility and Change
 
-Operations remain identical across all implementations.
+Representations may change.
 
-Implementations may realize operations through different mechanisms without altering their published semantic identity.
+Implementations may change.
+
+Execution mechanisms may change.
+
+Published capability must remain stable.
+
+Compatibility is determined by preservation of published capability.
+
+# 9. Operation Authority
+
+Protocol operations are owned by the protocol.
+
+Applications consume protocol operations.
+
+Implementations realize protocol operations.
+
+Neither applications nor implementations acquire authority over protocol capability.
 
 # 10. Protocol Authority
 
-Operations are defined only by the published protocol generation.
+Protocol authority always remains with the published interface contract.
 
-Implementations may realize published operations.
+Protocol operations derive their authority from the published interface contract.
 
-They never redefine them.
+Execution does not create authority.
+
+Published results do not create authority.
 
 # 11. Conclusion
 
-A protocol operation is the immutable published request for evaluation of one published protocol transition.
+A protocol operation is the bounded protocol capability identified by one published Privacy Engine interface contract.
 
-It identifies what is requested.
+It defines capability.
 
-Eligibility, enforcement, execution, and resulting state remain distinct protocol concepts.
+It does not define execution.
+
+It does not define representation.
+
+Protocol execution realizes the operation.
+
+Published results express the semantic outcome.
+
+Protocol authority always remains with the published interface contract.
