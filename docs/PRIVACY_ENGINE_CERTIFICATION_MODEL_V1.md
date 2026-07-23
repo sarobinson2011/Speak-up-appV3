@@ -2,187 +2,178 @@
 
 STATE.md remains canonical.
 
-This document is supporting documentation only.
-
-If any conflict exists between this document and STATE.md, STATE.md governs.
-
 ---
 
 # 1. Purpose of Certification
 
-Protocol certification exists to publish objective evidence that a specific implementation conforms to a published Privacy Engine protocol generation.
+Certification exists to recognize whether one identified implementation faithfully realizes one identified published Privacy Engine protocol generation.
 
-Certification evaluates implementation claims.
+Certification belongs to the architectural evaluation layer.
 
-It does not define protocol truth.
+It does not define protocol semantics.
 
-It does not modify protocol semantics.
+It does not define implementation machinery.
+
+It does not define deployment behaviour.
 
 ---
 
 # 2. Definition of Certification
 
-Certification is the publication of objective conformance evidence for a specific implementation against a published Privacy Engine protocol generation.
+A Privacy Engine certification is the bounded architectural recognition that one identified implementation faithfully realizes one identified Privacy Engine protocol generation.
 
-Certification therefore answers one question only:
+Certification is therefore:
 
-> Does the published evidence demonstrate that this implementation conforms to the published protocol generation?
-
-Certification does not evaluate implementation quality, operational maturity, governance, deployment, or commercial suitability.
-
----
-
-# 3. Certification Target
-
-Certification evaluates an implementation.
-
-The protocol generation is not certified.
-
-The protocol generation already defines the required behaviour.
-
-Certification evaluates whether the implementation objectively demonstrates those published requirements.
-
-The certification target is therefore:
-
-- one implementation
-- one published protocol generation
-- one objective conformance determination
+- implementation-specific
+- protocol-generation-specific
+- semantic rather than operational
 
 ---
 
-# 4. Certification Evidence
+# 3. Certification Scope
 
-Certification evaluates only evidence relevant to published protocol obligations.
+A certification applies only to:
 
-Evidence must be objective.
+- one identified implementation
+- one identified protocol generation
+- the realization relationship between them
 
-Evidence must be reproducible.
+Certification does not apply to:
 
-Evidence must be traceable to the published protocol generation.
+- deployments
+- operational infrastructure
+- runtime behaviour
+- organisational processes
+- governance
+- administrative policy
+- implementation technology
 
-Certification must not evaluate requirements that are absent from the protocol.
-
-Certification must not invent additional implementation obligations.
-
-Evidence may include:
-
-- protocol generation identifier
-- implementation identifier
-- implementation version
-- protocol obligations evaluated
-- objective conformance artefacts
-- reproducible validation results
-
-The protocol generation remains the normative reference.
-
-Evidence exists only to demonstrate conformance to that reference.
+Those remain outside the certification boundary.
 
 ---
 
-# 5. Pass / Fail Determination
+# 4. Relationship to the Protocol Generation
+
+The published protocol generation remains the complete semantic authority.
+
+Certification recognizes whether an implementation faithfully realizes that generation.
+
+Certification does not:
+
+- modify protocol semantics
+- reinterpret protocol semantics
+- extend protocol semantics
+- replace protocol semantics
+
+The protocol generation always remains authoritative.
+
+---
+
+# 5. Relationship to Protocol Realization
+
+Protocol realization defines the semantic-preserving relationship between an implementation and a protocol generation.
+
+Certification recognizes whether that realization relationship exists.
+
+Therefore:
+
+    Protocol Realization
+        defines the relationship
+
+    Certification
+        recognizes the relationship
+
+Certification does not redefine realization.
+
+It recognizes realization.
+
+---
+
+# 6. Relationship to Implementations
+
+Implementations provide the concrete machinery that realizes one identified protocol generation.
+
+Certification applies to the implementation.
+
+Certification does not become part of the implementation.
+
+Likewise, the implementation does not become certification.
+
+The implementation remains implementation.
+
+Certification remains certification.
+
+---
+
+# 7. Certification Identity
+
+Certification possesses its own architectural identity.
+
+Implementation identity and certification identity are distinct.
+
+Therefore an implementation may exist in different certification states without changing:
+
+- protocol identity
+- protocol generation identity
+- implementation identity
+- deployment identity
+
+Examples include:
+
+- uncertified
+- certified
+- certification withdrawn
+
+These affect certification identity only.
+
+---
+
+# 8. Compatibility and Failure
 
 Certification is binary.
 
-## Pass
+Either:
 
-Certification passes when objective evidence demonstrates that all evaluated protocol obligations conform to the published protocol generation.
+    certified(I, G)
 
-## Fail
+or
 
-Certification fails when objective evidence does not demonstrate conformance to one or more evaluated protocol obligations.
+    ¬certified(I, G)
 
-Certification produces no intermediate outcomes.
+Failure means only that certification does not exist for the identified implementation and protocol generation.
 
-There are no maturity levels.
+Failure does not redefine:
 
-There is no partial certification.
-
-There is no scoring.
-
-There is no probabilistic certification.
+- protocol semantics
+- implementation identity
+- deployment identity
 
 ---
 
-# 6. Responsibilities of Certification Authors
+# 9. Protocol Authority
 
-Certification authors are responsible for:
+Certification never acquires protocol authority.
 
-- evaluating published protocol obligations only
-- evaluating objective evidence only
-- accurately reporting observed results
-- publishing sufficient evidence for independent review
-- distinguishing observation from interpretation
+Certification recognizes realization.
 
-Certification authors must not:
+Only the published protocol generation defines protocol semantics.
 
-- redefine protocol semantics
-- extend protocol semantics
-- weaken protocol obligations
-- strengthen protocol obligations
-- introduce unpublished requirements
-- infer protocol truth beyond published specifications
+Protocol authority always remains with the published protocol generation.
 
 ---
 
-# 7. Published Certification Record
+# 10. Conclusion
 
-Every certification shall publish enough information for independent verification.
+A Privacy Engine certification is the bounded architectural recognition that one identified implementation faithfully realizes one identified Privacy Engine protocol generation.
 
-The published record shall identify:
+It recognizes realization.
 
-- protocol generation
-- implementation
-- implementation version
-- protocol generation reference
-- protocol obligations evaluated
-- evidence references
-- conformance determination
-- overall result (Pass or Fail)
+It does not define protocol semantics.
 
-Certification records publish evidence.
+It does not define implementations.
 
-They do not become protocol specifications.
+It does not define deployments.
 
----
+It does not acquire protocol authority.
 
-# 8. Relationship to Protocol Truth
-
-Protocol truth is established by the published protocol generation.
-
-Certification neither creates nor modifies that truth.
-
-Certification cannot:
-
-- define protocol semantics
-- redefine protocol semantics
-- extend protocol semantics
-- replace protocol versioning
-- replace compatibility analysis
-- replace migration policy
-- replace protocol authority
-
-Certification may only evaluate whether published evidence demonstrates conformance to an already-defined protocol generation.
-
-If a certification conflicts with the published protocol generation, the protocol generation remains authoritative.
-
-Certification therefore remains subordinate to the protocol.
-
----
-
-# 9. Conclusion
-
-A Privacy Engine protocol generation defines normative truth.
-
-An implementation claims conformance to that generation.
-
-Certification evaluates objective evidence supporting or rejecting that claim.
-
-Compatibility determines whether protocol invariants are preserved.
-
-Certification determines whether a specific implementation objectively demonstrates those invariants.
-
-Certification never becomes protocol authority.
-
-It publishes evidence of conformance.
-
-Nothing more.
+Protocol authority always remains with the published protocol generation.
