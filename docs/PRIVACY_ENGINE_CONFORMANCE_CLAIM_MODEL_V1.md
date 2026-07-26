@@ -1,189 +1,173 @@
 # Privacy Engine Conformance Claim Model V1
 
 STATE.md remains canonical.
-This document is supporting documentation only.
 
 ---
 
 # 1. Purpose of Conformance Claims
 
-A conformance claim publishes an implementation's assertion that it conforms to one published Privacy Engine protocol generation.
+A Privacy Engine conformance claim exists to assert that one identified implementation realizes one identified published Privacy Engine protocol generation.
 
-Its purpose is to identify:
+It provides an architectural assertion.
 
-- the implementation making the claim
-- the protocol generation claimed against
-- the conformance relationship being asserted
-- the conformance package supporting the assertion
+It does not establish realization.
 
-A claim communicates an implementation position.
-
-It does not prove that position.
+It does not certify realization.
 
 ---
 
 # 2. Definition of a Conformance Claim
 
-A conformance claim is a declarative assertion that:
+A Privacy Engine conformance claim is an assertion that one identified implementation realizes one identified published Privacy Engine protocol generation.
 
-> one identified implementation conforms to one identified published Privacy Engine protocol generation.
+A conformance claim is an architectural assertion.
 
-A claim is not:
+It is not itself evidence.
 
-- protocol truth
-- conformance evidence
-- a conformance artifact
-- a conformance package
-- certification
-- proof of correctness
-
-A claim may be supported, evaluated, accepted, rejected, or withdrawn without changing protocol truth.
+It is not itself certification.
 
 ---
 
-# 3. Claim Scope
+# 3. Conformance Claim Scope
 
-A claim applies only to:
+A conformance claim is bounded.
+
+Each conformance claim refers to exactly:
 
 - one identified implementation
-- one published protocol generation
-- one immutable supporting conformance package
+- one identified published Privacy Engine protocol generation
 
-A claim asserts conformance only within the requirements and boundaries of the referenced protocol generation.
+A conformance claim does not refer to multiple protocol generations simultaneously.
 
-It does not assert:
-
-- conformance to another protocol generation
-- conformance by another implementation
-- general implementation quality
-- operational readiness
-- deployment correctness
-- implementation security beyond published protocol requirements
-- certification status
-
-A claim must not extend or reinterpret its referenced protocol generation.
+A conformance claim does not apply generically to all implementations.
 
 ---
 
-# 4. Claim Identity
+# 4. Relationship to the Protocol Generation
 
-Claim identity derives from the complete relationship between:
+The published protocol generation defines the protocol semantics.
 
-- implementation identity
-- protocol-generation identity
-- supporting conformance-package identity
+A conformance claim refers to that published protocol generation.
 
-Formally:
-
-> ClaimIdentity = ImplementationIdentity + ProtocolGenerationIdentity + PackageIdentity
-
-A change to any component produces a different claim.
-
-Claims referring to different implementations, protocol generations, or packages are not interchangeable.
-
-A claim must remain referenceable without introducing independent claim authority.
+It does not define, modify, reinterpret, or extend protocol semantics.
 
 ---
 
-# 5. Claim Relationship to Evidence
+# 5. Relationship to Protocol Realization
 
-Conformance evidence supports a claim.
+Protocol realization is the semantic relationship between an implementation and a published protocol generation.
 
-The claim and its evidence remain distinct.
+A conformance claim asserts that this realization exists.
 
-The claim states:
+Realization exists independently of the claim.
 
-> the implementation conforms.
-
-The evidence supports evaluation of that statement through objective implementation facts.
-
-A claim does not:
-
-- create evidence
-- alter evidence
-- determine evidence completeness
-- convert unsupported assertions into supported assertions
-
-Evidence may support or fail to support a claim.
-
-Neither result modifies protocol truth.
-
-The supporting conformance package provides the immutable publication boundary through which claim evidence is referenced.
+The claim neither creates nor alters realization.
 
 ---
 
-# 6. Relationship to Protocol Truth
+# 6. Relationship to Implementations
 
-A protocol generation defines the conformance requirements against which a claim is made.
+A conformance claim applies to one identified implementation.
 
-The claim remains subordinate to those requirements.
+It does not define implementation architecture.
 
-A claim cannot:
+It does not define implementation machinery.
 
-- define protocol semantics
-- modify protocol requirements
-- resolve protocol ambiguity
-- create compatibility
-- override published protocol identity
-- make an implementation conformant by declaration
+It does not define implementation identity.
 
-Formally:
-
-> ProtocolGeneration → defines required truth
-> Claim → asserts implementation preservation of that truth
-
-The protocol does not depend upon the claim.
-
-The claim depends upon the protocol.
+Implementations remain distinct architectural objects.
 
 ---
 
 # 7. Relationship to Certification
 
-A conformance claim is independent of certification.
+Certification is distinct from a conformance claim.
 
-An implementation may publish a claim without certification.
+A conformance claim asserts realization.
 
-Certification may evaluate the conformance package supporting that claim.
+Certification may:
 
-Certification does not create the claim and the claim does not imply certification.
+- recognize the asserted realization
+- reject the asserted realization
 
-The authorities remain separate:
+Certification evaluates the claim.
 
-- the implementation owns the claim
-- evidence authors own published implementation facts
-- the package identifies the immutable publication
-- certification owns its evaluation result
-- the protocol generation owns conformance truth
+It does not become the claim.
 
-A certification result may accept or reject a claim within its own evaluation scope.
-
-It cannot redefine the claim's referenced protocol generation.
+Likewise, the claim is not certification.
 
 ---
 
-# 8. Conclusion
+# 8. Conformance Claim Identity
 
-A conformance claim is a lightweight declarative assertion that one identified implementation conforms to one published Privacy Engine protocol generation.
+A conformance claim possesses its own architectural identity.
 
-Its identity derives from:
+Its identity is separate from:
 
-- the implementation
-- the protocol generation
-- the immutable supporting conformance package
+- protocol generation identity
+- protocol realization identity
+- implementation identity
+- deployment identity
+- certification identity
 
-Evidence supports the claim.
+A conformance claim identifies one assertion.
 
-Artifacts document objective implementation facts.
+It is not the realization itself.
 
-Packages publish those artifacts.
+---
 
-Certification evaluates the published package.
+# 9. Compatibility and Failure
 
-The claim itself proves nothing, certifies nothing, and defines no protocol truth.
+A conformance claim may be correct.
 
-A protocol generation defines truth.
+A conformance claim may be incorrect.
 
-An implementation claims conformance.
+Correctness is determined by whether the identified implementation actually realizes the identified published protocol generation.
 
-Each authority remains separate.
+A conformance claim does not itself establish realization.
+
+Therefore:
+
+> claim(C, I, G)
+
+does not imply:
+
+> realizes(I, G)
+
+Likewise:
+
+> ¬realizes(I, G)
+
+means the conformance claim is not valid.
+
+---
+
+# 10. Protocol Authority
+
+A conformance claim does not define protocol semantics.
+
+It does not define realization.
+
+It does not define implementations.
+
+It does not define deployments.
+
+It does not acquire protocol authority.
+
+Protocol authority always remains with the published protocol generation.
+
+---
+
+# 11. Conclusion
+
+A Privacy Engine conformance claim is the bounded architectural assertion that one identified implementation realizes one identified published Privacy Engine protocol generation.
+
+It asserts realization.
+
+It does not establish realization.
+
+It is distinct from certification.
+
+Certification may recognize or reject the asserted realization.
+
+Protocol authority always remains with the published protocol generation.
