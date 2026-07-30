@@ -1,215 +1,233 @@
 # Privacy Engine Protocol Generation Model V1
 
 STATE.md remains canonical.
-This document is supporting documentation only.
 
-# 1. Purpose of a Protocol Generation
+# 1. Purpose of Protocol Generations
 
-A protocol generation identifies one immutable published Privacy Engine protocol.
+The purpose of the Privacy Engine protocol generation model is to define the underlying semantic object upon which protocol publication, published protocol identity, protocol succession, and protocol lineage are constructed.
 
-Its purpose is to define the complete published semantic composition upon which all compatible implementations, applications, conformance assessments, certification activities, and future protocol evolution depend.
+A protocol generation exists independently of publication.
 
-A protocol generation defines one identifiable protocol.
+Publication changes publication state, not protocol identity.
 
-It does not:
-
-- define implementations
-- define deployments
-- define software releases
-- define operational infrastructure
-- define treasury management
-- define transport mechanisms
-- define application behaviour
+---
 
 # 2. Definition of a Protocol Generation
 
-A Privacy Engine protocol generation is one immutable published composition of interface contracts, protocol operations, semantic guarantees, and compatibility rules that together define one identifiable Privacy Engine protocol.
+A Privacy Engine protocol generation is one uniquely identified Privacy Engine protocol definition.
 
-It defines the authoritative semantic composition of one protocol generation.
+A protocol generation is the semantic object referenced throughout the Privacy Engine architecture.
 
-It does not define how those semantics are realized.
+It exists independently of publication.
 
-# 3. Generation Scope
+Publication neither creates nor replaces a protocol generation.
 
-A protocol generation contains exactly the published semantic definition of one protocol generation.
+---
 
-Its scope includes:
+# 3. Protocol Generation Scope
 
-- published interface contracts
-- published protocol operations
-- published semantic guarantees
-- published compatibility rules
+A protocol generation defines:
 
-Its scope excludes:
+- one complete protocol definition
+- one protocol identity
+- one semantic definition
 
-- implementations
-- deployments
-- smart contracts
-- relays
-- APIs
-- transport
-- databases
-- storage
-- infrastructure
-- treasury management
-- operational topology
-- monitoring
-- application behaviour
+A protocol generation does not define:
 
-# 4. Relationship to the Protocol
-
-The protocol generation defines one identifiable Privacy Engine protocol.
-
-The protocol is identified by its published generation.
-
-A protocol generation therefore provides the immutable semantic identity of the protocol.
-
-The protocol does not exist independently of its published generation.
-
-# 5. Generation Composition
-
-A protocol generation is composed exclusively of published protocol artifacts.
-
-These are:
-
-- published interface contracts
-- published protocol operations
-- published semantic guarantees
-- published compatibility rules
-
-Together they define one complete protocol generation.
-
-No implementation artifact forms part of the protocol generation.
-
-# 6. Relationship to Interface Contracts
-
-Every published interface contract belongs to exactly one protocol generation.
-
-Interface contracts publish the protocol operations belonging to that generation.
-
-An interface contract cannot simultaneously belong to multiple protocol generations.
-
-# 7. Relationship to Protocol Operations
-
-Every protocol operation belongs to exactly one protocol generation.
-
-Operations derive their published semantics from the protocol generation that owns them.
-
-Operations do not independently define protocol identity.
-
-# 8. Generation Identity
-
-A protocol generation is identified by its published semantic composition.
-
-Generation identity is independent of:
-
+- publication
 - implementation
-- deployment
-- software version
-- execution environment
-- operational infrastructure
+- realization
+- conformance
+- certification
+- compatibility
+- succession
+- lineage
 
-Different implementations may realize the same protocol generation.
+Those are distinct architectural relationships.
 
-Different deployments may realize the same protocol generation.
+---
 
-Generation identity remains unchanged.
+# 4. Relationship to Protocol Publication
 
-# 9. Immutability
+Protocol publication acts upon an identified protocol generation.
 
-Once published, a protocol generation is immutable.
+Publication is represented conceptually as:
 
-Published interface contracts, protocol operations, semantic guarantees, and compatibility rules cannot be modified within the same generation.
+> publication(Q, G)
 
-Implementations may evolve while preserving the published protocol generation.
+where:
 
-The protocol generation itself remains unchanged.
+- Q is one publication act
+- G is one protocol generation
 
-# 10. Compatibility and Succession
+Publication changes only publication state.
 
-Compatibility is defined relative to one identified protocol generation.
+Publication does not create a different protocol generation.
 
-A semantic change cannot occur within an existing protocol generation.
+---
 
-Instead:
+# 5. Relationship to the Published Protocol
 
-- semantic preservation retains the existing generation
-- semantic change creates a successor protocol generation
+A published protocol is the published state of one identified protocol generation.
+
+Conceptually:
+
+> generation(G)
+
+> publication(Q, G)
+
+> published(G)
+
+Publication therefore changes publication state only.
+
+It does not replace protocol identity.
+
+---
+
+# 6. Protocol Generation Identity
+
+Each protocol generation possesses exactly one unique protocol identity.
+
+Identity exists independently of publication.
 
 Therefore:
 
-> semantics(G') ≠ semantics(G)
-> → G' ≠ G
+> identity(G)
 
-Successor protocol generations establish new protocol identity.
+and after publication:
 
-# 11. Protocol Authority
+> published(G)
 
-Protocol authority belongs exclusively to the published protocol generation.
+> identity(G) preserved
 
-Implementations do not acquire protocol authority.
+Publication never produces a second protocol identity.
 
-Deployments do not acquire protocol authority.
+---
 
-Applications do not acquire protocol authority.
+# 7. Publication State
 
-Operational infrastructure does not acquire protocol authority.
+Publication introduces a publication state.
 
-The published protocol generation remains the sole authority defining protocol semantics.
+Conceptually:
 
-## Semantic Invariant
+> generation(G)
 
-Protocol generation:
+> ¬published(G)
 
-> G
+↓
 
-Composition:
+> publication(Q, G)
 
-> composition(G) =
-> {
->     contracts(G),
->     operations(G),
->     guarantees(G),
->     compatibility(G)
-> }
+↓
 
-Published relationships:
+> published(G)
 
-> contracts(G) publish operations(G)
+Identity remains unchanged throughout this transition.
 
-Semantic identity:
+Only publication state changes.
 
-> semantics(G) = immutable
+---
 
-For every operation:
+# 8. Semantic Change and New Generations
 
-> belongs(O, G)
+A protocol generation represents one semantic definition.
 
-> publish(C, O)
+If protocol semantics change, a different protocol generation exists.
 
-> semantics(O) ⊆ semantics(G)
+Conceptually:
 
-Generation rule:
+> semantics(G₂) ≠ semantics(G₁)
 
-> semantics(G') ≠ semantics(G)
->     → G' ≠ G
+↓
 
-# 12. Conclusion
+> G₂ ≠ G₁
 
-A Privacy Engine protocol generation is one immutable published composition of interface contracts, protocol operations, semantic guarantees, and compatibility rules that together define one identifiable Privacy Engine protocol.
+Publication never transforms one protocol generation into another.
 
-It defines the authoritative semantic composition of the protocol.
+Semantic evolution occurs only through the creation of a distinct protocol generation.
 
-It defines generation identity.
+---
 
-It does not define implementation.
+# 9. Relationship to Protocol Succession
 
-It does not define deployment.
+Protocol succession relates distinct published protocol generations.
 
-Implementations realize the protocol generation.
+Conceptually:
 
-Applications consume the protocol generation.
+> succession(G₂, G₁)
 
-Semantic change requires a successor protocol generation.
+Succession never changes the identity of either protocol generation.
+
+It establishes only an architectural ordering relationship.
+
+---
+
+# 10. Relationship to Protocol Lineage
+
+A protocol lineage is constructed from protocol succession relationships between published protocol generations.
+
+Each lineage member remains an independently identifiable protocol generation.
+
+Lineage records ordering.
+
+It does not merge protocol identities.
+
+---
+
+# 11. Relationship to Implementations
+
+Implementations realize published protocol generations.
+
+Implementations do not define protocol generations.
+
+Multiple independent implementations may realize the same protocol generation.
+
+---
+
+# 12. Relationship to Protocol Realization
+
+Protocol realization preserves the published semantics of one identified protocol generation.
+
+Realization operates on protocol generations.
+
+It does not redefine them.
+
+---
+
+# 13. Relationship to Conformance and Certification
+
+Conformance, certification, and compatibility evaluate implementations against published protocol generations.
+
+They do not establish protocol identity.
+
+They do not modify protocol generations.
+
+---
+
+# 14. Protocol Authority
+
+Protocol authority belongs to the published protocol generation.
+
+Publication does not create new authority.
+
+Implementations, realizations, conformance assessments, certifications, compatibility declarations, succession relationships, and protocol lineages never acquire protocol authority.
+
+Protocol authority always remains with the published protocol generation.
+
+---
+
+# 15. Conclusion
+
+A Privacy Engine protocol generation is one uniquely identified Privacy Engine protocol definition.
+
+Publication changes publication state.
+
+It does not create protocol identity.
+
+It does not replace protocol identity.
+
+Protocol succession orders protocol generations.
+
+Protocol lineage records those ordered relationships.
 
 Protocol authority always remains with the published protocol generation.
