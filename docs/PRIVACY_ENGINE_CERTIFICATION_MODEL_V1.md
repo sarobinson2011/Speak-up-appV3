@@ -2,178 +2,330 @@
 
 STATE.md remains canonical.
 
----
+# 1. Purpose
 
-# 1. Purpose of Certification
+This document defines the Privacy Engine Certification Model.
 
-Certification exists to recognize whether one identified implementation faithfully realizes one identified published Privacy Engine protocol generation.
+A Privacy Engine certification is the bounded architectural recognition of one
+identified implementation with respect to one identified implementation profile,
+based upon one or more identified conformance determinations, and issued by one
+identified certification authority.
 
-Certification belongs to the architectural evaluation layer.
+Certification is a recognition layer.
 
-It does not define protocol semantics.
+It neither performs implementation assessment nor creates protocol semantics.
 
-It does not define implementation machinery.
+# 2. Scope
 
-It does not define deployment behaviour.
+This document defines:
 
----
+- certification;
+- certification identity;
+- certification authority;
+- certification subject;
+- certification target;
+- certification scope;
+- certification basis;
+- certification determination;
+- certification status;
+- complete certification;
+- partial certification;
+- certification validity;
+- certification withdrawal and reassessment;
+- relationship to conformance;
+- relationship to testing;
+- relationship to evidence;
+- relationship to implementation claims;
+- relationship to compatibility;
+- preservation of protocol semantics;
+- protocol authority.
 
-# 2. Definition of Certification
+It does not define operational certification programs, auditor qualifications,
+commercial certification schemes, legal frameworks, accreditation systems,
+branding, certification marks, or business processes.
 
-A Privacy Engine certification is the bounded architectural recognition that one identified implementation faithfully realizes one identified Privacy Engine protocol generation.
+# 3. Primary Definition
 
-Certification is therefore:
+A Privacy Engine certification is the bounded architectural recognition of one
+identified implementation with respect to one identified implementation profile,
+based upon one or more identified conformance determinations, and issued by one
+identified certification authority.
 
-- implementation-specific
-- protocol-generation-specific
-- semantic rather than operational
+Certification recognizes conformance.
 
----
+It does not perform conformance assessment.
 
-# 3. Certification Scope
+It does not redefine protocol semantics.
 
-A certification applies only to:
+# 4. Certification Identity
 
-- one identified implementation
-- one identified protocol generation
-- the realization relationship between them
+Each certification possesses its own unique architectural identity.
 
-Certification does not apply to:
+Certification identity remains distinct from:
 
-- deployments
-- operational infrastructure
-- runtime behaviour
-- organisational processes
-- governance
-- administrative policy
-- implementation technology
+- implementation identity;
+- implementation profile identity;
+- conformance identity;
+- assessment identity;
+- certification authority identity.
 
-Those remain outside the certification boundary.
+Certification identity remains stable throughout the lifetime of that
+certification.
 
----
+# 5. Certification Authority
 
-# 4. Relationship to the Protocol Generation
+Every certification is issued by exactly one identified certification
+authority.
 
-The published protocol generation remains the complete semantic authority.
+The certification authority:
 
-Certification recognizes whether an implementation faithfully realizes that generation.
+- issues certification;
+- identifies the certification;
+- determines certification status.
 
-Certification does not:
+The certification authority does not:
 
-- modify protocol semantics
-- reinterpret protocol semantics
-- extend protocol semantics
-- replace protocol semantics
+- redefine protocol semantics;
+- redefine implementation profiles;
+- redefine conformance.
 
-The protocol generation always remains authoritative.
+# 6. Certification Subject
 
----
+The subject of a certification is exactly one identified implementation.
 
-# 5. Relationship to Protocol Realization
+Certification never certifies abstract protocol definitions, specifications,
+profiles, or reference implementations in the absence of an identified
+implementation.
 
-Protocol realization defines the semantic-preserving relationship between an implementation and a protocol generation.
+# 7. Certification Target
 
-Certification recognizes whether that realization relationship exists.
+The target of certification is exactly one identified implementation profile.
 
-Therefore:
+Certification recognizes conformance with respect to that profile only.
 
-    Protocol Realization
-        defines the relationship
+Certification does not broaden its target beyond the implementation profile on
+which it is based.
 
-    Certification
-        recognizes the relationship
+# 8. Certification Scope and Boundedness
 
-Certification does not redefine realization.
+Certification is explicitly bounded.
 
-It recognizes realization.
+Its scope is determined by:
 
----
+- the identified implementation;
+- the identified implementation profile;
+- the supporting conformance determination(s).
 
-# 6. Relationship to Implementations
+Certification applies only within that declared scope.
 
-Implementations provide the concrete machinery that realizes one identified protocol generation.
+No unstated scope is implied.
 
-Certification applies to the implementation.
+# 9. Certification Basis
 
-Certification does not become part of the implementation.
+Certification is based upon one or more identified conformance determinations.
 
-Likewise, the implementation does not become certification.
+Certification shall not exist without an explicit conformance basis.
 
-The implementation remains implementation.
+Testing, implementation claims, or evidence alone do not constitute
+certification.
 
-Certification remains certification.
+# 10. Certification Determination
 
----
+Certification records the architectural recognition issued by the certification
+authority.
 
-# 7. Certification Identity
+It is a recognition decision rather than an implementation assessment.
 
-Certification possesses its own architectural identity.
+Implementation assessment remains part of the conformance process.
 
-Implementation identity and certification identity are distinct.
+# 11. Certification Status
 
-Therefore an implementation may exist in different certification states without changing:
+Certification possesses an explicit status.
 
-- protocol identity
-- protocol generation identity
-- implementation identity
-- deployment identity
+Status represents the architectural state of the certification itself.
 
-Examples include:
+Certification status is distinct from:
 
-- uncertified
-- certified
-- certification withdrawn
+- implementation status;
+- project status;
+- protocol status;
+- compatibility status.
 
-These affect certification identity only.
+# 12. Complete Certification
 
----
+Complete certification recognizes conformance for the complete declared
+implementation profile within the declared certification scope.
 
-# 8. Compatibility and Failure
+No additional recognition is implied outside that scope.
 
-Certification is binary.
+# 13. Partial Certification
 
-Either:
+Partial certification recognizes only the bounded portion explicitly declared
+within the certification scope.
 
-    certified(I, G)
+Partial certification must not be interpreted as complete certification.
 
-or
+# 14. Certification Validity
 
-    ¬certified(I, G)
+Certification remains valid only while its declared basis remains valid.
 
-Failure means only that certification does not exist for the identified implementation and protocol generation.
+Changes affecting the certified implementation, implementation profile, or
+supporting conformance determination may invalidate certification.
 
-Failure does not redefine:
+Validity belongs to the certification.
 
-- protocol semantics
-- implementation identity
-- deployment identity
+It does not modify protocol semantics.
 
----
+# 15. Certification Withdrawal and Reassessment
 
-# 9. Protocol Authority
+Certification may be withdrawn by the issuing certification authority.
 
-Certification never acquires protocol authority.
+Certification may subsequently be reassessed using a new conformance
+determination.
 
-Certification recognizes realization.
+Withdrawal affects certification status only.
 
-Only the published protocol generation defines protocol semantics.
+It does not alter:
 
-Protocol authority always remains with the published protocol generation.
+- implementation identity;
+- protocol specification;
+- implementation profile;
+- protocol semantics.
 
----
+# 16. Relationship to Conformance
 
-# 10. Conclusion
+Conformance determines whether applicable requirements are satisfied.
 
-A Privacy Engine certification is the bounded architectural recognition that one identified implementation faithfully realizes one identified Privacy Engine protocol generation.
+Certification recognizes that conformance.
 
-It recognizes realization.
+Certification neither performs nor replaces conformance.
 
-It does not define protocol semantics.
+# 17. Relationship to Testing
 
-It does not define implementations.
+Testing may contribute evidence supporting conformance.
 
-It does not define deployments.
+Testing alone does not constitute certification.
 
-It does not acquire protocol authority.
+Certification is not a testing process.
 
-Protocol authority always remains with the published protocol generation.
+# 18. Relationship to Evidence
+
+Evidence may support conformance assessments.
+
+Certification recognizes the resulting conformance determination rather than the
+evidence itself.
+
+Evidence alone cannot establish certification.
+
+# 19. Relationship to Implementation Claims
+
+Implementation claims are declarations made by implementation authors or other
+parties.
+
+Certification is an architectural recognition issued by an identified
+certification authority.
+
+Claims and certification remain distinct.
+
+# 20. Relationship to Compatibility
+
+Certification does not define compatibility.
+
+Compatibility remains a separate architectural subject.
+
+Certification neither creates nor modifies compatibility relationships.
+
+# 21. Preservation of Protocol Semantics
+
+Certification preserves protocol semantics.
+
+Certification introduces no new protocol requirements.
+
+Certification introduces no alternative protocol interpretation.
+
+Certification introduces no competing semantic authority.
+
+Formally:
+
+    derives(S, P)
+
+    derives(F, S)
+
+    implements(I, F)
+
+    assesses(A, I, F)
+
+    determines(A, C)
+
+    issues(CA, T)
+
+    basedOn(T, C)
+
+    certifies(T, I, F)
+
+Architectural progression:
+
+    P -> S -> F -> I -> A -> C -> T
+
+Success path:
+
+    obligations
+        ->
+    realization
+        ->
+    assessment
+        ->
+    conformance
+        ->
+    certification
+
+Certification is therefore a preservation function over established
+conformance.
+
+# 22. Protocol Authority
+
+Certification is never protocol authority.
+
+Protocol authority always remains with the published Privacy Engine protocol
+generation.
+
+Certification cannot redefine:
+
+- protocol semantics;
+- implementation requirements;
+- implementation profiles;
+- conformance.
+
+# 23. Explicit Exclusions
+
+This document does not define:
+
+- auditor qualifications;
+- accreditation bodies;
+- certification programs;
+- trust frameworks;
+- legal obligations;
+- commercial branding;
+- certification marks;
+- implementation processes;
+- protocol governance.
+
+No additional architectural ontology is introduced.
+
+# 24. Conclusion
+
+A Privacy Engine certification is the bounded architectural recognition of one
+identified implementation with respect to one identified implementation profile,
+based upon one or more identified conformance determinations, and issued by one
+identified certification authority.
+
+Certification recognizes conformance.
+
+It does not perform assessment.
+
+It does not redefine protocol semantics.
+
+It does not become protocol authority.
+
+Protocol authority always remains with the published Privacy Engine protocol
+generation.
