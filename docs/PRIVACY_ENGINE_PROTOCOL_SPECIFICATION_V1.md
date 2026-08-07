@@ -11,7 +11,9 @@ Current composition status:
 
 - SF-01 — Authority, Scope, and Normative Interpretation: composed;
 - SF-02 — Protocol Generation, Publication, Versioning, and Lineage: composed;
-- SF-03–SF-16: not yet composed.
+- SF-03 — Protocol Terminology, Subjects, and Identifiers: composed;
+- SF-04 — Privacy, Actor Separation, and Compositional Unlinkability: composed;
+- SF-05–SF-16: not yet composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
@@ -47,7 +49,9 @@ reviews, or hidden development context.
 The current cumulative document composes:
 
 - SF-01 — Authority, Scope, and Normative Interpretation;
-- SF-02 — Protocol Generation, Publication, Versioning, and Lineage.
+- SF-02 — Protocol Generation, Publication, Versioning, and Lineage;
+- SF-03 — Protocol Terminology, Subjects, and Identifiers;
+- SF-04 — Privacy, Actor Separation, and Compositional Unlinkability.
 
 These sections authoritatively contain:
 
@@ -55,11 +59,20 @@ These sections authoritatively contain:
 - RF-02 — Protocol definition, scope, and invariant ownership;
 - RF-03 — Protocol generation, publication, and Published Protocol;
 - RF-04 — Succession, lineage, versioning, deprecation, and migration;
-- RF-05 — Normative language, interpretation, applicability, and strength.
+- RF-05 — Normative language, interpretation, applicability, and strength;
+- RF-06 — Protocol terminology;
+- RF-07 — Protocol subject identity and identity separation;
+- RF-08 — Protocol identifiers and occurrence identifiers;
+- RF-09 — Private actors and public protocol subjects;
+- RF-10 — Privacy, anonymity, and unlinkability;
+- RF-11 — Compositional privacy, observability, and forbidden correlation;
+- RF-15 — Anonymous membership, continuity, and enrollment separation;
+- RF-19 — Nullifier-based uniqueness and action-bounded unlinkability.
 
-The current document does not define the later operational, cryptographic,
-state-transition, application, implementation-profile, conformance, or
-certification requirements assigned to SF-03–SF-16.
+The current document does not define the later interface, proof, validity,
+Protocol Action lifecycle, Evaluation, Determination, state-transition,
+application, implementation-profile, conformance, or certification requirements
+assigned to SF-05–SF-16.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
@@ -213,6 +226,14 @@ The semantic-family codes introduced by this composition slice are:
 | PE-GEN-* | RF-03 | SF-02 |
 | PE-EVOL-* | RF-04 | SF-02 |
 | PE-NORM-* | RF-05 | SF-01 |
+| PE-TERM-* | RF-06 | SF-03 |
+| PE-SUBJ-* | RF-07 | SF-03 |
+| PE-ID-* | RF-08 | SF-03 |
+| PE-ACTSEP-* | RF-09 | SF-04 |
+| PE-PRIV-* | RF-10 | SF-04 |
+| PE-COMP-* | RF-11 | SF-04 |
+| PE-MEM-* | RF-15 | SF-04 |
+| PE-UNIQ-* | RF-19 | SF-04 |
 
 The numeric component is three digits and is allocated independently within
 each semantic family.
@@ -569,62 +590,376 @@ SF-01 and SF-02.
 | PE-GEN-019 | RF-03 | MUST | Every certification | A certification MUST identify the conformance basis and published Protocol Generation to which the certification applies. | S08, S10, S18 |
 | PE-GEN-020 | RF-03 | MUST NOT | Every downstream implementation or assessment artifact | A downstream implementation, profile, conformance determination, or certification MUST NOT modify the identity, semantics, obligations, lifecycle, or authority of its referenced published Protocol Generation. | S08, S10, S17, S18 |
 
-## 22. Current Composition Boundary
+## 22. SF-03 — Protocol Terminology, Subjects, and Identifiers
+
+SF-03 establishes the canonical terminology, subject identities, identifier
+boundaries, and relationship distinctions used by every later section.
+
+It identifies established subjects and preserves their distinctions.
+
+It does not compose their deferred operational lifecycles.
+
+### 22.1 Canonical Terms
+
+The following terms have the stated meanings throughout this specification:
+
+| Term | Canonical meaning |
+|---|---|
+| Protocol subject | An established semantic object, occurrence, process, result, mapping, relationship, or bounded supporting structure governed by the published protocol generation. |
+| Private Actor (`X`) | The private performer of a Protocol Action whose identity is not disclosed by the public protocol occurrence. |
+| Protocol Operation (`O`) | A published bounded protocol capability or behavior type; it is not one performed action occurrence. |
+| Protocol Action (`A`) | One identified public occurrence of protocol-defined behavior presented for Evaluation. |
+| Protocol Action Evaluation (`E`) | One identified bounded evaluation occurrence applying the complete applicable rule set to one Protocol Action in one bounded context. |
+| Protocol Action Determination (`D`) | The identified bounded result produced by one completed Protocol Action Evaluation. |
+| Protocol Transition (`T`) | A published semantic mapping between a bounded source-state class and a bounded successor-state class. |
+| Protocol State Transition (`U`) | One identified protocol-governed state-change occurrence governed by an applicable Protocol Transition mapping. |
+| Subject identifier (`id(S)`) | A value or coordinate that identifies one bounded protocol subject according to its declared role without becoming the subject itself. |
+| Representation | A syntactic, serialized, stored, transmitted, or displayed expression of a subject; it is not the semantic subject it represents. |
+| Public protocol subject | A protocol subject exposed to the extent required for public protocol use or verification without thereby exposing a Private Actor. |
+| Action-local public value | A public value whose permitted meaning and use are bounded to one action or action context. |
+| Application meaning | Meaning assigned by an application to a public protocol occurrence or consequence; it is not protocol identity or protocol validity. |
+
+The established protocol-use occurrence inventory contains four separately
+identified occurrences arranged within three model units:
+
+| Model unit | Identified occurrence | Identity boundary |
+|---|---|---|
+| Protocol Action | `A` | Public action-occurrence identity |
+| Evaluation and Determination | `E` | Evaluation-occurrence identity |
+| Evaluation and Determination | `D` | Determination-result identity, relationally dependent upon completed `E` |
+| Protocol State Transition | `U` | State-change-occurrence identity |
+
+Protocol Operation and Protocol Transition are classification or mapping
+constructs required by later operational sections. They are not silently
+collapsed into their associated occurrences.
+
+Private Actor is an established surrounding private subject. It does not
+become a public protocol occurrence.
+
+### 22.2 Canonical Relationship and Identity Invariants
+
+The type-and-occurrence distinctions are:
+
+> operationType(O)
+> =/=>
+> actionOccurrence(A)
+
+> transitionMapping(T)
+> =/=>
+> transitionOccurrence(U)
+
+The identified protocol-use occurrences remain distinct:
+
+> A != E
+
+> E != D
+
+> D != U
+
+Their identifiers remain non-substitutable:
+
+> id(A) != id(E)
+
+> id(E) != id(D)
+
+> id(D) != id(U)
+
+Relationships connect subjects without merging them:
+
+> evaluates(E, A) =/=> E = A
+
+> determinationOf(D, E) =/=> D = E
+
+> authorizedBy(U, D) =/=> U = D
+
+Subject, identifier, and representation remain distinct:
+
+> identifiesSubject(id(S), S) =/=> id(S) = S
+
+> represents(Rep, S) =/=> Rep = S
+
+### 22.3 RF-06 — Protocol Terminology
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-TERM-001 | RF-06 | MUST | Every use of a canonical Protocol Specification term | A canonical term MUST be interpreted according to its definition and bounded role in this specification. | S02, S17, S18 |
+| PE-TERM-002 | RF-06 | MUST | Every downstream section, profile, implementation, application adapter, assessment, and supporting artifact | Every downstream use of a canonical term MUST preserve the same subject, relationship, scope, and identity distinction established by this specification. | S02, S17, S18 |
+| PE-TERM-003 | RF-06 | MUST | Every term that may denote either a protocol type or an occurrence | A term that may denote either a type or an occurrence MUST explicitly preserve the applicable type-or-occurrence distinction. | S02, S23, S24, S26, S27 |
+| PE-TERM-004 | RF-06 | MUST | Every specification definition involving a semantic subject, identifier, or representation | The terminology used for a semantic subject, its identifier, and its representation MUST preserve those as distinct concepts. | S02, S17, S18 |
+| PE-TERM-005 | RF-06 | MUST NOT | Every alias, abbreviation, implementation name, application label, and editorial synonym | An alias, abbreviation, implementation name, application label, or editorial synonym MUST NOT silently redefine, merge, widen, or narrow a canonical protocol term. | S02, S17, S18, S28 |
+| PE-TERM-006 | RF-06 | MUST NOT | Every terminology decision and editorial reorganization | Terminology or editorial structure MUST NOT introduce a new first-class protocol subject, lifecycle, authority, or semantic boundary. | S02, S17, S18, S28 |
+| PE-TERM-007 | RF-06 | MUST | Every permitted local alias for a canonical protocol term | A permitted local alias MUST map explicitly and unambiguously to exactly one canonical term while preserving its protocol meaning. | S02, S17 |
+
+### 22.4 RF-07 — Protocol Subject Identity and Identity Separation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-SUBJ-001 | RF-07 | MUST | Every established identified protocol subject | Every established identified protocol subject MUST retain its own bounded identity according to its defined architectural role. | S17, S18, S24, S25, S27 |
+| PE-SUBJ-002 | RF-07 | MUST | Every Protocol Action, Protocol Action Evaluation, Protocol Action Determination, and Protocol State Transition | Protocol Action, Evaluation, Determination, and Protocol State Transition identities MUST remain mutually distinct. | S18, S24, S25, S27 |
+| PE-SUBJ-003 | RF-07 | MUST | Every Protocol Action Evaluation and its Protocol Action Determination | Evaluation and Determination MUST retain distinct process and result identities while remaining two bounded aspects of one architectural model. | S18, S25 |
+| PE-SUBJ-004 | RF-07 | MUST | Every Protocol Operation and associated Protocol Action | A Protocol Operation capability and each Protocol Action occurrence classified by it MUST remain distinct. | S02, S23, S24 |
+| PE-SUBJ-005 | RF-07 | MUST | Every Protocol Transition and governed Protocol State Transition | A Protocol Transition mapping and each Protocol State Transition occurrence governed by it MUST remain distinct. | S02, S26, S27 |
+| PE-SUBJ-006 | RF-07 | MUST | Every relationship between identified protocol subjects | Every subject relationship MUST preserve its declared direction, bounded meaning, and participating subject identities. | S17, S18 |
+| PE-SUBJ-007 | RF-07 | MUST | Every protocol subject referenced through an implementation, application, runtime mechanism, or application interpretation | A protocol subject MUST remain distinct from the implementation, application, runtime mechanism, and application-defined meaning through which it is represented or used. | S17, S18, S24 |
+| PE-SUBJ-008 | RF-07 | MUST | Every downstream representation or reference to an established protocol subject | Every downstream representation or reference MUST preserve the identity of the same established protocol subject rather than substitute a newly inferred subject. | S02, S17, S18 |
+| PE-SUBJ-009 | RF-07 | MUST NOT | Every relationship, composition, representation, and implementation convenience involving distinct subjects | A relationship, composition, representation, or implementation convenience MUST NOT silently merge distinct protocol subjects or their identities. | S17, S18, S24, S25, S27 |
+| PE-SUBJ-010 | RF-07 | MUST NOT | Every proposed extension to the established protocol-subject inventory | A proposed extension MUST NOT introduce a new first-class subject unless independent identity, meaning, semantic ownership, and irreducible lifecycle necessity are all established. | S17, S18, S28 |
+
+### 22.5 RF-08 — Protocol Identifiers and Occurrence Identifiers
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-ID-001 | RF-08 | MUST | Every protocol identifier | Every protocol identifier MUST possess one declared bounded role identifying exactly the subject or occurrence specified by that role. | S18, S24, S25, S27 |
+| PE-ID-002 | RF-08 | MUST | Every identified protocol subject and its identifier | A protocol subject and the identifier used to reference it MUST remain distinct. | S17, S18 |
+| PE-ID-003 | RF-08 | MUST | Every protocol subject and its syntactic, serialized, stored, transmitted, or displayed representation | A semantic protocol subject and each representation of it MUST remain distinct. | S02, S17, S18 |
+| PE-ID-004 | RF-08 | MUST NOT | Every relationship between separately identified protocol subjects | The identifier of one related protocol subject MUST NOT be substituted for the identifier of another subject. | S18, S24, S25, S27 |
+| PE-ID-005 | RF-08 | MUST NOT | Every identifier of a Protocol Action occurrence | A Protocol Action identifier MUST NOT identify, encode, imply, or reconstruct the Private Actor who performed the action. | S18, S24 |
+| PE-ID-006 | RF-08 | MUST NOT | Every public Evaluation, Determination, and Protocol State Transition identifier | An Evaluation, Determination, or Protocol State Transition identifier MUST NOT identify, encode, imply, or reconstruct a Private Actor. | S18, S25, S27 |
+| PE-ID-007 | RF-08 | MUST NOT | Every implementation, transaction, retry, transport-attempt, storage, or diagnostic identifier | An operational identifier MUST NOT silently become or redefine a protocol-subject or occurrence identifier. | S18, S24, S27 |
+| PE-ID-008 | RF-08 | MUST NOT | Every protocol identifier outside its declared subject and context | A protocol identifier MUST NOT be reused outside its declared role as a universal participant identifier, cross-subject join key, or cross-action identity mechanism. | S18, S24 |
+| PE-ID-009 | RF-08 | MUST | Every permitted change of protocol-subject representation | A representation change MUST preserve the identity, semantics, relationships, and bounded identifier role of the represented protocol subject. | S02, S17, S18 |
+
+## 23. SF-04 — Privacy, Actor Separation, and Compositional Unlinkability
+
+SF-04 establishes the identity and privacy requirements that every later
+protocol, application, implementation, observability, and assessment section
+must preserve.
+
+The governing principle is:
+
+> Private actors, public actions.
+
+A public Protocol Action may be visible and verifiable.
+
+Its visibility does not imply visibility of its Private Actor.
+
+> identifiesAction(id(A), A)
+> =/=>
+> identifiesActor(id(A), X)
+
+### 23.1 Identity-Bearing and Non-Identity-Bearing Roles
+
+Public and private values remain bounded to their protocol roles:
+
+| Value or identity surface | Bounded role | Prohibited interpretation |
+|---|---|---|
+| `memberSecret` | Private possession material from which anonymous membership identity derives | Public identifier, wallet credential, application identity, or backend recovery handle |
+| Membership leaf | Membership-layer representation derived from `memberSecret` | Public action identity or cross-action participant tag |
+| Nullifier | Public action-context uniqueness value | Private-actor identity or reusable cross-action participant identity |
+| Protocol Action identifier | Identifier of one public action occurrence | Identifier of the Private Actor |
+| Evaluation, Determination, or transition identifier | Identifier of its exact public protocol subject | Identifier of the Private Actor or a reusable participant |
+| Wallet identifier | Implementation or transaction context where present | Anonymous membership identity or Private Actor identity |
+| Application identifier | Application-owned context | Protocol identity or Private Actor identity |
+| Implementation or deployment identifier | Realization context | Protocol identity or Private Actor identity |
+| Transport identifier | Delivery context where unavoidable | Protocol identity, continuity authority, or Private Actor identity |
+
+### 23.2 RF-09 — Private Actors and Public Protocol Subjects
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-ACTSEP-001 | RF-09 | MUST | Every Privacy Engine realization of a public protocol action | Every realization MUST preserve the architectural principle `Private actors, public actions`. | S01, S18, S19, S21, S24 |
+| PE-ACTSEP-002 | RF-09 | MUST | Every publicly visible Protocol Action | A publicly visible Protocol Action MUST remain verifiable to its declared protocol extent without disclosure of the Private Actor. | S19, S21, S24, S29 |
+| PE-ACTSEP-003 | RF-09 | MUST | Every relationship between a Private Actor and a public Protocol Action | The performer relationship MUST preserve the Private Actor and Protocol Action as distinct subjects. | S18, S24 |
+| PE-ACTSEP-004 | RF-09 | MUST | Every publicly identified protocol subject | A public protocol-subject identifier MUST identify only its declared protocol subject and role. | S18, S21, S24 |
+| PE-ACTSEP-005 | RF-09 | MUST | Every public protocol consequence | A public protocol consequence MUST remain attributable to the applicable public protocol occurrence without becoming attributable to a disclosed Private Actor. | S18, S21, S24 |
+| PE-ACTSEP-006 | RF-09 | MUST NOT | Every Protocol Action validity, authorization, uniqueness, and public-consequence rule | A rule governing a public Protocol Action MUST NOT require disclosure of civil, wallet, enrollment, admission, application, implementation, deployment, or transport identity as Private Actor identity. | S19, S21, S24, S29 |
+| PE-ACTSEP-007 | RF-09 | MUST NOT | Every public Privacy Engine protocol surface | A public protocol surface MUST NOT require or create a reusable public participant identity. | S18, S19, S21, S22, S24 |
+
+### 23.3 RF-10 — Privacy, Anonymity, and Unlinkability
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-PRIV-001 | RF-10 | MUST | Every Privacy Engine protocol action governed by anonymous-participation semantics | The protocol action MUST permit verification of its applicable validity properties without disclosure of the Private Actor. | S01, S19, S21, S24 |
+| PE-PRIV-002 | RF-10 | MUST | Every public value and public protocol subject exposed by an anonymous action | Private Actor identity MUST remain non-inferable from each exposed value or subject within the protocol-defined privacy boundary. | S18, S19, S21, S24 |
+| PE-PRIV-003 | RF-10 | MUST | Every pair or collection of anonymous Protocol Actions in distinct action contexts | Cross-action unlinkability MUST be preserved unless the published protocol generation expressly defines a narrower public relationship that remains non-identifying. | S01, S18, S19, S21, S24 |
+| PE-PRIV-004 | RF-10 | MUST NOT | Every wallet identifier, wallet signature, wallet-derived value, and wallet relationship | Wallet identity MUST NOT be substituted for, used to infer, or represented as anonymous membership identity or Private Actor identity. | S01, S19, S20, S21, S22, S29 |
+| PE-PRIV-005 | RF-10 | MUST NOT | Every application identifier, account, profile, metadata value, and application-defined relationship | Application identity or application metadata MUST NOT be substituted for, used to infer, or represented as protocol identity or Private Actor identity. | S18, S20, S21, S29 |
+| PE-PRIV-006 | RF-10 | MUST NOT | Every implementation identifier and implementation-specific internal value | Implementation identity or internal implementation context MUST NOT be substituted for, used to infer, or represented as protocol identity or Private Actor identity. | S17, S18, S21 |
+| PE-PRIV-007 | RF-10 | MUST NOT | Every deployment identifier, topology coordinate, service identity, and infrastructure relationship | Deployment identity or infrastructure topology MUST NOT be substituted for, used to infer, or represented as protocol identity or Private Actor identity. | S18, S20, S21, S22 |
+| PE-PRIV-008 | RF-10 | MUST NOT | Every transport identifier, connection attribute, delivery path, retry path, and request context | Transport identity or delivery context MUST NOT be substituted for, used to infer, or represented as protocol identity or Private Actor identity. | S18, S20, S21, S22 |
+| PE-PRIV-009 | RF-10 | MUST NOT | Every enrollment right, admission object, funding relationship, sponsor relationship, and associated provenance | Enrollment, admission, funding, or sponsor provenance MUST NOT be carried into public-action identity or used as an action-layer correlation value. | S01, S19, S20, S21, S22, S29 |
+| PE-PRIV-010 | RF-10 | MUST | Every action-local public value | An action-local public value MUST remain bounded to its declared action role, action context, and permitted protocol interpretation. | S18, S19, S21, S24 |
+| PE-PRIV-011 | RF-10 | MUST | Every privacy-sensitive failure path | Failure handling MUST preserve Private Actor non-disclosure and the non-identity-bearing role of public values. | S18, S20, S21, S29 |
+| PE-PRIV-012 | RF-10 | MUST NOT | Every implementation, profile, application, conformance claim, diagnostic, and specification interpretation | A Privacy Engine artifact MUST NOT claim anonymity, unlinkability, metadata protection, or transport protection beyond the bounded guarantees of the identified published protocol generation. | S01, S02, S17, S18 |
+
+### 23.4 RF-11 — Compositional Privacy, Observability, and Forbidden Correlation
+
+Privacy must hold for public surfaces both individually and in composition:
+
+> nonIdentifying(S1)
+
+> and nonIdentifying(S2)
+
+> and ...
+
+> and nonIdentifying(Sn)
+
+> -> nonIdentifying(composition(S1, S2, ..., Sn))
+
+Therefore:
+
+> identifiesProtocolSubject(id(S1), S1)
+
+> and ...
+
+> identifiesProtocolSubject(id(Sn), Sn)
+
+> =/=> identifiesActor(composition(id(S1), ..., id(Sn)), X)
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-COMP-001 | RF-11 | MUST | Every composition of publicly exposed Privacy Engine values, subjects, consequences, and records | The composition MUST remain non-identifying for the Private Actor within the protocol-defined privacy boundary. | S02, S18, S20, S21, S22 |
+| PE-COMP-002 | RF-11 | MUST NOT | Every implementation-controlled identifier, timing label, diagnostic, serialization field, log field, storage key, route, and public response | An implementation-controlled surface MUST NOT create an actor-reconstruction, provenance, or unauthorized cross-action correlation bridge. | S01, S02, S18, S20, S21, S22, S29 |
+| PE-COMP-003 | RF-11 | MUST | Every privacy-sensitive field name, variable name, route name, log label, diagnostic, comment, example, test, serialization field, and specification term | Privacy-sensitive naming and documentation MUST use neutral terminology that preserves non-attribution and the bounded role of each value. | S01, S02, S18, S20, S21, S22 |
+| PE-COMP-004 | RF-11 | MUST | Every public observability surface | Public observability MUST expose only the minimum role-bounded information required by the applicable protocol semantics. | S01, S18, S20, S21, S22, S29 |
+| PE-COMP-005 | RF-11 | MUST | Every diagnostic and failure-reporting surface | A diagnostic MUST describe only the applicable protocol subject, status, or bounded failure classification without identifying or reconstructing the Private Actor. | S01, S18, S20, S21, S22 |
+| PE-COMP-006 | RF-11 | MUST NOT | Every request history, telemetry record, path-acquisition record, submission record, and operational history | Operational history or telemetry MUST NOT create a persistent relationship linking private participation across protocol layers or action contexts. | S01, S18, S20, S21, S22 |
+| PE-COMP-007 | RF-11 | MUST NOT | Every public protocol response, log, status surface, and diagnostic | A public surface MUST NOT expose unnecessary provenance, topology, route, provider, retry, fallback, or execution-path information capable of increasing actor correlation. | S01, S18, S20, S21, S22 |
+| PE-COMP-008 | RF-11 | MUST | Every information crossing between Privacy Engine layers | A layer boundary MUST pass only the minimum preserved output required by the receiving layer without carrying unrelated provenance or identity context from the preceding layer. | S01, S20, S21, S22 |
+| PE-COMP-009 | RF-11 | MUST | Every implementation composition exposing multiple individually non-identifying surfaces | The combined surface MUST be assessed and preserved as non-identifying rather than relying only on the independent safety of each component. | S02, S18, S20, S21, S22 |
+| PE-COMP-010 | RF-11 | MUST NOT | Every informative example, supporting cross-reference, test artifact, assessment record, and documentation surface | Supporting or informative material MUST NOT introduce a correlation or identity interpretation prohibited from normative runtime surfaces. | S01, S02, S17, S18 |
+
+### 23.5 RF-15 — Anonymous Membership, Continuity, and Enrollment Separation
+
+The anonymous-membership identity path is:
+
+> memberSecret
+> ->
+> leaf
+
+Continuity exists only through possession of the same original
+`memberSecret`.
+
+The leaf remains a membership-layer representation. It does not become public
+action identity.
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-MEM-001 | RF-15 | MUST | Every anonymous membership identity in the current published protocol generation | Anonymous membership identity MUST derive solely from private `memberSecret` possession through `leaf = Poseidon1(memberSecret)`. | S01, S19, S20, S21, S22 |
+| PE-MEM-002 | RF-15 | MUST | Every claim of anonymous membership continuity | Anonymous membership continuity MUST mean possession of the same original `memberSecret`. | S01, S19, S21, S22, S29 |
+| PE-MEM-003 | RF-15 | MUST | Every replacement of an active `memberSecret` with a different secret | A different `memberSecret` MUST establish a different anonymous membership identity. | S01, S19, S21, S22 |
+| PE-MEM-004 | RF-15 | MUST NOT | Every wallet, backend, application, deployment, transport, and heuristic recovery mechanism | A mechanism other than possession of the same original `memberSecret` MUST NOT establish, reconstruct, or simulate anonymous membership continuity. | S01, S19, S20, S21, S22, S29 |
+| PE-MEM-005 | RF-15 | MUST | Every membership leaf | A membership leaf MUST remain bounded to membership inclusion, path acquisition, and private proof-witness use according to the applicable protocol semantics. | S01, S19, S20, S21, S22 |
+| PE-MEM-006 | RF-15 | MUST | Every membership enrollment or activation | Enrollment or activation MUST attach membership only to the privately controlled membership material presented for that enrollment without importing funding provenance into membership identity. | S01, S19, S20, S21, S22 |
+| PE-MEM-007 | RF-15 | MUST NOT | Every enrollment right, admission object, funding wallet, sponsor relationship, and accounting state | An enrollment or admission artifact MUST NOT be represented as anonymous membership identity or Private Actor identity. | S01, S19, S20, S21, S22, S29 |
+| PE-MEM-008 | RF-15 | MUST NOT | Every public enrollment, membership-status, readiness, and application surface | A public surface MUST NOT expose a reusable mapping from enrollment or admission provenance to anonymous membership or public action occurrence. | S01, S19, S20, S21, S22, S29 |
+
+### 23.6 RF-19 — Nullifier-Based Uniqueness and Action-Bounded Unlinkability
+
+The current published protocol generation uses:
+
+> nullifier = Poseidon3(memberSecret, actionId, SIGN_DOMAIN)
+
+The nullifier establishes scoped uniqueness.
+
+It does not establish reusable participant identity.
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-UNIQ-001 | RF-19 | MUST | Every anonymous action type requiring one action per member per action context | Uniqueness MUST be enforced within the declared `(actionId, member)` scope. | S01, S19, S20, S21, S22, S24 |
+| PE-UNIQ-002 | RF-19 | MUST | Every nullifier in the current published protocol generation | A nullifier MUST be derived as `Poseidon3(memberSecret, actionId, SIGN_DOMAIN)`. | S01, S19, S20, S22 |
+| PE-UNIQ-003 | RF-19 | MUST | Every action-layer duplicate-prevention decision in the current published protocol generation | Nullifier status MUST remain the sole action-layer duplicate-prevention primitive. | S01, S19, S21, S22, S24 |
+| PE-UNIQ-004 | RF-19 | MUST NOT | Every public nullifier and nullifier-status record | A nullifier or its status MUST NOT be represented as Private Actor identity or reusable participant identity. | S01, S18, S19, S20, S21, S22, S24 |
+| PE-UNIQ-005 | RF-19 | MUST NOT | Every nullifier outside its declared action context | A nullifier MUST NOT be reused as a cross-action join key, participant tag, continuity handle, or global identity mechanism. | S01, S18, S19, S20, S21, S22, S24 |
+| PE-UNIQ-006 | RF-19 | MUST NOT | Every wallet identifier, membership leaf, enrollment identifier, admission object, and application account | A wallet, leaf, enrollment, admission, or application identifier MUST NOT replace the nullifier as the action-layer uniqueness key. | S01, S19, S20, S21, S22, S24 |
+| PE-UNIQ-007 | RF-19 | MUST NOT | Every duplicate-status response, log, diagnostic, event, and read model | Duplicate-status observability MUST NOT disclose or enable inference of the Private Actor beyond the bounded action-local uniqueness fact. | S01, S18, S20, S21, S22 |
+| PE-UNIQ-008 | RF-19 | MUST NOT | Every interpretation of nullifier-enforced uniqueness | Scoped nullifier uniqueness MUST NOT be represented as one-person, one-human, one-wallet, or globally reusable participant uniqueness. | S01, S19, S21, S22, S24 |
+
+## 24. Supporting Relationships and Deferred Operational Semantics
+
+SF-03 and SF-04 establish terminology, identity, and privacy dependencies for
+later sections.
+
+They do not yet compose the complete operational semantics of the subjects
+they identify.
+
+The following authoritative homes remain deferred:
+
+- interfaces, Protocol Operations, Published Results, requests, responses, and
+  adapters: SF-05 and SF-12;
+- proofs, declared public inputs, verification, evidence, and validity: SF-06;
+- Protocol Actions and applicable rules: SF-07;
+- Evaluation, Determination, acceptance, rejection, and accepted
+  no-transition behavior: SF-08;
+- protocol state, transition mappings, preconditions, transition occurrences,
+  authorization, execution, and commitment: SF-09 and SF-10;
+- history, public consequences, failure, staleness, and re-evaluation: SF-11;
+- runtime, implementation, realization, compatibility, profiles, and reference
+  implementations: SF-12–SF-14;
+- conformance and certification: SF-15;
+- protocol-semantic preservation and complete explicit exclusions: SF-16.
+
+References to these subjects in SF-03 and SF-04 establish only terminology,
+identity separation, or privacy dependencies.
+
+They do not relocate the later requirement families.
+
+RF-49 and RF-50 remain reserved to SF-16.
+
+## 25. Current Composition Boundary
 
 This cumulative document currently contains the authoritative normative homes
-for RF-01–RF-05 only.
+for:
+
+- RF-01–RF-11;
+- RF-15;
+- RF-19.
 
 The following section families remain deliberately uncomposed:
 
-- SF-03 — terminology and subject relationships;
-- SF-04 — identity and privacy;
-- SF-05 — interfaces and published results;
-- SF-06 — proof and public-input semantics;
-- SF-07 — validity and Protocol Actions;
+- SF-05 — interface contracts, protocol surfaces, operations, and results;
+- SF-06 — proofs, public inputs, verification, evidence, and validity;
+- SF-07 — Protocol Actions and applicable rules;
 - SF-08 — Evaluation, Determination, acceptance, and rejection;
-- SF-09 — protocol state;
-- SF-10 — transitions and commitment;
-- SF-11 — history and failure;
-- SF-12 — application boundaries;
-- SF-13 — implementation;
+- SF-09 — protocol state, transition semantics, preconditions, and
+  authorization;
+- SF-10 — transition execution, commitment, atomicity, and state evolution;
+- SF-11 — history, public consequences, failure, staleness, and re-evaluation;
+- SF-12 — application, adapter, runtime, and integration boundaries;
+- SF-13 — implementation, realization, compatibility, and migration;
 - SF-14 — implementation profiles and reference implementations;
 - SF-15 — conformance and certification;
-- SF-16 — semantic preservation and exclusions.
+- SF-16 — semantic preservation and explicit exclusions.
 
 Their absence is explicit and must not be interpreted as implicit definition,
 permission, prohibition, or completion.
 
 This slice does not define:
 
-- privacy subjects or privacy semantics;
-- proofs, proof systems, or public inputs;
-- Protocol Actions;
-- Evaluation or Determination;
-- acceptance or rejection;
-- Protocol State Transition occurrences;
-- application-specific meaning;
-- runtime execution;
+- interface-contract or concrete-interface semantics;
+- Published Result semantics;
+- proof construction or proof verification;
+- declared public-input schemas or ordering;
+- complete Protocol Action lifecycle or validity requirements;
+- complete Evaluation or Determination semantics;
+- acceptance or rejection requirements;
+- protocol-state or transition lifecycle requirements;
+- transition execution or commitment;
+- application request, response, or adapter behavior;
+- runtime or implementation mechanics;
 - blockchain consensus;
 - transaction formats;
-- transport;
-- relay mechanics;
+- transport or relay mechanics;
 - database or storage mechanics;
 - implementation profiles;
 - reference implementations;
 - conformance assessment;
 - certification;
 - RF-49 semantic-preservation requirements;
-- or RF-50 final exclusion requirements.
+- or RF-50 complete exclusion requirements.
 
 These are local composition-boundary statements. They do not relocate or
 duplicate the authoritative homes reserved for later requirement families.
 
-Privacy-language discipline remains mandatory throughout composition. This
-document introduces no actor identity, reusable participant identity,
-cross-action linkage, identity-bearing diagnostic, or runtime correlation
-identifier.
+The cumulative specification contains 152 stable normative requirements:
 
-## 23. Engineering[144] Traceability
+- 81 requirements preserved from SF-01 and SF-02;
+- 71 requirements composed through SF-03 and SF-04.
+
+The document remains incomplete until SF-05–SF-16 have been composed and the
+complete specification has passed final consolidation review.
+
+## 26. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -648,22 +983,33 @@ The source codes used in the normative requirement tables are:
 | S16 | `PRIVACY_ENGINE_DEPRECATION_AND_MIGRATION_MODEL_V1.md` |
 | S17 | `PRIVACY_ENGINE_FORMAL_ARCHITECTURE_CONSOLIDATION_REVIEW_V1.md` |
 | S18 | `PRIVACY_ENGINE_PROTOCOL_USE_CHAIN_CONSOLIDATION_REVIEW_V1.md` |
+| S19 | `PRIVACY_ENGINE_DEFINITION.md` |
+| S20 | `PRIVACY_ENGINE_LAYER_INTERFACE_MAP_V1.md` |
+| S21 | `PRIVACY_ENGINE_PROTOCOL_BOUNDARY_V1.md` |
+| S22 | `PRIVACY_ENGINE_PROTOCOL_SURFACE_V1.md` |
+| S23 | `PRIVACY_ENGINE_PROTOCOL_OPERATION_MODEL_V1.md` |
+| S24 | `PRIVACY_ENGINE_PROTOCOL_ACTION_MODEL_V1.md` |
+| S25 | `PRIVACY_ENGINE_PROTOCOL_ACTION_EVALUATION_MODEL_V1.md` |
+| S26 | `PRIVACY_ENGINE_PROTOCOL_TRANSITION_MODEL_V1.md` |
+| S27 | `PRIVACY_ENGINE_PROTOCOL_STATE_TRANSITION_MODEL_V1.md` |
+| S28 | `PRIVACY_ENGINE_PROTOCOL_CLAIM_ASSESSMENT_V1.md` |
+| S29 | `PRIVACY_ENGINE_APPLICATION_ADAPTER_CONTRACT_V1.md` |
 
 Source references record semantic provenance and composition support.
 
 They do not create independent normative authority.
 
-The authoritative normative home of each Engineering[144] requirement is the
-SF-01 or SF-02 section in which that requirement appears.
+The authoritative normative home of each requirement is the composed SF-01,
+SF-02, SF-03, or SF-04 section containing its requirement family.
 
-The traceability direction is:
+The traceability direction remains:
 
 > established formal source
 > -> normative requirement family
 > -> one authoritative specification destination
 > -> stable normative requirement
 
-The composition invariants are:
+The composition invariants remain:
 
 > oneSemanticRequirement(R)
 > ->
@@ -687,34 +1033,61 @@ The composition invariants are:
 
 Traceability organizes established semantics. It does not redefine them.
 
-## 24. Conclusion
+## 27. Conclusion
 
-SF-01 and SF-02 establish the normative foundation of the cumulative Privacy
-Engine Protocol Specification.
+SF-01 through SF-04 now establish the cumulative normative foundation,
+protocol-generation model, canonical terminology, subject-identity model, and
+privacy model of the Privacy Engine Protocol Specification.
 
-They define:
+SF-03 establishes:
 
-- specification identity, derivation, status, scope, and completeness;
-- normative language, applicability, identifiers, and traceability;
-- the Privacy Engine Protocol and its invariant ownership;
-- Protocol Generation identity and completeness;
-- Protocol Publication;
-- Published Protocol identity and immutability;
-- Protocol Succession;
-- Protocol Lineage;
-- versioning and semantic change;
-- compatible and breaking evolution;
-- deprecation and migration;
-- coexistence and retirement;
-- and downstream generation-reference requirements.
+- canonical protocol terminology;
+- stable subject interpretation;
+- the complete identified protocol-use occurrence inventory;
+- subject-identity separation;
+- type-and-occurrence separation;
+- subject, identifier, and representation separation;
+- relationship direction and boundedness;
+- downstream preservation of subject identity;
+- and the prohibition of terminology-based ontology expansion.
 
-Protocol, Protocol Generation, Protocol Publication, Published Protocol,
-Protocol Succession, and Protocol Lineage remain distinct.
+SF-04 establishes:
+
+- Private Actors and public Protocol Actions;
+- public action visibility without Private Actor disclosure;
+- anonymous-membership identity and continuity boundaries;
+- action-local public representation;
+- nullifier-based scoped uniqueness;
+- cross-action unlinkability;
+- separation from wallet, application, implementation, deployment, and
+  transport identity;
+- compositional privacy;
+- privacy-preserving observability and diagnostics;
+- and privacy-language discipline across runtime and documentation surfaces.
+
+Protocol Operation remains distinct from Protocol Action occurrence.
+
+Protocol Transition remains distinct from Protocol State Transition
+occurrence.
+
+Protocol Action, Evaluation, Determination, and Protocol State Transition
+retain their separate identities.
+
+Private Actor remains distinct from every public protocol subject and public
+consequence.
+
+No reusable participant identity, cross-action identity mechanism, or
+actor-reconstruction bridge is introduced.
+
+No Protocol Claim or other new first-class subject is introduced.
+
+The 81 requirements established by SF-01 and SF-02 remain unchanged.
+
+The cumulative Protocol Specification now contains 152 stable normative
+requirements and is ready to receive SF-05 through SF-07 without reopening the
+ontology or redefining privacy.
 
 The Protocol Specification remains derived, portable, implementation-facing,
 and non-authoritative.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
-
-The cumulative Protocol Specification is ready to receive SF-03 and SF-04
-without reopening the ontology or redefining the requirements composed here.
