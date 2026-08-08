@@ -16,7 +16,8 @@ Current composition status:
 - SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results: composed;
 - SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity: composed;
 - SF-07 — Protocol Actions and Applicable Rules: composed;
-- SF-08–SF-16: not yet composed.
+- SF-08 — Evaluation, Determination, Acceptance, and Rejection: composed;
+- SF-09–SF-16: not yet composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
@@ -28,7 +29,7 @@ been composed.
 No absent section, deferred requirement family, supporting reference, or
 informative statement may be treated as implicitly completed.
 
-The current composition boundary is defined in Section 28.
+The current composition boundary is defined in Section 29.
 
 ## 2. Purpose
 
@@ -57,7 +58,8 @@ The current cumulative document composes:
 - SF-04 — Privacy, Actor Separation, and Compositional Unlinkability;
 - SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results;
 - SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity;
-- SF-07 — Protocol Actions and Applicable Rules.
+- SF-07 — Protocol Actions and Applicable Rules;
+- SF-08 — Evaluation, Determination, Acceptance, and Rejection.
 
 These sections authoritatively contain:
 
@@ -80,14 +82,19 @@ These sections authoritatively contain:
 - RF-18 — Evidence, protocol validity, and non-proof validity conditions;
 - RF-19 — Nullifier-based uniqueness and action-bounded unlinkability;
 - RF-20 — Protocol Actions;
-- RF-21 — Applicable protocol-rule sets and action validity.
+- RF-21 — Applicable protocol-rule sets and action validity;
+- RF-22 — Protocol Action Evaluation;
+- RF-23 — Protocol Action Determination;
+- RF-24 — Acceptance and rejection;
+- RF-25 — Accepted no-transition behavior.
 
-The current document does not define the later Evaluation, Determination,
-acceptance, rejection, protocol-state, transition, application, runtime,
-implementation, implementation-profile, conformance, or certification
-requirements assigned to SF-08–SF-16.
+The current document does not define the later protocol-state, transition,
+application, runtime, implementation, implementation-profile, conformance, or
+certification requirements assigned to SF-09–SF-16.
 
 RF-14 remains assigned to SF-12.
+
+RF-26 remains assigned to SF-09.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
@@ -1383,10 +1390,599 @@ Evaluation and producing the Determination.
 | PE-RULE-011 | RF-21 | MUST NOT | Every implementation, transaction, transport, retry, storage, and diagnostic identifier | An operational identifier MUST NOT determine, replace, merge, or redefine Protocol Action identity, rule applicability, or protocol validity. | S18, S20, S24 |
 | PE-RULE-012 | RF-21 | MUST | Every Protocol Action prepared for complete Evaluation | The Action, complete applicable rule set, and bounded evaluation context MUST be available as distinct preserved inputs to SF-08 without pre-emptively defining Evaluation, Determination, acceptance, or rejection. | S02, S18, S24, S25 |
 
-## 27. Supporting Relationships and Deferred Operational Semantics
+## 27. SF-08 — Evaluation, Determination, Acceptance, and Rejection
+
+SF-08 defines the complete implementation-facing Evaluation and Determination
+boundary for one identified Protocol Action.
+
+Let:
+
+- `A` be one Protocol Action;
+- `E` be one Protocol Action Evaluation;
+- `D` be one Protocol Action Determination;
+- `R` be the complete applicable protocol-rule set;
+- `C` be the bounded evaluation context;
+- `V` be one proof-verification occurrence;
+- `Z` be one proof;
+- `PI` be the declared public inputs;
+- `X` be a Private Actor;
+- `U` be a possible Protocol State Transition.
+
+The occurrence inventory remains:
+
+> A != E
+
+> E != D
+
+> D != U
+
+Evaluation is the process.
+
+Determination is the result of completed Evaluation.
+
+They possess distinct identities and meanings while remaining two bounded
+aspects of one architectural model.
+
+No Evaluation Outcome object, acceptance object, or rejection object is
+introduced.
+
+### 27.1 Protocol Action Evaluation
+
+A Privacy Engine Protocol Action Evaluation is one identified, bounded
+occurrence that evaluates one identified Protocol Action against the complete
+applicable protocol-rule set within one bounded evaluation context.
+
+The core relationships are:
+
+> evaluates(E, A)
+
+> applies(E, R)
+
+> evaluatedIn(E, C)
+
+Evaluation may begin only when `A`, `R`, and `C` have been established.
+
+> begins(E, A, R, C)
+> ->
+> fixedScope(E, A, R, C)
+
+Once Evaluation begins, the Action, rule set, and context are fixed.
+
+An implementation must not silently substitute, merge, widen, narrow, repair,
+or infer a replacement Action, rule set, or context.
+
+Where the required Action, complete applicable rule set, or bounded context
+cannot be established before Evaluation begins, the condition is
+pre-evaluation failure.
+
+Pre-evaluation failure does not create an authoritative Evaluation or
+Determination.
+
+Evaluation may contain bounded components for:
+
+- action-type validity;
+- declared public-input validity;
+- proof-verification requirements;
+- proof-to-public-input coherence;
+- non-proof validity conditions;
+- protocol-state requirements;
+- accepted-root requirements;
+- uniqueness requirements;
+- domain-separation requirements;
+- temporal requirements;
+- and every other applicable protocol rule.
+
+Each component evaluates only its assigned requirement or explicitly assigned
+subset of `R`.
+
+> componentOf(K, E)
+
+> evaluatesAssignedRequirements(K, RK)
+
+> RK subsetOf R
+
+A component does not become complete Evaluation unless its assigned rule set is
+the complete applicable rule set.
+
+Proof verification is one possible bounded component:
+
+> verifies(V, Z, PI)
+
+> contributesTo(V, E)
+
+Proof verification remains evidence.
+
+It does not become Evaluation or directly produce Determination, acceptance, or
+rejection.
+
+Evaluation completeness is:
+
+> complete(E)
+> iff
+> evaluatesAll(E, R, A, C)
+
+Completeness requires:
+
+- every applicable rule was evaluated;
+- every required component was performed;
+- every component remained within its assignment;
+- all required component results were available;
+- the results were coherently combined;
+- and no applicable rule was omitted, substituted, weakened, repaired, or
+  inferred.
+
+A partial or incomplete Evaluation cannot produce a Determination.
+
+Evaluation failure occurs when Evaluation begins with fixed `A`, `R`, and `C`
+but cannot complete.
+
+> evaluationFailure(E)
+> ->
+> not existsProtocolActionDetermination(D, E)
+
+Evaluation failure is neither acceptance nor rejection.
+
+### 27.2 RF-22 — Protocol Action Evaluation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-EVAL-001 | RF-22 | MUST | Every Protocol Action Evaluation | A Protocol Action Evaluation MUST possess one stable occurrence identity identifying exactly one bounded Evaluation occurrence. | S01, S02, S18, S25 |
+| PE-EVAL-002 | RF-22 | MUST | Every Protocol Action Evaluation | An Evaluation MUST evaluate exactly one identified Protocol Action. | S18, S24, S25 |
+| PE-EVAL-003 | RF-22 | MUST | Every Protocol Action Evaluation | An Evaluation MUST apply exactly one complete applicable protocol-rule set established for the evaluated Action. | S18, S24, S25, S33 |
+| PE-EVAL-004 | RF-22 | MUST | Every Protocol Action Evaluation | An Evaluation MUST occur within exactly one bounded protocol-relevant evaluation context. | S18, S24, S25 |
+| PE-EVAL-005 | RF-22 | MUST | Every candidate entering the authoritative Evaluation boundary | Authoritative Evaluation MUST begin only after the Action, complete applicable rule set, and bounded evaluation context have been established as distinct inputs. | S18, S24, S25 |
+| PE-EVAL-006 | RF-22 | MUST | Every Protocol Action Evaluation after Evaluation begins | The Evaluation MUST preserve its identified Action, complete applicable rule set, and bounded evaluation context throughout the Evaluation. | S18, S25 |
+| PE-EVAL-007 | RF-22 | MUST NOT | Every Protocol Action Evaluation after Evaluation begins | An Evaluation MUST NOT substitute, merge, widen, narrow, repair, or infer a replacement Action, rule set, or evaluation context. | S18, S25 |
+| PE-EVAL-008 | RF-22 | MUST | Every complete Protocol Action Evaluation | A complete Evaluation MUST evaluate every applicable protocol rule governing the identified Action in the identified context. | S18, S24, S25 |
+| PE-EVAL-009 | RF-22 | MUST | Every Evaluation component | An Evaluation component MUST possess an explicit assignment to one applicable requirement or one bounded subset of the complete applicable rule set. | S18, S25, S33 |
+| PE-EVAL-010 | RF-22 | MUST | Every Evaluation component | An Evaluation component MUST evaluate only the applicable requirement or bounded subset assigned to that component. | S18, S25, S33 |
+| PE-EVAL-011 | RF-22 | MUST NOT | Every Evaluation component whose assigned rules are not the complete applicable rule set | A bounded component MUST NOT be represented as complete Protocol Action Evaluation. | S18, S25, S33 |
+| PE-EVAL-012 | RF-22 | MUST | Every Evaluation containing multiple required components | The Evaluation MUST coherently combine every required component result before determining whether the Evaluation is complete. | S18, S25 |
+| PE-EVAL-013 | RF-22 | MUST | Every proof-verification occurrence contributing to Evaluation | Proof verification MUST remain bounded evidence concerning the declared proof relation and declared public inputs. | S18, S25 |
+| PE-EVAL-014 | RF-22 | MUST | Every relationship between proof verification and Protocol Action Evaluation | Proof verification MUST remain distinct from the complete Evaluation to which it contributes. | S02, S18, S25 |
+| PE-EVAL-015 | RF-22 | MUST NOT | Every proof-verification result | A proof-verification result MUST NOT directly produce a Protocol Action Determination, acceptance classification, or rejection classification. | S02, S18, S25 |
+| PE-EVAL-016 | RF-22 | MUST | Every Evaluation whose applicable rule set contains non-proof validity conditions | The Evaluation MUST evaluate every applicable non-proof validity condition independently of proof-verification success. | S18, S24, S25 |
+| PE-EVAL-017 | RF-22 | MUST | Every Protocol Action Evaluation completeness classification | An Evaluation MUST be classified as complete exactly when it has evaluated every applicable rule for the identified Action within the identified context. | S18, S25 |
+| PE-EVAL-018 | RF-22 | MUST NOT | Every partial or incomplete Protocol Action Evaluation | A partial or incomplete Evaluation MUST NOT produce a Determination, acceptance classification, or rejection classification. | S18, S25 |
+| PE-EVAL-019 | RF-22 | MUST NOT | Every Evaluation failure and every pre-evaluation failure | Evaluation failure or pre-evaluation failure MUST NOT be represented as a completed Evaluation or as producing a Protocol Action Determination. | S18, S25 |
+| PE-EVAL-020 | RF-22 | MUST NOT | Every Evaluation component, identifier, evidence record, representation, diagnostic, log, field, route, test, example, and observability surface | An Evaluation surface MUST NOT identify the Private Actor, extend evidence into actor identification, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S18, S20, S25 |
+
+### 27.3 Protocol Action Determination
+
+A Privacy Engine Protocol Action Determination is the identified and bounded
+authoritative result of one completed Protocol Action Evaluation.
+
+“Authoritative” means authoritative only within the Determination's bounded
+classification role.
+
+It does not assign protocol authority to `D`.
+
+Every completed Evaluation produces exactly one Determination:
+
+> complete(E)
+> ->
+> producesExactlyOne(E, D)
+
+Every Determination derives from exactly one completed Evaluation:
+
+> produces(E, D)
+> ->
+> complete(E)
+
+> determinationOf(D, E)
+
+The relationship is bidirectionally bounded:
+
+> complete(E)
+> <->
+> producesExactlyOne(E, D)
+
+A Determination identifies:
+
+- exactly one completed Evaluation;
+- exactly one evaluated Protocol Action;
+- exactly one complete applicable protocol-rule set;
+- exactly one bounded evaluation context;
+- and exactly one acceptance or rejection classification.
+
+The relationships are:
+
+> determines(D, A)
+
+> determinedUnder(D, R)
+
+> determinedIn(D, C)
+
+A Determination is distinct from:
+
+- the Evaluation that produced it;
+- a proof-verification result;
+- a Published Result;
+- an Evaluation Outcome object;
+- a Protocol State Transition;
+- a committed public protocol-state consequence;
+- application truth;
+- and protocol authority.
+
+Equivalent correct Evaluations must produce equivalent Determinations where
+the Action and applicable rules are the same and the contexts are equivalent:
+
+> sameAction(A)
+> and sameRules(R)
+> and equivalentContext(C1, C2)
+> and correct(E1)
+> and correct(E2)
+> and produces(E1, D1)
+> and produces(E2, D2)
+> ->
+> equivalentDetermination(D1, D2)
+
+Materially different contexts may produce different protocol-validity
+classifications:
+
+> not equivalentContext(C1, C2)
+> and protocolValid(A, C1)
+> =/=>
+> protocolValid(A, C2)
+
+Context dependence does not create implementation discretion.
+
+### 27.4 RF-23 — Protocol Action Determination
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-DETERM-001 | RF-23 | MUST | Every Protocol Action Determination | A Protocol Action Determination MUST possess one stable result identity identifying exactly one bounded Determination. | S01, S02, S18, S25 |
+| PE-DETERM-002 | RF-23 | MUST | Every relationship between a Protocol Action Evaluation and its Determination | The Evaluation process and resulting Determination MUST remain separately identified and semantically distinct. | S17, S18, S25 |
+| PE-DETERM-003 | RF-23 | MUST | Every completed Protocol Action Evaluation | A completed Evaluation MUST produce exactly one Protocol Action Determination. | S18, S25 |
+| PE-DETERM-004 | RF-23 | MUST | Every Protocol Action Determination | A Determination MUST derive from exactly one completed Protocol Action Evaluation. | S18, S25 |
+| PE-DETERM-005 | RF-23 | MUST | Every Protocol Action Determination | A Determination MUST identify exactly one producing completed Evaluation, one evaluated Action, one complete applicable rule set, and one bounded evaluation context. | S18, S25 |
+| PE-DETERM-006 | RF-23 | MUST | Every valid Protocol Action Determination | A valid Determination MUST contain exactly one acceptance or rejection classification defined by RF-24. | S18, S25 |
+| PE-DETERM-007 | RF-23 | MUST NOT | Every incomplete or failed Protocol Action Evaluation | An incomplete or failed Evaluation MUST NOT be treated as possessing or producing a Protocol Action Determination. | S18, S25 |
+| PE-DETERM-008 | RF-23 | MUST | Every Protocol Action Determination and proof-verification result | A Determination MUST remain distinct from every proof-verification occurrence and proof-verification result contributing to its Evaluation. | S02, S18, S25 |
+| PE-DETERM-009 | RF-23 | MUST | Every Protocol Action Determination and Published Result | A Determination MUST remain distinct from every interface-level Published Result and its concrete representation. | S02, S18, S25, S32 |
+| PE-DETERM-010 | RF-23 | MUST | Every Protocol Action Determination and possible Protocol State Transition | A Determination MUST remain distinct from transition identity, transition execution, commitment, and every committed public protocol-state consequence. | S18, S25, S27 |
+| PE-DETERM-011 | RF-23 | MUST NOT | Every Determination identifier, representation, diagnostic, log, field, route, test, example, and observability surface | A Determination surface MUST NOT identify the Private Actor, become reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S18, S20, S25 |
+| PE-DETERM-012 | RF-23 | MUST | Every pair of correct Evaluations of the same Action under the same applicable rules and equivalent contexts | The Evaluations MUST produce equivalent acceptance or rejection Determinations. | S18, S25 |
+| PE-DETERM-013 | RF-23 | MUST | Every context-dependent Protocol Action Determination | The Determination MUST remain bounded to its identified evaluation context without converting material context differences into implementation discretion. | S18, S24, S25 |
+| PE-DETERM-014 | RF-23 | MUST NOT | Every Protocol Action Determination | A Determination MUST NOT be represented as an Evaluation Outcome object or as an independently authoritative source of protocol semantics. | S02, S17, S18, S25 |
+
+### 27.5 Acceptance and Rejection
+
+Every valid Determination records exactly one mutually exclusive
+classification:
+
+> accepts(D, A)
+> xor
+> rejects(D, A)
+
+Acceptance means completed Evaluation classified `A` as satisfying the complete
+applicable protocol-rule set within `C`.
+
+Rejection means completed Evaluation classified `A` as not satisfying the
+complete applicable protocol-rule set within `C`.
+
+The complete validity relation remains:
+
+> protocolValid(A, C)
+> iff
+> satisfiesAll(A, R, C)
+
+Correct acceptance is:
+
+> correct(D, A, C)
+> ->
+> (accepts(D, A) iff protocolValid(A, C))
+
+Correct rejection is:
+
+> correct(D, A, C)
+> ->
+> (rejects(D, A) iff not protocolValid(A, C))
+
+Acceptance and rejection are predicates of `D`.
+
+They are not separately identified objects.
+
+The following remain distinct:
+
+- incomplete Evaluation;
+- Evaluation failure;
+- pre-evaluation failure;
+- infrastructure failure;
+- implementation error;
+- proof-invalid evidence;
+- rejection;
+- accepted no-transition;
+- transition failure.
+
+A proof-invalid result may establish that one applicable proof requirement was
+not satisfied.
+
+It does not independently establish complete Protocol Action rejection until
+the complete Evaluation has produced a rejecting Determination.
+
+An erroneous Determination does not change protocol truth:
+
+> incorrectAcceptance(D, A)
+> =/=>
+> protocolValid(A, C)
+
+> incorrectRejection(D, A)
+> =/=>
+> not protocolValid(A, C)
+
+Acceptance and rejection classify protocol validity only.
+
+They do not classify application, factual, legal, social, or institutional
+truth.
+
+### 27.6 RF-24 — Acceptance and Rejection
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CLASS-001 | RF-24 | MUST | Every valid Protocol Action Determination | A valid Determination MUST record exactly one mutually exclusive acceptance or rejection classification. | S18, S24, S25 |
+| PE-CLASS-002 | RF-24 | MUST | Every correct accepting Determination | Acceptance MUST mean that completed Evaluation established satisfaction of every applicable protocol rule within the identified evaluation context. | S18, S24, S25 |
+| PE-CLASS-003 | RF-24 | MUST | Every correct rejecting Determination | Rejection MUST mean that completed Evaluation established non-satisfaction of at least one applicable protocol rule within the identified evaluation context. | S18, S24, S25 |
+| PE-CLASS-004 | RF-24 | MUST | Every correct Protocol Action Determination | The Determination MUST accept the Action exactly when the Action is protocol-valid within the identified evaluation context. | S18, S24, S25 |
+| PE-CLASS-005 | RF-24 | MUST | Every correct Protocol Action Determination | The Determination MUST reject the Action exactly when the Action is not protocol-valid within the identified evaluation context. | S18, S24, S25 |
+| PE-CLASS-006 | RF-24 | MUST NOT | Every incomplete Evaluation, Evaluation failure, and pre-evaluation failure | An incomplete Evaluation, Evaluation failure, or pre-evaluation failure MUST NOT be classified as acceptance or rejection. | S18, S25 |
+| PE-CLASS-007 | RF-24 | MUST NOT | Every infrastructure, transport, deployment, storage, implementation, and observability failure | An operational or implementation failure MUST NOT be represented as protocol rejection. | S01, S18, S25 |
+| PE-CLASS-008 | RF-24 | MUST NOT | Every proof-invalid result considered outside complete Protocol Action Evaluation | A proof-invalid result alone MUST NOT be represented as a complete rejecting Determination. | S02, S18, S25 |
+| PE-CLASS-009 | RF-24 | MUST NOT | Every erroneous acceptance or rejection classification | An incorrect classification MUST NOT redefine the applicable rules, protocol validity, or protocol semantics. | S18, S25 |
+| PE-CLASS-010 | RF-24 | MUST NOT | Every acceptance and rejection classification | Acceptance or rejection MUST NOT be represented as a separately identified acceptance object, rejection object, or Evaluation Outcome object. | S02, S17, S18, S25 |
+| PE-CLASS-011 | RF-24 | MUST NOT | Every application or external interpretation of acceptance or rejection | Acceptance or rejection MUST NOT be treated as establishing application, factual, legal, social, or institutional truth. | S18, S24, S25 |
+| PE-CLASS-012 | RF-24 | MUST NOT | Every acceptance or rejection representation, identifier, diagnostic, log, field, route, test, example, and observability surface | An acceptance or rejection classification MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S18, S20, S25 |
+
+### 27.7 Accepted No-Transition Behavior
+
+Acceptance does not necessarily authorize or require a Protocol State
+Transition.
+
+The applicable protocol rules determine whether an accepted Determination
+authorizes zero, one, or multiple separately identified transitions.
+
+SF-08 owns only the successful accepted no-transition terminal path.
+
+SF-09 remains the authoritative home for transition authorization and
+cardinality.
+
+The no-transition path is:
+
+> accepts(D, A)
+
+> and noTransitionRequired(D)
+
+> ->
+> not existsAuthorizedTransition(U, D)
+
+This path is complete and successful at the Determination boundary.
+
+It is not:
+
+- rejection;
+- incomplete Evaluation;
+- Evaluation failure;
+- pre-transition failure;
+- transition failure;
+- incomplete execution;
+- missing commitment;
+- or implementation error.
+
+Acceptance does not imply that a transition exists:
+
+> accepts(D, A)
+> =/=>
+> exists(U)
+
+Acceptance does not independently authorize a transition:
+
+> accepts(D, A)
+> =/=>
+> authorizes(D, U)
+
+Acceptance does not establish commitment:
+
+> accepts(D, A)
+> =/=>
+> committed(U)
+
+A rejected Determination does not authorize an accepted transition:
+
+> rejects(D, A)
+> ->
+> not authorizesAcceptedTransition(D, U)
+
+The absence of a transition on a protocol-defined no-transition path is the
+required successful behavior.
+
+An implementation must not invent a transition, report a missing commitment, or
+reinterpret the path as failure.
+
+### 27.8 RF-25 — Accepted No-Transition Behavior
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-NOTRANS-001 | RF-25 | MUST | Every accepted Protocol Action Determination | The applicable protocol rules MUST determine whether the accepted Determination requires no authorized Protocol State Transition. | S18, S25, S27 |
+| PE-NOTRANS-002 | RF-25 | MUST | Every accepted Determination for which no transition is required | The Determination MUST terminate successfully without an authorized Protocol State Transition. | S18, S27 |
+| PE-NOTRANS-003 | RF-25 | MUST | Every accepted no-transition path | The path MUST be treated as a complete successful terminal path at the Determination boundary. | S18, S27 |
+| PE-NOTRANS-004 | RF-25 | MUST NOT | Every accepted no-transition path | An accepted no-transition path MUST NOT be represented as rejection, incomplete Evaluation, Evaluation failure, pre-transition failure, transition failure, incomplete execution, missing commitment, or implementation error. | S18, S27 |
+| PE-NOTRANS-005 | RF-25 | MUST NOT | Every inference from Protocol Action acceptance | Acceptance alone MUST NOT be treated as establishing that a Protocol State Transition exists. | S18, S25, S27 |
+| PE-NOTRANS-006 | RF-25 | MUST NOT | Every inference from Protocol Action acceptance | Acceptance alone MUST NOT be treated as transition authorization. | S18, S25, S27 |
+| PE-NOTRANS-007 | RF-25 | MUST NOT | Every inference from Protocol Action acceptance | Acceptance alone MUST NOT be treated as transition execution or commitment. | S18, S25, S27 |
+| PE-NOTRANS-008 | RF-25 | MUST NOT | Every rejecting Protocol Action Determination | A rejecting Determination MUST NOT authorize a transition that requires an accepted Determination. | S18, S25, S27 |
+| PE-NOTRANS-009 | RF-25 | MUST NOT | Every implementation handling an accepted no-transition path | An implementation MUST NOT invent a transition, report missing commitment, or reinterpret the protocol-defined absence of a transition as failure. | S18, S27 |
+
+### 27.9 Evaluation and Determination Privacy
+
+SF-08 preserves:
+
+> Private actors, public actions.
+
+Evaluation determines whether the public Action satisfies the complete
+applicable protocol-rule set.
+
+It does not determine Private Actor identity.
+
+The identifier non-implications are:
+
+> identifiesEvaluation(id(E), E)
+> =/=>
+> identifiesActor(id(E), X)
+
+> identifiesDetermination(id(D), D)
+> =/=>
+> identifiesActor(id(D), X)
+
+Evidence remains bounded:
+
+> establishesEvidence(Z, property)
+> =/=>
+> identifiesActor(Z, X)
+
+No Evaluation component, evidence record, Determination identifier,
+classification, diagnostic, log, field name, variable name, route name,
+serialization field, storage key, test, example, comment, documentation
+surface, or observability surface may:
+
+- identify the Private Actor;
+- infer wallet identity as actor identity;
+- carry enrollment or admission provenance;
+- introduce reusable participant identity;
+- create cross-action linkage;
+- extend proof meaning into actor identification;
+- expose implementation, deployment, transport, retry, or topology information
+  as actor identity;
+- or create an actor-reconstruction bridge through composition.
+
+SF-04 remains the authoritative home for privacy and forbidden-correlation
+requirements.
+
+SF-08 applies those established requirements to Evaluation and Determination
+without redefining them.
+
+### 27.10 Evaluation and Determination Authority
+
+A Protocol Action Evaluation applies protocol rules derived from the published
+protocol generation.
+
+A Protocol Action Determination records the result of that Evaluation.
+
+Its bounded classification authority does not become protocol authority.
+
+No Evaluation, Determination, acceptance classification, rejection
+classification, implementation, application, proof, verification result, or
+evidence record may redefine:
+
+- the protocol generation;
+- protocol semantics;
+- privacy semantics;
+- proof semantics;
+- public-input semantics;
+- applicable protocol rules;
+- protocol validity;
+- transition semantics;
+- conformance;
+- or certification.
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+### 27.11 SF-08 Formal Summary
+
+The Evaluation scope is fixed:
+
+> begins(E, A, R, C)
+> ->
+> fixedScope(E, A, R, C)
+
+Evaluation completeness is:
+
+> complete(E)
+> iff
+> evaluatesAll(E, R, A, C)
+
+The complete Evaluation and Determination relationship is:
+
+> complete(E)
+> <->
+> producesExactlyOne(E, D)
+
+Determination classification is:
+
+> accepts(D, A)
+> xor
+> rejects(D, A)
+
+Correctness is:
+
+> correct(D, A, C)
+> ->
+> (accepts(D, A) iff protocolValid(A, C))
+
+> correct(D, A, C)
+> ->
+> (rejects(D, A) iff not protocolValid(A, C))
+
+Evaluation failure produces no Determination:
+
+> evaluationFailure(E)
+> ->
+> not existsProtocolActionDetermination(D, E)
+
+Proof verification remains bounded evidence:
+
+> verifies(V, Z, PI)
+
+> contributesTo(V, E)
+
+> verifiesValid(V, Z, PI)
+> =/=>
+> accepts(D, A)
+
+Accepted no-transition is:
+
+> accepts(D, A)
+
+> and noTransitionRequired(D)
+
+> ->
+> not existsAuthorizedTransition(U, D)
+
+Acceptance remains distinct from transition existence, authorization, and
+commitment:
+
+> accepts(D, A)
+> =/=>
+> exists(U)
+
+> accepts(D, A)
+> =/=>
+> authorizes(D, U)
+
+> accepts(D, A)
+> =/=>
+> committed(U)
+
+The privacy boundary remains:
+
+> identifiesEvaluation(id(E), E)
+> =/=>
+> identifiesActor(id(E), X)
+
+> identifiesDetermination(id(D), D)
+> =/=>
+> identifiesActor(id(D), X)
+
+SF-08 ends with one accepted or rejected Determination, or with an explicit
+absence of Determination where Evaluation did not complete.
+
+It does not define transition mappings, transition authorization mechanics,
+transition execution, commitment, state evolution, history, or complete
+cross-stage failure semantics.
+
+## 28. Supporting Relationships and Deferred Operational Semantics
 
 SF-03 and SF-04 establish the terminology, identity, and privacy requirements
-preserved by SF-05–SF-07.
+preserved by SF-05–SF-08.
 
 SF-05 establishes:
 
@@ -1409,16 +2005,28 @@ SF-07 establishes:
 - Protocol Action occurrence identity;
 - action attempts and admission to Evaluation;
 - applicable protocol-rule sets;
-- and the complete action-validity boundary required before Evaluation.
+- and the complete Action-plus-rules boundary required before Evaluation.
+
+SF-08 establishes:
+
+- Protocol Action Evaluation identity and fixed scope;
+- complete application of the applicable rule set;
+- Evaluation components and proof-verification contribution;
+- Evaluation completeness and stage-local failure boundaries;
+- Protocol Action Determination identity;
+- exactly-one completed-Evaluation/Determination cardinality;
+- mutually exclusive acceptance and rejection;
+- Determination correctness;
+- Evaluation and Determination privacy;
+- and accepted no-transition behavior.
 
 The following authoritative homes remain deferred:
 
-- Evaluation, Determination, acceptance, rejection, and accepted no-transition
-  behavior: SF-08;
 - protocol state, transition mappings, preconditions, transition occurrences,
-  and authorization: SF-09;
+  authorization, and transition cardinality: SF-09;
 - transition execution, commitment, atomicity, and state evolution: SF-10;
-- history, public consequences, failure, staleness, and re-evaluation: SF-11;
+- history, public consequences, cross-stage failure, staleness, and
+  re-evaluation: SF-11;
 - application requests, responses, adapters, runtime, and integration
   boundaries: SF-12;
 - implementation, realization, compatibility, and migration: SF-13;
@@ -1433,24 +2041,25 @@ They do not relocate the deferred requirement families.
 
 RF-14 remains assigned to SF-12.
 
+RF-26 remains assigned to SF-09.
+
 RF-49 and RF-50 remain reserved to SF-16.
 
-## 28. Current Composition Boundary
+## 29. Current Composition Boundary
 
 This cumulative document currently contains the authoritative normative homes
 for:
 
 - RF-01–RF-13;
-- RF-15–RF-21.
+- RF-15–RF-25.
 
 The following section families remain deliberately uncomposed:
 
-- SF-08 — Evaluation, Determination, acceptance, rejection, and accepted
-  no-transition behavior;
-- SF-09 — protocol state, transition semantics, preconditions, and
-  authorization;
+- SF-09 — protocol state, transition semantics, preconditions, transition
+  occurrences, authorization, and cardinality;
 - SF-10 — transition execution, commitment, atomicity, and state evolution;
-- SF-11 — history, public consequences, failure, staleness, and re-evaluation;
+- SF-11 — history, public consequences, cross-stage failure, staleness, and
+  re-evaluation;
 - SF-12 — application, adapter, runtime, and integration boundaries;
 - SF-13 — implementation, realization, compatibility, and migration;
 - SF-14 — implementation profiles and reference implementations;
@@ -1462,18 +2071,18 @@ prohibition, or completion.
 
 This cumulative slice does not define:
 
-- complete Protocol Action Evaluation;
-- Protocol Action Determination;
-- acceptance or rejection;
-- accepted no-transition behavior;
 - protocol state;
-- Protocol Transition preconditions;
-- Protocol State Transition authorization or cardinality;
+- Protocol Transition mappings;
+- transition preconditions or eligibility;
+- Protocol State Transition identity;
+- transition authorization mechanics or cardinality;
 - transition execution or commitment;
+- successor-state construction;
+- state evolution;
 - protocol-state history;
 - committed public protocol-state consequences;
-- cross-stage failure classifications;
-- staleness or re-evaluation;
+- complete cross-stage failure classifications;
+- stale authorization or re-evaluation;
 - application request, response, or adapter behavior;
 - runtime or integration responsibility;
 - implementation or realization mechanics;
@@ -1488,21 +2097,27 @@ This cumulative slice does not define:
 - RF-49 semantic-preservation requirements;
 - or RF-50 complete exclusion requirements.
 
-These are local composition-boundary statements.
+SF-08 contains only the stage-local pre-evaluation and Evaluation-failure
+distinctions required to prevent incomplete Evaluation from becoming rejection.
 
-They do not relocate or duplicate the authoritative homes reserved for later
-requirement families.
+SF-08 contains only the accepted no-transition terminal behavior required to
+distinguish successful acceptance from transition existence, authorization,
+execution, or commitment.
 
-The cumulative specification contains 252 stable normative requirements:
+These local boundary statements do not relocate or duplicate the authoritative
+homes reserved for SF-09–SF-16.
+
+The cumulative specification contains 307 stable normative requirements:
 
 - 81 requirements preserved from SF-01 and SF-02;
 - 71 requirements preserved from SF-03 and SF-04;
-- 100 requirements composed through SF-05, SF-06, and SF-07.
+- 100 requirements preserved from SF-05 through SF-07;
+- 55 requirements composed in SF-08.
 
-The document remains incomplete until SF-08–SF-16 have been composed and the
+The document remains incomplete until SF-09–SF-16 have been composed and the
 complete specification has passed final consolidation review.
 
-## 29. Cumulative Traceability
+## 30. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -1582,90 +2197,84 @@ Traceability organizes established semantics.
 
 It does not redefine them.
 
-## 30. Conclusion
+## 31. Conclusion
 
-SF-01 through SF-07 now establish the cumulative normative path from protocol
+SF-01 through SF-08 now establish the cumulative normative path from protocol
 authority and publication through terminology, privacy, interfaces, proof
-evidence, validity, and one bounded Protocol Action ready for Evaluation.
+evidence, Protocol Actions, complete Evaluation, and exactly one resulting
+Determination.
 
-SF-05 establishes:
+SF-05 establishes interface contracts, protocol surfaces, Protocol Operation
+capabilities, and Published Results.
 
-- Interface Contract identity and bounded semantic meaning;
-- Concrete Interface Specification identity and syntactic realization;
-- semantic equivalence across permitted representations;
-- stable Protocol Surfaces;
-- Protocol Operation as published bounded capability;
-- Protocol Operation type versus Protocol Action occurrence;
-- Published Result identity and semantic preservation;
-- Published Result versus representation;
-- Published Result versus Determination;
-- and Published Result versus committed public protocol-state consequence.
+SF-06 establishes proofs, declared public inputs, proof verification, bounded
+evidence, non-proof validity conditions, and complete protocol validity.
 
-SF-06 establishes:
+SF-07 establishes one identified Protocol Action, its complete applicable
+protocol-rule set, and its bounded evaluation context.
 
-- proof identity and proof representation;
-- the declared proof relation;
-- public and private input separation;
-- the locked current public-input order;
-- proof-to-public-input coherence;
-- proof artifact integrity;
-- bounded proof verification;
-- proof-valid, proof-invalid, and verification-failure separation;
-- proof evidence;
-- proof validity versus complete protocol validity;
-- non-proof validity conditions;
-- and protocol validity versus application or external truth.
+SF-08 establishes:
 
-SF-07 establishes:
+- one identified Evaluation occurrence;
+- fixed Action, rule-set, and context scope;
+- bounded Evaluation components;
+- proof verification as contributing evidence;
+- evaluation of every applicable proof and non-proof rule;
+- Evaluation completeness;
+- partial, incomplete, pre-evaluation, and Evaluation-failure boundaries;
+- exactly one Determination from every completed Evaluation;
+- exactly one completed Evaluation for every Determination;
+- acceptance and rejection as mutually exclusive predicates;
+- correctness relative to complete protocol validity;
+- deterministic equivalent Evaluation;
+- context-dependent validity without implementation discretion;
+- accepted no-transition as a successful terminal path;
+- Evaluation and Determination identity privacy;
+- and bounded Determination authority without protocol authority.
 
-- Protocol Action as one bounded first-class occurrence;
-- action identity and action boundedness;
-- action type versus occurrence;
-- action attempt versus admitted occurrence;
-- retry and transport-attempt separation;
-- declared public inputs;
-- applicable protocol-rule completeness;
-- context-bounded Protocol Action validity;
-- Protocol Action versus Private Actor;
-- action identity versus operational identity;
-- application meaning versus protocol validity;
-- and the complete Action-plus-rules boundary required before SF-08 Evaluation.
+The cumulative protocol-use path is now:
 
-The implementation-facing path is:
+> one identified Protocol Action
+> -> one complete applicable protocol-rule set
+> -> one bounded evaluation context
+> -> one complete Protocol Action Evaluation
+> -> exactly one Protocol Action Determination
+> -> acceptance xor rejection
+> -> possible later transition handling or successful accepted no-transition termination
 
-> published Interface Contract
-> -> permitted concrete representation
-> -> published Protocol Operation capability
-> -> proof and declared public inputs
-> -> bounded proof-verification evidence
-> -> complete applicable validity conditions
-> -> one identified Protocol Action ready for Evaluation
+Evaluation remains distinct from Protocol Action and proof verification.
 
-Protocol Operation remains a capability type.
+Evaluation is the process.
 
-Protocol Action remains one identified occurrence.
+Determination is the result of completed Evaluation.
 
-Proof verification contributes bounded evidence.
+Incomplete Evaluation is not rejection.
 
-It does not independently establish complete protocol validity, acceptance, or
+Evaluation failure is not rejection.
+
+Proof verification remains bounded evidence.
+
+Acceptance does not imply transition existence, authorization, execution, or
 commitment.
 
-Published Result remains an interface-level semantic result.
+Accepted no-transition behavior is successful completion at the Determination
+boundary.
 
-It does not become Determination, an Evaluation Outcome object, or a committed
-public protocol-state consequence.
+Determination remains distinct from Published Result and every committed public
+protocol-state consequence.
 
-Private Actor remains distinct from proofs, public inputs, Protocol Action
-identity, interfaces, results, implementations, applications, deployments,
-transports, diagnostics, and observability surfaces.
+Private Actor remains distinct from Action, Evaluation, Determination, proof,
+evidence, public inputs, classifications, interfaces, results, applications,
+implementations, deployments, transports, diagnostics, and observability
+surfaces.
 
 No reusable participant identity, cross-action identity mechanism, Protocol
-Claim, Evaluation Outcome object, or other new first-class subject is
-introduced.
+Claim, Evaluation Outcome object, acceptance object, rejection object, or other
+new first-class subject is introduced.
 
-The 152 requirements established through SF-01–SF-04 remain unchanged.
+All 252 requirements established through SF-01–SF-07 remain unchanged.
 
-SF-08–SF-16 remain deliberately deferred.
+SF-09–SF-16 remain deliberately deferred.
 
 The cumulative specification remains incomplete pending those sections and the
 final consolidation review.
