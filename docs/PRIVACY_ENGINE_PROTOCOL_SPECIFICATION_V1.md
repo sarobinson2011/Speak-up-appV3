@@ -13,7 +13,10 @@ Current composition status:
 - SF-02 — Protocol Generation, Publication, Versioning, and Lineage: composed;
 - SF-03 — Protocol Terminology, Subjects, and Identifiers: composed;
 - SF-04 — Privacy, Actor Separation, and Compositional Unlinkability: composed;
-- SF-05–SF-16: not yet composed.
+- SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results: composed;
+- SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity: composed;
+- SF-07 — Protocol Actions and Applicable Rules: composed;
+- SF-08–SF-16: not yet composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
@@ -25,7 +28,7 @@ been composed.
 No absent section, deferred requirement family, supporting reference, or
 informative statement may be treated as implicitly completed.
 
-The current composition boundary is defined in Section 22.
+The current composition boundary is defined in Section 28.
 
 ## 2. Purpose
 
@@ -51,7 +54,10 @@ The current cumulative document composes:
 - SF-01 — Authority, Scope, and Normative Interpretation;
 - SF-02 — Protocol Generation, Publication, Versioning, and Lineage;
 - SF-03 — Protocol Terminology, Subjects, and Identifiers;
-- SF-04 — Privacy, Actor Separation, and Compositional Unlinkability.
+- SF-04 — Privacy, Actor Separation, and Compositional Unlinkability;
+- SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results;
+- SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity;
+- SF-07 — Protocol Actions and Applicable Rules.
 
 These sections authoritatively contain:
 
@@ -66,13 +72,22 @@ These sections authoritatively contain:
 - RF-09 — Private actors and public protocol subjects;
 - RF-10 — Privacy, anonymity, and unlinkability;
 - RF-11 — Compositional privacy, observability, and forbidden correlation;
+- RF-12 — Interface contracts and concrete interface specifications;
+- RF-13 — Protocol surfaces, operations, and Published Results;
 - RF-15 — Anonymous membership, continuity, and enrollment separation;
-- RF-19 — Nullifier-based uniqueness and action-bounded unlinkability.
+- RF-16 — Proofs and declared public inputs;
+- RF-17 — Proof verification;
+- RF-18 — Evidence, protocol validity, and non-proof validity conditions;
+- RF-19 — Nullifier-based uniqueness and action-bounded unlinkability;
+- RF-20 — Protocol Actions;
+- RF-21 — Applicable protocol-rule sets and action validity.
 
-The current document does not define the later interface, proof, validity,
-Protocol Action lifecycle, Evaluation, Determination, state-transition,
-application, implementation-profile, conformance, or certification requirements
-assigned to SF-05–SF-16.
+The current document does not define the later Evaluation, Determination,
+acceptance, rejection, protocol-state, transition, application, runtime,
+implementation, implementation-profile, conformance, or certification
+requirements assigned to SF-08–SF-16.
+
+RF-14 remains assigned to SF-12.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
@@ -217,7 +232,7 @@ The stable identifier syntax is:
 
 > PE-<SEMANTIC-FAMILY>-<NNN>
 
-The semantic-family codes introduced by this composition slice are:
+The semantic-family codes introduced by the current cumulative composition are:
 
 | Prefix | Requirement family | Authoritative section family |
 |---|---|---|
@@ -232,8 +247,15 @@ The semantic-family codes introduced by this composition slice are:
 | PE-ACTSEP-* | RF-09 | SF-04 |
 | PE-PRIV-* | RF-10 | SF-04 |
 | PE-COMP-* | RF-11 | SF-04 |
+| PE-IFACE-* | RF-12 | SF-05 |
+| PE-SURF-* | RF-13 | SF-05 |
 | PE-MEM-* | RF-15 | SF-04 |
+| PE-PROOF-* | RF-16 | SF-06 |
+| PE-VERIFY-* | RF-17 | SF-06 |
+| PE-VALID-* | RF-18 | SF-06 |
 | PE-UNIQ-* | RF-19 | SF-04 |
+| PE-ACTION-* | RF-20 | SF-07 |
+| PE-RULE-* | RF-21 | SF-07 |
 
 The numeric component is three digits and is allocated independently within
 each semantic family.
@@ -865,52 +887,566 @@ It does not establish reusable participant identity.
 | PE-UNIQ-007 | RF-19 | MUST NOT | Every duplicate-status response, log, diagnostic, event, and read model | Duplicate-status observability MUST NOT disclose or enable inference of the Private Actor beyond the bounded action-local uniqueness fact. | S01, S18, S20, S21, S22 |
 | PE-UNIQ-008 | RF-19 | MUST NOT | Every interpretation of nullifier-enforced uniqueness | Scoped nullifier uniqueness MUST NOT be represented as one-person, one-human, one-wallet, or globally reusable participant uniqueness. | S01, S19, S21, S22, S24 |
 
-## 24. Supporting Relationships and Deferred Operational Semantics
+## 24. SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results
 
-SF-03 and SF-04 establish terminology, identity, and privacy dependencies for
-later sections.
+SF-05 defines the implementation-facing boundary from published interface
+meaning to concrete representation, exposed capability, and interface-level
+semantic result.
 
-They do not yet compose the complete operational semantics of the subjects
-they identify.
+It preserves the established distinction between semantic subjects and their
+representations.
+
+It does not define application requests, application responses, application
+adapters, runtime machinery, transport, or implementation topology.
+
+### 24.1 Interface Contract and Concrete Interface Specification
+
+An Interface Contract is the bounded published semantic contract through which
+one published Privacy Engine protocol generation exposes externally relied-upon
+behavior.
+
+A Concrete Interface Specification is one identified syntactic realization of
+exactly one Interface Contract for one bounded integration surface.
+
+The relationship is:
+
+> definesBoundedInterfaceMeaning(K)
+
+> derives(K, P)
+
+> realizes(S, K)
+
+> semantics(S) = semantics(K)
+
+The semantic contract and its representation remain distinct:
+
+> K != S
+
+> representationOf(S, K)
+> =/=>
+> definesProtocolSemantics(S)
+
+An Interface Contract owns its bounded semantic definition.
+
+That bounded ownership does not become protocol authority:
+
+> definesBoundedInterfaceMeaning(K)
+> =/=>
+> protocolAuthority(K)
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+### 24.2 RF-12 — Interface Contracts and Concrete Interface Specifications
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-IFACE-001 | RF-12 | MUST | Every Privacy Engine Interface Contract | An Interface Contract MUST possess one stable identity, one bounded semantic role, and one version sufficient to distinguish its published meaning. | S02, S17, S20, S22, S31 |
+| PE-IFACE-002 | RF-12 | MUST | Every Privacy Engine Interface Contract | An Interface Contract MUST derive from exactly one identified published Privacy Engine protocol generation. | S02, S09, S17, S31 |
+| PE-IFACE-003 | RF-12 | MUST | Every Privacy Engine Interface Contract | An Interface Contract MUST define its bounded input semantics, output semantics, Protocol Operations, externally relied-upon behavior, and applicable observable failure semantics. | S22, S31 |
+| PE-IFACE-004 | RF-12 | MUST | Every Interface Contract and every concrete realization of it | Interface meaning and concrete representation MUST remain distinct semantic and syntactic roles. | S17, S20, S30, S31 |
+| PE-IFACE-005 | RF-12 | MUST | Every Concrete Interface Specification | A Concrete Interface Specification MUST possess one stable specification identity, one specification version, and one bounded integration surface. | S30 |
+| PE-IFACE-006 | RF-12 | MUST | Every Concrete Interface Specification | A Concrete Interface Specification MUST identify and realize exactly one governing Interface Contract. | S30, S31 |
+| PE-IFACE-007 | RF-12 | MUST | Every Concrete Interface Specification | A Concrete Interface Specification MUST completely define the operation names, invocation forms, field ordering, type constraints, encoding rules, result representations, and externally observable error representations required by its bounded surface. | S30 |
+| PE-IFACE-008 | RF-12 | MUST | Every Concrete Interface Specification and its governing Interface Contract | The concrete representation MUST preserve semantic equivalence with the governing Interface Contract. | S20, S30, S31 |
+| PE-IFACE-009 | RF-12 | MAY | Every Interface Contract permitting multiple concrete realizations | Multiple Concrete Interface Specifications MAY realize the same Interface Contract when each realization independently preserves the complete bounded interface meaning. | S30 |
+| PE-IFACE-010 | RF-12 | MUST | Every representation-only interface change | A representation-only change MUST preserve the identity, semantics, ordering requirements, compatibility boundary, and observable guarantees of the governing Interface Contract. | S22, S30, S31 |
+| PE-IFACE-011 | RF-12 | MUST | Every change to published Interface Contract meaning | A change to published interface semantics, obligations, validity, or observable guarantees MUST be represented through the applicable distinct-generation and versioning rules. | S15, S22, S30, S31 |
+| PE-IFACE-012 | RF-12 | MUST NOT | Every Interface Contract and Concrete Interface Specification | Implementation algorithms, storage layouts, deployment topology, transport machinery, operational policy, and application-defined meaning MUST NOT become interface semantics unless the published protocol generation expressly defines them as such. | S20, S22, S29, S30, S31 |
+| PE-IFACE-013 | RF-12 | MUST NOT | Every Interface Contract and Concrete Interface Specification | An Interface Contract or Concrete Interface Specification MUST NOT independently acquire, transfer, replace, or modify protocol authority. | S02, S17, S30, S31 |
+| PE-IFACE-014 | RF-12 | MUST | Every public Interface Contract and Concrete Interface Specification | Every public interface realization MUST preserve the applicable SF-03 and SF-04 identity, privacy, unlinkability, minimum-disclosure, and neutral-naming requirements. | S01, S18, S20, S22, S29, S30, S31 |
+
+### 24.3 Protocol Surface and Protocol Operation
+
+A Protocol Surface is one identified and bounded externally stable capability
+boundary of a published protocol generation.
+
+A Protocol Surface exposes protocol commitments while leaving implementation
+machinery replaceable.
+
+A Protocol Operation is one stable, published, bounded capability identified by
+an Interface Contract.
+
+A Protocol Operation defines capability.
+
+A Protocol Action is one occurrence of protocol-defined behavior.
+
+The distinction is:
+
+> operationType(O)
+> =/=>
+> actionOccurrence(A)
+
+A Protocol Operation does not become execution, implementation, transport, or
+application behavior.
+
+### 24.4 Published Result
+
+A Published Result is one interface-level semantic result defined according to
+a governing Interface Contract and Protocol Operation.
+
+A Published Result is distinct from its concrete representation:
+
+> publishedResult(Y)
+> =/=>
+> representation(YR)
+
+It is also distinct from a Protocol Action Determination:
+
+> publishedResult(Y)
+> =/=>
+> determination(D)
+
+A Published Result does not become an Evaluation Outcome object:
+
+> publishedResult(Y)
+> =/=>
+> evaluationOutcomeObject(Y)
+
+A Published Result is not the committed public protocol-state consequence of a
+Protocol State Transition:
+
+> publishedResult(Y)
+> =/=>
+> publicProtocolConsequence(U, Q1)
+
+These distinctions preserve the later authoritative homes of Determination,
+state transition, commitment, and public consequence.
+
+### 24.5 RF-13 — Protocol Surfaces, Operations, and Published Results
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-SURF-001 | RF-13 | MUST | Every Privacy Engine Protocol Surface | A Protocol Surface MUST possess one stable identity and one bounded externally relied-upon capability scope within one published protocol generation. | S02, S09, S22 |
+| PE-SURF-002 | RF-13 | MUST | Every Protocol Surface | A Protocol Surface MUST expose only the protocol capabilities, semantic guarantees, compatibility boundaries, and observable behavior defined for that surface. | S09, S22, S31 |
+| PE-SURF-003 | RF-13 | MUST | Every implementation realizing a Protocol Surface | Internal implementation machinery MUST remain replaceable when the complete published semantics and guarantees of the Protocol Surface remain preserved. | S09, S22, S23, S31 |
+| PE-SURF-004 | RF-13 | MUST NOT | Every implementation detail behind a Protocol Surface | Code structure, storage layout, deployment topology, relay selection, transport, persistence, monitoring, optimization, or helper naming MUST NOT become protocol-surface semantics merely because a current implementation uses it. | S09, S20, S22, S23, S31 |
+| PE-SURF-005 | RF-13 | MUST | Every Privacy Engine Protocol Operation | A Protocol Operation MUST possess one stable capability identity defined by one published Interface Contract within one identified protocol generation. | S09, S23, S31 |
+| PE-SURF-006 | RF-13 | MUST | Every Protocol Operation | A Protocol Operation MUST define one bounded protocol-owned capability, including its applicable input meaning, output meaning, and externally relied-upon behavior. | S09, S23, S31 |
+| PE-SURF-007 | RF-13 | MUST | Every Protocol Operation and associated Protocol Action | The Protocol Operation capability type and each Protocol Action occurrence classified by that capability MUST remain distinct. | S02, S18, S23, S24 |
+| PE-SURF-008 | RF-13 | MUST | Every offered Protocol Operation | The governing Interface Contract MUST declare the operation's applicability conditions and the semantic roles of every required input and Published Result. | S23, S31, S32 |
+| PE-SURF-009 | RF-13 | MUST | Every implementation realizing a Protocol Operation | An implementation MUST preserve the operation's published capability across execution and implementation variation. | S09, S23 |
+| PE-SURF-018 | RF-13 | MUST NOT | Every execution or implementation variation realizing a Protocol Operation | Execution or implementation variation MUST NOT redefine the Protocol Operation's published capability. | S09, S23 |
+| PE-SURF-010 | RF-13 | MUST | Every Published Result | A Published Result MUST possess one bounded result identity and MUST identify the governing Interface Contract and Protocol Operation from which its meaning derives. | S31, S32 |
+| PE-SURF-011 | RF-13 | MUST | Every Published Result | A Published Result MUST express only the interface-level success semantics, failure semantics, guarantees, and observable meaning defined by its governing Interface Contract. | S31, S32 |
+| PE-SURF-012 | RF-13 | MUST | Every Published Result and concrete representation of it | Published Result meaning and its serialized, transported, stored, displayed, or application-facing representation MUST remain distinct. | S20, S30, S32 |
+| PE-SURF-013 | RF-13 | MUST | Every concrete realization or translation of a Published Result | Every concrete realization or permitted downstream translation MUST preserve the complete bounded meaning of the same Published Result. | S29, S30, S32 |
+| PE-SURF-014 | RF-13 | MUST NOT | Every Published Result | A Published Result MUST NOT be represented as a Protocol Action Evaluation, Protocol Action Determination, acceptance object, rejection object, or separate Evaluation Outcome object. | S02, S18, S25, S32 |
+| PE-SURF-015 | RF-13 | MUST NOT | Every Published Result | A Published Result MUST NOT be represented as a committed Protocol State Transition or as an independently authoritative public protocol-state consequence. | S02, S18, S27, S32 |
+| PE-SURF-016 | RF-13 | MUST NOT | Every application interpretation or representation of a Protocol Surface, Protocol Operation, or Published Result | Application-defined meaning, terminology, formatting, workflow, or response structure MUST NOT redefine protocol capability, validity, or Published Result meaning. | S09, S24, S29, S32 |
+| PE-SURF-017 | RF-13 | MUST | Every public Protocol Surface, Protocol Operation representation, and Published Result | The complete exposed composition MUST preserve the applicable SF-03 and SF-04 identity, privacy, unlinkability, minimum-disclosure, and forbidden-correlation requirements. | S01, S18, S20, S22, S24, S32 |
+
+## 25. SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity
+
+SF-06 defines the bounded proof and validity path used before complete Protocol
+Action Evaluation.
+
+It defines proofs, declared public inputs, proof verification, proof evidence,
+non-proof validity conditions, and complete protocol-action validity.
+
+It does not define Evaluation, Determination, acceptance, rejection,
+authorization, transition execution, commitment, or application truth.
+
+### 25.1 Proofs and Declared Public Inputs
+
+A proof is one bounded cryptographic evidence object constructed according to
+the proof relation and proof-system requirements of the applicable published
+protocol generation.
+
+A proof remains distinct from:
+
+- its representation;
+- its public inputs;
+- its private witness;
+- the Protocol Action it supports;
+- the Private Actor;
+- proof verification;
+- complete Protocol Action validity.
+
+The current published generation uses:
+
+- Circom;
+- Groth16 over BN254;
+- Poseidon hashing;
+- a tree depth of 16;
+- a root-history window of 16.
+
+The locked declared public-input ordering is:
+
+1. `nullifier`;
+2. `petitionId` / `actionId`;
+3. `membershipRoot`.
+
+The public-input roles are:
+
+- `nullifier`: action-context-bounded uniqueness;
+- `petitionId` / `actionId`: the bounded public action context;
+- `membershipRoot`: the membership-state commitment against which the proof is
+  evaluated.
+
+Private witness material includes the applicable `memberSecret`, Merkle path,
+and leaf-related witness data.
+
+The current relation preserves:
+
+> leaf = Poseidon1(memberSecret)
+
+> nullifier = Poseidon3(memberSecret, actionId, SIGN_DOMAIN)
+
+The public-input set does not contain the `memberSecret`, leaf, Merkle path,
+wallet identity, enrollment provenance, admission provenance, relay selection,
+path-provider selection, or execution-topology information.
+
+### 25.2 RF-16 — Proofs and Declared Public Inputs
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-PROOF-001 | RF-16 | MUST | Every proof required by a Privacy Engine Protocol Action | A proof MUST possess one bounded evidence identity distinct from its encoding, public inputs, private witness, supported Protocol Action, and Private Actor. | S18, S19, S24 |
+| PE-PROOF-002 | RF-16 | MUST | Every proof type in a published protocol generation | The published protocol generation MUST declare the proof relation, proof-system requirements, public-input schema, private-witness boundary, and verification semantics applicable to the proof type. | S01, S19, S20, S22, S24 |
+| PE-PROOF-003 | RF-16 | MUST | Every current-generation anonymous-action proof | The proof relation MUST establish knowledge of the applicable membership secret and membership witness, inclusion under the declared membership root, and correct nullifier derivation for the declared action context without disclosing the Private Actor. | S01, S19, S20, S24 |
+| PE-PROOF-004 | RF-16 | MUST | Every proof relation and proof-construction boundary | Public inputs and private witness material MUST remain explicitly separated according to the applicable published proof relation. | S01, S19, S20 |
+| PE-PROOF-005 | RF-16 | MUST | Every current-generation anonymous-action public-input set | The declared public inputs MUST occur in the exact ordered sequence `nullifier`, `petitionId` or `actionId`, `membershipRoot`. | S01, S20, S22, S24 |
+| PE-PROOF-006 | RF-16 | MUST | Every current-generation declared public-input interpretation | `nullifier` MUST remain bounded to action-context uniqueness, `petitionId` or `actionId` MUST remain bounded to action context, and `membershipRoot` MUST remain bounded to the applicable membership-state commitment. | S01, S19, S20, S24 |
+| PE-PROOF-007 | RF-16 | MUST | Every proof and declared public-input set presented together | The proof representation, public-input values, ordering, action context, and proof relation MUST form one coherent verification input. | S01, S20, S24 |
+| PE-PROOF-008 | RF-16 | MUST | Every proof-construction process | Proof construction MUST keep `memberSecret`, Merkle path, membership leaf, and other private witness material outside public inputs and public protocol surfaces. | S01, S19, S20 |
+| PE-PROOF-009 | RF-16 | MUST | Every proof realization for the current published generation | The proof realization MUST use the published generation's declared Circom and Groth16-over-BN254 proof semantics and compatible verifier artifacts. | S01, S19, S22 |
+| PE-PROOF-010 | RF-16 | MUST | Every published proof artifact set | Proof artifacts, verification keys, verifier artifacts, public-input ordering, and associated provenance MUST satisfy the published artifact-integrity and reproducibility requirements. | S01, S22 |
+| PE-PROOF-011 | RF-16 | MUST | Every permitted proof or public-input representation | A representation MUST preserve the complete proof relation, proof-system semantics, verifier compatibility, input meaning, and input ordering of the identified published generation. | S01, S20, S22, S30 |
+| PE-PROOF-012 | RF-16 | MUST | Every change to a proof system, proof relation, public-input schema, public-input ordering, verifier encoding, or artifact-integrity rule | The change MUST follow the applicable distinct-generation, versioning, publication, and artifact-regeneration requirements. | S01, S15, S22 |
+| PE-PROOF-013 | RF-16 | MUST NOT | Every proof and proof representation | A proof or its representation MUST NOT be treated as the Protocol Action occurrence, Private Actor identity, wallet identity, membership identity, application truth, or reusable participant identity. | S18, S19, S20, S24 |
+| PE-PROOF-014 | RF-16 | MUST NOT | Every declared public input and public-input composition | A public input or public-input composition MUST NOT exceed its declared role or become a reusable participant identifier, cross-action join key, actor-reconstruction value, or application-only correlation field. | S01, S18, S20, S24 |
+
+### 25.3 Proof Verification
+
+Proof verification is one bounded evaluation of a proof and its declared public
+inputs against the applicable proof relation and verifier artifacts.
+
+Let:
+
+- `Z` be one proof;
+- `PI` be its declared public-input set;
+- `V` be one bounded proof-verification occurrence;
+- `E` be the later complete Protocol Action Evaluation.
+
+The relationship is:
+
+> verifies(V, Z, PI)
+
+> contributesTo(V, E)
+
+A completed proof-verification occurrence produces one bounded valid or invalid
+verification classification.
+
+An inability to complete verification is a stage-local verification failure.
+It is not silently converted into proof validity, proof invalidity, Protocol
+Action acceptance, rejection, or commitment.
+
+Proof verification is a bounded evaluation component.
+
+It does not add another first-class subject to the established protocol-use
+occurrence inventory.
+
+### 25.4 RF-17 — Proof Verification
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-VERIFY-001 | RF-17 | MUST | Every required proof verification | Proof verification MUST occur as one bounded verification occurrence whose proof, public inputs, proof relation, verifier artifacts, and result are distinguishable. | S18, S19, S25 |
+| PE-VERIFY-002 | RF-17 | MUST | Every proof-verification occurrence | Verification MUST evaluate exactly the presented proof and declared public-input set against the applicable published proof relation and verifier artifacts. | S01, S19, S20, S25 |
+| PE-VERIFY-003 | RF-17 | MUST | Every correct proof-verification realization | Verification MUST be deterministic for the same proof, public inputs, proof relation, verifier artifacts, and protocol-relevant verification context. | S19, S25 |
+| PE-VERIFY-004 | RF-17 | MUST | Every completed proof-verification occurrence | A completed verification MUST produce exactly one bounded proof-valid or proof-invalid classification. | S19, S25 |
+| PE-VERIFY-005 | RF-17 | MUST | Every proof-valid classification | A proof-valid classification MUST establish only that the proof and declared public inputs satisfy the applicable published proof relation. | S18, S19, S24, S25 |
+| PE-VERIFY-006 | RF-17 | MUST | Every proof-invalid classification required for a Protocol Action | A required proof-invalid classification MUST prevent that proof from satisfying the corresponding applicable proof-verification requirement. | S24, S25 |
+| PE-VERIFY-007 | RF-17 | MUST | Every inability to complete required proof verification | Verification failure MUST remain distinguishable from a completed proof-valid classification, completed proof-invalid classification, Protocol Action rejection, and later failure classifications. | S02, S18, S25 |
+| PE-VERIFY-008 | RF-17 | MUST | Every proof-valid verification result used in Protocol Action Evaluation | The result MUST contribute only the bounded evidence established by the applicable proof relation. | S18, S24, S25 |
+| PE-VERIFY-009 | RF-17 | MUST NOT | Every proof-valid verification result | Successful proof verification MUST NOT independently establish complete Protocol Action validity, acceptance, rejection, transition authorization, transition execution, or commitment. | S02, S18, S24, S25 |
+| PE-VERIFY-010 | RF-17 | MUST NOT | Every proof-verification occurrence and result | Proof verification MUST NOT establish Private Actor identity, wallet identity, enrollment provenance, admission provenance, application truth, legal truth, factual truth, or reusable participant identity. | S18, S19, S24, S25 |
+| PE-VERIFY-011 | RF-17 | MUST NOT | Every proof-verification implementation | Verifier code structure, deployment address, transaction identity, runtime mechanism, storage, transport, or diagnostic behavior MUST NOT redefine the applicable proof relation or verification semantics. | S01, S20, S25 |
+| PE-VERIFY-012 | RF-17 | MUST NOT | Every proof-verification component and result | A proof-verification component or result MUST NOT independently acquire or modify protocol authority. | S02, S17, S18, S25 |
+
+### 25.5 Evidence and Complete Protocol Validity
+
+Proof verification contributes bounded evidence to the later complete
+Evaluation.
+
+It does not independently establish complete protocol validity:
+
+> verifiesValid(V, Z, PI)
+> =/=>
+> protocolValid(A, C)
+
+It does not independently establish acceptance:
+
+> verifiesValid(V, Z, PI)
+> =/=>
+> accepts(D, A)
+
+It does not independently establish commitment:
+
+> verifiesValid(V, Z, PI)
+> =/=>
+> committed(U)
+
+Complete Protocol Action validity is defined by satisfaction of every applicable
+protocol rule in one bounded evaluation context:
+
+> applicableRules(A, R)
+
+> protocolValid(A, C)
+> iff
+> satisfiesAll(A, R, C)
+
+Applicable non-proof validity conditions can include:
+
+- action-type requirements;
+- public-input shape and domain requirements;
+- proof-to-public-input coherence;
+- accepted-root requirements;
+- protocol-state requirements;
+- uniqueness and replay-prevention requirements;
+- domain-separation requirements;
+- temporal requirements;
+- other conditions derived from the published protocol generation.
+
+Protocol validity is protocol-relative and context-bounded.
+
+It does not establish application, factual, legal, social, or institutional
+truth.
+
+### 25.6 RF-18 — Evidence, Protocol Validity, and Non-Proof Validity Conditions
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-VALID-001 | RF-18 | MUST | Every proof-verification result used during Protocol Action Evaluation | The result MUST remain bounded evidence concerning exactly the proof relation and public-input relationship evaluated by that verification occurrence. | S18, S24, S25 |
+| PE-VALID-002 | RF-18 | MUST | Every proof-verification result contributing to complete Evaluation | The result MUST contribute to the later Protocol Action Evaluation without replacing the Action, applicable rule set, Evaluation, or Determination. | S02, S18, S24, S25 |
+| PE-VALID-003 | RF-18 | MUST | Every Protocol Action validity determination basis | Complete Protocol Action validity MUST mean satisfaction of every applicable protocol rule within one bounded evaluation context. | S18, S24, S25 |
+| PE-VALID-004 | RF-18 | MUST NOT | Every successful proof-verification result | Successful proof verification MUST NOT be represented as complete Protocol Action validity unless proof verification constitutes the complete applicable protocol-rule set for that action and context. | S02, S18, S24, S25 |
+| PE-VALID-005 | RF-18 | MUST | Every Protocol Action whose applicable rule set includes non-proof validity conditions | Every applicable non-proof validity condition MUST remain represented and evaluated as part of the complete applicable protocol-rule set. | S18, S24, S25 |
+| PE-VALID-006 | RF-18 | MUST | Every non-proof protocol-validity condition | A non-proof validity condition MUST derive from the identified published protocol generation and MUST possess a bounded applicability rule for the affected action and context. | S02, S24, S25 |
+| PE-VALID-007 | RF-18 | MUST | Every current-generation Protocol Action Evaluation basis | The applicable validity basis MUST account for required action shape, public-input coherence, accepted-root status, nullifier uniqueness, replay prevention, domain separation, protocol-state requirements, and every other applicable generation-derived condition. | S01, S20, S24, S25 |
+| PE-VALID-008 | RF-18 | MUST | Every required proof-invalid verification result | A required proof-invalid result MUST prevent the Protocol Action from satisfying the corresponding applicable proof requirement. | S24, S25 |
+| PE-VALID-009 | RF-18 | MUST | Every interpretation of protocol validity | Protocol validity MUST remain action-specific, applicable-rule-relative, and bounded to the identified evaluation context. | S24, S25 |
+| PE-VALID-010 | RF-18 | MUST NOT | Every proof-valid or protocol-valid classification | Proof validity or protocol validity MUST NOT independently become Protocol Action acceptance, rejection, transition authorization, transition execution, or commitment. | S02, S18, S24, S25 |
+| PE-VALID-011 | RF-18 | MUST NOT | Every protocol-valid Protocol Action and interpretation of it | Protocol validity MUST NOT be represented as application truth, external factual truth, legal truth, social truth, institutional recognition, or a Protocol Claim. | S18, S24, S25, S28 |
+| PE-VALID-012 | RF-18 | MUST | Every evidence, validity, failure, and diagnostic surface | The surface MUST preserve SF-03 and SF-04 identity separation, Private Actor non-disclosure, role-bounded public values, neutral naming, and compositional unlinkability. | S01, S18, S20, S24, S25 |
+
+## 26. SF-07 — Protocol Actions and Applicable Rules
+
+SF-07 defines the complete Protocol Action occurrence and applicable-rule
+boundary required before authoritative Evaluation.
+
+It does not define the complete Evaluation process, Determination, acceptance,
+rejection, state transition, commitment, application request, application
+response, or application adapter.
+
+### 26.1 Protocol Action Definition
+
+A Privacy Engine Protocol Action is one bounded occurrence of protocol-defined
+behavior presented through an implementation for Evaluation under the
+applicable rules of one published Privacy Engine protocol generation.
+
+Let:
+
+- `P` be one published protocol generation;
+- `I` be one implementation;
+- `X` be one Private Actor;
+- `O` be one Protocol Operation capability;
+- `A` be one Protocol Action occurrence;
+- `T` be the applicable action type;
+- `PI` be the declared public-input set;
+- `R` be the complete applicable protocol-rule set;
+- `C` be the bounded evaluation context;
+- `Z` be a proof supporting the action where required.
+
+The action-side relationships are:
+
+> occurrenceOf(A, T)
+
+> governedBy(A, P)
+
+> performedThrough(A, I)
+
+> performs(X, A)
+
+> carries(A, PI)
+
+> supports(Z, A)
+
+> applicableRules(A, R)
+
+> evaluatedIn(A, C)
+
+The Action is distinct from its Private Actor, type, operation capability,
+proof, public inputs, implementation, Evaluation, Determination, Published
+Result, Protocol State Transition, and application-defined meaning.
+
+### 26.2 Action Attempt, Admission, and Occurrence Identity
+
+An action attempt is an effort to construct, present, submit, or obtain
+evaluation of a candidate Protocol Action.
+
+An attempt does not automatically constitute an evaluated Protocol Action.
+
+A candidate enters the Protocol Action model when it is admitted to the
+applicable authoritative evaluation boundary:
+
+> admittedForEvaluation(candidateA)
+> ->
+> instantiates(candidateA, A)
+
+Transport retries, relay attempts, submission retries, and internal processing
+attempts do not silently widen or replace the logical action occurrence.
+
+The applicable specification determines whether repeated authoritative
+presentations concern one occurrence or distinct occurrences.
+
+That determination cannot infer, merge, or reconstruct Private Actor identity.
+
+### 26.3 RF-20 — Protocol Actions
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-ACTION-001 | RF-20 | MUST | Every Privacy Engine Protocol Action | A Protocol Action MUST be one bounded occurrence of protocol-defined behavior presented through an implementation for Evaluation under the applicable rules of one identified published protocol generation. | S02, S18, S24 |
+| PE-ACTION-002 | RF-20 | MUST | Every Protocol Action occurrence | Each Protocol Action MUST possess one stable occurrence identity distinct from every other Protocol Action occurrence. | S18, S24 |
+| PE-ACTION-003 | RF-20 | MUST | Every Protocol Action | The Action MUST be bounded to one occurrence, one action type, one declared public-input set, one applicable protocol-rule set, and one bounded evaluation context. | S18, S24 |
+| PE-ACTION-004 | RF-20 | MUST | Every Protocol Action occurrence | The occurrence MUST identify its protocol-defined action type and governing published protocol generation. | S24 |
+| PE-ACTION-005 | RF-20 | MUST | Every Protocol Operation, action type, and Protocol Action occurrence | Published capability, action-type classification, and individual action occurrence MUST remain distinct. | S02, S18, S23, S24 |
+| PE-ACTION-006 | RF-20 | MUST | Every effort to construct, present, submit, or obtain evaluation of a candidate Protocol Action | An action attempt MUST remain distinct from a Protocol Action occurrence admitted to the authoritative evaluation boundary. | S18, S24 |
+| PE-ACTION-007 | RF-20 | MUST | Every candidate admitted to authoritative Protocol Action Evaluation | Admission to the applicable authoritative evaluation boundary MUST instantiate one bounded Protocol Action occurrence without identifying its Private Actor. | S18, S24 |
+| PE-ACTION-008 | RF-20 | MUST NOT | Every transport retry, relay attempt, submission retry, implementation retry, and internal processing attempt | An operational retry or attempt MUST NOT silently widen, replace, merge, or create the identity of the logical Protocol Action occurrence. | S18, S20, S24 |
+| PE-ACTION-009 | RF-20 | MUST | Every protocol rule governing repeated authoritative presentations | The rule MUST determine whether the presentations concern one action occurrence or distinct action occurrences without inferring or merging Private Actor identity. | S18, S24 |
+| PE-ACTION-010 | RF-20 | MUST | Every Protocol Action | The Action MUST carry exactly the declared public-input set required for its action type while remaining distinct from those public inputs. | S20, S24 |
+| PE-ACTION-011 | RF-20 | MUST | Every proof-supported Protocol Action | The Action and its supporting proof MUST remain distinct, and the proof MUST contribute only its bounded evidence role. | S18, S24, S25 |
+| PE-ACTION-012 | RF-20 | MUST | Every Protocol Action performed through an implementation | The Action occurrence MUST remain distinct from the implementation, deployment, transaction, transport, storage, and runtime machinery through which it is presented. | S18, S20, S24 |
+| PE-ACTION-013 | RF-20 | MUST | Every relationship between a Private Actor and Protocol Action | The Private Actor and public Protocol Action MUST remain distinct according to `Private actors, public actions`. | S01, S18, S19, S24 |
+| PE-ACTION-014 | RF-20 | MUST NOT | Every Protocol Action identifier and representation | An action identifier or representation MUST NOT identify, encode, imply, reconstruct, or become a reusable identifier for the Private Actor. | S01, S18, S20, S24 |
+| PE-ACTION-015 | RF-20 | MUST NOT | Every application interpretation of a Protocol Action | Application-defined meaning, terminology, workflow, metadata, or truth MUST NOT become Protocol Action identity or protocol validity. | S18, S24, S28, S29 |
+| PE-ACTION-016 | RF-20 | MUST | Every relationship from a Protocol Action to a possible Published Result, Determination, or Protocol State Transition | The Protocol Action MUST remain distinct from every interface result, downstream Determination, and possible state-transition consequence. | S02, S18, S24, S27, S32 |
+| PE-ACTION-017 | RF-20 | MUST NOT | Every Protocol Action interpretation and extension | A Protocol Action MUST NOT be represented as a Protocol Claim or used to introduce another first-class subject without satisfying the established closed-ontology test. | S17, S18, S24, S28 |
+
+### 26.4 Applicable Protocol Rules and Action Validity
+
+Every Protocol Action is governed by one complete bounded applicable
+protocol-rule set.
+
+The rules derive through the established authority direction:
+
+> derives(Spec, P)
+
+> derives(Profile, Spec)
+
+> implements(I, Profile)
+
+> applicableRules(A, R)
+
+> derivesRules(R, P)
+
+Applicability may depend on:
+
+- the Protocol Action type;
+- the applicable implementation profile;
+- protocol-relevant current state;
+- the bounded evaluation context.
+
+Implementation policy may determine whether an implementation offers,
+transports, or locally prepares an action.
+
+Implementation policy does not silently become protocol validity.
+
+The complete validity invariant is:
+
+> protocolValid(A, C)
+> iff
+> satisfiesAll(A, R, C)
+
+The applicable rule set includes every proof and non-proof requirement governing
+the Action in that context.
+
+SF-07 establishes the Action and complete applicable-rule boundary.
+
+SF-08 remains the authoritative home for applying that complete rule set through
+Evaluation and producing the Determination.
+
+### 26.5 RF-21 — Applicable Protocol-Rule Sets and Action Validity
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-RULE-001 | RF-21 | MUST | Every Protocol Action | The Action MUST be governed by exactly one complete and bounded applicable protocol-rule set for its identified action type and evaluation context. | S02, S18, S24, S33 |
+| PE-RULE-002 | RF-21 | MUST | Every rule included in an applicable Protocol Action rule set | Each applicable rule MUST derive from the identified published protocol generation through the established Protocol Specification and implementation-profile direction. | S02, S18, S24, S33 |
+| PE-RULE-003 | RF-21 | MUST | Every determination of Protocol Action rule applicability | Applicability MUST be determined only from protocol-defined action type, applicable implementation profile, protocol-relevant state, and bounded evaluation-context conditions. | S24, S33 |
+| PE-RULE-004 | RF-21 | MUST | Every Protocol Action admitted for authoritative Evaluation | The complete applicable protocol-rule set MUST be established before authoritative Evaluation begins. | S18, S24, S25 |
+| PE-RULE-005 | RF-21 | MUST NOT | Every implementation, application, transport, deployment, and operational policy | Implementation convenience, application policy, transport behavior, deployment state, or operational discretion MUST NOT silently create, remove, weaken, strengthen, or reinterpret a protocol-validity rule. | S18, S24, S33 |
+| PE-RULE-006 | RF-21 | MUST | Every Protocol Action validity classification basis | Protocol Action validity MUST mean satisfaction of every applicable protocol rule within the identified bounded evaluation context. | S18, S24, S25 |
+| PE-RULE-007 | RF-21 | MUST | Every applicable Protocol Action rule set | The rule set MUST include every applicable proof requirement, public-input requirement, non-proof validity condition, uniqueness condition, state-relative condition, and action-type constraint. | S01, S18, S24, S25, S33 |
+| PE-RULE-008 | RF-21 | MUST | Every protocol-validity interpretation | Protocol validity MUST remain action-specific and bounded to the identified evaluation context. | S18, S24, S25 |
+| PE-RULE-013 | RF-21 | MUST NOT | Every comparison of Protocol Action validity across materially different evaluation contexts | Validity in one evaluation context MUST NOT be inferred as validity in a materially different evaluation context. | S18, S24, S25 |
+| PE-RULE-009 | RF-21 | MUST NOT | Every application interpretation and external claim associated with a Protocol Action | Application meaning, factual meaning, legal meaning, social meaning, or institutional meaning MUST NOT replace or redefine the applicable protocol-rule set or protocol validity. | S18, S24, S25, S28, S29 |
+| PE-RULE-010 | RF-21 | MUST | Every action-local uniqueness or authorization rule | The rule MUST preserve the declared action scope without creating reusable participant identity, actor disclosure, or unauthorized cross-action linkage. | S01, S18, S20, S24 |
+| PE-RULE-011 | RF-21 | MUST NOT | Every implementation, transaction, transport, retry, storage, and diagnostic identifier | An operational identifier MUST NOT determine, replace, merge, or redefine Protocol Action identity, rule applicability, or protocol validity. | S18, S20, S24 |
+| PE-RULE-012 | RF-21 | MUST | Every Protocol Action prepared for complete Evaluation | The Action, complete applicable rule set, and bounded evaluation context MUST be available as distinct preserved inputs to SF-08 without pre-emptively defining Evaluation, Determination, acceptance, or rejection. | S02, S18, S24, S25 |
+
+## 27. Supporting Relationships and Deferred Operational Semantics
+
+SF-03 and SF-04 establish the terminology, identity, and privacy requirements
+preserved by SF-05–SF-07.
+
+SF-05 establishes:
+
+- bounded Interface Contract meaning;
+- concrete syntactic realization;
+- stable Protocol Surfaces;
+- Protocol Operation capability;
+- and Published Result semantics.
+
+SF-06 establishes:
+
+- proofs and declared public inputs;
+- proof verification;
+- bounded proof evidence;
+- complete protocol validity;
+- and non-proof validity conditions.
+
+SF-07 establishes:
+
+- Protocol Action occurrence identity;
+- action attempts and admission to Evaluation;
+- applicable protocol-rule sets;
+- and the complete action-validity boundary required before Evaluation.
 
 The following authoritative homes remain deferred:
 
-- interfaces, Protocol Operations, Published Results, requests, responses, and
-  adapters: SF-05 and SF-12;
-- proofs, declared public inputs, verification, evidence, and validity: SF-06;
-- Protocol Actions and applicable rules: SF-07;
-- Evaluation, Determination, acceptance, rejection, and accepted
-  no-transition behavior: SF-08;
+- Evaluation, Determination, acceptance, rejection, and accepted no-transition
+  behavior: SF-08;
 - protocol state, transition mappings, preconditions, transition occurrences,
-  authorization, execution, and commitment: SF-09 and SF-10;
+  and authorization: SF-09;
+- transition execution, commitment, atomicity, and state evolution: SF-10;
 - history, public consequences, failure, staleness, and re-evaluation: SF-11;
-- runtime, implementation, realization, compatibility, profiles, and reference
-  implementations: SF-12–SF-14;
+- application requests, responses, adapters, runtime, and integration
+  boundaries: SF-12;
+- implementation, realization, compatibility, and migration: SF-13;
+- implementation profiles and reference implementations: SF-14;
 - conformance and certification: SF-15;
 - protocol-semantic preservation and complete explicit exclusions: SF-16.
 
-References to these subjects in SF-03 and SF-04 establish only terminology,
-identity separation, or privacy dependencies.
+References to deferred subjects establish only the cross-section relationships
+required to preserve current boundaries.
 
-They do not relocate the later requirement families.
+They do not relocate the deferred requirement families.
+
+RF-14 remains assigned to SF-12.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
-## 25. Current Composition Boundary
+## 28. Current Composition Boundary
 
 This cumulative document currently contains the authoritative normative homes
 for:
 
-- RF-01–RF-11;
-- RF-15;
-- RF-19.
+- RF-01–RF-13;
+- RF-15–RF-21.
 
 The following section families remain deliberately uncomposed:
 
-- SF-05 — interface contracts, protocol surfaces, operations, and results;
-- SF-06 — proofs, public inputs, verification, evidence, and validity;
-- SF-07 — Protocol Actions and applicable rules;
-- SF-08 — Evaluation, Determination, acceptance, and rejection;
+- SF-08 — Evaluation, Determination, acceptance, rejection, and accepted
+  no-transition behavior;
 - SF-09 — protocol state, transition semantics, preconditions, and
   authorization;
 - SF-10 — transition execution, commitment, atomicity, and state evolution;
@@ -921,22 +1457,26 @@ The following section families remain deliberately uncomposed:
 - SF-15 — conformance and certification;
 - SF-16 — semantic preservation and explicit exclusions.
 
-Their absence is explicit and must not be interpreted as implicit definition,
-permission, prohibition, or completion.
+Their absence is explicit and is not an implicit definition, permission,
+prohibition, or completion.
 
-This slice does not define:
+This cumulative slice does not define:
 
-- interface-contract or concrete-interface semantics;
-- Published Result semantics;
-- proof construction or proof verification;
-- declared public-input schemas or ordering;
-- complete Protocol Action lifecycle or validity requirements;
-- complete Evaluation or Determination semantics;
-- acceptance or rejection requirements;
-- protocol-state or transition lifecycle requirements;
+- complete Protocol Action Evaluation;
+- Protocol Action Determination;
+- acceptance or rejection;
+- accepted no-transition behavior;
+- protocol state;
+- Protocol Transition preconditions;
+- Protocol State Transition authorization or cardinality;
 - transition execution or commitment;
+- protocol-state history;
+- committed public protocol-state consequences;
+- cross-stage failure classifications;
+- staleness or re-evaluation;
 - application request, response, or adapter behavior;
-- runtime or implementation mechanics;
+- runtime or integration responsibility;
+- implementation or realization mechanics;
 - blockchain consensus;
 - transaction formats;
 - transport or relay mechanics;
@@ -948,18 +1488,21 @@ This slice does not define:
 - RF-49 semantic-preservation requirements;
 - or RF-50 complete exclusion requirements.
 
-These are local composition-boundary statements. They do not relocate or
-duplicate the authoritative homes reserved for later requirement families.
+These are local composition-boundary statements.
 
-The cumulative specification contains 152 stable normative requirements:
+They do not relocate or duplicate the authoritative homes reserved for later
+requirement families.
+
+The cumulative specification contains 252 stable normative requirements:
 
 - 81 requirements preserved from SF-01 and SF-02;
-- 71 requirements composed through SF-03 and SF-04.
+- 71 requirements preserved from SF-03 and SF-04;
+- 100 requirements composed through SF-05, SF-06, and SF-07.
 
-The document remains incomplete until SF-05–SF-16 have been composed and the
+The document remains incomplete until SF-08–SF-16 have been composed and the
 complete specification has passed final consolidation review.
 
-## 26. Cumulative Traceability
+## 29. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -994,13 +1537,17 @@ The source codes used in the normative requirement tables are:
 | S27 | `PRIVACY_ENGINE_PROTOCOL_STATE_TRANSITION_MODEL_V1.md` |
 | S28 | `PRIVACY_ENGINE_PROTOCOL_CLAIM_ASSESSMENT_V1.md` |
 | S29 | `PRIVACY_ENGINE_APPLICATION_ADAPTER_CONTRACT_V1.md` |
+| S30 | `PRIVACY_ENGINE_CONCRETE_INTERFACE_SPECIFICATION_MODEL_V1.md` |
+| S31 | `PRIVACY_ENGINE_INTERFACE_CONTRACT_MODEL_V1.md` |
+| S32 | `PRIVACY_ENGINE_PUBLISHED_RESULT_MODEL_V1.md` |
+| S33 | `PRIVACY_ENGINE_PROTOCOL_ENFORCEMENT_MODEL_V1.md` |
 
 Source references record semantic provenance and composition support.
 
 They do not create independent normative authority.
 
-The authoritative normative home of each requirement is the composed SF-01,
-SF-02, SF-03, or SF-04 section containing its requirement family.
+The authoritative normative home of each requirement is the composed section
+family containing its requirement family.
 
 The traceability direction remains:
 
@@ -1031,63 +1578,96 @@ The composition invariants remain:
 
 > semantics(Spec) = semantics(P)
 
-Traceability organizes established semantics. It does not redefine them.
+Traceability organizes established semantics.
 
-## 27. Conclusion
+It does not redefine them.
 
-SF-01 through SF-04 now establish the cumulative normative foundation,
-protocol-generation model, canonical terminology, subject-identity model, and
-privacy model of the Privacy Engine Protocol Specification.
+## 30. Conclusion
 
-SF-03 establishes:
+SF-01 through SF-07 now establish the cumulative normative path from protocol
+authority and publication through terminology, privacy, interfaces, proof
+evidence, validity, and one bounded Protocol Action ready for Evaluation.
 
-- canonical protocol terminology;
-- stable subject interpretation;
-- the complete identified protocol-use occurrence inventory;
-- subject-identity separation;
-- type-and-occurrence separation;
-- subject, identifier, and representation separation;
-- relationship direction and boundedness;
-- downstream preservation of subject identity;
-- and the prohibition of terminology-based ontology expansion.
+SF-05 establishes:
 
-SF-04 establishes:
+- Interface Contract identity and bounded semantic meaning;
+- Concrete Interface Specification identity and syntactic realization;
+- semantic equivalence across permitted representations;
+- stable Protocol Surfaces;
+- Protocol Operation as published bounded capability;
+- Protocol Operation type versus Protocol Action occurrence;
+- Published Result identity and semantic preservation;
+- Published Result versus representation;
+- Published Result versus Determination;
+- and Published Result versus committed public protocol-state consequence.
 
-- Private Actors and public Protocol Actions;
-- public action visibility without Private Actor disclosure;
-- anonymous-membership identity and continuity boundaries;
-- action-local public representation;
-- nullifier-based scoped uniqueness;
-- cross-action unlinkability;
-- separation from wallet, application, implementation, deployment, and
-  transport identity;
-- compositional privacy;
-- privacy-preserving observability and diagnostics;
-- and privacy-language discipline across runtime and documentation surfaces.
+SF-06 establishes:
 
-Protocol Operation remains distinct from Protocol Action occurrence.
+- proof identity and proof representation;
+- the declared proof relation;
+- public and private input separation;
+- the locked current public-input order;
+- proof-to-public-input coherence;
+- proof artifact integrity;
+- bounded proof verification;
+- proof-valid, proof-invalid, and verification-failure separation;
+- proof evidence;
+- proof validity versus complete protocol validity;
+- non-proof validity conditions;
+- and protocol validity versus application or external truth.
 
-Protocol Transition remains distinct from Protocol State Transition
-occurrence.
+SF-07 establishes:
 
-Protocol Action, Evaluation, Determination, and Protocol State Transition
-retain their separate identities.
+- Protocol Action as one bounded first-class occurrence;
+- action identity and action boundedness;
+- action type versus occurrence;
+- action attempt versus admitted occurrence;
+- retry and transport-attempt separation;
+- declared public inputs;
+- applicable protocol-rule completeness;
+- context-bounded Protocol Action validity;
+- Protocol Action versus Private Actor;
+- action identity versus operational identity;
+- application meaning versus protocol validity;
+- and the complete Action-plus-rules boundary required before SF-08 Evaluation.
 
-Private Actor remains distinct from every public protocol subject and public
-consequence.
+The implementation-facing path is:
 
-No reusable participant identity, cross-action identity mechanism, or
-actor-reconstruction bridge is introduced.
+> published Interface Contract
+> -> permitted concrete representation
+> -> published Protocol Operation capability
+> -> proof and declared public inputs
+> -> bounded proof-verification evidence
+> -> complete applicable validity conditions
+> -> one identified Protocol Action ready for Evaluation
 
-No Protocol Claim or other new first-class subject is introduced.
+Protocol Operation remains a capability type.
 
-The 81 requirements established by SF-01 and SF-02 remain unchanged.
+Protocol Action remains one identified occurrence.
 
-The cumulative Protocol Specification now contains 152 stable normative
-requirements and is ready to receive SF-05 through SF-07 without reopening the
-ontology or redefining privacy.
+Proof verification contributes bounded evidence.
 
-The Protocol Specification remains derived, portable, implementation-facing,
-and non-authoritative.
+It does not independently establish complete protocol validity, acceptance, or
+commitment.
+
+Published Result remains an interface-level semantic result.
+
+It does not become Determination, an Evaluation Outcome object, or a committed
+public protocol-state consequence.
+
+Private Actor remains distinct from proofs, public inputs, Protocol Action
+identity, interfaces, results, implementations, applications, deployments,
+transports, diagnostics, and observability surfaces.
+
+No reusable participant identity, cross-action identity mechanism, Protocol
+Claim, Evaluation Outcome object, or other new first-class subject is
+introduced.
+
+The 152 requirements established through SF-01–SF-04 remain unchanged.
+
+SF-08–SF-16 remain deliberately deferred.
+
+The cumulative specification remains incomplete pending those sections and the
+final consolidation review.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
