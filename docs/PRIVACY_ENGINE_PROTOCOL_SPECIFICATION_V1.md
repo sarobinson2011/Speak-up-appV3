@@ -20,7 +20,10 @@ Current composition status:
 - SF-09 — Protocol State, Transition Semantics, Preconditions, and Authorization: composed;
 - SF-10 — Transition Execution, Commitment, Atomicity, and State Evolution: composed;
 - SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation: composed;
-- SF-12–SF-16: not yet composed.
+- SF-12 — Application, Adapter, Runtime, and Integration Boundaries: composed;
+- SF-13 — Implementation, Realization, Compatibility, and Migration: composed;
+- SF-14 — Implementation Profiles and Reference Implementations: composed;
+- SF-15–SF-16: not yet composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
@@ -65,7 +68,10 @@ The current cumulative document composes:
 - SF-08 — Evaluation, Determination, Acceptance, and Rejection;
 - SF-09 — Protocol State, Transition Semantics, Preconditions, and Authorization;
 - SF-10 — Transition Execution, Commitment, Atomicity, and State Evolution;
-- SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation.
+- SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation;
+- SF-12 — Application, Adapter, Runtime, and Integration Boundaries;
+- SF-13 — Implementation, Realization, Compatibility, and Migration;
+- SF-14 — Implementation Profiles and Reference Implementations.
 
 These sections authoritatively contain:
 
@@ -102,17 +108,22 @@ These sections authoritatively contain:
 - RF-32 — Protocol-state history;
 - RF-33 — Public protocol-state consequences;
 - RF-34 — Failure classifications and failure separation;
-- RF-35 — Stale authorization and re-evaluation.
+- RF-35 — Stale authorization and re-evaluation;
+- RF-14 — Application requests, responses, and adapters;
+- RF-36 — Application and adapter authority boundaries;
+- RF-37 — Runtime, enforcement, and execution responsibility;
+- RF-38 — Implementation identity and implementation obligations;
+- RF-39 — Protocol realization;
+- RF-40 — Prohibited implementation, runtime, application, and assessment authority;
+- RF-41 — Compatibility targets, surfaces, statements, profiles, declarations, and assessment;
+- RF-42 — Implementation profiles;
+- RF-43 — Reference implementations.
 
-The current document does not define the application, runtime, implementation,
-implementation-profile, conformance, certification, semantic-preservation, or
-complete-exclusion requirements assigned to SF-12–SF-16.
+The current document does not yet define the conformance, certification,
+complete protocol-semantic-preservation, or complete-exclusion requirements
+assigned to SF-15 and SF-16.
 
-RF-14, RF-36, and RF-37 remain assigned to SF-12.
-
-RF-38–RF-41 remain assigned to SF-13.
-
-RF-42 and RF-43 remain assigned to SF-14.
+RF-44–RF-48 remain assigned to SF-15.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
@@ -2647,114 +2658,556 @@ It does not define the application, runtime, implementation, profile,
 conformance, certification, semantic-preservation, or complete-exclusion
 requirements reserved to SF-12–SF-16.
 
-## 31. Supporting Relationships and Deferred Operational Semantics
+## 31. SF-12 — Application, Adapter, Runtime, and Integration Boundaries
 
-SF-03 and SF-04 establish the terminology, identity, and privacy requirements
-preserved by SF-05–SF-11.
+SF-12 defines the application-owned representations, translation boundaries,
+operational responsibilities, and integration-preservation obligations through
+which applications use Privacy Engine capabilities.
 
-SF-05 establishes interface contracts, Protocol Surfaces, Protocol Operations,
-and Published Results.
+Application representation remains distinct from protocol meaning.
 
-SF-06 establishes proofs, declared public inputs, verification, bounded
-evidence, complete validity, and non-proof validity conditions.
+Operational responsibility remains distinct from protocol authority.
 
-SF-07 establishes Protocol Action identity, the complete applicable rule set,
-and the bounded evaluation context.
+### 31.1 Application Requests, Adapters, and Application Responses
 
-SF-08 establishes Evaluation, Determination, acceptance, rejection, and the
-successful accepted no-transition terminal path.
+An Application Request is one bounded application-owned representation
+presented toward an application boundary for possible translation into an
+applicable protocol-facing representation.
 
-SF-09 establishes transition mapping, preconditions, eligibility, transition
-occurrence identity, authorization, and protocol-defined cardinality.
+An Application Request is not automatically a Protocol Operation or Protocol
+Action. Translation and protocol admission do not occur merely because an
+application created a request.
 
-SF-10 establishes preserved execution, complete atomic commitment,
-authoritative successor state, and state evolution.
+An Application Adapter is the bounded translation boundary between
+application-owned representation and the applicable protocol-facing interface
+representation.
 
-SF-11 establishes committed history, bounded public consequences, complete
-cross-stage failure separation, stale authorization, and re-evaluation.
+Translation changes representation only.
+
+Where the applicable meaning cannot be preserved, translation fails:
+
+> input -> preservedTranslation(input)
+
+or:
+
+> input -> translationFailure
+
+never:
+
+> input -> repairedOrInferred(input')
+
+An Application Response is one bounded application-owned representation
+derived from an applicable Published Result or other protocol-defined output
+exposed through the governing interface.
+
+It is not the Published Result or public protocol-state consequence itself.
+
+#### 31.1.1 RF-14 — Application Requests, Responses, and Adapters
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-APPREP-001 | RF-14 | MUST | Every Application Request | An Application Request MUST remain a bounded application-owned representation presented for possible translation at one identified application boundary. | S29, S41, S43 |
+| PE-APPREP-002 | RF-14 | MUST | Every identified Application Request | The request identity and scope MUST identify the request representation without identifying a Private Actor or becoming a reusable cross-action identifier. | S01, S18, S41 |
+| PE-APPREP-003 | RF-14 | MUST NOT | Every Application Request | An Application Request MUST NOT be interpreted merely by its existence as a Protocol Operation, Protocol Action, proof, declared public input, Evaluation, Determination, Protocol State Transition, protocol state, or protocol truth. | S18, S23, S24, S41 |
+| PE-APPREP-004 | RF-14 | MUST | Every application-owned request value | Each request value MUST remain application-owned until a valid adapter translation establishes its applicable protocol-facing representation under the governing Interface Contract. | S29, S30, S31, S41 |
+| PE-APPREP-005 | RF-14 | MUST | Every Application Adapter | An Application Adapter MUST remain a bounded translation boundary between application-owned representation and the applicable protocol-facing interface representation. | S29, S40 |
+| PE-APPREP-006 | RF-14 | MUST | Every identified Application Adapter | Adapter identity and scope MUST remain distinct from the application, runtime, implementation, Interface Contract, Concrete Interface Specification, Protocol Operation, Protocol Action, and Private Actor. | S20, S29, S40 |
+| PE-APPREP-007 | RF-14 | MUST | Every adapter translation | Translation MUST be governed by the applicable Interface Contract and Concrete Interface Specification and MUST map only representations supported by that boundary. | S29, S30, S31, S40 |
+| PE-APPREP-008 | RF-14 | MUST | Every successful adapter translation | A successful translation MUST preserve the complete bounded meaning, identity distinctions, ordering requirements, applicability conditions, and failure semantics of its source representation. | S29, S30, S40, S41, S42 |
+| PE-APPREP-009 | RF-14 | MUST | Every adapter unable to preserve applicable meaning | The adapter MUST return bounded translation failure when it cannot preserve the applicable meaning or required representation. | S29, S40, S43 |
+| PE-APPREP-010 | RF-14 | MUST NOT | Every adapter translation | Translation MUST NOT repair, infer, widen, narrow, merge, divide, substitute, or invent protocol meaning, protocol subjects, protocol values, or protocol outcomes. | S18, S29, S40, S43 |
+| PE-APPREP-011 | RF-14 | MUST | Every Application Response | An Application Response MUST remain a bounded application-owned representation derived from one applicable protocol-defined output exposed through the governing interface. | S29, S32, S42 |
+| PE-APPREP-012 | RF-14 | MUST | Every identified Application Response | Response identity and scope MUST identify the response representation without changing the identity of its source output or identifying a Private Actor. | S01, S18, S32, S42 |
+| PE-APPREP-013 | RF-14 | MUST NOT | Every Application Response | An Application Response MUST NOT be identified with or substituted for its source Published Result, public protocol-state consequence, Determination, protocol state, or application interpretation. | S18, S27, S32, S42 |
+| PE-APPREP-014 | RF-14 | MUST | Every Application Response derived through translation | The response MUST preserve the complete bounded meaning and failure status of its source protocol-defined output while remaining application-owned representation. | S29, S32, S40, S42 |
+| PE-APPREP-015 | RF-14 | MUST NOT | Every Application Request, adapter output, and Application Response | Application-facing representation MUST NOT convert protocol output into factual, legal, social, institutional, or application truth or into evidence of user intent or Private Actor identity. | S01, S18, S29, S41, S42 |
+| PE-APPREP-016 | RF-14 | MUST | Every request, adapter, response, field, serialization, example, and diagnostic surface | Application-facing representation and translation surfaces MUST preserve SF-03 and SF-04 terminology, identity separation, privacy, unlinkability, minimum-disclosure, and neutral-naming requirements. | S01, S18, S20, S29, S40, S41, S42 |
+
+### 31.2 Application, Adapter, and Integration Authority Boundaries
+
+Applications own application representation, application-local policy, and
+application interpretation.
+
+Adapters own bounded representation translation.
+
+Integrators own preservation across connected boundaries.
+
+None owns protocol semantics.
+
+#### 31.2.1 RF-36 — Application and Adapter Authority Boundaries
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-APPAUTH-001 | RF-36 | MAY | Every application | An application MAY define application-local representation, terminology, policy, validation, presentation, persistence, and interpretation within its declared application-owned scope. | S29, S40, S41, S42, S43 |
+| PE-APPAUTH-002 | RF-36 | MUST NOT | Every application policy or interpretation | Application policy or interpretation MUST NOT alter protocol validity, applicable protocol obligations, proof meaning, public-input meaning, Evaluation, Determination, transition semantics, commitment, protocol state, compatibility, conformance, or certification. | S18, S21, S29, S43 |
+| PE-APPAUTH-003 | RF-36 | MUST NOT | Every application and Application Request or Response | An application or its representations MUST NOT acquire protocol authority or represent application-owned meaning as protocol-defined meaning. | S21, S29, S41, S42 |
+| PE-APPAUTH-004 | RF-36 | MUST | Every Application Adapter | An adapter MUST exercise responsibility only for bounded representation handling and translation within its governing interface boundary. | S29, S40 |
+| PE-APPAUTH-005 | RF-36 | MUST NOT | Every Application Adapter | An adapter MUST NOT redefine Interface Contract meaning, Protocol Surface meaning, Protocol Operation meaning, Protocol Action identity, proof or public-input meaning, Evaluation, Determination, transition, commitment, state, Published Result, public consequence, validity, privacy, compatibility, conformance, or certification. | S18, S20, S22, S29, S40 |
+| PE-APPAUTH-006 | RF-36 | MUST | Every integrator | An integrator MUST preserve every applicable upstream semantic subject, requirement, identity distinction, ordering rule, failure rule, privacy boundary, and authority boundary across the connected application, adapter, runtime, and implementation surfaces. | S20, S21, S29, S44 |
+| PE-APPAUTH-007 | RF-36 | MUST NOT | Every integration | Integration MUST NOT authorize semantic repair, inference, substitution, correlation, authority transfer, or the creation of an application-specific alternative protocol path. | S18, S20, S21, S44 |
+| PE-APPAUTH-008 | RF-36 | MUST | Every adapter replacement or application-boundary change | The replacement or change MUST preserve every applicable published interface meaning and MUST fail compatibility where that meaning cannot be preserved. | S22, S29, S40, S44 |
+| PE-APPAUTH-009 | RF-36 | MUST NOT | Every application-side validation or default | Application validation, defaults, convenience abstractions, or preferred outcomes MUST NOT be treated as protocol validation, protocol defaults, protocol rules, or protocol outcomes. | S29, S40, S41 |
+| PE-APPAUTH-010 | RF-36 | MUST | Every application, adapter, and integration failure | Failure MUST be reported within its bounded layer and MUST preserve the distinction between representation failure, runtime failure, implementation failure, and protocol-defined failure. | S18, S27, S43, S44 |
+| PE-APPAUTH-011 | RF-36 | MUST NOT | Every application, adapter, integration record, or observability surface | The surface MUST NOT identify a Private Actor, carry enrollment or admission provenance, create reusable participant identity, create cross-action linkage, or compose metadata into an actor-reconstruction bridge. | S01, S18, S20, S21, S44 |
+| PE-APPAUTH-012 | RF-36 | MUST | Every public application, adapter, or integration identifier | A public identifier MUST remain bounded to its declared non-actor subject and MUST NOT be interpreted as protocol identity, Protocol Action identity, or Private Actor identity. | S01, S18, S20, S44 |
+
+### 31.3 Runtime, Enforcement, Execution, and Integration Responsibility
+
+A Privacy Engine runtime is an identified operational context through which an
+implementation performs bounded protocol-facing work.
+
+The runtime may orchestrate mechanisms.
+
+Orchestration does not merge their semantic roles.
+
+Protocol Enforcement evaluates transition eligibility under published
+preconditions and contributes to complete Protocol Action Evaluation where
+applicable.
+
+Enforcement is not complete Evaluation.
+
+Execution is not enforcement.
+
+Execution is not commitment.
+
+#### 31.3.1 RF-37 — Runtime, Enforcement, and Execution Responsibility
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-RUNTIME-001 | RF-37 | MUST | Every Privacy Engine runtime | A runtime MUST remain an identified operational context through which one or more identified implementations perform bounded protocol-facing work. | S43, S47 |
+| PE-RUNTIME-002 | RF-37 | MUST | Every identified runtime | Runtime identity and scope MUST remain distinct from application identity, adapter identity, implementation identity, deployment identity, protocol identity, Protocol Action identity, and Private Actor identity. | S01, S18, S43, S47 |
+| PE-RUNTIME-003 | RF-37 | MUST NOT | Every runtime | A runtime MUST NOT interpret application-local meaning as protocol meaning or assume application ownership merely because it receives application-facing material. | S21, S43, S47 |
+| PE-RUNTIME-004 | RF-37 | MUST | Every runtime using an implementation | The runtime MUST preserve the identity and declared scope of each implementation through which it realizes protocol-facing work. | S43, S45, S47 |
+| PE-RUNTIME-005 | RF-37 | MAY | Every runtime | A runtime MAY receive applicable inputs, invoke validation and enforcement, invoke Evaluation, invoke authorized execution, expose applicable results, and report bounded failure where those responsibilities are assigned by the applicable implementation profile. | S33, S34, S43, S47, S55 |
+| PE-RUNTIME-006 | RF-37 | MUST NOT | Every runtime orchestration path | Runtime orchestration order, component topology, retry behavior, transport, storage, or deployment mechanics MUST NOT redefine the semantic identity or ordering requirements of Protocol Actions, Evaluations, Determinations, transitions, commitment, state, history, or consequences. | S18, S20, S27, S43, S47 |
+| PE-RUNTIME-007 | RF-37 | MUST | Every Protocol Enforcement occurrence | Enforcement MUST evaluate only the applicable published transition preconditions and MUST contribute its bounded eligibility result to the complete applicable Protocol Action Evaluation where required. | S25, S27, S33 |
+| PE-RUNTIME-008 | RF-37 | MUST NOT | Every Protocol Enforcement occurrence | Enforcement MUST NOT be interpreted as the complete Protocol Action Evaluation or as an independent Protocol Action Determination. | S02, S18, S25, S33 |
+| PE-RUNTIME-009 | RF-37 | MUST NOT | Every Protocol Enforcement occurrence | Enforcement MUST NOT execute a transition, commit state, construct authoritative successor state, publish a result, or select an alternative transition. | S27, S33, S34 |
+| PE-RUNTIME-010 | RF-37 | MUST | Every authorized transition execution | Execution MUST preserve the already-authorized Protocol State Transition occurrence and realize only its published transition mapping. | S27, S34 |
+| PE-RUNTIME-011 | RF-37 | MUST NOT | Every transition execution | Execution MUST NOT perform enforcement, substitute another transition occurrence, or treat derived successor-state material as committed authoritative state. | S27, S33, S34, S35 |
+| PE-RUNTIME-012 | RF-37 | MUST NOT | Every successful execution | Successful execution MUST NOT be interpreted as commitment until the complete SF-10 commitment requirements have been satisfied. | S27, S34, S35 |
+| PE-RUNTIME-013 | RF-37 | MUST | Every runtime result or failure report | Runtime reporting MUST preserve the source result, lifecycle stage, success or failure classification, and applicable identity distinctions without inventing protocol truth. | S18, S27, S32, S43, S47 |
+| PE-RUNTIME-014 | RF-37 | MUST NOT | Every runtime or implementation failure | A runtime or implementation failure MUST NOT mutate an earlier Protocol Action, Evaluation, Determination, authorization, transition occurrence, commitment status, or protocol-state history. | S18, S27, S43, S47 |
+| PE-RUNTIME-015 | RF-37 | MUST | Every runtime value, log, diagnostic, retry, timing, ordering, topology, and observability surface | The surface MUST preserve SF-04 privacy and MUST NOT expose or compose runtime metadata as Private Actor identity or cross-action linkage. | S01, S18, S20, S43, S47 |
+| PE-RUNTIME-016 | RF-37 | MUST NOT | Every runtime, enforcement mechanism, execution mechanism, and orchestrator | Operational responsibility MUST NOT be interpreted as ownership of protocol semantics or as protocol authority. | S21, S33, S34, S43, S47 |
+
+### 31.4 SF-12 Formal Summary
+
+The SF-12 preservation paths are:
+
+> ApplicationRequest
+> -> preservedTranslation
+> -> protocolFacingRepresentation
+
+> protocolDefinedOutput
+> -> preservedTranslation
+> -> ApplicationResponse
+
+> runtimeResponsibility
+> =/=> protocolAuthority
+
+> enforcementEligibility(V)
+> -> contributesTo(V, E)
+
+> enforcementEligibility(V)
+> =/=> completeEvaluation(E)
+
+> executed(U)
+> =/=> committed(U)
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+## 32. SF-13 — Implementation, Realization, Compatibility, and Migration
+
+SF-13 defines implementation identity and obligations, the preservation
+relationship of protocol realization, the complete prohibition against
+downstream semantic authority, and the bounded compatibility architecture.
+
+An implementation realizes applicable protocol obligations.
+
+It does not define them.
+
+### 32.1 Implementation Identity, Scope, and Obligations
+
+A Privacy Engine implementation is one identified technical realization of
+the applicable normative requirements selected by one or more applicable
+implementation profiles.
+
+Its identity is realization identity only.
+
+#### 32.1.1 RF-38 — Implementation Identity and Implementation Obligations
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-IMPL-001 | RF-38 | MUST | Every Privacy Engine implementation | An implementation MUST be one identified technical realization of the applicable normative requirements selected by its applicable implementation profile or profiles. | S08, S45, S55 |
+| PE-IMPL-002 | RF-38 | MUST | Every implementation | Implementation identity MUST be stable and sufficient to distinguish the implementation from other implementations and materially different implementation versions. | S45 |
+| PE-IMPL-003 | RF-38 | MUST | Every implementation | The implementation MUST declare a bounded realization scope identifying the roles, capabilities, interfaces, protocol generation, Protocol Specification, and implementation profiles it claims to realize. | S08, S10, S44, S45, S55 |
+| PE-IMPL-004 | RF-38 | MUST | Every materially changed implementation version | A materially changed version MUST remain separately identifiable where the change affects applicable obligations, externally observable normative behavior, compatibility, or assessment. | S15, S45 |
+| PE-IMPL-005 | RF-38 | MAY | Every implementation | An implementation MAY use multiple components, algorithms, languages, processes, services, storage structures, transports, and deployment mechanisms where every applicable requirement permits that variation. | S20, S45, S46 |
+| PE-IMPL-006 | RF-38 | MUST | Every component used by an implementation | Component identity, responsibility, and failure MUST remain attributable to the implementation scope without becoming independent protocol identity or protocol authority. | S20, S44, S45 |
+| PE-IMPL-007 | RF-38 | MUST | Every implementation deployment or operational instance | Deployment and instance identity MUST remain distinct from implementation identity, implementation-version identity, profile identity, protocol identity, and Private Actor identity. | S01, S18, S43, S45 |
+| PE-IMPL-008 | RF-38 | MUST NOT | Every implementation identifier | An implementation identifier MUST NOT be interpreted as a protocol-generation identifier, Protocol Specification identifier, implementation-profile identifier, reference designation, conformance identity, certification identity, Protocol Action identity, or Private Actor identity. | S01, S08, S18, S45, S55, S56 |
+| PE-IMPL-009 | RF-38 | MUST | Every implementation | The implementation MUST satisfy every normative requirement applicable through its identified profile, including applicable success, rejection, failure, privacy, observability, and authority requirements. | S05, S06, S44, S45, S55 |
+| PE-IMPL-010 | RF-38 | MUST | Every implementation claiming a requirement is non-applicable | The claim MUST derive from the requirement's published applicability rule and the applicable profile scope rather than implementation preference or existing behavior. | S04, S05, S45, S55 |
+| PE-IMPL-011 | RF-38 | MAY | Every implementation-facing choice explicitly permitted by the applicable profile | The implementation MAY select a choice only within the complete bounded choice space permitted by the Protocol Specification and resolved or retained by the applicable profile. | S45, S55 |
+| PE-IMPL-012 | RF-38 | MUST NOT | Every implementation | Implementation convenience, cost, infrastructure limitation, preferred result, deployment topology, storage model, transport model, local policy, or existing behavior MUST NOT become protocol discretion or an exception to an applicable requirement. | S20, S21, S44, S45 |
+| PE-IMPL-013 | RF-38 | MAY | Multiple implementations of the same applicable profile | Implementations MAY differ technically where every difference remains within permitted implementation choice and preserves equivalent protocol-observable semantics. | S45, S46, S55 |
+| PE-IMPL-014 | RF-38 | MUST | Every permitted implementation variation | The variation MUST preserve every applicable requirement, semantic subject, identity distinction, ordering rule, failure behavior, privacy guarantee, and observable protocol outcome. | S18, S44, S45, S46 |
+| PE-IMPL-015 | RF-38 | MUST | Every implementation failure | Failure MUST remain explicit, bounded to the failed realization responsibility, and distinguishable from protocol invalidity and from alteration of the governing requirement. | S18, S27, S44, S45 |
+| PE-IMPL-016 | RF-38 | MUST NOT | Every implementation name, identifier, version, component, deployment, instance, log, diagnostic, test, and observability surface | The surface MUST NOT identify a Private Actor, create reusable participant identity, create cross-action linkage, or compose implementation metadata into an actor-reconstruction bridge. | S01, S18, S20, S44, S45 |
+
+### 32.2 Protocol Realization
+
+Protocol realization is the bounded preservation relationship through which an
+identified implementation realizes applicable published protocol semantics.
+
+The relationship is:
+
+> implementation realizes protocol semantics
+
+not:
+
+> implementation defines protocol semantics
+
+#### 32.2.1 RF-39 — Protocol Realization
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-REALIZE-001 | RF-39 | MUST | Every claimed Protocol Realization | The realization MUST identify one implementation, one applicable Protocol Specification and published protocol generation, the applicable implementation profile or profiles, and one bounded realization scope. | S08, S10, S45, S46, S55 |
+| PE-REALIZE-002 | RF-39 | MUST | Every Protocol Realization relationship | The relationship MUST remain a bounded preservation relation between its identified implementation and upstream semantic target rather than a new source of protocol semantics or protocol identity. | S10, S12, S45, S46 |
+| PE-REALIZE-003 | RF-39 | MUST | Every implementation realizing an applicable requirement | The implementation MUST preserve the complete meaning, strength, applicability, identity distinctions, conditions, success behavior, and failure behavior of that requirement. | S05, S06, S45, S46, S55 |
+| PE-REALIZE-004 | RF-39 | MUST | Every successful realization of an upstream semantic subject | Every later realization layer MUST preserve the same selected subject `T` throughout the declared scope. | S18, S27, S46 |
+| PE-REALIZE-005 | RF-39 | MUST | Every realization unable to preserve an applicable subject or requirement | The realization MUST fail explicitly rather than claim successful realization. | S44, S45, S46 |
+| PE-REALIZE-006 | RF-39 | MUST NOT | Every Protocol Realization | A realization MUST NOT repair, reinterpret, widen, narrow, merge, divide, substitute, infer, or invent replacement protocol meaning `T'` for the applicable meaning `T`. | S18, S44, S46 |
+| PE-REALIZE-007 | RF-39 | MUST NOT | Every Protocol Realization | A realization MUST NOT omit an applicable mandatory requirement or treat a prohibited behavior as a permitted technical choice. | S05, S06, S45, S46, S55 |
+| PE-REALIZE-008 | RF-39 | MUST | Every complete realization claim | The claim MUST account for every requirement applicable within its declared scope and for every declared dependency of the applicable profile. | S06, S08, S45, S46, S55 |
+| PE-REALIZE-009 | RF-39 | MAY | Multiple realizations of the same applicable profile | Multiple realizations MAY use different internal and operational means where each independently preserves the same required protocol-observable semantics. | S45, S46, S55 |
+| PE-REALIZE-010 | RF-39 | MUST | Every realization-specific extension | The extension MUST remain outside protocol semantics and MUST NOT conflict with, weaken, obscure, or expand any applicable protocol obligation. | S21, S44, S45, S46 |
+| PE-REALIZE-011 | RF-39 | MUST | Every realization record, report, or diagnostic | The surface MUST remain bounded to realization status and MUST preserve SF-04 privacy, neutral naming, and non-correlation requirements. | S01, S18, S44, S46 |
+| PE-REALIZE-012 | RF-39 | MUST NOT | Every implementation and realization | Realizing protocol semantics MUST NOT be interpreted as defining the protocol generation, Protocol Specification, implementation profile, conformance, certification, or protocol authority. | S08, S10, S12, S45, S46, S55 |
+
+### 32.3 Complete Prohibition of Downstream Protocol Authority
+
+RF-40 is the authoritative home for the cross-realization prohibition against
+downstream semantic authority.
+
+Local application, adapter, and runtime boundaries in SF-12 remain supporting
+applications of this complete prohibition.
+
+#### 32.3.1 RF-40 — Prohibited Implementation, Runtime, Application, and Assessment Authority
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-DOWNAUTH-001 | RF-40 | MUST NOT | Every application, adapter, runtime, integration, implementation, realization, compatibility structure, profile, reference implementation, assessment, report, deployment, and operational surface | A downstream structure or surface MUST NOT acquire or claim protocol authority. | S10, S12, S20, S21, S43, S44, S45, S46, S47 |
+| PE-DOWNAUTH-002 | RF-40 | MUST NOT | Every downstream structure or surface | It MUST NOT redefine, replace, amend, supersede, or mutate the identity, membership, publication state, lineage, lifecycle, semantics, or authority of a published protocol generation or Protocol Specification. | S08, S10, S12, S20, S21 |
+| PE-DOWNAUTH-003 | RF-40 | MUST NOT | Every downstream structure or surface | It MUST NOT redefine privacy, anonymity, unlinkability, minimum disclosure, actor separation, reusable-identity prohibitions, or compositional-correlation prohibitions. | S01, S18, S20, S21, S44 |
+| PE-DOWNAUTH-004 | RF-40 | MUST NOT | Every downstream structure or surface | It MUST NOT redefine proof relations, declared public inputs, verification semantics, evidence meaning, or complete protocol validity. | S18, S20, S21 |
+| PE-DOWNAUTH-005 | RF-40 | MUST NOT | Every downstream structure or surface | It MUST NOT redefine Protocol Operation, Protocol Action, applicable-rule, Evaluation, Determination, acceptance, rejection, or accepted no-transition semantics. | S18, S21, S43, S45 |
+| PE-DOWNAUTH-006 | RF-40 | MUST NOT | Every downstream structure or surface | It MUST NOT redefine transition mapping, transition-occurrence identity, authorization, execution, commitment, state, history, consequence, failure, staleness, or re-evaluation semantics. | S18, S27, S35, S43, S45 |
+| PE-DOWNAUTH-007 | RF-40 | MUST NOT | Every compatibility, profile, reference, conformance, or certification structure | It MUST NOT redefine compatibility truth, profile obligations, conformance, certification, or the upstream semantic basis against which those downstream relationships are evaluated. | S08, S18, S45, S46, S48, S55, S56 |
+| PE-DOWNAUTH-008 | RF-40 | MUST NOT | Every implementation behavior, compatibility declaration, assessment result, diagnostic, test result, deployment record, report, or observability surface | The surface MUST NOT be promoted into protocol truth or used to repair, infer, or replace upstream protocol meaning. | S18, S20, S44, S45, S46, S48 |
+| PE-DOWNAUTH-009 | RF-40 | MUST | Every conflict between a downstream artifact and its governing upstream requirement | The conflict MUST be resolved in favor of the governing upstream requirement, and the downstream artifact MUST be corrected, narrowed, withdrawn, superseded, or reported as failed. | S08, S10, S12, S44, S45, S46 |
+| PE-DOWNAUTH-010 | RF-40 | MUST | Every downstream derivation and realization path | The path MUST preserve the direction `Published Protocol Generation -> Protocol Specification -> Implementation Profile -> Implementation -> Conformance -> Certification` without upward authority transfer. | S02, S08, S10, S18, S45, S55, S56 |
+
+### 32.4 Compatibility Architecture
+
+Compatibility is a bounded declared or assessed relationship between one
+identified implementation and one identified published protocol generation
+across one declared compatibility surface and scope.
+
+The compatibility architecture contains distinct targets, surfaces,
+statements, profiles, declarations, and assessments.
+
+Compatibility does not establish protocol succession, semantic equivalence,
+conformance, or certification.
+
+#### 32.4.1 RF-41 — Compatibility Targets, Surfaces, Statements, Profiles, Declarations, and Assessment
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-COMPAT-001 | RF-41 | MUST | Every compatibility relationship | The relationship MUST identify one implementation, one implementation version where relevant, one compatibility target, one compatibility surface, and one bounded compatibility scope. | S45, S48, S50, S54 |
+| PE-COMPAT-002 | RF-41 | MUST | Every Compatibility Target | A Compatibility Target MUST identify exactly one published protocol generation used as the reference for the bounded compatibility relationship. | S10, S12, S54 |
+| PE-COMPAT-003 | RF-41 | MUST | Every identified Compatibility Target | Target identity MUST remain distinct from the identity of the referenced protocol generation, implementation, deployment, surface, statement, profile, declaration, assessment, conformance object, and certification object. | S18, S54 |
+| PE-COMPAT-004 | RF-41 | MUST | Every Compatibility Surface | A Compatibility Surface MUST identify the bounded set of published capabilities from one identified compatibility target that is covered by the compatibility statement or assessment. | S22, S53, S54 |
+| PE-COMPAT-005 | RF-41 | MUST | Every Compatibility Surface | The surface MUST be complete within its declared scope and MUST explicitly identify every included capability and every permitted exclusion. | S22, S48, S53 |
+| PE-COMPAT-006 | RF-41 | MUST NOT | Every Compatibility Surface | A Compatibility Surface MUST NOT be identified with a Protocol Surface, silently omit an applicable declared capability, or imply compatibility outside its bounded scope. | S22, S53 |
+| PE-COMPAT-007 | RF-41 | MUST | Every Compatibility Statement | A Compatibility Statement MUST be a bounded assertion by or about one identified implementation concerning one identified target and one identified surface. | S52, S53, S54 |
+| PE-COMPAT-008 | RF-41 | MUST | Every Compatibility Statement | The statement MUST identify its implementation, implementation version where relevant, target, surface, declared scope, claim boundary, and statement identity. | S45, S52, S53, S54 |
+| PE-COMPAT-009 | RF-41 | MUST NOT | Every Compatibility Statement | A statement MUST NOT be interpreted as proof of realization, proof of compatibility, conformance, certification, protocol succession, or protocol authority. | S48, S52 |
+| PE-COMPAT-010 | RF-41 | MUST | Every Compatibility Profile | A Compatibility Profile MUST remain a bounded aggregation of identified Compatibility Statements associated with one identified implementation. | S51, S52 |
+| PE-COMPAT-011 | RF-41 | MUST | Every Compatibility Profile | The profile MUST preserve the identity, target, surface, scope, and asserted meaning of each aggregated statement without merging their target or statement identities. | S51, S52, S54 |
+| PE-COMPAT-012 | RF-41 | MUST NOT | Every Compatibility Profile | A Compatibility Profile MUST NOT be treated as an Implementation Profile, MUST NOT select normative implementation obligations, and MUST NOT establish compatibility merely by aggregation. | S48, S51, S55 |
+| PE-COMPAT-013 | RF-41 | MUST | Every Compatibility Declaration | A Compatibility Declaration MUST remain the complete identified record of one declared compatibility relationship concerning one implementation, one target, one surface, and one bounded scope. | S49, S52, S53, S54 |
+| PE-COMPAT-014 | RF-41 | MUST | Every Compatibility Declaration | The declaration MUST preserve the complete constituent identities, statement provenance, declared scope, version information, and declared compatibility meaning required by its governing compatibility model. | S49, S50, S52, S53, S54 |
+| PE-COMPAT-015 | RF-41 | MUST NOT | Every Compatibility Declaration | Publication or persistence of a declaration MUST NOT convert declared compatibility into realized compatibility, protocol truth, conformance, or certification. | S48, S49, S50 |
+| PE-COMPAT-016 | RF-41 | MUST | Every Compatibility Assessment | A Compatibility Assessment MUST evaluate only the identified declared compatibility relationship against its identified target, surface, scope, applicable protocol invariants, and available bounded evidence. | S48, S49, S50, S53, S54 |
+| PE-COMPAT-017 | RF-41 | MUST | Every Compatibility Assessment report | The report MUST identify its assessed implementation, target, surface, scope, basis, limitations, and bounded result without creating a separate protocol truth or conformance determination. | S48, S50, S53, S54 |
+| PE-COMPAT-018 | RF-41 | MUST | Every compatibility target, surface, statement, profile, declaration, and assessment | Each structure MUST retain its own bounded identity and role and MUST remain distinct from every other compatibility structure. | S49, S50, S51, S52, S53, S54 |
+| PE-COMPAT-019 | RF-41 | MUST NOT | Every compatibility claim or assessment | Compatibility MUST NOT establish Protocol Succession, Protocol Lineage membership, migration eligibility, generation replacement, or retirement. | S13, S14, S15, S16, S48 |
+| PE-COMPAT-020 | RF-41 | MUST NOT | Every compatibility claim or assessment | Compatibility MUST NOT merge protocol-generation identities or establish complete semantic equivalence between distinct generations or implementations. | S13, S15, S16, S48 |
+| PE-COMPAT-021 | RF-41 | MUST NOT | Every compatibility structure or assessment | Compatibility MUST NOT be interpreted as an Implementation Profile, complete Protocol Realization, conformance claim, conformance assessment, conformance determination, certification basis, certification decision, certification status, or certification recognition. | S18, S48, S50, S51, S55, S56 |
+| PE-COMPAT-022 | RF-41 | MUST | Every compatibility consequence of protocol evolution or migration | The consequence MUST preserve RF-04 ownership of succession, lineage, versioning, deprecation, migration, coexistence, and retirement and MUST identify the affected target and surface explicitly. | S13, S14, S15, S16, S48, S54 |
+| PE-COMPAT-023 | RF-41 | MUST | Every failed, superseded, withdrawn, or historically retained compatibility statement, declaration, or assessment | Its lifecycle status MUST remain explicit and MUST NOT mutate the identity or semantics of the target generation, implementation, surface, or historical compatibility record. | S15, S49, S50, S52, S53, S54 |
+| PE-COMPAT-024 | RF-41 | MUST NOT | Every compatibility identifier, statement, declaration, assessment, field, diagnostic, test, report, and observability surface | The surface MUST NOT identify a Private Actor, carry enrollment or admission provenance, create reusable participant identity, create cross-action linkage, or compose compatibility metadata into an actor-reconstruction bridge. | S01, S18, S20, S44, S48, S49, S50, S51, S52, S53, S54 |
+
+### 32.5 SF-13 Formal Summary
+
+The realization invariant is:
+
+> selectedMeaning(T)
+> -> preservedByImplementation(T)
+
+Success path:
+
+> T -> preserved(T)
+
+Failure path:
+
+> T -> realizationFailure
+
+Forbidden path:
+
+> T -> T'
+
+where:
+
+> T' != T
+
+Compatibility preserves bounded identity:
+
+> compatibility(I, Target, Surface, Scope)
+
+> compatibility(I, Target, Surface, Scope)
+> =/=> succession(Target)
+
+> compatibility(I, Target, Surface, Scope)
+> =/=> semanticEquivalence(I, Target)
+
+> compatibility(I, Target, Surface, Scope)
+> =/=> conformance(I)
+
+> compatibility(I, Target, Surface, Scope)
+> =/=> certification(I)
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+## 33. SF-14 — Implementation Profiles and Reference Implementations
+
+SF-14 defines the bounded applicability layer between the Protocol
+Specification and implementations and the bounded role of designated,
+inspectable reference implementations.
+
+An Implementation Profile selects and organizes applicable requirements.
+
+A Reference Implementation realizes a profile.
+
+Neither defines protocol semantics.
+
+### 33.1 Implementation Profiles
+
+A Privacy Engine Implementation Profile is a uniquely identified, bounded, and
+complete implementation-facing selection and organization of applicable
+normative requirements derived from one Privacy Engine Protocol Specification.
+
+Completeness is bounded completeness within the declared profile scope.
+
+#### 33.1.1 RF-42 — Implementation Profiles
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-PROFILE-001 | RF-42 | MUST | Every Privacy Engine Implementation Profile | A profile MUST be one uniquely identified, bounded, and complete implementation-facing selection and organization of applicable normative requirements derived from one identified Privacy Engine Protocol Specification. | S08, S55 |
+| PE-PROFILE-002 | RF-42 | MUST | Every Implementation Profile | Profile identity MUST distinguish the profile from its source specification, other profiles, compatibility profiles, implementations, reference implementations, conformance artifacts, and certifications. | S18, S51, S55, S56 |
+| PE-PROFILE-003 | RF-42 | MUST | Every Implementation Profile | The profile MUST identify one bounded implementation target by role, capability set, deployment class, operational responsibility, or another specification-permitted implementation category. | S55 |
+| PE-PROFILE-004 | RF-42 | MUST | Every Implementation Profile | The profile MUST identify exactly one source Protocol Specification and the published protocol generation from which that specification derives. | S08, S10, S55 |
+| PE-PROFILE-005 | RF-42 | MUST | Every Implementation Profile | The profile MUST declare a precise scope sufficient to resolve the applicability of every normative requirement relevant to its target. | S05, S06, S55 |
+| PE-PROFILE-006 | RF-42 | MUST | Every requirement relevant to an Implementation Profile target | The profile MUST record the requirement as applicable, non-applicable under an identified specification rule, conditionally applicable, or resolved through a permitted specification choice. | S05, S06, S55 |
+| PE-PROFILE-007 | RF-42 | MUST NOT | Every Implementation Profile applicability decision | Applicability MUST NOT be invented from preference, convenience, implementation difficulty, existing implementation behavior, deployment topology, or a desired assessment result. | S05, S45, S55 |
+| PE-PROFILE-008 | RF-42 | MUST | Every requirement selected by an Implementation Profile | Selection MUST reference the same stable normative requirement defined by the source Protocol Specification and MUST preserve its identity. | S05, S06, S08, S55 |
+| PE-PROFILE-009 | RF-42 | MUST | Every applicable requirement in an Implementation Profile | The profile MUST preserve the requirement's complete meaning, operative strength, applicability conditions, prohibitions, permissions, success behavior, and failure behavior unchanged. | S04, S05, S55 |
+| PE-PROFILE-010 | RF-42 | MAY | Every choice explicitly permitted by the source Protocol Specification | A profile MAY resolve, constrain, require support for, exclude, or leave the choice implementation-defined only within the choice space permitted by the specification. | S08, S55 |
+| PE-PROFILE-011 | RF-42 | MUST NOT | Every Implementation Profile | A profile MUST NOT invent a choice, widen a choice space, treat mandatory behavior as optional, permit prohibited behavior, or omit a mandatory choice that must be resolved at profile level. | S05, S08, S55 |
+| PE-PROFILE-012 | RF-42 | MUST | Every Implementation Profile composition | The composition MUST identify the profile, source specification, target, scope, applicability decisions, permitted-choice resolutions, dependencies, and completeness conditions without duplicating normative requirements. | S06, S07, S08, S55 |
+| PE-PROFILE-013 | RF-42 | MUST | Every Implementation Profile dependency | The dependency MUST identify the depended-upon profile, direction, applicability condition, and required obligation boundary without merging profile identities or transferring authority. | S55 |
+| PE-PROFILE-014 | RF-42 | MUST | Every Implementation Profile | The profile MUST account for every requirement relevant to its declared scope and MUST fail profile construction when any applicable obligation, applicability decision, required choice, or dependency remains unresolved. | S06, S55 |
+| PE-PROFILE-015 | RF-42 | MUST | Every semantically changed Implementation Profile | A change to scope, applicability, dependencies, requirement selection, or resolved choices MUST produce a distinguishable profile version or identity where retaining the prior identity would imply unchanged obligations. | S15, S55 |
+| PE-PROFILE-016 | RF-42 | MAY | One Protocol Specification | Multiple Implementation Profiles MAY derive from the same specification where each profile has a distinct identity, bounded target, complete applicability resolution, and preserved requirement semantics. | S08, S55 |
+| PE-PROFILE-017 | RF-42 | MUST NOT | Every Implementation Profile | A profile MUST NOT modify, replace, weaken, strengthen, supersede, or become the Protocol Specification or published protocol generation from which it derives. | S08, S10, S55 |
+| PE-PROFILE-018 | RF-42 | MUST NOT | Every Implementation Profile | A profile MUST NOT be identified with an implementation, Compatibility Profile, conformance assessment, conformance determination, certification basis, certification decision, certification status, or certification recognition. | S18, S51, S55, S56 |
+| PE-PROFILE-019 | RF-42 | MUST NOT | Every incomplete Protocol Specification | A complete final Implementation Profile MUST NOT be published from an incomplete Protocol Specification. | S03, S07, S08, S55 |
+| PE-PROFILE-020 | RF-42 | MUST | Every profile construction or preservation failure | The profile MUST fail rather than invent, repair, weaken, strengthen, merge, divide, reinterpret, or infer a replacement requirement. | S05, S18, S55 |
+| PE-PROFILE-021 | RF-42 | MUST NOT | Every profile identifier, applicability record, choice record, dependency, report, example, diagnostic, and observability surface | The surface MUST NOT identify a Private Actor, create reusable participant identity, create cross-action linkage, or convert implementation-target metadata into an actor-reconstruction bridge. | S01, S18, S20, S55 |
+
+### 33.2 Reference Implementations
+
+A Privacy Engine Reference Implementation is one identified implementation
+explicitly designated as an inspectable realization of one identified
+Implementation Profile within one declared reference scope.
+
+Reference status is downstream recognition of an implementation role.
+
+It is not protocol authority, conformance, or certification.
+
+#### 33.2.1 RF-43 — Reference Implementations
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-REFIMPL-001 | RF-43 | MUST | Every Privacy Engine Reference Implementation | A Reference Implementation MUST be one identified implementation explicitly designated as an inspectable realization of one identified Implementation Profile within one declared reference scope. | S45, S55, S56 |
+| PE-REFIMPL-002 | RF-43 | MUST | Every Reference Implementation | Reference-implementation identity MUST distinguish the implementation, version, realized profile, reference scope, and reference status from every other reference realization. | S45, S55, S56 |
+| PE-REFIMPL-003 | RF-43 | MUST | Every reference designation | Reference status MUST be explicit, bounded to one identified implementation-profile relationship and scope, and independently reviewable. | S55, S56 |
+| PE-REFIMPL-004 | RF-43 | MUST NOT | Every reference designation | Designation MUST NOT be interpreted as protocol publication, protocol authority, automatic conformance, certification, compatibility, defect freedom, or exclusive implementation status. | S10, S12, S48, S56 |
+| PE-REFIMPL-005 | RF-43 | MUST | Every Reference Implementation | The declared reference scope MUST identify exactly which profile obligations, capability set, version, and implementation boundary the reference status covers. | S55, S56 |
+| PE-REFIMPL-006 | RF-43 | MUST | Every Reference Implementation realizing an Implementation Profile | The implementation MUST realize every applicable profile requirement within its declared reference scope. | S45, S46, S55, S56 |
+| PE-REFIMPL-007 | RF-43 | MUST | Every Reference Implementation | The implementation MUST preserve the applicable profile's required success behavior, failure behavior, privacy constraints, identity separations, and authority boundaries. | S18, S45, S46, S55, S56 |
+| PE-REFIMPL-008 | RF-43 | MAY | Every Reference Implementation | A Reference Implementation MAY select one implementation choice where that choice is explicitly permitted by the applicable profile. | S45, S55, S56 |
+| PE-REFIMPL-009 | RF-43 | MUST NOT | Every implementation choice selected by a Reference Implementation | The selected choice MUST NOT become a universal requirement, profile amendment, specification amendment, or prohibition against another permitted realization. | S45, S55, S56 |
+| PE-REFIMPL-010 | RF-43 | MAY | One Implementation Profile | Multiple Reference Implementations MAY realize the same profile where each independently satisfies every applicable obligation within its declared scope. | S55, S56 |
+| PE-REFIMPL-011 | RF-43 | MAY | One implementation realizing multiple Implementation Profiles | The implementation MAY hold separate reference status for multiple profiles only where each profile relationship, version, scope, dependencies, and designation remain explicitly and independently identified. | S55, S56 |
+| PE-REFIMPL-012 | RF-43 | MUST | Every materially changed Reference Implementation version | A materially changed version MUST remain separately identifiable where the change affects profile realization, permitted-choice resolution, normative behavior, interoperability behavior, defect status, or reference scope. | S15, S56 |
+| PE-REFIMPL-013 | RF-43 | MUST | Every maintained Reference Implementation version | The version MUST remain sufficiently stable, available, and inspectable to support its declared reference uses without silently rewriting its identified historical behavior. | S56 |
+| PE-REFIMPL-014 | RF-43 | MUST | Every detected Reference Implementation defect or divergence | The defect or divergence MUST be evaluated against the applicable profile and MUST NOT redefine, weaken, strengthen, or repair the profile requirement. | S55, S56 |
+| PE-REFIMPL-015 | RF-43 | MUST | Every Reference Implementation unable to preserve an applicable obligation | The implementation MUST fail explicitly, and its implementation or designation MUST be corrected, narrowed, suspended, withdrawn, or superseded as appropriate. | S45, S46, S55, S56 |
+| PE-REFIMPL-016 | RF-43 | MUST | Every ordinary implementation compared with a Reference Implementation | The ordinary implementation MUST be evaluated against its applicable profile rather than against incidental structure or behavior of the Reference Implementation. | S45, S55, S56 |
+| PE-REFIMPL-017 | RF-43 | MUST NOT | Every ordinary implementation | An ordinary implementation MUST NOT be required to copy reference source structure, language, algorithms, storage, deployment topology, APIs, logging, timing, or other behavior not required by the applicable profile. | S45, S55, S56 |
+| PE-REFIMPL-018 | RF-43 | MAY | Every conformance, certification, compatibility, testing, or interoperability activity | The activity MAY use a Reference Implementation as supporting evidence, comparison behavior, test infrastructure, fixture, peer, or implementation example. | S48, S55, S56 |
+| PE-REFIMPL-019 | RF-43 | MUST NOT | Every conformance, certification, or compatibility activity using a Reference Implementation | Agreement, interoperability, code reuse, designation, or behavioral similarity MUST NOT replace the applicable conformance basis, certification basis, or bounded compatibility assessment. | S48, S55, S56 |
+| PE-REFIMPL-020 | RF-43 | MUST | Every disagreement between a Reference Implementation and an upstream requirement | The disagreement MUST be resolved against the applicable Implementation Profile, Protocol Specification, and published protocol generation in that order of derivation. | S08, S10, S55, S56 |
+| PE-REFIMPL-021 | RF-43 | MUST NOT | Every reference identifier, designation, implementation record, version, test, diagnostic, report, log, and observability surface | The surface MUST NOT identify a Private Actor, create reusable participant identity, create cross-action linkage, or compose reference-implementation metadata into an actor-reconstruction bridge. | S01, S18, S20, S56 |
+
+### 33.3 SF-14 Formal Summary
+
+The profile path is:
+
+> PublishedProtocolGeneration(P)
+> -> ProtocolSpecification(S)
+> -> ImplementationProfile(F)
+> -> Implementation(I)
+
+For every applicable requirement:
+
+> applies(F, R)
+> -> semantics(F, R) = semantics(S, R)
+
+> applies(F, R)
+> -> strength(F, R) = strength(S, R)
+
+Profile failure preserves meaning:
+
+> cannotPreserve(F, R)
+> -> profileConstructionFailure(F)
+
+Reference realization remains downstream:
+
+> referenceImplementation(Ir, F)
+> -> implements(Ir, F)
+
+> behavior(Ir)
+> =/=> definesRequirement(F)
+
+> designation(Ir, F)
+> =/=> conformance(Ir, F)
+
+> designation(Ir, F)
+> =/=> certification(Ir, F)
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+## 34. Supporting Relationships and Deferred Assessment Semantics
+
+SF-03 and SF-04 establish the terminology, identity, privacy, unlinkability,
+minimum-disclosure, neutral-naming, and anti-correlation requirements preserved
+by SF-05–SF-14.
+
+SF-05 establishes the Interface Contracts, Concrete Interface Specifications,
+Protocol Surfaces, Protocol Operations, and Published Results used at SF-12
+translation boundaries.
+
+SF-06 through SF-11 establish the proof, validity, Action, Evaluation,
+Determination, transition, commitment, state, history, consequence, failure,
+staleness, and re-evaluation semantics that SF-12 runtimes and SF-13
+implementations preserve without redefinition.
+
+SF-12 establishes application representation, adapter translation, integration
+preservation, runtime responsibility, and enforcement/execution separation.
+
+SF-13 establishes implementation identity and obligations, Protocol
+Realization, the complete downstream-authority prohibition, and bounded
+compatibility architecture.
+
+SF-14 establishes Implementation Profiles and Reference Implementations.
 
 The following authoritative homes remain deferred:
 
-- application requests, responses, adapters, authority boundaries, runtime,
-  enforcement responsibility, execution responsibility, and integration:
-  SF-12;
-- implementation identity, realization, obligations, compatibility, and
-  migration: SF-13;
-- implementation profiles and reference implementations: SF-14;
-- conformance and certification: SF-15;
-- protocol-semantic preservation and complete explicit exclusions: SF-16.
+- conformance requirements, requirement sets, artifacts, evidence, packages,
+  claims, assessments, and determinations: SF-15;
+- certification bases, decisions, statuses, and recognition: SF-15;
+- complete protocol-semantic-preservation requirements: SF-16;
+- complete explicit exclusions: SF-16.
 
-References to deferred subjects establish only the local cross-section
-relationships and exclusions required to preserve SF-01–SF-11.
+References to conformance, certification, semantic preservation, and exclusions
+in SF-01–SF-14 establish only local distinctions, dependencies, prohibitions,
+and readiness boundaries.
 
-They do not relocate, duplicate, or pre-compose deferred requirement families.
+They do not compose RF-44–RF-50.
 
-RF-14, RF-36, and RF-37 remain assigned to SF-12.
-
-RF-38–RF-41 remain assigned to SF-13.
-
-RF-42 and RF-43 remain assigned to SF-14.
+RF-44–RF-48 remain assigned to SF-15.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
-## 32. Current Composition Boundary
+## 35. Current Composition Boundary
 
-This cumulative document currently contains the authoritative normative homes
-for:
+This cumulative document now contains the authoritative normative homes for:
 
-- RF-01–RF-13;
-- RF-15–RF-35.
+- RF-01–RF-43.
 
 The following section families remain deliberately uncomposed:
 
-- SF-12 — application, adapter, runtime, and integration boundaries;
-- SF-13 — implementation, realization, compatibility, and migration;
-- SF-14 — implementation profiles and reference implementations;
-- SF-15 — conformance and certification;
-- SF-16 — semantic preservation and explicit exclusions.
+- SF-15 — Conformance and Certification;
+- SF-16 — Protocol-Semantic Preservation and Explicit Exclusions.
 
 Their absence is explicit and is not an implicit definition, permission,
-prohibition, or completion.
+prohibition, assessment, certification, or completion.
 
 This cumulative slice does not define:
 
-- complete application-request, application-response, or adapter behavior;
-- complete application or adapter authority boundaries;
-- complete runtime, enforcement, execution, or integration responsibility;
-- implementation identity, realization, or complete implementation
-  obligations;
-- compatibility or migration requirements;
+- conformance requirement publication;
+- conformance requirement-set composition;
+- conformance artifacts, evidence, packages, claims, assessments, or
+  determinations;
+- certification bases, decisions, statuses, recognition, or lifecycle;
+- complete RF-49 protocol-semantic-preservation requirements;
+- complete RF-50 exclusions;
 - blockchain consensus;
 - transaction formats;
 - transport or relay mechanics;
 - database or storage mechanics;
-- implementation profiles;
-- reference implementations;
-- conformance assessment;
-- certification;
-- RF-49 semantic-preservation requirements;
-- or RF-50 complete exclusion requirements.
+- application-specific business meaning;
+- a concrete Implementation Profile;
+- an actual Reference Implementation;
+- a compatibility claim for any current codebase;
+- a conformance assessment;
+- or a certification assessment.
 
-Local references to applications, implementations, runtimes, storage,
-transports, diagnostics, and observability define only the exclusions and
-preservation boundaries needed by composed requirements.
-
-They do not compose SF-12–SF-16.
-
-The cumulative specification contains 430 stable normative requirements:
+The cumulative specification contains 578 stable normative requirements:
 
 - 81 requirements preserved from SF-01 and SF-02;
 - 71 requirements preserved from SF-03 and SF-04;
 - 100 requirements preserved from SF-05 through SF-07;
 - 55 requirements preserved from SF-08;
-- 39 requirements composed in SF-09;
-- 38 requirements composed in SF-10;
-- 46 requirements composed in SF-11.
+- 39 requirements preserved from SF-09;
+- 38 requirements preserved from SF-10;
+- 46 requirements preserved from SF-11;
+- 44 requirements composed in SF-12;
+- 62 requirements composed in SF-13;
+- 42 requirements composed in SF-14.
 
-The document remains incomplete until SF-12–SF-16 have been composed and the
-complete specification has passed final consolidation review.
+All 430 requirements established through Engineering[148] remain unchanged.
 
-## 33. Cumulative Traceability
+Engineering[149] adds 148 requirements.
+
+The document remains incomplete until SF-15 and SF-16 have been composed and
+the complete specification has passed final consolidation review.
+
+## 36. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -2799,6 +3252,23 @@ The source codes used in the normative requirement tables are:
 | S37 | `PRIVACY_ENGINE_PROTOCOL_TRANSITION_PRECONDITIONS_MODEL_V1.md` |
 | S38 | `PRIVACY_ENGINE_STATE_EVOLUTION_MODEL_V1.md` |
 | S39 | `PRIVACY_ENGINE_SUCCESSOR_STATE_MODEL_V1.md` |
+| S40 | `PRIVACY_ENGINE_APPLICATION_ADAPTER_MODEL_V1.md` |
+| S41 | `PRIVACY_ENGINE_APPLICATION_REQUEST_MODEL_V1.md` |
+| S42 | `PRIVACY_ENGINE_APPLICATION_RESPONSE_MODEL_V1.md` |
+| S43 | `PRIVACY_ENGINE_APPLICATION_RUNTIME_BOUNDARY_V1.md` |
+| S44 | `PRIVACY_ENGINE_INTEGRATOR_OBLIGATIONS_V1.md` |
+| S45 | `PRIVACY_ENGINE_IMPLEMENTATION_MODEL_V1.md` |
+| S46 | `PRIVACY_ENGINE_PROTOCOL_REALIZATION_MODEL_V1.md` |
+| S47 | `PRIVACY_ENGINE_RUNTIME_MODEL_V1.md` |
+| S48 | `PRIVACY_ENGINE_COMPATIBILITY_CONFORMANCE_MODEL_V1.md` |
+| S49 | `PRIVACY_ENGINE_COMPATIBILITY_DECLARATION_MODEL_V1.md` |
+| S50 | `PRIVACY_ENGINE_COMPATIBILITY_MODEL_V1.md` |
+| S51 | `PRIVACY_ENGINE_COMPATIBILITY_PROFILE_MODEL_V1.md` |
+| S52 | `PRIVACY_ENGINE_COMPATIBILITY_STATEMENT_MODEL_V1.md` |
+| S53 | `PRIVACY_ENGINE_COMPATIBILITY_SURFACE_MODEL_V1.md` |
+| S54 | `PRIVACY_ENGINE_COMPATIBILITY_TARGET_MODEL_V1.md` |
+| S55 | `PRIVACY_ENGINE_IMPLEMENTATION_PROFILE_MODEL_V1.md` |
+| S56 | `PRIVACY_ENGINE_REFERENCE_IMPLEMENTATION_MODEL_V1.md` |
 
 Source references record semantic provenance and composition support.
 
@@ -2817,20 +3287,16 @@ The traceability direction remains:
 The composition invariants remain:
 
 > oneSemanticRequirement(R)
-> ->
-> oneAuthoritativeNormativeHome(R)
+> -> oneAuthoritativeNormativeHome(R)
 
 > sameSemanticRequirement(R1, R2)
-> ->
-> oneNormativeRequirement(R)
+> -> oneNormativeRequirement(R)
 
 > supportingReference(N2, R)
-> =/=>
-> authoritativeHome(R, N2)
+> =/=> authoritativeHome(R, N2)
 
 > supportingReference(N2, R)
-> =/=>
-> redefines(N2, R)
+> =/=> redefines(N2, R)
 
 > traceableTo(R, F)
 
@@ -2840,78 +3306,74 @@ Traceability organizes established semantics.
 
 It does not redefine them.
 
-## 34. Conclusion
+## 37. Conclusion
 
-SF-01 through SF-11 now establish the cumulative normative path from one
+SF-01 through SF-14 now establish the cumulative normative path from one
 published protocol generation through terminology, privacy, interfaces, proof
-evidence, Protocol Actions, Evaluation, Determination, possible transition
+evidence, Protocol Actions, Evaluation, Determination, transition
 authorization, preserved execution, atomic commitment, authoritative state
-evolution, committed history, bounded public consequences, failure,
-staleness, and re-evaluation.
+evolution, committed history, public consequences, failure, staleness,
+application representation, runtime responsibility, implementation
+realization, compatibility, Implementation Profiles, and Reference
+Implementations.
 
-SF-09 establishes:
+SF-12 establishes:
 
-- protocol state required for transition applicability;
-- published transition mappings and complete preconditions;
-- bounded transition eligibility;
-- one identified Protocol State Transition occurrence;
-- authorization only from accepted Determinations;
-- and protocol-defined zero, one, or multiple transition cardinality.
+- Application Requests and Responses as application-owned representations;
+- adapter translation as representation preservation rather than semantic
+  definition;
+- translation failure rather than repair, inference, or substitution;
+- application-local policy without protocol authority;
+- integration as preservation responsibility;
+- runtime operational responsibility without semantic ownership;
+- enforcement as transition-eligibility contribution rather than complete
+  Evaluation;
+- and continued separation of enforcement, execution, and commitment.
 
-SF-10 establishes:
+SF-13 establishes:
 
-- execution of the already-authorized `U`;
-- preservation of `U` through every later stage;
-- prohibition of substitution with `U'`;
-- complete and atomic commitment;
-- commitment as the only source of authoritative state change;
-- protocol-defined successor state;
-- and committed state evolution from `Q0` through `U` to `Q1`.
+- implementation identity, scope, versions, components, deployments, and
+  instances;
+- complete applicable implementation obligations;
+- bounded technical variation with equivalent protocol-observable semantics;
+- Protocol Realization as preservation rather than definition;
+- failure rather than semantic repair or substitution;
+- the complete prohibition against downstream protocol authority;
+- distinct compatibility targets, surfaces, statements, profiles,
+  declarations, and assessments;
+- and compatibility separation from succession, semantic equivalence,
+  conformance, and certification.
 
-SF-11 establishes:
+SF-14 establishes:
 
-- committed-transition inclusion in authoritative protocol-state history;
-- exclusion of failed, pre-transition, and partial activity from committed
-  history;
-- separation of operational records from authoritative history;
-- bounded public protocol-state consequences;
-- complete cross-stage failure classification and separation;
-- stale authorization without retroactive Determination mutation;
-- and re-evaluation through new `E`, `D`, and where applicable `U` occurrences.
+- Implementation Profiles as complete bounded selections of applicable
+  normative requirements;
+- preservation of requirement identity, meaning, strength, applicability, and
+  choice boundaries;
+- honest deferral of complete final profile publication;
+- Reference Implementations as designated inspectable implementations;
+- permitted reference variation without mandatory implementation choices;
+- explicit reference defects and failure;
+- and reference separation from conformance, certification, and protocol
+  authority.
 
-Protocol Transition remains a mapping.
+Private Actor remains distinct from applications, requests, responses,
+adapters, integrations, runtimes, implementations, components, deployments,
+instances, compatibility structures, profiles, reference implementations,
+assessments, identifiers, records, diagnostics, tests, reports, and
+observability surfaces.
 
-Protocol State Transition remains an occurrence.
+No reusable participant identity, cross-action identity mechanism, application
+truth object, adapter-translation object, runtime-authority object,
+realization object, compatibility-outcome object, reference-designation
+object, or other new first-class subject is introduced.
 
-Authorization selects `U`.
+All 430 requirements established through Engineering[148] remain unchanged.
 
-Every later stage preserves `U`.
+Engineering[149] adds 148 requirements, producing 578 unique cumulative
+requirements.
 
-Only commitment establishes authoritative successor state.
-
-Only committed transitions enter authoritative protocol-state history.
-
-Published Result remains distinct from public protocol-state consequence.
-
-Rejection, accepted no-transition, pre-transition failure, transition failure,
-stale authorization, implementation error, incorrect execution, incorrect
-commitment, and incorrect reporting remain distinct.
-
-Re-evaluation creates new occurrences rather than repairing earlier ones.
-
-Private Actor remains distinct from state, transition, authorization,
-execution, commitment, history, consequence, failure, staleness,
-re-evaluation, identifiers, applications, implementations, deployments,
-transports, diagnostics, and observability surfaces.
-
-No reusable participant identity, cross-action identity mechanism,
-transition-set object, authorization object, execution object, commitment
-object, public-consequence object, failure object, stale-authorization object,
-or other new first-class subject is introduced.
-
-All 307 requirements established through SF-01–SF-08 remain unchanged.
-
-SF-12–SF-16 remain deliberately deferred.
+SF-15 and SF-16 remain deliberately deferred.
 
 The cumulative specification remains incomplete pending those sections and the
 final consolidation review.
