@@ -23,19 +23,22 @@ Current composition status:
 - SF-12 — Application, Adapter, Runtime, and Integration Boundaries: composed;
 - SF-13 — Implementation, Realization, Compatibility, and Migration: composed;
 - SF-14 — Implementation Profiles and Reference Implementations: composed;
-- SF-15–SF-16: not yet composed.
+- SF-15 — Conformance and Certification: composed;
+- SF-16 — Protocol-Semantic Preservation and Explicit Exclusions: composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
 
-This document does not yet constitute the complete Privacy Engine Protocol
-Specification because the remaining authoritative section families have not
-been composed.
+All sixteen planned section families and all fifty requirement families
+now possess authoritative normative homes.
 
-No absent section, deferred requirement family, supporting reference, or
-informative statement may be treated as implicitly completed.
+The specification is composition-complete pending the Engineering[151] final
+consolidation review.
 
-The current composition boundary is defined in Section 32.
+Composition completion does not constitute final review, acceptance,
+certification, publication, or publication readiness.
+
+The current composition boundary is defined in Section 37.
 
 ## 2. Purpose
 
@@ -71,7 +74,9 @@ The current cumulative document composes:
 - SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation;
 - SF-12 — Application, Adapter, Runtime, and Integration Boundaries;
 - SF-13 — Implementation, Realization, Compatibility, and Migration;
-- SF-14 — Implementation Profiles and Reference Implementations.
+- SF-14 — Implementation Profiles and Reference Implementations;
+- SF-15 — Conformance and Certification;
+- SF-16 — Protocol-Semantic Preservation and Explicit Exclusions.
 
 These sections authoritatively contain:
 
@@ -117,15 +122,18 @@ These sections authoritatively contain:
 - RF-40 — Prohibited implementation, runtime, application, and assessment authority;
 - RF-41 — Compatibility targets, surfaces, statements, profiles, declarations, and assessment;
 - RF-42 — Implementation profiles;
-- RF-43 — Reference implementations.
+- RF-43 — Reference implementations;
+- RF-44 — Published conformance requirements and requirement sets;
+- RF-45 — Conformance artifacts, evidence, and packages;
+- RF-46 — Conformance claims, assessments, and determinations;
+- RF-47 — Certification bases, decisions, and statuses;
+- RF-48 — Certification recognition, scope, and authority;
+- RF-49 — Protocol-semantic preservation;
+- RF-50 — Explicit protocol exclusions and prohibited interpretations.
 
-The current document does not yet define the conformance, certification,
-complete protocol-semantic-preservation, or complete-exclusion requirements
-assigned to SF-15 and SF-16.
+Every RF-01–RF-50 family now possesses one authoritative normative home.
 
-RF-44–RF-48 remain assigned to SF-15.
-
-RF-49 and RF-50 remain reserved to SF-16.
+The specification remains pending Engineering[151] final consolidation review.
 
 ## 4. Relationship to STATE.md
 
@@ -3111,103 +3119,433 @@ Reference realization remains downstream:
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
 
-## 34. Supporting Relationships and Deferred Assessment Semantics
+## 34. SF-15 — Conformance and Certification
 
-SF-03 and SF-04 establish the terminology, identity, privacy, unlinkability,
-minimum-disclosure, neutral-naming, and anti-correlation requirements preserved
-by SF-05–SF-14.
+SF-15 defines the bounded downstream structures through which implementation
+satisfaction is expressed, supported, evaluated, determined, and recognized.
 
-SF-05 establishes the Interface Contracts, Concrete Interface Specifications,
-Protocol Surfaces, Protocol Operations, and Published Results used at SF-12
-translation boundaries.
+Conformance evaluates implementation satisfaction.
 
-SF-06 through SF-11 establish the proof, validity, Action, Evaluation,
-Determination, transition, commitment, state, history, consequence, failure,
-staleness, and re-evaluation semantics that SF-12 runtimes and SF-13
-implementations preserve without redefinition.
+Certification recognizes bounded conformance.
 
-SF-12 establishes application representation, adapter translation, integration
-preservation, runtime responsibility, and enforcement/execution separation.
+Neither creates protocol obligations, protocol semantics, Private Actor
+identity, or protocol authority.
 
-SF-13 establishes implementation identity and obligations, Protocol
-Realization, the complete downstream-authority prohibition, and bounded
-compatibility architecture.
+### 34.1 Published Conformance Requirements and Requirement Sets
+
+A Published Conformance Requirement is one identified assessable expression of
+one existing applicable normative requirement.
+
+A Published Conformance Requirement Set is one identified, immutable, and
+complete collection of applicable Published Conformance Requirements within
+one declared assessment target and scope.
+
+#### 34.1.1 RF-44 — Published Conformance Requirements and Requirement Sets
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CONFREQ-001 | RF-44 | MUST | Every Published Conformance Requirement | The requirement MUST be one bounded assessable expression of one existing applicable normative requirement. | S05, S57 |
+| PE-CONFREQ-002 | RF-44 | MUST | Every Published Conformance Requirement | The requirement MUST possess a stable identity distinct from its source normative requirement. | S05, S57 |
+| PE-CONFREQ-003 | RF-44 | MUST | Every Published Conformance Requirement | The requirement MUST identify its source normative requirement, Protocol Specification, and published protocol generation. | S08, S57 |
+| PE-CONFREQ-004 | RF-44 | MUST | Every conformance derivation | Derivation MUST preserve source-requirement identity, complete normative meaning, and source traceability. | S05, S57 |
+| PE-CONFREQ-005 | RF-44 | MUST | Every conformance derivation | Derivation MUST preserve operative strength, applicability conditions, and permitted-choice boundaries. | S04, S05, S57 |
+| PE-CONFREQ-006 | RF-44 | MUST NOT | Every Published Conformance Requirement | The requirement MUST NOT create, remove, weaken, strengthen, repair, reinterpret, or replace a protocol obligation. | S05, S57 |
+| PE-CONFREQ-007 | RF-44 | MUST | Every published Conformance Requirement | Publication MUST make identity, source, meaning, strength, applicability, version, and traceability independently reviewable. | S57 |
+| PE-CONFREQ-008 | RF-44 | MUST | Every published Conformance Requirement | The published requirement MUST remain immutable; semantic change MUST create a distinguishable requirement. | S15, S57 |
+| PE-CONFREQ-009 | RF-44 | MUST | Every Published Conformance Requirement Set | The set MUST be one identified, bounded, immutable collection of applicable Published Conformance Requirements. | S58 |
+| PE-CONFREQ-010 | RF-44 | MUST | Every Conformance Requirement Set | Set identity MUST distinguish its target, scope, version, composition, and source generation. | S58 |
+| PE-CONFREQ-011 | RF-44 | MUST | Every Conformance Requirement Set | The set MUST identify exactly one bounded assessment target and one declared assessment scope. | S55, S58 |
+| PE-CONFREQ-012 | RF-44 | MUST | Every complete Conformance Requirement Set | The set MUST contain every and only Published Conformance Requirements applicable within its declared target and scope. | S06, S58 |
+| PE-CONFREQ-013 | RF-44 | MUST | Every Conformance Requirement Set constituent | Composition MUST preserve constituent identity, meaning, strength, applicability, ordering where relevant, and traceability. | S05, S06, S58 |
+| PE-CONFREQ-014 | RF-44 | MUST NOT | Every Conformance Requirement Set | The set MUST NOT evaluate an implementation, become an Implementation Profile, create obligations, or acquire protocol authority. | S55, S58 |
+
+### 34.2 Conformance Artifacts, Evidence, and Packages
+
+A Conformance Artifact records bounded objective implementation information.
+
+Conformance Evidence provides complete traceable support for one claim and
+scope.
+
+A Conformance Package publishes preserved constituents for one bounded
+assessment.
+
+#### 34.2.1 RF-45 — Conformance Artifacts, Evidence, and Packages
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CONFEVID-001 | RF-45 | MUST | Every Conformance Artifact | An artifact MUST be one bounded, immutable, referenceable unit documenting objective implementation information relevant to conformance. | S59 |
+| PE-CONFEVID-002 | RF-45 | MUST | Every Conformance Artifact | Artifact identity MUST distinguish the artifact, implementation, version, assessment scope, and recorded information. | S59 |
+| PE-CONFEVID-003 | RF-45 | MUST | Every Conformance Artifact | The artifact MUST preserve integrity, provenance, authorship or production context, and reference stability. | S59 |
+| PE-CONFEVID-004 | RF-45 | MUST | Every Conformance Artifact | Artifact content MUST remain objective, reviewable, and attributable to its declared implementation boundary. | S59 |
+| PE-CONFEVID-005 | RF-45 | MUST | Every artifact used as evidence | Use as evidence MUST preserve artifact identity and MUST record the evidentiary relationship separately. | S59, S60 |
+| PE-CONFEVID-006 | RF-45 | MUST NOT | Every Conformance Artifact | An artifact MUST NOT establish correctness, conformance, certification, protocol truth, or protocol authority merely by existing. | S59 |
+| PE-CONFEVID-007 | RF-45 | MUST | Every Conformance Evidence set | Evidence MUST be one identified, published, complete, and traceable support set for one claim and declared scope. | S60 |
+| PE-CONFEVID-008 | RF-45 | MUST | Every Conformance Evidence set | Evidence identity MUST distinguish its claim, implementation, profile, requirement set, scope, version, and constituent artifacts. | S60 |
+| PE-CONFEVID-009 | RF-45 | MUST | Every evidence constituent | Evidence MUST trace each supported claim element to applicable requirements and preserved artifacts. | S57, S60 |
+| PE-CONFEVID-010 | RF-45 | MUST | Every complete Conformance Evidence set | Evidence MUST account for every applicable conformance requirement within its declared evidentiary scope. | S58, S60 |
+| PE-CONFEVID-011 | RF-45 | MAY | Every Conformance Evidence set | Evidence MAY compose testing, inspection, analysis, review, measurement, and preserved artifacts. | S60, S64 |
+| PE-CONFEVID-012 | RF-45 | MUST NOT | Every Conformance Evidence set | Evidence MUST NOT perform assessment, determine conformance, establish certification, or become protocol truth. | S60, S64 |
+| PE-CONFEVID-013 | RF-45 | MUST | Every Conformance Package | A package MUST be one canonical, identified, immutable publication unit for one bounded conformance assessment. | S61 |
+| PE-CONFEVID-014 | RF-45 | MUST | Every Conformance Package | Package identity MUST distinguish its implementation, profile, claim, scope, version, evidence, artifacts, and publication. | S61 |
+| PE-CONFEVID-015 | RF-45 | MUST | Every Conformance Package | The package MUST identify its artifacts, evidence, claim references, applicable requirement set, scope, and traceability. | S58, S61 |
+| PE-CONFEVID-016 | RF-45 | MUST | Every published Conformance Package | The package MUST remain immutable; changed composition MUST create a distinguishable package. | S15, S61 |
+| PE-CONFEVID-017 | RF-45 | MUST | Every Conformance Package constituent | Packaging MUST preserve constituent identity, content, integrity, provenance, scope, and independent meaning. | S59, S60, S61 |
+| PE-CONFEVID-018 | RF-45 | MUST NOT | Every Conformance Package | The package MUST NOT merge constituents, perform assessment, or establish conformance by publication. | S61, S64 |
+| PE-CONFEVID-019 | RF-45 | MUST NOT | Every Conformance Package | The package MUST NOT constitute certification or replace a Certification Basis, Decision, Status, or recognition. | S61, S65, S66, S67, S68 |
+
+### 34.3 Conformance Claims, Assessments, and Determinations
+
+A Conformance Claim asserts satisfaction.
+
+A Conformance Assessment evaluates the claim.
+
+A Conformance Determination records the bounded result of one completed
+assessment.
+
+#### 34.3.1 RF-46 — Conformance Claims, Assessments, and Determinations
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CONFORM-001 | RF-46 | MUST | Every Conformance Claim | A claim MUST be one bounded assertion that one identified implementation satisfies one identified Implementation Profile within one declared scope. | S62, S64 |
+| PE-CONFORM-002 | RF-46 | MUST | Every Conformance Claim | Claim identity MUST distinguish the assertion, implementation, profile, specification, generation, scope, and version. | S62, S64 |
+| PE-CONFORM-003 | RF-46 | MUST | Every Conformance Claim | The claim MUST identify its implementation, implementation version where relevant, profile, specification, generation, and assessment scope. | S62 |
+| PE-CONFORM-004 | RF-46 | MUST | Every Conformance Claim | The claim MUST remain bounded to its declared implementation-profile relationship and scope. | S62 |
+| PE-CONFORM-005 | RF-46 | MUST NOT | Every Conformance Claim | The claim MUST NOT establish Protocol Realization or replace implementation obligations. | S46, S62 |
+| PE-CONFORM-006 | RF-46 | MUST NOT | Every Conformance Claim | The claim MUST NOT perform assessment, produce a determination, establish conformance, or establish certification. | S62, S63, S64, S68 |
+| PE-CONFORM-007 | RF-46 | MUST | Every Conformance Assessment | An assessment MUST be one identified bounded evaluation of one identified claim concerning one implementation, profile, and scope. | S63, S64 |
+| PE-CONFORM-008 | RF-46 | MUST | Every Conformance Assessment | Assessment identity MUST distinguish the evaluation occurrence, claim, implementation, profile, requirement set, evidence, and scope. | S63, S64 |
+| PE-CONFORM-009 | RF-46 | MUST | Every Conformance Assessment | The assessment MUST declare the exact target, applicable requirement set, evidence boundary, and assessment scope. | S58, S60, S63 |
+| PE-CONFORM-010 | RF-46 | MUST | Every complete Conformance Assessment | The assessment MUST evaluate every applicable requirement within its declared scope. | S58, S63, S64 |
+| PE-CONFORM-011 | RF-46 | MUST | Every Conformance Assessment | The assessment MUST use valid, applicable, integrity-preserved, and traceable evidence. | S59, S60, S63 |
+| PE-CONFORM-012 | RF-46 | MUST | Every Conformance Assessment | The assessment MUST evaluate the claim without modifying or becoming the claim. | S62, S63 |
+| PE-CONFORM-013 | RF-46 | MUST | Every completed Conformance Assessment | Completion MUST produce at most one distinct Conformance Determination for that assessment occurrence. | S63, S64 |
+| PE-CONFORM-014 | RF-46 | MUST | Every assessment unable to reach a supported classification | The assessment MUST fail or remain indeterminate and MUST NOT produce a conformant or non-conformant determination. | S63, S64 |
+| PE-CONFORM-015 | RF-46 | MUST | Every Conformance Determination | A determination MUST be the bounded authoritative result of one completed Conformance Assessment. | S64 |
+| PE-CONFORM-016 | RF-46 | MUST | Every Conformance Determination | Determination identity MUST distinguish its assessment, implementation, profile, scope, requirement set, and classification. | S64 |
+| PE-CONFORM-017 | RF-46 | MUST | Every conformant determination | The determination MUST record satisfaction of every applicable requirement within its declared scope. | S64 |
+| PE-CONFORM-018 | RF-46 | MUST | Every non-conformant determination | The determination MUST record that at least one applicable requirement within scope was not satisfied. | S64 |
+| PE-CONFORM-019 | RF-46 | MUST | Every Conformance Determination | The determination MUST record exactly one classification: conformant within scope or non-conformant within scope. | S64 |
+| PE-CONFORM-020 | RF-46 | MUST | Every Conformance Determination | The determination MUST identify its complete bounded scope; no unstated scope is implied. | S64 |
+| PE-CONFORM-021 | RF-46 | MUST NOT | Every partial Conformance Assessment | Partial assessment MUST NOT establish complete conformance beyond the requirements actually assessed. | S64 |
+| PE-CONFORM-022 | RF-46 | MUST | Every published Conformance Determination | The historical determination MUST remain immutable and independently identifiable. | S15, S64 |
+| PE-CONFORM-023 | RF-46 | MUST | Every correction affecting previous conformance | Correction MUST be evaluated through a new assessment producing a new determination where completed. | S64 |
+| PE-CONFORM-024 | RF-46 | MUST | Every conformance or compatibility activity | Conformance satisfaction and compatibility relationships MUST remain distinct. | S48, S64 |
+| PE-CONFORM-025 | RF-46 | MUST | Every conformance or certification activity | Conformance determination and certification recognition MUST remain distinct. | S64, S68 |
+| PE-CONFORM-026 | RF-46 | MUST | Every conformance authority | Conformance authority MUST remain bounded assessment authority within the declared target and scope. | S64 |
+| PE-CONFORM-027 | RF-46 | MUST NOT | Every claim, assessment, determination, evidence object, report, test, diagnostic, identifier, and metadata surface | The surface MUST NOT identify a Private Actor, create reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S18, S20, S64 |
+
+### 34.4 Certification Bases, Decisions, and Statuses
+
+A Certification Basis defines one immutable evaluation basis.
+
+A Certification Decision records one pass-or-fail result.
+
+Certification Status records the lifecycle state of one certification.
+
+#### 34.4.1 RF-47 — Certification Bases, Decisions, and Statuses
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CERTDET-001 | RF-47 | MUST | Every Certification Basis | A basis MUST be one complete, immutable, identified evaluation basis for one bounded certification decision. | S65 |
+| PE-CERTDET-002 | RF-47 | MUST | Every Certification Basis | Basis identity MUST distinguish its subject, target, scope, requirements, packages, determinations, policy, and version. | S65 |
+| PE-CERTDET-003 | RF-47 | MUST | Every complete Certification Basis | The basis MUST identify every criterion and supporting conformance structure required for its declared scope. | S57, S58, S61, S64, S65 |
+| PE-CERTDET-004 | RF-47 | MUST | Every published Certification Basis | The basis MUST remain immutable; changed criteria or composition MUST create a distinguishable basis. | S15, S65 |
+| PE-CERTDET-005 | RF-47 | MUST | Every Certification Basis | The basis MUST declare one bounded certification subject, target, program context, and scope. | S65, S68 |
+| PE-CERTDET-006 | RF-47 | MUST NOT | Every Certification Basis | The basis MUST NOT define its decision result, modify conformance, or create protocol obligations. | S65 |
+| PE-CERTDET-007 | RF-47 | MUST | Every Certification Decision | A decision MUST be one identified immutable pass-or-fail evaluation of one subject and package against one basis. | S66 |
+| PE-CERTDET-008 | RF-47 | MUST | Every Certification Decision | Decision identity MUST distinguish the subject, package, basis, scope, decision occurrence, and classification. | S66 |
+| PE-CERTDET-009 | RF-47 | MUST | Every passing Certification Decision | Pass MUST record that the identified subject and package satisfy the identified basis within scope. | S66 |
+| PE-CERTDET-010 | RF-47 | MUST | Every failing Certification Decision | Fail MUST record that the identified subject or package does not satisfy the identified basis within scope. | S66 |
+| PE-CERTDET-011 | RF-47 | MUST | Every Certification Decision | The decision MUST record exactly one classification: pass or fail. | S66 |
+| PE-CERTDET-012 | RF-47 | MUST | Every Certification Decision | The decision MUST identify the exact Certification Basis against which it was made. | S65, S66 |
+| PE-CERTDET-013 | RF-47 | MUST NOT | Every Certification Decision | The decision MUST NOT perform conformance assessment, alter evidence, repair failure, or modify a Conformance Determination. | S64, S66 |
+| PE-CERTDET-014 | RF-47 | MUST | Every Certification Status | Status MUST be one recorded lifecycle state of one identified certification. | S67, S68 |
+| PE-CERTDET-015 | RF-47 | MUST | Every Certification Status | Status identity MUST distinguish the certification, lifecycle occurrence, effective state, authority, and scope. | S67, S68 |
+| PE-CERTDET-016 | RF-47 | MUST | Every certification lifecycle change | The change MUST occur through a defined issuance, maintenance, suspension, withdrawal, expiry, or reassessment event. | S67, S68 |
+| PE-CERTDET-017 | RF-47 | MUST | Every Certification Status | Status MUST remain distinct from its supporting Certification Decision and historical decisions. | S66, S67 |
+| PE-CERTDET-018 | RF-47 | MUST NOT | Every Certification Status | Status MUST NOT become implementation state, conformance truth, protocol truth, or protocol authority. | S64, S67 |
+| PE-CERTDET-019 | RF-47 | MUST | Every certification lifecycle update | The update MUST preserve historical bases, decisions, determinations, and prior status occurrences unchanged. | S64, S65, S66, S67 |
+
+### 34.5 Certification Recognition, Scope, and Authority
+
+A Privacy Engine Certification is bounded recognition of one identified
+implementation with respect to one identified Implementation Profile.
+
+Certification is based on identified Conformance Determinations and is issued
+by one identified certification authority.
+
+#### 34.5.1 RF-48 — Certification Recognition, Scope, and Authority
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-CERT-001 | RF-48 | MUST | Every Privacy Engine Certification | Certification MUST be one bounded recognition of one identified implementation with respect to one identified Implementation Profile. | S68 |
+| PE-CERT-002 | RF-48 | MUST | Every Certification | Certification identity MUST distinguish the recognition, implementation, profile, scope, basis, decisions, determinations, authority, and status. | S68 |
+| PE-CERT-003 | RF-48 | MUST | Every Certification | The certification subject MUST be exactly one identified implementation. | S45, S68 |
+| PE-CERT-004 | RF-48 | MUST | Every Certification | The certification target MUST be exactly one identified Implementation Profile. | S55, S68 |
+| PE-CERT-005 | RF-48 | MUST | Every Certification | Certification MUST apply only within its explicitly declared implementation, profile, determination, and recognition scope. | S64, S68 |
+| PE-CERT-006 | RF-48 | MUST | Every Certification | Certification MUST be supported by one or more identified conformant Conformance Determinations covering its declared scope. | S64, S68 |
+| PE-CERT-007 | RF-48 | MUST NOT | Every complete-certification claim | Complete certification MUST NOT be claimed unless supporting determinations cover every applicable profile requirement within the declared complete scope. | S64, S68 |
+| PE-CERT-008 | RF-48 | MUST | Every partial Certification | Partial recognition MUST explicitly identify its bounded scope and MUST remain distinguishable from complete certification. | S68 |
+| PE-CERT-009 | RF-48 | MUST | Every Certification | The issuing certification authority MUST possess a stable identity distinct from the certification and assessed implementation. | S68 |
+| PE-CERT-010 | RF-48 | MUST | Every certification authority | The authority MUST declare the certification program, responsibilities, recognition boundary, and scope within which it acts. | S68 |
+| PE-CERT-011 | RF-48 | MUST | Every certification authority action | Issuance, maintenance, suspension, withdrawal, and update authority MUST remain bounded by the declared program and scope. | S68 |
+| PE-CERT-012 | RF-48 | MUST | Every Certification | Recognition MUST remain distinct from conformance assessment and MUST NOT replace it. | S63, S64, S68 |
+| PE-CERT-013 | RF-48 | MUST | Every certification or compatibility statement | Certification recognition and compatibility MUST remain distinct. | S48, S68 |
+| PE-CERT-014 | RF-48 | MUST NOT | Every Certification and certification authority | Neither certification nor its authority MUST become protocol authority or redefine upstream semantics. | S08, S10, S68 |
+| PE-CERT-015 | RF-48 | MUST | Every certification withdrawal | Withdrawal MUST change certification status only and MUST preserve implementation, profile, determination, decision, and protocol history. | S64, S66, S67, S68 |
+| PE-CERT-016 | RF-48 | MUST | Every certification reassessment | Reassessment MUST use new identified evidence, assessment, determination, basis, or decision occurrences where applicable. | S60, S63, S64, S65, S66, S68 |
+| PE-CERT-017 | RF-48 | MUST | Every certification lifecycle | Historical Conformance Determinations and Certification Decisions MUST remain immutable through issuance, withdrawal, correction, and reassessment. | S64, S66, S68 |
+| PE-CERT-018 | RF-48 | MUST | Every conformance and certification structure | Public identifiers and records MUST preserve Private Actor separation and action-bounded unlinkability. | S01, S18, S20, S64, S68 |
+| PE-CERT-019 | RF-48 | MUST | Every conformance and certification naming surface | Names, fields, routes, storage keys, logs, diagnostics, examples, tests, and reports MUST use neutral non-correlation-bearing terminology. | S01, S18, S20 |
+| PE-CERT-020 | RF-48 | MUST NOT | Every conformance and certification composition | Composition MUST NOT expose enrollment provenance, wallet identity, reusable participant identity, cross-action linkage, or an actor-reconstruction bridge. | S01, S18, S20, S64, S68 |
+
+### 34.6 SF-15 Formal Summary
+
+The downstream evaluation and recognition path is:
+
+> PublishedProtocolGeneration(P)
+> -> ProtocolSpecification(S)
+> -> ImplementationProfile(F)
+> -> Implementation(I)
+> -> ConformanceAssessment(Ac)
+> -> ConformanceDetermination(Dc)
+> -> Certification(C)
+
+Conformance preserves applicable requirements:
+
+> assesses(Ac, I, F)
+> -> preserves(Ac, requirements(F))
+
+A completed determination records one classification:
+
+> conformant(Dc) xor nonConformant(Dc)
+
+An unsupported or indeterminate assessment does not create a determination:
+
+> cannotDetermine(Ac)
+> -> assessmentFailure(Ac)
+
+Certification recognizes bounded conformance:
+
+> certification(C, I, F)
+> -> supportedBy(C, Dc)
+
+> certification(C, I, F)
+> =/=> performsConformanceAssessment(C)
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+## 35. SF-16 — Protocol-Semantic Preservation and Explicit Exclusions
+
+SF-16 closes the complete specification with global preservation and exclusion
+requirements.
+
+It references the authoritative local requirements established by SF-01
+through SF-15.
+
+It does not duplicate or replace them.
+
+### 35.1 Protocol-Semantic Preservation
+
+Every downstream layer operates over already-established upstream meaning.
+
+No downstream layer creates upstream meaning.
+
+#### 35.1.1 RF-49 — Protocol-Semantic Preservation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-SEMPRES-001 | RF-49 | MUST | Every downstream Privacy Engine layer | The layer MUST preserve applicable upstream protocol semantics within its declared role and scope. | S03, S08, S46 |
+| PE-SEMPRES-002 | RF-49 | MUST | The complete downstream chain | The chain MUST remain Generation to Specification to Profile to Implementation to Conformance to Certification. | S03, S08, S55, S64, S68 |
+| PE-SEMPRES-003 | RF-49 | MUST | Every selected semantic subject or obligation | Selection and every later layer MUST preserve the same selected subject or obligation. | S05, S55 |
+| PE-SEMPRES-004 | RF-49 | MUST | Every normative requirement crossing a downstream boundary | The boundary MUST preserve stable requirement identity and traceability. | S05, S57 |
+| PE-SEMPRES-005 | RF-49 | MUST | Every semantic subject crossing a downstream boundary | The boundary MUST preserve complete normative meaning. | S04, S05, S46 |
+| PE-SEMPRES-006 | RF-49 | MUST | Every requirement crossing a downstream boundary | The boundary MUST preserve operative strength unchanged. | S04, S05, S64 |
+| PE-SEMPRES-007 | RF-49 | MUST | Every requirement crossing a downstream boundary | The boundary MUST preserve applicability and its governing conditions. | S05, S55 |
+| PE-SEMPRES-008 | RF-49 | MUST | Every permitted protocol choice | Every downstream constraint or selection MUST remain within the published choice boundary. | S05, S55 |
+| PE-SEMPRES-009 | RF-49 | MUST | Every protocol subject and occurrence | Downstream processing MUST preserve subject identity, occurrence identity, and established identity separation. | S18, S27 |
+| PE-SEMPRES-010 | RF-49 | MUST | Every downstream representation and surface | The representation or surface MUST preserve privacy, unlinkability, minimum disclosure, and Private Actor separation. | S01, S18, S20 |
+| PE-SEMPRES-011 | RF-49 | MUST | Every proof, public input, verification, and validity boundary | The boundary MUST preserve declared proof meaning, public-input meaning, verification meaning, and complete validity conditions. | S18 |
+| PE-SEMPRES-012 | RF-49 | MUST | Every Protocol Action use chain | The chain MUST preserve Action, Evaluation, Determination, acceptance, and rejection identities and semantics. | S18, S24, S25 |
+| PE-SEMPRES-013 | RF-49 | MUST | Every transition use chain | The chain MUST preserve mapping, occurrence, authorization, execution, commitment, state, history, consequence, and failure semantics. | S18, S26, S27 |
+| PE-SEMPRES-014 | RF-49 | MUST | Every application or adapter boundary | Application representation and adapter translation MUST preserve selected protocol meaning or fail. | S29, S40, S41, S42, S44 |
+| PE-SEMPRES-015 | RF-49 | MUST | Every runtime or implementation boundary | Operational responsibility and implementation realization MUST preserve semantics without acquiring semantic ownership. | S43, S45, S46, S47 |
+| PE-SEMPRES-016 | RF-49 | MUST | Every compatibility structure | Compatibility MUST preserve its declared target, surface, relationship, scope, and separation from upstream semantics. | S48, S49, S50, S51, S52, S53, S54 |
+| PE-SEMPRES-017 | RF-49 | MUST | Every profile and Reference Implementation boundary | Profile selection and reference realization MUST preserve applicable requirements and permitted-choice boundaries. | S55, S56 |
+| PE-SEMPRES-018 | RF-49 | MUST | Every conformance boundary | Requirements, evidence, assessment, and determination MUST preserve upstream meaning and bounded scope. | S57, S58, S59, S60, S61, S62, S63, S64 |
+| PE-SEMPRES-019 | RF-49 | MUST | Every certification boundary | Basis, decision, status, recognition, and authority MUST preserve supporting conformance meaning and scope. | S65, S66, S67, S68 |
+| PE-SEMPRES-020 | RF-49 | MUST | Every successful downstream operation | Success MUST preserve the selected subject or obligation without substitution. | S18, S27, S46 |
+| PE-SEMPRES-021 | RF-49 | MUST | Every downstream operation unable to demonstrate preservation | The operation MUST fail, remain unsupported, narrow, withdraw, or be superseded under its defined lifecycle. | S27, S46, S64, S68 |
+| PE-SEMPRES-022 | RF-49 | MUST NOT | Every preservation failure | Failure MUST NOT repair, reinterpret, replace, or synthesize missing semantics. | S18, S27, S46 |
+| PE-SEMPRES-023 | RF-49 | MUST NOT | Every downstream layer | The layer MUST NOT substitute a different subject, occurrence, requirement, determination, transition, or recognition. | S18, S27, S46 |
+| PE-SEMPRES-024 | RF-49 | MUST NOT | Every downstream layer | The layer MUST NOT infer an absent obligation, permission, identity, evidence item, classification, or authority. | S05, S18, S46 |
+| PE-SEMPRES-025 | RF-49 | MUST NOT | Every downstream layer | The layer MUST NOT silently widen or narrow identity, meaning, applicability, choice, target, or scope. | S05, S55, S64, S68 |
+| PE-SEMPRES-026 | RF-49 | MUST NOT | Every downstream composition | Composition MUST NOT merge distinct subjects or divide one subject into replacement identities or obligations. | S05, S17, S18 |
+
+### 35.2 Explicit Exclusions and Prohibited Interpretations
+
+RF-50 provides the global exclusion closure.
+
+Local prohibitions remain authoritative in their owning sections.
+
+#### 35.2.1 RF-50 — Explicit Protocol Exclusions and Prohibited Interpretations
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-EXCLUDE-001 | RF-50 | MUST | The complete Protocol Specification | The specification MUST identify prohibited interpretations through authoritative exclusions and supporting local references. | S02, S03 |
+| PE-EXCLUDE-002 | RF-50 | MUST NOT | Every development or protocol interpretation | STATE.md MUST NOT be interpreted as published protocol authority. | S01, S08 |
+| PE-EXCLUDE-003 | RF-50 | MUST NOT | Every downstream structure | No specification, interface, application, runtime, implementation, profile, assessment, conformance, certification, deployment, report, or observability surface MUST become protocol authority. | S08, S17, S64, S68 |
+| PE-EXCLUDE-004 | RF-50 | MUST NOT | Every downstream layer | A downstream layer MUST NOT define, amend, replace, or supersede upstream protocol semantics. | S03, S08, S46 |
+| PE-EXCLUDE-005 | RF-50 | MUST NOT | Every application interpretation | Application-owned meaning, policy, request, response, or state MUST NOT become protocol truth. | S29, S40, S41, S42 |
+| PE-EXCLUDE-006 | RF-50 | MUST NOT | Every implementation interpretation | Existing implementation behavior, convenience, defect, topology, or machinery MUST NOT become protocol semantics. | S45, S46 |
+| PE-EXCLUDE-007 | RF-50 | MUST NOT | Every reference interpretation | Reference behavior, designation, similarity, or interoperability MUST NOT become a normative requirement. | S56 |
+| PE-EXCLUDE-008 | RF-50 | MUST NOT | Every compatibility interpretation | Compatibility MUST NOT become succession, semantic equivalence, conformance, certification, or protocol authority. | S48, S49, S50, S51, S52, S53, S54 |
+| PE-EXCLUDE-009 | RF-50 | MUST NOT | Every conformance interpretation | Conformance MUST NOT create obligations, redefine realization, become certification, or acquire protocol authority. | S57, S58, S64 |
+| PE-EXCLUDE-010 | RF-50 | MUST NOT | Every certification interpretation | Certification MUST NOT perform conformance assessment, redefine semantics, become protocol truth, or acquire protocol authority. | S64, S68 |
+| PE-EXCLUDE-011 | RF-50 | MUST NOT | Every evidence or testing interpretation | Artifact existence, evidence, testing, inspection, comparison, or package publication MUST NOT independently establish conformance or certification. | S59, S60, S61, S64, S68 |
+| PE-EXCLUDE-012 | RF-50 | MUST NOT | Every protocol-subject identifier | A protocol-subject or occurrence identifier MUST NOT identify or imply a Private Actor. | S01, S18, S20 |
+| PE-EXCLUDE-013 | RF-50 | MUST NOT | Every public identifier and metadata surface | The surface MUST NOT create reusable participant identity or identity continuity across bounded actions. | S01, S18, S20 |
+| PE-EXCLUDE-014 | RF-50 | MUST NOT | Every protocol, assessment, and certification surface | The surface MUST NOT create cross-action linkage or extend proof meaning into actor identification. | S01, S18, S20 |
+| PE-EXCLUDE-015 | RF-50 | MUST NOT | Every downstream record | Enrollment, admission, funding, sponsor, origin, ownership, or wallet provenance MUST NOT be carried into action, assessment, or certification identity. | S01, S18, S20 |
+| PE-EXCLUDE-016 | RF-50 | MUST NOT | Every metadata composition | Timing, ordering, transport, runtime, deployment, evidence, assessment, certification, or authority metadata MUST NOT create an actor-reconstruction bridge. | S01, S18, S20 |
+| PE-EXCLUDE-017 | RF-50 | MUST NOT | Every naming and documentation surface | Names, fields, routes, keys, logs, diagnostics, examples, tests, and reports MUST NOT bypass privacy or introduce correlation-bearing semantics. | S01, S18, S20 |
+| PE-EXCLUDE-018 | RF-50 | MUST | Every proposed new first-class protocol subject | The subject MUST demonstrate independent identity, semantics, validity, lifecycle, and consequence before introduction. | S17, S18, S28 |
+| PE-EXCLUDE-019 | RF-50 | MUST NOT | Every Protocol Claim interpretation | A Protocol Claim MUST NOT be introduced as a distinct first-class architectural subject. | S28 |
+| PE-EXCLUDE-020 | RF-50 | MUST NOT | Every Evaluation or classification model | An Evaluation Outcome, separate acceptance object, or separate rejection object MUST NOT be introduced. | S18, S25 |
+| PE-EXCLUDE-021 | RF-50 | MUST NOT | Every transition model | Authorization, execution, commitment, consequence, failure, or stale authorization MUST NOT become an artificial first-class subject. | S18, S27 |
+| PE-EXCLUDE-022 | RF-50 | MUST NOT | Every certification model | Certification outcome MUST NOT become a new protocol subject distinct from Decision, Status, or recognition. | S66, S67, S68 |
+| PE-EXCLUDE-023 | RF-50 | MUST NOT | Every implementation-specific design choice | Blockchain consensus, transaction formats, relay, transport, storage, database, deployment topology, language, and source structure MUST NOT become protocol law. | S21, S29, S44, S45 |
+| PE-EXCLUDE-024 | RF-50 | MUST NOT | Every application or certification-program choice | Application business meaning, auditor qualification, program operations, governance, accreditation, branding, and commercial policy MUST NOT become protocol law. | S29, S44, S68 |
+| PE-EXCLUDE-025 | RF-50 | MUST NOT | The current implementation and codebase | Specification composition MUST NOT be interpreted as a current-codebase compatibility, conformance, certification, security, or operational-readiness assessment. | S02, S17, S64, S68 |
+| PE-EXCLUDE-026 | RF-50 | MUST NOT | The Engineering[150] specification state | Composition completion MUST NOT be interpreted as final consolidation, acceptance, certification, publication, or publication readiness before Engineering[151]. | S01, S02, S03 |
+
+### 35.3 SF-16 Formal Summary
+
+For every selected semantic subject or obligation `T`:
+
+> selectionChooses(T)
+
+Success preserves the same `T`:
+
+> T -> preserved(T)
+
+Failure remains failure:
+
+> T -> fail
+
+Substitution is forbidden:
+
+> T -> T'
+
+where:
+
+> T' != T
+
+Therefore:
+
+> cannotPreserve(T)
+> -> fail
+
+and never:
+
+> cannotPreserve(T)
+> -> repairOrInfer(T')
+
+The complete authority direction remains:
+
+> Published Protocol Generation
+> -> Protocol Specification
+> -> Implementation Profile
+> -> Implementation
+> -> Conformance
+> -> Certification
+
+No downstream layer modifies an upstream layer.
+
+Private actors remain private.
+
+Public protocol actions and bounded downstream assessment structures remain
+public only within their declared non-identifying scope.
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+## 36. Supporting Relationships and Complete Dependency Chain
+
+SF-01 and SF-02 establish specification authority, normative interpretation,
+protocol generation, publication, versioning, and lineage.
+
+SF-03 and SF-04 establish terminology, subject identity, Private Actor
+separation, privacy, unlinkability, neutral naming, and forbidden correlation.
+
+SF-05 through SF-11 establish interfaces, operations, proofs, validity,
+Protocol Actions, Evaluation, Determination, transition mappings, transition
+occurrences, authorization, execution, commitment, state, history,
+consequence, failure, staleness, and re-evaluation.
+
+SF-12 establishes application representation, adapter translation, integration,
+runtime responsibility, and enforcement/execution boundaries.
+
+SF-13 establishes implementation identity, Protocol Realization, downstream
+authority prohibitions, compatibility, and migration.
 
 SF-14 establishes Implementation Profiles and Reference Implementations.
 
-The following authoritative homes remain deferred:
+SF-15 establishes conformance requirements, requirement sets, artifacts,
+evidence, packages, claims, assessments, determinations, certification bases,
+decisions, statuses, recognition, scope, and certification authority.
 
-- conformance requirements, requirement sets, artifacts, evidence, packages,
-  claims, assessments, and determinations: SF-15;
-- certification bases, decisions, statuses, and recognition: SF-15;
-- complete protocol-semantic-preservation requirements: SF-16;
-- complete explicit exclusions: SF-16.
+SF-16 closes the specification with global semantic-preservation and explicit
+exclusion requirements.
 
-References to conformance, certification, semantic preservation, and exclusions
-in SF-01–SF-14 establish only local distinctions, dependencies, prohibitions,
-and readiness boundaries.
+Every RF-01–RF-50 family now possesses exactly one authoritative normative
+home.
 
-They do not compose RF-44–RF-50.
+Supporting relationships increase traceability.
 
-RF-44–RF-48 remain assigned to SF-15.
+They do not create competing normative authority.
 
-RF-49 and RF-50 remain reserved to SF-16.
+## 37. Current Composition Boundary
 
-## 35. Current Composition Boundary
+This cumulative document now contains authoritative normative homes for:
 
-This cumulative document now contains the authoritative normative homes for:
+- SF-01–SF-16;
+- RF-01–RF-50.
 
-- RF-01–RF-43.
+The cumulative specification contains 729 stable normative requirements:
 
-The following section families remain deliberately uncomposed:
-
-- SF-15 — Conformance and Certification;
-- SF-16 — Protocol-Semantic Preservation and Explicit Exclusions.
-
-Their absence is explicit and is not an implicit definition, permission,
-prohibition, assessment, certification, or completion.
-
-This cumulative slice does not define:
-
-- conformance requirement publication;
-- conformance requirement-set composition;
-- conformance artifacts, evidence, packages, claims, assessments, or
-  determinations;
-- certification bases, decisions, statuses, recognition, or lifecycle;
-- complete RF-49 protocol-semantic-preservation requirements;
-- complete RF-50 exclusions;
-- blockchain consensus;
-- transaction formats;
-- transport or relay mechanics;
-- database or storage mechanics;
-- application-specific business meaning;
-- a concrete Implementation Profile;
-- an actual Reference Implementation;
-- a compatibility claim for any current codebase;
-- a conformance assessment;
-- or a certification assessment.
-
-The cumulative specification contains 578 stable normative requirements:
-
-- 81 requirements preserved from SF-01 and SF-02;
-- 71 requirements preserved from SF-03 and SF-04;
-- 100 requirements preserved from SF-05 through SF-07;
-- 55 requirements preserved from SF-08;
-- 39 requirements preserved from SF-09;
-- 38 requirements preserved from SF-10;
-- 46 requirements preserved from SF-11;
-- 44 requirements composed in SF-12;
-- 62 requirements composed in SF-13;
-- 42 requirements composed in SF-14.
+- 578 requirements preserved unchanged from SF-01–SF-14;
+- 14 requirements composed for RF-44;
+- 19 requirements composed for RF-45;
+- 27 requirements composed for RF-46;
+- 19 requirements composed for RF-47;
+- 20 requirements composed for RF-48;
+- 26 requirements composed for RF-49;
+- 26 requirements composed for RF-50;
+- 151 requirements added by Engineering[150].
 
 All 430 requirements established through Engineering[148] remain unchanged.
 
-Engineering[149] adds 148 requirements.
+All 148 requirements added by Engineering[149] remain unchanged.
 
-The document remains incomplete until SF-15 and SF-16 have been composed and
-the complete specification has passed final consolidation review.
+All section-family and requirement-family composition is complete.
 
-## 36. Cumulative Traceability
+The remaining boundary is Engineering[151]:
+
+- complete Protocol Specification consolidation review;
+- cumulative non-duplication review;
+- requirement-preservation review;
+- traceability review;
+- privacy and authority review;
+- final determination of specification acceptance and publication readiness.
+
+This document does not claim that Engineering[151] has occurred.
+
+It does not claim final review, acceptance, certification, publication, or
+publication readiness.
+
+It does not assess or certify the current implementation or codebase.
+
+## 38. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -3269,6 +3607,18 @@ The source codes used in the normative requirement tables are:
 | S54 | `PRIVACY_ENGINE_COMPATIBILITY_TARGET_MODEL_V1.md` |
 | S55 | `PRIVACY_ENGINE_IMPLEMENTATION_PROFILE_MODEL_V1.md` |
 | S56 | `PRIVACY_ENGINE_REFERENCE_IMPLEMENTATION_MODEL_V1.md` |
+| S57 | `PRIVACY_ENGINE_CONFORMANCE_REQUIREMENT_MODEL_V1.md` |
+| S58 | `PRIVACY_ENGINE_CONFORMANCE_REQUIREMENT_SET_MODEL_V1.md` |
+| S59 | `PRIVACY_ENGINE_CONFORMANCE_ARTIFACT_MODEL_V1.md` |
+| S60 | `PRIVACY_ENGINE_CONFORMANCE_EVIDENCE_MODEL_V1.md` |
+| S61 | `PRIVACY_ENGINE_CONFORMANCE_PACKAGE_MODEL_V1.md` |
+| S62 | `PRIVACY_ENGINE_CONFORMANCE_CLAIM_MODEL_V1.md` |
+| S63 | `PRIVACY_ENGINE_CONFORMANCE_ASSESSMENT_MODEL_V1.md` |
+| S64 | `PRIVACY_ENGINE_CONFORMANCE_MODEL_V1.md` |
+| S65 | `PRIVACY_ENGINE_CERTIFICATION_BASIS_MODEL_V1.md` |
+| S66 | `PRIVACY_ENGINE_CERTIFICATION_DECISION_MODEL_V1.md` |
+| S67 | `PRIVACY_ENGINE_CERTIFICATION_STATUS_MODEL_V1.md` |
+| S68 | `PRIVACY_ENGINE_CERTIFICATION_MODEL_V1.md` |
 
 Source references record semantic provenance and composition support.
 
@@ -3306,76 +3656,44 @@ Traceability organizes established semantics.
 
 It does not redefine them.
 
-## 37. Conclusion
+## 39. Conclusion
 
-SF-01 through SF-14 now establish the cumulative normative path from one
-published protocol generation through terminology, privacy, interfaces, proof
-evidence, Protocol Actions, Evaluation, Determination, transition
-authorization, preserved execution, atomic commitment, authoritative state
-evolution, committed history, public consequences, failure, staleness,
-application representation, runtime responsibility, implementation
-realization, compatibility, Implementation Profiles, and Reference
-Implementations.
+SF-01 through SF-16 now provide one cumulative developer-facing normative
+composition from the published Privacy Engine protocol generation through
+Specification, Implementation Profiles, implementations, conformance, and
+certification.
 
-SF-12 establishes:
+Engineering[150] establishes:
 
-- Application Requests and Responses as application-owned representations;
-- adapter translation as representation preservation rather than semantic
-  definition;
-- translation failure rather than repair, inference, or substitution;
-- application-local policy without protocol authority;
-- integration as preservation responsibility;
-- runtime operational responsibility without semantic ownership;
-- enforcement as transition-eligibility contribution rather than complete
-  Evaluation;
-- and continued separation of enforcement, execution, and commitment.
+- Published Conformance Requirements as assessable expressions of unchanged
+  normative obligations;
+- complete bounded Conformance Requirement Sets distinct from Implementation
+  Profiles;
+- distinct artifact, evidence, package, claim, assessment, and determination
+  structures;
+- binary completed Conformance Determinations within explicit scope;
+- immutable historical assessment and certification records;
+- distinct Certification Bases, Decisions, Statuses, and recognition;
+- certification as bounded recognition based on identified Conformance
+  Determinations;
+- bounded certification authority without protocol authority;
+- complete privacy and anti-correlation requirements across assessment and
+  certification surfaces;
+- one global semantic-preservation closure;
+- one global explicit-exclusion closure;
+- and one authoritative normative home for every RF-01–RF-50 family.
 
-SF-13 establishes:
+The cumulative specification is composition-complete.
 
-- implementation identity, scope, versions, components, deployments, and
-  instances;
-- complete applicable implementation obligations;
-- bounded technical variation with equivalent protocol-observable semantics;
-- Protocol Realization as preservation rather than definition;
-- failure rather than semantic repair or substitution;
-- the complete prohibition against downstream protocol authority;
-- distinct compatibility targets, surfaces, statements, profiles,
-  declarations, and assessments;
-- and compatibility separation from succession, semantic equivalence,
-  conformance, and certification.
+It remains pending Engineering[151] final consolidation review.
 
-SF-14 establishes:
+No final acceptance, certification, publication, or publication-readiness
+determination has yet been made.
 
-- Implementation Profiles as complete bounded selections of applicable
-  normative requirements;
-- preservation of requirement identity, meaning, strength, applicability, and
-  choice boundaries;
-- honest deferral of complete final profile publication;
-- Reference Implementations as designated inspectable implementations;
-- permitted reference variation without mandatory implementation choices;
-- explicit reference defects and failure;
-- and reference separation from conformance, certification, and protocol
-  authority.
+Private actors remain distinct from every public protocol, implementation,
+conformance, certification, metadata, naming, diagnostic, reporting, and
+observability surface.
 
-Private Actor remains distinct from applications, requests, responses,
-adapters, integrations, runtimes, implementations, components, deployments,
-instances, compatibility structures, profiles, reference implementations,
-assessments, identifiers, records, diagnostics, tests, reports, and
-observability surfaces.
-
-No reusable participant identity, cross-action identity mechanism, application
-truth object, adapter-translation object, runtime-authority object,
-realization object, compatibility-outcome object, reference-designation
-object, or other new first-class subject is introduced.
-
-All 430 requirements established through Engineering[148] remain unchanged.
-
-Engineering[149] adds 148 requirements, producing 578 unique cumulative
-requirements.
-
-SF-15 and SF-16 remain deliberately deferred.
-
-The cumulative specification remains incomplete pending those sections and the
-final consolidation review.
+No new first-class protocol subject is introduced.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
