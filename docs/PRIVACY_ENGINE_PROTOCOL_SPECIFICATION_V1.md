@@ -17,7 +17,10 @@ Current composition status:
 - SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity: composed;
 - SF-07 — Protocol Actions and Applicable Rules: composed;
 - SF-08 — Evaluation, Determination, Acceptance, and Rejection: composed;
-- SF-09–SF-16: not yet composed.
+- SF-09 — Protocol State, Transition Semantics, Preconditions, and Authorization: composed;
+- SF-10 — Transition Execution, Commitment, Atomicity, and State Evolution: composed;
+- SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation: composed;
+- SF-12–SF-16: not yet composed.
 
 The requirements in the composed sections are normative within their declared
 scope.
@@ -29,7 +32,7 @@ been composed.
 No absent section, deferred requirement family, supporting reference, or
 informative statement may be treated as implicitly completed.
 
-The current composition boundary is defined in Section 29.
+The current composition boundary is defined in Section 32.
 
 ## 2. Purpose
 
@@ -59,7 +62,10 @@ The current cumulative document composes:
 - SF-05 — Interface Contracts, Protocol Surfaces, Operations, and Results;
 - SF-06 — Proofs, Public Inputs, Verification, Evidence, and Validity;
 - SF-07 — Protocol Actions and Applicable Rules;
-- SF-08 — Evaluation, Determination, Acceptance, and Rejection.
+- SF-08 — Evaluation, Determination, Acceptance, and Rejection;
+- SF-09 — Protocol State, Transition Semantics, Preconditions, and Authorization;
+- SF-10 — Transition Execution, Commitment, Atomicity, and State Evolution;
+- SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation.
 
 These sections authoritatively contain:
 
@@ -86,15 +92,27 @@ These sections authoritatively contain:
 - RF-22 — Protocol Action Evaluation;
 - RF-23 — Protocol Action Determination;
 - RF-24 — Acceptance and rejection;
-- RF-25 — Accepted no-transition behavior.
+- RF-25 — Accepted no-transition behavior;
+- RF-26 — Published transition mappings, preconditions, and eligibility;
+- RF-27 — Protocol State Transition occurrence identity and lifecycle;
+- RF-28 — Transition authorization and cardinality;
+- RF-29 — Transition execution and preservation;
+- RF-30 — Transition commitment, completeness, and atomicity;
+- RF-31 — Protocol state, successor state, and state evolution;
+- RF-32 — Protocol-state history;
+- RF-33 — Public protocol-state consequences;
+- RF-34 — Failure classifications and failure separation;
+- RF-35 — Stale authorization and re-evaluation.
 
-The current document does not define the later protocol-state, transition,
-application, runtime, implementation, implementation-profile, conformance, or
-certification requirements assigned to SF-09–SF-16.
+The current document does not define the application, runtime, implementation,
+implementation-profile, conformance, certification, semantic-preservation, or
+complete-exclusion requirements assigned to SF-12–SF-16.
 
-RF-14 remains assigned to SF-12.
+RF-14, RF-36, and RF-37 remain assigned to SF-12.
 
-RF-26 remains assigned to SF-09.
+RF-38–RF-41 remain assigned to SF-13.
+
+RF-42 and RF-43 remain assigned to SF-14.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
@@ -263,6 +281,20 @@ The semantic-family codes introduced by the current cumulative composition are:
 | PE-UNIQ-* | RF-19 | SF-04 |
 | PE-ACTION-* | RF-20 | SF-07 |
 | PE-RULE-* | RF-21 | SF-07 |
+| PE-EVAL-* | RF-22 | SF-08 |
+| PE-DETERM-* | RF-23 | SF-08 |
+| PE-CLASS-* | RF-24 | SF-08 |
+| PE-NOTRANS-* | RF-25 | SF-08 |
+| PE-TRANSMAP-* | RF-26 | SF-09 |
+| PE-TRANSOCC-* | RF-27 | SF-09 |
+| PE-TRANSAUTH-* | RF-28 | SF-09 |
+| PE-TRANSEXEC-* | RF-29 | SF-10 |
+| PE-COMMIT-* | RF-30 | SF-10 |
+| PE-STATE-* | RF-31 | SF-10 |
+| PE-STATEHIST-* | RF-32 | SF-11 |
+| PE-STATECONSEQ-* | RF-33 | SF-11 |
+| PE-FAIL-* | RF-34 | SF-11 |
+| PE-STALEAUTH-* | RF-35 | SF-11 |
 
 The numeric component is three digits and is allocated independently within
 each semantic family.
@@ -1979,87 +2011,702 @@ It does not define transition mappings, transition authorization mechanics,
 transition execution, commitment, state evolution, history, or complete
 cross-stage failure semantics.
 
-## 28. Supporting Relationships and Deferred Operational Semantics
+## 28. SF-09 — Protocol State, Transition Semantics, Preconditions, and Authorization
+
+SF-09 defines the transition-applicability boundary following one accepted
+Protocol Action Determination.
+
+It establishes published Protocol Transition mappings, transition-specific
+preconditions, eligibility, one identified Protocol State Transition
+occurrence, authorization, and protocol-defined transition cardinality.
+
+SF-09 does not perform execution or commitment and does not establish
+authoritative successor state.
+
+### 28.1 Protocol State Applicability Boundary
+
+Let:
+
+- `Q0` be one applicable pre-transition protocol state;
+- `Q1` be one protocol-defined successor state;
+- `T` be one published Protocol Transition mapping;
+- `U` be one Protocol State Transition occurrence;
+- `D` be one accepted Protocol Action Determination;
+- `I` be one implementation.
+
+Protocol state is protocol-owned state governed by the published protocol
+generation.
+
+Application state, implementation-local state, transport state, database
+state, cache state, UI state, and operational state do not become protocol
+state merely because they describe, represent, or observe protocol activity.
+
+SF-09 uses `Q0` only to establish transition applicability and authorization.
+
+RF-31 in SF-10 remains the authoritative requirement family for protocol
+state, successor state, and state evolution.
+
+### 28.2 Protocol Transition Mapping, Preconditions, and Eligibility
+
+A Protocol Transition is an identified published semantic mapping between
+permitted pre-transition and successor-state classes.
+
+It defines permitted state-change semantics.
+
+It is not one state-change occurrence:
+
+> transitionMapping(T)
+> =/=>
+> transitionOccurrence(U)
+
+Transition preconditions are the complete published transition-specific
+conditions governing whether `T` is eligible against the applicable state and
+Action context.
+
+Eligibility is bounded to those conditions.
+
+It does not create another complete Protocol Action Evaluation or another
+Protocol Action Determination.
+
+### 28.3 RF-26 — Published Transition Mappings, Preconditions, and Eligibility
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-TRANSMAP-001 | RF-26 | MUST | Every published Protocol Transition mapping | A Protocol Transition mapping MUST possess one stable mapping identity within the applicable published protocol generation. | S02, S17, S18, S26 |
+| PE-TRANSMAP-002 | RF-26 | MUST | Every published Protocol Transition mapping | The mapping MUST define the permitted semantic relation between its applicable pre-transition-state class and its protocol-defined successor-state class. | S18, S26, S36 |
+| PE-TRANSMAP-003 | RF-26 | MUST NOT | Every Protocol Transition mapping and every interpretation of it | A Protocol Transition mapping MUST NOT be represented as one Protocol State Transition occurrence, execution, commitment, history entry, or actor occurrence. | S02, S17, S18, S26, S27 |
+| PE-TRANSMAP-004 | RF-26 | MUST | Every implementation applying a Protocol Transition mapping | The implementation MUST preserve the mapping identity and published transition semantics unchanged. | S01, S18, S26, S33, S36 |
+| PE-TRANSMAP-005 | RF-26 | MUST | Every published Protocol Transition mapping with transition-specific preconditions | The mapping MUST identify the complete published precondition set governing its eligibility. | S02, S26, S37 |
+| PE-TRANSMAP-006 | RF-26 | MUST | Every transition-eligibility evaluation | Eligibility MUST be established against the applicable protocol state, identified mapping, applicable Action context, and complete published transition-precondition set. | S18, S26, S33, S37 |
+| PE-TRANSMAP-007 | RF-26 | MUST | Every transition-eligibility evaluation whose complete applicable precondition set is satisfied | The eligibility result MUST preserve the identified mapping and permit only the later processing authorized by the applicable protocol rules. | S18, S33, S37 |
+| PE-TRANSMAP-008 | RF-26 | MUST | Every transition-eligibility evaluation whose applicable precondition set is not completely satisfied | The ineligible result MUST preserve the applicable pre-transition protocol state as unchanged by that attempted transition. | S18, S33, S36, S37 |
+| PE-TRANSMAP-009 | RF-26 | MUST NOT | Every implementation evaluating transition preconditions | The implementation MUST NOT infer satisfaction, weaken or strengthen a precondition, substitute another condition, repair the applicable state, or derive an alternate mapping. | S01, S18, S33, S36, S37 |
+| PE-TRANSMAP-010 | RF-26 | MUST | Every relationship between transition eligibility and complete Protocol Action Evaluation | Transition eligibility MUST remain a bounded transition-specific evaluation distinct from the complete Evaluation defined by RF-22. | S02, S18, S25, S33, S37 |
+| PE-TRANSMAP-011 | RF-26 | MUST NOT | Every transition-enforcement result | A transition-enforcement result MUST NOT itself establish acceptance or rejection, create or alter a Determination, authorize or execute a transition occurrence, commit state change, or establish successor state. | S18, S25, S33, S36 |
+| PE-TRANSMAP-012 | RF-26 | MUST NOT | Every implementation-local restriction on operation exposure, request handling, or execution capability | An implementation-local restriction MUST NOT be represented as a published transition precondition or as changing protocol eligibility semantics. | S01, S18, S33, S37 |
+| PE-TRANSMAP-013 | RF-26 | MUST NOT | Every mapping, precondition, eligibility, enforcement, diagnostic, log, field, route, test, example, serialization, and observability surface | A transition-mapping or eligibility surface MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S26, S33, S37 |
+
+### 28.4 Protocol State Transition Identity and Lifecycle
+
+A Protocol State Transition is one identified, bounded, protocol-governed
+state-change occurrence whose successful commitment completely changes one
+applicable pre-transition protocol state into one protocol-defined successor
+state.
+
+> transitions(U, Q0, Q1)
+
+> governedBy(U, P)
+
+The occurrence remains distinct from the mapping that governs it:
+
+> T != U
+
+It also remains distinct from every earlier occurrence:
+
+> A != E
+
+> E != D
+
+> D != U
+
+Authorization, execution, commitment, and failure are predicates or stages of
+the same `U`.
+
+They are not independently identified first-class subjects.
+
+### 28.5 RF-27 — Protocol State Transition Occurrence Identity and Lifecycle
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-TRANSOCC-001 | RF-27 | MUST | Every Protocol State Transition | A Protocol State Transition MUST possess one stable occurrence identity identifying exactly one bounded protocol-governed state-change occurrence. | S02, S17, S18, S27 |
+| PE-TRANSOCC-002 | RF-27 | MUST | Every Protocol State Transition | The occurrence MUST retain one bounded lifecycle across every applicable authorization, execution, commitment, and failure stage. | S18, S27 |
+| PE-TRANSOCC-003 | RF-27 | MUST | Every relationship between a Protocol Action and a Protocol State Transition | The Action and transition occurrence MUST retain distinct identities and semantic roles. | S17, S18, S24, S27 |
+| PE-TRANSOCC-004 | RF-27 | MUST | Every relationship between a Protocol Action Evaluation and a Protocol State Transition | The Evaluation and transition occurrence MUST retain distinct identities and semantic roles. | S17, S18, S25, S27 |
+| PE-TRANSOCC-005 | RF-27 | MUST | Every relationship between a Protocol Action Determination and a Protocol State Transition | The Determination and transition occurrence MUST retain distinct identities and semantic roles. | S17, S18, S25, S27 |
+| PE-TRANSOCC-006 | RF-27 | MUST | Every Protocol State Transition occurrence | The occurrence MUST remain distinct from its governing mapping, pre-transition state, successor state, implementation, history representation, and public consequence. | S02, S17, S18, S26, S27 |
+| PE-TRANSOCC-007 | RF-27 | MUST | Every authorization, execution, commitment, and failure stage concerning one Protocol State Transition | Every stage MUST preserve the identity of the same authorized `U`. | S01, S18, S27 |
+| PE-TRANSOCC-008 | RF-27 | MUST NOT | Every transition lifecycle representation | Authorization, execution, commitment, or failure MUST NOT be represented as a separately identified first-class transition object. | S02, S17, S18, S27 |
+| PE-TRANSOCC-009 | RF-27 | MUST | Every terminal Protocol State Transition classification | A terminal transition MUST be classified as committed or transition failure, but not both. | S18, S27 |
+| PE-TRANSOCC-010 | RF-27 | MUST NOT | Every authorized transition that has not reached a terminal classification | Absence of commitment MUST NOT by itself be represented as transition failure. | S18, S27 |
+| PE-TRANSOCC-011 | RF-27 | MUST NOT | Every transition identifier, lifecycle record, representation, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A transition-occurrence surface MUST NOT identify the Private Actor, carry enrollment or admission provenance, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27 |
+
+### 28.6 Transition Authorization and Cardinality
+
+Transition authorization is the bounded relationship by which one accepted
+Determination permits one identified `U` to proceed under the applicable
+protocol rules.
+
+> authorizedBy(U, D)
+> ->
+> accepts(D, A)
+
+Authorization selects `U`.
+
+It does not merely select a class from which an implementation may later
+choose a preferred occurrence or outcome.
+
+The complete applicable protocol rules determine whether an accepted
+Determination authorizes zero, exactly one, or multiple separately identified
+transitions.
+
+> authorizedTransitionCount(D) in {0, 1, n}
+
+### 28.7 RF-28 — Transition Authorization and Cardinality
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-TRANSAUTH-001 | RF-28 | MUST | Every authorization of a Protocol State Transition arising from a Protocol Action | The transition MUST be authorized by one accepted Protocol Action Determination. | S02, S18, S25, S27 |
+| PE-TRANSAUTH-002 | RF-28 | MUST NOT | Every rejected Determination, incomplete Evaluation, Evaluation failure, and absence of Determination | The condition MUST NOT authorize an accepted Protocol State Transition. | S18, S25, S27 |
+| PE-TRANSAUTH-003 | RF-28 | MUST | Every transition authorization | Authorization MUST identify the authorizing Determination, authorized `U`, governing `T`, applicable `Q0`, required successor-state relation, and every protocol-defined ordering or dependency. | S02, S18, S25, S26, S27 |
+| PE-TRANSAUTH-004 | RF-28 | MUST | Every transition authorization | Authorization MUST select one sufficiently bounded transition occurrence rather than a class of later implementation-selected outcomes. | S18, S27 |
+| PE-TRANSAUTH-005 | RF-28 | MUST NOT | Every accepted Protocol Action Determination | Acceptance MUST NOT by itself be represented as establishing transition authorization or that a transition occurrence exists. | S18, S25, S27 |
+| PE-TRANSAUTH-006 | RF-28 | MUST NOT | Every transition authorization | Authorization MUST NOT be represented as transition execution. | S18, S27 |
+| PE-TRANSAUTH-007 | RF-28 | MUST NOT | Every transition authorization | Authorization MUST NOT be represented as transition commitment. | S18, S27 |
+| PE-TRANSAUTH-008 | RF-28 | MUST NOT | Every transition authorization | Authorization MUST NOT be represented as an authoritative protocol-state change or authoritative successor state. | S18, S27 |
+| PE-TRANSAUTH-009 | RF-28 | MUST | Every accepted Determination for which transition cardinality is applicable | The complete applicable protocol rules MUST determine whether the Determination authorizes zero, exactly one, or multiple transition occurrences. | S02, S18, S25, S27 |
+| PE-TRANSAUTH-010 | RF-28 | MUST NOT | Every implementation realizing transition authorization | The implementation MUST NOT choose transition cardinality for convenience, preferred outcome, infrastructure capability, or implementation policy. | S01, S18, S27 |
+| PE-TRANSAUTH-011 | RF-28 | MUST | Every accepted Determination requiring zero transitions | The zero-transition authorization relation MUST preserve the successful terminal behavior defined by RF-25 without fabricating a transition occurrence. | S02, S18, S25, S27 |
+| PE-TRANSAUTH-012 | RF-28 | MUST | Every accepted Determination authorizing multiple independently committable effects | Each independently committable effect MUST remain one separately identified and separately atomic transition occurrence. | S18, S27 |
+| PE-TRANSAUTH-013 | RF-28 | MUST | Every accepted Determination authorizing multiple transitions with protocol-defined ordering or dependencies | Every authorized ordering and dependency MUST be preserved across the separately identified transitions. | S18, S27 |
+| PE-TRANSAUTH-014 | RF-28 | MUST | Every group of protocol-required state effects that must succeed or fail together | The effects MUST be represented as one composite atomic Protocol State Transition rather than as independently committable transitions. | S18, S27 |
+| PE-TRANSAUTH-015 | RF-28 | MUST NOT | Every authorization of multiple separately identified Protocol State Transitions | Multiple authorized transitions MUST NOT be represented as a separately identified first-class transition-set object. | S02, S17, S18, S27 |
+
+No transition-set object is introduced.
+
+Transition authorization, transition cardinality, and any ordering relation do
+not acquire protocol authority.
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+### 28.8 SF-09 Formal Summary
+
+> transitionMapping(T)
+> =/=>
+> transitionOccurrence(U)
+
+> authorizedBy(U, D)
+> ->
+> accepts(D, A)
+
+> accepts(D, A)
+> =/=>
+> exists(U)
+
+> authorizes(D, U)
+> =/=>
+> executing(U)
+
+> authorizes(D, U)
+> =/=>
+> committed(U)
+
+> authorizes(D, U)
+> =/=>
+> transitionsCommittedState(Q0, Q1)
+
+SF-09 authorizes only the identified transition occurrences required by the
+complete applicable protocol rules.
+
+It establishes no execution, commitment, or authoritative state change.
+
+## 29. SF-10 — Transition Execution, Commitment, Atomicity, and State Evolution
+
+SF-10 carries each authorized `U` through preserved execution to complete
+atomic commitment or explicit transition failure.
+
+It establishes authoritative successor state only through commitment.
+
+### 29.1 Transition Execution and Preservation
+
+Execution is the bounded stage in which an implementation attempts to realize
+the already-authorized `U`.
+
+Authorization selects `U`.
+
+Every later transition stage preserves `U`.
+
+Success path:
+
+> U -> preserved(U)
+
+Failure path:
+
+> U -> transitionFailure(U)
+
+Forbidden substitution path:
+
+> U -> U'
+
+where:
+
+> U' != U
+
+If execution cannot preserve `U`, it fails cleanly.
+
+### 29.2 RF-29 — Transition Execution and Preservation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-TRANSEXEC-001 | RF-29 | MUST | Every Protocol State Transition execution | Execution MUST be the bounded implementation activity that attempts to realize one already-authorized `U`. | S02, S18, S27, S34 |
+| PE-TRANSEXEC-002 | RF-29 | MUST | Every execution entry | Execution MUST begin only where the applicable authorization and transition-eligibility conditions permit execution of the identified `U`. | S18, S27, S33, S34 |
+| PE-TRANSEXEC-003 | RF-29 | MUST | Every execution of an authorized Protocol State Transition | Execution MUST preserve the transition identity, authorizing Determination, governing mapping, authorized pre-transition state, required successor-state relation, atomicity, and complete protocol-defined effects. | S01, S18, S26, S27, S34 |
+| PE-TRANSEXEC-004 | RF-29 | MUST | Every implementation executing an authorized Protocol State Transition | The implementation MUST realize the authorized `U` exactly as defined by the published transition semantics. | S18, S26, S27, S34 |
+| PE-TRANSEXEC-005 | RF-29 | MUST NOT | Every implementation executing an authorized Protocol State Transition | The implementation MUST NOT redefine, reinterpret, widen, narrow, repair, merge, divide, or infer replacement semantics for `U`. | S01, S18, S27, S34 |
+| PE-TRANSEXEC-006 | RF-29 | MUST NOT | Every execution of authorized `U` | Execution MUST NOT substitute, execute, commit, or report `U'` as `U` where `U' != U`. | S18, S27, S34 |
+| PE-TRANSEXEC-007 | RF-29 | MUST | Every relationship between transition eligibility and transition execution | Eligibility and execution MUST remain distinct stages, with eligibility deciding only whether the already-identified transition may proceed. | S18, S33, S34 |
+| PE-TRANSEXEC-008 | RF-29 | MUST NOT | Every completed transition execution | Completed execution MUST NOT by itself be represented as commitment or authoritative protocol-state change. | S18, S27, S34 |
+| PE-TRANSEXEC-009 | RF-29 | MUST NOT | Every successor-state value or representation derived during execution | Derived successor-state material MUST NOT be represented as authoritative protocol state before valid commitment. | S02, S18, S27, S34, S39 |
+| PE-TRANSEXEC-010 | RF-29 | MUST | Every implementation unable to preserve the authorized transition during execution | The implementation MUST fail the execution cleanly while preserving the identity and semantics of the authorized `U`. | S01, S18, S27, S34 |
+| PE-TRANSEXEC-011 | RF-29 | MUST NOT | Every failed transition execution | Execution failure MUST NOT authorize an alternate transition, alternate successor state, partial commitment, or semantic substitution. | S18, S27, S34 |
+| PE-TRANSEXEC-012 | RF-29 | MUST NOT | Every execution representation, instruction, transaction, internal call, storage operation, retry, diagnostic, log, field, route, test, example, serialization, and observability surface | An execution surface MUST NOT create another architectural transition identity, identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27, S34 |
+
+### 29.3 Transition Commitment, Completeness, and Atomicity
+
+Commitment is the successful terminal predicate of one `U`.
+
+Only commitment establishes the complete authoritative state change from `Q0`
+to `Q1`.
+
+> committed(U)
+> ->
+> completeStateChange(U, Q0, Q1)
+
+Within a valid authorization and execution context:
+
+> committed(U)
+> iff
+> completeStateChange(U, Q0, Q1)
+
+Semantic atomicity means that `U` establishes its complete authorized state
+change or establishes no committed state change.
+
+### 29.4 RF-30 — Transition Commitment, Completeness, and Atomicity
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-COMMIT-001 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST be the successful terminal predicate of the same identified `U` that was authorized and executed. | S02, S18, S27 |
+| PE-COMMIT-002 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST derive from one valid accepted Determination and valid authorization of `U`. | S18, S25, S27 |
+| PE-COMMIT-003 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST follow correct execution that preserves the complete authorized identity and semantics of `U`. | S01, S18, S27, S34 |
+| PE-COMMIT-004 | RF-30 | MUST | Every committed Protocol State Transition authorized against `Q0` | Commitment MUST establish that the applicable protocol state remains equivalent to the authorized `Q0` for the protocol-relevant purpose of `U`. | S18, S27, S36 |
+| PE-COMMIT-005 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST establish the complete protocol-defined state-change relation and the required successor state `Q1`. | S18, S27, S36, S39 |
+| PE-COMMIT-006 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST establish the absence of omitted required effects and unauthorized additional state effects. | S18, S27, S36 |
+| PE-COMMIT-007 | RF-30 | MUST | Every committed Protocol State Transition | Commitment MUST preserve semantic atomicity across every protocol-required effect owned by `U`. | S18, S27, S36 |
+| PE-COMMIT-008 | RF-30 | MUST | Every valid authorization and execution context for `U` | Commitment MUST be equivalent to complete state change only within that valid bounded context. | S02, S18, S27 |
+| PE-COMMIT-009 | RF-30 | MUST NOT | Every partial execution of a Protocol State Transition | Partial execution MUST NOT be represented as commitment. | S18, S27, S36 |
+| PE-COMMIT-010 | RF-30 | MUST NOT | Every partial or incomplete state change | A partial or incomplete state change MUST NOT be represented as commitment or authoritative successor state. | S18, S27, S36 |
+| PE-COMMIT-011 | RF-30 | MUST NOT | Every Protocol State Transition | A transition MUST NOT be partially committed. | S18, S27, S36 |
+| PE-COMMIT-012 | RF-30 | MUST NOT | Every implementation assertion, report, event, record, diagnostic, or representation concerning commitment | The implementation surface MUST NOT by itself establish protocol commitment. | S01, S18, S27 |
+| PE-COMMIT-013 | RF-30 | MUST NOT | Every commitment representation and interpretation | Commitment MUST NOT be represented as a separately identified first-class object or as possessing authority or lifecycle independent of `U`. | S02, S17, S18, S27 |
+
+### 29.5 Protocol State, Successor State, and State Evolution
+
+`Q0` and `Q1` are distinct identified protocol states related by committed
+`U`.
+
+The successor-state relation is derived only from:
+
+- the authorized `U`;
+- the governing `T`;
+- the applicable `Q0`;
+- and the complete published transition semantics.
+
+Execution may derive successor-state material.
+
+Only valid commitment establishes `Q1` as authoritative protocol state.
+
+State evolution is therefore:
+
+> Q0
+> ->
+> committed(U)
+> ->
+> Q1
+
+### 29.6 RF-31 — Protocol State, Successor State, and State Evolution
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-STATE-001 | RF-31 | MUST | Every protocol-state representation | Protocol state MUST contain only state governed as protocol state by the applicable published protocol generation. | S01, S02, S18, S35 |
+| PE-STATE-002 | RF-31 | MUST NOT | Every application, implementation-local, transport, database, cache, UI, operational, diagnostic, and observability state representation | The representation MUST NOT be treated as protocol state merely because it describes, realizes, stores, or observes protocol activity. | S01, S17, S18, S20, S35 |
+| PE-STATE-003 | RF-31 | MUST | Every Protocol State Transition authorization | The authorization MUST identify the bounded pre-transition protocol state `Q0` against which `U` is authorized. | S18, S27, S35 |
+| PE-STATE-004 | RF-31 | MUST NOT | Every implementation realizing an authorized transition | The implementation MUST NOT select, reconstruct, repair, or substitute a preferred pre-transition protocol state after authorization. | S01, S18, S27, S35 |
+| PE-STATE-005 | RF-31 | MUST | Every successor-state derivation | `Q1` MUST be derived only from the authorized `U`, governing `T`, applicable `Q0`, and complete published transition semantics. | S18, S26, S27, S36, S38, S39 |
+| PE-STATE-006 | RF-31 | MUST NOT | Every implementation deriving successor-state material | The implementation MUST NOT invent, infer, repair, merge, widen, narrow, substitute, or add application meaning to `Q1`. | S01, S18, S27, S36, S39 |
+| PE-STATE-007 | RF-31 | MUST NOT | Every successor-state value derived before commitment | Derived successor-state material MUST NOT be represented as authoritative protocol state. | S02, S18, S27, S34, S39 |
+| PE-STATE-008 | RF-31 | MUST | Every committed Protocol State Transition | Only valid commitment of `U` MUST establish `Q1` as authoritative successor state for that transition. | S02, S18, S27, S36, S38, S39 |
+| PE-STATE-009 | RF-31 | MUST | Every committed Protocol State Transition from `Q0` to `Q1` | The pre-transition state, successor state, and transition occurrence MUST retain distinct identities and their exact committed relationship. | S17, S18, S27, S35, S38, S39 |
+| PE-STATE-010 | RF-31 | MUST | Every authoritative protocol-state evolution | State evolution MUST consist of one applicable `Q0`, one committed `U`, and the protocol-defined authoritative `Q1`. | S18, S27, S35, S38 |
+| PE-STATE-011 | RF-31 | MUST NOT | Every failed, incomplete, partial, simulated, predicted, or merely reported transition | The transition condition MUST NOT establish authoritative state evolution or authoritative `Q1`. | S01, S18, S27, S34, S38, S39 |
+| PE-STATE-012 | RF-31 | MUST | Every committed protocol-state evolution | The evolution MUST preserve every applicable published protocol invariant and every complete protocol-required effect of `U`. | S18, S27, S35, S36, S38 |
+| PE-STATE-013 | RF-31 | MUST NOT | Every protocol-state identifier, state representation, successor-state derivation, evolution record, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A protocol-state surface MUST NOT identify the Private Actor, carry enrollment or admission provenance, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27, S35, S38, S39 |
+
+Execution, commitment, state, successor state, and state evolution remain
+bounded protocol concepts.
+
+None becomes protocol authority.
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+### 29.7 SF-10 Formal Summary
+
+> authorizedBy(U, D)
+> ->
+> preserved(U)
+
+> executed(U)
+> =/=>
+> committed(U)
+
+> derivesPostState(U, Q1)
+> =/=>
+> establishesPostState(U, Q1)
+
+> committed(U)
+> ->
+> establishesPostState(U, Q1)
+
+> partialExecution(U)
+> =/=>
+> committed(U)
+
+> partialStateChange(U)
+> =/=>
+> committed(U)
+
+> reportsCommitted(I, U)
+> =/=>
+> committed(U)
+
+Success path:
+
+> U -> preserved(U) -> committed(U)
+
+Failure path:
+
+> U -> transitionFailure(U)
+
+Forbidden path:
+
+> U -> U'
+
+where:
+
+> U' != U
+
+## 30. SF-11 — History, Public Consequences, Failure, Staleness, and Re-evaluation
+
+SF-11 defines the authoritative committed-history boundary, bounded public
+protocol-state consequence, complete cross-stage failure classification,
+stale authorization, and re-evaluation.
+
+It preserves every earlier occurrence and classification unchanged.
+
+### 30.1 Protocol-State History
+
+Only committed transitions enter authoritative protocol-state history as
+committed state changes.
+
+> committed(U)
+> ->
+> includedInProtocolStateHistory(U, H)
+
+Operational records may describe attempts, failures, retries, diagnostics, or
+implementation activity.
+
+They do not thereby become authoritative protocol-state history.
+
+### 30.2 RF-32 — Protocol-State History
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-STATEHIST-001 | RF-32 | MUST | Every Protocol State Transition included as a committed state change in authoritative protocol-state history | The transition MUST have validly committed. | S02, S18, S27 |
+| PE-STATEHIST-002 | RF-32 | MUST | Every authoritative protocol-state history representation | The representation MUST preserve each committed transition identity, committed ordering, applicable pre-transition state, authoritative successor state, and bounded public consequence. | S18, S27 |
+| PE-STATEHIST-003 | RF-32 | MUST NOT | Every failed Protocol State Transition | A failed transition MUST NOT be included as a committed transition in authoritative protocol-state history. | S18, S27 |
+| PE-STATEHIST-004 | RF-32 | MUST NOT | Every pre-transition failure | A pre-transition failure MUST NOT be included as a committed transition in authoritative protocol-state history. | S18, S27 |
+| PE-STATEHIST-005 | RF-32 | MUST NOT | Every partial execution or partial state change | Partial execution or partial state change MUST NOT be included as committed history. | S18, S27 |
+| PE-STATEHIST-006 | RF-32 | MUST NOT | Every operational attempt, diagnostic, retry, log, database row, event, report, error, cache record, or observability record | An operational record MUST NOT be treated as authoritative protocol-state history merely because it describes protocol activity. | S01, S18, S27 |
+| PE-STATEHIST-007 | RF-32 | MUST | Every permitted protocol-state history realization | The realization MUST preserve identical committed transition semantics independently of storage structure, database, blockchain, consensus, event, transaction, or infrastructure choice. | S01, S18, S27 |
+| PE-STATEHIST-008 | RF-32 | MUST NOT | Every history identifier, entry, representation, ordering record, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A protocol-state history surface MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27 |
+
+### 30.3 Public Protocol-State Consequences
+
+A committed `U` establishes one bounded public protocol-state consequence.
+
+> committed(U)
+> ->
+> publicProtocolConsequence(U, Q1)
+
+The consequence records only the protocol-defined meaning of committed state
+change.
+
+It is not an independently identified object between commitment and successor
+state.
+
+### 30.4 RF-33 — Public Protocol-State Consequences
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-STATECONSEQ-001 | RF-33 | MUST | Every committed Protocol State Transition | Commitment MUST establish the bounded public protocol-state consequence defined for `U` and authoritative `Q1`. | S02, S18, S27 |
+| PE-STATECONSEQ-002 | RF-33 | MUST | Every public protocol-state consequence | The consequence MUST remain bounded to the published protocol meaning of the committed state change. | S01, S18, S27 |
+| PE-STATECONSEQ-003 | RF-33 | MUST | Every relationship between a Published Result and a public protocol-state consequence | The interface-level Published Result and committed protocol-state consequence MUST remain distinct semantic roles. | S02, S18, S27, S32 |
+| PE-STATECONSEQ-004 | RF-33 | MUST | Every relationship between a Protocol Action Determination and a public protocol-state consequence | The Determination and committed consequence MUST remain distinct, including where both are publicly observable. | S18, S25, S27 |
+| PE-STATECONSEQ-005 | RF-33 | MUST | Every relationship between authoritative successor state and public protocol-state consequence | The successor-state representation and its bounded public consequence MUST remain distinct without introducing an intermediate consequence object. | S02, S17, S18, S27 |
+| PE-STATECONSEQ-006 | RF-33 | MUST NOT | Every public protocol-state consequence and every interpretation of it | The consequence MUST NOT be represented as application, factual, legal, social, institutional, user-intent, or off-protocol truth. | S01, S17, S18, S27 |
+| PE-STATECONSEQ-007 | RF-33 | MUST NOT | Every public protocol-state consequence | The consequence MUST NOT be represented as a separately identified first-class object possessing authority or lifecycle independent of committed `U`. | S02, S17, S18, S27 |
+| PE-STATECONSEQ-008 | RF-33 | MUST NOT | Every public consequence identifier, representation, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A public-consequence surface MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27 |
+| PE-STATECONSEQ-009 | RF-33 | MUST NOT | Every public consequence recording authorization, membership, eligibility, uniqueness, possession, or another bounded protocol property | The recorded property MUST NOT be extended into actor identification, enrollment or admission provenance, hidden intent, or additional correlation meaning. | S01, S18, S27 |
+
+### 30.5 Failure Classification and Separation
+
+A failure classification describes the stage and condition that actually
+occurred.
+
+The complete classification boundary distinguishes:
+
+- pre-evaluation failure;
+- Evaluation failure;
+- rejection;
+- accepted no-transition;
+- pre-transition failure;
+- transition failure;
+- stale authorization;
+- implementation error;
+- incorrect execution;
+- incorrect commitment;
+- and incorrect reporting.
+
+Causal relationships among classifications do not make them semantically
+equivalent.
+
+### 30.6 RF-34 — Failure Classifications and Failure Separation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-FAIL-001 | RF-34 | MUST | Every protocol-use failure or implementation-error classification | The classification MUST identify the actual bounded lifecycle stage and condition that occurred. | S02, S18, S25, S27, S37 |
+| PE-FAIL-002 | RF-34 | MUST | Every pre-evaluation failure | Pre-evaluation failure MUST mean that no valid Protocol Action Evaluation occurrence began. | S18, S25 |
+| PE-FAIL-003 | RF-34 | MUST | Every Protocol Action Evaluation failure | Evaluation failure MUST mean that one Evaluation began but did not complete and produced no Determination. | S18, S25 |
+| PE-FAIL-004 | RF-34 | MUST | Every Protocol Action rejection | Rejection MUST remain the rejecting classification of one valid Determination produced by one completed Evaluation. | S18, S25 |
+| PE-FAIL-005 | RF-34 | MUST | Every accepted no-transition terminal path | Accepted no-transition MUST remain a successful Determination-boundary completion rather than a failure classification. | S02, S18, S25, S27 |
+| PE-FAIL-006 | RF-34 | MUST | Every pre-transition failure | Pre-transition failure MUST mean that the post-Determination transition boundary could not validly enter bounded execution. | S18, S27, S37 |
+| PE-FAIL-007 | RF-34 | MUST | Every transition failure | Transition failure MUST remain the explicit terminal classification of an authorized transition that does not establish complete commitment. | S18, S27 |
+| PE-FAIL-008 | RF-34 | MUST NOT | Every stale authorization | Stale authorization MUST NOT be represented as rejection, Evaluation failure, or proof that the earlier Determination was incorrect. | S18, S25, S27 |
+| PE-FAIL-009 | RF-34 | MUST | Every implementation error | Implementation error MUST remain a bounded diagnosis of incorrect realization, classification, commitment, or reporting rather than a redefinition of protocol truth. | S01, S17, S18, S27 |
+| PE-FAIL-010 | RF-34 | MUST | Every incorrect execution diagnosis | Incorrect execution MUST identify implementation failure to preserve or correctly realize authorized `U` without becoming semantically equivalent to every transition failure. | S18, S27 |
+| PE-FAIL-011 | RF-34 | MUST | Every incorrect commitment diagnosis | Incorrect commitment MUST identify an implementation representation or materialization that does not satisfy valid protocol commitment. | S18, S27 |
+| PE-FAIL-012 | RF-34 | MUST | Every incorrect reporting diagnosis | Incorrect reporting MUST remain distinct from the protocol condition incorrectly reported. | S18, S27 |
+| PE-FAIL-013 | RF-34 | MUST NOT | Every pre-transition failure | Pre-transition failure MUST NOT be represented as transition failure where bounded execution of `U` did not begin. | S18, S27 |
+| PE-FAIL-014 | RF-34 | MUST NOT | Every transition failure, stale authorization, implementation error, incorrect execution, incorrect commitment, and incorrect reporting condition | A later-stage condition MUST NOT be converted into Protocol Action rejection or Evaluation failure. | S01, S18, S25, S27 |
+| PE-FAIL-015 | RF-34 | MUST NOT | Every infrastructure failure, inability to preserve `U`, changed-state condition, partial execution, or reporting error | The condition MUST NOT be silently converted into commitment or another semantically different success or failure class. | S01, S18, S27 |
+| PE-FAIL-016 | RF-34 | MUST NOT | Every failure, error, staleness, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A failure surface MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, expose implementation or operational metadata as actor identity, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S25, S27 |
+| PE-FAIL-017 | RF-34 | MUST NOT | Every failure classification and implementation-error diagnosis | A failure classification or error diagnosis MUST NOT be represented as a separately identified first-class failure object. | S02, S17, S18, S25, S27 |
+
+### 30.7 Stale Authorization and Re-evaluation
+
+Authorization may be bounded to `Q0`:
+
+> authorizedAgainst(U, Q0)
+
+Before commitment, the implementation establishes whether the applicable
+current protocol state remains equivalent to `Q0` for the protocol-relevant
+purpose of `U`.
+
+Material conflict makes the authorization stale and prohibits commitment under
+that authorization.
+
+Where the applicable protocol rules require re-evaluation, re-evaluation
+creates new occurrences.
+
+It does not mutate or repair earlier ones.
+
+### 30.8 RF-35 — Stale Authorization and Re-evaluation
+
+| Identifier | Family | Strength | Applicability | Normative requirement | Sources |
+|---|---|---|---|---|---|
+| PE-STALEAUTH-001 | RF-35 | MUST | Every transition authorization bounded to one pre-transition protocol state | The authorization MUST remain explicitly bounded to the identified `Q0`. | S02, S18, S25, S27 |
+| PE-STALEAUTH-002 | RF-35 | MUST | Every authorized transition before execution and commitment | The implementation MUST establish whether the applicable current protocol state remains equivalent to authorized `Q0` for the protocol-relevant purpose of `U`. | S01, S18, S27 |
+| PE-STALEAUTH-003 | RF-35 | MUST | Every authorized transition whose current protocol state remains equivalent to `Q0` | The equivalence determination MUST remain bounded to transition applicability and MUST preserve the original authorization unchanged. | S18, S27 |
+| PE-STALEAUTH-004 | RF-35 | MUST | Every authorized transition whose current protocol state materially conflicts with `Q0` | The authorization MUST be classified as stale for commitment against the conflicting state. | S18, S25, S27 |
+| PE-STALEAUTH-005 | RF-35 | MUST NOT | Every stale transition authorization | A stale authorization MUST NOT permit commitment against the materially conflicting state. | S18, S27 |
+| PE-STALEAUTH-006 | RF-35 | MUST NOT | Every implementation resolving applicable-state conflict | The implementation MUST NOT select whichever state context produces a preferred result or repair the existing authorization. | S01, S18, S25, S27 |
+| PE-STALEAUTH-007 | RF-35 | MUST NOT | Every stale transition authorization | Staleness MUST NOT mutate, invalidate, rewrite, or reclassify the earlier Evaluation or Determination. | S18, S25, S27 |
+| PE-STALEAUTH-008 | RF-35 | MUST | Every materially changed context or state for which the applicable protocol rules require re-evaluation | The implementation MUST begin one new Protocol Action Evaluation occurrence under the newly applicable bounded context. | S02, S18, S25, S27 |
+| PE-STALEAUTH-009 | RF-35 | MUST | Every completed required re-evaluation | The new Evaluation MUST produce one new Determination and, where applicable, newly authorized transition occurrences whose identities are distinct from every earlier transition occurrence. | S18, S25, S27 |
+| PE-STALEAUTH-010 | RF-35 | MUST NOT | Every required re-evaluation | Re-evaluation MUST NOT mutate, repair, replace, or silently reinterpret the earlier `E`, `D`, or `U`. | S01, S17, S18, S25, S27 |
+| PE-STALEAUTH-011 | RF-35 | MUST NOT | Every stale-authorization and re-evaluation identifier, record, diagnostic, log, field, route, test, example, serialization, storage key, and observability surface | A staleness or re-evaluation surface MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S25, S27 |
+| PE-STALEAUTH-012 | RF-35 | MUST NOT | Every stale-authorization condition and representation | Stale authorization MUST NOT be represented as a separately identified first-class stale-authorization object. | S02, S17, S18, S25, S27 |
+
+No stale-authorization object is introduced.
+
+No re-evaluation repair path is introduced.
+
+The preserved path is:
+
+> E1
+> ->
+> D1
+> ->
+> stale authorization
+> ->
+> new E2
+> ->
+> new D2
+> ->
+> possible new U2
+
+The forbidden paths are:
+
+> E1 -> repair(E1)
+
+> D1 -> rewrite(D1)
+
+> U1 -> infer(U2)
+
+without the required new Evaluation and Determination.
+
+### 30.9 SF-11 Privacy and Authority
+
+SF-11 preserves:
+
+> Private actors, public actions.
+
+Public state, transition, committed history, and bounded consequence visibility
+do not imply participant visibility.
+
+> identifiesTransition(id(U), U)
+> =/=>
+> identifiesActor(id(U), X)
+
+> identifiesState(id(Q), Q)
+> =/=>
+> identifiesActor(id(Q), X)
+
+> includedInProtocolStateHistory(U, H)
+> =/=>
+> identifiesActor(id(U), X)
+
+> publicProtocolConsequence(U, Q1)
+> =/=>
+> identifiesActor(id(U), X)
+
+No state, mapping, occurrence, authorization relation, execution, commitment,
+history, consequence, failure classification, stale authorization,
+re-evaluation, implementation, application, actor, proof, Evaluation, or
+Determination may redefine protocol semantics or acquire protocol authority.
+
+Protocol authority always remains with the published Privacy Engine protocol generation.
+
+### 30.10 SF-11 Formal Summary
+
+> committed(U)
+> ->
+> includedInProtocolStateHistory(U, H)
+
+> transitionFailure(U)
+> =/=>
+> includedAsCommittedTransition(U, H)
+
+> partialExecution(U)
+> =/=>
+> includedAsCommittedTransition(U, H)
+
+> committed(U)
+> ->
+> publicProtocolConsequence(U, Q1)
+
+> evaluationFailure(E)
+> =/=>
+> rejects(D, A)
+
+> transitionFailure(U)
+> =/=>
+> rejects(D, A)
+
+> transitionFailure(U)
+> =/=>
+> evaluationFailure(E)
+
+> preTransitionFailure(U)
+> =/=>
+> transitionFailure(U)
+
+> staleAuthorization(U)
+> =/=>
+> incorrect(D)
+
+> incorrectExecution(I, U)
+> =/=>
+> changesSemantics(P)
+
+> staleAuthorization(U)
+> ->
+> not committed(U)
+
+SF-11 completes the state-and-transition composition boundary.
+
+It does not define the application, runtime, implementation, profile,
+conformance, certification, semantic-preservation, or complete-exclusion
+requirements reserved to SF-12–SF-16.
+
+## 31. Supporting Relationships and Deferred Operational Semantics
 
 SF-03 and SF-04 establish the terminology, identity, and privacy requirements
-preserved by SF-05–SF-08.
+preserved by SF-05–SF-11.
 
-SF-05 establishes:
+SF-05 establishes interface contracts, Protocol Surfaces, Protocol Operations,
+and Published Results.
 
-- bounded Interface Contract meaning;
-- concrete syntactic realization;
-- stable Protocol Surfaces;
-- Protocol Operation capability;
-- and Published Result semantics.
+SF-06 establishes proofs, declared public inputs, verification, bounded
+evidence, complete validity, and non-proof validity conditions.
 
-SF-06 establishes:
+SF-07 establishes Protocol Action identity, the complete applicable rule set,
+and the bounded evaluation context.
 
-- proofs and declared public inputs;
-- proof verification;
-- bounded proof evidence;
-- complete protocol validity;
-- and non-proof validity conditions.
+SF-08 establishes Evaluation, Determination, acceptance, rejection, and the
+successful accepted no-transition terminal path.
 
-SF-07 establishes:
+SF-09 establishes transition mapping, preconditions, eligibility, transition
+occurrence identity, authorization, and protocol-defined cardinality.
 
-- Protocol Action occurrence identity;
-- action attempts and admission to Evaluation;
-- applicable protocol-rule sets;
-- and the complete Action-plus-rules boundary required before Evaluation.
+SF-10 establishes preserved execution, complete atomic commitment,
+authoritative successor state, and state evolution.
 
-SF-08 establishes:
-
-- Protocol Action Evaluation identity and fixed scope;
-- complete application of the applicable rule set;
-- Evaluation components and proof-verification contribution;
-- Evaluation completeness and stage-local failure boundaries;
-- Protocol Action Determination identity;
-- exactly-one completed-Evaluation/Determination cardinality;
-- mutually exclusive acceptance and rejection;
-- Determination correctness;
-- Evaluation and Determination privacy;
-- and accepted no-transition behavior.
+SF-11 establishes committed history, bounded public consequences, complete
+cross-stage failure separation, stale authorization, and re-evaluation.
 
 The following authoritative homes remain deferred:
 
-- protocol state, transition mappings, preconditions, transition occurrences,
-  authorization, and transition cardinality: SF-09;
-- transition execution, commitment, atomicity, and state evolution: SF-10;
-- history, public consequences, cross-stage failure, staleness, and
-  re-evaluation: SF-11;
-- application requests, responses, adapters, runtime, and integration
-  boundaries: SF-12;
-- implementation, realization, compatibility, and migration: SF-13;
+- application requests, responses, adapters, authority boundaries, runtime,
+  enforcement responsibility, execution responsibility, and integration:
+  SF-12;
+- implementation identity, realization, obligations, compatibility, and
+  migration: SF-13;
 - implementation profiles and reference implementations: SF-14;
 - conformance and certification: SF-15;
 - protocol-semantic preservation and complete explicit exclusions: SF-16.
 
-References to deferred subjects establish only the cross-section relationships
-required to preserve current boundaries.
+References to deferred subjects establish only the local cross-section
+relationships and exclusions required to preserve SF-01–SF-11.
 
-They do not relocate the deferred requirement families.
+They do not relocate, duplicate, or pre-compose deferred requirement families.
 
-RF-14 remains assigned to SF-12.
+RF-14, RF-36, and RF-37 remain assigned to SF-12.
 
-RF-26 remains assigned to SF-09.
+RF-38–RF-41 remain assigned to SF-13.
+
+RF-42 and RF-43 remain assigned to SF-14.
 
 RF-49 and RF-50 remain reserved to SF-16.
 
-## 29. Current Composition Boundary
+## 32. Current Composition Boundary
 
 This cumulative document currently contains the authoritative normative homes
 for:
 
 - RF-01–RF-13;
-- RF-15–RF-25.
+- RF-15–RF-35.
 
 The following section families remain deliberately uncomposed:
 
-- SF-09 — protocol state, transition semantics, preconditions, transition
-  occurrences, authorization, and cardinality;
-- SF-10 — transition execution, commitment, atomicity, and state evolution;
-- SF-11 — history, public consequences, cross-stage failure, staleness, and
-  re-evaluation;
 - SF-12 — application, adapter, runtime, and integration boundaries;
 - SF-13 — implementation, realization, compatibility, and migration;
 - SF-14 — implementation profiles and reference implementations;
@@ -2071,21 +2718,12 @@ prohibition, or completion.
 
 This cumulative slice does not define:
 
-- protocol state;
-- Protocol Transition mappings;
-- transition preconditions or eligibility;
-- Protocol State Transition identity;
-- transition authorization mechanics or cardinality;
-- transition execution or commitment;
-- successor-state construction;
-- state evolution;
-- protocol-state history;
-- committed public protocol-state consequences;
-- complete cross-stage failure classifications;
-- stale authorization or re-evaluation;
-- application request, response, or adapter behavior;
-- runtime or integration responsibility;
-- implementation or realization mechanics;
+- complete application-request, application-response, or adapter behavior;
+- complete application or adapter authority boundaries;
+- complete runtime, enforcement, execution, or integration responsibility;
+- implementation identity, realization, or complete implementation
+  obligations;
+- compatibility or migration requirements;
 - blockchain consensus;
 - transaction formats;
 - transport or relay mechanics;
@@ -2097,27 +2735,26 @@ This cumulative slice does not define:
 - RF-49 semantic-preservation requirements;
 - or RF-50 complete exclusion requirements.
 
-SF-08 contains only the stage-local pre-evaluation and Evaluation-failure
-distinctions required to prevent incomplete Evaluation from becoming rejection.
+Local references to applications, implementations, runtimes, storage,
+transports, diagnostics, and observability define only the exclusions and
+preservation boundaries needed by composed requirements.
 
-SF-08 contains only the accepted no-transition terminal behavior required to
-distinguish successful acceptance from transition existence, authorization,
-execution, or commitment.
+They do not compose SF-12–SF-16.
 
-These local boundary statements do not relocate or duplicate the authoritative
-homes reserved for SF-09–SF-16.
-
-The cumulative specification contains 307 stable normative requirements:
+The cumulative specification contains 430 stable normative requirements:
 
 - 81 requirements preserved from SF-01 and SF-02;
 - 71 requirements preserved from SF-03 and SF-04;
 - 100 requirements preserved from SF-05 through SF-07;
-- 55 requirements composed in SF-08.
+- 55 requirements preserved from SF-08;
+- 39 requirements composed in SF-09;
+- 38 requirements composed in SF-10;
+- 46 requirements composed in SF-11.
 
-The document remains incomplete until SF-09–SF-16 have been composed and the
+The document remains incomplete until SF-12–SF-16 have been composed and the
 complete specification has passed final consolidation review.
 
-## 30. Cumulative Traceability
+## 33. Cumulative Traceability
 
 The source codes used in the normative requirement tables are:
 
@@ -2156,6 +2793,12 @@ The source codes used in the normative requirement tables are:
 | S31 | `PRIVACY_ENGINE_INTERFACE_CONTRACT_MODEL_V1.md` |
 | S32 | `PRIVACY_ENGINE_PUBLISHED_RESULT_MODEL_V1.md` |
 | S33 | `PRIVACY_ENGINE_PROTOCOL_ENFORCEMENT_MODEL_V1.md` |
+| S34 | `PRIVACY_ENGINE_PROTOCOL_EXECUTION_MODEL_V1.md` |
+| S35 | `PRIVACY_ENGINE_PROTOCOL_STATE_MODEL_V1.md` |
+| S36 | `PRIVACY_ENGINE_PROTOCOL_TRANSITION_ENFORCEMENT_MODEL_V1.md` |
+| S37 | `PRIVACY_ENGINE_PROTOCOL_TRANSITION_PRECONDITIONS_MODEL_V1.md` |
+| S38 | `PRIVACY_ENGINE_STATE_EVOLUTION_MODEL_V1.md` |
+| S39 | `PRIVACY_ENGINE_SUCCESSOR_STATE_MODEL_V1.md` |
 
 Source references record semantic provenance and composition support.
 
@@ -2197,84 +2840,78 @@ Traceability organizes established semantics.
 
 It does not redefine them.
 
-## 31. Conclusion
+## 34. Conclusion
 
-SF-01 through SF-08 now establish the cumulative normative path from protocol
-authority and publication through terminology, privacy, interfaces, proof
-evidence, Protocol Actions, complete Evaluation, and exactly one resulting
-Determination.
+SF-01 through SF-11 now establish the cumulative normative path from one
+published protocol generation through terminology, privacy, interfaces, proof
+evidence, Protocol Actions, Evaluation, Determination, possible transition
+authorization, preserved execution, atomic commitment, authoritative state
+evolution, committed history, bounded public consequences, failure,
+staleness, and re-evaluation.
 
-SF-05 establishes interface contracts, protocol surfaces, Protocol Operation
-capabilities, and Published Results.
+SF-09 establishes:
 
-SF-06 establishes proofs, declared public inputs, proof verification, bounded
-evidence, non-proof validity conditions, and complete protocol validity.
+- protocol state required for transition applicability;
+- published transition mappings and complete preconditions;
+- bounded transition eligibility;
+- one identified Protocol State Transition occurrence;
+- authorization only from accepted Determinations;
+- and protocol-defined zero, one, or multiple transition cardinality.
 
-SF-07 establishes one identified Protocol Action, its complete applicable
-protocol-rule set, and its bounded evaluation context.
+SF-10 establishes:
 
-SF-08 establishes:
+- execution of the already-authorized `U`;
+- preservation of `U` through every later stage;
+- prohibition of substitution with `U'`;
+- complete and atomic commitment;
+- commitment as the only source of authoritative state change;
+- protocol-defined successor state;
+- and committed state evolution from `Q0` through `U` to `Q1`.
 
-- one identified Evaluation occurrence;
-- fixed Action, rule-set, and context scope;
-- bounded Evaluation components;
-- proof verification as contributing evidence;
-- evaluation of every applicable proof and non-proof rule;
-- Evaluation completeness;
-- partial, incomplete, pre-evaluation, and Evaluation-failure boundaries;
-- exactly one Determination from every completed Evaluation;
-- exactly one completed Evaluation for every Determination;
-- acceptance and rejection as mutually exclusive predicates;
-- correctness relative to complete protocol validity;
-- deterministic equivalent Evaluation;
-- context-dependent validity without implementation discretion;
-- accepted no-transition as a successful terminal path;
-- Evaluation and Determination identity privacy;
-- and bounded Determination authority without protocol authority.
+SF-11 establishes:
 
-The cumulative protocol-use path is now:
+- committed-transition inclusion in authoritative protocol-state history;
+- exclusion of failed, pre-transition, and partial activity from committed
+  history;
+- separation of operational records from authoritative history;
+- bounded public protocol-state consequences;
+- complete cross-stage failure classification and separation;
+- stale authorization without retroactive Determination mutation;
+- and re-evaluation through new `E`, `D`, and where applicable `U` occurrences.
 
-> one identified Protocol Action
-> -> one complete applicable protocol-rule set
-> -> one bounded evaluation context
-> -> one complete Protocol Action Evaluation
-> -> exactly one Protocol Action Determination
-> -> acceptance xor rejection
-> -> possible later transition handling or successful accepted no-transition termination
+Protocol Transition remains a mapping.
 
-Evaluation remains distinct from Protocol Action and proof verification.
+Protocol State Transition remains an occurrence.
 
-Evaluation is the process.
+Authorization selects `U`.
 
-Determination is the result of completed Evaluation.
+Every later stage preserves `U`.
 
-Incomplete Evaluation is not rejection.
+Only commitment establishes authoritative successor state.
 
-Evaluation failure is not rejection.
+Only committed transitions enter authoritative protocol-state history.
 
-Proof verification remains bounded evidence.
+Published Result remains distinct from public protocol-state consequence.
 
-Acceptance does not imply transition existence, authorization, execution, or
-commitment.
+Rejection, accepted no-transition, pre-transition failure, transition failure,
+stale authorization, implementation error, incorrect execution, incorrect
+commitment, and incorrect reporting remain distinct.
 
-Accepted no-transition behavior is successful completion at the Determination
-boundary.
+Re-evaluation creates new occurrences rather than repairing earlier ones.
 
-Determination remains distinct from Published Result and every committed public
-protocol-state consequence.
+Private Actor remains distinct from state, transition, authorization,
+execution, commitment, history, consequence, failure, staleness,
+re-evaluation, identifiers, applications, implementations, deployments,
+transports, diagnostics, and observability surfaces.
 
-Private Actor remains distinct from Action, Evaluation, Determination, proof,
-evidence, public inputs, classifications, interfaces, results, applications,
-implementations, deployments, transports, diagnostics, and observability
-surfaces.
+No reusable participant identity, cross-action identity mechanism,
+transition-set object, authorization object, execution object, commitment
+object, public-consequence object, failure object, stale-authorization object,
+or other new first-class subject is introduced.
 
-No reusable participant identity, cross-action identity mechanism, Protocol
-Claim, Evaluation Outcome object, acceptance object, rejection object, or other
-new first-class subject is introduced.
+All 307 requirements established through SF-01–SF-08 remain unchanged.
 
-All 252 requirements established through SF-01–SF-07 remain unchanged.
-
-SF-09–SF-16 remain deliberately deferred.
+SF-12–SF-16 remain deliberately deferred.
 
 The cumulative specification remains incomplete pending those sections and the
 final consolidation review.
