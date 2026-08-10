@@ -40,8 +40,18 @@ Its determination was `rejected pending identified correction`.
 Engineering[152] applied the bounded corrections recorded in
 `docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_CORRECTIONS_V1.md`.
 
-The specification remains composition-complete and is pending Engineering[153]
-independent consolidation re-review.
+Engineering[153] completed the independent consolidation re-review recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_REREVIEW_V1.md`.
+
+Engineering[153] confirmed F-01, F-02, F-03, and every other substantive
+consolidation category, but identified the blocking informative-status
+contradiction F-04. Its determination was `rejected pending identified correction`.
+
+Engineering[154] applied the bounded F-04 informative-status correction recorded
+in `docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_STATUS_CONSISTENCY_CORRECTION_V1.md`.
+
+The specification remains composition-complete and is pending Engineering[155]
+final independent consolidation re-review.
 
 The specification is not accepted, not publication-ready, and not published.
 
@@ -142,7 +152,7 @@ These sections authoritatively contain:
 
 Every RF-01–RF-50 family now possesses one authoritative normative home.
 
-The specification remains pending Engineering[151] final consolidation review.
+The specification's current acceptance and publication status is declared in Section 1.
 
 ## 4. Relationship to STATE.md
 
@@ -3559,11 +3569,19 @@ determination `rejected pending identified correction`.
 
 Engineering[152] completed the bounded F-01, F-02, and F-03 corrective pass.
 
-The remaining boundary is Engineering[153]:
+Engineering[153] independently confirmed those corrections and every other
+substantive consolidation category, but rejected the specification pending
+correction of the blocking informative-status contradiction F-04.
 
-- independent consolidation re-review of the corrected specification;
-- verification that every Engineering[151] blocking finding is resolved;
-- verification that every Engineering[151] passing result remains preserved;
+Engineering[154] corrected F-04 through the bounded informative-status edits
+recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_STATUS_CONSISTENCY_CORRECTION_V1.md`.
+
+The remaining boundary is Engineering[155]:
+
+- final independent consolidation re-review of the corrected specification;
+- verification that F-04 is resolved;
+- verification that every Engineering[153] passing result remains preserved;
 - and conditional determination of acceptance and publication readiness.
 
 This document does not claim acceptance, certification, publication, or
@@ -3717,8 +3735,16 @@ specification pending identified correction.
 Engineering[152] applied the bounded corrections recorded in
 `docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_CORRECTIONS_V1.md`.
 
-The specification remains pending Engineering[153] independent consolidation
-re-review. It is not accepted, not publication-ready, and not published.
+Engineering[153] completed the independent consolidation re-review, confirmed
+F-01, F-02, F-03, and every other substantive consolidation category, and
+rejected the specification pending correction of F-04.
+
+Engineering[154] applied the bounded informative-status correction recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_STATUS_CONSISTENCY_CORRECTION_V1.md`.
+
+The specification remains pending Engineering[155] final independent
+consolidation re-review. It is not accepted, not publication-ready, and not
+published.
 
 The current codebase remains unassessed and uncertified.
 
