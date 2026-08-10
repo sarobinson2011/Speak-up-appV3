@@ -32,11 +32,20 @@ scope.
 All sixteen planned section families and all fifty requirement families
 now possess authoritative normative homes.
 
-The specification is composition-complete pending the Engineering[151] final
-consolidation review.
+Engineering[151] completed the final consolidation review recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_REVIEW_V1.md`.
 
-Composition completion does not constitute final review, acceptance,
-certification, publication, or publication readiness.
+Its determination was `rejected pending identified correction`.
+
+Engineering[152] applied the bounded corrections recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_CORRECTIONS_V1.md`.
+
+The specification remains composition-complete and is pending Engineering[153]
+independent consolidation re-review.
+
+The specification is not accepted, not publication-ready, and not published.
+
+The current codebase remains unassessed and uncertified.
 
 The current composition boundary is defined in Section 37.
 
@@ -293,6 +302,7 @@ The semantic-family codes introduced by the current cumulative composition are:
 | PE-COMP-* | RF-11 | SF-04 |
 | PE-IFACE-* | RF-12 | SF-05 |
 | PE-SURF-* | RF-13 | SF-05 |
+| PE-APPREP-* | RF-14 | SF-12 |
 | PE-MEM-* | RF-15 | SF-04 |
 | PE-PROOF-* | RF-16 | SF-06 |
 | PE-VERIFY-* | RF-17 | SF-06 |
@@ -314,6 +324,21 @@ The semantic-family codes introduced by the current cumulative composition are:
 | PE-STATECONSEQ-* | RF-33 | SF-11 |
 | PE-FAIL-* | RF-34 | SF-11 |
 | PE-STALEAUTH-* | RF-35 | SF-11 |
+| PE-APPAUTH-* | RF-36 | SF-12 |
+| PE-RUNTIME-* | RF-37 | SF-12 |
+| PE-IMPL-* | RF-38 | SF-13 |
+| PE-REALIZE-* | RF-39 | SF-13 |
+| PE-DOWNAUTH-* | RF-40 | SF-13 |
+| PE-COMPAT-* | RF-41 | SF-13 |
+| PE-PROFILE-* | RF-42 | SF-14 |
+| PE-REFIMPL-* | RF-43 | SF-14 |
+| PE-CONFREQ-* | RF-44 | SF-15 |
+| PE-CONFEVID-* | RF-45 | SF-15 |
+| PE-CONFORM-* | RF-46 | SF-15 |
+| PE-CERTDET-* | RF-47 | SF-15 |
+| PE-CERT-* | RF-48 | SF-15 |
+| PE-SEMPRES-* | RF-49 | SF-16 |
+| PE-EXCLUDE-* | RF-50 | SF-16 |
 
 The numeric component is three digits and is allocated independently within
 each semantic family.
@@ -664,7 +689,7 @@ SF-01 and SF-02.
 
 | Identifier | Family | Strength | Applicability | Normative requirement | Sources |
 |---|---|---|---|---|---|
-| PE-SPEC-009 | RF-01 | MUST | Every implementation profile | An implementation profile MUST identify the Protocol Specification and published Protocol Generation from which its applicable obligations derive. | S08, S10 |
+| PE-SPEC-009 | RF-01 | MUST | Every implementation profile | The Protocol Specification MUST establish the downstream derivation rule requiring the implementation profile to identify the Protocol Specification and published Protocol Generation from which its applicable obligations derive. | S08, S10 |
 | PE-GEN-017 | RF-03 | MUST | Every Privacy Engine implementation | An implementation MUST identify exactly which published Protocol Generation it targets. | S08, S10, S12 |
 | PE-GEN-018 | RF-03 | MUST | Every conformance determination | A conformance determination MUST identify the implementation, implementation profile, Protocol Specification, and published Protocol Generation against which conformance is assessed. | S08, S10, S18 |
 | PE-GEN-019 | RF-03 | MUST | Every certification | A certification MUST identify the conformance basis and published Protocol Generation to which the certification applies. | S08, S10, S18 |
@@ -1080,7 +1105,7 @@ state transition, commitment, and public consequence.
 | PE-SURF-004 | RF-13 | MUST NOT | Every implementation detail behind a Protocol Surface | Code structure, storage layout, deployment topology, relay selection, transport, persistence, monitoring, optimization, or helper naming MUST NOT become protocol-surface semantics merely because a current implementation uses it. | S09, S20, S22, S23, S31 |
 | PE-SURF-005 | RF-13 | MUST | Every Privacy Engine Protocol Operation | A Protocol Operation MUST possess one stable capability identity defined by one published Interface Contract within one identified protocol generation. | S09, S23, S31 |
 | PE-SURF-006 | RF-13 | MUST | Every Protocol Operation | A Protocol Operation MUST define one bounded protocol-owned capability, including its applicable input meaning, output meaning, and externally relied-upon behavior. | S09, S23, S31 |
-| PE-SURF-007 | RF-13 | MUST | Every Protocol Operation and associated Protocol Action | The Protocol Operation capability type and each Protocol Action occurrence classified by that capability MUST remain distinct. | S02, S18, S23, S24 |
+| PE-SURF-007 | RF-13 | MUST | Every Protocol Operation and associated Protocol Action | The exposed Protocol Operation and associated Protocol Action representation MUST preserve the RF-07 distinction between the Protocol Operation capability type and each Protocol Action occurrence classified by that capability. | S02, S18, S23, S24 |
 | PE-SURF-008 | RF-13 | MUST | Every offered Protocol Operation | The governing Interface Contract MUST declare the operation's applicability conditions and the semantic roles of every required input and Published Result. | S23, S31, S32 |
 | PE-SURF-009 | RF-13 | MUST | Every implementation realizing a Protocol Operation | An implementation MUST preserve the operation's published capability across execution and implementation variation. | S09, S23 |
 | PE-SURF-018 | RF-13 | MUST NOT | Every execution or implementation variation realizing a Protocol Operation | Execution or implementation variation MUST NOT redefine the Protocol Operation's published capability. | S09, S23 |
@@ -1374,7 +1399,7 @@ That determination cannot infer, merge, or reconstruct Private Actor identity.
 | PE-ACTION-010 | RF-20 | MUST | Every Protocol Action | The Action MUST carry exactly the declared public-input set required for its action type while remaining distinct from those public inputs. | S20, S24 |
 | PE-ACTION-011 | RF-20 | MUST | Every proof-supported Protocol Action | The Action and its supporting proof MUST remain distinct, and the proof MUST contribute only its bounded evidence role. | S18, S24, S25 |
 | PE-ACTION-012 | RF-20 | MUST | Every Protocol Action performed through an implementation | The Action occurrence MUST remain distinct from the implementation, deployment, transaction, transport, storage, and runtime machinery through which it is presented. | S18, S20, S24 |
-| PE-ACTION-013 | RF-20 | MUST | Every relationship between a Private Actor and Protocol Action | The Private Actor and public Protocol Action MUST remain distinct according to `Private actors, public actions`. | S01, S18, S19, S24 |
+| PE-ACTION-013 | RF-20 | MUST | Every relationship between a Private Actor and Protocol Action | Protocol Action representation, processing, and Evaluation presentation MUST preserve the RF-09 Private Actor and public Protocol Action separation invariant throughout the Action lifecycle. | S01, S18, S19, S24 |
 | PE-ACTION-014 | RF-20 | MUST NOT | Every Protocol Action identifier and representation | An action identifier or representation MUST NOT identify, encode, imply, reconstruct, or become a reusable identifier for the Private Actor. | S01, S18, S20, S24 |
 | PE-ACTION-015 | RF-20 | MUST NOT | Every application interpretation of a Protocol Action | Application-defined meaning, terminology, workflow, metadata, or truth MUST NOT become Protocol Action identity or protocol validity. | S18, S24, S28, S29 |
 | PE-ACTION-016 | RF-20 | MUST | Every relationship from a Protocol Action to a possible Published Result, Determination, or Protocol State Transition | The Protocol Action MUST remain distinct from every interface result, downstream Determination, and possible state-transition consequence. | S02, S18, S24, S27, S32 |
@@ -1432,9 +1457,9 @@ Evaluation and producing the Determination.
 | PE-RULE-003 | RF-21 | MUST | Every determination of Protocol Action rule applicability | Applicability MUST be determined only from protocol-defined action type, applicable implementation profile, protocol-relevant state, and bounded evaluation-context conditions. | S24, S33 |
 | PE-RULE-004 | RF-21 | MUST | Every Protocol Action admitted for authoritative Evaluation | The complete applicable protocol-rule set MUST be established before authoritative Evaluation begins. | S18, S24, S25 |
 | PE-RULE-005 | RF-21 | MUST NOT | Every implementation, application, transport, deployment, and operational policy | Implementation convenience, application policy, transport behavior, deployment state, or operational discretion MUST NOT silently create, remove, weaken, strengthen, or reinterpret a protocol-validity rule. | S18, S24, S33 |
-| PE-RULE-006 | RF-21 | MUST | Every Protocol Action validity classification basis | Protocol Action validity MUST mean satisfaction of every applicable protocol rule within the identified bounded evaluation context. | S18, S24, S25 |
+| PE-RULE-006 | RF-21 | MUST | Every Protocol Action validity classification basis | The validity-classification basis MUST apply the complete RF-18 definition of Protocol Action validity through the complete applicable protocol-rule set within the identified bounded evaluation context without replacing or redefining that definition. | S18, S24, S25 |
 | PE-RULE-007 | RF-21 | MUST | Every applicable Protocol Action rule set | The rule set MUST include every applicable proof requirement, public-input requirement, non-proof validity condition, uniqueness condition, state-relative condition, and action-type constraint. | S01, S18, S24, S25, S33 |
-| PE-RULE-008 | RF-21 | MUST | Every protocol-validity interpretation | Protocol validity MUST remain action-specific and bounded to the identified evaluation context. | S18, S24, S25 |
+| PE-RULE-008 | RF-21 | MUST | Every protocol-validity interpretation | Protocol-rule interpretation and application MUST preserve the RF-18 action-specific, applicable-rule-relative, evaluation-context-bounded validity invariant without widening validity beyond the identified context. | S18, S24, S25 |
 | PE-RULE-013 | RF-21 | MUST NOT | Every comparison of Protocol Action validity across materially different evaluation contexts | Validity in one evaluation context MUST NOT be inferred as validity in a materially different evaluation context. | S18, S24, S25 |
 | PE-RULE-009 | RF-21 | MUST NOT | Every application interpretation and external claim associated with a Protocol Action | Application meaning, factual meaning, legal meaning, social meaning, or institutional meaning MUST NOT replace or redefine the applicable protocol-rule set or protocol validity. | S18, S24, S25, S28, S29 |
 | PE-RULE-010 | RF-21 | MUST | Every action-local uniqueness or authorization rule | The rule MUST preserve the declared action scope without creating reusable participant identity, actor disclosure, or unauthorized cross-action linkage. | S01, S18, S20, S24 |
@@ -1687,7 +1712,7 @@ Context dependence does not create implementation discretion.
 | PE-DETERM-003 | RF-23 | MUST | Every completed Protocol Action Evaluation | A completed Evaluation MUST produce exactly one Protocol Action Determination. | S18, S25 |
 | PE-DETERM-004 | RF-23 | MUST | Every Protocol Action Determination | A Determination MUST derive from exactly one completed Protocol Action Evaluation. | S18, S25 |
 | PE-DETERM-005 | RF-23 | MUST | Every Protocol Action Determination | A Determination MUST identify exactly one producing completed Evaluation, one evaluated Action, one complete applicable rule set, and one bounded evaluation context. | S18, S25 |
-| PE-DETERM-006 | RF-23 | MUST | Every valid Protocol Action Determination | A valid Determination MUST contain exactly one acceptance or rejection classification defined by RF-24. | S18, S25 |
+| PE-DETERM-006 | RF-23 | MUST | Every valid Protocol Action Determination | A valid Determination MUST contain and reference its RF-24 classification without defining an alternative classification model. | S18, S25 |
 | PE-DETERM-007 | RF-23 | MUST NOT | Every incomplete or failed Protocol Action Evaluation | An incomplete or failed Evaluation MUST NOT be treated as possessing or producing a Protocol Action Determination. | S18, S25 |
 | PE-DETERM-008 | RF-23 | MUST | Every Protocol Action Determination and proof-verification result | A Determination MUST remain distinct from every proof-verification occurrence and proof-verification result contributing to its Evaluation. | S02, S18, S25 |
 | PE-DETERM-009 | RF-23 | MUST | Every Protocol Action Determination and Published Result | A Determination MUST remain distinct from every interface-level Published Result and its concrete representation. | S02, S18, S25, S32 |
@@ -2274,7 +2299,7 @@ If execution cannot preserve `U`, it fails cleanly.
 | PE-TRANSEXEC-006 | RF-29 | MUST NOT | Every execution of authorized `U` | Execution MUST NOT substitute, execute, commit, or report `U'` as `U` where `U' != U`. | S18, S27, S34 |
 | PE-TRANSEXEC-007 | RF-29 | MUST | Every relationship between transition eligibility and transition execution | Eligibility and execution MUST remain distinct stages, with eligibility deciding only whether the already-identified transition may proceed. | S18, S33, S34 |
 | PE-TRANSEXEC-008 | RF-29 | MUST NOT | Every completed transition execution | Completed execution MUST NOT by itself be represented as commitment or authoritative protocol-state change. | S18, S27, S34 |
-| PE-TRANSEXEC-009 | RF-29 | MUST NOT | Every successor-state value or representation derived during execution | Derived successor-state material MUST NOT be represented as authoritative protocol state before valid commitment. | S02, S18, S27, S34, S39 |
+| PE-TRANSEXEC-009 | RF-29 | MUST NOT | Every successor-state value or representation derived during execution | Execution machinery and execution output MUST NOT claim or expose derived successor-state material as committed authoritative protocol state before valid RF-30 commitment. | S02, S18, S27, S34, S39 |
 | PE-TRANSEXEC-010 | RF-29 | MUST | Every implementation unable to preserve the authorized transition during execution | The implementation MUST fail the execution cleanly while preserving the identity and semantics of the authorized `U`. | S01, S18, S27, S34 |
 | PE-TRANSEXEC-011 | RF-29 | MUST NOT | Every failed transition execution | Execution failure MUST NOT authorize an alternate transition, alternate successor state, partial commitment, or semantic substitution. | S18, S27, S34 |
 | PE-TRANSEXEC-012 | RF-29 | MUST NOT | Every execution representation, instruction, transaction, internal call, storage operation, retry, diagnostic, log, field, route, test, example, serialization, and observability surface | An execution surface MUST NOT create another architectural transition identity, identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge. | S01, S17, S18, S20, S27, S34 |
@@ -2757,7 +2782,7 @@ None owns protocol semantics.
 | PE-APPAUTH-009 | RF-36 | MUST NOT | Every application-side validation or default | Application validation, defaults, convenience abstractions, or preferred outcomes MUST NOT be treated as protocol validation, protocol defaults, protocol rules, or protocol outcomes. | S29, S40, S41 |
 | PE-APPAUTH-010 | RF-36 | MUST | Every application, adapter, and integration failure | Failure MUST be reported within its bounded layer and MUST preserve the distinction between representation failure, runtime failure, implementation failure, and protocol-defined failure. | S18, S27, S43, S44 |
 | PE-APPAUTH-011 | RF-36 | MUST NOT | Every application, adapter, integration record, or observability surface | The surface MUST NOT identify a Private Actor, carry enrollment or admission provenance, create reusable participant identity, create cross-action linkage, or compose metadata into an actor-reconstruction bridge. | S01, S18, S20, S21, S44 |
-| PE-APPAUTH-012 | RF-36 | MUST | Every public application, adapter, or integration identifier | A public identifier MUST remain bounded to its declared non-actor subject and MUST NOT be interpreted as protocol identity, Protocol Action identity, or Private Actor identity. | S01, S18, S20, S44 |
+| PE-APPAUTH-012 | RF-36 | MUST | Every public application, adapter, or integration identifier | The identifier MUST remain bounded to its declared non-actor subject without being interpreted as protocol identity, Protocol Action identity, or Private Actor identity. | S01, S18, S20, S44 |
 
 ### 31.3 Runtime, Enforcement, Execution, and Integration Responsibility
 
@@ -2796,7 +2821,7 @@ Execution is not commitment.
 | PE-RUNTIME-012 | RF-37 | MUST NOT | Every successful execution | Successful execution MUST NOT be interpreted as commitment until the complete SF-10 commitment requirements have been satisfied. | S27, S34, S35 |
 | PE-RUNTIME-013 | RF-37 | MUST | Every runtime result or failure report | Runtime reporting MUST preserve the source result, lifecycle stage, success or failure classification, and applicable identity distinctions without inventing protocol truth. | S18, S27, S32, S43, S47 |
 | PE-RUNTIME-014 | RF-37 | MUST NOT | Every runtime or implementation failure | A runtime or implementation failure MUST NOT mutate an earlier Protocol Action, Evaluation, Determination, authorization, transition occurrence, commitment status, or protocol-state history. | S18, S27, S43, S47 |
-| PE-RUNTIME-015 | RF-37 | MUST | Every runtime value, log, diagnostic, retry, timing, ordering, topology, and observability surface | The surface MUST preserve SF-04 privacy and MUST NOT expose or compose runtime metadata as Private Actor identity or cross-action linkage. | S01, S18, S20, S43, S47 |
+| PE-RUNTIME-015 | RF-37 | MUST | Every runtime value, log, diagnostic, retry, timing, ordering, topology, and observability surface | The surface MUST preserve SF-04 privacy without exposing or composing runtime metadata as Private Actor identity or cross-action linkage. | S01, S18, S20, S43, S47 |
 | PE-RUNTIME-016 | RF-37 | MUST NOT | Every runtime, enforcement mechanism, execution mechanism, and orchestrator | Operational responsibility MUST NOT be interpreted as ownership of protocol semantics or as protocol authority. | S21, S33, S34, S43, S47 |
 
 ### 31.4 SF-12 Formal Summary
@@ -2890,7 +2915,7 @@ not:
 | PE-REALIZE-007 | RF-39 | MUST NOT | Every Protocol Realization | A realization MUST NOT omit an applicable mandatory requirement or treat a prohibited behavior as a permitted technical choice. | S05, S06, S45, S46, S55 |
 | PE-REALIZE-008 | RF-39 | MUST | Every complete realization claim | The claim MUST account for every requirement applicable within its declared scope and for every declared dependency of the applicable profile. | S06, S08, S45, S46, S55 |
 | PE-REALIZE-009 | RF-39 | MAY | Multiple realizations of the same applicable profile | Multiple realizations MAY use different internal and operational means where each independently preserves the same required protocol-observable semantics. | S45, S46, S55 |
-| PE-REALIZE-010 | RF-39 | MUST | Every realization-specific extension | The extension MUST remain outside protocol semantics and MUST NOT conflict with, weaken, obscure, or expand any applicable protocol obligation. | S21, S44, S45, S46 |
+| PE-REALIZE-010 | RF-39 | MUST | Every realization-specific extension | The extension MUST remain outside protocol semantics without conflicting with, weakening, obscuring, or expanding any applicable protocol obligation. | S21, S44, S45, S46 |
 | PE-REALIZE-011 | RF-39 | MUST | Every realization record, report, or diagnostic | The surface MUST remain bounded to realization status and MUST preserve SF-04 privacy, neutral naming, and non-correlation requirements. | S01, S18, S44, S46 |
 | PE-REALIZE-012 | RF-39 | MUST NOT | Every implementation and realization | Realizing protocol semantics MUST NOT be interpreted as defining the protocol generation, Protocol Specification, implementation profile, conformance, certification, or protocol authority. | S08, S10, S12, S45, S46, S55 |
 
@@ -2955,7 +2980,7 @@ conformance, or certification.
 | PE-COMPAT-020 | RF-41 | MUST NOT | Every compatibility claim or assessment | Compatibility MUST NOT merge protocol-generation identities or establish complete semantic equivalence between distinct generations or implementations. | S13, S15, S16, S48 |
 | PE-COMPAT-021 | RF-41 | MUST NOT | Every compatibility structure or assessment | Compatibility MUST NOT be interpreted as an Implementation Profile, complete Protocol Realization, conformance claim, conformance assessment, conformance determination, certification basis, certification decision, certification status, or certification recognition. | S18, S48, S50, S51, S55, S56 |
 | PE-COMPAT-022 | RF-41 | MUST | Every compatibility consequence of protocol evolution or migration | The consequence MUST preserve RF-04 ownership of succession, lineage, versioning, deprecation, migration, coexistence, and retirement and MUST identify the affected target and surface explicitly. | S13, S14, S15, S16, S48, S54 |
-| PE-COMPAT-023 | RF-41 | MUST | Every failed, superseded, withdrawn, or historically retained compatibility statement, declaration, or assessment | Its lifecycle status MUST remain explicit and MUST NOT mutate the identity or semantics of the target generation, implementation, surface, or historical compatibility record. | S15, S49, S50, S52, S53, S54 |
+| PE-COMPAT-023 | RF-41 | MUST | Every failed, superseded, withdrawn, or historically retained compatibility statement, declaration, or assessment | Its lifecycle status MUST remain explicit without mutating the identity or semantics of the target generation, implementation, surface, or historical compatibility record. | S15, S49, S50, S52, S53, S54 |
 | PE-COMPAT-024 | RF-41 | MUST NOT | Every compatibility identifier, statement, declaration, assessment, field, diagnostic, test, report, and observability surface | The surface MUST NOT identify a Private Actor, carry enrollment or admission provenance, create reusable participant identity, create cross-action linkage, or compose compatibility metadata into an actor-reconstruction bridge. | S01, S18, S20, S44, S48, S49, S50, S51, S52, S53, S54 |
 
 ### 32.5 SF-13 Formal Summary
@@ -3072,7 +3097,7 @@ It is not protocol authority, conformance, or certification.
 | PE-REFIMPL-011 | RF-43 | MAY | One implementation realizing multiple Implementation Profiles | The implementation MAY hold separate reference status for multiple profiles only where each profile relationship, version, scope, dependencies, and designation remain explicitly and independently identified. | S55, S56 |
 | PE-REFIMPL-012 | RF-43 | MUST | Every materially changed Reference Implementation version | A materially changed version MUST remain separately identifiable where the change affects profile realization, permitted-choice resolution, normative behavior, interoperability behavior, defect status, or reference scope. | S15, S56 |
 | PE-REFIMPL-013 | RF-43 | MUST | Every maintained Reference Implementation version | The version MUST remain sufficiently stable, available, and inspectable to support its declared reference uses without silently rewriting its identified historical behavior. | S56 |
-| PE-REFIMPL-014 | RF-43 | MUST | Every detected Reference Implementation defect or divergence | The defect or divergence MUST be evaluated against the applicable profile and MUST NOT redefine, weaken, strengthen, or repair the profile requirement. | S55, S56 |
+| PE-REFIMPL-014 | RF-43 | MUST | Every detected Reference Implementation defect or divergence | The defect or divergence MUST be evaluated against the applicable profile without redefining, weakening, strengthening, or repairing the profile requirement. | S55, S56 |
 | PE-REFIMPL-015 | RF-43 | MUST | Every Reference Implementation unable to preserve an applicable obligation | The implementation MUST fail explicitly, and its implementation or designation MUST be corrected, narrowed, suspended, withdrawn, or superseded as appropriate. | S45, S46, S55, S56 |
 | PE-REFIMPL-016 | RF-43 | MUST | Every ordinary implementation compared with a Reference Implementation | The ordinary implementation MUST be evaluated against its applicable profile rather than against incidental structure or behavior of the Reference Implementation. | S45, S55, S56 |
 | PE-REFIMPL-017 | RF-43 | MUST NOT | Every ordinary implementation | An ordinary implementation MUST NOT be required to copy reference source structure, language, algorithms, storage, deployment topology, APIs, logging, timing, or other behavior not required by the applicable profile. | S45, S55, S56 |
@@ -3219,7 +3244,7 @@ assessment.
 | PE-CONFORM-011 | RF-46 | MUST | Every Conformance Assessment | The assessment MUST use valid, applicable, integrity-preserved, and traceable evidence. | S59, S60, S63 |
 | PE-CONFORM-012 | RF-46 | MUST | Every Conformance Assessment | The assessment MUST evaluate the claim without modifying or becoming the claim. | S62, S63 |
 | PE-CONFORM-013 | RF-46 | MUST | Every completed Conformance Assessment | Completion MUST produce at most one distinct Conformance Determination for that assessment occurrence. | S63, S64 |
-| PE-CONFORM-014 | RF-46 | MUST | Every assessment unable to reach a supported classification | The assessment MUST fail or remain indeterminate and MUST NOT produce a conformant or non-conformant determination. | S63, S64 |
+| PE-CONFORM-014 | RF-46 | MUST | Every assessment unable to reach a supported classification | The assessment MUST fail or remain indeterminate without producing a conformant or non-conformant determination. | S63, S64 |
 | PE-CONFORM-015 | RF-46 | MUST | Every Conformance Determination | A determination MUST be the bounded authoritative result of one completed Conformance Assessment. | S64 |
 | PE-CONFORM-016 | RF-46 | MUST | Every Conformance Determination | Determination identity MUST distinguish its assessment, implementation, profile, scope, requirement set, and classification. | S64 |
 | PE-CONFORM-017 | RF-46 | MUST | Every conformant determination | The determination MUST record satisfaction of every applicable requirement within its declared scope. | S64 |
@@ -3289,7 +3314,7 @@ by one identified certification authority.
 | PE-CERT-009 | RF-48 | MUST | Every Certification | The issuing certification authority MUST possess a stable identity distinct from the certification and assessed implementation. | S68 |
 | PE-CERT-010 | RF-48 | MUST | Every certification authority | The authority MUST declare the certification program, responsibilities, recognition boundary, and scope within which it acts. | S68 |
 | PE-CERT-011 | RF-48 | MUST | Every certification authority action | Issuance, maintenance, suspension, withdrawal, and update authority MUST remain bounded by the declared program and scope. | S68 |
-| PE-CERT-012 | RF-48 | MUST | Every Certification | Recognition MUST remain distinct from conformance assessment and MUST NOT replace it. | S63, S64, S68 |
+| PE-CERT-012 | RF-48 | MUST | Every Certification | Recognition MUST remain distinct from conformance assessment without replacing it. | S63, S64, S68 |
 | PE-CERT-013 | RF-48 | MUST | Every certification or compatibility statement | Certification recognition and compatibility MUST remain distinct. | S48, S68 |
 | PE-CERT-014 | RF-48 | MUST NOT | Every Certification and certification authority | Neither certification nor its authority MUST become protocol authority or redefine upstream semantics. | S08, S10, S68 |
 | PE-CERT-015 | RF-48 | MUST | Every certification withdrawal | Withdrawal MUST change certification status only and MUST preserve implementation, profile, determination, decision, and protocol history. | S64, S66, S67, S68 |
@@ -3529,21 +3554,22 @@ All 148 requirements added by Engineering[149] remain unchanged.
 
 All section-family and requirement-family composition is complete.
 
-The remaining boundary is Engineering[151]:
+Engineering[151] completed final consolidation review and recorded the
+determination `rejected pending identified correction`.
 
-- complete Protocol Specification consolidation review;
-- cumulative non-duplication review;
-- requirement-preservation review;
-- traceability review;
-- privacy and authority review;
-- final determination of specification acceptance and publication readiness.
+Engineering[152] completed the bounded F-01, F-02, and F-03 corrective pass.
 
-This document does not claim that Engineering[151] has occurred.
+The remaining boundary is Engineering[153]:
 
-It does not claim final review, acceptance, certification, publication, or
+- independent consolidation re-review of the corrected specification;
+- verification that every Engineering[151] blocking finding is resolved;
+- verification that every Engineering[151] passing result remains preserved;
+- and conditional determination of acceptance and publication readiness.
+
+This document does not claim acceptance, certification, publication, or
 publication readiness.
 
-It does not assess or certify the current implementation or codebase.
+The current implementation and codebase remain unassessed and uncertified.
 
 ## 38. Cumulative Traceability
 
@@ -3683,12 +3709,18 @@ Engineering[150] establishes:
 - one global explicit-exclusion closure;
 - and one authoritative normative home for every RF-01–RF-50 family.
 
-The cumulative specification is composition-complete.
+The cumulative specification remains composition-complete.
 
-It remains pending Engineering[151] final consolidation review.
+Engineering[151] completed final consolidation review and rejected the
+specification pending identified correction.
 
-No final acceptance, certification, publication, or publication-readiness
-determination has yet been made.
+Engineering[152] applied the bounded corrections recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_CONSOLIDATION_CORRECTIONS_V1.md`.
+
+The specification remains pending Engineering[153] independent consolidation
+re-review. It is not accepted, not publication-ready, and not published.
+
+The current codebase remains unassessed and uncertified.
 
 Private actors remain distinct from every public protocol, implementation,
 conformance, certification, metadata, naming, diagnostic, reporting, and
