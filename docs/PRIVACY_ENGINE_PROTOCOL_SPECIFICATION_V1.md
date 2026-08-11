@@ -58,12 +58,20 @@ Engineering[155] independently confirmed that F-04 is resolved, every
 Engineering[153] passing result remains preserved, and no additional blocking or
 non-blocking defect exists. Its determination is `accepted and publication-ready`.
 
-The specification remains composition-complete and is accepted and
-publication-ready.
+Engineering[156] completed the separate explicit specification-publication act
+recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_PUBLICATION_RECORD_V1.md`.
 
-The specification remains unpublished. Publication requires a separate explicit act.
+The specification remains composition-complete and is published as Privacy
+Engine Protocol Specification V1.
 
-The current codebase remains unassessed and uncertified.
+This specification publication issues the accepted developer-facing normative
+composition. It does not republish the protocol generation, create a new protocol
+generation, change specification identity or version, alter protocol semantics,
+or transfer protocol authority.
+
+The current codebase remains unassessed and uncertified. Compatibility and
+conformance remain unestablished, and no certification has been issued.
 
 The current composition boundary is defined in Section 37.
 
@@ -3595,9 +3603,21 @@ independently confirmed:
 
 The final consolidation boundary is complete.
 
-The specification remains unpublished. Publication requires a separate explicit act.
+Engineering[156] completed the separate explicit specification-publication act
+recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_PUBLICATION_RECORD_V1.md`.
+
+Privacy Engine Protocol Specification V1 is published as the complete
+developer-facing normative specification of the same identified already-published
+Privacy Engine protocol generation.
+
+Specification publication does not republish the protocol generation, create a
+new protocol generation, alter specification identity or version, change
+protocol semantics, or transfer protocol authority.
 
 The current implementation and codebase remain unassessed and uncertified.
+Compatibility and conformance remain unestablished, and no certification has
+been issued.
 
 ## 38. Cumulative Traceability
 
@@ -3756,11 +3776,22 @@ Engineering[155] completed final independent consolidation re-review, confirmed
 that F-04 is resolved and every Engineering[153] passing result remains
 preserved, and found no additional blocking or non-blocking defect.
 
-The specification is accepted and publication-ready.
+Engineering[155] acceptance and publication readiness remain preserved.
 
-The specification remains unpublished. Publication requires a separate explicit act.
+Engineering[156] completed the separate explicit specification-publication act
+recorded in
+`docs/PRIVACY_ENGINE_PROTOCOL_SPECIFICATION_PUBLICATION_RECORD_V1.md`.
 
-The current codebase remains unassessed and uncertified.
+Privacy Engine Protocol Specification V1 is published as the complete
+developer-facing normative specification of the same identified already-published
+Privacy Engine protocol generation.
+
+Specification publication does not republish the protocol generation, create a
+new protocol generation, alter specification identity or version, change
+protocol semantics, or transfer protocol authority.
+
+The current codebase remains unassessed and uncertified. Compatibility and
+conformance remain unestablished, and no certification has been issued.
 
 Private actors remain distinct from every public protocol, implementation,
 conformance, certification, metadata, naming, diagnostic, reporting, and
