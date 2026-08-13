@@ -2,15 +2,17 @@
 
 Composition date: 2026-08-12.
 
+Correction date: 2026-08-12.
+
 STATE.md remains the single canonical development authority.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
 
 ## 1. Profile Status
 
-This document is the composed Privacy Engine Complete Implementation Profile V1.
+This document is the corrected Privacy Engine Complete Implementation Profile V1.
 
-Profile status: **composed**.
+Profile status: **PE-REFIMPL-017 correction completed — pending independent re-review**.
 
 It is derivative of Privacy Engine Protocol Specification V1 and normative only
 as the identified implementation-facing profile target. It is not a new protocol
@@ -55,7 +57,7 @@ No downstream layer acquires authority over an upstream layer.
 | Profile identity | Privacy Engine Complete Implementation Profile V1 |
 | Profile version | V1 |
 | Target identity | Generic Complete Privacy Engine Protocol Implementation Target |
-| Profile status | composed |
+| Profile status | PE-REFIMPL-017 correction completed — pending independent re-review |
 
 The profile identity remains distinct from the published protocol generation,
 Protocol Specification, scope determination, implementations, applications,
@@ -779,7 +781,7 @@ copy, rewrite, replace, or acquire ownership of their normative statements.
 | PE-REFIMPL-014 | RF-43 | SF-14 | MUST | Every detected Reference Implementation defect or divergence | non-applicable | Published applicability `Every detected Reference Implementation defect or divergence` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
 | PE-REFIMPL-015 | RF-43 | SF-14 | MUST | Every Reference Implementation unable to preserve an applicable obligation | non-applicable | Published applicability `Every Reference Implementation unable to preserve an applicable obligation` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
 | PE-REFIMPL-016 | RF-43 | SF-14 | MUST | Every ordinary implementation compared with a Reference Implementation | non-applicable | Published applicability `Every ordinary implementation compared with a Reference Implementation` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
-| PE-REFIMPL-017 | RF-43 | SF-14 | MUST NOT | Every ordinary implementation | non-applicable | Published applicability `Every ordinary implementation` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
+| PE-REFIMPL-017 | RF-43 | SF-14 | MUST NOT | Every ordinary implementation | applicable | Published applicability `Every ordinary implementation` governs the selected complete target because that target denotes an ordinary implementation class; the requirement protects implementation freedom, and the selected target includes that subject and boundary. | None at profile level; the exact published applicability remains controlling. | None. | Internal to this complete profile; no Reference Implementation is required, no Reference Implementation designation is created, and no separate profile dependency is introduced. | Applicable requirement preserved unchanged by identity, meaning, strength, applicability, behavior, and traceability. |
 | PE-REFIMPL-018 | RF-43 | SF-14 | MAY | Every conformance, certification, compatibility, testing, or interoperability activity | non-applicable | Published applicability `Every conformance, certification, compatibility, testing, or interoperability activity` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
 | PE-REFIMPL-019 | RF-43 | SF-14 | MUST NOT | Every conformance, certification, or compatibility activity using a Reference Implementation | non-applicable | Published applicability `Every conformance, certification, or compatibility activity using a Reference Implementation` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
 | PE-REFIMPL-020 | RF-43 | SF-14 | MUST | Every disagreement between a Reference Implementation and an upstream requirement | non-applicable | Published applicability `Every disagreement between a Reference Implementation and an upstream requirement` is confined to Reference Implementation designation or comparison, which this profile does not create, which does not govern the selected target. | Not activated for this target under the published applicability rule. | None. | Outside target; no included capability or profile dependency activates it. | Recorded as non-applicable without deleting, weakening, or changing the published requirement. |
@@ -940,9 +942,9 @@ copy, rewrite, replace, or acquire ownership of their normative statements.
 
 | Result | Count |
 |---|---:|
-| Applicable | 477 |
+| Applicable | 478 |
 | Conditionally applicable | 0 |
-| Non-applicable | 245 |
+| Non-applicable | 244 |
 | Resolved through permitted specification choice | 7 |
 | Total dispositions | 729 |
 | Unique identifiers | 729 |
@@ -1046,7 +1048,11 @@ Protocol authority always remains with the published Privacy Engine protocol gen
 
 ## 28. Composition Findings
 
-The row-level assessment establishes:
+Engineering[159] independently sustained 728 original dispositions and rejected
+only the PE-REFIMPL-017 disposition. Engineering[160] applied the required
+bounded correction.
+
+The corrected row-level composition establishes:
 
 - one profile identity and one selected target;
 - 729 unique dispositions in published order;
@@ -1058,17 +1064,30 @@ The row-level assessment establishes:
 - coherent exclusion of application-owned and later assessment subjects;
 - preserved privacy, neutral naming, application separation, implementation freedom, and protocol authority;
 - no current-codebase assessment;
-- no blocking finding;
-- and no non-blocking finding.
+- Engineering[159] F-01 corrected;
+- no additional finding;
+- and independent re-review pending.
+
+This correction does not independently pass the profile.
 
 ## 29. Profile Determination
 
-The Engineering[158] determination is:
+Engineering[158] originally determined:
 
 > Privacy Engine Complete Implementation Profile V1 composed
 
-The profile is complete relative to the Generic Complete Privacy Engine
-Protocol Implementation Target.
+Engineering[159] rejected that composition pending correction of
+PE-REFIMPL-017.
+
+The Engineering[160] determination is:
+
+> Privacy Engine Complete Implementation Profile V1 PE-REFIMPL-017 correction completed
+
+The corrected profile remains complete relative to the Generic Complete Privacy
+Engine Protocol Implementation Target and is ready for independent re-review.
+
+This correction does not independently pass the profile and does not determine
+implementation satisfaction.
 
 ## 30. Future Assessment Position
 
@@ -1115,6 +1134,10 @@ All 729 published normative requirements have exactly one justified
 disposition. Every applicable obligation and permitted-choice boundary remains
 preserved. No condition, choice, or profile dependency remains unresolved.
 
-Determination: **Privacy Engine Complete Implementation Profile V1 composed**.
+Engineering[159] F-01 has received the required bounded correction. The
+corrected artifact is ready for independent re-review and has not independently
+passed it.
+
+Determination: **Privacy Engine Complete Implementation Profile V1 PE-REFIMPL-017 correction completed**.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
