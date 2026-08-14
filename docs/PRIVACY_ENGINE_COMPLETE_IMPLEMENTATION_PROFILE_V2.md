@@ -6,6 +6,8 @@ Correction date: 2026-08-12.
 
 Identity/version correction date: 2026-08-14.
 
+Status-synchronization date: 2026-08-14.
+
 STATE.md remains the single canonical development authority.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
@@ -16,12 +18,14 @@ This document is Privacy Engine Complete Implementation Profile V2, the
 distinguishably identified derivative of the Engineering[160] corrected
 Privacy Engine Complete Implementation Profile V1.
 
-Profile status: **identity/version correction completed — pending independent re-review**.
+Profile status: **composition accepted**.
 
-Engineering[162] changes only profile identity, profile version, and the
+Engineering[162] changed only profile identity, profile version, and the
 mechanically dependent non-ledger passages required to correct Engineering[161]
-F-02. It preserves the complete corrected composition, selected target, and
-every ledger row unchanged.
+F-02. Engineering[163] independently accepted the resulting V2 composition.
+Engineering[164] synchronizes this internal status without changing the
+profile's identity, version, selected target, composition, applicability
+boundary, ledger, choices, dependencies, or obligation boundary.
 
 The rejected V1 profile history remains preserved and independently
 identifiable.
@@ -69,7 +73,7 @@ No downstream layer acquires authority over an upstream layer.
 | Profile identity | Privacy Engine Complete Implementation Profile V2 |
 | Profile version | V2 |
 | Target identity | Generic Complete Privacy Engine Protocol Implementation Target |
-| Profile status | identity/version correction completed — pending independent re-review |
+| Profile status | composition accepted |
 
 The V2 identity distinguishes this semantically changed corrected profile from
 the rejected V1 profile history.
@@ -1097,12 +1101,15 @@ The corrected row-level composition remains unchanged and establishes:
 - preserved privacy, neutral naming, application separation, implementation freedom, and protocol authority;
 - no current-codebase assessment;
 - Engineering[159] F-01 independently resolved;
-- Engineering[161] F-02 given its bounded identity/version correction;
-- no additional blocking finding;
-- no non-blocking finding;
-- and independent re-review of V2 pending.
+- Engineering[161] F-02 independently resolved by Engineering[163];
+- zero blocking findings;
+- zero non-blocking findings;
+- and V2 composition independently accepted by Engineering[163].
 
-The identity/version correction does not independently pass or accept V2.
+Engineering[162]'s identity/version correction did not independently pass or
+accept V2. Engineering[163] supplied the independent acceptance determination.
+Engineering[164] changes only the mechanically dependent profile-status
+passages required to synchronize the artifact with that determination.
 
 ## 29. Profile Determination
 
@@ -1126,12 +1133,21 @@ The Engineering[162] determination is:
 
 > Privacy Engine Complete Implementation Profile V2 identity/version correction completed
 
+The Engineering[163] independent re-review determination is:
+
+> Privacy Engine Complete Implementation Profile V2 composition accepted
+
+The Engineering[164] synchronization determination is:
+
+> Privacy Engine Complete Implementation Profile V2 status synchronized to composition accepted
+
 V1 remains preserved as the rejected historical profile artifact.
 
 V2 remains complete relative to the unchanged Generic Complete Privacy Engine
-Protocol Implementation Target and is ready for independent re-review.
+Protocol Implementation Target. Its composition is accepted, and its internal
+status is synchronized with the Engineering[163] determination.
 
-This correction does not independently accept V2 and does not determine
+Neither composition acceptance nor status synchronization determines
 implementation satisfaction.
 
 ## 30. Future Assessment Position
@@ -1148,8 +1164,9 @@ The required direction remains:
 > -> later conformance
 > -> later certification
 
-Independent composition re-review must precede profile-status synchronization
-or implementation assessment.
+Independent composition re-review and profile-status synchronization are
+complete. Implementation-assessment basis, scope, and assessment remain later,
+separately bounded work.
 
 ## 31. Explicit Exclusions
 
@@ -1188,12 +1205,14 @@ permitted-choice boundary remains preserved. No condition, choice, or profile
 dependency remains unresolved.
 
 Engineering[159] F-01 remains independently resolved. Engineering[161] F-02 has
-received the required bounded identity/version correction. The V1 historical
-artifact remains unchanged, and V2 is ready for independent re-review.
+received the required bounded identity/version correction and was independently
+resolved by Engineering[163]. The V1 historical artifact remains unchanged.
+V2 composition is accepted, and its internal status is synchronized.
 
-V2 has not independently passed or been accepted.
+This status synchronization changes no profile semantic boundary and triggers
+no new profile identity or version.
 
-Determination: **Privacy Engine Complete Implementation Profile V2 identity/version correction completed**.
+Determination: **Privacy Engine Complete Implementation Profile V2 status synchronized to composition accepted**.
 
 Protocol authority always remains with the published Privacy Engine protocol generation.
 
