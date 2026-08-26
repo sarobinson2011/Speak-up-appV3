@@ -133,7 +133,7 @@ A03 is `Protocol Surface identity and version mapping`.
 
 Its exact unresolved relationship is:
 
-> Which exact functions, events, routes, payloads, responses, state reads and public observations compose each Protocol Surface and which surface identity and version govern them.
+> Which exact functions, events, routes, payloads, responses, state reads, and public observations compose each Protocol Surface and which surface identity and version govern them.
 
 Its baseline limitation is:
 
@@ -141,7 +141,7 @@ Its baseline limitation is:
 
 Its minimum later evidence is:
 
-> A complete surface manifest mapping every applicable Protocol Surface identity and version to exact tracked declarations, ABI and route shapes, public fields, deployment identities and bounded runtime observations.
+> A complete surface manifest mapping every applicable Protocol Surface identity and version to exact tracked declarations, ABI and route shapes, public fields, deployment identities, and bounded runtime observations.
 
 The exact guarded predecessor rows are:
 
@@ -163,8 +163,8 @@ The exact guarded predecessor rows are:
 | 14 | `PE-SURF-013` | MUST | Every concrete realization or translation of a Published Result | still-ambiguous | `b598983e09ac6417b8b63555c7c0e5790f67e0ef966ead902da6ca9756e4257c` |
 | 15 | `PE-SURF-014` | MUST NOT | Every Published Result | still-ambiguous | `82f367e4132b478d71fc63daf7259e05918e2193bc606fdbfb11d3c9a6ed4937` |
 | 16 | `PE-SURF-015` | MUST NOT | Every Published Result | still-ambiguous | `ac36ee3dea19b36f71850ea7c385e83148d0d13d3dc5b7dce5e29505191bdc95` |
-| 17 | `PE-SURF-016` | MUST NOT | Every application interpretation or representation of a Protocol Surface, Protocol Operation or Published Result | still-ambiguous | `607ced3bcf3b79408309340622dd168fdbc90a6262dfd07e84eacdc68ed66efd` |
-| 18 | `PE-SURF-017` | MUST | Every public Protocol Surface, Protocol Operation representation and Published Result | still-ambiguous | `f0bdaf74ed9ecc4b4d3ad660b572b429dfccdceba9e1669c7d6892530ae606e4` |
+| 17 | `PE-SURF-016` | MUST NOT | Every application interpretation or representation of a Protocol Surface, Protocol Operation, or Published Result | still-ambiguous | `607ced3bcf3b79408309340622dd168fdbc90a6262dfd07e84eacdc68ed66efd` |
+| 18 | `PE-SURF-017` | MUST | Every public Protocol Surface, Protocol Operation representation, and Published Result | still-ambiguous | `f0bdaf74ed9ecc4b4d3ad660b572b429dfccdceba9e1669c7d6892530ae606e4` |
 
 There are exactly 18 rows and 18 unique identifiers. The guarded position of `PE-SURF-018` before `PE-SURF-010` is preserved.
 
