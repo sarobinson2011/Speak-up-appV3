@@ -1,3 +1,6 @@
+<a id="pe-g2-art-pe-g2-semantic-difference-001"></a>
+# Privacy Engine Generation 2 Evaluation Determination Atomicity Semantic Difference V1
+
 Artifact identifier: PE-G2-SEMANTIC-DIFFERENCE-001
 Engineering inputs: CLAR-ATOMIC-001 through CLAR-ATOMIC-015
 <a id="pe-g2-delta-atomic-001"></a>
@@ -20,3 +23,6 @@ Implementation independence: protocol-semantic atomicity is not implementation t
 Privacy: Private actors, public actions; no reusable participant identity, actor provenance or cross-action linkage.
 <a id="pe-g2-delta-atomic-010"></a>
 Authority: the published predecessor remains authoritative for predecessor-governed semantics.
+
+Candidate status: candidate; unreviewed; unpublished; non-authoritative.
+End of PE-G2-SEMANTIC-DIFFERENCE-001.
