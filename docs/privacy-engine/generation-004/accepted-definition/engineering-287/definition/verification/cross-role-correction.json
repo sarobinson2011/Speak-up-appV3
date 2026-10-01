@@ -1,0 +1,190 @@
+{
+  "author_checks": "PASS",
+  "synthetic_evidence_only": true,
+  "vectors": [
+    {
+      "case": "authenticated distinct roles: correlation-only correction",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE",
+      "correlation_only_exempted_edge_indices": [
+        2
+      ],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "missing authentication",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-EVIDENCE-AUTHENTICATION",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-EVIDENCE-AUTHENTICATION",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "missing provenance",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "source-established equality",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "reject separate_semantic_domains",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "reject no_source_defined_linkage",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "reject scope",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "reject graph_sha256",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-EVIDENCE-DIGEST",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-EVIDENCE-DIGEST",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "reject left_domain",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "no claim preserves baseline",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "observable source path remains",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE",
+      "correlation_only_exempted_edge_indices": [
+        2
+      ],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "hidden actor path retained",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "ACTOR-RECONSTRUCTION-RISK"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE",
+      "correlation_only_exempted_edge_indices": [
+        2
+      ],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "unknown visibility fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-SURFACE-LABELS",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE"
+      ],
+      "earliest_failure": "INVALID-SURFACE-LABELS",
+      "correlation_only_exempted_edge_indices": [
+        2
+      ],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    },
+    {
+      "case": "cross-action same-role nullifier tracking stays rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT",
+      "correlation_only_exempted_edge_indices": [],
+      "full_actor_graph_preserved": true,
+      "uniqueness_rule_unchanged": true
+    }
+  ],
+  "source_evidence_authenticated": false,
+  "profile_admitted": false
+}

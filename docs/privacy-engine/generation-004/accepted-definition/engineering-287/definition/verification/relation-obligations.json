@@ -1,0 +1,53 @@
+{
+  "actor_graph": "COMPLETE-UNFILTERED-RETAINED",
+  "all_other_pairs": "RETAINED; no discharge granted by this manifest",
+  "argument_validation_implementation": "UNFINISHED",
+  "branches": [
+    {
+      "condition": "a1=a2",
+      "rule": "S84 SAME-SCOPED-A-N only; all other paths retained"
+    },
+    {
+      "condition": "a1!=a2 AND n1!=n2",
+      "rule": "No direct n equality; all other paths retained"
+    },
+    {
+      "condition": "a1!=a2 AND n1=n2",
+      "rule": "Conditional collision reduction; proof soundness, exact algorithm, security budget, unlinkability and whole-view obligations OPEN"
+    }
+  ],
+  "cryptographic_evidence": "UNAVAILABLE",
+  "discharged_obligations": [],
+  "established_cross_action_equality": "REJECT",
+  "format": "PE-G4-RELATION-OBLIGATIONS-V1",
+  "full_graph": {
+    "equality_stream": {
+      "bytes": 196971906,
+      "format": "PE-G4-POTENTIAL-EQUALITY-PAIRS-V1",
+      "ordering": "lexicographic index pairs, i<j",
+      "predicate": "left.arbitrary OR right.arbitrary OR equal symbolic_digest",
+      "row_encoding": "U32-BE left index; U32-BE right index",
+      "rows": 24621484,
+      "sha256": "e0aefda567dd55aabe233cb17ba8722035ffe49387c8f7857634a4fa3384982a"
+    },
+    "removed_edges": 0,
+    "removed_nodes": 0,
+    "structural_edges": 27450,
+    "tokens": 7018
+  },
+  "input_sha256": {
+    "privacy/expanded/PRIVACY.candidate.json": "6777e380dec2f9b75bcafa7b52879bc9a03e39e46aa326eef57321562229e7f6",
+    "privacy/relation-aware/construct.py": "91621a2883fe7fec8269b4473fa5ef6b7b99bacdb129170a829820c66eddf729",
+    "privacy/relation-aware/rule.md": "9cffb0780030aa3f807d047a6fc7edd609998d44be95e3e0643155b2caadddbc",
+    "sources/retained/S22.md": "12b6769910ce071e033a1aae40a8fa751958df32e14bd04f105412eb89844217",
+    "sources/retained/S71.md": "8777041cfc5e219a3d09a22f0bd7bebe1a72d1b28823dd65d19ed09682644a66"
+  },
+  "pair": [
+    "SYMBOLIC-U-ONE::PUBLIC-PI:n",
+    "SYMBOLIC-U-TWO::PUBLIC-PI:n"
+  ],
+  "production_acceptance_integration": "UNFINISHED",
+  "profile_admitted": false,
+  "scope": "PROPOSED-STATIC-RULE-NOT-GOVERNING-PRIVACY",
+  "unknown_visibility": "REJECT"
+}

@@ -1,0 +1,8 @@
+order	owner	ordered_input_summary	actual_read_or_effect	branch_or_operation	closure_consequence
+01	PetitionRegistry.signPetitionWithZKProof	petitionId,nullifier,admissionCommitment,pA,pB,pC,pubSignals	petitions[petitionId].exists	exit if false	Application-only read; not a new protocol validity rule
+02	same	petitionId,nullifier	usedSignNullifier[petitionId][nullifier]	exit if true	Actual state read; no proof verification on this branch
+03	same	configured groth16Verifier	groth16Verifier address	exit if zero	Source-code address availability; no proof-result fact
+04	Groth16Verifier.verifyProof	pA[2],pB[2][2],pC[2],pubSignals[3]	embedded r,q,verification-key constants; calldata; gas; precompile results	checkField; three mul/add pairs; pairing	Exact actual calls must remain visible at their governed boundary
+05	PetitionRegistry caller	nullifier,petitionId,pubSignals[0:2]	exact input equalities	exit if mismatch	No public-input reordering permitted
+06	same	petitionId,nullifier	usedSignNullifier write	sets true	Does not establish separate authorized U or both gates
+07	same	petitionId,nullifier,zero	PetitionSigned event	emit	No actor label or supplied admissionCommitment in event

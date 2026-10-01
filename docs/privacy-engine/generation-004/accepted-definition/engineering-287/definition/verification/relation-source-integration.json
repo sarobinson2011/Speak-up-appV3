@@ -1,0 +1,91 @@
+{
+  "source_integration": "PASS-S89-V3-CANDIDATE",
+  "conditional_proof": {
+    "result": "VALID-CONDITIONAL-DERIVATION",
+    "assumptions": {
+      "action-distinct": [
+        "NE",
+        "a1",
+        "a2"
+      ],
+      "left-relation": [
+        "EQ",
+        "n1",
+        [
+          "POSEIDON3",
+          [
+            "s1",
+            "a1",
+            "SIGN_DOMAIN"
+          ]
+        ]
+      ],
+      "right-relation": [
+        "EQ",
+        "n2",
+        [
+          "POSEIDON3",
+          [
+            "s2",
+            "a2",
+            "SIGN_DOMAIN"
+          ]
+        ]
+      ],
+      "output-equal": [
+        "EQ",
+        "n1",
+        "n2"
+      ]
+    },
+    "conclusion": [
+      "COLLISION",
+      "POSEIDON3",
+      [
+        "s1",
+        "a1",
+        "SIGN_DOMAIN"
+      ],
+      [
+        "s2",
+        "a2",
+        "SIGN_DOMAIN"
+      ]
+    ],
+    "binding": {
+      "sources/PE-G4-SOURCE-S89.md": "16767b4d13906b1caad4bd2c1ca6277021fda3e5da18ed01181a62caf89d63e0",
+      "privacy/relation-aware/rule.md": "9cffb0780030aa3f807d047a6fc7edd609998d44be95e3e0643155b2caadddbc",
+      "privacy/relation-aware/construct.py": "91621a2883fe7fec8269b4473fa5ef6b7b99bacdb129170a829820c66eddf729",
+      "privacy/relation-aware/proof_kernel.py": "bd37938b9ba67d1348f5a7a559ddbb65362cb9e1c763c4b3e2aec57c4bba75a0",
+      "profile/integration/relation_member.py": "74bebdab2d6d1b2f9957476db0e9299844c71e446b8851731bdb958fbe344682",
+      "profile/integration/relation_admission.py": "623dad9b47ccf1598b898617d98427f8b819e2f554f5154f9a6c7a7f77722c1e",
+      "sources/retained/S22.md": "12b6769910ce071e033a1aae40a8fa751958df32e14bd04f105412eb89844217",
+      "privacy/expanded/PRIVACY.candidate.json": "6777e380dec2f9b75bcafa7b52879bc9a03e39e46aa326eef57321562229e7f6"
+    },
+    "security_established": false,
+    "profile_admitted": false
+  },
+  "rejected_cases": [
+    "changed source binding",
+    "extra completion flag",
+    "unknown premise",
+    "unsupported security rule",
+    "self reference",
+    "forward reference",
+    "negative reference",
+    "Boolean index",
+    "missing relation",
+    "wrong output premise",
+    "swapped premise",
+    "extra proof step",
+    "short proof",
+    "wrong final conclusion",
+    "missing appointment",
+    "fabricated security claim"
+  ],
+  "full_graph_unchanged": true,
+  "synthetic_outer_written": false,
+  "general_security_argument_validator": "NOT-IMPLEMENTED",
+  "acceptance_path": "NOT-COMPLETE",
+  "profile_admitted": false
+}

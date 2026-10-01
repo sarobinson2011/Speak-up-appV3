@@ -1,0 +1,50 @@
+[
+  {
+    "requirement_id": "PE-G4-CAP-081",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-CORRELATION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "Cross-role raw public scalar equality MUST be excluded from correlation only when independently authenticated separation evidence binds the exact public roles, source domains, complete graph and absence of source-defined linkage.",
+    "owner_sources": "PE-G4-SOURCE-S86#separation",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84",
+    "treatment": "CORRELATION-ONLY-CORRECTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-082",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-CORRELATION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "The complete edge-origin classification MUST be independently established; missing or unknown provenance or separation evidence MUST NOT grant the correction.",
+    "owner_sources": "PE-G4-SOURCE-S86#provenance",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84",
+    "treatment": "CORRELATION-ONLY-CORRECTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-083",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-CORRELATION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "Actor reconstruction MUST retain every graph edge; unknown visibility, same-role cross-action nullifier links, source-established relations and alternate observable paths MUST retain their existing failure obligations.",
+    "owner_sources": "PE-G4-SOURCE-S86#preservation",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84",
+    "treatment": "CORRELATION-ONLY-CORRECTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-084",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-CORRELATION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "This correction MUST NOT change public uniqueness, appoint an evidence authority, assert source completeness or grant profile admission.",
+    "owner_sources": "PE-G4-SOURCE-S86#scope",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84",
+    "treatment": "CORRELATION-ONLY-CORRECTION"
+  }
+]

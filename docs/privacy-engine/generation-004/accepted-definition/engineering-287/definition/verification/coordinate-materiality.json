@@ -1,0 +1,80 @@
+{
+  "status": "PASS-BOUNDED-AUTHOR-CHECKS",
+  "synthetic_fixtures_only": true,
+  "immutable_leaf_mutations": 50,
+  "invalid_structural_join_cases": 8,
+  "gate_vectors": [
+    {
+      "v": 0,
+      "b": 0,
+      "EQ": 0,
+      "MC": 1,
+      "validated_gate_outcome": "CONFLICT"
+    },
+    {
+      "v": 0,
+      "b": 1,
+      "EQ": 0,
+      "MC": 1,
+      "validated_gate_outcome": "CONFLICT"
+    },
+    {
+      "v": 0,
+      "b": 2,
+      "EQ": 0,
+      "MC": 1,
+      "validated_gate_outcome": "CONFLICT"
+    },
+    {
+      "v": 1,
+      "b": 0,
+      "EQ": 1,
+      "MC": 0,
+      "validated_gate_outcome": "EQUIVALENT"
+    },
+    {
+      "v": 1,
+      "b": 1,
+      "EQ": 0,
+      "MC": 1,
+      "validated_gate_outcome": "CONFLICT"
+    },
+    {
+      "v": 1,
+      "b": 2,
+      "EQ": 2,
+      "MC": 2,
+      "validated_gate_outcome": "INDETERMINATE"
+    },
+    {
+      "v": 2,
+      "b": 0,
+      "EQ": 2,
+      "MC": 2,
+      "validated_gate_outcome": "INDETERMINATE"
+    },
+    {
+      "v": 2,
+      "b": 1,
+      "EQ": 0,
+      "MC": 1,
+      "validated_gate_outcome": "CONFLICT"
+    },
+    {
+      "v": 2,
+      "b": 2,
+      "EQ": 2,
+      "MC": 2,
+      "validated_gate_outcome": "INDETERMINATE"
+    }
+  ],
+  "evaluation_vectors": 243,
+  "evaluation_counts": {
+    "0": 31,
+    "1": 1,
+    "2": 211
+  },
+  "full_DepD_substituted": false,
+  "source_adequacy_established": false,
+  "profile_admitted": false
+}

@@ -1,0 +1,37 @@
+{
+  "finding": "GENERIC-STATIC-CROSS-ACTION-NULLIFIER-OBSTRUCTION",
+  "current_applicability_accepts_both_source_classes": [
+    {
+      "a": "11",
+      "n": "13",
+      "source_used": false,
+      "mapping_applicability": true,
+      "actual_E_or_D_asserted": false
+    },
+    {
+      "a": "12",
+      "n": "13",
+      "source_used": false,
+      "mapping_applicability": true,
+      "actual_E_or_D_asserted": false
+    }
+  ],
+  "static_pair": [
+    "SYMBOLIC-U-ONE::PUBLIC-PI:n",
+    "SYMBOLIC-U-TWO::PUBLIC-PI:n"
+  ],
+  "retained_static_generator_includes_pair": true,
+  "same_role_pair_not_covered_by_S86_S87": true,
+  "bounded_policy_counterexample": {
+    "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+    "failures": [
+      "UNIQUENESS-FAILURE",
+      "CORRELATION-FAILURE"
+    ],
+    "earliest_failure": "UNIQUENESS-FAILURE"
+  },
+  "actual_proof_relation_realizability_established": false,
+  "actual_privacy_breach_claimed": false,
+  "scope": "Current conservative abstract admission model only; no claim about completed real E/D/U",
+  "consequence": "Appointments or signatures alone cannot turn this declared generic static abstraction into an admission PASS. An explicit source-grounded resolution of this remaining static case is required; sampled success or ignoring the pair is insufficient."
+}

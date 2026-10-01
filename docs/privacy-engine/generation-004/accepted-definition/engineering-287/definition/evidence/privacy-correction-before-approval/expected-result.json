@@ -1,0 +1,64 @@
+{
+  "diagnostic_checks": "PASS",
+  "meaning": "The source-model obstruction is reproduced, not repaired; this is not a privacy admission result.",
+  "exact_program_fields": 118,
+  "root_inputs_without_dedicated_schema_surface": 94,
+  "component_program_fields": 24,
+  "private_output_case": {
+    "public_output": false,
+    "surface_count": 57,
+    "token_count": 126,
+    "public_token_count": 0,
+    "equality_edge_count": 6706,
+    "correlation_failure_witness": null,
+    "correlation_full_model_result": "NO-PUBLIC-ENDPOINTS-IN-THIS-MODEL",
+    "actor_test": "NOT-EVALUATED; no actor-risk clearance inferred"
+  },
+  "public_output_case": {
+    "public_output": true,
+    "surface_count": 57,
+    "token_count": 126,
+    "public_token_count": 4,
+    "equality_edge_count": 6706,
+    "correlation_failure_witness": [
+      {
+        "schema": "OBSERVABILITY-OUTPUT",
+        "field": "transition_occurrence_id",
+        "exposure": "PUBLIC",
+        "reuse": "NONE",
+        "domain": "ACTION-IDENTITY",
+        "context": "U-ONE",
+        "record": 1,
+        "digest": "21f0394dbd8f0acac6f7f789ac7e0bf166b6a788010176622b3f542e9b193224",
+        "id": "T0054"
+      },
+      {
+        "schema": "AUTHORIZATION-HEADER",
+        "field": "successor-generation-id",
+        "exposure": "CONFIDENTIAL",
+        "reuse": "NONE",
+        "domain": "OPAQUE",
+        "context": "U-ONE",
+        "record": 1,
+        "digest": "350ff2eab3c18c2b2f3466650acdb945f260cd97bd8ecb1511ee52342ca74f51",
+        "id": "T0002"
+      },
+      {
+        "schema": "OBSERVABILITY-OUTPUT",
+        "field": "transition_occurrence_id",
+        "exposure": "PUBLIC",
+        "reuse": "NONE",
+        "domain": "ACTION-IDENTITY",
+        "context": "U-TWO",
+        "record": 1,
+        "digest": "06f376f376f7b8855b0d06d74cee6cfafd26c9b788098f4bb7ce394379c0d51c",
+        "id": "T0117"
+      }
+    ],
+    "correlation_full_model_result": "FAIL-PROVEN-BY-SUBGRAPH",
+    "actor_test": "NOT-EVALUATED; no actor-risk clearance inferred"
+  },
+  "fixed_source_sha256": "697689d376a40d1acde9e34683bf57b4c14d3cad75eb082d229cfbbaa7fd31e7",
+  "historical_code_executed": false,
+  "source_or_privacy_appointment_created": false
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "requirement_id": "PE-G4-CAP-071",
+    "basis_requirement_id": "USER-APPROVED-BOUNDED-PUBLIC-RELATIONSHIPS",
+    "requirement_family": "RF-11",
+    "strength": "MAY",
+    "applicability": "conditional",
+    "scope": "Only the three approved G4 public-input relationships, with exact source/scope bindings",
+    "text": "Equality of public r values MAY express only their shared membership-root relationship when both exact canonical root values and independently authenticated owning source meaning and membership scope agree.",
+    "owner_sources": "PE-G4-SOURCE-S84#root",
+    "supporting_references": "PE-G4-PRIV-003, PE-G4-SOURCE-S83",
+    "treatment": "APPROVED-SCOPED-PUBLIC-RELATIONSHIP"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-072",
+    "basis_requirement_id": "USER-APPROVED-BOUNDED-PUBLIC-RELATIONSHIPS",
+    "requirement_family": "RF-11",
+    "strength": "MAY",
+    "applicability": "conditional",
+    "scope": "Only the three approved G4 public-input relationships, with exact source/scope bindings",
+    "text": "Equality of public a values MAY express only a shared public action context when both exact canonical values and independently authenticated owning action-context meaning and scope agree.",
+    "owner_sources": "PE-G4-SOURCE-S84#action",
+    "supporting_references": "PE-G4-PRIV-003, PE-G4-SOURCE-S83",
+    "treatment": "APPROVED-SCOPED-PUBLIC-RELATIONSHIP"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-073",
+    "basis_requirement_id": "USER-APPROVED-BOUNDED-PUBLIC-RELATIONSHIPS",
+    "requirement_family": "RF-11",
+    "strength": "MAY",
+    "applicability": "conditional",
+    "scope": "Only the three approved G4 public-input relationships, with exact source/scope bindings",
+    "text": "Equality of public n values MAY express duplicate recognition only as equality of the scoped pair (a,n), with the same independently authenticated action-context meaning, exact a value and owning uniqueness scope; it MUST NOT permit a cross-action nullifier join.",
+    "owner_sources": "PE-G4-SOURCE-S84#duplicate",
+    "supporting_references": "PE-G4-PRIV-003, PE-G4-SOURCE-S83",
+    "treatment": "APPROVED-SCOPED-PUBLIC-RELATIONSHIP"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-074",
+    "basis_requirement_id": "USER-APPROVED-BOUNDED-PUBLIC-RELATIONSHIPS",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Only the three approved G4 public-input relationships, with exact source/scope bindings",
+    "text": "Each permitted public relationship MUST bind the exact declared public-input role, canonical in-domain scalar bytes, occurrence-local field identity and independently authenticated source/scope references; missing or inconsistent binding evidence MUST fail without granting the permission.",
+    "owner_sources": "PE-G4-SOURCE-S84#bindings",
+    "supporting_references": "PE-G4-PRIV-003, PE-G4-SOURCE-S83",
+    "treatment": "APPROVED-SCOPED-PUBLIC-RELATIONSHIP"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-075",
+    "basis_requirement_id": "USER-APPROVED-BOUNDED-PUBLIC-RELATIONSHIPS",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Only the three approved G4 public-input relationships, with exact source/scope bindings",
+    "text": "These permissions MUST apply only to the matching public equality checks for uniqueness and observer-visible correlation; every edge MUST remain in actor reconstruction, and no permission MUST clear an independent correlation path, create a reusable participant identifier or grant an actor-identification relationship.",
+    "owner_sources": "PE-G4-SOURCE-S84#preservation",
+    "supporting_references": "PE-G4-PRIV-003, PE-G4-SOURCE-S83",
+    "treatment": "APPROVED-SCOPED-PUBLIC-RELATIONSHIP"
+  }
+]

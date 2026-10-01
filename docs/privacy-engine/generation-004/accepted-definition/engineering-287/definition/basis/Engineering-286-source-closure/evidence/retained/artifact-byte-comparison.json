@@ -1,0 +1,98 @@
+[
+  {
+    "artifact_id": "r1cs_canonical",
+    "archive_member": "zk/v3-groth16/build/sign_petition.r1cs",
+    "declared_sha256": "ae963d20454fdefef6d5f88fe0f5831923ebe0900df9e472b10386cf025f7677",
+    "actual_sha256": null,
+    "result": "ABSENT-FROM-ARCHIVE",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "wasm_canonical",
+    "archive_member": "zk/v3-groth16/build/sign_petition_js/sign_petition.wasm",
+    "declared_sha256": "996ad4bcf08548125ae15fbf98a9748170647d8609bdbade16003c3cd351dcb3",
+    "actual_sha256": null,
+    "result": "ABSENT-FROM-ARCHIVE",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "zkey_canonical",
+    "archive_member": "zk/v3-groth16/keys/sign_petition_final.zkey",
+    "declared_sha256": "762433cb44fc19ff7ebf575b71f56af75f17b161f87102517a6259086b9b99f1",
+    "actual_sha256": null,
+    "result": "ABSENT-FROM-ARCHIVE",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "vkey_canonical",
+    "archive_member": "zk/v3-groth16/keys/verification_key.json",
+    "declared_sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c",
+    "actual_sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "golden_proof",
+    "archive_member": "zk/v3-groth16/golden-proof.json",
+    "declared_sha256": "7d81531f80ad85682f2673bd0abce43becfd9a416d240d6eba430a2362d2f6fa",
+    "actual_sha256": "01360c724f748b1630b6605bf7464af585643a0d87fcbbb2a21e3fa3025a63b7",
+    "result": "MISMATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "verifier_source",
+    "archive_member": "contracts/src/v3/Groth16Verifier.sol",
+    "declared_sha256": "b1216366353f3dbf478e1e03add31077bbe4bc76d5a4e40aaba574cd5841bd87",
+    "actual_sha256": "b1216366353f3dbf478e1e03add31077bbe4bc76d5a4e40aaba574cd5841bd87",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_wasm_runtime",
+    "archive_member": "frontend/public/zk/sign_petition.wasm",
+    "declared_sha256": "996ad4bcf08548125ae15fbf98a9748170647d8609bdbade16003c3cd351dcb3",
+    "actual_sha256": "996ad4bcf08548125ae15fbf98a9748170647d8609bdbade16003c3cd351dcb3",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_zkey_runtime",
+    "archive_member": "frontend/public/zk/sign_petition_final.zkey",
+    "declared_sha256": "762433cb44fc19ff7ebf575b71f56af75f17b161f87102517a6259086b9b99f1",
+    "actual_sha256": "762433cb44fc19ff7ebf575b71f56af75f17b161f87102517a6259086b9b99f1",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_vkey_runtime",
+    "archive_member": "frontend/public/zk/verification_key.json",
+    "declared_sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c",
+    "actual_sha256": "8548836eaeb4500e19ca9032852095b257a9a5267206dd4e8180740c8841d14c",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_proof_hook",
+    "archive_member": "frontend/src/hooks/useZKProof.js",
+    "declared_sha256": "e2620d78620e2b0b8fe7a9f316c057747ce695e9a04d37f4e1c455e25609d61f",
+    "actual_sha256": "8df56093b0a5a3ed8121e3cbe45761d0cfc967bc0fcdd108222944f5901a575a",
+    "result": "MISMATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_sign_button",
+    "archive_member": "frontend/src/components/M2SignButton.jsx",
+    "declared_sha256": "1b0df4df7706acbcde2adb76fb4b86a9991d9eb1305d0cc41084248204704189",
+    "actual_sha256": "16faf8dba309411ebc40ae00c66cbfda4b2e32e48c18b46d422bcffc7c1e96f2",
+    "result": "MISMATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  },
+  {
+    "artifact_id": "frontend_config",
+    "archive_member": "frontend/src/config.js",
+    "declared_sha256": "165471f0585cdd3b62123bd99fd0c678e01097f65d8d6c4983f6ed4bbb82033f",
+    "actual_sha256": "165471f0585cdd3b62123bd99fd0c678e01097f65d8d6c4983f6ed4bbb82033f",
+    "result": "MATCH",
+    "interpretation": "byte integrity only; no rebuild or verifier/key correspondence proved"
+  }
+]

@@ -1,0 +1,313 @@
+{
+  "author_checks": "PASS",
+  "scope": "Approved correlation integration and declared static model only",
+  "fields_covered": 118,
+  "root_inputs_covered": 94,
+  "read_metadata_cells": 1062,
+  "operation_nodes": 93,
+  "definition_nodes": 60,
+  "expression_nodes": 978,
+  "node_templates": 3040,
+  "structural_edge_templates": 9516,
+  "unresolved_producer_clauses": 19,
+  "graph_vectors": [
+    {
+      "case": "confidential path is not asserted publicly observable",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [],
+      "earliest_failure": "NONE"
+    },
+    {
+      "case": "source-established observable path fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "CORRELATION-FAILURE"
+    },
+    {
+      "case": "unknown visibility fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE"
+    },
+    {
+      "case": "omitted edge visibility fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE"
+    },
+    {
+      "case": "absent threat model fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE"
+    },
+    {
+      "case": "cannot relabel public visibility",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-SURFACE-LABELS"
+      ],
+      "earliest_failure": "INVALID-SURFACE-LABELS"
+    },
+    {
+      "case": "hidden actor bridge still fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "ACTOR-RECONSTRUCTION-RISK"
+      ],
+      "earliest_failure": "ACTOR-RECONSTRUCTION-RISK"
+    },
+    {
+      "case": "constant exception never filters actor graph",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "ACTOR-RECONSTRUCTION-RISK"
+      ],
+      "earliest_failure": "ACTOR-RECONSTRUCTION-RISK"
+    },
+    {
+      "case": "same public root across distinct contexts",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "cannot suppress visible public equality",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-SURFACE-LABELS",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-SURFACE-LABELS"
+    },
+    {
+      "case": "coalition path fails",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "CORRELATION-FAILURE"
+    },
+    {
+      "case": "coalition cannot erase member observations",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-SURFACE-LABELS"
+      ],
+      "earliest_failure": "INVALID-SURFACE-LABELS"
+    }
+  ],
+  "source_appointed": false,
+  "privacy_admitted": false,
+  "full_equality_graph_instantiated": false,
+  "source_complete_producer_observer_model": false,
+  "public_relationship_permissions": [
+    "SAME-SCOPED-ROOT",
+    "SAME-SCOPED-A",
+    "SAME-SCOPED-A-N"
+  ],
+  "relationship_vectors": [
+    {
+      "case": "shared root in exact same source scope permitted",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [],
+      "earliest_failure": "NONE"
+    },
+    {
+      "case": "shared public action context permitted",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [],
+      "earliest_failure": "NONE"
+    },
+    {
+      "case": "same scoped a and n duplicate permitted",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [],
+      "earliest_failure": "NONE"
+    },
+    {
+      "case": "all three compose without actor edge",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [],
+      "earliest_failure": "NONE"
+    },
+    {
+      "case": "same root value different scope rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "different root source bytes not equated",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "same numeric a different domain rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "n across different a rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "same a and n different uniqueness domain rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "n without exact a bindings fails closed",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE"
+    },
+    {
+      "case": "missing root scope evidence fails closed",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE"
+    },
+    {
+      "case": "claim value digest mismatch rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "out of scalar domain rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "root cannot be relabelled generation constant",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "unexpected relationship metadata rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "cross-role reinterpretation rejected",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "cannot borrow other occurrence a binding",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    },
+    {
+      "case": "permitted root edge remains in full actor graph",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "ACTOR-RECONSTRUCTION-RISK"
+      ],
+      "earliest_failure": "ACTOR-RECONSTRUCTION-RISK"
+    },
+    {
+      "case": "permission does not clear an alternative correlation path",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "CORRELATION-FAILURE"
+    },
+    {
+      "case": "cross-role scalar equality receives no permission",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "UNIQUENESS-FAILURE",
+        "CORRELATION-FAILURE"
+      ],
+      "earliest_failure": "UNIQUENESS-FAILURE"
+    },
+    {
+      "case": "unrelated subject cannot acquire root permission",
+      "scope": "GRAPH-CHECKS-ONLY-NOT-PROFILE-ADMISSION",
+      "failures": [
+        "INVALID-ACTION-CONTEXT",
+        "UNIQUENESS-FAILURE"
+      ],
+      "earliest_failure": "INVALID-ACTION-CONTEXT"
+    }
+  ],
+  "publication_performed": false,
+  "historical_constructor_executed": false
+}

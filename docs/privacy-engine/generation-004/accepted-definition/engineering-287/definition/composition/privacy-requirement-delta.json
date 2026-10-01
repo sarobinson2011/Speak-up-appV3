@@ -1,0 +1,62 @@
+[
+  {
+    "requirement_id": "PE-G4-CAP-066",
+    "basis_requirement_id": "USER-APPROVED-OBSERVATION-AWARE-CORRELATION",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "G4 profiles subject to the approved observation-aware privacy construction",
+    "text": "The G4 privacy construction MUST include every declared program field, root argument, component side/status, ReadObject metadata cell, operation, expression branch, parameter/call/control relationship, governing owning schema, public PI alias and source-required producer observation/custody path; absent source completeness MUST remain an admission failure.",
+    "owner_sources": "PE-G4-SOURCE-S83#universe",
+    "supporting_references": "PE-G4-SOURCE-S70, PE-G4-SOURCE-S80#privacy",
+    "treatment": "APPROVED-PRIVACY-PROCEDURAL-DELTA"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-067",
+    "basis_requirement_id": "USER-APPROVED-OBSERVATION-AWARE-CORRELATION",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "G4 profiles subject to the approved observation-aware privacy construction",
+    "text": "Every required observer and coalition visibility assessment MUST be independently source-established for the exact regenerated graph; missing or unknown visibility MUST fail, and a caller-supplied completeness flag MUST NOT substitute for that evidence.",
+    "owner_sources": "PE-G4-SOURCE-S83#visibility",
+    "supporting_references": "PE-G4-SOURCE-S70, PE-G4-SOURCE-S80#privacy",
+    "treatment": "APPROVED-PRIVACY-PROCEDURAL-DELTA"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-068",
+    "basis_requirement_id": "USER-APPROVED-OBSERVATION-AWARE-CORRELATION",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "G4 profiles subject to the approved observation-aware privacy construction",
+    "text": "Cross-context correlation assessment MUST use the independently established observable graph for each required observer coalition, preserve the existing permitted constant-equality exception only in that assessment, and include equality of values visible to that coalition.",
+    "owner_sources": "PE-G4-SOURCE-S83#correlation",
+    "supporting_references": "PE-G4-SOURCE-S70, PE-G4-SOURCE-S80#privacy",
+    "treatment": "APPROVED-PRIVACY-PROCEDURAL-DELTA"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-069",
+    "basis_requirement_id": "USER-APPROVED-OBSERVATION-AWARE-CORRELATION",
+    "requirement_family": "RF-11",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "G4 profiles subject to the approved observation-aware privacy construction",
+    "text": "Actor-reconstruction assessment MUST retain the complete regenerated graph, including confidential, non-observed and permitted constant-equality edges, without visibility filtering.",
+    "owner_sources": "PE-G4-SOURCE-S83#actor",
+    "supporting_references": "PE-G4-SOURCE-S70, PE-G4-SOURCE-S80#privacy",
+    "treatment": "APPROVED-PRIVACY-PROCEDURAL-DELTA"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-070",
+    "basis_requirement_id": "USER-APPROVED-OBSERVATION-AWARE-CORRELATION",
+    "requirement_family": "RF-11",
+    "strength": "MUST NOT",
+    "applicability": "conditional",
+    "scope": "G4 profiles subject to the approved observation-aware privacy construction",
+    "text": "The observation-aware correction MUST NOT introduce public-linkage exceptions, suppress existing public PI, convert changing roots or action-local values into generation constants, or waive the unchanged public uniqueness and actor-protection obligations.",
+    "owner_sources": "PE-G4-SOURCE-S83#no-exceptions",
+    "supporting_references": "PE-G4-SOURCE-S70, PE-G4-SOURCE-S80#privacy",
+    "treatment": "APPROVED-PRIVACY-PROCEDURAL-DELTA"
+  }
+]

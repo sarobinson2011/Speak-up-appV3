@@ -1,0 +1,13 @@
+# Engineering[284] — bounded authoring completion and forward task
+
+The four authorized decisions are incorporated: latest 16 valid authoritative root introductions; one required scoped atomic unused-to-used effect; distinct A on each new authoritative admission; domain-first authoritative admission. No decision is reopened.
+
+Completed authoring includes the integrated typed E candidate, root/scoped-state/scalar assessments, exact completeness aggregation, two-component projection and 21-row recovery joins, all 861 draft requirement dispositions, verifier-completion and observation/currentness contracts, all 118 field/phase/privacy joins, and the concrete canonical source-read adapter proposal. Its exact 94-field dispatch and fresh TSEV1 decoder checks are supplied. The proposal is a concrete interface at S70's authenticated-read boundary, not a selected live producer.
+
+This closes [284]'s substantive source-determined authoring slice. It does NOT close full source-specific program admission, complete implementation readiness or authority evidence. Remaining construction is the exact governing successor-source delta/admission basis, followed by source-producer correspondence, any added dependencies/coordinates/observers and final canonical body/program/privacy assembly. Missing independent appointment/evidence and future occurrence facts remain separate. They are not labeled completed or replaced by author fixtures.
+
+The earlier repeated stopping point was a workflow error: absence of an appointed runtime source should not have prevented completing the adapter proposal or defining the next governed construction. A handover now follows the completed substantive artifacts and an exact next task, not a claim that all engineering work is finished.
+
+Engineering[285] must construct the successor-source change/admission basis from these exact local owners: E283 root/effect, E284 action/domain/interface/evaluation, verifier interface, observation interface and adapter. Produce exact source/anchor deltas against immutable G3, proposed normative requirement changes where meaning is new, source-to-program joins and the bounded lifecycle prerequisites. Do not allocate successor IDs, publish, install or appoint authority. Do not start another generic review or ask Steve for an unspecified source package.
+
+All 861 original requirement texts/strengths/conditions, 21 recovery rows, original evidence and completed E282 reviews are preserved. G3 PE-PUBLISHED-PROTOCOL-G3-001 / 3.0.0 remains immutable; M=0; I164 archive-only and adoption not-performed. No repository/STATE/code changes, install, commit/tag/push, live fetch/contact, appointment, deployment, lifecycle act, registry/profile/mapping insertion or successor allocation occurred.

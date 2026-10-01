@@ -1,0 +1,21 @@
+# Active S87 uniqueness extension
+
+S87 now extends S86-qualified pair separation to uniqueness, exactly as authorized. Prior obstruction descriptions below are historical; the cross-role policy decision is resolved within that scope. Every other public pair is independently checked. Complete equality and actor edges remain unchanged. Full source/evidence and governing admission remain unestablished. Current checks are verification/cross-role-uniqueness.json.
+
+# Active S86 correction
+
+The original expansion description below records the pre-S86 obstruction. S86 now conditionally corrects correlation only using authenticated semantic-separation and edge-origin evidence. The equality stream and actor graph remain complete. Public uniqueness remains a blocker. Current exact counts are in verification/privacy-expansion.json; active correction vectors are in verification/cross-role-correction.json.
+
+# Complete declared-template expansion and privacy integration candidate
+
+The fresh expander instantiates two contexts, including separate COMPONENT-BINDING records for both components. It replicates all inherited and supplementary structural relations, retaining component-local binding joins. It streams every pair admitted by the retained S71 rule: either endpoint arbitrary OR their symbolic digests equal. In particular arbitrary-to-constant and arbitrary-to-fresh edges remain. No type, visibility, approved relationship or actor filter removes these edges. Constant/fresh symbolic handling follows the inherited owning core fields; unspecified supplementary surfaces remain conservative arbitrary values.
+
+PRIVACY.candidate.json is deterministic canonical JSON binding complete input declarations, surfaces, symbolic tokens, structural edges and the exact streamed equality-member recipe/count/digest. It is explicitly an integration candidate, not the currently governed PRIVACY member. Its format is newly authored and not silently passed to the historical validator. The streamed member uses its documented domain prefix and U32 index pairs; --materialize writes the identical full edge member if needed. The archive omits that large reproducible stream. Verification traverses every pair and independently checks the count; no sample substitutes for expansion.
+
+This closes the missing static expansion for the supplied declaration universe. It does not establish that this universe covers all actual source operations, repeated READs, runtime records, actors or observers. Those remain separate completeness and occurrence obligations. The symbolic graph has one actor-graph connected component because every arbitrary token connects to every other token. That proves connectivity, not actor safety: actor/visibility classifications for all supplementary surfaces remain unestablished.
+
+The expansion exposes a decisive static obstruction. Public root and public action inputs are arbitrary canonical scalar surfaces. A cross-context cross-role potential equality is therefore generated. S84 permits only same-role, scope-bound root/action/duplicate relationships; it does not permit that pair. The existing approved cross-role fixture independently reproduces UNIQUENESS-FAILURE and CORRELATION-FAILURE when those public scalar values coincide. The fixture is not evidence of an actual occurrence or a claim that every occurrence collides; static admission conservatively includes the potential collision.
+
+Unknown observer evidence independently blocks admission. Supplying missing appointments alone does not remove the static obstruction. Removing the offending edges, classifying arbitrary PI as constants, treating them as hidden, adding a cross-role exception or changing the inherited conservative rule is not performed. Current policy remains exactly as approved.
+
+Canonical integration into an admissible governing PRIVACY member is therefore blocked. No full immutable profile, profile digest, admitted mapping, publication or registry row is claimed. Any remedy must explicitly resolve this static semantic obstruction and preserve full actor protection and fail-closed unknown visibility; it cannot be hidden inside a serialization change or another package of author tests.

@@ -1,0 +1,1136 @@
+{
+  "schemas": {
+    "AUTHORIZATION-HEADER": [
+      "serialization-domain",
+      "successor-generation-id",
+      "mapping-id",
+      "mapping-sha256",
+      "profile-id",
+      "profile-sha256",
+      "authorization-id",
+      "transition-occurrence-id",
+      "determination-id",
+      "authorized-state-id",
+      "successor-state-relation-definition-id",
+      "ordering-coordinate-set-digest",
+      "dependency-coordinate-set-digest",
+      "component-count"
+    ],
+    "COMPONENT-BINDING": [
+      "component_order",
+      "component_id",
+      "binding_mode",
+      "canonical_type_id",
+      "authorization_context_digest",
+      "bound_value"
+    ],
+    "COMPARISON-ATTEMPT": [
+      "comparison_attempt_id",
+      "generation_id",
+      "mapping_id",
+      "mapping_sha256",
+      "profile_id",
+      "profile_sha256",
+      "authorization_id",
+      "authorization_sha256",
+      "transition_occurrence_id",
+      "determination_id",
+      "authorized_state_id",
+      "authorized_state_sha256",
+      "current_state_id",
+      "current_state_sha256",
+      "stage",
+      "result",
+      "failure_code"
+    ],
+    "COMPARISON-RESULT": [
+      "comparison_attempt_id",
+      "transition_occurrence_id",
+      "result",
+      "failure_code"
+    ],
+    "RECOVERY-RESULT": [
+      "transition_occurrence_id",
+      "comparison_attempt_id",
+      "stage",
+      "event",
+      "unchanged_d_sufficiency",
+      "disposition"
+    ],
+    "OBSERVABILITY-OUTPUT": [
+      "transition_occurrence_id",
+      "classification"
+    ],
+    "COMPONENT-0001": [
+      "represented_value",
+      "canonical_value",
+      "blind",
+      "opening"
+    ],
+    "COMPONENT-0002": [
+      "represented_value",
+      "canonical_value",
+      "blind",
+      "opening"
+    ]
+  },
+  "constant_fields": [
+    "result",
+    "classification",
+    "failure_code",
+    "stage",
+    "event",
+    "unchanged_d_sufficiency",
+    "disposition",
+    "binding_mode",
+    "serialization-domain",
+    "canonical_type_id",
+    "component_id",
+    "component_order",
+    "component-count"
+  ],
+  "fields": [
+    {
+      "field_id": "PE-G4-CAP-READ-ACTION",
+      "type_id": "PE-TSE-ID",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ID",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Fixed A occurrence instantiated only after selected domain-first admission"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-EVALUATION",
+      "type_id": "PE-TSE-ID",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ID",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Fixed E occurrence; externally joined to the actual evaluator occurrence"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-CONTEXT",
+      "type_id": "PE-TSE-ID",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ID",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Fixed bounded C identity; not a source of extra rules"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ACTION-TYPE",
+      "type_id": "PE-G4-CAP-SOURCE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SOURCE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact governed type definition source reference"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-RULE-SET",
+      "type_id": "PE-G4-CAP-SOURCE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SOURCE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact complete applicable rule-set source reference; not a wildcard result"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-NULLIFIER",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "n, canonical in-domain scalar"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ACTION-CONTEXT",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "a, canonical in-domain scalar"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-DECLARED-ROOT",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "r, canonical in-domain scalar"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-DECLARED-PI",
+      "type_id": "PE-G4-CAP-PUBLIC-INPUTS",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-PUBLIC-INPUTS",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact declared PI tuple in n,a,r order"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ACTION-BINDING",
+      "type_id": "PE-G4-CAP-ACTION-INPUT-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ACTION-INPUT-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Independently validated binding of A/E/type/R/C/PI"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-DOMAIN-BINDING",
+      "type_id": "PE-G4-CAP-ADMITTED-DOMAIN-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ADMITTED-DOMAIN-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Independently validated completed pre-admission range assessment bound to A,n,a,r"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-POLICY",
+      "type_id": "PE-G4-CAP-SOURCE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SOURCE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact selected root-policy definition source reference"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SCOPE",
+      "type_id": "PE-G4-CAP-SCOPE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SCOPE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Competent membership-state scope meaning"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-CUT",
+      "type_id": "PE-G4-CAP-CUT-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-CUT-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact source-owned membership observation cut relevant to E"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-COUNT",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Complete authoritative introduction count through the root cut"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-01",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 1; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-02",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 2; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-03",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 3; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-04",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 4; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-05",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 5; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-06",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 6; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-07",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 7; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-08",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 8; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-09",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 9; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-10",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 10; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-11",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 11; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-12",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 12; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-13",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 13; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-14",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 14; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-15",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 15; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-SLOT-16",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Newest-first root slot 16; domain-valid occupied root or zero padding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-01",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 1; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-02",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 2; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-03",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 3; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-04",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 4; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-05",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 5; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-06",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 6; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-07",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 7; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-08",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 8; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-09",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 9; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-10",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 10; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-11",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 11; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-12",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 12; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-13",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 13; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-14",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 14; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-15",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 15; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-OCCUPIED-16",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Occupancy of slot 16; complete authoritative values TRUE/FALSE only"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-01",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 1; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-02",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 2; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-03",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 3; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-04",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 4; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-05",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 5; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-06",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 6; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-07",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 7; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-08",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 8; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-09",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 9; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-10",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 10; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-11",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 11; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-12",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 12; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-13",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 13; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-14",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 14; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-15",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 15; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-ID-16",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical source-owned introduction occurrence identity bytes for occupied slot 16; empty only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-01",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 1; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-02",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 2; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-03",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 3; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-04",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 4; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-05",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 5; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-06",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 6; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-07",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 7; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-08",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 8; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-09",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 9; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-10",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 10; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-11",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 11; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-12",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 12; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-13",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 13; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-14",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 14; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-15",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 15; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-INTRODUCTION-POSITION-16",
+      "type_id": "PE-TSE-UINT",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-UINT",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Logical position in the authoritative finite introduction sequence for slot 16; zero only if absent"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ROOT-BINDING",
+      "type_id": "PE-G4-CAP-ROOT-OBSERVATION-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ROOT-OBSERVATION-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Complete authenticated root observation binding, including count, all slots/flags/identities/positions"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-UNIQUENESS-SCOPE",
+      "type_id": "PE-G4-CAP-SCOPE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SCOPE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Competent uniqueness-state scope meaning"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-UNIQUENESS-CUT",
+      "type_id": "PE-G4-CAP-CUT-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-CUT-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact source-owned uniqueness cut coherent with E"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-USED",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Complete authoritative used status for exact a,n; UNRESOLVED is not a third state"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-SCOPED-STATE",
+      "type_id": "PE-G4-CAP-SCOPED-STATE",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-STATE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Canonical complete scoped tuple a,n,used"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-STATE-BINDING",
+      "type_id": "PE-G4-CAP-STATE-OBSERVATION-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-STATE-OBSERVATION-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Complete authenticated scoped-state binding"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-COHERENT-CUT-BINDING",
+      "type_id": "PE-G4-CAP-CONTEXT-CUT-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-CONTEXT-CUT-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Independent source evidence that both cuts belong to the fixed coherent E/C"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-PROOF-ID",
+      "type_id": "PE-TSE-ID",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ID",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Bounded proof identity distinct from A/E/PI/private actor"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-VERIFICATION-ID",
+      "type_id": "PE-TSE-ID",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-ID",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Bounded contributing V identity; not E or D"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-PROOF-BYTES",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact presented proof representation, never private witness bytes"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-PROOF-RELATION",
+      "type_id": "PE-G4-CAP-SOURCE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SOURCE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact retained proof relation/domain/schema reference"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-VERIFIER-ARTIFACTS",
+      "type_id": "PE-G4-CAP-SOURCE-REFERENCE",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-SOURCE-REFERENCE",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact compatible artifact/verifier/provenance definition reference"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-ARTIFACT-BINDING-BYTES",
+      "type_id": "PE-TSE-BYTES",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-BYTES",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Exact consumed artifact/provenance binding material; not a substitute for additional actual reads"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-VERIFICATION-RESULT",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Authenticated completed proof-valid TRUE/proof-invalid FALSE; inability UNRESOLVED"
+    },
+    {
+      "field_id": "PE-G4-CAP-READ-VERIFICATION-BINDING",
+      "type_id": "PE-G4-CAP-VERIFICATION-INPUT-BINDING",
+      "equality_definition_id": "PE-G4-CAP-FIELD-EQUAL-VERIFICATION-INPUT-BINDING",
+      "source_id": "PE-G4-SOURCE-S78",
+      "source_anchor": "inputs",
+      "semantic_role": "Authenticated V/Z/PI/relation/artifact/result/E argument binding"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-REPRESENTATION",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:REPRESENTATION"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-VALUE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:VALUE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-STATUS-AUTHORITATIVE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:STATUS-AUTHORITATIVE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-STATUS-AVAILABLE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:STATUS-AVAILABLE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-STATUS-VALID",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:STATUS-VALID"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-AUTHORIZED-STATUS-AUTHENTICATED",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:AUTHORIZED:STATUS-AUTHENTICATED"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-REPRESENTATION",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:REPRESENTATION"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-VALUE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:VALUE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-STATUS-AUTHORITATIVE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:STATUS-AUTHORITATIVE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-STATUS-AVAILABLE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:STATUS-AVAILABLE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-STATUS-VALID",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:STATUS-VALID"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0001-CURRENT-STATUS-AUTHENTICATED",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "ROOT-ELIGIBLE:CURRENT:STATUS-AUTHENTICATED"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-REPRESENTATION",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:REPRESENTATION"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-VALUE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:VALUE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-STATUS-AUTHORITATIVE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:STATUS-AUTHORITATIVE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-STATUS-AVAILABLE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:STATUS-AVAILABLE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-STATUS-VALID",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:STATUS-VALID"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-AUTHORIZED-STATUS-AUTHENTICATED",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:AUTHORIZED:STATUS-AUTHENTICATED"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-REPRESENTATION",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "SCOPED-USED:CURRENT:REPRESENTATION"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-VALUE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "components",
+      "semantic_role": "SCOPED-USED:CURRENT:VALUE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-STATUS-AUTHORITATIVE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:CURRENT:STATUS-AUTHORITATIVE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-STATUS-AVAILABLE",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:CURRENT:STATUS-AVAILABLE"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-STATUS-VALID",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:CURRENT:STATUS-VALID"
+    },
+    {
+      "field_id": "PE-TSE-FIELD-COMPONENT-0002-CURRENT-STATUS-AUTHENTICATED",
+      "type_id": "PE-TSE-BOOL3",
+      "equality_definition_id": "PE-G4-CAP-EQUAL-BOOL",
+      "source_id": "PE-G4-SOURCE-S73",
+      "source_anchor": "status",
+      "semantic_role": "SCOPED-USED:CURRENT:STATUS-AUTHENTICATED"
+    }
+  ],
+  "root_fields": [
+    "PE-G4-CAP-READ-ACTION",
+    "PE-G4-CAP-READ-EVALUATION",
+    "PE-G4-CAP-READ-CONTEXT",
+    "PE-G4-CAP-READ-ACTION-TYPE",
+    "PE-G4-CAP-READ-RULE-SET",
+    "PE-G4-CAP-READ-NULLIFIER",
+    "PE-G4-CAP-READ-ACTION-CONTEXT",
+    "PE-G4-CAP-READ-DECLARED-ROOT",
+    "PE-G4-CAP-READ-DECLARED-PI",
+    "PE-G4-CAP-READ-ACTION-BINDING",
+    "PE-G4-CAP-READ-DOMAIN-BINDING",
+    "PE-G4-CAP-READ-ROOT-POLICY",
+    "PE-G4-CAP-READ-ROOT-SCOPE",
+    "PE-G4-CAP-READ-ROOT-CUT",
+    "PE-G4-CAP-READ-INTRODUCTION-COUNT",
+    "PE-G4-CAP-READ-ROOT-SLOT-01",
+    "PE-G4-CAP-READ-ROOT-SLOT-02",
+    "PE-G4-CAP-READ-ROOT-SLOT-03",
+    "PE-G4-CAP-READ-ROOT-SLOT-04",
+    "PE-G4-CAP-READ-ROOT-SLOT-05",
+    "PE-G4-CAP-READ-ROOT-SLOT-06",
+    "PE-G4-CAP-READ-ROOT-SLOT-07",
+    "PE-G4-CAP-READ-ROOT-SLOT-08",
+    "PE-G4-CAP-READ-ROOT-SLOT-09",
+    "PE-G4-CAP-READ-ROOT-SLOT-10",
+    "PE-G4-CAP-READ-ROOT-SLOT-11",
+    "PE-G4-CAP-READ-ROOT-SLOT-12",
+    "PE-G4-CAP-READ-ROOT-SLOT-13",
+    "PE-G4-CAP-READ-ROOT-SLOT-14",
+    "PE-G4-CAP-READ-ROOT-SLOT-15",
+    "PE-G4-CAP-READ-ROOT-SLOT-16",
+    "PE-G4-CAP-READ-OCCUPIED-01",
+    "PE-G4-CAP-READ-OCCUPIED-02",
+    "PE-G4-CAP-READ-OCCUPIED-03",
+    "PE-G4-CAP-READ-OCCUPIED-04",
+    "PE-G4-CAP-READ-OCCUPIED-05",
+    "PE-G4-CAP-READ-OCCUPIED-06",
+    "PE-G4-CAP-READ-OCCUPIED-07",
+    "PE-G4-CAP-READ-OCCUPIED-08",
+    "PE-G4-CAP-READ-OCCUPIED-09",
+    "PE-G4-CAP-READ-OCCUPIED-10",
+    "PE-G4-CAP-READ-OCCUPIED-11",
+    "PE-G4-CAP-READ-OCCUPIED-12",
+    "PE-G4-CAP-READ-OCCUPIED-13",
+    "PE-G4-CAP-READ-OCCUPIED-14",
+    "PE-G4-CAP-READ-OCCUPIED-15",
+    "PE-G4-CAP-READ-OCCUPIED-16",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-01",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-02",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-03",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-04",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-05",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-06",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-07",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-08",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-09",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-10",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-11",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-12",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-13",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-14",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-15",
+    "PE-G4-CAP-READ-INTRODUCTION-ID-16",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-01",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-02",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-03",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-04",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-05",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-06",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-07",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-08",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-09",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-10",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-11",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-12",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-13",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-14",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-15",
+    "PE-G4-CAP-READ-INTRODUCTION-POSITION-16",
+    "PE-G4-CAP-READ-ROOT-BINDING",
+    "PE-G4-CAP-READ-UNIQUENESS-SCOPE",
+    "PE-G4-CAP-READ-UNIQUENESS-CUT",
+    "PE-G4-CAP-READ-USED",
+    "PE-G4-CAP-READ-SCOPED-STATE",
+    "PE-G4-CAP-READ-STATE-BINDING",
+    "PE-G4-CAP-READ-COHERENT-CUT-BINDING",
+    "PE-G4-CAP-READ-PROOF-ID",
+    "PE-G4-CAP-READ-VERIFICATION-ID",
+    "PE-G4-CAP-READ-PROOF-BYTES",
+    "PE-G4-CAP-READ-PROOF-RELATION",
+    "PE-G4-CAP-READ-VERIFIER-ARTIFACTS",
+    "PE-G4-CAP-READ-ARTIFACT-BINDING-BYTES",
+    "PE-G4-CAP-READ-VERIFICATION-RESULT",
+    "PE-G4-CAP-READ-VERIFICATION-BINDING"
+  ],
+  "source_sha256": "697689d376a40d1acde9e34683bf57b4c14d3cad75eb082d229cfbbaa7fd31e7",
+  "source_path": "G3 source S70, preserved as G4 source by reference"
+}

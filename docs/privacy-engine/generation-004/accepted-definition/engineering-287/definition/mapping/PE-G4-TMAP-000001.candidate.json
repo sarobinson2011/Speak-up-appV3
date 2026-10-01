@@ -1,0 +1,43 @@
+{
+  "mapping_id": "PE-G4-TMAP-000001",
+  "profile_id": "PE-G4-TSE-PROFILE-000001-V0001",
+  "generation_id": "PE-PROTOCOL-GENERATION-004",
+  "status": "UNPUBLISHED-NONADMITTED-CANDIDATE",
+  "action_type_source": {
+    "source_id": "PE-G4-SOURCE-S76",
+    "sha256": "d5cef2cb095ebc81332b226060c23a95656cc3c991fd5006b1bf221b9d91e206",
+    "anchor": "action-type"
+  },
+  "rule_set_source": {
+    "source_id": "PE-G4-SOURCE-S76",
+    "sha256": "d5cef2cb095ebc81332b226060c23a95656cc3c991fd5006b1bf221b9d91e206",
+    "anchor": "rules"
+  },
+  "applicability_definition_id": "PE-G4-CAP-APPLICABILITY",
+  "source_class_definition_id": "PE-G4-CAP-IS-SOURCE",
+  "successor_class_definition_id": "PE-G4-CAP-IS-SUCCESSOR",
+  "successor_relation_definition_id": "PE-G4-CAP-SUCCESSOR-RELATION",
+  "successor_relation_ordered_arguments": [
+    "a",
+    "n",
+    "Q0",
+    "Q1"
+  ],
+  "state_type_id": "PE-G4-CAP-SCOPED-STATE",
+  "source_state": "(a,n,FALSE)",
+  "successor_state": "(a,n,TRUE)",
+  "frame": "All other scoped keys, membership/history and product state preserved. No stale snapshot restoration.",
+  "required_successful_effect_count": 1,
+  "accepted_no_transition_selected": false,
+  "recovery_definition_id": "PE-G4-CAP-RECOVERY",
+  "profile_sha256": null,
+  "profile_sha256_absence_reason": "Complete canonical outer container does not yet exist; fragment digests are not profile digests.",
+  "registry_row_created": false,
+  "dependency_coordinate_definition_ids": [
+    "PE-G4-CAP-SEMANTIC-BASIS-COORDINATE",
+    "PE-G4-CAP-E-BASIS-COORDINATE"
+  ],
+  "ordering_coordinate_definition_ids": [],
+  "ordering_disposition_source": "PE-G4-SOURCE-S85#ordering",
+  "source_applicability_independently_accepted": false
+}

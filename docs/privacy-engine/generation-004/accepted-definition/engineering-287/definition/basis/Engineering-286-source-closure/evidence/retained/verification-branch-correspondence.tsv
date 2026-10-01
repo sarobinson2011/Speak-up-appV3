@@ -1,0 +1,14 @@
+case_id	exact_source_branch	observed_source_behavior	bounded_protocol_interpretation	required_treatment	obligations
+V01	checkField(v): v>=r	returns ABI false	Before admission under selected domain-first clause	Not a completed proof-invalid basis for this selected capability; no A/E/D should have begun	I01;I05
+V02	g1_mulAccC: precompile 7 staticcall success=0	returns ABI false	Verification cannot be established complete from this result	No proof-invalid or rejecting D inference	I05;I06
+V03	g1_mulAccC: precompile 6 staticcall success=0	returns ABI false	Verification cannot be established complete from this result	Same raw output as V02 and V05; completion evidence required	I05;I06
+V04	checkPairing: precompile 8 staticcall success=0	isOk=0; returns ABI false	Verification cannot be established complete from this result	No completed negative inferred from failed call	I05;I06
+V05	all required calls complete; pairing result is zero	returns ABI false	Potential completed proof-invalid only under validated exact verifier/relation/input/artifact correspondence	Negative proof component; D only after all other required checks complete	I05;I07
+V06	all required calls complete; pairing result is one	returns ABI true	Potential proof-valid only under exact validated correspondence and context	Not complete E, D, authorization or commitment	I05;I07
+V07	outer call cannot complete or produce a validated result	no established bounded outcome	Inability/failed evaluation according to phase	No false/rejection default	I05;I06
+P01	petition existence check fails	PetitionDoesNotExist revert	Application predicate outside selected protocol validity	Do not add petition existence to R	I06;I07
+P02	usedSignNullifier is true before verifier call	NullifierAlreadyUsed revert; verifier not called	Negative uniqueness fact may exist; complete E not demonstrated	Do not treat early revert as complete rejecting D	I03;I06;I07
+P03	verifier address is zero	InvalidVerifier revert	Missing required verification mechanism	Inability; not proof-invalid	I05;I06
+P04	verifier returns false	InvalidZKProof revert	Collapses V01–V05 at caller surface	Caller error name cannot recover lost completion distinction	I05;I06
+P05	proof returns true but n/a binding fails	InvalidZKProof revert	Input coherence failure	Selected integrated entry does not classify incoherent source inputs as rejection	I01;I05
+P06	all source-code checks shown succeed	writes used=true; emits PetitionSigned(...,0)	Archive implementation effect; no protocol E/D/gate evidence supplied	Missing root-acceptance call and selected protocol completion/authorization gates cannot be inferred	I02;I06;I07

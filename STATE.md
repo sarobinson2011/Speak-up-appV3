@@ -5978,3 +5978,40 @@ docs/PRIVACY_ENGINE_FORMAL_ARCHITECTURE_CONSOLIDATION_REVIEW_V1.md
 
 STATE.md remains the canonical architectural authority.
 
+
+
+---
+
+## Engineering[287] — Accepted G4 protocol-definition baseline
+
+Checkpoint identity: E287-ACCEPTED-DEFINITION-BASELINE-V1
+
+Steve fully accepted the corrected parameterized G4 protocol definition on
+1 October 2026. Definition acceptance is complete at the reviewed scope;
+implementation can now be developed against the accepted contract. Concrete
+governing parameters and qualified evidence remain required by that contract.
+
+Accepted baseline:
+`docs/privacy-engine/generation-004/accepted-definition/engineering-287/README.md`
+
+Frozen definition archive SHA-256:
+`6dd7fb4658ff25076ed7c4409bbe7ae74479fea247586da4cc460a3955045505`
+
+Owning S90 SHA-256:
+`0bb1e21b33d919aa9e174f374d224803aadef17dd8087e048562ab8d277c35f4`
+
+The 972-requirement accepted definition preserves all S03–S89 source bytes and
+the preceding 971 requirement records. CAP-111 records the approved non-vacuity
+rule. Acceptance is user acceptance following a same-reviewer semantic assessment;
+separately independent technical-review provenance is not asserted.
+
+This Git checkpoint preserves accepted definition and review provenance. G4
+remains unpublished; no succession, source/assessor appointment, profile admission
+or registry insertion occurs. Published G3 is unchanged, M=0, and I164 adoption
+remains not-performed. No runtime implementation, circuit, key, proof artifact,
+environment configuration or deployed contract is changed by this checkpoint.
+
+Next substantive work: develop and demonstrate a conforming implementation
+against this accepted parameterized definition, preserving the stated scope
+and qualification/admission boundaries. Do not reopen a generic definition
+review cycle without a concrete demonstrated defect.

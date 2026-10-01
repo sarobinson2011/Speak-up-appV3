@@ -1,0 +1,335 @@
+# Proposed successor-source clauses — unallocated documentary package
+
+These clauses are proposals only. Local clause names are review coordinates, not normative requirement IDs or successor namespaces. Scope: the selected anonymous-membership participation capability. All 861 baseline requirements and their antecedents remain unchanged. Normative additions select new governing meaning; qualifications make retained obligations explicit at this interface; preserved obligations and representation choices create no independent new authority. No source is appointed and no lifecycle act is performed.
+
+The exact retained owner drafts accompany this patch. Clauses below are proposed additions at those owner anchors, not edits to published G3. Existing compatible text remains. Historical closure-status paragraphs in retained drafts are evidence of prior scope, not new normative obligations.
+
+<a id="root-window"></a>
+## root-window
+
+Proposed owner: `E283-DRAFT-ROOT-SOURCE` / `preserved-definition-draft/root-policy-source-draft.md#root-domain`. Classification: NORMATIVE-ADDITION.
+
+For the selected capability, H MUST be the finite authoritative sequence of valid membership-root introductions in its governing membership scope at the applicable cut. Root eligibility MUST use exactly its latest min(16,|H|) introduction occurrences, newest first. A distinct valid introduction of an equal value MUST count separately; a retransmission or repeated observation of one introduction MUST NOT count again. An initial root MUST count only if authoritatively introduced.
+
+Delta: Selects exact policy/window/occurrence counting; existing root validity duty does not supply these details.
+
+Preserved basis: S19#4.4, S22#6.; PE-G3-PROOF-006, PE-G3-VALID-001.
+
+<a id="root-padding"></a>
+## root-padding
+
+Proposed owner: `E283-DRAFT-ROOT-SOURCE` / `preserved-definition-draft/root-policy-source-draft.md#root-acceptance`. Classification: NORMATIVE-ADDITION.
+
+The declared root r MUST be eligible exactly when it equals the root of at least one occupied introduction in that suffix. An empty history MUST yield ineligibility. An unoccupied slot MUST NOT confer eligibility, including for zero; an occupied zero MUST receive no privilege or exclusion beyond the governing membership-state validity rules.
+
+Delta: Closes empty, zero and repeated-root semantics; no sentinel authority.
+
+Preserved basis: S19#4.4, S22#6.; PE-G3-PROOF-006, PE-G3-VALID-001.
+
+<a id="root-stages"></a>
+## root-stages
+
+Proposed owner: `E283-DRAFT-ROOT-SOURCE` / `preserved-definition-draft/root-policy-source-draft.md#observation`. Classification: NORMATIVE-ADDITION.
+
+The same fixed declared r MUST satisfy the selected root policy at E and independently at both PRE-EXECUTION and PRE-COMMITMENT. Later root expiry MUST NOT alter an existing D. A change to history that preserves eligibility MUST NOT alone establish material conflict; actual changed dependencies MUST remain subject to full unchanged-D assessment.
+
+Delta: Applies the chosen window to all three boundaries while preserving existing historical D/gate/recovery distinction.
+
+Preserved basis: S25#pe-g3-source-s25-sem-comparison, S71#pe-g3-source-s71-sem-comparison; PE-G3-TSEEXEC-001, PE-G3-TSEPROF-005.
+
+<a id="effect-state"></a>
+## effect-state
+
+Proposed owner: `E283-DRAFT-EFFECT-SOURCE` / `preserved-definition-draft/effect-source-draft.md#source-successor-classes`. Classification: NORMATIVE-ADDITION.
+
+For the selected capability, the owned state MUST be the scoped tuple (a,n,used), with canonical scalar a,n and authoritative used in {FALSE,TRUE}. The eligible source class MUST be exactly (a,n,FALSE), and the bounded successor class MUST be exactly (a,n,TRUE). Missing or unresolved state MUST NOT be treated as unused.
+
+Delta: Selects bounded protocol-owned state and exact source/successor classes.
+
+Preserved basis: S19#4.3, S22#7., S26#4.; PE-G3-UNIQ-001, PE-G3-TSEPROF-004.
+
+<a id="effect-required"></a>
+## effect-required
+
+Proposed owner: `E283-DRAFT-EFFECT-SOURCE` / `preserved-definition-draft/effect-source-draft.md#cardinality`. Classification: NORMATIVE-ADDITION.
+
+For this type, an accepting D MUST require one successful scoped unused-to-used effect through a separately valid authorization and U; the accepted no-transition route MUST NOT be selected. D alone MUST NOT authorize or perform that effect. Required successful effect cardinality MUST NOT be read as a commitment liveness guarantee or a restriction on the number of terminally failed attempts allowed by recovery.
+
+Delta: Selects required-effect route only for this type; conditional no-transition obligations remain untouched.
+
+Preserved basis: S24#19., S26#4., S43#pe-g3-source-s43-sem-authorization; PE-G3-NOTRANS-001, PE-G3-TRANSAUTH-001, PE-G3-TRANSAUTH-002.
+
+<a id="effect-frame"></a>
+## effect-frame
+
+Proposed owner: `E283-DRAFT-EFFECT-SOURCE` / `preserved-definition-draft/effect-source-draft.md#successor-relation`. Classification: NORMATIVE-ADDITION.
+
+A successful effect MUST change only the exact fixed key (a,n) from FALSE to TRUE. It MUST preserve all other keys, membership state/history and product state. It MUST NOT restore unrelated state from an earlier snapshot or commit the same key again under the unused precondition. Final comparison and semantic commitment MUST remain indivisible with no intervening authoritative state change.
+
+Delta: New exact frame/successor scope; retained semantic atomicity. No database or chain mechanism selected.
+
+Preserved basis: S26#4., S71#pe-g3-source-s71-sem-comparison; PE-G3-TSEPROF-005, PE-G3-TSEEXEC-003-A02.
+
+<a id="admission-domain"></a>
+## admission-domain
+
+Proposed owner: `E284-DRAFT-INTERFACE-SOURCE` / `interface-program-draft/source-interface-contract.md#scalar`. Classification: NORMATIVE-ADDITION.
+
+Before authoritative admission for this capability, n,a,r MUST each be available in their declared canonical representation and denote a scalar x with 0 <= x < 21888242871839275222246405745257275088548364400416034343698204186575808495617. Malformed representation, completed out-of-domain assessment, or inability to establish that assessment MUST admit no A, begin no E, produce no D, acceptance or rejection. Modular reduction, truncation or a default value MUST NOT substitute for that assessment.
+
+Delta: Selects pre-admission location and disposition; retained scalar proof domain is not sufficient alone to determine this phase.
+
+Preserved basis: S24#8., S22#6.; PE-G3-PROOF-005, PE-G3-PROOF-009, PE-G3-FAIL-018.
+
+<a id="admission-fixed"></a>
+## admission-fixed
+
+Proposed owner: `E284-DRAFT-EVALUATION-SOURCE` / `integrated-evaluation-draft/source-contract.md#admission`. Classification: NORMATIVE-QUALIFICATION.
+
+After authoritative admission, the identified inputs MUST remain fixed. Before E begins, A, its type, complete R and bounded coherent C MUST be established as distinct inputs; if R or C cannot be established, E MUST NOT begin. Missing later facts MUST NOT permit substitution of a new r, source scope, context or rule set within that E.
+
+Delta: Binds retained fixed-input rules to the selected pre-admission assessment; not an additional action-validity predicate.
+
+Preserved basis: S24#9., S25#pe-g2-src-s25-sec-008-000; PE-G3-EVAL-001, PE-G3-EVAL-005, PE-G3-PROOF-007.
+
+<a id="occurrence-new"></a>
+## occurrence-new
+
+Proposed owner: `E284-DRAFT-ACTION-SOURCE` / `action-source-draft.md#occurrence`. Classification: NORMATIVE-ADDITION.
+
+Each new authoritative admission for evaluation MUST instantiate a distinct bounded A even when proof bytes or PI equal an earlier admission. Transport, retransmission, delivery or retrieval alone MUST NOT establish a new authoritative admission or create A/E/D. Admission identity MUST NOT be inferred from proof equality, nullifier equality, actor identity or endpoint arrival.
+
+Delta: Selects the repeated-presentation rule without inventing a universal technical identifier.
+
+Preserved basis: S24#5., S24#7., S24#8.; PE-G3-ACTION-002, PE-G3-ACTION-008, PE-G3-ACTION-009.
+
+<a id="occurrence-recovery"></a>
+## occurrence-recovery
+
+Proposed owner: `E284-DRAFT-ACTION-SOURCE` / `action-source-draft.md#recovery`. Classification: NORMATIVE-ADDITION.
+
+For every unchanged recovery row requiring SAME E and SAME D, the existing A/E/D MUST be preserved. Where a row requires NEW E, a new authoritative admission MUST establish a new A before that E and a new D MUST arise only on successful completion. Failed U MUST remain terminal. No recovery overlay MUST change the 21-row function or authorize a second consumption of a used key.
+
+Delta: New A linkage for NEW E; preserves exact recovery table and D production boundary.
+
+Preserved basis: S70#pe-g3-source-s70-sem-recovery, S24#8.; PE-G3-TSEREEVAL-001-A01, PE-G3-TSEREEVAL-001-A02, PE-G3-TSEREEVAL-002.
+
+<a id="occurrence-delivery"></a>
+## occurrence-delivery
+
+Proposed owner: `E284-DRAFT-ACTION-SOURCE` / `action-source-draft.md#determination`. Classification: PRESERVED-OBLIGATION.
+
+Delivery loss or retry after successful E/D completion MUST preserve the same E/D, MUST NOT erase D or reopen E, and MUST NOT by itself create another D. Equal classifications across distinct admissions MUST NOT merge their occurrence identities.
+
+Delta: Preserved delivery separation; selected occurrence rule does not weaken determinism.
+
+Preserved basis: S25#pe-g2-src-s25-clar-atomic-009-01, S43#pe-g3-source-s43-sem-recovery; PE-G3-SURF-019, PE-G3-FAIL-019, PE-G3-STALEAUTH-013.
+
+<a id="verifier-binding"></a>
+## verifier-binding
+
+Proposed owner: `E284-DRAFT-VERIFIER-INTERFACE-SOURCE` / `source-correspondence-pass/verifier-interface-source-draft.md#qualification`. Classification: NORMATIVE-QUALIFICATION.
+
+A consumed verification result MUST bind the bounded V, exact Z/proof representation, ordered PI=(n,a,r), relation, compatible exact verifier/artifact material and protocol-relevant context. The competent source MUST establish that every computation required by those identified semantics completed before classifying proof-valid or proof-invalid.
+
+Delta: Makes retained bounded verification/completion duties explicit at the result-read interface; no new outcome subject.
+
+Preserved basis: S22#6., S25#pe-g3-source-s25-sem-dependency; PE-G3-VERIFY-001, PE-G3-VERIFY-002, PE-G3-PROOF-007, PE-G3-PROOF-010.
+
+<a id="verifier-negative"></a>
+## verifier-negative
+
+Proposed owner: `E284-DRAFT-VERIFIER-INTERFACE-SOURCE` / `source-correspondence-pass/verifier-interface-source-draft.md#evidence`. Classification: NORMATIVE-QUALIFICATION.
+
+A raw FALSE MUST be usable as a completed proof-invalid result only when the governing source establishes that it denotes completed negative verification for the exact inputs. If the same return can denote failure to complete required computations, a consumer MUST require competent independent completion/binding evidence or a faithful realization that preserves the distinction. An unchecked completion flag, revert label or unappointed trace MUST NOT discharge this duty.
+
+Delta: Preserved verification-failure distinction sharpened into exact producer evidence prerequisite.
+
+Preserved basis: S22#6., S25#pe-g3-source-s25-sem-dependency; PE-G3-VERIFY-004, PE-G3-VERIFY-006, PE-G3-VERIFY-007.
+
+<a id="verifier-authority"></a>
+## verifier-authority
+
+Proposed owner: `E284-DRAFT-VERIFIER-INTERFACE-SOURCE` / `source-correspondence-pass/verifier-interface-source-draft.md#boundary`. Classification: PRESERVED-OBLIGATION.
+
+The retained on-chain authoritative verification role MUST be preserved. An off-chain preflight, observer or proof-result carrier MUST NOT acquire that authority by parsing, signature possession, source label or hash. Completion evidence MUST be bound through the competent source chain; it MUST NOT silently appoint the carrier as verifier.
+
+Delta: Preserves source role while allowing an evidence carrier only under separately established competence.
+
+Preserved basis: S22#6.; PE-G3-VERIFY-011, PE-G3-VERIFY-012, PE-G3-PROOF-009.
+
+<a id="observation-scope"></a>
+## observation-scope
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#scope`. Classification: NORMATIVE-QUALIFICATION.
+
+Each root and uniqueness observation MUST identify its exact owning source meaning and scope. Their association to the same selected capability, fixed PI, type and context MUST be validated. Their scope identifiers need not be equal. A provider label, wallet, product record or equal tuple alone MUST NOT establish that association.
+
+Delta: New explicit interface constraint implementing retained bounded context/source validation.
+
+Preserved basis: S24#10., S70#pe-g3-source-s70-sem-types; PE-G3-RULE-003, PE-G3-RULE-008, PE-G3-TSEPROF-004.
+
+<a id="observation-cut"></a>
+## observation-cut
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#cut`. Classification: NORMATIVE-QUALIFICATION.
+
+A cut MUST denote the bounded source-authoritative observation boundary at which the asserted facts hold. Its identifier MUST NOT itself establish authenticity, completeness, currentness, finality or cross-source ordering. Root evidence MUST establish the complete count and newest valid suffix; state evidence MUST establish the complete exact scoped-key state at the applicable boundary.
+
+Delta: Defines interface meaning without selecting finality, chain height or observer.
+
+Preserved basis: S70#pe-g3-source-s70-sem-dependency, S70#pe-g3-source-s70-sem-comparison; PE-G3-TSEPROF-004, PE-G3-TSEAUTH-001.
+
+<a id="observation-joint"></a>
+## observation-joint
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#joint`. Classification: NORMATIVE-QUALIFICATION.
+
+The owning source evidence MUST establish that individually validated root/state observations can be used together under the fixed context at the requested phase without incompatible authoritative states or omission of a relevant change. Joint applicability MUST NOT be inferred from individual signatures, equal cuts or plausible values alone. It MUST NOT require identical cuts, simultaneous retrieval or one global history absent a governing source rule.
+
+Delta: Explicit source obligation for coherence; no unchecked joint-valid flag.
+
+Preserved basis: S25#pe-g2-src-s25-sec-008-000, S70#pe-g3-source-s70-sem-comparison; PE-G3-EVAL-005, PE-G3-PROOF-007, PE-G3-TSEPROF-004.
+
+<a id="observation-phase"></a>
+## observation-phase
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#gates`. Classification: NORMATIVE-QUALIFICATION.
+
+E observations MUST bind fixed E/C; each gate observation MUST independently bind the exact authorization, D, Q0, mapping/profile and digests, fixed semantic basis, gate stage and comparison attempt of that U. Old observations MUST NOT be treated as current merely because payloads match; competent evidence MUST establish their continued applicability. Gate cuts MAY differ from E and each other without that difference alone being conflict.
+
+Delta: Phase-specific source applicability under unchanged owning schemas.
+
+Preserved basis: S71#pe-g3-source-s71-sem-authorization, S72#pe-g3-source-s72-sem-comparison; PE-G3-TSECMPID-001, PE-G3-TSEEXEC-001.
+
+<a id="observation-failure"></a>
+## observation-failure
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#failure`. Classification: PRESERVED-OBLIGATION.
+
+Missing, malformed, untrusted or incoherent source facts MUST NOT become completed negative facts. Validation failures MUST retain precedence over gate predicates. Once preceding validation succeeds, independently sufficient authenticated MC MUST remain decisive despite unrelated unresolved predicate input. Joint applicability MUST NOT turn all unresolved predicates into validation failures or suppress such a conflict.
+
+Delta: Preserves validation-first and sufficient-conflict distinction, separate from complete E.
+
+Preserved basis: S70#pe-g3-source-s70-sem-comparison; PE-G3-TSERESULT-001, PE-G3-TSEPROF-005, PE-G3-EVAL-026.
+
+<a id="complete-e"></a>
+## complete-e
+
+Proposed owner: `E284-DRAFT-INTERFACE-SOURCE` / `interface-program-draft/source-interface-contract.md#completion`. Classification: PRESERVED-OBLIGATION.
+
+Every assigned required result MUST complete coherently before E produces D. One known negative MUST NOT mask another required unresolved result. Once complete, acceptance MUST require all applicable rules satisfied; otherwise the complete result is rejection. Successful completion and exactly one D MUST occur at the same semantic boundary; inability of a begun E to achieve it MUST terminate as incomplete Evaluation failure with no D.
+
+Delta: Unchanged completion law; five-result expression is a bounded realization, not a new completion rule.
+
+Preserved basis: S25#pe-g2-src-s25-clar-atomic-001-01, S25#pe-g2-src-s25-clar-atomic-006-01; PE-G3-EVAL-021, PE-G3-EVAL-023, PE-G3-EVAL-026, PE-G3-DETERM-015.
+
+<a id="carrier-exact"></a>
+## carrier-exact
+
+Proposed owner: `E284-DRAFT-ADAPTER-SOURCE` / `adapter-proposal/source-contract.md#carrier`. Classification: REPRESENTATION-ONLY.
+
+At this proposed adapter boundary each declared value SHALL be one complete canonical TSEV1 value of the exact declared type, with no trailing bytes, normalization of malformed input, reordering, reduction or defaults. The 94 ordered field assignments and matching type/owner/anchor/equality declarations SHALL be exactly those in the retained dispatch. This choice specifies only this adapter representation; it changes neither public PI nor the expression language.
+
+Delta: Concrete optional realization of existing canonical boundary; not a universal new protocol encoding.
+
+Preserved basis: S70#pe-g3-source-s70-sem-types; PE-G3-TSEPROF-003, PE-G3-TSEPROF-004.
+
+<a id="adapter-validation"></a>
+## adapter-validation
+
+Proposed owner: `E284-DRAFT-ADAPTER-SOURCE` / `adapter-proposal/source-contract.md#assembly`. Classification: NORMATIVE-QUALIFICATION.
+
+A producer crossing the boundary MUST establish independent competence, exact assertion/evidence binding, required source-defined validity and authentication for each supplied fact before it is consumed as authoritative. ReadObject flags MUST be results of that validation, never unchecked caller declarations. Parsing or mutually consistent binding tuples MUST NOT substitute for source truth or externally fixed A/E/C.
+
+Delta: Makes existing independent-validation boundary concrete; no new authority-validation primitive.
+
+Preserved basis: S70#pe-g3-source-s70-sem-authority, S70#pe-g3-source-s70-sem-dependency; PE-G3-TSEPROF-003, PE-G3-TSEPROF-004, PE-G3-TSEIFACE-001.
+
+<a id="adapter-history"></a>
+## adapter-history
+
+Proposed owner: `E284-DRAFT-INTERFACE-SOURCE` / `interface-program-draft/source-interface-contract.md#root`. Classification: NORMATIVE-QUALIFICATION.
+
+Root production MUST establish valid introduction identities, authoritative order/count, complete newest suffix, scalar domain, occupancy and exact scope/policy/cut/r binding. Occupied positions MUST be h,h-1,...,h-min(16,h)+1 with source-owned nonempty occurrence identities; absent positions/values MUST be zero and absent identity bytes empty. Shape equality MUST NOT establish validity, authority or currentness.
+
+Delta: Exact selected-policy evidence contract plus representation details, not a new history storage mandate.
+
+Preserved basis: S19#4.4, S70#pe-g3-source-s70-sem-dependency; PE-G3-PROOF-006, PE-G3-TSEPROF-004.
+
+<a id="adapter-state"></a>
+## adapter-state
+
+Proposed owner: `E284-DRAFT-INTERFACE-SOURCE` / `interface-program-draft/source-interface-contract.md#state`. Classification: NORMATIVE-QUALIFICATION.
+
+State production MUST establish canonical a,n, exact scope/key, complete FALSE/TRUE state, coherent cut/phase and competent evidence. A missing record MUST mean unused only if a competent complete-state rule establishes that interpretation. Constructor equality MUST NOT authenticate state or authorize the effect.
+
+Delta: Exact complete-state source duty; storage defaults remain unselected.
+
+Preserved basis: S22#7., S70#pe-g3-source-s70-sem-types; PE-G3-UNIQ-001, PE-G3-TSEPROF-004.
+
+<a id="adapter-expansion"></a>
+## adapter-expansion
+
+Proposed owner: `E284-DRAFT-ADAPTER-SOURCE` / `adapter-proposal/source-contract.md#dependency`. Classification: PRESERVED-OBLIGATION.
+
+Every actual contributing read, conversion, assertion, evidence value, status, call argument/result and control dependency MUST be represented and validated at its governed boundary. A producer needing additional operations MUST expand the complete body/program/privacy declarations before admission; it MUST NOT hide them behind v, used, proof-valid, a digest or one catch-all field. Pure PE-TSE calls and external evidence nodes MUST remain distinct under the existing schemas.
+
+Delta: Retains complete actual Dep(D); no new host-call or recursive graph-import primitive.
+
+Preserved basis: S70#pe-g3-source-s70-sem-dependency; PE-G3-TSEPROF-007, PE-G3-TSEPROF-008-A01.
+
+<a id="comparison-core"></a>
+## comparison-core
+
+Proposed owner: `E283-DRAFT-EFFECT-SOURCE` / `preserved-definition-draft/effect-source-draft.md#gate-materiality`. Classification: NORMATIVE-ADDITION.
+
+Within the validated selected-effect domain, equivalence MUST be v AND NOT b, with ordered sufficient conflicts NOT v then b. Here v is current acceptedness of the same r and b current used status of the same (a,n). Authorized v/b MUST be TRUE/FALSE. Every other source-required material condition MUST be explicitly integrated before admission. All original comparison result/failure rows, including both-true and incomplete coverage, MUST remain.
+
+Delta: Selects mapping-specific core, conditional on complete materiality closure; does not amend general comparison algorithm.
+
+Preserved basis: S70#pe-g3-source-s70-sem-comparison, S71#pe-g3-source-s71-sem-authorization; PE-G3-TSEPROF-005, PE-G3-TSEPROF-006-A01, PE-G3-TSEPROF-006-A02.
+
+<a id="coordinates"></a>
+## coordinates
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#coordinates`. Classification: PRESERVED-OBLIGATION.
+
+Fixed authorization/context coordinates, mutable current observations and full recovery dependencies MUST remain separate. The complete ordering/dependency-coordinate sets MUST include every coordinate required by the selected source meanings. Cut IDs and introduction positions MUST NOT automatically become inter-U ordering coordinates. A declaration of no additional coordinates MUST have an exact source completeness basis; NONE in the retained bounded projection is not that proof.
+
+Delta: Preserves full coordinate binding while preventing invented ordering law or unsupported empty final set.
+
+Preserved basis: S71#pe-g3-source-s71-sem-authorization, S70#pe-g3-source-s70-sem-dependency; PE-G3-TSEPROF-002, PE-G3-TSEAUTH-001.
+
+<a id="replay-fresh"></a>
+## replay-fresh
+
+Proposed owner: `E284-DRAFT-EVALUATION-SOURCE` / `integrated-evaluation-draft/source-contract.md#acquisition`. Classification: PRESERVED-OBLIGATION.
+
+A successful occurrence MUST retain the whole actual least Dep(D), every repeated READ and complete argument/evidence/control records required for exact replay. Fresh unchanged-D sufficiency MUST cover that entire closure: any proved difference/invalidity gives FALSE; otherwise unavailable required validation/equality gives UNRESOLVED; TRUE requires the complete conjunction. Stable projected v/b or the 94-field dispatch MUST NOT substitute for that map.
+
+Delta: Preserved recovery law specialized to adapter integration.
+
+Preserved basis: S70#pe-g3-source-s70-sem-dependency, S70#pe-g3-source-s70-sem-recovery; PE-G3-TSEPROF-007, PE-G3-TSERECOV-001-A01.
+
+<a id="privacy-universe"></a>
+## privacy-universe
+
+Proposed owner: `E284-DRAFT-OBSERVATION-SOURCE` / `observation-interface-draft/source-contract.md#privacy`. Classification: PRESERVED-OBLIGATION.
+
+The complete privacy model MUST include all 118 declared fields, exact owning schemas, public PI aliases, source/evidence/operation/argument/control surfaces and every producer-added observer/custody/correlation path in two distinct contexts. Additional joined records MUST NOT become public by implication. Actor reconstruction MUST use the full graph; the governed constant-edge exception MUST apply only to correlation reachability.
+
+Delta: Preserved whole-model obligations; external observer enumeration cannot be omitted by calling the carrier private.
+
+Preserved basis: S70#pe-g3-source-s70-sem-privacy; PE-G3-TSEPRIV-001, PE-G3-TSEPRIV-002, PE-G3-TSEPRIV-004, PE-G3-TSEPRIV-005-A02.
+
+<a id="admission-separation"></a>
+## admission-separation
+
+Proposed owner: `E284-DRAFT-ADAPTER-SOURCE` / `adapter-proposal/source-contract.md#admission`. Classification: PRESERVED-OBLIGATION.
+
+No source label, author test or package hash MUST be represented as appointed source authority, independent privacy evidence, successor publication, immutable profile admission or actual use facts. New governing meaning and mapping/profile changes MUST obtain a separately governed distinct-generation basis. Source ownership, exact producer correspondence, final body/program/privacy assembly and independent privacy appointment/evidence MUST be established before admission; actual occurrence/currentness/fresh-map facts MUST be established at use.
+
+Delta: Preserves lifecycle boundary and G3 immutability/M=0; no successor namespace allocated.
+
+Preserved basis: S55#3., S70#pe-g3-source-s70-sem-authority, S70#pe-g3-source-s70-sem-privacy; PE-G3-PROFILE-001, PE-G3-TSEPROF-008-A01, PE-G3-TMREG-008, PE-G3-GEN-014, PE-G3-EVOL-014.

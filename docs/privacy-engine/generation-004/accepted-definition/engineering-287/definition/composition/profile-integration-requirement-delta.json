@@ -1,0 +1,38 @@
+[
+  {
+    "requirement_id": "PE-G4-CAP-088",
+    "basis_requirement_id": "G4-PROFILE-INTEGRATION-CONSTRUCTION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "The unpublished G4 PRIVACY member MUST use the exact PE-G4-PRIVACY-PROFILE-V2 canonical declaration and procedure binding specified here; the earlier integration candidate MUST NOT be substituted as a governing member.",
+    "owner_sources": "PE-G4-SOURCE-S88#serialization",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86, PE-G4-SOURCE-S87",
+    "treatment": "CANONICAL-REPRESENTATION-CONSTRUCTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-089",
+    "basis_requirement_id": "G4-PROFILE-INTEGRATION-CONSTRUCTION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "The PRIVACY member MUST bind the exact external source-appointed evidence authority; missing or mismatched appointment inputs MUST prevent construction of production outer-profile bytes, and structural equality MUST NOT be represented as independent appointment validation.",
+    "owner_sources": "PE-G4-SOURCE-S88#authority",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86, PE-G4-SOURCE-S87",
+    "treatment": "CANONICAL-REPRESENTATION-CONSTRUCTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-090",
+    "basis_requirement_id": "G4-PROFILE-INTEGRATION-CONSTRUCTION",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "Successful serialization MUST NOT grant admission; source completeness, complete observer/coalition evidence, exact component/composition scope, existing signed V2 preimages and all S83/S84/S86/S87 protections MUST remain required.",
+    "owner_sources": "PE-G4-SOURCE-S88#admission",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S83, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86, PE-G4-SOURCE-S87",
+    "treatment": "CANONICAL-REPRESENTATION-CONSTRUCTION"
+  }
+]

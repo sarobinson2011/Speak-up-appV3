@@ -1,0 +1,13 @@
+# Proposed patch interpretation
+
+This is a source-change proposal against the immutable baseline, not a composed or published successor. The exact E283/E284 drafts are retained as authored inputs. The 30 proposed clauses give the reviewable additions/qualifications at their exact local owner anchors. The 97 sentence coordinates are local review positions, not allocated requirement identifiers; composition can bind them only under separately authorized naming/identity rules.
+
+No baseline requirement is edited, deleted or renumbered. New meanings are explicitly classified NORMATIVE-ADDITION. Existing-law qualifications and preserved obligations identify the exact retained basis; they do not count as newly granted authority. Representation-only detail applies only to the selected adapter. The complete source text includes the retained owner sections plus the proposed patch; historical status/next-chat narrative is non-normative and is not incorporated as a successor obligation.
+
+Before admission the candidate has no A. Exact n/a/r domain assessment is performed on candidate bytes; after a new authoritative admission establishes A, DOMAIN-BINDING binds that already-completed assessment to the same unchanged values and that A. The binding is not a precondition requiring A before A exists and is not itself an authority proof. E's bounded identity is fixed when its coherent A/R/C inputs are established at the evaluation boundary; no E completion or D is inferred from a binding tuple.
+
+The latest-16 bound is a user-authorized policy selection, not an optimality claim inferred from I164. Its occurrence semantics distinguish repeated observations from separately valid equal-valued introductions. The domain rule governs candidate admission; invalid source-observed state is an evidence validity failure, not a completed negative action rule. The required effect is successful-effect cardinality, not an unconditional liveness promise.
+
+The complete-E rule and gate rule remain distinct. An unresolved required E result blocks D despite another negative. After gate validation, independently sufficient authenticated MC can decide despite an unrelated unresolved predicate. Source-basis/currentness failure is earlier validation failure; an incomplete predicate alone must not be relabeled as a basis failure to suppress MC. All original failure rows and 21 recovery rows remain exact.
+
+No local digest authenticates source truth. No fixture is an appointment. No source label is a successor source identity. None of the local step names in the producer work table adds an expression primitive, outcome subject, actor coordinate, public proof input or public trace.

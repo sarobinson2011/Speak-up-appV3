@@ -1,0 +1,2824 @@
+[
+  {
+    "requirement_id": "PE-G3-MEM-001",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every anonymous membership identity in the current published protocol generation",
+      "text": "Anonymous membership identity MUST derive solely from private `memberSecret` possession through `leaf = Poseidon1(memberSecret)`.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "PROOF-RELATION",
+    "assigned_target": "R05 / pv",
+    "specific_discharge": "Leaf relation is established through the retained proof; do not read secret or leaf as public E input.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every anonymous membership identity in the current published protocol generation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-002",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every claim of anonymous membership continuity",
+      "text": "Anonymous membership continuity MUST mean possession of the same original `memberSecret`.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "IDENTITY-PRESERVATION",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Same-secret continuity and distinct-secret identity; no wallet/backend recovery substitution.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every claim of anonymous membership continuity",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-003",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every replacement of an active `memberSecret` with a different secret",
+      "text": "A different `memberSecret` MUST establish a different anonymous membership identity.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "IDENTITY-PRESERVATION",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Same-secret continuity and distinct-secret identity; no wallet/backend recovery substitution.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every replacement of an active `memberSecret` with a different secret",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-004",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-004",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every wallet, backend, application, deployment, transport, and heuristic recovery mechanism",
+      "text": "A mechanism other than possession of the same original `memberSecret` MUST NOT establish, reconstruct, or simulate anonymous membership continuity.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "IDENTITY-PRESERVATION",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Same-secret continuity and distinct-secret identity; no wallet/backend recovery substitution.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every wallet, backend, application, deployment, transport, and heuristic recovery mechanism",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-005",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every membership leaf",
+      "text": "A membership leaf MUST remain bounded to membership inclusion, path acquisition, and private proof-witness use according to the applicable protocol semantics.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "PRIVACY-AND-IDENTITY",
+    "assigned_target": "AC11;IF08",
+    "specific_discharge": "Keep leaf/admission provenance within their bounded roles; no public actor bridge.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every membership leaf",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-006",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every membership enrollment or activation",
+      "text": "Enrollment or activation MUST attach membership only to the privately controlled membership material presented for that enrollment without importing funding provenance into membership identity.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "CONDITIONAL-UPSTREAM-ENROLLMENT",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Applies to enrollment/activation under its exact scope; selected participation effect does not perform enrollment.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every membership enrollment or activation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-007",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every enrollment right, admission object, funding wallet, sponsor relationship, and accounting state",
+      "text": "An enrollment or admission artifact MUST NOT be represented as anonymous membership identity or Private Actor identity.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "PRIVACY-AND-IDENTITY",
+    "assigned_target": "AC11;IF08",
+    "specific_discharge": "Keep leaf/admission provenance within their bounded roles; no public actor bridge.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every enrollment right, admission object, funding wallet, sponsor relationship, and accounting state",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-MEM-008",
+    "exact_requirement": {
+      "id": "PE-G3-MEM-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every public enrollment, membership-status, readiness, and application surface",
+      "text": "A public surface MUST NOT expose a reusable mapping from enrollment or admission provenance to anonymous membership or public action occurrence.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "PRIVACY-AND-IDENTITY",
+    "assigned_target": "AC11;IF08",
+    "specific_discharge": "Keep leaf/admission provenance within their bounded roles; no public actor bridge.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every public enrollment, membership-status, readiness, and application surface",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-001",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every anonymous action type requiring one action per member per action context",
+      "text": "Uniqueness MUST be enforced within the declared `(actionId, member)` scope.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "E-PREDICATE-AND-EFFECT",
+    "assigned_target": "R07 / NOT used; AC08",
+    "specific_discharge": "Use exact scoped (a,n) state plus required atomic consumption; no alternate duplicate primitive.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every anonymous action type requiring one action per member per action context",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-002",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every nullifier in the current published protocol generation",
+      "text": "A nullifier MUST be derived as `Poseidon3(memberSecret, actionId, SIGN_DOMAIN)`.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "PROOF-RELATION",
+    "assigned_target": "R05 / pv",
+    "specific_discharge": "Retain Poseidon3(secret,a,SIGN_DOMAIN); no separate public secret-derived read.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every nullifier in the current published protocol generation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-003",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every action-layer duplicate-prevention decision in the current published protocol generation",
+      "text": "Nullifier status MUST remain the sole action-layer duplicate-prevention primitive.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "E-PREDICATE-AND-EFFECT",
+    "assigned_target": "R07 / NOT used; AC08",
+    "specific_discharge": "Use exact scoped (a,n) state plus required atomic consumption; no alternate duplicate primitive.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every action-layer duplicate-prevention decision in the current published protocol generation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-004",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-004",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every public nullifier and nullifier-status record",
+      "text": "A nullifier or its status MUST NOT be represented as Private Actor identity or reusable participant identity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY-AND-SCOPE",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Keep nullifier/status action-local; no participant, wallet, cross-action or human identity interpretation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every public nullifier and nullifier-status record",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-005",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-005",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every nullifier outside its declared action context",
+      "text": "A nullifier MUST NOT be reused as a cross-action join key, participant tag, continuity handle, or global identity mechanism.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY-AND-SCOPE",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Keep nullifier/status action-local; no participant, wallet, cross-action or human identity interpretation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every nullifier outside its declared action context",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-006",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-006",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every wallet identifier, membership leaf, enrollment identifier, admission object, and application account",
+      "text": "A wallet, leaf, enrollment, admission, or application identifier MUST NOT replace the nullifier as the action-layer uniqueness key.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY-AND-SCOPE",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Keep nullifier/status action-local; no participant, wallet, cross-action or human identity interpretation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every wallet identifier, membership leaf, enrollment identifier, admission object, and application account",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-007",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every duplicate-status response, log, diagnostic, event, and read model",
+      "text": "Duplicate-status observability MUST NOT disclose or enable inference of the Private Actor beyond the bounded action-local uniqueness fact.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "PRIVACY-AND-SCOPE",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Keep nullifier/status action-local; no participant, wallet, cross-action or human identity interpretation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every duplicate-status response, log, diagnostic, event, and read model",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-UNIQ-008",
+    "exact_requirement": {
+      "id": "PE-G3-UNIQ-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every interpretation of nullifier-enforced uniqueness",
+      "text": "Scoped nullifier uniqueness MUST NOT be represented as one-person, one-human, one-wallet, or globally reusable participant uniqueness.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S21, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY-AND-SCOPE",
+    "assigned_target": "AC01;AC11",
+    "specific_discharge": "Keep nullifier/status action-local; no participant, wallet, cross-action or human identity interpretation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every interpretation of nullifier-enforced uniqueness",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-001",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof required by a Privacy Engine Protocol Action",
+      "text": "A proof MUST possess one bounded evidence identity distinct from its encoding, public inputs, private witness, supported Protocol Action, and Private Actor.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "IDENTITY-SEPARATION",
+    "assigned_target": "EV02;AC01;AC11",
+    "specific_discharge": "Bound proof identity separately from encoding, PI, A and actor; do not merge subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof required by a Privacy Engine Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-002",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof type in a published protocol generation",
+      "text": "The published protocol generation MUST declare the proof relation, proof-system requirements, public-input schema, private-witness boundary, and verification semantics applicable to the proof type.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "SOURCE-AND-ARTIFACT-ADMISSION",
+    "assigned_target": "R03;VI02",
+    "specific_discharge": "Exact published relation/schema/system and compatible artifacts must be established; archive mismatches do not redefine them.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof type in a published protocol generation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-003",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every current-generation anonymous-action proof",
+      "text": "The proof relation MUST establish knowledge of the applicable membership secret and membership witness, inclusion under the declared membership root, and correct nullifier derivation for the declared action context without disclosing the Private Actor.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PROOF-RELATION",
+    "assigned_target": "R05 / pv",
+    "specific_discharge": "Membership knowledge/inclusion and correct scoped nullifier derivation are the assigned relation.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every current-generation anonymous-action proof",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-004",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof relation and proof-construction boundary",
+      "text": "Public inputs and private witness material MUST remain explicitly separated according to the applicable published proof relation.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20"
+    },
+    "phase_role": "PRIVACY-AND-WITNESS-BOUNDARY",
+    "assigned_target": "AC11;IF05;IF08",
+    "specific_discharge": "Private witnesses stay outside public PI and protocol surfaces; composed PI remains role-bounded.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof relation and proof-construction boundary",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-005",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every current-generation anonymous-action public-input set",
+      "text": "The declared public inputs MUST occur in the exact ordered sequence `nullifier`, `petitionId` or `actionId`, `membershipRoot`.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S22, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "FIXED-INPUT-COHERENCE",
+    "assigned_target": "R02;R03;EV03",
+    "specific_discharge": "PI is exactly n,a,r with retained meanings; compare exact bindings before classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every current-generation anonymous-action public-input set",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-006",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every current-generation declared public-input interpretation",
+      "text": "`nullifier` MUST remain bounded to action-context uniqueness, `petitionId` or `actionId` MUST remain bounded to action context, and `membershipRoot` MUST remain bounded to the applicable membership-state commitment.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "FIXED-INPUT-COHERENCE",
+    "assigned_target": "R02;R03;EV03",
+    "specific_discharge": "PI is exactly n,a,r with retained meanings; compare exact bindings before classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every current-generation declared public-input interpretation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-007",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-007",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof and declared public-input set presented together",
+      "text": "The proof representation, public-input values, ordering, action context, and proof relation MUST form one coherent verification input.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "FIXED-INPUT-COHERENCE",
+    "assigned_target": "R02;R03;EV03",
+    "specific_discharge": "PI is exactly n,a,r with retained meanings; compare exact bindings before classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof and declared public-input set presented together",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-008",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-construction process",
+      "text": "Proof construction MUST keep `memberSecret`, Merkle path, membership leaf, and other private witness material outside public inputs and public protocol surfaces.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20"
+    },
+    "phase_role": "PRIVACY-AND-WITNESS-BOUNDARY",
+    "assigned_target": "AC11;IF05;IF08",
+    "specific_discharge": "Private witnesses stay outside public PI and protocol surfaces; composed PI remains role-bounded.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-construction process",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-009",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof realization for the current published generation",
+      "text": "The proof realization MUST use the published generation's declared Circom and Groth16-over-BN254 proof semantics and compatible verifier artifacts.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "SOURCE-AND-ARTIFACT-ADMISSION",
+    "assigned_target": "R03;VI02",
+    "specific_discharge": "Exact published relation/schema/system and compatible artifacts must be established; archive mismatches do not redefine them.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof realization for the current published generation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-010",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-010",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every published proof artifact set",
+      "text": "Proof artifacts, verification keys, verifier artifacts, public-input ordering, and associated provenance MUST satisfy the published artifact-integrity and reproducibility requirements.",
+      "sources": "PE-G3-SOURCE-S22"
+    },
+    "phase_role": "SOURCE-AND-ARTIFACT-ADMISSION",
+    "assigned_target": "R03;VI02",
+    "specific_discharge": "Exact published relation/schema/system and compatible artifacts must be established; archive mismatches do not redefine them.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every published proof artifact set",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-011",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-011",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every permitted proof or public-input representation",
+      "text": "A representation MUST preserve the complete proof relation, proof-system semantics, verifier compatibility, input meaning, and input ordering of the identified published generation.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S22, PE-G3-SOURCE-S30"
+    },
+    "phase_role": "SOURCE-AND-ARTIFACT-ADMISSION",
+    "assigned_target": "R03;VI02",
+    "specific_discharge": "Exact published relation/schema/system and compatible artifacts must be established; archive mismatches do not redefine them.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every permitted proof or public-input representation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-012",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every change to a proof system, proof relation, public-input schema, public-input ordering, verifier encoding, or artifact-integrity rule",
+      "text": "The change MUST follow the applicable distinct-generation, versioning, publication, and artifact-regeneration requirements.",
+      "sources": "PE-G3-SOURCE-S15, PE-G3-SOURCE-S22"
+    },
+    "phase_role": "CONDITIONAL-LIFECYCLE",
+    "assigned_target": "preserved authority limits",
+    "specific_discharge": "Any listed semantic/artifact change follows its existing lifecycle; no lifecycle action performed here.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every change to a proof system, proof relation, public-input schema, public-input ordering, verifier encoding, or artifact-integrity rule",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-013",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-013",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof and proof representation",
+      "text": "A proof or its representation MUST NOT be treated as the Protocol Action occurrence, Private Actor identity, wallet identity, membership identity, application truth, or reusable participant identity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "IDENTITY-SEPARATION",
+    "assigned_target": "EV02;AC01;AC11",
+    "specific_discharge": "Bound proof identity separately from encoding, PI, A and actor; do not merge subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof and proof representation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-PROOF-014",
+    "exact_requirement": {
+      "id": "PE-G3-PROOF-014",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every declared public input and public-input composition",
+      "text": "A public input or public-input composition MUST NOT exceed its declared role or become a reusable participant identifier, cross-action join key, actor-reconstruction value, or application-only correlation field.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY-AND-WITNESS-BOUNDARY",
+    "assigned_target": "AC11;IF05;IF08",
+    "specific_discharge": "Private witnesses stay outside public PI and protocol surfaces; composed PI remains role-bounded.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every declared public input and public-input composition",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-001",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every required proof verification",
+      "text": "Proof verification MUST occur as one bounded verification occurrence whose proof, public inputs, proof relation, verifier artifacts, and result are distinguishable.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-VERIFICATION-INPUT",
+    "assigned_target": "VI01;VI02;EV03",
+    "specific_discharge": "Bind V and exact Z/PI/relation/artifacts/context; deterministic semantics are not an implementation-selected rule.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every required proof verification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-002",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-verification occurrence",
+      "text": "Verification MUST evaluate exactly the presented proof and declared public-input set against the applicable published proof relation and verifier artifacts.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S20, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-VERIFICATION-INPUT",
+    "assigned_target": "VI01;VI02;EV03",
+    "specific_discharge": "Bind V and exact Z/PI/relation/artifacts/context; deterministic semantics are not an implementation-selected rule.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification occurrence",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-003",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every correct proof-verification realization",
+      "text": "Verification MUST be deterministic for the same proof, public inputs, proof relation, verifier artifacts, and protocol-relevant verification context.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-VERIFICATION-INPUT",
+    "assigned_target": "VI01;VI02;EV03",
+    "specific_discharge": "Bind V and exact Z/PI/relation/artifacts/context; deterministic semantics are not an implementation-selected rule.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every correct proof-verification realization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-004",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every completed proof-verification occurrence",
+      "text": "A completed verification MUST produce exactly one bounded proof-valid or proof-invalid classification.",
+      "sources": "PE-G3-SOURCE-S19, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "QUALIFIED-PROOF-RESULT",
+    "assigned_target": "VI01–03; R04 / pv",
+    "specific_discharge": "TRUE/FALSE requires completed verification; inability remains distinct and cannot become completed FALSE.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every completed proof-verification occurrence",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-005",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-valid classification",
+      "text": "A proof-valid classification MUST establish only that the proof and declared public inputs satisfy the applicable published proof relation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "QUALIFIED-PROOF-RESULT",
+    "assigned_target": "VI01–03; R04 / pv",
+    "specific_discharge": "TRUE/FALSE requires completed verification; inability remains distinct and cannot become completed FALSE.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-valid classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-006",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-invalid classification required for a Protocol Action",
+      "text": "A required proof-invalid classification MUST prevent that proof from satisfying the corresponding applicable proof-verification requirement.",
+      "sources": "PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "QUALIFIED-PROOF-RESULT",
+    "assigned_target": "VI01–03; R04 / pv",
+    "specific_discharge": "TRUE/FALSE requires completed verification; inability remains distinct and cannot become completed FALSE.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-invalid classification required for a Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-007",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-007",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every inability to complete required proof verification",
+      "text": "Verification failure MUST remain distinguishable from a completed proof-valid classification, completed proof-invalid classification, Protocol Action rejection, and later failure classifications.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "QUALIFIED-PROOF-RESULT",
+    "assigned_target": "VI01–03; R04 / pv",
+    "specific_discharge": "TRUE/FALSE requires completed verification; inability remains distinct and cannot become completed FALSE.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every inability to complete required proof verification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-008",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-valid verification result used in Protocol Action Evaluation",
+      "text": "The result MUST contribute only the bounded evidence established by the applicable proof relation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-AUTHORITY-LIMIT",
+    "assigned_target": "AC04;AC06;VI04",
+    "specific_discharge": "Proof result is only assigned evidence; no actor truth, complete E/D/U or source authority is inferred.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-valid verification result used in Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-009",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-009",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-valid verification result",
+      "text": "Successful proof verification MUST NOT independently establish complete Protocol Action validity, acceptance, rejection, transition authorization, transition execution, or commitment.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-AUTHORITY-LIMIT",
+    "assigned_target": "AC04;AC06;VI04",
+    "specific_discharge": "Proof result is only assigned evidence; no actor truth, complete E/D/U or source authority is inferred.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-valid verification result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-010",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-010",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-verification occurrence and result",
+      "text": "Proof verification MUST NOT establish Private Actor identity, wallet identity, enrollment provenance, admission provenance, application truth, legal truth, factual truth, or reusable participant identity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-AUTHORITY-LIMIT",
+    "assigned_target": "AC04;AC06;VI04",
+    "specific_discharge": "Proof result is only assigned evidence; no actor truth, complete E/D/U or source authority is inferred.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification occurrence and result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-011",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-verification implementation",
+      "text": "Verifier code structure, deployment address, transaction identity, runtime mechanism, storage, transport, or diagnostic behavior MUST NOT redefine the applicable proof relation or verification semantics.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-AUTHORITY-LIMIT",
+    "assigned_target": "AC04;AC06;VI04",
+    "specific_discharge": "Proof result is only assigned evidence; no actor truth, complete E/D/U or source authority is inferred.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification implementation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VERIFY-012",
+    "exact_requirement": {
+      "id": "PE-G3-VERIFY-012",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-verification component and result",
+      "text": "A proof-verification component or result MUST NOT independently acquire or modify protocol authority.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-AUTHORITY-LIMIT",
+    "assigned_target": "AC04;AC06;VI04",
+    "specific_discharge": "Proof result is only assigned evidence; no actor truth, complete E/D/U or source authority is inferred.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification component and result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-001",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-verification result used during Protocol Action Evaluation",
+      "text": "The result MUST remain bounded evidence concerning exactly the proof relation and public-input relationship evaluated by that verification occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-COMPOSITION",
+    "assigned_target": "AC04;AC06",
+    "specific_discharge": "Proof evidence contributes to, but does not replace, complete rule-relative E or later subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification result used during Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-002",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-verification result contributing to complete Evaluation",
+      "text": "The result MUST contribute to the later Protocol Action Evaluation without replacing the Action, applicable rule set, Evaluation, or Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-COMPOSITION",
+    "assigned_target": "AC04;AC06",
+    "specific_discharge": "Proof evidence contributes to, but does not replace, complete rule-relative E or later subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification result contributing to complete Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-003",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action validity determination basis",
+      "text": "Complete Protocol Action validity MUST mean satisfaction of every applicable protocol rule within one bounded evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RULE-APPLICABILITY-AND-COMPLETENESS",
+    "assigned_target": "AC03;AC04;AC06",
+    "specific_discharge": "Exact source-derived R/C required; every applicable non-proof rule gets an explicit assignment.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action validity determination basis",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-004",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-004",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every successful proof-verification result",
+      "text": "Successful proof verification MUST NOT be represented as complete Protocol Action validity unless proof verification constitutes the complete applicable protocol-rule set for that action and context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-COMPOSITION",
+    "assigned_target": "AC04;AC06",
+    "specific_discharge": "Proof evidence contributes to, but does not replace, complete rule-relative E or later subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every successful proof-verification result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-005",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action whose applicable rule set includes non-proof validity conditions",
+      "text": "Every applicable non-proof validity condition MUST remain represented and evaluated as part of the complete applicable protocol-rule set.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RULE-APPLICABILITY-AND-COMPLETENESS",
+    "assigned_target": "AC03;AC04;AC06",
+    "specific_discharge": "Exact source-derived R/C required; every applicable non-proof rule gets an explicit assignment.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action whose applicable rule set includes non-proof validity conditions",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-006",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every non-proof protocol-validity condition",
+      "text": "A non-proof validity condition MUST derive from the identified published protocol generation and MUST possess a bounded applicability rule for the affected action and context.",
+      "sources": "PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RULE-APPLICABILITY-AND-COMPLETENESS",
+    "assigned_target": "AC03;AC04;AC06",
+    "specific_discharge": "Exact source-derived R/C required; every applicable non-proof rule gets an explicit assignment.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every non-proof protocol-validity condition",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-007",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-007",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every current-generation Protocol Action Evaluation basis",
+      "text": "The applicable validity basis MUST account for required action shape, public-input coherence, accepted-root status, nullifier uniqueness, replay prevention, domain separation, protocol-state requirements, and every other applicable generation-derived condition.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EXPLICIT-VALIDITY-BASIS",
+    "assigned_target": "R02–R08;EV03;EV04",
+    "specific_discharge": "Shape/domain admission, PI coherence, proof/domain relation, root acceptance and scoped uniqueness/replay assigned; additional generation-derived conditions remain exact applicability obligations.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every current-generation Protocol Action Evaluation basis",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-008",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every required proof-invalid verification result",
+      "text": "A required proof-invalid result MUST prevent the Protocol Action from satisfying the corresponding applicable proof requirement.",
+      "sources": "PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "NEGATIVE-PROOF-COMPONENT",
+    "assigned_target": "R04 / pv",
+    "specific_discharge": "Completed proof-invalid cannot satisfy the proof requirement; incomplete other components still prevent D.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every required proof-invalid verification result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-009",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every interpretation of protocol validity",
+      "text": "Protocol validity MUST remain action-specific, applicable-rule-relative, and bounded to the identified evaluation context.",
+      "sources": "PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RULE-APPLICABILITY-AND-COMPLETENESS",
+    "assigned_target": "AC03;AC04;AC06",
+    "specific_discharge": "Exact source-derived R/C required; every applicable non-proof rule gets an explicit assignment.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every interpretation of protocol validity",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-010",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-010",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-valid or protocol-valid classification",
+      "text": "Proof validity or protocol validity MUST NOT independently become Protocol Action acceptance, rejection, transition authorization, transition execution, or commitment.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "EVIDENCE-COMPOSITION",
+    "assigned_target": "AC04;AC06",
+    "specific_discharge": "Proof evidence contributes to, but does not replace, complete rule-relative E or later subjects.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-valid or protocol-valid classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-011",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every protocol-valid Protocol Action and interpretation of it",
+      "text": "Protocol validity MUST NOT be represented as application truth, external factual truth, legal truth, social truth, institutional recognition, or a Protocol Claim.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25, PE-G3-SOURCE-S28"
+    },
+    "phase_role": "PRIVACY-AND-INTERPRETATION",
+    "assigned_target": "AC11;AC01",
+    "specific_discharge": "No application/legal/social truth or actor reconstruction; preserve exact RF/SF conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every protocol-valid Protocol Action and interpretation of it",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-VALID-012",
+    "exact_requirement": {
+      "id": "PE-G3-VALID-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every evidence, validity, failure, and diagnostic surface",
+      "text": "The surface MUST preserve SF-03 and SF-04 identity separation, Private Actor non-disclosure, role-bounded public values, neutral naming, and compositional unlinkability.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRIVACY-AND-INTERPRETATION",
+    "assigned_target": "AC11;AC01",
+    "specific_discharge": "No application/legal/social truth or actor reconstruction; preserve exact RF/SF conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every evidence, validity, failure, and diagnostic surface",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-001",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Privacy Engine Protocol Action",
+      "text": "A Protocol Action MUST be one bounded occurrence of protocol-defined behavior presented through an implementation for Evaluation under the applicable rules of one identified published protocol generation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "ACTION-BOUNDARY",
+    "assigned_target": "AC01;AC03;EV01–03",
+    "specific_discharge": "Fix one bounded type/generation/R/C/PI and preserve type-versus-occurrence distinctions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Privacy Engine Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-002",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action occurrence",
+      "text": "Each Protocol Action MUST possess one stable occurrence identity distinct from every other Protocol Action occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "OCCURRENCE-AND-ADMISSION",
+    "assigned_target": "AC02;domain-admission-selection.md",
+    "specific_discharge": "New authoritative admission creates distinct A; transport/retrieval alone does not. Scalar refusal is pre-admission.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action occurrence",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-003",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action",
+      "text": "The Action MUST be bounded to one occurrence, one action type, one declared public-input set, one applicable protocol-rule set, and one bounded evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "ACTION-BOUNDARY",
+    "assigned_target": "AC01;AC03;EV01–03",
+    "specific_discharge": "Fix one bounded type/generation/R/C/PI and preserve type-versus-occurrence distinctions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-004",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action occurrence",
+      "text": "The occurrence MUST identify its protocol-defined action type and governing published protocol generation.",
+      "sources": "PE-G3-SOURCE-S24"
+    },
+    "phase_role": "ACTION-BOUNDARY",
+    "assigned_target": "AC01;AC03;EV01–03",
+    "specific_discharge": "Fix one bounded type/generation/R/C/PI and preserve type-versus-occurrence distinctions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action occurrence",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-005",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Operation, action type, and Protocol Action occurrence",
+      "text": "Published capability, action-type classification, and individual action occurrence MUST remain distinct.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S23, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "ACTION-BOUNDARY",
+    "assigned_target": "AC01;AC03;EV01–03",
+    "specific_discharge": "Fix one bounded type/generation/R/C/PI and preserve type-versus-occurrence distinctions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Operation, action type, and Protocol Action occurrence",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-006",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every effort to construct, present, submit, or obtain evaluation of a candidate Protocol Action",
+      "text": "An action attempt MUST remain distinct from a Protocol Action occurrence admitted to the authoritative evaluation boundary.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "OCCURRENCE-AND-ADMISSION",
+    "assigned_target": "AC02;domain-admission-selection.md",
+    "specific_discharge": "New authoritative admission creates distinct A; transport/retrieval alone does not. Scalar refusal is pre-admission.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every effort to construct, present, submit, or obtain evaluation of a candidate Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-007",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-007",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every candidate admitted to authoritative Protocol Action Evaluation",
+      "text": "Admission to the applicable authoritative evaluation boundary MUST instantiate one bounded Protocol Action occurrence without identifying its Private Actor.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "OCCURRENCE-AND-ADMISSION",
+    "assigned_target": "AC02;domain-admission-selection.md",
+    "specific_discharge": "New authoritative admission creates distinct A; transport/retrieval alone does not. Scalar refusal is pre-admission.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every candidate admitted to authoritative Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-008",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every transport retry, relay attempt, submission retry, implementation retry, and internal processing attempt",
+      "text": "An operational retry or attempt MUST NOT silently widen, replace, merge, or create the identity of the logical Protocol Action occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "OCCURRENCE-AND-ADMISSION",
+    "assigned_target": "AC02;domain-admission-selection.md",
+    "specific_discharge": "New authoritative admission creates distinct A; transport/retrieval alone does not. Scalar refusal is pre-admission.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transport retry, relay attempt, submission retry, implementation retry, and internal processing attempt",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-009",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every protocol rule governing repeated authoritative presentations",
+      "text": "The rule MUST determine whether the presentations concern one action occurrence or distinct action occurrences without inferring or merging Private Actor identity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "OCCURRENCE-AND-ADMISSION",
+    "assigned_target": "AC02;domain-admission-selection.md",
+    "specific_discharge": "New authoritative admission creates distinct A; transport/retrieval alone does not. Scalar refusal is pre-admission.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every protocol rule governing repeated authoritative presentations",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-010",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-010",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action",
+      "text": "The Action MUST carry exactly the declared public-input set required for its action type while remaining distinct from those public inputs.",
+      "sources": "PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "ACTION-BOUNDARY",
+    "assigned_target": "AC01;AC03;EV01–03",
+    "specific_discharge": "Fix one bounded type/generation/R/C/PI and preserve type-versus-occurrence distinctions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-011",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-011",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-supported Protocol Action",
+      "text": "The Action and its supporting proof MUST remain distinct, and the proof MUST contribute only its bounded evidence role.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "IDENTITY-AND-ONTOLOGY",
+    "assigned_target": "AC01;AC07",
+    "specific_discharge": "Separate A from proof, machinery, result, D and U; no new claim/outcome subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-supported Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-012",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action performed through an implementation",
+      "text": "The Action occurrence MUST remain distinct from the implementation, deployment, transaction, transport, storage, and runtime machinery through which it is presented.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "IDENTITY-AND-ONTOLOGY",
+    "assigned_target": "AC01;AC07",
+    "specific_discharge": "Separate A from proof, machinery, result, D and U; no new claim/outcome subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action performed through an implementation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-013",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-013",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every relationship between a Private Actor and Protocol Action",
+      "text": "Protocol Action representation, processing, and Evaluation presentation MUST preserve the RF-09 Private Actor and public Protocol Action separation invariant throughout the Action lifecycle.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S19, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY",
+    "assigned_target": "AC11",
+    "specific_discharge": "No actor-derived A identity or reusable participant encoding.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every relationship between a Private Actor and Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-014",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-014",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action identifier and representation",
+      "text": "An action identifier or representation MUST NOT identify, encode, imply, reconstruct, or become a reusable identifier for the Private Actor.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "PRIVACY",
+    "assigned_target": "AC11",
+    "specific_discharge": "No actor-derived A identity or reusable participant encoding.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action identifier and representation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-015",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-015",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every application interpretation of a Protocol Action",
+      "text": "Application-defined meaning, terminology, workflow, metadata, or truth MUST NOT become Protocol Action identity or protocol validity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S28, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "APPLICATION-EXCLUSION",
+    "assigned_target": "AC01;AC04",
+    "specific_discharge": "Application meaning and petition existence do not enter protocol R.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every application interpretation of a Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-016",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-016",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every relationship from a Protocol Action to a possible Published Result, Determination, or Protocol State Transition",
+      "text": "The Protocol Action MUST remain distinct from every interface result, downstream Determination, and possible state-transition consequence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S27, PE-G3-SOURCE-S32"
+    },
+    "phase_role": "IDENTITY-AND-ONTOLOGY",
+    "assigned_target": "AC01;AC07",
+    "specific_discharge": "Separate A from proof, machinery, result, D and U; no new claim/outcome subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every relationship from a Protocol Action to a possible Published Result, Determination, or Protocol State Transition",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-ACTION-017",
+    "exact_requirement": {
+      "id": "PE-G3-ACTION-017",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action interpretation and extension",
+      "text": "A Protocol Action MUST NOT be represented as a Protocol Claim or used to introduce another first-class subject without satisfying the established closed-ontology test.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S28"
+    },
+    "phase_role": "IDENTITY-AND-ONTOLOGY",
+    "assigned_target": "AC01;AC07",
+    "specific_discharge": "Separate A from proof, machinery, result, D and U; no new claim/outcome subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action interpretation and extension",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-001",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action",
+      "text": "The Action MUST be governed by exactly one complete and bounded applicable protocol-rule set for its identified action type and evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-002",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every rule included in an applicable Protocol Action rule set",
+      "text": "Each applicable rule MUST derive from the identified published protocol generation through the established Protocol Specification and implementation-profile direction.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every rule included in an applicable Protocol Action rule set",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-003",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every determination of Protocol Action rule applicability",
+      "text": "Applicability MUST be determined only from protocol-defined action type, applicable implementation profile, protocol-relevant state, and bounded evaluation-context conditions.",
+      "sources": "PE-G3-SOURCE-S24, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every determination of Protocol Action rule applicability",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-004",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action admitted for authoritative Evaluation",
+      "text": "The complete applicable protocol-rule set MUST be established before authoritative Evaluation begins.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action admitted for authoritative Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-005",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-005",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every implementation, application, transport, deployment, and operational policy",
+      "text": "Implementation convenience, application policy, transport behavior, deployment state, or operational discretion MUST NOT silently create, remove, weaken, strengthen, or reinterpret a protocol-validity rule.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "AUTHORITY-AND-POLICY-EXCLUSION",
+    "assigned_target": "AC03;AC04",
+    "specific_discharge": "No implementation/application/transport identifier or policy creates/removes protocol rules.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every implementation, application, transport, deployment, and operational policy",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-006",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action validity classification basis",
+      "text": "The validity-classification basis MUST apply the complete RF-18 definition of Protocol Action validity through the complete applicable protocol-rule set within the identified bounded evaluation context without replacing or redefining that definition.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action validity classification basis",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-007",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-007",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every applicable Protocol Action rule set",
+      "text": "The rule set MUST include every applicable proof requirement, public-input requirement, non-proof validity condition, uniqueness condition, state-relative condition, and action-type constraint.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every applicable Protocol Action rule set",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-008",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every protocol-validity interpretation",
+      "text": "Protocol-rule interpretation and application MUST preserve the RF-18 action-specific, applicable-rule-relative, evaluation-context-bounded validity invariant without widening validity beyond the identified context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every protocol-validity interpretation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-013",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-013",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every comparison of Protocol Action validity across materially different evaluation contexts",
+      "text": "Validity in one evaluation context MUST NOT be inferred as validity in a materially different evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "CONTEXT-PRESERVATION",
+    "assigned_target": "AC05;AC07",
+    "specific_discharge": "Changed material context is not automatically equivalent; no validity carry-over by convenience.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every comparison of Protocol Action validity across materially different evaluation contexts",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-009",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-009",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every application interpretation and external claim associated with a Protocol Action",
+      "text": "Application meaning, factual meaning, legal meaning, social meaning, or institutional meaning MUST NOT replace or redefine the applicable protocol-rule set or protocol validity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25, PE-G3-SOURCE-S28, PE-G3-SOURCE-S29"
+    },
+    "phase_role": "AUTHORITY-AND-POLICY-EXCLUSION",
+    "assigned_target": "AC03;AC04",
+    "specific_discharge": "No implementation/application/transport identifier or policy creates/removes protocol rules.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every application interpretation and external claim associated with a Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-010",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-010",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every action-local uniqueness or authorization rule",
+      "text": "The rule MUST preserve the declared action scope without creating reusable participant identity, actor disclosure, or unauthorized cross-action linkage.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "SCOPE-AND-PRIVACY",
+    "assigned_target": "AC11",
+    "specific_discharge": "Scoped uniqueness/authorization cannot create actor or cross-action identity.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every action-local uniqueness or authorization rule",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-011",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every implementation, transaction, transport, retry, storage, and diagnostic identifier",
+      "text": "An operational identifier MUST NOT determine, replace, merge, or redefine Protocol Action identity, rule applicability, or protocol validity.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S24"
+    },
+    "phase_role": "AUTHORITY-AND-POLICY-EXCLUSION",
+    "assigned_target": "AC03;AC04",
+    "specific_discharge": "No implementation/application/transport identifier or policy creates/removes protocol rules.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every implementation, transaction, transport, retry, storage, and diagnostic identifier",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-RULE-012",
+    "exact_requirement": {
+      "id": "PE-G3-RULE-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action prepared for complete Evaluation",
+      "text": "The Action, complete applicable rule set, and bounded evaluation context MUST be available as distinct preserved inputs to SF-08 without pre-emptively defining Evaluation, Determination, acceptance, or rejection.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRE-E-APPLICABILITY",
+    "assigned_target": "AC03;AC04;EV04",
+    "specific_discharge": "Establish complete exact R and bounded C before E; source-derived checks only; no blanket other-rules default.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action prepared for complete Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-001",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation",
+      "text": "A Protocol Action Evaluation MUST possess one stable occurrence identity identifying exactly one bounded Evaluation occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-002",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation",
+      "text": "An Evaluation MUST evaluate exactly one identified Protocol Action.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-003",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation",
+      "text": "An Evaluation MUST apply exactly one complete applicable protocol-rule set established for the evaluated Action.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-004",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation",
+      "text": "An Evaluation MUST occur within exactly one bounded protocol-relevant evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-005",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every candidate entering the authoritative Evaluation boundary",
+      "text": "Authoritative Evaluation MUST begin only after the Action, complete applicable rule set, and bounded evaluation context have been established as distinct inputs.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every candidate entering the authoritative Evaluation boundary",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-006",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation after Evaluation begins",
+      "text": "The Evaluation MUST preserve its identified Action, complete applicable rule set, and bounded evaluation context throughout the Evaluation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation after Evaluation begins",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-007",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation after Evaluation begins",
+      "text": "An Evaluation MUST NOT substitute, merge, widen, narrow, repair, or infer a replacement Action, rule set, or evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "E-INPUT-IDENTITY",
+    "assigned_target": "AC03;EV03",
+    "specific_discharge": "Distinct fixed E/A/R/C established before E and preserved; no repair or widening.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation after Evaluation begins",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-008",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every complete Protocol Action Evaluation",
+      "text": "A complete Evaluation MUST evaluate every applicable protocol rule governing the identified Action in the identified context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every complete Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-009",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Evaluation component",
+      "text": "An Evaluation component MUST possess an explicit assignment to one applicable requirement or one bounded subset of the complete applicable rule set.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation component",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-010",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-010",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Evaluation component",
+      "text": "An Evaluation component MUST evaluate only the applicable requirement or bounded subset assigned to that component.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation component",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-011",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Evaluation component whose assigned rules are not the complete applicable rule set",
+      "text": "A bounded component MUST NOT be represented as complete Protocol Action Evaluation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S33"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation component whose assigned rules are not the complete applicable rule set",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-012",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Evaluation containing multiple required components",
+      "text": "The Evaluation MUST coherently combine every required component result before determining whether the Evaluation is complete.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation containing multiple required components",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-013",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-013",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every proof-verification occurrence contributing to Evaluation",
+      "text": "Proof verification MUST remain bounded evidence concerning the declared proof relation and declared public inputs.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-PROOF-COMPONENT",
+    "assigned_target": "AC04;VI04",
+    "specific_discharge": "Proof result never directly creates D; remains distinct from E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification occurrence contributing to Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-014",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-014",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every relationship between proof verification and Protocol Action Evaluation",
+      "text": "Proof verification MUST remain distinct from the complete Evaluation to which it contributes.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-PROOF-COMPONENT",
+    "assigned_target": "AC04;VI04",
+    "specific_discharge": "Proof result never directly creates D; remains distinct from E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every relationship between proof verification and Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-015",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-015",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-verification result",
+      "text": "A proof-verification result MUST NOT directly produce a Protocol Action Determination, acceptance classification, or rejection classification.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "BOUNDED-PROOF-COMPONENT",
+    "assigned_target": "AC04;VI04",
+    "specific_discharge": "Proof result never directly creates D; remains distinct from E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-verification result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-016",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-016",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Evaluation whose applicable rule set contains non-proof validity conditions",
+      "text": "The Evaluation MUST evaluate every applicable non-proof validity condition independently of proof-verification success.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation whose applicable rule set contains non-proof validity conditions",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-017",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-017",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation completeness classification",
+      "text": "An Evaluation MUST be classified as complete exactly when it has evaluated every applicable rule for the identified Action within the identified context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPONENT-ASSIGNMENT-COMPLETENESS",
+    "assigned_target": "AC04;AC06;EV04",
+    "specific_discharge": "Each required component assigned explicitly; all complete coherently before classification, including non-proof conditions.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation completeness classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-018",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-018",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every partial or incomplete Protocol Action Evaluation",
+      "text": "A partial or incomplete Evaluation MUST NOT produce a Determination, acceptance classification, or rejection classification.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every partial or incomplete Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-019",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-019",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Evaluation failure and every pre-evaluation failure",
+      "text": "Evaluation failure or pre-evaluation failure MUST NOT be represented as a completed Evaluation or as producing a Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation failure and every pre-evaluation failure",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-020",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-020",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Evaluation component, identifier, evidence record, representation, diagnostic, log, field, route, test, example, and observability surface",
+      "text": "An Evaluation surface MUST NOT identify the Private Actor, extend evidence into actor identification, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRIVACY",
+    "assigned_target": "AC11;IF08",
+    "specific_discharge": "All E surfaces preserve actor non-disclosure and unlinkability.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation component, identifier, evidence record, representation, diagnostic, log, field, route, test, example, and observability surface",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-021",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-021",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every completed Protocol Action Evaluation",
+      "text": "Every completed Protocol Action Evaluation MUST produce exactly one Protocol Action Determination as part of the same protocol-semantic completion transition.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every completed Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-022",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-022",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every implementation representation of Evaluation completion and Determination production",
+      "text": "An implementation MUST NOT represent Evaluation completion and required Determination production as two protocol-semantic transitions separated by a valid completed-Evaluation state.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every implementation representation of Evaluation completion and Determination production",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-023",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-023",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Evaluation completion classification",
+      "text": "A Protocol Action Evaluation MUST be in a valid completed state exactly when every applicable completion requirement is satisfied and exactly one corresponding Protocol Action Determination has been produced.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Evaluation completion classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-024",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-024",
+      "strength": "MAY",
+      "applicability": "applicable",
+      "scope": "Every active incomplete Protocol Action Evaluation",
+      "text": "An active Protocol Action Evaluation MAY contain bounded internal steps, completed components and intermediate component state while remaining incomplete.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every active incomplete Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-025",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-025",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every internal Evaluation step, component result, intermediate state and readiness condition",
+      "text": "An internal step, component result, combined intermediate state or completion-readiness condition MUST NOT be represented as completed Evaluation or as a Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every internal Evaluation step, component result, intermediate state and readiness condition",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-EVAL-026",
+    "exact_requirement": {
+      "id": "PE-G3-EVAL-026",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every begun Evaluation unable to establish one valid Determination at its completion boundary",
+      "text": "If an Evaluation that has begun cannot establish exactly one valid Determination at the same protocol-semantic boundary as Evaluation completion, the Evaluation MUST terminate as Evaluation failure, MUST remain incomplete, and MUST produce no Determination, acceptance or rejection.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "ATOMIC-E-D-AND-FAILURE",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "No D from partial/incomplete/failed E; successful completion and exactly one D are one semantic boundary; internal steps remain incomplete.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every begun Evaluation unable to establish one valid Determination at its completion boundary",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TSEREEVAL-001-A01",
+    "exact_requirement": {
+      "id": "PE-G3-TSEREEVAL-001-A01",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "ALWAYS",
+      "text": "A new Evaluation MUST create a new E identity.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RECOVERY-OCCURRENCE",
+    "assigned_target": "AC09;recovery-occurrence-joins.tsv",
+    "specific_discharge": "New E distinct; prior E/D preserved; new D only at successful completion; no authorization/U from failed E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "ALWAYS",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TSEREEVAL-001-A02",
+    "exact_requirement": {
+      "id": "PE-G3-TSEREEVAL-001-A02",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "ALWAYS",
+      "text": "A new Evaluation MUST preserve every earlier E and D without mutation.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RECOVERY-OCCURRENCE",
+    "assigned_target": "AC09;recovery-occurrence-joins.tsv",
+    "specific_discharge": "New E distinct; prior E/D preserved; new D only at successful completion; no authorization/U from failed E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "ALWAYS",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TSEREEVAL-002",
+    "exact_requirement": {
+      "id": "PE-G3-TSEREEVAL-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "ALWAYS",
+      "text": "A new Evaluation MUST produce a new D only if it completes successfully at the Evaluation-completion boundary.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RECOVERY-OCCURRENCE",
+    "assigned_target": "AC09;recovery-occurrence-joins.tsv",
+    "specific_discharge": "New E distinct; prior E/D preserved; new D only at successful completion; no authorization/U from failed E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "ALWAYS",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TSEREEVAL-003",
+    "exact_requirement": {
+      "id": "PE-G3-TSEREEVAL-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "ALWAYS",
+      "text": "Failure before successful completion of a new Evaluation MUST produce no new D, acceptance, authorization or U.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "RECOVERY-OCCURRENCE",
+    "assigned_target": "AC09;recovery-occurrence-joins.tsv",
+    "specific_discharge": "New E distinct; prior E/D preserved; new D only at successful completion; no authorization/U from failed E.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "ALWAYS",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-001",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination",
+      "text": "A Protocol Action Determination MUST possess one stable result identity identifying exactly one bounded Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-002",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every relationship between a Protocol Action Evaluation and its Determination",
+      "text": "The Evaluation process and resulting Determination MUST remain separately identified and semantically distinct.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every relationship between a Protocol Action Evaluation and its Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-003",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every completed Protocol Action Evaluation",
+      "text": "A completed Evaluation MUST produce exactly one Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every completed Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-004",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination",
+      "text": "A Determination MUST derive from exactly one completed Protocol Action Evaluation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-005",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination",
+      "text": "A Determination MUST identify exactly one producing completed Evaluation, one evaluated Action, one complete applicable rule set, and one bounded evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-006",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-006",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every valid Protocol Action Determination",
+      "text": "A valid Determination MUST contain and reference its RF-24 classification without defining an alternative classification model.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every valid Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-007",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every incomplete or failed Protocol Action Evaluation",
+      "text": "An incomplete or failed Evaluation MUST NOT be treated as possessing or producing a Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every incomplete or failed Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-008",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-008",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination and proof-verification result",
+      "text": "A Determination MUST remain distinct from every proof-verification occurrence and proof-verification result contributing to its Evaluation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-SUBJECT-SEPARATION",
+    "assigned_target": "AC07",
+    "specific_discharge": "D distinct from V, published result and U/state; no outcome object or independent semantic authority.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination and proof-verification result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-009",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination and Published Result",
+      "text": "A Determination MUST remain distinct from every interface-level Published Result and its concrete representation.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S32"
+    },
+    "phase_role": "D-SUBJECT-SEPARATION",
+    "assigned_target": "AC07",
+    "specific_discharge": "D distinct from V, published result and U/state; no outcome object or independent semantic authority.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination and Published Result",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-010",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-010",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination and possible Protocol State Transition",
+      "text": "A Determination MUST remain distinct from transition identity, transition execution, commitment, and every committed public protocol-state consequence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "D-SUBJECT-SEPARATION",
+    "assigned_target": "AC07",
+    "specific_discharge": "D distinct from V, published result and U/state; no outcome object or independent semantic authority.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination and possible Protocol State Transition",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-011",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Determination identifier, representation, diagnostic, log, field, route, test, example, and observability surface",
+      "text": "A Determination surface MUST NOT identify the Private Actor, become reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRIVACY",
+    "assigned_target": "AC11",
+    "specific_discharge": "D representations cannot reconstruct actor or link contexts.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Determination identifier, representation, diagnostic, log, field, route, test, example, and observability surface",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-012",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every pair of correct Evaluations of the same Action under the same applicable rules and equivalent contexts",
+      "text": "The Evaluations MUST produce equivalent acceptance or rejection Determinations.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "CONTEXT-RELATIVE-DETERMINISM",
+    "assigned_target": "AC07;EV04",
+    "specific_discharge": "Equivalent inputs yield equivalent classification without merging identities; material context remains fixed.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every pair of correct Evaluations of the same Action under the same applicable rules and equivalent contexts",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-013",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-013",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every context-dependent Protocol Action Determination",
+      "text": "The Determination MUST remain bounded to its identified evaluation context without converting material context differences into implementation discretion.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "CONTEXT-RELATIVE-DETERMINISM",
+    "assigned_target": "AC07;EV04",
+    "specific_discharge": "Equivalent inputs yield equivalent classification without merging identities; material context remains fixed.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every context-dependent Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-014",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-014",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every Protocol Action Determination",
+      "text": "A Determination MUST NOT be represented as an Evaluation Outcome object or as an independently authoritative source of protocol semantics.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-SUBJECT-SEPARATION",
+    "assigned_target": "AC07",
+    "specific_discharge": "D distinct from V, published result and U/state; no outcome object or independent semantic authority.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-015",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-015",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every protocol state representing Evaluation completion",
+      "text": "A protocol state MUST NOT contain a completed Protocol Action Evaluation without exactly one corresponding Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every protocol state representing Evaluation completion",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-DETERM-016",
+    "exact_requirement": {
+      "id": "PE-G3-DETERM-016",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every Evaluation and Determination identity boundary",
+      "text": "Atomic establishment of Evaluation completion and Determination production MUST preserve the distinct identities and meanings of the Evaluation process and Determination result.",
+      "sources": "PE-G3-SOURCE-S25"
+    },
+    "phase_role": "D-IDENTITY-ATOMICITY",
+    "assigned_target": "AC06;AC07",
+    "specific_discharge": "Exactly one distinct D at successful E completion, carrying exact E/A/R/C and one classification; none on failure.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every Evaluation and Determination identity boundary",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-001",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every valid Protocol Action Determination",
+      "text": "A valid Determination MUST record exactly one mutually exclusive acceptance or rejection classification.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPLETE-CLASSIFICATION",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "All required results complete: accept iff all satisfy; reject iff at least one fails; exactly one classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every valid Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-002",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every correct accepting Determination",
+      "text": "Acceptance MUST mean that completed Evaluation established satisfaction of every applicable protocol rule within the identified evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPLETE-CLASSIFICATION",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "All required results complete: accept iff all satisfy; reject iff at least one fails; exactly one classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every correct accepting Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-003",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every correct rejecting Determination",
+      "text": "Rejection MUST mean that completed Evaluation established non-satisfaction of at least one applicable protocol rule within the identified evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPLETE-CLASSIFICATION",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "All required results complete: accept iff all satisfy; reject iff at least one fails; exactly one classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every correct rejecting Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-004",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every correct Protocol Action Determination",
+      "text": "The Determination MUST accept the Action exactly when the Action is protocol-valid within the identified evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPLETE-CLASSIFICATION",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "All required results complete: accept iff all satisfy; reject iff at least one fails; exactly one classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every correct Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-005",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-005",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every correct Protocol Action Determination",
+      "text": "The Determination MUST reject the Action exactly when the Action is not protocol-valid within the identified evaluation context.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "COMPLETE-CLASSIFICATION",
+    "assigned_target": "AC06;EV04",
+    "specific_discharge": "All required results complete: accept iff all satisfy; reject iff at least one fails; exactly one classification.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every correct Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-006",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-006",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every incomplete Evaluation, Evaluation failure, and pre-evaluation failure",
+      "text": "An incomplete Evaluation, Evaluation failure, or pre-evaluation failure MUST NOT be classified as acceptance or rejection.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "INCOMPLETENESS-IS-NOT-REJECTION",
+    "assigned_target": "AC06;VI01",
+    "specific_discharge": "Partial/operational failure or lone negative proof result cannot become D/rejection.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every incomplete Evaluation, Evaluation failure, and pre-evaluation failure",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-007",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every infrastructure, transport, deployment, storage, implementation, and observability failure",
+      "text": "An operational or implementation failure MUST NOT be represented as protocol rejection.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "INCOMPLETENESS-IS-NOT-REJECTION",
+    "assigned_target": "AC06;VI01",
+    "specific_discharge": "Partial/operational failure or lone negative proof result cannot become D/rejection.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every infrastructure, transport, deployment, storage, implementation, and observability failure",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-008",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every proof-invalid result considered outside complete Protocol Action Evaluation",
+      "text": "A proof-invalid result alone MUST NOT be represented as a complete rejecting Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "INCOMPLETENESS-IS-NOT-REJECTION",
+    "assigned_target": "AC06;VI01",
+    "specific_discharge": "Partial/operational failure or lone negative proof result cannot become D/rejection.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every proof-invalid result considered outside complete Protocol Action Evaluation",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-009",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-009",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every erroneous acceptance or rejection classification",
+      "text": "An incorrect classification MUST NOT redefine the applicable rules, protocol validity, or protocol semantics.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "SEMANTIC-AND-ONTOLOGY-BOUNDARY",
+    "assigned_target": "AC07;AC01",
+    "specific_discharge": "No new result subject, redefinition by erroneous classification, or external truth implication.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every erroneous acceptance or rejection classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-010",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-010",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every acceptance and rejection classification",
+      "text": "Acceptance or rejection MUST NOT be represented as a separately identified acceptance object, rejection object, or Evaluation Outcome object.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "SEMANTIC-AND-ONTOLOGY-BOUNDARY",
+    "assigned_target": "AC07;AC01",
+    "specific_discharge": "No new result subject, redefinition by erroneous classification, or external truth implication.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every acceptance and rejection classification",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-011",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-011",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every application or external interpretation of acceptance or rejection",
+      "text": "Acceptance or rejection MUST NOT be treated as establishing application, factual, legal, social, or institutional truth.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S24, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "SEMANTIC-AND-ONTOLOGY-BOUNDARY",
+    "assigned_target": "AC07;AC01",
+    "specific_discharge": "No new result subject, redefinition by erroneous classification, or external truth implication.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every application or external interpretation of acceptance or rejection",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-CLASS-012",
+    "exact_requirement": {
+      "id": "PE-G3-CLASS-012",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every acceptance or rejection representation, identifier, diagnostic, log, field, route, test, example, and observability surface",
+      "text": "An acceptance or rejection classification MUST NOT identify the Private Actor, introduce reusable participant identity, create cross-action linkage, or create an actor-reconstruction bridge.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S20, PE-G3-SOURCE-S25"
+    },
+    "phase_role": "PRIVACY",
+    "assigned_target": "AC11",
+    "specific_discharge": "No actor or cross-context correlation in classifications or their surfaces.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every acceptance or rejection representation, identifier, diagnostic, log, field, route, test, example, and observability surface",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-001",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Protocol Action Determination",
+      "text": "The applicable protocol rules MUST determine whether the accepted Determination requires no authorized Protocol State Transition.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "POST-D-EFFECT-BOUNDARY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Selected accepted path requires the scoped effect; acceptance alone is not U/authorization/commitment; reject cannot authorize accepted-U.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-002",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-002",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Determination for which no transition is required",
+      "text": "The Determination MUST terminate successfully without an authorized Protocol State Transition.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-NO-TRANSITION",
+    "assigned_target": "AC08",
+    "specific_discharge": "Exact zero-transition antecedent is not selected for this type; retain rule globally without reporting selected effect failure as accepted-no-transition.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Determination for which no transition is required",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-003",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted no-transition path",
+      "text": "The path MUST be treated as a complete successful terminal path at the Determination boundary.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-NO-TRANSITION",
+    "assigned_target": "AC08",
+    "specific_discharge": "Exact zero-transition antecedent is not selected for this type; retain rule globally without reporting selected effect failure as accepted-no-transition.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted no-transition path",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-004",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-004",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every accepted no-transition path",
+      "text": "An accepted no-transition path MUST NOT be represented as rejection, incomplete Evaluation, Evaluation failure, pre-transition failure, transition failure, incomplete execution, missing commitment, or implementation error.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-NO-TRANSITION",
+    "assigned_target": "AC08",
+    "specific_discharge": "Exact zero-transition antecedent is not selected for this type; retain rule globally without reporting selected effect failure as accepted-no-transition.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted no-transition path",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-005",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-005",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every inference from Protocol Action acceptance",
+      "text": "Acceptance alone MUST NOT be treated as establishing that a Protocol State Transition exists.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "POST-D-EFFECT-BOUNDARY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Selected accepted path requires the scoped effect; acceptance alone is not U/authorization/commitment; reject cannot authorize accepted-U.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every inference from Protocol Action acceptance",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-006",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-006",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every inference from Protocol Action acceptance",
+      "text": "Acceptance alone MUST NOT be treated as transition authorization.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "POST-D-EFFECT-BOUNDARY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Selected accepted path requires the scoped effect; acceptance alone is not U/authorization/commitment; reject cannot authorize accepted-U.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every inference from Protocol Action acceptance",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-007",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every inference from Protocol Action acceptance",
+      "text": "Acceptance alone MUST NOT be treated as transition execution or commitment.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "POST-D-EFFECT-BOUNDARY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Selected accepted path requires the scoped effect; acceptance alone is not U/authorization/commitment; reject cannot authorize accepted-U.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every inference from Protocol Action acceptance",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-008",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every rejecting Protocol Action Determination",
+      "text": "A rejecting Determination MUST NOT authorize a transition that requires an accepted Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "POST-D-EFFECT-BOUNDARY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Selected accepted path requires the scoped effect; acceptance alone is not U/authorization/commitment; reject cannot authorize accepted-U.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every rejecting Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-NOTRANS-009",
+    "exact_requirement": {
+      "id": "PE-G3-NOTRANS-009",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every implementation handling an accepted no-transition path",
+      "text": "An implementation MUST NOT invent a transition, report missing commitment, or reinterpret the protocol-defined absence of a transition as failure.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-NO-TRANSITION",
+    "assigned_target": "AC08",
+    "specific_discharge": "Exact zero-transition antecedent is not selected for this type; retain rule globally without reporting selected effect failure as accepted-no-transition.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every implementation handling an accepted no-transition path",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-001",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-001",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every authorization of a Protocol State Transition arising from a Protocol Action",
+      "text": "The transition MUST be authorized by one accepted Protocol Action Determination.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every authorization of a Protocol State Transition arising from a Protocol Action",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-002",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-002",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every rejected Determination, incomplete Evaluation, Evaluation failure, and absence of Determination",
+      "text": "The condition MUST NOT authorize an accepted Protocol State Transition.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every rejected Determination, incomplete Evaluation, Evaluation failure, and absence of Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-003",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-003",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every transition authorization",
+      "text": "Authorization MUST identify the authorizing Determination, authorized `U`, governing `T`, applicable `Q0`, required successor-state relation, and every protocol-defined ordering or dependency.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S26, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-004",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-004",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every transition authorization",
+      "text": "Authorization MUST select one sufficiently bounded transition occurrence rather than a class of later implementation-selected outcomes.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-005",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-005",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every accepted Protocol Action Determination",
+      "text": "Acceptance MUST NOT by itself be represented as establishing transition authorization or that a transition occurrence exists.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Protocol Action Determination",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-006",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-006",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every transition authorization",
+      "text": "Authorization MUST NOT be represented as transition execution.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-007",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-007",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every transition authorization",
+      "text": "Authorization MUST NOT be represented as transition commitment.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-008",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-008",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every transition authorization",
+      "text": "Authorization MUST NOT be represented as an authoritative protocol-state change or authoritative successor state.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-009",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-009",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Determination for which transition cardinality is applicable",
+      "text": "The complete applicable protocol rules MUST determine whether the Determination authorizes zero, exactly one, or multiple transition occurrences.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Determination for which transition cardinality is applicable",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-010",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-010",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every implementation realizing transition authorization",
+      "text": "The implementation MUST NOT choose transition cardinality for convenience, preferred outcome, infrastructure capability, or implementation policy.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every implementation realizing transition authorization",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-011",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-011",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Determination requiring zero transitions",
+      "text": "The zero-transition authorization relation MUST preserve the successful terminal behavior defined by RF-25 without fabricating a transition occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S25, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-OTHER-CARDINALITY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Zero/multiple-transition antecedents not selected here; preserve exact scopes globally and do not introduce transition-set subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Determination requiring zero transitions",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-012",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-012",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Determination authorizing multiple independently committable effects",
+      "text": "Each independently committable effect MUST remain one separately identified and separately atomic transition occurrence.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-OTHER-CARDINALITY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Zero/multiple-transition antecedents not selected here; preserve exact scopes globally and do not introduce transition-set subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Determination authorizing multiple independently committable effects",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-013",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-013",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every accepted Determination authorizing multiple transitions with protocol-defined ordering or dependencies",
+      "text": "Every authorized ordering and dependency MUST be preserved across the separately identified transitions.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-OTHER-CARDINALITY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Zero/multiple-transition antecedents not selected here; preserve exact scopes globally and do not introduce transition-set subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every accepted Determination authorizing multiple transitions with protocol-defined ordering or dependencies",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-014",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-014",
+      "strength": "MUST",
+      "applicability": "applicable",
+      "scope": "Every group of protocol-required state effects that must succeed or fail together",
+      "text": "The effects MUST be represented as one composite atomic Protocol State Transition rather than as independently committable transitions.",
+      "sources": "PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "LATER-AUTHORIZATION",
+    "assigned_target": "AC08;authorization-header-contract.tsv",
+    "specific_discharge": "Require accepted D, bounded U/T/Q0/successor/coordinates and selected one atomic effect; authorization distinct from execution/commitment/state. M=0 still authorizes none.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every group of protocol-required state effects that must succeed or fail together",
+    "complete_S55_target_claim": false
+  },
+  {
+    "requirement_id": "PE-G3-TRANSAUTH-015",
+    "exact_requirement": {
+      "id": "PE-G3-TRANSAUTH-015",
+      "strength": "MUST NOT",
+      "applicability": "applicable",
+      "scope": "Every authorization of multiple separately identified Protocol State Transitions",
+      "text": "Multiple authorized transitions MUST NOT be represented as a separately identified first-class transition-set object.",
+      "sources": "PE-G3-SOURCE-S17, PE-G3-SOURCE-S18, PE-G3-SOURCE-S27"
+    },
+    "phase_role": "CONDITIONAL-OTHER-CARDINALITY",
+    "assigned_target": "AC08",
+    "specific_discharge": "Zero/multiple-transition antecedents not selected here; preserve exact scopes globally and do not introduce transition-set subject.",
+    "status": "SOURCE-DETERMINED-ROLE-ASSIGNED; source-specific satisfaction/admission not established",
+    "condition": "Every authorization of multiple separately identified Protocol State Transitions",
+    "complete_S55_target_claim": false
+  }
+]

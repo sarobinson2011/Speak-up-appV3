@@ -1,0 +1,1627 @@
+[
+  {
+    "coordinate": "root-window/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "For the selected capability, H MUST be the finite authoritative sequence of valid membership-root introductions in its governing membership scope at the applicable cut.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-domain",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-001"
+  },
+  {
+    "coordinate": "root-window/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Root eligibility MUST use exactly its latest min(16,|H|) introduction occurrences, newest first.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-domain",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-002"
+  },
+  {
+    "coordinate": "root-window/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "A distinct valid introduction of an equal value MUST count separately; a retransmission or repeated observation of one introduction MUST NOT count again.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-domain",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-003"
+  },
+  {
+    "coordinate": "root-window/4",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "An initial root MUST count only if authoritatively introduced.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-domain",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-004"
+  },
+  {
+    "coordinate": "root-padding/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "The declared root r MUST be eligible exactly when it equals the root of at least one occupied introduction in that suffix.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-acceptance",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-005"
+  },
+  {
+    "coordinate": "root-padding/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "An empty history MUST yield ineligibility.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-acceptance",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-006"
+  },
+  {
+    "coordinate": "root-padding/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "An unoccupied slot MUST NOT confer eligibility, including for zero; an occupied zero MUST receive no privilege or exclusion beyond the governing membership-state validity rules.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "root-acceptance",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-VALID-001"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-007"
+  },
+  {
+    "coordinate": "root-stages/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "The same fixed declared r MUST satisfy the selected root policy at E and independently at both PRE-EXECUTION and PRE-COMMITMENT.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "observation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEEXEC-001",
+      "PE-G3-TSEPROF-005"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-008"
+  },
+  {
+    "coordinate": "root-stages/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Later root expiry MUST NOT alter an existing D.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "observation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEEXEC-001",
+      "PE-G3-TSEPROF-005"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-009"
+  },
+  {
+    "coordinate": "root-stages/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "A change to history that preserves eligibility MUST NOT alone establish material conflict; actual changed dependencies MUST remain subject to full unchanged-D assessment.",
+    "source_id": "PE-G4-SOURCE-S74",
+    "source_anchor": "observation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEEXEC-001",
+      "PE-G3-TSEPROF-005"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-010"
+  },
+  {
+    "coordinate": "effect-state/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "For the selected capability, the owned state MUST be the scoped tuple (a,n,used), with canonical scalar a,n and authoritative used in {FALSE,TRUE}.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "source-successor-classes",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-011"
+  },
+  {
+    "coordinate": "effect-state/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "The eligible source class MUST be exactly (a,n,FALSE), and the bounded successor class MUST be exactly (a,n,TRUE).",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "source-successor-classes",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-012"
+  },
+  {
+    "coordinate": "effect-state/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Missing or unresolved state MUST NOT be treated as unused.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "source-successor-classes",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-013"
+  },
+  {
+    "coordinate": "effect-required/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "For this type, an accepting D MUST require one successful scoped unused-to-used effect through a separately valid authorization and U; the accepted no-transition route MUST NOT be selected.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "cardinality",
+    "basis_requirement_ids": [
+      "PE-G3-NOTRANS-001",
+      "PE-G3-TRANSAUTH-001",
+      "PE-G3-TRANSAUTH-002"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-014"
+  },
+  {
+    "coordinate": "effect-required/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "D alone MUST NOT authorize or perform that effect.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "cardinality",
+    "basis_requirement_ids": [
+      "PE-G3-NOTRANS-001",
+      "PE-G3-TRANSAUTH-001",
+      "PE-G3-TRANSAUTH-002"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-015"
+  },
+  {
+    "coordinate": "effect-required/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Required successful effect cardinality MUST NOT be read as a commitment liveness guarantee or a restriction on the number of terminally failed attempts allowed by recovery.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "cardinality",
+    "basis_requirement_ids": [
+      "PE-G3-NOTRANS-001",
+      "PE-G3-TRANSAUTH-001",
+      "PE-G3-TRANSAUTH-002"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-016"
+  },
+  {
+    "coordinate": "effect-frame/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "A successful effect MUST change only the exact fixed key (a,n) from FALSE to TRUE.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "successor-relation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEEXEC-003-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-017"
+  },
+  {
+    "coordinate": "effect-frame/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "It MUST preserve all other keys, membership state/history and product state.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "successor-relation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEEXEC-003-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-018"
+  },
+  {
+    "coordinate": "effect-frame/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "It MUST NOT restore unrelated state from an earlier snapshot or commit the same key again under the unused precondition.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "successor-relation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEEXEC-003-A02"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-019"
+  },
+  {
+    "coordinate": "effect-frame/4",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Final comparison and semantic commitment MUST remain indivisible with no intervening authoritative state change.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "successor-relation",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEEXEC-003-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-020"
+  },
+  {
+    "coordinate": "admission-domain/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Before authoritative admission for this capability, n,a,r MUST each be available in their declared canonical representation and denote a scalar x with 0 <= x < 21888242871839275222246405745257275088548364400416034343698204186575808495617.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "scalar",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-005",
+      "PE-G3-PROOF-009",
+      "PE-G3-FAIL-018"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-021"
+  },
+  {
+    "coordinate": "admission-domain/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Malformed representation, completed out-of-domain assessment, or inability to establish that assessment MUST admit no A, begin no E, produce no D, acceptance or rejection.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "scalar",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-005",
+      "PE-G3-PROOF-009",
+      "PE-G3-FAIL-018"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-022"
+  },
+  {
+    "coordinate": "admission-domain/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Modular reduction, truncation or a default value MUST NOT substitute for that assessment.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "scalar",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-005",
+      "PE-G3-PROOF-009",
+      "PE-G3-FAIL-018"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-023"
+  },
+  {
+    "coordinate": "admission-fixed/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "After authoritative admission, the identified inputs MUST remain fixed.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-001",
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-024"
+  },
+  {
+    "coordinate": "admission-fixed/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Before E begins, A, its type, complete R and bounded coherent C MUST be established as distinct inputs; if R or C cannot be established, E MUST NOT begin.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-001",
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-025"
+  },
+  {
+    "coordinate": "admission-fixed/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Missing later facts MUST NOT permit substitution of a new r, source scope, context or rule set within that E.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-001",
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-026"
+  },
+  {
+    "coordinate": "occurrence-new/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Each new authoritative admission for evaluation MUST instantiate a distinct bounded A even when proof bytes or PI equal an earlier admission.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "occurrence",
+    "basis_requirement_ids": [
+      "PE-G3-ACTION-002",
+      "PE-G3-ACTION-008",
+      "PE-G3-ACTION-009"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-027"
+  },
+  {
+    "coordinate": "occurrence-new/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Transport, retransmission, delivery or retrieval alone MUST NOT establish a new authoritative admission or create A/E/D.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "occurrence",
+    "basis_requirement_ids": [
+      "PE-G3-ACTION-002",
+      "PE-G3-ACTION-008",
+      "PE-G3-ACTION-009"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-028"
+  },
+  {
+    "coordinate": "occurrence-new/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Admission identity MUST NOT be inferred from proof equality, nullifier equality, actor identity or endpoint arrival.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "occurrence",
+    "basis_requirement_ids": [
+      "PE-G3-ACTION-002",
+      "PE-G3-ACTION-008",
+      "PE-G3-ACTION-009"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-029"
+  },
+  {
+    "coordinate": "occurrence-recovery/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "For every unchanged recovery row requiring SAME E and SAME D, the existing A/E/D MUST be preserved.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "recovery",
+    "basis_requirement_ids": [
+      "PE-G3-TSEREEVAL-001-A01",
+      "PE-G3-TSEREEVAL-001-A02",
+      "PE-G3-TSEREEVAL-002"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-030"
+  },
+  {
+    "coordinate": "occurrence-recovery/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Where a row requires NEW E, a new authoritative admission MUST establish a new A before that E and a new D MUST arise only on successful completion.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "recovery",
+    "basis_requirement_ids": [
+      "PE-G3-TSEREEVAL-001-A01",
+      "PE-G3-TSEREEVAL-001-A02",
+      "PE-G3-TSEREEVAL-002"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-031"
+  },
+  {
+    "coordinate": "occurrence-recovery/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Failed U MUST remain terminal.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "recovery",
+    "basis_requirement_ids": [
+      "PE-G3-TSEREEVAL-001-A01",
+      "PE-G3-TSEREEVAL-001-A02",
+      "PE-G3-TSEREEVAL-002"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-032"
+  },
+  {
+    "coordinate": "occurrence-recovery/4",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "No recovery overlay MUST change the 21-row function or authorize a second consumption of a used key.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "recovery",
+    "basis_requirement_ids": [
+      "PE-G3-TSEREEVAL-001-A01",
+      "PE-G3-TSEREEVAL-001-A02",
+      "PE-G3-TSEREEVAL-002"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-033"
+  },
+  {
+    "coordinate": "occurrence-delivery/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Delivery loss or retry after successful E/D completion MUST preserve the same E/D, MUST NOT erase D or reopen E, and MUST NOT by itself create another D.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "determination",
+    "basis_requirement_ids": [
+      "PE-G3-SURF-019",
+      "PE-G3-FAIL-019",
+      "PE-G3-STALEAUTH-013"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "occurrence-delivery/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Equal classifications across distinct admissions MUST NOT merge their occurrence identities.",
+    "source_id": "PE-G4-SOURCE-S76",
+    "source_anchor": "determination",
+    "basis_requirement_ids": [
+      "PE-G3-SURF-019",
+      "PE-G3-FAIL-019",
+      "PE-G3-STALEAUTH-013"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "verifier-binding/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A consumed verification result MUST bind the bounded V, exact Z/proof representation, ordered PI=(n,a,r), relation, compatible exact verifier/artifact material and protocol-relevant context.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "qualification",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-001",
+      "PE-G3-VERIFY-002",
+      "PE-G3-PROOF-007",
+      "PE-G3-PROOF-010"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-034"
+  },
+  {
+    "coordinate": "verifier-binding/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "The competent source MUST establish that every computation required by those identified semantics completed before classifying proof-valid or proof-invalid.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "qualification",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-001",
+      "PE-G3-VERIFY-002",
+      "PE-G3-PROOF-007",
+      "PE-G3-PROOF-010"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-035"
+  },
+  {
+    "coordinate": "verifier-negative/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A raw FALSE MUST be usable as a completed proof-invalid result only when the governing source establishes that it denotes completed negative verification for the exact inputs.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "evidence",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-004",
+      "PE-G3-VERIFY-006",
+      "PE-G3-VERIFY-007"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-036"
+  },
+  {
+    "coordinate": "verifier-negative/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "If the same return can denote failure to complete required computations, a consumer MUST require competent independent completion/binding evidence or a faithful realization that preserves the distinction.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "evidence",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-004",
+      "PE-G3-VERIFY-006",
+      "PE-G3-VERIFY-007"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-037"
+  },
+  {
+    "coordinate": "verifier-negative/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "An unchecked completion flag, revert label or unappointed trace MUST NOT discharge this duty.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "evidence",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-004",
+      "PE-G3-VERIFY-006",
+      "PE-G3-VERIFY-007"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-038"
+  },
+  {
+    "coordinate": "verifier-authority/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "The retained on-chain authoritative verification role MUST be preserved.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "boundary",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-011",
+      "PE-G3-VERIFY-012",
+      "PE-G3-PROOF-009"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "verifier-authority/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "An off-chain preflight, observer or proof-result carrier MUST NOT acquire that authority by parsing, signature possession, source label or hash.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "boundary",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-011",
+      "PE-G3-VERIFY-012",
+      "PE-G3-PROOF-009"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "verifier-authority/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Completion evidence MUST be bound through the competent source chain; it MUST NOT silently appoint the carrier as verifier.",
+    "source_id": "PE-G4-SOURCE-S79",
+    "source_anchor": "boundary",
+    "basis_requirement_ids": [
+      "PE-G3-VERIFY-011",
+      "PE-G3-VERIFY-012",
+      "PE-G3-PROOF-009"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "observation-scope/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Each root and uniqueness observation MUST identify its exact owning source meaning and scope.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "scope",
+    "basis_requirement_ids": [
+      "PE-G3-RULE-003",
+      "PE-G3-RULE-008",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-039"
+  },
+  {
+    "coordinate": "observation-scope/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Their association to the same selected capability, fixed PI, type and context MUST be validated.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "scope",
+    "basis_requirement_ids": [
+      "PE-G3-RULE-003",
+      "PE-G3-RULE-008",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-040"
+  },
+  {
+    "coordinate": "observation-scope/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Their scope identifiers need not be equal.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "scope",
+    "basis_requirement_ids": [
+      "PE-G3-RULE-003",
+      "PE-G3-RULE-008",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [],
+    "disposition": "SOURCE-INTERPRETATION-NO-INVENTED-MODALITY",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "observation-scope/4",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A provider label, wallet, product record or equal tuple alone MUST NOT establish that association.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "scope",
+    "basis_requirement_ids": [
+      "PE-G3-RULE-003",
+      "PE-G3-RULE-008",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-041"
+  },
+  {
+    "coordinate": "observation-cut/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A cut MUST denote the bounded source-authoritative observation boundary at which the asserted facts hold.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "cut",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-042"
+  },
+  {
+    "coordinate": "observation-cut/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Its identifier MUST NOT itself establish authenticity, completeness, currentness, finality or cross-source ordering.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "cut",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-043"
+  },
+  {
+    "coordinate": "observation-cut/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Root evidence MUST establish the complete count and newest valid suffix; state evidence MUST establish the complete exact scoped-key state at the applicable boundary.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "cut",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-044"
+  },
+  {
+    "coordinate": "observation-joint/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "The owning source evidence MUST establish that individually validated root/state observations can be used together under the fixed context at the requested phase without incompatible authoritative states or omission of a relevant change.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "joint",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-045"
+  },
+  {
+    "coordinate": "observation-joint/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Joint applicability MUST NOT be inferred from individual signatures, equal cuts or plausible values alone.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "joint",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-046"
+  },
+  {
+    "coordinate": "observation-joint/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "It MUST NOT require identical cuts, simultaneous retrieval or one global history absent a governing source rule.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "joint",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-005",
+      "PE-G3-PROOF-007",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-047"
+  },
+  {
+    "coordinate": "observation-phase/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "E observations MUST bind fixed E/C; each gate observation MUST independently bind the exact authorization, D, Q0, mapping/profile and digests, fixed semantic basis, gate stage and comparison attempt of that U.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "gates",
+    "basis_requirement_ids": [
+      "PE-G3-TSECMPID-001",
+      "PE-G3-TSEEXEC-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-048"
+  },
+  {
+    "coordinate": "observation-phase/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Old observations MUST NOT be treated as current merely because payloads match; competent evidence MUST establish their continued applicability.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "gates",
+    "basis_requirement_ids": [
+      "PE-G3-TSECMPID-001",
+      "PE-G3-TSEEXEC-001"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-049"
+  },
+  {
+    "coordinate": "observation-phase/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Gate cuts MAY differ from E and each other without that difference alone being conflict.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "gates",
+    "basis_requirement_ids": [
+      "PE-G3-TSECMPID-001",
+      "PE-G3-TSEEXEC-001"
+    ],
+    "all_modalities": [
+      "MAY"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-050"
+  },
+  {
+    "coordinate": "observation-failure/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Missing, malformed, untrusted or incoherent source facts MUST NOT become completed negative facts.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "failure",
+    "basis_requirement_ids": [
+      "PE-G3-TSERESULT-001",
+      "PE-G3-TSEPROF-005",
+      "PE-G3-EVAL-026"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "observation-failure/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Validation failures MUST retain precedence over gate predicates.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "failure",
+    "basis_requirement_ids": [
+      "PE-G3-TSERESULT-001",
+      "PE-G3-TSEPROF-005",
+      "PE-G3-EVAL-026"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "observation-failure/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Once preceding validation succeeds, independently sufficient authenticated MC MUST remain decisive despite unrelated unresolved predicate input.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "failure",
+    "basis_requirement_ids": [
+      "PE-G3-TSERESULT-001",
+      "PE-G3-TSEPROF-005",
+      "PE-G3-EVAL-026"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "observation-failure/4",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Joint applicability MUST NOT turn all unresolved predicates into validation failures or suppress such a conflict.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "failure",
+    "basis_requirement_ids": [
+      "PE-G3-TSERESULT-001",
+      "PE-G3-TSEPROF-005",
+      "PE-G3-EVAL-026"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "complete-e/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Every assigned required result MUST complete coherently before E produces D.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "completion",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-021",
+      "PE-G3-EVAL-023",
+      "PE-G3-EVAL-026",
+      "PE-G3-DETERM-015"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "complete-e/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "One known negative MUST NOT mask another required unresolved result.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "completion",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-021",
+      "PE-G3-EVAL-023",
+      "PE-G3-EVAL-026",
+      "PE-G3-DETERM-015"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "complete-e/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Once complete, acceptance MUST require all applicable rules satisfied; otherwise the complete result is rejection.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "completion",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-021",
+      "PE-G3-EVAL-023",
+      "PE-G3-EVAL-026",
+      "PE-G3-DETERM-015"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "complete-e/4",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Successful completion and exactly one D MUST occur at the same semantic boundary; inability of a begun E to achieve it MUST terminate as incomplete Evaluation failure with no D.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "completion",
+    "basis_requirement_ids": [
+      "PE-G3-EVAL-021",
+      "PE-G3-EVAL-023",
+      "PE-G3-EVAL-026",
+      "PE-G3-DETERM-015"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "carrier-exact/1",
+    "classification": "REPRESENTATION-ONLY",
+    "exact_text": "At this proposed adapter boundary each declared value SHALL be one complete canonical TSEV1 value of the exact declared type, with no trailing bytes, normalization of malformed input, reordering, reduction or defaults.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "carrier",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "SHALL"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-051"
+  },
+  {
+    "coordinate": "carrier-exact/2",
+    "classification": "REPRESENTATION-ONLY",
+    "exact_text": "The 94 ordered field assignments and matching type/owner/anchor/equality declarations SHALL be exactly those in the retained dispatch.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "carrier",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "SHALL"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-052"
+  },
+  {
+    "coordinate": "carrier-exact/3",
+    "classification": "REPRESENTATION-ONLY",
+    "exact_text": "This choice specifies only this adapter representation; it changes neither public PI nor the expression language.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "carrier",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [],
+    "disposition": "SOURCE-INTERPRETATION-NO-INVENTED-MODALITY",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "adapter-validation/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A producer crossing the boundary MUST establish independent competence, exact assertion/evidence binding, required source-defined validity and authentication for each supplied fact before it is consumed as authoritative.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "assembly",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEIFACE-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-053"
+  },
+  {
+    "coordinate": "adapter-validation/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "ReadObject flags MUST be results of that validation, never unchecked caller declarations.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "assembly",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEIFACE-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-054"
+  },
+  {
+    "coordinate": "adapter-validation/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Parsing or mutually consistent binding tuples MUST NOT substitute for source truth or externally fixed A/E/C.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "assembly",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-003",
+      "PE-G3-TSEPROF-004",
+      "PE-G3-TSEIFACE-001"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-055"
+  },
+  {
+    "coordinate": "adapter-history/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Root production MUST establish valid introduction identities, authoritative order/count, complete newest suffix, scalar domain, occupancy and exact scope/policy/cut/r binding.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "root",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-056"
+  },
+  {
+    "coordinate": "adapter-history/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Occupied positions MUST be h,h-1,...,h-min(16,h)+1 with source-owned nonempty occurrence identities; absent positions/values MUST be zero and absent identity bytes empty.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "root",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-057"
+  },
+  {
+    "coordinate": "adapter-history/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Shape equality MUST NOT establish validity, authority or currentness.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "root",
+    "basis_requirement_ids": [
+      "PE-G3-PROOF-006",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-058"
+  },
+  {
+    "coordinate": "adapter-state/1",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "State production MUST establish canonical a,n, exact scope/key, complete FALSE/TRUE state, coherent cut/phase and competent evidence.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "state",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-059"
+  },
+  {
+    "coordinate": "adapter-state/2",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "A missing record MUST mean unused only if a competent complete-state rule establishes that interpretation.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "state",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-060"
+  },
+  {
+    "coordinate": "adapter-state/3",
+    "classification": "NORMATIVE-QUALIFICATION",
+    "exact_text": "Constructor equality MUST NOT authenticate state or authorize the effect.",
+    "source_id": "PE-G4-SOURCE-S77",
+    "source_anchor": "state",
+    "basis_requirement_ids": [
+      "PE-G3-UNIQ-001",
+      "PE-G3-TSEPROF-004"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-061"
+  },
+  {
+    "coordinate": "adapter-expansion/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Every actual contributing read, conversion, assertion, evidence value, status, call argument/result and control dependency MUST be represented and validated at its governed boundary.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "dependency",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSEPROF-008-A01"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "adapter-expansion/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "A producer needing additional operations MUST expand the complete body/program/privacy declarations before admission; it MUST NOT hide them behind v, used, proof-valid, a digest or one catch-all field.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "dependency",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSEPROF-008-A01"
+    ],
+    "all_modalities": [
+      "MUST",
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "adapter-expansion/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Pure PE-TSE calls and external evidence nodes MUST remain distinct under the existing schemas.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "dependency",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSEPROF-008-A01"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "comparison-core/1",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Within the validated selected-effect domain, equivalence MUST be v AND NOT b, with ordered sufficient conflicts NOT v then b.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "gate-materiality",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEPROF-006-A01",
+      "PE-G3-TSEPROF-006-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-062"
+  },
+  {
+    "coordinate": "comparison-core/2",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Here v is current acceptedness of the same r and b current used status of the same (a,n).",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "gate-materiality",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEPROF-006-A01",
+      "PE-G3-TSEPROF-006-A02"
+    ],
+    "all_modalities": [],
+    "disposition": "SOURCE-INTERPRETATION-NO-INVENTED-MODALITY",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "comparison-core/3",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Authorized v/b MUST be TRUE/FALSE.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "gate-materiality",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEPROF-006-A01",
+      "PE-G3-TSEPROF-006-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-063"
+  },
+  {
+    "coordinate": "comparison-core/4",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "Every other source-required material condition MUST be explicitly integrated before admission.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "gate-materiality",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEPROF-006-A01",
+      "PE-G3-TSEPROF-006-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-064"
+  },
+  {
+    "coordinate": "comparison-core/5",
+    "classification": "NORMATIVE-ADDITION",
+    "exact_text": "All original comparison result/failure rows, including both-true and incomplete coverage, MUST remain.",
+    "source_id": "PE-G4-SOURCE-S75",
+    "source_anchor": "gate-materiality",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-005",
+      "PE-G3-TSEPROF-006-A01",
+      "PE-G3-TSEPROF-006-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "CANDIDATE-NORMATIVE-HOME",
+    "candidate_requirement_id": "PE-G4-CAP-065"
+  },
+  {
+    "coordinate": "coordinates/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Fixed authorization/context coordinates, mutable current observations and full recovery dependencies MUST remain separate.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "coordinates",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-002",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "coordinates/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "The complete ordering/dependency-coordinate sets MUST include every coordinate required by the selected source meanings.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "coordinates",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-002",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "coordinates/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Cut IDs and introduction positions MUST NOT automatically become inter-U ordering coordinates.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "coordinates",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-002",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "coordinates/4",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "A declaration of no additional coordinates MUST have an exact source completeness basis; NONE in the retained bounded projection is not that proof.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "coordinates",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-002",
+      "PE-G3-TSEAUTH-001"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "replay-fresh/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "A successful occurrence MUST retain the whole actual least Dep(D), every repeated READ and complete argument/evidence/control records required for exact replay.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "acquisition",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSERECOV-001-A01"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "replay-fresh/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Fresh unchanged-D sufficiency MUST cover that entire closure: any proved difference/invalidity gives FALSE; otherwise unavailable required validation/equality gives UNRESOLVED; TRUE requires the complete conjunction.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "acquisition",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSERECOV-001-A01"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "replay-fresh/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Stable projected v/b or the 94-field dispatch MUST NOT substitute for that map.",
+    "source_id": "PE-G4-SOURCE-S78",
+    "source_anchor": "acquisition",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPROF-007",
+      "PE-G3-TSERECOV-001-A01"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "privacy-universe/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "The complete privacy model MUST include all 118 declared fields, exact owning schemas, public PI aliases, source/evidence/operation/argument/control surfaces and every producer-added observer/custody/correlation path in two distinct contexts.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "privacy",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPRIV-001",
+      "PE-G3-TSEPRIV-002",
+      "PE-G3-TSEPRIV-004",
+      "PE-G3-TSEPRIV-005-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "privacy-universe/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Additional joined records MUST NOT become public by implication.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "privacy",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPRIV-001",
+      "PE-G3-TSEPRIV-002",
+      "PE-G3-TSEPRIV-004",
+      "PE-G3-TSEPRIV-005-A02"
+    ],
+    "all_modalities": [
+      "MUST NOT"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "privacy-universe/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Actor reconstruction MUST use the full graph; the governed constant-edge exception MUST apply only to correlation reachability.",
+    "source_id": "PE-G4-SOURCE-S80",
+    "source_anchor": "privacy",
+    "basis_requirement_ids": [
+      "PE-G3-TSEPRIV-001",
+      "PE-G3-TSEPRIV-002",
+      "PE-G3-TSEPRIV-004",
+      "PE-G3-TSEPRIV-005-A02"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "admission-separation/1",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "No source label, author test or package hash MUST be represented as appointed source authority, independent privacy evidence, successor publication, immutable profile admission or actual use facts.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-PROFILE-001",
+      "PE-G3-TSEPROF-008-A01",
+      "PE-G3-TMREG-008",
+      "PE-G3-GEN-014",
+      "PE-G3-EVOL-014"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "admission-separation/2",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "New governing meaning and mapping/profile changes MUST obtain a separately governed distinct-generation basis.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-PROFILE-001",
+      "PE-G3-TSEPROF-008-A01",
+      "PE-G3-TMREG-008",
+      "PE-G3-GEN-014",
+      "PE-G3-EVOL-014"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  },
+  {
+    "coordinate": "admission-separation/3",
+    "classification": "PRESERVED-OBLIGATION",
+    "exact_text": "Source ownership, exact producer correspondence, final body/program/privacy assembly and independent privacy appointment/evidence MUST be established before admission; actual occurrence/currentness/fresh-map facts MUST be established at use.",
+    "source_id": "PE-G4-SOURCE-S81",
+    "source_anchor": "admission",
+    "basis_requirement_ids": [
+      "PE-G3-PROFILE-001",
+      "PE-G3-TSEPROF-008-A01",
+      "PE-G3-TMREG-008",
+      "PE-G3-GEN-014",
+      "PE-G3-EVOL-014"
+    ],
+    "all_modalities": [
+      "MUST"
+    ],
+    "disposition": "SUPPORTING-RESTATEMENT-NO-SECOND-HOME",
+    "candidate_requirement_id": null
+  }
+]

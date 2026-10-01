@@ -1,0 +1,38 @@
+[
+  {
+    "requirement_id": "PE-G4-CAP-085",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-UNIQUENESS",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "Public uniqueness MUST apply exactly the authenticated S86 cross-role semantic-separation qualification to each candidate pair; no additional evidence shortcut or same-role permission is granted.",
+    "owner_sources": "PE-G4-SOURCE-S87#qualification",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86",
+    "treatment": "UNIQUENESS-SAME-SCHEME-CORRECTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-086",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-UNIQUENESS",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "Every other cross-context public equal-byte pair MUST still be assessed under the existing uniqueness rule; qualifying one pair MUST NOT suppress an unrelated uniqueness failure.",
+    "owner_sources": "PE-G4-SOURCE-S87#all-pairs",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86",
+    "treatment": "UNIQUENESS-SAME-SCHEME-CORRECTION"
+  },
+  {
+    "requirement_id": "PE-G4-CAP-087",
+    "basis_requirement_id": "USER-AUTHORIZED-CROSS-ROLE-UNIQUENESS",
+    "requirement_family": "RF-26",
+    "strength": "MUST",
+    "applicability": "conditional",
+    "scope": "Selected G4 mapping and independently validated source-applicability domain",
+    "text": "The complete actor graph, same-role cross-action nullifier protection, source-established linkage, unknown-evidence failure and all remaining admission requirements MUST be preserved.",
+    "owner_sources": "PE-G4-SOURCE-S87#preservation",
+    "supporting_references": "PE-G4-SOURCE-S71, PE-G4-SOURCE-S84, PE-G4-SOURCE-S86",
+    "treatment": "UNIQUENESS-SAME-SCHEME-CORRECTION"
+  }
+]
