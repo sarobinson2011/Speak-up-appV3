@@ -1,0 +1,35 @@
+..E.............
+======================================================================
+ERROR: test_cross_job_receipt_substitution_rejected (tests.test_lifetime.LifetimeTests.test_cross_job_receipt_substitution_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/tests/test_lifetime.py", line 124, in test_cross_job_receipt_substitution_rejected
+    with self.assertRaises(ValueError):run(m,t,self.p/'two',self.p/'key',resume=True)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/recovery_schedule/runner.py", line 146, in run
+    return _run(*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/recovery_schedule/runner.py", line 82, in _run
+    p=scheduler.read(label);require(p is not None and scheduler.receipts[label]==expected and p['complete'],'missing/stale prerequisite receipt')
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/recovery_schedule/state.py", line 47, in read
+    return unpack(p,self)
+           ^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/metadata_catalog/receipts.py", line 40, in unpack
+    for k in ('prerequisites','artifacts'):p[k]=thaw(p[k],scheduler)
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/metadata_catalog/receipts.py", line 29, in thaw
+    e=value[MARK];p=scheduler.root/e['path'];require(p.parent==scheduler.root,'receipt catalog containment');scheduler.verify(p,e['sha256'])
+                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4n/Engineering-288-checkpoint-4N/recovery_schedule/state.py", line 60, in verify
+    with path.open('rb') as f:
+         ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmplflxluwp/two.stages/a80af966046591170498598dc8acf7cb80149083cca5be336fc66d9ce0c237d7.catalog.sqlite'
+
+----------------------------------------------------------------------
+Ran 16 tests in 17.831s
+
+FAILED (errors=1)

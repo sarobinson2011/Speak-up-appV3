@@ -1,0 +1,15 @@
+link_order	from_token_id	to_token_id	relation_order	relation_class
+000001	a.first	m.middle	000000	EQUALS
+000002	a.first	x.free	000000	EQUALS
+000003	a.first	z.last	000001	CHILD
+000004	b.fixed	x.free	000000	EQUALS
+000005	m.middle	b.fixed	000000	EQUALS
+000006	m.middle	x.free	000000	EQUALS
+000007	q.$record	b.fixed	000009	USES
+000008	q.$record	m.middle	000000	EQUALS
+000009	q.$record	q.$record	000001	SELF
+000010	q.$record	x.free	000000	EQUALS
+000011	z.last	a.first	000002	PARENT
+000012	z.last	m.middle	000000	EQUALS
+000013	z.last	q.$record	000000	EQUALS
+000014	z.last	x.free	000000	EQUALS

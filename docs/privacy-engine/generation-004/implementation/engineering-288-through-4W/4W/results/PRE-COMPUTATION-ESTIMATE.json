@@ -1,0 +1,20 @@
+{
+  "scope": "one bounded retained-prefix probe of the new wrapper; no full retained stream",
+  "expected_seconds": {
+    "low": 15,
+    "high": 35
+  },
+  "enforced_attempt_timeout_seconds": 55,
+  "reserved_attempt_ceiling_seconds": 60,
+  "aggregate_probe_ceiling_seconds": 180,
+  "maximum_attempts": 3,
+  "new_bytes_planned_to_validate": 134217728,
+  "maximum_generated_bytes_planned_with_regeneration": 201326592,
+  "expected_parent_rss_MiB": 80,
+  "expected_two_native_workers_combined_rss_MiB": 1000,
+  "spool_peak_MiB": 64,
+  "retained_inputs_rehashed_per_open_bytes": 619906652,
+  "basis": "4V measured full retained index loads and 64 MiB emitter/parser sample; exact source inputs unchanged",
+  "qualification": false,
+  "actual_admission": false
+}

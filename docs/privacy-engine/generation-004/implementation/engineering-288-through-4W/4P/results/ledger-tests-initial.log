@@ -1,0 +1,37 @@
+test_absent_source_bytes_digest_and_anchor_errors (tests.test_ledger.LedgerTests.test_absent_source_bytes_digest_and_anchor_errors) ... ok
+test_bad_signature_not_masked_by_bad_ledger (tests.test_ledger.LedgerTests.test_bad_signature_not_masked_by_bad_ledger) ... ok
+test_conflicting_exact_computational_assignment (tests.test_ledger.LedgerTests.test_conflicting_exact_computational_assignment) ... ok
+test_duplicate_classification_and_missing_obligation (tests.test_ledger.LedgerTests.test_duplicate_classification_and_missing_obligation) ... ok
+test_duplicate_count_cannot_replace_missing_stripe (tests.test_ledger.LedgerTests.test_duplicate_count_cannot_replace_missing_stripe) ... FAIL
+test_every_exact_duty_family_is_required (tests.test_ledger.LedgerTests.test_every_exact_duty_family_is_required) ... ok
+test_exact_union_multiplicities_cap_and_exceeded (tests.test_ledger.LedgerTests.test_exact_union_multiplicities_cap_and_exceeded) ... ok
+test_forged_exact_disposition_and_computational_waiver (tests.test_ledger.LedgerTests.test_forged_exact_disposition_and_computational_waiver) ... ok
+test_illegal_or_duplicate_coverage_intervals (tests.test_ledger.LedgerTests.test_illegal_or_duplicate_coverage_intervals) ... ok
+test_independent_full_finite_sources_pass_conditionally (tests.test_ledger.LedgerTests.test_independent_full_finite_sources_pass_conditionally) ... ok
+test_insufficient_whole_view_and_missing_nv_binding (tests.test_ledger.LedgerTests.test_insufficient_whole_view_and_missing_nv_binding) ... ok
+test_laboratory_qualification_never_actual (tests.test_ledger.LedgerTests.test_laboratory_qualification_never_actual) ... ok
+test_maximum_one_schema_fail_and_zero_maximum_meaning (tests.test_ledger.LedgerTests.test_maximum_one_schema_fail_and_zero_maximum_meaning) ... ok
+test_missing_classification_and_composition_qualification_cannot_budget_pass (tests.test_ledger.LedgerTests.test_missing_classification_and_composition_qualification_cannot_budget_pass) ... ok
+test_missing_composition_terms_or_wrong_multiplicity (tests.test_ledger.LedgerTests.test_missing_composition_terms_or_wrong_multiplicity) ... ok
+test_missing_external_disposition (tests.test_ledger.LedgerTests.test_missing_external_disposition) ... ok
+test_missing_node_structural_and_potential_coverage (tests.test_ledger.LedgerTests.test_missing_node_structural_and_potential_coverage) ... ok
+test_nv_runs_even_when_argument_omitted (tests.test_ledger.LedgerTests.test_nv_runs_even_when_argument_omitted) ... ok
+test_potential_stripe_counts_independent_exhaustive_oracle (tests.test_ledger.LedgerTests.test_potential_stripe_counts_independent_exhaustive_oracle) ... ok
+test_reference_outside_claimed_scope (tests.test_ledger.LedgerTests.test_reference_outside_claimed_scope) ... ok
+test_remove_ledger_source_is_missing_not_empty_success (tests.test_ledger.LedgerTests.test_remove_ledger_source_is_missing_not_empty_success) ... ok
+test_unknown_assessment_is_not_zero_term (tests.test_ledger.LedgerTests.test_unknown_assessment_is_not_zero_term) ... ok
+test_wrong_model_policy_target_and_coalition_binding (tests.test_ledger.LedgerTests.test_wrong_model_policy_target_and_coalition_binding) ... ok
+
+======================================================================
+FAIL: test_duplicate_count_cannot_replace_missing_stripe (tests.test_ledger.LedgerTests.test_duplicate_count_cannot_replace_missing_stripe)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4D/tests/test_ledger.py", line 56, in test_duplicate_count_cannot_replace_missing_stripe
+    r=self.reject(q,t,'INCOMPLETE-EVIDENCE-UNIVERSE');self.assertEqual(r['bindings']['ledger_validation']['coverage']['potential_pairs'],3)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 3
+
+----------------------------------------------------------------------
+Ran 23 tests in 5.587s
+
+FAILED (failures=1)

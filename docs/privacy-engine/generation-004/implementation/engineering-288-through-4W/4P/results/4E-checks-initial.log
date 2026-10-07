@@ -1,0 +1,109 @@
+INVALID-EVIDENCE-DIGEST: complete model descriptor digest mismatch
+INVALID-CHECKPOINT: SHA state identity
+{
+  "result": "FAIL",
+  "checkpoint": "4E",
+  "tests_run": 185,
+  "failures": 2,
+  "errors": 2,
+  "cli": [
+    {
+      "dataset": "GAMMA",
+      "mode": "CONDITIONAL-LAB",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "GAMMA",
+      "mode": "ACTUAL",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "DELTA",
+      "mode": "CONDITIONAL-LAB",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "DELTA",
+      "mode": "ACTUAL",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true,
+      "profile_admitted": false
+    }
+  ],
+  "accepted_and_retained_inputs_unchanged": true,
+  "expansion_rerun": false,
+  "full_pair_stream_executed": false,
+  "profile_admitted": false,
+  "seconds": 31.854599,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+}
+rtitions (tests.test_stream.Streams.test_every_two_chunk_boundary_and_random_partitions) ... ok
+test_independent_exhaustive_oracle_complete (tests.test_stream.Streams.test_independent_exhaustive_oracle_complete) ... ok
+test_malformed_framing (tests.test_stream.Streams.test_malformed_framing) ... ok
+test_minimum_width_spelling_above_six_digits (tests.test_stream.Streams.test_minimum_width_spelling_above_six_digits) ... ok
+test_missing_each_structural_and_potential_row (tests.test_stream.Streams.test_missing_each_structural_and_potential_row) ... ok
+test_never_read_unbounded_and_read_ahead_is_accounted (tests.test_stream.Streams.test_never_read_unbounded_and_read_ahead_is_accounted) ... ok
+test_occurrence_values_have_separate_complete_equality_set (tests.test_stream.Streams.test_occurrence_values_have_separate_complete_equality_set) ... ok
+test_reader_io_error_does_not_make_prefix_complete (tests.test_stream.Streams.test_reader_io_error_does_not_make_prefix_complete) ... ok
+test_reverse_numeric_orientation_while_lexically_sorted (tests.test_stream.Streams.test_reverse_numeric_orientation_while_lexically_sorted) ... ok
+test_structural_reverse_not_symmetric (tests.test_stream.Streams.test_structural_reverse_not_symmetric) ... ok
+test_wrong_order_and_ordinals (tests.test_stream.Streams.test_wrong_order_and_ordinals) ... ok
+
+======================================================================
+ERROR: test_union_multiplicities_exact_sum_cap_and_exceeded_budget (tests.test_admission.AdmissionTests.test_union_multiplicities_exact_sum_cap_and_exceeded_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4E/tests/test_admission.py", line 194, in test_union_multiplicities_exact_sum_cap_and_exceeded_budget
+    self.assertEqual(r['bindings']['computed_budgets']['D-EXP-ACTOR-INFORMATION']['bound'],[1,1])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'D-EXP-ACTOR-INFORMATION'
+
+======================================================================
+ERROR: test_exact_union_multiplicities_cap_and_exceeded (tests.test_ledger.LedgerTests.test_exact_union_multiplicities_cap_and_exceeded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4E/tests/test_ledger.py", line 98, in test_exact_union_multiplicities_cap_and_exceeded
+    self.assertEqual(r['bindings']['computed_budgets']['D-EXP-CROSS-ACTION-TRACKING']['bound'],[1,1])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'D-EXP-CROSS-ACTION-TRACKING'
+
+======================================================================
+FAIL: test_authenticated_malformed_frame_maps_to_schema (tests.test_integration.IntegrationTests.test_authenticated_malformed_frame_maps_to_schema)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4E/tests/test_integration.py", line 23, in test_authenticated_malformed_frame_maps_to_schema
+    q,t=dataset();self.resign(q,t,lambda b:b[:-1]);r=collect(q,t);self.assertEqual(r['earliest_failure'],'INVALID-PROFILE-SCHEMA',r);self.assertNotIn('INVALID-EVIDENCE-AUTHENTICATION',r['failures'])
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID-EVIDENCE-DIGEST' != 'INVALID-PROFILE-SCHEMA'
+- INVALID-EVIDENCE-DIGEST
++ INVALID-PROFILE-SCHEMA
+ : {'result': 'REJECTED', 'earliest_failure': 'INVALID-EVIDENCE-DIGEST', 'failures': ['INVALID-EVIDENCE-DIGEST', 'INCOMPLETE-EVIDENCE-UNIVERSE'], 'reasons': {'INVALID-EVIDENCE-DIGEST': ['scope ROOT-ELIGIBLE: $: scope source exact four-file object correspondence'], 'INCOMPLETE-EVIDENCE-UNIVERSE': ['three distinct scopes not all completely bound and conditionally qualified', 'authenticated three-scope ledger conclusion not established']}, 'mode': 'CONDITIONAL-LAB', 'bindings': {'final_profile_sha256': '03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9', 'model_sha256': 'c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc', 'policy_id': 'G-POLICY', 'policy_material_sha256': 'da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad', 'assumption_ids': ['G-HYPOTHESIS'], 'qualification_ids': ['G-QUAL'], 'computed_dispositions': {'G-OB-ACTOR-INFORMATION': 'NOT-ESTABLISHED', 'G-OB-COLLISION': 'NOT-ESTABLISHED', 'G-OB-CROSS-ACTION-TRACKING': 'NOT-ESTABLISHED', 'G-OB-EXACT': 'NOT-ESTABLISHED'}, 'computed_budgets': {}, 'ledger_validation': {'source_acquired': True, 'mechanical_coverage': True, 'classification_ready': True, 'ready_obligations': ['G-OB-ACTOR-INFORMATION', 'G-OB-COLLISION', 'G-OB-CROSS-ACTION-TRACKING', 'G-OB-EXACT'], 'ready_rules': ['G-RULE-ACTOR-INFORMATION', 'G-RULE-COLLISION', 'G-RULE-CROSS-ACTION-TRACKING'], 'nv_ready': ['G-EXP-ACTOR-INFORMATION', 'G-EXP-COLLISION', 'G-EXP-CROSS-ACTION-TRACKING'], 'qualification': 'EXPLICIT-LAB-ASSUMPTIONS-ONLY', 'actual_qualification_established': False, 'profile_admitted': False, 'source_reference': {'owner_source_id': 'CP3-LAB-GAMMA', 'source_sha256': '33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2', 'source_anchor': 'complete-ledger-construction', 'material_sha256': '8dd0f443324e77fabe00597aca8f4c509a255ca7e09a318d1153b6b6165d53a1'}, 'coverage': {'nodes': 4, 'structural_occurrences': 2, 'potential_pairs': 6, 'pair_enumeration': False}}, 'scope_validation': {'source_acquired': True, 'scopes': {'ROOT-ELIGIBLE': {'closure_established': True, 'bundle_bound': False, 'ready': False, 'qualification': 'NOT-ESTABLISHED', 'node_indices': [0, 1, 2, 3], 'seed_ids': ['G-N0', 'G-N2']}, 'SCOPED-USED': {'closure_established': True, 'bundle_bound': True, 'ready': False, 'qualification': 'NOT-ESTABLISHED', 'node_indices': [0, 1, 2, 3], 'seed_ids': ['G-N1', 'G-N3'], 'link_validation': {'result': 'PASS-SUPPLIED-LINK-STREAM', 'complete': True, 'eof_observed': True, 'bytes_consumed': 315, 'consumed_sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6', 'complete_stream_sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6', 'rows_validated': 8, 'structural_rows': 2, 'potential_rows': 6, 'expected_structural_rows': 2, 'expected_potential_rows': 6, 'peak_pending_line_bytes': 66, 'chunk_budget_bytes': 65536, 'failure': None, 'profile_admitted': False, 'actual_qualification_established': False}}, 'NOT-APPLICABLE': {'closure_established': True, 'bundle_bound': True, 'ready': False, 'qualification': 'NOT-ESTABLISHED', 'node_indices': [0, 1, 2, 3], 'seed_ids': [], 'link_validation': {'result': 'PASS-SUPPLIED-LINK-STREAM', 'complete': True, 'eof_observed': True, 'bytes_consumed': 315, 'consumed_sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6', 'complete_stream_sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6', 'rows_validated': 8, 'structural_rows': 2, 'potential_rows': 6, 'expected_structural_rows': 2, 'expected_potential_rows': 6, 'peak_pending_line_bytes': 66, 'chunk_budget_bytes': 65536, 'failure': None, 'profile_admitted': False, 'actual_qualification_established': False}}}, 'ready': False, 'qualification': 'NOT-ESTABLISHED', 'actual_qualification_established': False, 'profile_admitted': False, 'potential_pairs_enumerated': False, 'source_reference': {'owner_source_id': 'CP3-LAB-GAMMA', 'source_sha256': '33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2', 'source_anchor': 'complete-scope-source', 'material_sha256': 'a6faa745479e1020efe064d405709ec14df14635cf47240b040dad5282e7af2f'}}, 'bundle_authentication': {'ROOT-ELIGIBLE': {'four_file_identity': True, 'signature_valid': True, 'complete': True, 'source_authority_established': False, 'profile_admitted': False, 'algorithm': 'ED25519-RFC8032', 'message_limit_bytes': 67108864, 'file_identities': {'evidence.tsv': {'bytes': 780, 'sha256': '319772bc2631787e49ff837f37342d6740858ddd38ddd9e067f794d983dd6f75'}, 'tokens.tsv': {'bytes': 584, 'sha256': '103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8'}, 'links.tsv': {'bytes': 314, 'sha256': 'c1d4398ae29480f73da714b4150ebecd7c514ed56c3d854a2e4efedd5439c65c'}, 'signature.txt': {'bytes': 144, 'sha256': '8f452c85b9bf73617b67746f35aa5aaf2dbe4f311dd16b91e27e51b1c289758c'}}, 'object_sha256': '907402ede7d91468594bf8848a208feb9bc2d48ddcd744d9f7b54a620a269395', 'signed_message_bytes': 1705}, 'SCOPED-USED': {'four_file_identity': True, 'signature_valid': True, 'complete': True, 'source_authority_established': False, 'profile_admitted': False, 'algorithm': 'ED25519-RFC8032', 'message_limit_bytes': 67108864, 'file_identities': {'evidence.tsv': {'bytes': 776, 'sha256': 'c59c97ad1c364af5e954609874cc6d6c646fb3bc922de756f1afec588936854b'}, 'tokens.tsv': {'bytes': 584, 'sha256': '103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8'}, 'links.tsv': {'bytes': 315, 'sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6'}, 'signature.txt': {'bytes': 144, 'sha256': '25b411556044e90eb027a1a07ec7eecf99bd954d71a6741115ec6b3572adb2e7'}}, 'object_sha256': 'a2d846bf896afa3b53d22db1d8b3a05631b358f3b648e2e5f68e4a13e321f46b', 'signed_message_bytes': 1702}, 'NOT-APPLICABLE': {'four_file_identity': True, 'signature_valid': True, 'complete': True, 'source_authority_established': False, 'profile_admitted': False, 'algorithm': 'ED25519-RFC8032', 'message_limit_bytes': 67108864, 'file_identities': {'evidence.tsv': {'bytes': 775, 'sha256': 'db5c2ac4ef523fe1e603ada7c4fc09c9a0aebdc4f159a5e687992483d0820b12'}, 'tokens.tsv': {'bytes': 584, 'sha256': '103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8'}, 'links.tsv': {'bytes': 315, 'sha256': 'aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6'}, 'signature.txt': {'bytes': 144, 'sha256': '1b1423001c5051443819a1f446c8207e76f5073c4d1a67c4941efe39f136cf7e'}}, 'object_sha256': 'c59eca47f4527cb8139eb7d89819e6dbe9a786b808994266a3517d7e4aaa2c09', 'signed_message_bytes': 1701}}, 'laboratory_hypotheses': ['policy-governance', 'assessor-competence', 'observer-completeness', 'model-ledger-classification', 'composition-decomposition', 'source-producer-correspondence', 'proof-soundness', 'profile-adequacy', 'applicability', 'evidence-authority', 'non-vacuity'], 'meaning': 'Local conditional binding/admission checks only; actual qualification and full-stream identities remain unestablished'}, 'profile_admitted': False, 'actual_qualification_established': False, 'runtime_effect_performed': False, 'full_model_integration_witness': False}
+
+======================================================================
+FAIL: test_bad_signature_retained_with_later_stream_failure (tests.test_integration.IntegrationTests.test_bad_signature_retained_with_later_stream_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4E/tests/test_integration.py", line 28, in test_bad_signature_retained_with_later_stream_failure
+    q,t=dataset();self.resign(q,t,lambda b:b[:-1]);bad_signature(q);r=collect(q,t);self.assertIn('INVALID-EVIDENCE-AUTHENTICATION',r['failures']);self.assertEqual(r['earliest_failure'],'INVALID-PROFILE-SCHEMA')
+                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID-EVIDENCE-AUTHENTICATION' != 'INVALID-PROFILE-SCHEMA'
+- INVALID-EVIDENCE-AUTHENTICATION
++ INVALID-PROFILE-SCHEMA
+
+
+----------------------------------------------------------------------
+Ran 185 tests in 30.340s
+
+FAILED (failures=2, errors=2)
+

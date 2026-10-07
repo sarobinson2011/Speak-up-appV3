@@ -1,0 +1,176 @@
+{
+  "format": "CP4F-BACKEND-OBSERVATIONS-1",
+  "reference_versions_match_pins": true,
+  "capabilities": {
+    "incremental_pure_ed25519": "NOT-IMPLEMENTED",
+    "candidate": "ed25519-dalek=2.2.0; hazmat VerifyingKey::verify_stream",
+    "blocker": "RFC8032 point/encoding acceptance compatibility review and pinned executable/dependency build unavailable",
+    "bounded_reference": {
+      "cryptography": "46.0.0",
+      "openssl": "OpenSSL 3.5.3 16 Sep 2025"
+    },
+    "ed25519ph_substitution": false,
+    "bespoke_curve_arithmetic": false
+  },
+  "libsodium": "1.0.18",
+  "python": "3.12.14",
+  "binary_sha256": {
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/cryptography/hazmat/bindings/_rust.abi3.so": "3e69d5c6b4b2102ecc7e86a5850120f3c55defd8f4b22b82d3d6419f6dc9360e",
+    "/usr/lib/x86_64-linux-gnu/libsodium.so.23.3.0": "fe00408090ea084504d7cb0130af56a22554fe299034b864551b65a64ca8a7b5"
+  },
+  "vectors": [
+    [
+      "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+      "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+      "",
+      "e5564300c360ac729086e2cc806e828a84877f1eb8e5d974d873e065224901555fb8821590a33bacc61e39701cf9b46bd25bf5f0595bbe24655141438e7a100b"
+    ],
+    [
+      "4ccd089b28ff96da9db6c346ec114e0f5b8a319f35aba624da8cf6ed4fb8a6fb",
+      "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "72",
+      "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00"
+    ]
+  ],
+  "cases": [
+    {
+      "case": "valid",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": true,
+      "libsodium": true
+    },
+    {
+      "case": "changed-message",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "7278",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "wrong-key",
+      "public_key": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "wrong-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "e5564300c360ac729086e2cc806e828a84877f1eb8e5d974d873e065224901555fb8821590a33bacc61e39701cf9b46bd25bf5f0595bbe24655141438e7a100b",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "short-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "long-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c0078",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "short-key",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af466",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "scalar-L",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69daedd3f55c1a631258d69cf7a2def9de1400000000000000000000000000000010",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "R-y-equals-p",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "key-y-equals-p",
+      "public_key": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "R-negative-zero",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "0100000000000000000000000000000000000000000000000000000000000080085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "digest-sha256",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "b2b92ec415e38f0a4fb581fb34ad2a7af87f0a8bde07df2f23d7dcb74a67bebbecd3b27c6950fba199fcad30e915c9aedaf8e7e4e518175c4be87fc5fcb1f102",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "digest-sha512",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "ea22ec953464e2c2b33730b2330fba98bdd675f9f2127d40e4cf53ca1792c3f563fabce1b76bbcba83cdb687e433c9737c5417d3f629ebc811c92119eae6960e",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "Ed25519ph",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "ab9b4115731fa999280183209d73f33b0b68c04f5d495fb7e493ff36c660d73ec537aa7ff7a138cafc3e31d86a31c33a02b5d72e67676b584dd98754c9910a0a",
+      "message_hex": "72",
+      "openssl": false,
+      "libsodium": false
+    },
+    {
+      "case": "canonical-identity-small-order",
+      "public_key": "0100000000000000000000000000000000000000000000000000000000000000",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "72",
+      "openssl": true,
+      "libsodium": false
+    },
+    {
+      "case": "noncanonical-negative-zero-key",
+      "public_key": "0100000000000000000000000000000000000000000000000000000000000080",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "74657374",
+      "openssl": true,
+      "libsodium": false
+    },
+    {
+      "case": "noncanonical-y-identity-key",
+      "public_key": "eeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "74657374",
+      "openssl": true,
+      "libsodium": false
+    }
+  ],
+  "incremental_verifier_implemented": false,
+  "acceptance_equivalence_established": false,
+  "actual_admission": false
+}

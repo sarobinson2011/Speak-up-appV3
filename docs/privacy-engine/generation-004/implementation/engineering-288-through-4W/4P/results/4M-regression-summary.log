@@ -1,0 +1,144 @@
+INVALID-EVIDENCE-DIGEST: complete model descriptor digest mismatch
+INVALID-CHECKPOINT: SHA state identity
+{
+  "result": "FAIL",
+  "checkpoint": "4M",
+  "tests_run": 353,
+  "failures": 0,
+  "errors": 0,
+  "cli": [
+    {
+      "dataset": "GAMMA",
+      "mode": "CONDITIONAL-LAB",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "GAMMA",
+      "mode": "ACTUAL",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "DELTA",
+      "mode": "CONDITIONAL-LAB",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true,
+      "profile_admitted": false
+    },
+    {
+      "dataset": "DELTA",
+      "mode": "ACTUAL",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true,
+      "profile_admitted": false
+    }
+  ],
+  "accepted_and_retained_inputs_unchanged": false,
+  "expansion_rerun": false,
+  "full_pair_stream_executed": false,
+  "profile_admitted": false,
+  "seconds": 131.500398,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+}
+_scope) ... ok
+test_changed_source_bytes_same_digest_key (tests.test_scope_auth.ScopeAuthTests.test_changed_source_bytes_same_digest_key) ... ok
+test_connected_and_disconnected_signed_integration (tests.test_scope_auth.ScopeAuthTests.test_connected_and_disconnected_signed_integration) ... ok
+test_digest_and_signature_failures_collected_before_malformed_records (tests.test_scope_auth.ScopeAuthTests.test_digest_and_signature_failures_collected_before_malformed_records) ... ok
+test_edge_reference_workaround_does_not_repair_field_label (tests.test_scope_auth.ScopeAuthTests.test_edge_reference_workaround_does_not_repair_field_label) ... ok
+test_empty_or_foreign_seed (tests.test_scope_auth.ScopeAuthTests.test_empty_or_foreign_seed) ... ok
+test_exact_compact_closure_against_independent_exhaustive_oracle (tests.test_scope_auth.ScopeAuthTests.test_exact_compact_closure_against_independent_exhaustive_oracle) ... ok
+test_exact_four_file_object_includes_signature (tests.test_scope_auth.ScopeAuthTests.test_exact_four_file_object_includes_signature) ... ok
+test_explicit_large_message_capability_fails_closed (tests.test_scope_auth.ScopeAuthTests.test_explicit_large_message_capability_fails_closed) ... ok
+test_file_acquisition_roundtrip (tests.test_scope_auth.ScopeAuthTests.test_file_acquisition_roundtrip) ... ok
+test_incomplete_or_extraneous_claimed_closure (tests.test_scope_auth.ScopeAuthTests.test_incomplete_or_extraneous_claimed_closure) ... ok
+test_missing_composition_cannot_be_replaced_by_component (tests.test_scope_auth.ScopeAuthTests.test_missing_composition_cannot_be_replaced_by_component) ... ok
+test_missing_evidence_authority_role (tests.test_scope_auth.ScopeAuthTests.test_missing_evidence_authority_role) ... ok
+test_missing_external_authority (tests.test_scope_auth.ScopeAuthTests.test_missing_external_authority) ... ok
+test_missing_required_experiment_in_source_law (tests.test_scope_auth.ScopeAuthTests.test_missing_required_experiment_in_source_law) ... ok
+test_missing_scope_source (tests.test_scope_auth.ScopeAuthTests.test_missing_scope_source) ... ok
+test_missing_source_bytes (tests.test_scope_auth.ScopeAuthTests.test_missing_source_bytes) ... ok
+test_missing_transitive_source_binding_dependency (tests.test_scope_auth.ScopeAuthTests.test_missing_transitive_source_binding_dependency) ... ok
+test_missing_truncated_extraneous_file_bytes (tests.test_scope_auth.ScopeAuthTests.test_missing_truncated_extraneous_file_bytes) ... ok
+test_no_positive_ledger_disposition_through_signature_failure (tests.test_scope_auth.ScopeAuthTests.test_no_positive_ledger_disposition_through_signature_failure) ... ok
+test_partial_acquisition_keeps_available_authentication_checks (tests.test_scope_auth.ScopeAuthTests.test_partial_acquisition_keeps_available_authentication_checks) ... ok
+test_path_escape_rejected (tests.test_scope_auth.ScopeAuthTests.test_path_escape_rejected) ... ok
+test_same_size_changed_source_not_authenticated_by_metadata (tests.test_scope_auth.ScopeAuthTests.test_same_size_changed_source_not_authenticated_by_metadata) ... ok
+test_scope_mechanism_identity_is_independently_bound (tests.test_scope_auth.ScopeAuthTests.test_scope_mechanism_identity_is_independently_bound) ... ok
+test_scoped_stream_preserves_original_indexes_across_chunks (tests.test_scope_auth.ScopeAuthTests.test_scoped_stream_preserves_original_indexes_across_chunks) ... ok
+test_signature_over_digest_is_rejected (tests.test_scope_auth.ScopeAuthTests.test_signature_over_digest_is_rejected) ... ok
+test_source_assertion_cross_bundle_substitution (tests.test_scope_auth.ScopeAuthTests.test_source_assertion_cross_bundle_substitution) ... ok
+test_unavailable_arguments_cannot_report_ready_scope (tests.test_scope_auth.ScopeAuthTests.test_unavailable_arguments_cannot_report_ready_scope) ... ok
+test_wrong_experiment_target_or_view (tests.test_scope_auth.ScopeAuthTests.test_wrong_experiment_target_or_view) ... ok
+test_wrong_external_key_and_self_appointment_rejected (tests.test_scope_auth.ScopeAuthTests.test_wrong_external_key_and_self_appointment_rejected) ... ok
+test_wrong_outer_binding_in_source (tests.test_scope_auth.ScopeAuthTests.test_wrong_outer_binding_in_source) ... ok
+test_wrong_scope_cross_bundle_substitution (tests.test_scope_auth.ScopeAuthTests.test_wrong_scope_cross_bundle_substitution) ... ok
+test_wrong_source_owner (tests.test_scope_auth.ScopeAuthTests.test_wrong_source_owner) ... ok
+test_changed_input_after_pause_and_corrupt_receipt (tests.test_semantic_stream.CollectorSemanticTests.test_changed_input_after_pause_and_corrupt_receipt) ... ok
+test_complete_both_families (tests.test_semantic_stream.CollectorSemanticTests.test_complete_both_families) ... ok
+test_literal_amendment_stays_closed (tests.test_semantic_stream.CollectorSemanticTests.test_literal_amendment_stays_closed) ... ok
+test_malformed_records_preserve_signature_failure (tests.test_semantic_stream.CollectorSemanticTests.test_malformed_records_preserve_signature_failure) ... ok
+test_missing_dependency (tests.test_semantic_stream.CollectorSemanticTests.test_missing_dependency) ... ok
+test_missing_qualification_never_replaced_by_signature (tests.test_semantic_stream.CollectorSemanticTests.test_missing_qualification_never_replaced_by_signature) ... ok
+test_repeated_pause_resume_exact_prefix_and_terminal_revalidation (tests.test_semantic_stream.CollectorSemanticTests.test_repeated_pause_resume_exact_prefix_and_terminal_revalidation) ... ok
+test_substituted_invocation_and_result (tests.test_semantic_stream.CollectorSemanticTests.test_substituted_invocation_and_result) ... ok
+test_wrong_source_ownership (tests.test_semantic_stream.CollectorSemanticTests.test_wrong_source_ownership) ... ok
+test_integrated_interrupted_parser_never_imports_partial_success (tests.test_semantic_stream.RecoveryParserTests.test_integrated_interrupted_parser_never_imports_partial_success) ... ok
+test_interruption_inside_json_rebuilds_from_bytes (tests.test_semantic_stream.RecoveryParserTests.test_interruption_inside_json_rebuilds_from_bytes) ... ok
+test_large_hex_changed_nibble_odd_and_wrong_case (tests.test_semantic_stream.RecoveryParserTests.test_large_hex_changed_nibble_odd_and_wrong_case) ... ok
+test_caps_are_inability (tests.test_semantic_stream.SemanticTests.test_caps_are_inability) ... ok
+test_collision_key_equivalence_oracle (tests.test_semantic_stream.SemanticTests.test_collision_key_equivalence_oracle) ... ok
+test_dependency_closure_and_missing_transitive_material (tests.test_semantic_stream.SemanticTests.test_dependency_closure_and_missing_transitive_material) ... ok
+test_disk_arrays_and_exact_roundtrip (tests.test_semantic_stream.SemanticTests.test_disk_arrays_and_exact_roundtrip) ... ok
+test_exact_two_source_invocation_oracles (tests.test_semantic_stream.SemanticTests.test_exact_two_source_invocation_oracles) ... ok
+test_independent_exhaustive_canonical_values_and_chunk_boundaries (tests.test_semantic_stream.SemanticTests.test_independent_exhaustive_canonical_values_and_chunk_boundaries) ... ok
+test_large_hex_and_primitive_id_unchanged (tests.test_semantic_stream.SemanticTests.test_large_hex_and_primitive_id_unchanged) ... ok
+test_noncanonical_malformed_and_truncated (tests.test_semantic_stream.SemanticTests.test_noncanonical_malformed_and_truncated) ... ok
+test_exact_source_defined_dollar_record_identity_is_not_primitive_id (tests.test_stream.ModelIdentityTests.test_exact_source_defined_dollar_record_identity_is_not_primitive_id) ... ok
+test_byte_budget_no_digest_for_unobserved_eof (tests.test_stream.NativeStreams.test_byte_budget_no_digest_for_unobserved_eof) ... ok
+test_cardinality_alone_counterexamples_illegal_replacement (tests.test_stream.NativeStreams.test_cardinality_alone_counterexamples_illegal_replacement) ... ok
+test_changed_bytes_and_expected_digest (tests.test_stream.NativeStreams.test_changed_bytes_and_expected_digest) ... ok
+test_complete_retained_model_index_with_header_only (tests.test_stream.NativeStreams.test_complete_retained_model_index_with_header_only) ... ok
+test_descriptor_changed_bytes_rejected (tests.test_stream.NativeStreams.test_descriptor_changed_bytes_rejected) ... ok
+test_duplicate_every_row_even_when_count_kept_constant (tests.test_stream.NativeStreams.test_duplicate_every_row_even_when_count_kept_constant) ... ok
+test_every_byte_truncation_no_complete_digest (tests.test_stream.NativeStreams.test_every_byte_truncation_no_complete_digest) ... ok
+test_every_two_chunk_boundary_and_random_partitions (tests.test_stream.NativeStreams.test_every_two_chunk_boundary_and_random_partitions) ... ok
+test_independent_exhaustive_oracle_complete (tests.test_stream.NativeStreams.test_independent_exhaustive_oracle_complete) ... ok
+test_malformed_framing (tests.test_stream.NativeStreams.test_malformed_framing) ... ok
+test_minimum_width_spelling_above_six_digits (tests.test_stream.NativeStreams.test_minimum_width_spelling_above_six_digits) ... ok
+test_missing_each_structural_and_potential_row (tests.test_stream.NativeStreams.test_missing_each_structural_and_potential_row) ... ok
+test_native_chunk_sizes (tests.test_stream.NativeStreams.test_native_chunk_sizes) ... ok
+test_never_read_unbounded_and_read_ahead_is_accounted (tests.test_stream.NativeStreams.test_never_read_unbounded_and_read_ahead_is_accounted) ... ok
+test_occurrence_values_have_separate_complete_equality_set (tests.test_stream.NativeStreams.test_occurrence_values_have_separate_complete_equality_set) ... ok
+test_reader_io_error_does_not_make_prefix_complete (tests.test_stream.NativeStreams.test_reader_io_error_does_not_make_prefix_complete) ... ok
+test_reverse_numeric_orientation_while_lexically_sorted (tests.test_stream.NativeStreams.test_reverse_numeric_orientation_while_lexically_sorted) ... ok
+test_structural_reverse_not_symmetric (tests.test_stream.NativeStreams.test_structural_reverse_not_symmetric) ... ok
+test_wrong_order_and_ordinals (tests.test_stream.NativeStreams.test_wrong_order_and_ordinals) ... ok
+test_cardinality_alone_counterexamples_illegal_replacement (tests.test_stream.Streams.test_cardinality_alone_counterexamples_illegal_replacement) ... ok
+test_changed_bytes_and_expected_digest (tests.test_stream.Streams.test_changed_bytes_and_expected_digest) ... ok
+test_duplicate_every_row_even_when_count_kept_constant (tests.test_stream.Streams.test_duplicate_every_row_even_when_count_kept_constant) ... ok
+test_every_byte_truncation_no_complete_digest (tests.test_stream.Streams.test_every_byte_truncation_no_complete_digest) ... ok
+test_every_two_chunk_boundary_and_random_partitions (tests.test_stream.Streams.test_every_two_chunk_boundary_and_random_partitions) ... ok
+test_independent_exhaustive_oracle_complete (tests.test_stream.Streams.test_independent_exhaustive_oracle_complete) ... ok
+test_malformed_framing (tests.test_stream.Streams.test_malformed_framing) ... ok
+test_minimum_width_spelling_above_six_digits (tests.test_stream.Streams.test_minimum_width_spelling_above_six_digits) ... ok
+test_missing_each_structural_and_potential_row (tests.test_stream.Streams.test_missing_each_structural_and_potential_row) ... ok
+test_never_read_unbounded_and_read_ahead_is_accounted (tests.test_stream.Streams.test_never_read_unbounded_and_read_ahead_is_accounted) ... ok
+test_occurrence_values_have_separate_complete_equality_set (tests.test_stream.Streams.test_occurrence_values_have_separate_complete_equality_set) ... ok
+test_reader_io_error_does_not_make_prefix_complete (tests.test_stream.Streams.test_reader_io_error_does_not_make_prefix_complete) ... ok
+test_reverse_numeric_orientation_while_lexically_sorted (tests.test_stream.Streams.test_reverse_numeric_orientation_while_lexically_sorted) ... ok
+test_structural_reverse_not_symmetric (tests.test_stream.Streams.test_structural_reverse_not_symmetric) ... ok
+test_wrong_order_and_ordinals (tests.test_stream.Streams.test_wrong_order_and_ordinals) ... ok
+
+----------------------------------------------------------------------
+Ran 353 tests in 129.202s
+
+OK
+

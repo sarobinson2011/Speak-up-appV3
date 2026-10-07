@@ -1,0 +1,116 @@
+{
+  "result": "REJECTED",
+  "earliest_failure": "INVALID-ACTION-CONTEXT",
+  "failures": [
+    "INVALID-ACTION-CONTEXT",
+    "INCOMPLETE-EVIDENCE-UNIVERSE",
+    "UNIQUENESS-FAILURE",
+    "CORRELATION-FAILURE",
+    "ACTOR-RECONSTRUCTION-RISK"
+  ],
+  "reasons": {
+    "INVALID-ACTION-CONTEXT": [
+      "ledger NV2: NV2 degenerate/mismatched source scope",
+      "ledger NV2: NV2 degenerate/mismatched source scope",
+      "ledger NV2: NV2 degenerate/mismatched source scope",
+      "NV2 degenerate/mismatched source scope",
+      "NV2 degenerate/mismatched source scope",
+      "NV2 degenerate/mismatched source scope"
+    ],
+    "INCOMPLETE-EVIDENCE-UNIVERSE": [
+      "NV support/whole-class/view qualification unavailable G-EXP-ACTOR-INFORMATION",
+      "NV support/whole-class/view qualification unavailable G-EXP-COLLISION",
+      "NV support/whole-class/view qualification unavailable G-EXP-CROSS-ACTION-TRACKING",
+      "computed obligation disposition G-OB-ACTOR-INFORMATION",
+      "computed obligation disposition G-OB-COLLISION",
+      "computed obligation disposition G-OB-CROSS-ACTION-TRACKING",
+      "source-grounded and qualified composition prerequisites G-RULE-ACTOR-INFORMATION",
+      "source-grounded and qualified composition prerequisites G-RULE-COLLISION",
+      "source-grounded and qualified composition prerequisites G-RULE-CROSS-ACTION-TRACKING",
+      "whole-view composition not established for obligation G-OB-ACTOR-INFORMATION",
+      "whole-view composition not established for obligation G-OB-COLLISION",
+      "whole-view composition not established for obligation G-OB-CROSS-ACTION-TRACKING",
+      "signed result cells must equal independent complete decision ROOT-ELIGIBLE:uniqueness_result",
+      "signed result cells must equal independent complete decision ROOT-ELIGIBLE:correlation_result",
+      "signed result cells must equal independent complete decision ROOT-ELIGIBLE:actor_reconstruction_result",
+      "signed result cells must equal independent complete decision SCOPED-USED:uniqueness_result",
+      "signed result cells must equal independent complete decision SCOPED-USED:correlation_result",
+      "signed result cells must equal independent complete decision SCOPED-USED:actor_reconstruction_result",
+      "signed result cells must equal independent complete decision NOT-APPLICABLE:uniqueness_result",
+      "signed result cells must equal independent complete decision NOT-APPLICABLE:correlation_result",
+      "signed result cells must equal independent complete decision NOT-APPLICABLE:actor_reconstruction_result"
+    ],
+    "ACTOR-RECONSTRUCTION-RISK": [
+      "Qualified INVALID-ARGUMENT: G-ARG-ACTOR-INFORMATION"
+    ],
+    "UNIQUENESS-FAILURE": [
+      "Qualified INVALID-ARGUMENT: G-ARG-COLLISION"
+    ],
+    "CORRELATION-FAILURE": [
+      "Qualified INVALID-ARGUMENT: G-ARG-CROSS-ACTION-TRACKING"
+    ]
+  },
+  "mode": "CONDITIONAL-LAB",
+  "bindings": {
+    "final_profile_sha256": "6dd8b1ce9eef5279d89ef66deba03394d1d561f53aa93f3c867265989673ff82",
+    "model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+    "policy_id": "G-POLICY",
+    "policy_material_sha256": "da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad",
+    "assumption_ids": [
+      "G-HYPOTHESIS"
+    ],
+    "qualification_ids": [
+      "G-QUAL"
+    ],
+    "computed_dispositions": {
+      "G-OB-ACTOR-INFORMATION": "NOT-ESTABLISHED",
+      "G-OB-COLLISION": "NOT-ESTABLISHED",
+      "G-OB-CROSS-ACTION-TRACKING": "NOT-ESTABLISHED",
+      "G-OB-EXACT": "EXACT-SATISFIED"
+    },
+    "computed_budgets": {},
+    "ledger_validation": {
+      "source_acquired": true,
+      "mechanical_coverage": true,
+      "classification_ready": true,
+      "ready_obligations": [
+        "G-OB-EXACT"
+      ],
+      "ready_rules": [],
+      "nv_ready": [],
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "source_reference": {
+        "owner_source_id": "CP3-LAB-GAMMA",
+        "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2",
+        "source_anchor": "complete-ledger-construction",
+        "material_sha256": "f7a9154140c64fb9303ecb7a25fc351b4e041fe125d6525b648009417f3dc3aa"
+      },
+      "coverage": {
+        "nodes": 4,
+        "structural_occurrences": 2,
+        "potential_pairs": 6,
+        "pair_enumeration": false
+      }
+    },
+    "laboratory_hypotheses": [
+      "policy-governance",
+      "assessor-competence",
+      "observer-completeness",
+      "model-ledger-classification",
+      "composition-decomposition",
+      "source-producer-correspondence",
+      "proof-soundness",
+      "profile-adequacy",
+      "applicability",
+      "evidence-authority",
+      "non-vacuity"
+    ],
+    "meaning": "Local conditional binding/admission checks only; full checkpoint-2 integration deferred to checkpoint 4"
+  },
+  "profile_admitted": false,
+  "actual_qualification_established": false,
+  "runtime_effect_performed": false,
+  "full_model_integration_witness": false
+}

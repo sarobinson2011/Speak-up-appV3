@@ -1,0 +1,29 @@
+test_atomic_stage_write_interruption_recovers (tests.test_schedule.SchedulingTests.test_atomic_stage_write_interruption_recovers) ... ok
+test_changed_scope_descriptor_not_caller_authority (tests.test_schedule.SchedulingTests.test_changed_scope_descriptor_not_caller_authority) ... FAIL
+test_completed_stages_and_terminal_reuse (tests.test_schedule.SchedulingTests.test_completed_stages_and_terminal_reuse) ... ok
+test_corrupt_and_substituted_receipts (tests.test_schedule.SchedulingTests.test_corrupt_and_substituted_receipts) ... ok
+test_corrupt_index_rejected (tests.test_schedule.SchedulingTests.test_corrupt_index_rejected) ... ok
+test_corrupt_main_journal_after_completion (tests.test_schedule.SchedulingTests.test_corrupt_main_journal_after_completion) ... ok
+test_corrupt_native_state_even_after_completion (tests.test_schedule.SchedulingTests.test_corrupt_native_state_even_after_completion) ... ok
+test_cross_scope_native_journal_substitution (tests.test_schedule.SchedulingTests.test_cross_scope_native_journal_substitution) ... ok
+test_independent_signature_failure_and_malformed_record (tests.test_schedule.SchedulingTests.test_independent_signature_failure_and_malformed_record) ... ok
+test_index_reuse_after_interruption_before_ledger_commit (tests.test_schedule.SchedulingTests.test_index_reuse_after_interruption_before_ledger_commit) ... ok
+test_native_partial_state_and_quanta (tests.test_schedule.SchedulingTests.test_native_partial_state_and_quanta) ... ok
+test_native_scoped_completion_matches_uninterrupted (tests.test_schedule.SchedulingTests.test_native_scoped_completion_matches_uninterrupted) ... ok
+test_repeat_pause_partial_rows (tests.test_schedule.SchedulingTests.test_repeat_pause_partial_rows) ... ok
+test_source_mutation_after_completion_collects_failure (tests.test_schedule.SchedulingTests.test_source_mutation_after_completion_collects_failure) ... ok
+test_wrong_trusted_input_or_missing_qualification_rejects (tests.test_schedule.SchedulingTests.test_wrong_trusted_input_or_missing_qualification_rejects) ... ok
+
+======================================================================
+FAIL: test_changed_scope_descriptor_not_caller_authority (tests.test_schedule.SchedulingTests.test_changed_scope_descriptor_not_caller_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4K/tests/test_schedule.py", line 88, in test_changed_scope_descriptor_not_caller_authority
+    with self.assertRaises(ValueError):self.execute(resume=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 15 tests in 6.268s
+
+FAILED (failures=1)

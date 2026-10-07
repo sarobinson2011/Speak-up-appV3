@@ -1,0 +1,151 @@
+{
+  "result": "PASS",
+  "synthetic_payload_bytes": 100663296,
+  "rows": [
+    {
+      "result": "PASS",
+      "mode": "sign",
+      "message_bytes": 100664676,
+      "message_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+      "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+      "signature": "ea46bc61ee701b7def02a6cc014646be2bea6de9ea9120557329068ca7f273b7a44fb53cf4cd246421c9a0d8053afa93a2da90eb1bbd3b9db0557640f90c700e",
+      "job_manifest": {
+        "canonical_model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+        "contract": {
+          "bytes": 81,
+          "path": "contract.json",
+          "sha256": "0412450e06ba22c266acdcd0e520d0ffebc47879509be27defcaf6b02ce2e80b"
+        },
+        "files": {
+          "evidence.tsv": {
+            "bytes": 769,
+            "path": "evidence.tsv",
+            "sha256": "fb3bd949b9543051244e487b5ea7115defd4ef635527c9e1ffb663fbe30ef159"
+          },
+          "links.tsv": {
+            "bytes": 100663296,
+            "path": "links.tsv",
+            "sha256": "5a310b10d915ba9166406006738169f7e56e1e6525cc8ee0a2e608f013c49d57"
+          },
+          "outer": {
+            "bytes": 26297,
+            "path": "outer.bin",
+            "sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9"
+          },
+          "signature.txt": {
+            "bytes": 138,
+            "path": "signature.txt",
+            "sha256": "e16e32e426e43d5fe56a16d4f574f60b8249d2a3b000d4231c292a8429f1cd43"
+          },
+          "tokens.tsv": {
+            "bytes": 584,
+            "path": "tokens.tsv",
+            "sha256": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8"
+          }
+        },
+        "format": "CP4F-EXACT-BYTE-JOB-1",
+        "model": {
+          "bytes": 58,
+          "path": "model.txt",
+          "sha256": "d61838cac2f108992b3182ec117fbdbe76b9eef6d6f8d30e63a452950feb703a"
+        },
+        "object_sha256": "2b5e0a7db54cbdd9aa5dad5b29f02c78d859ab9b148c16fd9325df6ff1987410",
+        "phase": "STATIC-ADMISSION",
+        "profile_sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+        "scope": "NOT-APPLICABLE"
+      },
+      "signer": "cryptography 46.0.0 / OpenSSL 3.5.3 one-shot pure Ed25519",
+      "seconds": 0.5867179319993738,
+      "max_rss_kib": 218804,
+      "profile_admitted": false,
+      "full_retained_stream_processed": false,
+      "bounded_child_wall_seconds": 0.6460001839996039
+    },
+    {
+      "result": "PASS",
+      "mode": "reference",
+      "openssl_pure": true,
+      "libsodium_pure": true,
+      "message_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+      "seconds": 0.5203027459992882,
+      "max_rss_kib": 216600,
+      "profile_admitted": false,
+      "full_retained_stream_processed": false,
+      "bounded_child_wall_seconds": 0.580718359000457
+    },
+    {
+      "result": "PASS",
+      "mode": "stream",
+      "rows": [
+        {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+          "offset": 100664676,
+          "total": 100664676,
+          "prefix_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+          "replayed_bytes": 0,
+          "new_bytes": 100664676,
+          "seconds": 0.4189326779996918,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+          "signature": "ea46bc61ee701b7def02a6cc014646be2bea6de9ea9120557329068ca7f273b7a44fb53cf4cd246421c9a0d8053afa93a2da90eb1bbd3b9db0557640f90c700e",
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        },
+        {
+          "result": "PAUSED",
+          "cryptographic_signature_verified": false,
+          "complete_message_sha256": null,
+          "offset": 41943040,
+          "total": 100664676,
+          "prefix_sha256": "741dcafe75167ca60f69ca421054d14e418972c13d983370c96eb0ba018850f7",
+          "replayed_bytes": 0,
+          "new_bytes": 41943040,
+          "seconds": 0.14582125500055554,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+          "signature": "ea46bc61ee701b7def02a6cc014646be2bea6de9ea9120557329068ca7f273b7a44fb53cf4cd246421c9a0d8053afa93a2da90eb1bbd3b9db0557640f90c700e",
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        },
+        {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+          "offset": 100664676,
+          "total": 100664676,
+          "prefix_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+          "replayed_bytes": 41943040,
+          "new_bytes": 58721636,
+          "seconds": 0.3773925679997774,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+          "signature": "ea46bc61ee701b7def02a6cc014646be2bea6de9ea9120557329068ca7f273b7a44fb53cf4cd246421c9a0d8053afa93a2da90eb1bbd3b9db0557640f90c700e",
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        }
+      ],
+      "message_sha256": "8b22dde86d0f09913959bc5e0a074d411ebe89065b3e731ea5a89ddd61234079",
+      "controller_max_rss_kib": 22468,
+      "native_verifier_max_rss_kib": 22444,
+      "chunk_limit_bytes": 1048576,
+      "native_buffer_bytes": 65536,
+      "seconds": 0.9487758969999049,
+      "max_rss_kib": 22468,
+      "profile_admitted": false,
+      "full_retained_stream_processed": false,
+      "bounded_child_wall_seconds": 1.0116990079995958
+    }
+  ],
+  "aggregate_benchmark_seconds": 2.2384175509996567,
+  "per_child_limit_seconds": 60,
+  "aggregate_limit_seconds": 180,
+  "temporary_disk_bytes": 100699968,
+  "synthetic_not_conforming_link_stream": true,
+  "profile_admitted": false,
+  "full_retained_stream_processed": false
+}

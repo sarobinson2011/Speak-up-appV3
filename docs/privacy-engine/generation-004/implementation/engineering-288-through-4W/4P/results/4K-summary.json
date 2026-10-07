@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "parent_verified": true,
+  "full_regression": {
+    "passed": 311,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 64.442363
+  },
+  "targeted": {
+    "passed": 20,
+    "log": "results/4K-focused-complete.log",
+    "additional_unique_case_after_full_regression": "tests.test_schedule.SchedulingTests.test_independent_delta_and_noncontiguous_scope_projection"
+  },
+  "unique_tests_verified": 312,
+  "cli_checks_passed": 11,
+  "fresh_restore": "results/4K-fresh-restore.json",
+  "benchmarks": {
+    "processes": 3,
+    "external_timeout_seconds_each": 60,
+    "aggregate_ceiling_seconds": 180,
+    "actual_aggregate_seconds": 4.326044645000366
+  },
+  "practical_recovery": "IMPLEMENTED-VERIFIED-STATIC-SCOPED",
+  "constant_time_recovery": false,
+  "safe_ed25519_state_export": false,
+  "exact_prefix_reconstruction_retained": true,
+  "full_retained_stream_processed": false,
+  "qualification_established": false,
+  "profile_admitted": false
+}

@@ -1,0 +1,12 @@
+{
+  "wall_seconds": 0.7013718830003199,
+  "limit_per_process": 60,
+  "aggregate_limit": 180,
+  "runs": [
+    {
+      "mode": "make",
+      "exit_code": 1,
+      "result": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4H/benchmarks/integrated_transport.py\", line 64, in <module>\n    start=time.monotonic();mode=sys.argv[1];r=(make if mode=='make' else validate)(Path(sys.argv[2]).resolve());r.update(mode=mode,seconds=time.monotonic()-start,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,child_peak_rss_kib=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss);print(json.dumps(r,indent=2))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4H/benchmarks/integrated_transport.py\", line 36, in make\n    import nacl.signing\nModuleNotFoundError: No module named 'nacl'\n"
+    }
+  ]
+}

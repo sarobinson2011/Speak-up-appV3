@@ -1,0 +1,134 @@
+{
+  "result": "CONDITIONAL-STATIC-LEDGER-CONSTRUCTED",
+  "templates": {
+    "obligations": [
+      {
+        "coalition_id": "G-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-2-3"
+        ],
+        "experiment_id": "G-EXP-ACTOR-INFORMATION",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "G-N0",
+          "G-N1",
+          "G-N2",
+          "G-N3"
+        ],
+        "obligation_id": "G-OB-ACTOR-INFORMATION",
+        "target_ids": [
+          "G-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "G-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-2-3"
+        ],
+        "experiment_id": "G-EXP-COLLISION",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "G-N0",
+          "G-N1",
+          "G-N2",
+          "G-N3"
+        ],
+        "obligation_id": "G-OB-COLLISION",
+        "target_ids": [
+          "G-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "G-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-2-3"
+        ],
+        "experiment_id": "G-EXP-CROSS-ACTION-TRACKING",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "G-N0",
+          "G-N1",
+          "G-N2",
+          "G-N3"
+        ],
+        "obligation_id": "G-OB-CROSS-ACTION-TRACKING",
+        "target_ids": [
+          "G-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "G-COALITION",
+        "edge_ids": [
+          "G4-STRUCTURAL-EDGE-1",
+          "G4-STRUCTURAL-EDGE-2"
+        ],
+        "experiment_id": null,
+        "kind": "EXACT",
+        "node_ids": [
+          "G-N0",
+          "G-N1",
+          "G-N2",
+          "G-N3"
+        ],
+        "obligation_id": "G-OB-EXACT",
+        "target_ids": [
+          "G-TARGET"
+        ]
+      }
+    ],
+    "composition_rules": {
+      "directory_id": "G-RULE-DIRECTORY",
+      "records": [
+        {
+          "composition_id": "G-RULE-ACTOR-INFORMATION",
+          "experiment_id": "G-EXP-ACTOR-INFORMATION",
+          "method": "UNION",
+          "policy_id": "G-POLICY",
+          "qualification_id": "G-QUAL",
+          "theorem_ref": null
+        },
+        {
+          "composition_id": "G-RULE-COLLISION",
+          "experiment_id": "G-EXP-COLLISION",
+          "method": "UNION",
+          "policy_id": "G-POLICY",
+          "qualification_id": "G-QUAL",
+          "theorem_ref": null
+        },
+        {
+          "composition_id": "G-RULE-CROSS-ACTION-TRACKING",
+          "experiment_id": "G-EXP-CROSS-ACTION-TRACKING",
+          "method": "UNION",
+          "policy_id": "G-POLICY",
+          "qualification_id": "G-QUAL",
+          "theorem_ref": null
+        }
+      ]
+    }
+  },
+  "source_reference": {
+    "material_sha256": "8dd0f443324e77fabe00597aca8f4c509a255ca7e09a318d1153b6b6165d53a1",
+    "owner_source_id": "CP3-LAB-GAMMA",
+    "source_anchor": "complete-ledger-construction",
+    "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2"
+  },
+  "model_digest": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+  "classification_basis": "EXPLICIT-FINITE-LAB-SOURCE-HYPOTHESES-ONLY",
+  "qualification_established": false,
+  "profile_admitted": false
+}

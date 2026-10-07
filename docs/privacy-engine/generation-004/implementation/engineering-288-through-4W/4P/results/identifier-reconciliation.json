@@ -1,0 +1,182 @@
+{
+  "result": "PASS-NARROW-IDENTIFIER-RECONCILIATION",
+  "model_sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1",
+  "contract_sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710",
+  "accepted_grammar_sha256": "7786cbf610be39c2eb8a1cef49aae62a7d7824f9fdb83195bc7bb4a2b7bd2a16",
+  "cases": [
+    {
+      "case": "literal-node",
+      "validator": "accepted",
+      "accepted": false,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [
+          "SYMBOLIC-U-ONE::SECURITY:ALGORITHM.$record::CP2-ALGORITHM-000001"
+        ],
+        "edge_ids": [],
+        "experiment_id": null
+      }
+    },
+    {
+      "case": "literal-node",
+      "validator": "implementation",
+      "accepted": false,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [
+          "SYMBOLIC-U-ONE::SECURITY:ALGORITHM.$record::CP2-ALGORITHM-000001"
+        ],
+        "edge_ids": [],
+        "experiment_id": null
+      }
+    },
+    {
+      "case": "structural-edge-only",
+      "validator": "accepted",
+      "accepted": true,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [],
+        "edge_ids": [
+          "G4-STRUCTURAL-EDGE-198061"
+        ],
+        "experiment_id": null
+      }
+    },
+    {
+      "case": "structural-edge-only",
+      "validator": "implementation",
+      "accepted": true,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [],
+        "edge_ids": [
+          "G4-STRUCTURAL-EDGE-198061"
+        ],
+        "experiment_id": null
+      }
+    },
+    {
+      "case": "potential-edge-only",
+      "validator": "accepted",
+      "accepted": true,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [],
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-1-36511"
+        ],
+        "experiment_id": null
+      }
+    },
+    {
+      "case": "potential-edge-only",
+      "validator": "implementation",
+      "accepted": true,
+      "template": {
+        "obligation_id": "REPRO-OBLIGATION",
+        "kind": "EXACT",
+        "target_ids": [
+          "REPRO-TARGET"
+        ],
+        "coalition_id": "REPRO-COALITION",
+        "node_ids": [],
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-1-36511"
+        ],
+        "experiment_id": null
+      }
+    }
+  ],
+  "structural_edge": {
+    "edge_id": "G4-STRUCTURAL-EDGE-198061",
+    "edge": [
+      7051,
+      36511,
+      13944,
+      "OWNS-RECORD-FIELD"
+    ],
+    "duty": {
+      "coverage_status": "MECHANICALLY-ESTABLISHED",
+      "disposition": "NOT-ESTABLISHED",
+      "inventory_id": "CP4D-RELATION-013944",
+      "node_source_orders": [
+        3537,
+        3660
+      ],
+      "privacy_classification": null,
+      "provenance": {
+        "data_row": 36,
+        "input_path": "definition-completion/security-relations.tsv",
+        "input_sha256": "63a9c87d3fb47303c8ed751bef54f000b1edae894f5b0ced637d92d908e9a0b3",
+        "row_sha256": "15a58caa892b04a7fc705d3ab597f24f8868ea577117340657e328ad9807cca2"
+      },
+      "relation": {
+        "from_node": "SECURITY:ALGORITHM.algorithm_id",
+        "relation": "OWNS-RECORD-FIELD",
+        "to_node": "SECURITY:ALGORITHM.$record"
+      },
+      "relation_order": 13944,
+      "required_exact_checks": [
+        "SOURCE-OWNERSHIP",
+        "SOURCE-ESTABLISHED-LINKAGE",
+        "DECLARATION-RECORD-JOINS"
+      ],
+      "source_qualification": "NOT-ESTABLISHED",
+      "structural_occurrences": 4,
+      "structural_ordinal_ranges": [
+        [
+          198061,
+          198065
+        ]
+      ]
+    },
+    "profile_admitted": false
+  },
+  "potential_edge": {
+    "edge_id": "G4-EQUALITY-PAIR-1-36511",
+    "endpoints": [
+      "SYMBOLIC-U-ONE::CORE:AUTHORIZATION-HEADER.successor-generation-id",
+      "SYMBOLIC-U-ONE::SECURITY:ALGORITHM.$record::CP2-ALGORITHM-000001"
+    ],
+    "membership": "MECHANICALLY-ESTABLISHED",
+    "privacy_classification": null,
+    "disposition": "NOT-ESTABLISHED",
+    "full_actor_graph_inclusion_required": true,
+    "source": "potential-domain.json bound to saved complete model",
+    "profile_admitted": false
+  },
+  "field_label_surface": "SECURITY:ALGORITHM.$record",
+  "field_label_accepts_literal": false,
+  "conclusion": "Literal OBLIGATION.node_ids entry fails primitive ID. Legal accepted edge_ids permit incident-edge references without embedding that token spelling. This is not a universal OBLIGATION instantiation impossibility and does not establish complete duty coverage. FIELD-LABEL.surface_id still directly requires the literal selected surface and has no edge_ids alternative.",
+  "remaining_obstacle": "Selected finite FIELD-LABEL surface directory versus accepted primitive ID grammar; authoritative narrow resolution required.",
+  "sources_changed": false,
+  "model_renamed": false,
+  "full_stream_executed": false,
+  "profile_admitted": false
+}

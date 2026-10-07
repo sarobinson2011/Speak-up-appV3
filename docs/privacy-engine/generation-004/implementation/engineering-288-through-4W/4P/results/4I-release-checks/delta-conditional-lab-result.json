@@ -1,0 +1,326 @@
+{
+  "result": "CONDITIONAL-BINDING-AND-ADMISSION-CHECKS-PASS",
+  "earliest_failure": "NONE",
+  "failures": [],
+  "reasons": {},
+  "mode": "CONDITIONAL-LAB",
+  "bindings": {
+    "final_profile_sha256": "4ddde12439861b8756bc84e06dbd8295e5d95e74e6fa1f76ccfe157b6b4e5625",
+    "model_sha256": "f7c889104c1369a108e9552e63922c5507f3d63c60867967128f78cbd17fe62b",
+    "policy_id": "D-POLICY",
+    "policy_material_sha256": "84727493f24d689b40390985e52e92ffbcac797db8eb690ebb4802e493117b77",
+    "assumption_ids": [
+      "D-HYPOTHESIS"
+    ],
+    "qualification_ids": [
+      "D-QUAL"
+    ],
+    "computed_dispositions": {
+      "D-OB-ACTOR-INFORMATION": "COMPUTATIONALLY-BOUNDED",
+      "D-OB-COLLISION": "COMPUTATIONALLY-BOUNDED",
+      "D-OB-CROSS-ACTION-TRACKING": "COMPUTATIONALLY-BOUNDED",
+      "D-OB-EXACT": "EXACT-SATISFIED"
+    },
+    "computed_budgets": {
+      "D-EXP-ACTOR-INFORMATION": {
+        "bound": [
+          1,
+          4
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      },
+      "D-EXP-COLLISION": {
+        "bound": [
+          0,
+          1
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      },
+      "D-EXP-CROSS-ACTION-TRACKING": {
+        "bound": [
+          1,
+          4
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      }
+    },
+    "ledger_validation": {
+      "source_acquired": true,
+      "mechanical_coverage": true,
+      "classification_ready": true,
+      "ready_obligations": [
+        "D-OB-ACTOR-INFORMATION",
+        "D-OB-COLLISION",
+        "D-OB-CROSS-ACTION-TRACKING",
+        "D-OB-EXACT"
+      ],
+      "ready_rules": [
+        "D-RULE-ACTOR-INFORMATION",
+        "D-RULE-COLLISION",
+        "D-RULE-CROSS-ACTION-TRACKING"
+      ],
+      "nv_ready": [
+        "D-EXP-ACTOR-INFORMATION",
+        "D-EXP-COLLISION",
+        "D-EXP-CROSS-ACTION-TRACKING"
+      ],
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "source_reference": {
+        "material_sha256": "b942f1699617cb25a87065f12d092252806d1a70281cf1dc6cb89c86a3521dce",
+        "owner_source_id": "CP3-LAB-DELTA",
+        "source_anchor": "complete-ledger-construction",
+        "source_sha256": "a7b205bb06669277e8016172b29ce1b4f80a992092b03a0c93c817428cafbf47"
+      },
+      "coverage": {
+        "nodes": 6,
+        "structural_occurrences": 2,
+        "potential_pairs": 15,
+        "pair_enumeration": false
+      }
+    },
+    "scope_validation": {
+      "source_acquired": true,
+      "scopes": {
+        "ROOT-ELIGIBLE": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "seed_ids": [
+            "D-N0",
+            "D-N3"
+          ],
+          "link_validation": {
+            "result": "PASS-SUPPLIED-LINK-STREAM",
+            "complete": true,
+            "eof_observed": true,
+            "bytes_consumed": 594,
+            "consumed_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "complete_stream_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "rows_validated": 17,
+            "structural_rows": 2,
+            "potential_rows": 15,
+            "expected_structural_rows": 2,
+            "expected_potential_rows": 15,
+            "peak_pending_line_bytes": 66,
+            "chunk_budget_bytes": 65536,
+            "failure": null,
+            "profile_admitted": false,
+            "actual_qualification_established": false
+          }
+        },
+        "SCOPED-USED": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "seed_ids": [
+            "D-N1",
+            "D-N4"
+          ],
+          "link_validation": {
+            "result": "PASS-SUPPLIED-LINK-STREAM",
+            "complete": true,
+            "eof_observed": true,
+            "bytes_consumed": 594,
+            "consumed_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "complete_stream_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "rows_validated": 17,
+            "structural_rows": 2,
+            "potential_rows": 15,
+            "expected_structural_rows": 2,
+            "expected_potential_rows": 15,
+            "peak_pending_line_bytes": 66,
+            "chunk_budget_bytes": 65536,
+            "failure": null,
+            "profile_admitted": false,
+            "actual_qualification_established": false
+          }
+        },
+        "NOT-APPLICABLE": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "seed_ids": [],
+          "link_validation": {
+            "result": "PASS-SUPPLIED-LINK-STREAM",
+            "complete": true,
+            "eof_observed": true,
+            "bytes_consumed": 594,
+            "consumed_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "complete_stream_sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684",
+            "rows_validated": 17,
+            "structural_rows": 2,
+            "potential_rows": 15,
+            "expected_structural_rows": 2,
+            "expected_potential_rows": 15,
+            "peak_pending_line_bytes": 66,
+            "chunk_budget_bytes": 65536,
+            "failure": null,
+            "profile_admitted": false,
+            "actual_qualification_established": false
+          }
+        }
+      },
+      "ready": true,
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "potential_pairs_enumerated": false,
+      "source_reference": {
+        "material_sha256": "90cd4e115351e477ba9f3fcdbb8274e7698492a6982caeb8b130658eeb72cc67",
+        "owner_source_id": "CP3-LAB-DELTA",
+        "source_anchor": "complete-scope-source",
+        "source_sha256": "a7b205bb06669277e8016172b29ce1b4f80a992092b03a0c93c817428cafbf47"
+      },
+      "signed_results_consistent": true,
+      "conditional_checks_pass": true
+    },
+    "bundle_authentication": {
+      "ROOT-ELIGIBLE": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "algorithm": "ED25519-RFC8032",
+        "message_limit_bytes": 67108864,
+        "file_identities": {
+          "evidence.tsv": {
+            "bytes": 780,
+            "sha256": "6ca71feb1fc22b4c02569a5cf42775feb021525c755dfe561fc92cce2653b406"
+          },
+          "tokens.tsv": {
+            "bytes": 812,
+            "sha256": "4c572f90a56df518bc8ee92222d18a2dd86f730a474b2bcf86b670068d8bc7d0"
+          },
+          "links.tsv": {
+            "bytes": 594,
+            "sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684"
+          },
+          "signature.txt": {
+            "bytes": 144,
+            "sha256": "1521acf45872b4d292d6acd9c6b4e30056d57c4a0bf4ebf27b1f302a83bbe95e"
+          }
+        },
+        "object_sha256": "4efb14a6fbc5c82c78505520e6f4e8c5a78ae890ee84122d2d4422cb2f4a1b0e",
+        "signed_message_bytes": 2213
+      },
+      "SCOPED-USED": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "algorithm": "ED25519-RFC8032",
+        "message_limit_bytes": 67108864,
+        "file_identities": {
+          "evidence.tsv": {
+            "bytes": 776,
+            "sha256": "75edc2279cb5d22646738261d6645f9363ef6f67a732ebeb3377ddb186defde8"
+          },
+          "tokens.tsv": {
+            "bytes": 812,
+            "sha256": "4c572f90a56df518bc8ee92222d18a2dd86f730a474b2bcf86b670068d8bc7d0"
+          },
+          "links.tsv": {
+            "bytes": 594,
+            "sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684"
+          },
+          "signature.txt": {
+            "bytes": 144,
+            "sha256": "baea16a3a0e0d9ec5419487b3cbb80729cf6ce448602da4c29ff7810ac3b2e40"
+          }
+        },
+        "object_sha256": "b0e61d4b915da838d9f5d51d7bd5ecaa75d44efd669528deea9d13adafb68e67",
+        "signed_message_bytes": 2209
+      },
+      "NOT-APPLICABLE": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "algorithm": "ED25519-RFC8032",
+        "message_limit_bytes": 67108864,
+        "file_identities": {
+          "evidence.tsv": {
+            "bytes": 775,
+            "sha256": "f14b831d8f4d1bdc80a0a748492cba960f1036e8ea04fe79ccf9d2ad37f63446"
+          },
+          "tokens.tsv": {
+            "bytes": 812,
+            "sha256": "4c572f90a56df518bc8ee92222d18a2dd86f730a474b2bcf86b670068d8bc7d0"
+          },
+          "links.tsv": {
+            "bytes": 594,
+            "sha256": "e7a96a70cd87a991c16d1ea8db00591a4abd6d9d637203b1c9427a937a228684"
+          },
+          "signature.txt": {
+            "bytes": 144,
+            "sha256": "c1a8d53f7c2f217c154fb5cc63e66219ac6e1eb4173329c872f4b4c5b333eb61"
+          }
+        },
+        "object_sha256": "8a8afd7874195fdee4d3a3f5a73443dfd36201b525351ec42984fc803202392a",
+        "signed_message_bytes": 2208
+      }
+    },
+    "laboratory_hypotheses": [
+      "policy-governance",
+      "assessor-competence",
+      "observer-completeness",
+      "model-ledger-classification",
+      "composition-decomposition",
+      "source-producer-correspondence",
+      "proof-soundness",
+      "profile-adequacy",
+      "applicability",
+      "evidence-authority",
+      "non-vacuity"
+    ],
+    "meaning": "Local conditional binding/admission checks only; actual qualification and full-stream identities remain unestablished"
+  },
+  "profile_admitted": false,
+  "actual_qualification_established": false,
+  "runtime_effect_performed": false,
+  "full_model_integration_witness": false
+}

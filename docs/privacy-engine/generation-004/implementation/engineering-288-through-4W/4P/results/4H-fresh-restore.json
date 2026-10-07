@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "preseal_zip_sha256": "f2ffbfcf43a18436fddaf03d296b2b3557b334105ab2bb0c10fa9a428f1f0f22",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 2860, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4h-restore-r_vnkhjq/Engineering-288-checkpoint-4H/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4h_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 7}\n",
+      "stderr": ""
+    }
+  ],
+  "seconds": 8.909138134000386,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

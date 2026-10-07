@@ -1,0 +1,185 @@
+{
+  "result": "PASS",
+  "commands": [
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "keygen",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.lifetime",
+        "/tmp/4n-cli-ydp42sc1/GAMMA",
+        "--documents",
+        "16",
+        "--family",
+        "GAMMA"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/GAMMA/job"
+      ],
+      "exit": 2,
+      "expected": 2
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.lifetime",
+        "/tmp/4n-cli-ydp42sc1/DELTA",
+        "--documents",
+        "16",
+        "--family",
+        "DELTA"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/DELTA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/DELTA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/DELTA/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/DELTA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/DELTA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/DELTA/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/DELTA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/DELTA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/DELTA/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4n-cli-ydp42sc1/key",
+        "--manifest",
+        "/tmp/4n-cli-ydp42sc1/DELTA/manifest.json",
+        "--trusted",
+        "/tmp/4n-cli-ydp42sc1/DELTA/trusted.json",
+        "--checkpoint",
+        "/tmp/4n-cli-ydp42sc1/DELTA/job"
+      ],
+      "exit": 2,
+      "expected": 2
+    }
+  ],
+  "handle_limit": 96,
+  "actual_admission": false,
+  "full_stream_processed": false
+}

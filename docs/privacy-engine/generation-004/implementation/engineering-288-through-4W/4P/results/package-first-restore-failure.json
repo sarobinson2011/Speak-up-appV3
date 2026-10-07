@@ -1,0 +1,11 @@
+{
+  "operation": "first fresh-extraction smoke test",
+  "result": "FAILED before extraction: zipfile.BadZipFile",
+  "earlier_verified_bytes": 41653736,
+  "earlier_verified_sha256": "d46748f829ab600bce775e20fe237a3d3b084e6f5c786dae05dee961f549de83",
+  "subsequently_observed_bytes": 37961843,
+  "subsequently_observed_sha256": "c86c2f29cad447bc856a7fedc90cccad1c1721d35a81bc537b7f773352e586f8",
+  "cause": "UNKNOWN; no construction process was still running when inspected",
+  "recovery": "Rebuild using temporary file, fsync, verified member hashes, atomic rename; then fresh restore smoke. See package-restore-smoke.json for outcome.",
+  "full_stream_work": false
+}

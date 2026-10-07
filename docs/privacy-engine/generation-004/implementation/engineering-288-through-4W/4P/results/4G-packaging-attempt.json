@@ -1,0 +1,9 @@
+{
+  "initial_attempt": "FAILED",
+  "affected_operation": "ZIP member creation for upstream source file with pre-1980 timestamp",
+  "cause": "ZIP DOS timestamp minimum is 1980; vendored/source archive timestamps can precede it",
+  "correction": "ZipFile strict_timestamps=False clamps archive metadata only; source content bytes unchanged",
+  "followup": "final package CRC/member hashes and fresh restore recorded separately",
+  "subsequent_package_creation": "PASS",
+  "fresh_restore": "PASS"
+}

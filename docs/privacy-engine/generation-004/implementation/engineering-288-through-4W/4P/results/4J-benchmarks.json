@@ -1,0 +1,30 @@
+{
+  "format": "CP4J-BOUNDED-PERFORMANCE-1",
+  "hard_limit_each_seconds": 60,
+  "aggregate_limit_seconds": 180,
+  "validation_runs": [
+    {
+      "result_file": "4J-large-initial-validate.json",
+      "seconds": 2.3100103529995977,
+      "peak_rss_kib": 26116,
+      "complete_conditional_pass": true
+    },
+    {
+      "result_file": "4J-large-second-validate.json",
+      "seconds": 2.4559805280005094,
+      "peak_rss_kib": 25900,
+      "complete_conditional_pass": true
+    },
+    {
+      "result_file": "4J-large-validate.json",
+      "seconds": 2.3225433030020213,
+      "peak_rss_kib": 24940,
+      "complete_conditional_pass": true
+    }
+  ],
+  "aggregate_validation_seconds": 7.088534184002128,
+  "full_retained_conformance_evidence": false,
+  "initial_runs": "earlier implementation snapshots; final runtime identity is in 4J-large-validate.json",
+  "uncertainty": "warm filesystem cache, local storage, host load, small finite model; no full-universe performance extrapolation",
+  "fixture_construction_and_signing_peak_rss_kib": 625212
+}

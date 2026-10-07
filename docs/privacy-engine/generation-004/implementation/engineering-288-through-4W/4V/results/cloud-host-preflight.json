@@ -1,0 +1,47 @@
+{
+  "result": "PASS-HOST-PREFLIGHT",
+  "target": "/workspace/scratch/4fa8f7981583",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "available_memory": {
+    "MemTotal": 10451460096,
+    "MemAvailable": 9793429504
+  },
+  "cgroup_headroom_bytes": [
+    4800393216
+  ],
+  "effective_available_bytes": 4800393216,
+  "free_disk_bytes": 28476817408,
+  "free_inodes": 2094555,
+  "required_available_memory_bytes": 4294967296,
+  "initial_RAM_planning_ceiling_bytes": 8589934592,
+  "required_free_disk_bytes": 2147483648,
+  "native": [
+    {
+      "name": "emitter_service",
+      "returncode": 0,
+      "result": "{\"result\":\"PASS\",\"role\":\"conditional-laboratory-emitter\"}",
+      "sha256": "74ca71195028dbcfc3c34a4f708c98f355d0271746e2acb9d1a6325bb32b2026"
+    },
+    {
+      "name": "validator_service",
+      "returncode": 0,
+      "result": "{\"result\":\"PASS\",\"role\":\"retained-independent-validator-wrapper\"}",
+      "sha256": "6c8158766af8d2813dab5f5b497716b1ce3d5e525611ff680e80ab391140763f"
+    }
+  ],
+  "library_sha256": {
+    "/usr/lib/x86_64-linux-gnu/libcrypto.so.3": "c19c2cf8d7cf91c4f273b1d3bbc56a9d19c91a739bfe57ad630756ee8ede7b77",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0",
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": "f06f2ce1f1833df5f41cf13b6447ff07bea993ad9b27297d3428c2f70ab3f0e7",
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "6222a16be7f2d458d6870efe6e715fc0c8d45766fb79cf7dcc3125538d703e28"
+  },
+  "compiler": "/usr/bin/g++",
+  "errors": [],
+  "writes_performed": false,
+  "full_execution_started": false,
+  "actual_admission": false,
+  "limitations": "Read-only host check does not prove fsync durability or future capacity. Throughput must be measured separately on this host; cloud timings are not local timings."
+}

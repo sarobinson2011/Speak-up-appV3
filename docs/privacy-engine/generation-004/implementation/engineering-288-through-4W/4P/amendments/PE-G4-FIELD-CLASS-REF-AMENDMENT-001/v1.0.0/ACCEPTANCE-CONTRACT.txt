@@ -1,0 +1,741 @@
+G4 PRIVACY ACCEPTANCE CONTRACT — CONCRETE COMPLETION PROPOSAL
+1 October 2026
+
+Status: integrated author construction in candidate source S90 under the
+authorized S89 redesign. S90 supplies the V4 final-member grammar; no concrete
+V4 governing profile is instantiated. No appointment,
+profile admission, publication or implementation adoption is asserted.
+This document closes the proposed contract structure, not independent acceptance
+of that proposal or evidence that a particular cryptographic construction meets it.
+
+1. Fixed completion criterion
+
+An implementation must be able to determine which evidence is required, how it
+is validated, which failures take precedence, and what success means, without
+choosing privacy policy itself. No successful construction test is admission.
+A parameterized source policy is legitimate only when the parameter authority,
+meaning, validation and absence behavior are specified. A blank parameter may
+not be filled by the profile issuer or the software implementer.
+
+2. Two kinds of privacy obligation
+
+The complete regenerated graph remains the obligation universe. Its structural,
+source-established and potential equality edges remain recorded with exact
+provenance. Symbols such as ARBITRARY never establish observed equality.
+
+A. Exact obligations: source ownership, declaration/record joins, exposure,
+coalition/visibility completeness, source-established linkage, canonical
+encoding, protected actor information, and actual observed counterexamples.
+These are resolved by exact evidence validation and inherited S83–S87 rules.
+A computational bound cannot excuse an established violation or unknown fact.
+
+B. Computational obligations: a potential graph path whose realization or
+information gain is claimed computationally bounded under an explicitly
+identified relation and security experiment. No such claim is discharged merely
+because an edge has a hash label or distinct action inputs.
+
+Every obligation must receive one disposition: EXACT-SATISFIED,
+EXACT-VIOLATION, COMPUTATIONALLY-BOUNDED or NOT-ESTABLISHED. No obligation is
+silently dropped. Whole-view obligations must cover paths and interactions, not
+only a list of individual equality edges.
+
+3. Governing security policy — external, source-owned, immutable
+
+A selected profile must reference a policy by exact identity, digest and owning
+source anchor. The competent policy source must be independently established
+under the inherited source rules. The privacy signer and profile issuer cannot
+appoint this source or choose its contents.
+
+The policy must specify all of the following, with no empty/default cells:
+(a) The protected actor variables, required coalitions and exact observation
+    channels. The set must include every inherited protected actor and every
+    required observer view; it cannot omit a known disclosure to obtain a PASS.
+(b) The authorized public leakage: exactly the approved scoped root, action and
+    same-(a,n) duplicate relationships, plus otherwise already authorized public
+    outcomes. No other exception may be inferred from a security experiment.
+(c) Adversary resources and capabilities: computation model, resource bounds,
+    adaptive action selection, concurrency, retries, corruption/auxiliary
+    knowledge and any oracle queries. Classical/quantum capabilities must be
+    stated explicitly. An excluded capability limits the claim; it must not
+    silently remove a coalition required by the source model.
+(d) The allowed operating envelope: number of relevant occurrences, comparisons,
+    attempts, queries and participants; time/deployment scope where applicable.
+    Unbounded activity cannot borrow a finite-envelope bound.
+(e) Exact secret-generation and state-distribution assumptions; exact algorithm,
+    field, parameter set, encodings, domain constants and relation identities.
+(f) Maximum acceptable rational probability/advantage bounds for collision,
+    cross-action tracking and actor-information experiments. Numerators and
+    positive denominators denote exact fractions in [0,1]; no floating-point
+    rounding, generic security-bits label or implicit 1/p bound is sufficient.
+(g) The approved assumption set, with exact statements, scope, evidence and
+    qualification rule for each. A name such as Poseidon-secure is insufficient.
+(h) The qualified argument-assessment mechanism: accepted certificate grammar,
+    checking procedure and exact semantic version/digest, trust basis, required
+    competence/soundness evidence, and explicit inability behavior.
+(i) The composition method and overall budget allocation for all claims and
+    observer views, including repeated attempts and lifetime comparisons.
+
+The contract deliberately sets no numerical default. Numerical choices are
+protocol parameters supplied by the independently governing policy, not choices
+made by implementation code. Until such a policy is established, this selected
+candidate cannot obtain computational admission. This does not prevent building
+an implementation that reads and enforces the contract.
+
+4. Security claims and their meaning
+
+COLLISION: probability that an adversary within the declared envelope produces
+two distinct, canonically encoded, relation-valid input tuples with equal outputs
+of the exact nullifier hash. The S89 conditional derivation is a transfer lemma
+for this claim. Accepted-proof relation enforcement and soundness are separate
+premises and must have their own established bounds or exact justification.
+
+CROSS-ACTION-TRACKING: distinguishing advantage between two source-specified
+experiments whose protected actor associations differ across distinct actions
+but whose approved public leakage, schedule and permitted auxiliary knowledge
+are identical. Each experiment must specify the secret/state sampling and full
+coalition view. Advantage is the absolute difference of the probabilities that
+the declared adversary outputs one in the two experiments. Missing experiments,
+unequal permitted leakage or an incomplete view mean NOT-ESTABLISHED.
+
+ACTOR-INFORMATION: the analogous distinguishing claim for each protected actor
+association/attribute, preserving the authorized disclosures. Direct disclosure
+of a protected value or a demonstrated reconstruction path is EXACT-VIOLATION,
+not an advantage that can be accepted by allocating a larger budget.
+
+These experiments must be provided as exact source-owned definitions and bound
+to the concrete producer model. There is no universal substitution of tracking
+for collision, or pairwise privacy for coalition privacy. The collision lemma
+does not prove either information claim.
+
+5. Admissible security argument
+
+For every computational obligation the argument must identify:
+- the exact regenerated obligation IDs and whole-view scope it covers;
+- policy/model/source/relation/algorithm/artifact digests;
+- the precise experiment and all premises;
+- explicit assumption references from the governing policy;
+- the complete reduction/certificate and its required artifacts;
+- an exact rational bound and its envelope/resource applicability;
+- the independently qualified assessment mechanism and its returned evidence.
+
+The source-owned assessor must validate the mathematical/cryptographic argument
+under its specified soundness/competence contract. Its evidence must distinguish
+completed VALID, completed INVALID and UNAVAILABLE, for these exact inputs.
+Its result is a source fact only after independent source and assertion binding;
+a caller flag or an unappointed signature cannot establish it.
+
+Signature authentication, byte equality and digest integrity are necessary
+binding checks, not argument validity. The existing six-step S89 kernel accepts
+only its conditional collision derivation. It cannot be reused as a verifier of
+Poseidon security, proof soundness, unlinkability or arbitrary certificates.
+
+Unsupported grammar, missing evaluator qualification, an unapproved assumption,
+unproved reduction premise, incompatible envelope or incomplete artifact
+correspondence produces NOT-ESTABLISHED. A completed invalid assessment produces
+EXACT-VIOLATION for the claimed evidence; neither result permits admission.
+
+This is a source-qualified argument-assessment interface. A general automated
+cryptographic theorem prover is not a protocol prerequisite. A realization may
+use a formal proof checker or a source-qualified assessment process only if its
+exact evidence, competence and assertion semantics satisfy the above contract.
+Neither mechanism is appointed by this proposal.
+
+6. Composition and budget checks
+
+Every required observer view and every protected target must be covered. Coverage
+is regenerated from the complete model, not supplied by an issuer completion bit.
+A proof may cover a whole experiment jointly. Otherwise a source-established
+composition argument must join the component claims and their interactions.
+
+For a UNION composition, use the exact sum of the rational failure bounds, capped
+at one. UNION does not require independence. A tighter bound, a product bound,
+or a conversion between different experiments requires its own validated
+argument. Repetition counts must be within the policy envelope; each applicable
+term must occur with its correct multiplicity. Do not double-count a term merely
+to invent a failure, or omit shared/adaptive interactions to claim success.
+
+For each policy experiment, the composed bound must be at most its specified
+maximum. A checked bound exceeding that maximum is a policy failure. Unknown
+terms, an unsupported composition theorem or inability to regenerate exact
+coverage are NOT-ESTABLISHED. A budget PASS is conditional on all its validated
+premises; it is not mathematical injectivity or unconditional anonymity.
+
+7. Ordered acceptance decision
+
+The proposed integrated validator must:
+(1) Independently regenerate source/body/program/privacy declarations and verify
+    the exact outer bytes and source-policy bindings.
+(2) Collect all inherited authority, signature, object digest, component,
+    schema, source scope, visibility, universe and owning-record failures.
+    A later incomplete security argument cannot mask earlier bad authentication.
+(3) Establish the security policy and argument-assessor competence from independent
+    source evidence, not from issuer data, the privacy signer, or key equality.
+(4) Regenerate the entire graph and exact/computational obligation ledger.
+(5) Reject established protected linkages/counterexamples under retained S83–S87.
+(6) Validate every argument, premise, scope, certificate and artifact binding;
+    validate whole-view coverage and composition; compare exact bounds to policy.
+(7) Accept only if every required obligation is established and every inherited
+    gate passes. Emit the exact admitted profile/policy/assumption bindings.
+
+The inherited ORDER remains controlling. Model/certificate shape inconsistencies
+map to INVALID-PROFILE-SCHEMA; unestablished policy/assessor authority to
+INVALID-EVIDENCE-AUTHORITY; missing objects to MISSING-EVIDENCE; signature/digest
+failures keep their existing codes; scope/experiment binding failures map to
+INVALID-ACTION-CONTEXT; incomplete universe, unsupported/unavailable arguments
+or missing premises map to INCOMPLETE-EVIDENCE-UNIVERSE. Established violations
+and exceeded bounds map to UNIQUENESS-FAILURE, CORRELATION-FAILURE or
+ACTOR-RECONSTRUCTION-RISK according to the protected experiment. A generic
+collision argument cannot clear an unrelated failure. No new protocol outcome
+subject, proof input or public source trace is introduced.
+
+Externally the existing failure vocabulary remains. Internal evidence retains
+whether rejection came from an established violation or inability to establish
+admission. Success explicitly means acceptance under the bound governing policy
+and its established assumptions. It does not itself authorize an E, D, U,
+publication, registry insertion or state transition.
+
+8. Canonical integration requirements
+
+The immutable privacy member must bind the contract version, complete security
+policy reference, experiments, allowed assumption references, declared operating
+envelope, qualification-mechanism references, complete obligation ledger and
+composition/budget rules. Actual occurrence records and admission evidence stay
+outside it and sign its final digest with the inherited V2 preimages.
+
+Additional policy/assessment/evidence fields require explicit observer/custody
+registration and graph provenance before a complete successor member is claimed.
+They cannot be hidden inside an opaque carrier or treated as non-observable by
+fiat. Conditional constants and source-derived facts retain their exact scope.
+A change to the policy or assumptions changes the bound immutable profile;
+it cannot be made by mutating an admitted profile or regenerating signatures.
+
+9. Definition completion versus admission completion
+
+The acceptance contract can be defined without choosing a deployed chain,
+provider, signer or concrete Poseidon implementation. A specific selected
+profile cannot be admitted without the required exact parameter, source,
+assessor, observer, artifact and evidence bindings. Future use-phase observations
+are separate and are not prerequisites to defining this static contract.
+
+The source and schema/member-grammar integration is included in this review
+candidate. Independent semantic review and actual profile instantiation remain
+required. Current relation_admission.py is rejection-only and must not be
+called a completed implementation of sections 3–7. No source or profile bytes
+are changed by writing this proposal. The closure assessment below identifies
+the remaining definition obligations rather than declaring them satisfied.
+
+
+ENGINEERING[287] S90 CORRECTION — AUTHORIZED AUTHOR CONSTRUCTION
+
+This correction is within the existing construction authorization. It clarifies
+S90 #experiments, #qualification, #schemas, #instantiation, #representation and
+#decision under CAP-101/102/104/105/106/109. It appoints no source, changes no
+S03–S89 byte or prior requirement, and creates no governing member. The separate
+NONVACUITY-CONTRACT.txt enacts Steve's approved option A and controls that decision.
+
+1. Canonical record placement; no self digest
+
+The following rules supersede the ambiguous S90 final-member paragraph wherever
+that paragraph leaves nested record placement unspecified. The 14 outer keys
+and 11 security_contract keys remain exactly those listed by S90. Canonical JSON
+is the S88 sorted-key, ASCII-escaped compact encoding followed by one LF;
+duplicate object keys, floats/nonfinite numbers and noncanonical input fail.
+Primitive and record shapes are exactly v4_record_grammar.py below. Source
+semantics/qualification are additional checks, never consequences of shape.
+
+security_contract.policy is exactly {record, algorithms, artifacts, observers,
+field_labels}: one POLICY record and arrays of ALGORITHM, ARTIFACT, OBSERVER and
+FIELD-LABEL records respectively. The POLICY.policy_digest equals SHA256 of the
+independently governing material bytes named by POLICY.policy_source.material_sha256.
+It is NOT a digest of the containing POLICY record or profile. approved_by_source
+is independent approval material for those exact governing bytes, not a key or
+a claim of this serializer. Governing policy bytes must exist before construction.
+
+security_contract.experiments, assumptions and qualification_contracts contain
+EXPERIMENT, ASSUMPTION and QUALIFICATION record arrays respectively.
+operating_envelope and leakage are the sole ENVELOPE and LEAKAGE records.
+All record arrays are in increasing ASCII byte order of their schema identity
+field, with no duplicate identity. Ordered semantic sequences inside a record
+retain their specified order; predecessor/term order is not inferred from ID
+sort order. Empty applicable directories remain prohibited by source validation.
+
+security_contract.obligations contains the complete STATIC obligation TEMPLATE
+directory. Each record has exactly obligation_id, kind, target_ids, coalition_id,
+node_ids, edge_ids, experiment_id. The full OBLIGATION evidence record additionally
+has profile_digest, model_digest, disposition, argument_ids, exact_evidence_refs.
+Those five fields are EXTERNAL validation evidence and MUST NOT occur in the
+immutable obligation template. They retain their registered types and full
+observer/custody duties. EXACT experiment_id is JSON null, with no computational
+substitution; COMPUTATIONAL experiment_id must resolve exactly.
+
+security_contract.composition_rules is exactly {directory_id, records}.
+directory_id is POLICY.composition_id: it identifies the complete rules DIRECTORY,
+not one COMPOSITION record. Every records element has exactly composition_id,
+policy_id, experiment_id, method, theorem_ref, qualification_id. External full
+COMPOSITION evidence supplies argument_ids, aligned multiplicities and
+composed_bound after validating the actual arguments. No result, invocation,
+certificate, signature, admission disposition or final profile digest is embedded
+in an immutable rule template. Each required experiment has exactly one rule,
+and every rule's experiment and policy join must resolve; orphan rules fail.
+For UNION, theorem_ref is null and the exact sum law already owned by S90 applies.
+For SOURCE-QUALIFIED-THEOREM it is a qualified SOURCE-REF. Null does not establish
+the remaining premises. qualification_id still binds the competent assessment
+contract for the evidence and coverage premises.
+
+ARGUMENT, ASSESSMENT, ASSESSOR-EVENT and POLICY-APPLICABILITY instances, full
+OBLIGATION and COMPOSITION result instances, and their actual source/certificate
+material are external. They are bound to the completed outer profile digest.
+Static privacy model tokens for these schemas are symbolic fields/classes, never
+concrete future record values or a hash of the member into itself. The static
+template ledger is an inventory of required duties; it asserts no discharge.
+
+contract_sha256 binds the complete corrected ACCEPTANCE-CONTRACT.txt.
+schema_sha256 binds exact security-fields.tsv bytes (the 156 semantic fields).
+qualification_interface_sha256 binds qualification-interface.tsv. The additional
+framing-register and grammar digests MUST also be included in procedures_sha256
+and declaration_input_sha256 at their exact relative paths. format_source remains
+S90 and format_source_sha256 binds the full corrected source. These source hashes
+are computed after authoring the source, before constructing a future profile;
+no literal S90 self digest is written into the source.
+
+All inherited S88 outer fields retain their meaning; policy_sources appends S89
+then S90 to the four prior identifiers. Rebuilt model has exactly surfaces,
+relations, tokens, structural_edges, equality_stream, actor_graph_policy. Surfaces
+use the inherited augmented-node columns; relations use augmented-edge columns;
+token/edge/equality layouts follow the retained expansion. Additional fields and
+parser surfaces extend these same typed arrays and MUST NOT be an opaque side
+graph. Static token indexes are contiguous and all edge references must resolve.
+
+2. Exact external availability representation
+
+The canonical external security-record object is exactly
+{format, profile_digest, phase, records}, with format PE-G4-SECURITY-RECORDS-V4,
+the final OUTER profile digest, and phase STATIC-ADMISSION/E/PRE-EXECUTION/
+PRE-COMMITMENT. records is an object containing all 16 registered schema names.
+Each value is exactly {status, justification, instances}. status is PRESENT,
+UNAVAILABLE or INAPPLICABLE. PRESENT has a nonempty canonical record array;
+the other statuses have an empty array. INAPPLICABLE requires an independently
+validated source-reference justification; an issuer cannot switch off a required
+experiment, coalition, target, argument or view. UNAVAILABLE always prevents
+discharge of the required duty. Its justification may itself be unavailable
+(null); such absence establishes no qualified inability assertion.
+
+A completed assessor invocation may produce a PRESENT ASSESSMENT record with
+complete_result UNAVAILABLE or INVALID. In either case validated_bound is null;
+VALID requires a RATIONAL validated_bound. Result presence is distinct from
+VALIDITY. Invalid or unavailable evidence supplies no usable numerical term.
+ASSESSOR-EVENT input_bytes/output_bytes may be null only if the independently
+qualified event grammar establishes that field is inapplicable at that event;
+required-but-missing data makes source/evidence completeness fail. Empty byte
+string is present data, distinct from null. No serializer fabricates a bound,
+call result, error or cache hit. All other registered fields are present and
+typed, except the expressly defined UNION/EXACT null cases above.
+
+The old producer-evidence V2 carrier has a fixed old directory and MUST NOT be
+used to claim it encodes these new records. This external canonical object is
+source material accompanying the inherited four-file V2 evidence bundles, not
+a fifth signed-envelope file or fourth immutable member. Exact bytes must be
+supplied and parsed before independently regenerating evidence.tsv/tokens.tsv/
+links.tsv. For a security field, token_sha256 is SHA256 of canonical JSON of its
+typed value (including its one LF). BYTES fields therefore hash their canonical
+hex representation; referenced ARTIFACT.digest separately hashes the decoded
+exact artifact octets. The record-token digest hashes its complete canonical
+record. Frame/status/presence tokens hash the corresponding typed canonical
+value. Every security object field and all exact record/source/parser/visibility
+links enter the same signed token/link universe. The V2 domains, headers, object
+digest preimage, required three scopes and final-profile joins remain unchanged.
+Auxiliary object availability and source authentication are mandatory; having a
+matching token digest without the required exact bytes is MISSING-EVIDENCE.
+
+Do not hide the object wrapper, array/directory cardinalities, null tags, status,
+phase or justification metadata. security-framing-fields.tsv is the explicit
+register of those additional field classes and framing-custody.tsv retains all
+seven possible custody roles as UNKNOWN until independently resolved. Its
+presence classes expand once per corresponding record field, including a null
+field; its per-schema classes expand once per schema directory. The existing
+156 semantic fields and their original 1,092 custody cells remain preserved.
+Static owning-record class nodes, complete record bytes and source-established
+parser subfields still participate in the complete graph and actor analysis.
+No framing value is automatically public or eligible for the constant exception.
+
+3. Static universe and actual occurrence universe
+
+At STATIC admission, the independently qualified governing source/model parser
+must supply a finite COMPLETE symbolic directory for every applicable field,
+record class, event, artifact parser output and old/new producer surface within
+the declared operating envelope. It may be a qualified bounded symbolic
+representation of all repetition counts/branches; it is never a representative
+sample directory or the first invocation trace. Model completeness, coverage and
+the exact symbolic multiplicity/guard semantics are independently checked under
+the bound source procedure. If that representation cannot be qualified or its
+scope is unbounded/unknown, admission fails. No universal compiler or graph
+minimizer is implied by this interface.
+
+This duty includes ALL inherited record classes, not just the new security ones:
+ReadObject acquisitions, callbacks, retries, failures, diagnostics, cache/history,
+transport, verifier calls, observer auxiliary knowledge and all source-established
+and actor paths. A repeated owning record remains distinct. Full inherited
+field/class/custody/source edges remain; each required directory is expanded in
+both distinct symbolic U contexts. No successful fixture fixes multiplicity.
+The full potential-equality rule remains left.arbitrary OR right.arbitrary OR
+equal symbolic_digest, including old/new and arbitrary/constant pairs. All
+structural and equality edges remain in actor reachability. Proven absent paths
+need exact source evidence; no constant or permission pruning of the actor graph.
+
+FIELD-LABEL.surface_id identifies a FIELD CLASS in the finite complete surface
+register, including framing fields and FIELD-LABEL's own field classes. It does
+not create another surface class for each label record or demand infinitely many
+labels of labels. Each expanded occurrence inherits its field-class label only
+after qualified owner/coalition/visibility validation. Different visibility needs
+separate source-qualified classes; UNKNOWN never defaults to CONFIDENTIAL.
+
+During E, either gate and recovery, exact ACTUAL record/event directories replace
+symbolic multiplicities only for occurrence evidence. They must belong to the
+admitted model's qualified class/envelope coverage and bind all owning header,
+phase/attempt/history and full dependency/replay/fresh-map joins. Unexpected
+record classes, unmodeled source callbacks or an exceeded scope reject use; the
+software cannot extend immutable profile bytes in place. Additional accounting,
+material predicates, ordering, coordinates or state effects still require explicit
+profile revision and block this two-component candidate in the meantime.
+
+4. Quantification and independent qualification
+
+The security bound is required uniformly for EVERY adversary in the source-owned
+declared capability/resource class, with all allowed adaptive schedules, choices,
+queries, corruptions, auxiliaries and coalitions. A proof about a chosen benign
+adversary returning a constant is not a bound on that class. The two information
+experiments must actually differ in each claimed protected association/attribute;
+identical worlds or an omitted required target do not discharge that claim. A
+whole-view coverage checker must establish all required alternatives, paths and
+interactions. Conditioning away an observed disclosure is prohibited. The
+collision claim retains its separate relation-valid ordered-tuple meaning.
+
+Source/policy/assessor authority and competence must be established outside the
+profile's own claims. An assessment cannot be its own sole competence evidence;
+a cyclic chain with no independently established governing basis fails authority
+validation. Trust anchors are external source facts under the inherited source
+rules, not a new protocol-selected person/key/organization. A valid signature
+only authenticates an assertion. Qualification must establish its exact semantic
+checking behavior/scope/soundness and approval, with required evidence available.
+
+Approved assumptions remain explicit conditional hypotheses. They cannot be
+promoted to proven algorithm facts, used as proof of source competence, or used
+to replace required evidence of an argument/premise. If the argument merely
+assumes its very target conclusion, it discharges no independent security
+obligation; that is circular reasoning. An independently approved primitive
+assumption is permitted only with an established reduction/correspondence and
+explicit conditional claim. No protocol default for numerical strength is added
+by this clarification. The separately approved NONVACUITY-CONTRACT.txt imposes
+maximum < 1 and meaningful scope; it sets no numerical default.
+
+5. Failure collection and composition disambiguation
+
+The inherited ORDER is unchanged. All independently detectable failures are
+collected; malformed/unavailable later data cannot mask earlier authentication.
+An unavailable parser result cannot be used to fabricate further factual errors.
+Malformed shape/null tags/template placement: INVALID-PROFILE-SCHEMA.
+Wrong supplied profile digest: PROFILE-DIGEST-MISMATCH.
+Unestablished independent authority/competence: INVALID-EVIDENCE-AUTHORITY.
+Missing required exact object bytes: MISSING-EVIDENCE.
+Signature/object digest failures: their unchanged authentication/digest codes.
+Unknown/invalid declared visibility: INVALID-SURFACE-LABELS; missing complete
+qualified observer view also contributes INCOMPLETE-EVIDENCE-UNIVERSE.
+Established context/experiment/envelope mismatch: INVALID-ACTION-CONTEXT.
+Unavailable/unsupported argument, scope that cannot be established, incomplete
+whole-view/directory/ledger or missing premise: INCOMPLETE-EVIDENCE-UNIVERSE.
+An established exceeded budget or completed INVALID assessment contributes the
+protected experiment's failure code: COLLISION -> UNIQUENESS-FAILURE;
+CROSS-ACTION-TRACKING -> CORRELATION-FAILURE; ACTOR-INFORMATION ->
+ACTOR-RECONSTRUCTION-RISK. Internal reason retains INVALID-ARGUMENT distinct
+from a demonstrated producer privacy violation. An unqualified INVALID flag
+is a qualification/evidence failure, never a known counterexample.
+
+All known protected paths/equalities retain the original applicable failures;
+a row can contribute more than one failure (including observed cross-action n).
+Known envelope mismatch and missing scope proof are distinct cases, not an
+implementer-selected choice between two codes. The decision-case row saying
+'INVALID-ACTION-CONTEXT or incomplete evidence' is read under this distinction.
+
+UNION is permitted only when qualified evidence proves that the complete failure
+event/advantage decomposition is bounded by these exact terms. Arithmetic alone
+does not justify joining arbitrary distinguishing games. Multiplicities align
+one-for-one with ordered, distinct argument_ids, are positive integers, and cover
+all applicable repetitions/interactions. A single joint argument has one term;
+shared terms are not counted twice without source-established multiplicity.
+A source-qualified tighter/product/composed-game bound requires its own exact
+theorem and qualification. Every required experiment has complete coverage and
+is compared to its own source-owned maximum, with no invented policy values.
+
+6. Status of this completed correction
+
+This source-determined correction fixes record placement, external absence,
+framing visibility, static-versus-actual coverage, quantification, noncircular
+qualification and failure interpretation. It supplies documentary grammar, not
+a production V4 acceptance validator, instantiated governing member, source
+appointment or security evidence. Author grammar checks do not independently
+accept this correction. The historical SUPPLIED package retains its original
+BLOCKED verdict. Steve has now approved A; the final assessment is in the
+Engineering[287] completion report. Prior review/authorization and execution
+receipt questions are not reopened.
+
+
+ENGINEERING[287] OPTION A — APPROVED NON-VACUITY CONTRACT
+
+Authority: Steve's message 'A' in Engineering[287], 1 October 2026, selects the
+explicit option A in the focused definition report. This is protocol-authoring
+authorization. It is not policy-source appointment, evidence qualification,
+profile admission, publication or permission to execute a transition.
+
+This section governs S90 #nonvacuity and supersedes the earlier OPEN decision
+markers. Existing exact privacy protections, leakage exceptions, capability
+decisions, numeric-source ownership and independent qualification duties remain.
+
+NV1. Every required computational EXPERIMENT.maximum MUST be a canonical reduced
+rational [numerator,positive denominator] with 0 <= numerator < denominator.
+Numerical targets still originate in the independently governing policy; there
+is no default target, security-bits label, probability 1/p, adversary model or
+algorithm assumption. A weak maximum below one remains a visibly weak target;
+this floor alone establishes no practically adequate strength.
+
+Validated argument bounds and composed bounds remain canonical probabilities in
+[0,1]. Bound one is representable as a pessimistic qualified result; it exceeds
+every permitted maximum and cannot discharge admission. The strict maximum law
+applies in the V4 experiment grammar and the UNION budget entrypoint, not only
+in explanatory text. Maximum zero is permitted, but only a soundly established
+zero bound can meet it. Unsupported perfect-security assertions still fail.
+
+NV2. Every required experiment MUST have independently established nonempty
+admissible scope and genuine protected alternatives, with uniform protection over
+the entire source-owned adversary/capability/resource class and all allowed
+adaptive schedules, repeated actions, queries, auxiliaries and required coalitions.
+For collision, the scope includes admissible distinct canonical relation-valid
+input tuples and the corresponding source-defined adversarial experiment. A
+collision impossibility proof over a genuinely nonempty such domain may establish
+zero; eliminating the domain is not that proof.
+
+For CROSS-ACTION-TRACKING, the source-owned worlds differ in protected actor
+associations across admissible distinct actions, with nonzero support for those
+alternatives. For each ACTOR-INFORMATION target the worlds genuinely differ in
+that protected association/attribute with nonzero support. Approved public
+leakage and permitted schedules/auxiliary knowledge are matched under the exact
+experiment semantics. Each required coalition receives the complete view. An
+identical-world pair, zero-occurrence-only scope, chosen constant-output benign
+adversary, erased required coalition/target, or conditioning away a prohibited
+observation does not discharge the intended claim.
+
+These are STATIC model/support duties. They require no invented real A/E/D/U or
+two already executed actions. They do not mandate an unbounded adversary or new
+corruption policy. Additional restricted model assumptions remain explicit and
+independently governed; the claim may not be advertised beyond their scope.
+
+NV3. Support, whole-class quantification, whole-view coverage, exact source scope
+and applicability MUST be established under the independently qualified parser/
+assessment contracts already bound by POLICY, EXPERIMENT and QUALIFICATION.
+The exact world/envelope/target/coalition definitions and validating evidence
+are referenced through their existing SOURCE-REFs and argument/premise/artifact
+joins; no new proof input, PE-TSE host call, actor subject or public trace is added.
+
+The non-vacuity validation interface takes the exact policy, experiment/world
+definitions, envelope, complete model/target/coalition directories and qualification
+contracts. Its qualified VALID result binds those exact inputs and establishes
+the NV1/NV2 duties. INVALID and UNAVAILABLE are distinct and neither discharges
+them. An unqualified VALID flag, arbitrary signature, positive count supplied by
+the issuer or a schema-valid world reference cannot establish these semantic facts.
+The exact independently qualified checking mechanism/grammar is a policy input;
+software must enforce its source-owned contract and cannot invent a substitute.
+Callbacks, outputs, errors, retries, caches and observer/dependency surfaces use
+the existing assessor/argument/source evidence classes and full expansion law.
+
+Empty or inapplicable directories require independent source justification for
+the actual duty. A required computational privacy experiment cannot be marked
+inapplicable merely because it cannot meet NV1/NV2. The regenerated full ledger
+and complete targets/views control which duties are required. Genuine source-
+established inapplicability of a duty is distinct from an empty supported scope
+for a claim represented as providing computational privacy.
+
+NV4. Failure collection MUST preserve the inherited ORDER. A malformed or
+prohibited maximum is INVALID-PROFILE-SCHEMA. Established model/world/envelope
+scope failing NV2 contributes INVALID-ACTION-CONTEXT. Missing required exact
+bytes, unestablished authority and failed signature/digest retain their earlier
+codes. Unavailable/unsupported non-vacuity assessment or inability to establish
+complete support/coverage contributes INCOMPLETE-EVIDENCE-UNIVERSE. All detectable
+failures are collected; the earliest wins. The EXCEEDED budget case contributes
+the protected experiment's existing uniqueness/correlation/actor failure code.
+No new failure code or externally observable result subject is introduced.
+
+All exact/source-established protected violations, observed counterexamples and
+unknown visibility still reject even if budgets and support checks otherwise pass.
+Acceptance requires EVERY governing duty, including NV1–NV4, independent source
+and evidence qualification, profile adequacy and inherited gates. It means only
+the precise conditional protection justified by that policy and its established
+assumptions. Neither a strict maximum, schema validity, successful calculation,
+successful serialization nor this authoring decision alone supplies privacy.
+
+CONSTRUCTION DEPENDENCY LAW
+
+Static policy/source/algorithm/parser/qualification/field-label/model material
+embedded in or referenced by the immutable member must have an acyclic exact-byte
+construction basis before final outer-profile hashing. It may bind earlier
+source/body/program/model material where its qualified contract permits, but
+must not require its own final outer digest or the final admission decision to
+exist as a construction input. The immutable obligation/composition templates
+contain no actual result fields. Final-profile-bound argument/result/occurrence
+records, signatures and admission evidence follow completed immutable bytes and
+remain external. A hidden self-digest in referenced material is not excused by
+using SOURCE-REF; circular construction prevents construction/admission.
+
+SELECTED PROFILE BOUNDARY
+
+Non-vacuity and envelope applicability add source-validation duties, not a third
+projected material bit. The two-component profile is suitable only if the full
+source-owned scope fits its fixed effect, ordering and coordinate/dependency
+contracts. A policy that needs additional changing material conditions, runtime
+budget-accounting state, ordering or effects must reject this profile until
+explicitly revised. No new lifetime-counting mechanism is silently appointed.
+
+CROSS-RECORD ACCEPTANCE JOINS
+
+The active grammar's shape functions establish structure only. A production
+validator must also enforce these exact typed joins after independently qualified
+regeneration; it may not derive semantic truth from matching identifier spelling.
+Each record carrying policy_id names the sole immutable POLICY.policy_id. POLICY
+experiment_ids, coalition_ids, assumption_ids, qualification_ids and field_label_ids
+are the exact identity directories of the corresponding immutable record arrays,
+in their canonical identity order. target_ids is the independently regenerated
+complete protected-target directory, matched to source-qualified OBSERVER target
+references and model target identities; it is not issuer-selected. envelope_id
+and leakage_id name the sole owning records. All required directories are complete;
+source-qualified justified inapplicability is the only permitted empty directory.
+
+Every algorithm_id reference resolves in the ALGORITHM directory, every artifact_id
+in ARTIFACT, qualification_id in QUALIFICATION, assumption_id in ASSUMPTION and
+experiment_id in EXPERIMENT, with exact policy/scope/source/artifact correspondence.
+ALGORITHM.artifact_ids and ARTIFACT.algorithm_id agree. Each EXPERIMENT coalition,
+target, algorithm, envelope and leakage reference resolves to its owning directory
+and exact qualified scope. FIELD-LABEL.surface_id covers a declared full-model
+field class exactly once, and its coalition/owner/visibility references are
+independently adequate for every expanded instance. Completeness cannot be
+established merely because all supplied references resolve.
+
+Static obligation node_ids/edge_ids resolve in the rebuilt model, target/coalition
+joins cover the full required universe, and every COMPUTATIONAL experiment_id
+resolves. EXACT obligations use null experiment_id and do not acquire a computational
+waiver. The complete obligation directory is independently regenerated under the
+qualified source/model contract, including exact joins and whole-view interactions;
+issuer omissions, invented obligations or classifications inconsistent with a
+known exact violation fail. External OBLIGATION instances repeat the immutable
+template fields exactly, bind the final outer profile digest and SHA256 of its
+canonical immutable model, and add only the specified evidence/result fields.
+
+A COMPOSITION rule is unique for each required experiment. External COMPOSITION
+instances repeat its template fields exactly and align distinct argument_ids with
+positive multiplicities and qualified bounds. ARGUMENT.composition_id names this
+specific rule record, not POLICY's directory identity. ARGUMENT obligation_ids,
+experiment, assumptions, qualification, artifacts, envelope and premises match
+the independently checked claim. Every ASSESSMENT names exactly its ARGUMENT and
+qualified mechanism; exact_input_digest hashes the complete invocation preimage
+specified by that exact source-qualified mechanism. The validator reconstructs
+that preimage from the supplied exact argument/policy/world/artifact/premise bytes;
+it never assumes a generic checker preimage or accepts an opaque matching digest.
+Relevant assessor-event records cover the entire qualified invocation and actual
+control/read/return/error/retry/cache trace, with exact predecessor/context/attempt
+joins. POLICY-APPLICABILITY binds the final profile, exact governing mapping,
+current source context, envelope, phase and attempt. No outside record may change
+an immutable source policy/template, certify its own authority or omit actual
+consumed dependencies. Missing, orphaned or incoherent material fails in the
+inherited schema/context/universe/authority categories as applicable.
+
+All graph index/byte/count representations must fit their inherited U32/U64/ordinal
+wire domains. A finite but unrepresentable model fails schema validation; no
+truncation, wraparound, silent scope reduction or alternative codec is permitted.
+
+V4 MODEL/EVIDENCE BYTE ADAPTER
+
+This is the explicit V4 binding of the existing signed-table fields; it extends
+the owning token/link universe and preserves the V2 headers/domains/four-file
+preimages. It does not permit using the old V2/V3 decision implementation for V4.
+For this V4 member, surface_template_sha256 hashes canonical JSON of model.surfaces
+and relation_template_sha256 hashes canonical JSON of model.relations, including
+the single terminal LF. These are exact typed template arrays, not issuer prose
+or caches. Both arrays and their qualified derivation are independently regenerated.
+The V4 adapter supersedes the old submodel-only template preimages for these two
+field values; it changes no signature domain, TSV header or object digest framing.
+
+model tokens retain the zero-based contiguous index, id, surface, context, record,
+exposure, reuse, arbitrary and symbolic_digest layout of the inherited expansion.
+In the static model they contain symbolic values only. STRUCTURAL edges are exact
+[left index,right index,one-based relation-template order,relation class] arrays;
+source-directory/record-field/frame/parser/custody expansions normalize into that
+same layout. Template relation provenance/source meaning remains bound by the
+complete source-owned arrays/procedure/model inputs; identical-looking source
+relations with distinct provenance have distinct template identities. There are
+no hidden edges or anonymous side graphs.
+
+For ledger edge_ids, a structural occurrence is G4-STRUCTURAL-EDGE- followed by
+its one-based canonical model.structural_edges array index in ordinary decimal.
+A potential equality edge is G4-EQUALITY-PAIR-{left-index}-{right-index}, with
+zero-based ordinary-decimal indexes and left < right. node_ids name exact token
+id values. These identity constructors are unambiguous, are not actor identifiers,
+and do not imply runtime priority. Relation/order/record completeness is checked
+against the qualified model, never against a supplied expected-result cache.
+
+The regenerated static signed-token universe is the complete model.tokens array;
+its token_sha256 is symbolic_digest. The actual occurrence universe replaces
+symbolic values with exact independently authenticated owning record values and
+uses their owning-source byte law (the S90 canonical typed JSON law for security
+records). Complete actual directories must match admitted field classes/envelope
+and occurrence joins. Tokens and links are regenerated from those exact records;
+static placeholders cannot be presented as actual equality witnesses.
+
+For every structural edge the signed link is the corresponding token IDs,
+f'{relation-template-order:06}', and its relation class. Every static potential
+equality pair from the inherited full predicate also supplies a link with
+relation_order 000000 and relation_class EQUALS. Actual occurrence equality uses
+exact source-qualified owning value equality and all established relations; no
+potential symbol is promoted to a known match. The complete links are ordered
+lexicographically by the four string cells; identical tuples occur once and
+provenance-distinct relations remain separate. No equality stream is sampled.
+The signed-token row order is the regenerated token array order. token_order and
+link_order use the inherited f'{one-based-row:06}' minimum-width decimal spelling;
+the six-character format is not a new link-count cap. Actual comparison-attempt
+ordinals and other explicitly closed ORD6 identifiers retain their true limits.
+
+The seven TOKEN_HEADER and five LINK_HEADER cells, literal TAB separators, one
+LF after every row, and UTF-8/no-BOM/no-CR constraints are the retained S70 law.
+Component evidence uses the inherited complete closure of its source-owned
+component seed through the full regenerated graph; it cannot omit a required
+security/observer duty. The three distinct scopes/kinds are retained: ROOT-ELIGIBLE,
+SCOPED-USED and NOT-APPLICABLE composition. Whole-view computational qualifications
+are checked for their exact relevant experiment/target/view scopes in every bundle;
+a component PASS cannot replace composition or the other component.
+
+The sole evidence.tsv row retains the fifteen EVIDENCE_HEADER cells and inherited
+identity/scope constructors: profile-id#ADMISSION-V1 at static admission, or
+profile-id#OCCURRENCE-SET- plus SHA256 of exact scoped tokens.tsv at occurrence;
+evidence_id is profile-id#kind-ALL for composition and profile-id#kind-component-id
+otherwise. kind is ADMISSION-COMPONENT/ADMISSION-COMPOSITION at static admission
+and COMPONENT/COMPOSITION at occurrence. profile_sha256 binds the final outer
+container, not a privacy subobject. tokens_sha256 and links_sha256 hash their
+complete exact file bytes. The three *_result cells are independently computed
+PASS/FAIL for the respective complete uniqueness/correlation/actor contract after
+all exact/computational qualification, coverage, composition, budgets and NV duties;
+an arbitrary signed PASS is not a result. Inability cannot create admitted evidence.
+issued_by and algorithm are the externally appointed evidence authority identity
+and ED25519-RFC8032. The signature.txt line and the signed/object-digest preimages
+are exactly the retained V2 laws. All authority/semantic/scope failures still collect
+in inherited ORDER before acceptance; serializing these cells grants no permission.
+
+
+APPROVED COMPATIBILITY AMENDMENT PE-G4-FIELD-CLASS-REF-AMENDMENT-001 v1.0.0
+# PE-G4-FIELD-CLASS-REF-AMENDMENT-001 version 1.0.0
+
+Authority: explicit user approval, AUTHORITY.json SHA-256 5a33a07373db842ed9efc898cf682407d2032175eb7d2c9cb645ad5c6f24cd63.
+This is a narrow compatibility amendment to the preserved Engineering[287]/S90 baseline, not evidence of source or mechanism qualification or protocol publication.
+
+FIELD-LABEL.surface_id has type FIELD-CLASS-REF. Its representation is the unchanged canonical JSON string containing the exact case-sensitive field-class name. Its spelling is either an existing ID or an existing ID immediately followed by `.$record`. Its value MUST be an exact member of the complete source-owned surface register bound to the model. Occurrence-qualified token IDs, aliases, names absent from that register and all other dollar spellings are invalid. Canonical JSON retains its accepted serialization; alternate byte encodings are not introduced.
+
+This type applies solely to FIELD-LABEL.surface_id. General ID and OBLIGATION grammar are unchanged. Owner, coalition, visibility, complete field-class coverage and UNKNOWN rules remain unchanged. A supplied register is an input to local membership checks; only the independent source/model correspondence and qualification rules establish its authority and completeness. Missing register context cannot establish validity and must fail through INCOMPLETE-EVIDENCE-UNIVERSE at admission. Malformed spelling remains a schema failure; a well-spelled absent member is an incomplete-universe failure.
+
+Revised normative schema/grammar/contract are the companion files. PE-G4-SOURCE-S90-FCR-001.md consolidates the preserved S90 text with this exact amendment; its source identifier is PE-G4-SOURCE-S90-FCR-001, version 1.0.0. BINDING.json pins all revised and reused normative bytes. Historical accepted/ and predecessor ZIPs remain immutable. Dependent source/procedure, finite contract, provenance, profile, invocation, evidence and signature bindings must be regenerated or verified unchanged; no prior receipt silently migrates.
+
+Exact affected baseline clauses: security-fields.tsv data row 83 (file line 84), S90 line 890; v4_record_grammar.py ID lines 57–59; ACCEPTANCE-CONTRACT lines 385–390 (S90 451–456) and 615 onward (S90 681 onward). Earlier OBLIGATION edge-reference compatibility is unaffected and does not replace FIELD-LABEL references or prove duty coverage.

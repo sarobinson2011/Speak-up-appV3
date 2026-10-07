@@ -1,0 +1,169 @@
+{
+  "result": "CONDITIONAL-STATIC-LEDGER-CONSTRUCTED",
+  "templates": {
+    "obligations": [
+      {
+        "coalition_id": "D-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-0-4",
+          "G4-EQUALITY-PAIR-0-5",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-1-4",
+          "G4-EQUALITY-PAIR-1-5",
+          "G4-EQUALITY-PAIR-2-3",
+          "G4-EQUALITY-PAIR-2-4",
+          "G4-EQUALITY-PAIR-2-5",
+          "G4-EQUALITY-PAIR-3-4",
+          "G4-EQUALITY-PAIR-3-5",
+          "G4-EQUALITY-PAIR-4-5"
+        ],
+        "experiment_id": "D-EXP-ACTOR-INFORMATION",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "D-N0",
+          "D-N1",
+          "D-N2",
+          "D-N3",
+          "D-N4",
+          "D-N5"
+        ],
+        "obligation_id": "D-OB-ACTOR-INFORMATION",
+        "target_ids": [
+          "D-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "D-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-0-4",
+          "G4-EQUALITY-PAIR-0-5",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-1-4",
+          "G4-EQUALITY-PAIR-1-5",
+          "G4-EQUALITY-PAIR-2-3",
+          "G4-EQUALITY-PAIR-2-4",
+          "G4-EQUALITY-PAIR-2-5",
+          "G4-EQUALITY-PAIR-3-4",
+          "G4-EQUALITY-PAIR-3-5",
+          "G4-EQUALITY-PAIR-4-5"
+        ],
+        "experiment_id": "D-EXP-COLLISION",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "D-N0",
+          "D-N1",
+          "D-N2",
+          "D-N3",
+          "D-N4",
+          "D-N5"
+        ],
+        "obligation_id": "D-OB-COLLISION",
+        "target_ids": [
+          "D-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "D-COALITION",
+        "edge_ids": [
+          "G4-EQUALITY-PAIR-0-1",
+          "G4-EQUALITY-PAIR-0-2",
+          "G4-EQUALITY-PAIR-0-3",
+          "G4-EQUALITY-PAIR-0-4",
+          "G4-EQUALITY-PAIR-0-5",
+          "G4-EQUALITY-PAIR-1-2",
+          "G4-EQUALITY-PAIR-1-3",
+          "G4-EQUALITY-PAIR-1-4",
+          "G4-EQUALITY-PAIR-1-5",
+          "G4-EQUALITY-PAIR-2-3",
+          "G4-EQUALITY-PAIR-2-4",
+          "G4-EQUALITY-PAIR-2-5",
+          "G4-EQUALITY-PAIR-3-4",
+          "G4-EQUALITY-PAIR-3-5",
+          "G4-EQUALITY-PAIR-4-5"
+        ],
+        "experiment_id": "D-EXP-CROSS-ACTION-TRACKING",
+        "kind": "COMPUTATIONAL",
+        "node_ids": [
+          "D-N0",
+          "D-N1",
+          "D-N2",
+          "D-N3",
+          "D-N4",
+          "D-N5"
+        ],
+        "obligation_id": "D-OB-CROSS-ACTION-TRACKING",
+        "target_ids": [
+          "D-TARGET"
+        ]
+      },
+      {
+        "coalition_id": "D-COALITION",
+        "edge_ids": [
+          "G4-STRUCTURAL-EDGE-1",
+          "G4-STRUCTURAL-EDGE-2"
+        ],
+        "experiment_id": null,
+        "kind": "EXACT",
+        "node_ids": [
+          "D-N0",
+          "D-N1",
+          "D-N2",
+          "D-N3",
+          "D-N4",
+          "D-N5"
+        ],
+        "obligation_id": "D-OB-EXACT",
+        "target_ids": [
+          "D-TARGET"
+        ]
+      }
+    ],
+    "composition_rules": {
+      "directory_id": "D-RULE-DIRECTORY",
+      "records": [
+        {
+          "composition_id": "D-RULE-ACTOR-INFORMATION",
+          "experiment_id": "D-EXP-ACTOR-INFORMATION",
+          "method": "UNION",
+          "policy_id": "D-POLICY",
+          "qualification_id": "D-QUAL",
+          "theorem_ref": null
+        },
+        {
+          "composition_id": "D-RULE-COLLISION",
+          "experiment_id": "D-EXP-COLLISION",
+          "method": "UNION",
+          "policy_id": "D-POLICY",
+          "qualification_id": "D-QUAL",
+          "theorem_ref": null
+        },
+        {
+          "composition_id": "D-RULE-CROSS-ACTION-TRACKING",
+          "experiment_id": "D-EXP-CROSS-ACTION-TRACKING",
+          "method": "UNION",
+          "policy_id": "D-POLICY",
+          "qualification_id": "D-QUAL",
+          "theorem_ref": null
+        }
+      ]
+    }
+  },
+  "source_reference": {
+    "material_sha256": "e0926c29f4b24a0c019c38d342c4b2fa4b6b236aa504ba81725715e93cd89667",
+    "owner_source_id": "CP3-LAB-DELTA",
+    "source_anchor": "complete-ledger-construction",
+    "source_sha256": "a7b205bb06669277e8016172b29ce1b4f80a992092b03a0c93c817428cafbf47"
+  },
+  "model_digest": "f7c889104c1369a108e9552e63922c5507f3d63c60867967128f78cbd17fe62b",
+  "classification_basis": "EXPLICIT-FINITE-LAB-SOURCE-HYPOTHESES-ONLY",
+  "qualification_established": false,
+  "profile_admitted": false
+}

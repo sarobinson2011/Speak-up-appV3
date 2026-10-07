@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "preseal_zip_sha256": "1f70c9b4b8acd86e1aa82746f0c7120e3434c9064e6e6286f171e00e99546a72",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 3700, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4k-restore-3yvtz3jt/Engineering-288-checkpoint-4K/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4k_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 7}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "tests.test_schedule"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "....................\n----------------------------------------------------------------------\nRan 20 tests in 8.810s\n\nOK\n"
+    }
+  ],
+  "seconds": 16.94403037400116,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

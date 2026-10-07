@@ -1,0 +1,262 @@
+{
+  "result": "PASS",
+  "commands": [
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "keygen",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.projections",
+        "/tmp/4o-cli-xazpqlyb/E",
+        "--phase",
+        "E"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/E/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/E/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/E/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/E/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/E/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/E/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/E/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/E/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/E/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/E/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/E/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/E/job"
+      ],
+      "exit": 2,
+      "expected": 2
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.projections",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION",
+        "--phase",
+        "PRE-EXECUTION"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-EXECUTION/job"
+      ],
+      "exit": 2,
+      "expected": 2
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.projections",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT",
+        "--phase",
+        "PRE-COMMITMENT"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/tmp/4o-cli-xazpqlyb/key",
+        "--manifest",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/tmp/4o-cli-xazpqlyb/PRE-COMMITMENT/job"
+      ],
+      "exit": 2,
+      "expected": 2
+    }
+  ],
+  "handle_limit": 96,
+  "actual_admission": false,
+  "full_stream_processed": false
+}

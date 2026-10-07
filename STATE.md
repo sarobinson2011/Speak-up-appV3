@@ -6015,3 +6015,30 @@ Next substantive work: develop and demonstrate a conforming implementation
 against this accepted parameterized definition, preserving the stated scope
 and qualification/admission boundaries. Do not reopen a generic definition
 review cycle without a concrete demonstrated defect.
+
+
+---
+
+## Engineering[288] — Interim implementation preservation through 4W
+
+Checkpoint: ENGINEERING-288-THROUGH-4W-INTERIM.
+This records implementation and conditional evidence; Engineering[288] is not closed.
+Snapshot: `docs/privacy-engine/generation-004/implementation/engineering-288-through-4W/README.md`.
+CHECKPOINT.json SHA-256: `b909a8d1ff259d9677cedeabfbbff43bac3212a1925b8b9b4ca8659dda393589`.
+
+Engineering[287] accepted baseline and historical source bytes remain preserved.
+The approved 4I FIELD-CLASS-REF amendment and its provenance are retained.
+Completed binary identity and textual generation/replay identities are recorded
+separately from independent supplied-row validation.
+
+The local independent-validation job is paused after its initial two-hour budget:
+1,125,281,431,552 bytes and 5,180,796,974 rows are reported checkpointed.
+Supervisor status was WORKER-FAILED at budget expiry; validator status was PAUSED.
+The stop is consistent with budget enforcement; the terminating signal is unconfirmed.
+A quiescent backup was reported successful. Full validation remains incomplete.
+
+This is a bounded source/evidence snapshot, not a standalone fixture distribution.
+Large dependencies remain in hash-bound external archives listed in CHECKPOINT.json.
+Historical signatures and receipts retain their original bindings.
+Authentication, final full-model integration and authoritative qualification remain
+outstanding. Actual admission remains disabled. No publication or succession is claimed.

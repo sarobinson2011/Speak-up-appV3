@@ -1,0 +1,17 @@
+# Focused integration review
+
+Accepted source clauses are retained unchanged. CLAUSE-MAP-4E.json and CLAUSE-MAP.json retain exact source hashes and excerpts. This checkpoint uses their existing interpretations; it does not reopen the definition.
+
+| Obligation and applicable retained clauses | Implemented integration / qualification boundary |
+| --- | --- |
+| S70 lines 701–715, S90 lines 739–804: independent appointment, exact objects and V2 authentication | Explicit independently supplied trusted contract; profile appointment exact equality; key/fingerprint and issuer checks; exact final outer digest; four-file length-prefixed object SHA-256; original-message pure Ed25519. Keys/journals do not confer appointment. |
+| S70 lines 969–1047 and S90 qualified scope laws | Source-parsed seed directories, complete graph closure, experiment/target/view scope and exact external-record/ledger/four-file correspondence per bundle. No caller closure list establishes a result. |
+| ACCEPTANCE-CONTRACT section 3, lines 362–390 | No visibility or permission pruning; token table exact model-bound coverage; all structural/equality edges in closure; separate structural/potential completeness. UNKNOWN remains invalid, and local resource limits never authorize a reduced universe. |
+| Accepted failure laws, ACCEPTANCE-CONTRACT lines 181–185 and 436–449 | Independent known errors accumulate under unchanged ORDER. Grammar, appointment, authentication, digest and semantic scope failures retain distinct categories. Pauses suppress positives and preserve recoverable state. |
+| Accepted ledger/qualification contracts; retained CP4D populated duties | Exact/computational classifications, complete duties, dispositions, budget, composition and non-vacuity checks are reused. Missing roles/source/ledger prerequisites prevent positive qualified dispositions. Signed PASS is compared with independently computed results. |
+
+Digest dependencies remain acyclic: the immutable profile precedes external signed tables/source result assertions. The source construction DAG rejects a request for final-profile/result bytes inside preconstruction material. External bundle assertions can bind the completed outer profile and object without being embedded back into that signed object. The new local journal binds these inputs but is not part of the signed preimage or source contract.
+
+A tested malformed scope-source object exposed an error-handling defect: LOCAL-VALIDATION is internal, not an accepted admission code. It is now normalized to INVALID-PROFILE-SCHEMA before adding it to the ordered collector; this avoids aborting later failure collection. Token adapters separately check local framing/ordinals before exact model comparison, preserving schema-failure precedence over authority failures. Missing file acquisition maps to MISSING-EVIDENCE. Additional adapter model/contract failures suppress all positive ledger/budget/scope conclusions.
+
+The complete retained model is not reconstructed or weakened. Its retained identities and expansion/verification evidence remain in SOURCE-INPUT-MANIFEST-4H.json and the predecessor archives. The new path is demonstrated on complete finite laboratory models. A production-scale profile cannot be claimed admitted through this bounded semantic adapter: retained FIELD-LABEL grammar incompatibility, object-size/invocation capabilities, incomplete authoritative evidence and full-stream identity obligations remain explicit.

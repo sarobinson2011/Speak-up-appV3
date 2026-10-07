@@ -1,0 +1,78 @@
+stage: verifying baseline source catalog
+stage: verifying saved model identity and exact catalog metadata
+{
+  "format": "CP4I-DEPENDENCY-REBINDING-1",
+  "result": "PASS",
+  "amendment_binding_sha256": "db5904ac9681e20c8dfcf8963a203d951fc81187d7b1462230dbdbd215ff2d75",
+  "source_catalog": {
+    "nodes": 4119,
+    "relations": 21182,
+    "nodes_relations_selectors_join_rules_equal": true,
+    "provenance_regenerated": true
+  },
+  "model": {
+    "path_in_CP2": "results/expansion/model.json",
+    "bytes": 382699944,
+    "sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1",
+    "serialization_changed": false,
+    "reuse_verified": true,
+    "basis": "Exact saved model hash and old/new ordered model metadata equality; unchanged selectors/join rules, contexts, multiplicities, exposure/reuse and all expansion-relevant contract fields. Type only enters SOURCE-REF branch tests; neither ID nor FIELD-CLASS-REF takes those branches.",
+    "surface_array_sha256": "5391dbb382b38d9b45ba24bbf70be478396174448bb01515ba09c3d34ca759b0",
+    "relation_array_sha256": "4ea4819228507b491081c765effff635f587381d509fce7031848891ca2b9d59"
+  },
+  "contract": {
+    "old_sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710",
+    "new_sha256": "2bbd9d52e1591bc12adc9cc0983c1686ade2cfc4cbcbeb95b6025259d5bf07fc",
+    "new_path": "rebinding/selected-contract.json"
+  },
+  "regenerated": [
+    {
+      "path": "rebinding/model-duty-ledger.jsonl",
+      "rows": 21182,
+      "changed_rows": 662,
+      "sha256": "5ecd7d7626838b88bac3c4a92bca1dfccec855414beecdbcbc3819ab77035e7b",
+      "parent_sha256": "4b76d20715fa8835fdce3edfb89a5e8c2944a2ca57d0d9e72927497748380f41"
+    },
+    {
+      "path": "rebinding/ledger/node-duties.jsonl",
+      "rows": 4119,
+      "changed_rows": 356,
+      "sha256": "8f008144f56135cf491d8e81ff75ff56fba3b61ab4ec2c32815b99c03c4e9b99",
+      "parent_sha256": "428cce0a48a73925a8e1ac65ee2471e76dad4f9fdf2cdef388e93aaa181decb1"
+    },
+    {
+      "path": "rebinding/ledger/structural-duties.jsonl",
+      "rows": 21182,
+      "changed_rows": 662,
+      "sha256": "a434b0e463caa2800b563cfdef9c151025950bb0e3d26590c7e1e1ada1d1de93",
+      "parent_sha256": "7ee7a5d19d76a4e9aa5a9fad9a22357e22a07c4ae6dd6ae0236bd6feb247bbbc"
+    }
+  ],
+  "expansion_rerun": false,
+  "full_pair_or_link_stream_processed": false,
+  "actual_admission_enabled": false,
+  "source_qualification_established": false,
+  "seconds": 1.807841,
+  "verified_unchanged": [
+    {
+      "path": "rebinding/ledger/potential-domain.json",
+      "sha256": "1dc8b9062684b3de6e7d7c65324a695097508fe76779353171ffd27e19f3134c",
+      "reason": "no changed schema/type/source digest dependency in these bytes"
+    },
+    {
+      "path": "rebinding/ledger/governing-slots.json",
+      "sha256": "bb807f5d1ed79416d14d7d56da2f5bf4b2922fac8bfce569d81559ea9e3e4784",
+      "reason": "no changed schema/type/source digest dependency in these bytes"
+    },
+    {
+      "path": "rebinding/ledger/required-security-duties.json",
+      "sha256": "8b66b9825c6ff6f8cdfcbcced1eacc81eaa6670a9871ab416c3f7da0fc12de48",
+      "reason": "no changed schema/type/source digest dependency in these bytes"
+    }
+  ],
+  "reviewed_dependency_code": {
+    "catalog.py": "26a5e6e5250d4321091e2a3e278ad8c84244a1ca41a27679bcc47028324ffbf8",
+    "expand.py": "9a69093efebd74dae79300952352f29427d433c3a659a07d7cfdab95ae03e404",
+    "build.py": "77136f21eb167f91e49c5a215d05530a0df5883e3887d6b5aa91e713bdf4472c"
+  }
+}

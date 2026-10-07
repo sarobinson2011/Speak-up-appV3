@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "preseal_zip_sha256": "51bacd5e86e9d36d42d469ae0ebc3b56d95e451a44cb2878253dc4417270f9fe",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 2632, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4g-restore-60f0qjtp/Engineering-288-checkpoint-4G/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4g_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 8}\n",
+      "stderr": ""
+    }
+  ],
+  "seconds": 7.452945024000655,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

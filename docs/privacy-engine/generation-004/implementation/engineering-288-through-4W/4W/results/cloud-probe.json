@@ -1,0 +1,129 @@
+{
+  "result": "PASS-BOUNDED-GENERATION-AND-INDEPENDENT-VALIDATION-PROBE",
+  "wall_seconds": 18.626790770998923,
+  "initialization_seconds": 0.7844261989994266,
+  "persistent_index_startup_seconds": 5.6098001489990565,
+  "ready": {
+    "emitter": {
+      "ready": true,
+      "index_seconds": 3.19918,
+      "rss_kib": 472832,
+      "address_space_limit": 1610612736,
+      "file_size_limit": 268435456,
+      "handle_limit": 64
+    },
+    "validator": {
+      "ready": true,
+      "tokens": 426984,
+      "structural": 4368254,
+      "potential": 91157453467,
+      "max_line": 373,
+      "index_seconds": 2.39624,
+      "rss_kib": 489856,
+      "address_space_limit": 1610612736,
+      "file_size_limit": 268435456,
+      "handle_limit": 64
+    }
+  },
+  "records": [
+    {
+      "stage": "generation_with_spool_fsync_and_exact_check",
+      "bytes": 67108864,
+      "seconds": 0.2646438230003696,
+      "worker_seconds": 0.18435
+    },
+    {
+      "stage": "independent_validation_including_spool_hash",
+      "seconds": 0.4088570999992953,
+      "worker_seconds": 0.408285,
+      "offset": 67108864,
+      "rss_kib": 489856
+    },
+    {
+      "stage": "generation_with_spool_fsync_and_exact_check",
+      "bytes": 67108864,
+      "seconds": 0.2671291260012367,
+      "worker_seconds": 0.166782
+    },
+    {
+      "stage": "independent_validation_including_spool_hash",
+      "seconds": 3.5653840319973824,
+      "worker_seconds": 3.56501,
+      "offset": 67108881,
+      "rss_kib": 489856
+    }
+  ],
+  "first_complete_spool_step_seconds": 0.677857678001601,
+  "first_prefix": {
+    "result": "PAUSED",
+    "complete": false,
+    "offset": 67108864,
+    "rows": 386907,
+    "structural": 1,
+    "potential": 386906,
+    "pending_bytes": 49,
+    "read_ahead_bytes": 0,
+    "eof_observed": false,
+    "consumed_sha256": "b48c77645a5d6826203730fca8262b20c3eb969c4a011293b2c70c9cad64a41e",
+    "whole_stream_sha256": null,
+    "failure": null,
+    "error_read_ahead_note": "parser failure is terminal; its last read chunk may contain unparsed bytes",
+    "seconds": 0.408285,
+    "rss_kib": 489856,
+    "actual_admission": false,
+    "qualification_established": false,
+    "source_kind": "deterministic-laboratory-emitter",
+    "source_authenticated": false,
+    "four_file_authentication_complete": false,
+    "independent_row_validator": true,
+    "independent_generator": false,
+    "expected_whole_stream_sha256": "dc5776088dfc860e25a42e260b245b607969f6c49346bd6912eecc0ef53d8a74",
+    "evicted_prefix_bytes_reread": 0
+  },
+  "recovery_seconds_including_input_rehash_index_reload_and_spool_regeneration": 6.82496454899956,
+  "recovery_result": {
+    "result": "PAUSED",
+    "complete": false,
+    "offset": 134217728,
+    "rows": 777135,
+    "structural": 2,
+    "potential": 777133,
+    "pending_bytes": 159,
+    "read_ahead_bytes": 0,
+    "eof_observed": false,
+    "consumed_sha256": "e08594ed526db3aae0baab2deab08fe1f7b3ca748991b22cb6e11fbe849ac7e0",
+    "whole_stream_sha256": null,
+    "failure": null,
+    "error_read_ahead_note": "parser failure is terminal; its last read chunk may contain unparsed bytes",
+    "seconds": 0.592808,
+    "rss_kib": 489856,
+    "actual_admission": false,
+    "qualification_established": false,
+    "source_kind": "deterministic-laboratory-emitter",
+    "source_authenticated": false,
+    "four_file_authentication_complete": false,
+    "independent_row_validator": true,
+    "independent_generator": false,
+    "expected_whole_stream_sha256": "dc5776088dfc860e25a42e260b245b607969f6c49346bd6912eecc0ef53d8a74",
+    "evicted_prefix_bytes_reread": 0
+  },
+  "metrics": {
+    "evicted_prefix_bytes_reread": 0,
+    "generated_bytes": 134217728,
+    "regenerated_bytes": 67108864,
+    "spool_regenerations": 1,
+    "spools_evicted": 2,
+    "spools_published": 2,
+    "validated_new_bytes": 134217728
+  },
+  "peak_job_file_bytes": 67116260,
+  "parent_peak_rss_kib": 16556,
+  "measurement_only": true,
+  "full_retained_validation": false,
+  "actual_admission": false,
+  "attempt": 1,
+  "attempt_wall_seconds": 18.712861175998114,
+  "aggregate_attempt_allowance_charged_seconds": 60,
+  "maximum_attempt_seconds": 60,
+  "aggregate_ceiling_seconds": 180
+}

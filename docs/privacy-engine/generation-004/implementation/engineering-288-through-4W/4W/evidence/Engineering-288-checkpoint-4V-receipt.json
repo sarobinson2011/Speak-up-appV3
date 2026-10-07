@@ -1,0 +1,78 @@
+{
+  "format": "ENGINEERING-288-CHECKPOINT-4V-RECEIPT-1",
+  "result": "PASS-BOUNDED-CONDITIONAL-ACQUISITION-AND-RECOVERY",
+  "archive": "Engineering-288-checkpoint-4V.zip",
+  "archive_bytes": 19219586,
+  "archive_sha256": "6dede9f5021c7d05564c4077ec7ef90ca94190fc257f9626b0d39d2b45e831ba",
+  "package_manifest_sha256": "c499fc3b39b53ba1dfd6ad03a6d3c2864b90cb74af2dd24ec58c4bb67825f952",
+  "package_members": 51,
+  "member_bytes_excluding_manifest": 19583727,
+  "model_sha256": "dd946419e4fd4c657a0a0d663b145e958ddf3c4957bf006b94b5c3f7ec96e74d",
+  "model_changed": false,
+  "contract_sha256": "2bbd9d52e1591bc12adc9cc0983c1686ade2cfc4cbcbeb95b6025259d5bf07fc",
+  "textual_links_sha256": "dc5776088dfc860e25a42e260b245b607969f6c49346bd6912eecc0ef53d8a74",
+  "descriptor_sha256": "c79ea7fa8e27de3fb051c50f4f50d52cecb51c3d3e0025c9569b174d27882f5f",
+  "source_kind": "deterministic-laboratory-emitter / bounded immutable-laboratory-file fixtures",
+  "independent_row_validator": "byte-exact retained Index and Parser with a new persistent spool/recovery driver",
+  "resumability_implemented": true,
+  "resumability_verified_with_independent_small_oracles": true,
+  "tests": {
+    "methods": 17,
+    "adversarial_matching_digest_stream_variants": 18,
+    "atomic_interruption_points": 8,
+    "complete_synthetic_rows": 73536
+  },
+  "measurements": {
+    "aggregate_benchmark_seconds": 21.693550315998436,
+    "max_individual_throughput_seconds": 0.6185010009994585,
+    "parent_peak_rss_kib": 50816,
+    "emitter_peak_rss_kib": 472832,
+    "validator_peak_rss_kib": 489856
+  },
+  "fresh_extraction": {
+    "result": "PASS",
+    "checks": [
+      {
+        "script": "tools/verify_package.py",
+        "result": {
+          "actual_admission": false,
+          "members": 50,
+          "no_full_stream_computation": true,
+          "parent_4U_members": 82,
+          "result": "PASS-4V-PACKAGE-INTEGRITY",
+          "retained_byte_exact_files": 9
+        }
+      },
+      {
+        "script": "tests/smoke_recovery.py",
+        "result": {
+          "result": "PASS-FRESH-SMALL-RECOVERY",
+          "rows": 14,
+          "structural": 4,
+          "potential": 10,
+          "bytes": 587,
+          "whole_stream_sha256": "ebc2bcf41d9bd75583e4d940ea445cecd5d648747af36c402d39b1bb3262b577",
+          "spool_regenerations": 1,
+          "actual_admission": false
+        }
+      }
+    ]
+  },
+  "full_retained_stream_generated": false,
+  "full_retained_stream_replayed": false,
+  "full_retained_independent_validation": false,
+  "source_authentication_established": false,
+  "four_file_authentication_complete": false,
+  "full_model_integration_complete": false,
+  "qualification_established": false,
+  "actual_admission": false,
+  "trust": "Trusted local execution state and quiescent exact input bindings; MAC and checksum integrity are not independent source authentication or qualification.",
+  "remaining": [
+    "portable detached supervisor and durable new aggregate budget",
+    "bounded Ubuntu native/resource/throughput preflight",
+    "separately authorized full static laboratory row-validation execution",
+    "genuine source acquisition/four-file authentication/scope and final full-model witness",
+    "authoritative inputs, appointments, assessor competence and qualifications"
+  ],
+  "next_bounded_task": "4W portable independent-validation supervisor and Ubuntu preflight; no full execution authorized"
+}

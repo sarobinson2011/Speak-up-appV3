@@ -1,0 +1,35 @@
+test_actual_always_disabled (tests.test_integrated_auth.IntegratedTests.test_actual_always_disabled) ... ok
+test_altered_file_and_independent_qualification_failure (tests.test_integrated_auth.IntegratedTests.test_altered_file_and_independent_qualification_failure) ... ok
+test_changed_prefix_same_size_timestamp_terminal (tests.test_integrated_auth.IntegratedTests.test_changed_prefix_same_size_timestamp_terminal) ... ok
+test_corrupt_journal (tests.test_integrated_auth.IntegratedTests.test_corrupt_journal) ... ok
+test_cross_scope_crypto_receipt_substitution (tests.test_integrated_auth.IntegratedTests.test_cross_scope_crypto_receipt_substitution) ... ok
+test_dishonest_signed_pass_assertion (tests.test_integrated_auth.IntegratedTests.test_dishonest_signed_pass_assertion) ... ok
+test_end_to_end_independent_families (tests.test_integrated_auth.IntegratedTests.test_end_to_end_independent_families) ... ok
+test_interrupted_collector_commit_recovers_prior_state (tests.test_integrated_auth.IntegratedTests.test_interrupted_collector_commit_recovers_prior_state) ... ok
+test_missing_appointment_and_missing_qualification (tests.test_integrated_auth.IntegratedTests.test_missing_appointment_and_missing_qualification) ... ok
+test_missing_link_and_duplicate_are_not_completeness (tests.test_integrated_auth.IntegratedTests.test_missing_link_and_duplicate_are_not_completeness) ... ok
+test_missing_supplied_file_is_missing_evidence (tests.test_integrated_auth.IntegratedTests.test_missing_supplied_file_is_missing_evidence) ... ok
+test_parser_boundary_resumes (tests.test_integrated_auth.IntegratedTests.test_parser_boundary_resumes) ... ok
+test_receipt_cannot_grant_source_qualification (tests.test_integrated_auth.IntegratedTests.test_receipt_cannot_grant_source_qualification) ... ok
+test_repeated_resume_exact_results_and_terminal_recheck (tests.test_integrated_auth.IntegratedTests.test_repeated_resume_exact_results_and_terminal_recheck) ... ok
+test_source_bytes_changed (tests.test_integrated_auth.IntegratedTests.test_source_bytes_changed) ... ok
+test_source_owned_seed_closure_not_caller_metadata (tests.test_integrated_auth.IntegratedTests.test_source_owned_seed_closure_not_caller_metadata) ... ERROR
+test_stale_manifest_or_trusted_receipt (tests.test_integrated_auth.IntegratedTests.test_stale_manifest_or_trusted_receipt) ... ok
+test_substituted_scope_bundle (tests.test_integrated_auth.IntegratedTests.test_substituted_scope_bundle) ... ok
+test_token_adapter_arbitrary_chunks_and_truncation (tests.test_integrated_auth.IntegratedTests.test_token_adapter_arbitrary_chunks_and_truncation) ... ok
+test_wrong_appointment (tests.test_integrated_auth.IntegratedTests.test_wrong_appointment) ... ok
+test_wrong_model_contract_and_profile (tests.test_integrated_auth.IntegratedTests.test_wrong_model_contract_and_profile) ... ok
+
+======================================================================
+ERROR: test_source_owned_seed_closure_not_caller_metadata (tests.test_integrated_auth.IntegratedTests.test_source_owned_seed_closure_not_caller_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4H/tests/test_integrated_auth.py", line 98, in test_source_owned_seed_closure_not_caller_metadata
+    t=copy.deepcopy(self.t);t['scope_source_ref']=t['ledger_source_ref'];self.fresh(t=t);r=self.go();self.assertTrue(r['failures']);self.assertFalse(r['bindings']['scope_validation']['ready'])
+                                                                                                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'scope_validation'
+
+----------------------------------------------------------------------
+Ran 21 tests in 7.941s
+
+FAILED (errors=1)

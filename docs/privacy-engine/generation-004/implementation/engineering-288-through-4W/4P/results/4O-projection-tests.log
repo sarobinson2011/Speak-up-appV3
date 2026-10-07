@@ -1,0 +1,31 @@
+test_directory_unavailable_inapplicable_not_missing_field_fallback (tests.test_projections.ProjectionTests.test_directory_unavailable_inapplicable_not_missing_field_fallback) ... /tmp/engineering4o/Engineering-288-checkpoint-4O/fixtures/projections.py:59: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/engineering4o/Engineering-288-checkpoint-4O/accepted/definition-completion/security-framing-fields.tsv' mode='r' encoding='UTF-8'>
+  frames={r['surface_id']:r for r in csv.DictReader((Path(__file__).resolve().parents[1]/'accepted/definition-completion/security-framing-fields.tsv').open(),delimiter='\t')}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_exact_record_and_reference_ordinal_binding (tests.test_projections.ProjectionTests.test_exact_record_and_reference_ordinal_binding) ... ok
+test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle (tests.test_projections.ProjectionTests.test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle) ... FAIL
+test_exhaustive_source_reference_subfields_and_list_occurrences (tests.test_projections.ProjectionTests.test_exhaustive_source_reference_subfields_and_list_occurrences) ... ok
+test_integrated_all_phases_pause_repeat_resume_and_oracle (tests.test_projections.ProjectionTests.test_integrated_all_phases_pause_repeat_resume_and_oracle) ... ok
+test_integrated_hash_collisions (tests.test_projections.ProjectionTests.test_integrated_hash_collisions) ... ok
+test_integrated_mutation_and_journal_corruption (tests.test_projections.ProjectionTests.test_integrated_mutation_and_journal_corruption) ... ok
+test_interrupted_projection_and_equality_recovery (tests.test_projections.ProjectionTests.test_interrupted_projection_and_equality_recovery) ... ok
+test_invalid_unavailable_assessment_null_and_union_exact_null (tests.test_projections.ProjectionTests.test_invalid_unavailable_assessment_null_and_union_exact_null) ... ok
+test_late_interruption_reuses_verified_indexes (tests.test_projections.ProjectionTests.test_late_interruption_reuses_verified_indexes) ... ok
+test_lazy_eviction_and_mutated_snapshot (tests.test_projections.ProjectionTests.test_lazy_eviction_and_mutated_snapshot) ... ok
+test_missing_field_not_schema_null_and_duplicate_record (tests.test_projections.ProjectionTests.test_missing_field_not_schema_null_and_duplicate_record) ... ok
+test_null_is_record_interpretation_not_primitive_weakening (tests.test_projections.ProjectionTests.test_null_is_record_interpretation_not_primitive_weakening) ... ok
+test_required_generated_parser_boundary_is_explicit (tests.test_projections.ProjectionTests.test_required_generated_parser_boundary_is_explicit) ... ok
+test_trace_null_correspondence_and_missing_qualification (tests.test_projections.ProjectionTests.test_trace_null_correspondence_and_missing_qualification) ... ok
+
+======================================================================
+FAIL: test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle (tests.test_projections.ProjectionTests.test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 55, in test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle
+    self.assertGreater(count,1200)
+AssertionError: 1177 not greater than 1200
+
+----------------------------------------------------------------------
+Ran 15 tests in 239.580s
+
+FAILED (failures=1)

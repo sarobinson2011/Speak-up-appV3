@@ -1,0 +1,97 @@
+{
+  "result": "REJECTED",
+  "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE",
+  "failures": [
+    "INCOMPLETE-EVIDENCE-UNIVERSE"
+  ],
+  "reasons": {
+    "INCOMPLETE-EVIDENCE-UNIVERSE": [
+      "qualified UNAVAILABLE has no usable bound G-ARG-ACTOR-INFORMATION",
+      "qualified UNAVAILABLE has no usable bound G-ARG-COLLISION",
+      "qualified UNAVAILABLE has no usable bound G-ARG-CROSS-ACTION-TRACKING",
+      "computed obligation disposition G-OB-ACTOR-INFORMATION",
+      "computed obligation disposition G-OB-COLLISION",
+      "computed obligation disposition G-OB-CROSS-ACTION-TRACKING",
+      "no zero/default for invalid/unavailable terms G-RULE-ACTOR-INFORMATION",
+      "no zero/default for invalid/unavailable terms G-RULE-COLLISION",
+      "no zero/default for invalid/unavailable terms G-RULE-CROSS-ACTION-TRACKING",
+      "whole-view composition not established for obligation G-OB-ACTOR-INFORMATION",
+      "whole-view composition not established for obligation G-OB-COLLISION",
+      "whole-view composition not established for obligation G-OB-CROSS-ACTION-TRACKING"
+    ]
+  },
+  "mode": "CONDITIONAL-LAB",
+  "bindings": {
+    "final_profile_sha256": "68df5f8c1e16b3375bc5de6cb1f4b191c6bbbaf6857335fd7f91670945b840fd",
+    "model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+    "policy_id": "G-POLICY",
+    "policy_material_sha256": "da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad",
+    "assumption_ids": [
+      "G-HYPOTHESIS"
+    ],
+    "qualification_ids": [
+      "G-QUAL"
+    ],
+    "computed_dispositions": {
+      "G-OB-ACTOR-INFORMATION": "NOT-ESTABLISHED",
+      "G-OB-COLLISION": "NOT-ESTABLISHED",
+      "G-OB-CROSS-ACTION-TRACKING": "NOT-ESTABLISHED",
+      "G-OB-EXACT": "EXACT-SATISFIED"
+    },
+    "computed_budgets": {},
+    "ledger_validation": {
+      "source_acquired": true,
+      "mechanical_coverage": true,
+      "classification_ready": true,
+      "ready_obligations": [
+        "G-OB-ACTOR-INFORMATION",
+        "G-OB-COLLISION",
+        "G-OB-CROSS-ACTION-TRACKING",
+        "G-OB-EXACT"
+      ],
+      "ready_rules": [
+        "G-RULE-ACTOR-INFORMATION",
+        "G-RULE-COLLISION",
+        "G-RULE-CROSS-ACTION-TRACKING"
+      ],
+      "nv_ready": [
+        "G-EXP-ACTOR-INFORMATION",
+        "G-EXP-COLLISION",
+        "G-EXP-CROSS-ACTION-TRACKING"
+      ],
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "source_reference": {
+        "owner_source_id": "CP3-LAB-GAMMA",
+        "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2",
+        "source_anchor": "complete-ledger-construction",
+        "material_sha256": "dd9de67c00641964f6dab26a74a404d68d95d49e076b9ca805423649796dcbff"
+      },
+      "coverage": {
+        "nodes": 4,
+        "structural_occurrences": 2,
+        "potential_pairs": 6,
+        "pair_enumeration": false
+      }
+    },
+    "laboratory_hypotheses": [
+      "policy-governance",
+      "assessor-competence",
+      "observer-completeness",
+      "model-ledger-classification",
+      "composition-decomposition",
+      "source-producer-correspondence",
+      "proof-soundness",
+      "profile-adequacy",
+      "applicability",
+      "evidence-authority",
+      "non-vacuity"
+    ],
+    "meaning": "Local conditional binding/admission checks only; full checkpoint-2 integration deferred to checkpoint 4"
+  },
+  "profile_admitted": false,
+  "actual_qualification_established": false,
+  "runtime_effect_performed": false,
+  "full_model_integration_witness": false
+}

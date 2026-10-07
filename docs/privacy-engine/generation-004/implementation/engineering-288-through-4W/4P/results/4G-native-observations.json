@@ -1,0 +1,232 @@
+{
+  "backend": {
+    "version": "CP4G-PURE-RECOVERY-1",
+    "python": "3.12.14",
+    "binary_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+    "build_manifest_sha256": "02ecac662c84e93deb142766c40d414d2883fb81f0a6b36e303807a35c709f8d",
+    "code": {
+      "pure_auth/controller.py": "dc350d6aec495220c680b58e8cee864ba9ae0428b9235a137edbe574836c44de",
+      "large_auth/message.py": "96a0040e11f3944ffc78463c64c7758f6363b839648728e13355da21752a0858",
+      "large_auth/core.py": "fa39bf1f38b748a63d797fc798c47dca335d7e5f427a0aa83d1c85f4f52d9d04",
+      "v4_ingest/wire.py": "5279f94e8902be6996ad553d0d27f5a1a0bf001248fb29eb3f71848a5883aa88",
+      "v4_ingest/records.py": "bdb4598c8b85acd35321211583399d44cce6482c5149b88dc38b9414fdf4cd20",
+      "v4_ingest/data/security-fields.tsv": "5afec3dcd96d6b05125a56b8399db7c2772058b9c5121fb8ef11fc9542ee2f03",
+      "link_recovery/cli.py": "4e3666e90fc92e9c85c1b30804e1b2b9ca961c3b1e3d55654f51b604a681d10d",
+      "crypto_backend/Cargo.toml": "7b57abb2689fbe41237a44d0e56035d43acf017723d43a02fbd5dd8a9522ae74",
+      "crypto_backend/Cargo.lock": "5a0471eaea333b25ca150a462bfd7dfcbfaf289342b0956cd7c200b0103a595e",
+      "crypto_backend/src/main.rs": "d52c42a38c40e30c7d07cf07b546882b6bbfdb8a725a37aa17b1354fb2406030"
+    }
+  },
+  "cases": [
+    {
+      "case": "valid",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 0,
+      "result": {
+        "status": "VERIFIED-EXACT-MESSAGE",
+        "bytes": 1,
+        "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1",
+        "verified": true
+      },
+      "stderr": ""
+    },
+    {
+      "case": "changed-message",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "7278",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "wrong-key",
+      "public_key": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "wrong-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "e5564300c360ac729086e2cc806e828a84877f1eb8e5d974d873e065224901555fb8821590a33bacc61e39701cf9b46bd25bf5f0595bbe24655141438e7a100b",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "short-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "exact lowercase hex length\n"
+    },
+    {
+      "case": "long-signature",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c0078",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "exact lowercase hex length\n"
+    },
+    {
+      "case": "short-key",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af466",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "exact lowercase hex length\n"
+    },
+    {
+      "case": "scalar-L",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69daedd3f55c1a631258d69cf7a2def9de1400000000000000000000000000000010",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature scalar\n"
+    },
+    {
+      "case": "R-y-equals-p",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "noncanonical point encoding\n"
+    },
+    {
+      "case": "key-y-equals-p",
+      "public_key": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "signature": "92a009a9f0d4cab8720e820b5f642540a2b27b5416503f8fb3762223ebdb69da085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "noncanonical point encoding\n"
+    },
+    {
+      "case": "R-negative-zero",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "0100000000000000000000000000000000000000000000000000000000000080085ac1e43e15996e458f3613d0f11d8c387b2eaeb4302aeeb00d291612bb0c00",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "noncanonical point encoding\n"
+    },
+    {
+      "case": "digest-sha256",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "b2b92ec415e38f0a4fb581fb34ad2a7af87f0a8bde07df2f23d7dcb74a67bebbecd3b27c6950fba199fcad30e915c9aedaf8e7e4e518175c4be87fc5fcb1f102",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "digest-sha512",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "ea22ec953464e2c2b33730b2330fba98bdd675f9f2127d40e4cf53ca1792c3f563fabce1b76bbcba83cdb687e433c9737c5417d3f629ebc811c92119eae6960e",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "Ed25519ph",
+      "public_key": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+      "signature": "ab9b4115731fa999280183209d73f33b0b68c04f5d495fb7e493ff36c660d73ec537aa7ff7a138cafc3e31d86a31c33a02b5d72e67676b584dd98754c9910a0a",
+      "message_hex": "72",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "signature equation\n"
+    },
+    {
+      "case": "canonical-identity-small-order",
+      "public_key": "0100000000000000000000000000000000000000000000000000000000000000",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "72",
+      "exit_code": 0,
+      "result": {
+        "status": "VERIFIED-EXACT-MESSAGE",
+        "bytes": 1,
+        "sha256": "454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1",
+        "verified": true
+      },
+      "stderr": ""
+    },
+    {
+      "case": "noncanonical-negative-zero-key",
+      "public_key": "0100000000000000000000000000000000000000000000000000000000000080",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "74657374",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "noncanonical point encoding\n"
+    },
+    {
+      "case": "noncanonical-y-identity-key",
+      "public_key": "eeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "signature": "01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "message_hex": "74657374",
+      "exit_code": 2,
+      "result": {
+        "status": "REJECTED",
+        "verified": false
+      },
+      "stderr": "noncanonical point encoding\n"
+    }
+  ],
+  "external_qualification_established": false,
+  "profile_admitted": false
+}

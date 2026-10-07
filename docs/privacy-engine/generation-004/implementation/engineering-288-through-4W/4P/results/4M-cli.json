@@ -1,0 +1,306 @@
+{
+  "result": "PASS",
+  "commands": [
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "keygen",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.catalogs",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E",
+        "--phase",
+        "E"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--rows",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/E/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.catalogs",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION",
+        "--phase",
+        "PRE-EXECUTION"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--rows",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-EXECUTION/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "fixtures.catalogs",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT",
+        "--phase",
+        "PRE-COMMITMENT"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "start",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/job",
+        "--new-bytes",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "integrated_auth",
+        "resume",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--manifest",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/manifest.json",
+        "--trusted",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/trusted.json",
+        "--checkpoint",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/job"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key",
+        "--rows",
+        "1"
+      ],
+      "exit": 3,
+      "expected": 3
+    },
+    {
+      "args": [
+        "-m",
+        "metadata_catalog",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/occurrences.jsonl",
+        "--expectation",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/expect.json",
+        "--state",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/PRE-COMMITMENT/transport",
+        "--key",
+        "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/work/4M-cli/key"
+      ],
+      "exit": 0,
+      "expected": 0
+    }
+  ],
+  "actual_admission": false,
+  "full_stream_processed": false
+}

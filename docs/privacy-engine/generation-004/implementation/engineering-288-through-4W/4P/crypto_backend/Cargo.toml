@@ -1,0 +1,18 @@
+[package]
+name = "pe-rfc8032-stream"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85.1"
+license = "MIT"
+publish = false
+
+[dependencies]
+ed25519-dalek = { version = "=2.2.0", default-features = false, features = ["std", "hazmat"] }
+curve25519-dalek = { version = "=4.1.3", default-features = false }
+sha2 = { version = "=0.10.9", default-features = false, features = ["std"] }
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+panic = "abort"
+strip = true

@@ -1,0 +1,36 @@
+{
+  "result": "PASS-FRESH-EXTRACTION",
+  "archive_sha256": "cef7cc5b793ce95a12a40b9605e234f6191b7fe012a339e98aef987b71720a02",
+  "checks": [
+    {
+      "script": "tools/verify_package.py",
+      "returncode": 0,
+      "output": {
+        "actual_admission": false,
+        "members": 49,
+        "no_full_stream_computation": true,
+        "parent_4U_members": 82,
+        "result": "PASS-4V-PACKAGE-INTEGRITY",
+        "retained_byte_exact_files": 9
+      }
+    },
+    {
+      "script": "tests/smoke_recovery.py",
+      "returncode": 0,
+      "output": {
+        "result": "PASS-FRESH-SMALL-RECOVERY",
+        "rows": 14,
+        "structural": 4,
+        "potential": 10,
+        "bytes": 587,
+        "whole_stream_sha256": "ebc2bcf41d9bd75583e4d940ea445cecd5d648747af36c402d39b1bb3262b577",
+        "spool_regenerations": 1,
+        "actual_admission": false
+      }
+    }
+  ],
+  "seconds": 0.9186960420011019,
+  "full_stream_processed": false,
+  "actual_admission": false,
+  "verification_subject": "Pre-seal archive before embedding this report; the final exact archive is verified again and bound in the external 4V receipt."
+}

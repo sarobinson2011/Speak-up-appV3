@@ -1,0 +1,11 @@
+# Actual 4T verification results
+
+- Exact 4S ZIP, receipt, selected candidate inputs and required 4A worker/controller/descriptor identities verified. Historical bytes preserved.
+- Every retained descriptor token, fixed group and structural row matches the complete candidate model. Metadata construction took 23.301 seconds, peak RSS 2,171,476 KiB. No potential-pair stream enumerated.
+- Analytical total: 91,161,821,721 rows and 19,909,380,154,846 bytes. Three retained performance segment row/byte/first-ordinal results match the derived prefix table exactly. Full text SHA-256 remains null.
+- 17 focused package/oracle/recovery checks passed in 3.243 seconds. Includes original orientation, lexical punctuation/literal record names, duplicate union, positive structural EQUALS, ORD6 boundary, ordinals above six digits, every small split, pause/repeated resume, interrupted reservation, commit-before-supervisor interruption, partial writes, corruption/substitution, explicit budget stop/grant, runtime/model rejection and verified snapshot restoration. This is not a repeated kernel suite.
+- 6 host/installation checks passed in 3.515 seconds. Actual cloud native probe passed; the actual cloud preflight correctly rejected insufficient cgroup memory headroom. Positive installer capacity was an isolated test fixture, not a claim about the cloud or user's available RAM. Insufficient memory and disk reject. Installation is idempotent and starts no job. Omission of the separate textual authorization flag rejects before job creation. No user host was accessed.
+- All Python sources parse and all delivered shell blocks pass bash syntax checks. An initial documentation heredoc delimiter collision was corrected; details are retained in PACKAGING-RECOVERY.json. No full computation resulted.
+- Final sealed ZIP is freshly extracted and byte-verified; its external receipt records final ZIP/manifest identities and fresh-extraction result to avoid a self-referential receipt hash.
+
+New throughput benchmark execution: zero seconds. Optional local probe is separately bounded. No binary generation/replay, full textual generation/replay, supplied-file integration, signature verification, source qualification or actual admission occurred.

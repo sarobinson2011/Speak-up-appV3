@@ -1,0 +1,35 @@
+# Full-validation preflight — no execution authorization
+
+## What would be computed
+
+A future conditional run emits the canonical static TSV into bounded spools and independently validates every actual byte/row with the retained parser. Required final identities: 19,909,380,154,846 bytes; 91,157,453,467 potential rows; 4,368,254 structural rows; 91,161,821,721 total rows; SHA-256 `dc5776088dfc860e25a42e260b245b607969f6c49346bd6912eecc0ef53d8a74`. The header contributes bytes but no row. It must finish with both semantic counts and the exact cumulative digest. No segment digest combination is a final identity.
+
+The completed 4T same-generator generation/replay is preserved. This future computation has a different purpose: independent row semantics over actually emitted laboratory bytes. It is not an independent external source, not four-file authentication, and not a qualified full-model witness. The binary stream is never involved.
+
+## Measurement basis and estimates
+
+`results/benchmarks.json` records a complete independent synthetic 384-token oracle (73,536 rows; 10,662,787 bytes) and a single 64 MiB retained-model prefix. The retained index contained all 426,984 tokens and 4,368,254 structural rows; it computed the required potential count exactly. This checks index capacity, not full row coverage.
+
+Two bounded development/final measurement rounds took **21.694 seconds aggregate**, including index loading/oracle setup. No individual throughput measurement exceeded 0.62 seconds. Generation and validation are timed separately. The final code measurement: generation 0.619 s (~108.5 MB/s); independent validation including spool hash/read 0.563 s (~119.3 MB/s). Earlier cloud measurement was materially faster: ~254.8 MB/s and ~165.3 MB/s. Index loading took roughly 2.4–4.9 seconds per worker. This observed variability is why the first sample is not a reliable local completion forecast.
+
+Linear byte extrapolation of the measured sequential loops gives **about 56–98 hours** on this cloud measurement basis. Use **55–200+ hours only as a provisional planning range**, not a hard bound or host prediction. Late lexical ranks can spend more time skipping disallowed orientations; filesystem sync, CPU scaling and memory pressure vary. Existing binary or textual hash-only throughput is not validator throughput. A bounded measurement on Steve's Ubuntu host is required before a useful local estimate.
+
+Memory, measured separately: parent peak 50,816 KiB (~49.6 MiB), emitter peak 472,832 KiB (~461.8 MiB), validator peak 489,856 KiB (~478.4 MiB). Each native worker has an enforced 1.5 GiB virtual-address limit, 256 MiB file-size limit and 64-handle limit; parent has a 512 MiB soft virtual-address ceiling. Two workers plus controller are held persistently; they do not reload the model for each spool. Allow at least 4 GiB available RAM at launch and retain the 8 GiB planning ceiling. No Python all-pairs collection occurs in the retained path; the exhaustive Python oracle is deliberately small.
+
+Default spool: 64 MiB. Required number at that ceiling: 296,673, possibly one extra zero-byte EOF acknowledgement if a stream ends exactly at a spool boundary. Live job bound is 67,637,248 logical file bytes (one spool + four 128 KiB state/temporary envelopes + margin); configurable spool cap cannot exceed 256 MiB. Disk growth is independent of stream length: one live state, one spool, no segment-per-file catalog or unbounded local logs. CLI stdout must be rotated/capped by a future supervisor; do not redirect millions of records to an unbounded log.
+
+Selected model + descriptor + contract total 619,906,652 bytes, normally reused at existing paths. Add the package/archive (roughly 20 MiB each), three whole-job copies for live/backup/restore (~203 MiB at the default ceiling), up to 256 MiB bounded rotating logs, and filesystem overhead. A **2 GiB free disk** preflight reserve covers these plus >800 MiB margin on a normal 4 KiB filesystem. No full archive chain is extracted. `PACKAGE-MANIFEST.json` gives exact package member bytes; `Engineering-288-checkpoint-4V-receipt.json` gives exact archive size. Keep larger retained archive chains out of this calculation unless you plan to copy them.
+
+Peak space is small but cumulative I/O is not: one complete run would write ~19.91 TB through spools and perform at least three application reads (~59.73 TB) for emission checking, validator spool identity and row parsing. Cache may serve some reads; fsync still makes each spool durable. There are about three small state commits per spool. A slower local disk or durability implementation can dominate. No claimed 20 TB physical input file is produced or retained.
+
+## Recovery and progress
+
+Each completed parser segment has global consumed position, predecessor, row ordinal, separate counts, partial row and cumulative SHA state. Lost current spools regenerate from an explicit lexical cursor; already evicted prefixes are not reprocessed under the documented trusted-state boundary. A restart rehashes ~620 MB of bound model/descriptor/contract bytes, reloads native indexes, and at worst regenerates one active spool plus validates bytes since the last committed state. Restoring an older backup adds work since that backup. Tiny partial-step recovery budgets cause repeated current-spool hashing and are for tests, not normal execution.
+
+A future supervisor should keep both workers alive, run one full spool per step, print cumulative byte/row/count progress no more than once per minute, rotate logs at a total 256 MiB ceiling, and take stopped/quiescent backups periodically. State publication is already atomic and resumable; the detached supervisor, durable aggregate budget accounting and safe host migration are **not** implemented by 4V's intentionally bounded foreground CLI. The CLI's soft review limit is checked between steps; one step can overrun by two bounded worker requests plus initialization/hashing. It is not a hard full-run budget.
+
+Recommend a **new two-hour aggregate review stop** for a separately approved initial full-validation run only after local bounded preflight and the supervisor integration. Do not reuse binary two-hour or textual 48-hour authorization. At review, preserve progress and grant more budget only against observed throughput and available resources. A technical failure preserves the last committed state; it does not justify resetting to byte zero. No expensive run is proposed for execution in this checkpoint.
+
+## Authentication remains separate
+
+The file-backed collector still needs actual exact source-owned files, complete scopes and token/occurrence correspondence, V2 length-prefixed object/signed messages, outer-profile binding, independent authority appointments, and pure Ed25519 verification. The canonical backend cannot reuse this adapter's SHA state. Its retained resume strategy reconstructs its exact signed-message prefix when needed; include that extra pass in any future genuine four-file plan. This checkpoint neither runs nor eliminates that cost.

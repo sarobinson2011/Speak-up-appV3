@@ -1,0 +1,468 @@
+{
+  "result": "CONDITIONAL-BINDING-AND-ADMISSION-CHECKS-PASS",
+  "earliest_failure": "NONE",
+  "failures": [],
+  "reasons": {},
+  "mode": "CONDITIONAL-LAB",
+  "bindings": {
+    "final_profile_sha256": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+    "model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+    "policy_id": "G-POLICY",
+    "policy_material_sha256": "da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad",
+    "assumption_ids": [
+      "G-HYPOTHESIS"
+    ],
+    "qualification_ids": [
+      "G-QUAL"
+    ],
+    "computed_dispositions": {
+      "G-OB-ACTOR-INFORMATION": "COMPUTATIONALLY-BOUNDED",
+      "G-OB-COLLISION": "COMPUTATIONALLY-BOUNDED",
+      "G-OB-CROSS-ACTION-TRACKING": "COMPUTATIONALLY-BOUNDED",
+      "G-OB-EXACT": "EXACT-SATISFIED"
+    },
+    "computed_budgets": {
+      "G-EXP-ACTOR-INFORMATION": {
+        "bound": [
+          0,
+          1
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      },
+      "G-EXP-COLLISION": {
+        "bound": [
+          0,
+          1
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      },
+      "G-EXP-CROSS-ACTION-TRACKING": {
+        "bound": [
+          0,
+          1
+        ],
+        "maximum": [
+          2,
+          3
+        ],
+        "within_budget": true
+      }
+    },
+    "ledger_validation": {
+      "source_acquired": true,
+      "mechanical_coverage": true,
+      "classification_ready": true,
+      "ready_obligations": [
+        "G-OB-ACTOR-INFORMATION",
+        "G-OB-COLLISION",
+        "G-OB-CROSS-ACTION-TRACKING",
+        "G-OB-EXACT"
+      ],
+      "ready_rules": [
+        "G-RULE-ACTOR-INFORMATION",
+        "G-RULE-COLLISION",
+        "G-RULE-CROSS-ACTION-TRACKING"
+      ],
+      "nv_ready": [
+        "G-EXP-ACTOR-INFORMATION",
+        "G-EXP-COLLISION",
+        "G-EXP-CROSS-ACTION-TRACKING"
+      ],
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "source_reference": {
+        "material_sha256": "b773e46446e734dce925021ebfeece5815eba3f045c9894b34f4adfe9048468f",
+        "owner_source_id": "CP3-LAB-GAMMA",
+        "source_anchor": "complete-ledger-construction",
+        "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2"
+      },
+      "coverage": {
+        "nodes": 4,
+        "structural_occurrences": 2,
+        "potential_pairs": 6,
+        "pair_enumeration": false
+      }
+    },
+    "scope_validation": {
+      "source_acquired": true,
+      "scopes": {
+        "ROOT-ELIGIBLE": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "seed_ids": [
+            "G-N0",
+            "G-N2"
+          ],
+          "link_validation": {
+            "complete": true,
+            "bytes_consumed": 315,
+            "complete_stream_sha256": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "replayed_bytes": 0,
+            "structural_rows": 2,
+            "potential_rows": 6
+          }
+        },
+        "SCOPED-USED": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "seed_ids": [
+            "G-N1",
+            "G-N3"
+          ],
+          "link_validation": {
+            "complete": true,
+            "bytes_consumed": 315,
+            "complete_stream_sha256": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "replayed_bytes": 0,
+            "structural_rows": 2,
+            "potential_rows": 6
+          }
+        },
+        "NOT-APPLICABLE": {
+          "closure_established": true,
+          "bundle_bound": true,
+          "ready": true,
+          "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+          "node_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "seed_ids": [],
+          "link_validation": {
+            "complete": true,
+            "bytes_consumed": 315,
+            "complete_stream_sha256": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "replayed_bytes": 0,
+            "structural_rows": 2,
+            "potential_rows": 6
+          }
+        }
+      },
+      "ready": true,
+      "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+      "actual_qualification_established": false,
+      "profile_admitted": false,
+      "potential_pairs_enumerated": false,
+      "source_reference": {
+        "material_sha256": "b0adff0b72683eda94524b019bdb79212fd5ed308e66d039a91c41fd4c86c645",
+        "owner_source_id": "CP3-LAB-GAMMA",
+        "source_anchor": "complete-scope-source",
+        "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2"
+      },
+      "signed_results_consistent": true,
+      "conditional_checks_pass": true
+    },
+    "bundle_authentication": {
+      "ROOT-ELIGIBLE": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "backend": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "byte_stage": {
+          "result": "PASS-EXACT-BYTE-ACQUISITION",
+          "complete": true,
+          "offsets": {
+            "outer": 2176906,
+            "evidence.tsv": 780,
+            "tokens.tsv": 584,
+            "links.tsv": 315,
+            "signature.txt": 144
+          },
+          "consumed_sha256": {
+            "outer": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+            "evidence.tsv": "6205bc049de566be5597dc518e2e84d49e64133840a734d1f0e4268f237665d9",
+            "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+            "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "signature.txt": "c58d3a5b90f1de8af13bf71923259277f1813bd4c20b6b206c0084faf4d81aea"
+          },
+          "complete_object_sha256": "078fcbd1c80fabb24e09e94d81007d4d6da83f6cc43cc0f17bc91a8b2ca80a3d",
+          "complete_outer_profile_sha256": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+          "file_complete": {
+            "outer": true,
+            "evidence.tsv": true,
+            "tokens.tsv": true,
+            "links.tsv": true,
+            "signature.txt": true
+          },
+          "outer_members": [
+            {
+              "name": "SOURCE-OWNED-BODY",
+              "bytes": 25,
+              "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+            },
+            {
+              "name": "EXPRESSION-PROGRAM",
+              "bytes": 28,
+              "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+            },
+            {
+              "name": "PRIVACY",
+              "bytes": 2176735,
+              "sha256": "f2bec6e15dc65bd35e8063983a3e6c4c9b432ca71f2a2df854ba4041351d48c8"
+            }
+          ],
+          "prefix_bytes_rechecked": 0,
+          "new_bytes": 2178729,
+          "seconds": 0.003931138999178074,
+          "incremental_signature_verified": false,
+          "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+          "profile_admitted": false,
+          "source_authority_established": false
+        },
+        "crypto_stage": {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "0d3277bf6909072cd39b85e7576ffbc9bc6981108564cb8d95062c06720a98c7",
+          "offset": 1706,
+          "total": 1706,
+          "prefix_sha256": "0d3277bf6909072cd39b85e7576ffbc9bc6981108564cb8d95062c06720a98c7",
+          "replayed_bytes": 0,
+          "new_bytes": 1706,
+          "seconds": 0.0037433459983731154,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+          "signature": "436b6277bf65454434448cf60c60c1a6408a5ea05f5a523ebb0ccbfee034f2e2f20f1a6e9d7abdeec38d7ae5aaf0d5595c8e3e6db8b81a4a01243181e8af4f0e",
+          "four_file_outer_acquisition_checked": false,
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        }
+      },
+      "SCOPED-USED": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "backend": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "byte_stage": {
+          "result": "PASS-EXACT-BYTE-ACQUISITION",
+          "complete": true,
+          "offsets": {
+            "outer": 2176906,
+            "evidence.tsv": 776,
+            "tokens.tsv": 584,
+            "links.tsv": 315,
+            "signature.txt": 144
+          },
+          "consumed_sha256": {
+            "outer": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+            "evidence.tsv": "e162647a7ca13968a7652147747ff8644eb585f75bfab7ffcf81c75a6cdcdf59",
+            "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+            "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "signature.txt": "0e6e167a1391834bb3da3cfb8bfa5541eede8d8a709cce974a566ac887148d78"
+          },
+          "complete_object_sha256": "15fac05887748d9e637e74d4eb48254eafede90392493529862a3d7914183920",
+          "complete_outer_profile_sha256": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+          "file_complete": {
+            "outer": true,
+            "evidence.tsv": true,
+            "tokens.tsv": true,
+            "links.tsv": true,
+            "signature.txt": true
+          },
+          "outer_members": [
+            {
+              "name": "SOURCE-OWNED-BODY",
+              "bytes": 25,
+              "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+            },
+            {
+              "name": "EXPRESSION-PROGRAM",
+              "bytes": 28,
+              "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+            },
+            {
+              "name": "PRIVACY",
+              "bytes": 2176735,
+              "sha256": "f2bec6e15dc65bd35e8063983a3e6c4c9b432ca71f2a2df854ba4041351d48c8"
+            }
+          ],
+          "prefix_bytes_rechecked": 0,
+          "new_bytes": 2178725,
+          "seconds": 0.003818359000433702,
+          "incremental_signature_verified": false,
+          "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+          "profile_admitted": false,
+          "source_authority_established": false
+        },
+        "crypto_stage": {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "eb8b4edad2b93e9ae89b5570340d4ec244724260f814e08d186388db8aedde55",
+          "offset": 1702,
+          "total": 1702,
+          "prefix_sha256": "eb8b4edad2b93e9ae89b5570340d4ec244724260f814e08d186388db8aedde55",
+          "replayed_bytes": 0,
+          "new_bytes": 1702,
+          "seconds": 0.0030202390007616486,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+          "signature": "5c5fa173bf65a0ef746d293d023175568ce56dab3e8a556cfdc8b2f2914cffb4031e5754faff503cbc9c3b13b157e3bc3fdba759257c0c6334271ece7cf6be0d",
+          "four_file_outer_acquisition_checked": false,
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        }
+      },
+      "NOT-APPLICABLE": {
+        "four_file_identity": true,
+        "signature_valid": true,
+        "complete": true,
+        "source_authority_established": false,
+        "profile_admitted": false,
+        "backend": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "byte_stage": {
+          "result": "PASS-EXACT-BYTE-ACQUISITION",
+          "complete": true,
+          "offsets": {
+            "outer": 2176906,
+            "evidence.tsv": 775,
+            "tokens.tsv": 584,
+            "links.tsv": 315,
+            "signature.txt": 144
+          },
+          "consumed_sha256": {
+            "outer": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+            "evidence.tsv": "9b99798797030c1d157f8846a8e41d079d37730e0ae1ea6a1199dea31714ce04",
+            "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+            "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "signature.txt": "58b5f5bc17e55885214dd8611a9e0a407fbb2f8748e84a29bc57ee00a2d97fe4"
+          },
+          "complete_object_sha256": "dd99ee44bfbe21e1eda4f28b8a204df1c0b281a022c5d4c1b8a753c73b7e1f42",
+          "complete_outer_profile_sha256": "3869449269a72ab48c4d8e6949ce28f22c959ba36fcd3a47c827c0bef1ef9ac1",
+          "file_complete": {
+            "outer": true,
+            "evidence.tsv": true,
+            "tokens.tsv": true,
+            "links.tsv": true,
+            "signature.txt": true
+          },
+          "outer_members": [
+            {
+              "name": "SOURCE-OWNED-BODY",
+              "bytes": 25,
+              "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+            },
+            {
+              "name": "EXPRESSION-PROGRAM",
+              "bytes": 28,
+              "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+            },
+            {
+              "name": "PRIVACY",
+              "bytes": 2176735,
+              "sha256": "f2bec6e15dc65bd35e8063983a3e6c4c9b432ca71f2a2df854ba4041351d48c8"
+            }
+          ],
+          "prefix_bytes_rechecked": 0,
+          "new_bytes": 2178724,
+          "seconds": 0.003559910001058597,
+          "incremental_signature_verified": false,
+          "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+          "profile_admitted": false,
+          "source_authority_established": false
+        },
+        "crypto_stage": {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "cc8bc5163ab83be50155b4557df544cd4a1b43c4a235a9a0acfa1b7dca746147",
+          "offset": 1701,
+          "total": 1701,
+          "prefix_sha256": "cc8bc5163ab83be50155b4557df544cd4a1b43c4a235a9a0acfa1b7dca746147",
+          "replayed_bytes": 0,
+          "new_bytes": 1701,
+          "seconds": 0.002875962998587056,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+          "signature": "e6cbdda9d8ca37417c3b8244e1dfb8712ca91bc5a8047cc115985df4dba91225cc5084b3572025cf825ca7c04f64f8c8d31e24ddd099e4a90f62d00a6a8b4e01",
+          "four_file_outer_acquisition_checked": false,
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        }
+      }
+    },
+    "laboratory_hypotheses": [
+      "policy-governance",
+      "assessor-competence",
+      "observer-completeness",
+      "model-ledger-classification",
+      "composition-decomposition",
+      "source-producer-correspondence",
+      "proof-soundness",
+      "profile-adequacy",
+      "applicability",
+      "evidence-authority",
+      "non-vacuity"
+    ],
+    "meaning": "Local conditional binding/admission checks only; actual qualification and full-stream identities remain unestablished"
+  },
+  "profile_admitted": false,
+  "actual_qualification_established": false,
+  "runtime_effect_performed": false,
+  "full_model_integration_witness": false,
+  "semantic_acquisition": {
+    "exact_files": 47,
+    "invocations": [
+      {
+        "argument_id": "G-ARG-ACTOR-INFORMATION",
+        "bytes": 4331635,
+        "sha256": "50b1f2d08799cf6b06a8aeaeaa41144ec15ccbaac7f9bdd3904dc51a7bf7dea8",
+        "dependency_count": 13,
+        "competence_established": false
+      },
+      {
+        "argument_id": "G-ARG-COLLISION",
+        "bytes": 4331595,
+        "sha256": "75df3ef9a9426ec15b97eeab74a7d6d9319f0a5f2b8c88758188de1a7c20027b",
+        "dependency_count": 13,
+        "competence_established": false
+      },
+      {
+        "argument_id": "G-ARG-CROSS-ACTION-TRACKING",
+        "bytes": 4331655,
+        "sha256": "52292eddb18c662ccd8120f46ca073bc20c66bee1dbe683cdacf6ba09c664cbb",
+        "dependency_count": 13,
+        "competence_established": false
+      }
+    ],
+    "qualification_established": false,
+    "recovery": "FULL-PREFIX-REACQUISITION-AND-REINDEX"
+  },
+  "processing_complete": true,
+  "pending_stages": false,
+  "operation": "bounded-complete-semantic-collector",
+  "benchmark_only_for_performance_estimates": true,
+  "seconds": 2.3100103529995977,
+  "peak_rss_kib": 26116
+}

@@ -1,0 +1,207 @@
+{
+  "format": "CP4A-EXACT-UNIVERSE-DESCRIPTOR-V1",
+  "tokens": 426984,
+  "fixed_tokens": 50,
+  "fixed_digest_groups": 18,
+  "excluded_pairs": 1169,
+  "candidate_pairs": 91157454636,
+  "potential_pairs": 91157453467,
+  "binary_stream_bytes": 729259627770,
+  "binary_stream_sha256": null,
+  "descriptor_sha256": "4082f2bed30ccf2c45fe8f901a5340ef6a737d846e604cf9c184b8aee079ea1b",
+  "token_segment_concatenation_sha256": "e89d9498d714bef59fe2deb9f150eec1e84fd9b4e41caa23cb65306c5b97db6d",
+  "selected_contract_sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710",
+  "model_input": {
+    "path": "results/expansion/model.json",
+    "bytes": 382699944,
+    "sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1"
+  },
+  "retained_expansion": {
+    "actual_profile_complete": false,
+    "equality_plan": {
+      "bytes": 729259627770,
+      "format": "PE-G4-POTENTIAL-EQUALITY-PAIRS-V1",
+      "ordering": "lexicographic index pairs, i<j",
+      "predicate": "left.arbitrary OR right.arbitrary OR equal symbolic_digest",
+      "row_encoding": "U32-BE left index; U32-BE right index",
+      "rows": 91157453467,
+      "sha256": null
+    },
+    "framing_classes_preserved": 224,
+    "full_pair_enumeration_executed": false,
+    "immutable_obligation_ledger_instantiated": false,
+    "inherited_identity_comparison": "EXACT-TOKEN-AND-STRUCTURAL-ARRAYS",
+    "inherited_original_edges": 27450,
+    "inherited_original_tokens": 7018,
+    "ledger_boundary": "model-duty-ledger is provenance/completeness inventory; qualified S90 obligation classification/evidence is separate",
+    "model_identity": {
+      "bytes": 382699944,
+      "path": "model.json",
+      "sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1"
+    },
+    "model_identity_scope": "Canonical provisional six-key model; equality_stream.sha256 is null until CP4 exact-stream verification",
+    "observer_qualified": false,
+    "old_stream_hash_provenance": "Retained accepted/Lab evidence; not newly streamed in this checkpoint",
+    "profile_admitted": false,
+    "relation_templates": 21182,
+    "result": "COMPLETE-MECHANICAL-EXPANSION-FOR-DECLARED-CONDITIONAL-CONTRACT",
+    "schema_record_counts": {
+      "ALGORITHM": 2,
+      "ARGUMENT": 3,
+      "ARTIFACT": 2,
+      "ASSESSMENT": 3,
+      "ASSESSOR-EVENT": 36,
+      "ASSUMPTION": 2,
+      "COMPOSITION": 3,
+      "ENVELOPE": 1,
+      "EXPERIMENT": 3,
+      "FIELD-LABEL": 4119,
+      "LEAKAGE": 1,
+      "OBLIGATION": 4,
+      "OBSERVER": 2,
+      "POLICY": 1,
+      "POLICY-APPLICABILITY": 4,
+      "QUALIFICATION": 2
+    },
+    "seconds": 34.346,
+    "semantic_fields_preserved": 156,
+    "source_qualified": false,
+    "structural_edges": 4368254,
+    "surface_classes": 4119,
+    "tokens": 426984
+  },
+  "retained_verification": {
+    "assessor_branch_guards_verified": 72,
+    "class_context_joins_verified": 8238,
+    "exact_pair_count_independently_checked": 91157453467,
+    "full_pair_stream_verified": false,
+    "profile_admitted": false,
+    "relation_templates_verified": 21182,
+    "result": "PASS-ALL-EXPANDED-TOKEN-AND-STRUCTURAL-ROWS",
+    "seconds": 41.316,
+    "source_qualified": false,
+    "structural_rows_verified": 4368254,
+    "tokens_verified": 426984
+  },
+  "equality_only_links_tsv_bytes": 19908491206656,
+  "full_links_tsv_lower_bound": 19908491206656,
+  "full_links_tsv_upper_bound": 19911077213024,
+  "upper_bound_assumption": "structural relation class <=256 UTF-8 bytes; verify before use; up to all structural rows unique",
+  "token_id_min_bytes": 27,
+  "token_id_max_bytes": 157,
+  "reads": [
+    {
+      "path": "contract/selected-contract.json",
+      "bytes": 363032,
+      "sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710"
+    },
+    {
+      "path": "results/expansion/expansion-results.json",
+      "bytes": 1643,
+      "sha256": "c55236fb5c925e1a15f8c0fa6c298f72de550f4392f441142a9e2a28ded4a562"
+    },
+    {
+      "path": "results/expansion/verification-results.json",
+      "bytes": 380,
+      "sha256": "35176aadd5a6a7c3ab5082036876f2d32bc3891410cfa6722d22efc849614b48"
+    },
+    {
+      "path": "results/expansion/equality-plan.json",
+      "bytes": 273,
+      "sha256": "9fd6a9a5d1449823e15bfe2260b9b8adb768d499b8a1764eadbbb1f8ae892d49"
+    },
+    {
+      "path": "results/expansion/tokens/000000.jsonl",
+      "bytes": 8359810,
+      "sha256": "6fbc5f999baf6ff6e14b2e9895b34f8cb5c9bd947dd64fe10ca372716d645e41"
+    },
+    {
+      "path": "results/expansion/tokens/000001.jsonl",
+      "bytes": 8787554,
+      "sha256": "16f661c0922246121a7f40e7bff4e3a8da5b3ee7a5801204ce7c06443f4ed988"
+    },
+    {
+      "path": "results/expansion/tokens/000002.jsonl",
+      "bytes": 9393532,
+      "sha256": "5434c389938b548a41d93e844b86f7dab614cb047978b336d4ada9ff430ede8f"
+    },
+    {
+      "path": "results/expansion/tokens/000003.jsonl",
+      "bytes": 10814064,
+      "sha256": "a3f9b94553147ca213a88d15eca4bed18438e606e9cd35d8d8a9440c26686b3c"
+    },
+    {
+      "path": "results/expansion/tokens/000004.jsonl",
+      "bytes": 9867676,
+      "sha256": "b7c6a5c7c8a4842277bd234d6f5e39c0ea5ce9042f7b4ff420cfc86b3e121941"
+    },
+    {
+      "path": "results/expansion/tokens/000005.jsonl",
+      "bytes": 9618730,
+      "sha256": "edf57d6353edd27f14f7c4e5be5c6f4f1da543902de30641af72adff5fdc6ae6"
+    },
+    {
+      "path": "results/expansion/tokens/000006.jsonl",
+      "bytes": 9759880,
+      "sha256": "85d0710ffb752533e9cbe9228de57b2d5623fc054d04157742b8f096b69efebd"
+    },
+    {
+      "path": "results/expansion/tokens/000007.jsonl",
+      "bytes": 10135448,
+      "sha256": "a301a0967ab3d4abe4f82fae8de35ee15f7fa2f81f29ceaadee56bf0ff5593d8"
+    },
+    {
+      "path": "results/expansion/tokens/000008.jsonl",
+      "bytes": 9813286,
+      "sha256": "9f594613883e775a28383ba2a3ab5972597a23da7ea5e99eff00bfc9b2c3382e"
+    },
+    {
+      "path": "results/expansion/tokens/000009.jsonl",
+      "bytes": 8501372,
+      "sha256": "5b65b5441c47a4c4e4fdafeee7430ddd3b89829908389718a7046b56a6e03c1d"
+    },
+    {
+      "path": "results/expansion/tokens/000010.jsonl",
+      "bytes": 9139186,
+      "sha256": "4e3c0078c7b3928756548d318ec5cd913b32d0ded9c4549ef7b7cdb9f1a89390"
+    },
+    {
+      "path": "results/expansion/tokens/000011.jsonl",
+      "bytes": 10193750,
+      "sha256": "d021c84a4fe9bdad13ee5cf537269097d80f66e51db9fdccd265c0063a0e6bc4"
+    },
+    {
+      "path": "results/expansion/tokens/000012.jsonl",
+      "bytes": 10626636,
+      "sha256": "cb5cb2dc3ff8541eb91f76bb80ebb213f018b5b2dd36a5bfc6e084841cfc30a8"
+    },
+    {
+      "path": "results/expansion/tokens/000013.jsonl",
+      "bytes": 9654968,
+      "sha256": "b7f9e6470760752289f23c737139ede96ce40ff82469c13cc3bf4615b010e67b"
+    },
+    {
+      "path": "results/expansion/tokens/000014.jsonl",
+      "bytes": 9613504,
+      "sha256": "153b00f0a85fea40db5235a09bb27aa39978559747bf03b96c39222481868a8d"
+    },
+    {
+      "path": "results/expansion/tokens/000015.jsonl",
+      "bytes": 9917924,
+      "sha256": "13f971ff948ff26617d8e324ebd4db8ac99e9877a3a56ed43d84fe35c1848b71"
+    },
+    {
+      "path": "results/expansion/tokens/000016.jsonl",
+      "bytes": 10469984,
+      "sha256": "202446f9d4548b143b9b5b41e4938dc250b992be28c0b09f920cefef8b425e3b"
+    },
+    {
+      "path": "results/expansion/tokens/000017.jsonl",
+      "bytes": 764194,
+      "sha256": "b973ba67ee0d11e5ef6d5ec484745ba29569830804ddea283978743393d3119e"
+    }
+  ],
+  "seconds": 1.868143099000008,
+  "full_enumeration_performed": false,
+  "actual_qualification_established": false
+}

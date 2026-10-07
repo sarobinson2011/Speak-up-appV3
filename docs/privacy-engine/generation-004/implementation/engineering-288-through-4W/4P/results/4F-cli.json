@@ -1,0 +1,242 @@
+{
+  "result": "PASS",
+  "cases": [
+    {
+      "operation": "keygen",
+      "exit_code": 0,
+      "expected": 0,
+      "pass": true,
+      "result": null,
+      "progress": ""
+    },
+    {
+      "operation": "start",
+      "exit_code": 3,
+      "expected": 3,
+      "pass": true,
+      "result": {
+        "result": "PAUSED",
+        "complete": false,
+        "offsets": {
+          "outer": 25,
+          "evidence.tsv": 0,
+          "tokens.tsv": 0,
+          "links.tsv": 0,
+          "signature.txt": 0
+        },
+        "consumed_sha256": {
+          "outer": "bd5fdbfd8fde21fa8eee7f019e42dc39561f7021089529ed87b98062e8bd9e25",
+          "evidence.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tokens.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "links.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "signature.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "complete_object_sha256": null,
+        "complete_outer_profile_sha256": null,
+        "file_complete": {
+          "outer": false,
+          "evidence.tsv": false,
+          "tokens.tsv": false,
+          "links.tsv": false,
+          "signature.txt": false
+        },
+        "outer_members": [],
+        "prefix_bytes_rechecked": 0,
+        "new_bytes": 25,
+        "seconds": 0.001401671999701648,
+        "incremental_signature_verified": false,
+        "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+        "profile_admitted": false,
+        "source_authority_established": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"offsets\": [25, 0, 0, 0, 0], \"prefix_bytes_rechecked\": 0, \"new_bytes\": 25}\n"
+    },
+    {
+      "operation": "resume",
+      "exit_code": 0,
+      "expected": 0,
+      "pass": true,
+      "result": {
+        "result": "PASS-EXACT-BYTE-ACQUISITION",
+        "complete": true,
+        "offsets": {
+          "outer": 26297,
+          "evidence.tsv": 775,
+          "tokens.tsv": 584,
+          "links.tsv": 315,
+          "signature.txt": 144
+        },
+        "consumed_sha256": {
+          "outer": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+          "evidence.tsv": "db5c2ac4ef523fe1e603ada7c4fc09c9a0aebdc4f159a5e687992483d0820b12",
+          "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+          "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+          "signature.txt": "1b1423001c5051443819a1f446c8207e76f5073c4d1a67c4941efe39f136cf7e"
+        },
+        "complete_object_sha256": "c59eca47f4527cb8139eb7d89819e6dbe9a786b808994266a3517d7e4aaa2c09",
+        "complete_outer_profile_sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+        "file_complete": {
+          "outer": true,
+          "evidence.tsv": true,
+          "tokens.tsv": true,
+          "links.tsv": true,
+          "signature.txt": true
+        },
+        "outer_members": [
+          {
+            "name": "SOURCE-OWNED-BODY",
+            "bytes": 25,
+            "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+          },
+          {
+            "name": "EXPRESSION-PROGRAM",
+            "bytes": 28,
+            "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+          },
+          {
+            "name": "PRIVACY",
+            "bytes": 26126,
+            "sha256": "eb1ae49ca15daadc189ab3f24bd23b316f1f5da52654c5ef137c51c9a35f3959"
+          }
+        ],
+        "prefix_bytes_rechecked": 25,
+        "new_bytes": 28090,
+        "seconds": 0.0014301159999376978,
+        "incremental_signature_verified": false,
+        "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+        "profile_admitted": false,
+        "source_authority_established": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"offsets\": [26297, 775, 584, 315, 144], \"prefix_bytes_rechecked\": 25, \"new_bytes\": 28090}\n"
+    },
+    {
+      "operation": "continue",
+      "exit_code": 2,
+      "expected": 2,
+      "pass": true,
+      "result": {
+        "result": "REJECTED",
+        "earliest_failure": "INCOMPLETE-EVIDENCE-UNIVERSE",
+        "failures": [
+          "INCOMPLETE-EVIDENCE-UNIVERSE"
+        ],
+        "reasons": {
+          "INCOMPLETE-EVIDENCE-UNIVERSE": [
+            "incremental pure Ed25519 backend acceptance review/build unavailable; signature unverified",
+            "source appointment competence, full scope/ledger/semantic qualification not established by byte acquisition"
+          ]
+        },
+        "mode": "ACTUAL-DISABLED",
+        "bindings": {
+          "byte_stage": {
+            "result": "PASS-EXACT-BYTE-ACQUISITION",
+            "complete": true,
+            "offsets": {
+              "outer": 26297,
+              "evidence.tsv": 775,
+              "tokens.tsv": 584,
+              "links.tsv": 315,
+              "signature.txt": 144
+            },
+            "consumed_sha256": {
+              "outer": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+              "evidence.tsv": "db5c2ac4ef523fe1e603ada7c4fc09c9a0aebdc4f159a5e687992483d0820b12",
+              "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+              "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+              "signature.txt": "1b1423001c5051443819a1f446c8207e76f5073c4d1a67c4941efe39f136cf7e"
+            },
+            "complete_object_sha256": "c59eca47f4527cb8139eb7d89819e6dbe9a786b808994266a3517d7e4aaa2c09",
+            "complete_outer_profile_sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+            "file_complete": {
+              "outer": true,
+              "evidence.tsv": true,
+              "tokens.tsv": true,
+              "links.tsv": true,
+              "signature.txt": true
+            },
+            "outer_members": [
+              {
+                "name": "SOURCE-OWNED-BODY",
+                "bytes": 25,
+                "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+              },
+              {
+                "name": "EXPRESSION-PROGRAM",
+                "bytes": 28,
+                "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+              },
+              {
+                "name": "PRIVACY",
+                "bytes": 26126,
+                "sha256": "eb1ae49ca15daadc189ab3f24bd23b316f1f5da52654c5ef137c51c9a35f3959"
+              }
+            ],
+            "prefix_bytes_rechecked": 29933,
+            "new_bytes": 0,
+            "seconds": 0.0011881679997713945,
+            "incremental_signature_verified": false,
+            "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+            "profile_admitted": false,
+            "source_authority_established": false
+          },
+          "link_stage": {
+            "result": "PASS-SUPPLIED-LINK-STREAM",
+            "complete": true,
+            "eof_observed": true,
+            "bytes_consumed": 315,
+            "consumed_sha256": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "complete_stream_sha256": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "rows_validated": 8,
+            "structural_rows": 2,
+            "potential_rows": 6,
+            "expected_structural_rows": 2,
+            "expected_potential_rows": 6,
+            "peak_pending_line_bytes": 66,
+            "peak_rss_kib": 14208,
+            "seconds": 0.000515485,
+            "failure": null,
+            "profile_admitted": false,
+            "actual_qualification_established": false,
+            "prefix_bytes_rechecked": 0,
+            "prefix_verification_seconds": 3.896000180247938e-06,
+            "checkpoint_sequence": 1,
+            "journal_authenticates_source": false,
+            "controller_seconds": 0.0068265859999883105
+          },
+          "backend": {
+            "incremental_pure_ed25519": "NOT-IMPLEMENTED",
+            "candidate": "ed25519-dalek=2.2.0; hazmat VerifyingKey::verify_stream",
+            "blocker": "RFC8032 point/encoding acceptance compatibility review and pinned executable/dependency build unavailable",
+            "bounded_reference": {
+              "cryptography": "46.0.0",
+              "openssl": "OpenSSL 3.5.3 16 Sep 2025"
+            },
+            "ed25519ph_substitution": false,
+            "bespoke_curve_arithmetic": false
+          },
+          "canonical_model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+          "complete_authentication": false
+        },
+        "profile_admitted": false,
+        "actual_qualification_established": false,
+        "runtime_effect_performed": false,
+        "full_model_integration_witness": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"offsets\": [26297, 775, 584, 315, 144], \"prefix_bytes_rechecked\": 29933, \"new_bytes\": 0}\n"
+    },
+    {
+      "operation": "mutated-completed-input",
+      "exit_code": 2,
+      "expected": 2,
+      "pass": true,
+      "result": {
+        "result": "REJECTED-OR-INTERRUPTED",
+        "detail": "changed consumed input prefix: tokens.tsv",
+        "complete_object_sha256": null,
+        "profile_admitted": false,
+        "incremental_signature_verified": false
+      }
+    }
+  ],
+  "profile_admitted": false
+}

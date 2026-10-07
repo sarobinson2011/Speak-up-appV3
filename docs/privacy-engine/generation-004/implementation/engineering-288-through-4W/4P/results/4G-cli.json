@@ -1,0 +1,257 @@
+{
+  "result": "PASS",
+  "cases": [
+    {
+      "operation": "keygen",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "result": null,
+      "progress": ""
+    },
+    {
+      "operation": "start",
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "pass": true,
+      "result": {
+        "result": "PAUSED",
+        "cryptographic_signature_verified": false,
+        "complete_message_sha256": null,
+        "offset": 1,
+        "total": 1701,
+        "prefix_sha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2",
+        "replayed_bytes": 0,
+        "new_bytes": 1,
+        "seconds": 0.004398065999339451,
+        "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+        "signature": "88736af1a085c42b8e9b0ba095cfa8eab3ba64cda8bfec8715ba4ef9edd137ae2b31064a616e7b7b5fbd87e73d66ab946810b27115fd129e0f178520b6fa0e0c",
+        "four_file_outer_acquisition_checked": false,
+        "source_authority_established": false,
+        "actual_qualification_established": false,
+        "profile_admitted": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"consumed\": 1, \"total\": 1701, \"verified\": false}\n"
+    },
+    {
+      "operation": "resume",
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "pass": true,
+      "result": {
+        "result": "PAUSED",
+        "cryptographic_signature_verified": false,
+        "complete_message_sha256": null,
+        "offset": 32,
+        "total": 1701,
+        "prefix_sha256": "34adcd265110f2235307f8e9269575d4ec41806ba16341205ea0c0d059608e9b",
+        "replayed_bytes": 1,
+        "new_bytes": 31,
+        "seconds": 0.003994018999947002,
+        "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+        "signature": "88736af1a085c42b8e9b0ba095cfa8eab3ba64cda8bfec8715ba4ef9edd137ae2b31064a616e7b7b5fbd87e73d66ab946810b27115fd129e0f178520b6fa0e0c",
+        "four_file_outer_acquisition_checked": false,
+        "source_authority_established": false,
+        "actual_qualification_established": false,
+        "profile_admitted": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"consumed\": 32, \"total\": 1701, \"verified\": false}\n"
+    },
+    {
+      "operation": "resume",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "result": {
+        "result": "VERIFIED-EXACT-V2-SIGNATURE",
+        "cryptographic_signature_verified": true,
+        "complete_message_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+        "offset": 1701,
+        "total": 1701,
+        "prefix_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+        "replayed_bytes": 32,
+        "new_bytes": 1669,
+        "seconds": 0.005712590000257478,
+        "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+        "signature": "88736af1a085c42b8e9b0ba095cfa8eab3ba64cda8bfec8715ba4ef9edd137ae2b31064a616e7b7b5fbd87e73d66ab946810b27115fd129e0f178520b6fa0e0c",
+        "four_file_outer_acquisition_checked": false,
+        "source_authority_established": false,
+        "actual_qualification_established": false,
+        "profile_admitted": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"consumed\": 1701, \"total\": 1701, \"verified\": true}\n"
+    },
+    {
+      "operation": "resume",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "result": {
+        "result": "VERIFIED-EXACT-V2-SIGNATURE",
+        "cryptographic_signature_verified": true,
+        "complete_message_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+        "offset": 1701,
+        "total": 1701,
+        "prefix_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+        "replayed_bytes": 1701,
+        "new_bytes": 0,
+        "seconds": 0.003701489000377478,
+        "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+        "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+        "signature": "88736af1a085c42b8e9b0ba095cfa8eab3ba64cda8bfec8715ba4ef9edd137ae2b31064a616e7b7b5fbd87e73d66ab946810b27115fd129e0f178520b6fa0e0c",
+        "four_file_outer_acquisition_checked": false,
+        "source_authority_established": false,
+        "actual_qualification_established": false,
+        "profile_admitted": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"consumed\": 1701, \"total\": 1701, \"verified\": true}\n"
+    },
+    {
+      "operation": "preflight",
+      "expected_exit": 3,
+      "actual_exit": 3,
+      "pass": true,
+      "result": {
+        "result": "PAUSED",
+        "byte_stage": {
+          "result": "PAUSED",
+          "complete": false,
+          "offsets": {
+            "outer": 25,
+            "evidence.tsv": 0,
+            "tokens.tsv": 0,
+            "links.tsv": 0,
+            "signature.txt": 0
+          },
+          "consumed_sha256": {
+            "outer": "bd5fdbfd8fde21fa8eee7f019e42dc39561f7021089529ed87b98062e8bd9e25",
+            "evidence.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "tokens.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "links.tsv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "signature.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "complete_object_sha256": null,
+          "complete_outer_profile_sha256": null,
+          "file_complete": {
+            "outer": false,
+            "evidence.tsv": false,
+            "tokens.tsv": false,
+            "links.tsv": false,
+            "signature.txt": false
+          },
+          "outer_members": [],
+          "prefix_bytes_rechecked": 0,
+          "new_bytes": 25,
+          "seconds": 0.001646292999794241,
+          "incremental_signature_verified": false,
+          "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+          "profile_admitted": false,
+          "source_authority_established": false
+        },
+        "cryptographic_signature_verified": false,
+        "profile_admitted": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"offsets\": [25, 0, 0, 0, 0], \"prefix_bytes_rechecked\": 0, \"new_bytes\": 25}\n"
+    },
+    {
+      "operation": "continue",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "result": {
+        "result": "PASS-BYTE-AND-CRYPTO-PREFLIGHT",
+        "byte_stage": {
+          "result": "PASS-EXACT-BYTE-ACQUISITION",
+          "complete": true,
+          "offsets": {
+            "outer": 26297,
+            "evidence.tsv": 775,
+            "tokens.tsv": 584,
+            "links.tsv": 315,
+            "signature.txt": 144
+          },
+          "consumed_sha256": {
+            "outer": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+            "evidence.tsv": "db5c2ac4ef523fe1e603ada7c4fc09c9a0aebdc4f159a5e687992483d0820b12",
+            "tokens.tsv": "103406e6a44dedafedc84c5f66208e4bc9ab63d909c375480da0303ee735d3f8",
+            "links.tsv": "aa27cc0b67384adb389958d8d0b16834890e62b0ead6b1b7c8ce325a9eb218c6",
+            "signature.txt": "1b1423001c5051443819a1f446c8207e76f5073c4d1a67c4941efe39f136cf7e"
+          },
+          "complete_object_sha256": "c59eca47f4527cb8139eb7d89819e6dbe9a786b808994266a3517d7e4aaa2c09",
+          "complete_outer_profile_sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+          "file_complete": {
+            "outer": true,
+            "evidence.tsv": true,
+            "tokens.tsv": true,
+            "links.tsv": true,
+            "signature.txt": true
+          },
+          "outer_members": [
+            {
+              "name": "SOURCE-OWNED-BODY",
+              "bytes": 25,
+              "sha256": "af5e60b57fe9be74bb63a2f710518db0c9891171abf07e917c3dd8fad5f2fbfc"
+            },
+            {
+              "name": "EXPRESSION-PROGRAM",
+              "bytes": 28,
+              "sha256": "f9fe5c1d00f53465ece12d49eb62372da6f2932900dea72eb5427c047b9a60d8"
+            },
+            {
+              "name": "PRIVACY",
+              "bytes": 26126,
+              "sha256": "eb1ae49ca15daadc189ab3f24bd23b316f1f5da52654c5ef137c51c9a35f3959"
+            }
+          ],
+          "prefix_bytes_rechecked": 25,
+          "new_bytes": 28090,
+          "seconds": 0.0012433780011633644,
+          "incremental_signature_verified": false,
+          "signature_status": "UNAVAILABLE-BACKEND-ACCEPTANCE-REVIEW",
+          "profile_admitted": false,
+          "source_authority_established": false
+        },
+        "crypto_stage": {
+          "result": "VERIFIED-EXACT-V2-SIGNATURE",
+          "cryptographic_signature_verified": true,
+          "complete_message_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+          "offset": 1701,
+          "total": 1701,
+          "prefix_sha256": "6a864d10537f3b2c0400bfb0c8d349dfd207a11ccb49f9eb8bf55c9b1e34a2aa",
+          "replayed_bytes": 0,
+          "new_bytes": 1701,
+          "seconds": 0.004303994001020328,
+          "backend_sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b",
+          "public_key": "7244b152fad37bc0d2a180f20c38a5d4c44e6ad07d525c623bffaba83239a903",
+          "signature": "88736af1a085c42b8e9b0ba095cfa8eab3ba64cda8bfec8715ba4ef9edd137ae2b31064a616e7b7b5fbd87e73d66ab946810b27115fd129e0f178520b6fa0e0c",
+          "four_file_outer_acquisition_checked": false,
+          "source_authority_established": false,
+          "actual_qualification_established": false,
+          "profile_admitted": false
+        },
+        "cryptographic_signature_verified": true,
+        "four_file_outer_acquisition_checked": true,
+        "source_authority_established": false,
+        "actual_qualification_established": false,
+        "profile_admitted": false,
+        "ordered_admission_collector_complete": false
+      },
+      "progress": "{\"phase\": \"durable-checkpoint\", \"offsets\": [26297, 775, 584, 315, 144], \"prefix_bytes_rechecked\": 25, \"new_bytes\": 28090}\n{\"phase\": \"durable-checkpoint\", \"consumed\": 1701, \"total\": 1701, \"verified\": true}\n"
+    },
+    {
+      "operation": "mutated-completed-input",
+      "actual_exit": 2,
+      "pass": true,
+      "result": {
+        "result": "REJECTED-OR-INTERRUPTED",
+        "detail": "changed consumed prefix",
+        "cryptographic_signature_verified": false,
+        "profile_admitted": false
+      }
+    }
+  ],
+  "profile_admitted": false
+}

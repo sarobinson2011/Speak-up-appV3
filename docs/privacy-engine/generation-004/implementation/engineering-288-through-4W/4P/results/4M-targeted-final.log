@@ -1,0 +1,67 @@
+................E......F...............................
+======================================================================
+ERROR: test_corrupt_main_journal_after_completion (tests.test_schedule.SchedulingTests.test_corrupt_main_journal_after_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/tests/test_schedule.py", line 72, in test_corrupt_main_journal_after_completion
+    with self.assertRaises(ValueError):self.execute(resume=True)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/tests/test_schedule.py", line 15, in execute
+    def execute(self,**kw):return run(self.m,self.t,self.ck,self.p/'key',**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/runner.py", line 137, in run
+    try:return _run(*args,**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/runner.py", line 61, in _run
+    key=read_key(key_path);initial=journal(ck,key,job_binding)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/integrated_auth/collector.py", line 32, in journal
+    x=json.loads(raw);p=x['payload'];expected=hmac.new(key,canonical(p).rstrip(b'\n'),hashlib.sha256).hexdigest()
+                        ~^^^^^^^^^^^
+KeyError: 'payload'
+
+======================================================================
+FAIL: test_index_reuse_after_interruption_before_ledger_commit (tests.test_schedule.SchedulingTests.test_index_reuse_after_interruption_before_ledger_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/tests/test_schedule.py", line 59, in test_index_reuse_after_interruption_before_ledger_commit
+    r=self.execute(resume=True)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/tests/test_schedule.py", line 15, in execute
+    def execute(self,**kw):return run(self.m,self.t,self.ck,self.p/'key',**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/runner.py", line 137, in run
+    try:return _run(*args,**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/runner.py", line 63, in _run
+    m,files=identities(manifest,trusted,Path(str(ck)+'.inputs'),key,handles,remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/runner.py", line 24, in identities
+    t=parse(ACTIVE.get().write(parts()))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/v4_ingest/records.py", line 94, in parse
+    if isinstance(raw, Blob): return raw.store.parse(raw)
+                                     ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/semantic_stream/storage.py", line 173, in parse
+    self.parsed[key]=scheduled_parse(self,blob,original)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/recovery_schedule/index.py", line 10, in parse
+    if scheduler is None:return original(store,blob)
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4M/semantic_stream/storage.py", line 171, in original
+    d=Document(store,b);store.docs.append(d);return d.parse()
+                                                    ^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: canonical parse repeated
+
+----------------------------------------------------------------------
+Ran 55 tests in 65.103s
+
+FAILED (failures=1, errors=1)

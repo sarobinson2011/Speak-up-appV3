@@ -1,0 +1,58 @@
+{
+  "result": "PASS-FRESH-EXTRACTION-RESTORE",
+  "tested_archive_sha256": "7cc7b33e31867fe764b8e8f5265b480567fe124c27f19ed010743e73d0075d6f",
+  "tested_archive_bytes": 51928945,
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 980, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": "",
+      "seconds": 0.24071319599897834
+    },
+    {
+      "command": [
+        "python3",
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4e-restored-quj_9_gp/Engineering-288-checkpoint-4E/inputs/links.txt\n",
+      "stderr": "",
+      "seconds": 1.2460243930036086
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "ledger_kernel.audit"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS-POPULATED-INVENTORY-DOMAINS-AND-HASHES\",\n  \"nodes\": 426984,\n  \"structural_occurrences\": 4368254,\n  \"potential_pairs\": 91157453467,\n  \"full_pair_or_link_stream_executed\": false,\n  \"profile_admitted\": false,\n  \"meaning\": \"exact interval partition plus pinned retained source/member identities; classification/evidence still unestablished\"\n}\n",
+      "stderr": "",
+      "seconds": 1.080049145995872
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "scope_auth",
+        "fixtures/scope-disconnected/acquisition.json",
+        "--lab-contract",
+        "fixtures/scope-disconnected/lab-contract.json",
+        "--output",
+        "results/fresh-restore-conditional.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"CONDITIONAL-BINDING-AND-ADMISSION-CHECKS-PASS\", \"earliest_failure\": \"NONE\", \"profile_admitted\": false, \"output\": \"results/fresh-restore-conditional.json\"}\n",
+      "stderr": "",
+      "seconds": 0.25098722700204235
+    }
+  ],
+  "original_workspace_inputs_required": false,
+  "network_used": false,
+  "profile_admitted": false,
+  "full_pair_or_link_stream_executed": false
+}

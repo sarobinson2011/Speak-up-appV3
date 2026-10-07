@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "preseal_zip_sha256": "0b291343e4c06797dfbb376be81909768d23553baf3e805db26e614878201cb4",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 4113, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4l-restore-kt6raiim/Engineering-288-checkpoint-4L/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4l_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 16}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "tests.test_occurrence"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "........................\n----------------------------------------------------------------------\nRan 24 tests in 20.580s\n\nOK\n"
+    }
+  ],
+  "seconds": 35.78609927800062,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

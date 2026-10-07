@@ -1,0 +1,52 @@
+{
+  "result": "PASS-WITH-RECORDED-STALE-FIXTURE-REJECTION",
+  "runs": [
+    {
+      "stage": "construct",
+      "seconds": 0.6023314960038988,
+      "exit": 0,
+      "child_maxrss_kib": 104576,
+      "cpu_seconds": 0.562389
+    },
+    {
+      "stage": "validate",
+      "seconds": 25.682908326998586,
+      "exit": 0,
+      "child_maxrss_kib": 91164,
+      "cpu_seconds": 25.966915
+    },
+    {
+      "stage": "cycles",
+      "seconds": 2.005820140999276,
+      "exit": 0,
+      "child_maxrss_kib": 22844,
+      "cpu_seconds": 1.9977299999999998
+    },
+    {
+      "stage": "validate-final",
+      "seconds": 23.8709980670028,
+      "exit": 1,
+      "child_maxrss_kib": 89388,
+      "cpu_seconds": 24.281211
+    },
+    {
+      "stage": "rebound-construct",
+      "seconds": 0.5525377270023455,
+      "exit": 0,
+      "child_maxrss_kib": 103848,
+      "cpu_seconds": 0.5491889999999999
+    },
+    {
+      "stage": "rebound-validate",
+      "seconds": 25.730350910998823,
+      "exit": 0,
+      "child_maxrss_kib": 90708,
+      "cpu_seconds": 25.969479
+    }
+  ],
+  "total_seconds": 78.44494666900573,
+  "parent_maxrss_kib": 9856,
+  "individual_limit_seconds": 60,
+  "aggregate_limit_seconds": 180,
+  "full_retained_stream_processed": false
+}

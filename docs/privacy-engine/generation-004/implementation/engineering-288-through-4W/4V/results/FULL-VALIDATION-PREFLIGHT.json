@@ -1,0 +1,50 @@
+{
+  "result": "BOUNDED-PREFLIGHT-ONLY",
+  "bytes_for_future_whole_validation": 19909380154846,
+  "required_potential_rows": 91157453467,
+  "required_structural_rows": 4368254,
+  "required_total_rows": 91161821721,
+  "spool_bytes_default": 67108864,
+  "spools_at_default_ceiling": 296673,
+  "samples": [
+    {
+      "generation_MB_s": 254.82313924825965,
+      "validation_MB_s": 165.2677902408597,
+      "estimated_generation_hours": 21.70283041273647,
+      "estimated_validation_hours": 33.46316525613481,
+      "estimated_sequential_loop_hours": 55.65219159516706,
+      "basis": "one 64 MiB first-prefix sample, cloud host; not representative full-run evidence"
+    },
+    {
+      "generation_MB_s": 108.50243393552529,
+      "validation_MB_s": 119.27107034361586,
+      "estimated_generation_hours": 50.97013196618608,
+      "estimated_validation_hours": 46.36818769558508,
+      "estimated_sequential_loop_hours": 97.84245861138847,
+      "basis": "one 64 MiB first-prefix sample, cloud host; not representative full-run evidence"
+    }
+  ],
+  "uncertainty": "No defensible hard runtime upper bound from a first-prefix sample. Use host measurements and a new review budget; late lexical scans, fsync, CPU throttling and storage vary. Approximate planning range 55\u2013200+ hours is provisional, not a promise.",
+  "initial_review_stop_recommendation_hours": 2,
+  "full_run_authorized": false,
+  "measured_benchmark_aggregate_seconds": 21.693550315998436,
+  "measured_max_individual_throughput_seconds": 0.6185010009994585,
+  "native_per_process_address_space_limit_bytes": 1610612736,
+  "controller_soft_address_space_limit_bytes": 536870912,
+  "required_host_available_ram_bytes": 4294967296,
+  "planning_ram_ceiling_bytes": 8589934592,
+  "native_peak_emitter_rss_kib": 472832,
+  "native_peak_validator_rss_kib": 489856,
+  "parent_peak_rss_kib": 50816,
+  "extracted_external_input_bytes": 619906652,
+  "live_job_file_bytes_bound": 67637248,
+  "spool_maximum_configurable_bytes": 268435456,
+  "source_write_bytes_for_future_run": 19909380154846,
+  "minimum_application_spool_read_bytes_for_future_run": 59728140464538,
+  "passes": "one generation pass plus independent validation; emitter spool check, validator spool check, parser read add three spool reads; every restart hashes exact retained small inputs again",
+  "no_evicted_prefix_rereads_under_trusted_state_boundary": true,
+  "restart_cost": "exact model/contract/descriptor hashing + 1 or 2 index loads + <=one bounded spool regeneration + parsing since last committed state; old backup rollback adds bytes since that backup",
+  "pure_ed25519_prefix_reconstruction": "Not run, not eliminated; separate file-backed authentication obligation",
+  "required_free_disk_preflight_bytes": 2147483648,
+  "actual_admission": false
+}

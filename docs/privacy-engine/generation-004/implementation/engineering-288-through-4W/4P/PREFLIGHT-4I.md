@@ -1,0 +1,7 @@
+# Compatibility dependency verification: bounded preflight
+
+No pair/link stream generation, replay, validation or hashing is authorized here. No performance benchmark is needed for this field-only amendment.
+
+The dependency pass reads the saved 382,699,944-byte canonical model, rechecks its SHA-256, and reads its small surfaces/relations metadata via mmap. It compiles old/new source catalogs only (classes, selectors, relation templates and source provenance); it does not call token expansion, structural expansion or pair enumeration. Expected runtime 5–30 seconds, under a 60-second per-command supervisory limit. Estimated peak resident memory below 256 MiB for catalogs/source dictionaries and hash buffers; mmap virtual address range includes the 383 MB model. Scratch storage: approximately 1 GB for verified nested archives, saved model and copied small source catalog. Regenerated catalog/ledger provenance is expected below 30 MB.
+
+Recovery: original archives remain immutable. CP2 members are extracted to temporary files and hash-verified before atomic rename. Regenerated outputs go to rebinding/ and are deterministically reconstructible. Per-output identities and a final dependency report are committed only after each transformation and invariant check succeeds. An interrupted run can be rerun; it must verify old inputs again, not inherit success from a partial output. No archived full-stream digest is manufactured. The subsequent profile/evidence dependency pass uses only small independently signed finite fixtures.

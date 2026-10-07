@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "zip_tested_sha256": "4eaa9ce3181bb891220543041ab14dbe55dcf1065412227e284f04b665141e53",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 1091, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4f-restore-1_brwwme/Engineering-288-checkpoint-4F/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4f_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 5}\n",
+      "stderr": ""
+    }
+  ],
+  "seconds": 2.1502719489999436,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

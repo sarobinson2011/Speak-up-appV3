@@ -1,0 +1,146 @@
+test_directory_unavailable_inapplicable_not_missing_field_fallback (tests.test_projections.ProjectionTests.test_directory_unavailable_inapplicable_not_missing_field_fallback) ... /tmp/engineering4o/Engineering-288-checkpoint-4O/fixtures/projections.py:59: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/engineering4o/Engineering-288-checkpoint-4O/accepted/definition-completion/security-framing-fields.tsv' mode='r' encoding='UTF-8'>
+  frames={r['surface_id']:r for r in csv.DictReader((Path(__file__).resolve().parents[1]/'accepted/definition-completion/security-framing-fields.tsv').open(),delimiter='\t')}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_exact_record_and_reference_ordinal_binding (tests.test_projections.ProjectionTests.test_exact_record_and_reference_ordinal_binding) ... ERROR
+test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle (tests.test_projections.ProjectionTests.test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle) ... ERROR
+test_exhaustive_source_reference_subfields_and_list_occurrences (tests.test_projections.ProjectionTests.test_exhaustive_source_reference_subfields_and_list_occurrences) ... ERROR
+test_integrated_all_phases_pause_repeat_resume_and_oracle (tests.test_projections.ProjectionTests.test_integrated_all_phases_pause_repeat_resume_and_oracle) ... ok
+test_integrated_hash_collisions (tests.test_projections.ProjectionTests.test_integrated_hash_collisions) ... ok
+test_integrated_mutation_and_journal_corruption (tests.test_projections.ProjectionTests.test_integrated_mutation_and_journal_corruption) ... ERROR
+test_interrupted_projection_and_equality_recovery (tests.test_projections.ProjectionTests.test_interrupted_projection_and_equality_recovery) ... ok
+test_invalid_unavailable_assessment_null_and_union_exact_null (tests.test_projections.ProjectionTests.test_invalid_unavailable_assessment_null_and_union_exact_null) ... ERROR
+test_late_interruption_reuses_verified_indexes (tests.test_projections.ProjectionTests.test_late_interruption_reuses_verified_indexes) ... ok
+test_lazy_eviction_and_mutated_snapshot (tests.test_projections.ProjectionTests.test_lazy_eviction_and_mutated_snapshot) ... ERROR
+test_missing_field_not_schema_null_and_duplicate_record (tests.test_projections.ProjectionTests.test_missing_field_not_schema_null_and_duplicate_record) ... ERROR
+test_null_is_record_interpretation_not_primitive_weakening (tests.test_projections.ProjectionTests.test_null_is_record_interpretation_not_primitive_weakening) ... ERROR
+test_required_generated_parser_boundary_is_explicit (tests.test_projections.ProjectionTests.test_required_generated_parser_boundary_is_explicit) ... ok
+test_trace_null_correspondence_and_missing_qualification (tests.test_projections.ProjectionTests.test_trace_null_correspondence_and_missing_qualification) ... ERROR
+
+======================================================================
+ERROR: test_directory_unavailable_inapplicable_not_missing_field_fallback (tests.test_projections.ProjectionTests.test_directory_unavailable_inapplicable_not_missing_field_fallback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 89, in test_directory_unavailable_inapplicable_not_missing_field_fallback
+    h=self.harness(change=mutate)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_exact_record_and_reference_ordinal_binding (tests.test_projections.ProjectionTests.test_exact_record_and_reference_ordinal_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 106, in test_exact_record_and_reference_ordinal_binding
+    h=self.harness()
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle (tests.test_projections.ProjectionTests.test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 43, in test_exhaustive_all_s90_fields_records_and_frames_against_python_oracle
+    h=self.harness();sec=h[2];count=0
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_exhaustive_source_reference_subfields_and_list_occurrences (tests.test_projections.ProjectionTests.test_exhaustive_source_reference_subfields_and_list_occurrences)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 57, in test_exhaustive_source_reference_subfields_and_list_occurrences
+    h=self.harness();count=0
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_integrated_mutation_and_journal_corruption (tests.test_projections.ProjectionTests.test_integrated_mutation_and_journal_corruption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 142, in test_integrated_mutation_and_journal_corruption
+    c=self.case();self.oracle(self.go(c),c[2]);p=c[3]/'input/security_records_hex.bin';raw=p.read_bytes();p.write_bytes(raw[:-1]+b' ');r=self.go(c,resume=True);self.assertTrue(r['failures']);self.assertFalse(r['profile_admitted'])
+                                                                                           ^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpuohqsnfc/1/input/security_records_hex.bin'
+
+======================================================================
+ERROR: test_invalid_unavailable_assessment_null_and_union_exact_null (tests.test_projections.ProjectionTests.test_invalid_unavailable_assessment_null_and_union_exact_null)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 76, in test_invalid_unavailable_assessment_null_and_union_exact_null
+    h=self.harness(change=mutate);r=h[2]['records']['ASSESSMENT']['instances'][0]
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_lazy_eviction_and_mutated_snapshot (tests.test_projections.ProjectionTests.test_lazy_eviction_and_mutated_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 100, in test_lazy_eviction_and_mutated_snapshot
+    h=self.harness();e=h[0];self.project(h,'SECURITY-FRAME:ROOT.phase')
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_missing_field_not_schema_null_and_duplicate_record (tests.test_projections.ProjectionTests.test_missing_field_not_schema_null_and_duplicate_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 83, in test_missing_field_not_schema_null_and_duplicate_record
+    h=self.harness(change=change)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_null_is_record_interpretation_not_primitive_weakening (tests.test_projections.ProjectionTests.test_null_is_record_interpretation_not_primitive_weakening)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 68, in test_null_is_record_interpretation_not_primitive_weakening
+    h=self.harness();self.assertEqual(self.project(h,'SECURITY:ASSESSOR-EVENT.input_bytes','G-EVENT-COLLISION-0'),b'null\n')
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_trace_null_correspondence_and_missing_qualification (tests.test_projections.ProjectionTests.test_trace_null_correspondence_and_missing_qualification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 94, in test_trace_null_correspondence_and_missing_qualification
+    h=self.harness();e,ref,sec,b,t,p=h
+      ^^^^^^^^^^^^^^
+  File "/tmp/engineering4o/Engineering-288-checkpoint-4O/tests/test_projections.py", line 29, in harness
+    provider=StreamingProvider(t,{k:bytes.fromhex(v) for k,v in q['materials'].items()},{k:bytes.fromhex(v) for k,v in q['sources'].items()},s)
+                                                                                                                       ~^^^^^^^^^^^
+KeyError: 'sources'
+
+----------------------------------------------------------------------
+Ran 15 tests in 15.699s
+
+FAILED (errors=10)

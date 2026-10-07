@@ -1,0 +1,95 @@
+{
+  "result": "PASS",
+  "kind": "necessary bounded 4R package/recovery checks only",
+  "checks": [
+    {
+      "case": "pause after first committed segment",
+      "result": "PASS"
+    },
+    {
+      "case": "repeated generation resume preserves exact prior segment; torn part ignored",
+      "result": "PASS"
+    },
+    {
+      "case": "independent replay paused after first segment",
+      "result": "PASS"
+    },
+    {
+      "case": "generation plus predicate replay equals independent Python serialized oracle",
+      "result": "PASS"
+    },
+    {
+      "case": "terminal reuse identical result without worker replay",
+      "result": "PASS"
+    },
+    {
+      "case": "altered generation receipt rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "missing committed segment rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "wrong replay engine rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "corrupt elapsed budget journal rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "lost budget HEAD rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "budget deletion cannot reset completed computation charge",
+      "result": "PASS"
+    },
+    {
+      "case": "substituted runtime binding rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "substituted plan/descriptor rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "interruption after commit/before accounting resumes with full reservation charged",
+      "result": "PASS"
+    },
+    {
+      "case": "aggregate review stop persists across repeated resume",
+      "result": "PASS"
+    },
+    {
+      "case": "PAUSE prevents next segment",
+      "result": "PASS"
+    },
+    {
+      "case": "snapshot restore preserves complete independent small oracle",
+      "result": "PASS"
+    },
+    {
+      "case": "wrong snapshot digest rejected",
+      "result": "PASS"
+    },
+    {
+      "case": "restore never overwrites existing job",
+      "result": "PASS"
+    },
+    {
+      "case": "read-only ZIP preflight rejects insufficient memory/disk and native incompatibility; no paths/cwd changed",
+      "result": "PASS"
+    },
+    {
+      "case": "small descriptor exact complement/count recheck; no full pairs enumerated",
+      "result": "PASS"
+    }
+  ],
+  "elapsed_seconds": 0.9131275809995714,
+  "full_universe_processed": false,
+  "regression_suites_rerun": false,
+  "benchmarks_run": false,
+  "oracle_sha256": "6187ecdf216003a999d7d8382ab006adc7f577e7c68812980da3027b6f146a21"
+}

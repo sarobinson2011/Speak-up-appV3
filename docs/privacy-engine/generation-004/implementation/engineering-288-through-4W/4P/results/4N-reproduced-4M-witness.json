@@ -1,0 +1,14 @@
+{
+  "result": "DEMONSTRATED-LIFECYCLE-BOUNDARY",
+  "completed_small_documents": 92,
+  "attempted_documents": 128,
+  "open_file_limit": 96,
+  "failure": {
+    "type": "OSError",
+    "detail": "[Errno 24] Too many open files: '/tmp/semantic-4j-gmf076u0/92'"
+  },
+  "source": "semantic_stream/storage.py:Store.docs, Store.parse, Document.__init__",
+  "meaning": "Retained semantic indexes keep database connections open until whole invocation ends. Catalog maps themselves open readonly handles per operation. Complete metadata coverage is not complete actual-value acquisition.",
+  "full_stream_processed": false,
+  "qualification_established": false
+}

@@ -1,0 +1,20 @@
+{
+  "platform": "Ubuntu Linux x86_64",
+  "python_minimum": "3.11",
+  "ELF_interpreter": "/lib64/ld-linux-x86-64.so.2",
+  "required_symbol_versions_in_shipped_ELF": [
+    "GLIBC_2.38",
+    "GLIBC_2.34",
+    "GLIBCXX_3.4.32",
+    "CXXABI_1.3.9",
+    "OPENSSL_3.0.0",
+    "GCC_3.0"
+  ],
+  "symbol_version_full_listing": "evidence/native-symbol-versions.txt",
+  "available_memory_reservation_bytes": 8589934592,
+  "requires_ldd": true,
+  "requires_linux_memfd_exec": true,
+  "library_change_on_resume": "REJECT",
+  "automatic_compiler_fallback": false,
+  "missing_or_old_ABI_action": "Return preflight output; prepare a separately pinned build from exact supplied source with bounded compatibility tests and a fresh journal."
+}

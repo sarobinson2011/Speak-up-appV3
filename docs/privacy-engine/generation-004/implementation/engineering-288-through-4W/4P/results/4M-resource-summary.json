@@ -1,0 +1,59 @@
+{
+  "result": "PASS-AFTER-SNAPSHOT-CORRECTION",
+  "processes": [
+    {
+      "stage": "generate",
+      "seconds": 18.162391023004602,
+      "exit": 0,
+      "child_maxrss_kib": 16732,
+      "child_cpu_seconds": 18.113545
+    },
+    {
+      "stage": "validate",
+      "seconds": 25.138415248002275,
+      "exit": 0,
+      "child_maxrss_kib": 16032,
+      "child_cpu_seconds": 25.074130999999998
+    },
+    {
+      "stage": "scheduler",
+      "seconds": 6.173847253994609,
+      "exit": 1,
+      "child_maxrss_kib": 18196,
+      "child_cpu_seconds": 6.1252889999999995
+    },
+    {
+      "stage": "validate",
+      "seconds": 26.082484009995824,
+      "exit": 0,
+      "child_maxrss_kib": 16060,
+      "child_cpu_seconds": 25.999282,
+      "corrective": true
+    },
+    {
+      "stage": "scheduler",
+      "seconds": 6.225753339997027,
+      "exit": 1,
+      "child_maxrss_kib": 18232,
+      "child_cpu_seconds": 6.170978,
+      "corrective": true
+    },
+    {
+      "stage": "scheduler-snapshot-api",
+      "seconds": 5.822954852999828,
+      "exit": 0,
+      "child_maxrss_kib": 18744,
+      "child_cpu_seconds": 5.817226,
+      "corrective": true
+    }
+  ],
+  "total_seconds": 87.60584572799416,
+  "parent_maxrss_kib": 9600,
+  "limits": {
+    "individual_seconds": 60,
+    "aggregate_seconds": 180
+  },
+  "full_stream_processed": false,
+  "disk_bytes_at_completion": 1340601323,
+  "generations_retained": true
+}

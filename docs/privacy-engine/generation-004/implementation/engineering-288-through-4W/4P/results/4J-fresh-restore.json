@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "preseal_zip_sha256": "f4f1c9444f295f182269f4483f70f319131b9906fc3fa5263cdcb2fd3fe18749",
+  "commands": [
+    {
+      "command": [
+        "verify_package.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 3488, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "prepare_retained.py"
+      ],
+      "exit_code": 0,
+      "stdout": "/tmp/cp4j-restore-tq99t3rf/Engineering-288-checkpoint-4J/inputs/links.txt\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run_4j_cli.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"result\": \"PASS\", \"cases\": 7}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "tests.test_semantic_stream"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "....................\n----------------------------------------------------------------------\nRan 20 tests in 4.367s\n\nOK\n"
+    }
+  ],
+  "seconds": 12.358320594998077,
+  "full_retained_stream_processed": false,
+  "profile_admitted": false
+}

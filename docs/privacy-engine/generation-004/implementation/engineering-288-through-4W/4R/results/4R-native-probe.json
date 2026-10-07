@@ -1,0 +1,37 @@
+{
+  "result": "PASS-NATIVE-PROBE-ONLY",
+  "native": {
+    "result": "PASS",
+    "library_sha256": {
+      "/usr/lib/x86_64-linux-gnu/libcrypto.so.3": "c19c2cf8d7cf91c4f273b1d3bbc56a9d19c91a739bfe57ad630756ee8ede7b77",
+      "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+      "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+      "/usr/lib/x86_64-linux-gnu/libc.so.6": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0",
+      "/usr/lib/x86_64-linux-gnu/libm.so.6": "f06f2ce1f1833df5f41cf13b6447ff07bea993ad9b27297d3428c2f70ab3f0e7",
+      "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "6222a16be7f2d458d6870efe6e715fc0c8d45766fb79cf7dcc3125538d703e28"
+    },
+    "bounded_probe": [
+      {
+        "engine": "complement",
+        "rows": 5,
+        "sha256": "6187ecdf216003a999d7d8382ab006adc7f577e7c68812980da3027b6f146a21"
+      },
+      {
+        "engine": "predicate",
+        "rows": 5,
+        "sha256": "6187ecdf216003a999d7d8382ab006adc7f577e7c68812980da3027b6f146a21"
+      }
+    ]
+  },
+  "cloud_memory_observation": {
+    "MemTotal": 10451464192,
+    "MemAvailable": 9624563712,
+    "cgroup_headroom_bytes": [
+      1152131072
+    ],
+    "effective_available_bytes": 1152131072
+  },
+  "user_host_accessed": false,
+  "user_host_preflight_pass": false,
+  "full_stream_executed": false
+}

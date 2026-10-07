@@ -1,0 +1,33 @@
+{
+  "result": "BOUNDED-LIMIT-OR-FAILURE",
+  "processes": [
+    {
+      "stage": "generate",
+      "seconds": 18.162391023004602,
+      "exit": 0,
+      "child_maxrss_kib": 16732,
+      "child_cpu_seconds": 18.113545
+    },
+    {
+      "stage": "validate",
+      "seconds": 25.138415248002275,
+      "exit": 0,
+      "child_maxrss_kib": 16032,
+      "child_cpu_seconds": 25.074130999999998
+    },
+    {
+      "stage": "scheduler",
+      "seconds": 6.173847253994609,
+      "exit": 1,
+      "child_maxrss_kib": 18196,
+      "child_cpu_seconds": 6.1252889999999995
+    }
+  ],
+  "total_seconds": 49.474653525001486,
+  "parent_maxrss_kib": 9600,
+  "limits": {
+    "individual_seconds": 60,
+    "aggregate_seconds": 180
+  },
+  "full_stream_processed": false
+}

@@ -1,0 +1,112 @@
+{
+  "actual_admission_enabled": false,
+  "bytes": 464223570,
+  "checkpoint": "4Q",
+  "checks": [
+    {
+      "command": [
+        "tools/verify_package.py"
+      ],
+      "exit_code": 0,
+      "result": {
+        "full_stream_processed": false,
+        "kind": "4Q-package-integrity-only",
+        "manifested_files": 86,
+        "result": "PASS"
+      }
+    },
+    {
+      "command": [
+        "tools/check_metadata.py",
+        "--verify-parent"
+      ],
+      "exit_code": 0,
+      "result": {
+        "actual_admission": false,
+        "benchmarks_run": 0,
+        "blocked_requirements": 65,
+        "classes": 4119,
+        "exact_parent_zip_verified": true,
+        "full_stream_processed": false,
+        "planned_segments": 8031,
+        "regression_tests_run": 0,
+        "requirements": 67,
+        "result": "PASS-METADATA-ONLY"
+      }
+    },
+    {
+      "command": [
+        "tools/check_adversarial_metadata.py"
+      ],
+      "exit_code": 0,
+      "result": {
+        "cases": [
+          {
+            "case": "missing_requirement",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "duplicate_requirement",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "missing_dependency",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "dependency_cycle",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "false_qualification",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "invented_whole_digest",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "segment_gap",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "segment_fake_completion",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "missing_class",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "invented_owning_value",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "substituted_artifact",
+            "result": "EXPECTED-REJECTION"
+          },
+          {
+            "case": "wrong_assembly_join",
+            "result": "EXPECTED-REJECTION"
+          }
+        ],
+        "full_stream_processed": false,
+        "kernel_regressions_rerun": false,
+        "kind": "4Q-metadata-only negative checks",
+        "result": "PASS"
+      }
+    }
+  ],
+  "filename": "Engineering-288-checkpoint-4Q.zip",
+  "fresh_extraction": "PASS-METADATA-ONLY",
+  "fresh_seconds": 2.272144935999677,
+  "full_model_ready": false,
+  "full_stream_processed": false,
+  "kernel_regression_rerun": false,
+  "manifested_files": 86,
+  "new_benchmark_seconds": 0,
+  "parent_receipt_reused": true,
+  "result": "PASS",
+  "sha256": "353d158a0a7cbbd8f0a33619f4123eb7fc3e95921f3c92aed3b3312aebc7cd32",
+  "zip_crc": "PASS"
+}

@@ -1,0 +1,178 @@
+{
+  "result": "PASS",
+  "archive_sha256_tested": "90306c6b137eb4ec798e2ac8707fe731fc2b357c9a6f97f1e1a4b891ae21a745",
+  "archive_bytes_tested": 41654544,
+  "fresh_temporary_extraction": true,
+  "original_workspace_paths_used": false,
+  "network_used": false,
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "verify_package.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"result\": \"PASS-DELIVERED-FILE-HASHES\", \"files\": 442, \"full_stream_computed\": false, \"profile_admitted\": false}\n",
+      "stderr": "",
+      "seconds": 0.15192312500221306
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "ledger_kernel.audit"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"result\": \"PASS-POPULATED-INVENTORY-DOMAINS-AND-HASHES\",\n  \"nodes\": 426984,\n  \"structural_occurrences\": 4368254,\n  \"potential_pairs\": 91157453467,\n  \"full_pair_or_link_stream_executed\": false,\n  \"profile_admitted\": false,\n  \"meaning\": \"exact interval partition plus pinned retained source/member identities; classification/evidence still unestablished\"\n}\n",
+      "stderr": "",
+      "seconds": 0.9291801809995377
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "ledger_kernel",
+        "fixtures/gamma-request.json",
+        "--lab-contract",
+        "fixtures/gamma-lab-contract.json",
+        "--output",
+        "work/restored-static-ledger.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"result\": \"CONDITIONAL-STATIC-LEDGER-CONSTRUCTED\", \"obligations\": 4, \"composition_rules\": 3, \"profile_admitted\": false}\n",
+      "stderr": "",
+      "seconds": 0.05231113600166282
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "admission_kernel",
+        "fixtures/gamma-request.json",
+        "--lab-contract",
+        "fixtures/gamma-lab-contract.json",
+        "--output",
+        "work/restored-conditional-result.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"result\": \"CONDITIONAL-BINDING-AND-ADMISSION-CHECKS-PASS\",\n  \"earliest_failure\": \"NONE\",\n  \"failures\": [],\n  \"reasons\": {},\n  \"mode\": \"CONDITIONAL-LAB\",\n  \"bindings\": {\n    \"final_profile_sha256\": \"03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9\",\n    \"model_sha256\": \"c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc\",\n    \"policy_id\": \"G-POLICY\",\n    \"policy_material_sha256\": \"da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad\",\n    \"assumption_ids\": [\n      \"G-HYPOTHESIS\"\n    ],\n    \"qualification_ids\": [\n      \"G-QUAL\"\n    ],\n    \"computed_dispositions\": {\n      \"G-OB-ACTOR-INFORMATION\": \"COMPUTATIONALLY-BOUNDED\",\n      \"G-OB-COLLISION\": \"COMPUTATIONALLY-BOUNDED\",\n      \"G-OB-CROSS-ACTION-TRACKING\": \"COMPUTATIONALLY-BOUNDED\",\n      \"G-OB-EXACT\": \"EXACT-SATISFIED\"\n    },\n    \"computed_budgets\": {\n      \"G-EXP-ACTOR-INFORMATION\": {\n        \"bound\": [\n          0,\n          1\n        ],\n        \"maximum\": [\n          2,\n          3\n        ],\n        \"within_budget\": true\n      },\n      \"G-EXP-COLLISION\": {\n        \"bound\": [\n          0,\n          1\n        ],\n        \"maximum\": [\n          2,\n          3\n        ],\n        \"within_budget\": true\n      },\n      \"G-EXP-CROSS-ACTION-TRACKING\": {\n        \"bound\": [\n          0,\n          1\n        ],\n        \"maximum\": [\n          2,\n          3\n        ],\n        \"within_budget\": true\n      }\n    },\n    \"ledger_validation\": {\n      \"source_acquired\": true,\n      \"mechanical_coverage\": true,\n      \"classification_ready\": true,\n      \"ready_obligations\": [\n        \"G-OB-ACTOR-INFORMATION\",\n        \"G-OB-COLLISION\",\n        \"G-OB-CROSS-ACTION-TRACKING\",\n        \"G-OB-EXACT\"\n      ],\n      \"ready_rules\": [\n        \"G-RULE-ACTOR-INFORMATION\",\n        \"G-RULE-COLLISION\",\n        \"G-RULE-CROSS-ACTION-TRACKING\"\n      ],\n      \"nv_ready\": [\n        \"G-EXP-ACTOR-INFORMATION\",\n        \"G-EXP-COLLISION\",\n        \"G-EXP-CROSS-ACTION-TRACKING\"\n      ],\n      \"qualification\": \"EXPLICIT-LAB-ASSUMPTIONS-ONLY\",\n      \"actual_qualification_established\": false,\n      \"profile_admitted\": false,\n      \"source_reference\": {\n        \"material_sha256\": \"8dd0f443324e77fabe00597aca8f4c509a255ca7e09a318d1153b6b6165d53a1\",\n        \"owner_source_id\": \"CP3-LAB-GAMMA\",\n        \"source_anchor\": \"complete-ledger-construction\",\n        \"source_sha256\": \"33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2\"\n      },\n      \"coverage\": {\n        \"nodes\": 4,\n        \"structural_occurrences\": 2,\n        \"potential_pairs\": 6,\n        \"pair_enumeration\": false\n      }\n    },\n    \"laboratory_hypotheses\": [\n      \"policy-governance\",\n      \"assessor-competence\",\n      \"observer-completeness\",\n      \"model-ledger-classification\",\n      \"composition-decomposition\",\n      \"source-producer-correspondence\",\n      \"proof-soundness\",\n      \"profile-adequacy\",\n      \"applicability\",\n      \"evidence-authority\",\n      \"non-vacuity\"\n    ],\n    \"meaning\": \"Local conditional binding/admission checks only; full checkpoint-2 integration deferred to checkpoint 4\"\n  },\n  \"profile_admitted\": false,\n  \"actual_qualification_established\": false,\n  \"runtime_effect_performed\": false,\n  \"full_model_integration_witness\": false\n}\n",
+      "stderr": "",
+      "seconds": 0.22893053099687677
+    }
+  ],
+  "conditional_collector_result": {
+    "result": "CONDITIONAL-BINDING-AND-ADMISSION-CHECKS-PASS",
+    "earliest_failure": "NONE",
+    "failures": [],
+    "reasons": {},
+    "mode": "CONDITIONAL-LAB",
+    "bindings": {
+      "final_profile_sha256": "03988b591359cfde714bde6b4da7af49ad2a386e211f5a22705c89f98c88caf9",
+      "model_sha256": "c05da0326448a7e6fc4549fc4faadbbe196cb3680af27dc245efda38a7492fcc",
+      "policy_id": "G-POLICY",
+      "policy_material_sha256": "da49693b99b3c74e6356e882fcc3b753703abff3ea0f45547a34a235210cf3ad",
+      "assumption_ids": [
+        "G-HYPOTHESIS"
+      ],
+      "qualification_ids": [
+        "G-QUAL"
+      ],
+      "computed_dispositions": {
+        "G-OB-ACTOR-INFORMATION": "COMPUTATIONALLY-BOUNDED",
+        "G-OB-COLLISION": "COMPUTATIONALLY-BOUNDED",
+        "G-OB-CROSS-ACTION-TRACKING": "COMPUTATIONALLY-BOUNDED",
+        "G-OB-EXACT": "EXACT-SATISFIED"
+      },
+      "computed_budgets": {
+        "G-EXP-ACTOR-INFORMATION": {
+          "bound": [
+            0,
+            1
+          ],
+          "maximum": [
+            2,
+            3
+          ],
+          "within_budget": true
+        },
+        "G-EXP-COLLISION": {
+          "bound": [
+            0,
+            1
+          ],
+          "maximum": [
+            2,
+            3
+          ],
+          "within_budget": true
+        },
+        "G-EXP-CROSS-ACTION-TRACKING": {
+          "bound": [
+            0,
+            1
+          ],
+          "maximum": [
+            2,
+            3
+          ],
+          "within_budget": true
+        }
+      },
+      "ledger_validation": {
+        "source_acquired": true,
+        "mechanical_coverage": true,
+        "classification_ready": true,
+        "ready_obligations": [
+          "G-OB-ACTOR-INFORMATION",
+          "G-OB-COLLISION",
+          "G-OB-CROSS-ACTION-TRACKING",
+          "G-OB-EXACT"
+        ],
+        "ready_rules": [
+          "G-RULE-ACTOR-INFORMATION",
+          "G-RULE-COLLISION",
+          "G-RULE-CROSS-ACTION-TRACKING"
+        ],
+        "nv_ready": [
+          "G-EXP-ACTOR-INFORMATION",
+          "G-EXP-COLLISION",
+          "G-EXP-CROSS-ACTION-TRACKING"
+        ],
+        "qualification": "EXPLICIT-LAB-ASSUMPTIONS-ONLY",
+        "actual_qualification_established": false,
+        "profile_admitted": false,
+        "source_reference": {
+          "material_sha256": "8dd0f443324e77fabe00597aca8f4c509a255ca7e09a318d1153b6b6165d53a1",
+          "owner_source_id": "CP3-LAB-GAMMA",
+          "source_anchor": "complete-ledger-construction",
+          "source_sha256": "33d528fa25ce7413cea6f84bc6025cf433ab8c9f80f094a9595ffa0bf55688e2"
+        },
+        "coverage": {
+          "nodes": 4,
+          "structural_occurrences": 2,
+          "potential_pairs": 6,
+          "pair_enumeration": false
+        }
+      },
+      "laboratory_hypotheses": [
+        "policy-governance",
+        "assessor-competence",
+        "observer-completeness",
+        "model-ledger-classification",
+        "composition-decomposition",
+        "source-producer-correspondence",
+        "proof-soundness",
+        "profile-adequacy",
+        "applicability",
+        "evidence-authority",
+        "non-vacuity"
+      ],
+      "meaning": "Local conditional binding/admission checks only; full checkpoint-2 integration deferred to checkpoint 4"
+    },
+    "profile_admitted": false,
+    "actual_qualification_established": false,
+    "runtime_effect_performed": false,
+    "full_model_integration_witness": false
+  },
+  "full_pair_or_link_stream_executed": false
+}

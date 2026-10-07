@@ -1,0 +1,95 @@
+{
+  "result": "PASS-COMPACT-STATIC-CONNECTIVITY-ONLY",
+  "model_sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1",
+  "contract_sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710",
+  "input_sha256": {
+    "ledger_data/potential-domain.json": "1dc8b9062684b3de6e7d7c65324a695097508fe76779353171ffd27e19f3134c",
+    "ledger_data/node-duties.jsonl": "428cce0a48a73925a8e1ac65ee2471e76dad4f9fdf2cdef388e93aaa181decb1",
+    "accepted/profile/fragments/candidate-components.tsv": "59cc1ba829493bcfbfdb74469b181e728e6c7c85efa40b91c189c93247a68988"
+  },
+  "tokens": 426984,
+  "potential_pairs": 91157453467,
+  "arbitrary_hub_index": 1,
+  "source_component_incidence": {
+    "ROOT-ELIGIBLE": {
+      "source_row": {
+        "component_order": "0001",
+        "component_id": "ROOT-ELIGIBLE",
+        "represented_type_id": "PE-TSE-BOOL3",
+        "representation_decoder_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "canonical_type_id": "PE-TSE-BOOL3",
+        "canonicalization_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "normalization_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "authority_source_id": "PE-G4-SOURCE-S73",
+        "authority_anchor": "components",
+        "availability_condition_definition_id": "PE-G4-CAP-AVAILABILITY-STATUS",
+        "validity_condition_definition_id": "PE-G4-CAP-VALIDITY-STATUS",
+        "authentication_definition_id": "PE-G4-CAP-AUTHENTICATION-STATUS",
+        "privacy_class": "CONFIDENTIAL",
+        "observability_class": "AUTHENTICATED-CONFIDENTIAL-COMPARISON-ONLY",
+        "binding_mode": "CANONICAL-VALUE"
+      },
+      "surface": "CORE:COMPONENT-0001.canonical_value",
+      "token_index_ranges": [
+        [
+          56,
+          57
+        ],
+        [
+          3565,
+          3566
+        ]
+      ],
+      "meaning": "source-determined owning component value occurrences; witnesses of nonempty component incidence, not an independently qualified complete seed directory"
+    },
+    "SCOPED-USED": {
+      "source_row": {
+        "component_order": "0002",
+        "component_id": "SCOPED-USED",
+        "represented_type_id": "PE-TSE-BOOL3",
+        "representation_decoder_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "canonical_type_id": "PE-TSE-BOOL3",
+        "canonicalization_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "normalization_definition_id": "PE-G4-CAP-BOOL-IDENTITY",
+        "authority_source_id": "PE-G4-SOURCE-S73",
+        "authority_anchor": "components",
+        "availability_condition_definition_id": "PE-G4-CAP-AVAILABILITY-STATUS",
+        "validity_condition_definition_id": "PE-G4-CAP-VALIDITY-STATUS",
+        "authentication_definition_id": "PE-G4-CAP-AUTHENTICATION-STATUS",
+        "privacy_class": "CONFIDENTIAL",
+        "observability_class": "AUTHENTICATED-CONFIDENTIAL-COMPARISON-ONLY",
+        "binding_mode": "CANONICAL-VALUE"
+      },
+      "surface": "CORE:COMPONENT-0002.canonical_value",
+      "token_index_ranges": [
+        [
+          60,
+          61
+        ],
+        [
+          3569,
+          3570
+        ]
+      ],
+      "meaning": "source-determined owning component value occurrences; witnesses of nonempty component incidence, not an independently qualified complete seed directory"
+    }
+  },
+  "exact_conclusion": "Under the retained static predicate, every nonempty valid seed has all 426984 nodes in its closure. The arbitrary hub is adjacent to every other token; structural edges cannot reduce this closure.",
+  "scopes": {
+    "ROOT-ELIGIBLE": {
+      "conditional_nonempty_seed_closure_node_count": 426984,
+      "source_qualified_seed_directory": "NOT-ESTABLISHED"
+    },
+    "SCOPED-USED": {
+      "conditional_nonempty_seed_closure_node_count": 426984,
+      "source_qualified_seed_directory": "NOT-ESTABLISHED"
+    }
+  },
+  "composition_node_count": 426984,
+  "qualified_views": "NOT-ESTABLISHED",
+  "full_pair_stream_sha256": null,
+  "full_link_stream_sha256": null,
+  "expansion_rerun": false,
+  "pair_enumeration": false,
+  "profile_admitted": false
+}

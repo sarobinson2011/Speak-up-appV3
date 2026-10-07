@@ -1,0 +1,34 @@
+test_atomic_interruptions (__main__.AdapterTests.test_atomic_interruptions) ... ok
+test_caps_and_cleanup (__main__.AdapterTests.test_caps_and_cleanup) ... ERROR
+test_corrupt_and_cross_job_state (__main__.AdapterTests.test_corrupt_and_cross_job_state) ... ok
+test_descriptor_mutation (__main__.AdapterTests.test_descriptor_mutation) ... ok
+test_fixture_bytes_and_arbitrary_boundaries (__main__.AdapterTests.test_fixture_bytes_and_arbitrary_boundaries) ... ok
+test_independent_oracle_exact_emission_and_validation (__main__.AdapterTests.test_independent_oracle_exact_emission_and_validation) ... ok
+test_input_mutation_rejected_even_terminal (__main__.AdapterTests.test_input_mutation_rejected_even_terminal) ... ok
+test_interrupted_validation_commit_preserves_partial_parser (__main__.AdapterTests.test_interrupted_validation_commit_preserves_partial_parser) ... ok
+test_malformed_streams_even_with_matching_byte_digest (__main__.AdapterTests.test_malformed_streams_even_with_matching_byte_digest) ... ok
+test_missing_current_spool_regenerated_from_bounded_cursor (__main__.AdapterTests.test_missing_current_spool_regenerated_from_bounded_cursor) ... ok
+test_partial_header_rows_repeated_resume_and_eviction (__main__.AdapterTests.test_partial_header_rows_repeated_resume_and_eviction) ... ok
+test_spool_mutation_rejected (__main__.AdapterTests.test_spool_mutation_rejected) ... ok
+test_wrong_key_and_runtime_binding (__main__.AdapterTests.test_wrong_key_and_runtime_binding) ... ok
+test_wrong_whole_digest_never_success (__main__.AdapterTests.test_wrong_whole_digest_never_success) ... ok
+
+======================================================================
+ERROR: test_caps_and_cleanup (__main__.AdapterTests.test_caps_and_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4V/tests/test_adapter.py", line 125, in test_caps_and_cleanup
+    limits=Path(f'/proc/{child.pid}/limits').read_text();self.assertIn('1610612736',limits);self.assertIn('268435456',limits)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/proc/399/limits'
+
+----------------------------------------------------------------------
+Ran 14 tests in 7.274s
+
+FAILED (errors=1)

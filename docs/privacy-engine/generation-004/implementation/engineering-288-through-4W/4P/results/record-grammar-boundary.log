@@ -1,0 +1,52 @@
+{
+  "result": "REPRODUCED-RETAINED-MODEL-RECORD-GRAMMAR-INCOMPATIBILITY",
+  "model_sha256": "08d6e7fb1e0cf37cc7effa76b50eaff0459abc158d9c6f0da52c6c58372b14f1",
+  "selected_contract_sha256": "c92f3411df0ee6f97d0e97d19f3c145fca15172b6d067471d384a3c1a5065710",
+  "accepted_grammar_sha256": "7786cbf610be39c2eb8a1cef49aae62a7d7824f9fdb83195bc7bb4a2b7bd2a16",
+  "model_token": {
+    "arbitrary": true,
+    "context": "SYMBOLIC-U-ONE",
+    "exposure": "UNKNOWN",
+    "id": "SYMBOLIC-U-ONE::SECURITY:ALGORITHM.$record::CP2-ALGORITHM-000001",
+    "index": 36511,
+    "record": "CP2-ALGORITHM-000001",
+    "reuse": "NONE",
+    "surface": "SECURITY:ALGORITHM.$record",
+    "symbolic_digest": "350ff2eab3c18c2b2f3466650acdb945f260cd97bd8ecb1511ee52342ca74f51"
+  },
+  "field_label_surface_required_by_selected_contract": "SECURITY:ALGORITHM.$record",
+  "attempted_template": {
+    "obligation_id": "REPRO-OBLIGATION",
+    "kind": "EXACT",
+    "target_ids": [
+      "REPRO-TARGET"
+    ],
+    "coalition_id": "REPRO-COALITION",
+    "node_ids": [
+      "SYMBOLIC-U-ONE::SECURITY:ALGORITHM.$record::CP2-ALGORITHM-000001"
+    ],
+    "edge_ids": [],
+    "experiment_id": null
+  },
+  "cases": [
+    {
+      "case": "accepted OBLIGATION template",
+      "result": "REJECTED",
+      "detail": "canonical ID"
+    },
+    {
+      "case": "implementation OBLIGATION template",
+      "result": "REJECTED",
+      "detail": "$.node_ids[0]: canonical ASCII ID required"
+    },
+    {
+      "case": "accepted FIELD-LABEL.surface_id",
+      "result": "REJECTED",
+      "detail": "canonical ID"
+    }
+  ],
+  "changed_accepted_source": false,
+  "renamed_model_identifiers": false,
+  "profile_admitted": false,
+  "boundary": "Exact compatibility obstacle for the retained local model and its selected field-label directory; no broad definition review or source correction performed."
+}
