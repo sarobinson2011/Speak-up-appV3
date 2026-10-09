@@ -1,0 +1,84 @@
+test_backup_restore_never_restores_budget (__main__.Tests.test_backup_restore_never_restores_budget) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 21 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 96 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 157 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_competing_launch_rejected (__main__.Tests.test_competing_launch_rejected) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 233 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_complete_and_exact_reused_terminal (__main__.Tests.test_complete_and_exact_reused_terminal) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 264 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_corrupt_and_cross_job_budget_rejected (__main__.Tests.test_corrupt_and_cross_job_budget_rejected) ... ok
+test_corrupt_checkpoint_not_silently_reset (__main__.Tests.test_corrupt_checkpoint_not_silently_reset) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 368 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_exhausted_budget_resume_does_not_reset (__main__.Tests.test_exhausted_budget_resume_does_not_reset) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 443 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_graceful_pause_repeated_resume (__main__.Tests.test_graceful_pause_repeated_resume) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 481 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 542 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 559 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_idempotent_grants_and_cap (__main__.Tests.test_idempotent_grants_and_cap) ... ok
+test_log_rotation_bounded (__main__.Tests.test_log_rotation_bounded) ... ok
+test_mutation_and_stale_code_refused (__main__.Tests.test_mutation_and_stale_code_refused) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 648 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_supervisor_kill_full_lease_charged_and_resume (__main__.Tests.test_supervisor_kill_full_lease_charged_and_resume) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 737 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 798 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_watchdog_enforces_deadline_when_supervisor_stopped (__main__.Tests.test_watchdog_enforces_deadline_when_supervisor_stopped) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 859 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_worker_failure_preserves_progress (__main__.Tests.test_worker_failure_preserves_progress) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 934 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 995 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+======================================================================
+FAIL: test_exhausted_budget_resume_does_not_reset (__main__.Tests.test_exhausted_budget_resume_does_not_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4W/tests/test_supervisor.py", line 38, in test_exhausted_budget_resume_does_not_reset
+    t,k,c=self.new(seconds=.35,cap=17,delay=.03,quantum=.15);self.launch(t,k,c);s=self.wait(t,k,c);b=budget(t,k,c);self.assertGreaterEqual(b['charged_ns'],b['authorized_ns']);self.assertFalse(s['validation_status']=='PASS-CONDITIONAL-BYTE-VALIDATION')
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 166368073 not greater than or equal to 350000000
+
+======================================================================
+FAIL: test_watchdog_enforces_deadline_when_supervisor_stopped (__main__.Tests.test_watchdog_enforces_deadline_when_supervisor_stopped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4W/tests/test_supervisor.py", line 56, in test_watchdog_enforces_deadline_when_supervisor_stopped
+    t,k,c=self.new(seconds=.7,cap=17,delay=.03,quantum=.3);r=self.launch(t,k,c);self.progress(t,k,c);record=read(t/'RUNNING.json',k);fd=os.pidfd_open(r['pid']);killfd(fd,signal.SIGSTOP);time.sleep(.7);killfd(fd,signal.SIGCONT);os.close(fd);s=self.wait(t,k,c);self.assertNotEqual(s['validation_status'],'PASS-CONDITIONAL-BYTE-VALIDATION');self.assertIn(s['status'],['BUDGET-EXHAUSTED','WATCHDOG-STOP','WORKER-FAILED'])
+                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SUPERVISOR-FAILED' not found in ['BUDGET-EXHAUSTED', 'WATCHDOG-STOP', 'WORKER-FAILED']
+
+----------------------------------------------------------------------
+Ran 13 tests in 17.242s
+
+FAILED (failures=2)

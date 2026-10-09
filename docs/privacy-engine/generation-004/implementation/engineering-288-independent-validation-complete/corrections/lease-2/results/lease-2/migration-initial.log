@@ -1,0 +1,20 @@
+test_migration_resume_oracle (__main__.Tests.test_migration_resume_oracle) ... ok
+test_interruption_each_publication (__main__.Tests.test_interruption_each_publication) ... ok
+test_corrupt_plan_rejected (__main__.Tests.test_corrupt_plan_rejected) ... FAIL
+test_input_mutation_rejected (__main__.Tests.test_input_mutation_rejected) ... ok
+test_state_mutation_rejected (__main__.Tests.test_state_mutation_rejected) ... ok
+test_cross_job_plan_rejected (__main__.Tests.test_cross_job_plan_rejected) ... ok
+
+======================================================================
+FAIL: test_corrupt_plan_rejected (__main__.Tests.test_corrupt_plan_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4W-lease-2/tests/test_diagnostic.py", line 43, in test_corrupt_plan_rejected
+    with self.assertRaises(Exception):migrate(self.t,OLD)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.570s
+
+FAILED (failures=1)

@@ -1,0 +1,50 @@
+{
+  "result": "PASS-FRESH-EXTRACTION",
+  "subject_archive_sha256": "1e06bf58cc43af2dda9ad8f5b2c552d108b127d5ecf2bb2a94ceb3b7529c96c0",
+  "verification_subject": "pre-seal archive; final exact ZIP will also be verified in external receipt",
+  "install_and_repeat_install_verified": true,
+  "checks": [
+    {
+      "script": "tools/verify.py",
+      "returncode": 0,
+      "output": {
+        "result": "PASS-4W-PACKAGE",
+        "files": 53,
+        "runtime_files_exactly_reused_from_4V": 10,
+        "measured_source_identities_verified": true,
+        "actual_admission": false
+      }
+    },
+    {
+      "script": "tests/fresh_smoke.py",
+      "returncode": 0,
+      "output": {
+        "result": "PASS-FRESH-EXTRACTION-SUPERVISOR-RECOVERY",
+        "validation": {
+          "result": "VERIFIED-CONDITIONAL-INDEPENDENT-ROW-VALIDATION",
+          "rows": 14,
+          "structural": 4,
+          "potential": 10,
+          "serialized_bytes": 587,
+          "whole_stream_sha256": "ebc2bcf41d9bd75583e4d940ea445cecd5d648747af36c402d39b1bb3262b577",
+          "model_sha256": "81a1b1213ef98b315bb57653cd44a0818d9b97d4932a708d1f34e694ceddc899",
+          "contract_sha256": "ca555b5bade009cd1bbfbc96d85524337cb3a0b25f50cbe621f81062553f41a8",
+          "descriptor_sha256": "2a30276693a0cc5fea344fe199fcd31f70bfba068d3f41b02dbeeb27fd8f0444",
+          "source_kind": "deterministic-laboratory-emitter",
+          "trust": "MAC-protected trusted local execution state; not source authentication",
+          "actual_admission": false,
+          "qualification_established": false,
+          "four_file_authentication_complete": false
+        },
+        "charged_seconds": 2.355623753,
+        "backup_restored_without_budget_rollback": true,
+        "actual_admission": false
+      }
+    }
+  ],
+  "read_only_zip_preflight": "PASS",
+  "read_only_zip_preflight_writes": false,
+  "seconds": 5.419106182001997,
+  "no_full_stream_processed": true,
+  "actual_admission": false
+}

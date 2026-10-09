@@ -1,0 +1,19 @@
+test_budget_math_and_atomic_delay (__main__.Tests.test_budget_math_and_atomic_delay) ... ok
+test_twenty_second_supervisor_stall (__main__.Tests.test_twenty_second_supervisor_stall) ... FAIL
+
+======================================================================
+FAIL: test_twenty_second_supervisor_stall (__main__.Tests.test_twenty_second_supervisor_stall)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4fa8f7981583/Engineering-288-checkpoint-4W-lease-2/tests/test_lease_policy.py", line 30, in test_twenty_second_supervisor_stall
+    self.assertFalse(status(ot,ok,oc)['running']);self.assertEqual(budget(ot,ok,oc)['status'],'LEASE-EXPIRED-WITH-BUDGET-REMAINING')
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'BUDGET-EXHAUSTED' != 'LEASE-EXPIRED-WITH-BUDGET-REMAINING'
+- BUDGET-EXHAUSTED
++ LEASE-EXPIRED-WITH-BUDGET-REMAINING
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 20.762s
+
+FAILED (failures=1)

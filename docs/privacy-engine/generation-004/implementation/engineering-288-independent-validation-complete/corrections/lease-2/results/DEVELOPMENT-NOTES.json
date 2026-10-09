@@ -1,0 +1,16 @@
+{
+  "initial_failures": [
+    "Artificial subsecond test reservations could expire during Python/index startup; realistic bounded test reservations used.",
+    "A watchdog-triggered closed pipe was initially reported generically; now classified as budget/worker termination."
+  ],
+  "final_metadata_guards": [
+    "missing probe ledger rejected instead of reinitializing budget",
+    "stale supervisor identity rejected at completion verification",
+    "parent directories fsynced when publishing new task/probe/input directories",
+    "portable spool limit fixed at 64 MiB for the declared 2 GiB space plan"
+  ],
+  "partial_log": "results/final-guard-tests.log was incomplete when read; cause not established. A sequential rerun is fully recorded in results/final-guards-confirmed.log: four tests passed. No partial log is used as PASS evidence.",
+  "retained_runtime_changed": false,
+  "definition_changed": false,
+  "full_stream_run": false
+}

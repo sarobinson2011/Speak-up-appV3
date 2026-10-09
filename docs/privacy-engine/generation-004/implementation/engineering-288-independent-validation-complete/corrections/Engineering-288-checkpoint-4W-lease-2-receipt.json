@@ -1,0 +1,48 @@
+{
+  "result": "PASS-LEASE-2-PACKAGE",
+  "archive": "Engineering-288-checkpoint-4W-lease-2.zip",
+  "bytes": 215058,
+  "sha256": "b3fb39e27a7bafb6efbe157a523780355102f33e9c3cc31fbd7e0751ceb30f5b",
+  "manifest_sha256": "75eab02849f45f139cfdec4e5aae257738db2f55e1bbe9bcb41bc81797360d1b",
+  "checks": {
+    "result": "PASS-LEASE-2-BOUNDED-CHECKS",
+    "distinct_confirmed_tests": 16,
+    "targeted_prior_tests": 6,
+    "benchmarks_run": 0,
+    "full_stream_processed": false,
+    "actual_admission": false,
+    "lease_quantum_seconds": 120,
+    "renewal_lead_seconds": 60,
+    "uncertain_prepaid_tail_bound_seconds": 180,
+    "total_authorization_changed": false,
+    "validator_emitter_runtime_files_changed": 0,
+    "host_stall_cause": "UNKNOWN",
+    "attempt_3_termination_cause": "watchdog prepaid lease expiration",
+    "attempt_2_cause": "UNKNOWN",
+    "small_stall_test_seconds": 20,
+    "initial_harness_failures_retained": true
+  },
+  "fresh_functional": {
+    "result": "PASS-FRESH-INSTALL-AND-MIGRATED-ORACLE",
+    "integrity": {
+      "result": "PASS-DIAGNOSTIC-PACKAGE",
+      "members": 73,
+      "unchanged_runtime_files": 10,
+      "full_stream_processed": false,
+      "actual_admission": false
+    },
+    "test_output": "test_migration_resume_oracle (__main__.Tests.test_migration_resume_oracle) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 1.091s\n\nOK\n",
+    "full_stream_processed": false,
+    "actual_admission": false
+  },
+  "final_extraction": {
+    "result": "PASS-DIAGNOSTIC-PACKAGE",
+    "members": 74,
+    "unchanged_runtime_files": 10,
+    "full_stream_processed": false,
+    "actual_admission": false
+  },
+  "predecessor_sha256": "0e3f59b6ed3dce376205eba943e7b30dca7bebf0357053210f54eb364cf5d360",
+  "user_machine_migration": "NOT-YET-RUN",
+  "actual_admission": false
+}
