@@ -1,0 +1,36 @@
+{
+  "module_archive_member": "basis/module-cache/github.com/btcsuite/btcd/@v/v0.20.1-beta.zip",
+  "module_archive_sha256": "7d2a9a6a3a56a239a79bb75c887e87c6724f278d37e8cfdd01e27f41e478e2c7",
+  "basis_sha256": "6a0ae6794b558d4de6e190f42aa96a1c2723f37f8c5a4262da274161d8aaad8f",
+  "files": [
+    {
+      "member": "github.com/btcsuite/btcd@v0.20.1-beta/btcec/signature.go",
+      "sha256": "45435900a8f870618eacc94c36010fcad2159bdaefbdc5ae6b2e1be481445c57"
+    },
+    {
+      "member": "github.com/btcsuite/btcd@v0.20.1-beta/btcec/btcec.go",
+      "sha256": "49ced29f18f7413fe862d886d6e272809b4bef813693fb816ed33276fe6cd927"
+    },
+    {
+      "member": "github.com/btcsuite/btcd@v0.20.1-beta/btcec/pubkey.go",
+      "sha256": "aaf81bb6fb6a6923d768b6977ff5c412d8d0ad91a1f0172f02fa4b1e3318f341"
+    },
+    {
+      "source": "c4-sources/predecessor/evidence/engine-core.body",
+      "sha256": "5caa34c48dcbc5200a9054a50301d7f68c2815d1a470175d22fc16b15448771a"
+    },
+    {
+      "source": "c4-sources/predecessor/evidence/engine-core.json",
+      "sha256": "7102f1aa903a0887d21c99631ae773647a25df28f7dc2385fede1aa4b617dd3c"
+    },
+    {
+      "source": "c4-sources/predecessor/evidence/engine-evm-transactions.body",
+      "sha256": "23b23650f2159ff8daf61949aa721982accc714645efe5ca80a0004634837b75"
+    },
+    {
+      "source": "c4-sources/predecessor/evidence/engine-evm-transactions.json",
+      "sha256": "ffbe5eb8602248190dbc023ead00a780e92555fda50506f3a31a28ed636e9d10"
+    }
+  ],
+  "limitation": "Locally added decoder/recovery code is not independently audited. Legacy shape/EIP155 signing preimage and low-s normalization are grounded in exact retained fixture encoder and corroborated by pinned Engine execution; this is not broad Ethereum envelope support."
+}

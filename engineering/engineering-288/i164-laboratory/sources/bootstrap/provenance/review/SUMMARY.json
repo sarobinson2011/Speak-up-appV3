@@ -1,0 +1,48 @@
+{
+  "reviewer": "Codex, author-independent reviewer",
+  "implementation_author": "SU-Engineering[288C]",
+  "recipient": "Engineering-Anchor[2]",
+  "verdict": "CORRECTIONS REQUIRED",
+  "findings": {
+    "BR-01": "clean 163-file declared draft is rejected; launcher pins an undeclared 23330816-byte partial as a mandatory 164th member",
+    "BR-02": "recovered native helper has mode 0644; retained authentication fails BACKEND-UNAVAILABLE caused by PermissionError"
+  },
+  "input": {
+    "bytes": 12197057,
+    "sha256": "8081d716e9bf20cc527092e383e534285c84358a686118a9843bc047b88cf3b8",
+    "entries": 416,
+    "crc": "PASS",
+    "safe_exact_membership": "PASS",
+    "all_manifest_identities": "PASS"
+  },
+  "independent_evidence": {
+    "temporary_mechanics_controls": 31,
+    "loaded_graph_final_close_lock_control": 1,
+    "public_environment_rejections": [
+      "Cryptography 50.0.2",
+      "optimized CPython"
+    ],
+    "clean_root_fresh_process_defect_witness": true,
+    "native_helper_permission_witness": true
+  },
+  "supplied_controls_inspected_only": 30,
+  "supplied_harness_failures_preserved": 2,
+  "preservation": {
+    "candidate_members": 666,
+    "historical_files": 90,
+    "relationships": 43,
+    "ordinal_identities": "unchanged",
+    "runtime_files_byte_verified": 93,
+    "candidate_code_changes": 0
+  },
+  "observation_limits": "mechanics exercised privately under Python 3.12.14/Cryptography 50.0.2 with separately labelled as-pinned draft fixture; not public 41.0.7 compatibility or clean dependency acceptance",
+  "required_environment_records": "UNAVAILABLE HERE; exact prepared environment prerequisite retained",
+  "next_step": "Correct BR-01 and BR-02 with exact changed identities and focused evidence; independently reconcile prepared host records and bounded temporary probe",
+  "persistent_session_created": false,
+  "source_only": "UNCHANGED",
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "backup": "KERNEL-ONLY",
+  "streams": "UNCOMPUTED",
+  "actual_admission": false
+}

@@ -1,0 +1,374 @@
+{
+  "domain": "Pinned Authority.transaction and Authority.handle boundary alternatives, with Authority.sign/fault reached by listed requests. This finite partition is not all combinations or all program paths.",
+  "source_basis": {
+    "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+    "transaction": {
+      "line": 72,
+      "end_line": 75,
+      "column": 1,
+      "end_column": 56
+    },
+    "handler": {
+      "line": 107,
+      "end_line": 119,
+      "column": 2,
+      "end_column": 109
+    },
+    "response_persistence": {
+      "line": 121,
+      "end_line": 121,
+      "column": 2,
+      "end_column": 113
+    },
+    "fault_calls": {
+      "after_sign_claim": {
+        "line": 237,
+        "end_line": 237,
+        "column": 2,
+        "end_column": 34
+      },
+      "after_signature_created": {
+        "line": 239,
+        "end_line": 239,
+        "column": 2,
+        "end_column": 41
+      },
+      "after_signature_commit": {
+        "line": 244,
+        "end_line": 244,
+        "column": 2,
+        "end_column": 40
+      },
+      "before_signature_commit": {
+        "line": 243,
+        "end_line": 243,
+        "column": 84,
+        "end_column": 123
+      }
+    },
+    "fault_raise": {
+      "line": 29,
+      "end_line": 29,
+      "column": 16,
+      "end_column": 48
+    },
+    "yield_site": {
+      "line": 74,
+      "end_line": 74,
+      "column": 6,
+      "end_column": 11
+    },
+    "sign_dispatch": {
+      "line": 108,
+      "end_line": 108,
+      "column": 31,
+      "end_column": 50
+    },
+    "exit_code": 77,
+    "catch": "Exception",
+    "rollback_catch": "BaseException"
+  },
+  "paths": [
+    {
+      "id": "TRANSACTION-BEGIN",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 73,
+        "end_line": 73,
+        "column": 2,
+        "end_column": 36
+      },
+      "disposition": "PARTIAL",
+      "available_evidence": "All request/unit executions enter BEGIN IMMEDIATE.",
+      "remaining_gap": "BEGIN failure (lock/I/O/connection) not executed; BEGIN is outside transaction try; no rollback by this function then. Local test gap; deployment lock/I/O behavior unqualified."
+    },
+    {
+      "id": "TRANSACTION-BODY-NORMAL",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 72,
+        "end_line": 75,
+        "column": 1,
+        "end_column": 56
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "claim/persist/admission commits visible in reopened authenticated exports.",
+      "remaining_gap": "Not every method body, concurrency or disk-failure schedule."
+    },
+    {
+      "id": "TRANSACTION-BODY-EXCEPTION",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 74,
+        "end_line": 74,
+        "column": 6,
+        "end_column": 11
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "rollback request: source OSError traverses sign \u2192 generator \u2192 handler, SQL rollback attempt, reverted signature event after reopen.",
+      "remaining_gap": "All exception classes and implicit-operation failures not exhausted."
+    },
+    {
+      "id": "TRANSACTION-BODY-BASEEXCEPTION",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 74,
+        "end_line": 74,
+        "column": 6,
+        "end_column": 11
+      },
+      "disposition": "SUPPORTED-UNIT",
+      "available_evidence": "controls.json: journal write followed by KeyboardInterrupt, actual transaction rollback and exact reopened equality.",
+      "remaining_gap": "Harness body only; complete request-path BaseException unwind tracing unfinished."
+    },
+    {
+      "id": "TRANSACTION-COMMIT-FAILURE",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 72,
+        "end_line": 75,
+        "column": 1,
+        "end_column": 56
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "No failed COMMIT injection. Source catches BaseException and attempts ROLLBACK; commit outcome may be ambiguous. Need SQLite failure/uncertainty fixture and reopened evidence; power-loss durability additionally needs qualified evidence."
+    },
+    {
+      "id": "TRANSACTION-ROLLBACK-FAILURE",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 72,
+        "end_line": 75,
+        "column": 1,
+        "end_column": 56
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "No failing ROLLBACK execution. A rollback exception may replace the original exception; state unresolved. Requires a dedicated local failure fixture, not an assertion of restoration."
+    },
+    {
+      "id": "HANDLER-PRE-DISPATCH-ADMISSION",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 99,
+        "end_line": 106
+      },
+      "disposition": "PARTIAL",
+      "available_evidence": "replay.json: four REPLAY failures outside dispatch catch; prior state unchanged. Normal journal admission covered.",
+      "remaining_gap": "Malformed/authentication/role/capacity failures not freshly covered; prior scopes preserved. This slice does not repeat journal-boundary tests."
+    },
+    {
+      "id": "HANDLER-SIGN-EXCEPTION",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 108,
+        "end_line": 108,
+        "column": 31,
+        "end_column": 50
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "claim-ord, claim-zk, rollback, postpersist: exact source OSError transformed to authenticated saved error response.",
+      "remaining_gap": "Other signer/runtime exceptions unexecuted; no external outcome classification."
+    },
+    {
+      "id": "HANDLER-APPLY-AND-POSTCOMMIT-FAULTS",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 107,
+        "end_line": 119,
+        "column": 2,
+        "end_column": 109
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Non-sign dispatch, apply failure and retire/open/decide/release/retry_release/observe postcommit faults have static source locations but no new execution oracle here. Need separately bounded method-specific before/after inputs. No full-path claim."
+    },
+    {
+      "id": "HANDLER-BASEEXCEPTION-ESCAPE",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 107,
+        "end_line": 119,
+        "column": 2,
+        "end_column": 109
+      },
+      "disposition": "PARTIAL",
+      "available_evidence": "base-exception: KeyboardInterrupt escapes, claim survives, null journal response, no charge reset.",
+      "remaining_gap": "Trace hook injection disables later Python tracing; source catch class excludes BaseException but full dynamic propagation trace remains unavailable locally."
+    },
+    {
+      "id": "RESPONSE-CONSTRUCTION-SIGNING-BOUND",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 120,
+        "end_line": 120,
+        "column": 2,
+        "end_column": 67
+      },
+      "disposition": "PARTIAL",
+      "available_evidence": "Ordinary transformed errors and success-before-update-denial have exact response values and valid server envelopes.",
+      "remaining_gap": "Encoding/signing/RESPONSE-BOUND failures not injected; outside dispatch catch, prior effects may persist. Missing source full-domain response size bounds remain separate."
+    },
+    {
+      "id": "RESPONSE-UPDATE-FAILURE",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 121,
+        "end_line": 121,
+        "column": 2,
+        "end_column": 113
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "Two actual SQLite authorizer denials: DatabaseError escapes outside method handler, response transaction rolls back, prior claim/signed state preserved.",
+      "remaining_gap": "Authorizer denial is a controlled SQLite failure, not an I/O/commit/power-loss simulation."
+    },
+    {
+      "id": "RESPONSE-COMMIT-FAILURE",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 121,
+        "end_line": 121,
+        "column": 2,
+        "end_column": 113
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "No ambiguous response COMMIT fixture. A missing observed return cannot decide whether response or prior effects persisted; reopen/reconcile required. Local injection plus qualified durability obligations remain."
+    },
+    {
+      "id": "RESPONSE-RETURN",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 122,
+        "end_line": 122,
+        "column": 2,
+        "end_column": 12
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "claim/rollback/postpersist return exact persisted authenticated envelope, independently checked.",
+      "remaining_gap": "Interruption after response COMMIT but before delivery unexecuted; no delivery guarantee."
+    },
+    {
+      "id": "PROCESS-EXIT-BEFORE-SIGNATURE-COMMIT",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 243,
+        "end_line": 243,
+        "column": 84,
+        "end_column": 123
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "exit-rollback: actual os._exit(source exit code), no Python rollback trace, fresh-process reopen retains claim only and unanswered journal.",
+      "remaining_gap": "SQLite crash recovery on this lab filesystem only; power loss, rollback resistance and external signing copies unqualified."
+    },
+    {
+      "id": "PROCESS-EXIT-AFTER-SIGNATURE-COMMIT",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 244,
+        "end_line": 244,
+        "column": 2,
+        "end_column": 40
+      },
+      "disposition": "SUPPORTED-BOUNDED",
+      "available_evidence": "exit-postpersist: actual os._exit, exact signed transaction/event retained, response missing, replay blocked.",
+      "remaining_gap": "No external execution/nonexecution conclusion, nor lifetime storage bound."
+    },
+    {
+      "id": "POSTCOMMIT-after_ownership_commit",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 112,
+        "end_line": 112,
+        "column": 40,
+        "end_column": 78
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Guard r['method'] in ['retire', 'open'] is source-established. No execution in this slice; requires retained method-specific committed pre/post state, exact request and response/error persistence evidence. No refund/nonexecution inferred."
+    },
+    {
+      "id": "POSTCOMMIT-after_decision_commit",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 113,
+        "end_line": 113,
+        "column": 29,
+        "end_column": 66
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Guard r['method'] == 'decide' is source-established. No execution in this slice; requires retained method-specific committed pre/post state, exact request and response/error persistence evidence. No refund/nonexecution inferred."
+    },
+    {
+      "id": "POSTCOMMIT-after_release_commit",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 114,
+        "end_line": 114,
+        "column": 30,
+        "end_column": 66
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Guard r['method'] == 'release' is source-established. No execution in this slice; requires retained method-specific committed pre/post state, exact request and response/error persistence evidence. No refund/nonexecution inferred."
+    },
+    {
+      "id": "POSTCOMMIT-after_retry_commit",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 115,
+        "end_line": 115,
+        "column": 36,
+        "end_column": 70
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Guard r['method'] == 'retry_release' is source-established. No execution in this slice; requires retained method-specific committed pre/post state, exact request and response/error persistence evidence. No refund/nonexecution inferred."
+    },
+    {
+      "id": "POSTCOMMIT-after_observe_commit",
+      "source": "support/reference/runtime/authority.py",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "anchor": {
+        "line": 116,
+        "end_line": 116,
+        "column": 30,
+        "end_column": 66
+      },
+      "disposition": "GAP",
+      "available_evidence": null,
+      "remaining_gap": "Guard r['method'] == 'observe' is source-established. No execution in this slice; requires retained method-specific committed pre/post state, exact request and response/error persistence evidence. No refund/nonexecution inferred."
+    }
+  ],
+  "outside": [
+    "transitive imports/native SQL internals",
+    "other apply-method internal branches",
+    "arbitrary timing/concurrency/fault schedules",
+    "operational transport and custody",
+    "backup beyond kernel",
+    "full-program/model completeness"
+  ],
+  "readiness": "BLOCKED"
+}

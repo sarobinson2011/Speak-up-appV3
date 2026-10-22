@@ -1,0 +1,719 @@
+{
+  "status": "non-executable integration specification",
+  "groups": [
+    {
+      "record": "CONFIG",
+      "fields": [
+        "version",
+        "pilot",
+        "session",
+        "start_nonce",
+        "manager",
+        "model",
+        "profile",
+        "config"
+      ],
+      "owner": "authority.py",
+      "anchor": "Authority.__init__",
+      "existing": "EXECUTOR-META and ALLOWANCE-BINDING are historical analogues only",
+      "dependencies": "source/code/config/principal/ledger identity; no new namespace allowance",
+      "authentication": "local trusted construction; no deployment attestation",
+      "occurrence": "one namespace configuration; acquisitions repeated"
+    },
+    {
+      "record": "BINDING",
+      "fields": [
+        "ownership",
+        "ownership_code",
+        "accounting_code",
+        "config",
+        "code",
+        "principals",
+        "retained"
+      ],
+      "owner": "authority.py",
+      "anchor": "Authority.__init__",
+      "existing": "EXECUTOR-ALLOWANCE-BINDING has wrapper_code/accounting_code/policy; not this preimage",
+      "dependencies": "exact source bytes, configuration, principals, retained modules, ledger incarnation",
+      "authentication": "SHA-256 preimage binding, not custody or qualification",
+      "occurrence": "one computed binding; include every use/acquisition"
+    },
+    {
+      "record": "HEAD",
+      "fields": [
+        "binding",
+        "seq",
+        "head",
+        "counts",
+        "partitions",
+        "u",
+        "active",
+        "resources"
+      ],
+      "owner": "authority.py",
+      "anchor": "Authority.__init__; state; save",
+      "existing": "EXECUTOR-STATUS and ALLOWANCE-STATE are different schemas",
+      "dependencies": "latest event and complete after-state; permanent U map; holds and protected counts",
+      "authentication": "canonical typed correspondence plus event hash; local trust",
+      "occurrence": "initial + <=794 events = <=795 versions, excluding returned observations"
+    },
+    {
+      "record": "COUNTS",
+      "fields": [
+        "attempt",
+        "query",
+        "snapshot",
+        "verifier"
+      ],
+      "owner": "authority.py",
+      "anchor": "Authority.__init__; accounting.reserve/query",
+      "existing": "ALLOWANCE-STATE.query/snapshot only; attempts/verifier not equivalent",
+      "dependencies": "global protected lifetime charges; partition joins; no reset/refund",
+      "authentication": "transaction + immutable event, operational anchor unresolved",
+      "occurrence": "nested in every HEAD/event/returned state"
+    },
+    {
+      "record": "PARTITIONS",
+      "fields": [
+        "query",
+        "snapshot",
+        "verifier"
+      ],
+      "owner": "authority.py",
+      "anchor": "Authority.__init__; apply(backup); accounting.reserve/query",
+      "existing": "no staging partition in old ALLOWANCE-STATE",
+      "dependencies": "shared totals and stage reservations; Pilot001 already consumed quantities",
+      "authentication": "same local event guarantee; actual protected lifetime integration missing",
+      "occurrence": "nested state, not independent allowance"
+    },
+    {
+      "record": "RESOURCES",
+      "fields": [
+        "slots",
+        "holds",
+        "query_holds",
+        "extra_queries"
+      ],
+      "owner": "accounting.py",
+      "anchor": "validate; reserve; query; settle (initialized authority.__init__)",
+      "existing": "no existing exact fields",
+      "dependencies": "transport statuses -> sums; first-attempt disposition; charged query conversion",
+      "authentication": "exact integer types, canonical HEAD/event, atomic reserve",
+      "occurrence": "nested state versions and repeated observations"
+    },
+    {
+      "record": "U-ENTRY",
+      "fields": [
+        "<u-key>",
+        "intent",
+        "reservation",
+        "retired",
+        "petition",
+        "stage"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(retire/open/decide/observe)",
+      "existing": "EXECUTOR-STATE-ENTRY.u/status/intent_sha256 analogue",
+      "dependencies": "exact U; intent bytes; chain/executor/nonce; stage ownership",
+      "authentication": "authenticated executor request; immutable blob; shared ledger",
+      "occurrence": "<=64 retired entries per namespace, never freed"
+    },
+    {
+      "record": "STAGE",
+      "fields": [
+        "sid",
+        "message",
+        "meta",
+        "n",
+        "index",
+        "nonce",
+        "manager",
+        "branch",
+        "pending",
+        "last",
+        "attempts",
+        "retries",
+        "backups",
+        "transport",
+        "retry_ids"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(open/decide/observe)",
+      "existing": "no exact prospective stage schema",
+      "dependencies": "one lifetime stage, message bytes and signature, action schedule, all maps",
+      "authentication": "original-message verification plus local context, not qualified issuer",
+      "occurrence": "one stage retained through terminal state; repeated versions distinct"
+    },
+    {
+      "record": "TRANSPORT-ENTRY",
+      "fields": [
+        "<attempt-ref-key>",
+        "slot",
+        "queried",
+        "released"
+      ],
+      "owner": "accounting.py",
+      "anchor": "record; query; settle",
+      "existing": "EXECUTOR-RECORD has lifecycle status, not this per-transport membership",
+      "dependencies": "key -> immutable ATTEMPT; HELD/CONSUMED/RELEASED; slot sum and query holds",
+      "authentication": "immutable blob/content binding + authoritative event; booleans exact",
+      "occurrence": "<=102 entries per stage/version; retries <=16 mappings"
+    },
+    {
+      "record": "RETRY-ID-ENTRY",
+      "fields": [
+        "<retry-id-key>",
+        "attempt_ref"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(retry_release)",
+      "existing": "absent",
+      "dependencies": "unique 64-hex retry ID -> newly charged attempt; latest-parent chain",
+      "authentication": "signed fresh request, challenge replay rejection, expected HEAD",
+      "occurrence": "<=16 retained mappings; do not merge equal tx transmissions"
+    },
+    {
+      "record": "PENDING",
+      "fields": [
+        "action",
+        "phase",
+        "tx",
+        "released",
+        "query",
+        "first",
+        "latest",
+        "reconciliation",
+        "result"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(decide/release/retry_release/observe); sign",
+      "existing": "EXECUTOR-RECORD partial analogue only",
+      "dependencies": "first/latest ATTEMPT, exact action/tx/evidence; result only FAILED-FROZEN",
+      "authentication": "CAS + typed HEAD/event; no regeneration from SIGNING ambiguity",
+      "occurrence": "at most one pending action; null and variant presence explicit"
+    },
+    {
+      "record": "LAST",
+      "fields": [
+        "action",
+        "tx",
+        "result"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(observe)",
+      "existing": "EXECUTOR-RECONCILIATION analogue only",
+      "dependencies": "terminal logical action -> exact bytes/evidence; not per-broadcast causation",
+      "authentication": "observer qualified lab premise and event commitment",
+      "occurrence": "one latest pointer; older occurrences remain in immutable history"
+    },
+    {
+      "record": "BACKUP-ENTRY",
+      "fields": [
+        "<backup-id-key>",
+        "status"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(backup)",
+      "existing": "EXECUTOR-BACKUP historical schema not this marker",
+      "dependencies": "snapshot charge -> RETAINED-UNCERTAIN obligation; no callback success",
+      "authentication": "fresh executor authorization and event",
+      "occurrence": "<=85 stage markers; 130 shared snapshot cap; preserve prior consumed backup"
+    },
+    {
+      "record": "ATTEMPT",
+      "fields": [
+        "binding",
+        "pilot",
+        "session",
+        "u",
+        "intent",
+        "sid",
+        "action",
+        "parent",
+        "transaction",
+        "ordinal",
+        "retry_id",
+        "request"
+      ],
+      "owner": "accounting.py",
+      "anchor": "record",
+      "existing": "EXECUTOR-RECORD/ALLOWANCE-CHARGE do not carry this ancestry",
+      "dependencies": "parent -> previous latest; action -> template -> nonce owner; request -> exact canonical request; ordinal -> permanent charge",
+      "authentication": "content-addressed exact blob and event; request signature indirect via journal",
+      "occurrence": "<=102 distinct charged records; first parent/transaction/retry_id null"
+    },
+    {
+      "record": "ACTION",
+      "fields": [
+        "version",
+        "binding",
+        "pilot",
+        "session",
+        "sid",
+        "u",
+        "intent",
+        "reservation",
+        "branch",
+        "kind",
+        "index",
+        "template",
+        "decision_request",
+        "attempt_ordinal"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(decide)",
+      "existing": "EXECUTOR-INTENT and EXECUTOR-TRANSACTION not interchangeable",
+      "dependencies": "immutable intent -> authorized branch/template; initial attempt ordinal remains fixed",
+      "authentication": "signed decision packet + committed branch/charge; signer checks same action",
+      "occurrence": "<=87 loose first-action envelope ordinary; <=47 ZK; retries add no action"
+    },
+    {
+      "record": "TEMPLATE",
+      "fields": [
+        "signer",
+        "chain",
+        "nonce",
+        "target",
+        "calldata",
+        "value",
+        "gas_limit",
+        "gas_price"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(decide)",
+      "existing": "EXECUTOR-INTENT overlaps chain/executor/nonce/calldata/value/gas_limit",
+      "dependencies": "exact Ethereum signing fields; no replacement; calldata -> branch/ABI",
+      "authentication": "signed_eth.validate compares complete exact transaction to template",
+      "occurrence": "one per action; signed bytes retained independently, no hash-only substitution"
+    },
+    {
+      "record": "QUERY",
+      "fields": [
+        "request",
+        "ordinal",
+        "attempt",
+        "classification"
+      ],
+      "owner": "accounting.py",
+      "anchor": "query",
+      "existing": "ALLOWANCE-RECEIPT insufficient: no attempt/classification",
+      "dependencies": "attempt -> latest; ATTEMPT converts hold, EXTRA consumes extra query; request digest",
+      "authentication": "observer must echo canonical query; no numeric type coercion",
+      "occurrence": "<=118 charged queries cap envelope; one outstanding; extras <=16"
+    },
+    {
+      "record": "OBSERVATION",
+      "fields": [
+        "action",
+        "transaction",
+        "query",
+        "outcome",
+        "manager",
+        "nonce_consumed",
+        "source",
+        "qualification"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(observe)",
+      "existing": "EXECUTOR-RECONCILIATION has different domain/joins",
+      "dependencies": "query/action/tx -> logical outcome; first hold disposition; causal ambiguity retained",
+      "authentication": "observer packet; LAB-ASSUMED-QUALIFIED and LAB-SYNTHETIC-NOT-FINALITY are assumptions",
+      "occurrence": "<=118 saved outcomes; missing responses retain outstanding query"
+    },
+    {
+      "record": "EVENT",
+      "fields": [
+        "previous",
+        "request",
+        "kind",
+        "proof",
+        "after"
+      ],
+      "owner": "authority.py",
+      "anchor": "save",
+      "existing": "EXECUTOR-LOG/PAYLOAD different framing and after-state",
+      "dependencies": "previous hash -> prior bytes; request -> journal request; proof -> attempt/tx/outcome; after -> HEAD",
+      "authentication": "canonical complete bytes; seq inside after; F1 typed equality",
+      "occurrence": "<=794 successful service events loose bound; rejected journal requests separate"
+    },
+    {
+      "record": "JOURNAL",
+      "fields": [
+        "challenge",
+        "request",
+        "response"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle",
+      "existing": "no matching prospective journal in old executor export",
+      "dependencies": "exact packet to challenge and signed response; null response after interruption",
+      "authentication": "signature/context verified before admission; unique challenge permanent",
+      "occurrence": "<=384000 rows per journal; total lifetime journal multiplicity unresolved"
+    },
+    {
+      "record": "REQUEST",
+      "fields": [
+        "version",
+        "binding",
+        "pilot",
+        "session",
+        "principal",
+        "challenge",
+        "expected",
+        "method",
+        "u",
+        "body"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; Scheduler.packet",
+      "existing": "old invocation/request fields do not represent this protocol",
+      "dependencies": "expected HEAD -> CAS; method-specific bodies -> exact current object",
+      "authentication": "Ed25519 over VERSION + NUL + enc(request); executor/observer roles",
+      "occurrence": "one per authenticated retained challenge including rejected requests"
+    },
+    {
+      "record": "RESPONSE",
+      "fields": [
+        "request",
+        "challenge",
+        "ok",
+        "data",
+        "error",
+        "signature"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; Scheduler.call",
+      "existing": "old status response is not exact envelope",
+      "dependencies": "request is SHA256(packet), not request-only hash; data variants or error; outer signature",
+      "authentication": "server signature verified and response.request joins packet",
+      "occurrence": "at most one saved response per journal row; loss/delivery/acquisition distinct"
+    },
+    {
+      "record": "OWNERSHIP-META",
+      "fields": [
+        "format",
+        "incarnation"
+      ],
+      "owner": "ownership.py",
+      "anchor": "attach",
+      "existing": "absent from historical executor schema",
+      "dependencies": "binding includes SHA256(meta); complete shared ledger required",
+      "authentication": "local trusted SQLite; incarnation is not rollback proof",
+      "occurrence": "one per shared ledger, not per U; reads repeated"
+    },
+    {
+      "record": "OWNERSHIP-ROW",
+      "fields": [
+        "coord",
+        "raw",
+        "hash",
+        "coordinate/0",
+        "coordinate/1",
+        "coordinate/2",
+        "owner"
+      ],
+      "owner": "ownership.py",
+      "anchor": "identity; owner; row; claim; require",
+      "existing": "old reservation digest does not provide shared coordinate owner",
+      "dependencies": "coord=H([chain,executor,str(nonce)]); owner=H([kind,binding,U,intent]); immutable raw row",
+      "authentication": "hash + exact coordinate comparison; trusted shared ledger; signed/prospective guards",
+      "occurrence": "<=4096 shared rows local cap; <=150/110 prospective per namespace envelope"
+    },
+    {
+      "record": "BODY-head",
+      "fields": [],
+      "owner": "authority.py",
+      "anchor": "handle; apply(head)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-retire",
+      "fields": [
+        "intent_hex"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(retire)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-open",
+      "fields": [
+        "message_hex",
+        "key",
+        "signature"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(open)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-decide",
+      "fields": [
+        "kind"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(decide)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-sign",
+      "fields": [
+        "action"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; sign",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-release",
+      "fields": [
+        "action",
+        "tx"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(release)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-retry_release",
+      "fields": [
+        "action",
+        "tx",
+        "prior_attempt",
+        "retry_id"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(retry_release)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-query",
+      "fields": [
+        "action"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(query)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-observe",
+      "fields": [
+        "action",
+        "transaction",
+        "query",
+        "outcome",
+        "manager",
+        "nonce_consumed",
+        "source",
+        "qualification"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(observe)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "BODY-backup",
+      "fields": [
+        "id"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; apply(backup)",
+      "existing": "no exact prospective method body",
+      "dependencies": "REQUEST.method guards variant; nested query/action joins apply",
+      "authentication": "observer only for observe; executor otherwise",
+      "occurrence": "bounded by journal, not successful action count"
+    },
+    {
+      "record": "UNSIGNED-INTENT",
+      "fields": [
+        "chain",
+        "registry",
+        "executor",
+        "nonce",
+        "calldata_hex",
+        "value",
+        "gas_limit",
+        "config",
+        "decision",
+        "source",
+        "model",
+        "contract",
+        "profile",
+        "scope",
+        "key_epoch",
+        "method",
+        "arguments",
+        "carrier",
+        "gas_price",
+        "conditional_comparison_hex"
+      ],
+      "owner": "authority.py",
+      "anchor": "unsigned_intent",
+      "existing": "EXECUTOR-INTENT existing field analogues; carrier/signing timing new",
+      "dependencies": "nested ABI arguments keep exact executor/abi.py and ABI.json owners; compact identity excludes arguments/calldata/signatures",
+      "authentication": "executor validation; no pre-existing signing bytes; conditional capsule not permit",
+      "occurrence": "<=64 original exact intent blobs"
+    },
+    {
+      "record": "COMPACT-INTENT",
+      "fields": [
+        "format",
+        "identity",
+        "calldata_base64"
+      ],
+      "owner": "authority.py",
+      "anchor": "unsigned_intent",
+      "existing": "new wrapper for existing exact invocation",
+      "dependencies": "identity fields as expanded intent excluding arguments/calldata; original calldata retained; canonical base64 -> ABI arguments",
+      "authentication": "exact roundtrip + retained ABI validation",
+      "occurrence": "alternative input form, not a second invocation"
+    },
+    {
+      "record": "STAGE-META",
+      "fields": [
+        "bindings",
+        "key",
+        "signature",
+        "total",
+        "message_sha256",
+        "invocation"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(open)",
+      "existing": "historical stage metadata reused with new ownership context",
+      "dependencies": "bindings fields owned by retained stage_carrier.KEYS; signature covers original message, invocation exact",
+      "authentication": "original-message signature; issuer appointment and truth remain unqualified",
+      "occurrence": "one metadata blob plus original message blob"
+    },
+    {
+      "record": "BLOB-STORE",
+      "fields": [
+        "ref",
+        "raw"
+      ],
+      "owner": "authority.py",
+      "anchor": "blob; get",
+      "existing": "EXECUTOR-BLOB digest/payload analogue only",
+      "dependencies": "SHA256(raw)=ref; exact bytes retained; payload tagged by owning schema not opaque",
+      "authentication": "content integrity is not authenticity/qualification",
+      "occurrence": "<=460 loose retained content blobs; repeated reads separate"
+    },
+    {
+      "record": "SIGNED-RESULT",
+      "fields": [
+        "action",
+        "tx",
+        "recovered",
+        "release"
+      ],
+      "owner": "authority.py",
+      "anchor": "sign",
+      "existing": "new response variant",
+      "dependencies": "exact action and stored tx reference; recovered flag grants no release",
+      "authentication": "server signed response; release=false",
+      "occurrence": "successful sign persistence or repeated signed recovery; latter journal-bounded locally"
+    },
+    {
+      "record": "RELEASE-RESULT",
+      "fields": [
+        "head",
+        "action",
+        "attempt",
+        "tx",
+        "bytes",
+        "lab_only"
+      ],
+      "owner": "authority.py",
+      "anchor": "apply(release/retry_release)",
+      "existing": "new response variant",
+      "dependencies": "attempt only retry; bytes hex -> exact signed blob; committed head -> release event",
+      "authentication": "one-shot authorization commits before bytes return",
+      "occurrence": "one first/retry release per charged transport; delivery uncertain"
+    },
+    {
+      "record": "PACKET",
+      "fields": [
+        "request",
+        "signature"
+      ],
+      "owner": "authority.py",
+      "anchor": "handle; Scheduler.packet",
+      "existing": "new envelope",
+      "dependencies": "request-only canonical hash differs from packet hash in response",
+      "authentication": "Ed25519 verification with fixed LAB principal keys",
+      "occurrence": "one admitted challenge packet; malformed/preauth traffic not bounded by journal"
+    }
+  ],
+  "request_bodies": {
+    "head": [],
+    "retire": [
+      "intent_hex"
+    ],
+    "open": [
+      "message_hex",
+      "key",
+      "signature"
+    ],
+    "decide": [
+      "kind"
+    ],
+    "sign": [
+      "action"
+    ],
+    "release": [
+      "action",
+      "tx"
+    ],
+    "retry_release": [
+      "action",
+      "tx",
+      "prior_attempt",
+      "retry_id"
+    ],
+    "query": [
+      "action"
+    ],
+    "observe": [
+      "action",
+      "transaction",
+      "query",
+      "outcome",
+      "manager",
+      "nonce_consumed",
+      "source",
+      "qualification"
+    ],
+    "backup": [
+      "id"
+    ]
+  },
+  "field_rows": 424,
+  "nested_rule": "Expand every nested map key/value, tuple/ABI member and variant framing; groups are not opaque object leaves. Bind each child occurrence to containing record plus exact key/index. framing rows above are scope reminders, not final complete generated framing cardinality."
+}

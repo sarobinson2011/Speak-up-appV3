@@ -1,0 +1,17 @@
+# Findings and corrections
+
+| Finding | Correction | Evidence |
+|---|---|---|
+| D01 concurrent receipt misbinding | Reserve captures its own sequence before releasing the transaction; each observed state is returned with its exact charge receipt, whose coordinates are checked against the durable log. A later observed head is not relabelled as the charge sequence. | review-regressions.json, reconciliation.json |
+| D02 valid SUCCESS rejected | Active producer accepts executor SUCCESS; invalid domains remain rejected. | review-regressions.json, provider-lifecycle.json |
+| D03 valid REVERTED rejected | Active export parser maps evidence REVERTED to terminal FAILED; SUCCESS to SUCCESS. Historical parser preserved. | review-regressions.json, exact-joins.json, provider-lifecycle.json |
+| D04 wrong defining source | All 32 binding classes cite executor_accounted.py and exact Session.__init__ byte range/hash. | exact-joins.json, added-fields.json, surface-delta.json |
+| D05 unbounded reconciliation observations | Each public reconciliation/state observation consumes the shared query allowance before return. Internal repair returns no state, requires strict forward progress when invoked alone, and never republishes an already-current anchor. | reconciliation.json; complete-repetition-table.json; verification.json |
+
+The structural argument matters beyond passing tests: no public state/reconciliation success precedes a committed query charge; 1,024 lifetime query charges bound all returned observations, including retries and interrupted attempts. Initial plus 1,154 charged versions gives at most 1,155 durable state versions. Separate occurrence slots 1,156–2,179 cover returned observations, indexed by 1,155 + query ordinal. Identical values in separate occurrences are not merged. The 130 snapshot allowance remains shared. Exhaustion may permit trusted internal repair but yields no external state observation. Rejected exhausted requests do not create permitted state-return occurrences. Existing 65-status/65-backup coverage remains inherited unchanged.
+
+Internal methods and database access are trusted implementation interfaces, not an adversarial authorization boundary. Restoring both authority storage and its independent anchor can roll back counts; rollback resistance and key custody remain operational prerequisites. Restoring only stale authority storage freezes operation. New U/restart/configuration does not refill this authority. Historical job bindings are not silently migrated.
+
+Tests distinguish the original isolated adapter unit test (comparison assumed) from the new signed-provider lifecycle checks (real retained canonical signature backend and conditional signed carrier). Synthetic lifecycle receipts are not newly observed EVM occurrences. No new EVM run or full-stream run occurred. SUCCESS and REVERTED pass export and provider/producer boundaries; invalid signatures and mutated outcome spellings fail. Retirement remains durable through restart.
+
+The corrected mapping/coverage closes the five demonstrated defects under these finite conditional assumptions. It does not prove all possible implementations correct, establish genuine values, satisfy ledger duties, or reinstate operational admission. Formal-Lab should independently assess the correction and its finite occurrence argument. Qualification remains unavailable. Stream identities for this changed model remain uncomputed.

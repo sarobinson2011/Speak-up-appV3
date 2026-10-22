@@ -1,0 +1,64 @@
+{
+  "verdict": "SCOPED CLOSURE SUPPORTED: structurally unsuitable discriminator correction",
+  "smallest_residual_witness": null,
+  "complete_projection_coverage": false,
+  "implementation_author": "SU-Engineering[288C] assistant",
+  "independent_reviewer": "separate assistant in this conversation",
+  "candidate_code_modified": false,
+  "archive": {
+    "bytes": 9148223,
+    "sha256": "910e80c30369ce8d63dca14f4f77f8193bdc646e9e58ad42a92bb34f397da358",
+    "entries": 86,
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "manifest_hashes": "PASS"
+  },
+  "required_unchanged_dependency": {
+    "bytes": 31900862,
+    "sha256": "5c4f1f9960493de9c3c0ec8c80fda2da0b75b5fb70c079149f422f3d737c3aff",
+    "entries": 56,
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "manifest_hashes": "PASS"
+  },
+  "members": 666,
+  "unchanged_members": 649,
+  "intentional_changed_members": 17,
+  "historical_files": 90,
+  "relationships": 43,
+  "ordinals": "preserved",
+  "original_witness": "authenticated body {method: []}, fold accepts, old TypeError reproduced in both contexts; corrected fallback and output accepted",
+  "independent_DSL": {
+    "REJECT": 49,
+    "ACCEPT": 28
+  },
+  "independent_baseline_reproductions": 2,
+  "independent_current": {
+    "static_ingestion": 4,
+    "projection_and_output": 8,
+    "rejections": 12
+  },
+  "independent_recovered": {
+    "static_ingestion": 1,
+    "projection_and_output": 2
+  },
+  "supplied_groups_inspected": {
+    "focused": 34,
+    "adjacent_static": 16,
+    "recovered_process": 20
+  },
+  "supplied_harness_rerun": false,
+  "PC01": "preserved; 0 BODY-head / 2 UNVALIDATED-BODY in both contexts",
+  "original_KeyError_closure": "preserved with current projection/output regression",
+  "annotation_consumption": "fresh bytes exactly equal supplied",
+  "predecessor_coverage": "historical pin retained; no current whole-program coverage claim",
+  "workspace_artifacts": 6,
+  "producer_execution": false,
+  "lifecycle_or_completed_review_rerun": false,
+  "full_expansion": false,
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "backup": "KERNEL-ONLY",
+  "streams": "UNCOMPUTED",
+  "actual_admission": false
+}

@@ -1,0 +1,65 @@
+{
+  "declaration_coverage_verdict": "correction required",
+  "reconciliation_mechanics_verdict": "supported within exact externally pinned synthetic-input correspondence scope",
+  "actual_canonical_reconciliation": "BLOCKED",
+  "findings": [
+    {
+      "id": "SD-01",
+      "classification": "demonstrated coverage-check implementation defect",
+      "title": "Source-admitted success variant can be omitted from both generated and expected declarations undetected",
+      "affected_code": "input/code/static_declarations.py",
+      "sha256": "09135b10de717caa593e3d7130b606dc6555f0fd3d1814235561b06a43e2f91a",
+      "anchors": [
+        "schemas: SUCCESS-RESPONSE.data.request_method_choice",
+        "constructor_coverage: lines 86-102",
+        "build/validate: lines 104-145",
+        "validate_value: lines 168-169"
+      ],
+      "owning_requirements": [
+        "input/reference/INTEGRATION-SPEC.md steps 2-3 and Exact source/selector ownership",
+        "input/reference/CORRESPONDENCE.md exact identity item 6",
+        "input/reference/runtime/authority.py lines 117-120 and 127"
+      ],
+      "fault_injection": "Delete only head branch from declaration catalogue in memory; leave defining runtime sources and code files unchanged",
+      "expected": "Independent source coverage rejects incomplete catalogue before acceptance",
+      "observed": "build and validate accept 9328 templates; all 424 checklist targets remain; 38 saved exports accepted; valid signed head response fails REQUEST-METHOD-CONTEXT",
+      "minimal_fixture": "evidence/SD-01-minimal.json",
+      "minimal_fixture_bytes": 4103,
+      "minimal_fixture_sha256": "0b24589fc1be5bcc63b1d1ef6c53af320b478c1a4d1f1b7d312cc7c2b0352c3d",
+      "reproduce": "python3 -B scripts/minimal_omission.py input /tmp/ia01-static-minimal-new",
+      "scope": "Validator omission-detection defect. Delivered catalogue contains head; no production runtime refusal, authentication bypass or accepted-definition defect claimed.",
+      "smallest_remedy": "Add an independently source-derived dispatch-to-return-variant obligation map; reject omitted or misbound method alternatives and retain this one-response omission regression. Do not use the generated schema catalogue as its own expected coverage."
+    }
+  ],
+  "coverage_limitations": [
+    "Generic source inventory is not a per-template source-branch proof",
+    "Two historical context slots are not instantiated two-context models or current canonical bindings",
+    "Type templates depend on preceding unchanged semantic/authentication fold; not standalone qualified schemas",
+    "Internal value extraction does not independently validate every metadata adapter wrapper as its own record family",
+    "90-file preservation is historical bytes plus included copies; no complete current tree supplied",
+    "Framing/local recursion ceilings do not establish lifetime/full-domain capacity",
+    "Reconciliation checks transport/class/source/chain correspondence, not semantic model/profile/ledger consistency or authority provenance"
+  ],
+  "fresh": {
+    "supplied_static_checks": 67,
+    "supplied_semantic_reconciliation_controls": 6,
+    "checklist_source_omission_control": true,
+    "independent_controls": 22,
+    "separate_minimal_reduction": true,
+    "lifecycles": 0,
+    "new_process_exits": 0
+  },
+  "prior_IA01": "preserved; unchanged adapters and fresh narrow downstream check",
+  "unknowns_preserved": [
+    "visibility",
+    "dependency classification",
+    "seven-role custody",
+    "qualification",
+    "current context binding",
+    "lifetime multiplicity"
+  ],
+  "stream_identities": "UNCOMPUTED",
+  "actual_admission": false,
+  "route": "Engineering-Anchor[2]",
+  "next_task": "Correct SD-01 in declaration-coverage machinery only; retain positive head support and all current bindings, then request a narrow closure review."
+}

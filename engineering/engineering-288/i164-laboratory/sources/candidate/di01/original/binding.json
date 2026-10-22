@@ -1,0 +1,72 @@
+{
+  "mode": "binding",
+  "result": "COUNTEREXAMPLE-REPRODUCED",
+  "saved_witness": {
+    "path": "support/preserved-review/SD-01-minimal.json",
+    "bytes": 4103,
+    "sha256": "0b24589fc1be5bcc63b1d1ef6c53af320b478c1a4d1f1b7d312cc7c2b0352c3d"
+  },
+  "mutation": "del out['binding']['downstream_adapter']",
+  "prior": {
+    "binding_keys": [
+      "candidate",
+      "contexts",
+      "directories",
+      "downstream_adapter",
+      "duties",
+      "profile",
+      "register",
+      "reviewed_adapters",
+      "runtime"
+    ],
+    "blockers": [
+      "QUALIFIED-DEPENDENCY-VISIBILITY-CUSTODY",
+      "ACTUAL-PHASE-PRODUCER-APPOINTMENTS",
+      "OPERATIONAL-CUSTODY-ROLLBACK-LIFETIME",
+      "FINITE-LIFETIME-ACQUISITION-AND-STORAGE",
+      "EXTERNAL-OUTCOME-SERIALIZATION-FINALITY",
+      "COMPLETE-MODEL-GRAPH-AND-LEDGER-BINDING",
+      "CANONICAL-REGISTRATION-NOT-PERFORMED"
+    ],
+    "candidate_reference": {
+      "path": "candidate/identity.json",
+      "bytes": 1672,
+      "sha256": "d2b76814433f1d3c96bccdb2eaaa6ddb1521cafcd2c616fc1b93d064995a2130"
+    },
+    "downstream_adapter": {
+      "path": "integration/candidate_pipeline.py",
+      "bytes": 10871,
+      "sha256": "e4448e9ccabb129d305901d2e916e344348c808dec30fbd6f94faf4091abddde"
+    }
+  },
+  "validated_after_mutation": true,
+  "binding_keys_after": [
+    "candidate",
+    "contexts",
+    "directories",
+    "duties",
+    "profile",
+    "register",
+    "reviewed_adapters",
+    "runtime"
+  ],
+  "blockers_after": [
+    "QUALIFIED-DEPENDENCY-VISIBILITY-CUSTODY",
+    "ACTUAL-PHASE-PRODUCER-APPOINTMENTS",
+    "OPERATIONAL-CUSTODY-ROLLBACK-LIFETIME",
+    "FINITE-LIFETIME-ACQUISITION-AND-STORAGE",
+    "EXTERNAL-OUTCOME-SERIALIZATION-FINALITY",
+    "COMPLETE-MODEL-GRAPH-AND-LEDGER-BINDING",
+    "CANONICAL-REGISTRATION-NOT-PERFORMED"
+  ],
+  "final_binding": "BLOCKED",
+  "canonical_registration": false,
+  "actual_admission": false,
+  "stream_identities": "UNCOMPUTED",
+  "candidate_code_changed": false,
+  "elapsed_seconds": 7.008038381000006,
+  "final_bind_still_rejects": "FINAL-BINDING-BLOCKED:QUALIFIED-DEPENDENCY-VISIBILITY-CUSTODY,ACTUAL-PHASE-PRODUCER-APPOINTMENTS,OPERATIONAL-CUSTODY-ROLLBACK-LIFETIME,FINITE-LIFETIME-ACQUISITION-AND-STORAGE,EXTERNAL-OUTCOME-SERIALIZATION-FINALITY,COMPLETE-MODEL-GRAPH-AND-LEDGER-BINDING,CANONICAL-REGISTRATION-NOT-PERFORMED",
+  "new_instance_rejection": "MIXED-CANDIDATE-BINDING",
+  "mutant_output_bytes": 1299955,
+  "mutant_compressed_bytes": 198978
+}

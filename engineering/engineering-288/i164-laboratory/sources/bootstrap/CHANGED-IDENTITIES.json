@@ -1,0 +1,74 @@
+{
+  "changed_implementation_files": [
+    {
+      "path": "MANIFEST.json",
+      "old": {
+        "bytes": 78955,
+        "sha256": "fe5c73a8d9354f24835abda2d845b87c2ed054a51c978c7fb8f8aa33fa15985a"
+      },
+      "new": {
+        "bytes": 78956,
+        "sha256": "4a2975f096fd06d44728ac50daebca771b415ba863869136b70dba50d1ca855a"
+      }
+    },
+    {
+      "path": "RECOVERY.md",
+      "old": {
+        "bytes": 4610,
+        "sha256": "25439f429f03c696f9bb08d05edff2bbfe849e64ca595ffe6b0343b36fbe5041"
+      },
+      "new": {
+        "bytes": 4962,
+        "sha256": "1e49bed7c9ae90bd2ba69922ba4a95ffc677556cb3e2f77b3d7b41db661a4c59"
+      }
+    },
+    {
+      "path": "code/lab_bootstrap.py",
+      "old": {
+        "bytes": 9947,
+        "sha256": "ff78ac4e8b70997b20a5d1e732ace1755237d81b4a22bd5ff87ae1cf49da36b9"
+      },
+      "new": {
+        "bytes": 10469,
+        "sha256": "65f688b2e616e1540a0c49d26570ea45c6a31ee5c80fc235dde596d5fe8086f8"
+      }
+    },
+    {
+      "path": "provenance/draft-members.json",
+      "old": {
+        "bytes": 25083,
+        "sha256": "0d50f2ad332d5c5403a966e22f994c4913c21c37ce4711099ca239f21f152204"
+      },
+      "new": {
+        "bytes": 24934,
+        "sha256": "98328cd843a8a4522be2a0f3e3d4811800087ec65e5cab486be62d94e91b30ed"
+      }
+    }
+  ],
+  "mode_correction": {
+    "path": "runtime-recovered/retained-candidate/native/bin/pe-rfc8032-stream",
+    "old": "0644",
+    "recovery_mode": "0755",
+    "byte_identity": {
+      "bytes": 440816,
+      "sha256": "3d8b65ea87eb5b5a680c9c51c6897a8c32641f1580947046d1cc6c7f765c152b"
+    },
+    "note": "ZIP transport modes not assumed; recover_runtime establishes and validates mode"
+  },
+  "candidate_changes": [],
+  "runtime_byte_changes": [],
+  "old_sessions_migrated": false,
+  "v2_harness_change": {
+    "path": "code/dependency_check.py",
+    "old": {
+      "bytes": 3105,
+      "sha256": "8768426a3a7a75e0ffaafa6a33c92aac373d526e956f27951e68aa8ec10598a9"
+    },
+    "new": {
+      "bytes": 3151,
+      "sha256": "aceb291915d145d1b3029a24b386cb17002e02e6778693d3b8b80674e777984c"
+    },
+    "basis": "exact supplied cffi requirement; implementation_name from sys.implementation.name",
+    "candidate_or_launcher_changes": false
+  }
+}

@@ -1,0 +1,1197 @@
+{
+  "sources/model/REGISTER-INVENTORY.json": {
+    "bytes": 26661,
+    "sha256": "2f10a0162383c2c84ae0061b12b015a2dc67a359144c4bcb2ae0447b36710669"
+  },
+  "sources/model/SELECTED-PROVENANCE.json": {
+    "bytes": 3374,
+    "sha256": "116ccc801ef955aec97dde892254f75f6329b66f53e9c0fd7c4670241200b172"
+  },
+  "sources/model/candidate/identity.json": {
+    "bytes": 1254,
+    "sha256": "c493b7fc75603d1177f6a27b8d03090bd0825fd3da237483682d4486f064212a"
+  },
+  "sources/model/candidate/profile-binding.json": {
+    "bytes": 1448,
+    "sha256": "dbc467b5d43ae30f25e9ef4977f01bccf895a64b7284653fb0b9c2e3f715cb0d"
+  },
+  "sources/model/code/bind_ledger.py": {
+    "bytes": 5909,
+    "sha256": "b25c8e6180fd2022b2620bb1accdda85386fb8bafa8f57e2b2fe8e9746e1ad80",
+    "function_ranges": [
+      {
+        "name": "check_binding",
+        "first_line": 5,
+        "last_line": 10
+      },
+      {
+        "name": "build",
+        "first_line": 12,
+        "last_line": 51
+      }
+    ]
+  },
+  "sources/model/code/executor_records_v2.py": {
+    "bytes": 6905,
+    "sha256": "bd6f48d1ebb45d90b879f8ffcfb1b49ae245feefbca312bdcba57697174b8a44",
+    "function_ranges": [
+      {
+        "name": "validate_history",
+        "first_line": 25,
+        "last_line": 50
+      },
+      {
+        "name": "declarations",
+        "first_line": 51,
+        "last_line": 56
+      },
+      {
+        "name": "declarations",
+        "first_line": 60,
+        "last_line": 73
+      },
+      {
+        "name": "validate_export",
+        "first_line": 75,
+        "last_line": 86
+      },
+      {
+        "name": "visit",
+        "first_line": 65,
+        "last_line": 68
+      }
+    ]
+  },
+  "sources/model/code/expand_candidate.py": {
+    "bytes": 21791,
+    "sha256": "d4d0f560b088a05191cba845e0b3e9a3f37463604f1b1ec91be20ddde73d7479",
+    "function_ranges": [
+      {
+        "name": "need",
+        "first_line": 11,
+        "last_line": 12
+      },
+      {
+        "name": "load",
+        "first_line": 13,
+        "last_line": 13
+      },
+      {
+        "name": "sha",
+        "first_line": 14,
+        "last_line": 18
+      },
+      {
+        "name": "atomic",
+        "first_line": 19,
+        "last_line": 22
+      },
+      {
+        "name": "save",
+        "first_line": 23,
+        "last_line": 23
+      },
+      {
+        "name": "Model",
+        "first_line": 24,
+        "last_line": 34
+      },
+      {
+        "name": "Seq",
+        "first_line": 35,
+        "last_line": 53
+      },
+      {
+        "name": "Group",
+        "first_line": 54,
+        "last_line": 67
+      },
+      {
+        "name": "prepare",
+        "first_line": 69,
+        "last_line": 167
+      },
+      {
+        "name": "pairs",
+        "first_line": 169,
+        "last_line": 199
+      },
+      {
+        "name": "estimate",
+        "first_line": 201,
+        "last_line": 216
+      },
+      {
+        "name": "token_rows",
+        "first_line": 218,
+        "last_line": 224
+      },
+      {
+        "name": "edge_rows",
+        "first_line": 225,
+        "last_line": 234
+      },
+      {
+        "name": "segmented",
+        "first_line": 236,
+        "last_line": 253
+      },
+      {
+        "name": "assemble",
+        "first_line": 255,
+        "last_line": 279
+      },
+      {
+        "name": "main",
+        "first_line": 281,
+        "last_line": 301
+      },
+      {
+        "name": "__init__",
+        "first_line": 25,
+        "last_line": 30
+      },
+      {
+        "name": "small",
+        "first_line": 31,
+        "last_line": 31
+      },
+      {
+        "name": "copy",
+        "first_line": 32,
+        "last_line": 34
+      },
+      {
+        "name": "__init__",
+        "first_line": 36,
+        "last_line": 36
+      },
+      {
+        "name": "__len__",
+        "first_line": 37,
+        "last_line": 37
+      },
+      {
+        "name": "at",
+        "first_line": 38,
+        "last_line": 38
+      },
+      {
+        "name": "span",
+        "first_line": 39,
+        "last_line": 46
+      },
+      {
+        "name": "pos",
+        "first_line": 47,
+        "last_line": 53
+      },
+      {
+        "name": "__init__",
+        "first_line": 55,
+        "last_line": 55
+      },
+      {
+        "name": "add",
+        "first_line": 56,
+        "last_line": 56
+      },
+      {
+        "name": "__len__",
+        "first_line": 57,
+        "last_line": 57
+      },
+      {
+        "name": "entries",
+        "first_line": 58,
+        "last_line": 62
+      },
+      {
+        "name": "get",
+        "first_line": 63,
+        "last_line": 67
+      },
+      {
+        "name": "group",
+        "first_line": 109,
+        "last_line": 109
+      },
+      {
+        "name": "relation",
+        "first_line": 144,
+        "last_line": 144
+      },
+      {
+        "name": "put",
+        "first_line": 259,
+        "last_line": 259
+      }
+    ]
+  },
+  "sources/model/code/finalize_records.py": {
+    "bytes": 4922,
+    "sha256": "b7db4a8fd50f0e8e7f732afaadf2b5516553123ff7548be822e3bfe24c36c97f",
+    "function_ranges": [
+      {
+        "name": "L",
+        "first_line": 6,
+        "last_line": 6
+      },
+      {
+        "name": "H",
+        "first_line": 7,
+        "last_line": 7
+      },
+      {
+        "name": "S",
+        "first_line": 8,
+        "last_line": 8
+      }
+    ]
+  },
+  "sources/model/records/added-fields.json": {
+    "bytes": 674176,
+    "sha256": "8b458803d3962d96063e045328694b65cc38a38230a2483fa8f887c42fc44c61"
+  },
+  "sources/model/relationships-43.json": {
+    "bytes": 56339,
+    "sha256": "761772d3372c13cce1c61a551154534cc7d23ea32fc97a18db0794bbfdd27591"
+  },
+  "sources/model/retained/reference/PE-G4-SOURCE-S90-FCR-001.md": {
+    "bytes": 811633,
+    "sha256": "119a3038e45472b31bd03ac0a659c6cc9bcf227fe3a48fe996ed4621a938003d"
+  },
+  "sources/owning/C5-ADOPTION-CLAUSES.md": {
+    "bytes": 4564,
+    "sha256": "5c4afbd236d4ce7903fd1d74d9f023922c39475f726fb14341cc7dfb1e16d6ef"
+  },
+  "sources/owning/C5-TRANSITIONS.md": {
+    "bytes": 12192,
+    "sha256": "82b46ed61b9ebec27e86e3e691b64187d3b770e703c9b530d9b146bde9025e5c"
+  },
+  "sources/owning/StagedAuth.sol": {
+    "bytes": 9439,
+    "sha256": "a20d40b91f280f47029f26d05a8f339f6a72d0823fdc8960f0ee33127b85cde2"
+  },
+  "sources/owning/prospective-APPROVAL.md": {
+    "bytes": 2126,
+    "sha256": "5049b9e5c187320019a746b9bda7a0652282702d2e419d61cf5177a4410e6836"
+  },
+  "sources/owning/prospective-CONTRACT.md": {
+    "bytes": 9283,
+    "sha256": "54f1e77830731004a115d43d0b62b16a35446b6d72760ca2b9665f8087ad42ee"
+  },
+  "sources/retained/code/anchor.py": {
+    "bytes": 8957,
+    "sha256": "70adfc96e71a158b75a8c9a4dc417204bbac93ec4c60673fbf67e11d92ab5c0c",
+    "function_ranges": [
+      {
+        "name": "Blocked",
+        "first_line": 4,
+        "last_line": 4
+      },
+      {
+        "name": "Uncertain",
+        "first_line": 5,
+        "last_line": 5
+      },
+      {
+        "name": "need",
+        "first_line": 6,
+        "last_line": 7
+      },
+      {
+        "name": "enc",
+        "first_line": 8,
+        "last_line": 8
+      },
+      {
+        "name": "sha",
+        "first_line": 9,
+        "last_line": 9
+      },
+      {
+        "name": "parse",
+        "first_line": 14,
+        "last_line": 20
+      },
+      {
+        "name": "label",
+        "first_line": 21,
+        "last_line": 21
+      },
+      {
+        "name": "digest",
+        "first_line": 22,
+        "last_line": 22
+      },
+      {
+        "name": "coordinates",
+        "first_line": 23,
+        "last_line": 25
+      },
+      {
+        "name": "Anchor",
+        "first_line": 26,
+        "last_line": 118
+      },
+      {
+        "name": "pairs",
+        "first_line": 16,
+        "last_line": 19
+      },
+      {
+        "name": "__init__",
+        "first_line": 27,
+        "last_line": 34
+      },
+      {
+        "name": "check_backend",
+        "first_line": 35,
+        "last_line": 35
+      },
+      {
+        "name": "genesis",
+        "first_line": 36,
+        "last_line": 40
+      },
+      {
+        "name": "load",
+        "first_line": 41,
+        "last_line": 50
+      },
+      {
+        "name": "blob",
+        "first_line": 51,
+        "last_line": 52
+      },
+      {
+        "name": "receipt",
+        "first_line": 53,
+        "last_line": 57
+      },
+      {
+        "name": "apply",
+        "first_line": 58,
+        "last_line": 113
+      },
+      {
+        "name": "resolve",
+        "first_line": 114,
+        "last_line": 117
+      },
+      {
+        "name": "restore_anchor",
+        "first_line": 118,
+        "last_line": 118
+      }
+    ]
+  },
+  "sources/retained/code/signed_eth.py": {
+    "bytes": 3057,
+    "sha256": "3e688ebe7fc0e716e8590d620254a53f9dcf508450f9003561eccbb2e58c6d7b",
+    "function_ranges": [
+      {
+        "name": "need",
+        "first_line": 10,
+        "last_line": 11
+      },
+      {
+        "name": "multiply",
+        "first_line": 12,
+        "last_line": 17
+      },
+      {
+        "name": "decode_rlp",
+        "first_line": 18,
+        "last_line": 32
+      },
+      {
+        "name": "_decode",
+        "first_line": 34,
+        "last_line": 49
+      },
+      {
+        "name": "decode",
+        "first_line": 50,
+        "last_line": 51
+      },
+      {
+        "name": "validate",
+        "first_line": 52,
+        "last_line": 56
+      },
+      {
+        "name": "read",
+        "first_line": 19,
+        "last_line": 31
+      },
+      {
+        "name": "uint",
+        "first_line": 37,
+        "last_line": 38
+      }
+    ]
+  },
+  "sources/retained/code/stage_carrier.py": {
+    "bytes": 10174,
+    "sha256": "3f64dc786401e5594ba241ac06065bf9508a56cdd2c80fae885777e766999c29",
+    "function_ranges": [
+      {
+        "name": "W",
+        "first_line": 9,
+        "last_line": 9
+      },
+      {
+        "name": "H",
+        "first_line": 10,
+        "last_line": 10
+      },
+      {
+        "name": "Reject",
+        "first_line": 11,
+        "last_line": 11
+      },
+      {
+        "name": "need",
+        "first_line": 12,
+        "last_line": 13
+      },
+      {
+        "name": "validate_context",
+        "first_line": 16,
+        "last_line": 24
+      },
+      {
+        "name": "decode",
+        "first_line": 25,
+        "last_line": 45
+      },
+      {
+        "name": "Model",
+        "first_line": 46,
+        "last_line": 130
+      },
+      {
+        "name": "unique",
+        "first_line": 26,
+        "last_line": 30
+      },
+      {
+        "name": "__init__",
+        "first_line": 47,
+        "last_line": 49
+      },
+      {
+        "name": "event",
+        "first_line": 50,
+        "last_line": 50
+      },
+      {
+        "name": "retire",
+        "first_line": 51,
+        "last_line": 53
+      },
+      {
+        "name": "charge",
+        "first_line": 54,
+        "last_line": 58
+      },
+      {
+        "name": "dispatch",
+        "first_line": 59,
+        "last_line": 64
+      },
+      {
+        "name": "observe",
+        "first_line": 65,
+        "last_line": 68
+      },
+      {
+        "name": "repair_internal",
+        "first_line": 69,
+        "last_line": 69
+      },
+      {
+        "name": "begin",
+        "first_line": 70,
+        "last_line": 78
+      },
+      {
+        "name": "active",
+        "first_line": 79,
+        "last_line": 80
+      },
+      {
+        "name": "append",
+        "first_line": 81,
+        "last_line": 85
+      },
+      {
+        "name": "finalize",
+        "first_line": 86,
+        "last_line": 98
+      },
+      {
+        "name": "release",
+        "first_line": 99,
+        "last_line": 113
+      },
+      {
+        "name": "abandon",
+        "first_line": 114,
+        "last_line": 116
+      },
+      {
+        "name": "cleanup",
+        "first_line": 117,
+        "last_line": 120
+      },
+      {
+        "name": "snapshot",
+        "first_line": 121,
+        "last_line": 123
+      },
+      {
+        "name": "restore",
+        "first_line": 125,
+        "last_line": 130
+      }
+    ]
+  },
+  "sources/retained/code/stages.py": {
+    "bytes": 22114,
+    "sha256": "010f0d38b3c9f297439c7fe2b3c0345350f9bd566fd05a623273144fb37aaf3d",
+    "function_ranges": [
+      {
+        "name": "backup_operation",
+        "first_line": 23,
+        "last_line": 25
+      },
+      {
+        "name": "backup_body",
+        "first_line": 27,
+        "last_line": 29
+      },
+      {
+        "name": "release_binding",
+        "first_line": 31,
+        "last_line": 41
+      },
+      {
+        "name": "capacity",
+        "first_line": 43,
+        "last_line": 46
+      },
+      {
+        "name": "command",
+        "first_line": 48,
+        "last_line": 55
+      },
+      {
+        "name": "word",
+        "first_line": 57,
+        "last_line": 58
+      },
+      {
+        "name": "dynamic",
+        "first_line": 59,
+        "last_line": 59
+      },
+      {
+        "name": "calldata",
+        "first_line": 60,
+        "last_line": 70
+      },
+      {
+        "name": "exact_evm_from_near",
+        "first_line": 71,
+        "last_line": 83
+      },
+      {
+        "name": "envelope",
+        "first_line": 85,
+        "last_line": 90
+      },
+      {
+        "name": "cleanup_execution",
+        "first_line": 92,
+        "last_line": 103
+      },
+      {
+        "name": "transition",
+        "first_line": 105,
+        "last_line": 218
+      },
+      {
+        "name": "Scheduler",
+        "first_line": 220,
+        "last_line": 299
+      },
+      {
+        "name": "obj",
+        "first_line": 108,
+        "last_line": 108
+      },
+      {
+        "name": "__init__",
+        "first_line": 221,
+        "last_line": 221
+      },
+      {
+        "name": "state",
+        "first_line": 222,
+        "last_line": 223
+      },
+      {
+        "name": "advance",
+        "first_line": 224,
+        "last_line": 228
+      },
+      {
+        "name": "open",
+        "first_line": 229,
+        "last_line": 229
+      },
+      {
+        "name": "prepare",
+        "first_line": 230,
+        "last_line": 236
+      },
+      {
+        "name": "send",
+        "first_line": 237,
+        "last_line": 255
+      },
+      {
+        "name": "observe_lab",
+        "first_line": 256,
+        "last_line": 260
+      },
+      {
+        "name": "backup_status",
+        "first_line": 261,
+        "last_line": 273
+      },
+      {
+        "name": "_backup_finish",
+        "first_line": 274,
+        "last_line": 275
+      },
+      {
+        "name": "backup",
+        "first_line": 276,
+        "last_line": 296
+      },
+      {
+        "name": "recover",
+        "first_line": 297,
+        "last_line": 298
+      },
+      {
+        "name": "operational",
+        "first_line": 299,
+        "last_line": 299
+      }
+    ]
+  },
+  "sources/retained/retained-C2/retained/executor-basis/retained/kernel/candidate/contract/ABI.json": {
+    "bytes": 21903,
+    "sha256": "df80e539e900aa1c926f3ca46dc727e7462d2d229e22871260af85639c0f4881"
+  },
+  "sources/retained/retained-C2/retained/executor-basis/retained/kernel/candidate/executor/abi.py": {
+    "bytes": 3752,
+    "sha256": "e6d36c1ae8dfef44faefd6f64fa9b2d5fa1077ac9d62198198aeeebd25541800",
+    "function_ranges": [
+      {
+        "name": "word",
+        "first_line": 10,
+        "last_line": 12
+      },
+      {
+        "name": "static",
+        "first_line": 13,
+        "last_line": 25
+      },
+      {
+        "name": "canonical_type",
+        "first_line": 26,
+        "last_line": 27
+      },
+      {
+        "name": "encode",
+        "first_line": 28,
+        "last_line": 47
+      },
+      {
+        "name": "decode",
+        "first_line": 50,
+        "last_line": 82
+      },
+      {
+        "name": "value",
+        "first_line": 56,
+        "last_line": 77
+      }
+    ]
+  },
+  "sources/retained/retained-C2/retained/executor-basis/retained/kernel/candidate/executor/session.py": {
+    "bytes": 14204,
+    "sha256": "c7bccea343732611982f07e966192ffd05419e556ecc204b58048f760dced5d2",
+    "function_ranges": [
+      {
+        "name": "enc",
+        "first_line": 13,
+        "last_line": 13
+      },
+      {
+        "name": "sha",
+        "first_line": 14,
+        "last_line": 14
+      },
+      {
+        "name": "u_wire",
+        "first_line": 15,
+        "last_line": 16
+      },
+      {
+        "name": "Blocked",
+        "first_line": 17,
+        "last_line": 17
+      },
+      {
+        "name": "need",
+        "first_line": 18,
+        "last_line": 19
+      },
+      {
+        "name": "parse",
+        "first_line": 20,
+        "last_line": 26
+      },
+      {
+        "name": "validate_intent",
+        "first_line": 28,
+        "last_line": 41
+      },
+      {
+        "name": "_validate_expanded",
+        "first_line": 43,
+        "last_line": 66
+      },
+      {
+        "name": "compact_intent",
+        "first_line": 68,
+        "last_line": 79
+      },
+      {
+        "name": "Session",
+        "first_line": 81,
+        "last_line": 196
+      },
+      {
+        "name": "pairs",
+        "first_line": 22,
+        "last_line": 25
+      },
+      {
+        "name": "__init__",
+        "first_line": 82,
+        "last_line": 103
+      },
+      {
+        "name": "close",
+        "first_line": 104,
+        "last_line": 104
+      },
+      {
+        "name": "_blob",
+        "first_line": 105,
+        "last_line": 109
+      },
+      {
+        "name": "_hydrate",
+        "first_line": 110,
+        "last_line": 123
+      },
+      {
+        "name": "_check_evidence",
+        "first_line": 125,
+        "last_line": 129
+      },
+      {
+        "name": "_reload",
+        "first_line": 130,
+        "last_line": 146
+      },
+      {
+        "name": "states",
+        "first_line": 148,
+        "last_line": 149
+      },
+      {
+        "name": "_publish",
+        "first_line": 150,
+        "last_line": 161
+      },
+      {
+        "name": "retire",
+        "first_line": 162,
+        "last_line": 168
+      },
+      {
+        "name": "reject_comparison",
+        "first_line": 169,
+        "last_line": 172
+      },
+      {
+        "name": "seal",
+        "first_line": 173,
+        "last_line": 178
+      },
+      {
+        "name": "submission",
+        "first_line": 179,
+        "last_line": 185
+      },
+      {
+        "name": "reconcile",
+        "first_line": 186,
+        "last_line": 189
+      },
+      {
+        "name": "status",
+        "first_line": 190,
+        "last_line": 191
+      },
+      {
+        "name": "backup",
+        "first_line": 192,
+        "last_line": 196
+      }
+    ]
+  },
+  "sources/retry/CAPACITY.md": {
+    "bytes": 5999,
+    "sha256": "64a1210ffffd4bc946776838553ac5934936a9416555c1c7a329d530e9f2975b"
+  },
+  "sources/retry/CONTRACT.md": {
+    "bytes": 7862,
+    "sha256": "36a19c3d8e20cb28af5e14fb5e0d8b12fed291d2cf19b6db3c705d1f725dde5d"
+  },
+  "sources/retry/MANIFEST.json": {
+    "bytes": 80276,
+    "sha256": "4e7341fafc3c9ae0f78798ad7cc774fe6f13dc93dbae1bdaff9b037d3f35c195"
+  },
+  "sources/retry/TASK-AUTHORITY.md": {
+    "bytes": 1317,
+    "sha256": "85c9aeb0084759ffd277f47034495d17ef59b6df559a4e74957f8bc1e4ac6759"
+  },
+  "sources/retry/basis/DECISION.md": {
+    "bytes": 5597,
+    "sha256": "d426532c078ee4575553e2c72579d2a4f1203810addd7e9cdac06c97eea164d3"
+  },
+  "sources/retry/basis/I164-RETRY-ACCOUNTING-ADOPTION-1.md": {
+    "bytes": 6737,
+    "sha256": "c68fbb8fdeca0a4ece064428dd37b1cbbf10c334cef245e2f7e4608847b6b059"
+  },
+  "sources/retry/basis/RETRY-SPEC.md": {
+    "bytes": 9324,
+    "sha256": "3e566de62f6efa24222a1ca226a096893d6b6f110f2e34d12bb904c700ac181a"
+  },
+  "sources/retry/changed-identities.json": {
+    "bytes": 689,
+    "sha256": "65a980e4abdfa22a644b2421726ac22974fca6915e8cf7e45284f98ace2833df"
+  },
+  "sources/retry/prospective/accounting.py": {
+    "bytes": 4461,
+    "sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc",
+    "function_ranges": [
+      {
+        "name": "validate",
+        "first_line": 4,
+        "last_line": 19
+      },
+      {
+        "name": "reserve",
+        "first_line": 21,
+        "last_line": 30
+      },
+      {
+        "name": "record",
+        "first_line": 32,
+        "last_line": 34
+      },
+      {
+        "name": "ready",
+        "first_line": 36,
+        "last_line": 42
+      },
+      {
+        "name": "query",
+        "first_line": 44,
+        "last_line": 51
+      },
+      {
+        "name": "settle",
+        "first_line": 53,
+        "last_line": 59
+      }
+    ]
+  },
+  "sources/retry/prospective/authority.py": {
+    "bytes": 23223,
+    "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+    "function_ranges": [
+      {
+        "name": "public",
+        "first_line": 19,
+        "last_line": 19
+      },
+      {
+        "name": "exact",
+        "first_line": 22,
+        "last_line": 22
+      },
+      {
+        "name": "integer",
+        "first_line": 23,
+        "last_line": 23
+      },
+      {
+        "name": "label",
+        "first_line": 24,
+        "last_line": 24
+      },
+      {
+        "name": "digest",
+        "first_line": 25,
+        "last_line": 25
+      },
+      {
+        "name": "sig",
+        "first_line": 26,
+        "last_line": 26
+      },
+      {
+        "name": "verify",
+        "first_line": 27,
+        "last_line": 27
+      },
+      {
+        "name": "fault",
+        "first_line": 28,
+        "last_line": 32
+      },
+      {
+        "name": "unsigned_intent",
+        "first_line": 34,
+        "last_line": 51
+      },
+      {
+        "name": "Authority",
+        "first_line": 53,
+        "last_line": 245
+      },
+      {
+        "name": "Scheduler",
+        "first_line": 247,
+        "last_line": 264
+      },
+      {
+        "name": "__init__",
+        "first_line": 54,
+        "last_line": 69
+      },
+      {
+        "name": "close",
+        "first_line": 70,
+        "last_line": 70
+      },
+      {
+        "name": "transaction",
+        "first_line": 72,
+        "last_line": 75
+      },
+      {
+        "name": "blob",
+        "first_line": 76,
+        "last_line": 81
+      },
+      {
+        "name": "get",
+        "first_line": 82,
+        "last_line": 83
+      },
+      {
+        "name": "state",
+        "first_line": 84,
+        "last_line": 90
+      },
+      {
+        "name": "save",
+        "first_line": 91,
+        "last_line": 97
+      },
+      {
+        "name": "handle",
+        "first_line": 98,
+        "last_line": 122
+      },
+      {
+        "name": "stage",
+        "first_line": 123,
+        "last_line": 124
+      },
+      {
+        "name": "apply",
+        "first_line": 125,
+        "last_line": 220
+      },
+      {
+        "name": "require_ownership",
+        "first_line": 221,
+        "last_line": 224
+      },
+      {
+        "name": "intent",
+        "first_line": 225,
+        "last_line": 225
+      },
+      {
+        "name": "charge",
+        "first_line": 226,
+        "last_line": 226
+      },
+      {
+        "name": "sign",
+        "first_line": 227,
+        "last_line": 245
+      },
+      {
+        "name": "__init__",
+        "first_line": 249,
+        "last_line": 249
+      },
+      {
+        "name": "packet",
+        "first_line": 250,
+        "last_line": 253
+      },
+      {
+        "name": "call",
+        "first_line": 254,
+        "last_line": 256
+      },
+      {
+        "name": "decide",
+        "first_line": 257,
+        "last_line": 257
+      },
+      {
+        "name": "sign",
+        "first_line": 258,
+        "last_line": 258
+      },
+      {
+        "name": "release",
+        "first_line": 259,
+        "last_line": 260
+      },
+      {
+        "name": "retry",
+        "first_line": 262,
+        "last_line": 264
+      }
+    ]
+  },
+  "sources/retry/prospective/ownership.py": {
+    "bytes": 5543,
+    "sha256": "484bb578e1fff08bd397fea25987c929400bb203ae72cf55b8091db5007b2b18",
+    "function_ranges": [
+      {
+        "name": "attach",
+        "first_line": 13,
+        "last_line": 28
+      },
+      {
+        "name": "identity",
+        "first_line": 30,
+        "last_line": 30
+      },
+      {
+        "name": "owner",
+        "first_line": 31,
+        "last_line": 31
+      },
+      {
+        "name": "row",
+        "first_line": 32,
+        "last_line": 35
+      },
+      {
+        "name": "require",
+        "first_line": 37,
+        "last_line": 38
+      },
+      {
+        "name": "claim",
+        "first_line": 40,
+        "last_line": 46
+      },
+      {
+        "name": "SignedCarrierGuard",
+        "first_line": 48,
+        "last_line": 93
+      },
+      {
+        "name": "__init__",
+        "first_line": 54,
+        "last_line": 63
+      },
+      {
+        "name": "identity",
+        "first_line": 64,
+        "last_line": 64
+      },
+      {
+        "name": "get",
+        "first_line": 65,
+        "last_line": 66
+      },
+      {
+        "name": "create",
+        "first_line": 67,
+        "last_line": 67
+      },
+      {
+        "name": "_claims",
+        "first_line": 68,
+        "last_line": 78
+      },
+      {
+        "name": "commit",
+        "first_line": 79,
+        "last_line": 92
+      },
+      {
+        "name": "close",
+        "first_line": 93,
+        "last_line": 93
+      },
+      {
+        "name": "blob",
+        "first_line": 70,
+        "last_line": 71
+      }
+    ]
+  },
+  "sources/retry/results/SUMMARY.json": {
+    "bytes": 482,
+    "sha256": "8e9f7c772173e575e82001efb3c307d4eebf12f610fdbeb8287d85ad15903a6d"
+  },
+  "sources/retry/results/preservation.json": {
+    "bytes": 11532,
+    "sha256": "a23ad8f2d374d568aeac3a56080424b0dcf0bb948460701ee5b2819268746e3e"
+  }
+}

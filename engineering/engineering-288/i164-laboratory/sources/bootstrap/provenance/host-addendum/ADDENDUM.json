@@ -1,0 +1,45 @@
+{
+  "reviewer": "Codex, separate from SU-Engineering[288C] construction author",
+  "recipient": "Engineering-Anchor[2]",
+  "verdict": "CORRECTIONS REQUIRED; BR-01 and BR-02 remain open",
+  "prior_checkpoint": {
+    "bytes": 30265291,
+    "sha256": "a1a551594b744c505ab58527101dcf1f18b567686f52d502e6e6358c862b90e5",
+    "entries": 194,
+    "crc": "PASS",
+    "safe_exact_membership": "PASS",
+    "all_manifest_identities": "PASS"
+  },
+  "host_evidence": "Supplied terminal transcript; no direct access to the host",
+  "lock_reconstruction": "133 numbered lines reconstructed; bytes and SHA-256 match the captured original lock identity",
+  "versions_from_lock": {
+    "cffi": "2.1.1",
+    "cryptography": "41.0.7",
+    "pycparser": "3.11"
+  },
+  "hash_options_per_requirement": {
+    "cffi": 100,
+    "cryptography": 23,
+    "pycparser": 2
+  },
+  "host_reported_launcher_environment_gate": "PASS CPython 3.12.14, optimize=0, Cryptography 41.0.7",
+  "host_failure": "Reviewer probe cannot parse hash-pinned multi-line lock; not a launcher finding",
+  "host_operations_not_reached": [
+    "pip check",
+    "runtime recovery",
+    "temporary session creation/reopening"
+  ],
+  "remaining_environment_limits": [
+    "Original ENVIRONMENT-RESULT.json and COMPATIBILITY-RESULT.json bodies not supplied; exact record reconciliation remains pending",
+    "Installed version agreement is not verification of installed wheel bytes against lock hashes",
+    "No public 41.0.7 runtime compatibility execution established"
+  ],
+  "new_runtime_execution": false,
+  "candidate_modifications": 0,
+  "persistent_session_created": false,
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "backup": "KERNEL-ONLY",
+  "streams": "UNCOMPUTED",
+  "admission": false
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "case": "deny-error-response",
+    "exception": {
+      "type": "Blocked",
+      "message": "REPLAY"
+    },
+    "authoritative_state_and_journal_unchanged": true,
+    "scope": "actual duplicate authenticated request after reconstructed reopen; no signer invocation"
+  },
+  {
+    "case": "deny-success-response",
+    "exception": {
+      "type": "Blocked",
+      "message": "REPLAY"
+    },
+    "authoritative_state_and_journal_unchanged": true,
+    "scope": "actual duplicate authenticated request after reconstructed reopen; no signer invocation"
+  },
+  {
+    "case": "exit-rollback",
+    "exception": {
+      "type": "Blocked",
+      "message": "REPLAY"
+    },
+    "authoritative_state_and_journal_unchanged": true,
+    "scope": "actual duplicate authenticated request after reconstructed reopen; no signer invocation"
+  },
+  {
+    "case": "exit-postpersist",
+    "exception": {
+      "type": "Blocked",
+      "message": "REPLAY"
+    },
+    "authoritative_state_and_journal_unchanged": true,
+    "scope": "actual duplicate authenticated request after reconstructed reopen; no signer invocation"
+  }
+]
