@@ -1,0 +1,60 @@
+INDEPENDENT FINITE-OUTPUT VERIFIER REVIEW — RECOVERY
+
+Verify this review archive's published byte count, SHA-256 and entry count,
+CRC, safe exact membership and every MANIFEST.json size/hash before extraction.
+code/verify_checkpoint.py is a read-only verifier and optional safe extractor.
+Use a new persistent directory, never /tmp. No application executes on recovery.
+
+The exact 28-entry new author submission is included at
+inputs/I164-finite-verification.zip:
+96,006 bytes; SHA-256
+34f425f044337d14ca0abf6eb5469e69826f9ba4332035a5ec05603e67b52310.
+
+The exact unchanged consumer dependency is included at
+inputs/Engineering-288C-I164-finite-native-consumer-verified.zip:
+6,636,286 bytes; 40 entries; SHA-256
+cb88382f2e16ee9fbd44a30f05033ef12c6e467b838784fa25fa16b88bc5e5f5.
+Recover outputs/native.json from that authenticated archive. Its exact identity
+is 35,955,155 bytes / SHA-256
+1401d5797186b99790ffc6d868cadab62f358bdc1aea0a3946469eab636337ed.
+Do not run consumer construction to manufacture a missing output.
+
+Required unchanged external input dependency, already supplied and verified:
+Engineering-288C-I164-finite-native-inputs.zip:
+45,747,644 bytes; 60 entries; SHA-256
+94791c65c3502d85fc452c0e9c100391f5d0199f7690462e92b91c1a600caa8b.
+The exact reviewed bundle is its outputs/bundle.json, SHA-256
+e724e49952a6501ab45952416fdd422e9a989cf05f81b8e29254a50088b0a09b.
+That archive is deliberately not duplicated in this review checkpoint.
+
+Retained independent consumer review, also checked unchanged in this review:
+Engineering-Anchor2-I164-finite-native-consumer-independent-review.zip:
+19,999,861 bytes; 61 entries; SHA-256
+df97d1842f52606e40365db0a98d3f5fa46ed38eaf07f34656aeb456d3d140cd.
+Its relevant exact texts are incorporated in the author submission. Prior
+failure evidence remains in the unchanged predecessor archives. The completed
+consumer/input/projection/procedure reviews do not need to be rerun.
+
+Only if this new finite verification is to be reproduced, after verifying and
+recovering these exact inputs:
+python3 -I -B /ABS/new-verifier/code/verify_finite.py --component /ABS/finite-native-inputs.zip --consumer /ABS/finite-native-consumer-verified.zip --submitted /ABS/recovered-native.json --output /ABS/NEW-PERSISTENT-RESULT
+
+This command reads archives and the saved representation and creates only a new
+receipt directory (or preserved failure record). It does not instantiate/reopen
+sessions, run any producer, import historical builders, enumerate streams or
+construct/rebind a ledger. Standard library only; no dependency installation.
+
+Reviewer scripts are evidence of the new independent controls, not automatic
+setup instructions. Their paths record the review workspace. Public-control
+results include exact mutation recipes and each serialized input's byte count
+and SHA-256; all mutations are relative to the saved native.json. Complete
+mutants remain in named evidence directories in the review workspace and are
+not duplicated in this archive. Negative subprocess fixtures are reproduced
+by code/process_controls.py. Stale archive fixtures change only bit 0 of ZIP
+byte 10 and retain valid CRC/member bytes; their identities are recorded.
+No implementation source was changed for any control. Supplied 39 controls
+were inspected, not run as fresh review evidence.
+
+The returned finite verification receipt is neither a complete-model verifier
+result nor an immutable current-model identity. SOURCE-ONLY; readiness/final
+binding BLOCKED; backup KERNEL-ONLY; streams UNCOMPUTED; admission DISABLED.

@@ -1,0 +1,26 @@
+Verify this review ZIP's published bytes/SHA-256/entry count, CRC, exact
+MANIFEST.json membership and every member hash before safe extraction to a NEW
+persistent directory. Never /tmp. No application runs during recovery.
+
+The exact author submission is included at inputs/I164-finite-ledger.zip.
+Its original outputs/ledger.json, code, controls, negative witness, manifests
+and RECOVERY.md are preserved unchanged. Follow its exact external dependency
+identities: finite-input ZIP 45747644 bytes / 60 entries /
+94791c65c3502d85fc452c0e9c100391f5d0199f7690462e92b91c1a600caa8b;
+consumer ZIP 6636286 bytes / 40 entries /
+cb88382f2e16ee9fbd44a30f05033ef12c6e467b838784fa25fa16b88bc5e5f5.
+Recover exact outputs/native.json from the verified consumer archive; do not
+rerun construction. Prior independent verifier review is 14095640 bytes /
+56 entries / 99bc661eb6de2c9af36253c5b39344e7a2a21d4b1aa4d3d0c59891479080df51.
+These unchanged dependencies were verified and are not duplicated here.
+
+If reproducing this NEW ledger validation is needed:
+python3 -I -B /ABS/recovered/code/ledger.py --component /ABS/input.zip --consumer /ABS/consumer.zip --model /ABS/native.json --submitted /ABS/recovered/outputs/ledger.json --output /ABS/NEW-PERSISTENT-RESULT
+
+Reviewer scripts are records of focused new controls, not setup instructions.
+results/checks.json records each mutation path, old/new values, deletion flag
+and exact serialized fixture identity. Mutations are independently applied to
+the original ledger and encoded with sorted compact JSON; the single working
+fixture is reused, and its final bytes are included under fixtures/. The
+alternate model adds exactly b' \n' before the original saved model bytes.
+No prior validator suite, lifecycle or session needs to be rerun for continuity.

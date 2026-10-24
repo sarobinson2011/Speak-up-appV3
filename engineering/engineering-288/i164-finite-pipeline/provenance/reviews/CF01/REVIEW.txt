@@ -1,0 +1,135 @@
+CF-01 AUTHOR-INDEPENDENT CLOSURE REVIEW — 24 October 2026
+
+Verdict: SUPPORTED / CF-01 CLOSED within the retained finite saved-acquisition
+contract. Scoped connected-pipeline support is restored. No smallest residual
+CF-01 witness was found. This is not complete-model verification or readiness.
+
+Reviewer: Codex, the separate reviewer who found CF-01. Construction/correction
+author: SU-Engineering[288C]. I did not author or modify the implementation.
+This review's code changes are confined to independent harnesses and evidence.
+
+Artifact and dependency verification
+
+I164-CF01-correction(1).zip: 13,276,991 bytes, 96 entries, SHA-256
+3bc2c45635bf3a33919faecf22bb14df32f22aec3c0fa53e0165ab237bb96680.
+CRC, duplicate/path/type safety, exact archive membership and all 95 manifest
+member hashes verified. All six declared external recovery archives verified
+independently for bytes/hash, CRC, safe exact membership and manifests; embedded
+ledger/count components and selected original review evidence matched exactly.
+The unchanged source-only/discriminator/unknown recovery chain is reused, not
+presented as freshly rerun reviews. Current strict dependency roots contain the
+exact 666 candidate files, 163 draft files and exact component archive members.
+This preserves historical files, relationships, ordinals and original evidence
+by byte identity; their completed semantic reviews were not repeated.
+
+Only inherited code/connect.py changes: 11,569 bytes / SHA-256
+b0dee73765bf092660812c8ebae3e78fcd9a55a8b52d0d938d9779257cb56d2a
+becomes 13,076 bytes / SHA-256
+c164ee2d7944c1c7de7a902b8529a2d9b77d5fe4f9e547c33705844dd3616aaf.
+worker.py, recover.py, package.py and pins.json are unchanged. The copied ledger
+contract and implementation equal the authenticated ledger component sources.
+
+Finding, reproduction and correction
+
+Fresh old-code linkage execution reproduced the exact original witness using
+retained real-stage artifacts: the ledger has 9,339 node duties in the first
+context, but the old output_bindings accepts a summary reporting 0. The original
+full-public false receipt remains authenticated prior evidence; that old full
+chain was not rerun or relabeled as a new execution.
+
+The corrected implementation parses a verified ledger-byte snapshot, derives the
+whole redundant summary, compares exact JSON values/types/key sets/order, and
+emits context summaries from that derived value. Ledger and summary identities
+come from the same bytes used for these checks. No fixture totals or submitted
+summary hashes supply the expectations. The governing contract is the unchanged
+ledger.py summary/main interface, operating on the actual ledger accepted by the
+existing public validator. The internal linkage helper is not a standalone ledger
+authenticator; public run still executes all four required stages.
+
+Independent enumeration and cross-check against the actual finite model found,
+for EACH of SYMBOLIC-U-ONE and SYMBOLIC-U-TWO:
+  node duties 9,339; relation duties 9,376; fold duties 12;
+  token memberships 2,376; edge memberships 2,368.
+All reported counts, context ordering, model/acquisition binding, ledger byte
+length/hash, eleven-obligation count, status, qualification, canonical rebinding,
+final binding and admission fields are checked. Empty directories and zero-edge
+relation duties remain included. Relation-duty counts are contract obligations,
+not instantiated edge counts; n-ary folds add no Cartesian edges. Both symbolic
+contexts retain their identities without asserting doubled physical storage.
+
+Fresh reviewer evidence (separate from supplied evidence)
+
+1. 80 independent linkage controls on authentic previously validated outputs.
+   They include every count in both contexts, zero/increment/float/boolean
+   substitutions, coordinated counts and bindings, missing/reordered/duplicate
+   contexts, stale model/acquisition/ledger bindings, missing envelope fields,
+   duplicate JSON keys, unsupported status/qualification/readiness claims,
+   nested returned-result mutations, repeated calls, truthful reserialization,
+   and a coordinated changed ledger plus matching summary. All expected outcomes
+   passed. The changed ledger was rejected by the actual-byte bridge.
+2. Four separate fresh-process checks: old acceptance, corrected original-witness
+   rejection, coordinated substitution rejection, and legitimate acceptance.
+3. Three further fresh-process checks from the exact five-file executable recovery:
+   legitimate acceptance, original-witness rejection and coordinated rejection.
+4. A fresh unmodified public CLI full chain: all four real component subprocesses
+   returned zero; a valid final receipt was produced.
+5. A separate fresh public full-chain fault injection: all four real subprocesses
+   returned zero; only generated 04-ledger/result.json was changed after the real
+   ledger stage. node_duties 9339 -> 0, with the ledger unchanged, rejected with
+   LEDGER-RESULT-CORRESPONDENCE. No final receipt was written. This is a constructed
+   offline fault, not evidence of operational corruption.
+6. Final receipt and actual model/ledger correspondence were checked independently,
+   including exact code/input/output bindings, all duty entry bindings, UNKNOWN
+   classifications, all O01–O11 obligations and unchanged blocking statuses.
+
+The clean receipt is 133,428 bytes, SHA-256
+ad6e99c18aa7d095c21901284b5f6fb3534ebe3633830e9e5cd0f3c3d7f82de5.
+The fresh altered summary exactly equals the retained original witness bytes.
+The real ledger remains 49,301,820 bytes, SHA-256
+e147233a2e1e0ec6f2892088175831bc38afb025f8096d238191ce7ef72a917a.
+The clean and fault runs consumed about 344.3 and 345.2 stage seconds respectively.
+Full outputs, logs, original/altered summaries and the expected failure are retained.
+
+Supplied evidence, inspected but not rerun
+
+Engineering's 57 focused controls, three process checks, clean full chain and
+fault-injected full chain were inspected as supplied evidence. Recorded stage
+return codes, summary/receipt bytes and generated-member manifests corroborate
+its report. Large omitted supplied outputs identify the same exact bundle/model/
+ledger bytes freshly produced here. They are not counted as reviewer executions.
+Prior component support and prior scoped closures are reused; no completed review
+suite, producer campaign, acquisition, lifecycle or global expansion was rerun.
+
+Recovery anomalies and limitations
+
+All 96 declared archive files remained byte-exact in the three complete evidence
+extractions. However, undeclared regular partial files appeared in their failures/
+subdirectories, and two reappeared after preservation moves. The failed strict
+membership audits, exact bytes, original paths and repeated observations are
+retained. Their origin is UNESTABLISHED. These complete evidence extraction trees
+are NOT certified as strict roots. No validator was relaxed to admit their extras.
+A separate recovery of precisely the five executable/support files required by
+the launcher verified exact membership and bytes; fresh-process acceptance and
+rejection checks passed there. The six reused operational input roots remained
+strict and exact. Full-chain code/worker bytes match that executable recovery;
+the extra evidence files are not consumed by the entry point. This distinction is
+recorded rather than turning an archive hash into a claim about a live directory.
+The author's unavailable original path journal for six older partial files remains
+an explicit supplied-evidence gap, not a newly inferred attribution.
+
+Actual environment: CPython 3.12.14, optimization disabled; Linux 6.18.55 x86_64,
+glibc 2.39; Cryptography 50.0.2. No prepared-host 41.0.7 compatibility or Steve-host
+execution is established by these tests. Wheel-origin and earlier host evidence
+limits remain unchanged. The worker's database/network audit restrictions stayed
+in place. No database access, session operation, dependency change, canonical
+rebinding, policy change or persistent-session initialization was performed.
+
+Observation scope is one retained saved acquisition in two symbolic contexts,
+under the inherited exclusive-owner/trusted-process/mandatory-entry conditions.
+This is finite representation/ledger correspondence, not proof of producer runtime
+coverage, race resistance, completed model construction, authoritative lifetime
+bounds, qualification, storage durability, rollback resistance or canonical power.
+SOURCE-ONLY and UNKNOWN remain unchanged; all eleven obligations remain.
+Production/lifetime multiplicities, operational and authority evidence remain
+unresolved. Readiness/final binding BLOCKED; backup KERNEL-ONLY; streams UNCOMPUTED;
+admission disabled. No policy, new bound or outcome restriction is adopted.

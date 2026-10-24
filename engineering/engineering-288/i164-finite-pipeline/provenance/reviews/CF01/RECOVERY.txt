@@ -1,0 +1,45 @@
+CF-01 independent review checkpoint recovery
+
+Verify the checkpoint's outer size/hash, ZIP CRC, safe exact membership, and every
+MANIFEST.json hash. inputs/I164-CF01-correction.zip is the exact submitted archive.
+Its own manifest covers all 95 non-manifest entries. This checkpoint includes the
+reviewer harnesses, raw fresh chain outputs, logs and preserved failure evidence.
+
+Reuse the exact six dependencies identified in the embedded correction's
+provenance/recovery-dependencies.json and results/audit.json; do not run their
+completed review suites. The prior review archive used for authentic old-witness
+fixtures is I164-connected-finite-independent-review.zip, 34,472,947 bytes,
+76 entries, SHA-256 633f343a9301c3311bbd9779fcef826cc97c396595f404fa4423eac5d2528201.
+It is a recovery dependency, not re-embedded here. Its exact selected witness
+members and identities are retained by the correction archive.
+
+All work must use named persistent directories, never /tmp. Preserve partials and
+failed roots. Do not merge an evidence extraction with a strict executable/input
+root. The full evidence extractions in this review acquired undeclared partials;
+results/evidence-root-state.json states their precise limitations. To recover the
+small executable tree, extract only the five files in results/runtime-members.json
+from the exact correction ZIP into a new directory, and check exact file AND
+required directory membership plus every size/hash. Keep all other archive
+entries as evidence outside that executable tree. Required inputs remain exact
+666-member candidate, 163-member draft and component archive-member trees.
+The unchanged recover.py can compose them from the pinned six archives when they
+are unavailable. No dependency installation or session operation is required.
+
+Harnesses record original absolute workspace paths for evidence attribution.
+Their W variable derives from the script location. To reproduce their directory
+layout, extract this checkpoint as WORK/cf01-review; put the original connected
+review at WORK/cf-review and its original code at WORK/cf-recovered; extract the
+correction evidence at WORK/cf01-input and recover the five-file executable tree
+at WORK/cf01-runtime. Supply exact reused-root paths in WORK/cf-review/config.json
+(the current paths are preserved in results/used-config.json). Do not blindly reuse
+old absolute paths on another host. Runtime-process checks use the exact small
+executable recovery; linkage checks originally used byte-identical recovered code.
+Create fresh fixture and output names on every deliberate rerun. This checkpoint
+requires no test rerun for inspection.
+
+The 80 focused checks, seven small process checks and two real full-chain runs
+are distinct evidence categories. Old full-public acceptance is retained prior
+review evidence; only old linkage acceptance was freshly reproduced. The fault
+run's stage successes do not imply a successful final receipt: its expected result
+is rejection and no receipt. No completed review, lifecycle, producer campaign,
+acquisition, session operation or global expansion is authorized by this recipe.

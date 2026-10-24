@@ -1,0 +1,256 @@
+{
+  "status": "PASS \u2014 separate 50.0.2 saved-evidence and finite-consumer compatibility",
+  "output": "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh",
+  "assessment": "SOURCE-ONLY",
+  "old_environment_preserved": true,
+  "bootstrap_gate": "UNCHANGED; 41.0.7 ONLY",
+  "session_rebound": false,
+  "lifetime_bounds": "UNRESOLVED",
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "streams": "UNCOMPUTED",
+  "admission": false,
+  "native_model_completion": false,
+  "ledger_rebound": false,
+  "independent_consumer_controls": 55,
+  "supplied_consumer_controls": 28,
+  "review_suites_rerun": false,
+  "session_operations": false,
+  "database_connections": false,
+  "verified_inputs": [
+    {
+      "path": "/home/steve/dev/Engineering-288-execution/I164-python31214-01qgue5t/ENVIRONMENT-RESULT.json",
+      "bytes": 1720,
+      "sha256": "d8314be91461a8307d0ff474865ac5b1dd86712a65d44141f6fc6dc8e12b4508"
+    },
+    {
+      "path": "/home/steve/dev/Engineering-288-execution/I164-python31214-01qgue5t/requirements.lock",
+      "bytes": 11173,
+      "sha256": "93c41e8b77049d05a764127cad3b3d42832810e7742a14f3537c3f0e5ac4fa50"
+    },
+    {
+      "path": "/home/steve/dev/Engineering-288-execution/I164-python31214-01qgue5t/python/cpython-3.12.14-linux-x86_64-gnu/bin/python3.12",
+      "bytes": 30976376,
+      "sha256": "5ebcd7993f0e40cb4b16e15d2c4c3c343ecad419966299b8e8f6f9e6a36bf779"
+    },
+    {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-Anchor2-I164-finite-native-input-independent-review.zip",
+      "bytes": 59282045,
+      "sha256": "9646f4639ee7eaa869aacf5d1e63746061344542ea0c5003b10d42bf523b881b"
+    },
+    {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-Anchor2-I164-finite-native-consumer-independent-review.zip",
+      "bytes": 19999861,
+      "sha256": "df97d1842f52606e40365db0a98d3f5fa46ed38eaf07f34656aeb456d3d140cd"
+    }
+  ],
+  "new_environment": "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment",
+  "dependency_result": "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-dependencies/RESULT.json",
+  "new_build": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "optimize": 0,
+    "machine": "x86_64",
+    "libc": [
+      "glibc",
+      "2.39"
+    ],
+    "executable": "/home/steve/dev/Engineering-288-execution/I164-python31214-01qgue5t/python/cpython-3.12.14-linux-x86_64-gnu/bin/python3.12",
+    "executable_identity": {
+      "bytes": 30976376,
+      "sha256": "5ebcd7993f0e40cb4b16e15d2c4c3c343ecad419966299b8e8f6f9e6a36bf779"
+    },
+    "cryptography_openssl": "OpenSSL 4.0.3 29 Sep 2026",
+    "stdlib_ssl": "OpenSSL 3.5.9 29 Sep 2026",
+    "packages": {
+      "cryptography": {
+        "version": "50.0.2",
+        "requires": [
+          "cffi>=2.0.0 ; platform_python_implementation != 'PyPy'",
+          "typing-extensions>=4.13.2 ; python_full_version < '3.11'",
+          "bcrypt>=3.1.5 ; extra == 'ssh'"
+        ],
+        "build_files": [
+          {
+            "member": "cryptography-50.0.2.dist-info/METADATA",
+            "identity": {
+              "bytes": 4394,
+              "sha256": "047cfc71226409de4318b360aef15c63a2adf609731e3dcf7fe932f14ea042ee"
+            }
+          },
+          {
+            "member": "cryptography-50.0.2.dist-info/RECORD",
+            "identity": {
+              "bytes": 17965,
+              "sha256": "1e639ca10155a1cf4b8b5eac33cde9b1f14dca329be54161b2ed41d2d0499850"
+            }
+          },
+          {
+            "member": "cryptography-50.0.2.dist-info/WHEEL",
+            "identity": {
+              "bytes": 109,
+              "sha256": "39b425ce6c898e83f8b8cdeeb65dae690d3ab9f2382ca9c3860e77bf6d34077a"
+            }
+          },
+          {
+            "member": "cryptography/hazmat/bindings/_rust.abi3.so",
+            "identity": {
+              "bytes": 14434376,
+              "sha256": "1e5d23fa66915204b9b67202a46993844d81cda56f6ad52cead2def37617ee29"
+            }
+          }
+        ]
+      },
+      "cffi": {
+        "version": "2.1.1",
+        "requires": [
+          "pycparser; implementation_name != \"PyPy\""
+        ],
+        "build_files": [
+          {
+            "member": "_cffi_backend.cpython-312-x86_64-linux-gnu.so",
+            "identity": {
+              "bytes": 348856,
+              "sha256": "9bc1d08072255a5ec2db10fc75df1dd9e73097a75cd9150cfe875ebd6712f17c"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/METADATA",
+            "identity": {
+              "bytes": 2527,
+              "sha256": "558bafb9093a8e790175d9ecff9688382981d744877dad86fd6770db0f4dc918"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/RECORD",
+            "identity": {
+              "bytes": 3600,
+              "sha256": "3860322d54b205604fbcee564e92eb398aaea8bf0a027f227c82032c0534cd2d"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/WHEEL",
+            "identity": {
+              "bytes": 151,
+              "sha256": "504ac80cc95190c99aea177550563d7939b8fca6b1431c01c0d435e74afbbd0e"
+            }
+          }
+        ]
+      },
+      "pycparser": {
+        "version": "3.11",
+        "requires": [],
+        "build_files": [
+          {
+            "member": "pycparser-3.11.dist-info/METADATA",
+            "identity": {
+              "bytes": 8238,
+              "sha256": "e3a74c846648bb55f4f907284b745e2003b87b96d9c9d17a8a50cf37804541c9"
+            }
+          },
+          {
+            "member": "pycparser-3.11.dist-info/RECORD",
+            "identity": {
+              "bytes": 1579,
+              "sha256": "87810d4e2a8896e1871ca88bf2aafe26a0f2656320c14d93d252fc21ee59b02e"
+            }
+          },
+          {
+            "member": "pycparser-3.11.dist-info/WHEEL",
+            "identity": {
+              "bytes": 91,
+              "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+            }
+          }
+        ]
+      }
+    },
+    "wheel_payload_authentication": "NOT ESTABLISHED BY INVENTORY ALONE",
+    "probe": {
+      "passed": [
+        "RFC8032 public verification",
+        "Raw public byte equality",
+        "InvalidSignature rejection",
+        "InvalidSignature rejection",
+        "Raw key length rejection",
+        "Raw key length rejection",
+        "Raw key length rejection",
+        "Private API presence only; not invoked",
+        "secp256k1/Prehashed interface rejects invalid signature"
+      ],
+      "scope": "public primitive checks only; not I164 saved-export or signing validation",
+      "signing_executed": false,
+      "session_operated": false,
+      "model_expanded": false,
+      "admission": false
+    }
+  },
+  "saved_validation_command": [
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment/venv/bin/python",
+    "-I",
+    "-B",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/adapter/code/finite_inputs.py",
+    "validate",
+    "--component",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/evidence-count",
+    "--root",
+    "/home/steve/dev/Engineering-288-execution/I164-reviewed-recovery-0s8zad3j/current-candidate",
+    "--draft",
+    "/home/steve/dev/Engineering-288-execution/I164-reviewed-recovery-0s8zad3j/draft-connection",
+    "--bundle",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/adapter/outputs/bundle.json",
+    "--output",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/saved-validation"
+  ],
+  "contexts": [
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "fold_obligations": 12,
+      "lookup_groups": 9376,
+      "pairs": 2368,
+      "tokens": 2376
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "fold_obligations": 12,
+      "lookup_groups": 9376,
+      "pairs": 2368,
+      "tokens": 2376
+    }
+  ],
+  "directory_entries": 18678,
+  "eleven_obligations_preserved": true,
+  "native_validation_command": [
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment/venv/bin/python",
+    "-I",
+    "-B",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/native-consumer/code/consumer.py",
+    "--component",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/finite-input-component.zip",
+    "--submitted",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/native-consumer/outputs/native.json",
+    "--output",
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh/native-validation"
+  ],
+  "finite_native_result": {
+    "actual_admission": false,
+    "contexts": [
+      {
+        "context": "SYMBOLIC-U-ONE",
+        "groups": 9339,
+        "ordered_edges": 2368,
+        "tokens": 2376
+      },
+      {
+        "context": "SYMBOLIC-U-TWO",
+        "groups": 9339,
+        "ordered_edges": 2368,
+        "tokens": 2376
+      }
+    ],
+    "final_binding": "BLOCKED",
+    "native_sha256": "1401d5797186b99790ffc6d868cadab62f358bdc1aea0a3946469eab636337ed",
+    "obligations": 11,
+    "status": "PASS finite native representation"
+  }
+}

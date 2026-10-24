@@ -1,0 +1,49 @@
+SUPPLIED EVIDENCE — INSPECTED, NOT RERUN
+
+Author: SU-Engineering[288C]. The supplied code/checks.py and results/checks.json
+account for exactly 39 controls: one saved-output positive; 24 per-context
+mutations; seven global mutations; two alias/pristine checks; three subprocess
+checks; and two strict-parser checks. These are supporting evidence, separate
+from this reviewer's fresh public-API and recovered-process tests.
+
+The author harness verifies each mutation changes canonical bytes and expects
+the implementation's Rejected exception. Its chosen byte and endpoint changes
+are effective against the retained actual output. Its alias control changes
+returned context order and obligation count, but its subsequent assertion only
+checks the obligation count. The independent review therefore explicitly tests
+context order, nested counts, submitted byte identity and status aliases, followed
+by both pristine acceptance and continued negative rejection.
+
+The author's recovered execution copies only the verifier code, using exact
+dependency archives for expectations. That matches the executable's dependency
+model; local historical source modules are not imported. The supplied stale
+component negative uses the short value 'wrong', so it does not itself show
+rejection of a structurally valid but stale archive. Fresh reviewer processes
+also use CRC-valid archives with unchanged member payloads but changed ZIP
+timestamp bytes, as well as swapped archive roles and missing inputs.
+
+The 55 controls from the completed independent finite-consumer review and its
+28 author controls retain their historical scopes. Neither suite was executed
+again. Relevant review/contract/recovery texts are exact copies from the verified
+predecessor review and consumer archives. Original predecessor failure evidence
+remains in those unchanged archives; it was not rewritten as successful evidence.
+
+Two included Steve-host records report a 50.0.2 disposable bootstrap/handoff/
+confirmed close (10.338 seconds), and fresh-process disposable reopening/close
+(10.388 seconds), both exit 0. Their report linkage and listed database/binding
+identities are mutually consistent, and the launcher/profile/configuration pins
+match the previously reviewed prospective launcher. The raw host logs, environment
+and databases were not acquired or re-executed in this review. These reports are
+not an execution of the new finite-output verifier. They do not replace the
+original I164-snapshot-acquisition-egpf25d9 or contribute new finite occurrences.
+
+The reports retain SOURCE-ONLY, blocked readiness/final binding, disabled
+admission and UNCOMPUTED streams. Wheel-origin authentication and real-storage
+durability remain unestablished. Original-record reconciliation and operational
+ownership evidence are not resolved by this finite-output review.
+
+Fresh reviewer execution uses CPython 3.12.14 on x86_64 Linux/glibc 2.39.
+Cryptography 50.0.2 is installed but is not imported or exercised by this
+standard-library-only verifier. Neither prepared-host 41.0.7 nor Steve's 50.0.2
+environment was used for the new verifier; no such host compatibility run is
+claimed. No dependency changes, session operations or network submission occur.

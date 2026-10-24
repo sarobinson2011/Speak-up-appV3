@@ -1,0 +1,803 @@
+[
+  {
+    "path": "compiler/managed_observations.py",
+    "sha256": "2b4ccd7902d8e270ac8d4b22060d08d184dda1b0e6fcdccae781fd81eef902cc",
+    "imports": [
+      {
+        "line": 232,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PublicKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 234,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(pub[role])).verify(bytes.fromhex(sig), version.encode() + b'\\x00' + enc(obj))"
+      },
+      {
+        "line": 448,
+        "expression": "ingest.verify_signature(q['principal'], q, env['signature'])"
+      },
+      {
+        "line": 239,
+        "expression": "signature(request['principal'], request, q['signature'])"
+      },
+      {
+        "line": 245,
+        "expression": "signature('server', r, response['signature'])"
+      },
+      {
+        "line": 234,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(pub[role]))"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/carrier_fixture.py",
+    "sha256": "1bef257b5e0e990da67416956d5e46417f20340c688ce5e7d3d0bb93d1420813",
+    "imports": [
+      {
+        "line": 4,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 22,
+        "expression": "runtime.retained.t.unsigned(spec, raw)"
+      },
+      {
+        "line": 37,
+        "expression": "sign({'claim': {'format': 'C4-LAB-NEAR-SUBMIT-1', 'context': outcome.context(self.cfg, self.s.binding, v, self.u, 'observe', s['counts']['query'] + 1), 'near_spec': spec, 'near_hex': near.hex(), 'rpc_request_hex': enc(request).hex(), 'rpc_response_hex': enc(response).hex(), 'provenance': {'kind': 'INDEPENDENTLY-CONSTRUCTED-LAB-FIXTURE', 'source_authenticated': False, 'qualification_established': False}}, 'signature': ''})"
+      },
+      {
+        "line": 22,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB).sign(bytes.fromhex(sha(unsigned)))"
+      },
+      {
+        "line": 22,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/outcome.py",
+    "sha256": "b76152751e14b085d6cd91cec752e7b91f59835a29076244e5954b8631ba2d03",
+    "imports": [
+      {
+        "line": 6,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PublicKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 137,
+        "expression": "Ed25519PublicKey.from_public_bytes(lab_public).verify(sig, DOMAIN + enc(packet['claim']))"
+      },
+      {
+        "line": 137,
+        "expression": "Ed25519PublicKey.from_public_bytes(lab_public)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/prepare_connected.py",
+    "sha256": "bf3b7c2423647dd2cd8ac85386e84b367f4a3d318663cc10b6631cfcb0367440",
+    "imports": [
+      {
+        "line": 7,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 45,
+        "expression": "Ed25519PrivateKey.from_private_bytes(bytes([17]) * 32).sign(message)"
+      },
+      {
+        "line": 45,
+        "expression": "Ed25519PrivateKey.from_private_bytes(bytes([17]) * 32)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/test_outcome.py",
+    "sha256": "32207ca8f4cd8185faa2258080b8941b2ab9c116f4f5aa55f93526c50c3d1456",
+    "imports": [
+      {
+        "line": 4,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB).sign(outcome.DOMAIN + enc(p['claim'])).hex()"
+      },
+      {
+        "line": 38,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB).sign(bytes.fromhex(sha(unsigned)))"
+      },
+      {
+        "line": 47,
+        "expression": "sign({'claim': claim, 'signature': ''})"
+      },
+      {
+        "line": 51,
+        "expression": "sign(q)"
+      },
+      {
+        "line": 79,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 102,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 109,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 136,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 167,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB).sign(outcome.DOMAIN + enc(p['claim']))"
+      },
+      {
+        "line": 83,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 86,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 148,
+        "expression": "sign(p)"
+      },
+      {
+        "line": 38,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB)"
+      },
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(LAB)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/test_provider.py",
+    "sha256": "9f41d798c0563b366aa98dff51d74f2fb8ab8eedc94bb421bc92e05c18337fc0",
+    "imports": [
+      {
+        "line": 6,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 50,
+        "expression": "signed('provider', 'outcome', p['statement']['claim'])"
+      },
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[role]).sign(provider.signed_bytes(kind, c)).hex()"
+      },
+      {
+        "line": 21,
+        "expression": "signed('authority', 'appointment', {'subject': name, 'key': key, 'role': role, 'domain': d, 'governing': g, 'rule': provider.RULE, 'finality_basis': p['finality_basis'], 'assertion_scope': 'OUTCOME-SOURCE' if role == 'provider' else 'FINALITY-ASSESSMENT', 'laboratory_assumption': True})"
+      },
+      {
+        "line": 22,
+        "expression": "signed('qualifier', 'qualification', {'appointment_sha256': sha(enc(a)), 'subject': name, 'role': role, 'domain': d, 'governing': g, 'competence_contract': provider.RULE, 'finality_basis': p['finality_basis'], 'status': 'ASSUMED-FOR-LAB-ONLY'})"
+      },
+      {
+        "line": 41,
+        "expression": "signed('assessor', 'assessment', a)"
+      },
+      {
+        "line": 48,
+        "expression": "signed('assessor', 'assessment', p['assessment']['claim'])"
+      },
+      {
+        "line": 81,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 105,
+        "expression": "signed('provider', 'assessment', p['statement']['claim'])"
+      },
+      {
+        "line": 135,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 43,
+        "expression": "signed('provider', 'outcome', c)"
+      },
+      {
+        "line": 67,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 71,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 74,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 78,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 89,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 93,
+        "expression": "resign(p)"
+      },
+      {
+        "line": 166,
+        "expression": "resign(bad)"
+      },
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[role]).sign(provider.signed_bytes(kind, c))"
+      },
+      {
+        "line": 13,
+        "expression": "provider.signed_bytes(kind, c)"
+      },
+      {
+        "line": 103,
+        "expression": "signed('provider', 'outcome', p['statement']['claim'])"
+      },
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[role])"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/test_signed.py",
+    "sha256": "114c72826b8d6a1be505dd3d9c45694296ea6779ccc389c99997ea467a710bf2",
+    "imports": [
+      {
+        "line": 15,
+        "module": "cryptography.hazmat.primitives.asymmetric",
+        "names": [
+          "ec",
+          "utils"
+        ]
+      },
+      {
+        "line": 16,
+        "module": "cryptography.hazmat.primitives",
+        "names": [
+          "hashes"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 9,
+        "expression": "signed_eth.decode(self.raw)"
+      },
+      {
+        "line": 17,
+        "expression": "signed_eth.decode_rlp(self.raw)"
+      },
+      {
+        "line": 17,
+        "expression": "ec.derive_private_key(1, ec.SECP256K1()).public_key()"
+      },
+      {
+        "line": 17,
+        "expression": "pub.verify(utils.encode_dss_signature(r, s), digest, ec.ECDSA(utils.Prehashed(hashes.SHA256())))"
+      },
+      {
+        "line": 30,
+        "expression": "signed_eth.decode_rlp(self.raw)"
+      },
+      {
+        "line": 17,
+        "expression": "utils.encode_dss_signature(r, s)"
+      },
+      {
+        "line": 17,
+        "expression": "ec.ECDSA(utils.Prehashed(hashes.SHA256()))"
+      },
+      {
+        "line": 18,
+        "expression": "signed_eth.validate(self.raw, self.expected)"
+      },
+      {
+        "line": 18,
+        "expression": "signed_eth.decode(self.raw)"
+      },
+      {
+        "line": 24,
+        "expression": "signed_eth.validate(wrong, self.expected)"
+      },
+      {
+        "line": 17,
+        "expression": "ec.derive_private_key(1, ec.SECP256K1())"
+      },
+      {
+        "line": 17,
+        "expression": "utils.Prehashed(hashes.SHA256())"
+      },
+      {
+        "line": 22,
+        "expression": "signed_eth.validate(self.raw, want)"
+      },
+      {
+        "line": 28,
+        "expression": "signed_eth.validate(raw, self.expected)"
+      },
+      {
+        "line": 35,
+        "expression": "signed_eth.validate(raw, self.expected)"
+      },
+      {
+        "line": 17,
+        "expression": "ec.SECP256K1()"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/test_stages.py",
+    "sha256": "fc21b1fdebae3eaa2137c64248f4027e26fc9ebe84306f6ba17e914ac8155baf",
+    "imports": [
+      {
+        "line": 3,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 33,
+        "expression": "runtime.retained.t.unsigned(spec, raw)"
+      },
+      {
+        "line": 33,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEED).sign(bytes.fromhex(sha(unsigned)))"
+      },
+      {
+        "line": 33,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEED)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/code/wire.py",
+    "sha256": "68ed19cbb02feb400438014fdb554ec54f9292db82e5b46934aa1162f96c9e84",
+    "imports": [
+      {
+        "line": 7,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey",
+          "Ed25519PublicKey"
+        ]
+      },
+      {
+        "line": 8,
+        "module": "cryptography.hazmat.primitives",
+        "names": [
+          "serialization"
+        ]
+      },
+      {
+        "line": 9,
+        "module": "cryptography.exceptions",
+        "names": [
+          "InvalidSignature"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)"
+      },
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).sign(b'I164-LAB-SERVICE-RESPONSE-1\\x00' + enc(r)).hex()"
+      },
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).public_key()"
+      },
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).sign(b'I164-LAB-SERVICE-RESPONSE-1\\x00' + enc(r))"
+      },
+      {
+        "line": 138,
+        "expression": "Ed25519PublicKey.from_public_bytes(self.response_key).verify(bytes.fromhex(p['signature']), b'I164-LAB-SERVICE-RESPONSE-1\\x00' + enc(r))"
+      },
+      {
+        "line": 89,
+        "expression": "signature(self.response_key, response)"
+      },
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed)"
+      },
+      {
+        "line": 20,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed)"
+      },
+      {
+        "line": 138,
+        "expression": "Ed25519PublicKey.from_public_bytes(self.response_key)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/retained-C2/code/fixtures.py",
+    "sha256": "ba1ba8b539e919ef689d8be4b423e2285d4c47b0899fb7b02d03b64e4f8c8211",
+    "imports": [
+      {
+        "line": 3,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      },
+      {
+        "line": 4,
+        "module": "cryptography.hazmat.primitives",
+        "names": [
+          "serialization"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 30,
+        "expression": "Ed25519PrivateKey.from_private_bytes(bytes(range(32)))"
+      },
+      {
+        "line": 30,
+        "expression": "key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw).hex()"
+      },
+      {
+        "line": 32,
+        "expression": "t.unsigned(s, raw)"
+      },
+      {
+        "line": 30,
+        "expression": "key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)"
+      },
+      {
+        "line": 32,
+        "expression": "key.sign(bytes.fromhex(t.sha(msg)))"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/retained-C2/retained/transport/fixtures.py",
+    "sha256": "2ba740e85ab1a82484142d052ba96bbe54af308247978343b18b21f314a43cd3",
+    "imports": [
+      {
+        "line": 2,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      },
+      {
+        "line": 3,
+        "module": "cryptography.hazmat.primitives",
+        "names": [
+          "serialization"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 9,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEED)"
+      },
+      {
+        "line": 9,
+        "expression": "key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw).hex()"
+      },
+      {
+        "line": 13,
+        "expression": "unsigned(s, evm)"
+      },
+      {
+        "line": 13,
+        "expression": "key.sign(bytes.fromhex(sha(msg)))"
+      },
+      {
+        "line": 9,
+        "expression": "key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)"
+      }
+    ]
+  },
+  {
+    "path": "historical90/retained-candidate/retained-C2/retained/transport/transport.py",
+    "sha256": "27fb91e9d221e92332132980b78318b3ecc292b008261e3e3dde83678d0cae3e",
+    "imports": [
+      {
+        "line": 4,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PublicKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 31,
+        "expression": "unsigned(s, evm)"
+      },
+      {
+        "line": 32,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(s['public_key'])).verify(raw[-64:], bytes.fromhex(sha(expected)))"
+      },
+      {
+        "line": 32,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(s['public_key']))"
+      },
+      {
+        "line": 29,
+        "expression": "s['signer'].encode()"
+      }
+    ]
+  },
+  {
+    "path": "support/code/check_response_envelope.py",
+    "sha256": "f70d7a92a9806dddb1d12a59b7846816a6b888a7815b70661e32fe9506e501f8",
+    "imports": [
+      {
+        "line": 10,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 22,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest()).sign(VERSION.encode() + b'\\x00' + enc(obj)).hex()"
+      },
+      {
+        "line": 22,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest()).sign(VERSION.encode() + b'\\x00' + enc(obj))"
+      },
+      {
+        "line": 29,
+        "expression": "enc(z['signature']).hex()"
+      },
+      {
+        "line": 22,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest())"
+      }
+    ]
+  },
+  {
+    "path": "support/code/correspondence.py",
+    "sha256": "5768ff4503be04bdf956b47c40a6bf8a1cd8ae0597f1d55212f562a5b054b8b2",
+    "imports": [
+      {
+        "line": 9,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PublicKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 15,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(PUB[role])).verify(hexbytes(sig, 64), VERSION.encode() + b'\\x00' + enc(value))"
+      },
+      {
+        "line": 15,
+        "expression": "Ed25519PublicKey.from_public_bytes(bytes.fromhex(PUB[role]))"
+      },
+      {
+        "line": 90,
+        "expression": "{'sign-claim': 'sign', 'sign-persist': 'sign', 'retry-release': 'retry_release'}.get(k, k)"
+      },
+      {
+        "line": 103,
+        "expression": "Ed25519PublicKey.from_public_bytes(key).verify(sig, msg)"
+      },
+      {
+        "line": 92,
+        "expression": "self.sign_claims.get(sha(enc(r)))"
+      },
+      {
+        "line": 103,
+        "expression": "Ed25519PublicKey.from_public_bytes(key)"
+      },
+      {
+        "line": 127,
+        "expression": "signed_eth.validate(rawtx, a['template'])"
+      },
+      {
+        "line": 129,
+        "expression": "signed_eth.validate(self.get(p['tx']), a['template'])"
+      },
+      {
+        "line": 131,
+        "expression": "signed_eth.validate(self.get(p['tx']), a['template'])"
+      }
+    ]
+  },
+  {
+    "path": "support/preserved-review/minimal_omission.py",
+    "sha256": "99ffe32c87c8c9cc8ab7227ecb4fbe2933c0612f460a5140e44e61a5a9f5e6b8",
+    "imports": [
+      {
+        "line": 9,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest()).sign(VERSION.encode() + b'\\x00' + enc(value)).hex()"
+      },
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest()).sign(VERSION.encode() + b'\\x00' + enc(value))"
+      },
+      {
+        "line": 13,
+        "expression": "Ed25519PrivateKey.from_private_bytes(hashlib.sha256(('PUBLIC-LAB-ONLY-' + role).encode()).digest())"
+      }
+    ]
+  },
+  {
+    "path": "support/reference/runtime/authority.py",
+    "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+    "imports": [
+      {
+        "line": 13,
+        "module": "cryptography.hazmat.primitives.asymmetric.ed25519",
+        "names": [
+          "Ed25519PrivateKey",
+          "Ed25519PublicKey"
+        ]
+      },
+      {
+        "line": 14,
+        "module": "cryptography.hazmat.primitives",
+        "names": [
+          "serialization"
+        ]
+      }
+    ],
+    "call_sites": [
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)"
+      },
+      {
+        "line": 26,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[who]).sign(VERSION.encode() + b'\\x00' + enc(x)).hex()"
+      },
+      {
+        "line": 27,
+        "expression": "Ed25519PublicKey.from_public_bytes(PUB[who]).verify(bytes.fromhex(s), VERSION.encode() + b'\\x00' + enc(x))"
+      },
+      {
+        "line": 101,
+        "expression": "verify(r['principal'], r, q['signature'])"
+      },
+      {
+        "line": 222,
+        "expression": "unsigned_intent(self.get(v['intent']), u)"
+      },
+      {
+        "line": 225,
+        "expression": "unsigned_intent(self.get(s['u'][u]['intent']), u)"
+      },
+      {
+        "line": 238,
+        "expression": "signed_eth.validate(raw, t)"
+      },
+      {
+        "line": 255,
+        "expression": "verify('server', out['response'], out['signature'])"
+      },
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed).public_key()"
+      },
+      {
+        "line": 26,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[who]).sign(VERSION.encode() + b'\\x00' + enc(x))"
+      },
+      {
+        "line": 27,
+        "expression": "Ed25519PublicKey.from_public_bytes(PUB[who])"
+      },
+      {
+        "line": 129,
+        "expression": "unsigned_intent(raw, u)"
+      },
+      {
+        "line": 108,
+        "expression": "self.sign(r, inject)"
+      },
+      {
+        "line": 136,
+        "expression": "unsigned_intent(self.get(v['intent']), u)"
+      },
+      {
+        "line": 141,
+        "expression": "Ed25519PublicKey.from_public_bytes(key).verify(signature, msg)"
+      },
+      {
+        "line": 19,
+        "expression": "Ed25519PrivateKey.from_private_bytes(seed)"
+      },
+      {
+        "line": 26,
+        "expression": "Ed25519PrivateKey.from_private_bytes(SEEDS[who])"
+      },
+      {
+        "line": 144,
+        "expression": "signature.hex()"
+      },
+      {
+        "line": 160,
+        "expression": "unsigned_intent(self.get(s['u'][u]['intent']), u)"
+      },
+      {
+        "line": 141,
+        "expression": "Ed25519PublicKey.from_public_bytes(key)"
+      },
+      {
+        "line": 171,
+        "expression": "signed_eth.validate(self.get(p['tx']), action['template'])"
+      },
+      {
+        "line": 180,
+        "expression": "signed_eth.validate(raw, act['template'])"
+      }
+    ]
+  }
+]

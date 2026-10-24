@@ -1,0 +1,44 @@
+--- old/code/connect.py
++++ corrected/code/connect.py
+@@ -102,15 +102,38 @@
+       'model':o/'02-consumer/native.json','verification':o/'03-verification/result.json',
+       'ledger':o/'04-ledger/ledger.json','ledger_result':o/'04-ledger/result.json'}
+     for n,source in [('bundle','bundle'),('model','model'),('ledger','saved_ledger')]:need(read(files[n])==read(config[source]),'ACTUAL-OUTPUT-CORRESPONDENCE:'+n)
+-    verification=load(files['verification']);ledger=load(files['ledger']);validation=load(files['input_validation'])
++    verification=load(files['verification']);ledger_raw=read(files['ledger']);ledger=parse(ledger_raw);validation=load(files['input_validation'])
++    need(ledger_raw==read(config['saved_ledger']),'ACTUAL-OUTPUT-CORRESPONDENCE:ledger')
+     same(verification['submitted'],ident(read(files['model'])),'VERIFIED-MODEL-BYTES')
+     same(ledger['verification_receipt'],verification,'LEDGER-CONSUMES-VERIFICATION')
+     same(ledger['binding'],{'finite_model':ident(read(files['model'])),'acquisition':basis['acquisition']},'LEDGER-MODEL-ACQUISITION')
+     same(ledger['obligations'],basis['obligations'],'ACTUAL-LEDGER-OBLIGATIONS')
+     need(validation['all_eleven_obligations_preserved'] is True,'INPUT-OBLIGATIONS')
+     for obj in (verification,ledger,validation):same([x['context'] for x in obj['contexts']],basis['contexts'],'ACTUAL-CONTEXT-ORDER')
+-    return {'artifacts':{k:ident(read(v)) for k,v in files.items()},'contexts':copy.deepcopy(verification['contexts']),
+-            'ledger_contexts':copy.deepcopy(load(files['ledger_result'])['contexts'])}
++    # ledger.py::summary/main defines this redundant result envelope. Derive all
++    # claims from the exact validated ledger, never from the submitted summary.
++    expected_ledger_result={
++        'status':'PASS finite mechanical ledger correspondence',
++        'binding':copy.deepcopy(ledger['binding']),
++        'contexts':[{'context':c['context'],
++                     'node_duties':len(c['node_duties']),
++                     'relation_duties':len(c['relation_duties']),
++                     'fold_duties':len(c['fold_duties']),
++                     'token_members':sum(len(d['occurrence_keys']) for d in c['node_duties']),
++                     'edge_members':sum(len(d['ordered_edges']) for d in c['relation_duties'])}
++                    for c in ledger['contexts']],
++        'source_only_obligations':len(ledger['obligations']['source_only']),
++        'qualification_established':ledger['qualification_established'],
++        'canonical_ledger_rebound':ledger['canonical_ledger_rebound'],
++        'final_binding':ledger['final_binding'],
++        'actual_admission':ledger['actual_admission'],
++        'ledger':ident(ledger_raw)}
++    ledger_result_raw=read(files['ledger_result'])
++    same(parse(ledger_result_raw),expected_ledger_result,'LEDGER-RESULT-CORRESPONDENCE')
++    bound_raw={'ledger':ledger_raw,'ledger_result':ledger_result_raw}
++    return {'artifacts':{k:ident(bound_raw[k] if k in bound_raw else read(v)) for k,v in files.items()},
++            'contexts':copy.deepcopy(verification['contexts']),
++            'ledger_contexts':copy.deepcopy(expected_ledger_result['contexts'])}
+ def run(config,output,submitted=None):
+     need(sys.version_info[:3]==(3,12,14) and sys.flags.optimize==0,'INTERPRETER-APPLICABILITY')
+     output=Path(output).absolute();need(not os.path.lexists(output) and '/tmp' not in str(output),'NEW-PERSISTENT-OUTPUT')

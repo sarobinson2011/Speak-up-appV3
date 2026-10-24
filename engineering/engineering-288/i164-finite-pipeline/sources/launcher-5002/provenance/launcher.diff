@@ -1,0 +1,76 @@
+--- retained 41.0.7 launcher (unchanged)
++++ new prospective 50.0.2 launcher
+@@ -5,6 +5,14 @@
+ import platform, shutil, sqlite3, stat, sys, traceback
+ from pathlib import Path
+ P = Path(__file__).resolve().parents[1]
++# New prospective module, authenticated before execution; no legacy module patched.
++import importlib.util
++_PROFILE_CODE=P/'code/environment5002.py'
++if hashlib.sha256(_PROFILE_CODE.read_bytes()).hexdigest() != '05e47202c7dfc74c76a82394ad86a49791c44787d66f5a21fa40aa674846ace1':
++    raise RuntimeError('ENVIRONMENT-GUARD-IDENTITY')
++_spec=importlib.util.spec_from_file_location('i164_environment5002',_PROFILE_CODE)
++_profile=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(_profile)
++
+ class Blocked(RuntimeError): pass
+ def require(ok, why):
+     if not ok: raise Blocked(why)
+@@ -70,17 +78,12 @@
+     validate_runtime(dest);return {'runtime':str(dest.resolve()),'files':len(runtime_pins())}
+ 
+ def environment():
+-    return {'implementation':platform.python_implementation(),'python':platform.python_version(),
+-      'optimize':sys.flags.optimize,'cryptography':importlib.metadata.version('cryptography'),
+-      'sqlite':sqlite3.sqlite_version,'executable':str(Path(sys.executable).resolve()),
+-      'executable_identity':identity(Path(sys.executable).resolve()),
+-      'distributions':{x.metadata['Name']:x.version for x in importlib.metadata.distributions()}}
++    return _profile.collect()
+ def enforce_environment():
+-    e=environment();require(e['implementation']=='CPython' and e['python']=='3.12.14' and e['optimize']==0,'INTERPRETER')
+-    require(e['cryptography']=='41.0.7','CRYPTOGRAPHY-41.0.7-REQUIRED');return e
++    return _profile.enforce()
+ 
+ def binding(c,d,r,config):
+-    return {'format':'I164-LAB-BOOTSTRAP-BINDING-1','candidate_manifest':identity(P/'provenance/candidate-members.json'),
++    return {'format':'I164-LAB-BOOTSTRAP-BINDING-5002-1','environment_profile':identity(P/'environment-profile.json'),'environment_guard':identity(_PROFILE_CODE),'candidate_manifest':identity(P/'provenance/candidate-members.json'),
+       'draft_manifest':identity(P/'provenance/draft-members.json'),'runtime_map':identity(P/'provenance/runtime-layout.json'),
+       'launcher':identity(__file__),'candidate':str(c),'draft':str(d),'runtime':str(r),
+       'configuration':copy.deepcopy(config),'environment':environment(),
+@@ -127,6 +130,7 @@
+     Lock spans raw creation, confirmed close, managed reopening, caller handoff,
+     and final managed close. Unconfirmed cleanup blocks later opening.
+     """
++    _profile.load_profile()
+     c,d=inputs(candidate,draft);r=validate_runtime(runtime)
+     cfg=read(P/'laboratory-configuration.json');b=binding(c,d,r,cfg)
+     authority,open_session=load_runtime(c,r)
+@@ -137,7 +141,7 @@
+             write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})
+         else:
+             require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')
+-            require(read(dest/'binding.json')==b,'SESSION-BINDING')
++            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')
+             require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')
+             require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')
+             require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')
+@@ -173,6 +177,10 @@
+ 
+ @contextlib.contextmanager
+ def session(*args,**kwargs):
++    # Reject old-session metadata before runtime loading or database access.
++    destination=kwargs.get('destination',args[3] if len(args)>3 else None)
++    require(destination is not None,'DESTINATION-REQUIRED')
++    _profile.session_frontier(destination,kwargs.get('create',False))
+     enforce_environment()
+     with _session(*args,**kwargs) as managed:
+         yield managed
+@@ -180,8 +188,7 @@
+ def main():
+     a=argparse.ArgumentParser();a.add_argument('operation',choices=['recover-runtime','initialize','check-environment']);a.add_argument('--candidate');a.add_argument('--draft');a.add_argument('--runtime');a.add_argument('--destination');args=a.parse_args()
+     if args.operation=='check-environment':print(json.dumps(enforce_environment(),indent=2));return
+-    if args.operation=='recover-runtime':print(json.dumps(recover_runtime(args.candidate,args.draft,args.destination),indent=2));return
+-    enforce_environment()
++    if args.operation=='recover-runtime':_profile.load_profile();print(json.dumps(recover_runtime(args.candidate,args.draft,args.destination),indent=2));return
+     with session(args.candidate,args.draft,args.runtime,args.destination,create=True) as managed:
+         print(json.dumps({'status':managed.status(),'state':managed.state(),'serving':False},indent=2))
+     print('PASS bootstrap, managed validation and confirmed close; no serving process; admission disabled')

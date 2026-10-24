@@ -1,0 +1,37 @@
+{
+  "predecessor": {
+    "bytes": 13433845,
+    "entries": 181,
+    "sha256": "525fa0fe01c52266557ed025c4474bef02c74a6d7d4fa6f38d8c2c4a70b159e6"
+  },
+  "intentional_runtime_change": {
+    "code/connect.py": {
+      "before": {
+        "bytes": 11569,
+        "sha256": "b0dee73765bf092660812c8ebae3e78fcd9a55a8b52d0d938d9779257cb56d2a"
+      },
+      "after": {
+        "bytes": 13076,
+        "sha256": "c164ee2d7944c1c7de7a902b8529a2d9b77d5fe4f9e547c33705844dd3616aaf"
+      }
+    }
+  },
+  "unchanged_support_files": [
+    "code/worker.py",
+    "code/recover.py",
+    "code/package.py",
+    "provenance/pins.json"
+  ],
+  "candidate_changes": {},
+  "draft_changes": {},
+  "added_control_sources": {
+    "code/full_fault.py": {
+      "bytes": 2373,
+      "sha256": "02f5df5326ec02b8170990f54f949469fae929c47c29bb9afb6958c771ae32e7"
+    },
+    "code/cf01_checks.py": {
+      "bytes": 6390,
+      "sha256": "fa52fe00acde037d34c7f3059b885dadf9ed6d69e5834ed8fd6f6083ad47f5a6"
+    }
+  }
+}

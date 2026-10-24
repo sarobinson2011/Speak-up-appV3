@@ -1,0 +1,25 @@
+Verify this review archive's published byte count, SHA-256, entry count, CRC,
+exact MANIFEST.json membership and each member hash before extracting to a new
+persistent directory. Never /tmp. The exact author ZIP is included under inputs/.
+Its RECOVERY.md and six exact recovery dependency identities remain authoritative
+for byte recovery. Existing verified component archives can be reused; no old
+review suite or producer/session operation is required.
+
+The reviewer reused authenticated predecessor bytes to recover exact trees.
+Unexpected partials are evidence only under failures/, never source members.
+Reviewer scripts use recorded workspace paths, and are reproducibility records,
+not automatic setup instructions. code/full_probe_recovered.py executes the actual
+new chain and deliberately changes one generated summary after stage 04. It
+must not be interpreted as a successful pristine integration run.
+
+results/fault-chain-2 holds actual emitted bundle/model/ledger bytes, stage logs,
+execution records and the false accepted receipt. results/original-ledger-result.json
+is the exact pre-mutation summary; results/injected-change.json and witness.json
+identify the minimal fault. post-checks.json distinguishes further isolated
+helper probes from the one full public-run witness. No implementation code is
+modified by these scripts. Original implementation and all supplied failure
+records remain inside the exact author archive.
+
+Correct CF-01 and obtain separate independent review before treating the final
+receipt's ledger summary as established. Existing blockers and disabled admission
+remain unchanged.

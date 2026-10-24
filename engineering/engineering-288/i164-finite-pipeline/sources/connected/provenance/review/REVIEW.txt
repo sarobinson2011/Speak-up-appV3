@@ -1,0 +1,132 @@
+INDEPENDENT CONNECTED FINITE PIPELINE REVIEW — 24 OCTOBER 2026
+For Engineering-Anchor[2]
+
+Verdict: NOT FULLY SUPPORTED. CF-01 remains open: an altered intermediate
+ledger summary can supply false context/count claims to a successful final
+receipt. No implementation code was modified. SU-Engineering[288C] authored
+the integration; Codex performed this separate review. Prior component reviews
+remain supported within their scopes and were not rerun.
+
+Integrity and recovery
+The submitted archive matches 13,433,845 bytes, 181 entries and SHA-256
+525fa0fe01c52266557ed025c4474bef02c74a6d7d4fa6f38d8c2c4a70b159e6.
+CRC, safe exact membership and all 180 manifest member identities pass.
+Both recovered integration roots remain exact. All six external recovery
+archives in provenance/recovery-dependencies.json were checked by exact byte
+identity, CRC, exact membership and manifest hashes. Exact component trees
+were freshly extracted; candidate/draft trees were recovered from authenticated
+666/163-member manifests using unchanged verified predecessor bytes. Original
+undeclared partial files were preserved, not accepted as source members.
+No predecessor review suite or producer campaign ran.
+
+Connected execution confirmed
+All four actual stage commands ran in a fresh process using the recovered
+integration, and all returned zero. Stage 1 invokes finite_inputs.run, whose
+_prepare/_derive/_execute path consumes the saved export through ingestion,
+projection, directory/relation/procedure and acquisition-count validation.
+It emits the actual validated bundle. The consumer API requires the exact
+input archive rather than a loose bundle; the integration checks byte-for-byte
+identity of the emitted bundle with that authenticated archive's selected
+member before invoking the consumer. This is a valid explicit interface bridge
+for this one-bundle contract, not general acquisition admission.
+
+Stage 2 emits the actual representation. Stages 3 and 4 receive that emitted
+model pathname; the ledger re-verifies it through its existing public API.
+The integration checks actual bundle/model/ledger bytes against the selected
+saved artifacts, the model byte receipt, ledger model/acquisition binding,
+embedded verification receipt, both ordered contexts and all obligation sets.
+It rechecks consumed input trees/archives and source identities before writing
+the final receipt. No detached predecessor success substitutes for these calls.
+The actual model and ledger retain each context's 2,376 occurrences, 9,339
+groups, 2,368 edges, 9,339 node duties, 9,376 relation duties and 12 folds.
+UNKNOWN classifications and all three O01-O11 sets remain unchanged.
+
+CF-01: smallest reproduced witness
+File: generated 04-ledger/result.json.
+Change only contexts[0].node_duties from 9339 to 0 after the actual ledger stage
+returns successfully. Leave the model, ledger bytes, selected inputs, code and
+all other stage outputs unchanged. connect.output_bindings copies the summary's
+contexts into outputs.ledger_contexts without deriving or comparing those values
+to the actual ledger. Public connect.run then writes a successful receipt with
+node_duties=0 while the ledger still has 9,339 node duties in that context.
+
+The independent harness wrapped the original stage function only to make this
+controlled data mutation after stage 04; every original stage function and
+subprocess executed. No implementation source was edited and no stage was
+stubbed or skipped. This is constructed fault-injection evidence, not evidence
+that such corruption occurred on Steve's host or an adversarial-process security
+claim. Before/after summary bytes, exact mutation recipe, real command/exit/timing
+records, false final receipt and actual outputs are preserved. A fresh full-chain
+pristine success is NOT claimed by this intentionally corrupted run; its four
+real component stages succeeded before the injected summary change.
+
+Adjacent isolated linkage checks also accept reversal of the ledger-summary
+contexts and a false ledger summary hash. These are tests of the internal
+linkage helper on the fresh actual stage outputs; only the single count mutation
+was exercised through the complete public run. Altered actual model/ledger bytes
+and a missing verification-stage output do reject. Thus the defect is the
+unvalidated summary, not acceptance of arbitrary model or ledger contents.
+The receipt's hash correctly attributes the altered summary bytes but does not
+establish the truth of the summary's claims. Input/code/model/ledger identity
+bindings themselves remain exact in the reproduced witness.
+
+Smallest correction boundary
+Validate the entire ledger result against independently derived expectations
+from the validated ledger and its exact bytes before copying any fields into
+the final receipt. Alternatively derive the receipt's ledger summaries directly
+from the already validated ledger and reject inconsistent redundant summaries.
+Include context order, duty/member counts, exact ledger identity and status
+fields. Review other stage summary fields for the same attribution-versus-
+correspondence distinction. Do not weaken selected-byte checks or broaden
+acquisition admission. Implementation is left to the construction author.
+
+Fresh controls versus supplied evidence
+19 independent focused controls completed: exact preflight and nested alias
+checks; altered/context-mixed selected artifacts; missing/mixed configuration
+and archive/root bindings; skipped receipt stages; changed code/context,
+omitted obligations, qualification/readiness/admission claims; three fresh CLI
+receipt-type rejections. Eight post-chain checks cover three accepted summary
+mutations (CF-01), two altered actual-output rejections, missing verification
+output rejection, nested result alias resistance and a further fresh-process
+mixed-context rejection. The full-chain fault-injection execution is separately
+recorded and not counted as a successful clean integration test. No input or
+component review campaign was rerun.
+
+The supplied 48 controls were inspected in harnesses and records, not rerun:
+23 input, 13 receipt/linkage, four explicit receipt-type and eight output-root
+guard checks. Their covered selected-artifact and receipt mutations reject,
+but they do not mutate the ledger_result summaries copied into the final
+receipt. Prior verifier 102 API/11 process/39 supplied and ledger 45 API/three
+process/25 supplied controls retain their predecessor scopes only.
+
+Failure preservation and environment
+Early fresh attempts rejected undeclared partial files before executing stages.
+Those exact bytes, original paths and logs are preserved outside strict input
+roots; their origin is unestablished. One reviewer control expected a membership
+error but received an earlier valid tree-identity rejection; the harness reason
+was corrected, with original script and failure log retained. An attempted
+reuse of an already failed output directory also refused; that failure remains
+preserved and a new output path was used. None of these is treated as a candidate
+semantic defect or silently discarded. No implementation source was changed. A further undeclared partial was found
+inside the recovered evidence directory by the final packaging membership check;
+its bytes and packaging failure were preserved outside the strict root, then
+all declared integration members were reverified unchanged. No fresh full-chain
+rerun was needed for this unused evidence-file cleanup.
+
+Actual environment is CPython 3.12.14, x86_64 Linux/glibc 2.39 with Cryptography
+50.0.2, recorded in results/dependencies.json and the actual stage execution
+record. No prepared-host 41.0.7 compatibility or Steve-host new-integration
+execution is claimed. The worker denies SQLite connection and socket connect/
+bind events. Saved archive/file validation is not a new acquisition, database
+connection, session operation or producer execution.
+
+Retained limits
+The original acquisition and two symbolic contexts retain their provenance;
+finite saved evidence does not establish production occurrence or lifetime
+bounds. No complete-model identity, qualified assessment, authority act or
+canonical ledger rebinding is established. Original historical evidence,
+relationships, ordinals and scoped closures are preserved through unchanged
+verified predecessor identities, without repeating completed preservation
+campaigns. SOURCE-ONLY unchanged; readiness/final binding BLOCKED; backup
+KERNEL-ONLY; streams UNCOMPUTED; admission disabled. No global expansion,
+stream enumeration, canonical rebinding or policy change occurred.

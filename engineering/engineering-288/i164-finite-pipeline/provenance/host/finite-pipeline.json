@@ -1,0 +1,146 @@
+{
+  "status": "PASS \u2014 bounded corrected finite pipeline compatibility",
+  "output": "/home/steve/dev/Engineering-288-execution/I164-finite-pipeline-643cef71dff9",
+  "assessment": "SOURCE-ONLY",
+  "independent_controls": 80,
+  "independent_process_checks": 7,
+  "supplied_controls": 57,
+  "supplied_process_checks": 3,
+  "completed_review_reruns": false,
+  "session_operations": false,
+  "database_connections": false,
+  "wheel_origin_authentication": "UNESTABLISHED",
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "streams": "UNCOMPUTED",
+  "actual_admission": false,
+  "lifetime_bounds": "UNRESOLVED",
+  "environment_before": [
+    {
+      "package": "cryptography",
+      "version": "50.0.2",
+      "pinned_record_payloads": "PASS"
+    },
+    {
+      "package": "cffi",
+      "version": "2.1.1",
+      "pinned_record_payloads": "PASS"
+    },
+    {
+      "package": "pycparser",
+      "version": "3.11",
+      "pinned_record_payloads": "PASS"
+    }
+  ],
+  "review": {
+    "path": "/home/steve/Downloads/I164-CF01-independent-closure-review.zip",
+    "bytes": 43252708,
+    "sha256": "71261bb4103c6d44f6060deb68f1c8d3fb53aeb09ab7d6e0cb4db975506e7cce"
+  },
+  "runtime_members": {
+    "code/connect.py": {
+      "bytes": 13076,
+      "sha256": "c164ee2d7944c1c7de7a902b8529a2d9b77d5fe4f9e547c33705844dd3616aaf"
+    },
+    "code/worker.py": {
+      "bytes": 343,
+      "sha256": "187696c82e2ce0a9d5f3556680110cc7884035234e84e26f7041ddca6a2c31ff"
+    },
+    "code/recover.py": {
+      "bytes": 5232,
+      "sha256": "3d63d562da032815a6c2095ea04855c4f1c86df2347f8705d13e657fbe631991"
+    },
+    "code/package.py": {
+      "bytes": 2131,
+      "sha256": "d3afc096eab91e10a944e8d1fc48a0926cc0a7f7d46a507b67babdf6cd5ab67d"
+    },
+    "provenance/pins.json": {
+      "bytes": 691,
+      "sha256": "290d5211d90932476ec5f93ea60de5089b3445fe34caa6e287e4f772224e989e"
+    }
+  },
+  "dependencies": {
+    "inputs": {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-288C-I164-finite-native-inputs.zip",
+      "bytes": 45747644,
+      "sha256": "94791c65c3502d85fc452c0e9c100391f5d0199f7690462e92b91c1a600caa8b"
+    },
+    "consumer": {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-288C-I164-finite-native-consumer-verified.zip",
+      "bytes": 6636286,
+      "sha256": "cb88382f2e16ee9fbd44a30f05033ef12c6e467b838784fa25fa16b88bc5e5f5"
+    },
+    "ledger_review": {
+      "path": "/home/steve/Downloads/I164-finite-ledger-independent-review.zip",
+      "bytes": 15248500,
+      "sha256": "9d1182af3d1121037380d5ba4a1f6989a674e82ecbfb3514d880d4d4e8fa3dd4"
+    },
+    "draft": {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-288C-I164-source-only-model-ledger-inputs.zip",
+      "bytes": 13820246,
+      "sha256": "f26d73237597ad2998735d6c71810f341b9bdbbf705497b0360f2ae59fbd6ec3"
+    },
+    "discriminator": {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-Anchor2-I164-discriminator-type-closure-review.zip",
+      "bytes": 9280888,
+      "sha256": "a5a928a1d45e792059c70bc727a58fd4186865518fe158b9055fe4cdf861b218"
+    },
+    "unknown": {
+      "path": "/home/steve/Downloads-preserved-20261023T162944736719/Engineering-Anchor2-I164-unknown-method-closure-review.zip",
+      "bytes": 31900862,
+      "sha256": "5c4f1f9960493de9c3c0ec8c80fda2da0b75b5fb70c079149f422f3d737c3aff"
+    }
+  },
+  "command": [
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment/venv/bin/python",
+    "-I",
+    "-B",
+    "/home/steve/dev/Engineering-288-execution/I164-finite-pipeline-643cef71dff9/runtime/code/connect.py",
+    "--config",
+    "/home/steve/dev/Engineering-288-execution/I164-finite-pipeline-643cef71dff9/recovered/config.json",
+    "--output",
+    "/home/steve/dev/Engineering-288-execution/I164-finite-pipeline-643cef71dff9/pipeline"
+  ],
+  "returncode": 0,
+  "environment_after": [
+    {
+      "package": "cryptography",
+      "version": "50.0.2",
+      "pinned_record_payloads": "PASS"
+    },
+    {
+      "package": "cffi",
+      "version": "2.1.1",
+      "pinned_record_payloads": "PASS"
+    },
+    {
+      "package": "pycparser",
+      "version": "3.11",
+      "pinned_record_payloads": "PASS"
+    }
+  ],
+  "receipt": {
+    "bytes": 133428,
+    "sha256": "ad6e99c18aa7d095c21901284b5f6fb3534ebe3633830e9e5cd0f3c3d7f82de5"
+  },
+  "contexts": [
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "node_duties": 9339,
+      "relation_duties": 9376,
+      "fold_duties": 12,
+      "token_members": 2376,
+      "edge_members": 2368
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "node_duties": 9339,
+      "relation_duties": 9376,
+      "fold_duties": 12,
+      "token_members": 2376,
+      "edge_members": 2368
+    }
+  ],
+  "all_eleven_obligations_preserved": true,
+  "inputs_preserved": true
+}

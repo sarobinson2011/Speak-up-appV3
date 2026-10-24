@@ -1,0 +1,36 @@
+Verify this independent checkpoint's delivered size/SHA-256, CRC, safe exact
+membership and MANIFEST.json before extracting to a NEW persistent directory.
+No setup or test script should run automatically. Never use /tmp.
+
+inputs/ contains the exact new 101,857-byte/28-entry prospective submission
+(SHA bdef8320320e74c9f79e187da4e6adfe93ce1d4723871f69935c9f8816299e55)
+and its unchanged BR-01 recovery dependency, 15,341,542 bytes/49 entries
+(SHA 1ca0a131a5b0e43799577388ad23752b53306f8067d92fe5b61ce366db777c3e).
+The latter retains all original evidence and its exact v2 predecessor. This
+review did not rerun those completed reviews or probes. New implementation
+recovery requires only the submitted package; no overlay onto an old launcher,
+environment or session is appropriate.
+
+For source preservation, reuse the existing exact 666-member candidate and
+163-member draft roots. Their manifests are in the submission. The 93-file
+runtime mapping and exact old sources are verified against the BR-01 composition.
+Required original environment/interpreter paths are explicit in the profile;
+the new environment shares the original interpreter distribution. Do not
+delete, rewrite or migrate that original distribution or any session.
+
+Reviewer code/results and metadata/signature fixtures are independent evidence.
+The code records its workspace paths; it is not automatic installation or host
+configuration. Supplied controls are retained inside the original submission.
+Constructed metadata fixtures are not real session directories. The reviewer
+manifest-schema assumption failure is preserved separately from expected
+negative-control logs.
+
+Steve-host positive preflight remains pending. The candidate's bounded command,
+from its exact recovered package directory, is:
+/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment/venv/bin/python -I -B code/lab_bootstrap.py check-environment
+Preserve stdout, stderr and exit status in a new persistent evidence directory.
+This is a future evidence step, not evidence that it has run. No session or
+database operation is needed; stop on any mismatch without changing the pins.
+
+No initialization command, existing-session reopening, setup rerun, network
+submission, policy change or admission authorization is granted by this review.

@@ -1,0 +1,130 @@
+{
+  "admission": false,
+  "after_files": {
+    "BOOTSTRAP-COMPLETE.json": {
+      "bytes": 601,
+      "sha256": "e3b3619e2b654470fc003ecf8311f01808c329c28d74a9f236e36db85a245322"
+    },
+    "binding.json": {
+      "bytes": 5098,
+      "sha256": "b423148a95302a3dc03e451bfa4dff67d4da9a1a130990b18a94fcd5d5500c74"
+    },
+    "state/ownership.sqlite": {
+      "bytes": 16384,
+      "sha256": "ff3e668b827aaeec6421f4b97a2e4b5b629990d290afb47864d1b2b824ed585a"
+    },
+    "state/session.sqlite": {
+      "bytes": 28672,
+      "sha256": "a7a2accefb2224e4d38387df0215ba47f3d95fa4502174f777cee8e46074b6f6"
+    }
+  },
+  "assessment": "SOURCE-ONLY",
+  "before_files": {
+    "BOOTSTRAP-COMPLETE.json": {
+      "bytes": 601,
+      "sha256": "e3b3619e2b654470fc003ecf8311f01808c329c28d74a9f236e36db85a245322"
+    },
+    "binding.json": {
+      "bytes": 5098,
+      "sha256": "b423148a95302a3dc03e451bfa4dff67d4da9a1a130990b18a94fcd5d5500c74"
+    },
+    "state/ownership.sqlite": {
+      "bytes": 16384,
+      "sha256": "ff3e668b827aaeec6421f4b97a2e4b5b629990d290afb47864d1b2b824ed585a"
+    },
+    "state/session.sqlite": {
+      "bytes": 28672,
+      "sha256": "a7a2accefb2224e4d38387df0215ba47f3d95fa4502174f777cee8e46074b6f6"
+    }
+  },
+  "bootstrap_performed": false,
+  "changed_fixture_files": [],
+  "command": [
+    "/home/steve/dev/Engineering-288-execution/I164-crypto5002-saved-compatibility-f8pegowh-environment/venv/bin/python",
+    "-I",
+    "-B",
+    "/home/steve/dev/Engineering-288-execution/I164-reopen-5002-test-v_pzlvyy/reopen-test.py",
+    "/home/steve/dev/Engineering-288-execution/I164-bootstrap-5002-test-xyhpeykd",
+    "/home/steve/dev/Engineering-288-execution/I164-reopen-5002-test-v_pzlvyy"
+  ],
+  "confirmed_close": {
+    "active_marker_absent": true,
+    "context_returned": true,
+    "post_close_database_reopened": false,
+    "request_issued": false,
+    "state_evidence": "saved bootstrap versus reopened versus immediately before close",
+    "status": {
+      "actual_admission": false,
+      "authorization_renewed": false,
+      "connection_epoch": 1,
+      "external_nonexecution_established": false,
+      "phase": "CLOSED",
+      "reason": "close confirmed; no serving connection"
+    }
+  },
+  "driver": {
+    "bytes": 4258,
+    "sha256": "0f428f1bfc8b67bebc37d894d1b67c126be1dc654382075910e79b4e14caa299"
+  },
+  "elapsed_seconds": 10.388,
+  "evidence": "/home/steve/dev/Engineering-288-execution/I164-reopen-5002-test-v_pzlvyy",
+  "evidence_files": {
+    "before-close-state.json": {
+      "bytes": 468,
+      "sha256": "4ce5968470884affdbe884636b6186230d61b5cbd9f6dc1c8a14274f5a283351"
+    },
+    "before-state.json": {
+      "bytes": 468,
+      "sha256": "4ce5968470884affdbe884636b6186230d61b5cbd9f6dc1c8a14274f5a283351"
+    },
+    "bootstrap-result.json": {
+      "bytes": 30720,
+      "sha256": "07da12bd2b8c822e00dff51de7ce592e35b74c8249d3a7d64b8a3169036aa781"
+    },
+    "confirmed-close.json": {
+      "bytes": 457,
+      "sha256": "c2617e444ffa94c99bf972a1a7a5feeafd4bbda4d2a1ec263c5a51796e785e14"
+    },
+    "environment.json": {
+      "bytes": 3702,
+      "sha256": "86d8bf61ff02912c5c02874495af343f445714347fd42f68ac601a296e72c6a7"
+    },
+    "reopen-test.py": {
+      "bytes": 4258,
+      "sha256": "0f428f1bfc8b67bebc37d894d1b67c126be1dc654382075910e79b4e14caa299"
+    },
+    "reopened-state.json": {
+      "bytes": 776,
+      "sha256": "31f47d4be7d1cc001a71006a570dcf9fa2c6306629fcd35e26a0965cbeec3000"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.log": {
+      "bytes": 158,
+      "sha256": "584df8ffd6b680fa2330411694aa59219e212fe534257ac501f103d142544588"
+    },
+    "worker-result.json": {
+      "bytes": 198,
+      "sha256": "df748a61b7677b2c8892ab0121998318bc83345061bbeca685545789375fd91a"
+    }
+  },
+  "exit_code": 0,
+  "final_binding": "BLOCKED",
+  "fixture": "/home/steve/dev/Engineering-288-execution/I164-bootstrap-5002-test-xyhpeykd/disposable-session",
+  "operational_durability": "UNESTABLISHED",
+  "prior_source_and_evidence_preservation": "PASS",
+  "readiness": "BLOCKED",
+  "request_issued": false,
+  "status": "PASS \u2014 bounded fresh-process managed reopening and confirmed close",
+  "streams": "UNCOMPUTED",
+  "wheel_origin_authentication": "UNESTABLISHED",
+  "worker": {
+    "admission": false,
+    "bootstrap_performed": false,
+    "request_issued": false,
+    "state_correspondence": "exact",
+    "status": "PASS \u2014 fresh-process managed reopening and confirmed close"
+  }
+}
