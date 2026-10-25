@@ -1,0 +1,21 @@
+Independent review checkpoint recovery
+
+This archive contains the exact reviewed construction ZIP under source/, this reviewer's code and results, mutated private fixtures, fresh process logs and preserved failures. It contains no modified implementation source.
+
+First compare the downloaded outer archive's byte count, entry count and SHA-256 with the handoff. Run the standard-library-only code/verify_checkpoint.py against the outer ZIP after extracting that script to a new persistent review directory. It checks CRC, safe unique regular membership, exact MANIFEST membership and every member identity, and independently checks the embedded source ZIP's fixed identity and manifest. No application code is imported by this verifier.
+
+Do not initialize or reopen a session, connect a database, recollect evidence or rerun any completed review. The passing results are retained evidence. Reproduction of this review's bounded controls is only appropriate if separately requested; the scripts call the saved-evidence public validator and use no application session.
+
+The construction is component-root recoverable with unchanged verified candidate/draft/count inputs. It is not standalone cold recovery of all predecessors. Read the embedded source RECOVERY.md and provenance/dependencies.json, and the exact reference identities in results/audit.json. Direct predecessor ZIPs are the O06 finite integration, its independent-review checkpoint and the O06 expression component; full predecessor recovery additionally uses the six external archives recorded in that audit. They are not silently replaced by historical fragments.
+
+The current run used these persistent workspace names:
+- ic-input and ic-recovered: two exact extractions of the construction ZIP;
+- ic-review: this checkpoint's review files;
+- of-roots/candidate and of-roots/draft: reused unchanged complete composed trees;
+- of-roots/counts.zip and of-roots/counts: pinned count component;
+- of-review/results/chain/05-copies/receipt.json: retained validated O09 receipt.
+The exact per-member candidate/draft maps reside in the predecessor inputs/provenance/candidate-members.json and draft-members.json, as recorded in audit.py. Absolute paths in the retained config files are historical run locations, not installation requirements. A relocated review must bind actual new exact paths before invoking validation.
+
+Declared failures and partial records must stay preserved outside any strict recovered candidate/draft/code root. Never count a wrong-boundary rejection, missing result, truncated file or interrupted validator as a passing mutation test. Supplied cold copied-root failures remain failures. The additional review partial has unknown origin; it was preserved with its identity and original path. No clean cold-recovery reliability claim follows from the component relocation passes.
+
+Use CHECKPOINT.json for the scoped outcome and REVIEW.txt for evidence separation and limitations. All four inventory totals and fourteen lifetime totals remain UNKNOWN. Admission is disabled.

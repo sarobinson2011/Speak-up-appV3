@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "controls": 3,
+  "results": [
+    {
+      "case": "pristine-relocated",
+      "status": "PASS",
+      "code_root": "ic-input",
+      "seconds": 20.292,
+      "exit_code": 0,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/ic-input/code/inventory_connection.py",
+        "--config",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/pristine-relocated/config.json",
+        "--submitted",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/pristine-relocated/submitted.json",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/pristine-relocated/output"
+      ],
+      "detail": "pristine exact receipt accepted after code/input relocation"
+    },
+    {
+      "case": "mixed-provenance",
+      "status": "PASS",
+      "code_root": "ic-recovered",
+      "seconds": 21.032,
+      "exit_code": 1,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/ic-recovered/code/inventory_connection.py",
+        "--config",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/mixed-provenance/config.json",
+        "--submitted",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/mixed-provenance/submitted.json",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/mixed-provenance/output"
+      ],
+      "detail": "exact intended correspondence rejection"
+    },
+    {
+      "case": "false-reopened-state",
+      "status": "PASS",
+      "code_root": "ic-recovered",
+      "seconds": 21.005,
+      "exit_code": 1,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/ic-recovered/code/inventory_connection.py",
+        "--config",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/false-reopened-state/config.json",
+        "--submitted",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/false-reopened-state/submitted.json",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/ic-review/process/false-reopened-state/output"
+      ],
+      "detail": "exact intended correspondence rejection"
+    }
+  ],
+  "scope": "Fresh component code/input roots, reusing exact verified candidate/draft/counts; not a new full predecessor recovery or producer execution."
+}

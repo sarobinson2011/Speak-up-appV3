@@ -1,0 +1,15 @@
+# I164 inventory-to-carrier connection
+
+Engineering implementation, pending independent review. This adds one mandatory saved-evidence entry point, `code/inventory_connection.py`, to the existing O06 evaluator. It does not change multiplicity.py, copies.py, the 666-member candidate, the 163-member draft, policy or limits. It is not a new finite-pipeline stage or a global inventory.
+
+The entry point validates the actual prior expression receipt through the existing evaluator and O09/count/procedure validators. It checks the exact inventory/supplement archives, both manifests and 182 record identities, six recorded file hashes, three composition-root corrections, and acquisition-member correspondence to the validated O09 receipt. It then attaches record-qualified evidence to four existing unresolved expressions. The original ten selected values and all fourteen expression definitions/lifetime UNKNOWNs remain unchanged.
+
+Records are classified from retained paths, original configuration records and explicit copy roles. Historical component/fixture records are distinct from the original 41.0.7 session and the separate 50.0.2 host fixture. Every record retains its own identifier even when bytes match. Explicit copy links also require exact byte equality. They add no invocation and establish no physical alias/allocation relationship. The two contexts reference the same evidence; storage bytes are not multiplied. Supporting inventory records are not inserted into snapshot occurrence sets and are not cross-acquisition joins.
+
+Facts retain exact record identity, JSON selector and value. Their status is SAVED-ASSERTION-ONLY. Reading a record independently checks its bytes, not its execution claims. In particular, runtime-recovery.json records a count of 93 and a path; it does not contain verification of all runtime members. Reopened-state values and clean-close records remain recorded assertions. Synthetic laboratory configuration labels are retained as recorded, not promoted to instantiated model identities.
+
+The receipt validates by recomputing from current pinned inputs and exact JSON comparison, including types, ordered contexts, every record/copy link/fact, expression summaries, UNKNOWNs and all eleven obligations. It has no mutable validation cache. `run(config, submitted)` is the public validation API. `_attach` is internal derivation, never an alternate admission API. Calling the old evaluator alone does not produce the new connection receipt.
+
+The four unknowns remain: invocation coverage, instance completeness, physical-copy totals and diagnostic coverage. Missing exact invocation/instance identifiers, exhaustive inventories, physical allocation/alias evidence, diagnostic coverage and retention/lifetime evidence cannot be supplied by approving this receipt. 45,056 bytes remains only the selected two-database payload total.
+
+SOURCE-ONLY; readiness/final binding BLOCKED; streams UNCOMPUTED; admission disabled. Backup remains kernel-only. Decision B and the unapproved retention/compaction boundary are unchanged.

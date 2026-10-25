@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "controls": 13,
+  "results": [
+    {
+      "case": "missing-inventory_archive",
+      "status": "PASS",
+      "boundary": "CONFIGURATION",
+      "seconds": 0.0
+    },
+    {
+      "case": "missing-expression_receipt",
+      "status": "PASS",
+      "boundary": "CONFIGURATION",
+      "seconds": 0.0
+    },
+    {
+      "case": "missing-expression_config",
+      "status": "PASS",
+      "boundary": "CONFIGURATION",
+      "seconds": 0.0
+    },
+    {
+      "case": "missing-expression-file",
+      "status": "PASS",
+      "boundary": "[Errno 2] No such file or directory: '/workspace/scratch/ace5c9b2f18b/ic-review/fixtures/missing-expression.json'",
+      "seconds": 0.06
+    },
+    {
+      "case": "missing-inventory-file",
+      "status": "PASS",
+      "boundary": "[Errno 2] No such file or directory: '/workspace/scratch/ace5c9b2f18b/ic-review/fixtures/missing-inventory.zip'",
+      "seconds": 0.0
+    },
+    {
+      "case": "coordinated-archive-omission",
+      "status": "PASS",
+      "boundary": "SUPPLEMENT-PIN",
+      "seconds": 0.001
+    },
+    {
+      "case": "coordinated-archive-assertion",
+      "status": "PASS",
+      "boundary": "SUPPLEMENT-PIN",
+      "seconds": 0.001
+    },
+    {
+      "case": "coordinated-archive-duplicate",
+      "status": "PASS",
+      "boundary": "SUPPLEMENT-PIN",
+      "seconds": 0.001
+    },
+    {
+      "case": "stale-original-inventory-only",
+      "status": "PASS",
+      "boundary": "SUPPLEMENT-PIN",
+      "seconds": 0.0
+    },
+    {
+      "case": "coordinated-altered-expression-input",
+      "status": "PASS",
+      "boundary": "MULTIPLICITY-CORRESPONDENCE",
+      "seconds": 19.61
+    },
+    {
+      "case": "altered-copy-input",
+      "status": "PASS",
+      "boundary": "CARRIER-COPY-CORRESPONDENCE",
+      "seconds": 19.311
+    },
+    {
+      "case": "mixed-count-archive",
+      "status": "PASS",
+      "boundary": "COUNT-ARCHIVE",
+      "seconds": 0.061
+    },
+    {
+      "case": "omitted-required-draft",
+      "status": "PASS",
+      "boundary": "CONFIGURATION",
+      "seconds": 0.046
+    }
+  ]
+}

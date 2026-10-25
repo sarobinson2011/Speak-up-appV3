@@ -1,0 +1,71 @@
+{
+  "status": "PASS inspected, not rerun",
+  "supplied_failed_recovery_fragments": [
+    {
+      "member": "failures/recovered-root-extras/candidate/program_coverage_outputs/.coverage.json.EWAJmZ",
+      "bytes": 16515072,
+      "sha256": "a7eb15578be955ecff7cb7464901704d21ca3e3e5850376946fe9ed02b9c269b",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-extras/candidate/candidate/.native-mapping.json.Ad4R3Q",
+      "bytes": 43253760,
+      "sha256": "b3ea61e4e1ef56946c13604538ce49475b1a7a2a63a306ef4bc55959aad3ea45",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-extras/candidate/native/records/.relation-rules.json.0nACFo",
+      "bytes": 25690112,
+      "sha256": "42de7e775698262c1b4471d833fdda2afb9736411b57c62bfe3fdcbd8616ee21",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-extras/draft/outputs/.model-input.json.OVaYId",
+      "bytes": 16515072,
+      "sha256": "1485b2bde26bedee536d03bd67ac331aae53446da6c06ec0deb0863638fa2891",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-002-extras/candidate/layout_outputs/.procedure.json.pMt7iu",
+      "bytes": 8912896,
+      "sha256": "ddbda23673413c76ab8a0067510a38580cb4eca8024774fd90c3bf4352b52666",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-002-extras/candidate/program_coverage_outputs/.coverage.json.726vL3",
+      "bytes": 8126464,
+      "sha256": "7182eeea759e474492cd73d46a0884a2b1d5956e7083cf60d8a369822f67cd58",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-002-extras/candidate/candidate/.native-mapping.json.CURqKy",
+      "bytes": 15728640,
+      "sha256": "56141056dcdcece3ff057b24c69836f99f012ec3cd658f0e5c71885e5211df93",
+      "origin": "UNESTABLISHED"
+    },
+    {
+      "member": "failures/recovered-root-002-extras/draft/source-only/scope/sources/candidate/managed-route/.directory-relations.json.2b4RzG",
+      "bytes": 11796480,
+      "sha256": "52ba2b6cd91e88ae562f9cc32cf386268dd5851f1c4fcff7782b5173f81f5657",
+      "origin": "UNESTABLISHED"
+    }
+  ],
+  "new_recovery_partial": {
+    "identity": {
+      "bytes": 5767168,
+      "sha256": "2e0ab554b44710427d0e985dcf137d21dcdcfaff4bd508afc956ae97dc9222ff"
+    },
+    "is_exact_prefix_of": "failures/recovered-root-extras/draft/outputs/.model-input.json.OVaYId",
+    "origin": "UNESTABLISHED",
+    "preserved_outside_strict_root": true
+  },
+  "author_early_wrong_boundary_results": "Excluded from 72 controls and three process successes",
+  "independent_review_harness_correction": "Initial oracle over-constrained the total number of zero-byte records to two; a historical empty log also exists. The corrected test explicitly selects the two distinct supplement stderr records; original script and failed log retained. No implementation modified.",
+  "reviewer_generated_cache": "Own import cache preserved separately with origin recorded; all final code/input trees exact.",
+  "recorded_versions": {
+    "original_session": "41.0.7",
+    "separate_host_fixture": "50.0.2"
+  },
+  "version_evidence_limit": "Retained environment assertions; not new host execution, 41.0.7 compatibility test, installed-wheel authentication or historical original-record reconciliation.",
+  "recovery_limit": "Current component exact recovery and unchanged verified predecessor roots; supplied cold copied candidate/draft failures remain failures. No full cold-recovery claim."
+}

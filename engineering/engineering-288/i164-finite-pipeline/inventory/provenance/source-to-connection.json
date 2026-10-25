@@ -1,0 +1,528 @@
+{
+  "inventory_archive": {
+    "bytes": 406472,
+    "sha256": "7e5dc2486e4fdf22ad844f55f27e56894b3c516c7a9eb51e21c6091f2b5e6ea3"
+  },
+  "acquisition_id": "I164-snapshot-acquisition-egpf25d9",
+  "mappings": [
+    {
+      "evidence_record_ids": [
+        "I164-lab-inventory-acd8dffe1ff4:records/00100.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00102.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00103.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00104.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00105.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00106.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00115.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00117.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00118.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00119.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00120.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00121.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00128.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00138.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00140.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00141.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00142.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00143.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00144.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00154.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00155.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00161.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00169.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00170.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00172.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00174.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00176.json",
+        "I164-inventory-supplement-3baf25397517:records/I164-reopen-5002-test-v_pzlvyy--reopened-state.json"
+      ],
+      "evidence_use": "PARTIAL-RECORDED-INVENTORY; no numeric contribution or cross-acquisition join",
+      "expression_id": "read-recovery-invocations",
+      "guard": "status or state guard succeeds; close/recover cycle succeeds; fresh authenticated head/sign recovery request admitted",
+      "reason": [
+        "which observations require retention, acquisition identity and complete invocation scope"
+      ],
+      "scope": "managed_instances",
+      "source_contract": {
+        "count_expression": "SUM_instances status_calls_i + state_calls_i + recover_calls_i; head/sign requests separately in J",
+        "creation_guard": "status or state guard succeeds; close/recover cycle succeeds; fresh authenticated head/sign recovery request admitted",
+        "enforcing_mechanism": "lock/_require/quarantine fences; status has no allowance counter; journal-backed calls still consume journal rows",
+        "finite_global_bound": null,
+        "id": "read-recovery-invocations",
+        "lifetime_scope": "managed instance / journal / lifetime",
+        "missing_evidence": "which observations require retention, acquisition identity and complete invocation scope",
+        "occurrence_key": [
+          "managed_instance_receipt_id",
+          "invocation_sequence",
+          "source_site"
+        ],
+        "retention_obligation": "static repeatability is not proof every invocation persists or of operational endurance",
+        "source_anchors": [
+          {
+            "ast_sha256": "fd4cc9f4619219cb6d5ed19b6bb864a830be701cfa92a49aeb34dbf766502a5e",
+            "end_line": 24,
+            "line": 23,
+            "name": "status",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "3170783d8e3ce32cf6ecb88892d1b2d107dc59fc3f8ccf6d7d2921a630c96280",
+            "end_line": 42,
+            "line": 42,
+            "name": "state",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+            "end_line": 99,
+            "line": 76,
+            "name": "recover",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "d8682c00e6075a2fb1145255a5ce39d6d433013ee2f1e8d03cafdf32ba9817f8",
+            "end_line": 245,
+            "line": 227,
+            "name": "sign",
+            "path": "support/reference/runtime/authority.py",
+            "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+          },
+          {
+            "ast_sha256": "1ca84f6c3c08f036ec69c06fbbee2d712e6aeeda35eaa7219bd51286d78573a3",
+            "end_line": 258,
+            "line": 258,
+            "name": "sign",
+            "path": "support/reference/runtime/authority.py",
+            "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+          }
+        ],
+        "status": "UNBOUNDED_ADMITTED_SEQUENCE"
+      },
+      "status": "UNKNOWN",
+      "unit": "invocations",
+      "value": null
+    },
+    {
+      "evidence_record_ids": [
+        "I164-lab-inventory-acd8dffe1ff4:records/00005.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00008.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00107.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00122.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00128.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00132.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00145.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00150.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00153.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00154.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00156.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00159.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00160.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00170.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00175.json",
+        "I164-inventory-supplement-3baf25397517:records/I164-bootstrap-5002-test-xyhpeykd--runtime-recovery.json"
+      ],
+      "evidence_use": "PARTIAL-RECORDED-INVENTORY; no numeric contribution or cross-acquisition join",
+      "expression_id": "managed-instances",
+      "guard": "open_session constructs a managed owner and validates recovery",
+      "reason": [
+        "deployment identity and complete instance inventory; local epoch resets at construction"
+      ],
+      "scope": "deployments",
+      "source_contract": {
+        "count_expression": "SUM_deployments managed_instances_d",
+        "creation_guard": "open_session constructs a managed owner and validates recovery",
+        "enforcing_mechanism": "exclusive-owner trusted-process boundary; no instance creation budget",
+        "finite_global_bound": null,
+        "id": "managed-instances",
+        "lifetime_scope": "process/deployment lifetime",
+        "missing_evidence": "deployment identity and complete instance inventory; local epoch resets at construction",
+        "occurrence_key": [
+          "deployment_instance_receipt_id",
+          "process_start",
+          "database_binding"
+        ],
+        "retention_obligation": "epoch alone is not a global unique instance id; new instance is not new allowance",
+        "source_anchors": [
+          {
+            "ast_sha256": "7ee32eb1f9b30ab1048bdc85c216abcf67433dbccea02d3afe3599263292473a",
+            "end_line": 22,
+            "line": 14,
+            "name": "__init__",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "1cd1519824f5204800ebd2fbc85e42d22573fd9aa315cab79f5fe07aa2afe008",
+            "end_line": 104,
+            "line": 101,
+            "name": "open_session",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          }
+        ],
+        "status": "MISSING_BOUND_EVIDENCE"
+      },
+      "status": "UNKNOWN",
+      "unit": "managed_instances",
+      "value": null
+    },
+    {
+      "evidence_record_ids": [
+        "I164-lab-inventory-acd8dffe1ff4:records/00001.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00002.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00003.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00108.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00109.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00113.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00114.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00115.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00116.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00117.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00118.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00119.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00120.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00121.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00122.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00123.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00124.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00125.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00126.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00127.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00131.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00136.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00137.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00138.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00139.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00140.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00141.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00142.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00143.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00144.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00145.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00146.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00147.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00148.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00149.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00150.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00151.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00152.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00153.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00173.json"
+      ],
+      "evidence_use": "PARTIAL-RECORDED-INVENTORY; no numeric contribution or cross-acquisition join",
+      "expression_id": "backup-restoration-copies",
+      "guard": "external backup/archive/restoration/copy retained; no source-owned operation count supplied",
+      "reason": [
+        "complete storage/copy inventory, exact bytes, retention duties, external backup/restore evidence"
+      ],
+      "scope": "physical_retained_containers",
+      "source_contract": {
+        "count_expression": "SUM_containers exact_bytes_c; number_of_containers UNKNOWN",
+        "creation_guard": "external backup/archive/restoration/copy retained; no source-owned operation count supplied",
+        "enforcing_mechanism": "no reviewed prospective full-backup implementation; validated reopening preserves original state/charges",
+        "finite_global_bound": null,
+        "id": "backup-restoration-copies",
+        "lifetime_scope": "physical copies over lifetime",
+        "missing_evidence": "complete storage/copy inventory, exact bytes, retention duties, external backup/restore evidence",
+        "occurrence_key": [
+          "retained_container_receipt_id",
+          "copy_id",
+          "original_binding",
+          "frontier"
+        ],
+        "retention_obligation": "copies do not reset counters or free U/nonce ownership; moving to archives is not capacity reduction",
+        "source_anchors": [
+          {
+            "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+            "end_line": 99,
+            "line": 76,
+            "name": "recover",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "519e2ac9578b53f413d027a856450a20eff01e8021b7c7368a7c2fce87132738",
+            "end_line": 22,
+            "line": 16,
+            "name": "acquire",
+            "path": "support/code/ingest.py",
+            "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+          }
+        ],
+        "status": "MISSING_BOUND_EVIDENCE"
+      },
+      "status": "UNKNOWN",
+      "unit": "physical_bytes",
+      "value": null
+    },
+    {
+      "evidence_record_ids": [
+        "I164-lab-inventory-acd8dffe1ff4:records/00128.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00133.log",
+        "I164-lab-inventory-acd8dffe1ff4:records/00134.txt",
+        "I164-lab-inventory-acd8dffe1ff4:records/00154.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00155.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00169.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00170.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00174.json",
+        "I164-lab-inventory-acd8dffe1ff4:records/00176.json",
+        "I164-inventory-supplement-3baf25397517:records/I164-bootstrap-5002-test-xyhpeykd--stdout.log",
+        "I164-inventory-supplement-3baf25397517:records/I164-bootstrap-5002-test-xyhpeykd--stderr.log",
+        "I164-inventory-supplement-3baf25397517:records/I164-reopen-5002-test-v_pzlvyy--stdout.log",
+        "I164-inventory-supplement-3baf25397517:records/I164-reopen-5002-test-v_pzlvyy--stderr.log"
+      ],
+      "evidence_use": "PARTIAL-RECORDED-INVENTORY; no numeric contribution or cross-acquisition join",
+      "expression_id": "diagnostic-interruption-evidence",
+      "guard": "caught/propagated interruption or persistence uncertainty observation retained",
+      "reason": [
+        "required diagnostic retention/source-owned coverage and byte-size scope"
+      ],
+      "scope": "retained_traces",
+      "source_contract": {
+        "count_expression": "SUM_retained_traces length(trace); exact retained bytes UNKNOWN",
+        "creation_guard": "caught/propagated interruption or persistence uncertainty observation retained",
+        "enforcing_mechanism": "managed quarantine and incomplete-cleanup dispositions; no diagnostic lifetime cap",
+        "finite_global_bound": null,
+        "id": "diagnostic-interruption-evidence",
+        "lifetime_scope": "trace/acquisition lifetime",
+        "missing_evidence": "required diagnostic retention/source-owned coverage and byte-size scope",
+        "occurrence_key": [
+          "observation_receipt_id",
+          "instance",
+          "invocation",
+          "event_index"
+        ],
+        "retention_obligation": "partial/failed/unauthenticated/conflicting evidence not silently deleted or promoted to authenticated state",
+        "source_anchors": [
+          {
+            "ast_sha256": "3a432ef49fd654fadcfdd4f93575808f2dfdda1c18d87e3e6e8a0960d87e6336",
+            "end_line": 41,
+            "line": 32,
+            "name": "_run",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "fb8a75e7e52d3ab1364fcd3e10db3119b10cf074e2db2bcdeaef96493e46fc9f",
+            "end_line": 56,
+            "line": 50,
+            "name": "_dispose",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          },
+          {
+            "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+            "end_line": 99,
+            "line": 76,
+            "name": "recover",
+            "path": "compiler/live_connection.py",
+            "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+          }
+        ],
+        "status": "MISSING_BOUND_EVIDENCE"
+      },
+      "status": "UNKNOWN",
+      "unit": "trace_events",
+      "value": null
+    }
+  ],
+  "recorded_fact_selectors": [
+    {
+      "exact_recorded_value": {
+        "files": 93,
+        "runtime": "/home/steve/dev/Engineering-288-execution/I164-bootstrap-5002-test-xyhpeykd/runtime"
+      },
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 118,
+        "sha256": "f2674aafa446e009f6b7682fecff287e687a49fc9255f4d0c6fc68016c158ece"
+      },
+      "record_id": "I164-inventory-supplement-3baf25397517:records/I164-bootstrap-5002-test-xyhpeykd--runtime-recovery.json",
+      "selector": [],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": {
+        "state": {
+          "active": null,
+          "binding": "06fd99f64e70ae5ae015bece3c0f26f2ca5492208fe48b7b4e19a164c9e1a36e",
+          "counts": {
+            "attempt": 0,
+            "query": 0,
+            "snapshot": 0,
+            "verifier": 0
+          },
+          "head": "0000000000000000000000000000000000000000000000000000000000000000",
+          "partitions": {
+            "query": 0,
+            "snapshot": 0,
+            "verifier": 0
+          },
+          "resources": {
+            "extra_queries": 0,
+            "holds": 0,
+            "query_holds": 0,
+            "slots": 0
+          },
+          "seq": 0,
+          "u": {}
+        },
+        "status": {
+          "actual_admission": false,
+          "authorization_renewed": false,
+          "connection_epoch": 1,
+          "external_nonexecution_established": false,
+          "phase": "READY",
+          "reason": "fresh connection and retained history validated"
+        }
+      },
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 776,
+        "sha256": "31f47d4be7d1cc001a71006a570dcf9fa2c6306629fcd35e26a0965cbeec3000"
+      },
+      "record_id": "I164-inventory-supplement-3baf25397517:records/I164-reopen-5002-test-v_pzlvyy--reopened-state.json",
+      "selector": [],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": "PASS \u2014 bounded 50.0.2 bootstrap, managed handoff and clean close",
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 30720,
+        "sha256": "07da12bd2b8c822e00dff51de7ce592e35b74c8249d3a7d64b8a3169036aa781"
+      },
+      "record_id": "I164-lab-inventory-acd8dffe1ff4:records/00154.json",
+      "selector": [
+        "status"
+      ],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": "PASS \u2014 bounded fresh-process managed reopening and confirmed close",
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 4546,
+        "sha256": "d5916db5c2f50e2c5c6e6eca20c4c0ec89355a228c06a18a128a728465a79546"
+      },
+      "record_id": "I164-lab-inventory-acd8dffe1ff4:records/00170.json",
+      "selector": [
+        "status"
+      ],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": {
+        "active_marker_absent": true,
+        "context_returned": true,
+        "post_close_database_reopened": false,
+        "request_issued": false,
+        "state_evidence": "saved bootstrap versus reopened versus immediately before close",
+        "status": {
+          "actual_admission": false,
+          "authorization_renewed": false,
+          "connection_epoch": 1,
+          "external_nonexecution_established": false,
+          "phase": "CLOSED",
+          "reason": "close confirmed; no serving connection"
+        }
+      },
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 457,
+        "sha256": "c2617e444ffa94c99bf972a1a7a5feeafd4bbda4d2a1ec263c5a51796e785e14"
+      },
+      "record_id": "I164-lab-inventory-acd8dffe1ff4:records/00174.json",
+      "selector": [],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": {
+        "active_marker_absent": true,
+        "context_returned": true,
+        "failure_records_absent": true,
+        "real_storage_durability": "UNESTABLISHED",
+        "session": "/home/steve/dev/Engineering-288-execution/I164-bootstrap-5002-test-xyhpeykd/disposable-session",
+        "status": {
+          "actual_admission": false,
+          "authorization_renewed": false,
+          "connection_epoch": 1,
+          "external_nonexecution_established": false,
+          "phase": "CLOSED",
+          "reason": "close confirmed; no serving connection"
+        }
+      },
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 493,
+        "sha256": "976377ca6a7dcbe6a1d8a9774429bca4938a45ce96ad54140e6d10698becf503"
+      },
+      "record_id": "I164-lab-inventory-acd8dffe1ff4:records/00155.json",
+      "selector": [],
+      "support": "SAVED-ASSERTION-ONLY"
+    },
+    {
+      "exact_recorded_value": {
+        "after": {
+          "ownership.sqlite": {
+            "bytes": 16384,
+            "sha256": "f2d3fe8469ff9594f2473e7408c4de4bb609740a5d3db55b4761bac8c8691c77"
+          },
+          "session.sqlite": {
+            "bytes": 28672,
+            "sha256": "ee4125559e46c00d6417d64ce905c7a84b32d589087a4d8520b1a683c5836df1"
+          }
+        },
+        "before": {
+          "ownership.sqlite": {
+            "bytes": 16384,
+            "sha256": "f2d3fe8469ff9594f2473e7408c4de4bb609740a5d3db55b4761bac8c8691c77"
+          },
+          "session.sqlite": {
+            "bytes": 28672,
+            "sha256": "ee4125559e46c00d6417d64ce905c7a84b32d589087a4d8520b1a683c5836df1"
+          }
+        },
+        "existing_lock": "/home/steve/dev/Engineering-288-execution/.I164-lab-session-001.owner.lock",
+        "original_database_connections": 0,
+        "scope": "cooperative-owner closed-file acquisition",
+        "sidecars_absent": true,
+        "source_paths": {
+          "ownership.sqlite": "/home/steve/dev/Engineering-288-execution/I164-lab-session-001/state/ownership.sqlite",
+          "session.sqlite": "/home/steve/dev/Engineering-288-execution/I164-lab-session-001/state/session.sqlite"
+        },
+        "source_records": {
+          "BOOTSTRAP-COMPLETE.json": {
+            "bytes": 601,
+            "sha256": "c0c5acb5ae760ef5620a2f25699b565630e860d62a7003384eef3a63d2db0900"
+          },
+          "BOOTSTRAP-STARTED.json": {
+            "bytes": 36,
+            "sha256": "0e2f7e2d30dbf46b08425344c4c534291e838c4de8da362ff26f53b33f9716d1"
+          },
+          "RAW-CREATION-CLOSED.json": {
+            "bytes": 23,
+            "sha256": "7958e71a2af25223c367fbb30c14697b12fee4e2463adbff7e668f4ea70545f2"
+          },
+          "binding.json": {
+            "bytes": 2601,
+            "sha256": "d2ad3ad9a001f3bc5a3e96c0f533f3b2535b832d19088a716d23b29453c1b889"
+          }
+        }
+      },
+      "execution_independently_observed": false,
+      "identity": {
+        "bytes": 1636,
+        "sha256": "3d96da7eda0972425161010d5c29d6e188192ccc90d68380b5fce88396e19f8b"
+      },
+      "record_id": "I164-lab-inventory-acd8dffe1ff4:records/00136.json",
+      "selector": [],
+      "support": "SAVED-ASSERTION-ONLY"
+    }
+  ],
+  "copy_policy": "explicit retained role plus exact bytes; distinct records retained; no invocation or physical count",
+  "context_rule": "Both contexts reference one acquisition; no physical multiplication or cross-acquisition joins"
+}
