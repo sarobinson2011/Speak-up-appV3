@@ -1,0 +1,773 @@
+[
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "session_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "H"
+      },
+      "unit": "head_rows"
+    },
+    "global_domain_complete": false,
+    "id": "session-head",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_{s in session_namespaces} 1",
+      "creation_guard": "committed initialization; updates retain one row",
+      "enforcing_mechanism": "HEAD primary key; state/history exact correspondence",
+      "finite_global_bound": null,
+      "id": "session-head",
+      "lifetime_scope": "database/session",
+      "missing_evidence": "complete session/database namespace and writer scope",
+      "occurrence_key": [
+        "binding",
+        "database-incarnation",
+        "head-row-id=1"
+      ],
+      "retention_obligation": "current authoritative head plus immutable after-states; overwriting HEAD does not delete event history",
+      "source_anchors": [
+        {
+          "ast_sha256": "dc266441df339eb04aef8fcfbb04d353b92729862978a3501f3bfd3d7b7bfcc2",
+          "end_line": 69,
+          "line": 54,
+          "name": "__init__",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "46509f147004b4f44d4d304685aa362bea78a2e83201588976402c77992e4f1b",
+          "end_line": 249,
+          "line": 249,
+          "name": "__init__",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "d2c3da99840c7fc5ac9b273ef14e2df602a82bff30a4d5d00920f56c36600e6a",
+          "end_line": 90,
+          "line": 84,
+          "name": "state",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        }
+      ],
+      "status": "CONDITIONAL_EXPRESSION"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "session_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "E"
+      },
+      "unit": "events"
+    },
+    "global_domain_complete": false,
+    "id": "event-history",
+    "local_ceiling": 12000,
+    "source_contract": {
+      "count_expression": "SUM_s E_s; E_s <= MAX_EVENTS",
+      "creation_guard": "save executes inside committed action transaction",
+      "enforcing_mechanism": "save CAS, sequential event insertion, event/state byte ceilings",
+      "finite_global_bound": null,
+      "id": "event-history",
+      "lifetime_scope": "session immutable history",
+      "missing_evidence": "number of namespaces and retained history copies",
+      "occurrence_key": [
+        "binding",
+        "seq",
+        "event_hash"
+      ],
+      "retention_obligation": "immutable events/after-states remain protected; exception is not proof of rollback",
+      "source_anchors": [
+        {
+          "ast_sha256": "3c803b2c5d07b38ffba7d4f04c03648b60a3c0e91fc13eacdf5ee1e79465de97",
+          "end_line": 97,
+          "line": 91,
+          "name": "save",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "a7d17073923ddbd1d45bfb2e7d04acac0c71a4f33c520ec2d2f89c38c0fb20a6",
+          "end_line": 106,
+          "line": 24,
+          "name": "validate_export",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        }
+      ],
+      "status": "ESTABLISHED_FINITE_PER_SCOPE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "journal_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "J"
+      },
+      "unit": "journal_rows"
+    },
+    "global_domain_complete": false,
+    "id": "journal",
+    "local_ceiling": 384000,
+    "source_contract": {
+      "count_expression": "SUM_j J_j; J_j <= MAX_ROWS",
+      "creation_guard": "authenticated admissible envelope, fresh challenge, atomic journal reservation commits before processing",
+      "enforcing_mechanism": "BEGIN IMMEDIATE, replay check, count guard, primary key",
+      "finite_global_bound": null,
+      "id": "journal",
+      "lifetime_scope": "journal/database",
+      "missing_evidence": "journal/session lifetime multiplicity; external evidence byte bounds",
+      "occurrence_key": [
+        "binding",
+        "challenge"
+      ],
+      "retention_obligation": "retains accepted/stale/error/unanswered/interrupted requests; no deletion exemption",
+      "source_anchors": [
+        {
+          "ast_sha256": "c7b6148920512c551f4937202d62ca9a8f914d72a5167d95d3f44765b30b0bde",
+          "end_line": 122,
+          "line": 98,
+          "name": "handle",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "a6a64f76d2f9e6111bc35ebf8b229207c42da85d9dfa7dbdecb197af2f8a71f6",
+          "end_line": 75,
+          "line": 72,
+          "name": "transaction",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        }
+      ],
+      "status": "ESTABLISHED_FINITE_PER_SCOPE"
+    }
+  },
+  {
+    "constraints": [
+      "R<=J"
+    ],
+    "expression": {
+      "domain": "journal_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "R"
+      },
+      "unit": "response_rows"
+    },
+    "global_domain_complete": false,
+    "id": "saved-responses",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_j R_j; 0 <= R_j <= J_j",
+      "creation_guard": "response UPDATE and its transaction commit",
+      "enforcing_mechanism": "single journal response cell; exact authenticated request/challenge binding",
+      "finite_global_bound": null,
+      "id": "saved-responses",
+      "lifetime_scope": "journal/database",
+      "missing_evidence": "ambiguous response persistence requires current authenticated evidence",
+      "occurrence_key": [
+        "binding",
+        "challenge",
+        "packet_hash"
+      ],
+      "retention_obligation": "missing response does not prove non-execution; original exact envelope protected when available",
+      "source_anchors": [
+        {
+          "ast_sha256": "c7b6148920512c551f4937202d62ca9a8f914d72a5167d95d3f44765b30b0bde",
+          "end_line": 122,
+          "line": 98,
+          "name": "handle",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "a7d17073923ddbd1d45bfb2e7d04acac0c71a4f33c520ec2d2f89c38c0fb20a6",
+          "end_line": 106,
+          "line": 24,
+          "name": "validate_export",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        }
+      ],
+      "status": "CONDITIONAL_EXPRESSION"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "session_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "B"
+      },
+      "unit": "blob_rows"
+    },
+    "global_domain_complete": false,
+    "id": "blob-store",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_s B_s",
+      "creation_guard": "new exact content not already stored; owning transaction commits",
+      "enforcing_mechanism": "content-addressed equality/conflict check; export verifier ceiling 460 is local acquisition ceiling",
+      "finite_global_bound": null,
+      "id": "blob-store",
+      "lifetime_scope": "session blob namespace",
+      "missing_evidence": "lifetime namespaces/copies and original external byte-size evidence",
+      "occurrence_key": [
+        "binding",
+        "blob_ref"
+      ],
+      "retention_obligation": "physical same-namespace blobs may share exact content under source rule; each referencing occurrence remains distinct",
+      "source_anchors": [
+        {
+          "ast_sha256": "9ac0ac977b4385d9781950e412875b6d3aa163f318a0c53a028976ea3cf26f29",
+          "end_line": 81,
+          "line": 76,
+          "name": "blob",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "a7d17073923ddbd1d45bfb2e7d04acac0c71a4f33c520ec2d2f89c38c0fb20a6",
+          "end_line": 106,
+          "line": 24,
+          "name": "validate_export",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        }
+      ],
+      "status": "CONDITIONAL_EXPRESSION"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "ledger_namespaces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "O"
+      },
+      "unit": "ownership_coordinates"
+    },
+    "global_domain_complete": false,
+    "id": "ownership-ledger",
+    "local_ceiling": 4096,
+    "source_contract": {
+      "count_expression": "SUM_l O_l; O_l <= MAX_COORDINATES",
+      "creation_guard": "claim finds unowned coordinate in transaction; existing same owner is reused",
+      "enforcing_mechanism": "permanent owner, atomic collision guard and local row ceiling",
+      "finite_global_bound": null,
+      "id": "ownership-ledger",
+      "lifetime_scope": "shared ledger including historical signed-carrier writers",
+      "missing_evidence": "all writer/ledger namespaces; same chain/executor coverage",
+      "occurrence_key": [
+        "ledger-incarnation",
+        "chain",
+        "executor",
+        "decimal_nonce"
+      ],
+      "retention_obligation": "no free/renumber/reassignment; copying ledger creates no fresh ownership rights",
+      "source_anchors": [
+        {
+          "ast_sha256": "53447743242a7a8a37f8d076c9420eef168e6173fe86d7075f3a4c4ba026d8e2",
+          "end_line": 46,
+          "line": 40,
+          "name": "claim",
+          "path": "support/reference/runtime/ownership.py",
+          "source_sha256": "484bb578e1fff08bd397fea25987c929400bb203ae72cf55b8091db5007b2b18"
+        },
+        {
+          "ast_sha256": "46c6e6633c5c5cef472bb8f67ce6b35a2ebb2f17b5c8877473958caf4c999595",
+          "end_line": 31,
+          "line": 31,
+          "name": "owner",
+          "path": "support/reference/runtime/ownership.py",
+          "source_sha256": "484bb578e1fff08bd397fea25987c929400bb203ae72cf55b8091db5007b2b18"
+        },
+        {
+          "ast_sha256": "9e68dbccd1fc5596086613f006d1f72f9f612d1f863f2e578fc49a242ff60d1b",
+          "end_line": 93,
+          "line": 48,
+          "name": "SignedCarrierGuard",
+          "path": "support/reference/runtime/ownership.py",
+          "source_sha256": "484bb578e1fff08bd397fea25987c929400bb203ae72cf55b8091db5007b2b18"
+        }
+      ],
+      "status": "ESTABLISHED_FINITE_PER_SCOPE"
+    }
+  },
+  {
+    "constraints": [
+      "slots+holds<=16"
+    ],
+    "expression": {
+      "domain": "opened_stages",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "A"
+      },
+      "unit": "charged_attempts"
+    },
+    "global_domain_complete": false,
+    "id": "charged-attempts",
+    "local_ceiling": 102,
+    "source_contract": {
+      "count_expression": "SUM_s A_s; A_s <= 102; slots_s + holds_s <=16",
+      "creation_guard": "decide or explicit retry commits reserved resources and record",
+      "enforcing_mechanism": "accounting reserve/record/settle; no double failure slot charge",
+      "finite_global_bound": null,
+      "id": "charged-attempts",
+      "lifetime_scope": "one opened lifetime stage per session",
+      "missing_evidence": "session multiplicity; 101/61 structural bounds not demonstrated maxima",
+      "occurrence_key": [
+        "binding",
+        "U",
+        "attempt_blob",
+        "ordinal",
+        "parent_request"
+      ],
+      "retention_obligation": "charges, consumed slots, ancestry and unresolved holds persist; recovery is not a new charged attempt",
+      "source_anchors": [
+        {
+          "ast_sha256": "3f52dd20cc6a2f67f170988dd127c4dea971f49adb5a59812fab53b675b2fb9c",
+          "end_line": 30,
+          "line": 21,
+          "name": "reserve",
+          "path": "support/reference/runtime/accounting.py",
+          "source_sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc"
+        },
+        {
+          "ast_sha256": "50083e002a90438e3082e621a5f37ab7058d763b28fe03ddc2afc523724631c6",
+          "end_line": 34,
+          "line": 32,
+          "name": "record",
+          "path": "support/reference/runtime/accounting.py",
+          "source_sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc"
+        },
+        {
+          "ast_sha256": "3cfe0cc4d77dfdbc69a5467c2733df0f69397e5d44acf076835d99d4262314fe",
+          "end_line": 59,
+          "line": 53,
+          "name": "settle",
+          "path": "support/reference/runtime/accounting.py",
+          "source_sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc"
+        }
+      ],
+      "status": "ESTABLISHED_FINITE_PER_SCOPE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "acquisition_history_states",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "P"
+      },
+      "unit": "pending_U_states"
+    },
+    "global_domain_complete": false,
+    "id": "pending-uncertainty",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_acquisitions SUM_histories 1[pending != null]",
+      "creation_guard": "pending non-null, SIGNING ambiguity, unanswered or unresolved outcome",
+      "enforcing_mechanism": "signing fence, authenticated fold, no new authorization from failure",
+      "finite_global_bound": null,
+      "id": "pending-uncertainty",
+      "lifetime_scope": "action and each retained history/acquisition",
+      "missing_evidence": "number of acquisitions/histories; no duration-based expiry",
+      "occurrence_key": [
+        "binding",
+        "U",
+        "action",
+        "attempt",
+        "history_version"
+      ],
+      "retention_obligation": "unresolved signing/release/execution and recovery duties cannot be discharged by absence",
+      "source_anchors": [
+        {
+          "ast_sha256": "d8682c00e6075a2fb1145255a5ce39d6d433013ee2f1e8d03cafdf32ba9817f8",
+          "end_line": 245,
+          "line": 227,
+          "name": "sign",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "1ca84f6c3c08f036ec69c06fbbee2d712e6aeeda35eaa7219bd51286d78573a3",
+          "end_line": 258,
+          "line": 258,
+          "name": "sign",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "d1a649d16c658f5d3a9f6b005a9860943c134d3063916f685d91216370f393b4",
+          "end_line": 42,
+          "line": 36,
+          "name": "ready",
+          "path": "support/reference/runtime/accounting.py",
+          "source_sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc"
+        },
+        {
+          "ast_sha256": "a7d17073923ddbd1d45bfb2e7d04acac0c71a4f33c520ec2d2f89c38c0fb20a6",
+          "end_line": 106,
+          "line": 24,
+          "name": "validate_export",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        }
+      ],
+      "status": "CONDITIONAL_EXPRESSION"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "opened_stages",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "K"
+      },
+      "unit": "backup_identifiers"
+    },
+    "global_domain_complete": false,
+    "id": "backup-identifiers",
+    "local_ceiling": 85,
+    "source_contract": {
+      "count_expression": "SUM_s backup_ids_s; backup_ids_s <=85 within shared snapshot<=130",
+      "creation_guard": "fresh backup id and snapshot headroom, transaction commits",
+      "enforcing_mechanism": "backup replay and shared/partition counters",
+      "finite_global_bound": null,
+      "id": "backup-identifiers",
+      "lifetime_scope": "one stage/shared accounting namespace",
+      "missing_evidence": "external backup completion/copy/size evidence",
+      "occurrence_key": [
+        "binding",
+        "U",
+        "backup_id"
+      ],
+      "retention_obligation": "RETAINED-UNCERTAIN is kernel bookkeeping only; not external storage completion",
+      "source_anchors": [
+        {
+          "ast_sha256": "c15b36333a77d4cc70f1b14f6182975d1da0c86d2b9ca36beea8f80edddc5820",
+          "end_line": 220,
+          "line": 125,
+          "name": "apply",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "c1f7c6139195fc065d43503771c412086106040d48ebe697ae191131d5eca19c",
+          "end_line": 19,
+          "line": 4,
+          "name": "validate",
+          "path": "support/reference/runtime/accounting.py",
+          "source_sha256": "7c344469895db20062380e60ad60e055e6fc5121a167720bc64162f2e8aa26cc"
+        }
+      ],
+      "status": "ESTABLISHED_FINITE_PER_SCOPE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "retained_acquisition_receipts",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "X"
+      },
+      "unit": "acquisitions"
+    },
+    "global_domain_complete": false,
+    "id": "export-acquisitions",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_s retained_export_acquisitions_s",
+      "creation_guard": "independently acquired or retained export; managed validation export may be transient",
+      "enforcing_mechanism": "acquire/validate checks content and current expected head; no lifetime acquisition counter",
+      "finite_global_bound": null,
+      "id": "export-acquisitions",
+      "lifetime_scope": "acquisition over lifetime",
+      "missing_evidence": "complete retained acquisition inventory and source-owned scope; source has no global acquisition identifier",
+      "occurrence_key": [
+        "acquisition_receipt_id",
+        "source_binding",
+        "source_frontier"
+      ],
+      "retention_obligation": "equal exports are distinct acquisitions if separately required/retained; no automatic obligation to retain every transient read asserted",
+      "source_anchors": [
+        {
+          "ast_sha256": "519e2ac9578b53f413d027a856450a20eff01e8021b7c7368a7c2fce87132738",
+          "end_line": 22,
+          "line": 16,
+          "name": "acquire",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        },
+        {
+          "ast_sha256": "1dbf22b56957ccb11565012321e5bb7dfdba7694d4f662bb7ef0f14846396d42",
+          "end_line": 75,
+          "line": 61,
+          "name": "_validate",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        }
+      ],
+      "status": "MISSING_BOUND_EVIDENCE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "managed_instances",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "ADD",
+        "variables": [
+          "status",
+          "state",
+          "recover"
+        ]
+      },
+      "unit": "invocations"
+    },
+    "global_domain_complete": false,
+    "id": "read-recovery-invocations",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_instances status_calls_i + state_calls_i + recover_calls_i; head/sign requests separately in J",
+      "creation_guard": "status or state guard succeeds; close/recover cycle succeeds; fresh authenticated head/sign recovery request admitted",
+      "enforcing_mechanism": "lock/_require/quarantine fences; status has no allowance counter; journal-backed calls still consume journal rows",
+      "finite_global_bound": null,
+      "id": "read-recovery-invocations",
+      "lifetime_scope": "managed instance / journal / lifetime",
+      "missing_evidence": "which observations require retention, acquisition identity and complete invocation scope",
+      "occurrence_key": [
+        "managed_instance_receipt_id",
+        "invocation_sequence",
+        "source_site"
+      ],
+      "retention_obligation": "static repeatability is not proof every invocation persists or of operational endurance",
+      "source_anchors": [
+        {
+          "ast_sha256": "fd4cc9f4619219cb6d5ed19b6bb864a830be701cfa92a49aeb34dbf766502a5e",
+          "end_line": 24,
+          "line": 23,
+          "name": "status",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "3170783d8e3ce32cf6ecb88892d1b2d107dc59fc3f8ccf6d7d2921a630c96280",
+          "end_line": 42,
+          "line": 42,
+          "name": "state",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+          "end_line": 99,
+          "line": 76,
+          "name": "recover",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "d8682c00e6075a2fb1145255a5ce39d6d433013ee2f1e8d03cafdf32ba9817f8",
+          "end_line": 245,
+          "line": 227,
+          "name": "sign",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        },
+        {
+          "ast_sha256": "1ca84f6c3c08f036ec69c06fbbee2d712e6aeeda35eaa7219bd51286d78573a3",
+          "end_line": 258,
+          "line": 258,
+          "name": "sign",
+          "path": "support/reference/runtime/authority.py",
+          "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+        }
+      ],
+      "status": "UNBOUNDED_ADMITTED_SEQUENCE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "deployments",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "I"
+      },
+      "unit": "managed_instances"
+    },
+    "global_domain_complete": false,
+    "id": "managed-instances",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_deployments managed_instances_d",
+      "creation_guard": "open_session constructs a managed owner and validates recovery",
+      "enforcing_mechanism": "exclusive-owner trusted-process boundary; no instance creation budget",
+      "finite_global_bound": null,
+      "id": "managed-instances",
+      "lifetime_scope": "process/deployment lifetime",
+      "missing_evidence": "deployment identity and complete instance inventory; local epoch resets at construction",
+      "occurrence_key": [
+        "deployment_instance_receipt_id",
+        "process_start",
+        "database_binding"
+      ],
+      "retention_obligation": "epoch alone is not a global unique instance id; new instance is not new allowance",
+      "source_anchors": [
+        {
+          "ast_sha256": "7ee32eb1f9b30ab1048bdc85c216abcf67433dbccea02d3afe3599263292473a",
+          "end_line": 22,
+          "line": 14,
+          "name": "__init__",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "1cd1519824f5204800ebd2fbc85e42d22573fd9aa315cab79f5fe07aa2afe008",
+          "end_line": 104,
+          "line": 101,
+          "name": "open_session",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        }
+      ],
+      "status": "MISSING_BOUND_EVIDENCE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "physical_retained_containers",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "bytes"
+      },
+      "unit": "physical_bytes"
+    },
+    "global_domain_complete": false,
+    "id": "backup-restoration-copies",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_containers exact_bytes_c; number_of_containers UNKNOWN",
+      "creation_guard": "external backup/archive/restoration/copy retained; no source-owned operation count supplied",
+      "enforcing_mechanism": "no reviewed prospective full-backup implementation; validated reopening preserves original state/charges",
+      "finite_global_bound": null,
+      "id": "backup-restoration-copies",
+      "lifetime_scope": "physical copies over lifetime",
+      "missing_evidence": "complete storage/copy inventory, exact bytes, retention duties, external backup/restore evidence",
+      "occurrence_key": [
+        "retained_container_receipt_id",
+        "copy_id",
+        "original_binding",
+        "frontier"
+      ],
+      "retention_obligation": "copies do not reset counters or free U/nonce ownership; moving to archives is not capacity reduction",
+      "source_anchors": [
+        {
+          "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+          "end_line": 99,
+          "line": 76,
+          "name": "recover",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "519e2ac9578b53f413d027a856450a20eff01e8021b7c7368a7c2fce87132738",
+          "end_line": 22,
+          "line": 16,
+          "name": "acquire",
+          "path": "support/code/ingest.py",
+          "source_sha256": "a742246454965ad83f6e680dfe0d5f58b47287a38fad3ec88767d077d8fd8a6c"
+        }
+      ],
+      "status": "MISSING_BOUND_EVIDENCE"
+    }
+  },
+  {
+    "constraints": [],
+    "expression": {
+      "domain": "retained_traces",
+      "op": "SUM_SCOPED",
+      "term": {
+        "op": "VALUE",
+        "variable": "length"
+      },
+      "unit": "trace_events"
+    },
+    "global_domain_complete": false,
+    "id": "diagnostic-interruption-evidence",
+    "local_ceiling": null,
+    "source_contract": {
+      "count_expression": "SUM_retained_traces length(trace); exact retained bytes UNKNOWN",
+      "creation_guard": "caught/propagated interruption or persistence uncertainty observation retained",
+      "enforcing_mechanism": "managed quarantine and incomplete-cleanup dispositions; no diagnostic lifetime cap",
+      "finite_global_bound": null,
+      "id": "diagnostic-interruption-evidence",
+      "lifetime_scope": "trace/acquisition lifetime",
+      "missing_evidence": "required diagnostic retention/source-owned coverage and byte-size scope",
+      "occurrence_key": [
+        "observation_receipt_id",
+        "instance",
+        "invocation",
+        "event_index"
+      ],
+      "retention_obligation": "partial/failed/unauthenticated/conflicting evidence not silently deleted or promoted to authenticated state",
+      "source_anchors": [
+        {
+          "ast_sha256": "3a432ef49fd654fadcfdd4f93575808f2dfdda1c18d87e3e6e8a0960d87e6336",
+          "end_line": 41,
+          "line": 32,
+          "name": "_run",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "fb8a75e7e52d3ab1364fcd3e10db3119b10cf074e2db2bcdeaef96493e46fc9f",
+          "end_line": 56,
+          "line": 50,
+          "name": "_dispose",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        },
+        {
+          "ast_sha256": "437e8502d61b91d295966848cf180527e5fc14b26771ee1904d90aaa35e87b50",
+          "end_line": 99,
+          "line": 76,
+          "name": "recover",
+          "path": "compiler/live_connection.py",
+          "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+        }
+      ],
+      "status": "MISSING_BOUND_EVIDENCE"
+    }
+  }
+]

@@ -1,0 +1,43 @@
+Verify the checkpoint ZIP's CRC, safe unique regular membership, and every MANIFEST.json
+byte/hash entry before using any contents. inputs/I164-O06-finite-integration.zip is the
+unchanged reviewed 156596-byte / 63-entry source with SHA256
+bf22d15a7caf805902d70cb8b29daf9b335fe4c66b6a552d45c30ff9e18647de.
+
+The source's RECOVERY.md and code/recover.py define cold recovery from six external
+archives. Full verified identities are in results/recovery-continuation.json and the
+four direct predecessor identities in results/audit.json. This review checkpoint does
+not claim to embed all external recovery dependencies. Reuse unchanged verified roots
+when available. Recovering files is distinct from rerunning completed component suites
+or the lifecycle; neither is needed to recover.
+
+The complete composed candidate and draft membership maps are inputs/provenance/
+candidate-members.json (666 members) and draft-members.json (163 members) inside the
+finite-input archive. A partial top-level MANIFEST is not a replacement. Count archives,
+code, saved finite bundle/model/ledger and current source/procedure identities are pinned
+by the unchanged provenance/pins.json and their original manifests.
+
+This review restored lost workspace bytes, ran the original recovery, preserved its
+strict failure, and completed exact recovery through a review-only continuation. Eight
+undeclared fragments were preserved outside strict roots. results/partial-journal.json
+records each original path and identity; failures/ contains the bytes and failed first
+continuation. Their origin is unestablished; never promote them to declared members or
+silently discard them. No automatic retry or rule weakening is authorized.
+
+results/config.json and execution records retain the exact absolute paths used. The
+original and recovered source roots were of-input and of-recovered; dependencies were
+of-roots. Review programs live under of-review/code and leave implementation untouched.
+If a later execution is separately authorized, recover exact code/dependencies to new
+persistent directories and generate a local configuration with actual paths. Do not
+edit code to fit paths, initialize sessions, open databases, install dependencies or
+rerun old reviews. Preserve any failure directory before deciding a continuation.
+
+The actual six-stage execution used code/chain.py to call the unchanged public run once,
+then tested mutation of its real returned object and current expectation reconstruction.
+The chain launches all six original worker/validator commands. Its full actual outputs
+are included in results/chain. Linkage controls were independently authored and their
+private receipt copies were later checked byte-equal to that actual run. Their scripts
+are evidence for reproducibility, not a request to repeat completed reviews now.
+
+Use the report and results/final-audit.json for the exact scoped verdict. This checkpoint
+preserves saved-evidence validation, constructed controls, original captures and actual
+producer execution as distinct kinds of evidence. Readiness and admission stay blocked.

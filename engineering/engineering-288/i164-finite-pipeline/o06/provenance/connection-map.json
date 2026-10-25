@@ -1,0 +1,111 @@
+{
+  "anchors": [
+    {
+      "path": "code/connect.py",
+      "function": "preflight",
+      "line": 51,
+      "end_line": 88,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/connect.py",
+      "function": "output_bindings",
+      "line": 100,
+      "end_line": 138,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/connect.py",
+      "function": "expression_config",
+      "line": 189,
+      "end_line": 190,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/connect.py",
+      "function": "expression_bindings",
+      "line": 191,
+      "end_line": 223,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/connect.py",
+      "function": "validate_final",
+      "line": 224,
+      "end_line": 225,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/connect.py",
+      "function": "run",
+      "line": 227,
+      "end_line": 267,
+      "source_sha256": "68039a4808d45adce6dc16297b11fbf22bcb5877d5651cb6dc6cdaf0fb5c07c6"
+    },
+    {
+      "path": "code/multiplicity.py",
+      "function": "compile_expressions",
+      "line": 39,
+      "end_line": 56,
+      "source_sha256": "91d9db56aef8b622ae823b8e63ed52c971a3223fb736c5a27d2cf5800ab939ae"
+    },
+    {
+      "path": "code/multiplicity.py",
+      "function": "snapshot_rows",
+      "line": 81,
+      "end_line": 119,
+      "source_sha256": "91d9db56aef8b622ae823b8e63ed52c971a3223fb736c5a27d2cf5800ab939ae"
+    },
+    {
+      "path": "code/multiplicity.py",
+      "function": "evaluate",
+      "line": 121,
+      "end_line": 131,
+      "source_sha256": "91d9db56aef8b622ae823b8e63ed52c971a3223fb736c5a27d2cf5800ab939ae"
+    },
+    {
+      "path": "code/multiplicity.py",
+      "function": "run",
+      "line": 133,
+      "end_line": 147,
+      "source_sha256": "91d9db56aef8b622ae823b8e63ed52c971a3223fb736c5a27d2cf5800ab939ae"
+    }
+  ],
+  "links": [
+    [
+      "exact preflight",
+      "candidate/draft/count sources",
+      "existing composed membership and archive pins"
+    ],
+    [
+      "01-inputs",
+      "04-ledger",
+      "unchanged finite acquisition/model/ledger validators"
+    ],
+    [
+      "05-copies/receipt.json",
+      "06-expressions input",
+      "actual freshly checked lineage; no historical slot substitution"
+    ],
+    [
+      "exact acquisition export member",
+      "14 expressions",
+      "reviewed source selectors, scope keys and guards"
+    ],
+    [
+      "06-expressions/receipt.json",
+      "final outputs.carrier_expressions",
+      "fresh public revalidation plus exact summary derivation"
+    ],
+    [
+      "04-ledger/ledger.json",
+      "final ledger_contexts",
+      "unchanged CF-01 derivation from actual validated ledger"
+    ],
+    [
+      "both contexts",
+      "same acquisition carriers",
+      "references only; no physical storage multiplier"
+    ]
+  ]
+}
