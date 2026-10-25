@@ -1,0 +1,23 @@
+Verify this review ZIP's CRC, safe exact membership and MANIFEST.json member hashes.
+The exact submitted integration ZIP is under inputs/. Full fresh chain outputs, logs,
+reviewer harnesses, observed failures and preserved fragments are retained.
+
+Reuse the six original archives named in results/locations.json and identity-bound in
+results/audit.json. The unchanged recovery code in the submitted archive composes them;
+use python3 -B recover.py, not -I, because recovery imports its sibling connect module.
+Validation uses python3 -I -B connect.py. No setup, installation, database connection,
+new acquisition or session initialization is required or authorized.
+
+All evidence/output locations must be new persistent directories, never /tmp. Inspect
+and preserve failures and extras; do not merge them into strict input roots or weaken
+membership checks. Original execution paths in configs/logs are attribution records;
+resolve them to exact current recovered roots on another host. Review scripts use a
+WORK layout with oi-review, oi-input, oi-recovered, oi-roots and oi-deps. Running the
+scripts requires those dependencies and new output/fixture names; no rerun is needed
+to inspect this checkpoint. The final-audit.json record is the completion gate.
+
+The prior scoped O09 review is a reference dependency: 9,719,813 bytes, 64 entries,
+SHA-256 6ed45fe7856cd50cfb320731424b503fdaedaf776171eb03af0aa3b956f9be64.
+Its completed component controls were reused. Do not rerun them, producer campaigns,
+lifecycle, global expansion or session operations. Distinguish the current fresh
+full chain, focused linkage tests and three processes from supplied author results.
