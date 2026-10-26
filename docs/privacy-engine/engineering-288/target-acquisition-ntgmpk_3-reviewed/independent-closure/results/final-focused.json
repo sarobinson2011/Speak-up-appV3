@@ -1,0 +1,107 @@
+{
+  "process_count": 5,
+  "processes": [
+    {
+      "case": "fresh-full-chain-validation",
+      "status": "PASS",
+      "expected": "accept",
+      "reason": null,
+      "exit": 0,
+      "seconds": 4.812587729999905,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/tc-fresh-validation-component/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/workspace/scratch/ace5c9b2f18b/tc-roots",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/tc-review/full-chain-002"
+      ]
+    },
+    {
+      "case": "coordinated-count",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-FILE-IDENTITY:bundle.json",
+      "exit": 1,
+      "seconds": 0.8317086220004057,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/tc-input/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/workspace/scratch/ace5c9b2f18b/tc-roots",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/tc-final-fixtures/coordinated-count"
+      ]
+    },
+    {
+      "case": "both-legacy-binding",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-FILE-IDENTITY:bundle.json",
+      "exit": 1,
+      "seconds": 0.8921953409999333,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/tc-input/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/workspace/scratch/ace5c9b2f18b/tc-roots",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/tc-final-fixtures/both-legacy-binding"
+      ]
+    },
+    {
+      "case": "missing-saved-count",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EXACT-ROOT-FILES",
+      "exit": 1,
+      "seconds": 0.9806063410001116,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/tc-input/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/workspace/scratch/ace5c9b2f18b/tc-roots",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/tc-final-fixtures/missing-saved-count"
+      ]
+    },
+    {
+      "case": "status-escalation",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-FILE-IDENTITY:RESULT.json",
+      "exit": 1,
+      "seconds": 0.864366549999886,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/ace5c9b2f18b/tc-input/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/workspace/scratch/ace5c9b2f18b/tc-roots",
+        "--output",
+        "/workspace/scratch/ace5c9b2f18b/tc-final-fixtures/status-escalation"
+      ]
+    }
+  ],
+  "contract_controls": 3,
+  "target_empty_journal_nine_roles": "PASS",
+  "legacy_saved_head": "PASS",
+  "legacy_omitted_request_rejected": "PASS",
+  "fresh_result_pin_scope": "Exact output identity map from independently generated outputs; source/component pins unchanged; fresh RESULT differs only by execution time and duration.",
+  "coordinated_substitution_scope": "Correspondence alone correctly compares equality. Public sealed-byte pins reject false but equal replacement evidence.",
+  "implementation_unchanged": true
+}

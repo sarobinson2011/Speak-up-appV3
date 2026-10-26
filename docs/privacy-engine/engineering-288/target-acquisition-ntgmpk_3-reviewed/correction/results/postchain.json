@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "count": 13,
+  "controls": [
+    {
+      "name": "TE02/exact-canonical-receipt-and-no-validation-write",
+      "status": "PASS",
+      "expected": "accept",
+      "receipt": {
+        "bytes": 2155566,
+        "sha256": "9a1666823d8a4e1df671cef0c765e02e661517865e1d8ab993edaeb7b46789a1"
+      }
+    },
+    {
+      "name": "fresh-corrected-validation",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/corrected/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/corrected/evaluation"
+      ],
+      "returncode": 0,
+      "expected": "accept",
+      "reason": null,
+      "seconds": 4.331852854999852,
+      "status": "PASS"
+    },
+    {
+      "name": "relocated-code-source-recovery",
+      "status": "PASS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/relocated/code/evaluate.py",
+        "recover",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/relocated-roots"
+      ],
+      "returncode": 0,
+      "expected": "accept"
+    },
+    {
+      "name": "relocated-recovered-validation",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/relocated/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/relocated-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/relocated/evaluation"
+      ],
+      "returncode": 0,
+      "expected": "accept",
+      "reason": null,
+      "seconds": 4.4350512559999515,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-embedded-binding-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-embedded-binding-mismatch"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT",
+      "seconds": 4.371972373000062,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-embedded-context-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-embedded-context-mismatch"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT",
+      "seconds": 4.42965999099988,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-saved-count-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-saved-count-mismatch"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT",
+      "seconds": 4.342910613999948,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-saved-acquisition-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-saved-acquisition-mismatch"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT",
+      "seconds": 4.179464353999947,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-omitted-embedded-receipt",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-omitted-embedded-receipt"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "evidence_count_receipt",
+      "seconds": 4.300296046000085,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-noncanonical-saved-receipt",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-noncanonical-saved-receipt"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "COUNT-RECEIPT-SERIALIZATION",
+      "seconds": 4.4733503289999135,
+      "status": "PASS"
+    },
+    {
+      "name": "resealed-altered-ledger-summary",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/postchain-mutations/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/mutation-altered-ledger-summary"
+      ],
+      "returncode": 1,
+      "expected": "reject",
+      "reason": "SUMMARY-SUBSTITUTION",
+      "seconds": 4.851912748999894,
+      "status": "PASS"
+    },
+    {
+      "name": "empty-journal-target-contract",
+      "status": "PASS",
+      "expected": "accept"
+    },
+    {
+      "name": "legacy-saved-head-contract",
+      "status": "PASS",
+      "expected": "accept"
+    }
+  ],
+  "full_chain_rerun": false,
+  "test_only_resealed_mutations": 7,
+  "prior_controls_rerun": false
+}

@@ -1,0 +1,72 @@
+{
+  "status": "BOTH ORIGINAL WITNESSES REPRODUCED",
+  "records": [
+    {
+      "label": "source-recovery",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/code/evaluate.py",
+        "recover",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots"
+      ],
+      "returncode": 0,
+      "seconds": 3.263760328999979
+    },
+    {
+      "label": "TE-01-original-FIFO",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/evaluation"
+      ],
+      "returncode": 0,
+      "seconds": 4.4166712290000305,
+      "expected_corrected": "REJECT",
+      "observed": "FALSE ACCEPTANCE",
+      "entry_type": "FIFO",
+      "opened": false
+    },
+    {
+      "label": "TE-01-original-empty-directory",
+      "observed": "FALSE ACCEPTANCE",
+      "expected_corrected": "REJECT"
+    },
+    {
+      "label": "TE-02-original-pristine-validation",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/evaluation"
+      ],
+      "returncode": 0,
+      "seconds": 4.187999010000112,
+      "observed": "FALSE ACCEPTANCE OF INTERMEDIATE MISMATCH",
+      "saved_identity": {
+        "bytes": 2155566,
+        "sha256": "9a1666823d8a4e1df671cef0c765e02e661517865e1d8ab993edaeb7b46789a1"
+      },
+      "embedded_identity": {
+        "bytes": 2156052,
+        "sha256": "5f94103a933df8a607a11c2e2576dd32d977c785d577b0199f5082fcad78322e"
+      },
+      "alias_reproduced": true,
+      "only_difference": "embedded bindings.target_acquisition"
+    }
+  ],
+  "completed_review_rerun": false
+}

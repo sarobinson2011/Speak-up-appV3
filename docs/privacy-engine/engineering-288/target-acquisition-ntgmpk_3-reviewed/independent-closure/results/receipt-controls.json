@@ -1,0 +1,109 @@
+{
+  "controls": 17,
+  "results": [
+    {
+      "case": "canonical-original-count",
+      "status": "PASS",
+      "boundary": "ACCEPTED",
+      "no_input_repair": true
+    },
+    {
+      "case": "nested-binding",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "context-order",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "count",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "mixed-acquisition",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "obligation-omitted",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "status-escalation",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "numeric-bool-type",
+      "status": "PASS",
+      "boundary": "EMBEDDED-COUNT-RECEIPT",
+      "no_input_repair": true
+    },
+    {
+      "case": "missing-LF",
+      "status": "PASS",
+      "boundary": "COUNT-RECEIPT-SERIALIZATION",
+      "no_input_repair": true
+    },
+    {
+      "case": "second-LF",
+      "status": "PASS",
+      "boundary": "COUNT-RECEIPT-SERIALIZATION",
+      "no_input_repair": true
+    },
+    {
+      "case": "leading-space",
+      "status": "PASS",
+      "boundary": "COUNT-RECEIPT-SERIALIZATION",
+      "no_input_repair": true
+    },
+    {
+      "case": "pretty-printed",
+      "status": "PASS",
+      "boundary": "COUNT-RECEIPT-SERIALIZATION",
+      "no_input_repair": true
+    },
+    {
+      "case": "CRLF",
+      "status": "PASS",
+      "boundary": "COUNT-RECEIPT-SERIALIZATION",
+      "no_input_repair": true
+    },
+    {
+      "case": "duplicate-key",
+      "status": "PASS",
+      "boundary": "DUPLICATE-KEY",
+      "no_input_repair": true
+    },
+    {
+      "case": "missing-embedded",
+      "status": "PASS",
+      "boundary": "'evidence_count_receipt'",
+      "no_input_repair": true
+    },
+    {
+      "case": "old-shared-alias-reproduced",
+      "status": "PASS",
+      "original_alias_reproduced": true,
+      "corrected_nested_independence": false,
+      "scope": "Exact pinned return expressions; full construction tested separately"
+    },
+    {
+      "case": "corrected-bidirectional-nested-aliases",
+      "status": "PASS",
+      "original_alias_reproduced": false,
+      "corrected_nested_independence": true,
+      "scope": "Exact pinned return expressions; full construction tested separately"
+    }
+  ]
+}

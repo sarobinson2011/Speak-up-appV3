@@ -1,0 +1,11 @@
+--- predecessor/code/adapted_finite_inputs.py
++++ corrected/code/adapted_finite_inputs.py
+@@ -149,7 +149,7 @@
+           'index_scope':'THIS ACQUISITION AND CONTEXT ONLY; no historical model offset'})
+     return {'format':FORMAT,'scope':'FINITE-SELECTED-ACQUISITION-INPUT-ONLY',
+       'acquisition_id':acquisition,'export_identity':ident(a['export.json']),'export_exact_bytes_hex':a['export.json'].hex(),
+-      'evidence_count_receipt':receipt,'bindings':receipt['bindings'],'contexts':contexts,
++      'evidence_count_receipt':copy.deepcopy(receipt),'bindings':copy.deepcopy(receipt['bindings']),'contexts':contexts,
+       'native_contract':native_contract(i['root'],i['draft']),
+       'obligations':i['obligations'],'native_duty_names':pp.duty_names(),
+       'input_identities':copy.deepcopy(i['component_bindings']),

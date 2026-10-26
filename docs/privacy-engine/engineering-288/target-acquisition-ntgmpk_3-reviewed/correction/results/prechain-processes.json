@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "name": "TE01-corrected-public-FIFO",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/rejection-component/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/evaluation"
+      ],
+      "returncode": 1,
+      "expected_reason": "UNSUPPORTED-ROOT-ENTRY",
+      "seconds": 0.1555991660000018,
+      "status": "PASS"
+    },
+    {
+      "name": "TE01-source-load-before-import",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "-c",
+        "import sys;sys.path.insert(0,'/tmp/I164-TE-correction-bgic6d2k/rejection-component/code');import evaluate as e\ntry:e.load_sources('/tmp/I164-TE-correction-bgic6d2k/roots')\nexcept e.c.Rejected as ex:\n assert not any(n in sys.modules for n in ['candidate_pipeline','semantic','ingest']);print('REJECTED BEFORE CANDIDATE IMPORT:',ex);raise SystemExit(1)\nraise SystemExit(99)"
+      ],
+      "returncode": 1,
+      "expected_reason": "REJECTED BEFORE CANDIDATE IMPORT",
+      "seconds": 0.1370732660000158,
+      "status": "PASS"
+    },
+    {
+      "name": "TE01-corrected-public-empty-directory",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/rejection-component/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/evaluation"
+      ],
+      "returncode": 1,
+      "expected_reason": "UNDECLARED-ROOT-DIRECTORY",
+      "seconds": 0.14734597599999688,
+      "status": "PASS"
+    },
+    {
+      "name": "TE02-corrected-original-artifacts",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/rejection-component/code/evaluate.py",
+        "validate",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/roots",
+        "--output",
+        "/tmp/I164-TE-correction-bgic6d2k/predecessor/evaluation"
+      ],
+      "returncode": 1,
+      "expected_reason": "EMBEDDED-COUNT-RECEIPT",
+      "seconds": 4.423368367999956,
+      "status": "PASS"
+    },
+    {
+      "name": "corrected-source-recovery",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-I",
+        "-B",
+        "/tmp/I164-TE-correction-bgic6d2k/corrected/code/evaluate.py",
+        "recover",
+        "--roots",
+        "/tmp/I164-TE-correction-bgic6d2k/recovered-roots"
+      ],
+      "returncode": 0,
+      "expected_reason": "",
+      "seconds": 3.312466476000054,
+      "status": "PASS"
+    }
+  ],
+  "full_chain_evaluations": 0
+}

@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "count": 34,
+  "controls": [
+    {
+      "name": "TE01/legitimate-nested",
+      "status": "PASS",
+      "expected": "accept",
+      "payload_reads": 1
+    },
+    {
+      "name": "TE01/legitimate-empty-file",
+      "status": "PASS",
+      "expected": "accept",
+      "payload_reads": 1
+    },
+    {
+      "name": "TE01/extra-file",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNDECLARED-ROOT-FILE:extra",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/extra-empty-dir",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNDECLARED-ROOT-DIRECTORY:extra",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/nested-empty-dir",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNDECLARED-ROOT-DIRECTORY:d/extra",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/extra-fifo",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:extra",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/declared-file-fifo",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d/member",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/declared-dir-fifo",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/declared-dir-regular",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNDECLARED-ROOT-FILE:d",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/symlink-file",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d/member",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/dangling-symlink",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d/member",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/symlink-dir",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/root-symlink",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/root-file",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/root-fifo",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/missing-file",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EXACT-ROOT-FILES",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/missing-dir",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EXACT-ROOT-FILES",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/changed-bytes",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-FILE-IDENTITY:d/member",
+      "payload_reads": 1
+    },
+    {
+      "name": "TE01/extra-hardlink",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "UNDECLARED-ROOT-FILE:extra",
+      "payload_reads": 0
+    },
+    {
+      "name": "TE01/reject-unsafe-manifest",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-MEMBER-PATH"
+    },
+    {
+      "name": "TE01/reject-file-directory-manifest-conflict",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "ROOT-FILE-DIRECTORY-CONFLICT"
+    },
+    {
+      "name": "TE02/original-pristine-mismatch",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/bundle-binding-detached",
+      "status": "PASS",
+      "expected": "accept"
+    },
+    {
+      "name": "TE02/embedded-receipt-detached",
+      "status": "PASS",
+      "expected": "accept"
+    },
+    {
+      "name": "TE02/reverse-receipt-mutation-detached",
+      "status": "PASS",
+      "expected": "accept"
+    },
+    {
+      "name": "TE02/legitimate",
+      "status": "PASS",
+      "expected": "accept"
+    },
+    {
+      "name": "TE02/binding-mismatch",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/context-mismatch",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/count-mismatch",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/obligation-omission",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/acquisition-mix",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "EMBEDDED-COUNT-RECEIPT"
+    },
+    {
+      "name": "TE02/missing-LF",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "COUNT-RECEIPT-SERIALIZATION"
+    },
+    {
+      "name": "TE02/extra-whitespace",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "COUNT-RECEIPT-SERIALIZATION"
+    },
+    {
+      "name": "TE02/duplicate-key",
+      "status": "PASS",
+      "expected": "reject",
+      "reason": "DUPLICATE-KEY"
+    }
+  ],
+  "prior_controls_rerun": false,
+  "unexecuted": [
+    {
+      "case": "Unix socket inode fixture",
+      "reason": "runtime denied socket creation; original failure preserved; not counted as PASS"
+    }
+  ]
+}

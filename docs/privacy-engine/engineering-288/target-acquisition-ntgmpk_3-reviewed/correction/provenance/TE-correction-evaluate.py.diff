@@ -1,0 +1,92 @@
+--- predecessor/code/evaluate.py
++++ corrected/code/evaluate.py
+@@ -1,5 +1,5 @@
+ """Bounded offline orchestration. Root and acquisition pins precede all executable imports."""
+-import argparse,ast,copy,datetime,importlib,importlib.util,platform,sys,time,traceback
++import argparse,ast,copy,datetime,importlib,importlib.util,platform,sys,time,traceback,os,stat
+ from pathlib import Path
+ sys.dont_write_bytecode=True
+ sys.path.insert(0,str(Path(__file__).resolve().parent))
+@@ -16,11 +16,43 @@
+  return p
+ 
+ def tree(root,expected):
+- root=Path(root);seen={}
+- for p in root.rglob('*'):
+-  c.need(not p.is_symlink(),'ROOT-SYMLINK')
+-  if p.is_file():seen[p.relative_to(root).as_posix()]=c.ident(c.read(p))
+- c.same(seen,expected,'EXACT-RECOVERED-ROOT')
++ """Check all names and types before reading any payload. Never follow symlinks."""
++ root=Path(root)
++ c.need(stat.S_ISDIR(root.lstat().st_mode),'ROOT-DIRECTORY-TYPE')
++ c.need(type(expected) is dict,'ROOT-MANIFEST-TYPE')
++ allowed_dirs=set()
++ for name in expected:
++  c.need(type(name) is str and bool(name),'ROOT-MEMBER-NAME')
++  path=Path(name)
++  c.need(not path.is_absolute() and '..' not in path.parts and path.as_posix()==name and name!='.','ROOT-MEMBER-PATH')
++  allowed_dirs.update(p.as_posix() for p in path.parents if p.as_posix()!='.')
++ c.need(not set(expected)&allowed_dirs,'ROOT-FILE-DIRECTORY-CONFLICT')
++ files=set();directories=set()
++ def scan(parent):
++  with os.scandir(parent) as entries:
++   for entry in entries:
++    path=parent/entry.name;name=path.relative_to(root).as_posix()
++    mode=entry.stat(follow_symlinks=False).st_mode
++    if stat.S_ISDIR(mode):
++     c.need(name in allowed_dirs,'UNDECLARED-ROOT-DIRECTORY:'+name)
++     directories.add(name);scan(path)
++    elif stat.S_ISREG(mode):
++     c.need(name in expected,'UNDECLARED-ROOT-FILE:'+name);files.add(name)
++    else:raise c.Rejected('UNSUPPORTED-ROOT-ENTRY:'+name)
++ scan(root)
++ c.same(sorted(files),sorted(expected),'EXACT-ROOT-FILES')
++ c.same(sorted(directories),sorted(allowed_dirs),'EXACT-ROOT-DIRECTORIES')
++ # c.read performs lstat and O_NOFOLLOW again before each regular-file read.
++ for name in sorted(files):c.same(c.ident(c.read(root/name)),expected[name],'ROOT-FILE-IDENTITY:'+name)
++
++def receipt_correspondence(out,bundle):
++ """Standalone receipt uses contract.enc: sorted ASCII JSON plus one LF.
++ No mutation or normalization is written back to either input.
++ """
++ raw=c.read(Path(out)/'count-receipt.json');saved=c.parse(raw)
++ c.need(c.enc(saved)==raw,'COUNT-RECEIPT-SERIALIZATION')
++ c.need(c.enc(bundle['evidence_count_receipt'])==raw,'EMBEDDED-COUNT-RECEIPT')
++ return c.ident(raw)
+ 
+ def recover(dest):
+  pins();dest=Path(dest);c.need(not dest.exists(),'RECOVERY-EXISTS');dest.mkdir(parents=True)
+@@ -87,6 +119,7 @@
+   print('3/6 deriving finite inputs and representation through pinned pure lookup',flush=True)
+   bundle=finite._derive(i,receipt);bundle['bindings']['target_acquisition']={'archive':pin['archive'],'export':c.ident(a['export.json']),'contract':c.ident(c.read(out/'contract.json')),'binding':pin['binding'],'incarnation':pin['incarnation']}
+   native_consumption=finite._consume(bundle)
++  receipt_correspondence(out,bundle)
+   c.write(out/'bundle.json',bundle);bid=c.ident(c.read(out/'bundle.json'));component=c.ident(c.read(P/'provenance/component-pins.json'))
+   native=consumer.representation(bundle,consumer.construct(bundle,pp.lookup()),bid,component)
+   c.write(out/'native.json',native)
+@@ -116,19 +149,21 @@
+  """Fresh-process validation of sealed output bytes, explicit links and pure verification.
+  Does not rerun projection, construction, ledger construction or any completed review.
+  """
+- components=pins();pin,a,lineage=acquire_contract();out=Path(out)
++ components=pins()
++ for role in ['candidate','draft']:
++  with __import__('zipfile').ZipFile(P/'inputs'/f'{role}.zip') as z:tree(Path(roots)/role,c.parse(z.read('RECOVERY-MANIFEST.json')))
++ pin,a,lineage=acquire_contract();out=Path(out)
+  manifest=c.parse(c.read(P/'provenance/evaluation-pins.json'));tree(out,manifest)
+  c.same(c.parse(c.read(out/'contract.json')),lineage,'OUTPUT-CONTRACT')
+  import adapted_verify_finite as v,adapted_ledger as l
+  bundle=c.parse(c.read(out/'bundle.json'));native=c.parse(c.read(out/'native.json'));ledger=c.parse(c.read(out/'ledger.json'))
++ receipt_correspondence(out,bundle)
+  c.same(bundle['acquisition_id'],pin['acquisition_id'],'OUTPUT-ACQUISITION');c.same(bundle['export_exact_bytes_hex'],a['export.json'].hex(),'OUTPUT-EXPORT');c.same(bundle['export_identity'],c.ident(a['export.json']),'OUTPUT-EXPORT-ID')
+  for obj in [bundle,native,ledger]:obligation_check(obj['obligations'])
+  checked=v.check(native,bundle,c.ident(c.read(out/'bundle.json')),c.ident(c.read(P/'provenance/component-pins.json')));checked['submitted']=c.ident(c.read(out/'native.json'))
+  c.same(checked,c.parse(c.read(out/'verification.json')),'VERIFICATION-CORRESPONDENCE');c.same(ledger['verification_receipt'],checked,'LEDGER-VERIFICATION')
+  summary=l.summary(ledger);summary['ledger']=c.ident(c.read(out/'ledger.json'));c.same(summary,c.parse(c.read(out/'ledger-result.json')),'SUMMARY-SUBSTITUTION')
+- # Recovered roots are validated as exact bytes; no candidate constructors execute here.
+- for role in ['candidate','draft']:
+-  with __import__('zipfile').ZipFile(P/'inputs'/f'{role}.zip') as z:tree(Path(roots)/role,c.parse(z.read('RECOVERY-MANIFEST.json')))
++ # Root membership was checked before any candidate/output consumption; no candidate constructors execute here.
+  return {'status':'PASS sealed outputs, target bindings, pure finite verification and exact recovered roots','contexts':checked['contexts'],'evaluation_rerun':False,'review_rerun':False,'database_connections':0}
+ 
+ def main():

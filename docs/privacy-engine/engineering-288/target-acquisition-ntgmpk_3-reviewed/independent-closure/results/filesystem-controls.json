@@ -1,0 +1,177 @@
+{
+  "status": "PASS",
+  "actual_filesystem_controls": 18,
+  "synthetic_mode_controls": 3,
+  "controls": [
+    {
+      "case": "legitimate",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "accept",
+      "reason": null,
+      "payload_reads": 1
+    },
+    {
+      "case": "empty-file",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "accept",
+      "reason": null,
+      "payload_reads": 1
+    },
+    {
+      "case": "extra-file",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNDECLARED-ROOT-FILE:z",
+      "payload_reads": 0
+    },
+    {
+      "case": "extra-dir",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNDECLARED-ROOT-DIRECTORY:z",
+      "payload_reads": 0
+    },
+    {
+      "case": "nested-dir",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNDECLARED-ROOT-DIRECTORY:d/z",
+      "payload_reads": 0
+    },
+    {
+      "case": "fifo-extra",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:z",
+      "payload_reads": 0
+    },
+    {
+      "case": "fifo-declared",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d/member",
+      "payload_reads": 0
+    },
+    {
+      "case": "symlink",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d/member",
+      "payload_reads": 0
+    },
+    {
+      "case": "directory-symlink",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:d",
+      "payload_reads": 0
+    },
+    {
+      "case": "root-symlink",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "case": "root-fifo",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "case": "root-file",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-DIRECTORY-TYPE",
+      "payload_reads": 0
+    },
+    {
+      "case": "missing-member",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "EXACT-ROOT-FILES",
+      "payload_reads": 0
+    },
+    {
+      "case": "missing-directory",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "EXACT-ROOT-FILES",
+      "payload_reads": 0
+    },
+    {
+      "case": "changed-bytes",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-FILE-IDENTITY:d/member",
+      "payload_reads": 1
+    },
+    {
+      "case": "extra-hardlink",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "UNDECLARED-ROOT-FILE:z",
+      "payload_reads": 0
+    },
+    {
+      "case": "file-directory-conflict",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-FILE-DIRECTORY-CONFLICT",
+      "payload_reads": 0
+    },
+    {
+      "case": "unsafe-manifest",
+      "actual_filesystem": true,
+      "status": "PASS",
+      "expectation": "reject",
+      "reason": "ROOT-MEMBER-PATH",
+      "payload_reads": 0
+    },
+    {
+      "case": "socket",
+      "actual_filesystem": false,
+      "synthetic_classification_only": true,
+      "status": "PASS",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:unsupported"
+    },
+    {
+      "case": "character-device",
+      "actual_filesystem": false,
+      "synthetic_classification_only": true,
+      "status": "PASS",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:unsupported"
+    },
+    {
+      "case": "block-device",
+      "actual_filesystem": false,
+      "synthetic_classification_only": true,
+      "status": "PASS",
+      "reason": "UNSUPPORTED-ROOT-ENTRY:unsupported"
+    }
+  ],
+  "unexecuted": [
+    "Actual Unix socket inode fixture (previously unavailable, not attempted or claimed here)",
+    "Actual character/block device inodes"
+  ],
+  "socket_execution": "UNTESTED"
+}

@@ -1,0 +1,87 @@
+{
+  "acquisition_id": "I164-target-acquisition-ntgmpk_3",
+  "actual_admission": false,
+  "assessment": "SOURCE-ONLY",
+  "backup": "KERNEL-ONLY",
+  "changed_implementation_files": [
+    "code/adapted_finite_inputs.py",
+    "code/evaluate.py"
+  ],
+  "classification": "UNKNOWN",
+  "completed_review_reruns": 0,
+  "contexts": [
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "fold_duties": 12,
+      "groups": 9339,
+      "occurrences": 1045,
+      "ordered_edges": 1039,
+      "semantic_edges": 0,
+      "structural_edges": 1039
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "fold_duties": 12,
+      "groups": 9339,
+      "occurrences": 1045,
+      "ordered_edges": 1039,
+      "semantic_edges": 0,
+      "structural_edges": 1039
+    }
+  ],
+  "corrected_full_chain_runs": 1,
+  "database_connections": 0,
+  "earlier_snapshot_changed": false,
+  "final_binding": "BLOCKED",
+  "findings": [
+    "TE-01",
+    "TE-02"
+  ],
+  "inventory_unknowns": 4,
+  "lifecycle_reruns": 0,
+  "lifetime_unknowns": 14,
+  "limit_changes": false,
+  "new_focused_prechain_controls": 34,
+  "new_postchain_checks": 13,
+  "new_prechain_process_checks": 5,
+  "obligations": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O08",
+    "O09",
+    "O10",
+    "O11"
+  ],
+  "original_witnesses_rejected_by_corrected_public_validator": true,
+  "original_witnesses_reproduced": true,
+  "policy_changes": false,
+  "prior_independent_controls": {
+    "counted_as_new": false,
+    "rerun": false
+  },
+  "prior_supplied_controls": {
+    "count": 44,
+    "counted_as_new": false,
+    "rerun": false
+  },
+  "readiness": "BLOCKED",
+  "receipt_correspondence": {
+    "bytes": 2155566,
+    "sha256": "9a1666823d8a4e1df671cef0c765e02e661517865e1d8ab993edaeb7b46789a1"
+  },
+  "session_operations": 0,
+  "status": "CORRECTED; independent closure review pending",
+  "streams": "UNCOMPUTED",
+  "test_only_resealed_mutations": 7,
+  "unexecuted_controls": [
+    {
+      "case": "Unix socket inode fixture",
+      "reason": "runtime denied socket creation; original failure preserved; not counted as PASS"
+    }
+  ]
+}
