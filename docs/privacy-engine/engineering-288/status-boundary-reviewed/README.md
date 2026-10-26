@@ -1,0 +1,11 @@
+# Reviewed prospective status boundary milestone
+
+The corrected prospective entry has independent scoped source/API support and a completed, separately inspected real-backend host smoke. MILESTONE.json separates supplied controls, Formal-Lab[6] independent assertions and process checks, and the host observation. Repeated processes are not extra independent coverage. RETURNED-SMOKE-FINDING.txt preserves the returned finding as plain text; it is not a newly executed verification or an assertion of reviewer identity.
+
+The adopted status contract and decision, exact corrected code and two-context source correspondence are saved under correction/. Historical reports retain their original "pending" language; this additive milestone records subsequent support without rewriting those records. Host preflight REVIEW-SUPPORT likewise remains its original pre-smoke record.
+
+This is a compact provenance selection, NOT a runnable recovered application tree. Large generated basis outputs, database bytes, source-copy inventory and full archives remain outside Git. A selection or copied evidence record is not an additional invocation. Exact original archive manifests remain original and describe their full archives, not this selection. SELECTION-MANIFEST.json describes this Git selection only.
+
+General clients receive the state/handle facade; default CLI output uses a fixed completion/failure message. Original manager behaviour, recovery and evidence handling are unchanged. Arbitrary Python introspection, hostile in-process code and unapproved forwarding by trusted components are outside the declared boundary. No general privacy proof follows from internal-only diagnostics or absence of automatic logging.
+
+All eleven obligations, Decision B, exact retained evidence, allowances, charges, reservations and uncertainty protections remain. Both prior acquisitions stay separate from this new smoke fixture. Four inventory and fourteen lifetime totals remain UNKNOWN. SOURCE-ONLY; readiness/final binding BLOCKED; admission disabled; backup KERNEL-ONLY; streams UNCOMPUTED. The cumulative envelope remains unadopted. Missing historical launcher frames and untested Unix-socket execution remain explicit limitations. No further task is implemented or authorized here.

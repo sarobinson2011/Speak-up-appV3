@@ -1,0 +1,114 @@
+**Proposed owning contract: `ManagedAuthority.status` — prospective managed integration, draft 1.**
+
+**Recommendation:** keep `status()` as an internal connection-management and diagnostic interface, with no public status endpoint or automatic per-call persistence. Retain exact occurrences when they are deliberately captured or consumed as evidence. This is a proposed integration restriction and evidence contract—not a claim that the existing code enforces it or that transient calls have no privacy significance.
+
+The contract is decision-ready for its integration choices. Security qualification and complete model instantiation remain blocked.
+
+**1. Existing behaviour and boundary**
+
+The controlling implementation is `compiler/live_connection.py`, SHA-256:
+
+`7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5`
+
+Source-established facts:
+
+- `status()` reads the managed object under its `RLock` and returns a new dictionary. It performs no database access, journal insertion or allowance charge (`:23–24`).
+- It does not require `READY`; connection status remains readable in closed or quarantined states.
+- `recover()` embeds one normal status result after successful validation and publication of `READY` (`:90–92`).
+- `open_session()` calls `recover()` and discards its return before returning the managed object and scheduler (`:101–104`).
+- The declared acceptance boundary is one managed owner, trusted process and serialized access. Protection against introspection, competing owners and rollback is expressly excluded from the implementation claim.
+- The retained observation consumer supports status-call correspondence, but is not deployment attestation.
+
+The source does not establish a network endpoint, complete caller inventory or access-control enforcement for this method.
+
+**2. Proposed callers and recipients**
+
+| Component/use | Proposed permission | Result recipient |
+|---|---|---|
+| `ManagedAuthority.recover()` | Preserve the existing nested call and returned recovery structure. | The internal recovery caller. |
+| `open_session()` | Preserve its existing recovery call and discard behaviour. No new status publication. | Its internal control flow; no separate status recipient is introduced. |
+| Designated in-process managed controller/diagnostic code | May call for connection-management diagnosis, including non-READY states. | That component within the trusted process. |
+| Existing bounded observation machinery | May observe a separately authorized execution or consume retained traces. | The observation/evidence workflow under its own authorization and custody obligations. |
+| Public clients, remote monitoring, general application responses | No status interface or forwarding route is selected by this contract. | None through this proposed integration. |
+
+The last two rows are **proposed integration choices**, not existing runtime guards. The eventual integration must identify its diagnostic caller sites and establish that results are not forwarded through an unmodeled route.
+
+No broad “any trusted component” entitlement is proposed. Possession of the Python object is an implementation capability, not sufficient evidence that its holder belongs to the accepted caller scope.
+
+**3. Exposure outside the trusted process**
+
+The proposed integration provides **no direct service exposure** of the status result outside the trusted process. That includes forwarding the nested `recover().status` through a public response.
+
+Status-bearing evidence may leave the process through a separately authorized evidence/export workflow. Such an export is an actual disclosure and copy event. Its recipients, storage, lineage and relevant observer relationships must be covered; the word “evidence” supplies no privacy exemption.
+
+This preserves the already retained handoff and close records. It neither retracts those disclosures nor declares their custody qualified.
+
+“No public endpoint selected” is not proof of no external observation. Process operators, debuggers, logs, crash material, storage and scheduling channels remain subject to the governing observer model.
+
+**4. Field, error and timing treatment**
+
+| Surface | Contract |
+|---|---|
+| `phase` | Preserve the exact returned value and its connection-state meaning. It is not an admission or external-effect disposition. |
+| `reason` | Treat as potentially sensitive diagnostic content. It may contain exception type/message text. Do not classify it as public, constant or harmless. No automatic forwarding or additional logging is selected. When retained as evidence, preserve its exact source value; no silent truncation, redaction or normalized substitute. |
+| `connection_epoch` | Interpret only within the specific managed-object instance. It counts successful recoveries there, resets on construction and is not a global instance/call identifier, durability proof or allowance. |
+| Three fixed `False` fields | Preserve their literal values. They establish neither external nonexecution nor renewed authority. Constant values do not make the complete status occurrence non-observable. |
+| Errors/interruption | A missing normal return remains missing. Preserve any required exception/unwind evidence; do not fabricate a result or infer nonexecution from its absence. |
+| Lock waiting and scheduling | Include relevant ordering, contention, completion and timing channels in observer analysis. No fairness, latency bound, constant-time property or unobservability is claimed. |
+| Recorded timing | Existing event sequence is not a wall-clock trace. Do not invent timestamps or timing precision that the recorder did not capture. |
+
+The source supplies no authoritative finite domain for every possible `reason` string or lifetime epoch value. This contract does not invent one.
+
+**5. Transient use and retained evidence**
+
+**Transient use:** an internal call may return information for immediate management or diagnosis without creating a separate durable status receipt. The integration adds no automatic per-call logger.
+
+This does not waive another governing retention duty. If a particular use requires exact evidence that the transient path cannot supply, that use cannot claim evidential completeness.
+
+**Retained use:** a result becomes retained evidence when a governed capture/export records it, or when it is relied upon to establish a claimed occurrence or recovery correspondence. The following rules then apply:
+
+- Preserve the original captured artifact bytes, including required surrounding invocation, parent, state and exception material.
+- Identify the capture/acquisition, its exact artifact digest, source identity, applicable context, managed-instance binding and location of the status occurrence.
+- Within an existing managed trace, use its frame, parent and sequence identities. These are capture-local; they must not masquerade as global call identities.
+- Bind an embedded recovery status to its actual child status frame when that trace evidence exists.
+- If a standalone saved status object lacks call-frame or instance evidence, retain it as that bounded saved assertion. Do not manufacture the missing invocation history.
+
+A Python return dictionary has no intrinsic serialized byte representation. Where the existing managed recorder captures it, retain that recorder’s exact artifact bytes and value representation. Existing JSON handoff/close records retain their original bytes. This contract does **not** introduce a new canonical status serializer or silently re-encode old evidence.
+
+A later export is a distinct retained copy/acquisition. It must preserve origin lineage and must not be counted as another status invocation. Equal content alone neither proves shared origin nor authorizes merging copies.
+
+**6. Correspondence to the existing model**
+
+The proposed correspondence uses the existing separation required by S90:
+
+- **Static coverage:** status fields, owning return, framing, recovery embedding, managed state, lock/control flow, exceptions and applicable observer relationships belong to the source-derived declarations in both symbolic contexts. Multiplicities and guards require established scope; the first captured trace is not that scope.
+- **Actual occurrences:** separate calls remain separate owning occurrences within their authenticated or otherwise supported capture lineage. Their values, parent joins and dispositions follow the actual evidence.
+- **Copies:** separately retained copies preserve occurrence provenance and add applicable copy/observer relationships without becoming additional invocations.
+- **Unavailable evidence:** missing instance, caller, return, timing or lineage facts remain explicit gaps. They cannot become zeros, absent events or qualified classifications.
+
+The retained validator already checks exact field membership, literal constants, phase/epoch correspondence and the nested recovery-status relationship (`compiler/managed_observations.py:349–369`). Its check of `reason` establishes string type, not complete provenance of that text. This contract does not upgrade that check.
+
+No new token layout, multiplicity codec, global call identifier or relationship exception is proposed. Final ranges and qualified symbolic coverage remain unresolved under S90’s static/actual universe rules, lines **445–483**, and byte adapter, lines **748–781**.
+
+**7. Precise approval and remaining prerequisites**
+
+Steve’s approval is needed for three integration choices:
+
+1. Select the internal caller scope above, with designated diagnostic call sites and no public status/forwarding interface.
+2. Select transient-by-default use without adding automatic per-call persistence, while preserving every independently applicable evidence duty.
+3. Require exact capture and copy lineage for retained uses, without inventing missing call history or changing existing evidence bytes.
+
+The proposed decision is:
+
+> Approve draft 1 as the owning integration contract for `ManagedAuthority.status`, limited to its stated caller, exposure and evidence-handling choices. Preserve the existing method’s behaviour, recovery structure, exact retained evidence and all governing privacy and retention duties. This approval establishes no observer qualification, security bound, complete occurrence domain or enforcement fact. It authorizes no implementation, new execution, logging system, call limit, deletion or architecture adoption.
+
+Approval cannot supply:
+
+- Actual caller/forwarding and custody facts: owned by the managed integration and evidence-workflow source owners.
+- Security relevance of repetitions, timing and shared observations: owned by the independently governing policy/experiment sources.
+- Complete symbolic coverage and actual-to-model correspondence: requiring the applicable qualified source/parser/assessment evidence.
+- Runtime exclusivity, durability or rollback resistance: requiring technical and operational evidence.
+
+**No inspected clause prevents this narrow proposal.** S90 does prevent treating its internal-only designation or lack of logging as a privacy proof. If an independently governing requirement demands public status access or universal retained status traces, that requirement must be reconciled explicitly; this contract cannot override it.
+
+The cumulative-envelope architecture remains unadopted. All eleven obligations, both acquisitions, four inventory and fourteen lifetime UNKNOWN totals remain preserved. Decision B and SOURCE-ONLY remain unchanged; readiness/final binding remain blocked and admission disabled.

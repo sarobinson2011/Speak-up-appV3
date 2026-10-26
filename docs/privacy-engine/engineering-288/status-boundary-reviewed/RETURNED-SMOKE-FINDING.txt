@@ -1,0 +1,13 @@
+Verified: the saved evidence supports the bounded real-backend smoke test.
+
+- ZIP: 77,696 bytes, 37 entries; expected SHA-256 matched.
+- CRC, safe unique membership and all 36 manifested file hashes passed.
+- Saved trace, handoff, export and completion records agree: empty initialization, intended state()/handle() client surface and confirmed CLOSED state.
+- Execution recorded exit 0, approximately 44.5 seconds. Default stdout contains only the fixed completion message; stderr is empty.
+- Retained database-copy hashes match the recorded before/after identities.
+
+I inspected saved files only—no database opening or test rerun. This supports the instrumented host smoke, while durability, exclusivity and broader qualification remain unestablished.
+
+Next: return this finding to SU-Engineering[288D] to incorporate and save the reviewed status-boundary milestone using existing Git authorization. Keep host evidence separate from Formal-Lab’s independent controls.
+
+In plain English: the corrected entry worked with the real backend on your machine, kept diagnostics out of default output and closed cleanly. This check is complete; don’t rerun it. Admission remains disabled.

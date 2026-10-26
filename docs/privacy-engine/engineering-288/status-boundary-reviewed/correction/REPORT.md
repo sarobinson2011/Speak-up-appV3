@@ -1,0 +1,48 @@
+# I164 prospective status caller/output correction
+
+Implemented a separate prospective entry under the adopted ManagedAuthority.status contract. The historical 50.0.2 launcher and candidate sources remain exact, as do the earlier 41.0.7 path and all supplied acquisitions. No existing host session was accessed. This is a bounded implementation checkpoint for independent review, not closure, qualification or admission.
+
+## Resulting behaviour
+
+`code/prospective_entry.py` authenticates the exact retained contract, decision and dependency graph before importing the historical launcher. It calls the original `session()` context manager, not historical `main()`. Original environment/metadata guards, cooperative lock, raw-creation close, managed opening, diagnostic status read, create-only BOOTSTRAP-COMPLETE record, failure records and confirmed-close handling remain owned by the unchanged launcher. The managed method, recovery structure, allowances and retention code are not patched.
+
+The general callback receives `Client` with only `state()` and `handle(bytes)`. Its object contains an opaque process-local token; the wrapper remains in a private owner table. It exposes no manager, wrapper, control, scheduler, Scheduler.a, status or recover attribute. State is detached using exact primitive/list/dict types; signed response bytes pass through unchanged. Non-data objects/subclasses reject instead of invoking copy/repr hooks. Copy/pickle of the client rejects. Callback returns are discarded. Capabilities are revoked before close, including uncertain cleanup. Tokens are not global call IDs, durable instance identities or privacy allowances.
+
+The new initialize CLI invokes that entry and emits only fixed completion/failure text. It never calls the old status-printing main, serializes state/status, or prints an original traceback. Completion/failure, termination, scheduling and timing remain observable. There is no stream sandbox: hostile callback output, Python introspection, third-party side channels and arbitrary process modification are not controlled by this API boundary.
+
+Internal diagnostic access remains through the separately designated trusted `run_controlled(..., control=...)` path and `_Control.status()`, including non-READY states while owned. The control callback receives the exact status dictionary. There is no new capture sink, serializer, logger, authorization database or universal receipt. Existing separately authorized evidence tooling can consume/capture that exact value and surrounding evidence; the code does not authenticate a caller's evidence authority. Such a trusted callback must not forward status to general clients. The historical evidence workflows and their original bytes remain available unchanged.
+
+## Errors and retention
+
+The general facade does not send raw backend exceptions to its caller. It retains the original exception in the private owner for the duration of the current operation, raises a fixed ClientFailure to the general callback, and then re-raises the original into the historical launcher's existing failure-record/cleanup path. Catching the generic client failure cannot silently turn the operation into success or admit more dispatches through that capability. If the callback additionally fails, its chained failure is retained too. This is a prospective boundary disposition, not a change to ManagedAuthority recovery. No numerical call limit or fresh authority is created.
+
+After the original launcher finishes its error handling, the outer entry emits only the same coarse failure; it does not truncate, redact, re-encode or replace the launcher's saved error record. Pre-session guard failures and failures to write existing evidence do not acquire invented durable evidence: evidential completeness remains unestablished there. Authenticated application error response bytes from `handle()` are unchanged; this status-specific correction is not a content-redaction policy for the application protocol.
+
+Original exception context/cause are not attached to the generic boundary error. Tracebacks and function/module/private-attribute introspection can still reach Python internals: protection against that is expressly outside the trusted-process model. No exclusive custody, hostile-code isolation, queue/fairness, native concurrency or timing guarantee is claimed. The new owner table is for the stated single-threaded integration, not a new thread/process qualification.
+
+## Exact source correspondence
+
+`code/correspondence.py` derives and validates `provenance/status-correspondence.json` using exact serialization (sorted compact JSON, UTF-8, final LF). It pins the new entry and the exact contract/decision, verifies the retained source graph and inherited managed profile/model/producer/directory/procedure artifacts, and binds 19 affected sites in **each** of SYMBOLIC-U-ONE and SYMBOLIC-U-TWO. These are site/declaration counts, not invocation multiplicities.
+
+The additive binding joins existing managed:entry, managed:normal, managed:restored and managed:obligation-preservation requirements and their producer/directory/duty records. It preserves inherited managed-local phase/epoch/lock/recovery-result references and derives all six returned status fields from the unchanged source. New caller/output/control/failure/data-boundary relationships are explicit. The historical CLI stdout path is preserved as source and excluded from the prospective entry. No old generated artifact is overwritten, and no lifecycle/full model/equality stream is rebuilt.
+
+This binding is executable source-correspondence validation, not a canonical S90 token allocation, qualified complete-domain model or observation of historic launcher frames. Classifications remain UNKNOWN; multiplicities, classes and ordinals remain unallocated. Retained occurrences require exact acquisition/capture, artifact bytes/hash, context/source/instance and record location, with frame/parent/sequence only where supported. Copies do not become invocations. Neither acquisition is joined to another or used as a lifetime universe.
+
+Historical handoff/close producer-script and launcher-frame provenance remains explicitly unavailable. The current implementation cannot recover those past frames. Existing reason validation establishes string type, not complete provenance; epoch remains instance-local. Operating-envelope and independently governed security-composition parameters are still missing.
+
+## Fresh checks, separately scoped
+
+- **79 primary boundary assertions** passed in the first in-process run and separately in a fresh process. The first harness then failed recovered-root validation because its copy ignore rule incorrectly omitted every directory named `results`, including declared retained-launcher material. The application membership guard rejected that incomplete tree before application inputs were consumed.
+- The failed harness source, partial result, recovered-process stderr and omitted-root inventory are preserved. Only the harness copy rule changed. The resumed run skipped the completed primary and fresh-process blocks, passed the **79-assertion recovered-root run**, and completed **10 continuation checks**: recovered process, actual public environment refusal, and eight stale/nonregular dependency cases.
+- **24 adjacent assertions** passed: nested object and subclass return rejection, extra status-bearing state shape rejection, unsafe input object handling, caught backend plus later client failure retention, non-READY internal status, and the public controlled entry.
+- **22 correspondence assertions** passed, including exact legitimate outputs, both contexts, omitted sites/relations/joins, stale contract/decision/source, invented multiplicity/classification/history/admission, alternate serialization, summary substitution, and fresh/recovered processes.
+
+These are Engineering's new controls, not independent review counts. Repeated process runs are not additional independent semantic coverage. The original stdout witness was reproduced only by executing the retained main function with a disposable stub context, not by rerunning a historical bootstrap or review.
+
+Positive initialization/close/failure flow used the exact launcher mechanics with a disposable in-memory stub authority/manager, empty placeholder state files and mocked environment/runtime-loading seams. No SQLite connection, real managed lifecycle, transaction signing, request execution against a real backend or existing host-session access occurred. The actual unmocked public gate correctly refused this assessment environment before session creation; there is no new positive qualification of Steve's environment. Controls install a database/network/host-path audit guard; subprocess and source correspondence limits are recorded in the saved results.
+
+## Preserved limits
+
+Accepted definition, Decision B, all eleven O01–O11 obligations, both acquisitions, four inventory UNKNOWN totals and fourteen lifetime UNKNOWN totals remain. No deletion/compaction, new logger/call limit, public status endpoint or cumulative-envelope adoption. Existing charges, allowances, reservations, ownership, exact evidence and uncertainty remain. SOURCE-ONLY; readiness/final binding BLOCKED; actual admission disabled; backup KERNEL-ONLY; streams UNCOMPUTED. Prior TE-01/TE-02 closure is not rerun or broadened; its actual Unix-socket execution limitation remains untested.
+
+The smallest next step is independent review of this boundary correction and its source bindings. No deployment or existing-session command is authorized by this checkpoint.

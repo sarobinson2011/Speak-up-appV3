@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-1/recovered-root/tests/checks.py", line 284, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-1/recovered-root/tests/checks.py", line 248, in main
+    exercise(m,out)
+  File "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-1/recovered-root/tests/checks.py", line 120, in exercise
+    need(len(module.verify_inputs())==37,'exact dependencies verified')
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-1/recovered-root/code/prospective_entry.py", line 71, in verify_inputs
+    raise RuntimeError('DEPENDENCY-MEMBERSHIP')
+RuntimeError: DEPENDENCY-MEMBERSHIP

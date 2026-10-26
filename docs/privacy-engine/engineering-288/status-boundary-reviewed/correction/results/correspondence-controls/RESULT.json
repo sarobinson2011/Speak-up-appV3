@@ -1,0 +1,60 @@
+{
+  "result": "PASS",
+  "checks": [
+    "legitimate exact serialized binding",
+    "both contexts cover all affected sites",
+    "reject contract",
+    "reject decision",
+    "reject entry",
+    "reject omitted-site",
+    "reject omitted-context",
+    "reject context-substitution",
+    "reject missing-relation",
+    "reject missing-inherited-join",
+    "reject invented-multiplicity",
+    "reject invented-historical-frames",
+    "reject upgraded-classification",
+    "reject upgraded-admission",
+    "reject alternate serialization",
+    "reject summary substitution",
+    "recovered root reproduces exact binding",
+    "reject changed new-entry",
+    "reject changed historical-launcher",
+    "reject changed inherited-model",
+    "fresh process exact validation",
+    "recovered process exact validation"
+  ],
+  "count": 22,
+  "processes": [
+    {
+      "label": "fresh",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/3da0de3fef10/status-boundary/code/correspondence.py",
+        "check",
+        "/workspace/scratch/3da0de3fef10/status-boundary/provenance/status-correspondence.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "recovered",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/correspondence-controls/recovered-root/code/correspondence.py",
+        "check",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/correspondence-controls/recovered-root/provenance/status-correspondence.json"
+      ],
+      "returncode": 0
+    }
+  ],
+  "saved_binding": {
+    "bytes": 34758,
+    "sha256": "5bbc3b72fd1905c5588a6b21b357278cb5367643ea21bd6e3d2dfb360722cf0d"
+  },
+  "backend_execution": false,
+  "qualification": false
+}

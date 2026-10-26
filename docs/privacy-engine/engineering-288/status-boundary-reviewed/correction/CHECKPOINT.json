@@ -1,0 +1,40 @@
+{
+  "checkpoint": "I164-status-boundary-correction-1",
+  "status": "IMPLEMENTED; BOUNDED ENGINEERING CHECKS PASS; INDEPENDENT REVIEW PENDING",
+  "contract": {
+    "bytes": 11593,
+    "sha256": "ef55b55a1aab7427a1f58faa38bf2b5b27af1f0deddf62f73e3764bfbd09fcd6"
+  },
+  "decision": {
+    "bytes": 2551,
+    "sha256": "0ba88241ae82ff0bd416b47d7c81451f431e4a65a4662f9863948623e8ed693c"
+  },
+  "entry": {
+    "bytes": 9485,
+    "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+  },
+  "correspondence": {
+    "bytes": 34758,
+    "sha256": "5bbc3b72fd1905c5588a6b21b357278cb5367643ea21bd6e3d2dfb360722cf0d"
+  },
+  "test_disposition": "results/FINAL.json",
+  "failures_preserved": [
+    "failures/checks-before-recovery-copy-fix.py",
+    "results/controls-1/PARTIAL.json",
+    "results/controls-1/recovered.stderr"
+  ],
+  "boundaries": {
+    "source_only": true,
+    "obligations": 11,
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "admission": false,
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "cumulative_envelope_adopted": false,
+    "historical_launcher_frames": "UNAVAILABLE",
+    "unix_socket_execution_qualification": "UNTESTED; prior limitation preserved"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "result": "PASS",
+  "checks": [
+    "recovered process positive boundary checks",
+    "actual public guard refuses before session creation",
+    "reject stale/unsupported contract",
+    "reject stale/unsupported decision",
+    "reject stale/unsupported launcher",
+    "reject stale/unsupported manager",
+    "reject stale/unsupported pins",
+    "reject stale/unsupported fifo",
+    "reject stale/unsupported empty-dir",
+    "reject stale/unsupported symlink"
+  ],
+  "count": 10,
+  "processes": [
+    {
+      "label": "recovered",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/recovered-root/tests/checks.py",
+        "--child",
+        "--output",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/recovered-evidence"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "ff6bba88165ae0eaf490d258cdf7d9d0fc1f42a6c186fa73e89892f9e8b1ae15",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "actual-public-refusal",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/workspace/scratch/3da0de3fef10/status-boundary/code/prospective_entry.py",
+        "initialize",
+        "--candidate",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/NO-CANDIDATE",
+        "--draft",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/NO-DRAFT",
+        "--runtime",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/NO-RUNTIME",
+        "--destination",
+        "/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/NEVER-CREATED"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "41dfe2f007775ed56e679ba1433922ed69bfd4002bf7203cb978c9873af516bc"
+    },
+    {
+      "label": "reject-contract",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/contract/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7d2dfdc891b385c3aec477013ca05ca3b8db8afb5e35429726baf3c6ebb43dc6"
+    },
+    {
+      "label": "reject-decision",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/decision/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "df8718d8e626b917975d54a2f8b7436309783668716a850934b174a19a2dfa4b"
+    },
+    {
+      "label": "reject-launcher",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/launcher/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e4425a7adce52084695d664109b7ebc3803c45b7077d58e14fcc9e628fcf5f34"
+    },
+    {
+      "label": "reject-manager",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/manager/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "694cd79bc9c3e1f32f79c663acbf868ca17023076cadf32a777085b53848f893"
+    },
+    {
+      "label": "reject-pins",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/pins/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c110e49aceb9a42f63bc09102a862063b3a66cb829d5fd7c46ef9e495fdaf91b"
+    },
+    {
+      "label": "reject-fifo",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/fifo/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "acd9d62cf46a040c05a666c19c1c518184600c0493a58d66aa4fdc8a52ffb57e"
+    },
+    {
+      "label": "reject-empty-dir",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/empty-dir/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f1011f36fd6342080b4158f925c64cf6944b43934915ab4c802e18037878bac1"
+    },
+    {
+      "label": "reject-symlink",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy; m=runpy.run_path('/workspace/scratch/3da0de3fef10/status-boundary/results/controls-resumed/mutations/symlink/code/prospective_entry.py'); m['verify_inputs']()"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4475424cb0a4924f3c32eb68e7c0b518723e663f9a4446f96c35a343349156e0"
+    }
+  ],
+  "positive_backend": "DISPOSABLE STUB; exact retained launcher mechanics",
+  "real_database_connections": 0,
+  "real_managed_lifecycle_executions": 0,
+  "completed_reviews_rerun": 0,
+  "host_sessions_accessed": false,
+  "actual_admission": false
+}

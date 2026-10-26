@@ -1,0 +1,378 @@
+{
+  "status": "PASS bounded local controls",
+  "controls": [
+    {
+      "case": "public new launcher rejects old session before runtime/DB",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "NO-LEGACY-SESSION-MIGRATION"
+    },
+    {
+      "case": "supplied exact host observation matches pinned profile",
+      "result": "PASS"
+    },
+    {
+      "case": "returned observation mutation does not affect pristine validation",
+      "result": "PASS"
+    },
+    {
+      "case": "wrong python",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong implementation",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong optimize",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong machine",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong cryptography_openssl",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong executable",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "wrong stdlib_ssl",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "package cryptography 41.0.7",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "package cryptography 50.0.1",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "package cffi 2.0.0",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "package pycparser 3.10",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "installed sha256",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "installed bytes",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "missing installed member",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "old environment prefix",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-VENV-PREFIX"
+    },
+    {
+      "case": "omitted requirement markers",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-ENVIRONMENT"
+    },
+    {
+      "case": "real current cloud host correctly refused by exact host gate",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "EXACT-VENV-PREFIX"
+    },
+    {
+      "case": "create=True refuses preexisting old directory",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "DESTINATION-EXISTS"
+    },
+    {
+      "case": "create flag integer rejected",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "CREATE-TYPE"
+    },
+    {
+      "case": "fresh destination frontier is admitted without creating it",
+      "result": "PASS"
+    },
+    {
+      "case": "new metadata frontier accepted; not full session validation",
+      "result": "PASS"
+    },
+    {
+      "case": "mixed session configuration",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "SESSION-CONFIGURATION"
+    },
+    {
+      "case": "mixed session environment_profile",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "SESSION-PROFILE"
+    },
+    {
+      "case": "mixed session environment",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "SESSION-ENVIRONMENT"
+    },
+    {
+      "case": "recovered exact profile accepted",
+      "result": "PASS"
+    },
+    {
+      "case": "altered configuration bytes",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "CONFIGURATION-IDENTITY"
+    },
+    {
+      "case": "coordinated submitted profile expectation rejected by source pin",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "PROFILE-IDENTITY"
+    },
+    {
+      "case": "weakened dependency lock",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "LOCK-IDENTITY"
+    },
+    {
+      "case": "stale runtime mapping",
+      "result": "rejected",
+      "exception": "Rejected",
+      "reason": "SOURCE-MANIFEST:runtime-layout.json"
+    },
+    {
+      "case": "changed guard module before execution",
+      "result": "rejected",
+      "exception": "RuntimeError",
+      "reason": "ENVIRONMENT-GUARD-IDENTITY"
+    },
+    {
+      "case": "actual source Ed25519 signing and verification",
+      "result": "PASS"
+    },
+    {
+      "case": "authenticated session substitution",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "authenticated challenge substitution",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "authenticated attempt substitution",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "authenticated request substitution",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "wrong role",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "truncated signature",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "wrong signed type",
+      "result": "rejected",
+      "exception": "TypeError",
+      "reason": "fromhex() argument must be str, not list"
+    },
+    {
+      "case": "domain substitution",
+      "result": "rejected",
+      "exception": "InvalidSignature",
+      "reason": ""
+    },
+    {
+      "case": "fresh process recovered-root old-session rejection",
+      "result": "PASS"
+    }
+  ],
+  "count": 43,
+  "environment": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "optimize": 0,
+    "machine": "x86_64",
+    "libc": [
+      "glibc",
+      "2.39"
+    ],
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "executable_identity": {
+      "bytes": 30894944,
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "cryptography_openssl": "OpenSSL 4.0.3 29 Sep 2026",
+    "stdlib_ssl": "OpenSSL 3.5.8 25 Aug 2026",
+    "packages": {
+      "cryptography": {
+        "version": "50.0.2",
+        "requires": [
+          "cffi>=2.0.0 ; platform_python_implementation != 'PyPy'",
+          "typing-extensions>=4.13.2 ; python_full_version < '3.11'",
+          "bcrypt>=3.1.5 ; extra == 'ssh'"
+        ],
+        "build_files": [
+          {
+            "member": "cryptography-50.0.2.dist-info/METADATA",
+            "identity": {
+              "bytes": 4394,
+              "sha256": "047cfc71226409de4318b360aef15c63a2adf609731e3dcf7fe932f14ea042ee"
+            }
+          },
+          {
+            "member": "cryptography-50.0.2.dist-info/RECORD",
+            "identity": {
+              "bytes": 17871,
+              "sha256": "92c744f78d727df9823bc2e2582ea9de45cecf1d7693993fd2681b9dbbc2a3a1"
+            }
+          },
+          {
+            "member": "cryptography-50.0.2.dist-info/WHEEL",
+            "identity": {
+              "bytes": 109,
+              "sha256": "39b425ce6c898e83f8b8cdeeb65dae690d3ab9f2382ca9c3860e77bf6d34077a"
+            }
+          },
+          {
+            "member": "cryptography/hazmat/bindings/_rust.abi3.so",
+            "identity": {
+              "bytes": 14434376,
+              "sha256": "1e5d23fa66915204b9b67202a46993844d81cda56f6ad52cead2def37617ee29"
+            }
+          }
+        ]
+      },
+      "cffi": {
+        "version": "2.1.1",
+        "requires": [
+          "pycparser; implementation_name != \"PyPy\""
+        ],
+        "build_files": [
+          {
+            "member": "_cffi_backend.cpython-312-x86_64-linux-gnu.so",
+            "identity": {
+              "bytes": 348856,
+              "sha256": "9bc1d08072255a5ec2db10fc75df1dd9e73097a75cd9150cfe875ebd6712f17c"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/METADATA",
+            "identity": {
+              "bytes": 2527,
+              "sha256": "558bafb9093a8e790175d9ecff9688382981d744877dad86fd6770db0f4dc918"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/RECORD",
+            "identity": {
+              "bytes": 3515,
+              "sha256": "63c57a95a04470e9e631b58c2042a66fc1cf79fa265a6ee50250898b4d481a9e"
+            }
+          },
+          {
+            "member": "cffi-2.1.1.dist-info/WHEEL",
+            "identity": {
+              "bytes": 151,
+              "sha256": "504ac80cc95190c99aea177550563d7939b8fca6b1431c01c0d435e74afbbd0e"
+            }
+          }
+        ]
+      },
+      "pycparser": {
+        "version": "3.11",
+        "requires": [],
+        "build_files": [
+          {
+            "member": "pycparser-3.11.dist-info/METADATA",
+            "identity": {
+              "bytes": 8238,
+              "sha256": "e3a74c846648bb55f4f907284b745e2003b87b96d9c9d17a8a50cf37804541c9"
+            }
+          },
+          {
+            "member": "pycparser-3.11.dist-info/RECORD",
+            "identity": {
+              "bytes": 1490,
+              "sha256": "2f51bf961775a0854dc5dd245806c6e8811c4d4f2c7dcef4418b9e79ddaeed98"
+            }
+          },
+          {
+            "member": "pycparser-3.11.dist-info/WHEEL",
+            "identity": {
+              "bytes": 91,
+              "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+            }
+          }
+        ]
+      }
+    },
+    "wheel_payload_authentication": "NOT ESTABLISHED BY INVENTORY ALONE"
+  },
+  "pinned_host_execution": "NOT EXECUTED HERE; local gate correctly rejects different host",
+  "positive_profile_check": "replay of captured exact host inventory, not attestation of current host",
+  "databases_opened": false,
+  "persistent_session_initialized": false,
+  "transaction_signed": false,
+  "lab_authentication_signatures_created": true,
+  "admission": false
+}

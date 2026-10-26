@@ -1,0 +1,56 @@
+{
+  "checkpoint": "Formal-Lab6-I164-status-boundary-independent-review",
+  "date": "2026-10-26",
+  "review_author": "Formal-Lab[6] (Codex, independent reviewer)",
+  "construction_author": "SU-Engineering[288D]",
+  "verdict": "SUPPORTED WITHIN THE DECLARED TRUSTED-PROCESS STATUS CALLER/OUTPUT CONTRACT",
+  "residual_witness_within_scope": null,
+  "input": {
+    "bytes": 4269431,
+    "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+  },
+  "input_entries": 463,
+  "independent_testing": {
+    "boundary_assertions": 203,
+    "binding_assertions": 63,
+    "audit_assertion": 1,
+    "fresh_recovered_repeat": 267,
+    "additional_process_checks": 18,
+    "supplied_test_modules_imported": false,
+    "positive_backend": "Reviewer-written stubs; exact retained launcher mechanics",
+    "real_backend_positive": false,
+    "host_positive": false,
+    "database_connections": 0,
+    "existing_sessions_accessed": false
+  },
+  "preservation": {
+    "candidate_members": 666,
+    "draft_members": 163,
+    "runtime_source_map_members": 93,
+    "reference_members": 42,
+    "original_and_recovered_root_members_unchanged": 463,
+    "historical_launcher_frames": "UNAVAILABLE"
+  },
+  "boundaries": {
+    "obligations": 11,
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "SOURCE_ONLY": "UNCHANGED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false,
+    "policy_changed": false,
+    "implementation_changed": false,
+    "cumulative_envelope_adopted": false
+  },
+  "scope_limits": [
+    "Trusted single-threaded Python API discipline, not arbitrary introspection or hostile code isolation",
+    "Designated control/evidence authorization and custody are external premises",
+    "No complete-model, privacy or operational qualification",
+    "No installed-wheel authentication or original-record reconciliation",
+    "No new historical launcher-frame provenance",
+    "Exact authenticated application response bytes remain unchanged; not general content redaction"
+  ]
+}
