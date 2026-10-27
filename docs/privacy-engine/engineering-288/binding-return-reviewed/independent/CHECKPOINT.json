@@ -1,0 +1,164 @@
+{
+  "checkpoint": "Formal-Lab6-I164-binding-return-correspondence-independent-review",
+  "review_target": "I164-binding-return-correspondence-1.zip",
+  "input": {
+    "bytes": 40870457,
+    "sha256": "269e5e439de97fe77fcacba484c544b276457db7643cc5863875ef227331dc4f",
+    "entries": 844,
+    "manifested_hashes": 843
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "canonical": false,
+  "verdict": "SUPPORTED for bounded source-derived conditional getter correspondence and validated recovery-frontier binding",
+  "defect_witness": "None found in focused checks; no complete-runtime-coverage claim",
+  "source_derivation": {
+    "property": "ManagedAuthority.binding",
+    "return": "self._live.binding",
+    "type": "str under retained initialized Authority and typed HEAD premise",
+    "guards": [
+      "lock entry completes",
+      "_require normal continuation: READY, live present, retired absent",
+      "receiver/attribute evaluation completes",
+      "lock exit completes"
+    ],
+    "underlying_constructor": "sha(enc(...))",
+    "state_relation": "HEAD binding equals this Authority instance binding",
+    "independent_AST_and_guard_oracle": true,
+    "three_inherited_reference_links_verified": true,
+    "anchor_helper_AST_inspected_not_executed": true
+  },
+  "binding_validation": {
+    "mandatory_HF01_derive_recovery_invoked": true,
+    "expected_binding_from_same_validated_predecessor_evidence": true,
+    "semantic_comparison_before_whole_evidence_gate": true,
+    "coordinated_semantic_and_derivation_substitutions": "REJECTED: BINDING-VALIDATED-INSTANCE-VALUE",
+    "equal_string_wrong_instance_claims": "REJECTED: BINDING-ANCHOR-LINEAGE",
+    "nested_mutations_cannot_change_pristine_expectations": true,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ]
+  },
+  "independent_results": {
+    "primary_assertions": 91,
+    "primary_categories": {
+      "constructed_negative": 28,
+      "constructed_only": 4,
+      "independent": 25,
+      "internal_relation": 13,
+      "negative": 12,
+      "public_negative": 5,
+      "source_negative": 4
+    },
+    "recovered_assertions": 52,
+    "recovered_categories": {
+      "constructed_negative": 10,
+      "constructed_only": 4,
+      "independent": 25,
+      "internal_relation": 4,
+      "negative": 7,
+      "public_negative": 2
+    },
+    "fresh_offline_CLI_processes": 1,
+    "static_type_helper_inspection": "Separate saved result",
+    "source_oracle_failure_assertions": 0,
+    "constructed_cases_not_execution_evidence": true
+  },
+  "supplied_results": {
+    "primary": 95,
+    "recovered": 53,
+    "input_gates": 4,
+    "process_validation": 1,
+    "inspected_not_executed": true,
+    "interrupted_attempt_assertions": 13,
+    "interrupted_attempt_excluded": true,
+    "intermediate_recovery_archive_entries": 817,
+    "intermediate_outer_archive_freshly_verified": false
+  },
+  "identities": {
+    "current_code": {
+      "correspondence.py": {
+        "bytes": 12850,
+        "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"
+      },
+      "managed_coverage.py": {
+        "bytes": 83402,
+        "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"
+      }
+    },
+    "new_receipt": {
+      "bytes": 746342,
+      "sha256": "c284875c104ff8fad9690e1018c7c653f5f8116bc030cf9fbe26994f3311698b"
+    },
+    "unchanged_HF01_receipt": {
+      "bytes": 704580,
+      "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+    }
+  },
+  "preservation": {
+    "HF01_members_unchanged": 732,
+    "closure_review_noninput_members_unchanged": 72,
+    "prior_producer_functions_AST_identical": 31,
+    "prior_context_members_preserved": true,
+    "historical_identities_relationships_ordinals": "UNCHANGED",
+    "HF01_and_other_prior_scoped_closures": "PRESERVED; no review rerun",
+    "implementation_modified": false
+  },
+  "observation_limits": {
+    "actual_getter_execution": "UNAVAILABLE",
+    "actual_getter_count": null,
+    "getter_frame": null,
+    "object_identity": null,
+    "underlying_connection_identity": null,
+    "traced_invocations": 18,
+    "recovery_invocations": 1,
+    "status_returns": 2,
+    "separate_observer_Client_state_call": 1,
+    "observer_frame": null,
+    "missing_assignment_reference_state_ingestion_and_historical_launcher_frames": "PRESERVED",
+    "validated_frontier_is_current_or_lifetime_readiness": false,
+    "two_contexts_are_extra_executions": false
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "failure_provenance": {
+    "supplied_13_assertion_interruption_preserved": true,
+    "independent_oracle_attempt": "Zero assertions; AST object identity across separate parses corrected to source coordinates; full failed attempt preserved",
+    "independent_recovery_partial_bytes": 17301504,
+    "independent_recovery_gate": "REJECTED before predecessor import",
+    "independent_recovery_cause": "UNKNOWN",
+    "failed_roots_preserved": true
+  },
+  "boundaries": {
+    "all_eleven_obligations": "PRESERVED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "accounting_reservations_nonce_ownership_uncertainty": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false
+  },
+  "operations": {
+    "runtime_changes": false,
+    "new_acquisition": false,
+    "session_operations": 0,
+    "database_connections": 0,
+    "completed_suite_or_review_reruns": false,
+    "smoke_pipeline_lifecycle_reruns": false,
+    "policy_or_canonical_binding_changes": false,
+    "Git_save_repeated": false
+  },
+  "next_action": "Return scoped support to Engineering-Anchor[2]; missing getter execution evidence and all operational/lifetime/qualification/authority blockers remain. No collection or new construction authorized by this review."
+}

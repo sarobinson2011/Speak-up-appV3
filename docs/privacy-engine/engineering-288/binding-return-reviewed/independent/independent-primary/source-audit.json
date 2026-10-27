@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "independent_AST_guards_and_continuations": true,
+  "manager": {
+    "bytes": 5717,
+    "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+  },
+  "authority": {
+    "bytes": 23223,
+    "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+  },
+  "return": "self._live.binding",
+  "type": "str under retained initialized Authority/HEAD premise",
+  "normal_readiness": {
+    "phase": "READY",
+    "live_present": true,
+    "retired_absent": true
+  },
+  "authority_binding_expression": "sha(enc({'ownership':self.ownership_binding,'ownership_code':sha(Path(ownership.__file__).read_bytes()),'accounting_code':sha(Path(accounting.__file__).read_bytes()),'config':config,'code':sha(Path(__file__).read_bytes()),'principals':{k:v.hex() for k,v in PUB.items()},'retained':{n:sha((ROOT/'retained-candidate/code'/n).read_bytes()) for n in ['anchor.py','stages.py','signed_eth.py','lab_evm.py']}}))",
+  "constructor_input_keys": [
+    "ownership",
+    "ownership_code",
+    "accounting_code",
+    "config",
+    "code",
+    "principals",
+    "retained"
+  ],
+  "source_locations": {
+    "getter": "45:1:46:59:FunctionDef",
+    "lock": "46:2:46:59:With",
+    "return": "46:34:46:59:Return",
+    "value": "46:41:46:59:Attribute",
+    "receiver": "46:41:46:51:Attribute",
+    "readiness_call": "46:18:46:33:Call",
+    "readiness_program": "25:1:26:125:FunctionDef",
+    "readiness_test": "26:5:26:76:BoolOp"
+  },
+  "not_runtime_execution": true
+}

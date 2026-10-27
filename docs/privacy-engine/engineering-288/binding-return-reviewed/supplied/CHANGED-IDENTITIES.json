@@ -1,0 +1,53 @@
+{
+  "intentional_code_changes": {
+    "code/managed_coverage.py": {
+      "before": {
+        "bytes": 74051,
+        "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+      },
+      "after": {
+        "bytes": 83402,
+        "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"
+      },
+      "meaning": "Additive binding producer; existing functions unchanged"
+    },
+    "code/correspondence.py": {
+      "before": {
+        "bytes": 44179,
+        "sha256": "5ea4daf28e6d0707ad247722b6c1ba572ef3f18e75891aae0ffc882fe8d25097"
+      },
+      "after": {
+        "bytes": 12850,
+        "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"
+      },
+      "meaning": "New mandatory adapter over exact retained HF-01 validator; predecessor code unchanged in retained/hf01"
+    }
+  },
+  "added_controls_and_packaging": {
+    "tests/controls.py": {
+      "bytes": 14839,
+      "sha256": "06c567054e8d22c0f4d70f5e2fbfa1c39cfe6e5bf63ce232eed557ed22c4852b"
+    },
+    "tests/fresh_check.py": {
+      "bytes": 316,
+      "sha256": "60263d812d91232e4410ebfa624f7337525e447530669db38e6f1fa314a2b0d2"
+    },
+    "tests/input_gates.py": {
+      "bytes": 1842,
+      "sha256": "295fd2df848501e7b575e6ec312ed33ea3a23fdac9988d86955ce4a584b7b7f8"
+    },
+    "tools/checkpoint.py": {
+      "bytes": 2335,
+      "sha256": "85c3e16e3c258042b3c50fcbafbe4ee359508d9b5b9bbb39f58ebdd5b02b1091"
+    }
+  },
+  "preexisting_producer_functions_unchanged": 31,
+  "added_producer_functions": [
+    "binding_source",
+    "binding_value_projection",
+    "compile_binding_return",
+    "validate_binding_return"
+  ],
+  "runtime_sources_changed": false,
+  "previous_hf01_implementation_preserved_exactly": true
+}

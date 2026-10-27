@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/br-review/code/controls.py", line 50, in main
+    audit_result=check('independent defining-source types guards and return oracle',lambda:oracle['audit'](d['manager'],d['authority'],cat,d['values']['candidate/managed-route/model.json'],d['reference_module'].reference_catalogue(d),d['values']['candidate/managed-route/producers.json']['source_inventory']))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/br-review/code/controls.py", line 39, in check
+    v=fn();assert v is not False,label;record(label,category,'PASS');return v
+      ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/br-review/code/controls.py", line 50, in <lambda>
+    audit_result=check('independent defining-source types guards and return oracle',lambda:oracle['audit'](d['manager'],d['authority'],cat,d['values']['candidate/managed-route/model.json'],d['reference_module'].reference_catalogue(d),d['values']['candidate/managed-route/producers.json']['source_inventory']))
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/br-review/code/source_oracle.py", line 88, in audit
+    writer=unique(writers);assert writer in list(ast.walk(am['__init__'])) and isinstance(writer,ast.Assign)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

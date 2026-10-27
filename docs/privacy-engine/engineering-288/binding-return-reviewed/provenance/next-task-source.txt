@@ -1,0 +1,191 @@
+compiler/live_connection.py
+{"bytes": 5717, "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"}
+
+14:  def __init__(self,root,path,config,*,ownership_path):
+15:   self._lock=threading.RLock();self._root=Path(root).resolve();self._path=Path(path).resolve();self._owners=Path(ownership_path).resolve();self._config=copy.deepcopy(config)
+16:   self._live=None;self._retired=None;self._phase='CLOSED';self._reason='not opened';self._epoch=0
+
+25:  def _require(self):
+26:   if self._phase!='READY' or self._live is None or self._retired is not None:raise RecoveryBlocked('CONNECTION-'+self._phase)
+
+47:  @property
+48:  def config(self):
+49:   with self._lock:self._require();return copy.deepcopy(self._config)
+
+65:   if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')
+66:   s=a.state()
+67:   x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),
+68:    'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],
+69:    'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],
+
+89:     self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)
+90:     self._phase='VALIDATION_FAILED';head=self._validate(a)
+91:     self._live=a;self._retired=None;self._epoch+=1;self._phase='READY';self._reason='fresh connection and retained history validated'
+92:     return {'status':self.status(),'head':head,'recovery_only':True,'new_attempt_authorized':False}
+
+support/reference/runtime/authority.py
+{"bytes": 23223, "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"}
+
+54:  def __init__(self,path,config,create=False,*,ownership_path):
+55:   self.path=Path(path);self.config=parse(enc(config));exact(config,['version','pilot','session','start_nonce','manager','model','profile','config'])
+56:   need(config['version']==VERSION,'NO-MIGRATION');label(config['pilot']);label(config['session']);integer(config['start_nonce'],0,2**64-1)
+57:   need(type(config['manager']) is str and len(config['manager'])==40 and bytes.fromhex(config['manager']).hex()==config['manager'],'MANAGER')
+58:   for k in ['model','profile','config']:digest(config[k])
+
+248:  """Authenticated OFFLINE client. Signature requests have no raw-sign escape."""
+249:  def __init__(self,authority,principal='executor'):self.a=authority;self.principal=principal;self.counter=0
+250:  def packet(self,method,u,body=None,expected=None,challenge=None):
+251:   import secrets
+252:   q={'version':VERSION,'binding':self.a.binding,'pilot':self.a.config['pilot'],'session':self.a.config['session'],'principal':self.principal,'challenge':challenge or secrets.token_hex(32),'expected':expected or self.a.state()['head'],'method':method,'u':u,'body':body or {}}
+253:   return enc({'request':q,'signature':sig(self.principal,q)})
+254:  def call(self,method,u,body=None,inject=None):
+255:   packet=self.packet(method,u,body);raw=self.a.handle(packet,inject);out=parse(raw,RESPONSE_LIMIT);verify('server',out['response'],out['signature']);need(out['response']['request']==sha(packet),'RESPONSE-BINDING')
+
+compiler/managed_observations.py
+{"bytes": 35124, "sha256": "2b4ccd7902d8e270ac8d4b22060d08d184dda1b0e6fcdccae781fd81eef902cc"}
+
+248:  same(ast.unparse(ctor),'self._runtime.Authority.__init__(a, self._path, copy.deepcopy(self._config), ownership_path=self._owners)','UNSUPPORTED-CONSTRUCTOR-SOURCE')
+249:  validate_call=ast_call(methods['recover'],'self._validate')
+250:  need(ctor.lineno<validate_call.lineno,'UNSUPPORTED-CONSTRUCTION-ORDER')
+251:  defaults=dict(zip([a.arg for a in am['__init__'].args.args][-len(am['__init__'].args.defaults):],am['__init__'].args.defaults))
+252:  create=ast.literal_eval(defaults['create'])
+253:  configs=[f['call']['arguments']['config'] for f in frames.values() if f['call']['function']=='ManagedAuthority.__init__']
+254:  need(bool(configs),'MISSING-MANAGED-CONFIG')
+255:  for config in configs[1:]:same(config,configs[0],'MIXED-CONSTRUCTION-CONFIG')
+256:  for f in frames.values():
+257:   e=f['call'];name=e['function']
+258:   if name=='open_session':
+259:    init=one(f,'ManagedAuthority.__init__');same(init['call']['arguments'],e['arguments'],'ENTRY-CONFIG')
+260:    rec=children(f,'ManagedAuthority.recover')
+261:    if f['normal']:need(init['normal'] and len(rec)==1 and rec[0]['normal'],'ENTRY-CONSTRUCTION')
+262:    if rec:need(init['normal'] and len(rec)==1,'ENTRY-FAILED-INITIALIZATION');before(init,rec[0])
+263:   if name=='Authority.__init__':
+264:    need(e['parent'] in frames and frames[e['parent']]['call']['function']=='ManagedAuthority.recover','CONSTRUCTOR-CALLER')
+265:    same(e['arguments'],{'config':configs[0],'create':create},'CONSTRUCTOR-ARGUMENTS')
+
+389:    continue
+390:   need(f['normal'],'VALID-RECOVERY-EXPORT-MISLABELED')
+391:   same(f['return']['value'],actual,'RECOVERY-INGEST-RETURN')
+392:   same(x['config'],before['config'],'RECOVERY-CONFIG-ANCHOR')
+393:   same(x['ownership_meta'],before['ownership_meta'],'RECOVERY-OWNER-ANCHOR')
+394:   same(x['owners'],before['owners'],'RECOVERY-OWNERS-ANCHOR');same(x['blobs'],before['blobs'],'RECOVERY-BLOBS-ANCHOR')
+395:   need(len(before['events'])<=len(x['events'])<=len(after['events']),'RECOVERY-HISTORY-INTERVAL')
+
+434:  same(record['before']['config'],record['after']['config'],'CONFIG-CHANGED')
+435:  authenticated_recovery(frames,record,ingest)
+436:  same(record['before']['blobs'],record['after']['blobs'],'BLOB-CHANGED')
+437:  same(record['before']['ownership_meta'],record['after']['ownership_meta'],'OWNER-META-CHANGED')
+438:  same(record['before']['owners'],record['after']['owners'],'OWNER-CHANGED')
+439:  need(record['after']['events'][:len(record['before']['events'])]==record['before']['events'],'HISTORY-LOSS')
+440:  for f in frames.values():
+441:   if f['call']['function'] in ('open_session','ManagedAuthority.__init__','Authority.__init__'):
+442:    same(f['call']['arguments']['config'],record['before']['config'],'CONSTRUCTION-AUTHENTICATED-CONFIG')
+443:   if f['call']['function']=='validate_export':
+444:    same(f['call']['arguments']['x']['config'],record['before']['config'],'RECOVERY-AUTHENTICATED-CONFIG')
+445:  calls=[f for f in frames.values() if f['call']['source']=='authority' and f['call']['function']=='Authority.handle']
+
+current/code/correspondence.py
+{"bytes": 12850, "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"}
+
+41: def catalogue(data):
+42:  d=data['prior_data'];v=d['values'];g=d['guards'];m=data['coverage']
+43:  refs=d['reference_module'].reference_catalogue(d)
+44:  return m.compile_binding_return(d['manager'],d['authority'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],refs)
+45: 
+46: def _basis(data):
+47:  # Only the root selector is taken from the caller. Reload all authoritative
+48:  # sources and evidence, and invoke the mandatory reviewed predecessor afresh.
+49:  # Nothing mutable returned by this module is a cached expectation.
+50:  fresh=inputs(data['root']);d=fresh['prior_data'];p=fresh['prior_module']
+51:  prior=p.derive_recovery(d,p.recovery_catalogue(d))
+52:  saved=(fresh['prior_root']/'results/hf01-correspondence.json').read_bytes()
+53:  require(identity(saved)==HF_RECEIPT,'BINDING-PREDECESSOR-RECEIPT-PIN');require(enc(prior)==saved,'BINDING-PREDECESSOR-RECEIPT')
+54:  e=dict(d['ctx']['e']);require(all(type(k) is str and type(v) is bytes for k,v in e.items()),'BINDING-EVIDENCE-BYTES')
+
+104: def _checked(data,submitted_catalogue,claims=None,evidence=None):
+105:  basis=_basis(data);fresh=basis['fresh'];same(submitted_catalogue,basis['catalogue'],'BINDING-SOURCE-CATALOGUE')
+106:  # Candidate source/context dictionaries cannot replace the reloaded basis.
+107:  d=data['prior_data'];fd=fresh['prior_data']
+108:  for k in ('manager','authority'):require(d[k]==fd[k],'BINDING-CANDIDATE-SOURCE:'+k)
+109:  require(d['ctx']['c']==fd['ctx']['c'],'BINDING-CANDIDATE-CONTEXT:c')
+110:  same(d['ctx']['binding'],fd['ctx']['binding'],'BINDING-CANDIDATE-CONTEXT:binding')
+111:  _compare_evidence(basis['evidence'],d['ctx']['e'] if evidence is None else evidence,basis['catalogue']['source']['state_selector'])
+112:  rows=_rows(basis)
+113:  if claims is not None:_check_rows(claims,rows)
+114:  return rows,basis
+115: 
+116: def semantic(data,submitted_catalogue,claims=None,evidence=None):
+117:  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+118: 
+119: def derive_binding(data,submitted_catalogue,claims=None,evidence=None):
+120:  rows,basis=_checked(data,submitted_catalogue,claims,evidence)
+121:  result=copy.deepcopy(basis['prior']);result['format']='I164-MANAGED-BINDING-RETURN-CORRESPONDENCE-1'
+122:  result['prior_recovery_components']=result.pop('extension_components');result['prior_recovery_receipt']=identity(basis['saved'])
+123:  result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+124:  for context,row in zip(result['contexts'],rows):
+125:   require(context['context']==row['context'],'BINDING-DERIVATION-CONTEXT');context['binding_return_correspondence']=copy.deepcopy(row)
+
+152: def derive(root=ROOT):
+153:  data=inputs(root);return derive_binding(data,catalogue(data))
+154: def validate(root,saved):
+155:  require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-BINDING-CORRESPONDENCE')
+156:  return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'getter_runtime_evidence':'UNAVAILABLE','actual_admission':False,'complete_repetition_coverage':False}
+
+current/code/managed_coverage.py
+{"bytes": 83402, "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"}
+
+50: REQUIREMENTS = [
+51:  ('entry',['__init__','open_session'],'Exact Authority bytes; existing databases; recover before Scheduler(managed); exclusive owner is an external premise, not acquired by this code.'),
+52:  ('normal',['_require','_run','state','handle','binding','config'],'Lock acquired, READY, live present, retired absent; no transaction before or after dispatch; config copied. A normal return is not external execution proof.'),
+53:  ('quarantine',['_run','_quarantine','_require'],'BaseException revokes READY before reference transfer; failed rollback may leave dirty state but no subsequent managed dispatch is admitted.'),
+54:  ('queued',['_run','_require'],'Per-instance RLock serializes entry; queued callers recheck current state after acquiring lock. No fairness, queue bound or native-thread suitability is established.'),
+
+98:   if hasattr(n,'lineno') and (isinstance(n,ast.stmt) or type(n).__name__ in ['Call','IfExp','BoolOp','ListComp','SetComp','DictComp','GeneratorExp','Lambda']):
+99:    rows.append({'site':gr.key(n),'kind':type(n).__name__,'expression':ast.get_source_segment(raw.decode(),n),'guards':guards[gr.key(n)]})
+100:  gr.validate_rows(raw,rows)
+101:  need(set(functions)=={'__init__','status','_require','_quarantine','_run','state','handle','binding','config','_dispose','close','_validate','recover','open_session'},'MANAGED-FUNCTION-DOMAIN')
+102:  # These checks make the key semantic order explicit as well as byte bound.
+103:  require=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='_require')
+104:  need(ast.unparse(require.body[0].test)=="self._phase != 'READY' or self._live is None or self._retired is not None",'READY-GUARD')
+105:  q=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='_quarantine')
+106:  need(ast.unparse(q.body[0])=="self._phase = 'QUARANTINED'",'REVOKE-BEFORE-TRANSFER')
+107:  return {'source':identity(root,MANAGER),'functions':functions,'sites':rows,
+108:   'scope':'complete selected statement/call/guard inventory of managed module; not proof of feasible path execution',
+109:   'implicit_exceptions_and_arbitrary_interruptions':'GAP except prior scoped observations; no universal proof'}
+
+138:  maps=[]
+139:  for r in reqs:
+140:   maps.append({'requirement':r['id'],'source':PINS[MANAGER] if r['functions'] else PINS[PERSISTENCE],
+141:    'anchors':[dict(function=f,**src['functions'][f]) for f in r['functions']] if r['functions'] else persistence_anchors,
+142:    'affected_model_families':FAMILIES if r['functions'] else ['JOURNAL','REQUEST','PACKET','RESPONSE','SUCCESS-RESPONSE','ERROR-RESPONSE'],
+143:    'mapping_role':'entry / preservation / recovery guard, not a claim this function directly produces every affected field',
+144:    'local_declarations':[x['id'] for x in model['local_declarations']],
+145:    'dependency_role':'runtime recovery uses support/code/ingest.py' if r['functions'] else 'offline semantic and receipt evidence checker; not recovery runtime dependency',
+146:    'obligations':OBLIGATIONS,'multiplicity':None,'occurrence_evidence':'No new runtime observation; source anchors alone do not establish an event occurred'})
+
+871: def compile_binding_return(raw,authority,model,producer,guards,oracle,references):
+872:  source=binding_source(raw,authority,guards,oracle)
+873:  validate_reference_transfers(raw,model,producer,guards,oracle,authority,references)
+874:  rs=references['source']
+875:  read=[r for r in rs['reference_reads'] if r['function']=='binding' and r['site']==source['receiver']['site']]
+876:  call=[r for r in rs['calls'] if r['function']=='binding' and r['site']==source['readiness_call']['site']]
+877:  req=[r for r in rs['programs'] if r['function']=='_require']
+878:  need(len(read)==len(call)==len(req)==1,'BINDING-REFERENCE-JOINS')
+879:  for old,new in [(read[0],source['receiver']),(call[0],source['readiness_call']),(req[0],source['readiness_program'])]:
+880:   for k in ('site','expression','guards','continuation'):same(old[k],new[k],'BINDING-INHERITED-'+k)
+881:  inventory={r['site']:r for r in producer['source_inventory']['sites']}
+882:  for row in (source['return'],source['lock'],source['readiness_call']):
+883:   need(row['site'] in inventory,'BINDING-INHERITED-SITE');same(inventory[row['site']]['guards'],row['guards'],'BINDING-INHERITED-GUARDS')
+884:  heads=[d for d in model['existing_declarations'] if d.get('template_id')=='HEAD:/'+source['state_selector']];need(len(heads)==1,'BINDING-HEAD-DECLARATION');head=heads[0]
+885:  same({'bytes':len(enc(head)),'sha256':digest(enc(head))},{'bytes':811,'sha256':'c0deee963a471854b87398351246c4ae31577d8e717abc98bf6b912a7e7f7900'},'BINDING-HEAD-DEFINITION')
+886:  need(head['native_template']['type']=='STRING','BINDING-HEAD-TYPE')
+887:  return {'format':'I164-MANAGED-BINDING-RETURN-1','source':source,
+888:   'declaration':{'id':'managed-binding-return','owner':'ManagedAuthority.binding','type':'str','inherited_binding':copy.deepcopy(head),'origin':copy.deepcopy(source['value']),
+889:    'classification':'UNKNOWN','canonical_class':None,'ordinal':None,'multiplicity':None},
+890:   'reference_links':{'live_read':copy.deepcopy(read[0]),'ready_call':copy.deepcopy(call[0]),'ready_program':copy.deepcopy(req[0])},
+891:   'identity':'Reference symbols, underlying connections and recorded binding strings remain different domains. Equal strings never prove same instance/object/connection.',
+892:   'evidence_scope':'Existing validated recovery frontier only; not an observed getter invocation or a promise that the manager remains READY later.',
+893:   'actual_getter_observations':None,'complete_repetition_coverage':False,'full_model_binding':False,'actual_admission':False}
+894: 
+895: def validate_binding_return(raw,authority,model,producer,guards,oracle,references,submitted):
+896:  same(submitted,compile_binding_return(raw,authority,model,producer,guards,oracle,references),'BINDING-RETURN-CORRESPONDENCE');return True

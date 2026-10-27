@@ -1,0 +1,387 @@
+{
+  "result": "PASS",
+  "assertions": 52,
+  "categories": {
+    "constructed_negative": 10,
+    "constructed_only": 4,
+    "independent": 25,
+    "internal_relation": 4,
+    "negative": 7,
+    "public_negative": 2
+  },
+  "checks": [
+    {
+      "check": "independent defining-source types guards and return oracle",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate semantic correspondence",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate derivation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "derived receipt exact saved bytes",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate public validation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "no saved getter frame and no zero-count inference",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "source catalogue independently matches SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "all prior context members preserved SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent instance binding and exact HEAD bytes SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "predecessor acquisition occurrence and frame joins SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "reference value connection and missing-observation domains SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "full conditional forwarding SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "equal values retain distinct reference variables SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional guard wrong receiver SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-RECEIVER-REFERENCE"
+      }
+    },
+    {
+      "check": "conditional guard not READY SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-READINESS"
+      }
+    },
+    {
+      "check": "conditional return exact type SYMBOLIC-U-ONE NoneType",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "conditional return exact type SYMBOLIC-U-ONE int",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "conditional value origin SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-ORIGIN"
+      }
+    },
+    {
+      "check": "source catalogue independently matches SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "all prior context members preserved SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent instance binding and exact HEAD bytes SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "predecessor acquisition occurrence and frame joins SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "reference value connection and missing-observation domains SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "full conditional forwarding SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "equal values retain distinct reference variables SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional guard wrong receiver SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-RECEIVER-REFERENCE"
+      }
+    },
+    {
+      "check": "conditional guard not READY SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-READINESS"
+      }
+    },
+    {
+      "check": "conditional return exact type SYMBOLIC-U-TWO NoneType",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "conditional return exact type SYMBOLIC-U-TWO int",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "conditional value origin SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALUE-ORIGIN"
+      }
+    },
+    {
+      "check": "both exact ordered contexts",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "full coordinated wrong-instance reference scope",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-CASE-REFERENCE-SCOPE"
+      }
+    },
+    {
+      "check": "semantic wrong instance with equal binding context 0",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "derivation wrong binding type context 0",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "row relation omitted value context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-FIELDS"
+      }
+    },
+    {
+      "check": "row relation cross acquisition context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "semantic wrong instance with equal binding context 1",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "derivation wrong binding type context 1",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-VALUE-TYPE"
+      }
+    },
+    {
+      "check": "row relation omitted value context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-FIELDS"
+      }
+    },
+    {
+      "check": "row relation cross acquisition context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "coordinated reports semantic comparison",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALIDATED-INSTANCE-VALUE"
+      }
+    },
+    {
+      "check": "coordinated reports derivation comparison",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALIDATED-INSTANCE-VALUE"
+      }
+    },
+    {
+      "check": "public coordinated binding context 0",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-BINDING-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public coordinated binding context 1",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-BINDING-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "nested context trees do not alias",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "returned catalogue cannot change expectation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine semantic unchanged after nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine derivation unchanged after nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine public survives nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "mandatory predecessor actually invoked",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "comparison used validated original binding",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "implementation and candidate evidence unchanged",
+      "category": "independent",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "recovered": true,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "source": {
+    "correspondence.py": {
+      "bytes": 12850,
+      "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"
+    },
+    "managed_coverage.py": {
+      "bytes": 83402,
+      "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"
+    }
+  },
+  "database_connections": 0,
+  "session_operations": 0,
+  "completed_review_reruns": false,
+  "constructed_cases_are_execution_evidence": false
+}

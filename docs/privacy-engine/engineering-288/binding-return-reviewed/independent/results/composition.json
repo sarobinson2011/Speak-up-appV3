@@ -1,0 +1,271 @@
+{
+  "result": "PASS",
+  "actual_trees": {
+    "br-input": {
+      "members": 844,
+      "directories": 329,
+      "regular_membership_and_hashes": "PASS"
+    },
+    "br-recovered-2": {
+      "members": 844,
+      "directories": 329,
+      "regular_membership_and_hashes": "PASS"
+    }
+  },
+  "preserved_copies": {
+    "retained/hf01": {
+      "archive": {
+        "bytes": 39924668,
+        "sha256": "0e2cce5d4519ccaaab35e34af0f89ef01b8a773569fba66008ee7affb1a9529c"
+      },
+      "archive_entries": 732,
+      "byte_identical_members": 732
+    },
+    "retained/review": {
+      "archive": {
+        "bytes": 40300846,
+        "sha256": "5f0abc1727cb346f21140e97f4c75508962cef515f452941935d082e33c76a2e"
+      },
+      "archive_entries": 73,
+      "byte_identical_members": 72
+    }
+  },
+  "prior_producer_functions_AST_identical": 31,
+  "new_producer_functions": [
+    "binding_source",
+    "binding_value_projection",
+    "compile_binding_return",
+    "validate_binding_return"
+  ],
+  "prior_context_fields_and_other_top_fields_unchanged": true,
+  "supplied": {
+    "primary": {
+      "checks": 95,
+      "inspected_not_executed": true,
+      "result_identity": {
+        "bytes": 10235,
+        "sha256": "9c9d7cf8fb36b537ecf37d2463cbdaa498deb47f20c133b6d5787ba19a9c8766"
+      },
+      "check_labels": [
+        "source-derived binding catalogue",
+        "independent AST return selector and receiver",
+        "pristine semantic correspondence",
+        "pristine derivation",
+        "pristine public validation",
+        "prior context members unchanged SYMBOLIC-U-ONE",
+        "instance/acquisition/frontier joins SYMBOLIC-U-ONE",
+        "no getter frame, object identity or execution invented SYMBOLIC-U-ONE",
+        "legitimate constructed forwarding SYMBOLIC-U-ONE",
+        "equal binding permits a distinct constructed symbol without identity collapse SYMBOLIC-U-ONE",
+        "equal strings cannot substitute a different reference SYMBOLIC-U-ONE",
+        "coordinated wrong-instance symbols reject SYMBOLIC-U-ONE",
+        "wrong constructed return type SYMBOLIC-U-ONE",
+        "wrong constructed value SYMBOLIC-U-ONE",
+        "omitted constructed return SYMBOLIC-U-ONE",
+        "normal guard phase SYMBOLIC-U-ONE",
+        "normal guard live_reference SYMBOLIC-U-ONE",
+        "normal guard retired_reference SYMBOLIC-U-ONE",
+        "normal guard lock_enter_completed SYMBOLIC-U-ONE",
+        "normal guard attribute_completed SYMBOLIC-U-ONE",
+        "normal guard lock_exit_completed SYMBOLIC-U-ONE",
+        "constructed case cannot become execution evidence SYMBOLIC-U-ONE",
+        "semantic rejects omitted value SYMBOLIC-U-ONE",
+        "derivation rejects omitted value SYMBOLIC-U-ONE",
+        "semantic rejects wrong type SYMBOLIC-U-ONE",
+        "derivation rejects wrong type SYMBOLIC-U-ONE",
+        "semantic rejects wrong binding SYMBOLIC-U-ONE",
+        "derivation rejects wrong binding SYMBOLIC-U-ONE",
+        "semantic rejects wrong instance SYMBOLIC-U-ONE",
+        "derivation rejects wrong instance SYMBOLIC-U-ONE",
+        "semantic rejects stale frontier SYMBOLIC-U-ONE",
+        "derivation rejects stale frontier SYMBOLIC-U-ONE",
+        "semantic rejects mixed acquisition SYMBOLIC-U-ONE",
+        "derivation rejects mixed acquisition SYMBOLIC-U-ONE",
+        "semantic rejects invented frame SYMBOLIC-U-ONE",
+        "derivation rejects invented frame SYMBOLIC-U-ONE",
+        "public rejects altered binding SYMBOLIC-U-ONE",
+        "public rejects coordinated instance/value SYMBOLIC-U-ONE",
+        "prior context members unchanged SYMBOLIC-U-TWO",
+        "instance/acquisition/frontier joins SYMBOLIC-U-TWO",
+        "no getter frame, object identity or execution invented SYMBOLIC-U-TWO",
+        "legitimate constructed forwarding SYMBOLIC-U-TWO",
+        "equal binding permits a distinct constructed symbol without identity collapse SYMBOLIC-U-TWO",
+        "equal strings cannot substitute a different reference SYMBOLIC-U-TWO",
+        "coordinated wrong-instance symbols reject SYMBOLIC-U-TWO",
+        "wrong constructed return type SYMBOLIC-U-TWO",
+        "wrong constructed value SYMBOLIC-U-TWO",
+        "omitted constructed return SYMBOLIC-U-TWO",
+        "normal guard phase SYMBOLIC-U-TWO",
+        "normal guard live_reference SYMBOLIC-U-TWO",
+        "normal guard retired_reference SYMBOLIC-U-TWO",
+        "normal guard lock_enter_completed SYMBOLIC-U-TWO",
+        "normal guard attribute_completed SYMBOLIC-U-TWO",
+        "normal guard lock_exit_completed SYMBOLIC-U-TWO",
+        "constructed case cannot become execution evidence SYMBOLIC-U-TWO",
+        "semantic rejects omitted value SYMBOLIC-U-TWO",
+        "derivation rejects omitted value SYMBOLIC-U-TWO",
+        "semantic rejects wrong type SYMBOLIC-U-TWO",
+        "derivation rejects wrong type SYMBOLIC-U-TWO",
+        "semantic rejects wrong binding SYMBOLIC-U-TWO",
+        "derivation rejects wrong binding SYMBOLIC-U-TWO",
+        "semantic rejects wrong instance SYMBOLIC-U-TWO",
+        "derivation rejects wrong instance SYMBOLIC-U-TWO",
+        "semantic rejects stale frontier SYMBOLIC-U-TWO",
+        "derivation rejects stale frontier SYMBOLIC-U-TWO",
+        "semantic rejects mixed acquisition SYMBOLIC-U-TWO",
+        "derivation rejects mixed acquisition SYMBOLIC-U-TWO",
+        "semantic rejects invented frame SYMBOLIC-U-TWO",
+        "derivation rejects invented frame SYMBOLIC-U-TWO",
+        "public rejects altered binding SYMBOLIC-U-TWO",
+        "public rejects coordinated instance/value SYMBOLIC-U-TWO",
+        "source oracle rejects omit return",
+        "source oracle rejects wrong type",
+        "source oracle rejects wrong origin",
+        "source oracle rejects omit readiness",
+        "source oracle rejects wrong ready phase",
+        "source oracle rejects omit live link",
+        "source oracle rejects omit lock guard",
+        "source oracle rejects changed writer",
+        "coordinated catalogue/origin/reference substitution rejects",
+        "semantic rejects coordinated saved report substitution",
+        "derivation rejects coordinated saved report substitution",
+        "candidate baseline plus reports cannot replace expectation",
+        "evidence rejects omitted",
+        "evidence rejects wrong type",
+        "evidence rejects stale head",
+        "missing saved binding evidence rejects",
+        "context outputs have no shared nested aliases",
+        "nested semantic result cannot alter acceptance",
+        "fresh pristine semantic remains unchanged",
+        "cleared derived contexts rejected",
+        "pristine public receipt survives returned-result mutation",
+        "both source contexts remain required",
+        "mutated catalogue does not change fresh expectations",
+        "pristine final derivation byte-identical"
+      ]
+    },
+    "recovered": {
+      "checks": 53,
+      "inspected_not_executed": true,
+      "result_identity": {
+        "bytes": 6100,
+        "sha256": "13db2d6ac22b350c76bd5f33031806a91d64e2327f4eab9e5c58071fb05c4012"
+      },
+      "check_labels": [
+        "source-derived binding catalogue",
+        "independent AST return selector and receiver",
+        "pristine semantic correspondence",
+        "pristine derivation",
+        "pristine public validation",
+        "prior context members unchanged SYMBOLIC-U-ONE",
+        "instance/acquisition/frontier joins SYMBOLIC-U-ONE",
+        "no getter frame, object identity or execution invented SYMBOLIC-U-ONE",
+        "legitimate constructed forwarding SYMBOLIC-U-ONE",
+        "equal binding permits a distinct constructed symbol without identity collapse SYMBOLIC-U-ONE",
+        "equal strings cannot substitute a different reference SYMBOLIC-U-ONE",
+        "coordinated wrong-instance symbols reject SYMBOLIC-U-ONE",
+        "wrong constructed return type SYMBOLIC-U-ONE",
+        "wrong constructed value SYMBOLIC-U-ONE",
+        "omitted constructed return SYMBOLIC-U-ONE",
+        "semantic rejects omitted value SYMBOLIC-U-ONE",
+        "semantic rejects wrong binding SYMBOLIC-U-ONE",
+        "derivation rejects wrong binding SYMBOLIC-U-ONE",
+        "semantic rejects wrong instance SYMBOLIC-U-ONE",
+        "semantic rejects mixed acquisition SYMBOLIC-U-ONE",
+        "public rejects altered binding SYMBOLIC-U-ONE",
+        "public rejects coordinated instance/value SYMBOLIC-U-ONE",
+        "prior context members unchanged SYMBOLIC-U-TWO",
+        "instance/acquisition/frontier joins SYMBOLIC-U-TWO",
+        "no getter frame, object identity or execution invented SYMBOLIC-U-TWO",
+        "legitimate constructed forwarding SYMBOLIC-U-TWO",
+        "equal binding permits a distinct constructed symbol without identity collapse SYMBOLIC-U-TWO",
+        "equal strings cannot substitute a different reference SYMBOLIC-U-TWO",
+        "coordinated wrong-instance symbols reject SYMBOLIC-U-TWO",
+        "wrong constructed return type SYMBOLIC-U-TWO",
+        "wrong constructed value SYMBOLIC-U-TWO",
+        "omitted constructed return SYMBOLIC-U-TWO",
+        "semantic rejects omitted value SYMBOLIC-U-TWO",
+        "semantic rejects wrong binding SYMBOLIC-U-TWO",
+        "derivation rejects wrong binding SYMBOLIC-U-TWO",
+        "semantic rejects wrong instance SYMBOLIC-U-TWO",
+        "semantic rejects mixed acquisition SYMBOLIC-U-TWO",
+        "public rejects altered binding SYMBOLIC-U-TWO",
+        "public rejects coordinated instance/value SYMBOLIC-U-TWO",
+        "source oracle rejects omit return",
+        "source oracle rejects wrong type",
+        "coordinated catalogue/origin/reference substitution rejects",
+        "semantic rejects coordinated saved report substitution",
+        "derivation rejects coordinated saved report substitution",
+        "candidate baseline plus reports cannot replace expectation",
+        "context outputs have no shared nested aliases",
+        "nested semantic result cannot alter acceptance",
+        "fresh pristine semantic remains unchanged",
+        "cleared derived contexts rejected",
+        "pristine public receipt survives returned-result mutation",
+        "both source contexts remain required",
+        "mutated catalogue does not change fresh expectations",
+        "pristine final derivation byte-identical"
+      ]
+    },
+    "input-gates": {
+      "checks": 4,
+      "inspected_not_executed": true,
+      "result_identity": {
+        "bytes": 865,
+        "sha256": "b59df2608fb80e6088eafba9a59c4004971fcb496bd39886871d9bc4848fa725"
+      },
+      "check_labels": [
+        "new predecessor loader rejects undeclared directory",
+        "new predecessor loader rejects undeclared regular entry",
+        "new loader rejects stale producer before import",
+        "new loader rejects changed predecessor source before import"
+      ]
+    }
+  },
+  "supplied_process": "Saved result inspected only",
+  "interrupted_attempt": {
+    "status": "INTERRUPTED",
+    "completed_assertions": 13,
+    "exit_code": 130,
+    "reason": "Per-event profiling overhead; stopped the incomplete new suite. No candidate implementation failure observed. Partial counts excluded from completed results.",
+    "attempted_signal": "Scoped OS SIGINT returned ProcessLookupError; terminal interrupt stopped execution.",
+    "candidate_code_changed": false
+  },
+  "current_code": {
+    "managed_coverage.py": {
+      "bytes": 83402,
+      "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"
+    },
+    "correspondence.py": {
+      "bytes": 12850,
+      "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"
+    }
+  },
+  "current_receipt": {
+    "bytes": 746342,
+    "sha256": "c284875c104ff8fad9690e1018c7c653f5f8116bc030cf9fbe26994f3311698b"
+  },
+  "prior_receipt": {
+    "bytes": 704580,
+    "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+  },
+  "recovery_input_provenance": {
+    "bytes": 40824841,
+    "sha256": "f4578862d69ce9f90a0708311c3c10e22205519af3d2eb90f8776f206d08ff16",
+    "entries": 817,
+    "manifested_files": 816,
+    "CRC": "PASS",
+    "safe_unique_regular_membership": "PASS",
+    "all_hashes": "PASS",
+    "manifest_identity": {
+      "bytes": 190510,
+      "sha256": "3b82742bb8893afc3b1be597215643f2edc7ba724f60fc56b7c90145581a59aa"
+    },
+    "filename": "recovery-input.zip",
+    "root": "/workspace/scratch/3da0de3fef10/binding-tools/recovered-root",
+    "scope": "Stable new code/tests/tools, exact retained dependencies, provenance, preserved interrupted harness and saved receipt; current/final result records excluded",
+    "files_compared": 816
+  },
+  "reported_recovery_outer_archive_freshly_verified": false,
+  "historical_manifest_scopes_preserved": true
+}

@@ -1,0 +1,719 @@
+--- reviewed-HF01/code/correspondence.py
++++ code/correspondence.py
+@@ -1,574 +1,161 @@
+-"""Additive status boundary binding; no canonical allocation or full-model claim."""
+-import ast
+-import copy
+-import hashlib
+-import json
++"""Bounded binding getter correspondence over the mandatory HF-01 chain.
++No runtime/session operations. No getter execution is inferred from a state.
++"""
++import copy, hashlib, json, os, stat, types
+ from pathlib import Path
+-import types
+ 
+-ROOT = Path(__file__).resolve().parents[1]
+-ENTRY_SHA = 'a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9'
+-BASIS_SHA = '5d4e9d144d16c3d517985fa0bcdb98bdbb43ab832838d004ed251e52721ce017'
++ROOT=Path(__file__).resolve().parents[1]
++PRODUCER_PIN={'bytes': 83402, 'sha256': 'a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd'}
++HF_MANIFEST={'bytes':165408,'sha256':'e485d6be8f79aa36fa178e296491e031c47bfc611fbd3daf6fb7599d630285ed'}
++HF_RECEIPT={'bytes':704580,'sha256':'139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161'}
++def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
++def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
++def require(v,message):
++ if not v:raise ValueError(message)
++def same(a,b,message):require(enc(a)==enc(b),message)
++def module(p,name):
++ m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ 
++def predecessor_root(root):
++ root=Path(root);base=root/'retained/hf01'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'BINDING-ROOT-TYPE')
++ manifest_path=base/'MANIFEST.json';require(stat.S_ISREG(manifest_path.lstat().st_mode),'BINDING-MANIFEST-TYPE');raw=manifest_path.read_bytes()
++ require(identity(raw)==HF_MANIFEST,'BINDING-PREDECESSOR-MANIFEST');manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
++ dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};seen=set();seen_dirs=set()
++ def walk(path):
++  for entry in os.scandir(path):
++   q=Path(entry.path);n=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
++   if stat.S_ISDIR(mode):require(n in dirs,'BINDING-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(q)
++   else:require(stat.S_ISREG(mode) and n in expected,'BINDING-UNDECLARED-OR-NONREGULAR');seen.add(n)
++ walk(base);require(seen==expected and seen_dirs==dirs,'BINDING-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'BINDING-PREDECESSOR-BYTES:'+n)
++ return base
+ 
+-def enc(x):
+-    return (json.dumps(x,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
++def inputs(root=ROOT):
++ root=Path(root);base=predecessor_root(root)
++ producer=root/'code/managed_coverage.py';require(stat.S_ISREG(producer.lstat().st_mode),'BINDING-PRODUCER-TYPE');require(identity(producer.read_bytes())==PRODUCER_PIN,'BINDING-PRODUCER-SOURCE')
++ prior=module(base/'code/correspondence.py','_binding_hf01_predecessor')
++ data=prior.recovery_inputs(base)
++ return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':data,'coverage':module(producer,'_binding_managed_coverage')}
+ 
++def catalogue(data):
++ d=data['prior_data'];v=d['values'];g=d['guards'];m=data['coverage']
++ refs=d['reference_module'].reference_catalogue(d)
++ return m.compile_binding_return(d['manager'],d['authority'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],refs)
+ 
+-def identity(raw):
+-    return {'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
++def _basis(data):
++ # Only the root selector is taken from the caller. Reload all authoritative
++ # sources and evidence, and invoke the mandatory reviewed predecessor afresh.
++ # Nothing mutable returned by this module is a cached expectation.
++ fresh=inputs(data['root']);d=fresh['prior_data'];p=fresh['prior_module']
++ prior=p.derive_recovery(d,p.recovery_catalogue(d))
++ saved=(fresh['prior_root']/'results/hf01-correspondence.json').read_bytes()
++ require(identity(saved)==HF_RECEIPT,'BINDING-PREDECESSOR-RECEIPT-PIN');require(enc(prior)==saved,'BINDING-PREDECESSOR-RECEIPT')
++ e=dict(d['ctx']['e']);require(all(type(k) is str and type(v) is bytes for k,v in e.items()),'BINDING-EVIDENCE-BYTES')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'evidence':e,'catalogue':catalogue(fresh)}
+ 
++def _compare_evidence(expected,candidate,selector):
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'BINDING-EVIDENCE-BYTES')
++ path='evidence/recovery-export-0.json';require(path in candidate,'BINDING-MISSING-EXPORT')
++ a=json.loads(candidate[path]);b=json.loads(expected[path]);ar=bytes.fromhex(a['head']);br=bytes.fromhex(b['head']);astate=json.loads(ar);bstate=json.loads(br)
++ require(type(astate) is dict and selector in astate,'BINDING-MISSING-STATE-VALUE')
++ require(type(astate[selector]) is str,'BINDING-STATE-VALUE-TYPE')
++ same(astate[selector],bstate[selector],'BINDING-VALIDATED-INSTANCE-VALUE')
++ same(astate,bstate,'BINDING-VALIDATED-STATE');same(a['config'],b['config'],'BINDING-VALIDATED-CONFIG');same(a['ownership_meta'],b['ownership_meta'],'BINDING-VALIDATED-OWNERSHIP')
++ require(ar==br,'BINDING-VALIDATED-STATE-BYTES')
++ # Semantic binding/state comparison precedes this exact record gate. A set
++ # of mutually consistent substituted reports cannot authorize its own basis.
++ require(set(candidate)==set(expected),'BINDING-EVIDENCE-MEMBERSHIP')
++ for n in expected:require(candidate[n]==expected[n],'BINDING-EVIDENCE-BYTES:'+n)
+ 
+-def require(value, reason):
+-    if not value:raise ValueError(reason)
++def _rows(basis):
++ cat=basis['catalogue'];e=basis['evidence'];rows=[]
++ for context in basis['prior']['contexts']:
++  name=context['context'];hb=context['hf01_evidence_binding'];record=hb['head_record'];occ=hb['occurrence'];instance=hb['instance']
++  path=record['artifact'];require(path=='evidence/recovery-export-0.json' and record['pointer']=='/head','BINDING-HEAD-SELECTOR')
++  require({k:record[k] for k in ('bytes','sha256')}==identity(e[path]),'BINDING-HEAD-IDENTITY')
++  require(record['acquisition']==occ['call']['acquisition'] and occ['source']['qualified']=='ManagedAuthority.recover','BINDING-ACQUISITION-RECOVERY')
++  refs=[r for r in context['saved_reference_scope'] if r['occurrence']==occ['id']];require(len(refs)==1,'BINDING-REFERENCE-SCOPE-JOIN');ref=refs[0]
++  same(ref['instance'],instance,'BINDING-INSTANCE-JOIN');require(ref['frame']==occ['frame'] and ref['call_pointer']==occ['call']['pointer'],'BINDING-FRAME-JOIN')
++  raw=bytes.fromhex(json.loads(e[path])['head']);state=json.loads(raw);value=state[cat['source']['state_selector']]
++  require(type(value) is str,'BINDING-EXPECTED-VALUE-TYPE');same(value,instance['binding'],'BINDING-INSTANCE-STATE-RELATION')
++  # There is no fabricated getter occurrence. This is the exact existing
++  # recovery frontier to which a conditional source value relation can attach.
++  anchor={'context':name,'instance':copy.deepcopy(instance),'recovery_occurrence':occ['id'],
++   'recovery_frame':occ['frame'],'recovery_parent':occ['parent_frame'],'call':copy.deepcopy(occ['call']),'completion':copy.deepcopy(occ['completion']),
++   'record':copy.deepcopy(record),'decoded_state':identity(raw),'selector':'/'+cat['source']['state_selector'],'binding_value':value,
++   'predecessor_receipt':identity(basis['saved']),'reference_relation_ids':copy.deepcopy(ref['source_relation_ids']),
++   'object_identity':None,'underlying_connection_identity':None,'getter_frame':None,
++   'meaning':'Validated recorded instance binding at this recovery frontier; conditional source forwarding only. Not a getter result, current state, reference identity or connection identity.'}
++  rows.append({'context':name,'declaration':copy.deepcopy(cat),'validated_binding_anchor':anchor,
++   'getter_observations':None,'missing':'No ManagedAuthority.binding call/return frame or attribute/assignment observation is supplied. Absence in this sparse capture is not evidence it was never called.'})
++ return rows
+ 
++def _check_rows(submitted,expected):
++ require(type(submitted) is list and len(submitted)==len(expected)==2,'BINDING-CONTEXT-DOMAIN')
++ for row,want in zip(submitted,expected):
++  require(type(row) is dict and set(row)==set(want),'BINDING-ROW-FIELDS')
++  require(row['context']==want['context'],'BINDING-CONTEXT-IDENTITY')
++  a=row['validated_binding_anchor'];b=want['validated_binding_anchor']
++  require(type(a) is dict and set(a)==set(b),'BINDING-ANCHOR-FIELDS')
++  require(type(a['binding_value']) is str,'BINDING-ANCHOR-VALUE-TYPE');same(a['binding_value'],b['binding_value'],'BINDING-ANCHOR-VALUE')
++  same(a,b,'BINDING-ANCHOR-LINEAGE');same(row,want,'BINDING-CONTEXT-CORRESPONDENCE')
+ 
+-def inputs(root):
+-    root=Path(root);entry=root/'code/prospective_entry.py';raw=entry.read_bytes()
+-    require(hashlib.sha256(raw).hexdigest()==ENTRY_SHA,'ENTRY-SOURCE')
+-    m=types.ModuleType('_status_binding_entry');m.__file__=str(entry)
+-    exec(compile(raw,str(entry),'exec'),m.__dict__)
+-    pins=m.verify_inputs(root)
+-    raw=(root/'provenance/basis-pins.json').read_bytes()
+-    require(hashlib.sha256(raw).hexdigest()==BASIS_SHA,'BASIS-PINS')
+-    basis=json.loads(raw)
+-    values={}
+-    for name,expected in basis['members'].items():
+-        b=m._regular(root/'basis'/name)
+-        require(identity(b)==expected,'BASIS-SOURCE:'+name)
+-        values[name]=json.loads(b)
+-    return pins,basis,values
++def _checked(data,submitted_catalogue,claims=None,evidence=None):
++ basis=_basis(data);fresh=basis['fresh'];same(submitted_catalogue,basis['catalogue'],'BINDING-SOURCE-CATALOGUE')
++ # Candidate source/context dictionaries cannot replace the reloaded basis.
++ d=data['prior_data'];fd=fresh['prior_data']
++ for k in ('manager','authority'):require(d[k]==fd[k],'BINDING-CANDIDATE-SOURCE:'+k)
++ require(d['ctx']['c']==fd['ctx']['c'],'BINDING-CANDIDATE-CONTEXT:c')
++ same(d['ctx']['binding'],fd['ctx']['binding'],'BINDING-CANDIDATE-CONTEXT:binding')
++ _compare_evidence(basis['evidence'],d['ctx']['e'] if evidence is None else evidence,basis['catalogue']['source']['state_selector'])
++ rows=_rows(basis)
++ if claims is not None:_check_rows(claims,rows)
++ return rows,basis
+ 
++def semantic(data,submitted_catalogue,claims=None,evidence=None):
++ rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ 
+-def anchor(root, path, qualified):
+-    raw=(root/path).read_bytes();text=raw.decode();nodes=ast.parse(text).body
+-    for name in qualified.split('.'):
+-        choices=[n for n in nodes if isinstance(n,(ast.ClassDef,ast.FunctionDef)) and n.name==name]
+-        require(len(choices)==1,'ANCHOR:'+qualified);node=choices[0];nodes=node.body
+-    return {'path':path,**identity(raw),'qualified':qualified,'line':node.lineno,'end_line':node.end_lineno,
+-            'ast_sha256':hashlib.sha256(ast.dump(node,include_attributes=False).encode()).hexdigest(),
+-            'exact_source':ast.get_source_segment(text,node)}
++def derive_binding(data,submitted_catalogue,claims=None,evidence=None):
++ rows,basis=_checked(data,submitted_catalogue,claims,evidence)
++ result=copy.deepcopy(basis['prior']);result['format']='I164-MANAGED-BINDING-RETURN-CORRESPONDENCE-1'
++ result['prior_recovery_components']=result.pop('extension_components');result['prior_recovery_receipt']=identity(basis['saved'])
++ result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for context,row in zip(result['contexts'],rows):
++  require(context['context']==row['context'],'BINDING-DERIVATION-CONTEXT');context['binding_return_correspondence']=copy.deepcopy(row)
++ result['new_binding_slice_limits']={'static_conditional_correspondence':True,'saved_getter_execution_evidence':'UNAVAILABLE','actual_getter_count':None,
++  'source_binding_value_is_not_object_or_connection_identity':True,'validated_frontier_is_not_current_or_lifetime_state':True,'no_new_state_authentication':True,
++  'separate_observer_Client_state_call':True,'observer_frame':None,'missing_historical_producer_frames':True,'traced_invocations':18,
++  'complete_repetition_coverage':False,'multiplicity':None,'no_runtime_changes':True,'no_new_logging_or_retention_permission':True,
++  'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED',
++  'SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
++ return result
+ 
++def reference_scope(anchor):
++ return {'context':anchor['context'],'acquisition':anchor['record']['acquisition'],'recorded_instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence']}
+ 
+-def derive_boundary(root=ROOT):
+-    root=Path(root);pins,basis,values=inputs(root)
+-    manager='retained/candidate/compiler/live_connection.py'
+-    launcher='retained/launcher/code/lab_bootstrap.py'
+-    entry='code/prospective_entry.py'
+-    observed='retained/candidate/compiler/managed_observations.py'
+-    contexts=json.loads((root/'retained/candidate/candidate/contexts.json').read_bytes())
+-    contexts=[a['context'] for a in contexts['associations']]
+-    require(contexts==['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'CONTEXTS')
+-    decision=json.loads((root/'contract/DECISION.json').read_bytes())
+-    contract=pins['contract/CONTRACT-draft-1.txt']
+-    require({k:decision['contract'][k] for k in ('bytes','sha256')}==contract,'CONTRACT-DECISION')
+-    defs=[
+-      ('manager-status',manager,'ManagedAuthority.status','internal status return; six exact fields; lock waiting observable; no automatic persistence'),
+-      ('recover-embedding',manager,'ManagedAuthority.recover','existing child status and embedded return preserved; no general client recovery route'),
+-      ('managed-entry',manager,'open_session','existing recovered manager and scheduler kept behind launcher; recovery return discarded'),
+-      ('scheduler-capability','retained/candidate/support/reference/runtime/authority.py','Scheduler.__init__','scheduler.a retains manager; launcher discards scheduler; never returned by new facade'),
+-      ('launcher-forwarder',launcher,'ManagedSession.status','internal wrapper forwarding only; wrapper retained by trusted owner'),
+-      ('launcher-diagnostic-and-evidence',launcher,'_session','status diagnostic/read and create-only exact bootstrap record; existing failure records and close preserved'),
+-      ('launcher-entry',launcher,'session','original environment, metadata and cooperative ownership route retained'),
+-      ('excluded-historical-stdout',launcher,'main','historical status print preserved but unreachable from prospective CLI; not authorized as general output'),
+-      ('general-entry',entry,'run','client callback receives only Client; no control argument; no callback result forwarded'),
+-      ('trusted-control-entry',entry,'run_controlled','separate designated owner path; explicit control callback only; authorization is external premise'),
+-      ('internal-diagnostic',entry,'_Control.status','exact status value to designated internal caller; no serializer/logger added'),
+-      ('owner-routing',entry,'_run','token-scoped owner table; original failure passed to retained launcher before generic boundary failure; revoke before cleanup'),
+-      ('client-state',entry,'Client.state','detached source-shaped state only; no status or manager access'),
+-      ('client-handle',entry,'Client.handle','exact packet/response bytes only; no scheduler or recovery capability'),
+-      ('dispatch-and-failure',entry,'_dispatch','data-only results; preserve original exception for existing retention; fixed general failure; no automatic raw error output'),
+-      ('data-detachment',entry,'_data','exact supported JSON types only; reject object capabilities and subclasses, no copy hooks'),
+-      ('prospective-output',entry,'main','fixed completion or uncertain-failure output only; no status/state serialization or raw traceback'),
+-      ('existing-observation-check',observed,'fixed_status','existing status field/constants/phase/epoch/recovery-child check; reason string type only'),
+-      ('existing-observation-scope',observed,'Recorder.__call__','existing tracked frame/seq/nearest-parent; launcher frames not retrospectively supplied'),
+-    ]
+-    sites=[{'id':name,'anchor':anchor(root,path,fn),'role':role} for name,path,fn,role in defs]
+-    prof=values['candidate/managed-route/profile.json']
+-    model=values['candidate/managed-route/model.json']
+-    producers=values['candidate/managed-route/producers.json']
+-    directories=values['candidate/managed-route/directory-relations.json']
+-    duties=values['prospective_outputs/managed-route/procedure-duty.json']
+-    required=['managed:entry','managed:normal','managed:restored','managed:obligation-preservation']
+-    for key,rows,field in [('requirements',prof['requirements'],'id'),('mappings',producers['mappings'],'requirement'),('directories',directories['managed_directories'],'requirement'),('duties',duties['duties'],'requirement')]:
+-        require(set(required)<=set(r[field] for r in rows),'INHERITED-JOIN:'+key)
+-    locals_required=['managed-local:phase','managed-local:epoch','managed-local:lock','managed-local:recovery-result']
+-    require(set(locals_required)<=set(r['id'] for r in model['local_declarations']),'LOCAL-DECLARATION-JOIN')
+-    status=anchor(root,manager,'ManagedAuthority.status')
+-    node=ast.parse(status['exact_source'].lstrip()).body[0]
+-    returned=next(n.value for n in ast.walk(node) if isinstance(n,ast.Return))
+-    fields=[ast.literal_eval(k) for k in returned.keys]
+-    binding={'format':'I164-MANAGED-STATUS-BOUNDARY-1','contract':contract,
+-      'adoption':pins['contract/DECISION.json'],'entry':identity((root/entry).read_bytes()),
+-      'basis':basis,'source_bindings':pins,'sites':sites,
+-      'contexts':[{'context':context,'inherited_requirements':required,'inherited_local_declarations':locals_required,
+-        'status_fields':fields,'site_ids':[s['id'] for s in sites],
+-        'relationships':[
+-          {'from':'manager-status','to':'recover-embedding','relation':'actual child return embedded; exact equality only where supported trace exists'},
+-          {'from':'manager-status','to':'launcher-diagnostic-and-evidence','relation':'own call vs retained bootstrap embedding; distinct occurrence/copy identities'},
+-          {'from':'launcher-forwarder','to':'internal-diagnostic','relation':'only explicit trusted control route; actual calls never merged by equal values'},
+-          {'from':'launcher-diagnostic-and-evidence','to':'owner-routing','relation':'wrapper retained internally; token not global call/instance identity'},
+-          {'from':'client-state','to':'dispatch-and-failure','relation':'data-only state boundary; no status substitution'},
+-          {'from':'client-handle','to':'dispatch-and-failure','relation':'exact authenticated packet/response; inherited errors remain in those exact bytes'},
+-          {'from':'owner-routing','to':'prospective-output','relation':'no status/callback return forwarding; coarse failure/timing remains observable'}],
+-        'classification':'UNKNOWN','multiplicity':None,'canonical_class':None,'ordinal':None,
+-        'complete_symbolic_coverage':False} for context in contexts],
+-      'occurrence_contract':{'retained_identity':['capture/acquisition','artifact exact bytes/hash','context','source identity','supported managed-instance binding','record location','frame/parent/seq where actually recorded'],
+-        'copies':'Distinct retained copy/observer relationship; never an extra invocation solely from recopying',
+-        'historical_launcher_frames':'UNAVAILABLE; standalone handoff/close assertions remain bounded records, not manufactured invocations',
+-        'fresh_test_fixtures':'Synthetic backend controls only; no target/legacy acquisition occurrence join',
+-        'reason_provenance':'Existing validator only checks string type; no complete provenance or bounded domain established',
+-        'epoch':'Per managed instance only; no global call or durable ownership identity',
+-        'timing':'Ordering, lock contention, completion/refusal and failure observation remain relevant; no wall-clock/fairness bound'},
+-      'limits':copy.deepcopy(prof['limits']),
+-      'unchanged_obligations':pins['retained/remaining-obligations.json'],
+-      'inventory_unknown_totals':4,'lifetime_unknown_totals':14,
+-      'full_model_binding':False,'profile_policy_adoption':False,
+-      'trusted_boundary':'Single-threaded trusted Python integration; no protection against private-attribute/module/frame introspection, monkeypatching, hostile callbacks, OS streams, competing owners or rollback',
+-      'missing_external_premises':['Caller/evidence-workflow qualification and custody','Complete operating/security experiment scope and repetition bounds','Historical handoff/close producer and launcher-frame lineage','Real storage and exclusive-owner evidence']}
+-    require(binding['limits']['actual_admission'] is False,'ADMISSION')
+-    return binding
+-
+-
+-# New field-level connection. The historical boundary derivation above and the
+-# SOC-closed occurrence adapter remain unchanged and are consumed, not replayed.
+-def _module(path,name):
+-    m=types.ModuleType(name);m.__file__=str(path)
+-    exec(compile(path.read_bytes(),str(path),'exec'),m.__dict__)
+-    return m
+-
+-
+-def field_inputs(root):
+-    root=Path(root)
+-    old=root/'retained/occurrence'
+-    p=old/'code/smoke_occurrences.py'
+-    require(identity(p.read_bytes())=={'bytes':31687,'sha256':'5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b'},'SOC-CLOSED-ADAPTER')
+-    occurrence=_module(p,'_soc_closed_occurrence');ctx=occurrence.load(old)
+-    boundary=old/'retained/correction'
+-    # The existing validator verifies its pinned full root, source and bases.
+-    pins,basis,values=inputs(boundary)
+-    guards={}
+-    for name,sha in [('guard_relationships','97942b56af75398ad562da808d746787b7226d5400e1ca0a7dbe80fb98b9ac9b'),('guard_oracle','b46c25dedf8d72151b5be405dbc3f12fdb05ac47293ee9e118171f8ece9ebb2e')]:
+-        p=root/'retained/compiler'/(name+'.py');require(identity(p.read_bytes())['sha256']==sha,'GUARD-SOURCE:'+name);guards[name]=_module(p,'_field_'+name)
+-    coverage=_module(root/'code/managed_coverage.py','_extended_managed_coverage')
+-    return {'root':root,'old':old,'boundary':boundary,'occurrence':occurrence,'ctx':ctx,'pins':pins,'basis':basis,'values':values,'coverage':coverage,'guards':guards,
+-        'manager':ctx['c']['retained/candidate/compiler/live_connection.py']}
+-
+-
+-def field_catalogue(data):
+-    v=data['values'];g=data['guards']
+-    return data['coverage'].compile_status_fields(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'])
+-
+-
+-def check_catalogue(data,submitted):
+-    v=data['values'];g=data['guards']
+-    return data['coverage'].validate_status_fields(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],submitted)
+-
+-
+-def connected_fields(data,catalogue,evidence=None):
+-    """Consume existing occurrence/value/embedding checks and connect their
+-    saved results. This internal seam never admits unpinned replacement evidence.
+-    """
+-    check_catalogue(data,catalogue)
+-    old=data['occurrence'];ctx=dict(data['ctx'])
+-    if evidence is not None:ctx['e']=evidence
+-    observed=old.derive(ctx)  # includes existing fixed_status, source states and SOC fixes
+-    trace=json.loads(ctx['e']['evidence/execution-trace.json'])['events']
+-    normal={e['frame']:e for e in trace if e['event']=='return' and e['normal_return']}
+-    calls={e['frame']:e for e in trace if e['event']=='call' and not e['resumed_generator']}
+-    fields=catalogue['declarations'];rows=[]
+-    for frame,call in calls.items():
+-        if call['function']!='ManagedAuthority.status':continue
+-        ret=normal[frame];parent=calls[call['parent']];projection=[]
+-        for field in fields:
+-            name=field['name'];value=ret['value'][name]
+-            require(type(value).__name__==field['type'],'STATUS-OBSERVED-FIELD-TYPE:'+name)
+-            selector=field['value']
+-            if selector['op']=='literal':require(enc(value)==enc(selector['value']),'STATUS-OBSERVED-CONSTANT')
+-            else:require(enc(value)==enc(ret['state'][selector['name']]),'STATUS-OBSERVED-SELECTOR')
+-            projection.append({'declaration':field['id'],'value':copy.deepcopy(value),'return_pointer':f"/events/{ret['seq']}/value/{name}",
+-                'snapshot_pointer':None if selector['op']=='literal' else f"/events/{ret['seq']}/state/{selector['name']}",
+-                'source_expression':copy.deepcopy(selector),
+-                'origin_evidence':'Exact saved value/snapshot and supported successful source route; source assignment execution is not a separately recorded line event'})
+-        embedding=None
+-        if parent['function']=='ManagedAuthority.recover':
+-            par=normal[parent['frame']];key=catalogue['source']['recovery_embedding'][0]['key']
+-            embedding={'parent_frame':parent['frame'],'source':copy.deepcopy(catalogue['source']['recovery_embedding'][0]),
+-                'field_links':[{'declaration':f['id'],'child_pointer':f"/events/{ret['seq']}/value/{f['name']}",'parent_pointer':f"/events/{par['seq']}/value/{key}/{f['name']}"} for f in fields],
+-                'validation':'Existing fixed_status checks actual parent/child and exact whole-result equality; no fabricated frames'}
+-        rows.append({'frame':frame,'call_pointer':f"/events/{call['seq']}",'fields':projection,'recovery_embedding':embedding})
+-    return observed,rows
+-
+-
+-def derive_fields(root=ROOT):
+-    data=field_inputs(root);catalogue=field_catalogue(data)
+-    observed,rows=connected_fields(data,catalogue)
+-    saved=(data['old']/'results/occurrence-connection.json').read_bytes()
+-    require(data['occurrence'].enc(observed)==saved,'STALE-SOC-CLOSED-RECEIPT')
+-    boundary=derive_boundary(data['boundary'])
+-    # Existing source/site relationships, both contexts, duties and limits remain
+-    # the basis. Add only executable field correspondence and saved-field joins.
+-    boundary['format']='I164-MANAGED-STATUS-FIELD-CORRESPONDENCE-1'
+-    boundary['extension_components']={n:identity((Path(root)/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+-    boundary['prior_occurrence_receipt']=identity(saved)
+-    trace=identity(data['ctx']['e']['evidence/execution-trace.json'])
+-    for context in boundary['contexts']:
+-        view=next(v for v in observed['contexts'] if v['context']==context['context'])
+-        context['field_declarations']=copy.deepcopy(catalogue)
+-        context['saved_status_fields']=copy.deepcopy(rows)
+-        for row in context['saved_status_fields']:
+-            occurrence=next(o for o in view['occurrences'] if o.get('frame')==row['frame'])
+-            row['occurrence']=occurrence['id'];row['instance']=copy.deepcopy(view['instance']);row['trace_identity']=copy.deepcopy(trace)
+-        context['observation_limits']={'traced_invocations':18,'separate_observer_Client_state_call':1,'observer_frame':None,'observer_parent':None,'two_contexts_are_not_extra_executions':True,
+-            'static_origins_not_observed':['initial and failure/quarantine/cleanup status returns','exception-derived reason values','additional recovery epochs or invocations'],
+-            'missing':'Sparse trace has no full lines, offsets, call arguments or live/retired snapshots; historical producer/frame gaps remain'}
+-    boundary['occurrence_contract']['reason_provenance']='All direct selected source assignments and guarded internal parameter origins are now bound statically. Saved successful reason values retain their exact source-snapshot checks. Exception content, unrecorded histories and finite lifetime/string bounds remain unestablished.'
+-    boundary['new_field_slice_limits']={'static_source_coverage_only':True,'reason_string_bound':None,'epoch_lifetime_bound':None,'multiplicity':None,'complete_repetition_coverage':False,
+-        'no_new_status_serialization':True,'no_automatic_logging':True,'no_policy_change':True,'all_eleven_obligations_preserved':True,'Decision_B':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+-    return boundary
+-
+-
+-def validate_fields(root,saved):
+-    require(type(saved) is bytes and saved==enc(derive_fields(root)),'STALE-OR-ALTERED-FIELD-CORRESPONDENCE')
+-    return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'actual_admission':False,'complete_repetition_coverage':False}
+-
+-
+-# New reference slice. The previously reviewed field root and its receipt remain
+-# byte-for-byte retained; no historical test suite or producer is invoked.
+-def reference_inputs(root=ROOT):
+-    import os,stat
+-    root=Path(root);base=root/'retained/fields'
+-    require(stat.S_ISDIR(base.lstat().st_mode),'REFERENCE-BASE-ROOT-TYPE')
+-    p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'REFERENCE-BASE-MANIFEST-TYPE');raw=p.read_bytes()
+-    require(identity(raw)=={'bytes':102850,'sha256':'30fdca495d02ad4da5883d93ec62af801d9577b20142fc0fd97b8dedb3f3aab1'},'REFERENCE-BASE-MANIFEST')
+-    manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
+-    directories={str(p) for n in expected for p in Path(n).parents if str(p)!='.'};seen=set();dirs=set()
+-    def walk(path):
+-        for entry in os.scandir(path):
+-            q=Path(entry.path);name=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
+-            if stat.S_ISDIR(mode):
+-                require(name in directories,'REFERENCE-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+-            else:require(stat.S_ISREG(mode) and name in expected,'REFERENCE-UNDECLARED-OR-NONREGULAR');seen.add(name)
+-    walk(base);require(seen==expected and dirs==directories,'REFERENCE-BASE-MEMBERSHIP')
+-    for name,pin in manifest.items():require(identity((base/name).read_bytes())==pin,'REFERENCE-BASE-BYTES:'+name)
+-    prior=_module(base/'code/correspondence.py','_reviewed_field_correspondence')
+-    data=prior.field_inputs(base)
+-    data['reference_root']=root;data['field_root']=base;data['field_module']=prior
+-    data['reference_coverage']=_module(root/'code/managed_coverage.py','_reference_managed_coverage')
+-    data['authority']=data['ctx']['c']['retained/candidate/support/reference/runtime/authority.py']
+-    return data
+-
+-
+-def reference_catalogue(data):
+-    v=data['values'];g=data['guards']
+-    return data['reference_coverage'].compile_reference_transfers(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],data['authority'])
+-
+-
+-def check_reference_catalogue(data,submitted):
+-    v=data['values'];g=data['guards']
+-    return data['reference_coverage'].validate_reference_transfers(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],data['authority'],submitted)
+-
+-
+-def reference_path(data,case,submitted=None):
+-    mc=data['reference_coverage'];g=data['guards']
+-    if submitted is None:return mc.constructed_reference_path(data['manager'],g['guard_relationships'],g['guard_oracle'],case)
+-    return mc.validate_constructed_reference_path(data['manager'],g['guard_relationships'],g['guard_oracle'],case,submitted)
+-
+-
+-def derive_reference(data,catalogue,evidence=None):
+-    check_reference_catalogue(data,catalogue)
+-    ctx=dict(data['ctx'])
+-    if evidence is not None:ctx['e']=evidence
+-    # Reuse SOC-closed source/identity/completion/parent checks. No interpretation
+-    # of equal recorded binding dictionaries as equal runtime objects is added.
+-    observed=data['occurrence'].derive(ctx)
+-    fields=data['field_module'].derive(data['field_root'])
+-    saved=(data['field_root']/'results/status-field-correspondence.json').read_bytes()
+-    require(enc(fields)==saved,'REFERENCE-STALE-FIELD-RECEIPT')
+-    require(identity(saved)=={'bytes':293607,'sha256':'46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381'},'REFERENCE-FIELD-RECEIPT-PIN')
+-    trace=json.loads(ctx['e']['evidence/execution-trace.json'])['events']
+-    calls={e['frame']:e for e in trace if e['event']=='call' and not e['resumed_generator']}
+-    result=copy.deepcopy(fields);result['format']='I164-MANAGED-REFERENCE-CORRESPONDENCE-1'
+-    result['prior_field_components']=result.pop('extension_components')
+-    result['extension_components']={n:identity((data['reference_root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+-    result['prior_field_receipt']=identity(saved)
+-    source=catalogue['source'];by_function={}
+-    for r in source['writes']+source['calls']:
+-        by_function.setdefault('ManagedAuthority.'+r['function'],[]).append(r.get('id','managed-reference-call:'+r['site']))
+-    for context in result['contexts']:
+-        context['reference_declarations']=copy.deepcopy(catalogue)
+-        view=next(v for v in observed['contexts'] if v['context']==context['context'])
+-        rows=[]
+-        for occurrence in view['occurrences']:
+-            frame=occurrence.get('frame');call=calls.get(frame)
+-            if call is None or call['function'] not in by_function:continue
+-            rows.append({'occurrence':occurrence['id'],'instance':copy.deepcopy(view['instance']),'frame':frame,'parent':call['parent'],
+-             'call_pointer':'/events/'+str(call['seq']),'trace_identity':identity(ctx['e']['evidence/execution-trace.json']),
+-             'source_relation_ids':copy.deepcopy(by_function[call['function']]),
+-             'join_meaning':'Observed invocation of a source function containing these conditional relations; not proof every relation executed',
+-             'observed_reference_transfers':None,'object_identity':None,'underlying_connection_identity':None,
+-             'missing':'Capture has no _live/_retired values or local a identity. Existing sparse completion checks remain bounded; no assignment-line or historical launcher frame is invented.'})
+-        context['saved_reference_scope']=rows
+-        context['reference_observation_limits']={'actual_reference_transfers':'UNAVAILABLE','equal_recorded_values_prove_identity':False,
+-         'separate_observer_Client_state_call':True,'observer_frame':None,'observer_parent':None,'new_executions':0,
+-         'outstanding_cleanup_obligations':'Not discharged by absence of reference snapshots or a source clear'}
+-    result['new_reference_slice_limits']={'source_conditional_only':True,'new_runtime_behavior':False,'complete_repetition_coverage':False,
+-     'multiplicity':None,'lifetime_bound':None,'reference_identity_is_not_record_equality':True,'no_new_logging_or_retention_permission':True,
+-     'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED',
+-     'SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+-    return result
+-
+-
+-def derive_references(root=ROOT):
+-    data=reference_inputs(root)
+-    return derive_reference(data,reference_catalogue(data))
+-
+-
+-def validate_references(root,saved):
+-    require(type(saved) is bytes and saved==enc(derive_references(root)),'STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE')
+-    return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'actual_admission':False,'complete_repetition_coverage':False}
+-
+-
+-# Recovery envelope slice. Historical code and receipts are retained unchanged
+-# in their own roots. No application/backend source is imported or executed.
+-def _reviewed_recovery_inputs(root=ROOT):
+-    import os,stat
+-    root=Path(root);base=root/'retained/references'
+-    require(stat.S_ISDIR(base.lstat().st_mode),'RECOVERY-BASE-ROOT-TYPE')
+-    p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'RECOVERY-BASE-MANIFEST-TYPE');raw=p.read_bytes()
+-    require(identity(raw)=={'bytes':120341,'sha256':'fa6912f4b9296f2a73cb5e5a8a859bbfe94054c9b3873bec42532d71c8b08f5a'},'RECOVERY-BASE-MANIFEST')
+-    manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
+-    directories={str(p) for n in expected for p in Path(n).parents if str(p)!='.'};seen=set();dirs=set()
+-    def walk(path):
+-        for entry in os.scandir(path):
+-            q=Path(entry.path);name=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
+-            if stat.S_ISDIR(mode):
+-                require(name in directories,'RECOVERY-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+-            else:require(stat.S_ISREG(mode) and name in expected,'RECOVERY-UNDECLARED-OR-NONREGULAR');seen.add(name)
+-    walk(base);require(seen==expected and dirs==directories,'RECOVERY-BASE-MEMBERSHIP')
+-    for name,pin in manifest.items():require(identity((base/name).read_bytes())==pin,'RECOVERY-BASE-BYTES:'+name)
+-    prior=_module(base/'code/correspondence.py','_reviewed_reference_correspondence');data=prior.reference_inputs(base)
+-    data.update(recovery_root=root,reference_module=prior,reviewed_reference_root=base,
+-        recovery_coverage=_module(root/'code/managed_coverage.py','_recovery_managed_coverage'))
+-    return data
+-
+-
+-def recovery_catalogue(data):
+-    v=data['values'];g=data['guards']
+-    return data['recovery_coverage'].compile_recovery_fields(data['manager'],data['authority'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'])
+-
+-
+-def check_recovery_catalogue(data,submitted):
+-    v=data['values'];g=data['guards']
+-    return data['recovery_coverage'].validate_recovery_fields(data['manager'],data['authority'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],submitted)
+-
+-
+-def recovery_projection(data,catalogue,returned,validated_head,status_value):
+-    # This algebraic seam has explicit premises, not an evidence admission API.
+-    # Never let a supplied catalogue narrow its own required fields/constants.
+-    check_recovery_catalogue(data,catalogue)
+-    return data['recovery_coverage'].recovery_value_projection(catalogue,returned,validated_head,status_value)
+-
+-
+-def recovery_capture(raw):
+-    require(identity(raw)=={'bytes':12049,'sha256':'f75dce01a8dbc8de42c5f220ee523d90acd0315dc80fcdbbad4428d3fd1992d7'},'RECOVERY-CAPTURE-SOURCE')
+-    tree=ast.parse(raw);text=raw.decode();smoke=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='smoke')
+-    observer=next(n for n in smoke.body if isinstance(n,ast.FunctionDef) and n.name=='observer')
+-    normal=next(n for n in observer.body if isinstance(n,ast.If) and ast.unparse(n.test)=="event == 'return'")
+-    projections=[n for n in normal.body if isinstance(n,ast.If) and any(isinstance(a,ast.Assign) and any(ast.unparse(t)=="row['value']" for t in a.targets) for a in n.body)]
+-    require(len(projections)==1,'RECOVERY-CAPTURE-VALUE-PROJECTION');value=projections[0]
+-    require(isinstance(value.test,ast.Compare) and ast.unparse(value.test.left)=='name' and len(value.test.ops)==1 and isinstance(value.test.ops[0],ast.In),'RECOVERY-CAPTURE-VALUE-GUARD')
+-    names=ast.literal_eval(value.test.comparators[0]);require(type(names) is tuple and all(type(n) is str for n in names),'RECOVERY-CAPTURE-VALUE-NAMES')
+-    require([ast.unparse(n) for n in value.body]==["row['value'] = arg"],'RECOVERY-CAPTURE-VALUE-ORIGIN')
+-    exports=[n for n in normal.body if isinstance(n,ast.If) and any(isinstance(a,ast.Expr) and isinstance(a.value,ast.Call) and ast.unparse(a.value.func)=='EXPORTS.append' for a in n.body)]
+-    require(len(exports)==1,'RECOVERY-CAPTURE-EXPORT-PROJECTION');export=exports[0]
+-    require(ast.unparse(export.test)=="name == 'ManagedAuthority._validate' and row['normal_return']",'RECOVERY-CAPTURE-EXPORT-GUARD')
+-    require([ast.unparse(n) for n in export.body]==["EXPORTS.append(f.f_locals['x'])"],'RECOVERY-CAPTURE-EXPORT-ORIGIN')
+-    flush=next(n for n in ast.walk(smoke) if isinstance(n,ast.For) and ast.unparse(n.iter)=='enumerate(EXPORTS)')
+-    require(ast.unparse(flush.target)=='(i, x)' and [ast.unparse(n) for n in flush.body]==["write('recovery-export-' + str(i) + '.json', x)"],'RECOVERY-CAPTURE-EXPORT-FILE')
+-    def site(n):return {'line':n.lineno,'end_line':n.end_lineno,'exact_source':ast.get_source_segment(text,n)}
+-    return {'source':identity(raw),'value_functions':list(names),'value_projection':site(value),'export_projection':site(export),'export_file':site(flush),
+-        'export_local':'x','exported_function':'ManagedAuthority._validate','scalar_return_recorded':'ManagedAuthority._validate' in names,
+-        'meaning':'Trusted observer captures local export on normal validator completion, then writes it. This is not a separately observed validator scalar or ingest/state call.'}
+-
+-
+-def _checked_recovery(data,catalogue,evidence=None):
+-    """Negative-control seam: source and semantic correspondence. Replacement
+-    evidence never becomes admitted input; public derive uses the pinned root.
+-    """
+-    check_recovery_catalogue(data,catalogue)
+-    basis=_validated_predecessor_basis(data)
+-    ctx=dict(data['ctx'])
+-    if evidence is not None:ctx['e']=evidence
+-    e=_evidence_bytes(ctx['e']);ctx['e']=e
+-    require(ctx['c']==basis['data']['ctx']['c'] and ctx['binding']==basis['data']['ctx']['binding'] and ctx['root']==basis['data']['ctx']['root'],'HF01-SOURCE-AND-BOUNDARY-BASIS')
+-    capture=recovery_capture(e['preparation/worker.py'])
+-    observed=data['occurrence'].derive(ctx) # exact existing head/completion/lineage and SOC checks
+-    _bind_predecessor_evidence(basis,e,observed,catalogue)
+-    events=json.loads(e['evidence/execution-trace.json'])['events']
+-    calls={a['frame']:a for a in events if a['event']=='call' and not a['resumed_generator']}
+-    normal={a['frame']:a for a in events if a['event']=='return' and a['normal_return']}
+-    for a in normal.values():require(('value' in a)==(a['function'] in capture['value_functions']),'RECOVERY-CAPTURE-VALUE-MEMBERSHIP')
+-    recover=[a for a in calls.values() if a['function']=='ManagedAuthority.recover'];require(len(recover)==1,'RECOVERY-SAVED-DOMAIN')
+-    call=recover[0];ret=normal[call['frame']]
+-    def child(fn):
+-        found=[a for a in calls.values() if a['function']==fn and a['parent']==call['frame']]
+-        require(len(found)==1,'RECOVERY-CHILD:'+fn);return found[0]
+-    validate_call=child('ManagedAuthority._validate');status_call=child('ManagedAuthority.status')
+-    validate_return=normal[validate_call['frame']];status_return=normal[status_call['frame']]
+-    require(call['seq']<validate_call['seq']<validate_return['seq']<status_call['seq']<status_return['seq']<ret['seq'],'RECOVERY-CHILD-ORDER')
+-    export_path='evidence/recovery-export-0.json';x=json.loads(e[export_path]);head_raw=bytes.fromhex(x['head']);head=json.loads(head_raw)
+-    selector=catalogue['source']['head_chain']['selector']
+-    require(enc(x['expected_head'])==enc(head[selector]),'RECOVERY-VALIDATED-STATE-HEAD')
+-    projections=recovery_projection(data,catalogue,ret['value'],head[selector],status_return['value'])
+-    rows=[]
+-    for projection in projections:
+-        d=next(a for a in catalogue['declarations'] if a['id']==projection['declaration'])
+-        rows.append(dict(copy.deepcopy(projection),return_pointer=f"/events/{ret['seq']}/value/{projection['name']}",
+-            source_origin=copy.deepcopy(d['origin']),
+-            head_relation=None if d['origin']['kind']=='literal' else {
+-                'export':{'path':export_path,**identity(e[export_path]),'expected_head_pointer':'/expected_head','raw_head_hex_pointer':'/head'},
+-                'decoded_head':{'identity':identity(head_raw),'selector':'/'+selector},
+-                'validator_frame':validate_call['frame'],'validator_normal_return_pointer':f"/events/{validate_return['seq']}",
+-                'validator_scalar_pointer':None,'state_or_ingest_frame':None,
+-                'relation':'Existing authenticated export/state correspondence plus exact source return chain and capture contract; no scalar/assignment event invented'}))
+-    return observed,capture,{'frame':call['frame'],'parent':call['parent'],'call_pointer':f"/events/{call['seq']}",'fields':rows,
+-        'status_embedding':{'child_frame':status_call['frame'],'child_pointer':f"/events/{status_return['seq']}/value",'parent_pointer':f"/events/{ret['seq']}/value/status",'validation':'Existing source/status embedding checks plus exact equality; separate actual invocation'},
+-        'limitations':'Only this saved normal recovery. Failure/interruption paths are source guards, not new observed executions. No observed _validate scalar, Authority.state or ingest frame.'},basis
+-
+-
+-def connected_recovery(data,catalogue,evidence=None):
+-    observed,capture,row,_=_checked_recovery(data,catalogue,evidence)
+-    return observed,capture,row
+-
+-
+-def derive_recovery(data,catalogue,evidence=None):
+-    observed,capture,row,basis=_checked_recovery(data,catalogue,evidence)
+-    prior=basis['prior'];saved=basis['saved']
+-    result=copy.deepcopy(prior);result['format']='I164-MANAGED-RECOVERY-FIELD-CORRESPONDENCE-HF01-1'
+-    result['prior_reference_components']=result.pop('extension_components');result['prior_reference_receipt']=identity(saved)
+-    result['extension_components']={n:identity((data['recovery_root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+-    evidence=basis['evidence'] # checked identical; never repair a contradictory input
+-    for context in result['contexts']:
+-        view=next(v for v in observed['contexts'] if v['context']==context['context'])
+-        actual=next(o for o in view['occurrences'] if o.get('frame')==row['frame'])
+-        context['recovery_field_declarations']=copy.deepcopy(catalogue)
+-        context['saved_recovery_fields']=[dict(copy.deepcopy(row),occurrence=actual['id'],instance=copy.deepcopy(view['instance']),trace_identity=identity(evidence['evidence/execution-trace.json']))]
+-        context['recovery_capture_contract']=copy.deepcopy(capture)
+-        context['hf01_evidence_binding']=copy.deepcopy(basis['bindings'][context['context']])
+-    result['new_recovery_slice_limits']={'static_source_coverage_only':True,'saved_recovery_invocations':1,'traced_invocations':18,'separate_observer_Client_state_call':1,
+-        'observer_frame':None,'observer_parent':None,'missing_validator_scalar':True,'missing_ingest_and_state_frames':True,'two_contexts_are_not_two_executions':True,
+-        'no_new_head_authentication_or_transitive_type_proof':True,'no_runtime_changes':True,'complete_repetition_coverage':False,'multiplicity':None,
+-        'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','SOURCE_ONLY':'UNCHANGED',
+-        'cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+-    return result
+-
+-
+-# HF-01: one independent, current predecessor evidence basis per validation.
+-# No returned/caller-owned dictionaries are cached as authoritative expectations.
+-def _original_root(root):
+-    import os,stat
+-    base=Path(root)/'original';require(stat.S_ISDIR(base.lstat().st_mode),'HF01-ORIGINAL-ROOT-TYPE')
+-    p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'HF01-ORIGINAL-MANIFEST-TYPE');raw=p.read_bytes()
+-    require(identity(raw)=={'bytes':141342,'sha256':'4db465d7729b086495d380a2f3917a77f99e24727e200fb5fea6e4ebd964020f'},'HF01-ORIGINAL-MANIFEST')
+-    manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
+-    directories={str(p) for n in expected for p in Path(n).parents if str(p)!='.'};seen=set();dirs=set()
+-    def walk(path):
+-        for entry in os.scandir(path):
+-            q=Path(entry.path);name=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
+-            if stat.S_ISDIR(mode):
+-                require(name in directories,'HF01-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+-            else:require(stat.S_ISREG(mode) and name in expected,'HF01-UNDECLARED-OR-NONREGULAR');seen.add(name)
+-    walk(base);require(seen==expected and dirs==directories,'HF01-ORIGINAL-MEMBERSHIP')
+-    for name,pin in manifest.items():require(identity((base/name).read_bytes())==pin,'HF01-ORIGINAL-BYTES:'+name)
+-    return base
+-
+-
+-def recovery_inputs(root=ROOT):
+-    root=Path(root);base=_original_root(root)
+-    prior=_module(base/'code/correspondence.py','_hf01_original_correspondence')
+-    data=prior.recovery_inputs(base)
+-    data['recovery_root']=root
+-    data['recovery_coverage']=_module(root/'code/managed_coverage.py','_hf01_unchanged_producer')
+-    return data
+-
+-
+-def _evidence_bytes(evidence):
+-    require(type(evidence) is dict and all(type(k) is str and type(v) is bytes for k,v in evidence.items()),'HF01-EVIDENCE-BYTES')
+-    return dict(evidence) # values are immutable; copy the caller-owned mapping
+-
+-
+-def _validated_predecessor_basis(data):
+-    # Reload from the current verified dependency root, never from candidate
+-    # reports or a previously returned result. The predecessor and head decoder
+-    # consume this same fresh context, with no alternate evidence argument.
+-    fresh=recovery_inputs(data['recovery_root']);e=_evidence_bytes(fresh['ctx']['e']);fresh['ctx']['e']=e
+-    prior_module=fresh['reference_module']
+-    prior=prior_module.derive_reference(fresh,prior_module.reference_catalogue(fresh))
+-    saved=(fresh['reviewed_reference_root']/'results/reference-correspondence.json').read_bytes()
+-    require(enc(prior)==saved,'HF01-STALE-PREDECESSOR-RECEIPT')
+-    require(identity(saved)=={'bytes':451987,'sha256':'61f93d2ade9436c0d8b6885cea7cb5bb96b84e963c98bb07d7adce37852b7c7f'},'HF01-PREDECESSOR-RECEIPT-PIN')
+-    observed=fresh['occurrence'].derive(fresh['ctx'])
+-    bindings={}
+-    for view in observed['contexts']:
+-        name=view['context'];p=next(v for v in prior['contexts'] if v['context']==name)
+-        calls=[o for o in view['occurrences'] if o.get('source',{}).get('qualified')=='ManagedAuthority.recover'];require(len(calls)==1,'HF01-PREDECESSOR-RECOVERY')
+-        occurrence=calls[0];rows=[r for r in p['saved_reference_scope'] if r['occurrence']==occurrence['id']];require(len(rows)==1,'HF01-PREDECESSOR-REFERENCE-JOIN')
+-        row=rows[0];require(enc(row['instance'])==enc(view['instance']) and row['trace_identity']==identity(e['evidence/execution-trace.json']),'HF01-PREDECESSOR-INSTANCE-TRACE')
+-        require(row['frame']==occurrence['frame'] and row['parent']==occurrence['parent_frame'] and row['call_pointer']==occurrence['call']['pointer'],'HF01-PREDECESSOR-CALL-JOIN')
+-        # Reuse the exact HEAD record/declaration join already enforced by the
+-        # occurrence adapter; no database parse/query or new authentication rule.
+-        joins=[j for j in view['record_declaration_joins'] if j['declaration'].get('template_id')=='HEAD:'];require(len(joins)==1,'HF01-PREDECESSOR-HEAD-JOIN')
+-        record=joins[0]['record'];require(record['artifact']=='evidence/recovery-export-0.json' and record['pointer']=='/head','HF01-HEAD-RECORD-SELECTOR')
+-        require({k:record[k] for k in ('bytes','sha256')}==identity(e[record['artifact']]) and record['acquisition']==occurrence['call']['acquisition'],'HF01-HEAD-ACQUISITION-JOIN')
+-        bindings[name]={'predecessor_receipt':identity(saved),'occurrence':copy.deepcopy(occurrence),'instance':copy.deepcopy(view['instance']),
+-            'head_record':copy.deepcopy(record),'head_declaration':copy.deepcopy(joins[0]['declaration']),
+-            'trace_identity':identity(e['evidence/execution-trace.json']),
+-            'meaning':'Semantic value and exact-byte correspondence to the same current evidence consumed by the mandatory predecessor chain; not new database authentication or observation'}
+-    require(len(bindings)==len(observed['contexts'])==2,'HF01-CONTEXT-DOMAIN')
+-    return {'data':fresh,'evidence':e,'prior':prior,'saved':saved,'observed':observed,'bindings':bindings}
+-
+-
+-def _compare_validated_head(candidate_export,expected_export,selector):
+-    """Value relation under an independently validated expected-export premise.
+-    It is not an evidence admission API. No head constant or string cap is used.
+-    """
+-    candidate_raw=bytes.fromhex(candidate_export['head']);expected_raw=bytes.fromhex(expected_export['head'])
+-    candidate_state=json.loads(candidate_raw);expected_state=json.loads(expected_raw)
+-    require(enc(candidate_export['expected_head'])==enc(expected_export['expected_head']),'HF01-HEAD-EXPECTED-STATE')
+-    require(enc(candidate_state[selector])==enc(expected_state[selector]),'HF01-HEAD-STATE-SELECTOR')
+-    require(enc(candidate_state)==enc(expected_state),'HF01-COMPLETE-VALIDATED-STATE')
+-    require(candidate_raw==expected_raw,'HF01-EXACT-VALIDATED-STATE-BYTES')
+-    require(enc(candidate_export['config'])==enc(expected_export['config']),'HF01-CONFIGURATION-BASIS')
+-    require(candidate_export['ownership_meta']==expected_export['ownership_meta'],'HF01-OWNERSHIP-BASIS')
+-
+-
+-def _bind_predecessor_evidence(basis,evidence,observed,catalogue):
+-    # Compare semantic head/state/configuration/ownership before any whole-map
+-    # identity check. Seven mutually consistent altered reports cannot supply
+-    # their own expected head. The basis above is independently revalidated.
+-    expected=basis['evidence'];path='evidence/recovery-export-0.json'
+-    _compare_validated_head(json.loads(evidence[path]),json.loads(expected[path]),catalogue['source']['head_chain']['selector'])
+-    require(enc(observed)==enc(basis['observed']),'HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS')
+-    # This additional exact-record gate prevents mixed or stale retained bytes
+-    # even when their interpreted head happens to match. No silent repair.
+-    require(set(evidence)==set(expected),'HF01-EVIDENCE-MEMBERSHIP')
+-    for name in expected:require(evidence[name]==expected[name],'HF01-EVIDENCE-BYTES:'+name)
+-
++def constructed_projection(data,submitted_catalogue,case):
++ """Source/evidence-checked hypothetical getter case; never observation input."""
++ rows,basis=_checked(data,submitted_catalogue)
++ require(type(case) is dict and set(case)=={'kind','context','anchor','premise','returned'},'BINDING-CASE-FIELDS')
++ require(case['kind']=='CONSTRUCTED-CONDITIONAL-GETTER','BINDING-CASE-NOT-EXECUTION')
++ selected=[r for r in rows if r['context']==case['context']];require(len(selected)==1,'BINDING-CASE-CONTEXT');anchor=selected[0]['validated_binding_anchor']
++ same(case['anchor'],anchor,'BINDING-CASE-ANCHOR')
++ premise=case['premise'];require(type(premise) is dict and 'live_reference' in premise,'BINDING-CASE-PREMISE')
++ live=premise['live_reference'];require(type(live) is dict and 'scope' in live,'BINDING-CASE-REFERENCE')
++ same(live['scope'],reference_scope(anchor),'BINDING-CASE-REFERENCE-SCOPE')
++ require(type(premise.get('underlying')) is dict and 'binding' in premise['underlying'],'BINDING-CASE-UNDERLYING')
++ same(premise['underlying']['binding'],anchor['binding_value'],'BINDING-CASE-INSTANCE-BINDING')
++ projected=basis['fresh']['coverage'].binding_value_projection(basis['catalogue'],premise,case['returned'])
++ return {'kind':'CONSTRUCTED-CONDITIONAL-GETTER','context':case['context'],'anchor':copy.deepcopy(anchor),'projection':copy.deepcopy(projected),'runtime_observation':False}
+ 
+ def derive(root=ROOT):
+-    data=recovery_inputs(root)
+-    return derive_recovery(data,recovery_catalogue(data))
+-
+-
++ data=inputs(root);return derive_binding(data,catalogue(data))
+ def validate(root,saved):
+-    require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE')
+-    return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'actual_admission':False,'complete_repetition_coverage':False}
+-
++ require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-BINDING-CORRESPONDENCE')
++ return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'getter_runtime_evidence':'UNAVAILABLE','actual_admission':False,'complete_repetition_coverage':False}
+ 
+ if __name__=='__main__':
+-    import argparse
+-    p=argparse.ArgumentParser();p.add_argument('operation',choices=['write','check']);p.add_argument('output');a=p.parse_args()
+-    if a.operation=='write':
+-        with open(a.output,'xb') as f:f.write(enc(derive()))
+-    else:print(json.dumps(validate(ROOT,Path(a.output).read_bytes()),sort_keys=True))
++ import argparse
++ p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args()
++ print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

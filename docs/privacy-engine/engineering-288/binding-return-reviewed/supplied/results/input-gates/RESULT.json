@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "checks": 4,
+  "rows": [
+    {
+      "check": "new predecessor loader rejects undeclared directory",
+      "result": "PASS",
+      "reason": "BINDING-UNDECLARED-DIRECTORY"
+    },
+    {
+      "check": "new predecessor loader rejects undeclared regular entry",
+      "result": "PASS",
+      "reason": "BINDING-UNDECLARED-OR-NONREGULAR"
+    },
+    {
+      "check": "new loader rejects stale producer before import",
+      "result": "PASS",
+      "reason": "BINDING-PRODUCER-SOURCE"
+    },
+    {
+      "check": "new loader rejects changed predecessor source before import",
+      "result": "PASS",
+      "reason": "BINDING-PREDECESSOR-BYTES:code/managed_coverage.py"
+    }
+  ],
+  "error": null,
+  "positive_validation_on_gate_root": false,
+  "unix_socket_and_device_cases": "NOT TESTED",
+  "database_connections": 0,
+  "session_operations": 0
+}
