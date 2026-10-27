@@ -1,0 +1,94 @@
+{
+  "author": "SU-Engineering[288D]",
+  "checkpoint": "I164-status-field-correspondence-1",
+  "complete_repetition_coverage": false,
+  "contexts": [
+    "SYMBOLIC-U-ONE",
+    "SYMBOLIC-U-TWO"
+  ],
+  "database_connections": 0,
+  "fields_per_context": 6,
+  "host_session_operations": 0,
+  "new_canonical_allocations": 0,
+  "new_status_observations": 0,
+  "new_supplied_controls": {
+    "fresh_process": 156,
+    "recovered_root_repeat": 156,
+    "repeat_not_extra_independent_coverage": true
+  },
+  "observed_invocations": 18,
+  "policy_adoption": false,
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "historical_launcher_frames": "UNAVAILABLE",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "prior_implementation_and_evidence": "UNCHANGED; extensions isolated in two new source copies",
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED",
+    "unix_socket_device_execution": "UNTESTED"
+  },
+  "previous_independent_SOC02_R1": {
+    "primary": 100,
+    "recovered": 26,
+    "rerun": false
+  },
+  "previous_supplied_SOC02_R1": {
+    "primary": 35,
+    "recovered": 35,
+    "rerun": false
+  },
+  "prior_closure": {
+    "SOC-01": "Preserved",
+    "SOC-02-R1": "SUPPORTED for SOC-02-R1 closure within retained offline saved-evidence observation contract"
+  },
+  "prior_review_tests_pipeline_lifecycle_reruns": 0,
+  "reason_parameter_sites": 4,
+  "receipt": {
+    "bytes": 293607,
+    "sha256": "46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381"
+  },
+  "result": "VERIFIED bounded new supplied controls; independent review pending",
+  "retained_occurrence_root_unchanged": 467,
+  "runtime_behavior_changes": 0,
+  "separate_observer_Client_state_call": 1,
+  "source_changes": [
+    {
+      "after": {
+        "bytes": 43035,
+        "sha256": "a21761c0d023df458d444863e27d50073d29ee0cb5249bb068406cec5f63cf7c"
+      },
+      "before": {
+        "bytes": 28285,
+        "sha256": "e41ff0ceb85b1fce1e1e538aa4a9c3c9f43c619814cd14ac3ff55e2f60956729"
+      },
+      "path": "code/managed_coverage.py"
+    },
+    {
+      "after": {
+        "bytes": 18355,
+        "sha256": "a9b6dc38bba27f1af19dec93ea4341321a86e1bfaca3f2a14c0e24d76cf0be40"
+      },
+      "before": {
+        "bytes": 10981,
+        "sha256": "69ee1b271705634b495d016a0e267b7f5e2c8c2eabd65964c1eb6312a8ff6829"
+      },
+      "path": "code/correspondence.py"
+    }
+  ],
+  "state_changing_method_calls": 7,
+  "state_writes": {
+    "epoch": 2,
+    "phase": 9,
+    "reason": 7
+  },
+  "static_fields_are_not_new_observations": true
+}

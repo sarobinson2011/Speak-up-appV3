@@ -1,0 +1,181 @@
+{
+  "result": "PASS bounded six-field correspondence",
+  "assertions": 24,
+  "checks": [
+    {
+      "check": "independent source-derived fields writes guards continuations and origins",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "internal catalogue accepts legitimate source",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "public original receipt accepts",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "derived original receipt unchanged",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "SOC-closed receipt preserved exactly",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "six required return fields",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "saved distinct status invocation count",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "status frame membership SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all six exact source/value/pointer/instance joins SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "one six-field recovery parent-child embedding SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "separate observer and static limits SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "status frame membership SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all six exact source/value/pointer/instance joins SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "one six-field recovery parent-child embedding SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "separate observer and static limits SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "recovered coordinated reason omission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "recovered guard branch omission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "recovered boolean type substitution",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated observed reason fields snapshots and embedding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "MANAGED-RETURN-STATE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery false constant type",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "returned nested mutations do not alter subsequent expectations",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "implementation identities stable",
+      "result": "PASS",
+      "category": "independent"
+    }
+  ],
+  "source_audit_counts": {
+    "fields": 6,
+    "phase_writes": 9,
+    "reason_writes": 7,
+    "epoch_writes": 2,
+    "parameter_inputs": 4,
+    "local_captures": 1,
+    "transition_calls": 7
+  },
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 43035,
+      "sha256": "a21761c0d023df458d444863e27d50073d29ee0cb5249bb068406cec5f63cf7c"
+    },
+    "correspondence.py": {
+      "bytes": 18355,
+      "sha256": "a9b6dc38bba27f1af19dec93ea4341321a86e1bfaca3f2a14c0e24d76cf0be40"
+    }
+  },
+  "receipt": {
+    "bytes": 293607,
+    "sha256": "46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381"
+  },
+  "recovered": true,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "no_new_status_observations": true,
+  "constructed_controls_not_execution_evidence": true,
+  "supplied_suites_executed": false,
+  "completed_review_reruns": false,
+  "host_session_execution": false,
+  "database_connections": 0
+}

@@ -1,0 +1,1160 @@
+{
+  "result": "PASS bounded six-field correspondence",
+  "assertions": 147,
+  "checks": [
+    {
+      "check": "independent source-derived fields writes guards continuations and origins",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "internal catalogue accepts legitimate source",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "public original receipt accepts",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "derived original receipt unchanged",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "SOC-closed receipt preserved exactly",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "six required return fields",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "saved distinct status invocation count",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "status frame membership SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all six exact source/value/pointer/instance joins SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "one six-field recovery parent-child embedding SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "separate observer and static limits SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "status frame membership SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all six exact source/value/pointer/instance joins SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "one six-field recovery parent-child embedding SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "separate observer and static limits SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "coordinated field omission phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated field omission reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated field omission connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated field omission actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated field omission external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated field omission authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "wrong field type authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "altered field origin authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 16:37:16:57:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 16:58:16:83:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 16:84:16:97:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 29:2:29:27:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 31:2:31:21:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 52:2:52:33:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 55:3:55:67:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 56:21:56:41:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 56:42:56:72:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 60:3:60:23:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 60:24:60:77:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 83:3:83:28:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 83:29:83:77:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 90:4:90:35:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 91:36:91:50:AugAssign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 91:51:91:70:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 91:71:91:133:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "writer omission coordinated with cached inventory 99:4:99:88:Assign",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-INHERITED-SITE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit reason parameter origin 41:4:41:49:Call",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit reason parameter origin 59:3:59:37:Call",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit reason parameter origin 79:29:79:78:Call",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit reason parameter origin 94:22:94:67:Call",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit conditional true arm",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit conditional false arm",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit captured phase dependency",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "omit all transition calls",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated handler omission _run",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated handler omission _dispose",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated handler omission recover",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "normal continuation removed _dispose",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "normal continuation removed close",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "normal continuation removed recover",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant actual_admission 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant actual_admission True",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant external_nonexecution_established 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant external_nonexecution_established True",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant authorization_renewed 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "exact False constant authorization_renewed True",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "epoch declared global",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "invented finite reason bound",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "source coverage escalation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "stale defining identity",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-FIELD-CORRESPONDENCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "coordinated generator and cached guard omission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-GUARD-ORACLE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "stale defining source bytes",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-DEFINING-SOURCE"
+      },
+      "category": "catalogue"
+    },
+    {
+      "check": "constructed source-expression agreement 16:37:16:57:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 16:58:16:83:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 16:84:16:97:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 29:2:29:27:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 31:2:31:21:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 52:2:52:33:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 55:3:55:67:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 56:21:56:41:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 56:42:56:72:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 60:3:60:23:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 60:24:60:77:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 83:3:83:28:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 83:29:83:77:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 90:4:90:35:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 91:36:91:50:AugAssign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 91:51:91:70:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 91:71:91:133:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 99:4:99:88:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 41:4:41:49:Call",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 59:3:59:37:Call",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 79:29:79:78:Call",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 94:22:94:67:Call",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed source-expression agreement 94:4:94:21:Assign",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed recovered phase branch OPEN_FAILED",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed recovered phase branch VALIDATION_FAILED",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed recovered phase branch READY",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed recovered phase branch CLEANUP_UNCERTAIN",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed recovered phase branch arbitrary future string",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed exact exception text length 0",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed exact exception text length 3",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed exact exception text length 16385",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed exception operand wrong type",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-CONSTRUCTED-EXCEPTION-TYPE"
+      },
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "instance-local initialization and increment have no lifetime cap",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "observed wrong type frame 13 phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 13 reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 13 connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 13 actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 13 external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 13 authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-STATE:phase"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-REASON-TYPE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-STATE:connection_epoch"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-SOURCE-CONSTANT:actual_admission"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-SOURCE-CONSTANT:external_nonexecution_established"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed wrong type frame 14 authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STATUS-SOURCE-CONSTANT:authorization_renewed"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement phase",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement reason",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement connection_epoch",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement actual_admission",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement external_nonexecution_established",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "observed omitted field authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery parent-child disagreement authorization_renewed",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "coordinated observed reason fields snapshots and embedding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "MANAGED-RETURN-STATE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "recovery false constant type",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-STATUS-EDGE"
+      },
+      "category": "saved_evidence_mutation"
+    },
+    {
+      "check": "public omitted field context 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public invented observation context 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public omitted field context 1",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public invented observation context 1",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public mixed contexts",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public stale SOC receipt",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "public unsupported bounds and readiness",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-FIELD-CORRESPONDENCE"
+      },
+      "category": "public"
+    },
+    {
+      "check": "returned nested mutations do not alter subsequent expectations",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "implementation identities stable",
+      "result": "PASS",
+      "category": "independent"
+    }
+  ],
+  "source_audit_counts": {
+    "fields": 6,
+    "phase_writes": 9,
+    "reason_writes": 7,
+    "epoch_writes": 2,
+    "parameter_inputs": 4,
+    "local_captures": 1,
+    "transition_calls": 7
+  },
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 43035,
+      "sha256": "a21761c0d023df458d444863e27d50073d29ee0cb5249bb068406cec5f63cf7c"
+    },
+    "correspondence.py": {
+      "bytes": 18355,
+      "sha256": "a9b6dc38bba27f1af19dec93ea4341321a86e1bfaca3f2a14c0e24d76cf0be40"
+    }
+  },
+  "receipt": {
+    "bytes": 293607,
+    "sha256": "46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381"
+  },
+  "recovered": false,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "no_new_status_observations": true,
+  "constructed_controls_not_execution_evidence": true,
+  "supplied_suites_executed": false,
+  "completed_review_reruns": false,
+  "host_session_execution": false,
+  "database_connections": 0
+}

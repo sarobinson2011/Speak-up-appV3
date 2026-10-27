@@ -1,0 +1,1152 @@
+{
+  "source_sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5",
+  "fields": [
+    {
+      "name": "phase",
+      "expression": "self._phase"
+    },
+    {
+      "name": "reason",
+      "expression": "self._reason"
+    },
+    {
+      "name": "connection_epoch",
+      "expression": "self._epoch"
+    },
+    {
+      "name": "actual_admission",
+      "expression": "False"
+    },
+    {
+      "name": "external_nonexecution_established",
+      "expression": "False"
+    },
+    {
+      "name": "authorization_renewed",
+      "expression": "False"
+    }
+  ],
+  "writes": [
+    {
+      "site": "16:37:16:57:Assign",
+      "function": "__init__",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'CLOSED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "14:1:22:21:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "14:1:22:21:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "15:2:15:30:Assign",
+              "expression": "self._lock=threading.RLock()"
+            },
+            {
+              "site": "15:31:15:62:Assign",
+              "expression": "self._root=Path(root).resolve()"
+            },
+            {
+              "site": "15:63:15:94:Assign",
+              "expression": "self._path=Path(path).resolve()"
+            },
+            {
+              "site": "15:95:15:138:Assign",
+              "expression": "self._owners=Path(ownership_path).resolve()"
+            },
+            {
+              "site": "15:139:15:173:Assign",
+              "expression": "self._config=copy.deepcopy(config)"
+            },
+            {
+              "site": "16:2:16:17:Assign",
+              "expression": "self._live=None"
+            },
+            {
+              "site": "16:18:16:36:Assign",
+              "expression": "self._retired=None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "16:58:16:83:Assign",
+      "function": "__init__",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'not opened'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "14:1:22:21:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "14:1:22:21:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "15:2:15:30:Assign",
+              "expression": "self._lock=threading.RLock()"
+            },
+            {
+              "site": "15:31:15:62:Assign",
+              "expression": "self._root=Path(root).resolve()"
+            },
+            {
+              "site": "15:63:15:94:Assign",
+              "expression": "self._path=Path(path).resolve()"
+            },
+            {
+              "site": "15:95:15:138:Assign",
+              "expression": "self._owners=Path(ownership_path).resolve()"
+            },
+            {
+              "site": "15:139:15:173:Assign",
+              "expression": "self._config=copy.deepcopy(config)"
+            },
+            {
+              "site": "16:2:16:17:Assign",
+              "expression": "self._live=None"
+            },
+            {
+              "site": "16:18:16:36:Assign",
+              "expression": "self._retired=None"
+            },
+            {
+              "site": "16:37:16:57:Assign",
+              "expression": "self._phase='CLOSED'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "16:84:16:97:Assign",
+      "function": "__init__",
+      "target": "_epoch",
+      "operation": "set",
+      "value": "0",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "14:1:22:21:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "14:1:22:21:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "15:2:15:30:Assign",
+              "expression": "self._lock=threading.RLock()"
+            },
+            {
+              "site": "15:31:15:62:Assign",
+              "expression": "self._root=Path(root).resolve()"
+            },
+            {
+              "site": "15:63:15:94:Assign",
+              "expression": "self._path=Path(path).resolve()"
+            },
+            {
+              "site": "15:95:15:138:Assign",
+              "expression": "self._owners=Path(ownership_path).resolve()"
+            },
+            {
+              "site": "15:139:15:173:Assign",
+              "expression": "self._config=copy.deepcopy(config)"
+            },
+            {
+              "site": "16:2:16:17:Assign",
+              "expression": "self._live=None"
+            },
+            {
+              "site": "16:18:16:36:Assign",
+              "expression": "self._retired=None"
+            },
+            {
+              "site": "16:37:16:57:Assign",
+              "expression": "self._phase='CLOSED'"
+            },
+            {
+              "site": "16:58:16:83:Assign",
+              "expression": "self._reason='not opened'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "29:2:29:27:Assign",
+      "function": "_quarantine",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'QUARANTINED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "27:1:31:21:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "27:1:31:21:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        }
+      ]
+    },
+    {
+      "site": "31:2:31:21:Assign",
+      "function": "_quarantine",
+      "target": "_reason",
+      "operation": "set",
+      "value": "reason",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "27:1:31:21:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "27:1:31:21:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "29:2:29:27:Assign",
+              "expression": "self._phase='QUARANTINED'"
+            },
+            {
+              "site": "30:2:30:68:If",
+              "expression": "if self._live is not None:self._retired=self._live;self._live=None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "52:2:52:33:Assign",
+      "function": "_dispose",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'CLEANUP_UNCERTAIN'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "50:1:56:72:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "50:1:56:72:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "51:2:51:33:If",
+              "expression": "if self._retired is None:return"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "55:3:55:67:Assign",
+      "function": "_dispose",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'close not confirmed: '+type(e).__name__+':'+str(e)",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "50:1:56:72:FunctionDef"
+        ],
+        [
+          "dispatch",
+          "53:2:55:73:Try",
+          0
+        ],
+        [
+          "handler",
+          "54:2:55:73:ExceptHandler",
+          "BaseException"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "50:1:56:72:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "51:2:51:33:If",
+              "expression": "if self._retired is None:return"
+            },
+            {
+              "site": "52:2:52:33:Assign",
+              "expression": "self._phase='CLEANUP_UNCERTAIN'"
+            }
+          ]
+        },
+        {
+          "owner": "54:2:55:73:ExceptHandler",
+          "region": "body",
+          "normal_continuation_of": []
+        }
+      ]
+    },
+    {
+      "site": "56:21:56:41:Assign",
+      "function": "_dispose",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'CLOSED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "50:1:56:72:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "50:1:56:72:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "51:2:51:33:If",
+              "expression": "if self._retired is None:return"
+            },
+            {
+              "site": "52:2:52:33:Assign",
+              "expression": "self._phase='CLEANUP_UNCERTAIN'"
+            },
+            {
+              "site": "53:2:55:73:Try",
+              "expression": "try:self._retired.close()\n  except BaseException as e:\n   self._reason='close not confirmed: '+type(e).__name__+':'+str(e);raise"
+            },
+            {
+              "site": "56:2:56:20:Assign",
+              "expression": "self._retired=None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "56:42:56:72:Assign",
+      "function": "_dispose",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'close confirmed'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "50:1:56:72:FunctionDef"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "50:1:56:72:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "51:2:51:33:If",
+              "expression": "if self._retired is None:return"
+            },
+            {
+              "site": "52:2:52:33:Assign",
+              "expression": "self._phase='CLEANUP_UNCERTAIN'"
+            },
+            {
+              "site": "53:2:55:73:Try",
+              "expression": "try:self._retired.close()\n  except BaseException as e:\n   self._reason='close not confirmed: '+type(e).__name__+':'+str(e);raise"
+            },
+            {
+              "site": "56:2:56:20:Assign",
+              "expression": "self._retired=None"
+            },
+            {
+              "site": "56:21:56:41:Assign",
+              "expression": "self._phase='CLOSED'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "60:3:60:23:Assign",
+      "function": "close",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'CLOSED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "57:1:60:77:FunctionDef"
+        ],
+        [
+          "enter",
+          "58:2:60:77:With",
+          [
+            "self._lock"
+          ]
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "57:1:60:77:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "58:2:60:77:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "59:3:59:37:Expr",
+              "expression": "self._quarantine('explicit close')"
+            },
+            {
+              "site": "59:38:59:53:Expr",
+              "expression": "self._dispose()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "60:24:60:77:Assign",
+      "function": "close",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'close confirmed; no serving connection'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "57:1:60:77:FunctionDef"
+        ],
+        [
+          "enter",
+          "58:2:60:77:With",
+          [
+            "self._lock"
+          ]
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "57:1:60:77:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "58:2:60:77:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "59:3:59:37:Expr",
+              "expression": "self._quarantine('explicit close')"
+            },
+            {
+              "site": "59:38:59:53:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "60:3:60:23:Assign",
+              "expression": "self._phase='CLOSED'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "83:3:83:28:Assign",
+      "function": "recover",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'OPEN_FAILED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "83:29:83:77:Assign",
+      "function": "recover",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'open/validation not yet confirmed'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "90:4:90:35:Assign",
+      "function": "recover",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'VALIDATION_FAILED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ],
+        [
+          "try",
+          "87:3:99:94:Try"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            },
+            {
+              "site": "83:29:83:77:Assign",
+              "expression": "self._reason='open/validation not yet confirmed'"
+            },
+            {
+              "site": "84:3:84:111:If",
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')"
+            },
+            {
+              "site": "85:3:85:61:Assign",
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)"
+            },
+            {
+              "site": "86:3:86:18:Assign",
+              "expression": "self._retired=a"
+            }
+          ]
+        },
+        {
+          "owner": "87:3:99:94:Try",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "89:4:89:106:Expr",
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "91:36:91:50:AugAssign",
+      "function": "recover",
+      "target": "_epoch",
+      "operation": "add",
+      "value": "1",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ],
+        [
+          "try",
+          "87:3:99:94:Try"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            },
+            {
+              "site": "83:29:83:77:Assign",
+              "expression": "self._reason='open/validation not yet confirmed'"
+            },
+            {
+              "site": "84:3:84:111:If",
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')"
+            },
+            {
+              "site": "85:3:85:61:Assign",
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)"
+            },
+            {
+              "site": "86:3:86:18:Assign",
+              "expression": "self._retired=a"
+            }
+          ]
+        },
+        {
+          "owner": "87:3:99:94:Try",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "89:4:89:106:Expr",
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)"
+            },
+            {
+              "site": "90:4:90:35:Assign",
+              "expression": "self._phase='VALIDATION_FAILED'"
+            },
+            {
+              "site": "90:36:90:58:Assign",
+              "expression": "head=self._validate(a)"
+            },
+            {
+              "site": "91:4:91:16:Assign",
+              "expression": "self._live=a"
+            },
+            {
+              "site": "91:17:91:35:Assign",
+              "expression": "self._retired=None"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "91:51:91:70:Assign",
+      "function": "recover",
+      "target": "_phase",
+      "operation": "set",
+      "value": "'READY'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ],
+        [
+          "try",
+          "87:3:99:94:Try"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            },
+            {
+              "site": "83:29:83:77:Assign",
+              "expression": "self._reason='open/validation not yet confirmed'"
+            },
+            {
+              "site": "84:3:84:111:If",
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')"
+            },
+            {
+              "site": "85:3:85:61:Assign",
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)"
+            },
+            {
+              "site": "86:3:86:18:Assign",
+              "expression": "self._retired=a"
+            }
+          ]
+        },
+        {
+          "owner": "87:3:99:94:Try",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "89:4:89:106:Expr",
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)"
+            },
+            {
+              "site": "90:4:90:35:Assign",
+              "expression": "self._phase='VALIDATION_FAILED'"
+            },
+            {
+              "site": "90:36:90:58:Assign",
+              "expression": "head=self._validate(a)"
+            },
+            {
+              "site": "91:4:91:16:Assign",
+              "expression": "self._live=a"
+            },
+            {
+              "site": "91:17:91:35:Assign",
+              "expression": "self._retired=None"
+            },
+            {
+              "site": "91:36:91:50:AugAssign",
+              "expression": "self._epoch+=1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "91:71:91:133:Assign",
+      "function": "recover",
+      "target": "_reason",
+      "operation": "set",
+      "value": "'fresh connection and retained history validated'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ],
+        [
+          "try",
+          "87:3:99:94:Try"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            },
+            {
+              "site": "83:29:83:77:Assign",
+              "expression": "self._reason='open/validation not yet confirmed'"
+            },
+            {
+              "site": "84:3:84:111:If",
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')"
+            },
+            {
+              "site": "85:3:85:61:Assign",
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)"
+            },
+            {
+              "site": "86:3:86:18:Assign",
+              "expression": "self._retired=a"
+            }
+          ]
+        },
+        {
+          "owner": "87:3:99:94:Try",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "89:4:89:106:Expr",
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)"
+            },
+            {
+              "site": "90:4:90:35:Assign",
+              "expression": "self._phase='VALIDATION_FAILED'"
+            },
+            {
+              "site": "90:36:90:58:Assign",
+              "expression": "head=self._validate(a)"
+            },
+            {
+              "site": "91:4:91:16:Assign",
+              "expression": "self._live=a"
+            },
+            {
+              "site": "91:17:91:35:Assign",
+              "expression": "self._retired=None"
+            },
+            {
+              "site": "91:36:91:50:AugAssign",
+              "expression": "self._epoch+=1"
+            },
+            {
+              "site": "91:51:91:70:Assign",
+              "expression": "self._phase='READY'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": "99:4:99:88:Assign",
+      "function": "recover",
+      "target": "_phase",
+      "operation": "set",
+      "value": "phase if phase in ('OPEN_FAILED','VALIDATION_FAILED') else 'QUARANTINED'",
+      "guards": [
+        [
+          "class",
+          "13:0:99:94:ClassDef"
+        ],
+        [
+          "invoke",
+          "76:1:99:94:FunctionDef"
+        ],
+        [
+          "enter",
+          "77:2:99:94:With",
+          [
+            "self._lock"
+          ]
+        ],
+        [
+          "dispatch",
+          "87:3:99:94:Try",
+          0
+        ],
+        [
+          "handler",
+          "93:3:99:94:ExceptHandler",
+          "BaseException"
+        ]
+      ],
+      "continuation": [
+        {
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "77:2:99:94:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "78:3:78:65:If",
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')"
+            },
+            {
+              "site": "79:3:79:78:If",
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')"
+            },
+            {
+              "site": "82:3:82:18:Expr",
+              "expression": "self._dispose()"
+            },
+            {
+              "site": "83:3:83:28:Assign",
+              "expression": "self._phase='OPEN_FAILED'"
+            },
+            {
+              "site": "83:29:83:77:Assign",
+              "expression": "self._reason='open/validation not yet confirmed'"
+            },
+            {
+              "site": "84:3:84:111:If",
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')"
+            },
+            {
+              "site": "85:3:85:61:Assign",
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)"
+            },
+            {
+              "site": "86:3:86:18:Assign",
+              "expression": "self._retired=a"
+            }
+          ]
+        },
+        {
+          "owner": "93:3:99:94:ExceptHandler",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "94:4:94:21:Assign",
+              "expression": "phase=self._phase"
+            },
+            {
+              "site": "94:22:94:67:Expr",
+              "expression": "self._quarantine(type(e).__name__+':'+str(e))"
+            },
+            {
+              "site": "94:68:94:83:Assign",
+              "expression": "self._retired=a"
+            },
+            {
+              "site": "95:4:98:31:If",
+              "expression": "if not hasattr(a,'db'):self._retired=None\n    else:\n     try:self._dispose()\n     except BaseException:raise"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reason_arguments": [
+    {
+      "site": "41:4:41:49:Call",
+      "function": "_run",
+      "callee": "_quarantine",
+      "parameter": "reason",
+      "value": "type(e).__name__+':'+str(e)"
+    },
+    {
+      "site": "59:3:59:37:Call",
+      "function": "close",
+      "callee": "_quarantine",
+      "parameter": "reason",
+      "value": "'explicit close'"
+    },
+    {
+      "site": "79:29:79:78:Call",
+      "function": "recover",
+      "callee": "_quarantine",
+      "parameter": "reason",
+      "value": "'interrupted prior disposition'"
+    },
+    {
+      "site": "94:22:94:67:Call",
+      "function": "recover",
+      "callee": "_quarantine",
+      "parameter": "reason",
+      "value": "type(e).__name__+':'+str(e)"
+    }
+  ],
+  "counts": {
+    "fields": 6,
+    "phase_writes": 9,
+    "reason_writes": 7,
+    "epoch_writes": 2,
+    "parameter_inputs": 4,
+    "local_captures": 1,
+    "transition_calls": 7
+  },
+  "source_only": true,
+  "candidate_guard_modules_used_by_this_oracle": false
+}

@@ -1,0 +1,74 @@
+{
+  "result": "PASS",
+  "retained_occurrence_members": 467,
+  "retained_boundary_members": 463,
+  "prior_receipt": {
+    "bytes": 103441,
+    "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+  },
+  "SOC_closed_adapter": {
+    "bytes": 31687,
+    "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+  },
+  "historical_compiler_body_and_CLI_byte_preserved": true,
+  "boundary_body_byte_preserved_except_function_rename": true,
+  "guard_provenance": {
+    "candidate_archive": {
+      "bytes": 42764373,
+      "sha256": "152207d3140b4d9b0d97890b5ce38f5f4ff4bab3bc009af951e489faaf534a42"
+    },
+    "exact_selected_members": {
+      "guard_oracle.py": {
+        "bytes": 6171,
+        "sha256": "b46c25dedf8d72151b5be405dbc3f12fdb05ac47293ee9e118171f8ece9ebb2e"
+      },
+      "guard_relationships.py": {
+        "bytes": 6813,
+        "sha256": "97942b56af75398ad562da808d746787b7226d5400e1ca0a7dbe80fb98b9ac9b"
+      }
+    },
+    "only_two_members_compared_no_pipeline_or_full_candidate_recheck": true
+  },
+  "intentional_changes": [
+    {
+      "after": {
+        "bytes": 43035,
+        "sha256": "a21761c0d023df458d444863e27d50073d29ee0cb5249bb068406cec5f63cf7c"
+      },
+      "before": {
+        "bytes": 28285,
+        "sha256": "e41ff0ceb85b1fce1e1e538aa4a9c3c9f43c619814cd14ac3ff55e2f60956729"
+      },
+      "path": "code/managed_coverage.py"
+    },
+    {
+      "after": {
+        "bytes": 18355,
+        "sha256": "a9b6dc38bba27f1af19dec93ea4341321a86e1bfaca3f2a14c0e24d76cf0be40"
+      },
+      "before": {
+        "bytes": 10981,
+        "sha256": "69ee1b271705634b495d016a0e267b7f5e2c8c2eabd65964c1eb6312a8ff6829"
+      },
+      "path": "code/correspondence.py"
+    }
+  ],
+  "supplied_controls": [
+    {
+      "group": "fresh",
+      "reported_controls": 156,
+      "recorded_root": "/workspace/scratch/3da0de3fef10/status-fields",
+      "inspected_not_run": true
+    },
+    {
+      "group": "recovered",
+      "reported_controls": 156,
+      "recorded_root": "/workspace/scratch/3da0de3fef10/status-fields-recovered",
+      "inspected_not_run": true
+    }
+  ],
+  "candidate_and_draft_map_counts": {
+    "candidate": 666,
+    "draft": 163
+  }
+}
