@@ -1,0 +1,9 @@
+# Independent SOC-01 / SOC-02 closure review
+
+Verify this correction checkpoint, exact supplied review and original target dependencies. Preserve implementation code and source/evidence identities. Reuse prior boundary support and saved smoke; do not run a host smoke, session, database connection, completed pipeline, prior full review or lifecycle.
+
+Reproduce the nine preserved original witness variants against original/code/smoke_occurrences.py. Independently confirm SOC-01 rejection after mutations through returned results (including nested changes), both required contexts independently enforced, and continued pristine acceptance in the same process. Check derive outputs and public validation as well as the internal semantic seam.
+
+For SOC-02, verify constructor state comes from source assignments and captured snapshot semantics, not a blacklist of 17. Check coordinated constructor/recovery/status values, watcher-specific path/function attribution, historical-main substitution with compatible lines/values, self/no-self projection, exact types and frame allocation. Preserve source-grounded successful-route scope and sparse-trace limitations. Test legitimate observations, fresh-process and recovered-root behavior; do not infer generalized Python trace semantics or forged-observer resistance.
+
+Inspect new controls separately from the original supplied and independent results and from this author's witness reproduction. The receipt should stay byte-identical and contain 18 distinct traced invocations plus a separate explicit observer Client.state record in each of two context views. Copies/context views are not additional executions. No missing frames, arguments or historical provenance may be invented. Preserve all existing obligations, UNKNOWN totals, Decision B, retention/allowances and readiness/admission boundaries. Return a scoped closure verdict and any smallest remaining defect witness.

@@ -1,0 +1,801 @@
+{
+  "result": "PASS bounded SOC-02-R1 correction; no residual found in tested scope",
+  "assertions": 100,
+  "checks": [
+    {
+      "check": "pristine public validation",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine derivation byte identity",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine semantic frame count",
+      "result": "PASS"
+    },
+    {
+      "check": "pinned close has only self.db.close effect",
+      "result": "PASS"
+    },
+    {
+      "check": "source assignments intersect observer projection",
+      "result": "PASS"
+    },
+    {
+      "check": "raw and managed invocations independently identified",
+      "result": "PASS"
+    },
+    {
+      "check": "raw call return and exact export bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "managed call return and exact export bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic acceptance managed-close-binding-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "old exact derived witness managed-close-binding-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "old public pin protection managed-close-binding-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected semantic managed-close-binding-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected derive managed-close-binding-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected public managed-close-binding-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "old semantic acceptance raw-close-ownership-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "old exact derived witness raw-close-ownership-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "old public pin protection raw-close-ownership-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected semantic raw-close-ownership-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected derive raw-close-ownership-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected public raw-close-ownership-one-byte",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "old semantic acceptance coordinated-close-bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "old exact derived witness coordinated-close-bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "old public pin protection coordinated-close-bindings",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected semantic coordinated-close-bindings",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected derive coordinated-close-bindings",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "corrected public coordinated-close-bindings",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "semantic raw call binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive raw call binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic raw call ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive raw call ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic raw return binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive raw return binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic raw return ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive raw return ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic raw coordinated both endpoints binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive raw coordinated both endpoints binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic raw coordinated both endpoints ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "derive raw coordinated both endpoints ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "semantic managed call binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive managed call binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic managed call ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive managed call ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic managed return binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive managed return binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic managed return ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "derive managed return ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      }
+    },
+    {
+      "check": "semantic managed coordinated both endpoints binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive managed coordinated both endpoints binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic managed coordinated both endpoints ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "derive managed coordinated both endpoints ownership_binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "semantic coordinated both closes and fields",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive coordinated both closes and fields",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic coordinated constructors and both closes",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive coordinated constructors and both closes",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic raw swapped identity roles",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive raw swapped identity roles",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic raw missing projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "derive raw missing projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "semantic raw extra projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-PROJECTION"
+      }
+    },
+    {
+      "check": "derive raw extra projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-PROJECTION"
+      }
+    },
+    {
+      "check": "semantic managed swapped identity roles",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive managed swapped identity roles",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic managed missing projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "derive managed missing projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "semantic managed extra projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-PROJECTION"
+      }
+    },
+    {
+      "check": "derive managed extra projected field",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-PROJECTION"
+      }
+    },
+    {
+      "check": "semantic exact identity type None",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive exact identity type None",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic exact identity type False",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive exact identity type False",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic exact identity type 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive exact identity type 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic exact identity type []",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive exact identity type []",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic exact identity type {}",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive exact identity type {}",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic altered HEAD binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDOFF-HEAD"
+      }
+    },
+    {
+      "check": "derive altered HEAD binding",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDOFF-HEAD"
+      }
+    },
+    {
+      "check": "semantic altered ownership exact bytes",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "derive altered ownership exact bytes",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OWNERSHIP-INCARNATION"
+      }
+    },
+    {
+      "check": "semantic missing evidence/recovery-export-0.json",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/recovery-export-0.json'"
+      }
+    },
+    {
+      "check": "derive missing evidence/recovery-export-0.json",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/recovery-export-0.json'"
+      }
+    },
+    {
+      "check": "semantic missing evidence/client-handoff.json",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/client-handoff.json'"
+      }
+    },
+    {
+      "check": "derive missing evidence/client-handoff.json",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/client-handoff.json'"
+      }
+    },
+    {
+      "check": "unsupported-effect fixture is not no-op",
+      "result": "PASS"
+    },
+    {
+      "check": "unsupported source effect has no identity-preservation assumption",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "UNSUPPORTED-AUTHORITY-CLOSE-EFFECT"
+      }
+    },
+    {
+      "check": "returned and nested mutations leave expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "both contexts retain declared order",
+      "result": "PASS"
+    },
+    {
+      "check": "18 traced plus separate observer SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN classifications retained SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "context individually required 0",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "18 traced plus separate observer SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN classifications retained SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "context individually required 1",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "all obligations and UNKNOWN totals retained",
+      "result": "PASS"
+    },
+    {
+      "check": "public stale acquisition receipt",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public context order substitution",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public unsupported status and unknown-zero",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "final pristine accepted unchanged",
+      "result": "PASS"
+    },
+    {
+      "check": "implementation bytes unchanged",
+      "result": "PASS"
+    }
+  ],
+  "witnesses": [
+    {
+      "variant": "managed-close-binding-one-byte",
+      "trace": {
+        "bytes": 22459,
+        "sha256": "9881e948edcfee1d4172923ce7b6f4efb3ca21cf8616bd0e05c507d0a482c488"
+      },
+      "saved_receipt": {
+        "bytes": 103441,
+        "sha256": "89560fb61fe495e509aea64d98f21d34e828935ac9f2a4ac9dc81a60172fb36c"
+      },
+      "semantic_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "derive_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "variant": "raw-close-ownership-one-byte",
+      "trace": {
+        "bytes": 22459,
+        "sha256": "be8bfcb06bcc84952b85ae9daff6b7f03c112a9734cff84821fcad0a358144f0"
+      },
+      "saved_receipt": {
+        "bytes": 103441,
+        "sha256": "1c6d46d81937837c641efe1bd5519c3e2cf6822779795ffcd83ed6cce601c080"
+      },
+      "semantic_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "derive_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "variant": "coordinated-close-bindings",
+      "trace": {
+        "bytes": 17340,
+        "sha256": "c7d6681b4f7287b063b4238ba94cdc4e0d7a36dd7e044c5add7d0c853ed065b3"
+      },
+      "saved_receipt": {
+        "bytes": 103441,
+        "sha256": "a8ddc7e335083b615f205e72975377901025641f63b8f2821816c4bac5619467"
+      },
+      "semantic_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "derive_rejection": {
+        "type": "ValueError",
+        "message": "AUTHORITY-CLOSE-IDENTITY-TRANSITION"
+      },
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    }
+  ],
+  "old_variants_reproduced": 3,
+  "recovered_root": false,
+  "source": {
+    "bytes": 31687,
+    "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+  },
+  "pristine_receipt": {
+    "bytes": 103441,
+    "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2",
+    "operations": "offline source and saved-evidence validation only"
+  },
+  "supplied_tests_executed": false,
+  "completed_reviews_rerun": false,
+  "host_session_execution": false,
+  "database_connections": 0
+}

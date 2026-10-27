@@ -1,0 +1,20 @@
+{
+  "author": "Formal-Lab[6]",
+  "candidate_defects": false,
+  "failures": [
+    {
+      "script": "verify_input-initial.py",
+      "error": "AssertionError at flat top-level MANIFEST membership assumption inside first nested archive",
+      "cause": "Reviewer initially handled only the outer flat manifest. Nested archives use a members wrapper.",
+      "state": "Top-level identity/CRC/membership/hashes passed; extraction had not started.",
+      "correction": "Handle both recorded manifest schemas, retaining strict membership and byte/hash checks."
+    },
+    {
+      "script": "initial inline residual probe",
+      "error": "AssertionError: RUNTIME-EXECUTION during prospective_entry.py <module>",
+      "cause": "Reviewer guard also prohibited source definition loading used by the retained correspondence validator.",
+      "state": "Stopped before residual mutation test; no application invocation or session action occurred.",
+      "correction": "Permit retained entry definitions; still prohibit entry/session/application/worker function invocations and database/network calls."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "result": "PASS",
+  "composition": [
+    {
+      "path": "review",
+      "exact_files": 35
+    },
+    {
+      "path": "original",
+      "exact_files": 1
+    },
+    {
+      "path": "corrected",
+      "exact_files": 467
+    },
+    {
+      "path": "corrected/retained/correction",
+      "exact_files": 463
+    }
+  ],
+  "intentional_change": {
+    "implementation_change": {
+      "path": "code/smoke_occurrences.py",
+      "before": {
+        "bytes": 30524,
+        "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+      },
+      "after": {
+        "bytes": 31687,
+        "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+      }
+    },
+    "new_control": {
+      "bytes": 5794,
+      "sha256": "502d1e85532a58fc414bc3757cdd8e7ada8072814b6fc9dd70ab7a6081d98a2c"
+    },
+    "modified_predecessor_runtime_files": [],
+    "unchanged_receipt": {
+      "bytes": 103441,
+      "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+    }
+  },
+  "supplied": [
+    {
+      "folder": "fresh",
+      "controls": 35,
+      "reproductions": 3,
+      "inspected_not_run": true
+    },
+    {
+      "folder": "recovered",
+      "controls": 35,
+      "reproductions": 0,
+      "inspected_not_run": true
+    }
+  ],
+  "unchanged_identity_maps": {
+    "candidate": 666,
+    "draft": 163
+  },
+  "scope": "byte continuity to completed prior review, not a completed-review rerun"
+}

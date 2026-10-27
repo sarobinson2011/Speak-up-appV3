@@ -1,0 +1,228 @@
+{
+  "active_source": {
+    "bytes": 31687,
+    "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+  },
+  "additional_preservation": [
+    "No cross-acquisition occurrence joins",
+    "No new caps, deletion permission or retention change",
+    "Allowances, permanent charges, reservations, U/nonce ownership and uncertainty unchanged",
+    "Unix-socket/device execution untested; no qualification inferred"
+  ],
+  "archives": {
+    "connection": {
+      "bytes": 8512513,
+      "entries": 485,
+      "filename": "I164-status-smoke-occurrence-connection-1.zip",
+      "git_included": false,
+      "sha256": "20be027e282cf14a2dd1c790b60b788abab585a554152096e80ab29b5e1034f3"
+    },
+    "review-initial": {
+      "bytes": 12956201,
+      "entries": 69,
+      "filename": "Formal-Lab6-I164-status-smoke-occurrence-connection-independent-review.zip",
+      "git_included": false,
+      "sha256": "13b74ea86aed82a4e14b96e634aa8cd44b2617c804ee9b2df678b2c779be76c3"
+    },
+    "review-soc01-soc02": {
+      "bytes": 21550943,
+      "entries": 36,
+      "filename": "Formal-Lab6-I164-SOC01-SOC02-independent-review.zip",
+      "git_included": false,
+      "sha256": "62340d3d729c6fd3caf5a204a55ecf82efbd3b3955c5f466609ff36792f6d8e5"
+    },
+    "review-soc02-r1": {
+      "bytes": 29930542,
+      "entries": 21,
+      "filename": "Formal-Lab6-I164-SOC02-R1-independent-review.zip",
+      "git_included": false,
+      "sha256": "96f996a5284017cf86721c0fdb94fbeeda2d94cd372937beb7af3634a3927099"
+    },
+    "soc01-soc02": {
+      "bytes": 21703078,
+      "entries": 554,
+      "filename": "I164-SOC01-SOC02-correction.zip",
+      "git_included": false,
+      "sha256": "6f90951280861fc27e4539cfd0596ecfb3c98a1c30b74bfe528042922b42a948"
+    },
+    "soc02-r1": {
+      "bytes": 30156228,
+      "entries": 520,
+      "filename": "I164-SOC02-R1-correction.zip",
+      "git_included": false,
+      "sha256": "eb8f0c74f1431a00cfe67e7b756a7e3416385a34bebaa0e2b3981c063898092f"
+    }
+  },
+  "closure": {
+    "SOC-01": "Supported within its returned-result independence scope",
+    "SOC-02": "Original five variants corrected; support preserved",
+    "SOC-02-R1": "SUPPORTED for SOC-02-R1 closure within retained offline saved-evidence observation contract",
+    "remaining_witness": "None found in bounded tested scope"
+  },
+  "construction_author": "SU-Engineering[288D]",
+  "counts_are_separate_not_added": true,
+  "earlier_boundary_review_and_host_smoke": "Already saved; not repeated or included as new controls",
+  "external_current_boundary_archive": {
+    "bytes": 4269431,
+    "entries": 463,
+    "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+  },
+  "external_host_smoke_archive": {
+    "bytes": 77696,
+    "entries": 37,
+    "sha256": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8"
+  },
+  "incorporation_date": "2026-10-27",
+  "independent_controls": {
+    "initial_review": {
+      "primary": 84,
+      "process_checks": 10,
+      "recovered_repeat": 84
+    },
+    "soc01-soc02": {
+      "primary": 198,
+      "recovered": 37,
+      "separate_minimum_witness_process": true
+    },
+    "soc02-r1": {
+      "primary": 100,
+      "recovered": 26
+    }
+  },
+  "milestone": "I164 reviewed status smoke occurrence connection and SOC corrections",
+  "nested_archive_chain": [
+    {
+      "child": "soc02-r1",
+      "member": "input/I164-SOC02-R1-correction.zip",
+      "parent": "review-soc02-r1"
+    },
+    {
+      "child": "review-soc01-soc02",
+      "member": "inputs/independent-review.zip",
+      "parent": "soc02-r1"
+    },
+    {
+      "child": "soc01-soc02",
+      "member": "input/I164-SOC01-SOC02-correction.zip",
+      "parent": "review-soc01-soc02"
+    },
+    {
+      "child": "review-initial",
+      "member": "inputs/independent-review.zip",
+      "parent": "soc01-soc02"
+    },
+    {
+      "child": "connection",
+      "member": "input/I164-status-smoke-occurrence-connection-1.zip",
+      "parent": "review-initial"
+    }
+  ],
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "backup": "KERNEL-ONLY",
+    "candidate_identity_map": 666,
+    "cumulative_envelope": "UNADOPTED",
+    "draft_identity_map": 163,
+    "final_binding": "BLOCKED",
+    "historical_launcher_frames": "UNAVAILABLE",
+    "implementation_modified": false,
+    "input_members": 520,
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retained_correction_members": 463,
+    "streams": "UNCOMPUTED"
+  },
+  "prior_git_dependency": {
+    "prefix": "docs/privacy-engine/engineering-288/status-boundary-reviewed",
+    "selection_manifest": {
+      "bytes": 25777,
+      "sha256": "32e2301bc81cb616a2ac476dd1eafe43af1476ecbc655070cc6c82f654ada287"
+    },
+    "status": "Host-reported completed save; exact commit not transcribed. Check retained committed bytes without resaving."
+  },
+  "review_author": "Formal-Lab[6]",
+  "sources": {
+    "governing-model": {
+      "boundary_archive_member": "retained/candidate/preflight/sources/S90-FCR.md",
+      "bytes": 811633,
+      "sha256": "119a3038e45472b31bd03ac0a659c6cc9bcf227fe3a48fe996ed4621a938003d"
+    },
+    "managed-coverage": {
+      "boundary_archive_member": "retained/candidate/compiler/managed_coverage.py",
+      "bytes": 28285,
+      "sha256": "e41ff0ceb85b1fce1e1e538aa4a9c3c9f43c619814cd14ac3ff55e2f60956729"
+    },
+    "managed-source": {
+      "boundary_archive_member": "retained/candidate/compiler/live_connection.py",
+      "bytes": 5717,
+      "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+    },
+    "prospective-entry": {
+      "boundary_archive_member": "code/prospective_entry.py",
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    },
+    "source-correspondence": {
+      "boundary_archive_member": "code/correspondence.py",
+      "bytes": 10981,
+      "sha256": "69ee1b271705634b495d016a0e267b7f5e2c8c2eabd65964c1eb6312a8ff6829"
+    },
+    "status-contract": {
+      "boundary_archive_member": "contract/CONTRACT-draft-1.txt",
+      "bytes": 11593,
+      "sha256": "ef55b55a1aab7427a1f58faa38bf2b5b27af1f0deddf62f73e3764bfbd09fcd6"
+    },
+    "status-decision": {
+      "boundary_archive_member": "contract/DECISION.json",
+      "bytes": 2551,
+      "sha256": "0ba88241ae82ff0bd416b47d7c81451f431e4a65a4662f9863948623e8ed693c"
+    }
+  },
+  "sparse_trace": {
+    "context_views_are_not_executions": true,
+    "invented_observer_frame": false,
+    "missing": [
+      "offsets",
+      "call arguments",
+      "full line/exception history",
+      "live/retired snapshots",
+      "historical launcher-frame provenance"
+    ],
+    "separate_explicit_observer_Client_state_call": 1,
+    "traced_invocations": 18
+  },
+  "supplied_controls": {
+    "connection": {
+      "focused": 57,
+      "process_checks": 2
+    },
+    "soc01-soc02": {
+      "development_75_not_final_source_coverage": true,
+      "final_fresh": 76,
+      "final_recovered": 76
+    },
+    "soc02-r1": {
+      "fresh": 35,
+      "recovered": 35
+    }
+  },
+  "this_step": {
+    "candidate_code_changed": false,
+    "database_connections": 0,
+    "git_host_execution": "NOT EXECUTED HERE",
+    "host_smoke": 0,
+    "next_task_implemented": false,
+    "pipelines": 0,
+    "reviews_rerun": 0,
+    "session_operations": 0,
+    "tests": 0
+  },
+  "unchanged_receipt": {
+    "bytes": 103441,
+    "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+  }
+}

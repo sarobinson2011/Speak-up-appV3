@@ -1,0 +1,26 @@
+{"check":"pristine public validation","result":"PASS"}
+{"check":"pristine derivation byte identity","result":"PASS"}
+{"check":"pristine semantic frame count","result":"PASS"}
+{"check":"pinned close has only self.db.close effect","result":"PASS"}
+{"check":"source assignments intersect observer projection","result":"PASS"}
+{"check":"raw and managed invocations independently identified","result":"PASS"}
+{"check":"raw call return and exact export bindings","result":"PASS"}
+{"check":"managed call return and exact export bindings","result":"PASS"}
+{"check":"corrected semantic managed-close-binding-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive managed-close-binding-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public managed-close-binding-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected semantic raw-close-ownership-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive raw-close-ownership-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public raw-close-ownership-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected semantic coordinated-close-bindings","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive coordinated-close-bindings","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public coordinated-close-bindings","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"returned and nested mutations leave expectations intact","result":"PASS"}
+{"check":"both contexts retain declared order","result":"PASS"}
+{"check":"18 traced plus separate observer SYMBOLIC-U-ONE","result":"PASS"}
+{"check":"UNKNOWN classifications retained SYMBOLIC-U-ONE","result":"PASS"}
+{"check":"18 traced plus separate observer SYMBOLIC-U-TWO","result":"PASS"}
+{"check":"UNKNOWN classifications retained SYMBOLIC-U-TWO","result":"PASS"}
+{"check":"all obligations and UNKNOWN totals retained","result":"PASS"}
+{"check":"final pristine accepted unchanged","result":"PASS"}
+{"check":"implementation bytes unchanged","result":"PASS"}

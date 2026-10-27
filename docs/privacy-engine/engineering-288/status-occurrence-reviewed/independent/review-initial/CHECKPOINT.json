@@ -1,0 +1,79 @@
+{
+  "checkpoint": "Formal-Lab6-I164-status-smoke-occurrence-connection-independent-review",
+  "review_author": "Formal-Lab[6] (Codex, separate reviewer)",
+  "construction_author": "SU-Engineering[288D]",
+  "date": "2026-10-26",
+  "target_name": "I164-status-smoke-occurrence-connection-1.zip",
+  "target": {
+    "bytes": 8512513,
+    "sha256": "20be027e282cf14a2dd1c790b60b788abab585a554152096e80ab29b5e1034f3"
+  },
+  "target_entries": 485,
+  "verdict": "NOT SUPPORTED FOR CLOSURE AS SUBMITTED",
+  "findings": [
+    {
+      "id": "SOC-01",
+      "scope": "Public validate API",
+      "finding": "Returned contexts alias mutates future expected context universe; zero-context receipt accepted",
+      "smallest_accepted_receipt": {
+        "bytes": 1718,
+        "sha256": "e7832c0e45f17d84b61a9f105b84cab665ab2dcf0f4f3b20e7b6e52d2a492818"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "scope": "Internal semantic negative-control seam",
+      "finding": "Available producer/observer source and exact-type contradictions can pass",
+      "public_archive_pin_bypass": false
+    }
+  ],
+  "supported_original_evidence": {
+    "traced_invocations": 18,
+    "trace_events": 40,
+    "generator_suspensions": 2,
+    "generator_resumptions": 2,
+    "separate_observer_Client_state_calls": 1,
+    "context_views": 2,
+    "views_are_not_new_executions": true,
+    "duty_dispositions": "NOT-ESTABLISHED",
+    "classifications": "UNKNOWN"
+  },
+  "tests": {
+    "supplied_assertions_inspected": 57,
+    "supplied_process_checks_inspected": 2,
+    "supplied_suite_rerun": false,
+    "independent_review_assertions": 84,
+    "independent_witness_variants": 9,
+    "recovered_process_repeat_assertions": 84,
+    "extra_process_checks": 10,
+    "counts_mean_review_checks_completed_not_all_candidate_behavior_passed": true
+  },
+  "preservation": {
+    "correction_members_unchanged": 463,
+    "smoke_members_preserved": 37,
+    "each_review_root_members_unchanged": 485,
+    "prior_boundary_review_reused": {
+      "bytes": 4494310,
+      "sha256": "3ef0c2943582101f58646503482d20e28da17e3ccfefcdd4cef03714d6d2c517"
+    },
+    "implementation_modified": false,
+    "boundary_review_rerun": false,
+    "host_smoke_rerun": false,
+    "session_operations": 0,
+    "database_connections": 0
+  },
+  "limits": {
+    "obligations": 11,
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "SOURCE_ONLY": "UNCHANGED",
+    "Decision_B": "UNCHANGED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "actual_admission": false,
+    "cumulative_envelope": "UNADOPTED",
+    "historical_launcher_frame_gaps": "PRESERVED"
+  }
+}

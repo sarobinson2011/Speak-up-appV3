@@ -1,0 +1,102 @@
+{
+  "checkpoint": "Formal-Lab6-I164-SOC01-SOC02-independent-review",
+  "review_target": "I164-SOC01-SOC02-correction.zip",
+  "target": {
+    "bytes": 21703078,
+    "sha256": "6f90951280861fc27e4539cfd0596ecfb3c98a1c30b74bfe528042922b42a948",
+    "entries": 554
+  },
+  "author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "canonical": false,
+  "overall_verdict": "NOT SUPPORTED for full SOC-01/SOC-02 closure",
+  "SOC-01": "SUPPORTED within returned-result alias contract",
+  "SOC-02": "Original five variants corrected; NOT CLOSED because of residual close-entry snapshot correspondence",
+  "independent_testing": {
+    "primary_assertions": 198,
+    "original_witness_variants_reproduced": 9,
+    "residual_variants": 3,
+    "fresh_process_recovered_assertions": 37,
+    "separate_minimal_recovered_process": true,
+    "counts_are_not_producer_executions": true
+  },
+  "supplied_evidence": {
+    "final_controls": 76,
+    "recovered_repetition": 76,
+    "pre_final_controls": 75,
+    "supplied_suites_executed": false,
+    "prior_reviews_reused_not_rerun": true
+  },
+  "smallest_residual": {
+    "id": "SOC-02-R1",
+    "literal_trace_bytes_changed": 1,
+    "pointer": "/events/32/state/binding",
+    "frame": 18,
+    "trace": {
+      "bytes": 22459,
+      "sha256": "9881e948edcfee1d4172923ce7b6f4efb3ca21cf8616bd0e05c507d0a482c488"
+    },
+    "receipt": {
+      "bytes": 103441,
+      "sha256": "89560fb61fe495e509aea64d98f21d34e828935ac9f2a4ac9dc81a60172fb36c"
+    },
+    "semantic": "ACCEPTED",
+    "derive": "ACCEPTED",
+    "public": "REJECTED",
+    "pristine": "PASS"
+  },
+  "source": {
+    "bytes": 30524,
+    "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+  },
+  "original_receipt": {
+    "bytes": 103441,
+    "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+  },
+  "observations": {
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "traced_invocations": 18,
+    "separate_observer_state_calls": 1,
+    "context_views_are_not_extra_executions": true,
+    "sparse_trace_limits_preserved": true
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2",
+    "scope": "offline compilation and saved-record validation only"
+  },
+  "preservation": {
+    "input_members": 554,
+    "retained_correction_members": 463,
+    "candidate_identity_map": 666,
+    "draft_identity_map": 163,
+    "SOURCE_ONLY": "UNCHANGED",
+    "Decision_B": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "obligations": 11,
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "admission": false,
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "historical_launcher_frames": "UNAVAILABLE",
+    "implementation_modified": false
+  },
+  "prohibited_operations": {
+    "database_connections": 0,
+    "host_or_session_execution": false,
+    "boundary_review_rerun": false,
+    "smoke_rerun": false,
+    "pipeline_rerun": false,
+    "lifecycle_rerun": false,
+    "policy_adoption": false
+  },
+  "next_task": "Relate source-projected Authority.close call identity fields to source-supported return/export values; independently review that bounded correction without a new host smoke."
+}

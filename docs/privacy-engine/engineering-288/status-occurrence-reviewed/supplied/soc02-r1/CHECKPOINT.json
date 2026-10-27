@@ -1,0 +1,47 @@
+{
+  "checkpoint": "I164-SOC02-R1-correction",
+  "author": "SU-Engineering[288D]",
+  "SOC-01": "Independent scoped closure incorporated",
+  "SOC-02-R1": "Bounded correction verified; independent closure pending",
+  "supplied_review": {
+    "bytes": 21550943,
+    "entries": 36,
+    "sha256": "62340d3d729c6fd3caf5a204a55ecf82efbd3b3955c5f466609ff36792f6d8e5"
+  },
+  "source_change": {
+    "path": "code/smoke_occurrences.py",
+    "before": {
+      "bytes": 30524,
+      "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+    },
+    "after": {
+      "bytes": 31687,
+      "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+    }
+  },
+  "residual_variants_reproduced": 3,
+  "new_controls": 35,
+  "recovered_repeat": 35,
+  "repetition_not_additional_independent_coverage": true,
+  "previous_independent_checks": {
+    "primary": 198,
+    "recovered": 37,
+    "minimum_witness_process": true,
+    "rerun": false
+  },
+  "preservation": {
+    "obligations": 11,
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "admission": false,
+    "historical_launcher_frames": "UNAVAILABLE"
+  },
+  "database_connections": 0,
+  "host_session_execution": false,
+  "completed_review_pipeline_lifecycle_rerun": false
+}

@@ -1,0 +1,10 @@
+{
+  "classification": "Review infrastructure interruption, not candidate failure",
+  "observed_errors": [
+    "Failed to create unified exec process: exec-server transport disconnected",
+    "No usable execution environment is available. Wait for an environment to become available before using this tool.",
+    "ps -C python3: fatal library error, lookup self"
+  ],
+  "effect": "The first attempt to write recovered_controls.py did not execute. The workspace subsequently returned, and the primary independent Python process survived. No completed candidate review or host operation was restarted.",
+  "resolution": "The recovered-controls script was written after reconnection; result files and final source preservation were checked explicitly."
+}

@@ -1,0 +1,7 @@
+# Independent closure review of SOC-02-R1
+
+Verify this exact follow-up checkpoint and supplied review identity/dependencies. Preserve implementation code. Reuse SOC-01 closure and the original five SOC-02 corrections; no completed full review, host smoke, session, database connection, pipeline or lifecycle rerun.
+
+Reproduce the three saved residual variants against original/code/smoke_occurrences.py, including the one-byte /events/32/state/binding witness. Independently check corrected semantic and derive rejection, separately from public archive-pin rejection. Assess the source-supported Authority.close entry/return relationship and both ends' correspondence to exact saved HEAD/ownership identities. Check both raw and managed close, adjacent and coordinated changes, legitimate evidence and fresh/recovered-root behavior. Confirm the rule is source-grounded rather than a witness-specific blacklist.
+
+Keep new controls, supplied controls, prior 198 assertions/37 recovered assertions/minimum-witness process, and any new independent checks separate. Preserve SOC-01 returned-result independence, both contexts, 18 distinct traced invocations and separate observer Client.state call. No new frames, historical provenance, qualification or lifetime coverage may be inferred. Return a scoped closure verdict with any smallest residual witness. Preserve every existing obligation and readiness/admission boundary.

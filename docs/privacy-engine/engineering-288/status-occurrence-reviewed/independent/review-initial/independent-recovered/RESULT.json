@@ -1,0 +1,236 @@
+{
+  "result": "REVIEW COMPLETE; DEFECTS REPRODUCED",
+  "checks": [
+    "legitimate public receipt validation",
+    "derivation equals exact saved receipt",
+    "independently count 18 distinct complete traced invocations",
+    "40 sparse events; two generator suspensions and resumes are not new invocations",
+    "pinned observer source has one explicit Client.state call",
+    "observer state call has no recursively traced frame",
+    "one saved observer call; no request observation invented",
+    "equal-valued status invocations remain distinct",
+    "both declared contexts in original order",
+    "exact frame-set and observer membership SYMBOLIC-U-ONE",
+    "all 18 source identities, parents and exact evidence pointers SYMBOLIC-U-ONE",
+    "observer source binding without invented frame SYMBOLIC-U-ONE",
+    "observer associated with actual handoff SYMBOLIC-U-ONE",
+    "five inherited requirement joins SYMBOLIC-U-ONE",
+    "exact duties/producers/directories; no duty discharge SYMBOLIC-U-ONE",
+    "local declarations unchanged SYMBOLIC-U-ONE",
+    "four exact copy relationships without extra invocations SYMBOLIC-U-ONE",
+    "HEAD CONFIG OWNERSHIP declarations preserved SYMBOLIC-U-ONE",
+    "exact frame-set and observer membership SYMBOLIC-U-TWO",
+    "all 18 source identities, parents and exact evidence pointers SYMBOLIC-U-TWO",
+    "observer source binding without invented frame SYMBOLIC-U-TWO",
+    "observer associated with actual handoff SYMBOLIC-U-TWO",
+    "five inherited requirement joins SYMBOLIC-U-TWO",
+    "exact duties/producers/directories; no duty discharge SYMBOLIC-U-TWO",
+    "local declarations unchanged SYMBOLIC-U-TWO",
+    "four exact copy relationships without extra invocations SYMBOLIC-U-TWO",
+    "HEAD CONFIG OWNERSHIP declarations preserved SYMBOLIC-U-TWO",
+    "missing-final-completion",
+    "duplicate-call",
+    "wrong-parent",
+    "missing-generator-resume",
+    "yield-claimed-complete",
+    "unsupported-return",
+    "unrelated-return-line",
+    "fixed-status-false-to-zero",
+    "recovery-child-status-changed",
+    "close-still-ready",
+    "invented-observer-frame",
+    "wrong-observer-caller",
+    "handoff-state-mismatch",
+    "outside-observer-interval",
+    "request-claim",
+    "ownership-source-swap",
+    "invented-journal",
+    "stale-worker",
+    "false-close-summary",
+    "false-process-success",
+    "stdout-substitution",
+    "stderr-substitution",
+    "receipt omit-context",
+    "receipt reverse-contexts",
+    "receipt duplicate-context",
+    "receipt omit-invocation",
+    "receipt merge-equal-status",
+    "receipt mixed-acquisition",
+    "receipt mixed-instance",
+    "receipt missing-duty",
+    "receipt duty-discharge",
+    "receipt missing-observer",
+    "receipt inventory-zero",
+    "receipt lifetime-zero",
+    "receipt admission",
+    "receipt readiness",
+    "receipt serialization",
+    "SOC-01 pristine rejection after clear",
+    "SOC-01 altered universe accepted clear",
+    "SOC-01 pristine rejection after pop",
+    "SOC-01 altered universe accepted pop",
+    "SOC-01 pristine rejection after reverse",
+    "SOC-01 altered universe accepted reverse",
+    "SOC-01 pristine rejection after duplicate",
+    "SOC-01 altered universe accepted duplicate",
+    "SOC-02 semantic acceptance constructor-epoch",
+    "SOC-02 public original pins reject altered result constructor-epoch",
+    "SOC-02 semantic acceptance unwatched-old-main",
+    "SOC-02 public original pins reject altered result unwatched-old-main",
+    "SOC-02 semantic acceptance main-return-bool",
+    "SOC-02 public original pins reject altered result main-return-bool",
+    "SOC-02 semantic acceptance main-invented-self-state",
+    "SOC-02 public original pins reject altered result main-invented-self-state",
+    "SOC-02 semantic acceptance resume-nonboolean",
+    "SOC-02 public original pins reject altered result resume-nonboolean",
+    "derived occurrence mutation does not affect fresh derivation",
+    "separate pristine module still accepts saved evidence"
+  ],
+  "assertions": 84,
+  "witnesses": [
+    {
+      "id": "SOC-01",
+      "variant": "clear",
+      "public_api": true,
+      "accepted_contexts": [],
+      "pristine_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "receipt": {
+        "bytes": 1718,
+        "sha256": "e7832c0e45f17d84b61a9f105b84cab665ab2dcf0f4f3b20e7b6e52d2a492818"
+      }
+    },
+    {
+      "id": "SOC-01",
+      "variant": "pop",
+      "public_api": true,
+      "accepted_contexts": [
+        "SYMBOLIC-U-ONE"
+      ],
+      "pristine_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "receipt": {
+        "bytes": 52579,
+        "sha256": "ce2e41b96310d2d91bafb451d267eee405e3f3e81e95eb0686a16d6a796cdc19"
+      }
+    },
+    {
+      "id": "SOC-01",
+      "variant": "reverse",
+      "public_api": true,
+      "accepted_contexts": [
+        "SYMBOLIC-U-TWO",
+        "SYMBOLIC-U-ONE"
+      ],
+      "pristine_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "receipt": {
+        "bytes": 103441,
+        "sha256": "5564bcd25eda4547c2fb3b6177a93c84eaaf67e06d0ecfbc7f98e1e0b1803f2b"
+      }
+    },
+    {
+      "id": "SOC-01",
+      "variant": "duplicate",
+      "public_api": true,
+      "accepted_contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-ONE"
+      ],
+      "pristine_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "receipt": {
+        "bytes": 103441,
+        "sha256": "f28ad46a1727d8429dd770751c97eeccde3862ce825664cc60cebe798c9638d3"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "variant": "constructor-epoch",
+      "semantic_accepted": true,
+      "public_api_accepted": false,
+      "public_receipt_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "altered_trace": {
+        "bytes": 17341,
+        "sha256": "07aa92a8b4cb17ae74c0328960e758f943bc5fb305a93a5d71070135eaa32d17"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "variant": "unwatched-old-main",
+      "semantic_accepted": true,
+      "public_api_accepted": false,
+      "public_receipt_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "altered_trace": {
+        "bytes": 17368,
+        "sha256": "a2dd4d6bb99ee5c6a4d64bb76d1f7f86888779e6a732288ad402037b5fe15b4f"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "variant": "main-return-bool",
+      "semantic_accepted": true,
+      "public_api_accepted": false,
+      "public_receipt_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "altered_trace": {
+        "bytes": 17344,
+        "sha256": "13d79919396544432216bbe1475670b3d0580ae47ed503f5aac2cad6ad8d4dd0"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "variant": "main-invented-self-state",
+      "semantic_accepted": true,
+      "public_api_accepted": false,
+      "public_receipt_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "altered_trace": {
+        "bytes": 17366,
+        "sha256": "dd3f8e2c6e5cd422152204e0a9aaf3af68b512f84ddafb9742ea0b912ff0125c"
+      }
+    },
+    {
+      "id": "SOC-02",
+      "variant": "resume-nonboolean",
+      "semantic_accepted": true,
+      "public_api_accepted": false,
+      "public_receipt_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      },
+      "altered_trace": {
+        "bytes": 17337,
+        "sha256": "2c40a8400e319ee7724d9d22b9921b6e4c265c167db3b8ef80cf31a368b4e62e"
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "cryptography_installed": "50.0.2",
+    "use": "offline source compilation and saved-evidence validation only"
+  },
+  "boundary_review_rerun": false,
+  "host_smoke_rerun": false,
+  "session_operations": 0,
+  "database_connections": 0,
+  "implementation_modified": false
+}

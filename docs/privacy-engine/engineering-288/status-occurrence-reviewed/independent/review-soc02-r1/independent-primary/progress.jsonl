@@ -1,0 +1,100 @@
+{"check":"pristine public validation","result":"PASS"}
+{"check":"pristine derivation byte identity","result":"PASS"}
+{"check":"pristine semantic frame count","result":"PASS"}
+{"check":"pinned close has only self.db.close effect","result":"PASS"}
+{"check":"source assignments intersect observer projection","result":"PASS"}
+{"check":"raw and managed invocations independently identified","result":"PASS"}
+{"check":"raw call return and exact export bindings","result":"PASS"}
+{"check":"managed call return and exact export bindings","result":"PASS"}
+{"check":"old semantic acceptance managed-close-binding-one-byte","result":"PASS"}
+{"check":"old exact derived witness managed-close-binding-one-byte","result":"PASS"}
+{"check":"old public pin protection managed-close-binding-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected semantic managed-close-binding-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive managed-close-binding-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public managed-close-binding-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"old semantic acceptance raw-close-ownership-one-byte","result":"PASS"}
+{"check":"old exact derived witness raw-close-ownership-one-byte","result":"PASS"}
+{"check":"old public pin protection raw-close-ownership-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected semantic raw-close-ownership-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive raw-close-ownership-one-byte","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public raw-close-ownership-one-byte","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"old semantic acceptance coordinated-close-bindings","result":"PASS"}
+{"check":"old exact derived witness coordinated-close-bindings","result":"PASS"}
+{"check":"old public pin protection coordinated-close-bindings","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected semantic coordinated-close-bindings","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected derive coordinated-close-bindings","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"corrected public coordinated-close-bindings","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw call binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw call binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw call ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw call ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw return binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw return binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw return ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw return ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw coordinated both endpoints binding","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw coordinated both endpoints binding","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw coordinated both endpoints ownership_binding","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw coordinated both endpoints ownership_binding","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed call binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed call binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed call ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed call ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed return binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed return binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed return ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed return ownership_binding","error":{"message":"AUTHORITY-CLOSE-IDENTITY-TRANSITION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed coordinated both endpoints binding","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed coordinated both endpoints binding","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed coordinated both endpoints ownership_binding","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed coordinated both endpoints ownership_binding","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic coordinated both closes and fields","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive coordinated both closes and fields","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic coordinated constructors and both closes","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive coordinated constructors and both closes","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw swapped identity roles","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw swapped identity roles","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw missing projected field","error":{"message":"OBJECT-SNAPSHOT-FIELDS","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw missing projected field","error":{"message":"OBJECT-SNAPSHOT-FIELDS","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic raw extra projected field","error":{"message":"SNAPSHOT-PROJECTION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive raw extra projected field","error":{"message":"SNAPSHOT-PROJECTION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed swapped identity roles","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed swapped identity roles","error":{"message":"INSTANCE-BINDING","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed missing projected field","error":{"message":"OBJECT-SNAPSHOT-FIELDS","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed missing projected field","error":{"message":"OBJECT-SNAPSHOT-FIELDS","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic managed extra projected field","error":{"message":"SNAPSHOT-PROJECTION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive managed extra projected field","error":{"message":"SNAPSHOT-PROJECTION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic exact identity type None","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive exact identity type None","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic exact identity type False","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive exact identity type False","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic exact identity type 0","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive exact identity type 0","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic exact identity type []","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive exact identity type []","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic exact identity type {}","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive exact identity type {}","error":{"message":"SNAPSHOT-EXACT-TYPE","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic altered HEAD binding","error":{"message":"HANDOFF-HEAD","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive altered HEAD binding","error":{"message":"HANDOFF-HEAD","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic altered ownership exact bytes","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"derive altered ownership exact bytes","error":{"message":"OWNERSHIP-INCARNATION","type":"ValueError"},"result":"REJECTED"}
+{"check":"semantic missing evidence/recovery-export-0.json","error":{"message":"'evidence/recovery-export-0.json'","type":"KeyError"},"result":"REJECTED"}
+{"check":"derive missing evidence/recovery-export-0.json","error":{"message":"'evidence/recovery-export-0.json'","type":"KeyError"},"result":"REJECTED"}
+{"check":"semantic missing evidence/client-handoff.json","error":{"message":"'evidence/client-handoff.json'","type":"KeyError"},"result":"REJECTED"}
+{"check":"derive missing evidence/client-handoff.json","error":{"message":"'evidence/client-handoff.json'","type":"KeyError"},"result":"REJECTED"}
+{"check":"unsupported-effect fixture is not no-op","result":"PASS"}
+{"check":"unsupported source effect has no identity-preservation assumption","error":{"message":"UNSUPPORTED-AUTHORITY-CLOSE-EFFECT","type":"ValueError"},"result":"REJECTED"}
+{"check":"returned and nested mutations leave expectations intact","result":"PASS"}
+{"check":"both contexts retain declared order","result":"PASS"}
+{"check":"18 traced plus separate observer SYMBOLIC-U-ONE","result":"PASS"}
+{"check":"UNKNOWN classifications retained SYMBOLIC-U-ONE","result":"PASS"}
+{"check":"context individually required 0","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"18 traced plus separate observer SYMBOLIC-U-TWO","result":"PASS"}
+{"check":"UNKNOWN classifications retained SYMBOLIC-U-TWO","result":"PASS"}
+{"check":"context individually required 1","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"all obligations and UNKNOWN totals retained","result":"PASS"}
+{"check":"public stale acquisition receipt","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"public context order substitution","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"public unsupported status and unknown-zero","error":{"message":"OCCURRENCE-RECEIPT-MISMATCH","type":"ValueError"},"result":"REJECTED"}
+{"check":"final pristine accepted unchanged","result":"PASS"}
+{"check":"implementation bytes unchanged","result":"PASS"}

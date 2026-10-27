@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "composition": [
+    {
+      "tree": "review",
+      "exact_files": 67
+    },
+    {
+      "tree": "corrected/retained/correction",
+      "exact_files": 463
+    },
+    {
+      "tree": "original",
+      "exact_files": 2
+    },
+    {
+      "tree": "corrected",
+      "exact_files": 467
+    },
+    {
+      "preserved_candidate_map": 666,
+      "preserved_draft_map": 163,
+      "scope": "maps and retained subset byte-equal to previously reviewed archives; not a repeated full candidate/draft review"
+    }
+  ],
+  "intentional_change": {
+    "path": "code/smoke_occurrences.py",
+    "before": {
+      "bytes": 22323,
+      "sha256": "c2668ed97ef3b08ba7ef24184dcc6c2940affd322fb56c236bc5d65291dd7cd0"
+    },
+    "after": {
+      "bytes": 30524,
+      "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+    },
+    "unchanged_saved_receipt": {
+      "bytes": 103441,
+      "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+    }
+  },
+  "supplied_results": {
+    "final-fresh-controls": {
+      "reported_passes": 76,
+      "source": {
+        "bytes": 30524,
+        "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+      },
+      "independent": false
+    },
+    "final-recovered-controls": {
+      "reported_passes": 76,
+      "source": {
+        "bytes": 30524,
+        "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+      },
+      "independent": false
+    },
+    "fresh-controls": {
+      "reported_passes": 75,
+      "source": null,
+      "independent": false
+    }
+  },
+  "prior_review": {
+    "bytes": 12956201,
+    "sha256": "13b74ea86aed82a4e14b96e634aa8cd44b2617c804ee9b2df678b2c779be76c3"
+  },
+  "supplied_tests_executed": false
+}

@@ -1,0 +1,1422 @@
+{
+  "result": "SOC-01 supported; SOC-02 residual found",
+  "assertions": 198,
+  "checks": [
+    {
+      "check": "corrected derivation preserves exact original receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected public original acceptance",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected internal original acceptance",
+      "result": "PASS"
+    },
+    {
+      "check": "context identities and order agree with pinned definition",
+      "result": "PASS"
+    },
+    {
+      "check": "reconstructed exact original SOC-01 clear",
+      "result": "PASS"
+    },
+    {
+      "check": "old public acceptance clear",
+      "result": "PASS"
+    },
+    {
+      "check": "old pristine rejection after clear",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected public rejects clear",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected pristine survives clear",
+      "result": "PASS"
+    },
+    {
+      "check": "reconstructed exact original SOC-01 pop",
+      "result": "PASS"
+    },
+    {
+      "check": "old public acceptance pop",
+      "result": "PASS"
+    },
+    {
+      "check": "old pristine rejection after pop",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected public rejects pop",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected pristine survives pop",
+      "result": "PASS"
+    },
+    {
+      "check": "reconstructed exact original SOC-01 reverse",
+      "result": "PASS"
+    },
+    {
+      "check": "old public acceptance reverse",
+      "result": "PASS"
+    },
+    {
+      "check": "old pristine rejection after reverse",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected public rejects reverse",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected pristine survives reverse",
+      "result": "PASS"
+    },
+    {
+      "check": "reconstructed exact original SOC-01 duplicate",
+      "result": "PASS"
+    },
+    {
+      "check": "old public acceptance duplicate",
+      "result": "PASS"
+    },
+    {
+      "check": "old pristine rejection after duplicate",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected public rejects duplicate",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "corrected pristine survives duplicate",
+      "result": "PASS"
+    },
+    {
+      "check": "reconstructed exact original SOC-02 constructor-epoch",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic accepts constructor-epoch",
+      "result": "PASS"
+    },
+    {
+      "check": "old derive reproduces receipt constructor-epoch",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected semantic rejects constructor-epoch",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "corrected derive rejects constructor-epoch",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "corrected public rejects constructor-epoch",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "reconstructed exact original SOC-02 unwatched-old-main",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic accepts unwatched-old-main",
+      "result": "PASS"
+    },
+    {
+      "check": "old derive reproduces receipt unwatched-old-main",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected semantic rejects unwatched-old-main",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "UNWATCHED-PRODUCER"
+      }
+    },
+    {
+      "check": "corrected derive rejects unwatched-old-main",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "UNWATCHED-PRODUCER"
+      }
+    },
+    {
+      "check": "corrected public rejects unwatched-old-main",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "reconstructed exact original SOC-02 main-return-bool",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic accepts main-return-bool",
+      "result": "PASS"
+    },
+    {
+      "check": "old derive reproduces receipt main-return-bool",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected semantic rejects main-return-bool",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "corrected derive rejects main-return-bool",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "corrected public rejects main-return-bool",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "reconstructed exact original SOC-02 main-invented-self-state",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic accepts main-invented-self-state",
+      "result": "PASS"
+    },
+    {
+      "check": "old derive reproduces receipt main-invented-self-state",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected semantic rejects main-invented-self-state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "corrected derive rejects main-invented-self-state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "corrected public rejects main-invented-self-state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "reconstructed exact original SOC-02 resume-nonboolean",
+      "result": "PASS"
+    },
+    {
+      "check": "old semantic accepts resume-nonboolean",
+      "result": "PASS"
+    },
+    {
+      "check": "old derive reproduces receipt resume-nonboolean",
+      "result": "PASS"
+    },
+    {
+      "check": "corrected semantic rejects resume-nonboolean",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "corrected derive rejects resume-nonboolean",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "corrected public rejects resume-nonboolean",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "returned identity-dict detached",
+      "result": "PASS"
+    },
+    {
+      "check": "returned nested-returned-context detached",
+      "result": "PASS"
+    },
+    {
+      "check": "returned whole-response detached",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 source rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 source leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 evidence-pointer rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 evidence-pointer leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 recovery-result rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 recovery-result leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 duty rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 duty leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 producer rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 producer leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 declaration rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 declaration leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 record-declaration rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 record-declaration leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 instance rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 instance leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 0 copies rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 0 copies leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 source rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 source leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 evidence-pointer rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 evidence-pointer leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 recovery-result rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 recovery-result leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 duty rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 duty leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 producer rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 producer leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 declaration rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 declaration leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 record-declaration rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 record-declaration leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 instance rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 instance leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "derived alias 1 copies rejected",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "derived alias 1 copies leaves expectations intact",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic adjacent constructor epoch -1",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch -1",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor epoch 1",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch 1",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor epoch 2",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch 2",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor epoch True",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch True",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor epoch 0.0",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch 0.0",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor epoch None",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor epoch None",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor phase",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor phase",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor reason",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor reason",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor omitted field",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent constructor omitted field",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor entry preexisting state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-ENTRY"
+      }
+    },
+    {
+      "check": "derive adjacent constructor entry preexisting state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-ENTRY"
+      }
+    },
+    {
+      "check": "semantic adjacent coordinated constructor recover validate status close epoch",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent coordinated constructor recover validate status close epoch",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CONSTRUCTOR-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent coordinated READY reason",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MANAGED-RETURN-STATE"
+      }
+    },
+    {
+      "check": "derive adjacent coordinated READY reason",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MANAGED-RETURN-STATE"
+      }
+    },
+    {
+      "check": "semantic adjacent main exact return 0.0",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent main exact return 0.0",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent main exact return None",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent main exact return None",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent main exact return True",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent main exact return True",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent main exact return '0'",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent main exact return '0'",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "MAIN-SUCCESS-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent old watcher with compatible value",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "UNWATCHED-PRODUCER"
+      }
+    },
+    {
+      "check": "derive adjacent old watcher with compatible value",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "UNWATCHED-PRODUCER"
+      }
+    },
+    {
+      "check": "semantic adjacent free frame invented empty snapshot",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "derive adjacent free frame invented empty snapshot",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "semantic adjacent lambda invented state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "derive adjacent lambda invented state",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "SNAPSHOT-NO-SELF"
+      }
+    },
+    {
+      "check": "semantic adjacent client projected attribute",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "derive adjacent client projected attribute",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "semantic adjacent constructor omitted binding",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "derive adjacent constructor omitted binding",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OBJECT-SNAPSHOT-FIELDS"
+      }
+    },
+    {
+      "check": "semantic adjacent return binding altered",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "derive adjacent return binding altered",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "INSTANCE-BINDING"
+      }
+    },
+    {
+      "check": "semantic adjacent nonboolean completion",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "COMPLETION-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent nonboolean completion",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "COMPLETION-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent nonboolean initial resume",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "derive adjacent nonboolean initial resume",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "semantic adjacent nonboolean repeated resume",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "derive adjacent nonboolean repeated resume",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "semantic adjacent noninteger frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "TRACE-ORDER"
+      }
+    },
+    {
+      "check": "derive adjacent noninteger frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "TRACE-ORDER"
+      }
+    },
+    {
+      "check": "semantic adjacent noninteger parent",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "FRAME-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "derive adjacent noninteger parent",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "FRAME-EXACT-TYPE"
+      }
+    },
+    {
+      "check": "semantic adjacent noninteger line",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "derive adjacent noninteger line",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "CAPTURE-EXACT-TYPES"
+      }
+    },
+    {
+      "check": "semantic adjacent coordinated frame offset",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "FRAME-ALLOCATION"
+      }
+    },
+    {
+      "check": "derive adjacent coordinated frame offset",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "FRAME-ALLOCATION"
+      }
+    },
+    {
+      "check": "semantic adjacent omitted completion",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "INCOMPLETE-TRACE"
+      }
+    },
+    {
+      "check": "derive adjacent omitted completion",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "INCOMPLETE-TRACE"
+      }
+    },
+    {
+      "check": "semantic adjacent duplicated initial frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "TRACE-ORDER"
+      }
+    },
+    {
+      "check": "derive adjacent duplicated initial frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "TRACE-ORDER"
+      }
+    },
+    {
+      "check": "RESIDUAL semantic accepts managed-close-binding-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "RESIDUAL derive publishes changed trace identity managed-close-binding-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "public pins still reject residual managed-close-binding-one-byte",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "RESIDUAL semantic accepts raw-close-ownership-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "RESIDUAL derive publishes changed trace identity raw-close-ownership-one-byte",
+      "result": "PASS"
+    },
+    {
+      "check": "public pins still reject residual raw-close-ownership-one-byte",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "RESIDUAL semantic accepts coordinated-close-bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "RESIDUAL derive publishes changed trace identity coordinated-close-bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "public pins still reject residual coordinated-close-bindings",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "18 distinct traced plus separate observer SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "observer has no invented frame SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN and unallocated ordinals SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "public receipt 0 missing-context",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 0 duplicate-context",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 0 missing-observer",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 0 invented-observer-frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 0 duty-discharge",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 0 mixed-acquisition",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "18 distinct traced plus separate observer SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "observer has no invented frame SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN and unallocated ordinals SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "public receipt 1 missing-context",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 1 duplicate-context",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 1 missing-observer",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 1 invented-observer-frame",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 1 duty-discharge",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public receipt 1 mixed-acquisition",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public obligations",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives obligations",
+      "result": "PASS"
+    },
+    {
+      "check": "public inventory-zero",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives inventory-zero",
+      "result": "PASS"
+    },
+    {
+      "check": "public lifetime-zero",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives lifetime-zero",
+      "result": "PASS"
+    },
+    {
+      "check": "public admission",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives admission",
+      "result": "PASS"
+    },
+    {
+      "check": "public readiness",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives readiness",
+      "result": "PASS"
+    },
+    {
+      "check": "public limits",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "pristine survives limits",
+      "result": "PASS"
+    },
+    {
+      "check": "public exact bytes type",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "public exact serialization",
+      "result": "PASS",
+      "rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "check": "final repeated pristine acceptance",
+      "result": "PASS"
+    },
+    {
+      "check": "implementation unchanged",
+      "result": "PASS"
+    }
+  ],
+  "original_witness_variants": 9,
+  "residuals": [
+    {
+      "label": "managed-close-binding-one-byte",
+      "diff": [
+        {
+          "seq": 32,
+          "frame": 18,
+          "pointer": "/events/32/state/binding",
+          "before": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "after": "185e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af"
+        }
+      ],
+      "trace": {
+        "bytes": 22459,
+        "sha256": "9881e948edcfee1d4172923ce7b6f4efb3ca21cf8616bd0e05c507d0a482c488"
+      },
+      "semantic_accepted": true,
+      "derived": {
+        "bytes": 103441,
+        "sha256": "89560fb61fe495e509aea64d98f21d34e828935ac9f2a4ac9dc81a60172fb36c"
+      },
+      "public_accepted": false,
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "label": "raw-close-ownership-one-byte",
+      "diff": [
+        {
+          "seq": 7,
+          "frame": 7,
+          "pointer": "/events/7/state/ownership_binding",
+          "before": "4a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca",
+          "after": "1a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca"
+        }
+      ],
+      "trace": {
+        "bytes": 22459,
+        "sha256": "be8bfcb06bcc84952b85ae9daff6b7f03c112a9734cff84821fcad0a358144f0"
+      },
+      "semantic_accepted": true,
+      "derived": {
+        "bytes": 103441,
+        "sha256": "1c6d46d81937837c641efe1bd5519c3e2cf6822779795ffcd83ed6cce601c080"
+      },
+      "public_accepted": false,
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    },
+    {
+      "label": "coordinated-close-bindings",
+      "diff": [
+        {
+          "seq": 7,
+          "frame": 7,
+          "pointer": "/events/7/state/binding",
+          "before": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "after": "185e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af"
+        },
+        {
+          "seq": 7,
+          "frame": 7,
+          "pointer": "/events/7/state/ownership_binding",
+          "before": "4a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca",
+          "after": "1a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca"
+        },
+        {
+          "seq": 32,
+          "frame": 18,
+          "pointer": "/events/32/state/binding",
+          "before": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "after": "185e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af"
+        },
+        {
+          "seq": 32,
+          "frame": 18,
+          "pointer": "/events/32/state/ownership_binding",
+          "before": "4a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca",
+          "after": "1a802cabc79ca087d3efe9eece2661d61c1f24c40cc7a2bdbd2b86d4b7a3b6ca"
+        }
+      ],
+      "trace": {
+        "bytes": 17340,
+        "sha256": "c7d6681b4f7287b063b4238ba94cdc4e0d7a36dd7e044c5add7d0c853ed065b3"
+      },
+      "semantic_accepted": true,
+      "derived": {
+        "bytes": 103441,
+        "sha256": "a8ddc7e335083b615f205e72975377901025641f63b8f2821816c4bac5619467"
+      },
+      "public_accepted": false,
+      "public_rejection": {
+        "type": "ValueError",
+        "message": "OCCURRENCE-RECEIPT-MISMATCH"
+      }
+    }
+  ],
+  "source": {
+    "bytes": 30524,
+    "sha256": "339b2475f4c0ad08688d2764a1fdf207d7b0f31ffd1549bf9b1c148a516b40eb"
+  },
+  "receipt": {
+    "bytes": 103441,
+    "sha256": "1d4e8f19ead8096f3fef97fc70048661b0021af4f1a7c3d95fdb01cf665d0830"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2",
+    "scope": "offline compilation and saved-record validation only"
+  },
+  "database_connections": 0,
+  "host_or_session_execution": false,
+  "supplied_suites_run": false,
+  "completed_review_reruns": false
+}

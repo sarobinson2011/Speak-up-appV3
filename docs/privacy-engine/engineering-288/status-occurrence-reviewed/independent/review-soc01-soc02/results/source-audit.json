@@ -1,0 +1,31 @@
+{
+  "managed_constructor_literals_from_source": {
+    "_phase": "CLOSED",
+    "_reason": "not opened",
+    "_epoch": 0
+  },
+  "authority_close_from_source": "def close(self):\n    self.db.close()",
+  "authority_identity_writes": [
+    {
+      "line": 62,
+      "assignment": "self.ownership_binding = ownership.attach(self.db, ownership_path)"
+    },
+    {
+      "line": 63,
+      "assignment": "self.binding = sha(enc({'ownership': self.ownership_binding, 'ownership_code': sha(Path(ownership.__file__).read_bytes()), 'accounting_code': sha(Path(accounting.__file__).read_bytes()), 'config': config, 'code': sha(Path(__file__).read_bytes()), 'principals': {k: v.hex() for k, v in PUB.items()}, 'retained': {n: sha((ROOT / 'retained-candidate/code' / n).read_bytes()) for n in ['anchor.py', 'stages.py', 'signed_eth.py', 'lab_evm.py']}}))"
+    }
+  ],
+  "trace_event_count": 40,
+  "distinct_traced_invocations": 18,
+  "normal_completions": 18,
+  "generator_yields": 2,
+  "generator_resumes": 2,
+  "worker_explicit_state_calls": 1,
+  "separate_state_records": 1,
+  "state_traced_frames": 0,
+  "source_sha256": {
+    "live_connection.py": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5",
+    "authority.py": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+    "worker.py": "f75dce01a8dbc8de42c5f220ee523d90acd0315dc80fcdbbad4428d3fd1992d7"
+  }
+}
