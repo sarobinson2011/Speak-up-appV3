@@ -1,0 +1,117 @@
+{
+  "boundaries": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "accounting_reservations_nonce_ownership_uncertainty": "UNCHANGED",
+    "admission": false,
+    "all_eleven_obligations": "PRESERVED",
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "completed_checks_rerun": false,
+  "copy_scope": {
+    "custom_hooks_subclasses_or_arbitrary_Python_mutation_covered": false,
+    "distinct_equal_mutable_nodes": "NOT MERGED",
+    "domain": "ordinary builtin dict with str keys, list, None/bool/int/finite-float/str leaves",
+    "flat_scalar_shallow_result_identifies_deepcopy_execution": false,
+    "immutable_sharing": "ALLOWED",
+    "internal_aliases_and_cycles": "PRESERVED",
+    "later_constructor_input_must_equal_storage": false,
+    "mutable_source_copy_nodes": "DISJOINT",
+    "new_policy_or_domain_narrowing": false
+  },
+  "failure_provenance": {
+    "failed_root_and_exact_bytes_preserved": true,
+    "loader_rejected_before_predecessor_import": true,
+    "reviewer_oracle_attempt": "Zero assertions; normalized-text parentheses mismatch corrected to AST comparison; exact attempt preserved",
+    "reviewer_recovery_cause": "UNKNOWN",
+    "reviewer_recovery_partial_bytes": 22806528,
+    "supplied_syntax_preflight_and_interrupted_13_assertion_attempt_preserved": true
+  },
+  "implementation": {
+    "bytes": 41158663,
+    "entries": 918,
+    "manifested_hashes": 917,
+    "sha256": "e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f"
+  },
+  "independent_results": {
+    "completed_source_oracle_failure_assertions": 0,
+    "constructed_cases_are_execution_evidence": false,
+    "fresh_offline_CLI_processes": 1,
+    "primary_assertions": 146,
+    "primary_categories": {
+      "constructed_negative": 80,
+      "constructed_only": 16,
+      "independent": 23,
+      "internal_relation": 8,
+      "negative": 9,
+      "public_negative": 5,
+      "source_negative": 5
+    },
+    "recovered_assertions": 62,
+    "recovered_categories": {
+      "constructed_negative": 15,
+      "constructed_only": 11,
+      "independent": 23,
+      "internal_relation": 2,
+      "negative": 7,
+      "public_negative": 4
+    },
+    "static_type_helper_audits": 1
+  },
+  "observation_limits": {
+    "actual_getter_count": null,
+    "actual_getter_execution": "UNAVAILABLE",
+    "copy_identity_observations": null,
+    "getter_frame": null,
+    "missing_assignments_state_ingestion_and_historical_launcher_frames": "PRESERVED",
+    "observer_frame": null,
+    "saved_frontier_establishes_current_or_lifetime_readiness": false,
+    "separate_observer_Client_state_call": 1,
+    "storage_assignment_frame": null,
+    "traced_invocations": 18,
+    "two_contexts_are_two_physical_executions": false,
+    "underlying_connection_identity": null
+  },
+  "previous_git_commit": "d1f9f3a6468f023701ee7cbd2643ae38731f4529",
+  "previous_save_repeated": false,
+  "review": {
+    "bytes": 63598176,
+    "sha256": "97ccc050f291230f667a8d1fde28d9f655d75a28d72ec6604654d728cb5dcf94"
+  },
+  "review_entries": 43,
+  "reviewed_code": {
+    "correspondence.py": {
+      "bytes": 12376,
+      "sha256": "9ebc57d1baebe783275dbffbeb1df89b3ed01b446463a569ac4d230dd9e4d995"
+    },
+    "managed_coverage.py": {
+      "bytes": 95842,
+      "sha256": "9dca02b1a52f8e3db950d39c57db4cc60204bb81fcc012f6bac3891709b57c9e"
+    }
+  },
+  "reviewed_receipt": {
+    "bytes": 805314,
+    "sha256": "7d82305c3eb4646b0d9072daec9d93186848ac2b8e1aa71d6ac6de77fbbf12a3"
+  },
+  "source_inspection_only": true,
+  "supplied_results": {
+    "inspected_not_executed": true,
+    "intermediate_outer_archive_newly_verified": false,
+    "intermediate_recovery_entries": 903,
+    "interrupted_in_completed_totals": false,
+    "predecessor_interrupted_assertions": 13,
+    "primary": 127,
+    "process_validation": 1,
+    "recovered": 105,
+    "syntax_preflight_assertions": 0
+  },
+  "verdict": "SUPPORTED for bounded source-derived conditional config storage/getter copy correspondence and validated saved recovery-frontier configuration"
+}

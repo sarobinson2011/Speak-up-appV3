@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "source_derived_storage": "copy.deepcopy(config)",
+  "source_derived_getter": "copy.deepcopy(self._config)",
+  "readiness": "self._phase != 'READY' or self._live is None or self._retired is not None",
+  "exact_types": {
+    "version": "STRING",
+    "pilot": "STRING",
+    "session": "STRING",
+    "start_nonce": "INTEGER",
+    "manager": "STRING",
+    "model": "STRING",
+    "profile": "STRING",
+    "config": "STRING"
+  },
+  "locations": {
+    "constructor_storage": "15:139:15:173:Assign",
+    "constructor_input": "15:166:15:172:Name",
+    "constructor_copy": "15:152:15:173:Call",
+    "getter": "48:1:49:68:FunctionDef",
+    "lock": "49:2:49:68:With",
+    "return": "49:34:49:68:Return",
+    "copy_call": "49:41:49:68:Call",
+    "origin": "49:55:49:67:Attribute",
+    "readiness_call": "49:18:49:33:Call",
+    "readiness_program": "25:1:26:125:FunctionDef",
+    "readiness_test": "26:5:26:76:BoolOp",
+    "recovery_copy": "89:50:89:77:Call",
+    "export_copy": "67:61:67:88:Call"
+  },
+  "source": {
+    "manager": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5",
+    "authority": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+  },
+  "constructor_failure_after_storage_does_not_undo_assignment": true,
+  "no_getter_execution": true,
+  "no_getter_state_or_ingest_call": true
+}

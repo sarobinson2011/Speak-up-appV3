@@ -1,0 +1,62 @@
+{"check": "defining-source independent storage guard return and type audit", "category": "independent", "result": "PASS"}
+{"check": "legitimate semantic correspondence", "category": "independent", "result": "PASS"}
+{"check": "legitimate derivation", "category": "independent", "result": "PASS"}
+{"check": "derived exact saved receipt", "category": "independent", "result": "PASS"}
+{"check": "legitimate public validation", "category": "independent", "result": "PASS"}
+{"check": "two distinct ordered contexts", "category": "independent", "result": "PASS"}
+{"check": "missing getter execution stays unknown", "category": "independent", "result": "PASS"}
+{"check": "preserve prior context SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "configuration exact export values and bytes SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "constructor occurrence and instance joins SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "no invented object or copy identity SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "full anchored conditional copy SYMBOLIC-U-ONE", "category": "constructed_only", "result": "PASS"}
+{"check": "omitted typed field SYMBOLIC-U-ONE session", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-FIELDS"}}
+{"check": "exact field type SYMBOLIC-U-ONE session", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-TYPE:session"}}
+{"check": "omitted typed field SYMBOLIC-U-ONE start_nonce", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-FIELDS"}}
+{"check": "exact field type SYMBOLIC-U-ONE start_nonce", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-TYPE:start_nonce"}}
+{"check": "typed conditional variant not replacement anchor SYMBOLIC-U-ONE", "category": "constructed_only", "result": "PASS"}
+{"check": "semantic wrong instance SYMBOLIC-U-ONE", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-ANCHOR-LINEAGE"}}
+{"check": "derivation stale value SYMBOLIC-U-ONE", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-ANCHOR-VALUE"}}
+{"check": "public mandatory extension SYMBOLIC-U-ONE", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"}}
+{"check": "preserve prior context SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "configuration exact export values and bytes SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "constructor occurrence and instance joins SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "no invented object or copy identity SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "full anchored conditional copy SYMBOLIC-U-TWO", "category": "constructed_only", "result": "PASS"}
+{"check": "omitted typed field SYMBOLIC-U-TWO session", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-FIELDS"}}
+{"check": "exact field type SYMBOLIC-U-TWO session", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-TYPE:session"}}
+{"check": "omitted typed field SYMBOLIC-U-TWO start_nonce", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-FIELDS"}}
+{"check": "exact field type SYMBOLIC-U-TWO start_nonce", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-TYPE:start_nonce"}}
+{"check": "typed conditional variant not replacement anchor SYMBOLIC-U-TWO", "category": "constructed_only", "result": "PASS"}
+{"check": "semantic wrong instance SYMBOLIC-U-TWO", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-ANCHOR-LINEAGE"}}
+{"check": "derivation stale value SYMBOLIC-U-TWO", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-ANCHOR-VALUE"}}
+{"check": "public mandatory extension SYMBOLIC-U-TWO", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"}}
+{"check": "normal continuation phase", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-READY-PHASE"}}
+{"check": "normal continuation copy_completed", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-NORMAL-CONTINUATION:copy_completed"}}
+{"check": "flat shallow result alone cannot identify copier", "category": "constructed_only", "result": "PASS"}
+{"check": "same mutable config object is not copy", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "COPY-MUTABLE-SHARING"}}
+{"check": "independent nested identity facts constructor", "category": "constructed_only", "result": "PASS"}
+{"check": "graph accepts source-required alias and cycle constructor", "category": "constructed_only", "result": "PASS"}
+{"check": "nested shallow substitution constructor", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "COPY-MUTABLE-SHARING"}}
+{"check": "independent nested identity facts getter", "category": "constructed_only", "result": "PASS"}
+{"check": "graph accepts source-required alias and cycle getter", "category": "constructed_only", "result": "PASS"}
+{"check": "nested shallow substitution getter", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "COPY-MUTABLE-SHARING"}}
+{"check": "split required internal alias", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "COPY-ALIAS-SPLIT"}}
+{"check": "merge distinct equal mutable nodes", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "COPY-ALIAS-MERGE"}}
+{"check": "later constructor caller mutation does not change stored values", "category": "constructed_only", "result": "PASS"}
+{"check": "returned mutation keeps internal aliases and isolates storage", "category": "constructed_only", "result": "PASS"}
+{"check": "coordinated shallow origin semantic", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-SOURCE-CATALOGUE"}}
+{"check": "coordinated changed configuration semantic", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALIDATED-INSTANCE-VALUE"}}
+{"check": "coordinated changed configuration derivation", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALIDATED-INSTANCE-VALUE"}}
+{"check": "evidence missing config", "category": "internal_relation", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-MISSING-VALUE"}}
+{"check": "evidence nonce bool", "category": "internal_relation", "result": "REJECTED", "error": {"type": "ValueError", "message": "CONFIG-VALUE-TYPE:start_nonce"}}
+{"check": "public false copy runtime and admission", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"}}
+{"check": "public coordinated instance and config both contexts", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"}}
+{"check": "contexts have independent nested result trees", "category": "independent", "result": "PASS"}
+{"check": "catalogue mutation does not change new catalogue", "category": "independent", "result": "PASS"}
+{"check": "pristine semantic after nested result mutations", "category": "independent", "result": "PASS"}
+{"check": "pristine derivation after nested result mutations", "category": "independent", "result": "PASS"}
+{"check": "pristine public after nested result mutations", "category": "independent", "result": "PASS"}
+{"check": "mandatory predecessor derive actually invoked", "category": "independent", "result": "PASS"}
+{"check": "semantic comparison uses validated original config", "category": "independent", "result": "PASS"}
+{"check": "candidate code and saved evidence unchanged", "category": "independent", "result": "PASS"}

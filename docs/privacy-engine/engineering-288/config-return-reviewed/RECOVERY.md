@@ -1,0 +1,11 @@
+# Recover the reviewed config extension
+
+This compact selection contains the exact new producer/adapter, supplied new records, independent small review records, their unchanged original manifests, and compact lineage. SELECTION-MANIFEST.json defines this Git selection. Original manifests retain their larger historical scopes and are not claims that all their members are in Git.
+
+For full saved-input recovery, use Formal-Lab6-I164-config-return-correspondence-independent-review.zip: 63,598,176 bytes, 43 entries, SHA-256 97ccc050f291230f667a8d1fde28d9f655d75a28d72ec6604654d728cb5dcf94. Verify its CRC, exact safe regular membership and 42 member hashes before extracting into a new persistent directory. It contains the exact input/I164-config-return-correspondence-1.zip: 41,158,663 bytes, 918 entries, SHA-256 e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f. Verify its 917 manifest hashes, then recover its full root. All executable predecessors, including the exact 844-member binding root, are decoded there. No database connection is required.
+
+Read the original independent RECOVERY.md and supplied RECOVERY.md for their precise archival omissions and recovery scope. Exact large failure bytes and large archives remain outside Git; do not delete, compact, repair or relabel them. The intermediate Engineering 903-entry recovery ZIP has a retained continuity identity, not newly verified outer bytes in this save.
+
+The current guarded validation entry is tests/fresh_check.py; the public validator is code/correspondence.py. Completed results are already saved. These paths are recovery information, not an instruction to rerun them. This save runs no suite, review, pipeline, application, session or database operation.
+
+The prior binding save is complete at d1f9f3a6468f023701ee7cbd2643ae38731f4529 and is not repeated. The prepared host command verifies that milestone, checks for an exact matching successful config save receipt first, then either reuses it or writes only the new config-return-reviewed prefix. A failed/ambiguous receipt or pre-existing destination stops without repair or retry. No pull, merge, force push, signing, hooks or completed work is run. [skip ci] is retained on the new commit. Unrelated index/status/working differences are checked before and after.

@@ -1,0 +1,25 @@
+# Reviewed ManagedAuthority.config milestone
+
+Formal-Lab[6] supports the bounded source-derived constructor-storage and guarded config return/copy correspondence in both symbolic contexts. The exact current code and saved receipt match its reviewed input. This save incorporates that scoped support; historical supplied documents still describe the earlier submission stage and remain exact.
+
+Formal-Lab's 146 primary assertions, 62 recovered-root assertions, separate static type audit and one offline command remain separate from Engineering's 127 primary assertions, 105 recovered-root assertions and one process result. None was rerun for this save. Failed preparations are excluded: the supplied syntax preflight and reviewer oracle attempt completed zero assertions; the older interrupted 13-assertion run remains outside totals. The review's rejected 22,806,528-byte recovered-root partial file remains exact in the external review archive; cause UNKNOWN. Prior failures retain their original scope.
+
+Copy support is conditional on the declared ordinary builtin-data domain. Internal aliases and cycles are preserved; distinct equal mutable nodes are not merged, cross-copy mutable sharing rejects, and immutable sharing is allowed. A flat scalar shallow result cannot identify copier execution. No custom-hook, subclass or universal-copy guarantee is adopted.
+
+Getter execution, getter count, storage-assignment frames and historical copy/object identities remain unavailable. The 18 traced invocations and separate frameless Client.state observation remain distinct. Both symbolic contexts do not create two physical executions. The validated recovery frontier is not current/lifetime readiness, durability, custody or exclusivity evidence.
+
+## One next construction task, not implemented
+
+Add typed, guarded static result-flow correspondence for ManagedAuthority.state through _run('state'), in both contexts. compiler/live_connection.py line 42 delegates the no-argument state call. Lines 32-41 acquire the instance lock, apply _require, reject an active transaction before dispatch, assign result=getattr(self._live,method)(*args), reject an active transaction afterwards, and return that same result. Caught BaseException paths quarantine and re-raise; normal-return correspondence must not be assigned to them. Lock exit also belongs to normal continuation. This wrapper does not deepcopy its result.
+
+The underlying source is support/reference/runtime/authority.py lines 84-90: parse the selected HEAD bytes, check instance binding, conditionally check the matching event and typed after-state, validate accounting, then return s. Reuse the existing HEAD declaration, underlying source/state checks, readiness/reference mappings and recovery evidence bindings; do not reimplement them or claim that the getter performs the recovery export/ingestion procedure.
+
+What is already covered: current producer lines 151-154 have the state delegation; source/guard inventories are retained; managed_observations.py lines 175-212 derive wrapper dispatch arguments and propagate saved wrapper/run results. Its explicit comment preserves the lack of a tracked Authority.state backend frame. Existing recovery correspondence already traces the state/head authentication origin. These are not missing and must remain in place.
+
+Precise gap: there is no source-derived typed state-result declaration and executable projection joining the delegated Authority.state value to _run's result local and the ManagedAuthority.state return. The constructed reference-path consumer treats this result assignment as an opaque other-assignment gate (lines 652-665) and return as a value-free return event (line 668). Its function inventory and the current receipt contain status, reference, recovery, binding and config extensions, but no state-result projection. The mandatory validator invokes those existing extensions and therefore has no additional state-result relation to consume yet. The new task is this missing static bridge, not a repeat of existing saved wrapper-return checks.
+
+The retained defining sources, HEAD declaration and current validated predecessor inputs suffice for this bounded conditional construction. No new authority or acquisition is needed to specify it. Missing actual Authority.state frames and the separate observer call must remain evidence limits; no historical frame, physical identity or complete invocation coverage may be invented. Exact source identities and excerpts are in provenance/next-task-source.txt. This save does not implement the task.
+
+## Boundaries
+
+All eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, exact retention, allowances, permanent accounting, reservations, nonce/ownership and uncertainty duties remain unchanged. SOURCE-ONLY unchanged; cumulative-envelope UNADOPTED; readiness/final binding BLOCKED; backup KERNEL-ONLY; streams UNCOMPUTED; admission disabled. Prior acquisitions, milestones and source/evidence identities remain distinct. No policy, numerical limit, runtime behaviour or qualification changes.

@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "authority": {
+    "path": "retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/candidate/support/reference/runtime/authority.py",
+    "bytes": 23223,
+    "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"
+  },
+  "functions": {
+    "exact": "def exact(x,keys):need(type(x) is dict and set(x)==set(keys),'FIELDS')",
+    "integer": "def integer(x,lo,hi):need(type(x) is int and lo<=x<=hi,'INTEGER');return x",
+    "label": "def label(x):need(type(x) is str and 0<len(x)<=128,'LABEL');return x",
+    "digest": "def digest(x):need(type(x) is str and len(x)==64 and all(c in '0123456789abcdef' for c in x),'DIGEST');return x"
+  },
+  "source_analysis_only": true,
+  "new_assertion_group": 1,
+  "does_not_replace_predecessor_value_and_binding_validation": true
+}

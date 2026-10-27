@@ -1,0 +1,79 @@
+{
+  "Decision_B": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "actual_admission": false,
+  "allowances": "UNCHANGED",
+  "both_contexts": [
+    "SYMBOLIC-U-ONE",
+    "SYMBOLIC-U-TWO"
+  ],
+  "created_utc": "2026-10-27T16:00:13.416008+00:00",
+  "cumulative_envelope": "UNADOPTED",
+  "entry": "code/correspondence.py:validate -> derive -> derive_config",
+  "final_binding": "BLOCKED",
+  "format": "I164-CONFIG-RETURN-CORRESPONDENCE-CHECKPOINT-1",
+  "independent_review": "PENDING",
+  "inventory_unknowns": 4,
+  "lifetime_unknowns": 14,
+  "new_results": {
+    "fresh": {
+      "assertions": null,
+      "bytes": 559,
+      "exit_code": 0,
+      "record": "results/fresh/RESULT.json",
+      "seconds": null,
+      "sha256": "438d58aab829d231cab348b86bd4db5406fc2483ac01b3ac22f17b8d474b291a"
+    },
+    "primary": {
+      "assertions": 127,
+      "bytes": 12584,
+      "exit_code": null,
+      "record": "results/primary/RESULT.json",
+      "seconds": 746.7971894690054,
+      "sha256": "ec14022d4f795327acf1402049d02c2b71f33d3b2b0acfcb7c0de9841aa6dc8f"
+    },
+    "recovered": {
+      "assertions": 105,
+      "bytes": 10619,
+      "exit_code": null,
+      "record": "results/recovered/RESULT.json",
+      "seconds": 568.3014765879998,
+      "sha256": "1dd11785e3fbc9d08146424f4b22a74b6fe1502ae3954749c522cc698098c768"
+    }
+  },
+  "obligations_preserved": 11,
+  "prior_members_unchanged": 844,
+  "readiness": "BLOCKED",
+  "receipt": {
+    "bytes": 805314,
+    "path": "results/config-correspondence.json",
+    "sha256": "7d82305c3eb4646b0d9072daec9d93186848ac2b8e1aa71d6ac6de77fbbf12a3"
+  },
+  "recovered_input_core_files": 902,
+  "retention": "UNCHANGED",
+  "scope": "Conditional source-derived typed config return/copy for ordinary builtin data and same validated recovery-frontier configuration; serialized values do not prove historical Python object classes, hooks, copy identity or getter execution",
+  "source_components": {
+    "code/correspondence.py": {
+      "after": {
+        "bytes": 12376,
+        "sha256": "9ebc57d1baebe783275dbffbeb1df89b3ed01b446463a569ac4d230dd9e4d995"
+      },
+      "before_reviewed_binding": {
+        "bytes": 12850,
+        "sha256": "6b1a39997f066d0e97201aff3ae7d57008df16565122e4da3a75ca5ba6943399"
+      },
+      "intentional": true
+    },
+    "code/managed_coverage.py": {
+      "after": {
+        "bytes": 95842,
+        "sha256": "9dca02b1a52f8e3db950d39c57db4cc60204bb81fcc012f6bac3891709b57c9e"
+      },
+      "before_reviewed_binding": {
+        "bytes": 83402,
+        "sha256": "a626cb35ec63e7e7c50323b3db6bde4651a78c68af4ab9bc44b64cb193cb60bd"
+      },
+      "intentional": true
+    }
+  }
+}

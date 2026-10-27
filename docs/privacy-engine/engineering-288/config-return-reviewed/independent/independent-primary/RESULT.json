@@ -1,0 +1,1194 @@
+{
+  "result": "PASS",
+  "assertions": 146,
+  "categories": {
+    "constructed_negative": 80,
+    "constructed_only": 16,
+    "independent": 23,
+    "internal_relation": 8,
+    "negative": 9,
+    "public_negative": 5,
+    "source_negative": 5
+  },
+  "checks": [
+    {
+      "check": "defining-source independent storage guard return and type audit",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate semantic correspondence",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate derivation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "derived exact saved receipt",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate public validation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "two distinct ordered contexts",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "missing getter execution stays unknown",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "preserve prior context SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "configuration exact export values and bytes SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "constructor occurrence and instance joins SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "no invented object or copy identity SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "full anchored conditional copy SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "third live root cannot alias constructor input SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-MUTABLE-SHARING"
+      }
+    },
+    {
+      "check": "equal values with wrong constructed instance SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-CASE-ANCHOR"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:version"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:pilot"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:session"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:start_nonce"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:manager"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:model"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:profile"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-ONE config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-ONE config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:config"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-ONE config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "typed conditional variant not replacement anchor SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic wrong instance SYMBOLIC-U-ONE",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "derivation stale value SYMBOLIC-U-ONE",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-VALUE"
+      }
+    },
+    {
+      "check": "public mandatory extension SYMBOLIC-U-ONE",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "preserve prior context SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "configuration exact export values and bytes SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "constructor occurrence and instance joins SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "no invented object or copy identity SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "full anchored conditional copy SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "third live root cannot alias constructor input SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-MUTABLE-SHARING"
+      }
+    },
+    {
+      "check": "equal values with wrong constructed instance SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-CASE-ANCHOR"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:version"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO version",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:pilot"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO pilot",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:session"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO session",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:start_nonce"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO start_nonce",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:manager"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO manager",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:model"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO model",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:profile"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO profile",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "omitted typed field SYMBOLIC-U-TWO config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-FIELDS"
+      }
+    },
+    {
+      "check": "exact field type SYMBOLIC-U-TWO config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:config"
+      }
+    },
+    {
+      "check": "returned field correspondence SYMBOLIC-U-TWO config",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "typed conditional variant not replacement anchor SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic wrong instance SYMBOLIC-U-TWO",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "derivation stale value SYMBOLIC-U-TWO",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-VALUE"
+      }
+    },
+    {
+      "check": "public mandatory extension SYMBOLIC-U-TWO",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "normal continuation phase",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-READY-PHASE"
+      }
+    },
+    {
+      "check": "normal continuation live_present",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:live_present"
+      }
+    },
+    {
+      "check": "integer is not completion boolean live_present",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:live_present"
+      }
+    },
+    {
+      "check": "normal continuation retired_absent",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:retired_absent"
+      }
+    },
+    {
+      "check": "integer is not completion boolean retired_absent",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:retired_absent"
+      }
+    },
+    {
+      "check": "normal continuation lock_enter_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:lock_enter_completed"
+      }
+    },
+    {
+      "check": "integer is not completion boolean lock_enter_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:lock_enter_completed"
+      }
+    },
+    {
+      "check": "normal continuation copy_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:copy_completed"
+      }
+    },
+    {
+      "check": "integer is not completion boolean copy_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:copy_completed"
+      }
+    },
+    {
+      "check": "normal continuation lock_exit_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:lock_exit_completed"
+      }
+    },
+    {
+      "check": "integer is not completion boolean lock_exit_completed",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-NORMAL-CONTINUATION:lock_exit_completed"
+      }
+    },
+    {
+      "check": "flat shallow result alone cannot identify copier",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "same mutable config object is not copy",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-MUTABLE-SHARING"
+      }
+    },
+    {
+      "check": "independent nested identity facts constructor",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "graph accepts source-required alias and cycle constructor",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "nested shallow substitution constructor",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-MUTABLE-SHARING"
+      }
+    },
+    {
+      "check": "independent nested identity facts getter",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "graph accepts source-required alias and cycle getter",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "nested shallow substitution getter",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-MUTABLE-SHARING"
+      }
+    },
+    {
+      "check": "split required internal alias",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ALIAS-SPLIT"
+      }
+    },
+    {
+      "check": "merge distinct equal mutable nodes",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ALIAS-MERGE"
+      }
+    },
+    {
+      "check": "later constructor caller mutation does not change stored values",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "returned mutation keeps internal aliases and isolates storage",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "immutable sharing none",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "immutable sharing bool",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "immutable sharing integer",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "immutable sharing signed zero",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "immutable sharing string",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "graph exact boolean versus integer",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "graph exact signed zero",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "graph exact string versus integer",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "graph exact container kind",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-CONTAINER-SHAPE"
+      }
+    },
+    {
+      "check": "graph exact key order",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-KEY-ORDER"
+      }
+    },
+    {
+      "check": "graph exact element order",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-ATOM-VALUE"
+      }
+    },
+    {
+      "check": "unsupported projection domain tuple",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-UNSUPPORTED-TYPE"
+      }
+    },
+    {
+      "check": "unsupported projection domain subclass",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-UNSUPPORTED-TYPE"
+      }
+    },
+    {
+      "check": "unsupported projection domain nonfinite",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-NONFINITE"
+      }
+    },
+    {
+      "check": "unsupported projection domain nonstring key",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-DICT-KEY-TYPE"
+      }
+    },
+    {
+      "check": "undeclared symbolic mutable node",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-UNREACHABLE-NODE"
+      }
+    },
+    {
+      "check": "dangling symbolic reference",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "COPY-DANGLING-REFERENCE"
+      }
+    },
+    {
+      "check": "coordinated shallow origin semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-SOURCE-CATALOGUE"
+      }
+    },
+    {
+      "check": "producer rederives constructor aliases input",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-RETURN-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "producer rederives getter wrong receiver",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-RETURN-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "producer rederives readiness omitted",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-RETURN-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "producer rederives field omitted",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-RETURN-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "producer rederives type weakened",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-RETURN-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated changed configuration semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALIDATED-INSTANCE-VALUE"
+      }
+    },
+    {
+      "check": "coordinated changed configuration derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALIDATED-INSTANCE-VALUE"
+      }
+    },
+    {
+      "check": "caller baseline cannot redefine expected config",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALIDATED-INSTANCE-VALUE"
+      }
+    },
+    {
+      "check": "evidence missing config",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-MISSING-VALUE"
+      }
+    },
+    {
+      "check": "evidence nonce bool",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-VALUE-TYPE:start_nonce"
+      }
+    },
+    {
+      "check": "evidence stale HEAD same config",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "BINDING-VALIDATED-STATE"
+      }
+    },
+    {
+      "check": "full missing recovery record",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-MISSING-EXPORT"
+      }
+    },
+    {
+      "check": "anchor wrong acquisition",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "anchor missing value",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-FIELDS"
+      }
+    },
+    {
+      "check": "anchor stale recovery",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "anchor invented observed copy",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "anchor mixed predecessor",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CONFIG-ANCHOR-LINEAGE"
+      }
+    },
+    {
+      "check": "public duplicated context",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public false copy runtime and admission",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public coordinated instance and config both contexts",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CONFIG-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "contexts have independent nested result trees",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "catalogue mutation does not change new catalogue",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine semantic after nested result mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine derivation after nested result mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine public after nested result mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "mandatory predecessor derive actually invoked",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic comparison uses validated original config",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "candidate code and saved evidence unchanged",
+      "category": "independent",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "recovered": false,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "source": {
+    "correspondence.py": {
+      "bytes": 12376,
+      "sha256": "9ebc57d1baebe783275dbffbeb1df89b3ed01b446463a569ac4d230dd9e4d995"
+    },
+    "managed_coverage.py": {
+      "bytes": 95842,
+      "sha256": "9dca02b1a52f8e3db950d39c57db4cc60204bb81fcc012f6bac3891709b57c9e"
+    }
+  },
+  "database_connections": 0,
+  "session_operations": 0,
+  "completed_review_reruns": false,
+  "constructed_cases_are_execution_evidence": false
+}

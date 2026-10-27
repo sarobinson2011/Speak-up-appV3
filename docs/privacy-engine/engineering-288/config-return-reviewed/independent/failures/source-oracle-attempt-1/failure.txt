@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/cfg-review/code/controls.py", line 49, in main
+    audit_result=check('defining-source independent storage guard return and type audit',lambda:oracle['audit'](d['manager'],d['authority'],cat,d['values']['candidate/managed-route/model.json'],d['reference_module'].reference_catalogue(d),d['values']['candidate/managed-route/producers.json']['source_inventory']))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/cfg-review/code/controls.py", line 38, in check
+    v=fn();assert v is not False,label;record(label,category,'PASS');return v
+      ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/cfg-review/code/controls.py", line 49, in <lambda>
+    audit_result=check('defining-source independent storage guard return and type audit',lambda:oracle['audit'](d['manager'],d['authority'],cat,d['values']['candidate/managed-route/model.json'],d['reference_module'].reference_catalogue(d),d['values']['candidate/managed-route/producers.json']['source_inventory']))
+                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/cfg-review/code/source_oracle.py", line 102, in audit
+    assert "need(type(config['manager']) is str and len(config['manager']) == 40 and bytes.fromhex(config['manager']).hex() == config['manager'], 'MANAGER')" in expressions
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

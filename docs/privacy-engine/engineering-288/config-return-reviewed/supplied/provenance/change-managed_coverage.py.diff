@@ -1,0 +1,157 @@
+--- reviewed-binding/code/managed_coverage.py
++++ config/code/managed_coverage.py
+@@ -910,6 +910,154 @@
+  same(returned,under['binding'],'BINDING-VALUE-ORIGIN')
+  return {'declaration':catalogue['declaration']['id'],'value':returned,'reference_symbol':copy.deepcopy(live),'kind':'CONSTRUCTED-CONDITIONAL; not a getter execution'}
+ 
++# Configuration storage/getter correspondence. No application code is executed.
++def config_source(raw,authority,guards,oracle):
++ ready=binding_source(raw,authority,guards,oracle)
++ tree,loc=_recovery_locations(raw,guards,oracle);atree,aloc=_recovery_locations(authority,guards,oracle)
++ def one(rows,label):
++  rows=list(rows);need(len(rows)==1,'CONFIG-SOURCE-UNIQUE:'+label);return rows[0]
++ cls=one((n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority'),'manager')
++ methods={n.name:n for n in cls.body if isinstance(n,ast.FunctionDef)};fn=methods['config']
++ same([ast.unparse(d) for d in fn.decorator_list],['property'],'CONFIG-PROPERTY');same(ast.unparse(fn.args),'self','CONFIG-ARGUMENTS')
++ need(len(fn.body)==1 and isinstance(fn.body[0],ast.With),'CONFIG-WITH');lock=fn.body[0]
++ need(len(lock.items)==1 and lock.items[0].optional_vars is None,'CONFIG-LOCK-SHAPE');same(ast.unparse(lock.items[0].context_expr),'self._lock','CONFIG-LOCK')
++ need(len(lock.body)==2 and isinstance(lock.body[0],ast.Expr) and isinstance(lock.body[1],ast.Return),'CONFIG-ORDER')
++ check=lock.body[0].value;ret=lock.body[1];same(ast.unparse(check),'self._require()','CONFIG-READY-CALL')
++ def deepcopy_arg(n,label):
++  need(isinstance(n,ast.Call) and ast.unparse(n.func)=='copy.deepcopy' and len(n.args)==1 and not n.keywords,'CONFIG-DEEPCOPY:'+label);return n.args[0]
++ origin=deepcopy_arg(ret.value,'getter');same(ast.unparse(origin),'self._config','CONFIG-GETTER-ORIGIN')
++ writers=[]
++ for n in ast.walk(cls):
++  targets=n.targets if isinstance(n,(ast.Assign,ast.Delete)) else [n.target] if isinstance(n,(ast.AugAssign,ast.AnnAssign)) else []
++  if any(ast.unparse(t)=='self._config' for t in targets):writers.append(n)
++ store=one(writers,'storage writer');need(isinstance(store,ast.Assign) and len(store.targets)==1 and loc(store)['function']=='__init__','CONFIG-STORAGE-WRITER')
++ argument=deepcopy_arg(store.value,'constructor');same(ast.unparse(argument),'config','CONFIG-CONSTRUCTOR-INPUT')
++ ac=one((n for n in atree.body if isinstance(n,ast.ClassDef) and n.name=='Authority'),'authority');init=one((n for n in ac.body if isinstance(n,ast.FunctionDef) and n.name=='__init__'),'authority ctor')
++ exact=one((n for n in ast.walk(init) if isinstance(n,ast.Call) and ast.unparse(n.func)=='exact' and ast.unparse(n.args[0])=='config'),'config membership')
++ fields=ast.literal_eval(exact.args[1]);need(type(fields) is list and all(type(k) is str for k in fields) and len(fields)==len(set(fields)),'CONFIG-FIELD-DOMAIN')
++ authority_store=one((n for n in ast.walk(init) if isinstance(n,ast.Assign) and any(ast.unparse(t)=='self.config' for t in n.targets)),'authority config')
++ same(ast.unparse(authority_store.value),'parse(enc(config))','CONFIG-AUTHORITY-STORAGE')
++ recover_copy=one((n for n in ast.walk(methods['recover']) if isinstance(n,ast.Call) and ast.unparse(n.func)=='copy.deepcopy' and ast.unparse(n.args[0])=='self._config'),'recovery copy')
++ export_copy=one((n for n in ast.walk(methods['_validate']) if isinstance(n,ast.Call) and ast.unparse(n.func)=='copy.deepcopy' and ast.unparse(n.args[0])=='self._config'),'export copy')
++ return {'source':copy.deepcopy(ready['source']),'authority_source':copy.deepcopy(ready['authority_source']),
++  'constructor_storage':loc(store),'constructor_input':loc(argument),'constructor_copy':loc(store.value),'getter':loc(fn),'lock':loc(lock),'return':loc(ret),'copy_call':loc(ret.value),'origin':loc(origin),
++  'readiness_call':loc(check),'readiness_program':copy.deepcopy(ready['readiness_program']),'readiness_test':copy.deepcopy(ready['readiness_test']),'ready_phase':ready['ready_phase'],
++  'fields':fields,'authority_membership':aloc(exact),'authority_storage':aloc(authority_store),'recovery_copy':loc(recover_copy),'export_copy':loc(export_copy),
++  'normal_return_requires':['lock context enter completes','_require returns normally','copy.deepcopy of stored _config completes','lock context exit completes without error'],
++  'constructor_semantics':'One deepcopy(config) evaluated before _config assignment. An interrupted/failed copy does not establish storage or successful construction. Later caller-input mutations need not equal stored values.',
++  'getter_semantics':'Return deepcopy of this manager stored _config, not Authority.config; no new state/ingest/transaction check or persistence. Copy evaluation or lock exit may fail.',
++  'copy_scope':'Ordinary builtin dict/list data graphs and immutable scalar leaves below; shared internal references and cycles are preserved. Actual CONFIG is flat and scalar. Custom __deepcopy__, reducers, subclasses and arbitrary Python mutation are not covered by this conditional data projection.'}
++
++def compile_config_return(raw,authority,model,producer,guards,oracle,references):
++ source=config_source(raw,authority,guards,oracle)
++ validate_reference_transfers(raw,model,producer,guards,oracle,authority,references)
++ rs=references['source'];calls=[r for r in rs['calls'] if r['function']=='config' and r['site']==source['readiness_call']['site']];req=[r for r in rs['programs'] if r['function']=='_require']
++ need(len(calls)==len(req)==1,'CONFIG-REFERENCE-JOINS')
++ for old,new in [(calls[0],source['readiness_call']),(req[0],source['readiness_program'])]:
++  for k in ('site','expression','guards','continuation'):same(old[k],new[k],'CONFIG-INHERITED-'+k)
++ inventory={r['site']:r for r in producer['source_inventory']['sites']}
++ for k in ('constructor_storage','constructor_copy','return','copy_call','lock','readiness_call','recovery_copy','export_copy'):
++  row=source[k];need(row['site'] in inventory,'CONFIG-INHERITED-SITE');same(row['guards'],inventory[row['site']]['guards'],'CONFIG-INHERITED-GUARDS')
++ declarations={d['template_id']:d for d in model['existing_declarations']};config=declarations['CONFIG:'];typ=config['native_template']['type']
++ need(type(typ) is dict and set(typ)=={'object'},'CONFIG-DECLARATION-TYPE');same(sorted(typ['object']),sorted(source['fields']),'CONFIG-SOURCE-FIELD-COVERAGE')
++ fields={k:copy.deepcopy(declarations['CONFIG:/'+k]) for k in source['fields']}
++ for k,d in fields.items():same(d['native_template']['type'],typ['object'][k],'CONFIG-FIELD-TYPE');need(d['parent']==config['id'],'CONFIG-FIELD-PARENT')
++ return {'format':'I164-MANAGED-CONFIG-RETURN-1','source':source,
++  'declaration':{'id':'managed-config-return','owner':'ManagedAuthority.config','inherited_config':copy.deepcopy(config),'fields':fields,'origin':copy.deepcopy(source['copy_call']),'storage_origin':copy.deepcopy(source['constructor_copy']),
++   'classification':'UNKNOWN','canonical_class':None,'ordinal':None,'multiplicity':None},
++  'reference_links':{'ready_call':copy.deepcopy(calls[0]),'ready_program':copy.deepcopy(req[0])},
++  'copy_relation':{'container_domain':['dict with str keys','list'],'immutable_leaves':['NoneType','bool','int','float-finite','str'],
++   'mutable_nodes':'bijection preserving exact kinds, key/element order, scalar types/values, internal alias classes and cycles; source/copy mutable node sets disjoint',
++   'immutable_identity':'No fresh identity or physical identity claimed for scalar leaves; sharing is allowed.',
++   'phases':['constructor input at copy evaluation -> manager storage','manager storage at getter copy evaluation -> returned value'],
++   'no_current_input_equality_requirement':True,'no_historical_alias_observation':True},
++  'actual_getter_observations':None,'complete_repetition_coverage':False,'full_model_binding':False,'actual_admission':False}
++
++def validate_config_return(raw,authority,model,producer,guards,oracle,references,submitted):
++ same(submitted,compile_config_return(raw,authority,model,producer,guards,oracle,references),'CONFIG-RETURN-CORRESPONDENCE');return True
++
++def config_value_type(catalogue,value):
++ fields=catalogue['declaration']['inherited_config']['native_template']['type']['object']
++ need(type(value) is dict and set(value)==set(fields),'CONFIG-VALUE-FIELDS')
++ types={'STRING':str,'INTEGER':int}
++ for k,t in fields.items():need(t in types and type(value[k]) is types[t],'CONFIG-VALUE-TYPE:'+k)
++ return True
++
++def copy_graph(*values):
++ """Encode constructed builtin data references, never observed addresses.
++ One memo for all roots records cross-boundary sharing without serializing ids.
++ """
++ import math
++ nodes={};memo={}
++ def edge(v):
++  t=type(v)
++  if t in (dict,list):
++   if id(v) in memo:return {'ref':memo[id(v)]}
++   symbol='n'+str(len(memo));memo[id(v)]=symbol;node={'kind':t.__name__,'items':[]};nodes[symbol]=node
++   if t is dict:
++    need(all(type(k) is str for k in v),'COPY-DICT-KEY-TYPE');node['items']=[[k,edge(x)] for k,x in v.items()]
++   else:node['items']=[edge(x) for x in v]
++   return {'ref':symbol}
++  need(t in (type(None),bool,int,float,str),'COPY-UNSUPPORTED-TYPE')
++  if t is float:need(math.isfinite(v),'COPY-NONFINITE');v=v.hex()
++  return {'atom':t.__name__,'value':v}
++ roots=[edge(v) for v in values];return {'roots':roots,'nodes':nodes}
++
++def validate_copy_graph(graph):
++ """Validate a two-root deepcopy relation for the declared builtin domain.
++ Input is a finite symbolic graph; cycles do not imply infinite construction.
++ """
++ import math
++ need(type(graph) is dict and set(graph)=={'roots','nodes'},'COPY-GRAPH-FIELDS');roots=graph['roots'];nodes=graph['nodes']
++ need(type(roots) is list and len(roots)==2 and type(nodes) is dict and all(type(k) is str and k for k in nodes),'COPY-GRAPH-DOMAIN')
++ def edge(e):
++  need(type(e) is dict,'COPY-EDGE-TYPE')
++  if set(e)=={'ref'}:need(type(e['ref']) is str and e['ref'] in nodes,'COPY-DANGLING-REFERENCE');return
++  need(set(e)=={'atom','value'} and type(e['atom']) is str,'COPY-ATOM-FIELDS');t=e['atom'];v=e['value']
++  types={'NoneType':type(None),'bool':bool,'int':int,'str':str,'float':str};need(t in types and type(v) is types[t],'COPY-ATOM-TYPE')
++  if t=='float':
++   try:f=float.fromhex(v)
++   except ValueError:need(False,'COPY-FLOAT')
++   need(math.isfinite(f) and f.hex()==v,'COPY-FLOAT')
++ for node in nodes.values():
++  need(type(node) is dict and set(node)=={'kind','items'} and node['kind'] in ('dict','list') and type(node['items']) is list,'COPY-NODE')
++  if node['kind']=='dict':
++   keys=[]
++   for pair in node['items']:need(type(pair) is list and len(pair)==2 and type(pair[0]) is str,'COPY-DICT-ITEM');keys.append(pair[0]);edge(pair[1])
++   need(len(keys)==len(set(keys)),'COPY-DUPLICATE-KEY')
++  else:
++   for x in node['items']:edge(x)
++ for r in roots:edge(r)
++ def reachable(root):
++  found=set();pending=[root]
++  while pending:
++   e=pending.pop()
++   if 'ref' not in e or e['ref'] in found:continue
++   s=e['ref'];found.add(s);node=nodes[s];pending.extend([p[1] for p in node['items']] if node['kind']=='dict' else node['items'])
++  return found
++ left=reachable(roots[0]);right=reachable(roots[1]);need(left|right==set(nodes),'COPY-UNREACHABLE-NODE');need(not left&right,'COPY-MUTABLE-SHARING')
++ forward={};backward={};pending=[tuple(roots)]
++ while pending:
++  a,b=pending.pop();need(set(a)==set(b),'COPY-EDGE-KIND')
++  if 'atom' in a:same(a,b,'COPY-ATOM-VALUE');continue
++  x,y=a['ref'],b['ref']
++  if x in forward:need(forward[x]==y,'COPY-ALIAS-SPLIT');continue
++  need(y not in backward,'COPY-ALIAS-MERGE');forward[x]=y;backward[y]=x
++  an,bn=nodes[x],nodes[y];need(an['kind']==bn['kind'] and len(an['items'])==len(bn['items']),'COPY-CONTAINER-SHAPE')
++  for av,bv in zip(an['items'],bn['items']):
++   if an['kind']=='dict':need(av[0]==bv[0],'COPY-KEY-ORDER');pending.append((av[1],bv[1]))
++   else:pending.append((av,bv))
++ return {'result':'PASS','mutable_nodes':len(forward),'alias_and_cycle_correspondence':copy.deepcopy(forward),'runtime_observation':False,'immutable_identity_claim':False}
++
++def config_value_projection(catalogue,premise,stored,returned):
++ need(type(premise) is dict and set(premise)=={'phase','live_present','retired_absent','lock_enter_completed','copy_completed','lock_exit_completed'},'CONFIG-PREMISE-FIELDS')
++ need(type(premise['phase']) is str and premise['phase']==catalogue['source']['ready_phase'],'CONFIG-READY-PHASE')
++ for k in ('live_present','retired_absent','lock_enter_completed','copy_completed','lock_exit_completed'):need(premise[k] is True,'CONFIG-NORMAL-CONTINUATION:'+k)
++ config_value_type(catalogue,stored);config_value_type(catalogue,returned)
++ relation=validate_copy_graph(copy_graph(stored,returned))
++ return {'declaration':catalogue['declaration']['id'],'value':copy.deepcopy(returned),'copy_relation':relation,'runtime_observation':False}
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()
