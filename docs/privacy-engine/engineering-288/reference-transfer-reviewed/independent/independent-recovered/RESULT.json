@@ -1,0 +1,282 @@
+{
+  "result": "PASS bounded reference correspondence",
+  "assertions": 41,
+  "categories": {
+    "catalogue_negative": 3,
+    "constructed_negative": 2,
+    "constructed_not_execution": 16,
+    "independent": 15,
+    "public_negative": 4,
+    "saved_evidence_negative": 1
+  },
+  "checks": [
+    {
+      "check": "legitimate internal catalogue",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "legitimate public receipt",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "derived exact saved output",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent defining-source membership guards order and bindings",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "prior field component identities retained",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all prior context fields unchanged SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "source audit SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all prior context fields unchanged SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact saved invocation/conditional-source joins SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "no invented observer or reference observations SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact saved invocation/conditional-source joins SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "no invented observer or reference observations SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "recovered omitted transfer",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "recovered wrong source order",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "recovered false closure",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "SYMBOLIC-U-ONE quarantine interrupted between copy and clear",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-ONE quarantine interrupted between copy and clear",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-ONE recover successful publication",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-ONE recover successful publication",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-ONE failed validation then failed cleanup retains partial object",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-ONE failed validation then failed cleanup retains partial object",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-ONE return evaluation failure after READY cleans then quarantines",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-ONE return evaluation failure after READY cleans then quarantines",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "recovered substituted final reference SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "REFERENCE-PATH-SUBSTITUTION"
+      }
+    },
+    {
+      "check": "SYMBOLIC-U-TWO quarantine interrupted between copy and clear",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-TWO quarantine interrupted between copy and clear",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-TWO recover successful publication",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-TWO recover successful publication",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-TWO failed validation then failed cleanup retains partial object",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-TWO failed validation then failed cleanup retains partial object",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "SYMBOLIC-U-TWO return evaluation failure after READY cleans then quarantines",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "constructed result validates SYMBOLIC-U-TWO return evaluation failure after READY cleans then quarantines",
+      "result": "PASS",
+      "category": "constructed_not_execution"
+    },
+    {
+      "check": "recovered substituted final reference SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "REFERENCE-PATH-SUBSTITUTION"
+      }
+    },
+    {
+      "check": "new derivation rejects inconsistent saved close state",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "MANAGED-RETURN-STATE"
+      }
+    },
+    {
+      "check": "public missing transfer context 0",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public omitted observed function join 0",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public missing transfer context 1",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public omitted observed function join 1",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "returned/nested aliases do not change pristine validation",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "new implementation source bytes unchanged",
+      "result": "PASS",
+      "category": "independent"
+    }
+  ],
+  "failure": null,
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 62032,
+      "sha256": "0d8cfc2309a454739ae81714ebe563a0ef1e2a8c27a0477694751b9f986892e9"
+    },
+    "correspondence.py": {
+      "bytes": 25256,
+      "sha256": "b5fc4d6371b4a30946cc891a17df769de33e40cdec71da7dca9b787487a57ca1"
+    }
+  },
+  "recovered": true,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "constructed_cases_not_runtime": 8,
+  "no_new_observations": true,
+  "supplied_suites_executed": false,
+  "completed_review_reruns": false,
+  "host_session_execution": false,
+  "database_connections": 0
+}

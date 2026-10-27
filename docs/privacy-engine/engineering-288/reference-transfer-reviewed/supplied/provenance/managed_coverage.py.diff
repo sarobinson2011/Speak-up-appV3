@@ -1,0 +1,272 @@
+--- retained/fields/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -434,6 +434,269 @@
+  if op=='choice':return status_expression_value(expression['yes'] if status_expression_value(expression['test'],inputs) else expression['no'],inputs)
+  raise ValueError('STATUS-CONSTRUCTED-OP')
+ 
++
++# Appended to the existing declaration producer. No application imports.
++REFERENCE_SLOTS=('_live','_retired')
++
++def _ref_attr(n):
++ return n.attr if isinstance(n,ast.Attribute) and isinstance(n.value,ast.Name) and n.value.id=='self' else None
++
++def reference_source(raw,guards,oracle):
++ """Source-owned conditional reference relations, not an object observation.
++
++ The walk selecting assignments is independent of generated declarations.
++ Control-owned guard requirements use the retained independent oracle. Ordered
++ block prefixes explicitly require *normal* continuation, including early exits.
++ """
++ same({'bytes':len(raw),'sha256':digest(raw)},{k:PINS[MANAGER][k] for k in ('bytes','sha256')},'REFERENCE-DEFINING-SOURCE')
++ tree=ast.parse(raw);text=raw.decode();key=guards.key
++ cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority')
++ methods={n.name:n for n in cls.body if isinstance(n,ast.FunctionDef)}
++ generated,bad=guards.derive(raw);wanted,bad2=oracle.expected(raw)
++ need(not bad and not bad2,'REFERENCE-UNSUPPORTED-GUARDS');same(generated,wanted,'REFERENCE-GUARD-ORACLE')
++ parents={};owners={}
++ for p in ast.walk(tree):
++  for f,v in ast.iter_fields(p):
++   for i,c in enumerate(v if isinstance(v,list) else [v]):
++    if isinstance(c,ast.AST):parents[c]=(p,f,i if isinstance(v,list) else None)
++ for fn in methods.values():
++  for n in ast.walk(fn):owners[n]=fn.name
++ def ref(n):return {'site':key(n),'expression':ast.get_source_segment(text,n)}
++ def located(n):
++  prefix=[];child=n
++  while child in parents and not isinstance(child,ast.FunctionDef):
++   p,f,i=parents[child]
++   if i is not None and isinstance(child,ast.stmt):
++    prefix.append({'owner':key(p),'region':f,'normal_continuation_of':[ref(a) for a in getattr(p,f)[:i] if isinstance(a,ast.stmt)]})
++   if isinstance(p,ast.FunctionDef):break
++   child=p
++  return dict(ref(n),function=owners.get(n),guards=copy.deepcopy(wanted[key(n)]),continuation=list(reversed(prefix)))
++ def value(n):
++  if isinstance(n,ast.Constant) and n.value is None:return {'kind':'none','expression':ref(n)}
++  if _ref_attr(n) in REFERENCE_SLOTS:return {'kind':'slot-reference','slot':_ref_attr(n),'expression':ref(n)}
++  if isinstance(n,ast.Name) and n.id=='a':return {'kind':'invocation-local-reference','local':n.id,'expression':ref(n)}
++  raise ValueError('UNSUPPORTED-REFERENCE-RHS:'+ast.dump(n))
++ writes=[]
++ for fn in methods.values():
++  for n in ast.walk(fn):
++   targets=n.targets if isinstance(n,(ast.Assign,ast.Delete)) else [n.target] if isinstance(n,(ast.AugAssign,ast.AnnAssign)) else []
++   for t in targets:
++    if _ref_attr(t) not in REFERENCE_SLOTS:continue
++    need(isinstance(n,ast.Assign) and len(n.targets)==1,'UNSUPPORTED-REFERENCE-WRITE')
++    writes.append(dict(located(n),id='managed-reference-write:'+key(n),target=_ref_attr(t),value=value(n.value),
++     effect='Evaluate RHS, then replace this one slot; aliases in other slots remain',
++     completion='Conditional on this assignment completing; no physical close or obligation discharge follows from a clear'))
++ writes.sort(key=lambda r:tuple(map(int,r['site'].split(':')[:2])))
++ # A second control-owned statement traversal supplies assignment coverage.
++ # It never reads writes or a generated declaration's origin list.
++ independent=[]
++ def visit(n,fn):
++  if isinstance(n,ast.Assign):
++   for t in n.targets:
++    if _ref_attr(t) in REFERENCE_SLOTS:independent.append((key(n),fn,_ref_attr(t),ast.dump(n.value,include_attributes=False)))
++  for c in ast.iter_child_nodes(n):visit(c,fn)
++ for name,fn in methods.items():visit(fn,name)
++ same(sorted((r['site'],r['function'],r['target'],ast.dump(ast.parse(r['value']['expression']['expression'],mode='eval').body,include_attributes=False)) for r in writes),sorted(independent),'REFERENCE-ASSIGNMENT-ORACLE')
++ allocations=[];calls=[];reads=[]
++ for fn in methods.values():
++  for n in ast.walk(fn):
++   if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='a' for t in n.targets):
++    need(len(n.targets)==1 and isinstance(n.value,ast.Call) and ast.unparse(n.value.func)=='self._runtime.Authority.__new__','REFERENCE-LOCAL-PRODUCER')
++    same([ast.unparse(a) for a in n.value.args],['self._runtime.Authority'],'REFERENCE-ALLOCATION-ARGS');need(not n.value.keywords,'REFERENCE-ALLOCATION-KW')
++    allocations.append(dict(located(n),local='a',call=ref(n.value),
++     identity='Result reference of this call within its context/acquisition/instance/invocation; neither equal bytes nor this static site identifies a runtime object'))
++   if isinstance(n,ast.Attribute) and _ref_attr(n) in REFERENCE_SLOTS and isinstance(n.ctx,ast.Load):reads.append(dict(located(n),slot=_ref_attr(n)))
++   if isinstance(n,ast.Call):
++    target=ast.unparse(n.func)
++    if _ref_attr(n.func) in ('_quarantine','_dispose','_require') or target in ('self._retired.close','self._runtime.Authority.__init__','self._validate'):
++     bindings=[]
++     if target=='self._retired.close':bindings.append({'role':'receiver','value':{'kind':'slot-reference','slot':'_retired','expression':ref(n.func.value)}})
++     for i,a in enumerate(n.args):
++      if isinstance(a,ast.Name) and a.id=='a':bindings.append({'role':'argument:'+str(i),'value':value(a)})
++     calls.append(dict(located(n),callee=target,reference_bindings=bindings,
++      argument_rule='Receiver and arguments must evaluate normally before callee entry; exception formatting is not assumed infallible'))
++ need(len(allocations)==1,'REFERENCE-ALLOCATION-DOMAIN')
++ # Preserve source control for every method carrying a write or related call;
++ # this includes _run's failing argument evaluation and close's ordering.
++ selected={r['function'] for r in writes+calls}|{'_require'}
++ programs=[dict(located(fn),ast=ast.dump(fn,include_attributes=False)) for name,fn in methods.items() if name in selected]
++ return {'source':copy.deepcopy(PINS[MANAGER]),'writes':writes,'local_producers':allocations,'reference_reads':sorted(reads,key=lambda r:tuple(map(int,r['site'].split(':')[:2]))),
++  'calls':sorted(calls,key=lambda r:tuple(map(int,r['site'].split(':')[:2]))),'programs':programs,
++  'guards_meaning':'Syntactic evaluation guards and ordered normal-continuation prerequisites; not path feasibility, complete history or callback safety'}
++
++def compile_reference_transfers(raw,model,producer,guards,oracle,authority):
++ source=reference_source(raw,guards,oracle)
++ inventory={r['site']:r for r in producer['source_inventory']['sites']}
++ for row in source['writes']+source['local_producers']+source['calls']:
++  need(row['site'] in inventory,'REFERENCE-INHERITED-SITE');same(inventory[row['site']]['guards'],row['guards'],'REFERENCE-INHERITED-GUARDS')
++ declarations=[]
++ for slot in REFERENCE_SLOTS:
++  hits=[d for d in model['local_declarations'] if d['id']=='managed-local:'+slot[1:]]
++  need(len(hits)==1,'REFERENCE-DECLARATION-JOIN');d=hits[0]
++  same(d['source'],PINS[MANAGER],'REFERENCE-DECLARATION-SOURCE');need(d['type']=='optional opaque Authority reference','REFERENCE-DECLARATION-TYPE')
++  declarations.append({'declaration':copy.deepcopy(d),'slot':slot,'write_ids':[r['id'] for r in source['writes'] if r['target']==slot],
++   'reference_type':'None or opaque source reference; uninitialized is not None','classification':'UNKNOWN','multiplicity':None})
++ pin=PINS['support/reference/runtime/authority.py'];same({'bytes':len(authority),'sha256':digest(authority)},{k:pin[k] for k in ('bytes','sha256')},'REFERENCE-AUTHORITY-SOURCE')
++ cls=next(n for n in ast.parse(authority).body if isinstance(n,ast.ClassDef) and n.name=='Authority')
++ close=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='close')
++ same(ast.unparse(close),'def close(self):\n    self.db.close()','REFERENCE-AUTHORITY-CLOSE-SHAPE')
++ return {'format':'I164-MANAGED-REFERENCE-TRANSFERS-1','source':source,'declarations':declarations,
++  'connection_relation':{'source':copy.deepcopy(pin),'site':guards.key(close),'expression':ast.get_source_segment(authority.decode(),close),
++   'meaning':'For the pinned Authority method, the receiver owns a db attribute and close delegates to db.close. Reference-token equality is not database identity or durable closure evidence.',
++   'actual_object_and_connection_identity':'UNESTABLISHED from sparse saved representations'},
++  'identity':{'qualifiers':['symbolic context','acquisition/capture','managed instance','invocation','source site','occurrence within invocation'],
++   'copy_rule':'Copy a reference conditional on source execution; two simultaneously populated slots may alias. Never infer identity from equal dictionaries, bindings, paths, phase or epoch.',
++   'allocation_rule':'One source call-result variable per invocation; no global object, finite lifetime bound or proof of allocator freshness',
++   'recorded_representations':'Distinct exact retained bytes/locations and occurrence lineage remain distinct from references and connections'},
++  'cleanup':'Retired clear after normal close continuation; separate no-db partial-construction clear is not a close receipt. Abrupt or unobserved continuation retains uncertainty. Clearing never cancels governing duties.',
++  'static_vs_actual':'Only conditional source relations; no unseen assignment, object identity, successful cleanup or absence of outstanding obligations inferred',
++  'full_model_binding':False,'complete_symbolic_coverage':False,'actual_admission':False}
++
++def validate_reference_transfers(raw,model,producer,guards,oracle,authority,submitted):
++ same(submitted,compile_reference_transfers(raw,model,producer,guards,oracle,authority),'REFERENCE-CORRESPONDENCE')
++ return True
++
++def constructed_reference_path(raw,guards,oracle,case):
++ """Finite SOURCE-ONLY path algebra, never producer or database execution.
++
++ Opaque source operations have explicit constructed normal/abrupt premises.
++ Only reference/phase predicates are computed. Others require case facts. A
++ stop is a partial model prefix, not an exception, durable state or recovery log.
++ No statement or expression from the producer is compiled/evaluated here.
++ """
++ source=reference_source(raw,guards,oracle);key=guards.key
++ need(type(case) is dict and set(case)=={'kind','context','scope','method','initial','facts','outcomes','stop_after'},'REFERENCE-CASE-SHAPE')
++ need(case['kind']=='CONSTRUCTED-REFERENCE-PATH' and case['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'),'REFERENCE-CASE-KIND')
++ need(type(case['scope']) is dict and set(case['scope'])=={'acquisition','instance','invocation'} and all(type(v) is str and v for v in case['scope'].values()),'REFERENCE-CASE-SCOPE')
++ initial=case['initial'];need(type(initial) is dict and set(initial)=={'_live','_retired','_phase'},'REFERENCE-INITIAL')
++ scope={'context':case['context'],**case['scope']}
++ def token(label):return {'kind':'constructed-reference','scope':copy.deepcopy(scope),'origin':label}
++ def unbound():return {'kind':'uninitialized-slot'}
++ state={}
++ for slot in REFERENCE_SLOTS:
++  v=initial[slot];need(v is None or type(v) is str and bool(v),'REFERENCE-INITIAL-TYPE');state[slot]=None if v is None else token('initial:'+v)
++ need(initial['_phase'] in ('CLOSED','READY','QUARANTINED','CLEANUP_UNCERTAIN','OPEN_FAILED','VALIDATION_FAILED'),'REFERENCE-INITIAL-PHASE')
++ state['_phase']=initial['_phase']
++ if case['method']=='__init__':
++  need(initial=={'_live':None,'_retired':None,'_phase':'CLOSED'},'REFERENCE-CONSTRUCTOR-INITIAL');state={s:unbound() for s in REFERENCE_SLOTS};state['_phase']=None
++ cls=next(n for n in ast.parse(raw).body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority')
++ methods={n.name:n for n in cls.body if isinstance(n,ast.FunctionDef)}
++ allowed={p['function'] for p in source['programs']};need(case['method'] in allowed,'REFERENCE-METHOD')
++ for k in ('facts','outcomes'):need(type(case[k]) is dict,'REFERENCE-CASE-TABLE')
++ need(case['stop_after'] is None or type(case['stop_after']) is str,'REFERENCE-STOP')
++ events=[];used_facts=set();used_outcomes=set();frames=[];counter=0;stopped=False
++ class Abrupt(Exception):pass
++ class Stop(Exception):pass
++ class Returned(Exception):pass
++ def emit(event,n,**values):
++  events.append({'event':event,'site':key(n),'frame':frames[-1]['id'],'function':frames[-1]['function'],**copy.deepcopy(values)})
++ def gate(n,kind='opaque-operation',subject=None):
++  address=str(frames[-1]['id'])+'/'+key(n)+'/'+kind
++  outcome=case['outcomes'].get(address,'normal');need(outcome in ('normal','raise','stop'),'REFERENCE-OUTCOME')
++  if address in case['outcomes']:used_outcomes.add(address)
++  emit('premise',n,kind=kind,address=address,outcome=outcome,subject=subject)
++  if outcome=='raise':raise Abrupt()
++  if outcome=='stop':raise Stop()
++ def read(n,local):
++  if isinstance(n,ast.Constant) and n.value is None:return None
++  if _ref_attr(n) in REFERENCE_SLOTS:return copy.deepcopy(state[_ref_attr(n)])
++  if isinstance(n,ast.Name) and n.id=='a':need('a' in local,'REFERENCE-UNBOUND-LOCAL');return copy.deepcopy(local['a'])
++  raise ValueError('REFERENCE-MODEL-RHS')
++ def truth(n,local):
++  if isinstance(n,ast.UnaryOp) and isinstance(n.op,ast.Not):return not truth(n.operand,local)
++  if isinstance(n,ast.BoolOp):
++   if isinstance(n.op,ast.Or):return any(truth(x,local) for x in n.values)
++   if isinstance(n.op,ast.And):return all(truth(x,local) for x in n.values)
++  if isinstance(n,ast.Compare) and len(n.ops)==1:
++   a=_ref_attr(n.left);b=n.comparators[0]
++   if a in REFERENCE_SLOTS and isinstance(b,ast.Constant) and b.value is None and isinstance(n.ops[0],(ast.Is,ast.IsNot)):
++    need(state[a]!=unbound(),'REFERENCE-UNINITIALIZED-READ');answer=state[a] is None;return answer if isinstance(n.ops[0],ast.Is) else not answer
++   if a=='_phase' and isinstance(b,ast.Constant) and type(b.value) is str and isinstance(n.ops[0],(ast.Eq,ast.NotEq)):
++    answer=state[a]==b.value;return answer if isinstance(n.ops[0],ast.Eq) else not answer
++   if isinstance(n.left,ast.Name) and n.left.id=='phase' and isinstance(n.ops[0],ast.In):return local['phase'] in ast.literal_eval(b)
++  address=str(frames[-1]['id'])+'/'+key(n);need(address in case['facts'],'REFERENCE-MISSING-CONSTRUCTED-FACT:'+address)
++  fact=case['facts'][address];need(type(fact) is dict and set(fact)=={'value','subject'} and type(fact['value']) is bool,'REFERENCE-FACT-SHAPE')
++  subject=None
++  if any(isinstance(x,ast.Name) and x.id=='a' for x in ast.walk(n)):subject=local.get('a')
++  elif any(_ref_attr(x)=='_live' for x in ast.walk(n)):subject=state['_live']
++  same(fact['subject'],subject,'REFERENCE-FACT-SUBJECT');used_facts.add(address)
++  emit('condition-premise',n,address=address,result=fact['value'],subject=subject)
++  return fact['value']
++ def call(n,local):
++  name=_ref_attr(n.func);target=ast.unparse(n.func)
++  if name in ('_quarantine','_dispose','_require'):
++   gate(n,'argument-evaluation');invoke(name);return
++  subject=None
++  if target=='self._retired.close':subject=copy.deepcopy(state['_retired']);need(subject is not None and subject!=unbound(),'REFERENCE-CLOSE-WITHOUT-REFERENCE')
++  elif target in ('self._runtime.Authority.__init__','self._validate'):subject=read(n.args[0],local)
++  gate(n,'call:'+target,subject)
++ def stmt(n,local):
++  # A pre-statement gate permits interruption/evaluation failure before any
++  # modeled effect, including before an exception argument can be evaluated.
++  gate(n,'statement-entry')
++  if isinstance(n,ast.If):
++   arm=truth(n.test,local);emit('branch',n,truth=arm);block(n.body if arm else n.orelse,local)
++  elif isinstance(n,ast.With):
++   for i in n.items:gate(i.context_expr,'context-enter')
++   try:block(n.body,local)
++   except Stop:stopped_flag[0]=True;raise
++   finally:
++    # A stopped prefix has no invented exit; an exception/return can still have
++    # an exit failure. No arbitrary context-manager suppression is modeled.
++    if not stopped_flag[0]:gate(n,'context-exit')
++  elif isinstance(n,ast.Try):
++   need(not n.finalbody and not n.orelse and all(ast.unparse(h.type)=='BaseException' for h in n.handlers),'REFERENCE-MODEL-TRY')
++   try:block(n.body,local)
++   except Abrupt:
++    need(len(n.handlers)==1,'REFERENCE-MODEL-HANDLERS');emit('handler',n.handlers[0]);block(n.handlers[0].body,local)
++  elif isinstance(n,ast.Assign):
++   need(len(n.targets)==1,'REFERENCE-MODEL-ASSIGN');t=n.targets[0];slot=_ref_attr(t)
++   if slot in REFERENCE_SLOTS:
++    before=copy.deepcopy(state);rhs=read(n.value,local);state[slot]=copy.deepcopy(rhs)
++    emit('reference-write',n,target=slot,rhs=rhs,before=before,after=state)
++   elif isinstance(t,ast.Name) and t.id=='a':
++    gate(n.value,'allocation-return');local['a']=token('call-result:'+str(frames[-1]['id'])+':'+key(n.value));emit('local-reference',n,value=local['a'])
++   elif slot=='_phase':
++    v=n.value
++    if isinstance(v,ast.IfExp):v=v.body if truth(v.test,local) else v.orelse
++    state[slot]=local[v.id] if isinstance(v,ast.Name) else ast.literal_eval(v);emit('phase',n,value=state[slot])
++   elif isinstance(t,ast.Name) and t.id=='phase':local['phase']=state['_phase']
++   elif isinstance(n.value,ast.Call) and _ref_attr(n.value.func)=='_validate':call(n.value,local)
++   else:gate(n,'other-assignment')
++  elif isinstance(n,ast.Expr) and isinstance(n.value,ast.Call):call(n.value,local)
++  elif isinstance(n,ast.Raise):emit('raise',n);raise Abrupt()
++  elif isinstance(n,ast.Return):gate(n,'return-expression');emit('return',n);raise Returned()
++  else:gate(n,'other-statement')
++  if case['stop_after']==str(frames[-1]['id'])+'/'+key(n):raise Stop()
++ def block(body,local):
++  for n in body:stmt(n,local)
++ def invoke(name):
++  nonlocal counter
++  need(name in allowed and name not in [f['function'] for f in frames],'REFERENCE-MODEL-CYCLE');counter+=1
++  frame={'id':counter,'function':name};frames.append(frame)
++  try:
++   emit('enter',methods[name],parent=None if len(frames)==1 else frames[-2]['id'])
++   try:block(methods[name].body,{})
++   except Returned:pass
++   emit('normal-exit',methods[name])
++  except Stop:stopped_flag[0]=True;raise
++  finally:frames.pop()
++ stopped_flag=[False]
++ try:invoke(case['method']);completion='normal'
++ except Abrupt:completion='abrupt'
++ except Stop:completion='partial-prefix';stopped=True
++ same(sorted(used_facts),sorted(case['facts']),'REFERENCE-UNUSED-FACT')
++ same(sorted(used_outcomes),sorted(case['outcomes']),'REFERENCE-UNUSED-OUTCOME')
++ need(case['stop_after'] is None or stopped,'REFERENCE-UNREACHED-STOP')
++ return {'kind':'CONSTRUCTED-REFERENCE-PATH-RESULT','scope':scope,'case':copy.deepcopy(case),'completion':completion,'events':events,'final':copy.deepcopy(state),
++  'actual_observation':False,'object_identity_evidence':False,'physical_close_established':False,'outstanding_obligations_discharged':False,
++  'limits':'Source-structured conditional model with opaque normal/abrupt premises. Not feasible-path proof, callback semantics, arbitrary bytecode interruption, process restoration or a runtime trace.'}
++
++def validate_constructed_reference_path(raw,guards,oracle,case,submitted):
++ same(submitted,constructed_reference_path(raw,guards,oracle,case),'REFERENCE-PATH-SUBSTITUTION')
++ return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()

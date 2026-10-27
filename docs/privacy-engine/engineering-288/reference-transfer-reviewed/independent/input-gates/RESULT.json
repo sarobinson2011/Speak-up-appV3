@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "assertions": 5,
+  "checks": [
+    {
+      "check": "missing required field receipt",
+      "result": "REJECTED",
+      "message": "REFERENCE-BASE-MEMBERSHIP",
+      "before_candidate_consumption": true
+    },
+    {
+      "check": "substituted predecessor occurrence receipt",
+      "result": "REJECTED",
+      "message": "REFERENCE-BASE-BYTES:results/status-field-correspondence.json",
+      "before_candidate_consumption": true
+    },
+    {
+      "check": "mixed symbolic context definition",
+      "result": "REJECTED",
+      "message": "REFERENCE-BASE-BYTES:retained/occurrence/retained/correction/retained/candidate/candidate/contexts.json",
+      "before_candidate_consumption": true
+    },
+    {
+      "check": "undeclared input member",
+      "result": "REJECTED",
+      "message": "REFERENCE-UNDECLARED-OR-NONREGULAR",
+      "before_candidate_consumption": true
+    },
+    {
+      "check": "restored legitimate exact input tree accepts",
+      "result": "PASS"
+    }
+  ],
+  "fixture_restored_to_exact_original": true,
+  "original_and_implementation_files_unchanged": true,
+  "no_application_or_database_operations": true
+}

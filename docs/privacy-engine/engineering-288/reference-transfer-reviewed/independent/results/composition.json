@@ -1,0 +1,74 @@
+{
+  "result": "PASS",
+  "reviewed_field_root_unchanged_members": 489,
+  "independent_review_unchanged_noninput_members": 27,
+  "externally_retained_predecessor_archives_verified": {
+    "field_input": {
+      "bytes": 38539130,
+      "sha256": "b51b313de9d03d3bc5eb8436d18e219b05f173144be46d51f090d5119b244504"
+    },
+    "independent_review": {
+      "bytes": 38371220,
+      "sha256": "053edf0864c4211f4bff9aec67d1379d4589f5ae48820e13e32e392c4e97d07b"
+    }
+  },
+  "all_previous_context_fields_and_obligations_preserved": true,
+  "historical_compiler_body_and_CLI_byte_preserved": true,
+  "historical_field_body_byte_preserved_except_name": true,
+  "intentional_changes": [
+    {
+      "after": {
+        "bytes": 62032,
+        "sha256": "0d8cfc2309a454739ae81714ebe563a0ef1e2a8c27a0477694751b9f986892e9"
+      },
+      "before": {
+        "bytes": 43035,
+        "sha256": "a21761c0d023df458d444863e27d50073d29ee0cb5249bb068406cec5f63cf7c"
+      },
+      "path": "code/managed_coverage.py"
+    },
+    {
+      "after": {
+        "bytes": 25256,
+        "sha256": "b5fc4d6371b4a30946cc891a17df769de33e40cdec71da7dca9b787487a57ca1"
+      },
+      "before": {
+        "bytes": 18355,
+        "sha256": "a9b6dc38bba27f1af19dec93ea4341321a86e1bfaca3f2a14c0e24d76cf0be40"
+      },
+      "path": "code/correspondence.py"
+    }
+  ],
+  "new_output": {
+    "bytes": 451987,
+    "sha256": "61f93d2ade9436c0d8b6885cea7cb5bb96b84e963c98bb07d7adce37852b7c7f"
+  },
+  "prior_output": {
+    "bytes": 293607,
+    "sha256": "46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381"
+  },
+  "supplied_controls": [
+    {
+      "name": "attempt-2",
+      "controls": 182,
+      "constructed_cases": 21,
+      "recorded_root": "reference-transfers",
+      "inspected_not_executed": true
+    },
+    {
+      "name": "recovered",
+      "controls": 182,
+      "constructed_cases": 21,
+      "recorded_root": "reference-tools/recovered-root",
+      "inspected_not_executed": true
+    }
+  ],
+  "supplied_process_checks": 1,
+  "supplied_failure": {
+    "passed": 0,
+    "error": "AttributeError(\"'Module' object has no attribute 'lineno'\")",
+    "original_code_and_output_preserved": true
+  },
+  "historical_partial_review_manifest_scope_preserved": true,
+  "current_offline_recovery_complete_without_external_original_zip": true
+}

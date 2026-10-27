@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/reference-transfers/tests/controls.py", line 154, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/3da0de3fef10/reference-transfers/tests/controls.py", line 25, in main
+    m=module(a.root/'code/correspondence.py');data=m.reference_inputs(a.root);cat=m.reference_catalogue(data);source=cat['source'];mc=data['reference_coverage'];g=data['guards'];raw=data['manager']
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "reference-transfers/code/correspondence.py", line 264, in reference_catalogue
+    return data['reference_coverage'].compile_reference_transfers(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],data['authority'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "reference-transfers/code/managed_coverage.py", line 528, in compile_reference_transfers
+    source=reference_source(raw,guards,oracle)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "reference-transfers/code/managed_coverage.py", line 522, in reference_source
+    programs=[dict(located(fn),ast=ast.dump(fn,include_attributes=False)) for name,fn in methods.items() if name in selected]
+                   ^^^^^^^^^^^
+  File "reference-transfers/code/managed_coverage.py", line 470, in located
+    prefix.append({'owner':key(p),'region':f,'normal_continuation_of':[ref(a) for a in getattr(p,f)[:i] if isinstance(a,ast.stmt)]})
+                           ^^^^^^
+  File "reference-transfers/retained/fields/retained/compiler/guard_relationships.py", line 7, in key
+    def key(n):return ':'.join(map(str,[n.lineno,n.col_offset,n.end_lineno,n.end_col_offset,type(n).__name__]))
+                                        ^^^^^^^^
+AttributeError: 'Module' object has no attribute 'lineno'

@@ -1,0 +1,8 @@
+{
+  "result": "FAIL",
+  "scope": "reviewer static audit development probe",
+  "cause": "Reviewer call selector included builtin hasattr(a, db), which belongs to the separately retained conditional guard rather than the documented method-call relations",
+  "error": "AssertionError membership/order: reviewer expected 14 calls against selected 13",
+  "resolution": "Restrict reference-argument call relation selection to attribute method calls; retain explicit hasattr guard and reference-subject testing",
+  "implementation_modified": false
+}

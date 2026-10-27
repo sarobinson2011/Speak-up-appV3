@@ -1,0 +1,119 @@
+--- retained/fields/code/correspondence.py
++++ code/correspondence.py
+@@ -200,7 +200,7 @@
+     return observed,rows
+ 
+ 
+-def derive(root=ROOT):
++def derive_fields(root=ROOT):
+     data=field_inputs(root);catalogue=field_catalogue(data)
+     observed,rows=connected_fields(data,catalogue)
+     saved=(data['old']/'results/occurrence-connection.json').read_bytes()
+@@ -228,9 +228,106 @@
+     return boundary
+ 
+ 
++def validate_fields(root,saved):
++    require(type(saved) is bytes and saved==enc(derive_fields(root)),'STALE-OR-ALTERED-FIELD-CORRESPONDENCE')
++    return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'actual_admission':False,'complete_repetition_coverage':False}
++
++
++# New reference slice. The previously reviewed field root and its receipt remain
++# byte-for-byte retained; no historical test suite or producer is invoked.
++def reference_inputs(root=ROOT):
++    import os,stat
++    root=Path(root);base=root/'retained/fields'
++    require(stat.S_ISDIR(base.lstat().st_mode),'REFERENCE-BASE-ROOT-TYPE')
++    p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'REFERENCE-BASE-MANIFEST-TYPE');raw=p.read_bytes()
++    require(identity(raw)=={'bytes':102850,'sha256':'30fdca495d02ad4da5883d93ec62af801d9577b20142fc0fd97b8dedb3f3aab1'},'REFERENCE-BASE-MANIFEST')
++    manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
++    directories={str(p) for n in expected for p in Path(n).parents if str(p)!='.'};seen=set();dirs=set()
++    def walk(path):
++        for entry in os.scandir(path):
++            q=Path(entry.path);name=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
++            if stat.S_ISDIR(mode):
++                require(name in directories,'REFERENCE-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
++            else:require(stat.S_ISREG(mode) and name in expected,'REFERENCE-UNDECLARED-OR-NONREGULAR');seen.add(name)
++    walk(base);require(seen==expected and dirs==directories,'REFERENCE-BASE-MEMBERSHIP')
++    for name,pin in manifest.items():require(identity((base/name).read_bytes())==pin,'REFERENCE-BASE-BYTES:'+name)
++    prior=_module(base/'code/correspondence.py','_reviewed_field_correspondence')
++    data=prior.field_inputs(base)
++    data['reference_root']=root;data['field_root']=base;data['field_module']=prior
++    data['reference_coverage']=_module(root/'code/managed_coverage.py','_reference_managed_coverage')
++    data['authority']=data['ctx']['c']['retained/candidate/support/reference/runtime/authority.py']
++    return data
++
++
++def reference_catalogue(data):
++    v=data['values'];g=data['guards']
++    return data['reference_coverage'].compile_reference_transfers(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],data['authority'])
++
++
++def check_reference_catalogue(data,submitted):
++    v=data['values'];g=data['guards']
++    return data['reference_coverage'].validate_reference_transfers(data['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],data['authority'],submitted)
++
++
++def reference_path(data,case,submitted=None):
++    mc=data['reference_coverage'];g=data['guards']
++    if submitted is None:return mc.constructed_reference_path(data['manager'],g['guard_relationships'],g['guard_oracle'],case)
++    return mc.validate_constructed_reference_path(data['manager'],g['guard_relationships'],g['guard_oracle'],case,submitted)
++
++
++def derive_reference(data,catalogue,evidence=None):
++    check_reference_catalogue(data,catalogue)
++    ctx=dict(data['ctx'])
++    if evidence is not None:ctx['e']=evidence
++    # Reuse SOC-closed source/identity/completion/parent checks. No interpretation
++    # of equal recorded binding dictionaries as equal runtime objects is added.
++    observed=data['occurrence'].derive(ctx)
++    fields=data['field_module'].derive(data['field_root'])
++    saved=(data['field_root']/'results/status-field-correspondence.json').read_bytes()
++    require(enc(fields)==saved,'REFERENCE-STALE-FIELD-RECEIPT')
++    require(identity(saved)=={'bytes':293607,'sha256':'46d7acfacc3ef8fc06683564eaacec64e54b3559d5b9416f2575b53fb0213381'},'REFERENCE-FIELD-RECEIPT-PIN')
++    trace=json.loads(ctx['e']['evidence/execution-trace.json'])['events']
++    calls={e['frame']:e for e in trace if e['event']=='call' and not e['resumed_generator']}
++    result=copy.deepcopy(fields);result['format']='I164-MANAGED-REFERENCE-CORRESPONDENCE-1'
++    result['prior_field_components']=result.pop('extension_components')
++    result['extension_components']={n:identity((data['reference_root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++    result['prior_field_receipt']=identity(saved)
++    source=catalogue['source'];by_function={}
++    for r in source['writes']+source['calls']:
++        by_function.setdefault('ManagedAuthority.'+r['function'],[]).append(r.get('id','managed-reference-call:'+r['site']))
++    for context in result['contexts']:
++        context['reference_declarations']=copy.deepcopy(catalogue)
++        view=next(v for v in observed['contexts'] if v['context']==context['context'])
++        rows=[]
++        for occurrence in view['occurrences']:
++            frame=occurrence.get('frame');call=calls.get(frame)
++            if call is None or call['function'] not in by_function:continue
++            rows.append({'occurrence':occurrence['id'],'instance':copy.deepcopy(view['instance']),'frame':frame,'parent':call['parent'],
++             'call_pointer':'/events/'+str(call['seq']),'trace_identity':identity(ctx['e']['evidence/execution-trace.json']),
++             'source_relation_ids':copy.deepcopy(by_function[call['function']]),
++             'join_meaning':'Observed invocation of a source function containing these conditional relations; not proof every relation executed',
++             'observed_reference_transfers':None,'object_identity':None,'underlying_connection_identity':None,
++             'missing':'Capture has no _live/_retired values or local a identity. Existing sparse completion checks remain bounded; no assignment-line or historical launcher frame is invented.'})
++        context['saved_reference_scope']=rows
++        context['reference_observation_limits']={'actual_reference_transfers':'UNAVAILABLE','equal_recorded_values_prove_identity':False,
++         'separate_observer_Client_state_call':True,'observer_frame':None,'observer_parent':None,'new_executions':0,
++         'outstanding_cleanup_obligations':'Not discharged by absence of reference snapshots or a source clear'}
++    result['new_reference_slice_limits']={'source_conditional_only':True,'new_runtime_behavior':False,'complete_repetition_coverage':False,
++     'multiplicity':None,'lifetime_bound':None,'reference_identity_is_not_record_equality':True,'no_new_logging_or_retention_permission':True,
++     'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED',
++     'SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
++    return result
++
++
++def derive(root=ROOT):
++    data=reference_inputs(root)
++    return derive_reference(data,reference_catalogue(data))
++
++
+ def validate(root,saved):
+-    require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-FIELD-CORRESPONDENCE')
++    require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-REFERENCE-CORRESPONDENCE')
+     return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'actual_admission':False,'complete_repetition_coverage':False}
++
+ 
+ if __name__=='__main__':
+     import argparse
