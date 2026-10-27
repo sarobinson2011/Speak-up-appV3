@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/hf-review/code/independent_controls.py", line 31, in main
+    m=module(root/'code/correspondence.py','review_recovery');data=m.recovery_inputs(root);cat=m.recovery_catalogue(data);savedraw=(root/'results/recovery-field-correspondence.json').read_bytes();saved=json.loads(savedraw)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 348, in recovery_inputs
+    walk(base);require(seen==expected and dirs==directories,'RECOVERY-BASE-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 346, in walk
+    require(name in directories,'RECOVERY-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+                                                                                ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 346, in walk
+    require(name in directories,'RECOVERY-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+                                                                                ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 346, in walk
+    require(name in directories,'RECOVERY-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
+                                                                                ^^^^^^^
+  [Previous line repeated 6 more times]
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 347, in walk
+    else:require(stat.S_ISREG(mode) and name in expected,'RECOVERY-UNDECLARED-OR-NONREGULAR');seen.add(name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/hf-recovered/code/correspondence.py", line 23, in require
+    if not value:raise ValueError(reason)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: RECOVERY-UNDECLARED-OR-NONREGULAR

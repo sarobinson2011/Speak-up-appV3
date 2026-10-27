@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "assertions": 7,
+  "checks": [
+    {
+      "restored_member": "evidence/client-handoff.json",
+      "result": "REJECTED",
+      "reason": "HANDOFF-HEAD"
+    },
+    {
+      "restored_member": "evidence/confirmed-close.json",
+      "result": "REJECTED",
+      "reason": "RETAINED-IDENTITY:BOOTSTRAP-COMPLETE.json"
+    },
+    {
+      "restored_member": "evidence/execution-trace.json",
+      "result": "REJECTED",
+      "reason": "RECOVERY-HEAD"
+    },
+    {
+      "restored_member": "evidence/recovery-export-0.json",
+      "result": "REJECTED",
+      "reason": "HANDOFF-HEAD"
+    },
+    {
+      "restored_member": "evidence/session-records/BOOTSTRAP-COMPLETE.json",
+      "result": "REJECTED",
+      "reason": "BOOTSTRAP-STATE"
+    },
+    {
+      "restored_member": "evidence/smoke-result.json",
+      "result": "REJECTED",
+      "reason": "RESULT-STATE"
+    },
+    {
+      "restored_member": "new-session-records/BOOTSTRAP-COMPLETE.json",
+      "result": "REJECTED",
+      "reason": "COPY-LINEAGE"
+    }
+  ],
+  "scope": "Member-removal minimality for this fixed substitution; not a proof of global byte-minimality",
+  "no_database_or_runtime_operations": true
+}

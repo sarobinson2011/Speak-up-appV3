@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "check": "undeclared empty directory before import",
+      "result": "PASS",
+      "rejection": "RECOVERY-UNDECLARED-DIRECTORY"
+    },
+    {
+      "check": "undeclared FIFO before import",
+      "result": "PASS",
+      "rejection": "RECOVERY-UNDECLARED-OR-NONREGULAR"
+    },
+    {
+      "check": "symlink before import",
+      "result": "PASS",
+      "rejection": "RECOVERY-UNDECLARED-OR-NONREGULAR"
+    },
+    {
+      "check": "stale receipt before import",
+      "result": "PASS",
+      "rejection": "RECOVERY-BASE-BYTES:results/reference-correspondence.json"
+    },
+    {
+      "check": "missing receipt before import",
+      "result": "PASS",
+      "rejection": "RECOVERY-BASE-MEMBERSHIP"
+    }
+  ],
+  "passed": 5,
+  "root": "/workspace/scratch/3da0de3fef10/recovery-fields-tools/recovered-root-3",
+  "restored_exact_manifest": true,
+  "unix_socket_and_device_entries": "UNTESTED; preexisting limitation preserved",
+  "no_runtime": true
+}

@@ -1,0 +1,16 @@
+{
+  "reason": "Reviewer profile callback used pathlib.Path on every Python call. Interrupted only reviewer harness processes to remove avoidable profiling overhead. Candidate code unchanged; partial results preserved and not added to final counts.",
+  "partial_counts_at_interruption": {
+    "independent-primary": 3,
+    "independent-recovered": 3
+  },
+  "signal": "SIGINT",
+  "processes": [
+    9784,
+    9816
+  ],
+  "initial_signal_delivery": "Direct PID signal failed with ProcessLookupError; no process interrupted by that command.",
+  "termination": "Both reviewer sessions subsequently interrupted through their own stdin/session controls; each exited 130.",
+  "independent-primary_final_partial_checks": 17,
+  "independent-recovered_final_partial_checks": 3
+}

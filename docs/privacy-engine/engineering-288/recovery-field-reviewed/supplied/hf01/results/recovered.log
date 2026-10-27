@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root/tests/recovered_check.py", line 16, in <module>
+    data=m.recovery_inputs(root);cat=m.recovery_catalogue(data);e=dict(data['ctx']['e'])
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root/code/correspondence.py", line 488, in recovery_inputs
+    root=Path(root);base=_original_root(root)
+                         ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root/code/correspondence.py", line 482, in _original_root
+    walk(base);require(seen==expected and dirs==directories,'HF01-ORIGINAL-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root/code/correspondence.py", line 481, in walk
+    else:require(stat.S_ISREG(mode) and name in expected,'HF01-UNDECLARED-OR-NONREGULAR');seen.add(name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root/code/correspondence.py", line 23, in require
+    if not value:raise ValueError(reason)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: HF01-UNDECLARED-OR-NONREGULAR

@@ -1,0 +1,534 @@
+{
+  "result": "PASS",
+  "assertions": 69,
+  "categories": {
+    "constructed_only": 6,
+    "independent": 24,
+    "internal_relation": 19,
+    "negative": 12,
+    "public_negative": 8
+  },
+  "checks": [
+    {
+      "check": "legitimate semantic validation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate derivation exact saved bytes",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "derived bytes equal saved receipt",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate public validation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "preserved entire predecessor context SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent recovery frame and exact value SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "exact boolean types and source constants SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "same evidence trace acquisition occurrence and instance SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent exact HEAD member binding SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "preserved entire predecessor context SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent recovery frame and exact value SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "exact boolean types and source constants SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "same evidence trace acquisition occurrence and instance SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independent exact HEAD member binding SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "both declared context identities and ordering",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "missing observations are not invented",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "independently reconstructed original seven-report witness exact",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "original witness semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "original witness derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "original mixed receipt public rejection retained",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "adjacent last-digit coordinated substitution semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "adjacent last-digit coordinated substitution derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "caller baseline plus reports cannot alter semantic expectation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "caller baseline plus reports cannot alter derivation expectation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "missing instance binding semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/session-records/binding.json'"
+      }
+    },
+    {
+      "check": "missing instance binding derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/session-records/binding.json'"
+      }
+    },
+    {
+      "check": "mixed acquisition reports semantic",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-HEAD"
+      }
+    },
+    {
+      "check": "mixed acquisition reports derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-HEAD"
+      }
+    },
+    {
+      "check": "stale caller boundary cannot replace current basis",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-SOURCE-AND-BOUNDARY-BASIS"
+      }
+    },
+    {
+      "check": "value comparison rejects before whole-map identities",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "changed decoded selector",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-STATE-SELECTOR"
+      }
+    },
+    {
+      "check": "changed non-head state",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-COMPLETE-VALIDATED-STATE"
+      }
+    },
+    {
+      "check": "same state altered exact bytes",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-EXACT-VALIDATED-STATE-BYTES"
+      }
+    },
+    {
+      "check": "duplicate parsed head cannot hide different raw bytes",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-EXACT-VALIDATED-STATE-BYTES"
+      }
+    },
+    {
+      "check": "changed configuration",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-CONFIGURATION-BASIS"
+      }
+    },
+    {
+      "check": "changed ownership representation",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-OWNERSHIP-BASIS"
+      }
+    },
+    {
+      "check": "integer cannot equal boolean head expectation",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-HEAD-EXPECTED-STATE"
+      }
+    },
+    {
+      "check": "internal binding altered instance context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered occurrences context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered context name context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered record join context 0",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered instance context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered occurrences context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered context name context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal binding altered record join context 1",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS"
+      }
+    },
+    {
+      "check": "internal missing evidence member",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-EVIDENCE-MEMBERSHIP"
+      }
+    },
+    {
+      "check": "internal invented member",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-EVIDENCE-MEMBERSHIP"
+      }
+    },
+    {
+      "check": "internal unused evidence byte substitution",
+      "category": "internal_relation",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HF01-EVIDENCE-BYTES:MANIFEST.json"
+      }
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-ONE 64",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-ONE 0",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-ONE 20004",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-TWO 64",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-TWO 0",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "constructed equal nonzero/empty/unbounded premise SYMBOLIC-U-TWO 20004",
+      "category": "constructed_only",
+      "result": "PASS"
+    },
+    {
+      "check": "public missing head binding context 0",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public missing head binding context 1",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated false public receipt both contexts",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public missing context",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public duplicated context",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public stale predecessor",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public status escalation",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "semantic pristine after all nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "derivation unchanged after all nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "public pristine after all nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "mutated returned receipt cannot be accepted",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "candidate evidence not repaired or mutated",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "current predecessor actually invoked",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "observed head comparison uses original independent expectation",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "source bytes unchanged",
+      "category": "independent",
+      "result": "PASS"
+    }
+  ],
+  "failure": null,
+  "root": "/workspace/scratch/ace5c9b2f18b/hfc-input",
+  "recovered": false,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "source": {
+    "correspondence.py": {
+      "bytes": 44179,
+      "sha256": "5ea4daf28e6d0707ad247722b6c1ba572ef3f18e75891aae0ffc882fe8d25097"
+    },
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    }
+  },
+  "no_runtime_session_database_operations": true,
+  "no_completed_review_rerun": true
+}

@@ -1,0 +1,52 @@
+{
+  "stage": "temporary recovery ZIP before recovered validation",
+  "creation_report": {
+    "CRC": "PASS",
+    "all_member_hashes": "PASS",
+    "bytes": 39032071,
+    "entries": 608,
+    "filename": "recovery-input.zip",
+    "manifest_identity": {
+      "bytes": 140116,
+      "sha256": "8d113d2e1cc19694020517b7a63955e935997741d9d3c1bbcdc043e5bb863f8a"
+    },
+    "manifested_files": 607,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "2f6972b1c9cdf78c5a5ded77ad19b88272edbf9a35442a0fcbb67617cd73cb89"
+  },
+  "later_observed": {
+    "path": "/workspace/scratch/3da0de3fef10/recovery-fields-tools/recovery-input.zip",
+    "bytes": 36770819,
+    "sha256": "33caa75bdc569d8d8980f149bd272eb069869b14407d1563db50f4e846d9e231"
+  },
+  "recovery_error": "zipfile.BadZipFile: File is not a zip file",
+  "recovered_controls_started": false,
+  "source_of_discrepancy": "UNKNOWN",
+  "action": "Preserve failed temporary output separately; use a distinct new archive, identity verification and recovery in one completed process. No candidate implementation changes or primary-control rerun.",
+  "second_attempt": {
+    "creation_and_in_process_extraction": {
+      "filename": "recovery-input-2.zip",
+      "bytes": 39032919,
+      "sha256": "44d9f5e11cf0bfac6b3730b1d4cd1c255f9efe67e3928226a182d8bcb1bda291",
+      "entries": 609,
+      "manifested_files": 608,
+      "CRC": "PASS",
+      "safe_unique_regular_membership": "PASS",
+      "all_member_hashes": "PASS",
+      "manifest_identity": {
+        "bytes": 140263,
+        "sha256": "4fe29223edcf77bd791f9fdd79c8dabfc1979df227d9921e21496fc49c1338ca"
+      },
+      "extracted_root": "/workspace/scratch/3da0de3fef10/recovery-fields-tools/recovered-root",
+      "purpose": "New focused recovered-root validation only",
+      "prior_discrepancy": "results/packaging-discrepancy.json"
+    },
+    "next_process_observed": {
+      "bytes": 34910082,
+      "sha256": "5b5f356de427c73f35eda11c4d0a5443cf4cdd6c4787721c50a06b0faed8efae"
+    },
+    "controls_started": false,
+    "cause": "UNKNOWN; creation-process verification succeeded but bytes seen after asynchronous tool completion differ"
+  },
+  "next_action": "Create a distinct archive in one synchronous command, publish by rename only after verification, then verify bytes in a later process before controls."
+}

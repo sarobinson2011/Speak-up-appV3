@@ -1,0 +1,169 @@
+--- original
++++ HF01-corrected
+@@ -331,7 +331,7 @@
+ 
+ # Recovery envelope slice. Historical code and receipts are retained unchanged
+ # in their own roots. No application/backend source is imported or executed.
+-def recovery_inputs(root=ROOT):
++def _reviewed_recovery_inputs(root=ROOT):
+     import os,stat
+     root=Path(root);base=root/'retained/references'
+     require(stat.S_ISDIR(base.lstat().st_mode),'RECOVERY-BASE-ROOT-TYPE')
+@@ -392,15 +392,19 @@
+         'meaning':'Trusted observer captures local export on normal validator completion, then writes it. This is not a separately observed validator scalar or ingest/state call.'}
+ 
+ 
+-def connected_recovery(data,catalogue,evidence=None):
++def _checked_recovery(data,catalogue,evidence=None):
+     """Negative-control seam: source and semantic correspondence. Replacement
+     evidence never becomes admitted input; public derive uses the pinned root.
+     """
+     check_recovery_catalogue(data,catalogue)
++    basis=_validated_predecessor_basis(data)
+     ctx=dict(data['ctx'])
+     if evidence is not None:ctx['e']=evidence
+-    e=ctx['e'];capture=recovery_capture(e['preparation/worker.py'])
++    e=_evidence_bytes(ctx['e']);ctx['e']=e
++    require(ctx['c']==basis['data']['ctx']['c'] and ctx['binding']==basis['data']['ctx']['binding'] and ctx['root']==basis['data']['ctx']['root'],'HF01-SOURCE-AND-BOUNDARY-BASIS')
++    capture=recovery_capture(e['preparation/worker.py'])
+     observed=data['occurrence'].derive(ctx) # exact existing head/completion/lineage and SOC checks
++    _bind_predecessor_evidence(basis,e,observed,catalogue)
+     events=json.loads(e['evidence/execution-trace.json'])['events']
+     calls={a['frame']:a for a in events if a['event']=='call' and not a['resumed_generator']}
+     normal={a['frame']:a for a in events if a['event']=='return' and a['normal_return']}
+@@ -430,25 +434,28 @@
+                 'relation':'Existing authenticated export/state correspondence plus exact source return chain and capture contract; no scalar/assignment event invented'}))
+     return observed,capture,{'frame':call['frame'],'parent':call['parent'],'call_pointer':f"/events/{call['seq']}",'fields':rows,
+         'status_embedding':{'child_frame':status_call['frame'],'child_pointer':f"/events/{status_return['seq']}/value",'parent_pointer':f"/events/{ret['seq']}/value/status",'validation':'Existing source/status embedding checks plus exact equality; separate actual invocation'},
+-        'limitations':'Only this saved normal recovery. Failure/interruption paths are source guards, not new observed executions. No observed _validate scalar, Authority.state or ingest frame.'}
++        'limitations':'Only this saved normal recovery. Failure/interruption paths are source guards, not new observed executions. No observed _validate scalar, Authority.state or ingest frame.'},basis
++
++
++def connected_recovery(data,catalogue,evidence=None):
++    observed,capture,row,_=_checked_recovery(data,catalogue,evidence)
++    return observed,capture,row
+ 
+ 
+ def derive_recovery(data,catalogue,evidence=None):
+-    observed,capture,row=connected_recovery(data,catalogue,evidence)
+-    prior=data['reference_module'].derive(data['reviewed_reference_root']) # mandatorily retains both reviewed extensions
+-    saved=(data['reviewed_reference_root']/'results/reference-correspondence.json').read_bytes()
+-    require(enc(prior)==saved,'RECOVERY-STALE-REFERENCE-RECEIPT')
+-    require(identity(saved)=={'bytes':451987,'sha256':'61f93d2ade9436c0d8b6885cea7cb5bb96b84e963c98bb07d7adce37852b7c7f'},'RECOVERY-REFERENCE-RECEIPT-PIN')
+-    result=copy.deepcopy(prior);result['format']='I164-MANAGED-RECOVERY-FIELD-CORRESPONDENCE-1'
++    observed,capture,row,basis=_checked_recovery(data,catalogue,evidence)
++    prior=basis['prior'];saved=basis['saved']
++    result=copy.deepcopy(prior);result['format']='I164-MANAGED-RECOVERY-FIELD-CORRESPONDENCE-HF01-1'
+     result['prior_reference_components']=result.pop('extension_components');result['prior_reference_receipt']=identity(saved)
+     result['extension_components']={n:identity((data['recovery_root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+-    evidence=data['ctx']['e'] if evidence is None else evidence
++    evidence=basis['evidence'] # checked identical; never repair a contradictory input
+     for context in result['contexts']:
+         view=next(v for v in observed['contexts'] if v['context']==context['context'])
+         actual=next(o for o in view['occurrences'] if o.get('frame')==row['frame'])
+         context['recovery_field_declarations']=copy.deepcopy(catalogue)
+         context['saved_recovery_fields']=[dict(copy.deepcopy(row),occurrence=actual['id'],instance=copy.deepcopy(view['instance']),trace_identity=identity(evidence['evidence/execution-trace.json']))]
+         context['recovery_capture_contract']=copy.deepcopy(capture)
++        context['hf01_evidence_binding']=copy.deepcopy(basis['bindings'][context['context']])
+     result['new_recovery_slice_limits']={'static_source_coverage_only':True,'saved_recovery_invocations':1,'traced_invocations':18,'separate_observer_Client_state_call':1,
+         'observer_frame':None,'observer_parent':None,'missing_validator_scalar':True,'missing_ingest_and_state_frames':True,'two_contexts_are_not_two_executions':True,
+         'no_new_head_authentication_or_transitive_type_proof':True,'no_runtime_changes':True,'complete_repetition_coverage':False,'multiplicity':None,
+@@ -457,6 +464,98 @@
+     return result
+ 
+ 
++# HF-01: one independent, current predecessor evidence basis per validation.
++# No returned/caller-owned dictionaries are cached as authoritative expectations.
++def _original_root(root):
++    import os,stat
++    base=Path(root)/'original';require(stat.S_ISDIR(base.lstat().st_mode),'HF01-ORIGINAL-ROOT-TYPE')
++    p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'HF01-ORIGINAL-MANIFEST-TYPE');raw=p.read_bytes()
++    require(identity(raw)=={'bytes':141342,'sha256':'4db465d7729b086495d380a2f3917a77f99e24727e200fb5fea6e4ebd964020f'},'HF01-ORIGINAL-MANIFEST')
++    manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'}
++    directories={str(p) for n in expected for p in Path(n).parents if str(p)!='.'};seen=set();dirs=set()
++    def walk(path):
++        for entry in os.scandir(path):
++            q=Path(entry.path);name=q.relative_to(base).as_posix();mode=entry.stat(follow_symlinks=False).st_mode
++            if stat.S_ISDIR(mode):
++                require(name in directories,'HF01-UNDECLARED-DIRECTORY');dirs.add(name);walk(q)
++            else:require(stat.S_ISREG(mode) and name in expected,'HF01-UNDECLARED-OR-NONREGULAR');seen.add(name)
++    walk(base);require(seen==expected and dirs==directories,'HF01-ORIGINAL-MEMBERSHIP')
++    for name,pin in manifest.items():require(identity((base/name).read_bytes())==pin,'HF01-ORIGINAL-BYTES:'+name)
++    return base
++
++
++def recovery_inputs(root=ROOT):
++    root=Path(root);base=_original_root(root)
++    prior=_module(base/'code/correspondence.py','_hf01_original_correspondence')
++    data=prior.recovery_inputs(base)
++    data['recovery_root']=root
++    data['recovery_coverage']=_module(root/'code/managed_coverage.py','_hf01_unchanged_producer')
++    return data
++
++
++def _evidence_bytes(evidence):
++    require(type(evidence) is dict and all(type(k) is str and type(v) is bytes for k,v in evidence.items()),'HF01-EVIDENCE-BYTES')
++    return dict(evidence) # values are immutable; copy the caller-owned mapping
++
++
++def _validated_predecessor_basis(data):
++    # Reload from the current verified dependency root, never from candidate
++    # reports or a previously returned result. The predecessor and head decoder
++    # consume this same fresh context, with no alternate evidence argument.
++    fresh=recovery_inputs(data['recovery_root']);e=_evidence_bytes(fresh['ctx']['e']);fresh['ctx']['e']=e
++    prior_module=fresh['reference_module']
++    prior=prior_module.derive_reference(fresh,prior_module.reference_catalogue(fresh))
++    saved=(fresh['reviewed_reference_root']/'results/reference-correspondence.json').read_bytes()
++    require(enc(prior)==saved,'HF01-STALE-PREDECESSOR-RECEIPT')
++    require(identity(saved)=={'bytes':451987,'sha256':'61f93d2ade9436c0d8b6885cea7cb5bb96b84e963c98bb07d7adce37852b7c7f'},'HF01-PREDECESSOR-RECEIPT-PIN')
++    observed=fresh['occurrence'].derive(fresh['ctx'])
++    bindings={}
++    for view in observed['contexts']:
++        name=view['context'];p=next(v for v in prior['contexts'] if v['context']==name)
++        calls=[o for o in view['occurrences'] if o.get('source',{}).get('qualified')=='ManagedAuthority.recover'];require(len(calls)==1,'HF01-PREDECESSOR-RECOVERY')
++        occurrence=calls[0];rows=[r for r in p['saved_reference_scope'] if r['occurrence']==occurrence['id']];require(len(rows)==1,'HF01-PREDECESSOR-REFERENCE-JOIN')
++        row=rows[0];require(enc(row['instance'])==enc(view['instance']) and row['trace_identity']==identity(e['evidence/execution-trace.json']),'HF01-PREDECESSOR-INSTANCE-TRACE')
++        require(row['frame']==occurrence['frame'] and row['parent']==occurrence['parent_frame'] and row['call_pointer']==occurrence['call']['pointer'],'HF01-PREDECESSOR-CALL-JOIN')
++        # Reuse the exact HEAD record/declaration join already enforced by the
++        # occurrence adapter; no database parse/query or new authentication rule.
++        joins=[j for j in view['record_declaration_joins'] if j['declaration'].get('template_id')=='HEAD:'];require(len(joins)==1,'HF01-PREDECESSOR-HEAD-JOIN')
++        record=joins[0]['record'];require(record['artifact']=='evidence/recovery-export-0.json' and record['pointer']=='/head','HF01-HEAD-RECORD-SELECTOR')
++        require({k:record[k] for k in ('bytes','sha256')}==identity(e[record['artifact']]) and record['acquisition']==occurrence['call']['acquisition'],'HF01-HEAD-ACQUISITION-JOIN')
++        bindings[name]={'predecessor_receipt':identity(saved),'occurrence':copy.deepcopy(occurrence),'instance':copy.deepcopy(view['instance']),
++            'head_record':copy.deepcopy(record),'head_declaration':copy.deepcopy(joins[0]['declaration']),
++            'trace_identity':identity(e['evidence/execution-trace.json']),
++            'meaning':'Semantic value and exact-byte correspondence to the same current evidence consumed by the mandatory predecessor chain; not new database authentication or observation'}
++    require(len(bindings)==len(observed['contexts'])==2,'HF01-CONTEXT-DOMAIN')
++    return {'data':fresh,'evidence':e,'prior':prior,'saved':saved,'observed':observed,'bindings':bindings}
++
++
++def _compare_validated_head(candidate_export,expected_export,selector):
++    """Value relation under an independently validated expected-export premise.
++    It is not an evidence admission API. No head constant or string cap is used.
++    """
++    candidate_raw=bytes.fromhex(candidate_export['head']);expected_raw=bytes.fromhex(expected_export['head'])
++    candidate_state=json.loads(candidate_raw);expected_state=json.loads(expected_raw)
++    require(enc(candidate_export['expected_head'])==enc(expected_export['expected_head']),'HF01-HEAD-EXPECTED-STATE')
++    require(enc(candidate_state[selector])==enc(expected_state[selector]),'HF01-HEAD-STATE-SELECTOR')
++    require(enc(candidate_state)==enc(expected_state),'HF01-COMPLETE-VALIDATED-STATE')
++    require(candidate_raw==expected_raw,'HF01-EXACT-VALIDATED-STATE-BYTES')
++    require(enc(candidate_export['config'])==enc(expected_export['config']),'HF01-CONFIGURATION-BASIS')
++    require(candidate_export['ownership_meta']==expected_export['ownership_meta'],'HF01-OWNERSHIP-BASIS')
++
++
++def _bind_predecessor_evidence(basis,evidence,observed,catalogue):
++    # Compare semantic head/state/configuration/ownership before any whole-map
++    # identity check. Seven mutually consistent altered reports cannot supply
++    # their own expected head. The basis above is independently revalidated.
++    expected=basis['evidence'];path='evidence/recovery-export-0.json'
++    _compare_validated_head(json.loads(evidence[path]),json.loads(expected[path]),catalogue['source']['head_chain']['selector'])
++    require(enc(observed)==enc(basis['observed']),'HF01-ACQUISITION-INSTANCE-OCCURRENCE-BASIS')
++    # This additional exact-record gate prevents mixed or stale retained bytes
++    # even when their interpreted head happens to match. No silent repair.
++    require(set(evidence)==set(expected),'HF01-EVIDENCE-MEMBERSHIP')
++    for name in expected:require(evidence[name]==expected[name],'HF01-EVIDENCE-BYTES:'+name)
++
++
+ def derive(root=ROOT):
+     data=recovery_inputs(root)
+     return derive_recovery(data,recovery_catalogue(data))

@@ -1,0 +1,33 @@
+{
+  "result": "PASS original declared bytes preserved",
+  "input": {
+    "bytes": 39038102,
+    "sha256": "c92840a853097a9fe5fd1cd80134649fdd25a7463422cce81361a46bec70f8cf"
+  },
+  "strict_roots": [
+    {
+      "root": "hf-input",
+      "exact_unchanged_members": 617,
+      "parent_directories": 247,
+      "all_bytes_and_regular_types_verified": true
+    },
+    {
+      "root": "hf-recovered-2",
+      "exact_unchanged_members": 617,
+      "parent_directories": 247,
+      "all_bytes_and_regular_types_verified": true
+    }
+  ],
+  "first_recovered_root_failure": {
+    "declared_members_unchanged": 617,
+    "current_extra_regular_members": {
+      "retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.ttEpvZ": {
+        "bytes": 11534336,
+        "sha256": "0f48e8f429afbcbe20857e22f973c5e844dbfcbd3f4e50644439cb204e9a3c65"
+      }
+    },
+    "rejected_root_not_cleaned_by_reviewer": true,
+    "preserved_unexpected_bytes_are_prefix_of_declared_neighbor": true,
+    "source_of_extra_entry": "UNKNOWN"
+  }
+}

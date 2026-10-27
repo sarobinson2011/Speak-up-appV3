@@ -1,0 +1,828 @@
+{
+  "result": "PASS focused controls",
+  "assertions": 97,
+  "categories": {
+    "catalogue_negative": 47,
+    "constructed_negative": 10,
+    "constructed_only": 6,
+    "independent": 14,
+    "public_negative": 8,
+    "saved_evidence_negative": 12
+  },
+  "checks": [
+    {
+      "check": "legitimate public exact receipt",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "legitimate semantic connection",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "legitimate exact derivation",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source fields chain guards and ordering",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source audit SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all preceding context fields preserved SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact recorded value export and occurrence joins SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source audit SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all preceding context fields preserved SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact recorded value export and occurrence joins SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "validator scalar absence is real",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "eighteen invocations and separate observer preserved",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "coordinated field/expected membership omission head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed type head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed origin head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return guard head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return continuation head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated field/expected membership omission recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed type recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed origin recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return guard recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return continuation recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated field/expected membership omission new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed type new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed origin new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return guard new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing return continuation new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency validator_call",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency parameter",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency argument",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency state_assignment",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency state_call",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency validator_return",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency lookup",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency selector",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency export_assignment",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency expected_head_expression",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency ingest_call",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency raw_head_expression",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency authority_state_return",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency authority_state_load",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency authority_head_query",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted head dependency export_head_query",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted source program ManagedAuthority.recover",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted source program ManagedAuthority._validate",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "omitted source program Authority.state",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated wrong boolean constant 1",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated wrong boolean constant 2",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "missing embedded status relationship",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "false allocation and full model claim",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "cached producer omission 92:4:92:99:Return",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "cached producer omission 66:2:66:13:Assign",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "cached producer omission 67:2:72:119:Assign",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "cached producer omission 73:2:73:33:Call",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "cached producer omission 75:2:75:18:Return",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "cached producer omission 90:36:90:58:Assign",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-INHERITED-SITE"
+      }
+    },
+    {
+      "check": "stale manager defining source",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-MANAGER-SOURCE"
+      }
+    },
+    {
+      "check": "stale authority defining source",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-AUTHORITY-SOURCE"
+      }
+    },
+    {
+      "check": "substituted inherited head declaration",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-HEAD-DEFINITION"
+      }
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-ONE length 0",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-ONE length 3",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-ONE length 16385",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-TWO length 0",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-TWO length 3",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-TWO length 16385",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "conditional exact type/constant head None",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:head"
+      }
+    },
+    {
+      "check": "conditional exact type/constant head 0",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:head"
+      }
+    },
+    {
+      "check": "conditional exact type/constant head b'0'",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:head"
+      }
+    },
+    {
+      "check": "conditional exact type/constant head []",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:head"
+      }
+    },
+    {
+      "check": "conditional exact type/constant recovery_only 1",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:recovery_only"
+      }
+    },
+    {
+      "check": "conditional exact type/constant recovery_only False",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-ORIGIN:recovery_only"
+      }
+    },
+    {
+      "check": "conditional exact type/constant recovery_only 'true'",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:recovery_only"
+      }
+    },
+    {
+      "check": "conditional exact type/constant new_attempt_authorized 0",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:new_attempt_authorized"
+      }
+    },
+    {
+      "check": "conditional exact type/constant new_attempt_authorized True",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-ORIGIN:new_attempt_authorized"
+      }
+    },
+    {
+      "check": "conditional exact type/constant new_attempt_authorized None",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:new_attempt_authorized"
+      }
+    },
+    {
+      "check": "missing observed head",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'head'"
+      }
+    },
+    {
+      "check": "missing observed recovery_only",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'recovery_only'"
+      }
+    },
+    {
+      "check": "missing observed new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'new_attempt_authorized'"
+      }
+    },
+    {
+      "check": "wrong observed head",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-HEAD"
+      }
+    },
+    {
+      "check": "wrong observed recovery_only",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-ONLY"
+      }
+    },
+    {
+      "check": "wrong observed new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "NO-RENEWAL"
+      }
+    },
+    {
+      "check": "missing required export",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'evidence/recovery-export-0.json'"
+      }
+    },
+    {
+      "check": "invented validator scalar",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "TRACE-FIELDS"
+      }
+    },
+    {
+      "check": "wrong validator completion",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "COMPLETION-CLASS"
+      }
+    },
+    {
+      "check": "wrong recovery embedding parent",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CALLER-PARENT"
+      }
+    },
+    {
+      "check": "coordinated three-field head substitution",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDOFF-HEAD"
+      }
+    },
+    {
+      "check": "coordinated status parent child and snapshots",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "MANAGED-CALL-STATE"
+      }
+    },
+    {
+      "check": "public omitted field context 0",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public stale head context 0",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public omitted field context 1",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public stale head context 1",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public duplicated contexts",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public stale predecessor receipt",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public false observed scalar",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public UNKNOWN and readiness escalation",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "mutable returned objects cannot change pristine expectations",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "implementation source unchanged",
+      "result": "PASS",
+      "category": "independent"
+    }
+  ],
+  "failure": null,
+  "separate_coordinated_probe_not_included_in_pass_count": true,
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    },
+    "correspondence.py": {
+      "bytes": 36968,
+      "sha256": "e21dfa0524304914ee676fa6df45856bb32b56159302527fb62fc0d011ce97ad"
+    }
+  },
+  "recovered": false,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "constructed_cases": 6,
+  "no_runtime_session_database_operations": true,
+  "no_completed_review_rerun": true
+}

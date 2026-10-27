@@ -1,0 +1,1918 @@
+{
+  "SYMBOLIC-U-ONE": {
+    "result": "PASS",
+    "fields": [
+      {
+        "name": "head",
+        "source_expression": "head",
+        "type": "inherited HEAD string"
+      },
+      {
+        "name": "recovery_only",
+        "source_expression": "True",
+        "type": "bool"
+      },
+      {
+        "name": "new_attempt_authorized",
+        "source_expression": "False",
+        "type": "bool"
+      }
+    ],
+    "return": {
+      "continuation": [
+        {
+          "normal_continuation_of": [],
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body"
+        },
+        {
+          "normal_continuation_of": [
+            {
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+              "site": "78:3:78:65:If"
+            },
+            {
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+              "site": "79:3:79:78:If"
+            },
+            {
+              "expression": "self._dispose()",
+              "site": "82:3:82:18:Expr"
+            },
+            {
+              "expression": "self._phase='OPEN_FAILED'",
+              "site": "83:3:83:28:Assign"
+            },
+            {
+              "expression": "self._reason='open/validation not yet confirmed'",
+              "site": "83:29:83:77:Assign"
+            },
+            {
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+              "site": "84:3:84:111:If"
+            },
+            {
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+              "site": "85:3:85:61:Assign"
+            },
+            {
+              "expression": "self._retired=a",
+              "site": "86:3:86:18:Assign"
+            }
+          ],
+          "owner": "77:2:99:94:With",
+          "region": "body"
+        },
+        {
+          "normal_continuation_of": [
+            {
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+              "site": "89:4:89:106:Expr"
+            },
+            {
+              "expression": "self._phase='VALIDATION_FAILED'",
+              "site": "90:4:90:35:Assign"
+            },
+            {
+              "expression": "head=self._validate(a)",
+              "site": "90:36:90:58:Assign"
+            },
+            {
+              "expression": "self._live=a",
+              "site": "91:4:91:16:Assign"
+            },
+            {
+              "expression": "self._retired=None",
+              "site": "91:17:91:35:Assign"
+            },
+            {
+              "expression": "self._epoch+=1",
+              "site": "91:36:91:50:AugAssign"
+            },
+            {
+              "expression": "self._phase='READY'",
+              "site": "91:51:91:70:Assign"
+            },
+            {
+              "expression": "self._reason='fresh connection and retained history validated'",
+              "site": "91:71:91:133:Assign"
+            }
+          ],
+          "owner": "87:3:99:94:Try",
+          "region": "body"
+        }
+      ],
+      "expression": "return {'status':self.status(),'head':head,'recovery_only':True,'new_attempt_authorized':False}",
+      "function": "recover",
+      "guards": [
+        {
+          "kind": "ClassDef",
+          "region": "class-body",
+          "requires": [
+            {
+              "event": "class-definition-executed"
+            }
+          ],
+          "site": "13:0:99:94:ClassDef"
+        },
+        {
+          "kind": "FunctionDef",
+          "outer_conditions": "definition-time only; not proof they still hold at invocation",
+          "region": "invocation-boundary",
+          "requires": [
+            {
+              "event": "invocation-or-generator-resumption-required"
+            }
+          ],
+          "site": "76:1:99:94:FunctionDef"
+        },
+        {
+          "kind": "With",
+          "region": "body",
+          "requires": [
+            {
+              "event": "context-enter-completed",
+              "expression": "self._lock",
+              "item": 0
+            }
+          ],
+          "site": "77:2:99:94:With"
+        },
+        {
+          "kind": "Try",
+          "region": "try-body",
+          "requires": [
+            {
+              "event": "try-entered"
+            }
+          ],
+          "site": "87:3:99:94:Try"
+        }
+      ],
+      "site": "92:4:92:99:Return"
+    },
+    "head_chain": {
+      "argument": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "76:1:99:94:FunctionDef",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+                "site": "78:3:78:65:If"
+              },
+              {
+                "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+                "site": "79:3:79:78:If"
+              },
+              {
+                "expression": "self._dispose()",
+                "site": "82:3:82:18:Expr"
+              },
+              {
+                "expression": "self._phase='OPEN_FAILED'",
+                "site": "83:3:83:28:Assign"
+              },
+              {
+                "expression": "self._reason='open/validation not yet confirmed'",
+                "site": "83:29:83:77:Assign"
+              },
+              {
+                "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+                "site": "84:3:84:111:If"
+              },
+              {
+                "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+                "site": "85:3:85:61:Assign"
+              },
+              {
+                "expression": "self._retired=a",
+                "site": "86:3:86:18:Assign"
+              }
+            ],
+            "owner": "77:2:99:94:With",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+                "site": "89:4:89:106:Expr"
+              },
+              {
+                "expression": "self._phase='VALIDATION_FAILED'",
+                "site": "90:4:90:35:Assign"
+              }
+            ],
+            "owner": "87:3:99:94:Try",
+            "region": "body"
+          }
+        ],
+        "expression": "a",
+        "function": "recover",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "76:1:99:94:FunctionDef"
+          },
+          {
+            "kind": "With",
+            "region": "body",
+            "requires": [
+              {
+                "event": "context-enter-completed",
+                "expression": "self._lock",
+                "item": 0
+              }
+            ],
+            "site": "77:2:99:94:With"
+          },
+          {
+            "kind": "Try",
+            "region": "try-body",
+            "requires": [
+              {
+                "event": "try-entered"
+              }
+            ],
+            "site": "87:3:99:94:Try"
+          }
+        ],
+        "site": "90:56:90:57:Name"
+      },
+      "authority_head_query": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "self.db.execute('SELECT raw FROM head WHERE id=1')",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "85:10:85:60:Call"
+      },
+      "authority_state_load": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s=parse(self.db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0],MAX_STATE)",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "85:2:85:85:Assign"
+      },
+      "authority_state_return": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "s=parse(self.db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0],MAX_STATE)",
+                "site": "85:2:85:85:Assign"
+              },
+              {
+                "expression": "need(s['binding']==self.binding,'VERSION-BINDING')",
+                "site": "85:86:85:136:Expr"
+              },
+              {
+                "expression": "if s['seq']:\n   e=self.db.execute('SELECT raw FROM events WHERE seq=?',(s['seq'],)).fetchone();need(e is not None and sha(e[0])==s['head'],'HEAD-EVENT')\n   x=parse(e[0],MAX_EVENT);need(enc(x['after'])==enc({k:v for k,v in s.items() if k!='head'}),'HEAD-EVENT-TYPED')",
+                "site": "86:2:88:113:If"
+              },
+              {
+                "expression": "accounting.validate(s)",
+                "site": "89:2:89:24:Expr"
+              }
+            ],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "return s",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "90:2:90:10:Return"
+      },
+      "expected_head_expression": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:105:67:114:Subscript"
+      },
+      "export_assignment": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:2:72:119:Assign"
+      },
+      "export_head_query": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "db.execute('SELECT raw FROM head WHERE id=1')",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:122:67:167:Call"
+      },
+      "ingest_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "self._ingest.validate_export(x)",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "73:2:73:33:Call"
+      },
+      "lookup": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              },
+              {
+                "expression": "self._ingest.validate_export(x)",
+                "site": "73:2:73:33:Expr"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('VALIDATION-ACTIVE-TRANSACTION')",
+                "site": "74:2:74:77:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "75:9:75:18:Subscript"
+      },
+      "parameter": "a",
+      "raw_head_expression": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:122:67:187:Call"
+      },
+      "selector": "head",
+      "state_assignment": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s=a.state()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "66:2:66:13:Assign"
+      },
+      "state_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "a.state()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "66:4:66:13:Call"
+      },
+      "validator_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "76:1:99:94:FunctionDef",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+                "site": "78:3:78:65:If"
+              },
+              {
+                "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+                "site": "79:3:79:78:If"
+              },
+              {
+                "expression": "self._dispose()",
+                "site": "82:3:82:18:Expr"
+              },
+              {
+                "expression": "self._phase='OPEN_FAILED'",
+                "site": "83:3:83:28:Assign"
+              },
+              {
+                "expression": "self._reason='open/validation not yet confirmed'",
+                "site": "83:29:83:77:Assign"
+              },
+              {
+                "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+                "site": "84:3:84:111:If"
+              },
+              {
+                "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+                "site": "85:3:85:61:Assign"
+              },
+              {
+                "expression": "self._retired=a",
+                "site": "86:3:86:18:Assign"
+              }
+            ],
+            "owner": "77:2:99:94:With",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+                "site": "89:4:89:106:Expr"
+              },
+              {
+                "expression": "self._phase='VALIDATION_FAILED'",
+                "site": "90:4:90:35:Assign"
+              }
+            ],
+            "owner": "87:3:99:94:Try",
+            "region": "body"
+          }
+        ],
+        "expression": "self._validate(a)",
+        "function": "recover",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "76:1:99:94:FunctionDef"
+          },
+          {
+            "kind": "With",
+            "region": "body",
+            "requires": [
+              {
+                "event": "context-enter-completed",
+                "expression": "self._lock",
+                "item": 0
+              }
+            ],
+            "site": "77:2:99:94:With"
+          },
+          {
+            "kind": "Try",
+            "region": "try-body",
+            "requires": [
+              {
+                "event": "try-entered"
+              }
+            ],
+            "site": "87:3:99:94:Try"
+          }
+        ],
+        "site": "90:41:90:58:Call"
+      },
+      "validator_return": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              },
+              {
+                "expression": "self._ingest.validate_export(x)",
+                "site": "73:2:73:33:Expr"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('VALIDATION-ACTIVE-TRANSACTION')",
+                "site": "74:2:74:77:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "return s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "75:2:75:18:Return"
+      }
+    },
+    "programs": [
+      "ManagedAuthority.recover",
+      "ManagedAuthority._validate",
+      "Authority.state"
+    ],
+    "selected_field_count": 3,
+    "head_chain_entries": 16,
+    "guard_extraction_independent_of_candidate": true,
+    "source_only_not_execution": true
+  },
+  "SYMBOLIC-U-TWO": {
+    "result": "PASS",
+    "fields": [
+      {
+        "name": "head",
+        "source_expression": "head",
+        "type": "inherited HEAD string"
+      },
+      {
+        "name": "recovery_only",
+        "source_expression": "True",
+        "type": "bool"
+      },
+      {
+        "name": "new_attempt_authorized",
+        "source_expression": "False",
+        "type": "bool"
+      }
+    ],
+    "return": {
+      "continuation": [
+        {
+          "normal_continuation_of": [],
+          "owner": "76:1:99:94:FunctionDef",
+          "region": "body"
+        },
+        {
+          "normal_continuation_of": [
+            {
+              "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+              "site": "78:3:78:65:If"
+            },
+            {
+              "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+              "site": "79:3:79:78:If"
+            },
+            {
+              "expression": "self._dispose()",
+              "site": "82:3:82:18:Expr"
+            },
+            {
+              "expression": "self._phase='OPEN_FAILED'",
+              "site": "83:3:83:28:Assign"
+            },
+            {
+              "expression": "self._reason='open/validation not yet confirmed'",
+              "site": "83:29:83:77:Assign"
+            },
+            {
+              "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+              "site": "84:3:84:111:If"
+            },
+            {
+              "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+              "site": "85:3:85:61:Assign"
+            },
+            {
+              "expression": "self._retired=a",
+              "site": "86:3:86:18:Assign"
+            }
+          ],
+          "owner": "77:2:99:94:With",
+          "region": "body"
+        },
+        {
+          "normal_continuation_of": [
+            {
+              "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+              "site": "89:4:89:106:Expr"
+            },
+            {
+              "expression": "self._phase='VALIDATION_FAILED'",
+              "site": "90:4:90:35:Assign"
+            },
+            {
+              "expression": "head=self._validate(a)",
+              "site": "90:36:90:58:Assign"
+            },
+            {
+              "expression": "self._live=a",
+              "site": "91:4:91:16:Assign"
+            },
+            {
+              "expression": "self._retired=None",
+              "site": "91:17:91:35:Assign"
+            },
+            {
+              "expression": "self._epoch+=1",
+              "site": "91:36:91:50:AugAssign"
+            },
+            {
+              "expression": "self._phase='READY'",
+              "site": "91:51:91:70:Assign"
+            },
+            {
+              "expression": "self._reason='fresh connection and retained history validated'",
+              "site": "91:71:91:133:Assign"
+            }
+          ],
+          "owner": "87:3:99:94:Try",
+          "region": "body"
+        }
+      ],
+      "expression": "return {'status':self.status(),'head':head,'recovery_only':True,'new_attempt_authorized':False}",
+      "function": "recover",
+      "guards": [
+        {
+          "kind": "ClassDef",
+          "region": "class-body",
+          "requires": [
+            {
+              "event": "class-definition-executed"
+            }
+          ],
+          "site": "13:0:99:94:ClassDef"
+        },
+        {
+          "kind": "FunctionDef",
+          "outer_conditions": "definition-time only; not proof they still hold at invocation",
+          "region": "invocation-boundary",
+          "requires": [
+            {
+              "event": "invocation-or-generator-resumption-required"
+            }
+          ],
+          "site": "76:1:99:94:FunctionDef"
+        },
+        {
+          "kind": "With",
+          "region": "body",
+          "requires": [
+            {
+              "event": "context-enter-completed",
+              "expression": "self._lock",
+              "item": 0
+            }
+          ],
+          "site": "77:2:99:94:With"
+        },
+        {
+          "kind": "Try",
+          "region": "try-body",
+          "requires": [
+            {
+              "event": "try-entered"
+            }
+          ],
+          "site": "87:3:99:94:Try"
+        }
+      ],
+      "site": "92:4:92:99:Return"
+    },
+    "head_chain": {
+      "argument": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "76:1:99:94:FunctionDef",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+                "site": "78:3:78:65:If"
+              },
+              {
+                "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+                "site": "79:3:79:78:If"
+              },
+              {
+                "expression": "self._dispose()",
+                "site": "82:3:82:18:Expr"
+              },
+              {
+                "expression": "self._phase='OPEN_FAILED'",
+                "site": "83:3:83:28:Assign"
+              },
+              {
+                "expression": "self._reason='open/validation not yet confirmed'",
+                "site": "83:29:83:77:Assign"
+              },
+              {
+                "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+                "site": "84:3:84:111:If"
+              },
+              {
+                "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+                "site": "85:3:85:61:Assign"
+              },
+              {
+                "expression": "self._retired=a",
+                "site": "86:3:86:18:Assign"
+              }
+            ],
+            "owner": "77:2:99:94:With",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+                "site": "89:4:89:106:Expr"
+              },
+              {
+                "expression": "self._phase='VALIDATION_FAILED'",
+                "site": "90:4:90:35:Assign"
+              }
+            ],
+            "owner": "87:3:99:94:Try",
+            "region": "body"
+          }
+        ],
+        "expression": "a",
+        "function": "recover",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "76:1:99:94:FunctionDef"
+          },
+          {
+            "kind": "With",
+            "region": "body",
+            "requires": [
+              {
+                "event": "context-enter-completed",
+                "expression": "self._lock",
+                "item": 0
+              }
+            ],
+            "site": "77:2:99:94:With"
+          },
+          {
+            "kind": "Try",
+            "region": "try-body",
+            "requires": [
+              {
+                "event": "try-entered"
+              }
+            ],
+            "site": "87:3:99:94:Try"
+          }
+        ],
+        "site": "90:56:90:57:Name"
+      },
+      "authority_head_query": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "self.db.execute('SELECT raw FROM head WHERE id=1')",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "85:10:85:60:Call"
+      },
+      "authority_state_load": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s=parse(self.db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0],MAX_STATE)",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "85:2:85:85:Assign"
+      },
+      "authority_state_return": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "s=parse(self.db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0],MAX_STATE)",
+                "site": "85:2:85:85:Assign"
+              },
+              {
+                "expression": "need(s['binding']==self.binding,'VERSION-BINDING')",
+                "site": "85:86:85:136:Expr"
+              },
+              {
+                "expression": "if s['seq']:\n   e=self.db.execute('SELECT raw FROM events WHERE seq=?',(s['seq'],)).fetchone();need(e is not None and sha(e[0])==s['head'],'HEAD-EVENT')\n   x=parse(e[0],MAX_EVENT);need(enc(x['after'])==enc({k:v for k,v in s.items() if k!='head'}),'HEAD-EVENT-TYPED')",
+                "site": "86:2:88:113:If"
+              },
+              {
+                "expression": "accounting.validate(s)",
+                "site": "89:2:89:24:Expr"
+              }
+            ],
+            "owner": "84:1:90:10:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "return s",
+        "function": "state",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "53:0:245:72:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "84:1:90:10:FunctionDef"
+          }
+        ],
+        "site": "90:2:90:10:Return"
+      },
+      "expected_head_expression": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:105:67:114:Subscript"
+      },
+      "export_assignment": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:2:72:119:Assign"
+      },
+      "export_head_query": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "db.execute('SELECT raw FROM head WHERE id=1')",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:122:67:167:Call"
+      },
+      "ingest_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "self._ingest.validate_export(x)",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "73:2:73:33:Call"
+      },
+      "lookup": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              },
+              {
+                "expression": "self._ingest.validate_export(x)",
+                "site": "73:2:73:33:Expr"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('VALIDATION-ACTIVE-TRANSACTION')",
+                "site": "74:2:74:77:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "75:9:75:18:Subscript"
+      },
+      "parameter": "a",
+      "raw_head_expression": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "67:122:67:187:Call"
+      },
+      "selector": "head",
+      "state_assignment": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "s=a.state()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "66:2:66:13:Assign"
+      },
+      "state_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "a.state()",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "66:4:66:13:Call"
+      },
+      "validator_call": {
+        "continuation": [
+          {
+            "normal_continuation_of": [],
+            "owner": "76:1:99:94:FunctionDef",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "if self._phase=='READY':raise RecoveryBlocked('ALREADY-READY')",
+                "site": "78:3:78:65:If"
+              },
+              {
+                "expression": "if self._live is not None:self._quarantine('interrupted prior disposition')",
+                "site": "79:3:79:78:If"
+              },
+              {
+                "expression": "self._dispose()",
+                "site": "82:3:82:18:Expr"
+              },
+              {
+                "expression": "self._phase='OPEN_FAILED'",
+                "site": "83:3:83:28:Assign"
+              },
+              {
+                "expression": "self._reason='open/validation not yet confirmed'",
+                "site": "83:29:83:77:Assign"
+              },
+              {
+                "expression": "if not self._path.is_file() or not self._owners.is_file():raise RecoveryBlocked('MISSING-EXISTING-DATABASE')",
+                "site": "84:3:84:111:If"
+              },
+              {
+                "expression": "a=self._runtime.Authority.__new__(self._runtime.Authority)",
+                "site": "85:3:85:61:Assign"
+              },
+              {
+                "expression": "self._retired=a",
+                "site": "86:3:86:18:Assign"
+              }
+            ],
+            "owner": "77:2:99:94:With",
+            "region": "body"
+          },
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "self._runtime.Authority.__init__(a,self._path,copy.deepcopy(self._config),ownership_path=self._owners)",
+                "site": "89:4:89:106:Expr"
+              },
+              {
+                "expression": "self._phase='VALIDATION_FAILED'",
+                "site": "90:4:90:35:Assign"
+              }
+            ],
+            "owner": "87:3:99:94:Try",
+            "region": "body"
+          }
+        ],
+        "expression": "self._validate(a)",
+        "function": "recover",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "76:1:99:94:FunctionDef"
+          },
+          {
+            "kind": "With",
+            "region": "body",
+            "requires": [
+              {
+                "event": "context-enter-completed",
+                "expression": "self._lock",
+                "item": 0
+              }
+            ],
+            "site": "77:2:99:94:With"
+          },
+          {
+            "kind": "Try",
+            "region": "try-body",
+            "requires": [
+              {
+                "event": "try-entered"
+              }
+            ],
+            "site": "87:3:99:94:Try"
+          }
+        ],
+        "site": "90:41:90:58:Call"
+      },
+      "validator_return": {
+        "continuation": [
+          {
+            "normal_continuation_of": [
+              {
+                "expression": "db=a.db",
+                "site": "64:2:64:9:Assign"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('REOPEN-ACTIVE-TRANSACTION')",
+                "site": "65:2:65:73:If"
+              },
+              {
+                "expression": "s=a.state()",
+                "site": "66:2:66:13:Assign"
+              },
+              {
+                "expression": "x={'format':'I164-RETRY3-CORRESPONDENCE-EXPORT-1','config':copy.deepcopy(self._config),'expected_head':s['head'],'head':db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0].hex(),\n   'events':[[n,b.hex()] for n,b in db.execute('SELECT seq,raw FROM events ORDER BY seq')],\n   'blobs':[[n,b.hex()] for n,b in db.execute('SELECT ref,raw FROM blobs ORDER BY ref')],\n   'journal':[[n,b.hex(),None if r is None else r.hex()] for n,b,r in db.execute('SELECT challenge,request,response FROM journal ORDER BY challenge')],\n   'ownership_meta':db.execute('SELECT raw FROM ownership.meta WHERE id=1').fetchone()[0].hex(),\n   'owners':[[n,b.hex(),h] for n,b,h in db.execute('SELECT coord,raw,hash FROM ownership.coordinates ORDER BY coord')]}",
+                "site": "67:2:72:119:Assign"
+              },
+              {
+                "expression": "self._ingest.validate_export(x)",
+                "site": "73:2:73:33:Expr"
+              },
+              {
+                "expression": "if db.in_transaction:raise RecoveryBlocked('VALIDATION-ACTIVE-TRANSACTION')",
+                "site": "74:2:74:77:If"
+              }
+            ],
+            "owner": "61:1:75:18:FunctionDef",
+            "region": "body"
+          }
+        ],
+        "expression": "return s['head']",
+        "function": "_validate",
+        "guards": [
+          {
+            "kind": "ClassDef",
+            "region": "class-body",
+            "requires": [
+              {
+                "event": "class-definition-executed"
+              }
+            ],
+            "site": "13:0:99:94:ClassDef"
+          },
+          {
+            "kind": "FunctionDef",
+            "outer_conditions": "definition-time only; not proof they still hold at invocation",
+            "region": "invocation-boundary",
+            "requires": [
+              {
+                "event": "invocation-or-generator-resumption-required"
+              }
+            ],
+            "site": "61:1:75:18:FunctionDef"
+          }
+        ],
+        "site": "75:2:75:18:Return"
+      }
+    },
+    "programs": [
+      "ManagedAuthority.recover",
+      "ManagedAuthority._validate",
+      "Authority.state"
+    ],
+    "selected_field_count": 3,
+    "head_chain_entries": 16,
+    "guard_extraction_independent_of_candidate": true,
+    "source_only_not_execution": true
+  }
+}

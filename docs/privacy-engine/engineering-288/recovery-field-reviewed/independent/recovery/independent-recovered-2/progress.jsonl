@@ -1,0 +1,29 @@
+{"category": "independent", "check": "legitimate public exact receipt", "result": "PASS"}
+{"category": "independent", "check": "legitimate semantic connection", "result": "PASS"}
+{"category": "independent", "check": "legitimate exact derivation", "result": "PASS"}
+{"category": "independent", "check": "independent source fields chain guards and ordering", "result": "PASS"}
+{"category": "independent", "check": "independent source audit SYMBOLIC-U-ONE", "result": "PASS"}
+{"category": "independent", "check": "all preceding context fields preserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"category": "independent", "check": "exact recorded value export and occurrence joins SYMBOLIC-U-ONE", "result": "PASS"}
+{"category": "independent", "check": "independent source audit SYMBOLIC-U-TWO", "result": "PASS"}
+{"category": "independent", "check": "all preceding context fields preserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"category": "independent", "check": "exact recorded value export and occurrence joins SYMBOLIC-U-TWO", "result": "PASS"}
+{"category": "independent", "check": "validator scalar absence is real", "result": "PASS"}
+{"category": "independent", "check": "eighteen invocations and separate observer preserved", "result": "PASS"}
+{"category": "catalogue_negative", "check": "coordinated field/expected membership omission head", "error": {"message": "RECOVERY-FIELD-CORRESPONDENCE", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "catalogue_negative", "check": "coordinated field/expected membership omission recovery_only", "error": {"message": "RECOVERY-FIELD-CORRESPONDENCE", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "catalogue_negative", "check": "coordinated field/expected membership omission new_attempt_authorized", "error": {"message": "RECOVERY-FIELD-CORRESPONDENCE", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "constructed_only", "check": "constructed explicit-premise projection SYMBOLIC-U-ONE length 3", "result": "PASS"}
+{"category": "constructed_only", "check": "constructed explicit-premise projection SYMBOLIC-U-TWO length 3", "result": "PASS"}
+{"category": "constructed_negative", "check": "conditional exact type/constant recovery_only 1", "error": {"message": "RECOVERY-VALUE-TYPE:recovery_only", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "constructed_negative", "check": "conditional exact type/constant new_attempt_authorized 0", "error": {"message": "RECOVERY-VALUE-TYPE:new_attempt_authorized", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "missing observed head", "error": {"message": "'head'", "type": "KeyError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "missing observed recovery_only", "error": {"message": "'recovery_only'", "type": "KeyError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "missing observed new_attempt_authorized", "error": {"message": "'new_attempt_authorized'", "type": "KeyError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "wrong observed head", "error": {"message": "RECOVERY-HEAD", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "wrong observed recovery_only", "error": {"message": "RECOVERY-ONLY", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "saved_evidence_negative", "check": "wrong observed new_attempt_authorized", "error": {"message": "NO-RENEWAL", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "public_negative", "check": "public omitted field context 0", "error": {"message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "public_negative", "check": "public omitted field context 1", "error": {"message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE", "type": "ValueError"}, "result": "REJECTED"}
+{"category": "independent", "check": "mutable returned objects cannot change pristine expectations", "result": "PASS"}
+{"category": "independent", "check": "implementation source unchanged", "result": "PASS"}

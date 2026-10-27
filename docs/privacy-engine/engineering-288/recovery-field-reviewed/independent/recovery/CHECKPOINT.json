@@ -1,0 +1,164 @@
+{
+  "checkpoint": "Formal-Lab6-I164-recovery-field-correspondence-independent-review",
+  "review_target": "I164-recovery-field-correspondence-1.zip",
+  "target": {
+    "bytes": 39038102,
+    "sha256": "c92840a853097a9fe5fd1cd80134649fdd25a7463422cce81361a46bec70f8cf",
+    "entries": 617
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "canonical": false,
+  "verdict": "NOT SUPPORTED for full requested coordinated recovery-head correspondence assurance; HF-01 OPEN",
+  "supported_scope": [
+    "Source-derived three-field mappings, guards and normal continuations",
+    "Exact boolean constants and inherited head type",
+    "Legitimate pinned-input public receipt and prior component continuity",
+    "Public rejection of altered derived receipt"
+  ],
+  "finding": {
+    "id": "HF-01",
+    "status": "OPEN",
+    "summary": "Internal semantic and derivation interfaces accept coordinated substituted head and derive a mixed-evidence receipt",
+    "semantic_interface": "connected_recovery(data, catalogue, altered_evidence)",
+    "derivation_interface": "derive_recovery(data, catalogue, altered_evidence)",
+    "old_head": "0000000000000000000000000000000000000000000000000000000000000000",
+    "new_head": "1000000000000000000000000000000000000000000000000000000000000000",
+    "changed_members": 7,
+    "changed_bytes": 128,
+    "member_lengths_unchanged": true,
+    "current_source_and_database_bytes_unchanged": true,
+    "reproduced_in_fresh_recovered_root": true,
+    "public_validation_bypass": false,
+    "public_altered_receipt": "REJECTED",
+    "public_pristine_receipt": "PASS",
+    "original_trace_sha256": "9558e9987e53e117c5b49efa56c00b0e17389aa95e5c5d2d897ddde2b6b4a12a",
+    "altered_trace_sha256": "0ba7774c5d28d94c1ccc22a5651d61e360243e787960f0544aa9dc1b412c8f10",
+    "scope": "Requested coordinated semantic assurance, not admission of unpinned replacement evidence",
+    "minimality": "Each of seven one-member restorations rejects this fixed construction; global byte-minimality not claimed"
+  },
+  "independent_results": {
+    "primary_focused_assertions": 97,
+    "primary_categories": {
+      "catalogue_negative": 47,
+      "constructed_negative": 10,
+      "constructed_only": 6,
+      "independent": 14,
+      "public_negative": 8,
+      "saved_evidence_negative": 12
+    },
+    "recovered_focused_assertions": 29,
+    "witness_member_restoration_assertions": 7,
+    "new_offline_CLI_processes": 1,
+    "minimal_witness_processes": 2,
+    "exploratory_probe_processes": 1,
+    "accepted_witnesses_not_counted_as_passing_controls": true,
+    "constructed_cases_primary": 6,
+    "constructed_cases_recovered": 2
+  },
+  "supplied_results": {
+    "primary": 117,
+    "recovered": 30,
+    "input_gates": 5,
+    "fresh_process": 1,
+    "inspected_not_executed": true,
+    "recovery_input": "610-member pre-documentation archive distinct from 617-member target",
+    "damaged_temporary_archives": "Not supplied; reported/observed identities and unknown cause retained"
+  },
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    },
+    "correspondence.py": {
+      "bytes": 36968,
+      "sha256": "e21dfa0524304914ee676fa6df45856bb32b56159302527fb62fc0d011ce97ad"
+    }
+  },
+  "new_receipt": {
+    "bytes": 697659,
+    "sha256": "018dcc896a59518261726ddc9847ae2ba421454a5469320e2fd779611289cb3c"
+  },
+  "unchanged_reference_receipt": {
+    "bytes": 451987,
+    "sha256": "61f93d2ade9436c0d8b6885cea7cb5bb96b84e963c98bb07d7adce37852b7c7f"
+  },
+  "source_audit": {
+    "fields": 3,
+    "head_chain_entries": 16,
+    "programs": [
+      "ManagedAuthority.recover",
+      "ManagedAuthority._validate",
+      "Authority.state"
+    ],
+    "guards_independently_derived": true
+  },
+  "preservation": {
+    "predecessor_members": 552,
+    "prior_independent_noninput_members": 34,
+    "status_field_root_members": 489,
+    "SOC_closed_root_members": 467,
+    "candidate_and_draft_identity_maps": [
+      666,
+      163
+    ],
+    "old_context_fields_relationships_ordinals_and_obligations_unchanged": true,
+    "prior_closures_preserved_not_rerun": true,
+    "implementation_modified": false
+  },
+  "observations": {
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "recovery_invocations": 1,
+    "status_returns": 2,
+    "traced_invocations": 18,
+    "separate_observer_Client_state_calls": 1,
+    "validator_scalar": "NOT CAPTURED",
+    "Authority_state_and_ingest_frames": "UNAVAILABLE",
+    "assignment_and_historical_launcher_frames": "UNAVAILABLE",
+    "two_contexts_not_extra_executions": true,
+    "no_new_observations": true
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "failure_provenance": {
+    "supplied_packaging_discrepancies": 2,
+    "causes": "UNKNOWN",
+    "independent_first_recovery": "Rejected undeclared partial regular member before predecessor consumption; zero assertions completed",
+    "rejected_root_and_unexpected_bytes_preserved": true,
+    "new_clean_root_actual_members_verified": 617
+  },
+  "boundaries": {
+    "all_eleven_obligations_preserved": true,
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false
+  },
+  "prohibited_operations": {
+    "runtime_changes": false,
+    "acquisition": false,
+    "database_connections": 0,
+    "session_operations": false,
+    "completed_review_reruns": false,
+    "smoke_pipeline_lifecycle_reruns": false,
+    "policy_adoption": false,
+    "Git_save": false
+  },
+  "next_task": "Bounded HF-01 correction: anchor recovery-head expectations and joins to the same independently validated current evidence as the predecessor chain; reject this semantic/derivation witness without hardcoded zero heads or domain narrowing.",
+  "handoff": "Return finding and preserved scoped support to Engineering-Anchor[2]; no new admission or operational authority."
+}

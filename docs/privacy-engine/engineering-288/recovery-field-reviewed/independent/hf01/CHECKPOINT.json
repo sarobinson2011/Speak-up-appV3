@@ -1,0 +1,159 @@
+{
+  "checkpoint": "Formal-Lab6-I164-HF01-independent-review",
+  "review_target": "I164-HF01-correction.zip",
+  "input": {
+    "bytes": 39924668,
+    "sha256": "0e2cce5d4519ccaaab35e34af0f89ef01b8a773569fba66008ee7affb1a9529c",
+    "entries": 732,
+    "manifested_hashes": 731
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "canonical": false,
+  "verdict": "HF-01 CLOSED within the retained saved-evidence correspondence contract",
+  "finding": "No residual witness found in focused corrected checks; no global completeness claim",
+  "original_witness": {
+    "changed_members": 7,
+    "changed_bytes": 128,
+    "member_lengths_preserved": true,
+    "exact_reproduction_verified": true,
+    "semantic": "ACCEPTED",
+    "derivation": "ACCEPTED",
+    "public_altered_receipt": "REJECTED already before correction",
+    "public_pristine": "PASS"
+  },
+  "corrected_witness": {
+    "semantic": "REJECTED",
+    "derivation": "REJECTED",
+    "reason": "HF01-HEAD-EXPECTED-STATE",
+    "fresh_recovered_reproduction": true,
+    "public_old_mixed_receipt": "REJECTED",
+    "pristine_saved_receipt": "PASS in both contexts"
+  },
+  "correction_basis": {
+    "current_predecessor_actually_invoked": true,
+    "same_evidence_consumed_for_predecessor_and_head_expectation": true,
+    "semantic_comparison_before_whole_map_gate": true,
+    "no_caller_result_cached_as_expectation": true,
+    "no_silent_repair": true,
+    "no_hardcoded_zero_head_or_new_string_bound": true
+  },
+  "independent_results": {
+    "primary_assertions": 69,
+    "primary_categories": {
+      "constructed_only": 6,
+      "independent": 24,
+      "internal_relation": 19,
+      "negative": 12,
+      "public_negative": 8
+    },
+    "recovered_assertions": 34,
+    "recovered_categories": {
+      "independent": 24,
+      "internal_relation": 1,
+      "negative": 6,
+      "public_negative": 3
+    },
+    "fresh_offline_CLI_processes": 1,
+    "old_witness_reproduction_processes": 1,
+    "six_constructed_cases_not_runtime_evidence": true,
+    "partial_interrupted_attempts_not_added": true
+  },
+  "supplied_results": {
+    "primary": 75,
+    "recovered": 23,
+    "input_gates": 5,
+    "fresh_process": 1,
+    "inspected_not_executed": true,
+    "recovery_archive_entries": 717,
+    "recovery_outer_archive_not_supplied": true,
+    "current_core_identity_map_matches_reported_compact_canonical_identity": true
+  },
+  "identities": {
+    "correspondence.py": {
+      "bytes": 44179,
+      "sha256": "5ea4daf28e6d0707ad247722b6c1ba572ef3f18e75891aae0ffc882fe8d25097"
+    },
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    },
+    "corrected_receipt": {
+      "bytes": 704580,
+      "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+    },
+    "original_receipt": {
+      "bytes": 697659,
+      "sha256": "018dcc896a59518261726ddc9847ae2ba421454a5469320e2fd779611289cb3c"
+    }
+  },
+  "preservation": {
+    "original_members_unchanged": 617,
+    "prior_review_noninput_members_unchanged": 63,
+    "all_old_context_fields_preserved": true,
+    "prior_scoped_closures_and_historical_identities_relationships_ordinals": "UNCHANGED",
+    "implementation_modified": false,
+    "original_witnesses_and_failure_records": "PRESERVED"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "observation_limits": {
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "traced_invocations": 18,
+    "saved_normal_recovery_invocations": 1,
+    "saved_status_returns": 2,
+    "separate_observer_Client_state_call": 1,
+    "observer_frame": null,
+    "validator_scalar": "UNAVAILABLE",
+    "Authority_state_and_ingestion_frames": "UNAVAILABLE",
+    "assignment_and_historical_launcher_frames": "UNAVAILABLE",
+    "source_or_constructed_cases_not_new_execution_evidence": true
+  },
+  "failure_provenance": {
+    "supplied_FIFO_fixture_completed_assertions": 0,
+    "supplied_FIFO_cause": "UNKNOWN",
+    "independent_initial_partial_file_bytes": 14680064,
+    "independent_initial_root_rejected_before_dependency_import": true,
+    "independent_partial_file_cause": "UNKNOWN",
+    "interrupted_reviewer_harness_partial_counts": [
+      17,
+      3
+    ],
+    "interrupted_harness_only_change": "Removed per-call pathlib parsing from read-only profile callback",
+    "original_failed_roots_and_records_preserved": true
+  },
+  "boundaries": {
+    "all_eleven_obligations": "PRESERVED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "permanent_accounting_reservations_nonce_ownership_uncertainty": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false
+  },
+  "operations": {
+    "runtime_changes": false,
+    "new_acquisition": false,
+    "host_session_operations": false,
+    "database_connections": 0,
+    "completed_review_reruns": false,
+    "smoke_pipeline_lifecycle_reruns": false,
+    "policy_or_canonical_binding_changes": false,
+    "Git_save": false
+  },
+  "next_action": "Return scoped HF-01 closure to Engineering-Anchor[2]; unresolved operational evidence, lifetime bounds, qualification and canonical authority remain blockers."
+}

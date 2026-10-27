@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "passed": 5,
+  "checks": [
+    {
+      "check": "undeclared empty directory",
+      "result": "PASS",
+      "reason": "HF01-UNDECLARED-DIRECTORY"
+    },
+    {
+      "check": "undeclared FIFO",
+      "result": "PASS",
+      "reason": "HF01-UNDECLARED-OR-NONREGULAR"
+    },
+    {
+      "check": "undeclared symlink",
+      "result": "PASS",
+      "reason": "HF01-UNDECLARED-OR-NONREGULAR"
+    },
+    {
+      "check": "stale original receipt",
+      "result": "PASS",
+      "reason": "HF01-ORIGINAL-BYTES:results/recovery-field-correspondence.json"
+    },
+    {
+      "check": "missing original receipt",
+      "result": "PASS",
+      "reason": "HF01-ORIGINAL-MEMBERSHIP"
+    }
+  ],
+  "all_rejected_before_predecessor_import": true,
+  "restored_original_bytes": true,
+  "unix_sockets_devices": "UNTESTED; prior limitation preserved",
+  "no_runtime": true
+}

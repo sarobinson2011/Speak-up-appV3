@@ -1,0 +1,132 @@
+{
+  "result": "PASS",
+  "exact_recovered_trees": {
+    "hfc-input": {
+      "files": 732,
+      "parent_directories": 288,
+      "exact_regular_membership_and_hashes": "PASS"
+    },
+    "hfc-recovered-2": {
+      "files": 732,
+      "parent_directories": 288,
+      "exact_regular_membership_and_hashes": "PASS"
+    }
+  },
+  "preserved_copies": {
+    "original": {
+      "verified_archive": {
+        "bytes": 39038102,
+        "sha256": "c92840a853097a9fe5fd1cd80134649fdd25a7463422cce81361a46bec70f8cf"
+      },
+      "archive_entries": 617,
+      "exact_preserved_members": 617
+    },
+    "retained/review": {
+      "verified_archive": {
+        "bytes": 39400482,
+        "sha256": "dc9e1fd7a71fb079853ad1c7ff380213cd2b80201a848670778bc5e2d027b291"
+      },
+      "archive_entries": 64,
+      "exact_preserved_members": 63
+    }
+  },
+  "only_changed_implementation": "code/correspondence.py",
+  "before": {
+    "bytes": 36968,
+    "sha256": "e21dfa0524304914ee676fa6df45856bb32b56159302527fb62fc0d011ce97ad"
+  },
+  "after": {
+    "bytes": 44179,
+    "sha256": "5ea4daf28e6d0707ad247722b6c1ba572ef3f18e75891aae0ffc882fe8d25097"
+  },
+  "unchanged_managed_coverage": {
+    "bytes": 74051,
+    "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+  },
+  "old_functions_preserved_except": [
+    "connected_recovery",
+    "derive_recovery",
+    "recovery_inputs; old body retained as _reviewed_recovery_inputs"
+  ],
+  "new_functions": [
+    "_bind_predecessor_evidence",
+    "_checked_recovery",
+    "_compare_validated_head",
+    "_evidence_bytes",
+    "_original_root",
+    "_reviewed_recovery_inputs",
+    "_validated_predecessor_basis"
+  ],
+  "all_prior_context_fields_and_noncomponent_top_fields_unchanged": true,
+  "old_receipt": {
+    "bytes": 697659,
+    "sha256": "018dcc896a59518261726ddc9847ae2ba421454a5469320e2fd779611289cb3c"
+  },
+  "new_receipt": {
+    "bytes": 704580,
+    "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+  },
+  "supplied": {
+    "primary": {
+      "record": "results/primary/RESULT.json",
+      "inspected_not_executed": true,
+      "count": 75,
+      "identity": {
+        "bytes": 8572,
+        "sha256": "e6cd9251fec47999f85447083add0185795bfeb4ac7f41766b11085faf70937e"
+      }
+    },
+    "recovered": {
+      "record": "results/recovered-clean/RESULT.json",
+      "inspected_not_executed": true,
+      "count": 23,
+      "identity": {
+        "bytes": 2433,
+        "sha256": "d0ec08401d53f9173839a864c79eda3a05df07079a42539c0d8c1f52f225fec9"
+      }
+    },
+    "input_gates": {
+      "record": "results/input-gates.json",
+      "inspected_not_executed": true,
+      "count": 5,
+      "identity": {
+        "bytes": 878,
+        "sha256": "5242be78b9d21dea187109bb1fc1c8cc390668bd8f0c2f8822ca6dfdafdacd13"
+      }
+    }
+  },
+  "supplied_fresh_process": "Inspected saved PASS only; not executed",
+  "failed_fixture": {
+    "result": "FAIL",
+    "passed": 0,
+    "checks": [],
+    "error": "ValueError('HF01-UNDECLARED-OR-NONREGULAR')",
+    "root": "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "new_HF01_controls_only": true,
+    "database_connections": 0,
+    "runtime_operations": 0,
+    "completed_review_rerun": false
+  },
+  "recovered_input_scope": {
+    "CRC": "PASS",
+    "all_member_hashes": "PASS",
+    "bytes": 39914895,
+    "entries": 717,
+    "filename": "recovery-input.zip",
+    "manifest_identity": {
+      "bytes": 163211,
+      "sha256": "3c7b6286c6638f5f029d441da477e6bf81c0f06d2ce78f4c532245420b6767c4"
+    },
+    "manifested_files": 716,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "bf81f31854e380e01a51d0088874883f89445772c38931d5dc90ffff59bb9ae6",
+    "root": "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-clean-root",
+    "failed_first_root": "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root",
+    "verified_in_separate_process": true,
+    "gate_tests_not_run_on_clean_root": true
+  },
+  "recovered_input_outer_ZIP_present": false,
+  "historical_manifest_scopes": "Preserved. Partial review copy omits only its redundant input ZIP; original/ supplies all 617 decoded executable input members.",
+  "no_completed_review_rerun": true
+}

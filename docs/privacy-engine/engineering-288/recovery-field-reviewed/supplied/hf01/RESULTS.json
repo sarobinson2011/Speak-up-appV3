@@ -1,0 +1,148 @@
+{
+  "format": "I164-HF01-SUPPLIED-CORRECTION-RESULTS-1",
+  "result": "PASS",
+  "independent_closure": "PENDING",
+  "source": {
+    "correspondence.py": {
+      "bytes": 44179,
+      "sha256": "5ea4daf28e6d0707ad247722b6c1ba572ef3f18e75891aae0ffc882fe8d25097"
+    },
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    }
+  },
+  "receipt": {
+    "bytes": 704580,
+    "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+  },
+  "original_witness": {
+    "original_behavior": "Semantic and derivation ACCEPT; public mixed receipt REJECT; pristine PASS",
+    "reproduced_members": 7,
+    "changed_bytes": 128,
+    "exact_original_witness_and_receipt_match": true,
+    "process_exit": 0,
+    "record": "results/original-witness-reproduction/RESULT.json"
+  },
+  "corrected_witness": {
+    "minimal_and_reserialized": "REJECT in semantic and derivation",
+    "head_rejection": "HF01-HEAD-EXPECTED-STATE",
+    "public": "Original mixed receipts and coordinated new-format receipts rejected in both contexts"
+  },
+  "new_controls": {
+    "primary": {
+      "checks": 75,
+      "exit": 0,
+      "record": "results/primary/RESULT.json"
+    },
+    "recovered_clean": {
+      "checks": 23,
+      "exit": 0,
+      "record": "results/recovered-clean/RESULT.json"
+    },
+    "input_gates": {
+      "checks": 5,
+      "exit": 0,
+      "record": "results/input-gates.json"
+    },
+    "fresh_process": {
+      "result": "PASS",
+      "exit": 0,
+      "receipt": {
+        "bytes": 704580,
+        "sha256": "139d19185343c7821238faa7a9fc9b6cd91d379c32d80961ee2d490f0ab0a161"
+      },
+      "stdout": {
+        "bytes": 230,
+        "sha256": "13168a117008c0a4fb640390fa6a183a79e07d61db1d151507c2537e99820f93"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "new_HF01_check_only": true,
+      "no_runtime": true
+    }
+  },
+  "failed_fixture_attempt": {
+    "checks_completed": 0,
+    "result": "Correct rejection before predecessor import",
+    "record": "failures/recovered-root-membership/RESULT.json",
+    "cause": "UNKNOWN cross-process cleanup persistence; observed undeclared FIFO",
+    "failed_root_preserved_not_reused": true
+  },
+  "recovered_input": {
+    "CRC": "PASS",
+    "all_member_hashes": "PASS",
+    "bytes": 39914895,
+    "entries": 717,
+    "filename": "recovery-input.zip",
+    "manifest_identity": {
+      "bytes": 163211,
+      "sha256": "3c7b6286c6638f5f029d441da477e6bf81c0f06d2ce78f4c532245420b6767c4"
+    },
+    "manifested_files": 716,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "bf81f31854e380e01a51d0088874883f89445772c38931d5dc90ffff59bb9ae6",
+    "root": "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-clean-root",
+    "failed_first_root": "/workspace/scratch/3da0de3fef10/hf01-tools/recovered-root",
+    "verified_in_separate_process": true,
+    "gate_tests_not_run_on_clean_root": true
+  },
+  "core_preservation": {
+    "files": 688,
+    "identity_map": {
+      "bytes": 145810,
+      "sha256": "71b3973023c70442bcb171eb0ab65009c78861788ab372ece935d86fd2aa4fa0"
+    },
+    "all_primary_recovered_input_and_clean_root_bytes_equal": true,
+    "scope": "code/, tests/, tools/, original/, retained/review/ and corrected receipt; documentation/final results excluded"
+  },
+  "all_original_members_unchanged": 617,
+  "all_review_noninput_members_unchanged": 63,
+  "prior_independent_results_separate": {
+    "primary_focused_assertions": 97,
+    "primary_categories": {
+      "catalogue_negative": 47,
+      "constructed_negative": 10,
+      "constructed_only": 6,
+      "independent": 14,
+      "public_negative": 8,
+      "saved_evidence_negative": 12
+    },
+    "recovered_focused_assertions": 29,
+    "witness_member_restoration_assertions": 7,
+    "new_offline_CLI_processes": 1,
+    "minimal_witness_processes": 2,
+    "exploratory_probe_processes": 1,
+    "accepted_witnesses_not_counted_as_passing_controls": true,
+    "constructed_cases_primary": 6,
+    "constructed_cases_recovered": 2
+  },
+  "prior_supplied_results_separate": {
+    "primary": 117,
+    "recovered": 30,
+    "input_gates": 5,
+    "fresh_process": 1,
+    "inspected_not_executed": true,
+    "recovery_input": "610-member pre-documentation archive distinct from 617-member target",
+    "damaged_temporary_archives": "Not supplied; reported/observed identities and unknown cause retained"
+  },
+  "no_completed_reviews_or_suites_rerun": true,
+  "no_runtime_changes": true,
+  "no_acquisition": true,
+  "database_connections": 0,
+  "session_operations": 0,
+  "Git_save": false,
+  "all_eleven_obligations_preserved": true,
+  "inventory_UNKNOWN_totals": 4,
+  "lifetime_UNKNOWN_totals": 14,
+  "Decision_B": "UNCHANGED",
+  "retention": "UNCHANGED",
+  "allowances": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "cumulative_envelope": "UNADOPTED",
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "actual_admission": false
+}

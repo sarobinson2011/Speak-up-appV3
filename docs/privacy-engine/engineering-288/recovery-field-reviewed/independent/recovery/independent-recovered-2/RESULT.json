@@ -1,0 +1,232 @@
+{
+  "result": "PASS focused controls",
+  "assertions": 29,
+  "categories": {
+    "catalogue_negative": 3,
+    "constructed_negative": 2,
+    "constructed_only": 2,
+    "independent": 14,
+    "public_negative": 2,
+    "saved_evidence_negative": 6
+  },
+  "checks": [
+    {
+      "check": "legitimate public exact receipt",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "legitimate semantic connection",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "legitimate exact derivation",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source fields chain guards and ordering",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source audit SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all preceding context fields preserved SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact recorded value export and occurrence joins SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "independent source audit SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "all preceding context fields preserved SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "exact recorded value export and occurrence joins SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "validator scalar absence is real",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "eighteen invocations and separate observer preserved",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "coordinated field/expected membership omission head",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated field/expected membership omission recovery_only",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "coordinated field/expected membership omission new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "catalogue_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-FIELD-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-ONE length 3",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "constructed explicit-premise projection SYMBOLIC-U-TWO length 3",
+      "result": "PASS",
+      "category": "constructed_only"
+    },
+    {
+      "check": "conditional exact type/constant recovery_only 1",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:recovery_only"
+      }
+    },
+    {
+      "check": "conditional exact type/constant new_attempt_authorized 0",
+      "result": "REJECTED",
+      "category": "constructed_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-VALUE-TYPE:new_attempt_authorized"
+      }
+    },
+    {
+      "check": "missing observed head",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'head'"
+      }
+    },
+    {
+      "check": "missing observed recovery_only",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'recovery_only'"
+      }
+    },
+    {
+      "check": "missing observed new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "KeyError",
+        "message": "'new_attempt_authorized'"
+      }
+    },
+    {
+      "check": "wrong observed head",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-HEAD"
+      }
+    },
+    {
+      "check": "wrong observed recovery_only",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "RECOVERY-ONLY"
+      }
+    },
+    {
+      "check": "wrong observed new_attempt_authorized",
+      "result": "REJECTED",
+      "category": "saved_evidence_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "NO-RENEWAL"
+      }
+    },
+    {
+      "check": "public omitted field context 0",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "public omitted field context 1",
+      "result": "REJECTED",
+      "category": "public_negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-RECOVERY-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "mutable returned objects cannot change pristine expectations",
+      "result": "PASS",
+      "category": "independent"
+    },
+    {
+      "check": "implementation source unchanged",
+      "result": "PASS",
+      "category": "independent"
+    }
+  ],
+  "failure": null,
+  "separate_coordinated_probe_not_included_in_pass_count": true,
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    },
+    "correspondence.py": {
+      "bytes": 36968,
+      "sha256": "e21dfa0524304914ee676fa6df45856bb32b56159302527fb62fc0d011ce97ad"
+    }
+  },
+  "recovered": true,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "constructed_cases": 2,
+  "no_runtime_session_database_operations": true,
+  "no_completed_review_rerun": true
+}

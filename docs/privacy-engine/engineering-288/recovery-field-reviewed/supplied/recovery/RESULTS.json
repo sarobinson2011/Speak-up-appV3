@@ -1,0 +1,118 @@
+{
+  "format": "I164-RECOVERY-FIELDS-SUPPLIED-RESULTS-1",
+  "result": "PASS",
+  "new_supplied_controls": {
+    "primary": {
+      "assertions": 117,
+      "result": "PASS",
+      "process_exit": 0,
+      "record": "results/primary/RESULT.json"
+    },
+    "recovered": {
+      "assertions": 30,
+      "result": "PASS",
+      "process_exit": 0,
+      "record": "results/recovered.json"
+    },
+    "fresh_process": {
+      "result": "PASS",
+      "process_exit": 0,
+      "stdout": {
+        "bytes": 230,
+        "sha256": "f3671745a4dcc6f6a520f9fee335a1bfcea57e3f217cf573c87d92da6fd334eb"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "receipt": {
+        "bytes": 697659,
+        "sha256": "018dcc896a59518261726ddc9847ae2ba421454a5469320e2fd779611289cb3c"
+      }
+    },
+    "input_gates": {
+      "assertions": 5,
+      "result": "PASS",
+      "process_exit": 0,
+      "record": "results/input-gates.json"
+    }
+  },
+  "constructed_value_cases": 6,
+  "constructed_are_not_observations": true,
+  "implementation": {
+    "managed_coverage.py": {
+      "bytes": 74051,
+      "sha256": "b1b8409e4b8f08c46df84b5a225cec149661224f816a8c969fe0c9034a23a473"
+    },
+    "correspondence.py": {
+      "bytes": 36968,
+      "sha256": "e21dfa0524304914ee676fa6df45856bb32b56159302527fb62fc0d011ce97ad"
+    }
+  },
+  "receipt": {
+    "bytes": 697659,
+    "sha256": "018dcc896a59518261726ddc9847ae2ba421454a5469320e2fd779611289cb3c"
+  },
+  "recovered_input": {
+    "CRC": "PASS",
+    "all_member_hashes": "PASS",
+    "bytes": 39033959,
+    "entries": 610,
+    "filename": "recovery-input-3.zip",
+    "manifest_identity": {
+      "bytes": 140402,
+      "sha256": "0198309dafda982ec8ff09ad078cf7f75afaa6803545acc6852dd0e2878d4d54"
+    },
+    "manifested_files": 609,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "19291abf4313d21953da78d2a6df80982b0cd4bbfbabeb4a65ac22344ef1c54a",
+    "extracted_root": "/workspace/scratch/3da0de3fef10/recovery-fields-tools/recovered-root-3",
+    "verified_again_in_separate_process": true,
+    "purpose": "New focused recovered-root validation only",
+    "earlier_packaging_discrepancies": "results/packaging-discrepancy.json"
+  },
+  "core_preservation": {
+    "files": 560,
+    "identity_map": {
+      "bytes": 121964,
+      "sha256": "90547f1ed8c057881e4cc5b2d6f70b103a4454eaad1566da010e00e0d21ad950"
+    },
+    "all_match_primary_recovered_and_recovery_archive": true,
+    "scope": "code/, tests/, tools/, retained/references/, and new receipt; final documentation and result additions excluded"
+  },
+  "unchanged_predecessor_members": 552,
+  "independent_review_of_new_extension": "PENDING",
+  "prior_review_counts_not_added": {
+    "references": {
+      "independent_primary": 276,
+      "independent_recovered": 41,
+      "independent_input_gates": 5,
+      "independent_offline_command": 1,
+      "supplied_primary": 182,
+      "supplied_recovered": 182
+    },
+    "status_fields": {
+      "independent_primary": 147,
+      "independent_recovered": 24,
+      "independent_fresh_process": 1,
+      "supplied_primary": 156,
+      "supplied_recovered": 156
+    }
+  },
+  "no_prior_suite_or_review_rerun": true,
+  "no_host_or_session_operation": true,
+  "database_connections": 0,
+  "no_acquisition": true,
+  "git_save_repeated": false,
+  "runtime_changes": false,
+  "all_eleven_obligations_preserved": true,
+  "inventory_unknown_totals": 4,
+  "lifetime_unknown_totals": 14,
+  "SOURCE_ONLY": "UNCHANGED",
+  "Decision_B": "UNCHANGED",
+  "cumulative_envelope": "UNADOPTED",
+  "readiness": "BLOCKED",
+  "final_binding": "BLOCKED",
+  "actual_admission": false,
+  "packaging_discrepancies": "results/packaging-discrepancy.json"
+}
