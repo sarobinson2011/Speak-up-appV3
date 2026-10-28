@@ -1,0 +1,48 @@
+{
+  "result": "PASS",
+  "source_identities": {
+    "launcher": {
+      "bytes": 11481,
+      "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+    },
+    "entry": {
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    }
+  },
+  "programs": {
+    "session-init": "def __init__(self,managed):self.__managed=managed",
+    "session-handle": "def handle(self,authenticated_packet):return self.__managed.handle(authenticated_packet)",
+    "client-init": "def __init__(self, token):\n        self.__token = token",
+    "client-handle": "def handle(self, authenticated_packet):\n        return _dispatch(self.__token, 'handle', authenticated_packet)",
+    "owner-init": "def __init__(self, wrapper):\n        self.wrapper = wrapper\n        self.failure = None",
+    "dispatch": "def _dispatch(token, operation, packet):\n    owner = _OWNERS.get(token)\n    if owner is None or owner.failure is not None:\n        _fail()\n    try:\n        if operation == 'handle':\n            if type(packet) is not bytes:\n                raise TypeError('PACKET-BYTES')\n            result = owner.wrapper.handle(packet)\n            if type(result) is not bytes:\n                raise TypeError('RESPONSE-BYTES')\n            return result  # Preserve exact authenticated response; no re-encoding.\n        if operation != 'state':\n            raise RuntimeError('CLIENT-OPERATION')\n        result = owner.wrapper.state()\n        if type(result) is not dict or set(result) != _STATE_KEYS:\n            raise RuntimeError('STATE-SHAPE')\n        return _data(result)\n    except BaseException as error:\n        # Keep the ORIGINAL failure for the launcher's existing retention/cleanup\n        # path. No new log and no swallowed fault if the client catches failure.\n        owner.failure = error\n    # Outside the handler: no original engine exception in __context__/__cause__.\n    _fail()",
+    "fixed-failure": "def _fail():\n    raise ClientFailure('MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization') from None",
+    "owner-route": "def _run(launcher, candidate, draft, runtime, destination, client, create, control):\n    \"\"\"Trusted orchestration seam; production callers use run/run_controlled.\"\"\"\n    failed = False\n    try:\n        with launcher.session(candidate, draft, runtime, destination, create=create) as wrapper:\n            owner = _Owner(wrapper); token = object(); _OWNERS[token] = owner\n            try:\n                if control is not None:\n                    control(_Control(token))  # Explicit separately authorized use.\n                try:\n                    client(Client(token))\n                except BaseException as client_error:\n                    if owner.failure is not None:\n                        raise owner.failure from client_error\n                    raise\n                if owner.failure is not None:\n                    raise owner.failure\n            finally:\n                # Revoke before close, including failed/uncertain cleanup.\n                _OWNERS.pop(token, None)\n        # Callback returns are deliberately not forwarded to another recipient.\n    except BaseException:\n        # Original launcher already handled original failure/cleanup evidence.\n        # Do not print it, transform its retained record, or infer nonexecution.\n        failed = True\n    if failed:\n        _fail()",
+    "general-entry": "def run(candidate, draft, runtime, destination, client, *, create=False):\n    \"\"\"General entry: no control capability, status return or status publication.\"\"\"\n    failed = False\n    try:\n        launcher = _load_launcher()\n    except BaseException:\n        failed = True\n    if failed:\n        _fail()\n    return _run(launcher, candidate, draft, runtime, destination, client, create, None)",
+    "launcher-error": "except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise"
+  },
+  "manager_handle": "def handle(self,packet,inject=None):return self._run('handle',packet,inject)",
+  "source_guards_and_normal_prefixes_checked": true,
+  "outside_dispatch_catch": [
+    "client-call",
+    "owner-lookup",
+    "owner-guard",
+    "client-return",
+    "retain-error",
+    "fixed-failure"
+  ],
+  "caught_calling_region": [
+    "packet-check",
+    "session-call",
+    "manager-call",
+    "session-return",
+    "response-check",
+    "dispatch-return"
+  ],
+  "source_types": "Exact bytes on successful client handle; TypeError on every non-exact-byte packet; inject supplied by manager default",
+  "no_runtime_execution": true,
+  "normal_error_response_preserved": true,
+  "original_error_route": "owner.failure; _run re-raise on callback return or raise; token revocation before launcher context exit; best-effort original cleanup/evidence; fixed general-entry failure",
+  "return_and_destination_limits": "No automatic stdout/stderr/status publication; no introspection or callback-print protection; no observed return chain or failure-file bytes"
+}

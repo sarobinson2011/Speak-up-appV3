@@ -1,0 +1,1239 @@
+{
+  "result": "PASS",
+  "assertions": 149,
+  "categories": {
+    "constructed_negative": 54,
+    "constructed_only": 53,
+    "independent": 27,
+    "negative": 3,
+    "old_version_witness": 5,
+    "public_negative": 1,
+    "source_negative": 6
+  },
+  "checks": [
+    {
+      "check": "independent forwarding types guards and exception-destination source audit",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fresh mandatory predecessor basis",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fresh expected rows match saved client relation",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "exact two context order",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "all prior context fields unchanged SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "instance request source and evidence anchor SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing runtime links are explicitly unavailable SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "separate observer and saved output identities preserved SYMBOLIC-U-ONE",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "all prior context fields unchanged SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "instance request source and evidence anchor SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing runtime links are explicitly unavailable SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "separate observer and saved output identities preserved SYMBOLIC-U-TWO",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "normal exact forwarding including ok-false SYMBOLIC-U-ONE:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "five distinct ordered value hops and exact bytes SYMBOLIC-U-ONE:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source argument hops and only calling-client destination SYMBOLIC-U-ONE:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing hop SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "reordered hops SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong selector SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "substituted bytes SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong return type SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "stdout destination SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "error converted into fixed failure SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong manager SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:references"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong inject SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-MANAGER-ARGUMENTS"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong acquisition SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:scope"
+      },
+      "group": "core"
+    },
+    {
+      "check": "coordinated authenticated response replacement SYMBOLIC-U-ONE:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-EXACT-RESPONSE:underlying"
+      },
+      "group": "core"
+    },
+    {
+      "check": "nested projection results isolated SYMBOLIC-U-ONE:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "normal exact forwarding including ok-false SYMBOLIC-U-ONE:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "five distinct ordered value hops and exact bytes SYMBOLIC-U-ONE:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source argument hops and only calling-client destination SYMBOLIC-U-ONE:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing hop SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "reordered hops SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong selector SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "substituted bytes SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong return type SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "stdout destination SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "error converted into fixed failure SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong manager SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:references"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong inject SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-MANAGER-ARGUMENTS"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong acquisition SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:scope"
+      },
+      "group": "core"
+    },
+    {
+      "check": "coordinated authenticated response replacement SYMBOLIC-U-ONE:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-EXACT-RESPONSE:underlying"
+      },
+      "group": "core"
+    },
+    {
+      "check": "nested projection results isolated SYMBOLIC-U-ONE:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "normal exact forwarding including ok-false SYMBOLIC-U-TWO:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "five distinct ordered value hops and exact bytes SYMBOLIC-U-TWO:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source argument hops and only calling-client destination SYMBOLIC-U-TWO:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing hop SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "reordered hops SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong selector SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "substituted bytes SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong return type SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "stdout destination SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "error converted into fixed failure SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong manager SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:references"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong inject SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-MANAGER-ARGUMENTS"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong acquisition SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:scope"
+      },
+      "group": "core"
+    },
+    {
+      "check": "coordinated authenticated response replacement SYMBOLIC-U-TWO:0",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-EXACT-RESPONSE:underlying"
+      },
+      "group": "core"
+    },
+    {
+      "check": "nested projection results isolated SYMBOLIC-U-TWO:0",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "normal exact forwarding including ok-false SYMBOLIC-U-TWO:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "five distinct ordered value hops and exact bytes SYMBOLIC-U-TWO:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source argument hops and only calling-client destination SYMBOLIC-U-TWO:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "missing hop SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "reordered hops SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong selector SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "substituted bytes SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong return type SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "stdout destination SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "error converted into fixed failure SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong manager SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:references"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong inject SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-MANAGER-ARGUMENTS"
+      },
+      "group": "core"
+    },
+    {
+      "check": "wrong acquisition SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:scope"
+      },
+      "group": "core"
+    },
+    {
+      "check": "coordinated authenticated response replacement SYMBOLIC-U-TWO:1",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-EXACT-RESPONSE:underlying"
+      },
+      "group": "core"
+    },
+    {
+      "check": "nested projection results isolated SYMBOLIC-U-TWO:1",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "equal byte values retain distinct occurrences",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "original helper classification witness reproduced SYMBOLIC-U-ONE",
+      "category": "old_version_witness",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "original witness output exact",
+      "category": "old_version_witness",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "corrected helper classification SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "old classification rejected by corrected relation SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "normal fixed failure retains exact source message SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "adjacent old storage classification and corrected uncertainty SYMBOLIC-U-ONE",
+      "category": "old_version_witness",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "storage termination is not Python unwind SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "original helper classification witness reproduced SYMBOLIC-U-TWO",
+      "category": "old_version_witness",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "corrected helper classification SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "old classification rejected by corrected relation SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "normal fixed failure retains exact source message SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "adjacent old storage classification and corrected uncertainty SYMBOLIC-U-TWO",
+      "category": "old_version_witness",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "storage termination is not Python unwind SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention str SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated str SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention int SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated int SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention NoneType SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated NoneType SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "escaping manager original reaches trusted route SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage revoke SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output revoke SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage format SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output format SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage cleanup SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output cleanup SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage write SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output write SYMBOLIC-U-ONE",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catch placement client-call SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source catch placement packet-check SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source catch placement client-return SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "outer process termination creates no Python exception or destination SYMBOLIC-U-ONE",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention str SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated str SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention int SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated int SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "nonbyte source failure and original retention NoneType SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "fixed and trusted destinations separated NoneType SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "escaping manager original reaches trusted route SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage revoke SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output revoke SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage format SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output format SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage cleanup SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output cleanup SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "failed cleanup or evidence stage write SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "failure cannot invent evidence bytes or output write SYMBOLIC-U-TWO",
+      "category": "constructed_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catch placement client-call SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source catch placement packet-check SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source catch placement client-return SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "outer process termination creates no Python exception or destination SYMBOLIC-U-TWO",
+      "category": "constructed_only",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "source catalogue missing hop",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catalogue reordered hop",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catalogue wrong byte type",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catalogue wrong guard",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "source catalogue original to stdout",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      },
+      "group": "core"
+    },
+    {
+      "check": "coordinated source conversion cannot replace direct return",
+      "category": "source_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-DEFINING-SHAPE:_dispatch"
+      },
+      "group": "core"
+    },
+    {
+      "check": "mandatory handle predecessor actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "sources and saved evidence unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "core"
+    },
+    {
+      "check": "full semantic coordinated wrong instance 1",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CONTEXT-CORRESPONDENCE"
+      },
+      "group": "wrong-instance-1"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "wrong-instance-1"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "wrong-instance-1"
+    },
+    {
+      "check": "coordinated journal and claims journal-derivation",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-VALIDATED-JOURNAL"
+      },
+      "group": "journal-derivation"
+    },
+    {
+      "check": "journal expectation is fresh validated empty evidence",
+      "category": "independent",
+      "result": "PASS",
+      "group": "journal-derivation"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "journal-derivation"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "journal-derivation"
+    },
+    {
+      "check": "full missing export",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-MISSING-EXPORT"
+      },
+      "group": "missing-export"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "missing-export"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "missing-export"
+    },
+    {
+      "check": "public-omission",
+      "category": "public_negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CLIENT-CORRESPONDENCE"
+      },
+      "group": "public-omission"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-omission"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-omission"
+    },
+    {
+      "check": "pristine public before mutations",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-alias"
+    },
+    {
+      "check": "pristine public after nested mutations",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-alias"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-alias"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS",
+      "group": "public-alias"
+    }
+  ],
+  "groups": [
+    {
+      "group": "core",
+      "assertions": 132,
+      "result_identity": {
+        "bytes": 26727,
+        "sha256": "d52e5a64ce940a77210d8d7291bfd490f399ad1e5d4dedd5c098b2df2cf24ae7"
+      }
+    },
+    {
+      "group": "wrong-instance-1",
+      "assertions": 3,
+      "result_identity": {
+        "bytes": 1349,
+        "sha256": "62ced55345805b736c619628cb12b1891bb0dfe1f26d9f2f0939e70596561812"
+      }
+    },
+    {
+      "group": "journal-derivation",
+      "assertions": 4,
+      "result_identity": {
+        "bytes": 1494,
+        "sha256": "2a2d5396ac94e66e050d4b44e029a3eef0106b3842d98918233a8f237b8322ef"
+      }
+    },
+    {
+      "group": "missing-export",
+      "assertions": 3,
+      "result_identity": {
+        "bytes": 1316,
+        "sha256": "7064b06958d46d191e2785921201f00b486fe7ad0659ebb63bf83e21b617d1fe"
+      }
+    },
+    {
+      "group": "public-omission",
+      "assertions": 3,
+      "result_identity": {
+        "bytes": 1344,
+        "sha256": "d9cb8cfc9a1f728725e75eed7c52e4dd92708437eb16f8466b345b47e3b95ac0"
+      }
+    },
+    {
+      "group": "public-alias",
+      "assertions": 4,
+      "result_identity": {
+        "bytes": 1334,
+        "sha256": "9ba73c804e549293269089e92d80d200c7b22f24fdb76661b3d4783361fc0140"
+      }
+    }
+  ],
+  "source": {
+    "correspondence.py": {
+      "bytes": 9088,
+      "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+    },
+    "managed_coverage.py": {
+      "bytes": 150359,
+      "sha256": "16ac04fa6446c2d9238a11060b8f9c7002673c5869540760ee4448ab0ac91ff4"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "recovered": true,
+  "error": null,
+  "partial_failed_or_interrupted_groups_included": false,
+  "requests_issued": 0,
+  "new_signatures": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "completed_review_reruns": false,
+  "constructed_cases_are_execution_evidence": false
+}

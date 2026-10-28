@@ -1,0 +1,177 @@
+{
+  "result": "PASS",
+  "stages": {
+    "client-call": {
+      "location": "caller-outside-dispatch",
+      "protected": false,
+      "anchor": {
+        "site": "116:8:116:70:Return",
+        "expression": "return _dispatch(self.__token, 'handle', authenticated_packet)"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "owner-lookup": {
+      "location": "dispatch-before-try",
+      "protected": false,
+      "anchor": {
+        "site": "144:4:144:30:Assign",
+        "expression": "owner = _OWNERS.get(token)"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "owner-guard": {
+      "location": "dispatch-before-try",
+      "protected": false,
+      "anchor": {
+        "site": "145:4:146:15:If",
+        "expression": "if owner is None or owner.failure is not None:\n        _fail()"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "packet-check": {
+      "location": "dispatch-protected-try",
+      "protected": true,
+      "anchor": {
+        "site": "149:12:150:47:If",
+        "expression": "if type(packet) is not bytes:\n                raise TypeError('PACKET-BYTES')"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "session-call": {
+      "location": "dispatch-protected-try",
+      "protected": true,
+      "anchor": {
+        "site": "151:12:151:49:Assign",
+        "expression": "result = owner.wrapper.handle(packet)"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "manager-call": {
+      "location": "callee-under-dispatch-protected-call",
+      "protected": true,
+      "anchor": {
+        "site": "124:42:124:92:Return",
+        "expression": "return self.__managed.handle(authenticated_packet)"
+      },
+      "source": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      }
+    },
+    "session-return": {
+      "location": "callee-under-dispatch-protected-call",
+      "protected": true,
+      "anchor": {
+        "site": "124:42:124:92:Return",
+        "expression": "return self.__managed.handle(authenticated_packet)"
+      },
+      "source": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      }
+    },
+    "response-check": {
+      "location": "dispatch-protected-try",
+      "protected": true,
+      "anchor": {
+        "site": "152:12:153:49:If",
+        "expression": "if type(result) is not bytes:\n                raise TypeError('RESPONSE-BYTES')"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "dispatch-return": {
+      "location": "dispatch-protected-try",
+      "protected": true,
+      "anchor": {
+        "site": "154:12:154:25:Return",
+        "expression": "return result"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "client-return": {
+      "location": "caller-outside-dispatch",
+      "protected": false,
+      "anchor": {
+        "site": "116:8:116:70:Return",
+        "expression": "return _dispatch(self.__token, 'handle', authenticated_packet)"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "retain-error": {
+      "location": "dispatch-handler-body",
+      "protected": false,
+      "anchor": {
+        "site": "164:8:164:29:Assign",
+        "expression": "owner.failure = error"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "fixed-failure": {
+      "location": "fixed-helper-outside-protected-region",
+      "protected": false,
+      "anchor": {
+        "site": "29:4:29:111:Raise",
+        "expression": "raise ClientFailure('MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization') from None"
+      },
+      "source": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    }
+  },
+  "normal_order": [
+    "client-call",
+    "owner-lookup",
+    "owner-guard",
+    "packet-check",
+    "session-call",
+    "manager-call",
+    "session-return",
+    "response-check",
+    "dispatch-return",
+    "client-return"
+  ],
+  "source_intended_fixed_failure": {
+    "type": "ClientFailure",
+    "message": "MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization",
+    "cause": null
+  },
+  "dynamic_callee_protection_basis": "ManagedSession.handle directly calls manager and returns without a handler; its dispatcher call is in the protected try body",
+  "direct_consumers": [
+    {
+      "function": "client_handle_projection",
+      "line": 1590,
+      "expression": "classification['unexpected_raise_outside_dispatch_catch']"
+    }
+  ],
+  "regenerated_whole_result_validation": true,
+  "runtime_or_authority_decisions_consume_flag": false,
+  "not_a_new_runtime_observation": true
+}

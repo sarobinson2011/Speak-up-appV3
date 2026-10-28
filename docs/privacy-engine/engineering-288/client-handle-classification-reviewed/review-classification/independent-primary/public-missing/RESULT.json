@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "checks": 3,
+  "rows": [
+    {
+      "check": "public-missing",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "STALE-OR-ALTERED-CLIENT-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "mandatory predecessor derivation observed",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "current receipt and sources unchanged",
+      "result": "PASS",
+      "kind": "independent"
+    }
+  ],
+  "error": null,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "implementation": "cpython",
+    "optimization": 0,
+    "isolated": 1,
+    "dont_write_bytecode": true,
+    "cryptography": "50.0.2"
+  },
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "runtime_or_session_methods_invoked": false,
+  "retained_boundary_import_and_read_only_verification_permitted": true,
+  "constructed_not_runtime": true,
+  "case": "public-missing",
+  "root": "oc-input"
+}

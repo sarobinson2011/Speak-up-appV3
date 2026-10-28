@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/oc-review/code/additional.py", line 25, in <module>
+    expected=x['input']['manager_case']['wrapper_return']['value'];actual=x['output']['hops'][0]['value'];assert actual!=expected and actual.get('bytes_hex')=='00';facts.append({'context':x['input']['scope']['context'],'input_bytes_hex_length':len(expected['bytes_hex']),'deliberately_mutated_historical_first_hop':actual})
+                                                                          ~^^^^^^^^^^
+KeyError: 'output'

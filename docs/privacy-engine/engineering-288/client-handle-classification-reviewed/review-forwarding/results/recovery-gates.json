@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "root": "ch-input",
+      "result": "ACCEPTED",
+      "source": {
+        "bytes": 9088,
+        "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+      },
+      "prior_code_loaded": false
+    },
+    {
+      "root": "ch-recovered-2",
+      "result": "ACCEPTED",
+      "source": {
+        "bytes": 9088,
+        "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+      },
+      "prior_code_loaded": false
+    },
+    {
+      "root": "ch-recovered",
+      "result": "REJECTED",
+      "error": "CLIENT-UNDECLARED-OR-NONREGULAR",
+      "prior_code_loaded": false,
+      "earlier_refusal_completed_assertions": 0
+    },
+    {
+      "check": "original undeclared file preserved byte-exact",
+      "result": "PASS",
+      "identity": {
+        "bytes": 15990784,
+        "sha256": "2e32d7c9c898a01c82b97f8a0c0639730f4548c6703c24b5e323e0a587b9d682"
+      },
+      "cause": "UNKNOWN",
+      "included_as_declared_recovery_input": false
+    }
+  ],
+  "no_predecessor_execution": true
+}

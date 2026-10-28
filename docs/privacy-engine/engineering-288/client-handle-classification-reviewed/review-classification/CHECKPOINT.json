@@ -1,0 +1,299 @@
+{
+  "checkpoint": "Formal-Lab6-I164-outside-catch-classification-correction-independent-review",
+  "review_target": "I164-outside-catch-classification-correction-1.zip",
+  "input": {
+    "bytes": 60424906,
+    "sha256": "08499f314151aef36bdbe711ad6f821bf1258d28a8c0d65fd693e3b0db4a3ba5",
+    "entries": 1508,
+    "manifested_hashes": 1507
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "Engineering",
+  "author_independent": true,
+  "implementation_modified": false,
+  "canonical": false,
+  "verdict": "SUPPORTED within stated terminal-classification contract and currently modeled paths; prior prefix-termination caveat CLOSED; original helper/storage corrections preserved",
+  "residual_defect_witness": null,
+  "meaning": {
+    "true_iff": "terminal unexpected modeled raise outside the dynamically protected region of _dispatch own BaseException catch",
+    "ordinary_fixed_ClientFailure": "intentional-fixed-raise; flag false; modeled Python exception true",
+    "process_termination": "flag false; terminal Python exception not established (null)",
+    "normal_return": "flag false; no terminal exception modeled",
+    "catch_location_separate": true,
+    "runtime_exception_and_unwind_evidence": "UNAVAILABLE",
+    "flag_is_permission_or_global_exception_absence_proof": false,
+    "earlier_modeled_exception_or_storage_separate": true
+  },
+  "source_assessment": {
+    "source_oracle": "independent defining AST catch membership and dynamic direct-call propagation",
+    "modeled_stages": 12,
+    "protected_region_stages": [
+      "packet-check",
+      "session-call",
+      "manager-call",
+      "session-return",
+      "response-check",
+      "dispatch-return"
+    ],
+    "outside_region_stages": [
+      "client-call",
+      "owner-lookup",
+      "owner-guard",
+      "client-return",
+      "retain-error",
+      "fixed-failure"
+    ],
+    "single_flag_assignment": true,
+    "direct_consumers": [
+      {
+        "function": "client_handle_projection",
+        "line": 1590,
+        "expression": "classification['unexpected_raise_outside_dispatch_catch']"
+      }
+    ],
+    "generic_projection_validation": "full result regeneration and equality",
+    "operational_or_admission_consumer_in_audited_sources": false,
+    "helper_alone_validates_path_reachability_or_evidence": false
+  },
+  "witnesses": {
+    "six_old_prefix_true_flags_reproduced": true,
+    "prefix_termination_now_false": true,
+    "earliest_helper_false_flag_reproduced": true,
+    "earliest_failed_storage_false_flag_and_false_retention_reproduced": true,
+    "unexpected_helper_and_storage_raises_now_true": true,
+    "failed_or_terminating_storage_confirmation": null,
+    "ordinary_fixed_raise_not_unexpected": true,
+    "later_termination_does_not_erase_prior_conditional_storage": true,
+    "coordinated_post_termination_continuation_rejected": true,
+    "both_contexts": true
+  },
+  "validation": {
+    "source_validation": true,
+    "semantic_validation": true,
+    "mandatory_derivation": true,
+    "public_receipt_validation": true,
+    "actual_predecessor_derive_handle_observed": true,
+    "current_receipt_accepted_exact": true,
+    "old_version_receipt_rejected": true,
+    "coordinated_source_and_claim_changes_rejected": true,
+    "nested_results_do_not_change_expectations": true,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "versions": {
+      "catalogue": "I164-CLIENT-HANDLE-STATIC-2",
+      "receipt": "I164-CLIENT-HANDLE-RETURN-CORRESPONDENCE-2",
+      "classification": "I164-CLIENT-TERMINAL-CLASSIFICATION-1"
+    }
+  },
+  "independent_results": {
+    "primary_checks": 172,
+    "primary_groups": 11,
+    "primary_categories": {
+      "constructed": 62,
+      "independent": 34,
+      "negative": 66,
+      "old-witness": 10
+    },
+    "recovered_checks": 131,
+    "recovered_groups": 6,
+    "recovered_categories": {
+      "constructed": 46,
+      "independent": 21,
+      "negative": 54,
+      "old-witness": 10
+    },
+    "separate_public_CLI_process": 1,
+    "reviewer_failed_attempt_counts": [
+      0,
+      15
+    ],
+    "failed_attempts_in_completed_totals": false,
+    "progress_reconciliation": {
+      "result": "EXACT-RECORD-RECONCILIATION",
+      "combined_progress": {
+        "bytes": 5531,
+        "sha256": "dadbb4db3ebb5191ad12308c93acee482621f5a564d77b552eb52238ec779ca9"
+      },
+      "combined_rows": 31,
+      "failed_prefix_rows": 15,
+      "failed_record": {
+        "bytes": 4078,
+        "sha256": "19e9d72ec52f83e1ea6b79431e92fa4432bb47e1123827c27ed3f92cd4d56148"
+      },
+      "completed_suffix_rows": 16,
+      "completed_record": {
+        "bytes": 4171,
+        "sha256": "4ce3448a55fb5f46cd036197ce6d79a707f8356f03b85f23ac1826e823835162"
+      },
+      "unique_complete_record_start": 15,
+      "completed_process_observed": {
+        "exit_code": 0,
+        "stdout": "PASS 16 additional focused controls\n",
+        "source": "execution-tool completion"
+      },
+      "combined_progress_preserved": true,
+      "failed_rows_included_in_success_totals": false,
+      "duplication_mechanism": "UNKNOWN",
+      "tests_rerun_for_reconciliation": false
+    },
+    "constructed_cases_are_runtime_evidence": false
+  },
+  "supplied_results": {
+    "primary_checks": 131,
+    "recovered_checks": 129,
+    "process_validation": 1,
+    "inspected_not_run": true,
+    "failed_attempt_counts": [
+      81,
+      103
+    ],
+    "failed_attempts_in_completed_totals": false,
+    "failure_interpretations_independently_corroborated": true,
+    "intermediate_recovery_archive_newly_verified": false,
+    "intermediate_recovery": {
+      "CRC": "PASS",
+      "all_hashes": "PASS",
+      "bytes": 60161685,
+      "entries": 1460,
+      "manifest_identity": {
+        "bytes": 366769,
+        "sha256": "ee3f90b756b52e60489bf3444a9337c51d9aef882d25e222fcbb73eef63a7059"
+      },
+      "manifested_files": 1459,
+      "safe_unique_regular_membership": "PASS",
+      "sha256": "80326746838af18bdb65715bcea8c31ec7a942daccbdffa7aa0ec58e21c75d8e"
+    }
+  },
+  "preservation": {
+    "original_members_byte_identical": 1282,
+    "prior_review_non_input_records_byte_identical": 171,
+    "prior_independent_counts": [
+      217,
+      149
+    ],
+    "prior_independent_CLI": 1,
+    "prior_extra_caveat_cases": 6,
+    "prior_refused_root_and_partial_bytes_preserved": true,
+    "prior_supplied_counts": {
+      "focused": 17,
+      "recovered": 168,
+      "process": 1,
+      "pre_correction_separate": 170
+    },
+    "source_changes": {
+      "managed_coverage.py": {
+        "changed": [
+          "client_handle_projection",
+          "compile_client_handle"
+        ],
+        "added": [
+          "_client_outcome_classification"
+        ],
+        "removed": [],
+        "unchanged_function_bytes": 59,
+        "current": {
+          "bytes": 153726,
+          "sha256": "80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213"
+        },
+        "previous": {
+          "bytes": 150359,
+          "sha256": "16ac04fa6446c2d9238a11060b8f9c7002673c5869540760ee4448ab0ac91ff4"
+        }
+      },
+      "correspondence.py": {
+        "changed": [
+          "derive_client",
+          "predecessor_root"
+        ],
+        "added": [],
+        "removed": [],
+        "unchanged_function_bytes": 16,
+        "current": {
+          "bytes": 9122,
+          "sha256": "c0a119e8149b510f059874d166dabdfb8517b1c46d060cb9924e19ee1efdc8da"
+        },
+        "previous": {
+          "bytes": 9088,
+          "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+        }
+      }
+    },
+    "exact_receipt_change_paths": [
+      "/contexts/0/client_handle_return_correspondence/declaration/format",
+      "/contexts/0/client_handle_return_correspondence/declaration/outside_catch_failure_contract",
+      "/contexts/1/client_handle_return_correspondence/declaration/format",
+      "/contexts/1/client_handle_return_correspondence/declaration/outside_catch_failure_contract",
+      "/extension_components/correspondence.py/bytes",
+      "/extension_components/correspondence.py/sha256",
+      "/extension_components/managed_coverage.py/bytes",
+      "/extension_components/managed_coverage.py/sha256",
+      "/format"
+    ],
+    "all_other_receipt_fields_unchanged": true,
+    "historical_sources_evidence_relationships_ordinals_and_prior_support": "PRESERVED",
+    "archival_availability_qualifications": "PRESERVED; absent historical compact dependencies not newly verified"
+  },
+  "current_receipt": {
+    "bytes": 1720401,
+    "sha256": "20a4dcdac9b37f7e5208ce1015e6380c120c0ff157cd94cad2f90a83b954a441"
+  },
+  "previous_receipt": {
+    "bytes": 1719615,
+    "sha256": "16ed6d696676e54e2a9465e62761b189ed52aa65261fa2e9aa52cc5907d4a4a5"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "implementation": "cpython",
+    "optimization": 0,
+    "isolated": 1,
+    "dont_write_bytecode": true,
+    "cryptography": "50.0.2"
+  },
+  "observation_limits": {
+    "traced_invocations": 18,
+    "separate_frameless_Client_state_observer": 1,
+    "runtime_handle_return_chain": "UNAVAILABLE",
+    "actual_handle_call_count": null,
+    "packet_inject_reference_exception_and_cleanup_observations": "UNAVAILABLE",
+    "saved_journal_rows": 0,
+    "empty_journal_is_lifetime_zero": false,
+    "complete_interruption_or_runtime_coverage": false,
+    "instruction_level_feasibility_established": false,
+    "outer_callback_cleanup_projection": "PARTIAL; unchanged",
+    "new_durable_records_or_cleanup_completion": false,
+    "missing_launcher_frame_provenance": "PRESERVED",
+    "arbitrary_Python_introspection_resistance": false,
+    "new_host_or_wheel_byte_authentication_qualification": false
+  },
+  "boundaries": {
+    "all_eleven_obligations": "PRESERVED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "accounting_reservations_nonce_ownership_uncertainty": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false
+  },
+  "operations": {
+    "runtime_changes": false,
+    "requests": 0,
+    "new_signatures": 0,
+    "database_connections": 0,
+    "session_operations": 0,
+    "acquisitions": 0,
+    "dependency_installation": false,
+    "host_probe": false,
+    "completed_suite_or_review_reruns": false,
+    "Git_operations": false,
+    "policy_adoption": false
+  }
+}

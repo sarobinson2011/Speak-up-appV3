@@ -1,0 +1,692 @@
+{
+  "result": "PASS",
+  "checks": 101,
+  "rows": [
+    {
+      "check": "independent defining-source dynamic catch and consumer audit",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "normal exact byte return review:SYMBOLIC-U-ONE:0",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "classification adds no normalization or occurrence merge review:SYMBOLIC-U-ONE:0",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "normal exact byte return review:SYMBOLIC-U-ONE:1",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "classification adds no normalization or occurrence merge review:SYMBOLIC-U-ONE:1",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "normal exact byte return review:SYMBOLIC-U-TWO:2",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "classification adds no normalization or occurrence merge review:SYMBOLIC-U-TWO:2",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "normal exact byte return review:SYMBOLIC-U-TWO:3",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "classification adds no normalization or occurrence merge review:SYMBOLIC-U-TWO:3",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:client-call:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:client-call:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:owner-guard:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:owner-guard:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:packet-check:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:packet-check:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:manager-call:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:manager-call:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:session-return:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:session-return:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:client-return:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-ONE:client-return:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "storage SYMBOLIC-U-ONE:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "storage SYMBOLIC-U-ONE:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-ONE:normal",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-ONE:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-ONE:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "termination does not erase earlier stored original SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "intentional owner refusal SYMBOLIC-U-ONE:False",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "intentional owner refusal SYMBOLIC-U-ONE:True",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:client-call:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:client-call:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:owner-guard:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:owner-guard:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:packet-check:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:packet-check:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:manager-call:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:manager-call:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:session-return:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:session-return:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:client-return:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "source path SYMBOLIC-U-TWO:client-return:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "storage SYMBOLIC-U-TWO:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "storage SYMBOLIC-U-TWO:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-TWO:normal",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-TWO:raise",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "stored original then helper SYMBOLIC-U-TWO:process-termination",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "termination does not erase earlier stored original SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "intentional owner refusal SYMBOLIC-U-TWO:False",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "intentional owner refusal SYMBOLIC-U-TWO:True",
+      "result": "PASS",
+      "kind": "constructed"
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-ONE:client-call",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-ONE:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-ONE:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-ONE:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-ONE:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-ONE:owner-lookup",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-ONE:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-ONE:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-ONE:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-ONE:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-ONE:owner-guard",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-ONE:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-ONE:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-ONE:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-ONE:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-TWO:client-call",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-TWO:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-TWO:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-TWO:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-TWO:client-call",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-TWO:owner-lookup",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-TWO:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-TWO:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-TWO:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-TWO:owner-lookup",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "preserved prefix witness reproduced SYMBOLIC-U-TWO:owner-guard",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "coordinated termination-to-exception result rejects SYMBOLIC-U-TWO:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "changed outcome cannot replace fixed validated premise SYMBOLIC-U-TWO:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PREMISE:outcomes"
+      }
+    },
+    {
+      "check": "coordinated post-termination callback premise rejects SYMBOLIC-U-TWO:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-TERMINATION-CONTINUATION"
+      }
+    },
+    {
+      "check": "coordinated post-termination cleanup premise rejects SYMBOLIC-U-TWO:owner-guard",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-UNSUPPORTED-CLEANUP-PREMISE"
+      }
+    },
+    {
+      "check": "earliest helper false flag reproduced and repair retained SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "earliest storage false flag and known-false retention repaired SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "earliest helper false flag reproduced and repair retained SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "earliest storage false flag and known-false retention repaired SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "kind": "old-witness"
+    },
+    {
+      "check": "missing classification SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "integer flag SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "false means no exception SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "wrong source location SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "observed unwind SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "invented retained error SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "renewal SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "returned nested mutations cannot redefine classification SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "missing classification SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "integer flag SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "false means no exception SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "wrong source location SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "observed unwind SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "invented retained error SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "renewal SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "returned nested mutations cannot redefine classification SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "coordinated contract and guard substitution rejects defining sources",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-SOURCE-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "current source pin unchanged",
+      "result": "PASS",
+      "kind": "independent"
+    }
+  ],
+  "error": null,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "implementation": "cpython",
+    "optimization": 0,
+    "isolated": 1,
+    "dont_write_bytecode": true,
+    "cryptography": "50.0.2"
+  },
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "runtime_or_session_methods_invoked": false,
+  "retained_boundary_import_and_read_only_verification_permitted": true,
+  "constructed_not_runtime": true,
+  "root": "oc-recovered",
+  "recovered": true
+}

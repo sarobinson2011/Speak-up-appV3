@@ -1,0 +1,8 @@
+# Preserved new development attempts
+
+These attempts are excluded from completed control totals. Both ran only the new constructed/saved-input classification checks, not application/session code or old campaigns. Their exact control sources, progress, cases, result, stdout and stderr are retained separately.
+
+* `primary-fixture-selector`: 81 assertions completed before StopIteration. The test selected a storage fixture from the prior focused-correction case file, which actually contains only helper cases. The fixture selection was corrected to construct storage premises from the context-specific saved prefix with an invalid string packet. This did not change the production correction.
+* `primary-normal-comparison`: 103 assertions completed before a comparison assertion failed. A prior saved normal case's returned result contains a deliberately mutated first response hop (`bytes_hex='00'`), preserved from the prior nested-output mutation control (original/tests/controls.py, lines 79–80). Its saved input remains the authenticated expectation. The new check was corrected to compare every forwarding hop and destination to those exact saved input bytes, rather than treating the deliberately mutated result as a pristine expected output. The historical record was not repaired. This did not change production code.
+
+The following completed campaign and recovered-root check use the corrected test source. Earlier supplied and independent failures remain in original/ and review/ with their original scopes, including the review's zero-assertion membership failure. No historical failed result was relabeled as PASS.

@@ -1,0 +1,13 @@
+# Recovery of this bounded correction
+
+Verify the delivered ZIP's exact external identity, CRC, unique safe regular membership and all top MANIFEST.json hashes before extracting into a new persistent directory. Preserve originals; do not overlay an earlier root or host/session directory. The manifest describes files and their implied parent directories; reject undeclared entries, unexpected entry types and extra empty directories before candidate loading.
+
+The full reviewed forwarding root is under original/. Its exact predecessor remains original/retained/handle; the current adapter pins and verifies that predecessor's manifest, exact filesystem membership and file hashes before loading it. All executable recovery dependencies are retained. The complete forwarding review except its redundant embedded input archive is under review/, including failure bytes; earlier archived dependencies retain their documented identities and availability limitations. Compact historical copies are not represented as newly complete external archives. No deletion or compaction authorization follows.
+
+Use CPython 3.12.14 with optimization disabled and -I -B, and the retained Cryptography 50.0.2 profile. `tests/fresh_check.py ROOT` is the guarded saved-receipt validation entry. The public validator remains `code/correspondence.py --root ROOT --receipt ROOT/results/client-handle-correspondence.json`. `tests/controls.py --root ROOT --output NEW_PERSISTENT_OUTPUT --recovered` documents this correction's focused constructed checks. These commands are interface/recovery documentation, not instructions to repeat completed campaigns. Never use --write to replace the saved checkpoint receipt.
+
+The guarded checks forbid database/network/application operations. They read source as bytes/AST, reuse saved authentication fixtures and validate evidence offline; they do not invoke Client, ManagedSession or ManagedAuthority. Constructed results stay explicitly separate from observations. Tests emit output into a new directory, never strict predecessor input roots.
+
+results/recovery-input.json identifies the intermediate archive used for the new recovered-root check. Its extraction, exact files/directories/types gate and controls run in one process. The final checkpoint preserves that archive's exact input files and receipt; new documentation/result files are separately identified additions. The intermediate archive's outer identity differs from the final deliverable. Failures are preserved separately and excluded from completed totals.
+
+No Git, request, signing, submission, session, lifecycle, service or acquisition command is included. Existing authorizations and blockers are unchanged; independent review is the next step.

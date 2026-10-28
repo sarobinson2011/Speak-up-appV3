@@ -1,0 +1,63 @@
+{
+  "result": "PASS",
+  "assertions": 6,
+  "categories": {
+    "independent": 6
+  },
+  "checks": [
+    {
+      "check": "pristine full semantic before mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "context nested trees isolated",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "catalogue mutation cannot update expected source",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine semantic after nested mutations",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "mandatory handle derivation actually invoked",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "recovered": false,
+  "case": "semantic-alias",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "source": {
+    "correspondence.py": {
+      "bytes": 9088,
+      "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+    },
+    "managed_coverage.py": {
+      "bytes": 150359,
+      "sha256": "16ac04fa6446c2d9238a11060b8f9c7002673c5869540760ee4448ab0ac91ff4"
+    }
+  },
+  "database_connections": 0,
+  "session_operations": 0,
+  "requests_issued": 0,
+  "new_signatures": 0,
+  "completed_review_reruns": false,
+  "constructed_cases_are_execution_evidence": false
+}

@@ -1,0 +1,107 @@
+--- original/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -1447,14 +1447,46 @@
+   pin=source['sources']['launcher' if n.startswith('launcher') else 'entry'];same({k:sites[n]['anchor'][k] for k in pin},pin,'CLIENT-BOUNDARY-SOURCE')
+  ds={d['id']:d for d in manager['declarations']};need('wrapper-return' in ds,'CLIENT-MANAGER-DECLARATION')
+  values=['session-return','dispatch-result','dispatch-return','client-return']
+- return {'format':'I164-CLIENT-HANDLE-STATIC-1','source':source,'manager_relation':copy.deepcopy(manager),'boundary_contract':copy.deepcopy(boundary['contract']),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],
++ return {'format':'I164-CLIENT-HANDLE-STATIC-2','source':source,'manager_relation':copy.deepcopy(manager),'boundary_contract':copy.deepcopy(boundary['contract']),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],
+   'declarations':[{'id':n,'type':copy.deepcopy(ds['wrapper-return']['type']),'logical_type':'exact Python bytes','representation':'lowercase bytes_hex; no decoded/re-encoded replacement','classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in values],
+   'ordered_hops':['manager-return',*values],'arguments':[{'from':'Client.handle','to':'_dispatch','method':'handle','args':['client token','authenticated_packet']},{'from':'_dispatch','to':'ManagedSession.handle','args':['packet']},{'from':'ManagedSession.handle','to':'ManagedAuthority.handle','args':['authenticated_packet'],'inject':'source default None, not an observed value'}],
+   'reference_edges':[['client.token','token'],['owners[token]','owner'],['owner.wrapper','session'],['session.managed','manager']],'required_destinations':{'response':'calling general client only; not automatic stdout/stderr/status publication','original_error':'owner.failure then existing trusted launcher error/cleanup route conditional on continuation','fixed_failure':'general client or outer run caller','failure_record':'existing launcher evidence/failure-*.json only; best effort, exact bytes unavailable without observation'},
++  'outside_catch_failure_contract':{'version':'I164-CLIENT-TERMINAL-CLASSIFICATION-1','true_iff':'terminal unexpected modeled raise outside _dispatch protected region','false_is_not':'no exception, inside catch, no earlier effects, no pending error or permission to continue','intentional_fixed_raise_is_separate':True,'location_is_separate_from_outcome':True,'runtime_evidence_supplied':False},
+   'runtime_links':None,'runtime_call_count':None,'complete_repetition_coverage':False,'actual_admission':False}
+ 
+ def validate_client_handle(launcher,entry,manager,boundary,submitted):
+  same(submitted,compile_client_handle(launcher,entry,manager,boundary),'CLIENT-SOURCE-CORRESPONDENCE');return True
++
++def _client_outcome_classification(catalogue,events,completion):
++ """Classify the TERMINAL modeled stage relative to _dispatch's own catch.
++ A source-intended fixed ClientFailure is not an unexpected stage failure.
++ No classification here supplies runtime exception, unwind or retention evidence.
++ """
++ need(type(events) is list and bool(events),'CLIENT-CLASSIFICATION-EVENTS')
++ terminal=events[-1];stage=terminal['stage'];source=catalogue['source']['stages'][stage]
++ same(terminal['source'],source,'CLIENT-CLASSIFICATION-SOURCE')
++ kinds={'normal':'normal-return','fixed-client-failure':'intentional-fixed-raise','unqualified-escape':'unexpected-raise','process-termination':'process-termination'}
++ need(completion in kinds,'CLIENT-CLASSIFICATION-COMPLETION');kind=kinds[completion]
++ expected='raise' if kind=='unexpected-raise' else 'process-termination' if kind=='process-termination' else 'normal'
++ same(terminal['outcome'],expected,'CLIENT-CLASSIFICATION-OUTCOME')
++ def protected(node):return any(g['kind']=='try' and g['region']=='body' and 'BaseException' in g['handlers'] for g in node['guards'])
++ if stage in ('client-call','client-return'):location='caller-outside-dispatch';inside=False
++ elif stage in ('owner-lookup','owner-guard'):location='dispatch-before-try';inside=False;need(not protected(source),'CLIENT-PREFIX-PROTECTION')
++ elif stage=='retain-error':
++  location='dispatch-handler-body';inside=False
++  need(any(g['kind']=='handler' and g['type']=='BaseException' for g in source['guards']),'CLIENT-HANDLER-LOCATION')
++ elif stage=='fixed-failure':location='fixed-helper-outside-protected-region';inside=False
++ elif stage in ('manager-call','session-return'):
++  location='callee-under-dispatch-protected-call';inside=True;need(protected(catalogue['source']['stages']['session-call']),'CLIENT-CALLEE-PROTECTION')
++ else:location='dispatch-protected-try';inside=True;need(protected(source),'CLIENT-TRY-LOCATION')
++ if kind=='normal-return':need(stage=='client-return','CLIENT-NORMAL-TERMINAL')
++ if kind=='intentional-fixed-raise':need(stage=='fixed-failure','CLIENT-FIXED-TERMINAL')
++ return {'contract':'I164-CLIENT-TERMINAL-CLASSIFICATION-1','stage':stage,'stage_outcome':terminal['outcome'],'modeled_kind':kind,'source':copy.deepcopy(source),
++  'location_relative_to_dispatch_catch':location,'python_raise_protected_by_dispatch_catch':inside,
++  'unexpected_raise_outside_dispatch_catch':kind=='unexpected-raise' and not inside,
++  'terminal_python_exception_in_model':None if kind=='process-termination' else kind in ('unexpected-raise','intentional-fixed-raise'),
++  'runtime_python_exception_evidence':'UNAVAILABLE','runtime_python_unwind_evidence':'UNAVAILABLE',
++  'retention_cleanup_or_authority_established_by_classification':False}
+ 
+ def client_handle_projection(catalogue,verification,case,validated):
+  """Conditional source interpreter; validated is an independent premise, not
+@@ -1477,19 +1509,19 @@
+  need(packet['type'] in ('bytes','str','int','NoneType'),'CLIENT-PACKET-DOMAIN')
+  if packet['type']=='bytes':verification['exact_bytes'](packet['value'])
+  else:need(type(packet['value']) is {'str':str,'int':int,'NoneType':type(None)}[packet['type']],'CLIENT-PACKET-TYPE')
+- outcomes=case['outcomes'];need(type(outcomes) is dict,'CLIENT-OUTCOMES');used=set();events=[];hops=[];arguments=[];dest=[];original=None;fixed=None;manager_result=None;completion='pending';retained=False;outside=False
++ outcomes=case['outcomes'];need(type(outcomes) is dict,'CLIENT-OUTCOMES');used=set();events=[];hops=[];arguments=[];dest=[];original=None;fixed=None;manager_result=None;completion='pending';retained=False
+  def step(n):
+   need(n in outcomes and outcomes[n] in ('normal','raise','process-termination'),'CLIENT-OUTCOME:'+n);used.add(n);v=outcomes[n];events.append({'stage':n,'source':copy.deepcopy(catalogue['source']['stages'][n]),'outcome':v});return v
+  def link(n,row):hops.append({'id':case['occurrence']+'/'+n,'declaration':n,'value':copy.deepcopy(row['value']),'reference':copy.deepcopy(row['reference']),'scope':copy.deepcopy(scope)})
+  def fail_fixed():
+-  nonlocal fixed,completion,outside
++  nonlocal fixed,completion
+   result=step('fixed-failure')
+   if result=='normal':fixed=copy.deepcopy(catalogue['source']['fixed_failure']);completion='fixed-client-failure';dest.append({'kind':'fixed-failure','to':'general-client','value':copy.deepcopy(fixed)})
+-  else:completion='unqualified-escape' if result=='raise' else 'process-termination';outside=result=='raise'
++  else:completion='unqualified-escape' if result=='raise' else 'process-termination'
+  def outer(n):
+-  nonlocal completion,outside
++  nonlocal completion
+   v=step(n)
+-  if v!='normal':completion='unqualified-escape' if v=='raise' else v;outside=True;return False
++  if v!='normal':completion='unqualified-escape' if v=='raise' else v;return False
+   return True
+  # Lookup and its guard precede the catch. They cannot be advertised as caught.
+  entered=outer('client-call')
+@@ -1502,7 +1534,7 @@
+    # Client.handle's return is outside _dispatch's handler.
+    if v!='normal':
+     if v=='process-termination':completion=v;break
+-    if stage=='client-return':completion='unqualified-escape';outside=True;break
++    if stage=='client-return':completion='unqualified-escape';break
+     original={'kind':'conditional-exception','origin':stage,'catch_family':'BaseException','exact_type':None,'reference':case['occurrence']+'/error'};break
+    if stage=='packet-check' and packet['type']!='bytes':original={'kind':'source-TypeError','origin':stage,'type':'TypeError','message':catalogue['source']['packet_type_error'],'reference':case['occurrence']+'/error'};break
+    if stage=='session-call':arguments.append({'id':case['occurrence']+'/dispatch-to-session','to':'ManagedSession.handle','receiver':copy.deepcopy(refs['session']),'packet':copy.deepcopy(packet)})
+@@ -1525,7 +1557,7 @@
+   if original is not None:
+    v=step('retain-error')
+    if v=='normal':retained=True;dest.append({'kind':'original-exception-reference','to':'owner.failure','reference':original['reference']});fail_fixed()
+-   else:completion='unqualified-escape' if v=='raise' else v;outside=v=='raise';retained=None
++   else:completion='unqualified-escape' if v=='raise' else v;retained=None
+  if manager_result is None:need(case['manager_case'] is None and validated['manager_case'] is None,'CLIENT-UNREACHED-MANAGER')
+  need(used==set(outcomes),'CLIENT-UNREACHED-OUTCOME')
+  callback=case['callback'];need(callback in ('returns','raises','unobserved'),'CLIENT-CALLBACK')
+@@ -1550,10 +1582,12 @@
+   elif cleanup['outer_fail']=='normal':dest.append({'kind':'fixed-failure','to':'general-entry-caller','value':copy.deepcopy(catalogue['source']['fixed_failure'])})
+  else:
+   need(all(v=='unobserved' for v in cleanup.values()),'CLIENT-UNSUPPORTED-CLEANUP-PREMISE')
++ if completion=='process-termination':need(callback=='unobserved' and all(v=='unobserved' for v in cleanup.values()),'CLIENT-TERMINATION-CONTINUATION')
++ classification=_client_outcome_classification(catalogue,events,completion)
+  # No fabricated outer-run failure receipt: exact callback, exit and _fail
+  # continuations beyond these conditional destinations remain unobserved.
+  return {'kind':'CONSTRUCTED-CLIENT-HANDLE','occurrence':case['occurrence'],'scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'packet':copy.deepcopy(packet),'argument_hops':arguments,'manager':copy.deepcopy(manager_result),'events':events,'hops':hops,'completion':completion,'original_exception':original,'retained_original':retained,'fixed_client_failure':fixed,'destinations':dest,'evidence_route':evidence,
+-  'outside_catch_failure':outside,'prior_owner_failure':{'present':refs['owner_failed'],'exact_value':None,'resolution_established':False},'runtime_observation':False,'physical_identity_established':False,'raw_error_or_status_publication_authorized':False,'arbitrary_callback_forwarding_prevented':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++  'outside_catch_failure':classification['unexpected_raise_outside_dispatch_catch'],'outcome_classification':classification,'prior_owner_failure':{'present':refs['owner_failed'],'exact_value':None,'resolution_established':False},'runtime_observation':False,'physical_identity_established':False,'raw_error_or_status_publication_authorized':False,'arbitrary_callback_forwarding_prevented':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
+ 
+ def validate_client_handle_projection(catalogue,verification,case,validated,submitted):
+  expected=client_handle_projection(catalogue,verification,case,validated);same(submitted,expected,'CLIENT-PROJECTION-CORRESPONDENCE');return True

@@ -1,0 +1,31 @@
+--- original/code/correspondence.py
++++ code/correspondence.py
+@@ -4,7 +4,7 @@
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 150359, 'sha256': '16ac04fa6446c2d9238a11060b8f9c7002673c5869540760ee4448ab0ac91ff4'}
++PRODUCER_PIN={'bytes': 153726, 'sha256': '80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213'}
+ HANDLE_MANIFEST={'bytes': 276308, 'sha256': '71a7cb2823f6b35bb0fa3bcf87b677d07d076f98f8d63ed70c58538c94ae1567'}
+ HANDLE_RECEIPT={'bytes': 1156238, 'sha256': 'c840ab87c77c6900c457f39d029f51175546225b8af69e0fb6262bfcc52276ad'}
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+@@ -16,8 +16,8 @@
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ 
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/handle'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-ROOT-TYPE')
++ root=Path(root);base=root/'original/retained/handle'
++ for p in (root,root/'original',root/'original/retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-ROOT-TYPE')
+  p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'CLIENT-MANIFEST-TYPE');raw=p.read_bytes();require(identity(raw)==HANDLE_MANIFEST,'CLIENT-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen_dirs=set()
+  def walk(path):
+@@ -77,7 +77,7 @@
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def derive_client(data,submitted_catalogue,claims=None,evidence=None):
+- rows,basis=_checked(data,submitted_catalogue,claims,evidence);result=copy.deepcopy(basis['prior']);result['format']='I164-CLIENT-HANDLE-RETURN-CORRESPONDENCE-1'
++ rows,basis=_checked(data,submitted_catalogue,claims,evidence);result=copy.deepcopy(basis['prior']);result['format']='I164-CLIENT-HANDLE-RETURN-CORRESPONDENCE-2'
+  result['prior_handle_components']=result.pop('extension_components');result['prior_handle_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+  for context,row in zip(result['contexts'],rows):require(context['context']==row['context'],'CLIENT-DERIVATION-CONTEXT');context['client_handle_return_correspondence']=copy.deepcopy(row)
+  result['new_client_slice_limits']={'static_conditional_correspondence':True,'runtime_chain':'UNAVAILABLE','actual_call_count':None,'constructed_cases_not_evidence':True,'exact_response_bytes':True,'best_effort_failure_record_not_guaranteed':True,'outside_catch_and_interruption_limits_preserved':True,'physical_identity':None,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}

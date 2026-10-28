@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/outside-catch-correction/tests/controls.py", line 102, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/3da0de3fef10/outside-catch-correction/tests/controls.py", line 79, in main
+    out=check('normal byte return remains distinct '+label,lambda:valid(case,'normal-return','caller-outside-dispatch',False));check('normal exact bytes and all prior effects unchanged '+label,lambda:all(out[k]==savedcase['result'][k] for k in savedcase['result'] if k!='outside_catch_failure'))
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/outside-catch-correction/tests/controls.py", line 25, in check
+    value=fn();assert value is not False,name;row={'check':name,'result':'PASS'};rows.append(row)
+                      ^^^^^^^^^^^^^^^^^^
+AssertionError: normal exact bytes and all prior effects unchanged SYMBOLIC-U-ONE:normal

@@ -1,0 +1,241 @@
+--- reviewed-handle/managed_coverage.py
++++ client-handle/managed_coverage.py
+@@ -1327,6 +1327,238 @@
+  return {'kind':'CONSTRUCTED-HANDLE-RETURN','occurrence':case['occurrence'],'scope':copy.deepcopy(case['scope']),'arguments':copy.deepcopy(args),'backend':backend,'run':run,'links':links,'verified_pair':pair,'runtime_observation':False,'physical_object_identity_established':False,'external_nonexecution_established':False,'authorization_renewed':False,'admission':False}
+ 
+ 
++def _client_locate(raw):
++ tree=ast.parse(raw);parents={};text=raw.decode()
++ for p in ast.walk(tree):
++  for field,value in ast.iter_fields(p):
++   for i,n in enumerate(value if isinstance(value,list) else [value]):
++    if isinstance(n,ast.AST):parents[n]=(p,field,i if isinstance(value,list) else None)
++ def basic(n):return {'site':f'{n.lineno}:{n.col_offset}:{n.end_lineno}:{n.end_col_offset}:{type(n).__name__}','expression':ast.get_source_segment(text,n)}
++ def loc(n):
++  row=basic(n);child=n;gs=[];prefix=[]
++  while child in parents and not isinstance(child,ast.FunctionDef):
++   p,f,i=parents[child]
++   if isinstance(p,ast.If):gs.append({'kind':'if','test':basic(p.test),'arm':f})
++   elif isinstance(p,ast.Try):gs.append({'kind':'try','region':f,'handlers':[ast.unparse(h.type) for h in p.handlers]})
++   elif isinstance(p,ast.ExceptHandler):gs.append({'kind':'handler','type':ast.unparse(p.type),'binding':p.name})
++   elif isinstance(p,ast.With):gs.append({'kind':'with','contexts':[ast.unparse(x.context_expr) for x in p.items]})
++   elif isinstance(p,(ast.For,ast.While)):gs.append({'kind':type(p).__name__,'source':basic(p),'region':f})
++   if i is not None and isinstance(child,ast.stmt):prefix.append({'owner':basic(p),'region':f,'normal_prefix':[basic(x) for x in getattr(p,f)[:i] if isinstance(x,ast.stmt)]})
++   child=p
++  row.update(guards=list(reversed(gs)),continuation=list(reversed(prefix)));return row
++ return tree,loc
++
++def client_handle_source(launcher,entry,manager):
++ """Independent defining-source traversal, never a generated coverage oracle."""
++ lt,ll=_client_locate(launcher);et,el=_client_locate(entry)
++ def method(tree,cls,name):
++  owner=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name==cls) if cls else tree
++  return next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name==name)
++ def shape(n,expected):
++  def cleaned(fn):
++   fn=copy.deepcopy(fn)
++   if fn.body and isinstance(fn.body[0],ast.Expr) and isinstance(fn.body[0].value,ast.Constant) and type(fn.body[0].value.value) is str:fn.body.pop(0)
++   return ast.dump(fn,include_attributes=False)
++  same(cleaned(n),cleaned(ast.parse(expected).body[0]),'CLIENT-DEFINING-SHAPE:'+n.name)
++ session_init=method(lt,'ManagedSession','__init__');session=method(lt,'ManagedSession','handle')
++ client_init=method(et,'Client','__init__');client=method(et,'Client','handle');owner=method(et,'_Owner','__init__');dispatch=method(et,None,'_dispatch');fail=method(et,None,'_fail');run=method(et,None,'_run');general=method(et,None,'run');launch=method(lt,None,'_session')
++ shape(session_init,'def __init__(self, managed): self.__managed=managed')
++ shape(session,'def handle(self, authenticated_packet): return self.__managed.handle(authenticated_packet)')
++ shape(client_init,'def __init__(self, token): self.__token=token')
++ shape(client,"def handle(self, authenticated_packet): return _dispatch(self.__token, 'handle', authenticated_packet)")
++ shape(owner,'def __init__(self, wrapper):\n self.wrapper=wrapper\n self.failure=None')
++ shape(dispatch,"""def _dispatch(token, operation, packet):
++ owner = _OWNERS.get(token)
++ if owner is None or owner.failure is not None: _fail()
++ try:
++  if operation == 'handle':
++   if type(packet) is not bytes: raise TypeError('PACKET-BYTES')
++   result = owner.wrapper.handle(packet)
++   if type(result) is not bytes: raise TypeError('RESPONSE-BYTES')
++   return result
++  if operation != 'state': raise RuntimeError('CLIENT-OPERATION')
++  result = owner.wrapper.state()
++  if type(result) is not dict or set(result) != _STATE_KEYS: raise RuntimeError('STATE-SHAPE')
++  return _data(result)
++ except BaseException as error: owner.failure = error
++ _fail()
++""")
++ shape(fail,"def _fail(): raise ClientFailure('MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization') from None")
++ shape(run,"""def _run(launcher, candidate, draft, runtime, destination, client, create, control):
++ failed=False
++ try:
++  with launcher.session(candidate,draft,runtime,destination,create=create) as wrapper:
++   owner=_Owner(wrapper)
++   token=object()
++   _OWNERS[token]=owner
++   try:
++    if control is not None: control(_Control(token))
++    try: client(Client(token))
++    except BaseException as client_error:
++     if owner.failure is not None: raise owner.failure from client_error
++     raise
++    if owner.failure is not None: raise owner.failure
++   finally: _OWNERS.pop(token,None)
++ except BaseException: failed=True
++ if failed: _fail()
++""")
++ shape(general,"""def run(candidate,draft,runtime,destination,client,*,create=False):
++ failed=False
++ try: launcher=_load_launcher()
++ except BaseException: failed=True
++ if failed: _fail()
++ return _run(launcher,candidate,draft,runtime,destination,client,create,None)
++""")
++ # Exact existing exception-retention/cleanup body; no new sink is introduced.
++ tr=launch.body[-1].body[-1];need(isinstance(tr,ast.Try) and len(tr.handlers)==1,'CLIENT-LAUNCHER-TRY')
++ handler=tr.handlers[0];same(ast.unparse(handler.type),'BaseException','CLIENT-LAUNCHER-HANDLER')
++ expected=ast.parse("""try: pass
++except BaseException as e:
++ details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}
++ for name,obj in [('raw',raw),('managed',managed)]:
++  if obj is not None:
++   try: obj.close();details['cleanup'].append([name,'close returned'])
++   except BaseException as close_error: details['cleanup'].append([name,type(close_error).__name__,str(close_error)])
++ try: write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)
++ except BaseException: pass
++ raise
++""").body[0].handlers[0]
++ same(ast.dump(handler,include_attributes=False),ast.dump(expected,include_attributes=False),'CLIENT-RETENTION-SOURCE')
++ # Last normal statement removes ACTIVE only after normal managed close.
++ same([ast.unparse(n) for n in tr.body[-4:]],["yield ManagedSession(managed)","managed.close()","managed = None","(dest / 'ACTIVE.json').unlink()"],'CLIENT-NORMAL-CLEANUP')
++ clients=next(n for n in et.body if isinstance(n,ast.ClassDef) and n.name=='Client')
++ public=[n.name for n in clients.body if isinstance(n,ast.FunctionDef) and not n.name.startswith('_')];same(public,['state','handle'],'CLIENT-PUBLIC-SURFACE')
++ same(manager['source']['method'],'handle','CLIENT-MANAGER-SELECTOR');need(manager['source']['wrapper_return']['expression'].startswith('return '),'CLIENT-MANAGER-RETURN')
++ handle_branch=dispatch.body[2].body[0];dh=dispatch.body[2].handlers[0]
++ selected=[('session-init',launcher,ll,session_init),('session-handle',launcher,ll,session),('client-init',entry,el,client_init),('client-handle',entry,el,client),('owner-init',entry,el,owner),('dispatch',entry,el,dispatch),('fixed-failure',entry,el,fail),('owner-route',entry,el,run),('general-entry',entry,el,general),('launcher-error',launcher,ll,handler)]
++ anchors={n:dict(loc(node),source={'bytes':len(raw),'sha256':digest(raw)},ast=ast.dump(node,include_attributes=False)) for n,raw,loc,node in selected}
++ stages={'client-call':el(client.body[0]),'owner-lookup':el(dispatch.body[0]),'owner-guard':el(dispatch.body[1]),'packet-check':el(handle_branch.body[0]),'session-call':el(handle_branch.body[1]),'manager-call':ll(session.body[0]),'session-return':ll(session.body[0]),'response-check':el(handle_branch.body[2]),'dispatch-return':el(handle_branch.body[3]),'client-return':el(client.body[0]),'retain-error':el(dh.body[0]),'fixed-failure':el(fail.body[0]),'owner-route':el(run),'launcher-error':ll(handler)}
++ return {'sources':{'launcher':{'bytes':len(launcher),'sha256':digest(launcher)},'entry':{'bytes':len(entry),'sha256':digest(entry)}},'anchors':anchors,'stages':stages,'client_method':client.name,'operation':client.body[0].value.args[1].value,'default_inject':copy.deepcopy(manager['source']['default_inject']),
++  'packet_guard':ast.unparse(handle_branch.body[0].test),'response_guard':ast.unparse(handle_branch.body[2].test),'caught_class':ast.unparse(dh.type),'fixed_failure':{'type':fail.body[0].exc.func.id,'message':fail.body[0].exc.args[0].value,'explicit_cause':ast.literal_eval(fail.body[0].cause),'suppress_context':True},
++  'packet_type_error':handle_branch.body[0].body[0].exc.args[0].value,'response_type_error':handle_branch.body[2].body[0].exc.args[0].value,'public_methods':public,
++  'limits':['Trusted exact owners and unmodified builtins; no arbitrary Python introspection or hostile monkeypatch protection','No guarantee that _fail construction, outside-try lookup, interruption, error formatting, cleanup or evidence I/O succeeds','from None suppresses displayed context; no blanket absence of ambient caller exception/context or traceback object access','No runtime forwarding or callback trace supplied by a source anchor']}
++
++def compile_client_handle(launcher,entry,manager,boundary):
++ source=client_handle_source(launcher,entry,manager)
++ wanted=['client-handle','dispatch-and-failure','owner-routing','general-entry','launcher-diagnostic-and-evidence']
++ sites={s['id']:s for s in boundary['sites']}
++ need(all(n in sites for n in wanted),'CLIENT-BOUNDARY-SITES')
++ for n in wanted:
++  pin=source['sources']['launcher' if n.startswith('launcher') else 'entry'];same({k:sites[n]['anchor'][k] for k in pin},pin,'CLIENT-BOUNDARY-SOURCE')
++ ds={d['id']:d for d in manager['declarations']};need('wrapper-return' in ds,'CLIENT-MANAGER-DECLARATION')
++ values=['session-return','dispatch-result','dispatch-return','client-return']
++ return {'format':'I164-CLIENT-HANDLE-STATIC-1','source':source,'manager_relation':copy.deepcopy(manager),'boundary_contract':copy.deepcopy(boundary['contract']),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],
++  'declarations':[{'id':n,'type':copy.deepcopy(ds['wrapper-return']['type']),'logical_type':'exact Python bytes','representation':'lowercase bytes_hex; no decoded/re-encoded replacement','classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in values],
++  'ordered_hops':['manager-return',*values],'arguments':[{'from':'Client.handle','to':'_dispatch','method':'handle','args':['client token','authenticated_packet']},{'from':'_dispatch','to':'ManagedSession.handle','args':['packet']},{'from':'ManagedSession.handle','to':'ManagedAuthority.handle','args':['authenticated_packet'],'inject':'source default None, not an observed value'}],
++  'reference_edges':[['client.token','token'],['owners[token]','owner'],['owner.wrapper','session'],['session.managed','manager']],'required_destinations':{'response':'calling general client only; not automatic stdout/stderr/status publication','original_error':'owner.failure then existing trusted launcher error/cleanup route conditional on continuation','fixed_failure':'general client or outer run caller','failure_record':'existing launcher evidence/failure-*.json only; best effort, exact bytes unavailable without observation'},
++  'runtime_links':None,'runtime_call_count':None,'complete_repetition_coverage':False,'actual_admission':False}
++
++def validate_client_handle(launcher,entry,manager,boundary,submitted):
++ same(submitted,compile_client_handle(launcher,entry,manager,boundary),'CLIENT-SOURCE-CORRESPONDENCE');return True
++
++def client_handle_projection(catalogue,verification,case,validated):
++ """Conditional source interpreter; validated is an independent premise, not
++ an admission certificate. Full validation rebuilds actual evidence separately.
++ """
++ keys={'occurrence','scope','references','packet','outcomes','manager_case','callback','cleanup'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'CLIENT-CASE-FIELDS')
++ for k in keys-{'manager_case'}:same(case[k],validated[k],'CLIENT-PREMISE:'+k)
++ need(type(case['occurrence']) is str and bool(case['occurrence']),'CLIENT-OCCURRENCE')
++ scope=case['scope'];need(type(scope) is dict and set(scope)=={'context','acquisition','instance','recovery_frontier'},'CLIENT-SCOPE')
++ need(scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'),'CLIENT-CONTEXT')
++ refs=case['references'];required={'client','token','owner','session','manager','client.token','owners[token]','owner.wrapper','session.managed','owner_failed'}
++ need(type(refs) is dict and set(refs)==required and type(refs['owner_failed']) is bool,'CLIENT-REFERENCES')
++ for n in ('client','token','owner','session','manager'):
++  r=refs[n];need(type(r) is dict and set(r)=={'scope','symbol'} and type(r['symbol']) is str and bool(r['symbol']),'CLIENT-REFERENCE-TYPE');same(r['scope'],scope,'CLIENT-REFERENCE-SCOPE')
++ for a,b in catalogue['reference_edges']:
++  if a=='owners[token]' and refs[a] is None:continue
++  same(refs[a],refs[b],'CLIENT-REFERENCE-EDGE:'+a)
++ packet=case['packet'];need(type(packet) is dict and set(packet)=={'type','value'},'CLIENT-PACKET-REPRESENTATION')
++ need(packet['type'] in ('bytes','str','int','NoneType'),'CLIENT-PACKET-DOMAIN')
++ if packet['type']=='bytes':verification['exact_bytes'](packet['value'])
++ else:need(type(packet['value']) is {'str':str,'int':int,'NoneType':type(None)}[packet['type']],'CLIENT-PACKET-TYPE')
++ outcomes=case['outcomes'];need(type(outcomes) is dict,'CLIENT-OUTCOMES');used=set();events=[];hops=[];arguments=[];dest=[];original=None;fixed=None;manager_result=None;completion='pending';retained=False;outside=False
++ def step(n):
++  need(n in outcomes and outcomes[n] in ('normal','raise','process-termination'),'CLIENT-OUTCOME:'+n);used.add(n);v=outcomes[n];events.append({'stage':n,'source':copy.deepcopy(catalogue['source']['stages'][n]),'outcome':v});return v
++ def link(n,row):hops.append({'id':case['occurrence']+'/'+n,'declaration':n,'value':copy.deepcopy(row['value']),'reference':copy.deepcopy(row['reference']),'scope':copy.deepcopy(scope)})
++ def fail_fixed():
++  nonlocal fixed,completion,outside
++  result=step('fixed-failure')
++  if result=='normal':fixed=copy.deepcopy(catalogue['source']['fixed_failure']);completion='fixed-client-failure';dest.append({'kind':'fixed-failure','to':'general-client','value':copy.deepcopy(fixed)})
++  else:completion='unqualified-escape' if result=='raise' else 'process-termination';outside=result=='raise'
++ def outer(n):
++  nonlocal completion,outside
++  v=step(n)
++  if v!='normal':completion='unqualified-escape' if v=='raise' else v;outside=True;return False
++  return True
++ # Lookup and its guard precede the catch. They cannot be advertised as caught.
++ entered=outer('client-call')
++ if entered:arguments.append({'id':case['occurrence']+'/client-to-dispatch','to':'_dispatch','token':copy.deepcopy(refs['token']),'operation':catalogue['source']['operation'],'packet':copy.deepcopy(packet)})
++ entered=entered and outer('owner-lookup') and outer('owner-guard')
++ if entered and (refs['owners[token]'] is None or refs['owner_failed']):fail_fixed()
++ elif entered:
++  for stage in ('packet-check','session-call','manager-call','session-return','response-check','dispatch-return','client-return'):
++   v=step(stage)
++   # Client.handle's return is outside _dispatch's handler.
++   if v!='normal':
++    if v=='process-termination':completion=v;break
++    if stage=='client-return':completion='unqualified-escape';outside=True;break
++    original={'kind':'conditional-exception','origin':stage,'catch_family':'BaseException','exact_type':None,'reference':case['occurrence']+'/error'};break
++   if stage=='packet-check' and packet['type']!='bytes':original={'kind':'source-TypeError','origin':stage,'type':'TypeError','message':catalogue['source']['packet_type_error'],'reference':case['occurrence']+'/error'};break
++   if stage=='session-call':arguments.append({'id':case['occurrence']+'/dispatch-to-session','to':'ManagedSession.handle','receiver':copy.deepcopy(refs['session']),'packet':copy.deepcopy(packet)})
++   if stage=='manager-call':
++    mc=case['manager_case'];mv=validated['manager_case'];need(mc is not None and mv is not None,'CLIENT-MANAGER-PREMISE')
++    same(mc['scope'],scope,'CLIENT-MANAGER-SCOPE');same(mc['arguments'],{'packet':packet['value'],'inject':None},'CLIENT-MANAGER-ARGUMENTS')
++    same(mc['occurrence'],case['occurrence']+'/managed-handle','CLIENT-MANAGER-OCCURRENCE')
++    arguments.append({'id':case['occurrence']+'/session-to-manager','to':'ManagedAuthority.handle','receiver':copy.deepcopy(refs['manager']),'packet':copy.deepcopy(packet),'inject':None,'inject_basis':'source default; constructed, not observed'})
++    manager_result=handle_value_projection(catalogue['manager_relation'],verification,mc,mv)
++    if manager_result['run']['completion']!='normal':original={'kind':'manager-escaping-exception','origin':stage,'catch_family':'BaseException','exact_type':None,'reference':case['occurrence']+'/error'};break
++    row=mc['wrapper_return'];verification['exact_bytes'](row['value']);link('manager-return',row)
++   elif stage=='session-return':
++    need(manager_result is not None and manager_result['run']['completion']=='normal','CLIENT-SESSION-RETURN-PREMISE');link('session-return',case['manager_case']['wrapper_return']);link('dispatch-result',case['manager_case']['wrapper_return'])
++   elif stage=='response-check':
++    # A conforming pinned manager returns exact bytes. A wrong type here is an
++    # unsupported substitution, not a fabricated legitimate manager execution.
++    need(hops and type(hops[-1]['value']) is dict,'CLIENT-RESPONSE-PREMISE');verification['exact_bytes'](hops[-1]['value'])
++   elif stage=='dispatch-return':link('dispatch-return',case['manager_case']['wrapper_return'])
++   elif stage=='client-return':link('client-return',case['manager_case']['wrapper_return']);completion='normal';dest.append({'kind':'exact-response-bytes','to':'general-client','value':copy.deepcopy(hops[-1]['value'])})
++  if original is not None:
++   v=step('retain-error')
++   if v=='normal':retained=True;dest.append({'kind':'original-exception-reference','to':'owner.failure','reference':original['reference']});fail_fixed()
++   else:completion='unqualified-escape' if v=='raise' else v;outside=v=='raise';retained=None
++ if manager_result is None:need(case['manager_case'] is None and validated['manager_case'] is None,'CLIENT-UNREACHED-MANAGER')
++ need(used==set(outcomes),'CLIENT-UNREACHED-OUTCOME')
++ callback=case['callback'];need(callback in ('returns','raises','unobserved'),'CLIENT-CALLBACK')
++ cleanup=case['cleanup'];need(type(cleanup) is dict and set(cleanup)=={'revoke','format','cleanup','write','outer_fail'},'CLIENT-CLEANUP-FIELDS')
++ need(all(v in ('normal','raise','unobserved') for v in cleanup.values()),'CLIENT-CLEANUP-OUTCOME')
++ evidence={'original_reraised_to_launcher':None,'reference':None,'explicit_cause':'unobserved','retention':'UNESTABLISHED','bytes':None,'cleanup_obligations':'UNCHANGED','cleanup_premise':'normal means iteration/error-detail handling completed, not successful closure of every connection','active_marker_removal':'not established by this relation'}
++ if retained and completion=='fixed-client-failure' and callback!='unobserved':
++  if cleanup['revoke']=='normal':
++   evidence.update(original_reraised_to_launcher=True,reference=original['reference'],explicit_cause='client_error' if callback=='raises' else None)
++   dest.append({'kind':'original-exception-reference','to':'launcher-existing-error-cleanup','reference':original['reference']})
++   if cleanup['format']=='normal' and cleanup['cleanup']=='normal':
++    evidence['retention']='existing write returned normally; durability unestablished' if cleanup['write']=='normal' else 'write failed and suppressed; no record established' if cleanup['write']=='raise' else 'write unobserved'
++    if cleanup['write']=='normal':dest.append({'kind':'source-defined-original-error-details','to':'existing-launcher-evidence/failure-*.json','reference':original['reference'],'exact_bytes':None,'observed':False})
++   elif cleanup['format']=='raise' or cleanup['cleanup']=='raise':evidence['retention']='formatting/cleanup interrupted before write; no record established'
++   if cleanup['format']!='normal':need(cleanup['cleanup']==cleanup['write']=='unobserved','CLIENT-UNREACHED-RETENTION')
++   elif cleanup['cleanup']!='normal':need(cleanup['write']=='unobserved','CLIENT-UNREACHED-WRITE')
++  else:
++   evidence['retention']='revocation not confirmed; original propagation and record remain unresolved'
++   need(all(cleanup[k]=='unobserved' for k in ('format','cleanup','write','outer_fail')),'CLIENT-UNREACHED-LAUNCHER')
++  completed=cleanup['revoke']=='normal' and (cleanup['format']=='raise' or cleanup['format']=='normal' and (cleanup['cleanup']=='raise' or cleanup['cleanup']=='normal' and cleanup['write']!='unobserved'))
++  if not completed:need(cleanup['outer_fail']=='unobserved','CLIENT-UNREACHED-OUTER-FAIL')
++  elif cleanup['outer_fail']=='normal':dest.append({'kind':'fixed-failure','to':'general-entry-caller','value':copy.deepcopy(catalogue['source']['fixed_failure'])})
++ else:
++  need(all(v=='unobserved' for v in cleanup.values()),'CLIENT-UNSUPPORTED-CLEANUP-PREMISE')
++ # No fabricated outer-run failure receipt: exact callback, exit and _fail
++ # continuations beyond these conditional destinations remain unobserved.
++ return {'kind':'CONSTRUCTED-CLIENT-HANDLE','occurrence':case['occurrence'],'scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'packet':copy.deepcopy(packet),'argument_hops':arguments,'manager':copy.deepcopy(manager_result),'events':events,'hops':hops,'completion':completion,'original_exception':original,'retained_original':retained,'fixed_client_failure':fixed,'destinations':dest,'evidence_route':evidence,
++  'outside_catch_failure':outside,'prior_owner_failure':{'present':refs['owner_failed'],'exact_value':None,'resolution_established':False},'runtime_observation':False,'physical_identity_established':False,'raw_error_or_status_publication_authorized':False,'arbitrary_callback_forwarding_prevented':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_client_handle_projection(catalogue,verification,case,validated,submitted):
++ expected=client_handle_projection(catalogue,verification,case,validated);same(submitted,expected,'CLIENT-PROJECTION-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()

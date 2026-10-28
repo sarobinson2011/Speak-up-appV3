@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/oc-review/code/entries.py", line 7, in <module>
+    m=module(root/'code/correspondence.py');calls,stop=monitor(m);d=m.inputs(root);cat=m.catalogue(d);saved=(root/'results/client-handle-correspondence.json').read_bytes();bundle=json.loads(saved);claims=[x['client_handle_return_correspondence'] for x in bundle['contexts']]
+                                                                    ^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/code/correspondence.py", line 35, in inputs
+    prior=module(base/'code/correspondence.py','_client_handle_predecessor');data=prior.inputs(base)
+                                                                                  ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/code/correspondence.py", line 35, in inputs
+    prior=module(base/'code/correspondence.py','_handle_state_predecessor');data=prior.inputs(base)
+                                                                                 ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/code/correspondence.py", line 35, in inputs
+    prior=module(base/'code/correspondence.py','_state_config_predecessor');data=prior.inputs(base)
+                                                                                 ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/code/correspondence.py", line 35, in inputs
+    prior=module(base/'code/correspondence.py','_config_binding_predecessor');data=prior.inputs(base)
+                                                                                   ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/code/correspondence.py", line 38, in inputs
+    data=prior.recovery_inputs(base)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/code/correspondence.py", line 490, in recovery_inputs
+    data=prior.recovery_inputs(base)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/code/correspondence.py", line 350, in recovery_inputs
+    prior=_module(base/'code/correspondence.py','_reviewed_reference_correspondence');data=prior.reference_inputs(base)
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/code/correspondence.py", line 255, in reference_inputs
+    data=prior.field_inputs(base)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/code/correspondence.py", line 146, in field_inputs
+    occurrence=_module(p,'_soc_closed_occurrence');ctx=occurrence.load(old)
+                                                       ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/code/smoke_occurrences.py", line 46, in load
+    b.validate(r,c['provenance/status-correspondence.json'])
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/correspondence.py", line 135, in validate
+    require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-CORRESPONDENCE')
+                                                ^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/correspondence.py", line 54, in derive
+    root=Path(root);pins,basis,values=inputs(root)
+                                      ^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/oc-input/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/correspondence.py", line 30, in inputs
+    exec(compile(raw,str(entry),'exec'),m.__dict__)
+  File "/workspace/scratch/ace5c9b2f18b/oc-review/code/common.py", line 13, in audit
+    if event=='exec' and args[0].co_filename.rsplit('/',1)[-1].lower() in ('authority.py','live_connection.py','lab_bootstrap.py','worker.py','prospective_entry.py'):raise AssertionError('APPLICATION-SOURCE-EXECUTION')
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: APPLICATION-SOURCE-EXECUTION

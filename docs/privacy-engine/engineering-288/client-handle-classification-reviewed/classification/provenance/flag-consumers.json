@@ -1,0 +1,68 @@
+{
+  "inspected": "exact reviewed current code/tests; archived older copies retain their own scope",
+  "matches": [
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1480,
+      "text": " outcomes=case['outcomes'];need(type(outcomes) is dict,'CLIENT-OUTCOMES');used=set();events=[];hops=[];arguments=[];dest=[];original=None;fixed=None;manager_result=None;completion='pending';retained=False;outside=False"
+    },
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1488,
+      "text": "  else:completion='unqualified-escape' if result=='raise' else 'process-termination';outside=result=='raise'"
+    },
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1492,
+      "text": "  if v!='normal':completion='unqualified-escape' if v=='raise' else v;outside=True;return False"
+    },
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1505,
+      "text": "    if stage=='client-return':completion='unqualified-escape';outside=True;break"
+    },
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1528,
+      "text": "   else:completion='unqualified-escape' if v=='raise' else v;outside=v=='raise';retained=None"
+    },
+    {
+      "path": "code/managed_coverage.py",
+      "line": 1556,
+      "text": "  'outside_catch_failure':outside,'prior_owner_failure':{'present':refs['owner_failed'],'exact_value':None,'resolution_established':False},'runtime_observation':False,'physical_identity_established':False,'raw_error_or_status_publication_authorized':False,'arbitrary_callback_forwarding_prevented':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 17,
+      "text": "  old=json.loads((a.root/'failures/pre-correction/edge-witness.json').read_bytes());check('original inconsistent classification preserved',lambda:old['classification_inconsistent'] is True and old['output']['outside_catch_failure'] is False)"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 23,
+      "text": "   check('helper failure cannot claim fixed publication '+context,lambda:out['completion']=='unqualified-escape' and out['outside_catch_failure'] and out['fixed_client_failure'] is None and out['destinations']==[])"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 24,
+      "text": "   bad=copy.deepcopy(out);bad['outside_catch_failure']=False"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 27,
+      "text": "   check('normal helper still yields fixed source failure '+context,lambda:out['completion']=='fixed-client-failure' and not out['outside_catch_failure'] and out['fixed_client_failure']['suppress_context'])"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 30,
+      "text": "   check('storage failure outside handler, retention unknown '+context,lambda:out['completion']=='unqualified-escape' and out['outside_catch_failure'] and out['retained_original'] is None and out['fixed_client_failure'] is None)"
+    },
+    {
+      "path": "tests/failure_edges.py",
+      "line": 32,
+      "text": "   check('termination is not a Python outside-catch exception '+context,lambda:out['completion']=='process-termination' and not out['outside_catch_failure'] and out['retained_original'] is None)"
+    }
+  ],
+  "production_consumers": "producer return construction; validate_client_handle_projection compares entire regenerated result. Mandatory receipt uses source catalogue/code identities, not this flag as operational authority.",
+  "test_consumers": "failure_edges assertions; unchanged originals retained, not rerun",
+  "runtime_or_admission_decision_based_on_flag": false
+}

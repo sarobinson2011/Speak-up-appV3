@@ -1,0 +1,453 @@
+{
+  "result": "PASS",
+  "trees": {
+    "oc-input": {
+      "members": 1508,
+      "directories": 520,
+      "regular_exact_membership_and_bytes": "PASS"
+    },
+    "oc-recovered": {
+      "members": 1508,
+      "directories": 520,
+      "regular_exact_membership_and_bytes": "PASS"
+    }
+  },
+  "unchanged_original_members": 1282,
+  "unchanged_independent_review_records": 171,
+  "prior_independent_assertions": [
+    217,
+    149
+  ],
+  "prior_extra_caveat_cases": 6,
+  "prior_zero_assertion_failure_preserved": true,
+  "source_changes": {
+    "managed_coverage.py": {
+      "changed": [
+        "client_handle_projection",
+        "compile_client_handle"
+      ],
+      "added": [
+        "_client_outcome_classification"
+      ],
+      "removed": [],
+      "unchanged_function_bytes": 59,
+      "current": {
+        "bytes": 153726,
+        "sha256": "80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213"
+      },
+      "previous": {
+        "bytes": 150359,
+        "sha256": "16ac04fa6446c2d9238a11060b8f9c7002673c5869540760ee4448ab0ac91ff4"
+      }
+    },
+    "correspondence.py": {
+      "changed": [
+        "derive_client",
+        "predecessor_root"
+      ],
+      "added": [],
+      "removed": [],
+      "unchanged_function_bytes": 16,
+      "current": {
+        "bytes": 9122,
+        "sha256": "c0a119e8149b510f059874d166dabdfb8517b1c46d060cb9924e19ee1efdc8da"
+      },
+      "previous": {
+        "bytes": 9088,
+        "sha256": "39346b7ebd0aa927ebd6afbc4766e7fe1d22e61a351d4f186c833d11a57b4af2"
+      }
+    }
+  },
+  "receipt_change_paths": [
+    "/contexts/0/client_handle_return_correspondence/declaration/format",
+    "/contexts/0/client_handle_return_correspondence/declaration/outside_catch_failure_contract",
+    "/contexts/1/client_handle_return_correspondence/declaration/format",
+    "/contexts/1/client_handle_return_correspondence/declaration/outside_catch_failure_contract",
+    "/extension_components/correspondence.py/bytes",
+    "/extension_components/correspondence.py/sha256",
+    "/extension_components/managed_coverage.py/bytes",
+    "/extension_components/managed_coverage.py/sha256",
+    "/format"
+  ],
+  "all_other_receipt_fields_unchanged": true,
+  "current_receipt": {
+    "bytes": 1720401,
+    "sha256": "20a4dcdac9b37f7e5208ce1015e6380c120c0ff157cd94cad2f90a83b954a441"
+  },
+  "prior_receipt": {
+    "bytes": 1719615,
+    "sha256": "16ed6d696676e54e2a9465e62761b189ed52aa65261fa2e9aa52cc5907d4a4a5"
+  },
+  "supplied_controls": {
+    "primary": {
+      "checks": 131,
+      "identity": {
+        "bytes": 16769,
+        "sha256": "97059c697dacd0d10bceca5ed4549c084bda2455c22aab2d84a02eda13f8a2b6"
+      },
+      "source": {
+        "managed_coverage.py": {
+          "bytes": 153726,
+          "sha256": "80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213"
+        },
+        "correspondence.py": {
+          "bytes": 9122,
+          "sha256": "c0a119e8149b510f059874d166dabdfb8517b1c46d060cb9924e19ee1efdc8da"
+        }
+      },
+      "inspected_not_executed": true,
+      "labels": [
+        "source catch is BaseException around try body only",
+        "source owner lookup and guard precede try",
+        "ordinary fixed helper is an intentional raise from None",
+        "all six original prefix caveats preserved",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:client-call",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:client-call",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:client-call",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:client-call",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:client-call",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:owner-lookup",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:owner-lookup",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:owner-lookup",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:owner-lookup",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:owner-lookup",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:owner-guard",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:owner-guard",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:owner-guard",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:owner-guard",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:owner-guard",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:client-call",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:client-call",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:client-call",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:client-call",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:client-call",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:owner-lookup",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:owner-lookup",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:owner-lookup",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:owner-lookup",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:owner-lookup",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:owner-guard",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:owner-guard",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:owner-guard",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:owner-guard",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:owner-guard",
+        "original corrected helper-raise witness preserved SYMBOLIC-U-ONE",
+        "earliest original false classification rejects SYMBOLIC-U-ONE",
+        "intentional fixed raise is distinct from unexpected failure SYMBOLIC-U-ONE",
+        "false flag does not mean no modeled Python exception SYMBOLIC-U-ONE",
+        "refusal helper termination remains no exception evidence SYMBOLIC-U-ONE",
+        "handler-storage raise preserves original correction SYMBOLIC-U-ONE",
+        "failed storage stays unknown SYMBOLIC-U-ONE",
+        "storage termination is not a Python raise SYMBOLIC-U-ONE",
+        "prior modeled error remains separate from termination SYMBOLIC-U-ONE",
+        "termination after confirmed conditional storage SYMBOLIC-U-ONE",
+        "prior storage retained without inventing cleanup or unwind SYMBOLIC-U-ONE",
+        "blanket erasure of preceding storage rejects SYMBOLIC-U-ONE",
+        "invented cleanup after process termination rejects SYMBOLIC-U-ONE",
+        "original corrected helper-raise witness preserved SYMBOLIC-U-TWO",
+        "earliest original false classification rejects SYMBOLIC-U-TWO",
+        "intentional fixed raise is distinct from unexpected failure SYMBOLIC-U-TWO",
+        "false flag does not mean no modeled Python exception SYMBOLIC-U-TWO",
+        "refusal helper termination remains no exception evidence SYMBOLIC-U-TWO",
+        "handler-storage raise preserves original correction SYMBOLIC-U-TWO",
+        "failed storage stays unknown SYMBOLIC-U-TWO",
+        "storage termination is not a Python raise SYMBOLIC-U-TWO",
+        "prior modeled error remains separate from termination SYMBOLIC-U-TWO",
+        "termination after confirmed conditional storage SYMBOLIC-U-TWO",
+        "prior storage retained without inventing cleanup or unwind SYMBOLIC-U-TWO",
+        "blanket erasure of preceding storage rejects SYMBOLIC-U-TWO",
+        "invented cleanup after process termination rejects SYMBOLIC-U-TWO",
+        "normal byte return remains distinct SYMBOLIC-U-ONE:normal",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-ONE:normal",
+        "location remains separate for packet-check SYMBOLIC-U-ONE:normal",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-ONE:normal",
+        "location remains separate for client-return SYMBOLIC-U-ONE:normal",
+        "termination cannot infer missing return client-return SYMBOLIC-U-ONE:normal",
+        "normal byte return remains distinct SYMBOLIC-U-ONE:Exception",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-ONE:Exception",
+        "location remains separate for packet-check SYMBOLIC-U-ONE:Exception",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-ONE:Exception",
+        "location remains separate for client-return SYMBOLIC-U-ONE:Exception",
+        "termination cannot infer missing return client-return SYMBOLIC-U-ONE:Exception",
+        "normal byte return remains distinct SYMBOLIC-U-TWO:normal",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-TWO:normal",
+        "location remains separate for packet-check SYMBOLIC-U-TWO:normal",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-TWO:normal",
+        "location remains separate for client-return SYMBOLIC-U-TWO:normal",
+        "termination cannot infer missing return client-return SYMBOLIC-U-TWO:normal",
+        "normal byte return remains distinct SYMBOLIC-U-TWO:Exception",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-TWO:Exception",
+        "location remains separate for packet-check SYMBOLIC-U-TWO:Exception",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-TWO:Exception",
+        "location remains separate for client-return SYMBOLIC-U-TWO:Exception",
+        "termination cannot infer missing return client-return SYMBOLIC-U-TWO:Exception",
+        "nested result mutation leaves expectations isolated",
+        "stale semantic contract rejects source regeneration",
+        "current mandatory derivation carries versioned contract in both contexts",
+        "receipt does not manufacture runtime classifications",
+        "old-semantics public receipt rejects"
+      ]
+    },
+    "recovered": {
+      "checks": 129,
+      "identity": {
+        "bytes": 16558,
+        "sha256": "02334960f02ab9df661854331dafb86cccea589e807cfb1bd0e94501f4ab785c"
+      },
+      "source": {
+        "managed_coverage.py": {
+          "bytes": 153726,
+          "sha256": "80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213"
+        },
+        "correspondence.py": {
+          "bytes": 9122,
+          "sha256": "c0a119e8149b510f059874d166dabdfb8517b1c46d060cb9924e19ee1efdc8da"
+        }
+      },
+      "inspected_not_executed": true,
+      "labels": [
+        "source catch is BaseException around try body only",
+        "source owner lookup and guard precede try",
+        "ordinary fixed helper is an intentional raise from None",
+        "all six original prefix caveats preserved",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:client-call",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:client-call",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:client-call",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:client-call",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:client-call",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:client-call",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:owner-lookup",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:owner-lookup",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:owner-lookup",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:owner-lookup",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:owner-lookup",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:owner-lookup",
+        "prefix termination classified without Python raise SYMBOLIC-U-ONE:owner-guard",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects old true flag SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects exception evidence SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects unwind evidence SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects outside location as exception SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects retained error SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects cleanup completion SYMBOLIC-U-ONE:owner-guard",
+        "contradiction rejects renewed authorization SYMBOLIC-U-ONE:owner-guard",
+        "invented post-termination callback rejects SYMBOLIC-U-ONE:owner-guard",
+        "source-supported prefix raise remains outside SYMBOLIC-U-ONE:owner-guard",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-ONE:owner-guard",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:client-call",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:client-call",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:client-call",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:client-call",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:client-call",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:client-call",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:owner-lookup",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:owner-lookup",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:owner-lookup",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:owner-lookup",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:owner-lookup",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:owner-lookup",
+        "prefix termination classified without Python raise SYMBOLIC-U-TWO:owner-guard",
+        "termination alone establishes no error, cleanup or authorization SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects old true flag SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects exception evidence SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects unwind evidence SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects outside location as exception SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects retained error SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects cleanup completion SYMBOLIC-U-TWO:owner-guard",
+        "contradiction rejects renewed authorization SYMBOLIC-U-TWO:owner-guard",
+        "invented post-termination callback rejects SYMBOLIC-U-TWO:owner-guard",
+        "source-supported prefix raise remains outside SYMBOLIC-U-TWO:owner-guard",
+        "conditional raise does not supply observed unwind SYMBOLIC-U-TWO:owner-guard",
+        "original corrected helper-raise witness preserved SYMBOLIC-U-ONE",
+        "earliest original false classification rejects SYMBOLIC-U-ONE",
+        "intentional fixed raise is distinct from unexpected failure SYMBOLIC-U-ONE",
+        "false flag does not mean no modeled Python exception SYMBOLIC-U-ONE",
+        "refusal helper termination remains no exception evidence SYMBOLIC-U-ONE",
+        "handler-storage raise preserves original correction SYMBOLIC-U-ONE",
+        "failed storage stays unknown SYMBOLIC-U-ONE",
+        "storage termination is not a Python raise SYMBOLIC-U-ONE",
+        "prior modeled error remains separate from termination SYMBOLIC-U-ONE",
+        "termination after confirmed conditional storage SYMBOLIC-U-ONE",
+        "prior storage retained without inventing cleanup or unwind SYMBOLIC-U-ONE",
+        "blanket erasure of preceding storage rejects SYMBOLIC-U-ONE",
+        "invented cleanup after process termination rejects SYMBOLIC-U-ONE",
+        "original corrected helper-raise witness preserved SYMBOLIC-U-TWO",
+        "earliest original false classification rejects SYMBOLIC-U-TWO",
+        "intentional fixed raise is distinct from unexpected failure SYMBOLIC-U-TWO",
+        "false flag does not mean no modeled Python exception SYMBOLIC-U-TWO",
+        "refusal helper termination remains no exception evidence SYMBOLIC-U-TWO",
+        "handler-storage raise preserves original correction SYMBOLIC-U-TWO",
+        "failed storage stays unknown SYMBOLIC-U-TWO",
+        "storage termination is not a Python raise SYMBOLIC-U-TWO",
+        "prior modeled error remains separate from termination SYMBOLIC-U-TWO",
+        "termination after confirmed conditional storage SYMBOLIC-U-TWO",
+        "prior storage retained without inventing cleanup or unwind SYMBOLIC-U-TWO",
+        "blanket erasure of preceding storage rejects SYMBOLIC-U-TWO",
+        "invented cleanup after process termination rejects SYMBOLIC-U-TWO",
+        "normal byte return remains distinct SYMBOLIC-U-ONE:normal",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-ONE:normal",
+        "location remains separate for packet-check SYMBOLIC-U-ONE:normal",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-ONE:normal",
+        "location remains separate for client-return SYMBOLIC-U-ONE:normal",
+        "termination cannot infer missing return client-return SYMBOLIC-U-ONE:normal",
+        "normal byte return remains distinct SYMBOLIC-U-ONE:Exception",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-ONE:Exception",
+        "location remains separate for packet-check SYMBOLIC-U-ONE:Exception",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-ONE:Exception",
+        "location remains separate for client-return SYMBOLIC-U-ONE:Exception",
+        "termination cannot infer missing return client-return SYMBOLIC-U-ONE:Exception",
+        "normal byte return remains distinct SYMBOLIC-U-TWO:normal",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-TWO:normal",
+        "location remains separate for packet-check SYMBOLIC-U-TWO:normal",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-TWO:normal",
+        "location remains separate for client-return SYMBOLIC-U-TWO:normal",
+        "termination cannot infer missing return client-return SYMBOLIC-U-TWO:normal",
+        "normal byte return remains distinct SYMBOLIC-U-TWO:Exception",
+        "normal exact response bytes at every forwarding hop SYMBOLIC-U-TWO:Exception",
+        "location remains separate for packet-check SYMBOLIC-U-TWO:Exception",
+        "termination cannot infer missing return packet-check SYMBOLIC-U-TWO:Exception",
+        "location remains separate for client-return SYMBOLIC-U-TWO:Exception",
+        "termination cannot infer missing return client-return SYMBOLIC-U-TWO:Exception",
+        "nested result mutation leaves expectations isolated",
+        "stale semantic contract rejects source regeneration",
+        "recovered public validation accepts exact current receipt"
+      ]
+    }
+  },
+  "supplied_failed_attempts": {
+    "primary-fixture-selector": {
+      "completed_before_failure": 81,
+      "error": "StopIteration()",
+      "result": {
+        "bytes": 10780,
+        "sha256": "972c5b423b1fc1c475895b7d65ce88f2bb80baa0141a00edea9e1fcd0550b65e"
+      },
+      "stderr": {
+        "bytes": 618,
+        "sha256": "16badce1809707394719ee375c05d2afb3bbc11d1023dcc4f7fcd01f5cb9c422"
+      },
+      "excluded_from_completed_totals": true
+    },
+    "primary-normal-comparison": {
+      "completed_before_failure": 103,
+      "error": "AssertionError('normal exact bytes and all prior effects unchanged SYMBOLIC-U-ONE:normal')",
+      "result": {
+        "bytes": 13444,
+        "sha256": "8d16d522c078c480daf93d4b775afcb69b131fd30fcb974aacd817a8fe516f6b"
+      },
+      "stderr": {
+        "bytes": 1237,
+        "sha256": "90bb2f994d9cf1368336c7fee5be81311aa0967d341e8529fec0d039dc2232e4"
+      },
+      "excluded_from_completed_totals": true
+    }
+  },
+  "supplied_fresh_process": {
+    "mode": "fresh",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-I",
+      "-B",
+      "/workspace/scratch/3da0de3fef10/outside-catch-correction/tests/fresh_check.py",
+      "/workspace/scratch/3da0de3fef10/outside-catch-correction"
+    ],
+    "exit": 0,
+    "seconds": 120.21212206099881,
+    "retry": false,
+    "new_focused_validation_only": true
+  },
+  "supplied_fresh_result": {
+    "actual_admission": false,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "receipt": {
+      "bytes": 1720401,
+      "sha256": "20a4dcdac9b37f7e5208ce1015e6380c120c0ff157cd94cad2f90a83b954a441"
+    },
+    "result": "PASS",
+    "runtime_client_handle_chain": "UNAVAILABLE"
+  },
+  "intermediate_recovery_outer_archive_newly_verified": false,
+  "intermediate_recovery": {
+    "CRC": "PASS",
+    "all_hashes": "PASS",
+    "bytes": 60161685,
+    "entries": 1460,
+    "manifest_identity": {
+      "bytes": 366769,
+      "sha256": "ee3f90b756b52e60489bf3444a9337c51d9aef882d25e222fcbb73eef63a7059"
+    },
+    "manifested_files": 1459,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "80326746838af18bdb65715bcea8c31ec7a942daccbdffa7aa0ec58e21c75d8e"
+  },
+  "implementation_modified": false
+}

@@ -1,0 +1,146 @@
+{
+  "result": "PASS",
+  "checks": 16,
+  "rows": [
+    {
+      "check": "original false flag coordinated duplicate rejects SYMBOLIC-U-ONE:retain-error",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "original false flag coordinated duplicate rejects SYMBOLIC-U-ONE:fixed-failure",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "caught raise cannot relabel intentional fixed failure SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "nonempty nested source mutation does not change expected catalogue SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "direct classifier legitimate source-bound terminal SYMBOLIC-U-ONE",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "direct classifier mismatched completion and outcome SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CLASSIFICATION-OUTCOME"
+      }
+    },
+    {
+      "check": "direct classifier stale defining anchor SYMBOLIC-U-ONE",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CLASSIFICATION-SOURCE"
+      }
+    },
+    {
+      "check": "original false flag coordinated duplicate rejects SYMBOLIC-U-TWO:retain-error",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "original false flag coordinated duplicate rejects SYMBOLIC-U-TWO:fixed-failure",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "caught raise cannot relabel intentional fixed failure SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-PROJECTION-CORRESPONDENCE"
+      }
+    },
+    {
+      "check": "nonempty nested source mutation does not change expected catalogue SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "direct classifier legitimate source-bound terminal SYMBOLIC-U-TWO",
+      "result": "PASS",
+      "kind": "independent"
+    },
+    {
+      "check": "direct classifier mismatched completion and outcome SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CLASSIFICATION-OUTCOME"
+      }
+    },
+    {
+      "check": "direct classifier stale defining anchor SYMBOLIC-U-TWO",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CLASSIFICATION-SOURCE"
+      }
+    },
+    {
+      "check": "direct classifier missing events",
+      "result": "REJECTED",
+      "kind": "negative",
+      "error": {
+        "type": "ValueError",
+        "message": "CLIENT-CLASSIFICATION-EVENTS"
+      }
+    },
+    {
+      "check": "failed author fixture assumptions independently corroborated",
+      "result": "PASS",
+      "kind": "independent"
+    }
+  ],
+  "error": null,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "implementation": "cpython",
+    "optimization": 0,
+    "isolated": 1,
+    "dont_write_bytecode": true,
+    "cryptography": "50.0.2"
+  },
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "runtime_or_session_methods_invoked": false,
+  "retained_boundary_import_and_read_only_verification_permitted": true,
+  "constructed_not_runtime": true,
+  "root": "oc-input"
+}

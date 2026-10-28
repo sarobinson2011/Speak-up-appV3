@@ -1,0 +1,156 @@
+{
+  "contexts": {
+    "SYMBOLIC-U-ONE": {
+      "present_return_correspondences": [
+        "binding_return_correspondence",
+        "client_handle_return_correspondence",
+        "config_return_correspondence",
+        "handle_return_correspondence",
+        "state_return_correspondence"
+      ],
+      "state_value_declarations": [
+        "underlying-state",
+        "run-result",
+        "wrapper-return"
+      ]
+    },
+    "SYMBOLIC-U-TWO": {
+      "present_return_correspondences": [
+        "binding_return_correspondence",
+        "client_handle_return_correspondence",
+        "config_return_correspondence",
+        "handle_return_correspondence",
+        "state_return_correspondence"
+      ],
+      "state_value_declarations": [
+        "underlying-state",
+        "run-result",
+        "wrapper-return"
+      ]
+    }
+  },
+  "evidence_collection_authorized": false,
+  "implementation_added": false,
+  "inspection_only": true,
+  "source_rows": [
+    {
+      "excerpts": [
+        {
+          "first_line": 90,
+          "last_line": 98,
+          "text": "def _data(value):\n    \"\"\"Detach only exact JSON value types; never invoke object copy/repr hooks.\"\"\"\n    if type(value) in (str, int, bool, type(None)):\n        return value\n    if type(value) is list:\n        return [_data(v) for v in value]\n    if type(value) is dict and all(type(k) is str for k in value):\n        return {k: _data(v) for k, v in value.items()}\n    raise RuntimeError('UNSUPPORTED-CLIENT-VALUE')"
+        },
+        {
+          "first_line": 113,
+          "last_line": 116,
+          "text": "    def state(self):\n        return _dispatch(self.__token, 'state', None)\n    def handle(self, authenticated_packet):\n        return _dispatch(self.__token, 'handle', authenticated_packet)"
+        },
+        {
+          "first_line": 143,
+          "last_line": 166,
+          "text": "def _dispatch(token, operation, packet):\n    owner = _OWNERS.get(token)\n    if owner is None or owner.failure is not None:\n        _fail()\n    try:\n        if operation == 'handle':\n            if type(packet) is not bytes:\n                raise TypeError('PACKET-BYTES')\n            result = owner.wrapper.handle(packet)\n            if type(result) is not bytes:\n                raise TypeError('RESPONSE-BYTES')\n            return result  # Preserve exact authenticated response; no re-encoding.\n        if operation != 'state':\n            raise RuntimeError('CLIENT-OPERATION')\n        result = owner.wrapper.state()\n        if type(result) is not dict or set(result) != _STATE_KEYS:\n            raise RuntimeError('STATE-SHAPE')\n        return _data(result)\n    except BaseException as error:\n        # Keep the ORIGINAL failure for the launcher's existing retention/cleanup\n        # path. No new log and no swallowed fault if the client catches failure.\n        owner.failure = error\n    # Outside the handler: no original engine exception in __context__/__cause__.\n    _fail()"
+        }
+      ],
+      "identity": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      },
+      "member": "original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/prospective_entry.py"
+    },
+    {
+      "excerpts": [
+        {
+          "first_line": 119,
+          "last_line": 124,
+          "text": "class ManagedSession:\n    \"\"\"Deliberately no raw Authority, DB or scheduler capability in public API.\"\"\"\n    def __init__(self,managed):self.__managed=managed\n    def status(self):return self.__managed.status()\n    def state(self):return self.__managed.state()\n    def handle(self,authenticated_packet):return self.__managed.handle(authenticated_packet)"
+        }
+      ],
+      "identity": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      },
+      "member": "original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/code/lab_bootstrap.py"
+    },
+    {
+      "excerpts": [
+        {
+          "first_line": 1107,
+          "last_line": 1123,
+          "text": "def compile_state_return(raw,authority,observations,model,producer,guards,oracle,references):\n source=state_source(raw,authority,observations,guards,oracle);validate_reference_transfers(raw,model,producer,guards,oracle,authority,references)\n heads=[d for d in model['existing_declarations'] if d.get('template_id')=='HEAD:'];need(len(heads)==1,'STATE-HEAD-DECLARATION');head=heads[0]\n need(type(head['native_template']['type']) is dict and set(head['native_template']['type'])=={'object'},'STATE-HEAD-OBJECT')\n delegation=[d for d in producer['delegations'] if d['from']=='ManagedAuthority.state -> _run'];need(len(delegation)==1 and delegation[0]['to']=='Authority.state','STATE-EXISTING-DELEGATION')\n inventory={r['site']:r for r in producer['source_inventory']['sites']}\n for row in [source['wrapper_return'],source['wrapper_call'],source['result_assignment'],source['run_return'],source['readiness_call']]:\n  need(row['site'] in inventory,'STATE-INHERITED-SITE');same(row['guards'],inventory[row['site']]['guards'],'STATE-INHERITED-GUARD')\n rs=references['source'];calls=[r for r in rs['calls'] if r['site']==source['readiness_call']['site']];reads=[r for r in rs['reference_reads'] if r['site']==source['dispatch_receiver']['site']]\n need(len(calls)==len(reads)==1,'STATE-REFERENCE-JOINS')\n links=[{'id':'backend-to-run-result','from':copy.deepcopy(source['backend_return']),'to':copy.deepcopy(source['result_assignment']),'kind':'direct reference forwarding after normal dispatch'},\n  {'id':'run-result-to-wrapper-return','from':copy.deepcopy(source['run_return']),'to':copy.deepcopy(source['wrapper_return']),'kind':'direct reference forwarding after normal run and lock exit'}]\n declarations=[{'id':name,'type':copy.deepcopy(head['native_template']['type']),'origin':copy.deepcopy(source[site]),'classification':'UNKNOWN','canonical_class':None,'ordinal':None,'multiplicity':None} for name,site in [('underlying-state','backend_return'),('run-result','result_assignment'),('wrapper-return','wrapper_return')]]\n return {'format':'I164-MANAGED-STATE-RETURN-1','source':source,'inherited_head':copy.deepcopy(head),'declarations':declarations,'links':links,'delegation':copy.deepcopy(delegation[0]),'reference_links':{'ready':copy.deepcopy(calls[0]),'live_read':copy.deepcopy(reads[0])},\n  'type_scope':'Existing HEAD declaration and independently validated exact state; recursively preserve exact types/values of that state. This bridge is not a replacement full schema/ingestion validator.',\n  'identity_scope':'Equal serialized values are not object identity. Constructed scoped reference symbols stipulate forwarding; actual result/connection identities remain unobserved.',\n  'actual_runtime_links':None,'complete_repetition_coverage':False,'full_model_binding':False,'actual_admission':False}"
+        },
+        {
+          "first_line": 1171,
+          "last_line": 1185,
+          "text": "def state_value_projection(catalogue,case,validated):\n \"\"\"Caller validates catalogue, evidence anchor and every symbol scope first.\"\"\"\n need(type(case) is dict and set(case)=={'method','args','phase','live_reference','retired_reference','outcomes','underlying','run_result','wrapper_return'},'STATE-PROJECTION-FIELDS')\n need(type(case['method']) is str and case['method']==catalogue['source']['method'],'STATE-METHOD');same(case['args'],catalogue['source']['args'],'STATE-ARGS')\n need(type(case['phase']) is str and case['phase']==catalogue['source']['ready_phase'] and case['live_reference'] is not None and case['retired_reference'] is None,'STATE-READINESS')\n path=state_path_projection(catalogue,case['outcomes']);need(path['return_links_admissible'],'STATE-NO-NORMAL-RETURN')\n live=case['live_reference'];need(type(live) is dict and set(live)=={'kind','scope','symbol'} and live['kind']=='authority-reference' and type(live['symbol']) is str and bool(live['symbol']),'STATE-LIVE-SYMBOL')\n under=case['underlying'];need(type(under) is dict and set(under)=={'receiver','value','reference'},'STATE-UNDERLYING-FIELDS');same(under['receiver'],live,'STATE-DISPATCH-RECEIVER')\n ref=under['reference'];need(type(ref) is dict and set(ref)=={'kind','scope','symbol'} and ref['kind']=='state-result-reference' and type(ref['symbol']) is str and bool(ref['symbol']),'STATE-RESULT-SYMBOL')\n same(ref['scope'],live['scope'],'STATE-RESULT-SCOPE')\n values=[]\n for name in ('underlying','run_result','wrapper_return'):\n  row=case[name];need(type(row) is dict and set(row)==({'receiver','value','reference'} if name=='underlying' else {'value','reference'}),'STATE-LINK-FIELDS:'+name)\n  state_value_compare(catalogue,row['value'],validated);same(row['reference'],ref,'STATE-REFERENCE-FORWARDING:'+name);values.append({'link':name,'value':copy.deepcopy(row['value']),'reference':copy.deepcopy(ref)})\n return {'kind':'CONSTRUCTED-STATE-RETURN','path':path,'links':values,'copy_in_wrapper':False,'actual_object_identity_established':False,'runtime_observation':False}"
+        },
+        {
+          "first_line": 1361,
+          "last_line": 1369,
+          "text": "   return ast.dump(fn,include_attributes=False)\n  same(cleaned(n),cleaned(ast.parse(expected).body[0]),'CLIENT-DEFINING-SHAPE:'+n.name)\n session_init=method(lt,'ManagedSession','__init__');session=method(lt,'ManagedSession','handle')\n client_init=method(et,'Client','__init__');client=method(et,'Client','handle');owner=method(et,'_Owner','__init__');dispatch=method(et,None,'_dispatch');fail=method(et,None,'_fail');run=method(et,None,'_run');general=method(et,None,'run');launch=method(lt,None,'_session')\n shape(session_init,'def __init__(self, managed): self.__managed=managed')\n shape(session,'def handle(self, authenticated_packet): return self.__managed.handle(authenticated_packet)')\n shape(client_init,'def __init__(self, token): self.__token=token')\n shape(client,\"def handle(self, authenticated_packet): return _dispatch(self.__token, 'handle', authenticated_packet)\")\n shape(owner,'def __init__(self, wrapper):\\n self.wrapper=wrapper\\n self.failure=None')"
+        },
+        {
+          "first_line": 1441,
+          "last_line": 1455,
+          "text": "def compile_client_handle(launcher,entry,manager,boundary):\n source=client_handle_source(launcher,entry,manager)\n wanted=['client-handle','dispatch-and-failure','owner-routing','general-entry','launcher-diagnostic-and-evidence']\n sites={s['id']:s for s in boundary['sites']}\n need(all(n in sites for n in wanted),'CLIENT-BOUNDARY-SITES')\n for n in wanted:\n  pin=source['sources']['launcher' if n.startswith('launcher') else 'entry'];same({k:sites[n]['anchor'][k] for k in pin},pin,'CLIENT-BOUNDARY-SOURCE')\n ds={d['id']:d for d in manager['declarations']};need('wrapper-return' in ds,'CLIENT-MANAGER-DECLARATION')\n values=['session-return','dispatch-result','dispatch-return','client-return']\n return {'format':'I164-CLIENT-HANDLE-STATIC-2','source':source,'manager_relation':copy.deepcopy(manager),'boundary_contract':copy.deepcopy(boundary['contract']),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],\n  'declarations':[{'id':n,'type':copy.deepcopy(ds['wrapper-return']['type']),'logical_type':'exact Python bytes','representation':'lowercase bytes_hex; no decoded/re-encoded replacement','classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in values],\n  'ordered_hops':['manager-return',*values],'arguments':[{'from':'Client.handle','to':'_dispatch','method':'handle','args':['client token','authenticated_packet']},{'from':'_dispatch','to':'ManagedSession.handle','args':['packet']},{'from':'ManagedSession.handle','to':'ManagedAuthority.handle','args':['authenticated_packet'],'inject':'source default None, not an observed value'}],\n  'reference_edges':[['client.token','token'],['owners[token]','owner'],['owner.wrapper','session'],['session.managed','manager']],'required_destinations':{'response':'calling general client only; not automatic stdout/stderr/status publication','original_error':'owner.failure then existing trusted launcher error/cleanup route conditional on continuation','fixed_failure':'general client or outer run caller','failure_record':'existing launcher evidence/failure-*.json only; best effort, exact bytes unavailable without observation'},\n  'outside_catch_failure_contract':{'version':'I164-CLIENT-TERMINAL-CLASSIFICATION-1','true_iff':'terminal unexpected modeled raise outside _dispatch protected region','false_is_not':'no exception, inside catch, no earlier effects, no pending error or permission to continue','intentional_fixed_raise_is_separate':True,'location_is_separate_from_outcome':True,'runtime_evidence_supplied':False},\n  'runtime_links':None,'runtime_call_count':None,'complete_repetition_coverage':False,'actual_admission':False}"
+        }
+      ],
+      "identity": {
+        "bytes": 153726,
+        "sha256": "80caea048af5946a39e01d0f30b0e6ded7509684d67ce59b5fcff3cf224d2213"
+      },
+      "member": "code/managed_coverage.py"
+    },
+    {
+      "excerpts": [
+        {
+          "first_line": 41,
+          "last_line": 47,
+          "text": "def catalogue(data):\n p=data['prior_module'];pd=data['prior_data'];return data['coverage'].compile_client_handle(*sources(data),p.catalogue(pd),inner(data)['ctx']['binding'])\ndef _basis(data):\n fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];cat=p.catalogue(pd);prior=p.derive_handle(pd,cat)\n saved=(fresh['prior_root']/'results/handle-correspondence.json').read_bytes();require(identity(saved)==HANDLE_RECEIPT and enc(prior)==saved,'CLIENT-PREDECESSOR-RECEIPT')\n _,authority,anchor,observations=p.sources(pd)\n return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':fresh['coverage'].compile_client_handle(*sources(fresh),cat,inner(fresh)['ctx']['binding']),'evidence':dict(inner(fresh)['ctx']['e']),'verification':fresh['coverage'].handle_authentication(authority,anchor,observations)}"
+        },
+        {
+          "first_line": 79,
+          "last_line": 89,
+          "text": "def derive_client(data,submitted_catalogue,claims=None,evidence=None):\n rows,basis=_checked(data,submitted_catalogue,claims,evidence);result=copy.deepcopy(basis['prior']);result['format']='I164-CLIENT-HANDLE-RETURN-CORRESPONDENCE-2'\n result['prior_handle_components']=result.pop('extension_components');result['prior_handle_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}\n for context,row in zip(result['contexts'],rows):require(context['context']==row['context'],'CLIENT-DERIVATION-CONTEXT');context['client_handle_return_correspondence']=copy.deepcopy(row)\n result['new_client_slice_limits']={'static_conditional_correspondence':True,'runtime_chain':'UNAVAILABLE','actual_call_count':None,'constructed_cases_not_evidence':True,'exact_response_bytes':True,'best_effort_failure_record_not_guaranteed':True,'outside_catch_and_interruption_limits_preserved':True,'physical_identity':None,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}\n return result\ndef derive(root=ROOT):\n data=inputs(root);return derive_client(data,catalogue(data))\ndef validate(root,saved):\n require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-CLIENT-CORRESPONDENCE')\n return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'runtime_client_handle_chain':'UNAVAILABLE','actual_admission':False}"
+        }
+      ],
+      "identity": {
+        "bytes": 9122,
+        "sha256": "c0a119e8149b510f059874d166dabdfb8517b1c46d060cb9924e19ee1efdc8da"
+      },
+      "member": "code/correspondence.py"
+    },
+    {
+      "excerpts": [
+        {
+          "first_line": 42,
+          "last_line": 49,
+          "text": "def catalogue(data):\n d=inner(data);g=d['guards'];v=d['values']\n return data['coverage'].compile_handle_return(*sources(data),v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],d['reference_module'].reference_catalogue(d))\ndef _basis(data):\n fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];prior=p.derive_state(pd,p.catalogue(pd))\n saved=(fresh['prior_root']/'results/state-correspondence.json').read_bytes();require(identity(saved)==STATE_RECEIPT and enc(prior)==saved,'HANDLE-PREDECESSOR-RECEIPT')\n raw,authority,anchor,observations=sources(fresh)\n return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'verification':fresh['coverage'].handle_authentication(authority,anchor,observations)}"
+        }
+      ],
+      "identity": {
+        "bytes": 10972,
+        "sha256": "ae6f3550d1c0f6ee8ab939ddc25bcef921b82d8fe2024359ec6973edc2123d5f"
+      },
+      "member": "original/retained/handle/code/correspondence.py"
+    },
+    {
+      "excerpts": [
+        {
+          "first_line": 73,
+          "last_line": 80,
+          "text": "  source_calls=[{'frame':x['frame'],'parent':x['parent'],'function':x['function'],'record':{'acquisition':record['acquisition'],'artifact':trace_path,**identity(e[trace_path]),'pointer':'/events/'+str(i)}} for i,x in enumerate(events) if x['event']=='call' and x['function'] in ('ManagedAuthority.state','ManagedAuthority._run','Authority.state')]\n  observer={'kind':'explicit-observer-call','id':record['acquisition'].removeprefix('sha256:')+':'+name+':observer-state:0','record':{'acquisition':record['acquisition'],'artifact':hand_path,**identity(e[hand_path]),'pointer':'/0/state'},\n   'value':copy.deepcopy(hands[0]['state']),'caller':hands[0]['observer_call_site'],'frame':None,'parent_frame':None,'joins_to_three_return_links':None,'meaning':'Retained separate Client.state observation; no invented underlying, run or wrapper frame/value edge.'}\n  links=[{'declaration':d['id'],'conditional_value_at_validated_frontier':copy.deepcopy(state),'source_origin':copy.deepcopy(d['origin']),'observed_value':None,'frame':None,'object_reference_observed':None} for d in cat['declarations']]\n  rows.append({'context':name,'declaration':copy.deepcopy(cat),'validated_state_anchor':anchor,'conditional_links':links,'runtime_links':None,'unjoined_trace_calls':source_calls,'separate_observer':observer,\n   'actual_call_count':None,'classification':'UNKNOWN','multiplicity':None,'gap':'No captured backend-state/result-assignment/wrapper-return chain. Source and recorded value agreement do not establish object identity or actual execution.'})\n return rows\n"
+        },
+        {
+          "first_line": 101,
+          "last_line": 107,
+          "text": " rows,basis=_checked(data,submitted_catalogue,claims,evidence);result=copy.deepcopy(basis['prior']);result['format']='I164-MANAGED-STATE-RETURN-CORRESPONDENCE-1'\n result['prior_config_components']=result.pop('extension_components');result['prior_config_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}\n for context,row in zip(result['contexts'],rows):require(context['context']==row['context'],'STATE-DERIVATION-CONTEXT');context['state_return_correspondence']=copy.deepcopy(row)\n result['new_state_slice_limits']={'static_conditional_correspondence':True,'saved_three_link_execution_chain':'UNAVAILABLE','actual_state_call_count':None,'physical_result_identity':None,'reference_forwarding_is_source_semantics':True,'equal_contents_establish_identity':False,\n  'no_new_HEAD_authentication_or_ingestion_rule':True,'no_wrapper_copy':True,'separate_observer_Client_state_call':True,'observer_frame':None,'missing_state_ingest_assignment_and_historical_frames':True,'traced_invocations':18,\n  'validated_frontier_is_not_current_or_lifetime_state':True,'complete_repetition_coverage':False,'no_runtime_changes':True,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,\n  'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}"
+        }
+      ],
+      "identity": {
+        "bytes": 13423,
+        "sha256": "f2621678f7fcc9769c9a75565362499e31061b731d380e6081955d385f3cb957"
+      },
+      "member": "original/retained/handle/retained/state/code/correspondence.py"
+    }
+  ]
+}
