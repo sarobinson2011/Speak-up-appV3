@@ -1,0 +1,1 @@
+No new failed attempt occurred in this handle-extension construction. The two prior zero-assertion state membership failures and their exact binaries are preserved unchanged under retained/state/failures. Earlier failures remain in their original nested scopes. No failed attempt is included in completed totals.

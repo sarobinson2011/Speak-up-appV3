@@ -1,0 +1,84 @@
+{
+  "reviewed_state_checkpoint": {
+    "bytes": 41935972,
+    "sha256": "44942004491d883af8c422f10dd38fd1e25cbc4f56e2d53e6345e264d0893fdc"
+  },
+  "state_entries": 1016,
+  "independent_state_review": {
+    "bytes": 41478030,
+    "sha256": "63c72c1b7ad2f42f05b8f005454748967bf3fac5fcbc26fb81058567a717a311"
+  },
+  "review_entries": 34,
+  "review_compact_members": 33,
+  "independent_state_results": {
+    "primary": 108,
+    "recovered": 80,
+    "static_type_origin": 1,
+    "offline_command": 1,
+    "rerun": false
+  },
+  "Engineering_state_results": {
+    "primary": 83,
+    "recovered": 77,
+    "fresh_process": 1,
+    "zero_assertion_membership_failures": [
+      0,
+      0
+    ],
+    "rerun": false
+  },
+  "earlier_external_archival_dependencies": {
+    "config_checkpoint": {
+      "bytes": 41158663,
+      "decoded_root": "retained/config",
+      "entries": 918,
+      "sha256": "e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f"
+    },
+    "config_independent_review": {
+      "bytes": 63598176,
+      "compact_root": "retained/config-review",
+      "entries": 43,
+      "external_preservation_dependencies": [
+        {
+          "bytes": 22806528,
+          "path": "failures/initial-recovered-membership/unexpected-0.bin",
+          "sha256": "7fd866253d347d41b447f271bf3c14efea355c98a3d1b50a90714dfcee67b115"
+        },
+        {
+          "bytes": 41158663,
+          "path": "input/I164-config-return-correspondence-1.zip",
+          "sha256": "e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f"
+        }
+      ],
+      "sha256": "97ccc050f291230f667a8d1fde28d9f655d75a28d72ec6604654d728cb5dcf94"
+    },
+    "current_independent_review": "PENDING",
+    "executable_inputs": "All present in decoded predecessor; external large artifacts preserve prior archival failures only.",
+    "prior_successful_git_save": {
+      "commit": "16ece61efdb4189b9edcac1baf67759f49ca0232",
+      "new_save_performed": false,
+      "receipt": {
+        "bytes": 3404,
+        "sha256": "2938fed61b1420ce0561c1cde1cd18130e15a63a321efad088ee2d7e2bd5fef8"
+      }
+    },
+    "prior_support": {
+      "Engineering": {
+        "primary": 127,
+        "process_results": "retained, not rerun",
+        "recovered": 105
+      },
+      "Formal-Lab": {
+        "offline_command": "retained",
+        "primary": 146,
+        "recovered": 62,
+        "static_type_audit": "retained"
+      },
+      "failed_attempts": "Retained separately; excluded from completed assertion totals"
+    },
+    "runtime_getter_observations": "UNAVAILABLE"
+  },
+  "new_independent_review": "PENDING",
+  "runtime_handle_chain": "UNAVAILABLE",
+  "previous_Git_command_not_executed": true
+}

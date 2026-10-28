@@ -1,0 +1,493 @@
+{
+  "result": "PASS",
+  "wrapper": "def handle(self,packet,inject=None):return self._run('handle',packet,inject)",
+  "run": "def _run(self,method,*args):\n  with self._lock:\n   self._require()\n   try:\n    if self._live.db.in_transaction:raise RecoveryBlocked('UNEXPECTED-ACTIVE-TRANSACTION')\n    result=getattr(self._live,method)(*args)\n    if self._live.db.in_transaction:raise RecoveryBlocked('UNCOMMITTED-STATE')\n    return result\n   except BaseException as e:\n    self._quarantine(type(e).__name__+':'+str(e));raise",
+  "backend": "def handle(self,packet,inject=None):\n  q=parse(packet,REQUEST_LIMIT);exact(q,['request','signature']);r=q['request'];exact(r,['version','binding','pilot','session','principal','challenge','expected','method','u','body'])\n  need(r['version']==VERSION and r['binding']==self.binding and r['pilot']==self.config['pilot'] and r['session']==self.config['session'],'REQUEST-CONTEXT')\n  need(r['principal'] in ['executor','observer'],'PRINCIPAL');verify(r['principal'],r,q['signature']);digest(r['challenge']);digest(r['expected']);label(r['u']);need(type(r['body']) is dict,'BODY')\n  need((r['method']=='observe' and r['principal']=='observer') or (r['method']!='observe' and r['principal']=='executor'),'ROLE')\n  with self.transaction():\n   need(not self.db.execute('SELECT 1 FROM journal WHERE challenge=?',(r['challenge'],)).fetchone(),'REPLAY')\n   need(self.db.execute('SELECT count(*) FROM journal').fetchone()[0]<MAX_ROWS,'JOURNAL-CAP')\n   self.db.execute('INSERT INTO journal VALUES(?,?,NULL)',(r['challenge'],packet))\n  try:\n   if r['method']=='sign':data=self.sign(r,inject)\n   else:\n    with self.transaction():\n     s=self.state();need(r['expected']==s['head'],'STALE');data=self.apply(s,r,inject)\n    if r['method'] in ['retire','open']:fault('after_ownership_commit',inject)\n    if r['method']=='decide':fault('after_decision_commit',inject)\n    if r['method']=='release':fault('after_release_commit',inject)\n    if r['method']=='retry_release':fault('after_retry_commit',inject)\n    if r['method']=='observe':fault('after_observe_commit',inject)\n   response={'request':sha(packet),'challenge':r['challenge'],'ok':True,'data':data}\n  except Exception as e:\n   response={'request':sha(packet),'challenge':r['challenge'],'ok':False,'error':type(e).__name__+':'+str(e)}\n  raw=enc({'response':response,'signature':sig('server',response)});need(len(raw)<=RESPONSE_LIMIT,'RESPONSE-BOUND')\n  with self.transaction():self.db.execute('UPDATE journal SET response=? WHERE challenge=?',(raw,r['challenge']))\n  return raw",
+  "source_constants": {
+    "VERSION": "I164-PROSPECTIVE-LAB-RETRY-3",
+    "REQUEST_LIMIT": 3227648,
+    "RESPONSE_LIMIT": 1048576
+  },
+  "packet_parser": "def parse(b,limit=65536):\n need(type(b) is bytes and len(b)<=limit,'BYTE-BOUND')\n def pairs(ps):\n  d={}\n  for k,v in ps:need(k not in d,'DUPLICATE');d[k]=v\n  return d\n x=json.loads(b,object_pairs_hook=pairs);need(enc(x)==b,'CANONICAL');return x",
+  "encoder": "def enc(x):return (json.dumps(x,sort_keys=True,separators=(',',':'),allow_nan=False)+'\\n').encode()",
+  "backend_source_guards_and_continuations_independently_checked": true,
+  "source_derivation_not_runtime_execution": true,
+  "origins": [
+    "122:2:122:12:Return",
+    "37:4:37:44:Assign",
+    "43:37:43:77:Return"
+  ],
+  "reference_links": {
+    "ready": {
+      "site": "34:3:34:18:Call",
+      "expression": "self._require()",
+      "function": "_run",
+      "guards": [
+        {
+          "site": "13:0:99:94:ClassDef",
+          "kind": "ClassDef",
+          "region": "class-body",
+          "requires": [
+            {
+              "event": "class-definition-executed"
+            }
+          ]
+        },
+        {
+          "site": "32:1:41:55:FunctionDef",
+          "kind": "FunctionDef",
+          "region": "invocation-boundary",
+          "requires": [
+            {
+              "event": "invocation-or-generator-resumption-required"
+            }
+          ],
+          "outer_conditions": "definition-time only; not proof they still hold at invocation"
+        },
+        {
+          "site": "33:2:41:55:With",
+          "kind": "With",
+          "region": "body",
+          "requires": [
+            {
+              "event": "context-enter-completed",
+              "item": 0,
+              "expression": "self._lock"
+            }
+          ]
+        }
+      ],
+      "continuation": [
+        {
+          "owner": "32:1:41:55:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "33:2:41:55:With",
+          "region": "body",
+          "normal_continuation_of": []
+        }
+      ],
+      "callee": "self._require",
+      "reference_bindings": [],
+      "argument_rule": "Receiver and arguments must evaluate normally before callee entry; exception formatting is not assumed infallible"
+    },
+    "live_read": {
+      "site": "37:19:37:29:Attribute",
+      "expression": "self._live",
+      "function": "_run",
+      "guards": [
+        {
+          "site": "13:0:99:94:ClassDef",
+          "kind": "ClassDef",
+          "region": "class-body",
+          "requires": [
+            {
+              "event": "class-definition-executed"
+            }
+          ]
+        },
+        {
+          "site": "32:1:41:55:FunctionDef",
+          "kind": "FunctionDef",
+          "region": "invocation-boundary",
+          "requires": [
+            {
+              "event": "invocation-or-generator-resumption-required"
+            }
+          ],
+          "outer_conditions": "definition-time only; not proof they still hold at invocation"
+        },
+        {
+          "site": "33:2:41:55:With",
+          "kind": "With",
+          "region": "body",
+          "requires": [
+            {
+              "event": "context-enter-completed",
+              "item": 0,
+              "expression": "self._lock"
+            }
+          ]
+        },
+        {
+          "site": "35:3:41:55:Try",
+          "kind": "Try",
+          "region": "try-body",
+          "requires": [
+            {
+              "event": "try-entered"
+            }
+          ]
+        }
+      ],
+      "continuation": [
+        {
+          "owner": "32:1:41:55:FunctionDef",
+          "region": "body",
+          "normal_continuation_of": []
+        },
+        {
+          "owner": "33:2:41:55:With",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "34:3:34:18:Expr",
+              "expression": "self._require()"
+            }
+          ]
+        },
+        {
+          "owner": "35:3:41:55:Try",
+          "region": "body",
+          "normal_continuation_of": [
+            {
+              "site": "36:4:36:90:If",
+              "expression": "if self._live.db.in_transaction:raise RecoveryBlocked('UNEXPECTED-ACTIVE-TRANSACTION')"
+            }
+          ]
+        }
+      ],
+      "slot": "_live"
+    }
+  },
+  "inherited_declarations": {
+    "REQUEST:": {
+      "id": "I164:PROSPECTIVE-META1.Fb0f87541c9165f83f0cf1d81b562248cb19718c457ba4a31ec941cdbdea3ebfe",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "present",
+        "id": "REQUEST:",
+        "parent": null,
+        "presence": "required",
+        "record": "REQUEST",
+        "selector": "",
+        "source": "reference/runtime/authority.py",
+        "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+        "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+        "type": {
+          "object": {
+            "binding": "STRING",
+            "body": {
+              "guard": "typed successful action body OR exact refused/unanswered body; latter grants no action",
+              "union": [
+                {
+                  "choice_by": "method",
+                  "variants": {
+                    "backup": {
+                      "ref": "BODY-backup"
+                    },
+                    "decide": {
+                      "ref": "BODY-decide"
+                    },
+                    "head": {
+                      "ref": "BODY-head"
+                    },
+                    "observe": {
+                      "ref": "BODY-observe"
+                    },
+                    "open": {
+                      "ref": "BODY-open"
+                    },
+                    "query": {
+                      "ref": "BODY-query"
+                    },
+                    "release": {
+                      "ref": "BODY-release"
+                    },
+                    "retire": {
+                      "ref": "BODY-retire"
+                    },
+                    "retry_release": {
+                      "ref": "BODY-retry_release"
+                    },
+                    "sign": {
+                      "ref": "BODY-sign"
+                    }
+                  }
+                },
+                {
+                  "ref": "UNVALIDATED-BODY"
+                }
+              ]
+            },
+            "challenge": "STRING",
+            "expected": "STRING",
+            "method": "STRING",
+            "pilot": "STRING",
+            "principal": "STRING",
+            "session": "STRING",
+            "u": "STRING",
+            "version": "STRING"
+          }
+        },
+        "visibility": "UNKNOWN"
+      },
+      "parent": null,
+      "template_id": "REQUEST:"
+    },
+    "PACKET:": {
+      "id": "I164:PROSPECTIVE-META1.Fc41631ffe0e8d9cb00ec67c306ff71da5a74574a92e7d66546b4ee8e1192ae90",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "present",
+        "id": "PACKET:",
+        "parent": null,
+        "presence": "required",
+        "record": "PACKET",
+        "selector": "",
+        "source": "reference/runtime/authority.py",
+        "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+        "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+        "type": {
+          "object": {
+            "request": {
+              "ref": "REQUEST"
+            },
+            "signature": "STRING"
+          }
+        },
+        "visibility": "UNKNOWN"
+      },
+      "parent": null,
+      "template_id": "PACKET:"
+    },
+    "PACKET:#exact_bytes": {
+      "id": "I164:PROSPECTIVE-META1.F38973af98858043de142c995bf91951061e2f4334cbb02bbd891c8ed5a876fb8",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "derived framing of PACKET:",
+        "id": "PACKET:#exact_bytes",
+        "parent": "PACKET:",
+        "presence": "required",
+        "record": "PACKET",
+        "selector": "#exact_bytes",
+        "source": "code/framing_templates.py",
+        "source_rule": "framing_templates.framing over canonical common.enc; source-field presence guard required",
+        "source_sha256": "fca05faa1e5081da7f52f205884d060a9c494d14a86b6ab8cbd813fb2c9639d9",
+        "type": "STRING",
+        "visibility": "UNKNOWN"
+      },
+      "parent": "I164:PROSPECTIVE-META1.Fc41631ffe0e8d9cb00ec67c306ff71da5a74574a92e7d66546b4ee8e1192ae90",
+      "template_id": "PACKET:#exact_bytes"
+    },
+    "RESPONSE:": {
+      "id": "I164:PROSPECTIVE-META1.F77bad07e20322379665a053bfb230dd1fa6b03cc040b02d85f0a9d35bf0a2801",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "present",
+        "id": "RESPONSE:",
+        "parent": null,
+        "presence": "required",
+        "record": "RESPONSE",
+        "selector": "",
+        "source": "reference/runtime/authority.py",
+        "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+        "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+        "type": {
+          "object": {
+            "response": {
+              "choice_by": "ok",
+              "variants": {
+                "false": {
+                  "ref": "ERROR-RESPONSE"
+                },
+                "true": {
+                  "ref": "SUCCESS-RESPONSE"
+                }
+              }
+            },
+            "signature": "STRING"
+          }
+        },
+        "visibility": "UNKNOWN"
+      },
+      "parent": null,
+      "template_id": "RESPONSE:"
+    },
+    "RESPONSE:#exact_bytes": {
+      "id": "I164:PROSPECTIVE-META1.Fe863b5a03282eec76e7fdbf2ed20e45f3101f6c76496535bb651520ebf280120",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "derived framing of RESPONSE:",
+        "id": "RESPONSE:#exact_bytes",
+        "parent": "RESPONSE:",
+        "presence": "required",
+        "record": "RESPONSE",
+        "selector": "#exact_bytes",
+        "source": "code/framing_templates.py",
+        "source_rule": "framing_templates.framing over canonical common.enc; source-field presence guard required",
+        "source_sha256": "fca05faa1e5081da7f52f205884d060a9c494d14a86b6ab8cbd813fb2c9639d9",
+        "type": "STRING",
+        "visibility": "UNKNOWN"
+      },
+      "parent": "I164:PROSPECTIVE-META1.F77bad07e20322379665a053bfb230dd1fa6b03cc040b02d85f0a9d35bf0a2801",
+      "template_id": "RESPONSE:#exact_bytes"
+    },
+    "SUCCESS-RESPONSE:": {
+      "id": "I164:PROSPECTIVE-META1.Ff8fe5c072ba65878b980b27ed0e13bb63927be667afd923a7a15d2506665db09",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "present",
+        "id": "SUCCESS-RESPONSE:",
+        "parent": null,
+        "presence": "required",
+        "record": "SUCCESS-RESPONSE",
+        "selector": "",
+        "source": "reference/runtime/authority.py",
+        "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+        "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+        "type": {
+          "object": {
+            "challenge": "STRING",
+            "data": {
+              "request_method_choice": {
+                "backup": {
+                  "ref": "HEAD"
+                },
+                "decide": {
+                  "ref": "HEAD"
+                },
+                "head": {
+                  "ref": "HEAD"
+                },
+                "observe": {
+                  "ref": "HEAD"
+                },
+                "open": {
+                  "ref": "HEAD"
+                },
+                "query": {
+                  "ref": "HEAD"
+                },
+                "release": {
+                  "ref": "RELEASE-RESULT"
+                },
+                "retire": {
+                  "ref": "HEAD"
+                },
+                "retry_release": {
+                  "ref": "RETRY-RELEASE-RESULT"
+                },
+                "sign": {
+                  "ref": "SIGNED-RESULT"
+                }
+              }
+            },
+            "ok": "BOOLEAN",
+            "request": "STRING"
+          }
+        },
+        "visibility": "UNKNOWN"
+      },
+      "parent": null,
+      "template_id": "SUCCESS-RESPONSE:"
+    },
+    "ERROR-RESPONSE:": {
+      "id": "I164:PROSPECTIVE-META1.Fa42ec613ca7b1f086e0c8f490ed0d8051404e893e16d9bc9a235b15fb53136e4",
+      "identity_status": "PROPOSED-CANDIDATE-ONLY",
+      "native_template": {
+        "canonical": false,
+        "custody": [
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "dependency_classification": "UNKNOWN",
+        "guard": "present",
+        "id": "ERROR-RESPONSE:",
+        "parent": null,
+        "presence": "required",
+        "record": "ERROR-RESPONSE",
+        "selector": "",
+        "source": "reference/runtime/authority.py",
+        "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+        "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+        "type": {
+          "object": {
+            "challenge": "STRING",
+            "error": "STRING",
+            "ok": "BOOLEAN",
+            "request": "STRING"
+          }
+        },
+        "visibility": "UNKNOWN"
+      },
+      "parent": null,
+      "template_id": "ERROR-RESPONSE:"
+    }
+  },
+  "type_scope": "Exact source-produced bytes; existing declaration records bytes as lowercase hex STRING; packet canonical parse; inject has no source type check at wrapper/backend entry; method/action semantics remain predecessor scope",
+  "guard_scope": "Inner Exception becomes error response only when handler and encode/persist/return complete; outside failures and BaseException escape; lock exit is required; no guarantee of cleanup/nonexecution"
+}

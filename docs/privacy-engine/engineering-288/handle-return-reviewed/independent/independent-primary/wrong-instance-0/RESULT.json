@@ -1,0 +1,53 @@
+{
+  "result": "PASS",
+  "assertions": 3,
+  "categories": {
+    "independent": 2,
+    "negative": 1
+  },
+  "checks": [
+    {
+      "check": "full semantic coordinated wrong instance 0",
+      "category": "negative",
+      "result": "REJECTED",
+      "error": {
+        "type": "ValueError",
+        "message": "HANDLE-INSTANCE-LINEAGE"
+      }
+    },
+    {
+      "check": "mandatory state derivation actually invoked",
+      "category": "independent",
+      "result": "PASS"
+    },
+    {
+      "check": "candidate source evidence and saved receipt unchanged",
+      "category": "independent",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "recovered": false,
+  "case": "wrong-instance-0",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "optimization": 0,
+    "cryptography_installed": "50.0.2"
+  },
+  "source": {
+    "correspondence.py": {
+      "bytes": 10972,
+      "sha256": "ae6f3550d1c0f6ee8ab939ddc25bcef921b82d8fe2024359ec6973edc2123d5f"
+    },
+    "managed_coverage.py": {
+      "bytes": 128258,
+      "sha256": "b7108d38407c11f1e09f91ba56d29402cc0a900076a45d5edacd236856bb3bef"
+    }
+  },
+  "database_connections": 0,
+  "session_operations": 0,
+  "requests_issued": 0,
+  "new_signatures": 0,
+  "completed_review_reruns": false,
+  "constructed_cases_are_execution_evidence": false
+}

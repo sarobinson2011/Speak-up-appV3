@@ -1,0 +1,116 @@
+{
+  "boundaries": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "accounting_reservations_nonce_ownership_uncertainty": "UNCHANGED",
+    "admission": false,
+    "all_eleven_obligations": "PRESERVED",
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "completed_checks_rerun": false,
+  "implementation": {
+    "bytes": 42330497,
+    "entries": 1088,
+    "manifested_hashes": 1087,
+    "sha256": "6b486b1ca0c49da010face18132507020a07f3db84602d62a7c75af0305caa8e"
+  },
+  "independent_results": {
+    "constructed_cases_are_execution_evidence": false,
+    "failed_attempt_assertions": [
+      7
+    ],
+    "failed_or_interrupted_attempts_in_completed_totals": false,
+    "fresh_offline_CLI_processes": 1,
+    "interrupted_attempt_progress_rows": [
+      179,
+      4
+    ],
+    "primary_assertions": 219,
+    "primary_categories": {
+      "authentication_negative": 7,
+      "constructed_negative": 73,
+      "constructed_only": 59,
+      "independent": 51,
+      "internal_relation": 21,
+      "negative": 6,
+      "public_negative": 2
+    },
+    "primary_completed_groups": 12,
+    "recovered_assertions": 133,
+    "recovered_categories": {
+      "authentication_negative": 3,
+      "constructed_negative": 41,
+      "constructed_only": 43,
+      "independent": 32,
+      "internal_relation": 11,
+      "negative": 3
+    },
+    "recovered_completed_groups": 5
+  },
+  "observation_limits": {
+    "actual_handle_call_count": null,
+    "actual_handle_three_link_execution_chain": "UNAVAILABLE",
+    "captured_handle_calls_in_saved_trace": 0,
+    "complete_runtime_or_repetition_coverage": false,
+    "exhaustive_interrupt_feasibility_proven": false,
+    "inject_observed": false,
+    "inject_unknown_is_observed_None": false,
+    "method_specific_action_semantics_reproved": false,
+    "missing_launcher_frames_and_prior_observation_limits": "PRESERVED",
+    "observer_frame": null,
+    "observer_join_to_handle_links": null,
+    "packet_observation": null,
+    "physical_result_or_connection_identity": null,
+    "run_result_observation": null,
+    "saved_journal_rows": 0,
+    "separate_observer_Client_state_call": 1,
+    "traced_invocations": 18,
+    "underlying_response_observation": null,
+    "wrapper_return_observation": null,
+    "zero_saved_rows_are_lifetime_zero": false
+  },
+  "previous_git_commit": "1782e0cecc8231b8507c7c6745124d0421270cff",
+  "previous_save_repeated": false,
+  "review": {
+    "bytes": 42069714,
+    "sha256": "d69cd5939e0fc051adee4f270dd0148d4aecf5cfef2ecae65b3ec33cedf4f31c"
+  },
+  "review_entries": 142,
+  "reviewed_code": {
+    "correspondence.py": {
+      "bytes": 10972,
+      "sha256": "ae6f3550d1c0f6ee8ab939ddc25bcef921b82d8fe2024359ec6973edc2123d5f"
+    },
+    "managed_coverage.py": {
+      "bytes": 128258,
+      "sha256": "b7108d38407c11f1e09f91ba56d29402cc0a900076a45d5edacd236856bb3bef"
+    }
+  },
+  "reviewed_receipt": {
+    "bytes": 1156238,
+    "sha256": "c840ab87c77c6900c457f39d029f51175546225b8af69e0fb6262bfcc52276ad"
+  },
+  "supplied_results": {
+    "additional_internal": 21,
+    "failed_attempts_in_completed_totals": false,
+    "inspected_not_executed": true,
+    "intermediate_outer_archive_newly_verified": false,
+    "intermediate_recovery_archive_entries": 1068,
+    "primary": 101,
+    "prior_membership_failure_assertions": [
+      0,
+      0
+    ],
+    "process_check": 1,
+    "recovered": 101
+  },
+  "verdict": "SUPPORTED within bounded source-derived conditional handle return correspondence; runtime return-chain qualification unavailable"
+}

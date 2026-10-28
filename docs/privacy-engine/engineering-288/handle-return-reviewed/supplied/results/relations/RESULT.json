@@ -1,0 +1,96 @@
+{
+  "result": "PASS",
+  "checks": 21,
+  "rows": [
+    {
+      "check": "retained signature primitive fixture verifies without new signing",
+      "result": "PASS"
+    },
+    {
+      "check": "public key matches independently retained fixture",
+      "result": "PASS"
+    },
+    {
+      "check": "truncated signature rejects authenticated-pair checker",
+      "result": "PASS"
+    },
+    {
+      "check": "changed data with old signature rejects authenticated-pair checker",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong challenge rejects authenticated-pair checker",
+      "result": "PASS"
+    },
+    {
+      "check": "stale or substituted packet expected",
+      "result": "PASS"
+    },
+    {
+      "check": "stale or substituted packet binding",
+      "result": "PASS"
+    },
+    {
+      "check": "stale or substituted packet challenge",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated packet/response substitutions do not replace signatures",
+      "result": "PASS"
+    },
+    {
+      "check": "valid signed pair wrong instance rejects semantically",
+      "result": "PASS"
+    },
+    {
+      "check": "known non-None inject forwards without inferring its effects",
+      "result": "PASS"
+    },
+    {
+      "check": "inject value preserved as constructed argument only",
+      "result": "PASS"
+    },
+    {
+      "check": "equal bytes in distinct conditional occurrences remain distinct",
+      "result": "PASS"
+    },
+    {
+      "check": "backend normal return followed by post-transaction failure has only two value links",
+      "result": "PASS"
+    },
+    {
+      "check": "failed quarantine preserves unknown partial effects",
+      "result": "PASS"
+    },
+    {
+      "check": "error-expression failure escapes without normal response",
+      "result": "PASS"
+    },
+    {
+      "check": "internal row checker requires both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "internal omitted link rejects context 0",
+      "result": "PASS"
+    },
+    {
+      "check": "internal invented runtime link rejects context 0",
+      "result": "PASS"
+    },
+    {
+      "check": "internal omitted link rejects context 1",
+      "result": "PASS"
+    },
+    {
+      "check": "internal invented runtime link rejects context 1",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "seconds": 17.801617922999867,
+  "scope": "additional new internal byte/authentication/path controls, not full evidence admission",
+  "new_signatures": 0,
+  "runtime_or_session_operations": 0,
+  "constructed_only": true
+}

@@ -1,0 +1,11 @@
+# Recover this handle-return extension
+
+Verify the delivered ZIP size/SHA-256, CRC, safe unique regular membership and every MANIFEST.json hash before extracting into a new persistent directory. Never overwrite existing sessions or retained evidence. Preserve historical manifests and their original scopes.
+
+retained/state is the exact decoded 1,016-member I164-state-return-correspondence-1.zip: 41,935,972 bytes, SHA-256 44942004491d883af8c422f10dd38fd1e25cbc4f56e2d53e6345e264d0893fdc. All executable predecessors and both state membership-failure binaries remain there. retained/state-review contains 33 exact compact review members, omitting only its redundant embedded state ZIP. The original review is 41,478,030 bytes, 34 entries, SHA-256 63c72c1b7ad2f42f05b8f005454748967bf3fac5fcbc26fb81058567a717a311. Earlier external archival dependencies remain documented by the predecessor; no deletion or compaction is authorized.
+
+Using Python 3.12.14 with optimization disabled and -I -B, tests/fresh_check.py ROOT is the guarded saved-receipt entry; code/correspondence.py --root ROOT --receipt RECEIPT is the actual public CLI. New focused controls are tests/controls.py --root ROOT --output NEW_PERSISTENT_OUTPUT; --recovered reuses the exact saved constructed fixtures. Do not use --write against supplied fixtures/receipts. Completed results are already retained; these paths are recovery instructions, not authorization to rerun completed checks now.
+
+results/recovery-input.json identifies the stable intermediate input used for the separately recovered-root controls. Its code, controls, fixtures and receipt are byte-compared with the final checkpoint; its outer identity is separate from the final deliverable. Any failed preparations are recorded without replacing completed totals. Recovery never requires a database connection, application/session operation or request issue.
+
+The earlier prepared state Git save command is not run or repeated here; no successful host state-save receipt has been supplied in this task. That command and any host receipt remain separate provenance; this unreviewed extension is not committed here. Prior scoped support, missing runtime chains, distinct acquisitions, all UNKNOWNs and readiness/admission limits remain intact.
