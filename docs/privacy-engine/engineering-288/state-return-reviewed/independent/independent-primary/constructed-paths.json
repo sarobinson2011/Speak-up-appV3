@@ -1,0 +1,703 @@
+[
+  {
+    "case": "lock_enter",
+    "premise": {
+      "lock_enter": "raise"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "lock_enter",
+      "dispatch_completed": false,
+      "quarantine_called": false,
+      "quarantine_completed": null,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "raise"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "readiness",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "raise",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "readiness",
+      "dispatch_completed": false,
+      "quarantine_called": false,
+      "quarantine_completed": null,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "raise"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "pre_transaction",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": "raise",
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "pre_transaction",
+      "dispatch_completed": false,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "dispatch",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "raise",
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "dispatch",
+      "dispatch_completed": false,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "post_transaction",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "normal",
+      "post_transaction": "raise",
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "post_transaction",
+      "dispatch_completed": true,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "post_transaction",
+          "site": "38:4:38:78:If",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "return_expression",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "normal",
+      "post_transaction": false,
+      "return_expression": "raise",
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "return_expression",
+      "dispatch_completed": true,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "post_transaction",
+          "site": "38:4:38:78:If",
+          "outcome": false
+        },
+        {
+          "stage": "return_expression",
+          "site": "39:4:39:17:Return",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "lock_exit",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "normal",
+      "post_transaction": false,
+      "return_expression": "normal",
+      "lock_exit": "raise"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "lock_exit",
+      "dispatch_completed": true,
+      "quarantine_called": false,
+      "quarantine_completed": null,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "post_transaction",
+          "site": "38:4:38:78:If",
+          "outcome": false
+        },
+        {
+          "stage": "return_expression",
+          "site": "39:4:39:17:Return",
+          "outcome": "normal"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "raise"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "pre_transaction active",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": true,
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "pre_transaction",
+      "dispatch_completed": false,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": true
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "post_transaction active",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "normal",
+      "post_transaction": true,
+      "handler_reason": "normal",
+      "quarantine": "normal",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "post_transaction",
+      "dispatch_completed": true,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "post_transaction",
+          "site": "38:4:38:78:If",
+          "outcome": true
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "reason evaluation fails",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "raise",
+      "handler_reason": "raise",
+      "lock_exit": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "handler_reason",
+      "dispatch_completed": false,
+      "quarantine_called": false,
+      "quarantine_completed": null,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "raise"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "quarantine interrupted",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "raise",
+      "handler_reason": "normal",
+      "lock_exit": "normal",
+      "quarantine": "raise"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "quarantine",
+      "dispatch_completed": false,
+      "quarantine_called": true,
+      "quarantine_completed": false,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "raise"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "normal"
+        }
+      ],
+      "runtime_observation": false
+    }
+  },
+  {
+    "case": "exit supersedes rethrow",
+    "premise": {
+      "lock_enter": "normal",
+      "readiness": "normal",
+      "pre_transaction": false,
+      "dispatch": "raise",
+      "handler_reason": "normal",
+      "lock_exit": "raise",
+      "quarantine": "normal"
+    },
+    "result": {
+      "kind": "CONSTRUCTED-STATE-PATH",
+      "completion": "abrupt",
+      "return_links_admissible": false,
+      "failure_site": "lock_exit",
+      "dispatch_completed": false,
+      "quarantine_called": true,
+      "quarantine_completed": true,
+      "failed_or_interrupted_quarantine_effects": "UNKNOWN unless independently constructed reference path supplies them",
+      "events": [
+        {
+          "stage": "lock_enter",
+          "site": "33:7:33:17:Attribute",
+          "outcome": "normal"
+        },
+        {
+          "stage": "readiness",
+          "site": "34:3:34:18:Expr",
+          "outcome": "normal"
+        },
+        {
+          "stage": "pre_transaction",
+          "site": "36:4:36:90:If",
+          "outcome": false
+        },
+        {
+          "stage": "dispatch",
+          "site": "37:11:37:44:Call",
+          "outcome": "raise"
+        },
+        {
+          "stage": "handler_reason",
+          "site": "41:21:41:48:BinOp",
+          "outcome": "normal"
+        },
+        {
+          "stage": "quarantine",
+          "site": "41:4:41:49:Call",
+          "outcome": "normal"
+        },
+        {
+          "stage": "reraise",
+          "site": "41:50:41:55:Raise",
+          "outcome": "original exception re-raised"
+        },
+        {
+          "stage": "lock_exit",
+          "site": "33:2:41:55:With",
+          "outcome": "raise"
+        }
+      ],
+      "runtime_observation": false
+    }
+  }
+]

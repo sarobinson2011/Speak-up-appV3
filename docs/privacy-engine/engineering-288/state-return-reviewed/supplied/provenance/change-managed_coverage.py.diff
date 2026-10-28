@@ -1,0 +1,136 @@
+--- reviewed-config/code/managed_coverage.py
++++ state/code/managed_coverage.py
+@@ -1058,6 +1058,133 @@
+  return {'declaration':catalogue['declaration']['id'],'value':copy.deepcopy(returned),'copy_relation':relation,'runtime_observation':False}
+ 
+ 
++# State-return bridge: source-derived conditional values, never runtime calls.
++def state_source(raw,authority,observations,guards,oracle):
++ ready=binding_source(raw,authority,guards,oracle);recovery=recovery_source(raw,authority,guards,oracle)
++ same({'bytes':len(observations),'sha256':digest(observations)},{'bytes':35124,'sha256':'2b4ccd7902d8e270ac8d4b22060d08d184dda1b0e6fcdccae781fd81eef902cc'},'STATE-WRAPPER-CHECK-SOURCE')
++ tree,loc=_recovery_locations(raw,guards,oracle);atree,aloc=_recovery_locations(authority,guards,oracle)
++ def one(rows,label):
++  rows=list(rows);need(len(rows)==1,'STATE-SOURCE-UNIQUE:'+label);return rows[0]
++ cls=one((n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority'),'manager');methods={n.name:n for n in cls.body if isinstance(n,ast.FunctionDef)}
++ wrapper=methods['state'];need(not wrapper.decorator_list and ast.unparse(wrapper.args)=='self' and len(wrapper.body)==1 and isinstance(wrapper.body[0],ast.Return),'STATE-WRAPPER-SHAPE')
++ wr=wrapper.body[0];call=wr.value
++ need(isinstance(call,ast.Call) and ast.unparse(call.func)=='self._run' and len(call.args)==1 and not call.keywords,'STATE-WRAPPER-DELEGATION');method=ast.literal_eval(call.args[0]);same(method,wrapper.name,'STATE-WRAPPER-METHOD')
++ run=methods['_run'];same(ast.unparse(run.args),'self, method, *args','STATE-RUN-ARGS');need(len(run.body)==1 and isinstance(run.body[0],ast.With),'STATE-RUN-LOCK');lock=run.body[0]
++ need(len(lock.items)==1 and lock.items[0].optional_vars is None,'STATE-LOCK-SHAPE');same(ast.unparse(lock.items[0].context_expr),'self._lock','STATE-LOCK')
++ need(len(lock.body)==2 and isinstance(lock.body[0],ast.Expr) and isinstance(lock.body[1],ast.Try),'STATE-READINESS-TRY-ORDER')
++ req=lock.body[0];same(ast.unparse(req.value),'self._require()','STATE-REQUIRE');tr=lock.body[1]
++ need(not tr.orelse and not tr.finalbody and len(tr.handlers)==1 and len(tr.body)==4,'STATE-TRY-SHAPE');pre,assign,post,ret=tr.body
++ for node,message in [(pre,'UNEXPECTED-ACTIVE-TRANSACTION'),(post,'UNCOMMITTED-STATE')]:
++  need(isinstance(node,ast.If) and not node.orelse and len(node.body)==1 and isinstance(node.body[0],ast.Raise),'STATE-TRANSACTION-GUARD')
++  same(ast.unparse(node.test),'self._live.db.in_transaction','STATE-TRANSACTION-ORIGIN');same(ast.unparse(node.body[0].exc),'RecoveryBlocked('+repr(message)+')','STATE-TRANSACTION-RAISE')
++ need(isinstance(assign,ast.Assign) and len(assign.targets)==1 and isinstance(assign.targets[0],ast.Name),'STATE-RESULT-LOCAL');result=assign.targets[0].id
++ same(ast.unparse(assign.value),'getattr(self._live, method)(*args)','STATE-DISPATCH');need(isinstance(ret,ast.Return) and isinstance(ret.value,ast.Name) and ret.value.id==result,'STATE-RETURN-LOCAL')
++ writers=[n for n in ast.walk(run) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id==result for t in n.targets)];need(writers==[assign],'STATE-RESULT-WRITER')
++ handler=tr.handlers[0];same(ast.unparse(handler.type),'BaseException','STATE-HANDLER-TYPE');need(len(handler.body)==2 and isinstance(handler.body[0],ast.Expr) and isinstance(handler.body[1],ast.Raise) and handler.body[1].exc is None,'STATE-HANDLER-SHAPE')
++ quarantine=handler.body[0].value;need(isinstance(quarantine,ast.Call) and ast.unparse(quarantine.func)=='self._quarantine' and len(quarantine.args)==1 and not quarantine.keywords,'STATE-QUARANTINE')
++ reason=quarantine.args[0];same(ast.unparse(reason),"type("+handler.name+").__name__ + ':' + str("+handler.name+")",'STATE-REASON-ORIGIN')
++ ac=one((n for n in atree.body if isinstance(n,ast.ClassDef) and n.name=='Authority'),'authority');backend=one((n for n in ac.body if isinstance(n,ast.FunctionDef) and n.name==method),'backend')
++ need(ast.unparse(backend.args)=='self','STATE-BACKEND-ARGS');need(len(backend.body)==5,'STATE-BACKEND-SHAPE')
++ load,binding,event,accounting,backendret=backend.body;need(isinstance(event,ast.If) and not event.orelse,'STATE-EVENT-GUARD')
++ same(ast.unparse(event.test),"s['seq']",'STATE-EVENT-TEST');same(ast.unparse(accounting),'accounting.validate(s)','STATE-ACCOUNTING')
++ same(aloc(load),recovery['head_chain']['authority_state_load'],'STATE-EXISTING-LOAD');same(aloc(backendret),recovery['head_chain']['authority_state_return'],'STATE-EXISTING-RETURN')
++ same(ast.unparse(binding),"need(s['binding'] == self.binding, 'VERSION-BINDING')",'STATE-BACKEND-BINDING')
++ checks=[n for n in ast.walk(event) if isinstance(n,ast.Call) and ast.unparse(n.func)=='need']
++ need(len(checks)==2,'STATE-EVENT-CHECKS');same([ast.literal_eval(n.args[1]) for n in checks],['HEAD-EVENT','HEAD-EVENT-TYPED'],'STATE-EVENT-CHECK-NAMES')
++ obs=ast.parse(observations);prop=one((n for n in ast.walk(obs) if isinstance(n,ast.Call) and ast.unparse(n.func)=='propagate' and [ast.unparse(x) for x in n.args]==['f','run']),'existing wrapper propagation')
++ stages={'lock_enter':loc(lock.items[0].context_expr),'readiness':loc(req),'pre_transaction':loc(pre),'dispatch':loc(assign.value),'post_transaction':loc(post),'return_expression':loc(ret),'handler_reason':loc(reason),'quarantine':loc(quarantine),'reraise':loc(handler.body[1]),'lock_exit':loc(lock)}
++ return {'source':copy.deepcopy(ready['source']),'authority_source':copy.deepcopy(ready['authority_source']),'wrapper':loc(wrapper),'wrapper_return':loc(wr),'wrapper_call':loc(call),'method':method,'args':[],
++  'run':loc(run),'result_local':result,'result_assignment':loc(assign),'run_return':loc(ret),'dispatch':loc(assign.value),'dispatch_receiver':loc(assign.value.func.args[0]),
++  'readiness_program':copy.deepcopy(ready['readiness_program']),'readiness_call':loc(req.value),'ready_phase':ready['ready_phase'],'try_region':loc(tr),'handler':loc(handler),'stages':stages,
++  'normal_path':['lock_enter','readiness','pre_transaction','dispatch','post_transaction','return_expression','lock_exit'],
++  'caught_stages':['pre_transaction','dispatch','post_transaction','return_expression'],'outside_handler':['lock_enter','readiness','lock_exit'],
++  'backend':aloc(backend),'backend_load':aloc(load),'backend_return':aloc(backendret),'binding_check':aloc(binding),'event_guard':aloc(event),'event_checks':[aloc(n) for n in checks],'accounting_check':aloc(accounting),
++  'existing_recovery_head_chain':copy.deepcopy(recovery['head_chain']),
++  'existing_wrapper_check':{'source':{'path':'compiler/managed_observations.py','bytes':len(observations),'sha256':digest(observations)},'line':prop.lineno,'end_line':prop.end_lineno,'expression':ast.get_source_segment(observations.decode(),prop),'scope':'Reuse saved wrapper/run propagation where full trace exists; sparse capture does not supply missing backend frames.'},
++  'semantics':'Normal state wrapper passes the same delegated result reference through the result local and returns. No deepcopy or conversion in either wrapper. Backend parses HEAD and performs its own binding/event/accounting checks; this is not recovery ingestion.',
++  'exception_semantics':'Readiness precedes try; lock exit follows it. Failures inside try evaluate reason before calling quarantine, then re-raise if quarantine completes. Reason/quarantine may themselves fail or be interrupted. Lock exit may supersede a pending return/exception; no quarantine is invented for exit failure.'}
++
++def compile_state_return(raw,authority,observations,model,producer,guards,oracle,references):
++ source=state_source(raw,authority,observations,guards,oracle);validate_reference_transfers(raw,model,producer,guards,oracle,authority,references)
++ heads=[d for d in model['existing_declarations'] if d.get('template_id')=='HEAD:'];need(len(heads)==1,'STATE-HEAD-DECLARATION');head=heads[0]
++ need(type(head['native_template']['type']) is dict and set(head['native_template']['type'])=={'object'},'STATE-HEAD-OBJECT')
++ delegation=[d for d in producer['delegations'] if d['from']=='ManagedAuthority.state -> _run'];need(len(delegation)==1 and delegation[0]['to']=='Authority.state','STATE-EXISTING-DELEGATION')
++ inventory={r['site']:r for r in producer['source_inventory']['sites']}
++ for row in [source['wrapper_return'],source['wrapper_call'],source['result_assignment'],source['run_return'],source['readiness_call']]:
++  need(row['site'] in inventory,'STATE-INHERITED-SITE');same(row['guards'],inventory[row['site']]['guards'],'STATE-INHERITED-GUARD')
++ rs=references['source'];calls=[r for r in rs['calls'] if r['site']==source['readiness_call']['site']];reads=[r for r in rs['reference_reads'] if r['site']==source['dispatch_receiver']['site']]
++ need(len(calls)==len(reads)==1,'STATE-REFERENCE-JOINS')
++ links=[{'id':'backend-to-run-result','from':copy.deepcopy(source['backend_return']),'to':copy.deepcopy(source['result_assignment']),'kind':'direct reference forwarding after normal dispatch'},
++  {'id':'run-result-to-wrapper-return','from':copy.deepcopy(source['run_return']),'to':copy.deepcopy(source['wrapper_return']),'kind':'direct reference forwarding after normal run and lock exit'}]
++ declarations=[{'id':name,'type':copy.deepcopy(head['native_template']['type']),'origin':copy.deepcopy(source[site]),'classification':'UNKNOWN','canonical_class':None,'ordinal':None,'multiplicity':None} for name,site in [('underlying-state','backend_return'),('run-result','result_assignment'),('wrapper-return','wrapper_return')]]
++ return {'format':'I164-MANAGED-STATE-RETURN-1','source':source,'inherited_head':copy.deepcopy(head),'declarations':declarations,'links':links,'delegation':copy.deepcopy(delegation[0]),'reference_links':{'ready':copy.deepcopy(calls[0]),'live_read':copy.deepcopy(reads[0])},
++  'type_scope':'Existing HEAD declaration and independently validated exact state; recursively preserve exact types/values of that state. This bridge is not a replacement full schema/ingestion validator.',
++  'identity_scope':'Equal serialized values are not object identity. Constructed scoped reference symbols stipulate forwarding; actual result/connection identities remain unobserved.',
++  'actual_runtime_links':None,'complete_repetition_coverage':False,'full_model_binding':False,'actual_admission':False}
++
++def validate_state_return(raw,authority,observations,model,producer,guards,oracle,references,submitted):
++ same(submitted,compile_state_return(raw,authority,observations,model,producer,guards,oracle,references),'STATE-RETURN-CORRESPONDENCE');return True
++
++def state_value_compare(catalogue,value,validated):
++ """Finite value/type relation to a separately validated state, not admission.
++ Mutable alias topology is deliberately not inferred from equal contents.
++ """
++ fields=catalogue['inherited_head']['native_template']['type']['object']
++ need(type(value) is dict and type(validated) is dict and set(value)==set(validated)==set(fields),'STATE-VALUE-FIELDS')
++ pending=[(value,validated,'')]
++ while pending:
++  a,b,path=pending.pop();need(type(a) is type(b),'STATE-VALUE-TYPE:'+path)
++  if type(b) is dict:
++   need(set(a)==set(b) and all(type(k) is str for k in a),'STATE-VALUE-FIELDS:'+path);pending.extend((a[k],v,path+'/'+k) for k,v in b.items())
++  elif type(b) is list:
++   need(len(a)==len(b),'STATE-VALUE-LENGTH:'+path);pending.extend((x,y,path+'/'+str(i)) for i,(x,y) in enumerate(zip(a,b)))
++  else:need(type(b) in (str,int,bool,type(None)),'STATE-UNSUPPORTED-LEAF:'+path);same(a,b,'STATE-VALUE-ORIGIN:'+path)
++ return True
++
++def state_path_projection(catalogue,outcomes):
++ """Constructed stage outcomes. Normal/abrupt premises are not observations.
++ Actual RLock non-suppression and trusted source execution are premises.
++ """
++ need(type(outcomes) is dict,'STATE-PATH-OUTCOMES');src=catalogue['source'];used=set();events=[];failure=None;quarantine_called=False;quarantine_completed=None;dispatch_completed=False
++ def take(stage):
++  need(stage in outcomes,'STATE-PATH-MISSING:'+stage);v=outcomes[stage];allowed=(False,True,'raise') if stage in ('pre_transaction','post_transaction') else ('normal','raise')
++  need(any(type(v) is type(x) and v==x for x in allowed),'STATE-PATH-OUTCOME:'+stage);used.add(stage);events.append({'stage':stage,'site':src['stages'][stage]['site'],'outcome':v});return v
++ if take('lock_enter')=='raise':failure='lock_enter'
++ else:
++  if take('readiness')=='raise':failure='readiness'
++  else:
++   for stage in src['caught_stages']:
++    value=take(stage)
++    if value=='raise' or value is True:failure=stage;break
++    if stage=='dispatch':dispatch_completed=True
++   if failure:
++    if take('handler_reason')=='raise':failure='handler_reason'
++    else:
++     quarantine_called=True;quarantine_completed=take('quarantine')=='normal'
++     if not quarantine_completed:failure='quarantine'
++     else:events.append({'stage':'reraise','site':src['stages']['reraise']['site'],'outcome':'original exception re-raised'})
++  if take('lock_exit')=='raise':failure='lock_exit'
++ need(used==set(outcomes),'STATE-PATH-UNREACHED-OUTCOMES')
++ return {'kind':'CONSTRUCTED-STATE-PATH','completion':'normal' if failure is None else 'abrupt','return_links_admissible':failure is None,'failure_site':failure,'dispatch_completed':dispatch_completed,
++  'quarantine_called':quarantine_called,'quarantine_completed':quarantine_completed,'failed_or_interrupted_quarantine_effects':'UNKNOWN unless independently constructed reference path supplies them','events':events,'runtime_observation':False}
++
++def state_value_projection(catalogue,case,validated):
++ """Caller validates catalogue, evidence anchor and every symbol scope first."""
++ need(type(case) is dict and set(case)=={'method','args','phase','live_reference','retired_reference','outcomes','underlying','run_result','wrapper_return'},'STATE-PROJECTION-FIELDS')
++ need(type(case['method']) is str and case['method']==catalogue['source']['method'],'STATE-METHOD');same(case['args'],catalogue['source']['args'],'STATE-ARGS')
++ need(type(case['phase']) is str and case['phase']==catalogue['source']['ready_phase'] and case['live_reference'] is not None and case['retired_reference'] is None,'STATE-READINESS')
++ path=state_path_projection(catalogue,case['outcomes']);need(path['return_links_admissible'],'STATE-NO-NORMAL-RETURN')
++ live=case['live_reference'];need(type(live) is dict and set(live)=={'kind','scope','symbol'} and live['kind']=='authority-reference' and type(live['symbol']) is str and bool(live['symbol']),'STATE-LIVE-SYMBOL')
++ under=case['underlying'];need(type(under) is dict and set(under)=={'receiver','value','reference'},'STATE-UNDERLYING-FIELDS');same(under['receiver'],live,'STATE-DISPATCH-RECEIVER')
++ ref=under['reference'];need(type(ref) is dict and set(ref)=={'kind','scope','symbol'} and ref['kind']=='state-result-reference' and type(ref['symbol']) is str and bool(ref['symbol']),'STATE-RESULT-SYMBOL')
++ same(ref['scope'],live['scope'],'STATE-RESULT-SCOPE')
++ values=[]
++ for name in ('underlying','run_result','wrapper_return'):
++  row=case[name];need(type(row) is dict and set(row)==({'receiver','value','reference'} if name=='underlying' else {'value','reference'}),'STATE-LINK-FIELDS:'+name)
++  state_value_compare(catalogue,row['value'],validated);same(row['reference'],ref,'STATE-REFERENCE-FORWARDING:'+name);values.append({'link':name,'value':copy.deepcopy(row['value']),'reference':copy.deepcopy(ref)})
++ return {'kind':'CONSTRUCTED-STATE-RETURN','path':path,'links':values,'copy_in_wrapper':False,'actual_object_identity_established':False,'runtime_observation':False}
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()

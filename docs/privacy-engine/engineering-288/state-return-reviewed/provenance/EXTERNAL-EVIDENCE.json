@@ -1,0 +1,87 @@
+{
+  "all_large_archives_and_databases_outside_Git": true,
+  "historical_manifests_keep_original_scopes": true,
+  "omissions_preserved_external": [
+    {
+      "archive": "state",
+      "bytes": 5767168,
+      "member": "failures/recovered-initial/unexpected-partial.bin",
+      "sha256": "0d07f3f38d177b726c521669c11de22d4c766d510fa9b0105cdd39702c2650ef"
+    },
+    {
+      "archive": "state",
+      "bytes": 7864320,
+      "member": "failures/recovered-second/unexpected-0.bin",
+      "sha256": "939f377ca87b8f7099405f68c0f5400f72e3abf3edb1aab2d3962cf43d0585e7"
+    },
+    {
+      "archive": "review",
+      "bytes": 41935972,
+      "member": "input/I164-state-return-correspondence-1.zip",
+      "sha256": "44942004491d883af8c422f10dd38fd1e25cbc4f56e2d53e6345e264d0893fdc"
+    }
+  ],
+  "prior_external_dependencies": {
+    "config_checkpoint": {
+      "bytes": 41158663,
+      "decoded_root": "retained/config",
+      "entries": 918,
+      "sha256": "e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f"
+    },
+    "config_independent_review": {
+      "bytes": 63598176,
+      "compact_root": "retained/config-review",
+      "entries": 43,
+      "external_preservation_dependencies": [
+        {
+          "bytes": 22806528,
+          "path": "failures/initial-recovered-membership/unexpected-0.bin",
+          "sha256": "7fd866253d347d41b447f271bf3c14efea355c98a3d1b50a90714dfcee67b115"
+        },
+        {
+          "bytes": 41158663,
+          "path": "input/I164-config-return-correspondence-1.zip",
+          "sha256": "e97feef76c75230c8ebc348844192d825a28ee2efd5b38ae27f0edd86f16c52f"
+        }
+      ],
+      "sha256": "97ccc050f291230f667a8d1fde28d9f655d75a28d72ec6604654d728cb5dcf94"
+    },
+    "current_independent_review": "PENDING",
+    "executable_inputs": "All present in decoded predecessor; external large artifacts preserve prior archival failures only.",
+    "prior_successful_git_save": {
+      "commit": "16ece61efdb4189b9edcac1baf67759f49ca0232",
+      "new_save_performed": false,
+      "receipt": {
+        "bytes": 3404,
+        "sha256": "2938fed61b1420ce0561c1cde1cd18130e15a63a321efad088ee2d7e2bd5fef8"
+      }
+    },
+    "prior_support": {
+      "Engineering": {
+        "primary": 127,
+        "process_results": "retained, not rerun",
+        "recovered": 105
+      },
+      "Formal-Lab": {
+        "offline_command": "retained",
+        "primary": 146,
+        "recovered": 62,
+        "static_type_audit": "retained"
+      },
+      "failed_attempts": "Retained separately; excluded from completed assertion totals"
+    },
+    "runtime_getter_observations": "UNAVAILABLE"
+  },
+  "required_for_host_save": {
+    "Formal-Lab6-I164-state-return-correspondence-independent-review": {
+      "bytes": 41478030,
+      "sha256": "63c72c1b7ad2f42f05b8f005454748967bf3fac5fcbc26fb81058567a717a311"
+    }
+  },
+  "review_contains_exact_implementation_archive": {
+    "bytes": 41935972,
+    "entries": 1016,
+    "manifested_hashes": 1015,
+    "sha256": "44942004491d883af8c422f10dd38fd1e25cbc4f56e2d53e6345e264d0893fdc"
+  }
+}

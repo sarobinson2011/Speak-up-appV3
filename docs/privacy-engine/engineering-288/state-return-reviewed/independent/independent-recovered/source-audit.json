@@ -1,0 +1,100 @@
+{
+  "result": "PASS",
+  "source_derived_wrapper": "return self._run('state')",
+  "source_derived_assignment": "result = getattr(self._live, method)(*args)",
+  "backend_program": "def state(self):\n  s=parse(self.db.execute('SELECT raw FROM head WHERE id=1').fetchone()[0],MAX_STATE);need(s['binding']==self.binding,'VERSION-BINDING')\n  if s['seq']:\n   e=self.db.execute('SELECT raw FROM events WHERE seq=?',(s['seq'],)).fetchone();need(e is not None and sha(e[0])==s['head'],'HEAD-EVENT')\n   x=parse(e[0],MAX_EVENT);need(enc(x['after'])==enc({k:v for k,v in s.items() if k!='head'}),'HEAD-EVENT-TYPED')\n  accounting.validate(s)\n  return s",
+  "caught_and_outside_regions_independently_derived": true,
+  "source_locations": {
+    "wrapper": "42:1:42:42:FunctionDef",
+    "wrapper_return": "42:17:42:42:Return",
+    "wrapper_call": "42:24:42:42:Call",
+    "run": "32:1:41:55:FunctionDef",
+    "result_assignment": "37:4:37:44:Assign",
+    "run_return": "39:4:39:17:Return",
+    "dispatch": "37:11:37:44:Call",
+    "dispatch_receiver": "37:19:37:29:Attribute",
+    "readiness_program": "25:1:26:125:FunctionDef",
+    "readiness_call": "34:3:34:18:Call",
+    "try_region": "35:3:41:55:Try",
+    "handler": "40:3:41:55:ExceptHandler"
+  },
+  "stages": {
+    "lock_enter": "33:7:33:17:Attribute",
+    "readiness": "34:3:34:18:Expr",
+    "pre_transaction": "36:4:36:90:If",
+    "dispatch": "37:11:37:44:Call",
+    "post_transaction": "38:4:38:78:If",
+    "return_expression": "39:4:39:17:Return",
+    "handler_reason": "41:21:41:48:BinOp",
+    "quarantine": "41:4:41:49:Call",
+    "reraise": "41:50:41:55:Raise",
+    "lock_exit": "33:2:41:55:With"
+  },
+  "backend_locations": {
+    "backend": "84:1:90:10:FunctionDef",
+    "backend_load": "85:2:85:85:Assign",
+    "backend_return": "90:2:90:10:Return",
+    "binding_check": "85:86:85:136:Expr",
+    "event_guard": "86:2:88:113:If",
+    "accounting_check": "89:2:89:24:Expr"
+  },
+  "inherited_HEAD": {
+    "id": "I164:PROSPECTIVE-META1.Fbf32a81ea24b17408fe3157ff7785b075904a615bb88124fbea0a127d9fd7276",
+    "identity_status": "PROPOSED-CANDIDATE-ONLY",
+    "native_template": {
+      "canonical": false,
+      "custody": [
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN"
+      ],
+      "dependency_classification": "UNKNOWN",
+      "guard": "present",
+      "id": "HEAD:",
+      "parent": null,
+      "presence": "required",
+      "record": "HEAD",
+      "selector": "",
+      "source": "reference/runtime/authority.py",
+      "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs",
+      "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a",
+      "type": {
+        "object": {
+          "active": {
+            "union": [
+              "NULL",
+              "STRING"
+            ]
+          },
+          "binding": "STRING",
+          "counts": {
+            "ref": "COUNTS"
+          },
+          "head": "STRING",
+          "partitions": {
+            "ref": "PARTITIONS"
+          },
+          "resources": {
+            "ref": "RESOURCES"
+          },
+          "seq": "INTEGER",
+          "u": {
+            "directory": {
+              "ref": "U-ENTRY"
+            },
+            "key_type": "STRING"
+          }
+        }
+      },
+      "visibility": "UNKNOWN"
+    },
+    "parent": null,
+    "template_id": "HEAD:"
+  },
+  "wrapper_checker_propagate_source": "def propagate(parent,child):\n  need(parent['normal']==child['normal'],'WRAPPER-COMPLETION')\n  if parent['normal']:same(parent['return']['value'],child['return']['value'],'RETURN-EDGE')\n  else:\n   need(errors(parent) and errors(child),'MISSING-EDGE-EXCEPTION')\n   same(errors(parent)[-1]['exception'],errors(child)[-1]['exception'],'EXCEPTION-EDGE')",
+  "no_runtime_execution": true
+}

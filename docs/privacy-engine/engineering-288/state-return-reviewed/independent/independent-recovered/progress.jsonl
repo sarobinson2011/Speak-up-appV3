@@ -1,0 +1,80 @@
+{"check": "independent AST types guards forwarding backend and exception audit", "category": "independent", "result": "PASS"}
+{"check": "legitimate semantic correspondence", "category": "independent", "result": "PASS"}
+{"check": "legitimate derivation", "category": "independent", "result": "PASS"}
+{"check": "derived receipt exact saved bytes", "category": "independent", "result": "PASS"}
+{"check": "legitimate public validation", "category": "independent", "result": "PASS"}
+{"check": "exact two ordered contexts", "category": "independent", "result": "PASS"}
+{"check": "preserved predecessor fields SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "exact saved HEAD and instance value SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "source declaration and lineage joins SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "observer is exact separate saved record SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "no invented three-link execution SYMBOLIC-U-ONE", "category": "independent", "result": "PASS"}
+{"check": "anchored normal constructed forwarding SYMBOLIC-U-ONE", "category": "constructed_only", "result": "PASS"}
+{"check": "constructed method handle SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-METHOD"}}
+{"check": "constructed copied run reference SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-REFERENCE-FORWARDING:run_result"}}
+{"check": "constructed copied wrapper reference SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-REFERENCE-FORWARDING:wrapper_return"}}
+{"check": "constructed cross acquisition result SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-RESULT-SCOPE"}}
+{"check": "constructed nested bool instead of int SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-TYPE:/resources/holds"}}
+{"check": "constructed wrong nested count SYMBOLIC-U-ONE", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-ORIGIN:/counts/attempt"}}
+{"check": "alternative consistent symbols are not physical identity SYMBOLIC-U-ONE", "category": "constructed_only", "result": "PASS"}
+{"check": "semantic missing middle link SYMBOLIC-U-ONE", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-LINK-COVERAGE"}}
+{"check": "derivation wrong instance SYMBOLIC-U-ONE", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-ANCHOR-LINEAGE"}}
+{"check": "preserved predecessor fields SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "exact saved HEAD and instance value SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "source declaration and lineage joins SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "observer is exact separate saved record SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "no invented three-link execution SYMBOLIC-U-TWO", "category": "independent", "result": "PASS"}
+{"check": "anchored normal constructed forwarding SYMBOLIC-U-TWO", "category": "constructed_only", "result": "PASS"}
+{"check": "constructed method handle SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-METHOD"}}
+{"check": "constructed copied run reference SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-REFERENCE-FORWARDING:run_result"}}
+{"check": "constructed copied wrapper reference SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-REFERENCE-FORWARDING:wrapper_return"}}
+{"check": "constructed cross acquisition result SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-RESULT-SCOPE"}}
+{"check": "constructed nested bool instead of int SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-TYPE:/resources/holds"}}
+{"check": "constructed wrong nested count SYMBOLIC-U-TWO", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-ORIGIN:/counts/attempt"}}
+{"check": "alternative consistent symbols are not physical identity SYMBOLIC-U-TWO", "category": "constructed_only", "result": "PASS"}
+{"check": "semantic missing middle link SYMBOLIC-U-TWO", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-LINK-COVERAGE"}}
+{"check": "derivation wrong instance SYMBOLIC-U-TWO", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-ANCHOR-LINEAGE"}}
+{"check": "normal path no quarantine or copy", "category": "constructed_only", "result": "PASS"}
+{"check": "source exception region lock_enter", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return lock_enter", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region readiness", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return readiness", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region pre_transaction", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return pre_transaction", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region dispatch", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return dispatch", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region post_transaction", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return post_transaction", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region return_expression", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return return_expression", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region lock_exit", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return lock_exit", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region pre_transaction active", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return pre_transaction active", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region post_transaction active", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return post_transaction active", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region reason evaluation fails", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return reason evaluation fails", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region quarantine interrupted", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return quarantine interrupted", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "source exception region exit supersedes rethrow", "category": "constructed_only", "result": "PASS"}
+{"check": "abrupt cannot claim return exit supersedes rethrow", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-NO-NORMAL-RETURN"}}
+{"check": "integer not transaction outcome", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-PATH-OUTCOME:pre_transaction"}}
+{"check": "unreached outcomes cannot imply dispatch", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-PATH-UNREACHED-OUTCOMES"}}
+{"check": "missing normal lock exit", "category": "constructed_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-PATH-MISSING:lock_exit"}}
+{"check": "semantic coordinated method catalogue substitution", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-SOURCE-CATALOGUE"}}
+{"check": "coordinated HEAD semantic comparison", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-ORIGIN:/head"}}
+{"check": "coordinated HEAD derivation comparison", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-ORIGIN:/head"}}
+{"check": "coordinated three-value reports both contexts", "category": "negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-ORIGIN:/head"}}
+{"check": "exact evidence nested bool", "category": "internal_relation", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-TYPE:/counts/query"}}
+{"check": "exact evidence missing seq", "category": "internal_relation", "result": "REJECTED", "error": {"type": "ValueError", "message": "STATE-VALUE-FIELDS"}}
+{"check": "public omitted mapping", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-STATE-CORRESPONDENCE"}}
+{"check": "public status escalation", "category": "public_negative", "result": "REJECTED", "error": {"type": "ValueError", "message": "STALE-OR-ALTERED-STATE-CORRESPONDENCE"}}
+{"check": "nested returned contexts isolated", "category": "independent", "result": "PASS"}
+{"check": "catalogue returned mutation cannot change expectation", "category": "independent", "result": "PASS"}
+{"check": "pristine semantic after nested mutations", "category": "independent", "result": "PASS"}
+{"check": "pristine derivation after nested mutations", "category": "independent", "result": "PASS"}
+{"check": "pristine public after nested mutations", "category": "independent", "result": "PASS"}
+{"check": "mandatory config predecessor actually invoked", "category": "independent", "result": "PASS"}
+{"check": "HEAD comparison used validated original expectation", "category": "independent", "result": "PASS"}
+{"check": "sources and candidate evidence unchanged", "category": "independent", "result": "PASS"}

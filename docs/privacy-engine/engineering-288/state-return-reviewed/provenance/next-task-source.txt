@@ -1,0 +1,259 @@
+compiler/live_connection.py
+{"bytes": 5717, "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"}
+
+25:  def _require(self):
+26:   if self._phase!='READY' or self._live is None or self._retired is not None:raise RecoveryBlocked('CONNECTION-'+self._phase)
+27:  def _quarantine(self,reason):
+28:   # Revoke the usable reference BEFORE cleanup or any possibly failing I/O.
+29:   self._phase='QUARANTINED'
+30:   if self._live is not None:self._retired=self._live;self._live=None
+31:   self._reason=reason
+32:  def _run(self,method,*args):
+33:   with self._lock:
+34:    self._require()
+35:    try:
+36:     if self._live.db.in_transaction:raise RecoveryBlocked('UNEXPECTED-ACTIVE-TRANSACTION')
+37:     result=getattr(self._live,method)(*args)
+38:     if self._live.db.in_transaction:raise RecoveryBlocked('UNCOMMITTED-STATE')
+39:     return result
+40:    except BaseException as e:
+41:     self._quarantine(type(e).__name__+':'+str(e));raise
+42:  def state(self):return self._run('state')
+43:  def handle(self,packet,inject=None):return self._run('handle',packet,inject)
+
+support/reference/runtime/authority.py
+{"bytes": 23223, "sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a"}
+
+98:  def handle(self,packet,inject=None):
+99:   q=parse(packet,REQUEST_LIMIT);exact(q,['request','signature']);r=q['request'];exact(r,['version','binding','pilot','session','principal','challenge','expected','method','u','body'])
+100:   need(r['version']==VERSION and r['binding']==self.binding and r['pilot']==self.config['pilot'] and r['session']==self.config['session'],'REQUEST-CONTEXT')
+101:   need(r['principal'] in ['executor','observer'],'PRINCIPAL');verify(r['principal'],r,q['signature']);digest(r['challenge']);digest(r['expected']);label(r['u']);need(type(r['body']) is dict,'BODY')
+102:   need((r['method']=='observe' and r['principal']=='observer') or (r['method']!='observe' and r['principal']=='executor'),'ROLE')
+103:   with self.transaction():
+104:    need(not self.db.execute('SELECT 1 FROM journal WHERE challenge=?',(r['challenge'],)).fetchone(),'REPLAY')
+105:    need(self.db.execute('SELECT count(*) FROM journal').fetchone()[0]<MAX_ROWS,'JOURNAL-CAP')
+106:    self.db.execute('INSERT INTO journal VALUES(?,?,NULL)',(r['challenge'],packet))
+107:   try:
+108:    if r['method']=='sign':data=self.sign(r,inject)
+109:    else:
+110:     with self.transaction():
+111:      s=self.state();need(r['expected']==s['head'],'STALE');data=self.apply(s,r,inject)
+112:     if r['method'] in ['retire','open']:fault('after_ownership_commit',inject)
+113:     if r['method']=='decide':fault('after_decision_commit',inject)
+114:     if r['method']=='release':fault('after_release_commit',inject)
+115:     if r['method']=='retry_release':fault('after_retry_commit',inject)
+116:     if r['method']=='observe':fault('after_observe_commit',inject)
+117:    response={'request':sha(packet),'challenge':r['challenge'],'ok':True,'data':data}
+118:   except Exception as e:
+119:    response={'request':sha(packet),'challenge':r['challenge'],'ok':False,'error':type(e).__name__+':'+str(e)}
+120:   raw=enc({'response':response,'signature':sig('server',response)});need(len(raw)<=RESPONSE_LIMIT,'RESPONSE-BOUND')
+121:   with self.transaction():self.db.execute('UPDATE journal SET response=? WHERE challenge=?',(raw,r['challenge']))
+122:   return raw
+
+compiler/managed_observations.py
+{"bytes": 35124, "sha256": "2b4ccd7902d8e270ac8d4b22060d08d184dda1b0e6fcdccae781fd81eef902cc"}
+
+175:  # Derive wrapper methods, constant dispatch selection and forwarded parameters.
+176:  wrappers={}
+177:  for name,node in methods.items():
+178:   if len(node.body)==1 and isinstance(node.body[0],ast.Return) and isinstance(node.body[0].value,ast.Call):
+179:    call=node.body[0].value
+180:    if ast.unparse(call.func)=='self._run':
+181:     need(not call.keywords and isinstance(call.args[0],ast.Constant) and type(call.args[0].value) is str and all(isinstance(a,ast.Name) for a in call.args[1:]),'UNSUPPORTED-WRAPPER-SOURCE')
+182:     wrappers[name]=(call.args[0].value,[a.id for a in call.args[1:]])
+183:  dispatch=ast_call(methods['_run'],'getattr(self._live, method)')
+184:  same(ast.unparse(dispatch),'getattr(self._live, method)(*args)','UNSUPPORTED-DISPATCH-SOURCE')
+185:  for f in frames.values():
+186:   e=f['call'];name=e['function']
+187:   if e['source']=='manager' and name.split('.')[-1] in wrappers:
+188:    selected,params=wrappers[name.split('.')[-1]];run=one(f,'ManagedAuthority._run')
+189:    same(run['call']['arguments'],{'method':selected,'args':[e['arguments'][p] for p in params]},'DISPATCH-WRAPPER-ARGUMENTS')
+190:    propagate(f,run)
+191:   if name=='ManagedAuthority._run':
+192:    parent=frames.get(e['parent']);need(parent is not None and parent['call']['function'].split('.')[-1] in wrappers and parent['call']['source']=='manager','UNSUPPORTED-DISPATCH-CALLER')
+193:    args=e['arguments'];method=args['method'];need(type(args['args']) is list and method in am,'DISPATCH-TYPE')
+194:    guard=one(f,'ManagedAuthority._require')
+195:    back=[v for v in children(f) if v['call']['source']=='authority']
+196:    # state is not tracked by the retained recorder; only wrapper/run return
+197:    # equality can be claimed there. handle is tracked and cannot disappear.
+198:    if method in TRACK['authority']:
+199:     need(len(back)<=1,'DUPLICATE-DISPATCH')
+200:     if guard['normal'] and (f['normal'] or any(at_call(v,dispatch,spec[('manager',name)]) for v in errors(f))):need(len(back)==1,'MISSING-DISPATCH')
+201:     if back:
+202:      b=back[0];need(b['call']['function']=='Authority.'+method and guard['normal'],'DISPATCH-FUNCTION');before(guard,b)
+203:      prior=[v for v in f['events'] if v['event']=='line' and v['seq']<b['call']['seq']]
+204:      need(prior and prior[-1]['line']==dispatch.lineno,'DISPATCH-CALL-SITE')
+205:      params=[p.arg for p in am[method].args.args if p.arg!='self'];need(len(params)==len(args['args']),'DISPATCH-ARITY')
+206:      same(b['call']['arguments'],dict(zip(params,args['args'])),'DISPATCH-ARGUMENTS')
+207:      if f['normal']:
+208:       need(b['normal'],'DISPATCH-UNWIND-AS-RETURN');same(f['return']['value'],b['return']['value'],'BACKEND-RETURN-EDGE')
+209:      if not b['normal']:
+210:       need(not f['normal'] and errors(f) and errors(b),'DISPATCH-EXCEPTION-MISSING')
+211:       same(errors(f)[0]['exception'],errors(b)[-1]['exception'],'DISPATCH-EXCEPTION-EDGE')
+212:    else:need(not back,'UNTRACKED-METHOD-WITH-TRACKED-BACKEND')
+213:  # A normal Authority.handle result is source-produced canonical signed bytes,
+214:  # never None. Verify its request/challenge association independently of jointly
+215:  # editable wrapper/run return fields. Authentication is laboratory scoped.
+216:  handle=am['handle'];returns=[n for n in ast.walk(handle) if isinstance(n,ast.Return)]
+217:  same([ast.unparse(n.value) for n in returns],['raw'],'UNSUPPORTED-HANDLE-RETURN')
+218:  assigned=[n for n in ast.walk(handle) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='raw' for t in n.targets)]
+219:  same([ast.unparse(n.value) for n in assigned],["enc({'response': response, 'signature': sig('server', response)})"],'UNSUPPORTED-RESPONSE-PRODUCER')
+220:  version=next(ast.literal_eval(n.value) for n in auth.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='VERSION' for t in n.targets))
+221:  keypath='support/reference/public-keys.json'
+222:  keybytes=(Path(root)/keypath).read_bytes()
+223:  keypin=json.loads((Path(root)/'provenance/layout-runtime-members.json').read_bytes())[keypath]
+224:  same({'bytes':len(keybytes),'sha256':mc.digest(keybytes)},keypin,'RESPONSE-KEY-SOURCE')
+225:  pub=json.loads(keybytes)
+226:  def exact_bytes(v):
+227:   need(type(v) is dict and set(v)=={'bytes_hex'} and type(v['bytes_hex']) is str,'RETURN-BYTES-TYPE')
+228:   b=bytes.fromhex(v['bytes_hex']);need(b.hex()==v['bytes_hex'],'RETURN-HEX');return b
+229:  def decode(b):
+230:   v=json.loads(b);need(enc(v)==b,'ENVELOPE-CANONICAL');return v
+231:  def signature(role,obj,sig):
+232:   from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+233:   need(type(sig) is str and len(sig)==128,'ENVELOPE-SIGNATURE-TYPE')
+234:   Ed25519PublicKey.from_public_bytes(bytes.fromhex(pub[role])).verify(bytes.fromhex(sig),version.encode()+b'\0'+enc(obj))
+235:  for f in frames.values():
+236:   if f['call']['function']=='Authority.handle' and f['normal']:
+237:    packet=exact_bytes(f['call']['arguments']['packet']);q=decode(packet)
+238:    need(type(q) is dict and set(q)=={'request','signature'},'REQUEST-ENVELOPE')
+239:    request=q['request'];signature(request['principal'],request,q['signature'])
+240:    response=decode(exact_bytes(f['return']['value']))
+241:    need(type(response) is dict and set(response)=={'response','signature'},'RETURN-ENVELOPE')
+242:    r=response['response'];need(type(r) is dict and type(r.get('ok')) is bool,'RETURN-ENVELOPE-TYPE')
+243:    need(set(r)=={'request','challenge','ok',('data' if r['ok'] else 'error')},'RETURN-ENVELOPE-FIELDS')
+244:    same(r['request'],mc.digest(packet),'RETURN-REQUEST');same(r['challenge'],request['challenge'],'RETURN-CHALLENGE')
+245:    signature('server',r,response['signature'])
+
+current/code/managed_coverage.py
+{"bytes": 111127, "sha256": "2fb641ae9776153bd0512d2863c081bd9fcb1a555e983a4d81703e742c1dcec1"}
+
+148:  producers=dict(common,layout_loader=loader,source_inventory=src,bindings=list(PINS.values()),mappings=maps,
+149:   persistence_validator={'source':PINS[PERSISTENCE],'functions':persistence_functions,'closure':rv['archive'],'retained_legitimate_cases':14,'fresh_Formal_negative_groups':41,'Engineering_inspected_negative_groups':28,'tests_rerun_here':False},
+150:   runtime_ingest=PINS['support/code/ingest.py'],retained_producer_map=PINS['guard_emission_outputs/coverage.json'],
+151:   delegations=[{'from':'ManagedAuthority.state -> _run','to':'Authority.state','source':PINS['support/reference/runtime/authority.py'],'guard':'_require and inactive transaction before/after; per-instance lock'},
+152:    {'from':'ManagedAuthority.handle -> _run','to':'Authority.handle -> apply/sign and response persistence','source':PINS['support/reference/runtime/authority.py'],'guard':'_require and inactive transaction before/after; dispatch retains original request authentication and source branches'},
+153:    {'from':'ManagedAuthority.recover','to':'Authority.__init__','source':PINS['support/reference/runtime/authority.py'],'guard':'old handle close confirmed, existing files; initializer/validation success required before READY'},
+154:    {'from':'ManagedAuthority._validate','to':'ingest.validate_export','source':PINS['support/code/ingest.py'],'guard':'exact recovered export with inactive transaction before/after; saved-source correspondence only'}],
+155:   retained_producer_sites=[x for x in retained['sources']['runtime']['sites'] if set(x['families']).intersection(FAMILIES)],
+156:   retained_projection_sites=[x for x in retained['sources']['projection']['sites'] if set(x['families']).intersection(FAMILIES)],
+157:   retained_mapping_status='Reused byte-pinned prior source mappings; no replay, no new observations, no expanded runtime completeness')
+
+652:   elif isinstance(n,ast.Assign):
+653:    need(len(n.targets)==1,'REFERENCE-MODEL-ASSIGN');t=n.targets[0];slot=_ref_attr(t)
+654:    if slot in REFERENCE_SLOTS:
+655:     before=copy.deepcopy(state);rhs=read(n.value,local);state[slot]=copy.deepcopy(rhs)
+656:     emit('reference-write',n,target=slot,rhs=rhs,before=before,after=state)
+657:    elif isinstance(t,ast.Name) and t.id=='a':
+658:     gate(n.value,'allocation-return');local['a']=token('call-result:'+str(frames[-1]['id'])+':'+key(n.value));emit('local-reference',n,value=local['a'])
+659:    elif slot=='_phase':
+660:     v=n.value
+661:     if isinstance(v,ast.IfExp):v=v.body if truth(v.test,local) else v.orelse
+662:     state[slot]=local[v.id] if isinstance(v,ast.Name) else ast.literal_eval(v);emit('phase',n,value=state[slot])
+663:    elif isinstance(t,ast.Name) and t.id=='phase':local['phase']=state['_phase']
+664:    elif isinstance(n.value,ast.Call) and _ref_attr(n.value.func)=='_validate':call(n.value,local)
+665:    else:gate(n,'other-assignment')
+666:   elif isinstance(n,ast.Expr) and isinstance(n.value,ast.Call):call(n.value,local)
+667:   elif isinstance(n,ast.Raise):emit('raise',n);raise Abrupt()
+668:   elif isinstance(n,ast.Return):gate(n,'return-expression');emit('return',n);raise Returned()
+
+1062: def state_source(raw,authority,observations,guards,oracle):
+1063:  ready=binding_source(raw,authority,guards,oracle);recovery=recovery_source(raw,authority,guards,oracle)
+1064:  same({'bytes':len(observations),'sha256':digest(observations)},{'bytes':35124,'sha256':'2b4ccd7902d8e270ac8d4b22060d08d184dda1b0e6fcdccae781fd81eef902cc'},'STATE-WRAPPER-CHECK-SOURCE')
+1065:  tree,loc=_recovery_locations(raw,guards,oracle);atree,aloc=_recovery_locations(authority,guards,oracle)
+1066:  def one(rows,label):
+1067:   rows=list(rows);need(len(rows)==1,'STATE-SOURCE-UNIQUE:'+label);return rows[0]
+1068:  cls=one((n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority'),'manager');methods={n.name:n for n in cls.body if isinstance(n,ast.FunctionDef)}
+1069:  wrapper=methods['state'];need(not wrapper.decorator_list and ast.unparse(wrapper.args)=='self' and len(wrapper.body)==1 and isinstance(wrapper.body[0],ast.Return),'STATE-WRAPPER-SHAPE')
+
+1107: def compile_state_return(raw,authority,observations,model,producer,guards,oracle,references):
+1108:  source=state_source(raw,authority,observations,guards,oracle);validate_reference_transfers(raw,model,producer,guards,oracle,authority,references)
+1109:  heads=[d for d in model['existing_declarations'] if d.get('template_id')=='HEAD:'];need(len(heads)==1,'STATE-HEAD-DECLARATION');head=heads[0]
+1110:  need(type(head['native_template']['type']) is dict and set(head['native_template']['type'])=={'object'},'STATE-HEAD-OBJECT')
+1111:  delegation=[d for d in producer['delegations'] if d['from']=='ManagedAuthority.state -> _run'];need(len(delegation)==1 and delegation[0]['to']=='Authority.state','STATE-EXISTING-DELEGATION')
+1112:  inventory={r['site']:r for r in producer['source_inventory']['sites']}
+1113:  for row in [source['wrapper_return'],source['wrapper_call'],source['result_assignment'],source['run_return'],source['readiness_call']]:
+1114:   need(row['site'] in inventory,'STATE-INHERITED-SITE');same(row['guards'],inventory[row['site']]['guards'],'STATE-INHERITED-GUARD')
+1115:  rs=references['source'];calls=[r for r in rs['calls'] if r['site']==source['readiness_call']['site']];reads=[r for r in rs['reference_reads'] if r['site']==source['dispatch_receiver']['site']]
+1116:  need(len(calls)==len(reads)==1,'STATE-REFERENCE-JOINS')
+1117:  links=[{'id':'backend-to-run-result','from':copy.deepcopy(source['backend_return']),'to':copy.deepcopy(source['result_assignment']),'kind':'direct reference forwarding after normal dispatch'},
+1118:   {'id':'run-result-to-wrapper-return','from':copy.deepcopy(source['run_return']),'to':copy.deepcopy(source['wrapper_return']),'kind':'direct reference forwarding after normal run and lock exit'}]
+1119:  declarations=[{'id':name,'type':copy.deepcopy(head['native_template']['type']),'origin':copy.deepcopy(source[site]),'classification':'UNKNOWN','canonical_class':None,'ordinal':None,'multiplicity':None} for name,site in [('underlying-state','backend_return'),('run-result','result_assignment'),('wrapper-return','wrapper_return')]]
+1120:  return {'format':'I164-MANAGED-STATE-RETURN-1','source':source,'inherited_head':copy.deepcopy(head),'declarations':declarations,'links':links,'delegation':copy.deepcopy(delegation[0]),'reference_links':{'ready':copy.deepcopy(calls[0]),'live_read':copy.deepcopy(reads[0])},
+1121:   'type_scope':'Existing HEAD declaration and independently validated exact state; recursively preserve exact types/values of that state. This bridge is not a replacement full schema/ingestion validator.',
+1122:   'identity_scope':'Equal serialized values are not object identity. Constructed scoped reference symbols stipulate forwarding; actual result/connection identities remain unobserved.',
+1123:   'actual_runtime_links':None,'complete_repetition_coverage':False,'full_model_binding':False,'actual_admission':False}
+1124: 
+1125: def validate_state_return(raw,authority,observations,model,producer,guards,oracle,references,submitted):
+1126:  same(submitted,compile_state_return(raw,authority,observations,model,producer,guards,oracle,references),'STATE-RETURN-CORRESPONDENCE');return True
+
+1171: def state_value_projection(catalogue,case,validated):
+1172:  """Caller validates catalogue, evidence anchor and every symbol scope first."""
+1173:  need(type(case) is dict and set(case)=={'method','args','phase','live_reference','retired_reference','outcomes','underlying','run_result','wrapper_return'},'STATE-PROJECTION-FIELDS')
+1174:  need(type(case['method']) is str and case['method']==catalogue['source']['method'],'STATE-METHOD');same(case['args'],catalogue['source']['args'],'STATE-ARGS')
+1175:  need(type(case['phase']) is str and case['phase']==catalogue['source']['ready_phase'] and case['live_reference'] is not None and case['retired_reference'] is None,'STATE-READINESS')
+1176:  path=state_path_projection(catalogue,case['outcomes']);need(path['return_links_admissible'],'STATE-NO-NORMAL-RETURN')
+1177:  live=case['live_reference'];need(type(live) is dict and set(live)=={'kind','scope','symbol'} and live['kind']=='authority-reference' and type(live['symbol']) is str and bool(live['symbol']),'STATE-LIVE-SYMBOL')
+1178:  under=case['underlying'];need(type(under) is dict and set(under)=={'receiver','value','reference'},'STATE-UNDERLYING-FIELDS');same(under['receiver'],live,'STATE-DISPATCH-RECEIVER')
+1179:  ref=under['reference'];need(type(ref) is dict and set(ref)=={'kind','scope','symbol'} and ref['kind']=='state-result-reference' and type(ref['symbol']) is str and bool(ref['symbol']),'STATE-RESULT-SYMBOL')
+1180:  same(ref['scope'],live['scope'],'STATE-RESULT-SCOPE')
+1181:  values=[]
+1182:  for name in ('underlying','run_result','wrapper_return'):
+1183:   row=case[name];need(type(row) is dict and set(row)==({'receiver','value','reference'} if name=='underlying' else {'value','reference'}),'STATE-LINK-FIELDS:'+name)
+1184:   state_value_compare(catalogue,row['value'],validated);same(row['reference'],ref,'STATE-REFERENCE-FORWARDING:'+name);values.append({'link':name,'value':copy.deepcopy(row['value']),'reference':copy.deepcopy(ref)})
+1185:  return {'kind':'CONSTRUCTED-STATE-RETURN','path':path,'links':values,'copy_in_wrapper':False,'actual_object_identity_established':False,'runtime_observation':False}
+1186: 
+
+current/code/correspondence.py
+{"bytes": 13423, "sha256": "f2621678f7fcc9769c9a75565362499e31061b731d380e6081955d385f3cb957"}
+
+38: def inner(data):return data['prior_data']['prior_data']['prior_data']
+39: def catalogue(data):
+40:  d=inner(data);v=d['values'];g=d['guards'];obs=d['ctx']['c']['retained/candidate/compiler/managed_observations.py'];refs=d['reference_module'].reference_catalogue(d)
+41:  return data['coverage'].compile_state_return(d['manager'],d['authority'],obs,v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],refs)
+42: 
+43: def _basis(data):
+44:  # Fresh authority on every invocation; candidate values and returned trees
+45:  # never act as validation expectations or replace the predecessor's evidence.
+46:  fresh=inputs(data['root']);p=fresh['prior_module'];d=fresh['prior_data'];prior=p.derive_config(d,p.catalogue(d))
+47:  saved=(fresh['prior_root']/'results/config-correspondence.json').read_bytes();require(identity(saved)==CONFIG_RECEIPT and enc(prior)==saved,'STATE-PREDECESSOR-RECEIPT')
+48:  return {'fresh':fresh,'prior':prior,'saved':saved,'evidence':dict(inner(fresh)['ctx']['e']),'catalogue':catalogue(fresh)}
+49: 
+50: def _compare_evidence(basis,candidate):
+51:  require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'STATE-EVIDENCE-BYTES')
+52:  path='evidence/recovery-export-0.json';require(path in candidate,'STATE-MISSING-EXPORT');want=json.loads(basis['evidence'][path]);got=json.loads(candidate[path]);require(type(got) is dict and type(got.get('head')) is str,'STATE-MISSING-HEAD')
+53:  expected=json.loads(bytes.fromhex(want['head']));supplied=json.loads(bytes.fromhex(got['head']))
+54:  basis['fresh']['coverage'].state_value_compare(basis['catalogue'],supplied,expected)
+55:  # Type/value comparison is prior to the inherited exact state/config/owner
+56:  # and full evidence gates. Mutually consistent reports cannot be authority.
+57:  binding_module=basis['fresh']['prior_data']['prior_module']
+
+91: def _checked(data,submitted_catalogue,claims=None,evidence=None):
+92:  basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'STATE-SOURCE-CATALOGUE');d=inner(data);fd=inner(basis['fresh'])
+93:  for k in ('manager','authority'):require(d[k]==fd[k],'STATE-CANDIDATE-SOURCE:'+k)
+94:  require(d['ctx']['c']==fd['ctx']['c'],'STATE-CANDIDATE-CONTEXT');same(d['ctx']['binding'],fd['ctx']['binding'],'STATE-CANDIDATE-BINDING')
+95:  _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence);rows=_rows(basis)
+96:  if claims is not None:_check_rows(basis,claims,rows)
+97:  return rows,basis
+98: def semantic(data,submitted_catalogue,claims=None,evidence=None):
+99:  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+100: def derive_state(data,submitted_catalogue,claims=None,evidence=None):
+101:  rows,basis=_checked(data,submitted_catalogue,claims,evidence);result=copy.deepcopy(basis['prior']);result['format']='I164-MANAGED-STATE-RETURN-CORRESPONDENCE-1'
+102:  result['prior_config_components']=result.pop('extension_components');result['prior_config_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+103:  for context,row in zip(result['contexts'],rows):require(context['context']==row['context'],'STATE-DERIVATION-CONTEXT');context['state_return_correspondence']=copy.deepcopy(row)
+104:  result['new_state_slice_limits']={'static_conditional_correspondence':True,'saved_three_link_execution_chain':'UNAVAILABLE','actual_state_call_count':None,'physical_result_identity':None,'reference_forwarding_is_source_semantics':True,'equal_contents_establish_identity':False,
+105:   'no_new_HEAD_authentication_or_ingestion_rule':True,'no_wrapper_copy':True,'separate_observer_Client_state_call':True,'observer_frame':None,'missing_state_ingest_assignment_and_historical_frames':True,'traced_invocations':18,
+
+118: def derive(root=ROOT):
+119:  data=inputs(root);return derive_state(data,catalogue(data))
+120: def validate(root,saved):
+121:  require(type(saved) is bytes and saved==enc(derive(root)),'STALE-OR-ALTERED-STATE-CORRESPONDENCE')
+122:  return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'runtime_state_chain':'UNAVAILABLE','actual_admission':False,'complete_repetition_coverage':False}
+123: if __name__=='__main__':
+
+Current producer functions (read-only AST inventory): enc, digest, identity, need, same, load, check_pins, review, source_inventory, compile_bundle, validate_bundle, read_bundle, readiness, consume_constructed, status_source, _status_expr_nodes, compile_status_fields, validate_status_fields, status_expression_value, _ref_attr, reference_source, compile_reference_transfers, validate_reference_transfers, constructed_reference_path, validate_constructed_reference_path, _recovery_locations, recovery_source, compile_recovery_fields, validate_recovery_fields, recovery_value_projection, binding_source, compile_binding_return, validate_binding_return, binding_value_projection, config_source, compile_config_return, validate_config_return, config_value_type, copy_graph, validate_copy_graph, config_value_projection, state_source, compile_state_return, validate_state_return, state_value_compare, state_path_projection, state_value_projection, main
+Current mandatory receipt context members: binding_return_correspondence, canonical_class, classification, complete_symbolic_coverage, config_return_correspondence, context, field_declarations, hf01_evidence_binding, inherited_local_declarations, inherited_requirements, multiplicity, observation_limits, ordinal, recovery_capture_contract, recovery_field_declarations, reference_declarations, reference_observation_limits, relationships, saved_recovery_fields, saved_reference_scope, saved_status_fields, site_ids, state_return_correspondence, status_fields
+Existing retained request/response declarations (reused, not missing):
+[{"id": "I164:PROSPECTIVE-META1.Fb0f87541c9165f83f0cf1d81b562248cb19718c457ba4a31ec941cdbdea3ebfe", "identity_status": "PROPOSED-CANDIDATE-ONLY", "native_template": {"canonical": false, "custody": ["UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"], "dependency_classification": "UNKNOWN", "guard": "present", "id": "REQUEST:", "parent": null, "presence": "required", "record": "REQUEST", "selector": "", "source": "reference/runtime/authority.py", "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs", "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a", "type": {"object": {"binding": "STRING", "body": {"guard": "typed successful action body OR exact refused/unanswered body; latter grants no action", "union": [{"choice_by": "method", "variants": {"backup": {"ref": "BODY-backup"}, "decide": {"ref": "BODY-decide"}, "head": {"ref": "BODY-head"}, "observe": {"ref": "BODY-observe"}, "open": {"ref": "BODY-open"}, "query": {"ref": "BODY-query"}, "release": {"ref": "BODY-release"}, "retire": {"ref": "BODY-retire"}, "retry_release": {"ref": "BODY-retry_release"}, "sign": {"ref": "BODY-sign"}}}, {"ref": "UNVALIDATED-BODY"}]}, "challenge": "STRING", "expected": "STRING", "method": "STRING", "pilot": "STRING", "principal": "STRING", "session": "STRING", "u": "STRING", "version": "STRING"}}, "visibility": "UNKNOWN"}, "parent": null, "template_id": "REQUEST:"}, {"id": "I164:PROSPECTIVE-META1.Fc41631ffe0e8d9cb00ec67c306ff71da5a74574a92e7d66546b4ee8e1192ae90", "identity_status": "PROPOSED-CANDIDATE-ONLY", "native_template": {"canonical": false, "custody": ["UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"], "dependency_classification": "UNKNOWN", "guard": "present", "id": "PACKET:", "parent": null, "presence": "required", "record": "PACKET", "selector": "", "source": "reference/runtime/authority.py", "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs", "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a", "type": {"object": {"request": {"ref": "REQUEST"}, "signature": "STRING"}}, "visibility": "UNKNOWN"}, "parent": null, "template_id": "PACKET:"}, {"id": "I164:PROSPECTIVE-META1.F77bad07e20322379665a053bfb230dd1fa6b03cc040b02d85f0a9d35bf0a2801", "identity_status": "PROPOSED-CANDIDATE-ONLY", "native_template": {"canonical": false, "custody": ["UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"], "dependency_classification": "UNKNOWN", "guard": "present", "id": "RESPONSE:", "parent": null, "presence": "required", "record": "RESPONSE", "selector": "", "source": "reference/runtime/authority.py", "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs", "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a", "type": {"object": {"response": {"choice_by": "ok", "variants": {"false": {"ref": "ERROR-RESPONSE"}, "true": {"ref": "SUCCESS-RESPONSE"}}}, "signature": "STRING"}}, "visibility": "UNKNOWN"}, "parent": null, "template_id": "RESPONSE:"}, {"id": "I164:PROSPECTIVE-META1.Ff8fe5c072ba65878b980b27ed0e13bb63927be667afd923a7a15d2506665db09", "identity_status": "PROPOSED-CANDIDATE-ONLY", "native_template": {"canonical": false, "custody": ["UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"], "dependency_classification": "UNKNOWN", "guard": "present", "id": "SUCCESS-RESPONSE:", "parent": null, "presence": "required", "record": "SUCCESS-RESPONSE", "selector": "", "source": "reference/runtime/authority.py", "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs", "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a", "type": {"object": {"challenge": "STRING", "data": {"request_method_choice": {"backup": {"ref": "HEAD"}, "decide": {"ref": "HEAD"}, "head": {"ref": "HEAD"}, "observe": {"ref": "HEAD"}, "open": {"ref": "HEAD"}, "query": {"ref": "HEAD"}, "release": {"ref": "RELEASE-RESULT"}, "retire": {"ref": "HEAD"}, "retry_release": {"ref": "RETRY-RELEASE-RESULT"}, "sign": {"ref": "SIGNED-RESULT"}}}, "ok": "BOOLEAN", "request": "STRING"}}, "visibility": "UNKNOWN"}, "parent": null, "template_id": "SUCCESS-RESPONSE:"}, {"id": "I164:PROSPECTIVE-META1.Fa42ec613ca7b1f086e0c8f490ed0d8051404e893e16d9bc9a235b15fb53136e4", "identity_status": "PROPOSED-CANDIDATE-ONLY", "native_template": {"canonical": false, "custody": ["UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"], "dependency_classification": "UNKNOWN", "guard": "present", "id": "ERROR-RESPONSE:", "parent": null, "presence": "required", "record": "ERROR-RESPONSE", "selector": "", "source": "reference/runtime/authority.py", "source_rule": "source constructor/parser and full guarded inventory; ABI uses named function inputs", "source_sha256": "4565bb30cb637b3cef40a3f1da2b3722840b747ab110fa37eede0cbc2e3b313a", "type": {"object": {"challenge": "STRING", "error": "STRING", "ok": "BOOLEAN", "request": "STRING"}}, "visibility": "UNKNOWN"}, "parent": null, "template_id": "ERROR-RESPONSE:"}]
+Existing source-coverage gaps:
+["source-owned lifetime/session/queue/recovery multiplicities", "operational exclusive ownership and mandatory ingress evidence", "native SQLite cross-thread / cross-process serving qualification", "real-storage durability, coherent rollback image and external anchoring", "complete feasible interruption, implicit exception and transitive runtime paths", "authenticated backup, external outcome/finality and qualified custody", "complete model/ledger, canonical designation and final binding", "runtime observation adapter for the new managed model records"]
