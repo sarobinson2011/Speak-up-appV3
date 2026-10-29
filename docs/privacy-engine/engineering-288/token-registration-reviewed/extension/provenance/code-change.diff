@@ -1,0 +1,358 @@
+--- retained/status/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -1947,6 +1947,102 @@
+  status_typed_same(submitted,status_forward_projection(catalogue,case,validated),'STATUS-FORWARD-PROJECTION-CORRESPONDENCE');return True
+ 
+ 
++def token_registration_source(launcher,entry,status,client,boundary):
++ """Reuse reviewed source checks, then traverse the defining _run independently."""
++ need(type(launcher) is bytes and type(entry) is bytes,'TOKEN-SOURCE-TYPE')
++ for v in (status,client,boundary):status_exact_tree(v,'TOKEN-SOURCE-INPUT')
++ validate_status_forward(launcher,entry,status['manager_fields'],boundary,status)
++ validate_client_handle(launcher,entry,client['manager_relation'],boundary,client)
++ tree,loc=_client_locate(entry);run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='_run')
++ outer=run.body[2];with_=outer.body[0];owner,token,insert,protected=with_.body
++ control,callback,stored=protected.body;remove=protected.finalbody[0]
++ # The entire _run AST was checked above; these are source-derived nodes and
++ # guards, independent of a submitted/generated stage catalogue.
++ need(isinstance(protected,ast.Try) and not protected.handlers and len(protected.finalbody)==1,'TOKEN-FINALLY-STRUCTURE')
++ need(isinstance(callback,ast.Try) and len(callback.body)==1,'TOKEN-CALLBACK-STRUCTURE')
++ steps=[('owner-create',owner),('token-create',token),('registry-insert',insert),('control-guard',control.test),('control-create',control.body[0].value.args[0]),('control-callback',control.body[0]),('client-create',callback.body[0].value.args[0]),('client-callback',callback.body[0]),('owner-failure-guard',stored.test),('finally-enter',protected),('removal-attempt',remove.value),('removal-complete',remove)]
++ anchors={name:{**loc(node),'source':{'bytes':len(entry),'sha256':digest(entry)}} for name,node in steps}
++ need(any(g['kind']=='try' and g['region']=='finalbody' for g in loc(remove)['guards']),'TOKEN-REMOVAL-IN-FINALLY')
++ return {'entry':{'bytes':len(entry),'sha256':digest(entry)},'run':loc(run),'stages':anchors,'order':[n for n,_ in steps],
++  'control_guard':ast.unparse(control.test),'stored_failure_guard':ast.unparse(stored.test),'stored_failure_raise':loc(stored.body[0]),
++  'insert':{'registry':ast.unparse(insert.targets[0].value),'key':ast.unparse(insert.targets[0].slice),'value':ast.unparse(insert.value)},
++  'remove':{'receiver':ast.unparse(remove.value.func.value),'method':remove.value.func.attr,'key':ast.unparse(remove.value.args[0]),'default':ast.literal_eval(remove.value.args[1]),'return_consumed':False},
++  'before_launcher_exit':True,'callback_returns_forwarded':False,'exceptional_continuation':'Existing outer/error/cleanup path, outside this slice'}
++
++def compile_token_registration(launcher,entry,status,client,boundary):
++ source=token_registration_source(launcher,entry,status,client,boundary)
++ edges=[]
++ for edge in client['reference_edges']+status['reference_edges']:
++  if edge not in edges:edges.append(copy.deepcopy(edge))
++ return {'format':'I164-TOKEN-REGISTRATION-STATIC-1','source':source,'reference_edges':edges,
++  'declarations':[{'id':stage,'source_origin':copy.deepcopy(source['stages'][stage]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for stage in source['order']],
++  'guard_branches':{'control':['None: skip control creation/callback','non-None: normal control callback required before client'],
++   'stored_failure':['None: normal callback-to-finally path','non-None: exceptional continuation outside this slice'],
++   'stage_outcome':['normal','raise: stop at exceptional frontier','process-termination: no inferred Python unwind','unobserved: stop without continuation']},
++  'reference_semantics':{'token':'fresh object() symbol per selected _run invocation; not an observed address','owner':'fresh _Owner(wrapper) reference; wrapper is the selected validated instance representation','client_control':'distinct constructors, same selected token; control exists only on selected non-None branch','registry':'one invocation-qualified slot, not an inventory of global _OWNERS','equal_values_identify_objects':False},
++  'removal_semantics':{'finally_entry_is_not_attempt':True,'attempt_is_not_completion':True,'pop_return_is_discarded':True,'normal_pop':'selected key absent at the operation completion under exact builtins; not permanent absence','selected_owner_removal':'requires explicit conditional continuity premise; not inferred from callback return or discarded pop result','concurrency_exclusivity_or_durability_proved':False},
++  'boundary_contract':copy.deepcopy(status['boundary_contract']),'boundary_adoption':copy.deepcopy(status['boundary_adoption']),
++  'termination_contract':copy.deepcopy(client['outside_catch_failure_contract']),
++  'runtime_registration_revocation':None,'outer_lifecycle_complete':False,'actual_admission':False}
++
++def validate_token_registration(launcher,entry,status,client,boundary,submitted):
++ status_exact_tree(submitted,'TOKEN-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_token_registration(launcher,entry,status,client,boundary),'TOKEN-SOURCE-CORRESPONDENCE');return True
++
++def token_reference_premises(scope,control_present):
++ status_exact_tree(scope,'TOKEN-SCOPE');need(type(control_present) is bool,'TOKEN-CONTROL-TYPE')
++ need(type(scope) is dict and set(scope)=={'context','acquisition','instance','frontier','invocation'} and scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO') and type(scope['invocation']) is str and bool(scope['invocation']),'TOKEN-SCOPE-SHAPE')
++ # Canonical symbols are relational model names, not physical identity evidence.
++ refs={n:{'scope':copy.deepcopy(scope),'symbol':scope['invocation']+'/'+n+'-symbol'} for n in ('token','owner','session','manager','client')}
++ refs['control']={'scope':copy.deepcopy(scope),'symbol':scope['invocation']+'/control-symbol'} if control_present else None
++ refs.update({'client.token':copy.deepcopy(refs['token']),'control.token':copy.deepcopy(refs['token']) if control_present else None,'owners[token]':copy.deepcopy(refs['owner']),'owner.wrapper':copy.deepcopy(refs['session']),'session.managed':copy.deepcopy(refs['manager'])})
++ return refs
++
++def token_registration_projection(catalogue,case,validated):
++ """Finite conditional slice. validated comes from the mandatory evidence adapter.
++
++ Outcomes and continuity are explicit constructed premises, never observations.
++ Registry continuity is not proved by the callback, pop return or source anchor.
++ """
++ for x in (catalogue,case,validated):status_exact_tree(x,'TOKEN-EXACT-TYPE')
++ keys={'occurrence','scope','references','control_present','owner_failure_none','registry_continuity','outcomes'}
++ need(type(case) is dict and set(case)==keys and type(validated) is dict and set(validated)==keys-{'references'},'TOKEN-CASE-SHAPE')
++ for k in validated:status_typed_same(case[k],validated[k],'TOKEN-PREMISE:'+k)
++ for k in ('control_present','owner_failure_none','registry_continuity'):need(type(case[k]) is bool,'TOKEN-BOOL:'+k)
++ scope=case['scope'];refs=token_reference_premises(scope,case['control_present']);need(type(case['occurrence']) is str and case['occurrence']==scope['invocation'],'TOKEN-OCCURRENCE')
++ status_typed_same(case['references'],refs,'TOKEN-REFERENCES')
++ # Source-derived catalogue is mandatory in the adapter. Do not accept a case's
++ # supplied step order as the coverage oracle.
++ order=[n for n in catalogue['source']['order'] if case['control_present'] or n not in ('control-create','control-callback')]
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'TOKEN-OUTCOMES')
++ events=[];completed=set();completion=None;terminal=None
++ for i,stage in enumerate(order):
++  need(i<len(outcomes),'TOKEN-MISSING-STEP:'+stage);row=outcomes[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and type(row['stage']) is str and row['stage']==stage,'TOKEN-STEP-ORDER')
++  kind=row['outcome'];need(type(kind) is str and kind in ('normal','raise','process-termination','unobserved'),'TOKEN-OUTCOME-KIND')
++  events.append({'id':case['occurrence']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(catalogue['source']['stages'][stage]),'outcome':kind,'frame':None});terminal=kind
++  if kind!='normal':completion={'raise':'unexpected-raise','process-termination':'process-termination','unobserved':'unobserved-continuation'}[kind];break
++  completed.add(stage)
++  if stage=='owner-failure-guard' and not case['owner_failure_none']:completion='stored-failure-exceptional-frontier';break
++  if stage=='removal-complete':completion='normal-pop-completion'
++ need(len(events)==len(outcomes),'TOKEN-UNREACHED-STEP')
++ # Prefix creation/insertion acknowledgements establish only conditional model
++ # state. Absence of completion never means absence of effects.
++ popped='removal-complete' in completed;inserted='registry-insert' in completed
++ before={'key':copy.deepcopy(refs['token']),'owner':copy.deepcopy(refs['owner']) if inserted and case['registry_continuity'] else None,'continuity':'explicit constructed premise' if case['registry_continuity'] else 'UNKNOWN'}
++ exception=None if terminal in ('process-termination','unobserved') or completion=='stored-failure-exceptional-frontier' else terminal=='raise'
++ return {'kind':'CONSTRUCTED-TOKEN-REGISTRATION','occurrence':case['occurrence'],'scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'events':events,'completion':completion,
++  'registration_completed_in_model':inserted,'control_callback_completed_in_model':('control-callback' in completed) if case['control_present'] else None,'client_callback_completed_in_model':'client-callback' in completed,
++  'finally_entered_in_model':'finally-enter' in completed,'removal_attempt_entered_in_model':'removal-attempt' in completed,'removal_completed_in_model':popped,
++  'selected_slot_before_removal':before,'selected_owner_removed_in_model':True if popped and inserted and case['registry_continuity'] else None,
++  'slot_after_pop_in_model':'ABSENT-AT-POP-COMPLETION' if popped else 'UNKNOWN','revocation_persists':None,
++  'callback_return_destination':None,'pop_return_value':None,'physical_object_identity_observed':False,'runtime_observation':False,
++  'outcome_classification':{'modeled_kind':completion,'terminal_stage':events[-1]['stage'],'stage_outcome':terminal,'location':'_run orchestration, outside _dispatch catch; source outer BaseException and finally remain conditional','terminal_python_exception_in_model':exception,'runtime_python_exception_evidence':'UNAVAILABLE','runtime_unwind_evidence':'UNAVAILABLE','outer_handler_or_cleanup_reached':None},
++  'retained_error':None,'database_cleanup_completion':None,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_token_registration_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'TOKEN-SUBMITTED-OUTPUT');status_typed_same(submitted,token_registration_projection(catalogue,case,validated),'TOKEN-PROJECTION-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()
+--- retained/status/code/correspondence.py
++++ code/correspondence.py
+@@ -1,170 +1,117 @@
+-"""Mandatory internal status forwarding over the reviewed client-state chain. Saved evidence only."""
++"""Mandatory normal _run token correspondence over the reviewed IS-01 chain.
++Saved evidence only. No application method or database connection is invoked.
++"""
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 194665, 'sha256': '4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e'}
+-CLIENT_MANIFEST={'bytes':426786,'sha256':'f57144894667a71fce5ae3acca0229e2c95313db307f6ffbb8e02a04c8cf72f3'}
+-STATE_RECEIPT={'bytes':2180446,'sha256':'feefd0f5282b51608c7fd95ab24518aa1be9e491aa24f004ed588b1906c7aab9'}
++PRODUCER_PIN={'bytes': 205451, 'sha256': '4d485ad7df99bf6d0cd05c41d7091f126090eadc9ebcff39a80e1d25e623e5bc'}
++PREDECESSOR_MANIFEST={'bytes':525136,'sha256':'ee20ab983c00fda52e6ada13ba8f34aec6aaf94ea3980c69da98fd34f42f4b2c'}
++PREDECESSOR_RECEIPT={'bytes':2776568,'sha256':'4db6c9d4da0110055f483fdf5ef958a12edd9362b8315704ff0cf5143470c468'}
++CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+-
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+-
+-def require(v,message):
+- if not v:raise ValueError(message)
+-
+-def status_exact_tree(value,code):
+- """Check exact representation types BEFORE equality, copying or JSON encoding.
+-
+- Repeated aliases are allowed; cycles are not finite JSON values. This is a
+- representation contract, not a reason-string, epoch or lifetime bound.
+- """
++def require(ok,code):
++ if not ok:raise ValueError(code)
++def exact(value,code):
+  stack=[(value,False)];active=set()
+  while stack:
+-  node,leaving=stack.pop();kind=type(node)
+-  if leaving:active.remove(id(node));continue
++  node,leave=stack.pop();kind=type(node)
++  if leave:active.remove(id(node));continue
+   if kind is dict or kind is list:
+    require(id(node) not in active,code+':CYCLE');active.add(id(node));stack.append((node,True))
+    if kind is dict:
+-    for key,child in node.items():
+-     require(type(key) is str,code+':KEY-TYPE');stack.append((child,False))
++    for k,v in node.items():require(type(k) is str,code+':KEY-TYPE');stack.append((v,False))
+    else:
+-    for child in node:stack.append((child,False))
+-  else:require(any(kind is allowed for allowed in (str,int,bool,float,type(None))),code+':VALUE-TYPE')
+-
+-def same(a,b,message):
+- status_exact_tree(a,message);status_exact_tree(b,message);require(enc(a)==enc(b),message)
+-
++    for v in node:stack.append((v,False))
++  else:require(any(kind is t for t in (str,int,bool,float,type(None))),code+':VALUE-TYPE')
++def same(a,b,code):exact(a,code);exact(b,code);require(enc(a)==enc(b),code)
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+-
+-ORIGINAL_MANIFEST={'bytes':476626,'sha256':'faaeb5c39d82d05554c8967c7acab10dec75fe717f02a980fcd36861e72b77aa'}
+-def original_root(root):
+- require(stat.S_ISDIR(Path(root).lstat().st_mode),'CORRECTION-ROOT-TYPE')
+- base=Path(root)/'original';require(stat.S_ISDIR(base.lstat().st_mode),'ORIGINAL-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'ORIGINAL-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==ORIGINAL_MANIFEST,'ORIGINAL-MANIFEST-PIN')
+- manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen_dirs=set()
++def predecessor_root(root):
++ root=Path(root);base=root/'retained/status'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'TOKEN-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'TOKEN-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'TOKEN-PREDECESSOR-MANIFEST')
++ manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'ORIGINAL-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'ORIGINAL-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen_dirs==dirs,'ORIGINAL-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'ORIGINAL-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'TOKEN-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'TOKEN-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'TOKEN-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'TOKEN-PREDECESSOR-BYTES:'+n)
+  return base
+-
+-def predecessor_root(root):
+- root=original_root(root);base=root/'retained/state'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-ROOT-TYPE')
+- p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'CLIENT-MANIFEST-TYPE');raw=p.read_bytes();require(identity(raw)==CLIENT_MANIFEST,'CLIENT-PREDECESSOR-MANIFEST')
+- manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen_dirs=set()
+- def walk(path):
+-  for e in os.scandir(path):
+-   p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen_dirs==dirs,'CLIENT-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CLIENT-PREDECESSOR-BYTES:'+n)
+- return base
+-
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);producer=root/'code/managed_coverage.py'
+- require(stat.S_ISREG(producer.lstat().st_mode),'CLIENT-PRODUCER-TYPE');require(identity(producer.read_bytes())==PRODUCER_PIN,'CLIENT-PRODUCER-SOURCE')
+- prior=module(base/'code/correspondence.py','_state_client_predecessor');data=prior.inputs(base)
+- return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':data,'coverage':module(producer,'_client_state_coverage')}
+-
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'TOKEN-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'TOKEN-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_token_status_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_token_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+ def sources(data):return data['prior_module'].sources(data['prior_data'])
+-def manager_fields(data):
+- d=inner(data);v=d['values'];g=d['guards']
+- return data['coverage'].compile_status_fields(d['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'])
+-def catalogue(data):return data['coverage'].compile_status_forward(*sources(data),manager_fields(data),inner(data)['ctx']['binding'])
++def dependencies(data):
++ p=data['prior_module'];pd=data['prior_data'];status=p.catalogue(pd)
++ state=pd['prior_module'];sd=pd['prior_data'];client=sd['prior_module'].catalogue(sd['prior_data'])
++ return status,client
++
++def catalogue(data):return data['coverage'].compile_token_registration(*sources(data),*dependencies(data),inner(data)['ctx']['binding'])
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];prior=p.derive_client_state(pd,p.catalogue(pd))
+- saved=(fresh['prior_root']/'results/client-state-correspondence.json').read_bytes();require(identity(saved)==STATE_RECEIPT and enc(prior)==saved,'STATUS-FORWARD-PREDECESSOR-RECEIPT')
++ fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];prior=p.derive_status(pd,p.catalogue(pd))
++ saved=(fresh['prior_root']/'results/fresh/corrected-receipt.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'TOKEN-VALIDATED-PREDECESSOR-RECEIPT')
+  return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
++def _rows(basis):
++ rows=[];cat=basis['catalogue'];require(tuple(c['context'] for c in basis['prior']['contexts'])==CONTEXTS,'TOKEN-CONTEXT-DOMAIN')
++ for context in basis['prior']['contexts']:
++  status=context['internal_status_return_correspondence'];anchor=status['instance_anchor']
++  same(anchor,context['client_state_return_correspondence']['validated_state_anchor'],'TOKEN-VALIDATED-INSTANCE')
++  same(status['declaration']['source']['sources']['entry'],cat['source']['entry'],'TOKEN-VALIDATED-SOURCE')
++  rows.append({'context':context['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),
++   'reference_basis':copy.deepcopy(status['validated_reference_basis']),
++   'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
++   'scope':{'context':context['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':None,'request_identifier':None},
++   'runtime_registration_revocation_links':None,'actual_invocation_count':None,'physical_identity_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,
++   'separate_observer':copy.deepcopy(status['separate_observer']),'observer_join':None,'outer_lifecycle_complete':False,
++   'gap':'No _run token/owner creation, registry insertion, callback completion, finally-entry or pop-attempt/completion runtime frames. Selected finite cases remain constructed; exceptional/cleanup continuations remain partial.'})
++ return rows
++def _check_rows(basis,claims):
++ exact(claims,'TOKEN-SEMANTIC-CLAIMS');want=_rows(basis)
++ require(type(claims) is list and len(claims)==2,'TOKEN-CLAIM-CONTEXT-DOMAIN');same(claims,want,'TOKEN-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'STATUS-FORWARD-EVIDENCE-TYPES')
+- # The same validated predecessor supplies the trace/status source snapshots,
+- # acquisition/instance and HEAD bindings. Mutually agreeing reports cannot.
+- expected=basis['evidence'];path='evidence/execution-trace.json';require(path in candidate,'STATUS-FORWARD-MISSING-TRACE')
+- want=json.loads(expected[path]);got=json.loads(candidate[path]);require(type(got) is dict and type(got.get('events')) is list,'STATUS-FORWARD-TRACE-SHAPE')
+- for event in want['events']:
+-  if event.get('function')=='ManagedAuthority.status' and event.get('event')=='return' and event.get('normal_return'):
+-   seq=event['seq'];require(len(got['events'])>seq and type(got['events'][seq]) is dict,'STATUS-FORWARD-MISSING-STATUS')
+-   other=got['events'][seq];same(other.get('value'),event['value'],'STATUS-FORWARD-VALIDATED-STATUS-VALUE');same(other.get('state'),event['state'],'STATUS-FORWARD-VALIDATED-STATUS-SNAPSHOT')
+- p=basis['fresh']['prior_module'];p._compare_evidence({'fresh':basis['fresh']['prior_data'],'catalogue':p.catalogue(basis['fresh']['prior_data']),'evidence':expected},candidate)
+-def _rows(basis):
+- rows=[];cat=basis['catalogue'];coverage=basis['fresh']['coverage'];e=basis['evidence'];path='evidence/execution-trace.json';trace=json.loads(e[path]);defs=cat['manager_fields']['declarations']
+- for context in basis['prior']['contexts']:
+-  same(context['field_declarations'],cat['manager_fields'],'STATUS-FORWARD-PREDECESSOR-FIELDS')
+-  anchor=context['client_state_return_correspondence']['validated_state_anchor'];samples=[]
+-  for sample in context['saved_status_fields']:
+-   same(sample['instance'],anchor['instance'],'STATUS-FORWARD-VALIDATED-INSTANCE');same(sample['trace_identity'],identity(e[path]),'STATUS-FORWARD-TRACE-PIN')
+-   returned=[v for v in trace['events'] if v.get('frame')==sample['frame'] and v.get('event')=='return' and v.get('normal_return')];require(len(returned)==1,'STATUS-FORWARD-STATUS-RETURN');ret=returned[0];require(ret['function']=='ManagedAuthority.status','STATUS-FORWARD-MANAGER-CALLER')
+-   snapshot={d['value']['name']:ret['state'][d['value']['name']] for d in defs if d['value']['op']=='state'};value=coverage.status_snapshot_value(cat,snapshot);same(ret['value'],value,'STATUS-FORWARD-SAVED-SELECTORS')
+-   same([f['declaration'] for f in sample['fields']],[d['id'] for d in defs],'STATUS-FORWARD-SAVED-FIELD-COVERAGE')
+-   for f,d in zip(sample['fields'],defs):same(f['value'],value[d['name']],'STATUS-FORWARD-SAVED-FIELD');require(f['return_pointer']==f"/events/{ret['seq']}/value/{d['name']}",'STATUS-FORWARD-FIELD-POINTER')
+-   samples.append({'occurrence':sample['occurrence'],'frame':sample['frame'],'instance':copy.deepcopy(sample['instance']),'record':{'acquisition':anchor['record']['acquisition'],'artifact':path,**identity(e[path]),'return_pointer':f"/events/{ret['seq']}/value",'snapshot_pointer':f"/events/{ret['seq']}/state"},'value':copy.deepcopy(value),'snapshot':copy.deepcopy(snapshot),'existing_field_links':copy.deepcopy(sample),'forwarding_frame_join':None,'meaning':'Validated manager sample only; not a session/control status call or its forwarding history'})
+-  rows.append({'context':context['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'validated_manager_samples':samples,'predecessor_receipt':identity(basis['saved']),
+-   'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'field_links':copy.deepcopy(d['fields']),'same_result_reference_as':'manager-return','frame':None,'observed_value':None,'invocation':None} for d in cat['declarations']],
+-   'validated_reference_basis':{'static_manager_references':copy.deepcopy(context['reference_declarations']),'saved_reference_scope':copy.deepcopy(context['saved_reference_scope']),'source_owner_token_edges':copy.deepcopy(cat['reference_edges']),'physical_identity':None,'underlying_connection_identity':None},
+-   'scope':{'context':context['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':None,'request_identifier':None},'destination':'designated internal control caller','runtime_forwarding_links':None,'actual_status_forwarding_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'separate_observer':copy.deepcopy(context['client_state_return_correspondence']['separate_observer']),'observer_join':None,'missing':'No ManagedSession.status/_Control.status frames or physical return-reference observations; conditional expressions do not fill them.'})
+- return rows
+-def _check_rows(basis,claims,rows):
+- status_exact_tree(claims,'STATUS-FORWARD-CLAIMS');status_exact_tree(rows,'STATUS-FORWARD-EXPECTED-ROWS')
+- require(type(claims) is list and len(claims)==len(rows)==2,'STATUS-FORWARD-CONTEXT-DOMAIN')
+- for got,want in zip(claims,rows):
+-  require(type(got) is dict and set(got)==set(want),'STATUS-FORWARD-CONTEXT-FIELDS');same(got['context'],want['context'],'STATUS-FORWARD-CONTEXT-ORDER')
+-  same(got['instance_anchor'],want['instance_anchor'],'STATUS-FORWARD-INSTANCE-ANCHOR');same(got['validated_manager_samples'],want['validated_manager_samples'],'STATUS-FORWARD-SAMPLES')
+-  same(got,want,'STATUS-FORWARD-CORRESPONDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'TOKEN-EVIDENCE-TYPES')
++ # Compare to the actual validated predecessor's complete evidence, not to a
++ # set of mutually agreeing candidate reports or their claimed archive pins.
++ require(candidate==basis['evidence'],'TOKEN-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- status_exact_tree(submitted_catalogue,'STATUS-FORWARD-SUBMITTED-CATALOGUE');status_exact_tree(claims,'STATUS-FORWARD-CLAIMS')
+- basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'STATUS-FORWARD-CATALOGUE');d=inner(data);fd=inner(basis['fresh'])
+- require(type(d['manager']) is bytes and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()) and all(type(v) is bytes for v in sources(data)),'STATUS-FORWARD-CANDIDATE-SOURCE-TYPES')
+- require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'] and d['manager']==fd['manager'],'STATUS-FORWARD-CANDIDATE-SOURCES');same(d['ctx']['binding'],fd['ctx']['binding'],'STATUS-FORWARD-CANDIDATE-BINDING')
+- _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence);rows=_rows(basis)
+- if claims is not None:_check_rows(basis,claims,rows)
+- return rows,basis
++ exact(submitted_catalogue,'TOKEN-CATALOGUE');exact(claims,'TOKEN-CLAIMS')
++ basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'TOKEN-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['manager']) is bytes and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'TOKEN-CANDIDATE-SOURCE-TYPES')
++ require(sources(data)==sources(basis['fresh']) and d['manager']==fd['manager'] and d['ctx']['c']==fd['ctx']['c'],'TOKEN-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'TOKEN-CANDIDATE-BINDING')
++ _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ if claims is not None:_check_rows(basis,claims)
++ return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- result=copy.deepcopy(basis['prior']);result['format']='I164-INTERNAL-STATUS-FORWARD-CORRESPONDENCE-1';result['prior_client_state_components']=result.pop('extension_components');result['prior_client_state_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for context,row in zip(result['contexts'],rows):require(context['context']==row['context'],'STATUS-FORWARD-DERIVE-CONTEXT');context['internal_status_return_correspondence']=copy.deepcopy(row)
+- result['new_internal_status_limits']={'static_conditional_correspondence':True,'runtime_forwarding':'UNAVAILABLE','physical_reference_identity':None,'observer_join':None,'actual_call_count':None,'request_independent':True,'READY_requirement_added':False,'data_conversion_added':False,'new_output_or_capture_permission':False,'history_evidence_invented':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
++ _check_rows(basis,rows)
++ result=copy.deepcopy(basis['prior']);result['format']='I164-TOKEN-REGISTRATION-CORRESPONDENCE-1';result['prior_internal_status_components']=result.pop('extension_components');result['prior_internal_status_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['token_registration_correspondence']=copy.deepcopy(row)
++ result['new_token_registration_limits']={'normal_conditional_slice':True,'runtime_registration_revocation':'UNAVAILABLE','observer_join':None,'physical_identity':None,'outer_lifecycle_complete':False,'registry_continuity_is_explicit_conditional_premise':True,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+  return result
+-def derive_status(data,submitted_catalogue,claims=None,evidence=None):
++def derive_token(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+ def invocation_scope(anchor,invocation):
+- status_exact_tree(anchor,'STATUS-FORWARD-ANCHOR');status_exact_tree(invocation,'STATUS-FORWARD-INVOCATION')
+- require(type(invocation) is str and bool(invocation),'STATUS-FORWARD-INVOCATION')
++ exact(anchor,'TOKEN-ANCHOR');exact(invocation,'TOKEN-INVOCATION');require(type(invocation) is str and bool(invocation),'TOKEN-INVOCATION')
+  return {'context':anchor['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':invocation}
+-def reference_premises(scope,owner_present,owner_failed):
+- status_exact_tree(scope,'STATUS-FORWARD-SCOPE')
+- require(type(owner_present) is bool and type(owner_failed) is bool,'STATUS-FORWARD-OWNER-PREMISE')
+- refs={n:{'scope':copy.deepcopy(scope),'symbol':scope['invocation']+'/'+n+'-symbol'} for n in ('control','token','owner','session','manager','result')}
+- refs.update({'control.token':copy.deepcopy(refs['token']),'owners[token]':copy.deepcopy(refs['owner']) if owner_present else None,'owner.wrapper':copy.deepcopy(refs['session']),'session.managed':copy.deepcopy(refs['manager']),'owner_failed':owner_failed});return refs
+-def _construct_checked(basis,rows,case):
+- status_exact_tree(case,'STATUS-FORWARD-CONSTRUCTED-INPUT')
+- require(type(case) is dict and set(case)=={'kind','context','anchor','owner_present','owner_failed','manager_basis','projection'} and case['kind']=='CONSTRUCTED-INTERNAL-STATUS-FORWARD','STATUS-FORWARD-CONSTRUCTED-CASE')
+- matches=[r for r in rows if r['context']==case['context']];require(len(matches)==1,'STATUS-FORWARD-CONSTRUCTED-CONTEXT');row=matches[0];anchor=row['instance_anchor'];same(case['anchor'],anchor,'STATUS-FORWARD-CONSTRUCTED-ANCHOR')
+- p=case['projection'];require(type(p) is dict and type(p.get('occurrence')) is str,'STATUS-FORWARD-CONSTRUCTED-PROJECTION');scope=invocation_scope(anchor,p['occurrence']);refs=reference_premises(scope,case['owner_present'],case['owner_failed'])
+- mb=case['manager_basis'];require(type(mb) is dict,'STATUS-FORWARD-MANAGER-BASIS')
+- if mb.get('kind')=='saved-manager-value':
+-  require(set(mb)=={'kind','sample_occurrence'},'STATUS-FORWARD-SAMPLE-BASIS');found=[x for x in row['validated_manager_samples'] if x['occurrence']==mb['sample_occurrence']];require(len(found)==1,'STATUS-FORWARD-SAMPLE-OCCURRENCE');snapshot=copy.deepcopy(found[0]['snapshot'])
+- elif mb.get('kind')=='constructed-snapshot':
+-  require(set(mb)=={'kind','snapshot'},'STATUS-FORWARD-SNAPSHOT-BASIS');snapshot=copy.deepcopy(mb['snapshot']);basis['fresh']['coverage'].status_snapshot_value(basis['catalogue'],snapshot)
+- else:require(mb=={'kind':'unreached'},'STATUS-FORWARD-UNSUPPORTED-BASIS');snapshot=None
+- validated={'occurrence':p['occurrence'],'scope':scope,'references':refs,'outcomes':copy.deepcopy(p.get('outcomes')),'manager_snapshot':snapshot}
+- value=basis['fresh']['coverage'].status_forward_projection(basis['catalogue'],p,validated)
+- return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'manager_basis':copy.deepcopy(mb),'projection':value,'premises':'Explicit constructed conditional snapshot/outcomes and source-derived references; saved sample used only where selected, no runtime forwarding join','runtime_observation':False}
++def _construct_checked(basis,case):
++ exact(case,'TOKEN-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','control_present','owner_failure_none','registry_continuity','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-TOKEN-REGISTRATION','TOKEN-CONSTRUCTED-CASE')
++ rows=_rows(basis);selected=[r for r in rows if r['context']==case['context']];require(len(selected)==1,'TOKEN-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'TOKEN-CONSTRUCTED-ANCHOR')
++ scope=invocation_scope(anchor,case['invocation']);validated={'occurrence':case['invocation'],'scope':scope,**{k:copy.deepcopy(case[k]) for k in ('control_present','owner_failure_none','registry_continuity','outcomes')}}
++ c=basis['fresh']['coverage'];p=c.token_registration_projection(basis['catalogue'],case['projection'],validated)
++ c.validate_token_registration_projection(basis['catalogue'],case['projection'],validated,case['output'])
++ return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'projection':p,'premises':'Explicit finite constructed outcomes and registry continuity, source-derived references; selected acquisition frontier is not runtime execution evidence','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- status_exact_tree(case,'STATUS-FORWARD-CONSTRUCTED-INPUT')
+- rows,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,rows,case)
++ exact(case,'TOKEN-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_status(data,catalogue(data))
++ data=inputs(root);return derive_token(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'STATUS-FORWARD-RECEIPT-BYTES');value=json.loads(saved);require(type(value) is dict and value.get('format')=='I164-INTERNAL-STATUS-FORWARD-CORRESPONDENCE-1' and type(value.get('contexts')) is list and len(value['contexts'])==2 and all(type(c) is dict and 'internal_status_return_correspondence' in c for c in value['contexts']),'STATUS-FORWARD-MANDATORY-RELATION')
+- require(saved==enc(derive(root)),'STALE-OR-ALTERED-INTERNAL-STATUS-CORRESPONDENCE');return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'runtime_status_forwarding':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'TOKEN-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-TOKEN-REGISTRATION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'token_registration_correspondence' in c for c in v['contexts']),'TOKEN-MANDATORY-RELATION')
++ require(saved==enc(derive(root)),'TOKEN-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_registration_revocation':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

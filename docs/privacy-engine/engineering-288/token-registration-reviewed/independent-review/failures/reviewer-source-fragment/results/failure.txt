@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/tr-review/code/focused.py", line 16, in <module>
+    s=cat['source']['stages'][stage];rec.check('source site and source identity '+stage,lambda:s['site']==o['sites'][stage] and s['source']==o['entry'] and ast.dump(ast.parse(s['expression']))==ast.dump(ast.parse(o['expressions'][stage])))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/tr-review/code/common.py", line 46, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+      ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/tr-review/code/focused.py", line 16, in <lambda>
+    s=cat['source']['stages'][stage];rec.check('source site and source identity '+stage,lambda:s['site']==o['sites'][stage] and s['source']==o['entry'] and ast.dump(ast.parse(s['expression']))==ast.dump(ast.parse(o['expressions'][stage])))
+                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py", line 52, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 12
+    finally:
+            ^
+IndentationError: unindent does not match any outer indentation level

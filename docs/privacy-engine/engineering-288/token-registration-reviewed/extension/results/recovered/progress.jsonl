@@ -1,0 +1,50 @@
+{"check": "recovered actual mandatory predecessor invoked", "result": "PASS"}
+{"check": "recovered exact saved receipt reproduction", "result": "PASS"}
+{"check": "controlled normal SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "client-only normal SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unknown continuity normal pop SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "stored failure frontier SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "registry-insert termination no unwind/removal proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "client-callback termination no unwind/removal proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "finally-enter termination no unwind/removal proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "removal-attempt termination no unwind/removal proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "removal-complete termination no unwind/removal proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unobserved pop cannot confirm completion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "wrong token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong selected owner SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated cross-invocation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:occurrence"}
+{"check": "missing registry insertion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "reordered returned events SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "exact nested literal key SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact input list SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact output string SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested semantic claim SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "coordinated source/claim cannot change expectation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "returned nested mutation isolated SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "controlled normal SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "client-only normal SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unknown continuity normal pop SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "stored failure frontier SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "registry-insert termination no unwind/removal proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "client-callback termination no unwind/removal proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "finally-enter termination no unwind/removal proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "removal-attempt termination no unwind/removal proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "removal-complete termination no unwind/removal proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unobserved pop cannot confirm completion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "wrong token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong selected owner SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated cross-invocation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:occurrence"}
+{"check": "missing registry insertion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "reordered returned events SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "exact nested literal key SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact input list SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact output string SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested semantic claim SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "coordinated source/claim cannot change expectation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "returned nested mutation isolated SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "altered saved trace rejects against validated predecessor", "result": "REJECTED", "error": "TOKEN-VALIDATED-EVIDENCE"}
+{"check": "missing saved binding evidence rejects", "result": "REJECTED", "error": "TOKEN-VALIDATED-EVIDENCE"}
+{"check": "evidence key subclasses reject before equality", "result": "REJECTED", "error": "TOKEN-EVIDENCE-TYPES"}
+{"check": "recovered source coverage omission", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "all prior UNKNOWN totals and boundary flags retained", "result": "PASS"}
+{"check": "observer remains unjoined, no actual registration or removal observations", "result": "PASS"}

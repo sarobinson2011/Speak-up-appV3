@@ -1,0 +1,51 @@
+{"check": "recovered actual predecessor and exact current receipt", "result": "PASS"}
+{"check": "source completion plain no-control SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion unknown continuity SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion stored failure SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion finally unknown SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion pop raises SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion pop terminates SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "normal pop and known earlier facts coexist with outer gaps SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "recovered nested scope token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope owner SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope client.token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope control.token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope owner.wrapper SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope session.managed SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "cross-context scope SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "attempt absence cannot establish completion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "submitted output exact type completion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "submitted output exact type events SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "submitted output exact type reference_bindings SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "producer nested key exact type SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-EXACT-TYPE:KEY-TYPE"}
+{"check": "semantic nested scalar preflight SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CLAIMS:VALUE-TYPE"}
+{"check": "recovered return alias isolation SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source completion plain no-control SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source completion unknown continuity SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source completion stored failure SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source completion finally unknown SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source completion pop raises SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source completion pop terminates SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "normal pop and known earlier facts coexist with outer gaps SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "recovered nested scope token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope owner SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope client.token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope control.token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope owner.wrapper SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "recovered nested scope session.managed SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "cross-context scope SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "attempt absence cannot establish completion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "submitted output exact type completion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "submitted output exact type events SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "submitted output exact type reference_bindings SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "producer nested key exact type SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-EXACT-TYPE:KEY-TYPE"}
+{"check": "semantic nested scalar preflight SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CLAIMS:VALUE-TYPE"}
+{"check": "recovered return alias isolation SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "required claims missing context", "result": "REJECTED", "error": "TOKEN-CLAIM-CONTEXT-DOMAIN"}
+{"check": "required claims duplicate context", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "required claims reversed contexts", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "required claims omitted conditional link", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "required claims runtime evidence invented", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "fresh validated evidence missing trace", "result": "REJECTED", "error": "TOKEN-VALIDATED-EVIDENCE"}
+{"check": "fresh validated evidence changed trace", "result": "REJECTED", "error": "TOKEN-VALIDATED-EVIDENCE"}
+{"check": "all retained limits exact in both contexts", "result": "PASS"}

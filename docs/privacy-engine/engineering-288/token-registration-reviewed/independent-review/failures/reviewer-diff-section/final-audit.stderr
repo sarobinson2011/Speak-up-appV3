@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/tr-review/code/final_audit.py", line 15, in <module>
+    actualdiff=''.join(difflib.unified_diff((root/'retained/status/code/managed_coverage.py').read_text().splitlines(True),(root/'code/managed_coverage.py').read_text().splitlines(True),fromfile='retained/status/code/managed_coverage.py',tofile='code/managed_coverage.py')).encode();assert actualdiff==(root/'provenance/code-change.diff').read_bytes()
+                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

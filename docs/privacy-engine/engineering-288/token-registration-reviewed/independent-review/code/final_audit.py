@@ -1,0 +1,18 @@
+from pathlib import Path,PurePosixPath
+import sys,json,collections,difflib
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from integrity import check_tree,ident
+w=Path(__file__).resolve().parents[2];b=w/'tr-review';root=w/'tr-input';mf=json.loads((root/'MANIFEST.json').read_bytes());names=set(mf)|{'MANIFEST.json'};dirs={p.as_posix() for n in names for p in PurePosixPath(n).parents if p.as_posix()!='.'};mi=ident((root/'MANIFEST.json').read_bytes())
+roots=['tr-input','tr-primary-root','tr-recovered-root','tr-primary-v2-root','tr-full-semantic-root','tr-full-constructed-root','tr-cli-root']
+for n in roots:check_tree(w/n,names,dirs,mf,mi)
+groups={}
+for name,n in [('independent-primary-v2',170),('independent-recovered',51),('fresh-semantic',7),('fresh-constructed',10)]:
+ p=b/name;r=json.loads((p/'RESULT.json').read_bytes());lines=[json.loads(x) for x in (p/'progress.jsonl').read_text().splitlines()];assert r['result']=='PASS' and r['error'] is None and r['checks']==len(lines)==n and r['rows']==lines
+ groups[name]={'checks':n,'outcomes':dict(collections.Counter(x['result'] for x in lines)),'identity':ident((p/'RESULT.json').read_bytes()),'environment':r['environment'],'seconds':r['seconds']}
+cli=json.loads((b/'fresh-cli/RESULT.json').read_bytes());assert cli['result']=='PASS' and cli['checks']==1 and cli['process']['exit_code']==0 and cli['process']['stderr']==ident(b'');assert (b/'fresh-cli/stderr').read_bytes()==b''
+failed=json.loads((b/'failures/reviewer-source-fragment/results/RESULT.json').read_bytes());assert failed['result']=='FAIL' and failed['checks']==11 and 'IndentationError' in failed['error']
+manifest=json.loads((root/'provenance/recovery-input-MANIFEST.json').read_bytes());recovery=json.loads((root/'provenance/recovery-input-identity.json').read_bytes());assert ident((json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode())==recovery['manifest_identity']
+actualdiff=''.join(''.join(difflib.unified_diff((root/'retained/status/code'/name).read_text().splitlines(True),(root/'code'/name).read_text().splitlines(True),fromfile='retained/status/code/'+name,tofile='code/'+name)) for name in ('managed_coverage.py','correspondence.py')).encode();assert actualdiff==(root/'provenance/code-change.diff').read_bytes()
+comp=json.loads((b/'results/composition.json').read_bytes());assert comp['result']=='PASS'
+result={'result':'PASS','verdict':'SUPPORTED within the declared normal token registration/callback-to-revocation correspondence slice','input':ident((w/'upload/I164-token-registration-correspondence-1(1).zip').read_bytes()),'roots_verified_unchanged':roots,'files_per_root':len(names),'directories_per_root':len(dirs),'independent_groups':groups,'focused_and_full_entry_checks':sum(v['checks'] for v in groups.values()),'separate_actual_fresh_CLI':cli,'total_completed_checks_including_CLI':sum(v['checks'] for v in groups.values())+1,'failed_reviewer_attempt_excluded':11,'additional_zero_control_audit_failure_preserved':'Initially compared one section of a two-file diff; verified complete concatenation after correction.', 'failure_cause':'Reviewer parsed an indented source fragment without restoring its first-line column; corrected harness only.','residual_witness':None,'current_components':comp['current_components'],'receipt':comp['current_receipt'],'actual_diff_matches_declared':True,'supplied_recovery_manifest_serialization_matches':True,'predecessor_members_preserved':2053,'prior_review_noninput_records_preserved':80,'inherited_producer_functions_unchanged':78,'runtime_changes':0,'requests':0,'database_connections':0,'session_operations':0,'admission':False}
+(b/'results/final-audit.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

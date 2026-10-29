@@ -1,0 +1,7 @@
+from pathlib import Path
+import sys,subprocess,time,json,hashlib
+w=Path(__file__).resolve().parents[2];out=w/'tr-review/fresh-cli';out.mkdir(exist_ok=False);start=time.monotonic();cmd=[sys.executable,'-I','-B',str(w/'tr-review/code/cli_guarded.py'),str(w/'upload/I164-token-registration-correspondence-1(1).zip'),str(w/'tr-cli-root'),str(out/'recovery.json')]
+p=subprocess.run(cmd,capture_output=True);(out/'stdout').write_bytes(p.stdout);(out/'stderr').write_bytes(p.stderr)
+def ident(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+r={'exit_code':p.returncode,'seconds':time.monotonic()-start,'stdout':ident(p.stdout),'stderr':ident(p.stderr),'fresh_process':True,'recovered_final_root':True};(out/'process.json').write_text(json.dumps(r,indent=2)+'\n');assert p.returncode==0 and p.stderr==b''
+value=json.loads(p.stdout);raw=(w/'tr-cli-root/results/primary/token-registration-correspondence.json').read_bytes();assert value=={'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':ident(raw),'runtime_registration_revocation':'UNAVAILABLE','actual_admission':False};(out/'RESULT.json').write_text(json.dumps({'result':'PASS','checks':1,'public_result':value,'process':r},indent=2)+'\n');print('PASS actual fresh CLI, exact current receipt, both contexts, admission disabled')

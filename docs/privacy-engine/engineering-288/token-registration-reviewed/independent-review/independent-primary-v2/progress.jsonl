@@ -1,0 +1,170 @@
+{"check": "actual predecessor derive_status invoked", "result": "PASS"}
+{"check": "catalogue exact stage coverage from independent AST", "result": "PASS"}
+{"check": "source site and source identity owner-create", "result": "PASS"}
+{"check": "source site and source identity token-create", "result": "PASS"}
+{"check": "source site and source identity registry-insert", "result": "PASS"}
+{"check": "source site and source identity control-guard", "result": "PASS"}
+{"check": "source site and source identity control-create", "result": "PASS"}
+{"check": "source site and source identity control-callback", "result": "PASS"}
+{"check": "source site and source identity client-create", "result": "PASS"}
+{"check": "source site and source identity client-callback", "result": "PASS"}
+{"check": "source site and source identity owner-failure-guard", "result": "PASS"}
+{"check": "source site and source identity finally-enter", "result": "PASS"}
+{"check": "source site and source identity removal-attempt", "result": "PASS"}
+{"check": "source site and source identity removal-complete", "result": "PASS"}
+{"check": "control guard and failure guard are source conditions", "result": "PASS"}
+{"check": "pop anchor is in actual finally region", "result": "PASS"}
+{"check": "source-derived normal controlled SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source-derived normal client only SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source-derived normal unknown continuity SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source-derived stored failure frontier SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts registry-insert process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts registry-insert unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts registry-insert raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts control-callback process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts control-callback unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts control-callback raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts client-callback process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts client-callback unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts client-callback raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts finally-enter process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts finally-enter unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts finally-enter raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-attempt process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-attempt unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-attempt raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-complete process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-complete unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "prefix facts removal-complete raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "wrong binding token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owner SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding client SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding control SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding session SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding manager SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding client.token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding control.token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owners[token] SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owner.wrapper SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding session.managed SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated cross-invocation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:occurrence"}
+{"check": "equal phase content distinct invocation identities SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "stale scope acquisition SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "stale scope instance SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "stale scope frontier SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "actual omitted step registry-insert SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step control-guard SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step control-callback SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step owner-failure-guard SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step finally-enter SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step removal-attempt SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step removal-complete SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-MISSING-STEP:removal-complete"}
+{"check": "insertion before owner rejected SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "no premature registration_completed_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature finally_entered_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature removal_attempt_entered_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature removal_completed_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature selected_owner_removed_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved registration_completed_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved client_callback_completed_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved finally_entered_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved removal_attempt_entered_in_model SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "continuity cannot be invented SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported revocation_persists SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported database_cleanup_completion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported retained_error SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported pop_return_value SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported callback_return_destination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported actual_admission SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "exact types ('projection', 'occurrence') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('projection', 'outcomes') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('projection', 'scope') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'completion') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'events') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'reference_bindings', 'token') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact boolean control_present SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-BOOL:control_present"}
+{"check": "exact boolean owner_failure_none SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "exact boolean registry_continuity SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "semantic nested subclass SYMBOLIC-U-ONE", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "result aliases isolated SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "source-derived normal controlled SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source-derived normal client only SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source-derived normal unknown continuity SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "source-derived stored failure frontier SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts registry-insert process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts registry-insert unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts registry-insert raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts control-callback process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts control-callback unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts control-callback raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts client-callback process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts client-callback unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts client-callback raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts finally-enter process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts finally-enter unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts finally-enter raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-attempt process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-attempt unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-attempt raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-complete process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-complete unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "prefix facts removal-complete raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "wrong binding token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owner SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding client SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding control SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding session SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding manager SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding client.token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding control.token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owners[token] SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding owner.wrapper SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "wrong binding session.managed SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated cross-invocation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:occurrence"}
+{"check": "equal phase content distinct invocation identities SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "stale scope acquisition SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "stale scope instance SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "stale scope frontier SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "actual omitted step registry-insert SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step control-guard SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step control-callback SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step owner-failure-guard SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step finally-enter SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step removal-attempt SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "actual omitted step removal-complete SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-MISSING-STEP:removal-complete"}
+{"check": "insertion before owner rejected SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-STEP-ORDER"}
+{"check": "no premature registration_completed_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature finally_entered_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature removal_attempt_entered_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature removal_completed_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "no premature selected_owner_removed_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved registration_completed_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved client_callback_completed_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved finally_entered_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "earlier established fact preserved removal_attempt_entered_in_model SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "continuity cannot be invented SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported revocation_persists SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported database_cleanup_completion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported retained_error SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported pop_return_value SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported callback_return_destination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported actual_admission SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "exact types ('projection', 'occurrence') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('projection', 'outcomes') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('projection', 'scope') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'completion') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'events') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types ('output', 'reference_bindings', 'token') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact boolean control_present SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-BOOL:control_present"}
+{"check": "exact boolean owner_failure_none SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "exact boolean registry_continuity SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "semantic nested subclass SYMBOLIC-U-TWO", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "result aliases isolated SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "independent source validation omit declaration and expected stage", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "independent source validation replace pop key", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "independent source validation erase optional control guard", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "independent source validation remove stored failure guard", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "independent source validation claim forwarded callback result", "result": "REJECTED", "error": "TOKEN-SOURCE-CORRESPONDENCE"}
+{"check": "exact current receipt derived", "result": "PASS"}
+{"check": "returned context mutations cannot change expected receipt", "result": "PASS"}
+{"check": "unchanged obligations and unavailable observations retained", "result": "PASS"}

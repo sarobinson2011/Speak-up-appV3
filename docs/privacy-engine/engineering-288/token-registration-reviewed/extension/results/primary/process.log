@@ -1,0 +1,285 @@
+1 mandatory predecessor invoked, both contexts retained PASS
+2 prior receipt exact and all prior fields preserved PASS
+3 source independently establishes owner token insertion order PASS
+4 source independently establishes callback branch and failure guard PASS
+5 source pop default and discarded result inside finally before context exit PASS
+6 source stage coverage is exact independent of declarations PASS
+7 normal controlled registration callback pop SYMBOLIC-U-ONE PASS
+8 general callback without control SYMBOLIC-U-ONE PASS
+9 unknown continuity admitted without inferred selected-owner removal SYMBOLIC-U-ONE PASS
+10 normal pop under unknown continuity proves no selected owner removal SYMBOLIC-U-ONE PASS
+11 normal callback with retained failure stops at exceptional frontier SYMBOLIC-U-ONE PASS
+12 retained failure gate does not claim finally or unwind SYMBOLIC-U-ONE PASS
+13 owner-create raise SYMBOLIC-U-ONE PASS
+14 no completion inference owner-create raise SYMBOLIC-U-ONE PASS
+15 owner-create process-termination SYMBOLIC-U-ONE PASS
+16 no completion inference owner-create process-termination SYMBOLIC-U-ONE PASS
+17 owner-create unobserved SYMBOLIC-U-ONE PASS
+18 no completion inference owner-create unobserved SYMBOLIC-U-ONE PASS
+19 token-create raise SYMBOLIC-U-ONE PASS
+20 no completion inference token-create raise SYMBOLIC-U-ONE PASS
+21 token-create process-termination SYMBOLIC-U-ONE PASS
+22 no completion inference token-create process-termination SYMBOLIC-U-ONE PASS
+23 token-create unobserved SYMBOLIC-U-ONE PASS
+24 no completion inference token-create unobserved SYMBOLIC-U-ONE PASS
+25 registry-insert raise SYMBOLIC-U-ONE PASS
+26 no completion inference registry-insert raise SYMBOLIC-U-ONE PASS
+27 registry-insert process-termination SYMBOLIC-U-ONE PASS
+28 no completion inference registry-insert process-termination SYMBOLIC-U-ONE PASS
+29 registry-insert unobserved SYMBOLIC-U-ONE PASS
+30 no completion inference registry-insert unobserved SYMBOLIC-U-ONE PASS
+31 control-guard raise SYMBOLIC-U-ONE PASS
+32 no completion inference control-guard raise SYMBOLIC-U-ONE PASS
+33 control-guard process-termination SYMBOLIC-U-ONE PASS
+34 no completion inference control-guard process-termination SYMBOLIC-U-ONE PASS
+35 control-guard unobserved SYMBOLIC-U-ONE PASS
+36 no completion inference control-guard unobserved SYMBOLIC-U-ONE PASS
+37 control-create raise SYMBOLIC-U-ONE PASS
+38 no completion inference control-create raise SYMBOLIC-U-ONE PASS
+39 control-create process-termination SYMBOLIC-U-ONE PASS
+40 no completion inference control-create process-termination SYMBOLIC-U-ONE PASS
+41 control-create unobserved SYMBOLIC-U-ONE PASS
+42 no completion inference control-create unobserved SYMBOLIC-U-ONE PASS
+43 control-callback raise SYMBOLIC-U-ONE PASS
+44 no completion inference control-callback raise SYMBOLIC-U-ONE PASS
+45 control-callback process-termination SYMBOLIC-U-ONE PASS
+46 no completion inference control-callback process-termination SYMBOLIC-U-ONE PASS
+47 control-callback unobserved SYMBOLIC-U-ONE PASS
+48 no completion inference control-callback unobserved SYMBOLIC-U-ONE PASS
+49 client-create raise SYMBOLIC-U-ONE PASS
+50 no completion inference client-create raise SYMBOLIC-U-ONE PASS
+51 client-create process-termination SYMBOLIC-U-ONE PASS
+52 no completion inference client-create process-termination SYMBOLIC-U-ONE PASS
+53 client-create unobserved SYMBOLIC-U-ONE PASS
+54 no completion inference client-create unobserved SYMBOLIC-U-ONE PASS
+55 client-callback raise SYMBOLIC-U-ONE PASS
+56 no completion inference client-callback raise SYMBOLIC-U-ONE PASS
+57 client-callback process-termination SYMBOLIC-U-ONE PASS
+58 no completion inference client-callback process-termination SYMBOLIC-U-ONE PASS
+59 client-callback unobserved SYMBOLIC-U-ONE PASS
+60 no completion inference client-callback unobserved SYMBOLIC-U-ONE PASS
+61 owner-failure-guard raise SYMBOLIC-U-ONE PASS
+62 no completion inference owner-failure-guard raise SYMBOLIC-U-ONE PASS
+63 owner-failure-guard process-termination SYMBOLIC-U-ONE PASS
+64 no completion inference owner-failure-guard process-termination SYMBOLIC-U-ONE PASS
+65 owner-failure-guard unobserved SYMBOLIC-U-ONE PASS
+66 no completion inference owner-failure-guard unobserved SYMBOLIC-U-ONE PASS
+67 finally-enter raise SYMBOLIC-U-ONE PASS
+68 no completion inference finally-enter raise SYMBOLIC-U-ONE PASS
+69 finally-enter process-termination SYMBOLIC-U-ONE PASS
+70 no completion inference finally-enter process-termination SYMBOLIC-U-ONE PASS
+71 finally-enter unobserved SYMBOLIC-U-ONE PASS
+72 no completion inference finally-enter unobserved SYMBOLIC-U-ONE PASS
+73 removal-attempt raise SYMBOLIC-U-ONE PASS
+74 no completion inference removal-attempt raise SYMBOLIC-U-ONE PASS
+75 removal-attempt process-termination SYMBOLIC-U-ONE PASS
+76 no completion inference removal-attempt process-termination SYMBOLIC-U-ONE PASS
+77 removal-attempt unobserved SYMBOLIC-U-ONE PASS
+78 no completion inference removal-attempt unobserved SYMBOLIC-U-ONE PASS
+79 removal-complete raise SYMBOLIC-U-ONE PASS
+80 no completion inference removal-complete raise SYMBOLIC-U-ONE PASS
+81 removal-complete process-termination SYMBOLIC-U-ONE PASS
+82 no completion inference removal-complete process-termination SYMBOLIC-U-ONE PASS
+83 removal-complete unobserved SYMBOLIC-U-ONE PASS
+84 no completion inference removal-complete unobserved SYMBOLIC-U-ONE PASS
+85 wrong token SYMBOLIC-U-ONE REJECTED
+86 wrong owner SYMBOLIC-U-ONE REJECTED
+87 wrong client SYMBOLIC-U-ONE REJECTED
+88 wrong control SYMBOLIC-U-ONE REJECTED
+89 wrong session SYMBOLIC-U-ONE REJECTED
+90 wrong manager SYMBOLIC-U-ONE REJECTED
+91 wrong reference edge client.token SYMBOLIC-U-ONE REJECTED
+92 wrong reference edge control.token SYMBOLIC-U-ONE REJECTED
+93 wrong reference edge owners[token] SYMBOLIC-U-ONE REJECTED
+94 wrong reference edge owner.wrapper SYMBOLIC-U-ONE REJECTED
+95 wrong reference edge session.managed SYMBOLIC-U-ONE REJECTED
+96 coordinated foreign invocation projection and output SYMBOLIC-U-ONE REJECTED
+97 same content different invocation retains distinct occurrences SYMBOLIC-U-ONE PASS
+98 stale scope ('scope', 'instance') SYMBOLIC-U-ONE REJECTED
+99 stale scope ('scope', 'acquisition') SYMBOLIC-U-ONE REJECTED
+100 stale scope ('scope', 'frontier') SYMBOLIC-U-ONE REJECTED
+101 omitted step owner-create SYMBOLIC-U-ONE REJECTED
+102 omitted step token-create SYMBOLIC-U-ONE REJECTED
+103 omitted step registry-insert SYMBOLIC-U-ONE REJECTED
+104 omitted step control-guard SYMBOLIC-U-ONE REJECTED
+105 omitted step control-create SYMBOLIC-U-ONE REJECTED
+106 omitted step control-callback SYMBOLIC-U-ONE REJECTED
+107 omitted step client-create SYMBOLIC-U-ONE REJECTED
+108 omitted step client-callback SYMBOLIC-U-ONE REJECTED
+109 omitted step owner-failure-guard SYMBOLIC-U-ONE REJECTED
+110 omitted step finally-enter SYMBOLIC-U-ONE REJECTED
+111 omitted step removal-attempt SYMBOLIC-U-ONE REJECTED
+112 omitted step removal-complete SYMBOLIC-U-ONE REJECTED
+113 reordered insertion before owner creation SYMBOLIC-U-ONE REJECTED
+114 premature finally_entered_in_model SYMBOLIC-U-ONE REJECTED
+115 premature removal_attempt_entered_in_model SYMBOLIC-U-ONE REJECTED
+116 premature removal_completed_in_model SYMBOLIC-U-ONE REJECTED
+117 premature selected_owner_removed_in_model SYMBOLIC-U-ONE REJECTED
+118 unsupported claim retained_error SYMBOLIC-U-ONE REJECTED
+119 unsupported claim database_cleanup_completion SYMBOLIC-U-ONE REJECTED
+120 unsupported claim authorization_renewed SYMBOLIC-U-ONE REJECTED
+121 unsupported claim slot_after_pop_in_model SYMBOLIC-U-ONE REJECTED
+122 pop normal does not repair missing continuity SYMBOLIC-U-ONE REJECTED
+123 output event cross-invocation SYMBOLIC-U-ONE REJECTED
+124 exact-type string SYMBOLIC-U-ONE REJECTED
+125 exact-type dictionary SYMBOLIC-U-ONE REJECTED
+126 exact-type list SYMBOLIC-U-ONE REJECTED
+127 exact-type bool-as-int SYMBOLIC-U-ONE REJECTED
+128 exact-type output-string SYMBOLIC-U-ONE REJECTED
+129 exact-type output-container SYMBOLIC-U-ONE REJECTED
+130 subclassed literal output keys SYMBOLIC-U-ONE REJECTED
+131 nested literal key subclass SYMBOLIC-U-ONE REJECTED
+132 semantic altered ('conditional_links',) SYMBOLIC-U-ONE REJECTED
+133 semantic altered ('runtime_registration_revocation_links',) SYMBOLIC-U-ONE REJECTED
+134 semantic altered ('classification',) SYMBOLIC-U-ONE REJECTED
+135 semantic altered ('scope', 'invocation') SYMBOLIC-U-ONE REJECTED
+136 semantic altered ('context',) SYMBOLIC-U-ONE REJECTED
+137 semantic nested same-valued int subclass SYMBOLIC-U-ONE REJECTED
+138 mutated returned object cannot change expectations SYMBOLIC-U-ONE PASS
+139 direct submitted output accepted SYMBOLIC-U-ONE PASS
+140 producer pre-normalization input gate SYMBOLIC-U-ONE REJECTED
+141 producer pre-normalization output gate SYMBOLIC-U-ONE REJECTED
+142 producer output nested mutation isolation SYMBOLIC-U-ONE PASS
+143 normal controlled registration callback pop SYMBOLIC-U-TWO PASS
+144 general callback without control SYMBOLIC-U-TWO PASS
+145 unknown continuity admitted without inferred selected-owner removal SYMBOLIC-U-TWO PASS
+146 normal pop under unknown continuity proves no selected owner removal SYMBOLIC-U-TWO PASS
+147 normal callback with retained failure stops at exceptional frontier SYMBOLIC-U-TWO PASS
+148 retained failure gate does not claim finally or unwind SYMBOLIC-U-TWO PASS
+149 owner-create raise SYMBOLIC-U-TWO PASS
+150 no completion inference owner-create raise SYMBOLIC-U-TWO PASS
+151 owner-create process-termination SYMBOLIC-U-TWO PASS
+152 no completion inference owner-create process-termination SYMBOLIC-U-TWO PASS
+153 owner-create unobserved SYMBOLIC-U-TWO PASS
+154 no completion inference owner-create unobserved SYMBOLIC-U-TWO PASS
+155 token-create raise SYMBOLIC-U-TWO PASS
+156 no completion inference token-create raise SYMBOLIC-U-TWO PASS
+157 token-create process-termination SYMBOLIC-U-TWO PASS
+158 no completion inference token-create process-termination SYMBOLIC-U-TWO PASS
+159 token-create unobserved SYMBOLIC-U-TWO PASS
+160 no completion inference token-create unobserved SYMBOLIC-U-TWO PASS
+161 registry-insert raise SYMBOLIC-U-TWO PASS
+162 no completion inference registry-insert raise SYMBOLIC-U-TWO PASS
+163 registry-insert process-termination SYMBOLIC-U-TWO PASS
+164 no completion inference registry-insert process-termination SYMBOLIC-U-TWO PASS
+165 registry-insert unobserved SYMBOLIC-U-TWO PASS
+166 no completion inference registry-insert unobserved SYMBOLIC-U-TWO PASS
+167 control-guard raise SYMBOLIC-U-TWO PASS
+168 no completion inference control-guard raise SYMBOLIC-U-TWO PASS
+169 control-guard process-termination SYMBOLIC-U-TWO PASS
+170 no completion inference control-guard process-termination SYMBOLIC-U-TWO PASS
+171 control-guard unobserved SYMBOLIC-U-TWO PASS
+172 no completion inference control-guard unobserved SYMBOLIC-U-TWO PASS
+173 control-create raise SYMBOLIC-U-TWO PASS
+174 no completion inference control-create raise SYMBOLIC-U-TWO PASS
+175 control-create process-termination SYMBOLIC-U-TWO PASS
+176 no completion inference control-create process-termination SYMBOLIC-U-TWO PASS
+177 control-create unobserved SYMBOLIC-U-TWO PASS
+178 no completion inference control-create unobserved SYMBOLIC-U-TWO PASS
+179 control-callback raise SYMBOLIC-U-TWO PASS
+180 no completion inference control-callback raise SYMBOLIC-U-TWO PASS
+181 control-callback process-termination SYMBOLIC-U-TWO PASS
+182 no completion inference control-callback process-termination SYMBOLIC-U-TWO PASS
+183 control-callback unobserved SYMBOLIC-U-TWO PASS
+184 no completion inference control-callback unobserved SYMBOLIC-U-TWO PASS
+185 client-create raise SYMBOLIC-U-TWO PASS
+186 no completion inference client-create raise SYMBOLIC-U-TWO PASS
+187 client-create process-termination SYMBOLIC-U-TWO PASS
+188 no completion inference client-create process-termination SYMBOLIC-U-TWO PASS
+189 client-create unobserved SYMBOLIC-U-TWO PASS
+190 no completion inference client-create unobserved SYMBOLIC-U-TWO PASS
+191 client-callback raise SYMBOLIC-U-TWO PASS
+192 no completion inference client-callback raise SYMBOLIC-U-TWO PASS
+193 client-callback process-termination SYMBOLIC-U-TWO PASS
+194 no completion inference client-callback process-termination SYMBOLIC-U-TWO PASS
+195 client-callback unobserved SYMBOLIC-U-TWO PASS
+196 no completion inference client-callback unobserved SYMBOLIC-U-TWO PASS
+197 owner-failure-guard raise SYMBOLIC-U-TWO PASS
+198 no completion inference owner-failure-guard raise SYMBOLIC-U-TWO PASS
+199 owner-failure-guard process-termination SYMBOLIC-U-TWO PASS
+200 no completion inference owner-failure-guard process-termination SYMBOLIC-U-TWO PASS
+201 owner-failure-guard unobserved SYMBOLIC-U-TWO PASS
+202 no completion inference owner-failure-guard unobserved SYMBOLIC-U-TWO PASS
+203 finally-enter raise SYMBOLIC-U-TWO PASS
+204 no completion inference finally-enter raise SYMBOLIC-U-TWO PASS
+205 finally-enter process-termination SYMBOLIC-U-TWO PASS
+206 no completion inference finally-enter process-termination SYMBOLIC-U-TWO PASS
+207 finally-enter unobserved SYMBOLIC-U-TWO PASS
+208 no completion inference finally-enter unobserved SYMBOLIC-U-TWO PASS
+209 removal-attempt raise SYMBOLIC-U-TWO PASS
+210 no completion inference removal-attempt raise SYMBOLIC-U-TWO PASS
+211 removal-attempt process-termination SYMBOLIC-U-TWO PASS
+212 no completion inference removal-attempt process-termination SYMBOLIC-U-TWO PASS
+213 removal-attempt unobserved SYMBOLIC-U-TWO PASS
+214 no completion inference removal-attempt unobserved SYMBOLIC-U-TWO PASS
+215 removal-complete raise SYMBOLIC-U-TWO PASS
+216 no completion inference removal-complete raise SYMBOLIC-U-TWO PASS
+217 removal-complete process-termination SYMBOLIC-U-TWO PASS
+218 no completion inference removal-complete process-termination SYMBOLIC-U-TWO PASS
+219 removal-complete unobserved SYMBOLIC-U-TWO PASS
+220 no completion inference removal-complete unobserved SYMBOLIC-U-TWO PASS
+221 wrong token SYMBOLIC-U-TWO REJECTED
+222 wrong owner SYMBOLIC-U-TWO REJECTED
+223 wrong client SYMBOLIC-U-TWO REJECTED
+224 wrong control SYMBOLIC-U-TWO REJECTED
+225 wrong session SYMBOLIC-U-TWO REJECTED
+226 wrong manager SYMBOLIC-U-TWO REJECTED
+227 wrong reference edge client.token SYMBOLIC-U-TWO REJECTED
+228 wrong reference edge control.token SYMBOLIC-U-TWO REJECTED
+229 wrong reference edge owners[token] SYMBOLIC-U-TWO REJECTED
+230 wrong reference edge owner.wrapper SYMBOLIC-U-TWO REJECTED
+231 wrong reference edge session.managed SYMBOLIC-U-TWO REJECTED
+232 coordinated foreign invocation projection and output SYMBOLIC-U-TWO REJECTED
+233 same content different invocation retains distinct occurrences SYMBOLIC-U-TWO PASS
+234 stale scope ('scope', 'instance') SYMBOLIC-U-TWO REJECTED
+235 stale scope ('scope', 'acquisition') SYMBOLIC-U-TWO REJECTED
+236 stale scope ('scope', 'frontier') SYMBOLIC-U-TWO REJECTED
+237 omitted step owner-create SYMBOLIC-U-TWO REJECTED
+238 omitted step token-create SYMBOLIC-U-TWO REJECTED
+239 omitted step registry-insert SYMBOLIC-U-TWO REJECTED
+240 omitted step control-guard SYMBOLIC-U-TWO REJECTED
+241 omitted step control-create SYMBOLIC-U-TWO REJECTED
+242 omitted step control-callback SYMBOLIC-U-TWO REJECTED
+243 omitted step client-create SYMBOLIC-U-TWO REJECTED
+244 omitted step client-callback SYMBOLIC-U-TWO REJECTED
+245 omitted step owner-failure-guard SYMBOLIC-U-TWO REJECTED
+246 omitted step finally-enter SYMBOLIC-U-TWO REJECTED
+247 omitted step removal-attempt SYMBOLIC-U-TWO REJECTED
+248 omitted step removal-complete SYMBOLIC-U-TWO REJECTED
+249 reordered insertion before owner creation SYMBOLIC-U-TWO REJECTED
+250 premature finally_entered_in_model SYMBOLIC-U-TWO REJECTED
+251 premature removal_attempt_entered_in_model SYMBOLIC-U-TWO REJECTED
+252 premature removal_completed_in_model SYMBOLIC-U-TWO REJECTED
+253 premature selected_owner_removed_in_model SYMBOLIC-U-TWO REJECTED
+254 unsupported claim retained_error SYMBOLIC-U-TWO REJECTED
+255 unsupported claim database_cleanup_completion SYMBOLIC-U-TWO REJECTED
+256 unsupported claim authorization_renewed SYMBOLIC-U-TWO REJECTED
+257 unsupported claim slot_after_pop_in_model SYMBOLIC-U-TWO REJECTED
+258 pop normal does not repair missing continuity SYMBOLIC-U-TWO REJECTED
+259 output event cross-invocation SYMBOLIC-U-TWO REJECTED
+260 exact-type string SYMBOLIC-U-TWO REJECTED
+261 exact-type dictionary SYMBOLIC-U-TWO REJECTED
+262 exact-type list SYMBOLIC-U-TWO REJECTED
+263 exact-type bool-as-int SYMBOLIC-U-TWO REJECTED
+264 exact-type output-string SYMBOLIC-U-TWO REJECTED
+265 exact-type output-container SYMBOLIC-U-TWO REJECTED
+266 subclassed literal output keys SYMBOLIC-U-TWO REJECTED
+267 nested literal key subclass SYMBOLIC-U-TWO REJECTED
+268 semantic altered ('conditional_links',) SYMBOLIC-U-TWO REJECTED
+269 semantic altered ('runtime_registration_revocation_links',) SYMBOLIC-U-TWO REJECTED
+270 semantic altered ('classification',) SYMBOLIC-U-TWO REJECTED
+271 semantic altered ('scope', 'invocation') SYMBOLIC-U-TWO REJECTED
+272 semantic altered ('context',) SYMBOLIC-U-TWO REJECTED
+273 semantic nested same-valued int subclass SYMBOLIC-U-TWO REJECTED
+274 mutated returned object cannot change expectations SYMBOLIC-U-TWO PASS
+275 direct submitted output accepted SYMBOLIC-U-TWO PASS
+276 producer pre-normalization input gate SYMBOLIC-U-TWO REJECTED
+277 producer pre-normalization output gate SYMBOLIC-U-TWO REJECTED
+278 producer output nested mutation isolation SYMBOLIC-U-TWO PASS
+279 source validator declaration omission REJECTED
+280 source validator guard omission REJECTED
+281 source validator order alteration REJECTED
+282 source validator remove wrong key REJECTED
+283 source validator stale source REJECTED
+284 bundle nested mutation isolates expectations PASS
+285 observer stays unjoined and runtime unknown PASS

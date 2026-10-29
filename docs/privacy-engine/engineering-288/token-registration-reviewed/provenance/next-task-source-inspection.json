@@ -1,0 +1,139 @@
+{
+  "already_covered": [
+    "Exact _run AST and normal launcher statement order (client_handle_source, lines 1427-1428)",
+    "ManagedAuthority close/_dispose reference-transfer paths (constructed_reference_path)",
+    "Saved close frame, nested backend close, instance binding, handoff-before-close and confirmed-close records (SOC-closed smoke_occurrences.semantic, lines 238-292)",
+    "Invocation-specific registry registration and normal pop completion (token_registration_projection); continuity premise required for selected-owner removal"
+  ],
+  "existing_coverage": {
+    "client_handle_projection": {
+      "end_line": 1590,
+      "line": 1491
+    },
+    "client_handle_source": {
+      "end_line": 1439,
+      "line": 1351
+    },
+    "client_state_projection": {
+      "end_line": 1800,
+      "line": 1713
+    },
+    "compile_token_registration": {
+      "end_line": 1986,
+      "line": 1972
+    },
+    "constructed_reference_path": {
+      "end_line": 693,
+      "line": 559
+    },
+    "reference_source": {
+      "end_line": 525,
+      "line": 444
+    },
+    "token_registration_projection": {
+      "end_line": 2040,
+      "line": 2000
+    },
+    "token_registration_source": {
+      "end_line": 1970,
+      "line": 1950
+    }
+  },
+  "mandatory_path": [
+    "validate -> derive -> derive_token -> _checked -> _basis",
+    "_basis -> retained IS-01 derive_status -> earlier reviewed mandatory chain",
+    "catalogue -> compile_token_registration -> token_registration_source",
+    "constructed_projection -> _checked -> _construct_checked -> token_registration_projection"
+  ],
+  "method": "Read-only exact source, AST, saved receipt and mandatory-validator inspection. No code imports, validator/test/review execution or session operation.",
+  "missing_runtime_evidence_is_not_an_implementation_defect": true,
+  "new_operating_authority_required_for_static_construction": false,
+  "next_task_implemented": false,
+  "precise_gap": "No executable invocation-specific normal-exit composition connects the completed _run pop to resumption through session/_session, close of the same yielded manager, post-close local managed=None, and subsequent ACTIVE unlink. Current token projector stops at normal-pop-completion. Existing client projections consume cleanup only in retained-original/fixed-failure cases; normal-success cleanup remains unobserved. Separate source-shape checks and saved close facts do not supply this constructed composition.",
+  "producer": {
+    "bytes": 205451,
+    "sha256": "4d485ad7df99bf6d0cd05c41d7091f126090eadc9ebcff39a80e1d25e623e5bc"
+  },
+  "proposed_task": "One bounded normal session-exit correspondence in both contexts: completed pop -> launcher resumption -> selected managed.close normal completion -> local managed reference clear -> ACTIVE unlink attempt/completion. Reuse existing close/reference and saved-close checks. Preserve abrupt/unknown frontiers without extending a complete exceptional lifecycle.",
+  "retained_sources_suffice_for_constructed_relation": true,
+  "saved_limits": {
+    "new_token_registration_limits": {
+      "Decision_B": "UNCHANGED",
+      "SOURCE_ONLY": "UNCHANGED",
+      "actual_admission": false,
+      "all_eleven_obligations_preserved": true,
+      "allowances": "UNCHANGED",
+      "complete_repetition_coverage": false,
+      "cumulative_envelope": "UNADOPTED",
+      "final_binding": "BLOCKED",
+      "inventory_unknown_totals": 4,
+      "lifetime_unknown_totals": 14,
+      "normal_conditional_slice": true,
+      "observer_join": null,
+      "outer_lifecycle_complete": false,
+      "physical_identity": null,
+      "readiness": "BLOCKED",
+      "registry_continuity_is_explicit_conditional_premise": true,
+      "retention": "UNCHANGED",
+      "runtime_registration_revocation": "UNAVAILABLE"
+    },
+    "outer_callback_cleanup_projection": "PARTIAL; unchanged scope"
+  },
+  "source_files": {
+    "source-evidence/lab_bootstrap.py": {
+      "identity": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      },
+      "source_path": "target/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/code/lab_bootstrap.py"
+    },
+    "source-evidence/live_connection.py": {
+      "identity": {
+        "bytes": 5717,
+        "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+      },
+      "source_path": "target/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/candidate/compiler/live_connection.py"
+    },
+    "source-evidence/prospective_entry.py": {
+      "identity": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      },
+      "source_path": "target/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/prospective_entry.py"
+    },
+    "source-evidence/smoke_occurrences.py": {
+      "identity": {
+        "bytes": 31687,
+        "sha256": "5cc79baac1813284768fcc79cc1cf00d50b3febe02ea6947511ddc8b7427d05b"
+      },
+      "source_path": "target/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/code/smoke_occurrences.py"
+    }
+  },
+  "source_requirements": {
+    "lab_bootstrap.py": [
+      164,
+      165,
+      166,
+      167,
+      173,
+      185,
+      186
+    ],
+    "live_connection.py": [
+      57,
+      58,
+      59,
+      60
+    ],
+    "prospective_entry.py": [
+      173,
+      174,
+      186,
+      188
+    ]
+  },
+  "validator": {
+    "bytes": 11502,
+    "sha256": "afca436de30e93020923a12af2e53d2a0b584dcc34ab9f56d5b423d6a1fe9c7d"
+  }
+}

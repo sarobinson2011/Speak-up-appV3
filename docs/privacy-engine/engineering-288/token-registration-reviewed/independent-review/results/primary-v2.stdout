@@ -1,0 +1,170 @@
+1 actual predecessor derive_status invoked PASS
+2 catalogue exact stage coverage from independent AST PASS
+3 source site and source identity owner-create PASS
+4 source site and source identity token-create PASS
+5 source site and source identity registry-insert PASS
+6 source site and source identity control-guard PASS
+7 source site and source identity control-create PASS
+8 source site and source identity control-callback PASS
+9 source site and source identity client-create PASS
+10 source site and source identity client-callback PASS
+11 source site and source identity owner-failure-guard PASS
+12 source site and source identity finally-enter PASS
+13 source site and source identity removal-attempt PASS
+14 source site and source identity removal-complete PASS
+15 control guard and failure guard are source conditions PASS
+16 pop anchor is in actual finally region PASS
+17 source-derived normal controlled SYMBOLIC-U-ONE PASS
+18 source-derived normal client only SYMBOLIC-U-ONE PASS
+19 source-derived normal unknown continuity SYMBOLIC-U-ONE PASS
+20 source-derived stored failure frontier SYMBOLIC-U-ONE PASS
+21 prefix facts registry-insert process-termination SYMBOLIC-U-ONE PASS
+22 prefix facts registry-insert unobserved SYMBOLIC-U-ONE PASS
+23 prefix facts registry-insert raise SYMBOLIC-U-ONE PASS
+24 prefix facts control-callback process-termination SYMBOLIC-U-ONE PASS
+25 prefix facts control-callback unobserved SYMBOLIC-U-ONE PASS
+26 prefix facts control-callback raise SYMBOLIC-U-ONE PASS
+27 prefix facts client-callback process-termination SYMBOLIC-U-ONE PASS
+28 prefix facts client-callback unobserved SYMBOLIC-U-ONE PASS
+29 prefix facts client-callback raise SYMBOLIC-U-ONE PASS
+30 prefix facts finally-enter process-termination SYMBOLIC-U-ONE PASS
+31 prefix facts finally-enter unobserved SYMBOLIC-U-ONE PASS
+32 prefix facts finally-enter raise SYMBOLIC-U-ONE PASS
+33 prefix facts removal-attempt process-termination SYMBOLIC-U-ONE PASS
+34 prefix facts removal-attempt unobserved SYMBOLIC-U-ONE PASS
+35 prefix facts removal-attempt raise SYMBOLIC-U-ONE PASS
+36 prefix facts removal-complete process-termination SYMBOLIC-U-ONE PASS
+37 prefix facts removal-complete unobserved SYMBOLIC-U-ONE PASS
+38 prefix facts removal-complete raise SYMBOLIC-U-ONE PASS
+39 wrong binding token SYMBOLIC-U-ONE REJECTED
+40 wrong binding owner SYMBOLIC-U-ONE REJECTED
+41 wrong binding client SYMBOLIC-U-ONE REJECTED
+42 wrong binding control SYMBOLIC-U-ONE REJECTED
+43 wrong binding session SYMBOLIC-U-ONE REJECTED
+44 wrong binding manager SYMBOLIC-U-ONE REJECTED
+45 wrong binding client.token SYMBOLIC-U-ONE REJECTED
+46 wrong binding control.token SYMBOLIC-U-ONE REJECTED
+47 wrong binding owners[token] SYMBOLIC-U-ONE REJECTED
+48 wrong binding owner.wrapper SYMBOLIC-U-ONE REJECTED
+49 wrong binding session.managed SYMBOLIC-U-ONE REJECTED
+50 coordinated cross-invocation SYMBOLIC-U-ONE REJECTED
+51 equal phase content distinct invocation identities SYMBOLIC-U-ONE PASS
+52 stale scope acquisition SYMBOLIC-U-ONE REJECTED
+53 stale scope instance SYMBOLIC-U-ONE REJECTED
+54 stale scope frontier SYMBOLIC-U-ONE REJECTED
+55 actual omitted step registry-insert SYMBOLIC-U-ONE REJECTED
+56 actual omitted step control-guard SYMBOLIC-U-ONE REJECTED
+57 actual omitted step control-callback SYMBOLIC-U-ONE REJECTED
+58 actual omitted step owner-failure-guard SYMBOLIC-U-ONE REJECTED
+59 actual omitted step finally-enter SYMBOLIC-U-ONE REJECTED
+60 actual omitted step removal-attempt SYMBOLIC-U-ONE REJECTED
+61 actual omitted step removal-complete SYMBOLIC-U-ONE REJECTED
+62 insertion before owner rejected SYMBOLIC-U-ONE REJECTED
+63 no premature registration_completed_in_model SYMBOLIC-U-ONE REJECTED
+64 no premature finally_entered_in_model SYMBOLIC-U-ONE REJECTED
+65 no premature removal_attempt_entered_in_model SYMBOLIC-U-ONE REJECTED
+66 no premature removal_completed_in_model SYMBOLIC-U-ONE REJECTED
+67 no premature selected_owner_removed_in_model SYMBOLIC-U-ONE REJECTED
+68 earlier established fact preserved registration_completed_in_model SYMBOLIC-U-ONE REJECTED
+69 earlier established fact preserved client_callback_completed_in_model SYMBOLIC-U-ONE REJECTED
+70 earlier established fact preserved finally_entered_in_model SYMBOLIC-U-ONE REJECTED
+71 earlier established fact preserved removal_attempt_entered_in_model SYMBOLIC-U-ONE REJECTED
+72 continuity cannot be invented SYMBOLIC-U-ONE REJECTED
+73 unsupported revocation_persists SYMBOLIC-U-ONE REJECTED
+74 unsupported database_cleanup_completion SYMBOLIC-U-ONE REJECTED
+75 unsupported retained_error SYMBOLIC-U-ONE REJECTED
+76 unsupported pop_return_value SYMBOLIC-U-ONE REJECTED
+77 unsupported callback_return_destination SYMBOLIC-U-ONE REJECTED
+78 unsupported actual_admission SYMBOLIC-U-ONE REJECTED
+79 exact types ('projection', 'occurrence') SYMBOLIC-U-ONE REJECTED
+80 exact types ('projection', 'outcomes') SYMBOLIC-U-ONE REJECTED
+81 exact types ('projection', 'scope') SYMBOLIC-U-ONE REJECTED
+82 exact types ('output', 'completion') SYMBOLIC-U-ONE REJECTED
+83 exact types ('output', 'events') SYMBOLIC-U-ONE REJECTED
+84 exact types ('output', 'reference_bindings', 'token') SYMBOLIC-U-ONE REJECTED
+85 exact boolean control_present SYMBOLIC-U-ONE REJECTED
+86 exact boolean owner_failure_none SYMBOLIC-U-ONE REJECTED
+87 exact boolean registry_continuity SYMBOLIC-U-ONE REJECTED
+88 semantic nested subclass SYMBOLIC-U-ONE REJECTED
+89 result aliases isolated SYMBOLIC-U-ONE PASS
+90 source-derived normal controlled SYMBOLIC-U-TWO PASS
+91 source-derived normal client only SYMBOLIC-U-TWO PASS
+92 source-derived normal unknown continuity SYMBOLIC-U-TWO PASS
+93 source-derived stored failure frontier SYMBOLIC-U-TWO PASS
+94 prefix facts registry-insert process-termination SYMBOLIC-U-TWO PASS
+95 prefix facts registry-insert unobserved SYMBOLIC-U-TWO PASS
+96 prefix facts registry-insert raise SYMBOLIC-U-TWO PASS
+97 prefix facts control-callback process-termination SYMBOLIC-U-TWO PASS
+98 prefix facts control-callback unobserved SYMBOLIC-U-TWO PASS
+99 prefix facts control-callback raise SYMBOLIC-U-TWO PASS
+100 prefix facts client-callback process-termination SYMBOLIC-U-TWO PASS
+101 prefix facts client-callback unobserved SYMBOLIC-U-TWO PASS
+102 prefix facts client-callback raise SYMBOLIC-U-TWO PASS
+103 prefix facts finally-enter process-termination SYMBOLIC-U-TWO PASS
+104 prefix facts finally-enter unobserved SYMBOLIC-U-TWO PASS
+105 prefix facts finally-enter raise SYMBOLIC-U-TWO PASS
+106 prefix facts removal-attempt process-termination SYMBOLIC-U-TWO PASS
+107 prefix facts removal-attempt unobserved SYMBOLIC-U-TWO PASS
+108 prefix facts removal-attempt raise SYMBOLIC-U-TWO PASS
+109 prefix facts removal-complete process-termination SYMBOLIC-U-TWO PASS
+110 prefix facts removal-complete unobserved SYMBOLIC-U-TWO PASS
+111 prefix facts removal-complete raise SYMBOLIC-U-TWO PASS
+112 wrong binding token SYMBOLIC-U-TWO REJECTED
+113 wrong binding owner SYMBOLIC-U-TWO REJECTED
+114 wrong binding client SYMBOLIC-U-TWO REJECTED
+115 wrong binding control SYMBOLIC-U-TWO REJECTED
+116 wrong binding session SYMBOLIC-U-TWO REJECTED
+117 wrong binding manager SYMBOLIC-U-TWO REJECTED
+118 wrong binding client.token SYMBOLIC-U-TWO REJECTED
+119 wrong binding control.token SYMBOLIC-U-TWO REJECTED
+120 wrong binding owners[token] SYMBOLIC-U-TWO REJECTED
+121 wrong binding owner.wrapper SYMBOLIC-U-TWO REJECTED
+122 wrong binding session.managed SYMBOLIC-U-TWO REJECTED
+123 coordinated cross-invocation SYMBOLIC-U-TWO REJECTED
+124 equal phase content distinct invocation identities SYMBOLIC-U-TWO PASS
+125 stale scope acquisition SYMBOLIC-U-TWO REJECTED
+126 stale scope instance SYMBOLIC-U-TWO REJECTED
+127 stale scope frontier SYMBOLIC-U-TWO REJECTED
+128 actual omitted step registry-insert SYMBOLIC-U-TWO REJECTED
+129 actual omitted step control-guard SYMBOLIC-U-TWO REJECTED
+130 actual omitted step control-callback SYMBOLIC-U-TWO REJECTED
+131 actual omitted step owner-failure-guard SYMBOLIC-U-TWO REJECTED
+132 actual omitted step finally-enter SYMBOLIC-U-TWO REJECTED
+133 actual omitted step removal-attempt SYMBOLIC-U-TWO REJECTED
+134 actual omitted step removal-complete SYMBOLIC-U-TWO REJECTED
+135 insertion before owner rejected SYMBOLIC-U-TWO REJECTED
+136 no premature registration_completed_in_model SYMBOLIC-U-TWO REJECTED
+137 no premature finally_entered_in_model SYMBOLIC-U-TWO REJECTED
+138 no premature removal_attempt_entered_in_model SYMBOLIC-U-TWO REJECTED
+139 no premature removal_completed_in_model SYMBOLIC-U-TWO REJECTED
+140 no premature selected_owner_removed_in_model SYMBOLIC-U-TWO REJECTED
+141 earlier established fact preserved registration_completed_in_model SYMBOLIC-U-TWO REJECTED
+142 earlier established fact preserved client_callback_completed_in_model SYMBOLIC-U-TWO REJECTED
+143 earlier established fact preserved finally_entered_in_model SYMBOLIC-U-TWO REJECTED
+144 earlier established fact preserved removal_attempt_entered_in_model SYMBOLIC-U-TWO REJECTED
+145 continuity cannot be invented SYMBOLIC-U-TWO REJECTED
+146 unsupported revocation_persists SYMBOLIC-U-TWO REJECTED
+147 unsupported database_cleanup_completion SYMBOLIC-U-TWO REJECTED
+148 unsupported retained_error SYMBOLIC-U-TWO REJECTED
+149 unsupported pop_return_value SYMBOLIC-U-TWO REJECTED
+150 unsupported callback_return_destination SYMBOLIC-U-TWO REJECTED
+151 unsupported actual_admission SYMBOLIC-U-TWO REJECTED
+152 exact types ('projection', 'occurrence') SYMBOLIC-U-TWO REJECTED
+153 exact types ('projection', 'outcomes') SYMBOLIC-U-TWO REJECTED
+154 exact types ('projection', 'scope') SYMBOLIC-U-TWO REJECTED
+155 exact types ('output', 'completion') SYMBOLIC-U-TWO REJECTED
+156 exact types ('output', 'events') SYMBOLIC-U-TWO REJECTED
+157 exact types ('output', 'reference_bindings', 'token') SYMBOLIC-U-TWO REJECTED
+158 exact boolean control_present SYMBOLIC-U-TWO REJECTED
+159 exact boolean owner_failure_none SYMBOLIC-U-TWO REJECTED
+160 exact boolean registry_continuity SYMBOLIC-U-TWO REJECTED
+161 semantic nested subclass SYMBOLIC-U-TWO REJECTED
+162 result aliases isolated SYMBOLIC-U-TWO PASS
+163 independent source validation omit declaration and expected stage REJECTED
+164 independent source validation replace pop key REJECTED
+165 independent source validation erase optional control guard REJECTED
+166 independent source validation remove stored failure guard REJECTED
+167 independent source validation claim forwarded callback result REJECTED
+168 exact current receipt derived PASS
+169 returned context mutations cannot change expected receipt PASS
+170 unchanged obligations and unavailable observations retained PASS

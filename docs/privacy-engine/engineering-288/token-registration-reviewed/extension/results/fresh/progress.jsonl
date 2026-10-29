@@ -1,0 +1,14 @@
+{"check": "fresh actual semantic relation accepts both contexts", "result": "PASS"}
+{"check": "fresh derive after nested result mutations exact receipt", "result": "PASS"}
+{"check": "public JSON validation remains pristine", "result": "PASS"}
+{"check": "full constructed entry SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "full constructed entry SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "full semantic rejects coordinated source claims", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "full derive rejects stale instance binding", "result": "REJECTED", "error": "TOKEN-SEMANTIC-CORRESPONDENCE"}
+{"check": "full constructed rejects cross-context coordinated references", "result": "REJECTED", "error": "TOKEN-PREMISE:scope"}
+{"check": "public receipt requires new relation in both contexts", "result": "REJECTED", "error": "TOKEN-MANDATORY-RELATION"}
+{"check": "public receipt rejects coordinated omission", "result": "REJECTED", "error": "TOKEN-STALE-OR-ALTERED-RECEIPT"}
+{"check": "public exact bytes contract retained", "result": "REJECTED", "error": "TOKEN-RECEIPT-BYTES"}
+{"check": "semantic exact type before fresh construction", "result": "REJECTED", "error": "TOKEN-CLAIMS:VALUE-TYPE"}
+{"check": "constructed exact type before fresh construction", "result": "REJECTED", "error": "TOKEN-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "all accepted and value-mutated entries mandatorily invoked predecessor", "result": "PASS"}

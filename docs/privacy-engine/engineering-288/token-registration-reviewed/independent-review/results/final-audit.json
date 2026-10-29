@@ -1,0 +1,174 @@
+{
+  "result": "PASS",
+  "verdict": "SUPPORTED within the declared normal token registration/callback-to-revocation correspondence slice",
+  "input": {
+    "bytes": 69308990,
+    "sha256": "84c714c62aa6aa3956e5b137d03e584b055c06b26200b6768090ad33a5e4dbeb"
+  },
+  "roots_verified_unchanged": [
+    "tr-input",
+    "tr-primary-root",
+    "tr-recovered-root",
+    "tr-primary-v2-root",
+    "tr-full-semantic-root",
+    "tr-full-constructed-root",
+    "tr-cli-root"
+  ],
+  "files_per_root": 2178,
+  "directories_per_root": 668,
+  "independent_groups": {
+    "independent-primary-v2": {
+      "checks": 170,
+      "outcomes": {
+        "PASS": 67,
+        "REJECTED": 103
+      },
+      "identity": {
+        "bytes": 18137,
+        "sha256": "c74354f3d037a0d08691bed36001240f3b3dea2ff838e2efce055c914a50336d"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 129.72046981099993
+    },
+    "independent-recovered": {
+      "checks": 51,
+      "outcomes": {
+        "PASS": 18,
+        "REJECTED": 33
+      },
+      "identity": {
+        "bytes": 5688,
+        "sha256": "3e9c2aafa536ee84fe024a59fb08464ce73c04db9f390b42cdb7cb022cab36a7"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 109.96848643299745
+    },
+    "fresh-semantic": {
+      "checks": 7,
+      "outcomes": {
+        "PASS": 4,
+        "REJECTED": 3
+      },
+      "identity": {
+        "bytes": 1160,
+        "sha256": "e7c1b818eab19378d0c40bbc04dca23d10fc4fd1a70f2323e24640c962201b8d"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 299.8297280330007
+    },
+    "fresh-constructed": {
+      "checks": 10,
+      "outcomes": {
+        "PASS": 3,
+        "REJECTED": 7
+      },
+      "identity": {
+        "bytes": 1558,
+        "sha256": "c6d507cb048020ae829dbbd162c1a34f02ce00c6561d0f7f75d763c30fb1dacf"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 209.27568501300266
+    }
+  },
+  "focused_and_full_entry_checks": 238,
+  "separate_actual_fresh_CLI": {
+    "result": "PASS",
+    "checks": 1,
+    "public_result": {
+      "actual_admission": false,
+      "contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-TWO"
+      ],
+      "receipt": {
+        "bytes": 3328177,
+        "sha256": "1184bbf9366a2c7a8ced902836566b6610a8844cbf97698e78d10e6e91107145"
+      },
+      "result": "PASS",
+      "runtime_registration_revocation": "UNAVAILABLE"
+    },
+    "process": {
+      "exit_code": 0,
+      "seconds": 116.72417211599895,
+      "stdout": {
+        "bytes": 255,
+        "sha256": "3d4d29ee43807e3fa8e55fcd24a1aca68644f11b10a2e5fc593edb3d6626ee4d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "fresh_process": true,
+      "recovered_final_root": true
+    }
+  },
+  "total_completed_checks_including_CLI": 239,
+  "failed_reviewer_attempt_excluded": 11,
+  "additional_zero_control_audit_failure_preserved": "Initially compared one section of a two-file diff; verified complete concatenation after correction.",
+  "failure_cause": "Reviewer parsed an indented source fragment without restoring its first-line column; corrected harness only.",
+  "residual_witness": null,
+  "current_components": {
+    "managed_coverage.py": {
+      "predecessor": {
+        "bytes": 194665,
+        "sha256": "4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e"
+      },
+      "new": {
+        "bytes": 205451,
+        "sha256": "4d485ad7df99bf6d0cd05c41d7091f126090eadc9ebcff39a80e1d25e623e5bc"
+      }
+    },
+    "correspondence.py": {
+      "predecessor": {
+        "bytes": 17994,
+        "sha256": "0a8c0f97e769eca4c0629136b6eac28d1473094691a1d11beaf4d7412316d79d"
+      },
+      "new": {
+        "bytes": 11502,
+        "sha256": "afca436de30e93020923a12af2e53d2a0b584dcc34ab9f56d5b423d6a1fe9c7d"
+      }
+    }
+  },
+  "receipt": {
+    "bytes": 3328177,
+    "sha256": "1184bbf9366a2c7a8ced902836566b6610a8844cbf97698e78d10e6e91107145"
+  },
+  "actual_diff_matches_declared": true,
+  "supplied_recovery_manifest_serialization_matches": true,
+  "predecessor_members_preserved": 2053,
+  "prior_review_noninput_records_preserved": 80,
+  "inherited_producer_functions_unchanged": 78,
+  "runtime_changes": 0,
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "admission": false
+}
