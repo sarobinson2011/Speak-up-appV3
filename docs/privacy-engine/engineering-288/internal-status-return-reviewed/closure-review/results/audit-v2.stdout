@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "prior_archive": {
+    "bytes": 62835317,
+    "sha256": "06d3b32fdf83757b40d9963a45a21ca5a5a80d2ca5c4af813655b4ad465f3864"
+  },
+  "review_archive": {
+    "bytes": 66394354,
+    "sha256": "b8135042b4638af1acebfd90ac07ba4aea844853148f8ce0c99804cac8643334"
+  },
+  "original_members_unchanged": 1845,
+  "review_noninput_members_unchanged": 157,
+  "inherited_functions_unchanged": 70,
+  "changed_producer_functions": [
+    "status_forward_projection",
+    "status_forward_source",
+    "status_snapshot_value",
+    "validate_status_forward",
+    "validate_status_forward_projection"
+  ],
+  "added_producer_functions": [
+    "status_exact_tree",
+    "status_typed_same"
+  ],
+  "runtime_sources_unchanged": true,
+  "unrelated_historical_validators_unchanged": true,
+  "receipt_only_current_component_identities_changed": true,
+  "receipt": {
+    "bytes": 2776568,
+    "sha256": "4db6c9d4da0110055f483fdf5ef958a12edd9362b8315704ff0cf5143470c468"
+  },
+  "obligations": 11,
+  "supplied_recovery_manifest_selection_verified": 2037,
+  "supplied_intermediate_outer_archive_newly_verified": false,
+  "historical_qualifications": "Preserved unchanged; compact omitted outer archives/forensic manifests are not new executable requirements. Exact original/review outer bytes verified locally; not reconstructed.",
+  "prior_failures_preserved": true
+}

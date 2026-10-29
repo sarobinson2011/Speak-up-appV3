@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/entries.py", line 17, in <module>
+    d=m.inputs(root);cat=m.catalogue(d);claims=copy.deepcopy([x['internal_status_return_correspondence'] for x in receipt['contexts']]);ev=dict(m.inner(d)['ctx']['e']);path='evidence/execution-trace.json';tr=json.loads(ev[path])
+      ^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 35, in inputs
+    root=Path(root);base=predecessor_root(root);producer=root/'code/managed_coverage.py'
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 30, in predecessor_root
+    walk(base);require(files==expected and seen_dirs==dirs,'CLIENT-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  [Previous line repeated 22 more times]
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 29, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-input/code/correspondence.py", line 13, in require
+    if not v:raise ValueError(message)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLIENT-UNDECLARED-OR-NONREGULAR

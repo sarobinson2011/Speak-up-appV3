@@ -1,0 +1,104 @@
+--- original/code/correspondence.py
++++ code/correspondence.py
+@@ -2,7 +2,7 @@
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 193031, 'sha256': '57786ded29951dcf613e9dd6c8386fae00d92199344c1ab41df52fa49617f038'}
++PRODUCER_PIN={'bytes': 194665, 'sha256': '4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e'}
+ CLIENT_MANIFEST={'bytes':426786,'sha256':'f57144894667a71fce5ae3acca0229e2c95313db307f6ffbb8e02a04c8cf72f3'}
+ STATE_RECEIPT={'bytes':2180446,'sha256':'feefd0f5282b51608c7fd95ab24518aa1be9e491aa24f004ed588b1906c7aab9'}
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+@@ -12,13 +12,48 @@
+ def require(v,message):
+  if not v:raise ValueError(message)
+ 
+-def same(a,b,message):require(enc(a)==enc(b),message)
++def status_exact_tree(value,code):
++ """Check exact representation types BEFORE equality, copying or JSON encoding.
++
++ Repeated aliases are allowed; cycles are not finite JSON values. This is a
++ representation contract, not a reason-string, epoch or lifetime bound.
++ """
++ stack=[(value,False)];active=set()
++ while stack:
++  node,leaving=stack.pop();kind=type(node)
++  if leaving:active.remove(id(node));continue
++  if kind is dict or kind is list:
++   require(id(node) not in active,code+':CYCLE');active.add(id(node));stack.append((node,True))
++   if kind is dict:
++    for key,child in node.items():
++     require(type(key) is str,code+':KEY-TYPE');stack.append((child,False))
++   else:
++    for child in node:stack.append((child,False))
++  else:require(any(kind is allowed for allowed in (str,int,bool,float,type(None))),code+':VALUE-TYPE')
++
++def same(a,b,message):
++ status_exact_tree(a,message);status_exact_tree(b,message);require(enc(a)==enc(b),message)
+ 
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ 
++ORIGINAL_MANIFEST={'bytes':476626,'sha256':'faaeb5c39d82d05554c8967c7acab10dec75fe717f02a980fcd36861e72b77aa'}
++def original_root(root):
++ require(stat.S_ISDIR(Path(root).lstat().st_mode),'CORRECTION-ROOT-TYPE')
++ base=Path(root)/'original';require(stat.S_ISDIR(base.lstat().st_mode),'ORIGINAL-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'ORIGINAL-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==ORIGINAL_MANIFEST,'ORIGINAL-MANIFEST-PIN')
++ manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen_dirs=set()
++ def walk(path):
++  for e in os.scandir(path):
++   p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
++   if stat.S_ISDIR(mode):require(n in dirs,'ORIGINAL-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'ORIGINAL-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen_dirs==dirs,'ORIGINAL-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'ORIGINAL-BYTES:'+n)
++ return base
++
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/state'
++ root=original_root(root);base=root/'retained/state'
+  for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-ROOT-TYPE')
+  p=base/'MANIFEST.json';require(stat.S_ISREG(p.lstat().st_mode),'CLIENT-MANIFEST-TYPE');raw=p.read_bytes();require(identity(raw)==CLIENT_MANIFEST,'CLIENT-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen_dirs=set()
+@@ -76,13 +111,16 @@
+    'scope':{'context':context['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':None,'request_identifier':None},'destination':'designated internal control caller','runtime_forwarding_links':None,'actual_status_forwarding_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'separate_observer':copy.deepcopy(context['client_state_return_correspondence']['separate_observer']),'observer_join':None,'missing':'No ManagedSession.status/_Control.status frames or physical return-reference observations; conditional expressions do not fill them.'})
+  return rows
+ def _check_rows(basis,claims,rows):
++ status_exact_tree(claims,'STATUS-FORWARD-CLAIMS');status_exact_tree(rows,'STATUS-FORWARD-EXPECTED-ROWS')
+  require(type(claims) is list and len(claims)==len(rows)==2,'STATUS-FORWARD-CONTEXT-DOMAIN')
+  for got,want in zip(claims,rows):
+   require(type(got) is dict and set(got)==set(want),'STATUS-FORWARD-CONTEXT-FIELDS');same(got['context'],want['context'],'STATUS-FORWARD-CONTEXT-ORDER')
+   same(got['instance_anchor'],want['instance_anchor'],'STATUS-FORWARD-INSTANCE-ANCHOR');same(got['validated_manager_samples'],want['validated_manager_samples'],'STATUS-FORWARD-SAMPLES')
+   same(got,want,'STATUS-FORWARD-CORRESPONDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
++ status_exact_tree(submitted_catalogue,'STATUS-FORWARD-SUBMITTED-CATALOGUE');status_exact_tree(claims,'STATUS-FORWARD-CLAIMS')
+  basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'STATUS-FORWARD-CATALOGUE');d=inner(data);fd=inner(basis['fresh'])
++ require(type(d['manager']) is bytes and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()) and all(type(v) is bytes for v in sources(data)),'STATUS-FORWARD-CANDIDATE-SOURCE-TYPES')
+  require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'] and d['manager']==fd['manager'],'STATUS-FORWARD-CANDIDATE-SOURCES');same(d['ctx']['binding'],fd['ctx']['binding'],'STATUS-FORWARD-CANDIDATE-BINDING')
+  _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence);rows=_rows(basis)
+  if claims is not None:_check_rows(basis,claims,rows)
+@@ -97,13 +135,16 @@
+ def derive_status(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+ def invocation_scope(anchor,invocation):
++ status_exact_tree(anchor,'STATUS-FORWARD-ANCHOR');status_exact_tree(invocation,'STATUS-FORWARD-INVOCATION')
+  require(type(invocation) is str and bool(invocation),'STATUS-FORWARD-INVOCATION')
+  return {'context':anchor['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':invocation}
+ def reference_premises(scope,owner_present,owner_failed):
++ status_exact_tree(scope,'STATUS-FORWARD-SCOPE')
+  require(type(owner_present) is bool and type(owner_failed) is bool,'STATUS-FORWARD-OWNER-PREMISE')
+  refs={n:{'scope':copy.deepcopy(scope),'symbol':scope['invocation']+'/'+n+'-symbol'} for n in ('control','token','owner','session','manager','result')}
+  refs.update({'control.token':copy.deepcopy(refs['token']),'owners[token]':copy.deepcopy(refs['owner']) if owner_present else None,'owner.wrapper':copy.deepcopy(refs['session']),'session.managed':copy.deepcopy(refs['manager']),'owner_failed':owner_failed});return refs
+ def _construct_checked(basis,rows,case):
++ status_exact_tree(case,'STATUS-FORWARD-CONSTRUCTED-INPUT')
+  require(type(case) is dict and set(case)=={'kind','context','anchor','owner_present','owner_failed','manager_basis','projection'} and case['kind']=='CONSTRUCTED-INTERNAL-STATUS-FORWARD','STATUS-FORWARD-CONSTRUCTED-CASE')
+  matches=[r for r in rows if r['context']==case['context']];require(len(matches)==1,'STATUS-FORWARD-CONSTRUCTED-CONTEXT');row=matches[0];anchor=row['instance_anchor'];same(case['anchor'],anchor,'STATUS-FORWARD-CONSTRUCTED-ANCHOR')
+  p=case['projection'];require(type(p) is dict and type(p.get('occurrence')) is str,'STATUS-FORWARD-CONSTRUCTED-PROJECTION');scope=invocation_scope(anchor,p['occurrence']);refs=reference_premises(scope,case['owner_present'],case['owner_failed'])
+@@ -117,6 +158,7 @@
+  value=basis['fresh']['coverage'].status_forward_projection(basis['catalogue'],p,validated)
+  return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'manager_basis':copy.deepcopy(mb),'projection':value,'premises':'Explicit constructed conditional snapshot/outcomes and source-derived references; saved sample used only where selected, no runtime forwarding join','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
++ status_exact_tree(case,'STATUS-FORWARD-CONSTRUCTED-INPUT')
+  rows,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,rows,case)
+ def derive(root=ROOT):
+  data=inputs(root);return derive_status(data,catalogue(data))

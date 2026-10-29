@@ -1,0 +1,30 @@
+{"check": "legitimate typed forwarding SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "old snapshot accepts same-named subclass _phase SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _phase SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:phase"}
+{"check": "old snapshot accepts same-named subclass _reason SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _reason SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:reason"}
+{"check": "old snapshot accepts same-named subclass _epoch SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _epoch SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:connection_epoch"}
+{"check": "old returned representation accepts subclass container SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current returned representation rejects subclass container SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-VALUE-TYPE"}
+{"check": "old returned representation accepts subclass reason SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current returned representation rejects subclass reason SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:reason"}
+{"check": "old returned representation accepts subclass epoch SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "current returned representation rejects subclass epoch SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:connection_epoch"}
+{"check": "derived-output accepts wrong exact reason type SYMBOLIC-U-ONE", "result": "DEFECT-ACCEPTED"}
+{"check": "semantic helper accepts wrong exact reason type SYMBOLIC-U-ONE", "result": "DEFECT-ACCEPTED"}
+{"check": "legitimate typed forwarding SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "old snapshot accepts same-named subclass _phase SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _phase SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:phase"}
+{"check": "old snapshot accepts same-named subclass _reason SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _reason SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:reason"}
+{"check": "old snapshot accepts same-named subclass _epoch SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current snapshot rejects same-named subclass _epoch SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-VALUE-TYPE:connection_epoch"}
+{"check": "old returned representation accepts subclass container SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current returned representation rejects subclass container SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-VALUE-TYPE"}
+{"check": "old returned representation accepts subclass reason SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current returned representation rejects subclass reason SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:reason"}
+{"check": "old returned representation accepts subclass epoch SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "current returned representation rejects subclass epoch SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:connection_epoch"}
+{"check": "derived-output accepts wrong exact reason type SYMBOLIC-U-TWO", "result": "DEFECT-ACCEPTED"}
+{"check": "semantic helper accepts wrong exact reason type SYMBOLIC-U-TWO", "result": "DEFECT-ACCEPTED"}

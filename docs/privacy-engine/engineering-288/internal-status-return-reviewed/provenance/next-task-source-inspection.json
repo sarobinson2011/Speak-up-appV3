@@ -1,0 +1,64 @@
+{
+  "existing_coverage": {
+    "client_handle_projection": {
+      "end_line": 1590,
+      "line": 1491
+    },
+    "client_handle_source": {
+      "end_line": 1439,
+      "line": 1351
+    },
+    "client_state_projection": {
+      "end_line": 1800,
+      "line": 1713
+    },
+    "status_forward_projection": {
+      "end_line": 1943,
+      "line": 1901
+    },
+    "status_forward_source": {
+      "end_line": 1873,
+      "line": 1828
+    }
+  },
+  "implementation_gap": "No guarded occurrence-specific registration/removal relation for the exact _OWNERS[token] entry across the normal callback/finally path. Existing cleanup revoke premise is only consumed by the retained-original fixed-failure branch. Current status projection ends at the internal control return.",
+  "implemented": false,
+  "mandatory_calls": [
+    "correspondence.validate -> derive -> derive_status -> _checked",
+    "_checked -> _basis -> unchanged predecessor derive_client_state -> derive_client",
+    "catalogue -> compile_status_forward",
+    "client predecessor catalogue -> compile_client_handle -> source shape of _run"
+  ],
+  "method": "Read-only defining source, AST, saved receipt and mandatory-entry inspection; no validator execution",
+  "producer": {
+    "bytes": 194665,
+    "sha256": "4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e"
+  },
+  "proposal": "One bounded static/constructed token-registration and finally-revocation correspondence in both contexts, made mandatory; no runtime change or lifetime coverage claim",
+  "saved_gap": "new_client_state_limits.outer_callback_cleanup_projection = PARTIAL; unchanged scope",
+  "source": {
+    "identity": {
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    },
+    "source_path": "target/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/prospective_entry.py"
+  },
+  "source_lines": [
+    174,
+    176,
+    177,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    188
+  ],
+  "validator": {
+    "bytes": 17994,
+    "sha256": "0a8c0f97e769eca4c0629136b6eac28d1473094691a1d11beaf4d7412316d79d"
+  }
+}

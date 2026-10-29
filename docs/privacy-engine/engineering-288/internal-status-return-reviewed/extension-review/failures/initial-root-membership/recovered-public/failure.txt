@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/entries.py", line 9, in <module>
+    r=rec.check('current public receipt accepted',lambda:m.validate(root,raw));rec.check('public result preserves contexts and disabled admission',lambda:r['contexts']==['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'] and r['actual_admission'] is False and r['runtime_status_forwarding']=='UNAVAILABLE')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/common.py", line 46, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+      ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/entries.py", line 9, in <lambda>
+    r=rec.check('current public receipt accepted',lambda:m.validate(root,raw));rec.check('public result preserves contexts and disabled admission',lambda:r['contexts']==['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'] and r['actual_admission'] is False and r['runtime_status_forwarding']=='UNAVAILABLE')
+                                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 125, in validate
+    require(saved==enc(derive(root)),'STALE-OR-ALTERED-INTERNAL-STATUS-CORRESPONDENCE');return {'result':'PASS','contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'receipt':identity(saved),'runtime_status_forwarding':'UNAVAILABLE','actual_admission':False}
+                       ^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 122, in derive
+    data=inputs(root);return derive_status(data,catalogue(data))
+         ^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 35, in inputs
+    root=Path(root);base=predecessor_root(root);producer=root/'code/managed_coverage.py'
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 30, in predecessor_root
+    walk(base);require(files==expected and seen_dirs==dirs,'CLIENT-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 28, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-UNDECLARED-DIRECTORY');seen_dirs.add(n);walk(p)
+                                                                                            ^^^^^^^
+  [Previous line repeated 22 more times]
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 29, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-recovered/code/correspondence.py", line 13, in require
+    if not v:raise ValueError(message)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLIENT-UNDECLARED-OR-NONREGULAR

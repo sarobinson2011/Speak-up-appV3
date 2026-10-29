@@ -1,0 +1,13 @@
+# Recovery and prior-save continuity
+
+The complete external dependency is Formal-Lab6-I164-IS01-independent-closure-review.zip (a browser duplicate suffix is permitted only with identical bytes): 67,410,780 bytes, 81 entries, SHA-256 6af86c83868178d81323b20705ae7c3c160da48bca29ee2d774d92be45d4e4fd. Keep this archive outside Git. It contains the exact I164-IS01-correction.zip: 68,317,556 bytes, 2,053 entries, SHA-256 5915d8d409d043e9dd95535e91880263e26c776220b8c6d48bf75690e3fc60a9.
+
+For separately authorized future recovery, first verify the outer identity, safe membership, CRC and all hashes; then verify the embedded correction identity, membership and hashes before extraction to a new persistent directory. Use the existing verified archive inspection/extraction tools, never run candidate code merely to inspect saved evidence. Preserve failures without overlay, repair or automatic retry.
+
+The exact active full-root receipt is results/fresh/corrected-receipt.json in the correction. Its bytes are also preserved here at correction/results/fresh/corrected-receipt.json. Do not run the validator against this compact selection: its original/ and deeper predecessor roots must come from the full verified correction. Compact or historical forensic manifests do not constitute an executable-root inventory. Engineering's primary adapter predates the final root-directory guard; its distinct records remain qualified.
+
+provenance/selection-origin-map.json binds copied files to their exact verified source paths and bytes. provenance/external-only-records.json lists intentionally uncommitted large records by identity. Their omission from Git is not deletion, replacement by a summary, a claim of empty evidence, or a runtime evidence gap being resolved. The previous internal-status target and its review are decoded in the correction exactly as their existing recovery documents specify; inherited outer-archive qualifications remain.
+
+The prior client-state milestone is already saved: ed45cd9aadc532655374f865000b6755dd1de08e, prefix docs/privacy-engine/engineering-288/client-state-return-reviewed, selection manifest 24,504 bytes / SHA-256 dac5c91466ecaaecad0dd96ae26cd33e35a4806d6cfc616a70db63edc201d407 (146 files). The command verifies and preserves it, never repeats it. Matching new successful receipts or committed selections are reused. Incomplete or conflicting saves stop without repair/retry.
+
+Review campaigns remain saved evidence. No command in this selection authorizes their rerun, session access or admission. Read NEXT-TASK.md only as an identified unimplemented construction slice.

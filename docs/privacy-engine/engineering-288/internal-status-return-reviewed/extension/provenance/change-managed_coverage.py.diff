@@ -1,0 +1,126 @@
+--- reviewed-client-state/code/managed_coverage.py
++++ internal-status/code/managed_coverage.py
+@@ -1803,6 +1803,123 @@
+  same(submitted,client_state_projection(catalogue,case,validated),'CLIENT-STATE-PROJECTION-CORRESPONDENCE');return True
+ 
+ 
++def status_forward_source(launcher,entry,fields,boundary):
++ """Source-derived internal diagnostic route. No operational code is invoked."""
++ lt,ll=_client_locate(launcher);et,el=_client_locate(entry)
++ def method(tree,owner,name):
++  body=tree.body if owner is None else next(n.body for n in tree.body if isinstance(n,ast.ClassDef) and n.name==owner)
++  found=[n for n in body if isinstance(n,ast.FunctionDef) and n.name==name];need(len(found)==1,'STATUS-FORWARD-METHOD:'+name);return found[0]
++ def shape(node,text):
++  def norm(n):
++   n=copy.deepcopy(n)
++   if n.body and isinstance(n.body[0],ast.Expr) and isinstance(n.body[0].value,ast.Constant) and type(n.body[0].value.value) is str:n.body.pop(0)
++   return ast.dump(n,include_attributes=False)
++  same(norm(node),norm(ast.parse(text).body[0]),'STATUS-FORWARD-SOURCE-SHAPE:'+node.name)
++ session=method(lt,'ManagedSession','status');si=method(lt,'ManagedSession','__init__');control=method(et,'_Control','status');ci=method(et,'_Control','__init__');oi=method(et,'_Owner','__init__');fail=method(et,None,'_fail');route=method(et,None,'_run');controlled=method(et,None,'run_controlled')
++ shape(si,'def __init__(self,managed): self.__managed=managed')
++ shape(session,'def status(self): return self.__managed.status()')
++ shape(ci,'def __init__(self,token): self.__token=token')
++ shape(oi,'def __init__(self,wrapper):\n self.wrapper=wrapper\n self.failure=None')
++ shape(control,'def status(self):\n owner=_OWNERS.get(self.__token)\n if owner is None: _fail()\n return owner.wrapper.status()')
++ shape(fail,"def _fail(): raise ClientFailure('MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization') from None")
++ shape(controlled,'''def run_controlled(candidate,draft,runtime,destination,client,*,control,create=False):
++ failed=False
++ try: launcher=_load_launcher()
++ except BaseException: failed=True
++ if failed: _fail()
++ return _run(launcher,candidate,draft,runtime,destination,client,create,control)
++''')
++ # Independently locate the actual token store/control handoff/revocation. The
++ # full _run body is already mandatorily checked by the reviewed predecessor.
++ def unique(kind,expression):
++  hits=[n for n in ast.walk(route) if isinstance(n,kind) and ast.unparse(n)==expression];need(len(hits)==1,'STATUS-FORWARD-ROUTE:'+expression);return hits[0]
++ owner_store=unique(ast.Assign,'_OWNERS[token] = owner');token=unique(ast.Assign,'token = object()');new_owner=unique(ast.Assign,'owner = _Owner(wrapper)');control_call=unique(ast.Call,'control(_Control(token))');revoke=unique(ast.Call,'_OWNERS.pop(token, None)')
++ need(any(g['kind']=='if' and g['test']['expression']=='control is not None' and g['arm']=='body' for g in el(control_call)['guards']),'STATUS-FORWARD-CONTROL-GUARD')
++ phases=sorted({e['value'] for w in fields['source']['writes'] if w['target']=='_phase' for e in _status_expr_nodes(w['value']) if e['op']=='literal' and e['type']=='str'})
++ need(bool(phases),'STATUS-FORWARD-PHASE-DOMAIN')
++ epochs=[w for w in fields['source']['writes'] if w['target']=='_epoch'];initial=[w for w in epochs if w['function']=='__init__'];increments=[w for w in epochs if w['function']!='__init__']
++ need(len(initial)==len(increments)==1 and initial[0]['operation']=='set' and initial[0]['value']['op']=='literal' and initial[0]['value']['type']=='int' and increments[0]['operation']=='add' and increments[0]['value']['op']=='literal' and increments[0]['value']['type']=='int' and increments[0]['value']['value']>0,'STATUS-FORWARD-EPOCH-SOURCE')
++ types_={f['name']:f['type'] for f in fields['declarations']};need(set(types_)==set(fields['owning_return']['field_ids'][i].split(':')[-1] for i in range(len(types_))),'STATUS-FORWARD-FIELD-DOMAIN')
++ manager_return=copy.deepcopy(fields['source']['return']);lock=next(g for g in manager_return['guards'] if g['kind']=='With')
++ stages={'control-call':el(control),'owner-lookup':el(control.body[0]),'owner-guard':el(control.body[1]),'session-call':el(control.body[2].value),'manager-call':ll(session.body[0].value),'lock-enter':copy.deepcopy(lock),'manager-result':manager_return,'lock-exit':copy.deepcopy(lock),'manager-return':manager_return,'session-return':ll(session.body[0]),'control-return':el(control.body[2]),'fixed-failure':el(fail.body[0])}
++ anchors={name:{**loc(node),'source':{'bytes':len(raw),'sha256':digest(raw)},'ast':ast.dump(node,include_attributes=False)} for name,raw,loc,node in [('session-status',launcher,ll,session),('session-init',launcher,ll,si),('control-status',entry,el,control),('control-init',entry,el,ci),('owner-init',entry,el,oi),('controlled-entry',entry,el,controlled),('control-call',entry,el,control_call),('owner-store',entry,el,owner_store),('token-create',entry,el,token),('owner-create',entry,el,new_owner),('revoke',entry,el,revoke),('fixed-failure',entry,el,fail)]}
++ wanted=['manager-status','launcher-forwarder','internal-diagnostic','trusted-control-entry','owner-routing','general-entry'];sites={s['id']:s for s in boundary['sites']};need(all(n in sites for n in wanted),'STATUS-FORWARD-BOUNDARY-SITES')
++ pins={'launcher':{'bytes':len(launcher),'sha256':digest(launcher)},'entry':{'bytes':len(entry),'sha256':digest(entry)},'manager':{k:fields['source']['source'][k] for k in ('bytes','sha256')}}
++ for n in wanted:
++  pin=pins['manager' if n=='manager-status' else 'launcher' if n=='launcher-forwarder' else 'entry'];same({k:sites[n]['anchor'][k] for k in pin},pin,'STATUS-FORWARD-BOUNDARY-PIN')
++ return {'sources':pins,'anchors':anchors,'stages':stages,'owner_guard':ast.unparse(control.body[1].test),'normal_owner_condition':'owner is not None; prior owner.failure does not guard this method','session_call':{'receiver':ast.unparse(control.body[2].value.func.value),'method':control.body[2].value.func.attr,'args':[]},'manager_call':{'receiver':ast.unparse(session.body[0].value.func.value),'method':session.body[0].value.func.attr,'args':[]},'fixed_failure':{'type':fail.body[0].exc.func.id,'message':ast.literal_eval(fail.body[0].exc.args[0]),'explicit_cause':ast.literal_eval(fail.body[0].cause),'context_display_suppressed':True,'ambient_exception_context_not_established':True},'source_phase_literals':phases,'epoch_initial':initial[0]['value']['value'],'epoch_increment':increments[0]['value']['value'],'epoch_write_origins':copy.deepcopy(epochs),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],'no_local_except_in_forwarders':not any(isinstance(n,ast.Try) for fn in (session,control) for n in ast.walk(fn))}
++
++def compile_status_forward(launcher,entry,fields,boundary):
++ source=status_forward_source(launcher,entry,fields,boundary);need(source['no_local_except_in_forwarders'],'STATUS-FORWARD-LOCAL-CATCH')
++ hops=['manager-return','session-return','control-return']
++ return {'format':'I164-INTERNAL-STATUS-FORWARD-STATIC-1','source':source,'manager_fields':copy.deepcopy(fields),'boundary_contract':copy.deepcopy(boundary['contract']),'boundary_adoption':copy.deepcopy(boundary['adoption']),
++  'declarations':[{'id':n,'type':{'exact':'dict','fields':{d['name']:d['type'] for d in fields['declarations']}},'source_origin':copy.deepcopy(source['stages'][n]),'fields':[{'name':d['name'],'manager_declaration':d['id'],'selector':copy.deepcopy(d['value']),'origin_ids':copy.deepcopy(d['origin_ids'])} for d in fields['declarations']],'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in hops],'ordered_hops':hops,
++  'reference_edges':[['control.token','token'],['owners[token]','owner'],['owner.wrapper','session'],['session.managed','manager']],
++  'normal_stage_order':['control-call','owner-lookup','owner-guard','session-call','manager-call','lock-enter','manager-result','lock-exit','manager-return','session-return','control-return'],
++  'reference_semantics':{'manager_result':'new dictionary expression per successful status evaluation; no intrinsic serialized bytes','forwarders':'same returned reference; no conversion/copy/serialization','physical_object_identity_observed':False,'same_values_do_not_identify_calls_or_objects':True},
++  'guard_semantics':{'READY_required':False,'owner_failure_blocks':False,'dispatch_path':False,'data_conversion':False,'missing_owner':'source _fail intentional raise if helper completes as defined','normal':'owner present AND all source evaluation/lock/return continuations normal','exception':'no local catch in either forwarder; outer control/orchestration continuation not established','termination':'no inferred Python exception, unwind, retained error, cleanup or authority'},
++  'destinations':{'normal_status':'designated internal control caller','escaping_exception':'calling trusted control path; outer handling remains conditional/unobserved','general_client_status':False,'automatic_output':False,'new_capture_permission':False},
++  'scope':'acquisition/context/validated manager instance plus distinct request-independent invocation; observed sample frontier is not a later call time','runtime_forwarding_links':None,'actual_call_count':None,'complete_repetition_coverage':False,'actual_admission':False}
++
++def validate_status_forward(launcher,entry,fields,boundary,submitted):
++ same(submitted,compile_status_forward(launcher,entry,fields,boundary),'STATUS-FORWARD-SOURCE-CORRESPONDENCE');return True
++
++def status_snapshot_value(catalogue,snapshot):
++ fields=catalogue['manager_fields']['declarations'];required={d['value']['name'] for d in fields if d['value']['op']=='state'}
++ need(type(snapshot) is dict and set(snapshot)==required,'STATUS-FORWARD-SNAPSHOT-FIELDS');result={}
++ for d in fields:
++  expr=d['value'];v=snapshot[expr['name']] if expr['op']=='state' else expr['value'];need(d['type'] in ('str','int','bool') and type(v) is {'str':str,'int':int,'bool':bool}[d['type']],'STATUS-FORWARD-VALUE-TYPE:'+d['name']);result[d['name']]=v
++ need(result['phase'] in catalogue['source']['source_phase_literals'],'STATUS-FORWARD-PHASE')
++ delta=result['connection_epoch']-catalogue['source']['epoch_initial'];inc=catalogue['source']['epoch_increment'];need(delta>=0 and delta%inc==0,'STATUS-FORWARD-EPOCH')
++ return copy.deepcopy(result)
++
++def status_forward_projection(catalogue,case,validated):
++ """Explicit conditional premises only. Not a status execution or history proof."""
++ keys={'occurrence','scope','references','outcomes','manager_snapshot','returned'}
++ need(type(case) is dict and set(case)==keys and type(validated) is dict and set(validated)==keys-{'returned'},'STATUS-FORWARD-CASE')
++ for k in validated:same(case[k],validated[k],'STATUS-FORWARD-PREMISE:'+k)
++ scope=case['scope'];need(type(scope) is dict and set(scope)=={'context','acquisition','instance','frontier','invocation'},'STATUS-FORWARD-SCOPE');need(scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO') and type(case['occurrence']) is str and bool(case['occurrence']) and case['occurrence']==scope['invocation'],'STATUS-FORWARD-INVOCATION')
++ refs=case['references'];roles=['control','token','owner','session','manager','result'];need(type(refs) is dict and set(refs)==set(roles)|{'control.token','owners[token]','owner.wrapper','session.managed','owner_failed'},'STATUS-FORWARD-REFERENCES');need(type(refs['owner_failed']) is bool,'STATUS-FORWARD-OWNER-FAILURE-TYPE')
++ for role in roles:
++  v=refs[role];need(type(v) is dict and set(v)=={'scope','symbol'} and type(v['symbol']) is str and bool(v['symbol']),'STATUS-FORWARD-REFERENCE-TYPE');same(v['scope'],scope,'STATUS-FORWARD-REFERENCE-SCOPE')
++ for a,b in catalogue['reference_edges']:
++  if a=='owners[token]' and refs[a] is None:continue
++  same(refs[a],refs[b],'STATUS-FORWARD-REFERENCE-EDGE:'+a)
++ outcomes=case['outcomes'];need(type(outcomes) is dict,'STATUS-FORWARD-OUTCOMES');used=set();events=[];hops=[];arguments=[];result=None;completion=None;fixed=None
++ def step(stage):
++  need(stage in outcomes,'STATUS-FORWARD-MISSING-STAGE:'+stage);v=outcomes[stage];allowed=('intended-raise','raise','process-termination') if stage=='fixed-failure' else ('normal','raise','process-termination');need(type(v) is str and v in allowed,'STATUS-FORWARD-STAGE-KIND');used.add(stage);events.append({'stage':stage,'source':copy.deepcopy(catalogue['source']['stages'][stage]),'outcome':v});return v
++ stages=catalogue['normal_stage_order']
++ for stage in stages:
++  v=step(stage)
++  if v!='normal':completion='unexpected-raise' if v=='raise' else 'process-termination';break
++  if stage=='owner-guard' and refs['owners[token]'] is None:
++   v=step('fixed-failure');completion='intentional-fixed-raise' if v=='intended-raise' else 'unexpected-raise' if v=='raise' else 'process-termination'
++   if v=='intended-raise':fixed=copy.deepcopy(catalogue['source']['fixed_failure'])
++   break
++  if stage in ('session-call','manager-call'):
++   arguments.append({'id':case['occurrence']+'/'+stage,'scope':copy.deepcopy(scope),'to':'ManagedSession.status' if stage=='session-call' else 'ManagedAuthority.status','receiver':copy.deepcopy(refs['session' if stage=='session-call' else 'manager']),'args':[],'kwargs':{}})
++  if stage=='manager-result':result=status_snapshot_value(catalogue,case['manager_snapshot'])
++  if stage in catalogue['ordered_hops']:
++   need(result is not None,'STATUS-FORWARD-RETURN-WITHOUT-RESULT');hops.append({'id':case['occurrence']+'/'+stage,'declaration':stage,'manager_invocation':case['occurrence']+'/manager-status','scope':copy.deepcopy(scope),'value':copy.deepcopy(result),'reference':copy.deepcopy(refs['result'])})
++  if stage=='control-return':completion='normal-return'
++ need(used==set(outcomes),'STATUS-FORWARD-UNREACHED-STAGE')
++ if result is None:need(case['manager_snapshot'] is None,'STATUS-FORWARD-UNREACHED-SNAPSHOT')
++ need(type(case['returned']) is list,'STATUS-FORWARD-RETURNS-TYPE')
++ for hop in case['returned']:
++  need(type(hop) is dict and set(hop)=={'id','declaration','manager_invocation','scope','value','reference'},'STATUS-FORWARD-RETURN-SHAPE');value=hop['value'];defs=catalogue['manager_fields']['declarations'];need(type(value) is dict and set(value)=={d['name'] for d in defs},'STATUS-FORWARD-RETURN-VALUE-TYPE')
++  for d in defs:need(type(value[d['name']]) is {'str':str,'int':int,'bool':bool}[d['type']],'STATUS-FORWARD-RETURN-FIELD-TYPE:'+d['name'])
++ same(case['returned'],hops,'STATUS-FORWARD-RETURN-LINKS')
++ terminal=events[-1];exception=None if completion=='process-termination' else completion in ('intentional-fixed-raise','unexpected-raise')
++ classification={'modeled_kind':completion,'terminal_stage':terminal['stage'],'stage_outcome':terminal['outcome'],'location':'internal-status path; not a _dispatch invocation','dispatch_catch_applicable':False,'status_forwarder_local_catch':False,'terminal_python_exception_in_model':exception,'unexpected_raise_outside_dispatch_catch':completion=='unexpected-raise','runtime_exception_evidence':'UNAVAILABLE','runtime_unwind_evidence':'UNAVAILABLE','retention_cleanup_or_authority_established':False}
++ destinations=[]
++ if completion=='normal-return':destinations.append({'kind':'status-reference','to':catalogue['destinations']['normal_status'],'reference':copy.deepcopy(refs['result'])})
++ elif completion!='process-termination':destinations.append({'kind':completion,'to':'calling trusted control path conditional on ordinary exception propagation','exact_exception':fixed,'outer_handler_or_cleanup_reached':None})
++ return {'kind':'CONSTRUCTED-INTERNAL-STATUS-FORWARD','occurrence':case['occurrence'],'scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'arguments':arguments,'events':events,'hops':hops,'completion':completion,'outcome_classification':classification,'fixed_failure':fixed,'destinations':destinations,'conditional_dictionary_value':copy.deepcopy(result),'prior_owner_failure':{'present':refs['owner_failed'],'cleared':False,'exact_value':None},'runtime_observation':False,'physical_object_identity_observed':False,'reference_symbols_are_conditional':True,'source_phase_type_check_is_history_proof':False,'retained_error':None,'cleanup_completion':None,'new_output_permission':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_status_forward_projection(catalogue,case,validated,submitted):
++ same(submitted,status_forward_projection(catalogue,case,validated),'STATUS-FORWARD-PROJECTION-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()

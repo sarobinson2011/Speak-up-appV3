@@ -1,0 +1,11 @@
+{"check": "recovered output accepts subclass reason SYMBOLIC-U-ONE", "result": "DEFECT-ACCEPTED"}
+{"check": "recovered output accepts subclass connection_epoch SYMBOLIC-U-ONE", "result": "DEFECT-ACCEPTED"}
+{"check": "recovered output accepts subclass dictionary SYMBOLIC-U-ONE", "result": "DEFECT-ACCEPTED"}
+{"check": "same arbitrary subclass correctly rejects as return-input SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:reason"}
+{"check": "recovered full semantic accepts arbitrary str subclass", "result": "DEFECT-ACCEPTED"}
+{"check": "recovered output accepts subclass reason SYMBOLIC-U-TWO", "result": "DEFECT-ACCEPTED"}
+{"check": "recovered output accepts subclass connection_epoch SYMBOLIC-U-TWO", "result": "DEFECT-ACCEPTED"}
+{"check": "recovered output accepts subclass dictionary SYMBOLIC-U-TWO", "result": "DEFECT-ACCEPTED"}
+{"check": "same arbitrary subclass correctly rejects as return-input SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-FIELD-TYPE:reason"}
+{"check": "recovered full derive_status accepts arbitrary str subclass", "result": "DEFECT-ACCEPTED"}
+{"check": "both full checks invoked actual predecessor", "result": "PASS"}

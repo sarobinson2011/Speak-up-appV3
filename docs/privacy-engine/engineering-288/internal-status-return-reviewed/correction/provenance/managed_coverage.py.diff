@@ -1,0 +1,105 @@
+--- original/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -1803,8 +1803,31 @@
+  same(submitted,client_state_projection(catalogue,case,validated),'CLIENT-STATE-PROJECTION-CORRESPONDENCE');return True
+ 
+ 
++def status_exact_tree(value,code):
++ """Check exact representation types BEFORE equality, copying or JSON encoding.
++
++ Repeated aliases are allowed; cycles are not finite JSON values. This is a
++ representation contract, not a reason-string, epoch or lifetime bound.
++ """
++ stack=[(value,False)];active=set()
++ while stack:
++  node,leaving=stack.pop();kind=type(node)
++  if leaving:active.remove(id(node));continue
++  if kind is dict or kind is list:
++   need(id(node) not in active,code+':CYCLE');active.add(id(node));stack.append((node,True))
++   if kind is dict:
++    for key,child in node.items():
++     need(type(key) is str,code+':KEY-TYPE');stack.append((child,False))
++   else:
++    for child in node:stack.append((child,False))
++  else:need(any(kind is allowed for allowed in (str,int,bool,float,type(None))),code+':VALUE-TYPE')
++
++def status_typed_same(a,b,code):
++ status_exact_tree(a,code);status_exact_tree(b,code);same(a,b,code)
++
+ def status_forward_source(launcher,entry,fields,boundary):
+  """Source-derived internal diagnostic route. No operational code is invoked."""
++ need(type(launcher) is bytes and type(entry) is bytes,'STATUS-FORWARD-SOURCE-TYPE');status_exact_tree(fields,'STATUS-FORWARD-FIELDS');status_exact_tree(boundary,'STATUS-FORWARD-BOUNDARY')
+  lt,ll=_client_locate(launcher);et,el=_client_locate(entry)
+  def method(tree,owner,name):
+   body=tree.body if owner is None else next(n.body for n in tree.body if isinstance(n,ast.ClassDef) and n.name==owner)
+@@ -1814,7 +1837,7 @@
+    n=copy.deepcopy(n)
+    if n.body and isinstance(n.body[0],ast.Expr) and isinstance(n.body[0].value,ast.Constant) and type(n.body[0].value.value) is str:n.body.pop(0)
+    return ast.dump(n,include_attributes=False)
+-  same(norm(node),norm(ast.parse(text).body[0]),'STATUS-FORWARD-SOURCE-SHAPE:'+node.name)
++  status_typed_same(norm(node),norm(ast.parse(text).body[0]),'STATUS-FORWARD-SOURCE-SHAPE:'+node.name)
+  session=method(lt,'ManagedSession','status');si=method(lt,'ManagedSession','__init__');control=method(et,'_Control','status');ci=method(et,'_Control','__init__');oi=method(et,'_Owner','__init__');fail=method(et,None,'_fail');route=method(et,None,'_run');controlled=method(et,None,'run_controlled')
+  shape(si,'def __init__(self,managed): self.__managed=managed')
+  shape(session,'def status(self): return self.__managed.status()')
+@@ -1846,7 +1869,7 @@
+  wanted=['manager-status','launcher-forwarder','internal-diagnostic','trusted-control-entry','owner-routing','general-entry'];sites={s['id']:s for s in boundary['sites']};need(all(n in sites for n in wanted),'STATUS-FORWARD-BOUNDARY-SITES')
+  pins={'launcher':{'bytes':len(launcher),'sha256':digest(launcher)},'entry':{'bytes':len(entry),'sha256':digest(entry)},'manager':{k:fields['source']['source'][k] for k in ('bytes','sha256')}}
+  for n in wanted:
+-  pin=pins['manager' if n=='manager-status' else 'launcher' if n=='launcher-forwarder' else 'entry'];same({k:sites[n]['anchor'][k] for k in pin},pin,'STATUS-FORWARD-BOUNDARY-PIN')
++  pin=pins['manager' if n=='manager-status' else 'launcher' if n=='launcher-forwarder' else 'entry'];status_typed_same({k:sites[n]['anchor'][k] for k in pin},pin,'STATUS-FORWARD-BOUNDARY-PIN')
+  return {'sources':pins,'anchors':anchors,'stages':stages,'owner_guard':ast.unparse(control.body[1].test),'normal_owner_condition':'owner is not None; prior owner.failure does not guard this method','session_call':{'receiver':ast.unparse(control.body[2].value.func.value),'method':control.body[2].value.func.attr,'args':[]},'manager_call':{'receiver':ast.unparse(session.body[0].value.func.value),'method':session.body[0].value.func.attr,'args':[]},'fixed_failure':{'type':fail.body[0].exc.func.id,'message':ast.literal_eval(fail.body[0].exc.args[0]),'explicit_cause':ast.literal_eval(fail.body[0].cause),'context_display_suppressed':True,'ambient_exception_context_not_established':True},'source_phase_literals':phases,'epoch_initial':initial[0]['value']['value'],'epoch_increment':increments[0]['value']['value'],'epoch_write_origins':copy.deepcopy(epochs),'boundary_sites':[copy.deepcopy(sites[n]) for n in wanted],'no_local_except_in_forwarders':not any(isinstance(n,ast.Try) for fn in (session,control) for n in ast.walk(fn))}
+ 
+ def compile_status_forward(launcher,entry,fields,boundary):
+@@ -1862,9 +1885,11 @@
+   'scope':'acquisition/context/validated manager instance plus distinct request-independent invocation; observed sample frontier is not a later call time','runtime_forwarding_links':None,'actual_call_count':None,'complete_repetition_coverage':False,'actual_admission':False}
+ 
+ def validate_status_forward(launcher,entry,fields,boundary,submitted):
+- same(submitted,compile_status_forward(launcher,entry,fields,boundary),'STATUS-FORWARD-SOURCE-CORRESPONDENCE');return True
++ status_exact_tree(submitted,'STATUS-FORWARD-SUBMITTED-CATALOGUE')
++ status_typed_same(submitted,compile_status_forward(launcher,entry,fields,boundary),'STATUS-FORWARD-SOURCE-CORRESPONDENCE');return True
+ 
+ def status_snapshot_value(catalogue,snapshot):
++ status_exact_tree(catalogue,'STATUS-FORWARD-CATALOGUE');status_exact_tree(snapshot,'STATUS-FORWARD-SNAPSHOT')
+  fields=catalogue['manager_fields']['declarations'];required={d['value']['name'] for d in fields if d['value']['op']=='state'}
+  need(type(snapshot) is dict and set(snapshot)==required,'STATUS-FORWARD-SNAPSHOT-FIELDS');result={}
+  for d in fields:
+@@ -1875,16 +1900,17 @@
+ 
+ def status_forward_projection(catalogue,case,validated):
+  """Explicit conditional premises only. Not a status execution or history proof."""
++ status_exact_tree(catalogue,'STATUS-FORWARD-CATALOGUE');status_exact_tree(case,'STATUS-FORWARD-RETURN-INPUT');status_exact_tree(validated,'STATUS-FORWARD-VALIDATED-INPUT')
+  keys={'occurrence','scope','references','outcomes','manager_snapshot','returned'}
+  need(type(case) is dict and set(case)==keys and type(validated) is dict and set(validated)==keys-{'returned'},'STATUS-FORWARD-CASE')
+- for k in validated:same(case[k],validated[k],'STATUS-FORWARD-PREMISE:'+k)
++ for k in validated:status_typed_same(case[k],validated[k],'STATUS-FORWARD-PREMISE:'+k)
+  scope=case['scope'];need(type(scope) is dict and set(scope)=={'context','acquisition','instance','frontier','invocation'},'STATUS-FORWARD-SCOPE');need(scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO') and type(case['occurrence']) is str and bool(case['occurrence']) and case['occurrence']==scope['invocation'],'STATUS-FORWARD-INVOCATION')
+  refs=case['references'];roles=['control','token','owner','session','manager','result'];need(type(refs) is dict and set(refs)==set(roles)|{'control.token','owners[token]','owner.wrapper','session.managed','owner_failed'},'STATUS-FORWARD-REFERENCES');need(type(refs['owner_failed']) is bool,'STATUS-FORWARD-OWNER-FAILURE-TYPE')
+  for role in roles:
+-  v=refs[role];need(type(v) is dict and set(v)=={'scope','symbol'} and type(v['symbol']) is str and bool(v['symbol']),'STATUS-FORWARD-REFERENCE-TYPE');same(v['scope'],scope,'STATUS-FORWARD-REFERENCE-SCOPE')
++  v=refs[role];need(type(v) is dict and set(v)=={'scope','symbol'} and type(v['symbol']) is str and bool(v['symbol']),'STATUS-FORWARD-REFERENCE-TYPE');status_typed_same(v['scope'],scope,'STATUS-FORWARD-REFERENCE-SCOPE')
+  for a,b in catalogue['reference_edges']:
+   if a=='owners[token]' and refs[a] is None:continue
+-  same(refs[a],refs[b],'STATUS-FORWARD-REFERENCE-EDGE:'+a)
++  status_typed_same(refs[a],refs[b],'STATUS-FORWARD-REFERENCE-EDGE:'+a)
+  outcomes=case['outcomes'];need(type(outcomes) is dict,'STATUS-FORWARD-OUTCOMES');used=set();events=[];hops=[];arguments=[];result=None;completion=None;fixed=None
+  def step(stage):
+   need(stage in outcomes,'STATUS-FORWARD-MISSING-STAGE:'+stage);v=outcomes[stage];allowed=('intended-raise','raise','process-termination') if stage=='fixed-failure' else ('normal','raise','process-termination');need(type(v) is str and v in allowed,'STATUS-FORWARD-STAGE-KIND');used.add(stage);events.append({'stage':stage,'source':copy.deepcopy(catalogue['source']['stages'][stage]),'outcome':v});return v
+@@ -1908,7 +1934,7 @@
+  for hop in case['returned']:
+   need(type(hop) is dict and set(hop)=={'id','declaration','manager_invocation','scope','value','reference'},'STATUS-FORWARD-RETURN-SHAPE');value=hop['value'];defs=catalogue['manager_fields']['declarations'];need(type(value) is dict and set(value)=={d['name'] for d in defs},'STATUS-FORWARD-RETURN-VALUE-TYPE')
+   for d in defs:need(type(value[d['name']]) is {'str':str,'int':int,'bool':bool}[d['type']],'STATUS-FORWARD-RETURN-FIELD-TYPE:'+d['name'])
+- same(case['returned'],hops,'STATUS-FORWARD-RETURN-LINKS')
++ status_typed_same(case['returned'],hops,'STATUS-FORWARD-RETURN-LINKS')
+  terminal=events[-1];exception=None if completion=='process-termination' else completion in ('intentional-fixed-raise','unexpected-raise')
+  classification={'modeled_kind':completion,'terminal_stage':terminal['stage'],'stage_outcome':terminal['outcome'],'location':'internal-status path; not a _dispatch invocation','dispatch_catch_applicable':False,'status_forwarder_local_catch':False,'terminal_python_exception_in_model':exception,'unexpected_raise_outside_dispatch_catch':completion=='unexpected-raise','runtime_exception_evidence':'UNAVAILABLE','runtime_unwind_evidence':'UNAVAILABLE','retention_cleanup_or_authority_established':False}
+  destinations=[]
+@@ -1917,7 +1943,8 @@
+  return {'kind':'CONSTRUCTED-INTERNAL-STATUS-FORWARD','occurrence':case['occurrence'],'scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'arguments':arguments,'events':events,'hops':hops,'completion':completion,'outcome_classification':classification,'fixed_failure':fixed,'destinations':destinations,'conditional_dictionary_value':copy.deepcopy(result),'prior_owner_failure':{'present':refs['owner_failed'],'cleared':False,'exact_value':None},'runtime_observation':False,'physical_object_identity_observed':False,'reference_symbols_are_conditional':True,'source_phase_type_check_is_history_proof':False,'retained_error':None,'cleanup_completion':None,'new_output_permission':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
+ 
+ def validate_status_forward_projection(catalogue,case,validated,submitted):
+- same(submitted,status_forward_projection(catalogue,case,validated),'STATUS-FORWARD-PROJECTION-CORRESPONDENCE');return True
++ status_exact_tree(submitted,'STATUS-FORWARD-SUBMITTED-OUTPUT')
++ status_typed_same(submitted,status_forward_projection(catalogue,case,validated),'STATUS-FORWARD-PROJECTION-CORRESPONDENCE');return True
+ 
+ 
+ def main():

@@ -1,0 +1,27 @@
+{"check": "correct source declaration still validates", "result": "PASS"}
+{"check": "source exact bytes 0", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-TYPE"}
+{"check": "source exact bytes 1", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-TYPE"}
+{"check": "catalogue literal key manager_fields", "result": "REJECTED", "error": "STATUS-FORWARD-SUBMITTED-CATALOGUE:KEY-TYPE"}
+{"check": "catalogue literal key source", "result": "REJECTED", "error": "STATUS-FORWARD-SUBMITTED-CATALOGUE:KEY-TYPE"}
+{"check": "nested source scalar exact type", "result": "REJECTED", "error": "STATUS-FORWARD-SUBMITTED-CATALOGUE:VALUE-TYPE"}
+{"check": "source field container exact type", "result": "REJECTED", "error": "STATUS-FORWARD-FIELDS:VALUE-TYPE"}
+{"check": "source boundary container exact type", "result": "REJECTED", "error": "STATUS-FORWARD-BOUNDARY:VALUE-TYPE"}
+{"check": "snapshot exact key _phase SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "snapshot exact key _reason SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "snapshot exact key _epoch SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "missing hop SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "reordered hops SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "substituted return reference SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "coordinated wrong owner token SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-REFERENCE-EDGE:control.token"}
+{"check": "changed completion cannot keep normal hops SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-PREMISE:outcomes"}
+{"check": "general-client destination not source permission SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-CORRESPONDENCE"}
+{"check": "snapshot exact key _phase SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "snapshot exact key _reason SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "snapshot exact key _epoch SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-SNAPSHOT:KEY-TYPE"}
+{"check": "missing hop SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "reordered hops SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "substituted return reference SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-RETURN-LINKS"}
+{"check": "coordinated wrong owner token SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-REFERENCE-EDGE:control.token"}
+{"check": "changed completion cannot keep normal hops SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-PREMISE:outcomes"}
+{"check": "general-client destination not source permission SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-CORRESPONDENCE"}
+{"check": "new correction root retains symlink refusal", "result": "REJECTED", "error": "CORRECTION-ROOT-TYPE"}

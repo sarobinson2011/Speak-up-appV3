@@ -1,0 +1,143 @@
+{
+  "result": "PASS",
+  "scope": "Static preservation and boundary audit, not runtime or independent review",
+  "inherited_functions_unchanged": [
+    "enc",
+    "digest",
+    "identity",
+    "need",
+    "same",
+    "load",
+    "check_pins",
+    "review",
+    "source_inventory",
+    "compile_bundle",
+    "validate_bundle",
+    "read_bundle",
+    "readiness",
+    "consume_constructed",
+    "status_source",
+    "_status_expr_nodes",
+    "compile_status_fields",
+    "validate_status_fields",
+    "status_expression_value",
+    "_ref_attr",
+    "reference_source",
+    "compile_reference_transfers",
+    "validate_reference_transfers",
+    "constructed_reference_path",
+    "validate_constructed_reference_path",
+    "_recovery_locations",
+    "recovery_source",
+    "compile_recovery_fields",
+    "validate_recovery_fields",
+    "recovery_value_projection",
+    "binding_source",
+    "compile_binding_return",
+    "validate_binding_return",
+    "binding_value_projection",
+    "config_source",
+    "compile_config_return",
+    "validate_config_return",
+    "config_value_type",
+    "copy_graph",
+    "validate_copy_graph",
+    "config_value_projection",
+    "state_source",
+    "compile_state_return",
+    "validate_state_return",
+    "state_value_compare",
+    "state_path_projection",
+    "state_value_projection",
+    "handle_source",
+    "compile_handle_return",
+    "validate_handle_return",
+    "handle_authentication",
+    "handle_pair",
+    "handle_backend_path",
+    "handle_value_projection",
+    "_client_locate",
+    "client_handle_source",
+    "compile_client_handle",
+    "validate_client_handle",
+    "_client_outcome_classification",
+    "client_handle_projection",
+    "validate_client_handle_projection",
+    "client_state_source",
+    "compile_client_state",
+    "validate_client_state",
+    "data_source_domain",
+    "validate_data_detachment",
+    "_data_graph_value",
+    "client_state_projection",
+    "validate_client_state_projection",
+    "compile_status_forward",
+    "main"
+  ],
+  "current_extension_functions_changed": [
+    "status_forward_source",
+    "validate_status_forward",
+    "status_snapshot_value",
+    "status_forward_projection",
+    "validate_status_forward_projection"
+  ],
+  "functions_added": [
+    "status_exact_tree",
+    "status_typed_same"
+  ],
+  "historical_prefix_byte_identical": true,
+  "two_exact_tree_algorithms_identical": true,
+  "original_members": 1845,
+  "original_directories": 610,
+  "review_non_input_records": 157,
+  "runtime_sources_unchanged": [
+    {
+      "path": "original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/prospective_entry.py",
+      "identity": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    {
+      "path": "original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/code/lab_bootstrap.py",
+      "identity": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      }
+    },
+    {
+      "path": "original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/candidate/compiler/live_connection.py",
+      "identity": {
+        "bytes": 5717,
+        "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+      }
+    }
+  ],
+  "intentional_code_changes": {
+    "managed_coverage.py": {
+      "before": {
+        "bytes": 193031,
+        "sha256": "57786ded29951dcf613e9dd6c8386fae00d92199344c1ab41df52fa49617f038"
+      },
+      "after": {
+        "bytes": 194665,
+        "sha256": "4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e"
+      }
+    },
+    "correspondence.py": {
+      "before": {
+        "bytes": 15150,
+        "sha256": "d084342d7e1e217f6b3337bd261a42fc8d213739f05df12f8ae2beae7c8ddd43"
+      },
+      "after": {
+        "bytes": 17994,
+        "sha256": "0a8c0f97e769eca4c0629136b6eac28d1473094691a1d11beaf4d7412316d79d"
+      }
+    }
+  },
+  "primary_adapter_before_root_type_guard": {
+    "bytes": 17920,
+    "sha256": "b8fb4485c05ad96fb95a4e62a6c78b7d3207f1fbbb91b0b666c40477db5cd430"
+  },
+  "unchanged_semantics": "Exact types only. No source values, caller routes, guards, copies, exception/termination classification, destinations, duties or authority changed."
+}

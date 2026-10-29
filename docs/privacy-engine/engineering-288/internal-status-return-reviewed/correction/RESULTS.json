@@ -1,0 +1,133 @@
+{
+  "construction_author": "SU-Engineering[288D]",
+  "new_supplied": {
+    "original-witnesses": {
+      "checks": 14,
+      "outcomes": {
+        "PASS": 14
+      },
+      "seconds": 204.56425027399928,
+      "result": "PASS",
+      "record": "results/original-witnesses/RESULT.json",
+      "identity": {
+        "bytes": 1807,
+        "sha256": "38bb6773d933340148a443e64cf8cdeaf356642acd3fca64755e6155b589d993"
+      }
+    },
+    "primary": {
+      "checks": 268,
+      "outcomes": {
+        "PASS": 34,
+        "REJECTED": 234
+      },
+      "seconds": 77.03392606000125,
+      "result": "PASS",
+      "record": "results/primary/RESULT.json",
+      "identity": {
+        "bytes": 34218,
+        "sha256": "d74b4c3c0e298aabcdeb9e07918fac25ae2265c7b71ae48576dfaf2a65b3e7e7"
+      }
+    },
+    "fresh": {
+      "checks": 21,
+      "outcomes": {
+        "PASS": 6,
+        "REJECTED": 15
+      },
+      "seconds": 429.7361422310005,
+      "result": "PASS",
+      "record": "results/fresh/RESULT.json",
+      "identity": {
+        "bytes": 2810,
+        "sha256": "f4791f7a0a7a95bcb4adb1e0bf7fda8e5f0e8e6f2a6faae166f826e983722f1a"
+      }
+    },
+    "recovered-focused": {
+      "checks": 269,
+      "outcomes": {
+        "PASS": 35,
+        "REJECTED": 234
+      },
+      "seconds": 94.23998755499997,
+      "result": "PASS",
+      "record": "results/recovered-focused/RESULT.json",
+      "identity": {
+        "bytes": 34283,
+        "sha256": "bb35e833c23e2b55404476b26681d172464641d927d3e0d94766421564cabd58"
+      }
+    },
+    "recovered-public": {
+      "checks": 2,
+      "outcomes": {
+        "PASS": 2
+      },
+      "seconds": 89.26246222199916,
+      "result": "PASS",
+      "record": "results/recovered-public/RESULT.json",
+      "identity": {
+        "bytes": 621,
+        "sha256": "7a13d5f9cca7be197e1837657ecd85d45b0f789d356e4576526de537209d1032"
+      }
+    }
+  },
+  "original_acceptance_reproductions": "13 acceptances plus one predecessor-invocation assertion; these are expected defect confirmations, not corrected acceptances",
+  "independent_review": {
+    "author": "Formal-Lab[6]",
+    "record": "review/CHECKPOINT.json",
+    "primary": {
+      "checks": 206,
+      "outcomes": {
+        "REJECTED": 91,
+        "PASS": 107,
+        "DEFECT-ACCEPTED": 8
+      },
+      "groups": 6
+    },
+    "recovered": {
+      "checks": 165,
+      "outcomes": {
+        "PASS": 74,
+        "REJECTED": 82,
+        "DEFECT-ACCEPTED": 9
+      },
+      "groups": 6
+    },
+    "residual_confirmations": 17,
+    "separate_fresh_public_CLI": 1,
+    "failed_attempts": {
+      "failed_processes": 5,
+      "checks_in_each": 0,
+      "excluded": true,
+      "regular_partial_files": 2,
+      "originals_left_unchanged": true,
+      "forensic_bytes_preserved": true,
+      "cause": "UNKNOWN",
+      "gate_weakened": false
+    },
+    "scope": "Original finding and scoped support, not independent closure of this correction"
+  },
+  "prior_supplied": {
+    "focused_exact_types": 36,
+    "recovered_correspondence": 205,
+    "recovered_exact_types": 34,
+    "fresh_process": 5,
+    "pre_hardening": 204,
+    "failed_harness_excluded": 17
+  },
+  "new_failed_attempts": [],
+  "prior_failed_attempts": "All exact retained originals and independent refusals preserved, excluded from new completed totals",
+  "preservation_audit": {
+    "record": "provenance/source-audit.json",
+    "historical_producer_functions_unchanged": 70,
+    "current_extension_functions_changed": [
+      "status_forward_source",
+      "validate_status_forward",
+      "status_snapshot_value",
+      "status_forward_projection",
+      "validate_status_forward_projection"
+    ],
+    "runtime_source_changes": 0
+  },
+  "fresh_and_recovered_controls_are_new_saved_input_validation": true,
+  "completed_historical_campaigns_rerun": false
+}

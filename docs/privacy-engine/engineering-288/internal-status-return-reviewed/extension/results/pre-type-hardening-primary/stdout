@@ -1,0 +1,205 @@
+1 source-independent status selectors and complete hop ordering
+2 source-independent phase assignments
+3 source owner guard only tests absence
+4 source direct forwards without arguments
+5 source-controlled entry absent general-client status method
+6 fresh source validator accepts pristine catalogue
+7 defining source rejects coordinated READY guard
+8 defining source rejects coordinated owner-failure guard
+9 defining source rejects coordinated conversion
+10 defining source rejects coordinated copy
+11 defining source rejects coordinated wrong method
+12 defining source rejects coordinated wrong token
+13 defining source rejects coordinated new catch
+14 defining source rejects wrapper wrong method
+15 independent expected catalogue rejects omitted hop
+16 independent expected catalogue rejects reordered hops
+17 independent expected catalogue rejects omitted field
+18 independent expected catalogue rejects omitted guard
+19 independent expected catalogue rejects altered origin
+20 independent expected catalogue rejects general output
+21 independent expected catalogue rejects READY assumption
+22 actual semantic entry validates evidence in both contexts
+23 every predecessor context field preserved SYMBOLIC-U-ONE
+24 every predecessor context field preserved SYMBOLIC-U-TWO
+25 saved-value conditional chain SYMBOLIC-U-ONE
+26 exact value direct reference forwarding SYMBOLIC-U-ONE
+27 observer and absent runtime frames remain unjoined SYMBOLIC-U-ONE
+28 source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-ONE
+29 no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-ONE
+30 source phase CLOSED with prior failure SYMBOLIC-U-ONE
+31 no READY/failure guard or new output CLOSED SYMBOLIC-U-ONE
+32 source phase OPEN_FAILED with prior failure SYMBOLIC-U-ONE
+33 no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-ONE
+34 source phase QUARANTINED with prior failure SYMBOLIC-U-ONE
+35 no READY/failure guard or new output QUARANTINED SYMBOLIC-U-ONE
+36 source phase READY with prior failure SYMBOLIC-U-ONE
+37 no READY/failure guard or new output READY SYMBOLIC-U-ONE
+38 source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-ONE
+39 no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-ONE
+40 unbounded reason and instance-local epoch 0 SYMBOLIC-U-ONE
+41 unbounded reason and instance-local epoch 1 SYMBOLIC-U-ONE
+42 unbounded reason and instance-local epoch 101 SYMBOLIC-U-ONE
+43 source missing owner fixed failure SYMBOLIC-U-ONE
+44 fixed raise distinct from absence of exception SYMBOLIC-U-ONE
+45 conditional control-call raise SYMBOLIC-U-ONE
+46 conditional control-call process-termination SYMBOLIC-U-ONE
+47 termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-ONE
+48 conditional owner-lookup raise SYMBOLIC-U-ONE
+49 conditional owner-lookup process-termination SYMBOLIC-U-ONE
+50 termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-ONE
+51 conditional owner-guard raise SYMBOLIC-U-ONE
+52 conditional owner-guard process-termination SYMBOLIC-U-ONE
+53 termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-ONE
+54 conditional session-call raise SYMBOLIC-U-ONE
+55 conditional session-call process-termination SYMBOLIC-U-ONE
+56 termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-ONE
+57 conditional manager-call raise SYMBOLIC-U-ONE
+58 conditional manager-call process-termination SYMBOLIC-U-ONE
+59 termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-ONE
+60 conditional lock-enter raise SYMBOLIC-U-ONE
+61 conditional lock-enter process-termination SYMBOLIC-U-ONE
+62 termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-ONE
+63 conditional manager-result raise SYMBOLIC-U-ONE
+64 conditional manager-result process-termination SYMBOLIC-U-ONE
+65 termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-ONE
+66 conditional lock-exit raise SYMBOLIC-U-ONE
+67 conditional lock-exit process-termination SYMBOLIC-U-ONE
+68 termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-ONE
+69 conditional manager-return raise SYMBOLIC-U-ONE
+70 conditional manager-return process-termination SYMBOLIC-U-ONE
+71 termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-ONE
+72 conditional session-return raise SYMBOLIC-U-ONE
+73 conditional session-return process-termination SYMBOLIC-U-ONE
+74 termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-ONE
+75 conditional control-return raise SYMBOLIC-U-ONE
+76 conditional control-return process-termination SYMBOLIC-U-ONE
+77 termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-ONE
+78 conditional fixed-failure raise SYMBOLIC-U-ONE
+79 conditional fixed-failure process-termination SYMBOLIC-U-ONE
+80 termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-ONE
+81 omitted return hop SYMBOLIC-U-ONE
+82 reordered return hops SYMBOLIC-U-ONE
+83 wrong return container type SYMBOLIC-U-ONE
+84 omitted field phase SYMBOLIC-U-ONE
+85 altered type/value phase SYMBOLIC-U-ONE
+86 omitted field reason SYMBOLIC-U-ONE
+87 altered type/value reason SYMBOLIC-U-ONE
+88 omitted field connection_epoch SYMBOLIC-U-ONE
+89 altered type/value connection_epoch SYMBOLIC-U-ONE
+90 omitted field actual_admission SYMBOLIC-U-ONE
+91 altered type/value actual_admission SYMBOLIC-U-ONE
+92 omitted field external_nonexecution_established SYMBOLIC-U-ONE
+93 altered type/value external_nonexecution_established SYMBOLIC-U-ONE
+94 omitted field authorization_renewed SYMBOLIC-U-ONE
+95 altered type/value authorization_renewed SYMBOLIC-U-ONE
+96 coordinated all-hop reason substitution SYMBOLIC-U-ONE
+97 coordinated snapshot plus all returns SYMBOLIC-U-ONE
+98 wrong-instance anchor SYMBOLIC-U-ONE
+99 stale acquisition scope SYMBOLIC-U-ONE
+100 wrong manager reference edge SYMBOLIC-U-ONE
+101 coordinated result-reference substitution SYMBOLIC-U-ONE
+102 stale saved manager occurrence SYMBOLIC-U-ONE
+103 unreached extra stage SYMBOLIC-U-ONE
+104 wrong phase snapshot SYMBOLIC-U-ONE
+105 negative epoch snapshot SYMBOLIC-U-ONE
+106 reject unsupported derived claim destinations SYMBOLIC-U-ONE
+107 reject unsupported derived claim runtime_observation SYMBOLIC-U-ONE
+108 reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-ONE
+109 reject unsupported derived claim cleanup_completion SYMBOLIC-U-ONE
+110 semantic row checker rejects mixed sample SYMBOLIC-U-ONE
+111 saved-value conditional chain SYMBOLIC-U-TWO
+112 exact value direct reference forwarding SYMBOLIC-U-TWO
+113 observer and absent runtime frames remain unjoined SYMBOLIC-U-TWO
+114 source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-TWO
+115 no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-TWO
+116 source phase CLOSED with prior failure SYMBOLIC-U-TWO
+117 no READY/failure guard or new output CLOSED SYMBOLIC-U-TWO
+118 source phase OPEN_FAILED with prior failure SYMBOLIC-U-TWO
+119 no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-TWO
+120 source phase QUARANTINED with prior failure SYMBOLIC-U-TWO
+121 no READY/failure guard or new output QUARANTINED SYMBOLIC-U-TWO
+122 source phase READY with prior failure SYMBOLIC-U-TWO
+123 no READY/failure guard or new output READY SYMBOLIC-U-TWO
+124 source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-TWO
+125 no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-TWO
+126 unbounded reason and instance-local epoch 0 SYMBOLIC-U-TWO
+127 unbounded reason and instance-local epoch 1 SYMBOLIC-U-TWO
+128 unbounded reason and instance-local epoch 101 SYMBOLIC-U-TWO
+129 source missing owner fixed failure SYMBOLIC-U-TWO
+130 fixed raise distinct from absence of exception SYMBOLIC-U-TWO
+131 conditional control-call raise SYMBOLIC-U-TWO
+132 conditional control-call process-termination SYMBOLIC-U-TWO
+133 termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-TWO
+134 conditional owner-lookup raise SYMBOLIC-U-TWO
+135 conditional owner-lookup process-termination SYMBOLIC-U-TWO
+136 termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-TWO
+137 conditional owner-guard raise SYMBOLIC-U-TWO
+138 conditional owner-guard process-termination SYMBOLIC-U-TWO
+139 termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-TWO
+140 conditional session-call raise SYMBOLIC-U-TWO
+141 conditional session-call process-termination SYMBOLIC-U-TWO
+142 termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-TWO
+143 conditional manager-call raise SYMBOLIC-U-TWO
+144 conditional manager-call process-termination SYMBOLIC-U-TWO
+145 termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-TWO
+146 conditional lock-enter raise SYMBOLIC-U-TWO
+147 conditional lock-enter process-termination SYMBOLIC-U-TWO
+148 termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-TWO
+149 conditional manager-result raise SYMBOLIC-U-TWO
+150 conditional manager-result process-termination SYMBOLIC-U-TWO
+151 termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-TWO
+152 conditional lock-exit raise SYMBOLIC-U-TWO
+153 conditional lock-exit process-termination SYMBOLIC-U-TWO
+154 termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-TWO
+155 conditional manager-return raise SYMBOLIC-U-TWO
+156 conditional manager-return process-termination SYMBOLIC-U-TWO
+157 termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-TWO
+158 conditional session-return raise SYMBOLIC-U-TWO
+159 conditional session-return process-termination SYMBOLIC-U-TWO
+160 termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-TWO
+161 conditional control-return raise SYMBOLIC-U-TWO
+162 conditional control-return process-termination SYMBOLIC-U-TWO
+163 termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-TWO
+164 conditional fixed-failure raise SYMBOLIC-U-TWO
+165 conditional fixed-failure process-termination SYMBOLIC-U-TWO
+166 termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-TWO
+167 omitted return hop SYMBOLIC-U-TWO
+168 reordered return hops SYMBOLIC-U-TWO
+169 wrong return container type SYMBOLIC-U-TWO
+170 omitted field phase SYMBOLIC-U-TWO
+171 altered type/value phase SYMBOLIC-U-TWO
+172 omitted field reason SYMBOLIC-U-TWO
+173 altered type/value reason SYMBOLIC-U-TWO
+174 omitted field connection_epoch SYMBOLIC-U-TWO
+175 altered type/value connection_epoch SYMBOLIC-U-TWO
+176 omitted field actual_admission SYMBOLIC-U-TWO
+177 altered type/value actual_admission SYMBOLIC-U-TWO
+178 omitted field external_nonexecution_established SYMBOLIC-U-TWO
+179 altered type/value external_nonexecution_established SYMBOLIC-U-TWO
+180 omitted field authorization_renewed SYMBOLIC-U-TWO
+181 altered type/value authorization_renewed SYMBOLIC-U-TWO
+182 coordinated all-hop reason substitution SYMBOLIC-U-TWO
+183 coordinated snapshot plus all returns SYMBOLIC-U-TWO
+184 wrong-instance anchor SYMBOLIC-U-TWO
+185 stale acquisition scope SYMBOLIC-U-TWO
+186 wrong manager reference edge SYMBOLIC-U-TWO
+187 coordinated result-reference substitution SYMBOLIC-U-TWO
+188 stale saved manager occurrence SYMBOLIC-U-TWO
+189 unreached extra stage SYMBOLIC-U-TWO
+190 wrong phase snapshot SYMBOLIC-U-TWO
+191 negative epoch snapshot SYMBOLIC-U-TWO
+192 reject unsupported derived claim destinations SYMBOLIC-U-TWO
+193 reject unsupported derived claim runtime_observation SYMBOLIC-U-TWO
+194 reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-TWO
+195 reject unsupported derived claim cleanup_completion SYMBOLIC-U-TWO
+196 semantic row checker rejects mixed sample SYMBOLIC-U-TWO
+197 coordinated field/catalogue omission
+198 nested returned bundle mutations leave expectations isolated
+199 nested returned rows leave expectations isolated
+200 both contexts mandatory 0 False
+201 both contexts mandatory 1 False
+202 both contexts mandatory 2 True
+203 public validation rejects missing mandatory relation
+204 source/field producer predecessor inputs unchanged
+{"result": "PASS", "checks": 204, "error": null, "seconds": 202.05473559499842, "recovered": false, "constructed_cases_not_runtime": true, "previous_suites_rerun": false, "database_connections": 0, "session_operations": 0, "requests": 0}

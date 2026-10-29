@@ -1,0 +1,171 @@
+{
+  "result": "PASS",
+  "verdict": "IS-01 CLOSED within the retained in-memory exact-type correspondence contract",
+  "input_identity": {
+    "bytes": 68317556,
+    "sha256": "5915d8d409d043e9dd95535e91880263e26c776220b8c6d48bf75690e3fc60a9"
+  },
+  "roots_verified_unchanged": [
+    "is01-input",
+    "is01-old-root",
+    "is01-primary-root",
+    "is01-focused-recovered-root",
+    "is01-full-recovered-root",
+    "is01-adjacent-root",
+    "is01-public-root"
+  ],
+  "files_per_root": 2053,
+  "directories_per_root": 646,
+  "completed_groups": {
+    "original-reproductions": {
+      "checks": 14,
+      "outcomes": {
+        "PASS": 14
+      },
+      "result_identity": {
+        "bytes": 1686,
+        "sha256": "72415f8e1f061f7b12835331d81152433b588d6e8f625889357301db509d79a9"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 228.87822746200254
+    },
+    "independent-recovered": {
+      "checks": 154,
+      "outcomes": {
+        "PASS": 34,
+        "REJECTED": 120
+      },
+      "result_identity": {
+        "bytes": 20796,
+        "sha256": "8e884f656706c4c362edcbd34fb0ab62a0a87980f9ae18da92ce289a20a90db5"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 78.9711046750017
+    },
+    "fresh-full-entries": {
+      "checks": 20,
+      "outcomes": {
+        "REJECTED": 15,
+        "PASS": 5
+      },
+      "result_identity": {
+        "bytes": 2830,
+        "sha256": "b2b45b9a035580810a981514668526e77ec22e0769fdc19fd45a8bca5cd6850a"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 223.74594547599918
+    },
+    "adjacent": {
+      "checks": 27,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 26
+      },
+      "result_identity": {
+        "bytes": 3561,
+        "sha256": "24f8866b2f775250aa11d016eef378d0cf58b02e7b4b4338b13911fcf495762a"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 5.730029963000561
+    },
+    "public-entries": {
+      "checks": 6,
+      "outcomes": {
+        "PASS": 4,
+        "REJECTED": 2
+      },
+      "result_identity": {
+        "bytes": 1092,
+        "sha256": "c76b05ba785a6ace8e4ff9baa4bdd243d58f9111e2cfda6992d61b906f62d4aa"
+      },
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "seconds": 234.93400326300252
+    }
+  },
+  "corrected_checks": 207,
+  "old_reproduction_checks": 14,
+  "total_completed_checks": 221,
+  "residual_witness": null,
+  "reviewer_failed_attempts_excluded": {
+    "audit": "incorrectly counted pin dictionary as obligation list",
+    "focused_checks_before_same_final_harness_failure": 153,
+    "candidate_defect": false
+  },
+  "prior_failures_preserved": true,
+  "current_components": {
+    "intentional_implementation_changes": {
+      "managed_coverage.py": {
+        "before": {
+          "bytes": 193031,
+          "sha256": "57786ded29951dcf613e9dd6c8386fae00d92199344c1ab41df52fa49617f038"
+        },
+        "after": {
+          "bytes": 194665,
+          "sha256": "4eaf2faa53a149d56161fbb4247e2eb18661244a5c5afc1023d2ab73422e900e"
+        }
+      },
+      "correspondence.py": {
+        "before": {
+          "bytes": 15150,
+          "sha256": "d084342d7e1e217f6b3337bd261a42fc8d213739f05df12f8ae2beae7c8ddd43"
+        },
+        "after": {
+          "bytes": 17994,
+          "sha256": "0a8c0f97e769eca4c0629136b6eac28d1473094691a1d11beaf4d7412316d79d"
+        }
+      }
+    },
+    "primary_adapter_before_root_guard": {
+      "bytes": 17920,
+      "sha256": "b8fb4485c05ad96fb95a4e62a6c78b7d3207f1fbbb91b0b666c40477db5cd430"
+    },
+    "historical_and_runtime_sources": "UNCHANGED; original full inventory reverified",
+    "all_other_added_files": "New correction controls, provenance, reports and recovery material; exact identities in outer manifest"
+  },
+  "current_receipt": {
+    "bytes": 2776568,
+    "sha256": "4db6c9d4da0110055f483fdf5ef958a12edd9362b8315704ff0cf5143470c468"
+  },
+  "historical_functions_unchanged": 70,
+  "obligations_preserved": 11,
+  "runtime_changes": 0,
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "admission": false
+}

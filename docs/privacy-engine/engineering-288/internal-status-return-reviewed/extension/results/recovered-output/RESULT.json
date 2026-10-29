@@ -1,0 +1,834 @@
+{
+  "result": "PASS",
+  "checks": 205,
+  "rows": [
+    {
+      "check": "source-independent status selectors and complete hop ordering",
+      "result": "PASS"
+    },
+    {
+      "check": "source-independent phase assignments",
+      "result": "PASS"
+    },
+    {
+      "check": "source owner guard only tests absence",
+      "result": "PASS"
+    },
+    {
+      "check": "source direct forwards without arguments",
+      "result": "PASS"
+    },
+    {
+      "check": "source-controlled entry absent general-client status method",
+      "result": "PASS"
+    },
+    {
+      "check": "fresh source validator accepts pristine catalogue",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated READY guard",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated owner-failure guard",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated conversion",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated copy",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated wrong method",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated wrong token",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated new catch",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects wrapper wrong method",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects omitted hop",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects reordered hops",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects omitted field",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects omitted guard",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects altered origin",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects general output",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects READY assumption",
+      "result": "PASS"
+    },
+    {
+      "check": "actual semantic entry validates evidence in both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "every predecessor context field preserved SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "every predecessor context field preserved SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "saved-value conditional chain SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "exact value direct reference forwarding SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "observer and absent runtime frames remain unjoined SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase CLOSED with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output CLOSED SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase OPEN_FAILED with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase QUARANTINED with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase READY with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output READY SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 0 SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 1 SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 101 SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "source missing owner fixed failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "fixed raise distinct from absence of exception SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-lookup raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-lookup process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-guard raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-guard process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-enter raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-enter process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-result raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-result process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-exit raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-exit process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional fixed-failure raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional fixed-failure process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted return hop SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reordered return hops SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong return container type SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field phase SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value phase SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field reason SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value reason SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field connection_epoch SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value connection_epoch SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field actual_admission SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value actual_admission SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field external_nonexecution_established SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value external_nonexecution_established SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field authorization_renewed SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value authorization_renewed SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated all-hop reason substitution SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated snapshot plus all returns SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong-instance anchor SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "stale acquisition scope SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong manager reference edge SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated result-reference substitution SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "stale saved manager occurrence SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached extra stage SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong phase snapshot SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "negative epoch snapshot SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim destinations SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim runtime_observation SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim cleanup_completion SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row checker rejects mixed sample SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "saved-value conditional chain SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "exact value direct reference forwarding SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "observer and absent runtime frames remain unjoined SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase CLOSED with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output CLOSED SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase OPEN_FAILED with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase QUARANTINED with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase READY with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output READY SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 0 SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 1 SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "unbounded reason and instance-local epoch 101 SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "source missing owner fixed failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "fixed raise distinct from absence of exception SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-lookup raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-lookup process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-guard raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional owner-guard process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-enter raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-enter process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-result raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-result process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-exit raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional lock-exit process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional manager-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional session-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional control-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional fixed-failure raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional fixed-failure process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted return hop SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reordered return hops SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong return container type SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field phase SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value phase SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field reason SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value reason SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field connection_epoch SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value connection_epoch SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field actual_admission SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value actual_admission SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field external_nonexecution_established SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value external_nonexecution_established SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "omitted field authorization_renewed SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "altered type/value authorization_renewed SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated all-hop reason substitution SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated snapshot plus all returns SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong-instance anchor SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "stale acquisition scope SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong manager reference edge SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated result-reference substitution SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "stale saved manager occurrence SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached extra stage SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong phase snapshot SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "negative epoch snapshot SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim destinations SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim runtime_observation SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unsupported derived claim cleanup_completion SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row checker rejects mixed sample SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated field/catalogue omission",
+      "result": "PASS"
+    },
+    {
+      "check": "nested returned bundle mutations leave expectations isolated",
+      "result": "PASS"
+    },
+    {
+      "check": "nested returned rows leave expectations isolated",
+      "result": "PASS"
+    },
+    {
+      "check": "both contexts mandatory 0 False",
+      "result": "PASS"
+    },
+    {
+      "check": "both contexts mandatory 1 False",
+      "result": "PASS"
+    },
+    {
+      "check": "both contexts mandatory 2 True",
+      "result": "PASS"
+    },
+    {
+      "check": "public validation rejects missing mandatory relation",
+      "result": "PASS"
+    },
+    {
+      "check": "recovered saved exact receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "source/field producer predecessor inputs unchanged",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "seconds": 215.25450897599876,
+  "recovered": true,
+  "constructed_cases_not_runtime": true,
+  "previous_suites_rerun": false,
+  "database_connections": 0,
+  "session_operations": 0,
+  "requests": 0
+}

@@ -1,0 +1,85 @@
+{
+  "result": "FAIL",
+  "checks": 17,
+  "rows": [
+    {
+      "check": "source-independent status selectors and complete hop ordering",
+      "result": "PASS"
+    },
+    {
+      "check": "source-independent phase assignments",
+      "result": "PASS"
+    },
+    {
+      "check": "source owner guard only tests absence",
+      "result": "PASS"
+    },
+    {
+      "check": "source direct forwards without arguments",
+      "result": "PASS"
+    },
+    {
+      "check": "source-controlled entry absent general-client status method",
+      "result": "PASS"
+    },
+    {
+      "check": "fresh source validator accepts pristine catalogue",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated READY guard",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated owner-failure guard",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated conversion",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated copy",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated wrong method",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated wrong token",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects coordinated new catch",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source rejects wrapper wrong method",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects omitted hop",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects reordered hops",
+      "result": "PASS"
+    },
+    {
+      "check": "independent expected catalogue rejects omitted field",
+      "result": "PASS"
+    }
+  ],
+  "error": {
+    "exception": "AssertionError('Unexpected acceptance')",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 46, in main\n    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 10, in check\n    result=fn();assert result is not False,name;row={'check':name,'result':'PASS'};checks.append(row)\n           ^^^^\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 46, in <lambda>\n    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 16, in reject\n    raise AssertionError('Unexpected acceptance')\nAssertionError: Unexpected acceptance\n"
+  },
+  "seconds": 15.432471132999126,
+  "recovered": false,
+  "constructed_cases_not_runtime": true,
+  "previous_suites_rerun": false,
+  "database_connections": 0,
+  "session_operations": 0,
+  "requests": 0
+}

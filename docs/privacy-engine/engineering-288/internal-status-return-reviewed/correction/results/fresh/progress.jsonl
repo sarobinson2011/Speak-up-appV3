@@ -1,0 +1,21 @@
+{"check": "public pristine semantic accepts both contexts", "result": "PASS"}
+{"check": "public derive after nested semantic output mutations remains pristine", "result": "PASS"}
+{"check": "full constructed entry pristine SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "full constructed entry pristine SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "public JSON receipt validation after mutated returned objects", "result": "PASS"}
+{"check": "full coordinated same-type semantic claims rejected", "result": "REJECTED", "error": "STATUS-FORWARD-SAMPLES"}
+{"check": "public exact receipt bytes rejects subclass", "result": "REJECTED", "error": "STATUS-FORWARD-RECEIPT-BYTES"}
+{"check": "status_forward_source source field container preflight", "result": "REJECTED", "error": "STATUS-FORWARD-FIELDS:VALUE-TYPE"}
+{"check": "status_forward_source boundary container preflight", "result": "REJECTED", "error": "STATUS-FORWARD-BOUNDARY:VALUE-TYPE"}
+{"check": "status_forward_source exact raw source preflight", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-TYPE"}
+{"check": "compile_status_forward source field container preflight", "result": "REJECTED", "error": "STATUS-FORWARD-FIELDS:VALUE-TYPE"}
+{"check": "compile_status_forward boundary container preflight", "result": "REJECTED", "error": "STATUS-FORWARD-BOUNDARY:VALUE-TYPE"}
+{"check": "compile_status_forward exact raw source preflight", "result": "REJECTED", "error": "STATUS-FORWARD-SOURCE-TYPE"}
+{"check": "validated-only subclass premise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-VALIDATED-INPUT:VALUE-TYPE"}
+{"check": "scope helper anchor type SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-ANCHOR:VALUE-TYPE"}
+{"check": "reference helper scope type SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-SCOPE:VALUE-TYPE"}
+{"check": "validated-only subclass premise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-VALIDATED-INPUT:VALUE-TYPE"}
+{"check": "scope helper anchor type SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-ANCHOR:VALUE-TYPE"}
+{"check": "reference helper scope type SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-SCOPE:VALUE-TYPE"}
+{"check": "correction root must be an actual directory", "result": "REJECTED", "error": "CORRECTION-ROOT-TYPE"}
+{"check": "six full calls invoked actual mandatory predecessor", "result": "PASS"}

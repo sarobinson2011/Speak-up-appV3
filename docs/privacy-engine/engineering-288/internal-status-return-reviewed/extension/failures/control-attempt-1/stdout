@@ -1,0 +1,18 @@
+1 source-independent status selectors and complete hop ordering
+2 source-independent phase assignments
+3 source owner guard only tests absence
+4 source direct forwards without arguments
+5 source-controlled entry absent general-client status method
+6 fresh source validator accepts pristine catalogue
+7 defining source rejects coordinated READY guard
+8 defining source rejects coordinated owner-failure guard
+9 defining source rejects coordinated conversion
+10 defining source rejects coordinated copy
+11 defining source rejects coordinated wrong method
+12 defining source rejects coordinated wrong token
+13 defining source rejects coordinated new catch
+14 defining source rejects wrapper wrong method
+15 independent expected catalogue rejects omitted hop
+16 independent expected catalogue rejects reordered hops
+17 independent expected catalogue rejects omitted field
+{"result": "FAIL", "checks": 17, "error": {"exception": "AssertionError('Unexpected acceptance')", "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 46, in main\n    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 10, in check\n    result=fn();assert result is not False,name;row={'check':name,'result':'PASS'};checks.append(row)\n           ^^^^\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 46, in <lambda>\n    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py\", line 16, in reject\n    raise AssertionError('Unexpected acceptance')\nAssertionError: Unexpected acceptance\n"}, "seconds": 15.432471132999126, "recovered": false, "constructed_cases_not_runtime": true, "previous_suites_rerun": false, "database_connections": 0, "session_operations": 0, "requests": 0}

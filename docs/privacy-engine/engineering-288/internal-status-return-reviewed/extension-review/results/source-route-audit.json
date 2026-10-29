@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "source": {
+    "path": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/prospective_entry.py",
+    "bytes": 9485,
+    "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+  },
+  "control_handoff_condition": "control is not None",
+  "token_creation": "object()",
+  "token_to_owner_map": "_OWNERS[token] = owner",
+  "owner_guard": "owner is None",
+  "owner_failure_guard": false,
+  "READY_guard": false,
+  "revoke_in_finally": true,
+  "no_forwarder_catch": true,
+  "fixed_failure": {
+    "class": "ClientFailure",
+    "message": "MANAGED-OPERATION-UNAVAILABLE; outcome uncertain; no renewed authorization",
+    "explicit_cause": null,
+    "ambient_context_absence_inferred": false
+  },
+  "positions": {
+    "owner": {
+      "line": 174,
+      "end_line": 174,
+      "expression": "owner = _Owner(wrapper)"
+    },
+    "token": {
+      "line": 174,
+      "end_line": 174,
+      "expression": "token = object()"
+    },
+    "store": {
+      "line": 174,
+      "end_line": 174,
+      "expression": "_OWNERS[token] = owner"
+    },
+    "control_call": {
+      "line": 177,
+      "end_line": 177,
+      "expression": "control(_Control(token))"
+    },
+    "revoke": {
+      "line": 188,
+      "end_line": 188,
+      "expression": "_OWNERS.pop(token, None)"
+    }
+  },
+  "runtime_execution": false
+}

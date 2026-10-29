@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py", line 130, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py", line 46, in main
+    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))
+  File "/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py", line 10, in check
+    result=fn();assert result is not False,name;row={'check':name,'result':'PASS'};checks.append(row)
+           ^^^^
+  File "/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py", line 46, in <lambda>
+    check('independent expected catalogue rejects '+label,lambda bad=bad:reject(lambda:c.validate_status_forward(launcher,entry,m.manager_fields(d),m.inner(d)['ctx']['binding'],bad)))
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/status-forwarding/tests/controls.py", line 16, in reject
+    raise AssertionError('Unexpected acceptance')
+AssertionError: Unexpected acceptance

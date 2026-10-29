@@ -1,0 +1,198 @@
+{
+  "checkpoint": "Formal-Lab6-I164-internal-status-return-correspondence-independent-review",
+  "target": "I164-internal-status-return-correspondence-1.zip",
+  "input": {
+    "bytes": 62835317,
+    "entries": 1845,
+    "manifested_hashes": 1844,
+    "sha256": "06d3b32fdf83757b40d9963a45a21ca5a5a80d2ca5c4af813655b4ad465f3864"
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "implementation_modified": false,
+  "verdict": "NOT FULLY SUPPORTED: IS-01 residual exact-type acceptance in status dictionary keys, submitted outputs and semantic claims",
+  "finding": {
+    "id": "IS-01",
+    "smallest_witness": "One reason value becomes a str subclass with identical characters; files, evidence, pins and references unchanged.",
+    "affected_APIs": [
+      "status_forward_projection",
+      "constructed_projection",
+      "validate_status_forward_projection",
+      "_check_rows",
+      "semantic",
+      "derive_status"
+    ],
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "fresh_process_reproduced": true,
+    "recovered_root_reproduced": true,
+    "adjacent_output_types": [
+      "str subclass",
+      "int subclass",
+      "dict subclass"
+    ],
+    "cause": "Incomplete exact-type coverage: source-literal key types unchecked, and submitted outputs/semantic sample claims rely on JSON equality",
+    "wrong_claims_return_fresh_builtin_values": true,
+    "public_changed_JSON_receipt_forgery_demonstrated": false,
+    "public_byte_contract_preserved": true,
+    "operational_or_admission_bypass_demonstrated": false,
+    "smallest_next_correction": "Apply existing source-derived exact-type rules to status dictionary keys and values at return-input, submitted-output and semantic-claim boundaries, preserving source/runtime semantics.",
+    "additional_smallest_key_witness": "One phase dictionary key becomes S(str) with identical text; exact dictionary container and all field values unchanged; normal return accepted by pure and full constructed APIs."
+  },
+  "supported_scope": {
+    "source_direct_return_hops": [
+      "manager-return",
+      "session-return",
+      "control-return"
+    ],
+    "no_added_copy_data_dispatch_or_READY_guard": true,
+    "owner_absence_guard_and_token_routing": true,
+    "owner_failure_does_not_block_status": true,
+    "source_phases": [
+      "CLEANUP_UNCERTAIN",
+      "CLOSED",
+      "OPEN_FAILED",
+      "QUARANTINED",
+      "READY",
+      "VALIDATION_FAILED"
+    ],
+    "exact_false_constants": true,
+    "original_type_witnesses_reproduced_and_input_checks_corrected": 12,
+    "original_variants_per_context": 6,
+    "mandatory_predecessor_invocation_confirmed": true,
+    "coordinated_changed_values_reject": true,
+    "mutable_return_results_isolated": true
+  },
+  "current_components": {
+    "managed_coverage.py": {
+      "bytes": 193031,
+      "sha256": "57786ded29951dcf613e9dd6c8386fae00d92199344c1ab41df52fa49617f038"
+    },
+    "correspondence.py": {
+      "bytes": 15150,
+      "sha256": "d084342d7e1e217f6b3337bd261a42fc8d213739f05df12f8ae2beae7c8ddd43"
+    }
+  },
+  "current_receipt": {
+    "bytes": 2776568,
+    "sha256": "a2405706fa62c90b27a01387cab68cb4890f7e809bd85f9dff8d7469fe60b42b"
+  },
+  "affected_old_producer": {
+    "bytes": 192484,
+    "sha256": "903b4369f0e9d009b60c60a260e3dc44c399c0a69629eacdf7870a5d7feba7b0"
+  },
+  "integrity": {
+    "CRC": "PASS",
+    "exact_membership": "PASS",
+    "all_1844_hashes": "PASS",
+    "present_nested_archive_occurrences": 18,
+    "clean_final_roots_verified_unchanged": 13,
+    "files_per_root": 1845,
+    "implied_directories_per_root": 610,
+    "historical_qualifications": "PRESERVED"
+  },
+  "preservation": {
+    "predecessor_members": 1688,
+    "review_non_input_records": 90,
+    "inherited_producer_functions": 70,
+    "inherited_top_level_statements_unchanged": true,
+    "added_producer_functions": 6,
+    "prior_context_fields_relationships_ordinals_evidence_and_obligations_unchanged": true,
+    "prior_review_counts": [
+      273,
+      196
+    ],
+    "prior_failed_attempts_and_packaging_failure": "PRESERVED",
+    "runtime_source_changes": 0
+  },
+  "independent_results": {
+    "primary": {
+      "checks": 206,
+      "outcomes": {
+        "REJECTED": 91,
+        "PASS": 107,
+        "DEFECT-ACCEPTED": 8
+      },
+      "groups": 6
+    },
+    "recovered": {
+      "checks": 165,
+      "outcomes": {
+        "PASS": 74,
+        "REJECTED": 82,
+        "DEFECT-ACCEPTED": 9
+      },
+      "groups": 6
+    }
+  },
+  "residual_acceptance_confirmations": 17,
+  "separate_fresh_public_CLI": 1,
+  "supplied_results_separate": {
+    "focused_exact_types": 36,
+    "recovered_correspondence": 205,
+    "recovered_exact_types": 34,
+    "fresh_process": 5,
+    "pre_hardening": 204,
+    "failed_harness_excluded": 17
+  },
+  "initial_root_refusals": {
+    "failed_processes": 5,
+    "checks_in_each": 0,
+    "excluded": true,
+    "regular_partial_files": 2,
+    "originals_left_unchanged": true,
+    "forensic_bytes_preserved": true,
+    "cause": "UNKNOWN",
+    "gate_weakened": false
+  },
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "limits": {
+    "runtime_forwarding": "UNAVAILABLE",
+    "physical_reference_identity": null,
+    "actual_call_count": null,
+    "observer_join": null,
+    "traced_invocations": 18,
+    "separate_frameless_Client_state_observer": 1,
+    "complete_history_or_repetition_coverage": false,
+    "outer_exception_retention_cleanup": "UNOBSERVED/CONDITIONAL",
+    "new_host_or_wheel_qualification": false,
+    "arbitrary_Python_introspection_resistance": false
+  },
+  "boundaries": {
+    "all_eleven_obligations": "PRESERVED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "admission": false
+  },
+  "operations": {
+    "implementation_changes": 0,
+    "runtime_changes": 0,
+    "requests": 0,
+    "signatures": 0,
+    "application_acquisitions": 0,
+    "database_connections": 0,
+    "session_operations": 0,
+    "policy_adoption": false,
+    "completed_suite_reruns": false,
+    "Git_operations": 0
+  }
+}

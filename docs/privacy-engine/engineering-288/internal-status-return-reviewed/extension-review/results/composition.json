@@ -1,0 +1,1625 @@
+{
+  "result": "PASS",
+  "target": {
+    "identity": {
+      "bytes": 62835317,
+      "sha256": "06d3b32fdf83757b40d9963a45a21ca5a5a80d2ca5c4af813655b4ad465f3864"
+    },
+    "entries": 1845,
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "manifests": [
+      {
+        "manifest": "MANIFEST.json",
+        "verified_present": 1844,
+        "absent": []
+      },
+      {
+        "manifest": "retained/review/MANIFEST.json",
+        "verified_present": 89,
+        "absent": [
+          "input/I164-client-state-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/review/failures/checkpoint-verifier-attempt-1/MANIFEST.json",
+        "verified_present": 0,
+        "absent": [
+          "CHECKPOINT.json",
+          "RECOVERY.md",
+          "REPORT.md",
+          "cli-recovered/RESULT.json",
+          "cli-recovered/process.json",
+          "cli-recovered/stderr",
+          "cli-recovered/stdout",
+          "code/cli_guarded.py",
+          "code/common.py",
+          "code/composition.py",
+          "code/core.py",
+          "code/entry_checks.py",
+          "code/extra_entries.py",
+          "code/final_audit.py",
+          "code/integrity.py",
+          "code/package_checkpoint.py",
+          "code/run_cli.py",
+          "code/source_guard_checks.py",
+          "code/source_guard_checks_v2.py",
+          "code/verify_checkpoint.py",
+          "failures/reviewer-handler-shape-attempt-1/EXPLANATION.json",
+          "failures/reviewer-handler-shape-attempt-1/results/RESULT.json",
+          "failures/reviewer-handler-shape-attempt-1/results/calls.json",
+          "failures/reviewer-handler-shape-attempt-1/results/failure.txt",
+          "failures/reviewer-handler-shape-attempt-1/results/progress.jsonl",
+          "failures/reviewer-handler-shape-attempt-1/source_guard_checks.py",
+          "failures/reviewer-handler-shape-attempt-1/stderr",
+          "failures/reviewer-handler-shape-attempt-1/stdout",
+          "independent-primary/core/RESULT.json",
+          "independent-primary/core/calls.json",
+          "independent-primary/core/constructed-cases.json",
+          "independent-primary/core/progress.jsonl",
+          "independent-primary/core/source-oracle.json",
+          "independent-primary/derive-wrong-instance/RESULT.json",
+          "independent-primary/derive-wrong-instance/calls.json",
+          "independent-primary/derive-wrong-instance/progress.jsonl",
+          "independent-primary/semantic-alias/RESULT.json",
+          "independent-primary/semantic-alias/calls.json",
+          "independent-primary/semantic-alias/progress.jsonl",
+          "independent-primary/semantic-coordinated/RESULT.json",
+          "independent-primary/semantic-coordinated/calls.json",
+          "independent-primary/semantic-coordinated/progress.jsonl",
+          "independent-primary/source-guards-v2/RESULT.json",
+          "independent-primary/source-guards-v2/calls.json",
+          "independent-primary/source-guards-v2/guard-audit.json",
+          "independent-primary/source-guards-v2/progress.jsonl",
+          "independent-recovered/core/RESULT.json",
+          "independent-recovered/core/calls.json",
+          "independent-recovered/core/constructed-cases.json",
+          "independent-recovered/core/progress.jsonl",
+          "independent-recovered/core/source-oracle.json",
+          "independent-recovered/extra-entries/RESULT.json",
+          "independent-recovered/extra-entries/calls.json",
+          "independent-recovered/extra-entries/progress.jsonl",
+          "independent-recovered/public-negative/RESULT.json",
+          "independent-recovered/public-negative/calls.json",
+          "independent-recovered/public-negative/progress.jsonl",
+          "independent-recovered/public/RESULT.json",
+          "independent-recovered/public/calls.json",
+          "independent-recovered/public/progress.jsonl",
+          "input/I164-client-state-return-correspondence-1.zip",
+          "results/composition.json",
+          "results/core-primary.stderr",
+          "results/core-primary.stdout",
+          "results/core-recovered.stderr",
+          "results/core-recovered.stdout",
+          "results/derive-wrong-instance.stderr",
+          "results/derive-wrong-instance.stdout",
+          "results/extra-entries.stderr",
+          "results/extra-entries.stdout",
+          "results/final-audit.json",
+          "results/integrity-primary.json",
+          "results/integrity-recovered.json",
+          "results/public-negative.stderr",
+          "results/public-negative.stdout",
+          "results/public.stderr",
+          "results/public.stdout",
+          "results/semantic-alias.stderr",
+          "results/semantic-alias.stdout",
+          "results/semantic-coordinated.stderr",
+          "results/semantic-coordinated.stdout",
+          "results/source-guards-v2.stderr",
+          "results/source-guards-v2.stdout",
+          "results/source-guards.stderr",
+          "results/source-guards.stdout"
+        ]
+      },
+      {
+        "manifest": "retained/state/MANIFEST.json",
+        "verified_present": 1687,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/MANIFEST.json",
+        "verified_present": 1507,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/MANIFEST.json",
+        "verified_present": 1281,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle-review/MANIFEST.json",
+        "verified_present": 140,
+        "absent": [
+          "input/I164-handle-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/MANIFEST.json",
+        "verified_present": 1087,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state-review/MANIFEST.json",
+        "verified_present": 32,
+        "absent": [
+          "input/I164-state-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/MANIFEST.json",
+        "verified_present": 1015,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config-review/MANIFEST.json",
+        "verified_present": 40,
+        "absent": [
+          "failures/initial-recovered-membership/unexpected-0.bin",
+          "input/I164-config-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/MANIFEST.json",
+        "verified_present": 917,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding-review/MANIFEST.json",
+        "verified_present": 40,
+        "absent": [
+          "failures/initial-recovered-membership/unexpected-0.bin",
+          "input/I164-binding-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/MANIFEST.json",
+        "verified_present": 843,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/MANIFEST.json",
+        "verified_present": 731,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/MANIFEST.json",
+        "verified_present": 616,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/provenance/reference-review/MANIFEST.json",
+        "verified_present": 33,
+        "absent": [
+          "input/I164-reference-transfer-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/MANIFEST.json",
+        "verified_present": 551,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/field-independent-review/MANIFEST.json",
+        "verified_present": 26,
+        "absent": [
+          "input/I164-status-field-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/MANIFEST.json",
+        "verified_present": 488,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/MANIFEST.json",
+        "verified_present": 462,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/MANIFEST.json",
+        "verified_present": 27,
+        "absent": []
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/retained/review/MANIFEST.json",
+        "verified_present": 62,
+        "absent": [
+          "input/I164-recovery-field-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/review/MANIFEST.json",
+        "verified_present": 71,
+        "absent": [
+          "input/I164-HF01-correction.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/client/review/MANIFEST.json",
+        "verified_present": 170,
+        "absent": [
+          "input/I164-client-handle-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/state/retained/review/MANIFEST.json",
+        "verified_present": 132,
+        "absent": [
+          "input/I164-outside-catch-classification-correction-1.zip"
+        ]
+      }
+    ]
+  },
+  "nested_archives": {
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip": {
+      "identity": {
+        "bytes": 29930542,
+        "sha256": "96f996a5284017cf86721c0fdb94fbeeda2d94cd372937beb7af3634a3927099"
+      },
+      "entries": 21,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 20,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip": {
+      "identity": {
+        "bytes": 30156228,
+        "sha256": "eb8f0c74f1431a00cfe67e7b756a7e3416385a34bebaa0e2b3981c063898092f"
+      },
+      "entries": 520,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 519,
+          "absent": []
+        },
+        {
+          "manifest": "corrected/retained/correction/MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "corrected/retained/correction/retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        },
+        {
+          "manifest": "review/MANIFEST.json",
+          "verified_present": 34,
+          "absent": [
+            "input/I164-SOC01-SOC02-correction.zip"
+          ]
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/corrected/inputs/correction.zip": {
+      "identity": {
+        "bytes": 4269431,
+        "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+      },
+      "entries": 463,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/corrected/inputs/smoke.zip": {
+      "identity": {
+        "bytes": 77696,
+        "sha256": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8"
+      },
+      "entries": 37,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 36,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip": {
+      "identity": {
+        "bytes": 21550943,
+        "sha256": "62340d3d729c6fd3caf5a204a55ecf82efbd3b3955c5f466609ff36792f6d8e5"
+      },
+      "entries": 36,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 35,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip": {
+      "identity": {
+        "bytes": 21703078,
+        "sha256": "6f90951280861fc27e4539cfd0596ecfb3c98a1c30b74bfe528042922b42a948"
+      },
+      "entries": 554,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 553,
+          "absent": []
+        },
+        {
+          "manifest": "corrected/retained/correction/MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "corrected/retained/correction/retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        },
+        {
+          "manifest": "review/MANIFEST.json",
+          "verified_present": 66,
+          "absent": [
+            "input/I164-status-smoke-occurrence-connection-1.zip",
+            "predecessor/Formal-Lab6-I164-status-boundary-independent-review.zip"
+          ]
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/corrected/inputs/correction.zip": {
+      "identity": {
+        "bytes": 4269431,
+        "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+      },
+      "entries": 463,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/corrected/inputs/smoke.zip": {
+      "identity": {
+        "bytes": 77696,
+        "sha256": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8"
+      },
+      "entries": 37,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 36,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip": {
+      "identity": {
+        "bytes": 12956201,
+        "sha256": "13b74ea86aed82a4e14b96e634aa8cd44b2617c804ee9b2df678b2c779be76c3"
+      },
+      "entries": 69,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 68,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/input/I164-status-smoke-occurrence-connection-1.zip": {
+      "identity": {
+        "bytes": 8512513,
+        "sha256": "20be027e282cf14a2dd1c790b60b788abab585a554152096e80ab29b5e1034f3"
+      },
+      "entries": 485,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 484,
+          "absent": []
+        },
+        {
+          "manifest": "retained/correction/MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/correction/retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/input/I164-status-smoke-occurrence-connection-1.zip!/inputs/correction.zip": {
+      "identity": {
+        "bytes": 4269431,
+        "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+      },
+      "entries": 463,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/input/I164-status-smoke-occurrence-connection-1.zip!/inputs/smoke.zip": {
+      "identity": {
+        "bytes": 77696,
+        "sha256": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8"
+      },
+      "entries": 37,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 36,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/predecessor/Formal-Lab6-I164-status-boundary-independent-review.zip": {
+      "identity": {
+        "bytes": 4494310,
+        "sha256": "3ef0c2943582101f58646503482d20e28da17e3ccfefcdd4cef03714d6d2c517"
+      },
+      "entries": 496,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 495,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/predecessor/Formal-Lab6-I164-status-boundary-independent-review.zip!/dependencies/I164-launcher-5002-review.zip": {
+      "identity": {
+        "bytes": 101857,
+        "sha256": "bdef8320320e74c9f79e187da4e6adfe93ce1d4723871f69935c9f8816299e55"
+      },
+      "entries": 28,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/predecessor/Formal-Lab6-I164-status-boundary-independent-review.zip!/dependencies/I164-status-contract-adoption-1.zip": {
+      "identity": {
+        "bytes": 54869,
+        "sha256": "e06103888909cb2100d97dd75ab721fed237a5180444d05bec781c6e2f5d9fdd"
+      },
+      "entries": 14,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 13,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/closure-review.zip!/input/I164-SOC02-R1-correction.zip!/inputs/independent-review.zip!/input/I164-SOC01-SOC02-correction.zip!/inputs/independent-review.zip!/predecessor/Formal-Lab6-I164-status-boundary-independent-review.zip!/input/I164-status-boundary-correction-1.zip": {
+      "identity": {
+        "bytes": 4269431,
+        "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+      },
+      "entries": 463,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/inputs/correction.zip": {
+      "identity": {
+        "bytes": 4269431,
+        "sha256": "983e8aa849be387c4f92a54953fd24e2271bb090a01a0fb589230f0edad53185"
+      },
+      "entries": 463,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 462,
+          "absent": []
+        },
+        {
+          "manifest": "retained/launcher/MANIFEST.json",
+          "verified_present": 27,
+          "absent": []
+        }
+      ]
+    },
+    "retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/inputs/smoke.zip": {
+      "identity": {
+        "bytes": 77696,
+        "sha256": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8"
+      },
+      "entries": 37,
+      "CRC": "PASS",
+      "safe_exact_membership": "PASS",
+      "manifests": [
+        {
+          "manifest": "MANIFEST.json",
+          "verified_present": 36,
+          "absent": []
+        }
+      ]
+    }
+  },
+  "prior_target": {
+    "identity": {
+      "bytes": 61624841,
+      "sha256": "0ae24141a77f42eb96ed0f8d144f612d7a8045e04f7aa47dcaa8d1750f886907"
+    },
+    "entries": 1688,
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "manifests": [
+      {
+        "manifest": "MANIFEST.json",
+        "verified_present": 1687,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/MANIFEST.json",
+        "verified_present": 1507,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/MANIFEST.json",
+        "verified_present": 1281,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle-review/MANIFEST.json",
+        "verified_present": 140,
+        "absent": [
+          "input/I164-handle-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/MANIFEST.json",
+        "verified_present": 1087,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state-review/MANIFEST.json",
+        "verified_present": 32,
+        "absent": [
+          "input/I164-state-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/MANIFEST.json",
+        "verified_present": 1015,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config-review/MANIFEST.json",
+        "verified_present": 40,
+        "absent": [
+          "failures/initial-recovered-membership/unexpected-0.bin",
+          "input/I164-config-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/MANIFEST.json",
+        "verified_present": 917,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding-review/MANIFEST.json",
+        "verified_present": 40,
+        "absent": [
+          "failures/initial-recovered-membership/unexpected-0.bin",
+          "input/I164-binding-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/MANIFEST.json",
+        "verified_present": 843,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/MANIFEST.json",
+        "verified_present": 731,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/MANIFEST.json",
+        "verified_present": 616,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/provenance/reference-review/MANIFEST.json",
+        "verified_present": 33,
+        "absent": [
+          "input/I164-reference-transfer-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/MANIFEST.json",
+        "verified_present": 551,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/field-independent-review/MANIFEST.json",
+        "verified_present": 26,
+        "absent": [
+          "input/I164-status-field-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/MANIFEST.json",
+        "verified_present": 488,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/MANIFEST.json",
+        "verified_present": 462,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/MANIFEST.json",
+        "verified_present": 27,
+        "absent": []
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/retained/review/MANIFEST.json",
+        "verified_present": 62,
+        "absent": [
+          "input/I164-recovery-field-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/review/MANIFEST.json",
+        "verified_present": 71,
+        "absent": [
+          "input/I164-HF01-correction.zip"
+        ]
+      },
+      {
+        "manifest": "retained/client/review/MANIFEST.json",
+        "verified_present": 170,
+        "absent": [
+          "input/I164-client-handle-return-correspondence-1.zip"
+        ]
+      },
+      {
+        "manifest": "retained/review/MANIFEST.json",
+        "verified_present": 132,
+        "absent": [
+          "input/I164-outside-catch-classification-correction-1.zip"
+        ]
+      }
+    ]
+  },
+  "prior_review": {
+    "identity": {
+      "bytes": 60792892,
+      "sha256": "a8762d3b81d5f5cbedfb95e5afd8d2c083143ed759f88f2b550cfebfb6de4bf6"
+    },
+    "entries": 91,
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "manifests": [
+      {
+        "manifest": "MANIFEST.json",
+        "verified_present": 90,
+        "absent": []
+      },
+      {
+        "manifest": "failures/checkpoint-verifier-attempt-1/MANIFEST.json",
+        "verified_present": 0,
+        "absent": [
+          "CHECKPOINT.json",
+          "RECOVERY.md",
+          "REPORT.md",
+          "cli-recovered/RESULT.json",
+          "cli-recovered/process.json",
+          "cli-recovered/stderr",
+          "cli-recovered/stdout",
+          "code/cli_guarded.py",
+          "code/common.py",
+          "code/composition.py",
+          "code/core.py",
+          "code/entry_checks.py",
+          "code/extra_entries.py",
+          "code/final_audit.py",
+          "code/integrity.py",
+          "code/package_checkpoint.py",
+          "code/run_cli.py",
+          "code/source_guard_checks.py",
+          "code/source_guard_checks_v2.py",
+          "code/verify_checkpoint.py",
+          "failures/reviewer-handler-shape-attempt-1/EXPLANATION.json",
+          "failures/reviewer-handler-shape-attempt-1/results/RESULT.json",
+          "failures/reviewer-handler-shape-attempt-1/results/calls.json",
+          "failures/reviewer-handler-shape-attempt-1/results/failure.txt",
+          "failures/reviewer-handler-shape-attempt-1/results/progress.jsonl",
+          "failures/reviewer-handler-shape-attempt-1/source_guard_checks.py",
+          "failures/reviewer-handler-shape-attempt-1/stderr",
+          "failures/reviewer-handler-shape-attempt-1/stdout",
+          "independent-primary/core/RESULT.json",
+          "independent-primary/core/calls.json",
+          "independent-primary/core/constructed-cases.json",
+          "independent-primary/core/progress.jsonl",
+          "independent-primary/core/source-oracle.json",
+          "independent-primary/derive-wrong-instance/RESULT.json",
+          "independent-primary/derive-wrong-instance/calls.json",
+          "independent-primary/derive-wrong-instance/progress.jsonl",
+          "independent-primary/semantic-alias/RESULT.json",
+          "independent-primary/semantic-alias/calls.json",
+          "independent-primary/semantic-alias/progress.jsonl",
+          "independent-primary/semantic-coordinated/RESULT.json",
+          "independent-primary/semantic-coordinated/calls.json",
+          "independent-primary/semantic-coordinated/progress.jsonl",
+          "independent-primary/source-guards-v2/RESULT.json",
+          "independent-primary/source-guards-v2/calls.json",
+          "independent-primary/source-guards-v2/guard-audit.json",
+          "independent-primary/source-guards-v2/progress.jsonl",
+          "independent-recovered/core/RESULT.json",
+          "independent-recovered/core/calls.json",
+          "independent-recovered/core/constructed-cases.json",
+          "independent-recovered/core/progress.jsonl",
+          "independent-recovered/core/source-oracle.json",
+          "independent-recovered/extra-entries/RESULT.json",
+          "independent-recovered/extra-entries/calls.json",
+          "independent-recovered/extra-entries/progress.jsonl",
+          "independent-recovered/public-negative/RESULT.json",
+          "independent-recovered/public-negative/calls.json",
+          "independent-recovered/public-negative/progress.jsonl",
+          "independent-recovered/public/RESULT.json",
+          "independent-recovered/public/calls.json",
+          "independent-recovered/public/progress.jsonl",
+          "input/I164-client-state-return-correspondence-1.zip",
+          "results/composition.json",
+          "results/core-primary.stderr",
+          "results/core-primary.stdout",
+          "results/core-recovered.stderr",
+          "results/core-recovered.stdout",
+          "results/derive-wrong-instance.stderr",
+          "results/derive-wrong-instance.stdout",
+          "results/extra-entries.stderr",
+          "results/extra-entries.stdout",
+          "results/final-audit.json",
+          "results/integrity-primary.json",
+          "results/integrity-recovered.json",
+          "results/public-negative.stderr",
+          "results/public-negative.stdout",
+          "results/public.stderr",
+          "results/public.stdout",
+          "results/semantic-alias.stderr",
+          "results/semantic-alias.stdout",
+          "results/semantic-coordinated.stderr",
+          "results/semantic-coordinated.stdout",
+          "results/source-guards-v2.stderr",
+          "results/source-guards-v2.stdout",
+          "results/source-guards.stderr",
+          "results/source-guards.stdout"
+        ]
+      }
+    ]
+  },
+  "preserved_predecessor_members": 1688,
+  "preserved_review_non_input_records": 90,
+  "inherited_producer_functions_byte_identical": 70,
+  "inherited_top_level_statements_unchanged": true,
+  "added_functions": [
+    "compile_status_forward",
+    "status_forward_projection",
+    "status_forward_source",
+    "status_snapshot_value",
+    "validate_status_forward",
+    "validate_status_forward_projection"
+  ],
+  "type_correction_changed_functions": [
+    "status_snapshot_value",
+    "status_forward_projection"
+  ],
+  "runtime_sources_changed": 0,
+  "current_components": {
+    "managed_coverage.py": {
+      "bytes": 193031,
+      "sha256": "57786ded29951dcf613e9dd6c8386fae00d92199344c1ab41df52fa49617f038"
+    },
+    "correspondence.py": {
+      "bytes": 15150,
+      "sha256": "d084342d7e1e217f6b3337bd261a42fc8d213739f05df12f8ae2beae7c8ddd43"
+    }
+  },
+  "old_affected_producer": {
+    "bytes": 192484,
+    "sha256": "903b4369f0e9d009b60c60a260e3dc44c399c0a69629eacdf7870a5d7feba7b0"
+  },
+  "old_affected_adapter": {
+    "bytes": 15150,
+    "sha256": "7642fcfe96e77cde929aa556bd1eaeaf004b805e05854687cf6fb8fb91452a1d"
+  },
+  "current_receipt": {
+    "bytes": 2776568,
+    "sha256": "a2405706fa62c90b27a01387cab68cb4890f7e809bd85f9dff8d7469fe60b42b"
+  },
+  "all_prior_context_fields_relationships_ordinals_and_obligations_unchanged": true,
+  "type_hardening_receipt_only_component_identities_changed": true,
+  "supplied_results": {
+    "exact-types": {
+      "checks": 36,
+      "identity": {
+        "bytes": 4279,
+        "sha256": "3b6891ac7759b94368f0053589aff806fbf6e680def4d40d075061ba9544c57a"
+      },
+      "inspected_not_rerun": true,
+      "current_code": true,
+      "labels": [
+        "pristine typed forwarding SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _reason SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _reason SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _epoch SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _epoch SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _phase SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _phase SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced dict-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects dict-subclass SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced str-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects str-subclass SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced int-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects int-subclass SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _epoch bool SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _epoch float SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _reason bytes SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _phase bool SYMBOLIC-U-ONE",
+        "pristine typed forwarding SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _reason SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _reason SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _epoch SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _epoch SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _phase SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _phase SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced dict-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects dict-subclass SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced str-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects str-subclass SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced int-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects int-subclass SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _epoch bool SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _epoch float SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _reason bytes SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _phase bool SYMBOLIC-U-TWO",
+        "only current extension component identities changed by exact-type correction",
+        "final receipt isolates nested returned objects"
+      ]
+    },
+    "recovered-output": {
+      "checks": 205,
+      "identity": {
+        "bytes": 22764,
+        "sha256": "2536b3e110d1e0683aa68eca141560b381ffe81d96e5ac8293219857bdf1bdcc"
+      },
+      "inspected_not_rerun": true,
+      "current_code": true,
+      "labels": [
+        "source-independent status selectors and complete hop ordering",
+        "source-independent phase assignments",
+        "source owner guard only tests absence",
+        "source direct forwards without arguments",
+        "source-controlled entry absent general-client status method",
+        "fresh source validator accepts pristine catalogue",
+        "defining source rejects coordinated READY guard",
+        "defining source rejects coordinated owner-failure guard",
+        "defining source rejects coordinated conversion",
+        "defining source rejects coordinated copy",
+        "defining source rejects coordinated wrong method",
+        "defining source rejects coordinated wrong token",
+        "defining source rejects coordinated new catch",
+        "defining source rejects wrapper wrong method",
+        "independent expected catalogue rejects omitted hop",
+        "independent expected catalogue rejects reordered hops",
+        "independent expected catalogue rejects omitted field",
+        "independent expected catalogue rejects omitted guard",
+        "independent expected catalogue rejects altered origin",
+        "independent expected catalogue rejects general output",
+        "independent expected catalogue rejects READY assumption",
+        "actual semantic entry validates evidence in both contexts",
+        "every predecessor context field preserved SYMBOLIC-U-ONE",
+        "every predecessor context field preserved SYMBOLIC-U-TWO",
+        "saved-value conditional chain SYMBOLIC-U-ONE",
+        "exact value direct reference forwarding SYMBOLIC-U-ONE",
+        "observer and absent runtime frames remain unjoined SYMBOLIC-U-ONE",
+        "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-ONE",
+        "source phase CLOSED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output CLOSED SYMBOLIC-U-ONE",
+        "source phase OPEN_FAILED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-ONE",
+        "source phase QUARANTINED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-ONE",
+        "source phase READY with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output READY SYMBOLIC-U-ONE",
+        "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 0 SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 1 SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 101 SYMBOLIC-U-ONE",
+        "source missing owner fixed failure SYMBOLIC-U-ONE",
+        "fixed raise distinct from absence of exception SYMBOLIC-U-ONE",
+        "conditional control-call raise SYMBOLIC-U-ONE",
+        "conditional control-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-ONE",
+        "conditional owner-lookup raise SYMBOLIC-U-ONE",
+        "conditional owner-lookup process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-ONE",
+        "conditional owner-guard raise SYMBOLIC-U-ONE",
+        "conditional owner-guard process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-ONE",
+        "conditional session-call raise SYMBOLIC-U-ONE",
+        "conditional session-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-ONE",
+        "conditional manager-call raise SYMBOLIC-U-ONE",
+        "conditional manager-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-ONE",
+        "conditional lock-enter raise SYMBOLIC-U-ONE",
+        "conditional lock-enter process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-ONE",
+        "conditional manager-result raise SYMBOLIC-U-ONE",
+        "conditional manager-result process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-ONE",
+        "conditional lock-exit raise SYMBOLIC-U-ONE",
+        "conditional lock-exit process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-ONE",
+        "conditional manager-return raise SYMBOLIC-U-ONE",
+        "conditional manager-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-ONE",
+        "conditional session-return raise SYMBOLIC-U-ONE",
+        "conditional session-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-ONE",
+        "conditional control-return raise SYMBOLIC-U-ONE",
+        "conditional control-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-ONE",
+        "conditional fixed-failure raise SYMBOLIC-U-ONE",
+        "conditional fixed-failure process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-ONE",
+        "omitted return hop SYMBOLIC-U-ONE",
+        "reordered return hops SYMBOLIC-U-ONE",
+        "wrong return container type SYMBOLIC-U-ONE",
+        "omitted field phase SYMBOLIC-U-ONE",
+        "altered type/value phase SYMBOLIC-U-ONE",
+        "omitted field reason SYMBOLIC-U-ONE",
+        "altered type/value reason SYMBOLIC-U-ONE",
+        "omitted field connection_epoch SYMBOLIC-U-ONE",
+        "altered type/value connection_epoch SYMBOLIC-U-ONE",
+        "omitted field actual_admission SYMBOLIC-U-ONE",
+        "altered type/value actual_admission SYMBOLIC-U-ONE",
+        "omitted field external_nonexecution_established SYMBOLIC-U-ONE",
+        "altered type/value external_nonexecution_established SYMBOLIC-U-ONE",
+        "omitted field authorization_renewed SYMBOLIC-U-ONE",
+        "altered type/value authorization_renewed SYMBOLIC-U-ONE",
+        "coordinated all-hop reason substitution SYMBOLIC-U-ONE",
+        "coordinated snapshot plus all returns SYMBOLIC-U-ONE",
+        "wrong-instance anchor SYMBOLIC-U-ONE",
+        "stale acquisition scope SYMBOLIC-U-ONE",
+        "wrong manager reference edge SYMBOLIC-U-ONE",
+        "coordinated result-reference substitution SYMBOLIC-U-ONE",
+        "stale saved manager occurrence SYMBOLIC-U-ONE",
+        "unreached extra stage SYMBOLIC-U-ONE",
+        "wrong phase snapshot SYMBOLIC-U-ONE",
+        "negative epoch snapshot SYMBOLIC-U-ONE",
+        "reject unsupported derived claim destinations SYMBOLIC-U-ONE",
+        "reject unsupported derived claim runtime_observation SYMBOLIC-U-ONE",
+        "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-ONE",
+        "reject unsupported derived claim cleanup_completion SYMBOLIC-U-ONE",
+        "semantic row checker rejects mixed sample SYMBOLIC-U-ONE",
+        "saved-value conditional chain SYMBOLIC-U-TWO",
+        "exact value direct reference forwarding SYMBOLIC-U-TWO",
+        "observer and absent runtime frames remain unjoined SYMBOLIC-U-TWO",
+        "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-TWO",
+        "source phase CLOSED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output CLOSED SYMBOLIC-U-TWO",
+        "source phase OPEN_FAILED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-TWO",
+        "source phase QUARANTINED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-TWO",
+        "source phase READY with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output READY SYMBOLIC-U-TWO",
+        "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 0 SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 1 SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 101 SYMBOLIC-U-TWO",
+        "source missing owner fixed failure SYMBOLIC-U-TWO",
+        "fixed raise distinct from absence of exception SYMBOLIC-U-TWO",
+        "conditional control-call raise SYMBOLIC-U-TWO",
+        "conditional control-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-TWO",
+        "conditional owner-lookup raise SYMBOLIC-U-TWO",
+        "conditional owner-lookup process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-TWO",
+        "conditional owner-guard raise SYMBOLIC-U-TWO",
+        "conditional owner-guard process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-TWO",
+        "conditional session-call raise SYMBOLIC-U-TWO",
+        "conditional session-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-TWO",
+        "conditional manager-call raise SYMBOLIC-U-TWO",
+        "conditional manager-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-TWO",
+        "conditional lock-enter raise SYMBOLIC-U-TWO",
+        "conditional lock-enter process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-TWO",
+        "conditional manager-result raise SYMBOLIC-U-TWO",
+        "conditional manager-result process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-TWO",
+        "conditional lock-exit raise SYMBOLIC-U-TWO",
+        "conditional lock-exit process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-TWO",
+        "conditional manager-return raise SYMBOLIC-U-TWO",
+        "conditional manager-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-TWO",
+        "conditional session-return raise SYMBOLIC-U-TWO",
+        "conditional session-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-TWO",
+        "conditional control-return raise SYMBOLIC-U-TWO",
+        "conditional control-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-TWO",
+        "conditional fixed-failure raise SYMBOLIC-U-TWO",
+        "conditional fixed-failure process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-TWO",
+        "omitted return hop SYMBOLIC-U-TWO",
+        "reordered return hops SYMBOLIC-U-TWO",
+        "wrong return container type SYMBOLIC-U-TWO",
+        "omitted field phase SYMBOLIC-U-TWO",
+        "altered type/value phase SYMBOLIC-U-TWO",
+        "omitted field reason SYMBOLIC-U-TWO",
+        "altered type/value reason SYMBOLIC-U-TWO",
+        "omitted field connection_epoch SYMBOLIC-U-TWO",
+        "altered type/value connection_epoch SYMBOLIC-U-TWO",
+        "omitted field actual_admission SYMBOLIC-U-TWO",
+        "altered type/value actual_admission SYMBOLIC-U-TWO",
+        "omitted field external_nonexecution_established SYMBOLIC-U-TWO",
+        "altered type/value external_nonexecution_established SYMBOLIC-U-TWO",
+        "omitted field authorization_renewed SYMBOLIC-U-TWO",
+        "altered type/value authorization_renewed SYMBOLIC-U-TWO",
+        "coordinated all-hop reason substitution SYMBOLIC-U-TWO",
+        "coordinated snapshot plus all returns SYMBOLIC-U-TWO",
+        "wrong-instance anchor SYMBOLIC-U-TWO",
+        "stale acquisition scope SYMBOLIC-U-TWO",
+        "wrong manager reference edge SYMBOLIC-U-TWO",
+        "coordinated result-reference substitution SYMBOLIC-U-TWO",
+        "stale saved manager occurrence SYMBOLIC-U-TWO",
+        "unreached extra stage SYMBOLIC-U-TWO",
+        "wrong phase snapshot SYMBOLIC-U-TWO",
+        "negative epoch snapshot SYMBOLIC-U-TWO",
+        "reject unsupported derived claim destinations SYMBOLIC-U-TWO",
+        "reject unsupported derived claim runtime_observation SYMBOLIC-U-TWO",
+        "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-TWO",
+        "reject unsupported derived claim cleanup_completion SYMBOLIC-U-TWO",
+        "semantic row checker rejects mixed sample SYMBOLIC-U-TWO",
+        "coordinated field/catalogue omission",
+        "nested returned bundle mutations leave expectations isolated",
+        "nested returned rows leave expectations isolated",
+        "both contexts mandatory 0 False",
+        "both contexts mandatory 1 False",
+        "both contexts mandatory 2 True",
+        "public validation rejects missing mandatory relation",
+        "recovered saved exact receipt",
+        "source/field producer predecessor inputs unchanged"
+      ]
+    },
+    "recovered-types": {
+      "checks": 34,
+      "identity": {
+        "bytes": 4047,
+        "sha256": "24fbf54bc6d622126aafd1a9657f70adb2a1a293107c549cc7b7740d692d8522"
+      },
+      "inspected_not_rerun": true,
+      "current_code": true,
+      "labels": [
+        "pristine typed forwarding SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _reason SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _reason SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _epoch SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _epoch SYMBOLIC-U-ONE",
+        "original named-type witness reproduced _phase SYMBOLIC-U-ONE",
+        "exact type rejects named subclass _phase SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced dict-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects dict-subclass SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced str-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects str-subclass SYMBOLIC-U-ONE",
+        "original return subclass witness reproduced int-subclass SYMBOLIC-U-ONE",
+        "exact return type rejects int-subclass SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _epoch bool SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _epoch float SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _reason bytes SYMBOLIC-U-ONE",
+        "adjacent wrong snapshot type _phase bool SYMBOLIC-U-ONE",
+        "pristine typed forwarding SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _reason SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _reason SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _epoch SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _epoch SYMBOLIC-U-TWO",
+        "original named-type witness reproduced _phase SYMBOLIC-U-TWO",
+        "exact type rejects named subclass _phase SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced dict-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects dict-subclass SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced str-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects str-subclass SYMBOLIC-U-TWO",
+        "original return subclass witness reproduced int-subclass SYMBOLIC-U-TWO",
+        "exact return type rejects int-subclass SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _epoch bool SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _epoch float SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _reason bytes SYMBOLIC-U-TWO",
+        "adjacent wrong snapshot type _phase bool SYMBOLIC-U-TWO"
+      ]
+    },
+    "pre-type-hardening-primary": {
+      "checks": 204,
+      "identity": {
+        "bytes": 22681,
+        "sha256": "b698d568d23067102e6134d1e68a2610c6a816edd98cc4eb411e5a4e2ea9f594"
+      },
+      "inspected_not_rerun": true,
+      "current_code": false,
+      "labels": [
+        "source-independent status selectors and complete hop ordering",
+        "source-independent phase assignments",
+        "source owner guard only tests absence",
+        "source direct forwards without arguments",
+        "source-controlled entry absent general-client status method",
+        "fresh source validator accepts pristine catalogue",
+        "defining source rejects coordinated READY guard",
+        "defining source rejects coordinated owner-failure guard",
+        "defining source rejects coordinated conversion",
+        "defining source rejects coordinated copy",
+        "defining source rejects coordinated wrong method",
+        "defining source rejects coordinated wrong token",
+        "defining source rejects coordinated new catch",
+        "defining source rejects wrapper wrong method",
+        "independent expected catalogue rejects omitted hop",
+        "independent expected catalogue rejects reordered hops",
+        "independent expected catalogue rejects omitted field",
+        "independent expected catalogue rejects omitted guard",
+        "independent expected catalogue rejects altered origin",
+        "independent expected catalogue rejects general output",
+        "independent expected catalogue rejects READY assumption",
+        "actual semantic entry validates evidence in both contexts",
+        "every predecessor context field preserved SYMBOLIC-U-ONE",
+        "every predecessor context field preserved SYMBOLIC-U-TWO",
+        "saved-value conditional chain SYMBOLIC-U-ONE",
+        "exact value direct reference forwarding SYMBOLIC-U-ONE",
+        "observer and absent runtime frames remain unjoined SYMBOLIC-U-ONE",
+        "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-ONE",
+        "source phase CLOSED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output CLOSED SYMBOLIC-U-ONE",
+        "source phase OPEN_FAILED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-ONE",
+        "source phase QUARANTINED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-ONE",
+        "source phase READY with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output READY SYMBOLIC-U-ONE",
+        "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-ONE",
+        "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 0 SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 1 SYMBOLIC-U-ONE",
+        "unbounded reason and instance-local epoch 101 SYMBOLIC-U-ONE",
+        "source missing owner fixed failure SYMBOLIC-U-ONE",
+        "fixed raise distinct from absence of exception SYMBOLIC-U-ONE",
+        "conditional control-call raise SYMBOLIC-U-ONE",
+        "conditional control-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-ONE",
+        "conditional owner-lookup raise SYMBOLIC-U-ONE",
+        "conditional owner-lookup process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-ONE",
+        "conditional owner-guard raise SYMBOLIC-U-ONE",
+        "conditional owner-guard process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-ONE",
+        "conditional session-call raise SYMBOLIC-U-ONE",
+        "conditional session-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-ONE",
+        "conditional manager-call raise SYMBOLIC-U-ONE",
+        "conditional manager-call process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-ONE",
+        "conditional lock-enter raise SYMBOLIC-U-ONE",
+        "conditional lock-enter process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-ONE",
+        "conditional manager-result raise SYMBOLIC-U-ONE",
+        "conditional manager-result process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-ONE",
+        "conditional lock-exit raise SYMBOLIC-U-ONE",
+        "conditional lock-exit process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-ONE",
+        "conditional manager-return raise SYMBOLIC-U-ONE",
+        "conditional manager-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-ONE",
+        "conditional session-return raise SYMBOLIC-U-ONE",
+        "conditional session-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-ONE",
+        "conditional control-return raise SYMBOLIC-U-ONE",
+        "conditional control-return process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-ONE",
+        "conditional fixed-failure raise SYMBOLIC-U-ONE",
+        "conditional fixed-failure process-termination SYMBOLIC-U-ONE",
+        "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-ONE",
+        "omitted return hop SYMBOLIC-U-ONE",
+        "reordered return hops SYMBOLIC-U-ONE",
+        "wrong return container type SYMBOLIC-U-ONE",
+        "omitted field phase SYMBOLIC-U-ONE",
+        "altered type/value phase SYMBOLIC-U-ONE",
+        "omitted field reason SYMBOLIC-U-ONE",
+        "altered type/value reason SYMBOLIC-U-ONE",
+        "omitted field connection_epoch SYMBOLIC-U-ONE",
+        "altered type/value connection_epoch SYMBOLIC-U-ONE",
+        "omitted field actual_admission SYMBOLIC-U-ONE",
+        "altered type/value actual_admission SYMBOLIC-U-ONE",
+        "omitted field external_nonexecution_established SYMBOLIC-U-ONE",
+        "altered type/value external_nonexecution_established SYMBOLIC-U-ONE",
+        "omitted field authorization_renewed SYMBOLIC-U-ONE",
+        "altered type/value authorization_renewed SYMBOLIC-U-ONE",
+        "coordinated all-hop reason substitution SYMBOLIC-U-ONE",
+        "coordinated snapshot plus all returns SYMBOLIC-U-ONE",
+        "wrong-instance anchor SYMBOLIC-U-ONE",
+        "stale acquisition scope SYMBOLIC-U-ONE",
+        "wrong manager reference edge SYMBOLIC-U-ONE",
+        "coordinated result-reference substitution SYMBOLIC-U-ONE",
+        "stale saved manager occurrence SYMBOLIC-U-ONE",
+        "unreached extra stage SYMBOLIC-U-ONE",
+        "wrong phase snapshot SYMBOLIC-U-ONE",
+        "negative epoch snapshot SYMBOLIC-U-ONE",
+        "reject unsupported derived claim destinations SYMBOLIC-U-ONE",
+        "reject unsupported derived claim runtime_observation SYMBOLIC-U-ONE",
+        "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-ONE",
+        "reject unsupported derived claim cleanup_completion SYMBOLIC-U-ONE",
+        "semantic row checker rejects mixed sample SYMBOLIC-U-ONE",
+        "saved-value conditional chain SYMBOLIC-U-TWO",
+        "exact value direct reference forwarding SYMBOLIC-U-TWO",
+        "observer and absent runtime frames remain unjoined SYMBOLIC-U-TWO",
+        "source phase CLEANUP_UNCERTAIN with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output CLEANUP_UNCERTAIN SYMBOLIC-U-TWO",
+        "source phase CLOSED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output CLOSED SYMBOLIC-U-TWO",
+        "source phase OPEN_FAILED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output OPEN_FAILED SYMBOLIC-U-TWO",
+        "source phase QUARANTINED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output QUARANTINED SYMBOLIC-U-TWO",
+        "source phase READY with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output READY SYMBOLIC-U-TWO",
+        "source phase VALIDATION_FAILED with prior failure SYMBOLIC-U-TWO",
+        "no READY/failure guard or new output VALIDATION_FAILED SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 0 SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 1 SYMBOLIC-U-TWO",
+        "unbounded reason and instance-local epoch 101 SYMBOLIC-U-TWO",
+        "source missing owner fixed failure SYMBOLIC-U-TWO",
+        "fixed raise distinct from absence of exception SYMBOLIC-U-TWO",
+        "conditional control-call raise SYMBOLIC-U-TWO",
+        "conditional control-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup control-call SYMBOLIC-U-TWO",
+        "conditional owner-lookup raise SYMBOLIC-U-TWO",
+        "conditional owner-lookup process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup owner-lookup SYMBOLIC-U-TWO",
+        "conditional owner-guard raise SYMBOLIC-U-TWO",
+        "conditional owner-guard process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup owner-guard SYMBOLIC-U-TWO",
+        "conditional session-call raise SYMBOLIC-U-TWO",
+        "conditional session-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup session-call SYMBOLIC-U-TWO",
+        "conditional manager-call raise SYMBOLIC-U-TWO",
+        "conditional manager-call process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-call SYMBOLIC-U-TWO",
+        "conditional lock-enter raise SYMBOLIC-U-TWO",
+        "conditional lock-enter process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup lock-enter SYMBOLIC-U-TWO",
+        "conditional manager-result raise SYMBOLIC-U-TWO",
+        "conditional manager-result process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-result SYMBOLIC-U-TWO",
+        "conditional lock-exit raise SYMBOLIC-U-TWO",
+        "conditional lock-exit process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup lock-exit SYMBOLIC-U-TWO",
+        "conditional manager-return raise SYMBOLIC-U-TWO",
+        "conditional manager-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup manager-return SYMBOLIC-U-TWO",
+        "conditional session-return raise SYMBOLIC-U-TWO",
+        "conditional session-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup session-return SYMBOLIC-U-TWO",
+        "conditional control-return raise SYMBOLIC-U-TWO",
+        "conditional control-return process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup control-return SYMBOLIC-U-TWO",
+        "conditional fixed-failure raise SYMBOLIC-U-TWO",
+        "conditional fixed-failure process-termination SYMBOLIC-U-TWO",
+        "termination supplies no exception/retention/cleanup fixed-failure SYMBOLIC-U-TWO",
+        "omitted return hop SYMBOLIC-U-TWO",
+        "reordered return hops SYMBOLIC-U-TWO",
+        "wrong return container type SYMBOLIC-U-TWO",
+        "omitted field phase SYMBOLIC-U-TWO",
+        "altered type/value phase SYMBOLIC-U-TWO",
+        "omitted field reason SYMBOLIC-U-TWO",
+        "altered type/value reason SYMBOLIC-U-TWO",
+        "omitted field connection_epoch SYMBOLIC-U-TWO",
+        "altered type/value connection_epoch SYMBOLIC-U-TWO",
+        "omitted field actual_admission SYMBOLIC-U-TWO",
+        "altered type/value actual_admission SYMBOLIC-U-TWO",
+        "omitted field external_nonexecution_established SYMBOLIC-U-TWO",
+        "altered type/value external_nonexecution_established SYMBOLIC-U-TWO",
+        "omitted field authorization_renewed SYMBOLIC-U-TWO",
+        "altered type/value authorization_renewed SYMBOLIC-U-TWO",
+        "coordinated all-hop reason substitution SYMBOLIC-U-TWO",
+        "coordinated snapshot plus all returns SYMBOLIC-U-TWO",
+        "wrong-instance anchor SYMBOLIC-U-TWO",
+        "stale acquisition scope SYMBOLIC-U-TWO",
+        "wrong manager reference edge SYMBOLIC-U-TWO",
+        "coordinated result-reference substitution SYMBOLIC-U-TWO",
+        "stale saved manager occurrence SYMBOLIC-U-TWO",
+        "unreached extra stage SYMBOLIC-U-TWO",
+        "wrong phase snapshot SYMBOLIC-U-TWO",
+        "negative epoch snapshot SYMBOLIC-U-TWO",
+        "reject unsupported derived claim destinations SYMBOLIC-U-TWO",
+        "reject unsupported derived claim runtime_observation SYMBOLIC-U-TWO",
+        "reject unsupported derived claim physical_object_identity_observed SYMBOLIC-U-TWO",
+        "reject unsupported derived claim cleanup_completion SYMBOLIC-U-TWO",
+        "semantic row checker rejects mixed sample SYMBOLIC-U-TWO",
+        "coordinated field/catalogue omission",
+        "nested returned bundle mutations leave expectations isolated",
+        "nested returned rows leave expectations isolated",
+        "both contexts mandatory 0 False",
+        "both contexts mandatory 1 False",
+        "both contexts mandatory 2 True",
+        "public validation rejects missing mandatory relation",
+        "source/field producer predecessor inputs unchanged"
+      ]
+    }
+  },
+  "supplied_type_witnesses": [
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_reason",
+      "actual_type_name": "str",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_epoch",
+      "actual_type_name": "int",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_phase",
+      "actual_type_name": "str",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "serialized-equivalent returned dict-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "serialized-equivalent returned str-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "kind": "serialized-equivalent returned int-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_reason",
+      "actual_type_name": "str",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_epoch",
+      "actual_type_name": "int",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "builtin-name subclass in snapshot",
+      "field": "_phase",
+      "actual_type_name": "str",
+      "exact_builtin_type": false,
+      "original_accepted": true,
+      "serialized_value": {
+        "phase": "READY",
+        "reason": "fresh connection and retained history validated",
+        "connection_epoch": 1,
+        "actual_admission": false,
+        "external_nonexecution_established": false,
+        "authorization_renewed": false
+      }
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "serialized-equivalent returned dict-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "serialized-equivalent returned str-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "kind": "serialized-equivalent returned int-subclass",
+      "original_accepted": true,
+      "mutated_hop": "session-return"
+    }
+  ],
+  "supplied_fresh_process": {
+    "checks": 5,
+    "database_connections": 0,
+    "prior_suites_rerun": false,
+    "requests": 0,
+    "result": "PASS",
+    "rows": [
+      {
+        "check": "actual public semantic accepts pristine evidence",
+        "result": "PASS"
+      },
+      {
+        "check": "actual public saved receipt passes after nested semantic-result mutation",
+        "result": "PASS"
+      },
+      {
+        "check": "actual semantic rejects coordinated trace/snapshot/claim epoch substitution",
+        "result": "PASS"
+      },
+      {
+        "check": "actual derivation rejects coordinated catalogue and both-context hop omission",
+        "result": "PASS"
+      },
+      {
+        "check": "actual public validation rejects wrong constant type",
+        "result": "PASS"
+      }
+    ],
+    "seconds": 934.5649319740005,
+    "session_operations": 0
+  },
+  "supplied_failed_attempt": {
+    "checks": 17,
+    "not_in_completed_totals": true,
+    "ineffective_mutation_independently_corroborated": true
+  },
+  "prior_independent_counts": [
+    273,
+    196
+  ],
+  "prior_failure_records_preserved": true,
+  "intermediate_recovery_outer_archive_newly_verified": false,
+  "supplied_intermediate_recovery": {
+    "CRC": "PASS",
+    "all_hashes": "PASS",
+    "bytes": 62675133,
+    "entries": 1818,
+    "manifest_identity": {
+      "bytes": 472758,
+      "sha256": "5beaa129ad77e59cabb94f80e80b1e51a0c68427a65b6ef1294c218fbaa9f6d2"
+    },
+    "manifested_files": 1817,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "9ac476fe75f53a3b8eea5999f2e32d2b819e883692540e7f567250ef92b06051"
+  },
+  "manifest_interpretation": "Historical missing outer archives and forensic copies remain qualified; forensic snapshot MANIFEST.json documents are not declarations of new executable roots."
+}

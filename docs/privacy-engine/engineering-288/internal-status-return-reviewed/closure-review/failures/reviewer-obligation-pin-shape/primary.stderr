@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/is01-review/code/recover_script.py", line 6, in <module>
+    sys.argv=[str(Path(__file__).with_name(script)),root,out,*args];runpy.run_path(sys.argv[0],run_name='__main__')
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/ace5c9b2f18b/is01-review/code/focused.py", line 106, in <module>
+    rec.check('all eleven obligations and unavailable observations retained',lambda:len(json.loads(original)['unchanged_obligations'])==11 and all(r['runtime_forwarding_links'] is None and r['observer_join'] is None and r['actual_status_forwarding_count'] is None for r in rows))
+  File "/workspace/scratch/ace5c9b2f18b/is01-review/code/common.py", line 46, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+                  ^^^^^^^^^^^^^^
+AssertionError: all eleven obligations and unavailable observations retained

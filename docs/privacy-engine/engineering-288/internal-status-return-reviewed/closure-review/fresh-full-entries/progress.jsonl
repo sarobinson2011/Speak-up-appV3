@@ -1,0 +1,20 @@
+{"check": "current full semantic rejects original reason witness SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-CLAIMS:VALUE-TYPE"}
+{"check": "current full derive_status rejects original reason witness SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-CLAIMS:VALUE-TYPE"}
+{"check": "current full constructed entry rejects literal key SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATUS-FORWARD-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "current full semantic rejects original reason witness SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-CLAIMS:VALUE-TYPE"}
+{"check": "current full derive_status rejects original reason witness SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-CLAIMS:VALUE-TYPE"}
+{"check": "current full constructed entry rejects literal key SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATUS-FORWARD-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "incorrect exact types rejected before predecessor or normalization", "result": "PASS"}
+{"check": "full current derivation exact receipt both contexts", "result": "PASS"}
+{"check": "pristine full semantic after nested derived-result mutation", "result": "PASS"}
+{"check": "full semantic rejects coordinated trace and claims against fresh evidence", "result": "REJECTED", "error": "STATUS-FORWARD-VALIDATED-STATUS-VALUE"}
+{"check": "public bytes subclass is not an exact byte receipt", "result": "REJECTED", "error": "STATUS-FORWARD-RECEIPT-BYTES"}
+{"check": "public relation omission is not optional", "result": "REJECTED", "error": "STATUS-FORWARD-MANDATORY-RELATION"}
+{"check": "semantic row missing context", "result": "REJECTED", "error": "STATUS-FORWARD-CONTEXT-DOMAIN"}
+{"check": "semantic row duplicated context", "result": "REJECTED", "error": "STATUS-FORWARD-CONTEXT-ORDER"}
+{"check": "semantic row reversed contexts", "result": "REJECTED", "error": "STATUS-FORWARD-CONTEXT-ORDER"}
+{"check": "semantic row wrong instance", "result": "REJECTED", "error": "STATUS-FORWARD-INSTANCE-ANCHOR"}
+{"check": "semantic row stale frontier", "result": "REJECTED", "error": "STATUS-FORWARD-CORRESPONDENCE"}
+{"check": "semantic row unsupported qualification", "result": "REJECTED", "error": "STATUS-FORWARD-CORRESPONDENCE"}
+{"check": "three full current calls execute actual predecessor", "result": "PASS"}
+{"check": "source-only observation and obligation boundaries retained", "result": "PASS"}
