@@ -1,0 +1,225 @@
+{
+  "result": "PASS",
+  "input_archive_after_testing": {
+    "bytes": 61624841,
+    "sha256": "0ae24141a77f42eb96ed0f8d144f612d7a8045e04f7aa47dcaa8d1750f886907"
+  },
+  "unchanged_roots": {
+    "files_each": 1688,
+    "directories_each": 574,
+    "roots": [
+      "cs-input",
+      "cs-recovered"
+    ],
+    "regular_exact_membership_and_bytes": "PASS"
+  },
+  "independent_completed_checks": {
+    "primary": 273,
+    "recovered": 196
+  },
+  "independent_groups": {
+    "primary": [
+      {
+        "path": "independent-primary/core",
+        "checks": 227,
+        "result": {
+          "bytes": 22664,
+          "sha256": "5b6fb80291d2b28180726bc7c1b813e7e23380a7c620889c6482b171e00df9f2"
+        },
+        "seconds": 63.99570281399974,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-primary/derive-wrong-instance",
+        "checks": 2,
+        "result": {
+          "bytes": 640,
+          "sha256": "d5aa678a3dddbe72cbcec26dfe3025836548945b44ed4ee01fbec8cbfa530fb9"
+        },
+        "seconds": 63.42522108700041,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-primary/semantic-alias",
+        "checks": 4,
+        "result": {
+          "bytes": 751,
+          "sha256": "cc7ed2ff96a343ff20a9fed035e1d075bbe14e43230121448d480ab87704ed16"
+        },
+        "seconds": 111.33098082100014,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-primary/semantic-coordinated",
+        "checks": 2,
+        "result": {
+          "bytes": 637,
+          "sha256": "902351649bb2225bc3962789e4e5204d6ac5cef26a0467a0dda35b5d526d58c4"
+        },
+        "seconds": 63.32175081000014,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-primary/source-guards-v2",
+        "checks": 38,
+        "result": {
+          "bytes": 4137,
+          "sha256": "1e801aceab33dee61eff4bd0804b4176fc989bb8e920de621b5c7efd5a7ce354"
+        },
+        "seconds": 37.2249972300001,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      }
+    ],
+    "recovered": [
+      {
+        "path": "independent-recovered/core",
+        "checks": 185,
+        "result": {
+          "bytes": 18100,
+          "sha256": "f5e670e1f1a5daecee99129456c43aa40e3c4fbf03c319f9077d2ce1a3837a5f"
+        },
+        "seconds": 64.66345229300032,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-recovered/extra-entries",
+        "checks": 3,
+        "result": {
+          "bytes": 746,
+          "sha256": "5ed710e6c148ad9667d8af3f082d91bdb1bed42c304cf204e0c71e61c65ebc0c"
+        },
+        "seconds": 107.13855166300027,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-recovered/public",
+        "checks": 4,
+        "result": {
+          "bytes": 733,
+          "sha256": "ef8ab7b2a2c81300398d3b3c8db427ca63a502131c9072780e3b5f14e9cb21bb"
+        },
+        "seconds": 120.15142168400007,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      },
+      {
+        "path": "independent-recovered/public-negative",
+        "checks": 4,
+        "result": {
+          "bytes": 847,
+          "sha256": "185bcc5630861c8935092cde0a1d6ad4ba712b0ccaf6a6b7b0b974f7bdecfc3c"
+        },
+        "seconds": 64.41852500200002,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        }
+      }
+    ]
+  },
+  "separate_actual_public_CLI": {
+    "result": "PASS",
+    "public_result": {
+      "actual_admission": false,
+      "contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-TWO"
+      ],
+      "receipt": {
+        "bytes": 2180446,
+        "sha256": "feefd0f5282b51608c7fd95ab24518aa1be9e491aa24f004ed588b1906c7aab9"
+      },
+      "result": "PASS",
+      "runtime_client_state_chain": "UNAVAILABLE"
+    },
+    "process": {
+      "exit_code": 0,
+      "seconds": 61.12250426399987,
+      "stdout": {
+        "bytes": 250,
+        "sha256": "2a007b7fd7288ea6ec2b8b89ce53f006abb1e1b1c7c8d275ee351d2fc129c142"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "fresh_process": true,
+      "recovered_final_root": true
+    },
+    "completed_suites_rerun": false
+  },
+  "reviewer_failed_attempts": [
+    {
+      "path": "failures/reviewer-handler-shape-attempt-1",
+      "checks_before_failure": 17,
+      "included_in_completed_totals": false,
+      "reason": "Incomplete reviewer expectation for nested handler annotation; source-derived corrected test passed. Implementation unchanged."
+    }
+  ],
+  "supplied_counts_separate": {
+    "primary": 171,
+    "recovered": 173,
+    "fresh_process_assertions": 5
+  },
+  "new_implementation_defect_witness": null,
+  "implementation_modified": false
+}

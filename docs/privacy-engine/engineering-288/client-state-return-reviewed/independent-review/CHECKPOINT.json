@@ -1,0 +1,183 @@
+{
+  "checkpoint": "Formal-Lab6-I164-client-state-return-correspondence-independent-review",
+  "review_target": "I164-client-state-return-correspondence-1.zip",
+  "input": {
+    "bytes": 61624841,
+    "entries": 1688,
+    "manifested_hashes": 1687,
+    "sha256": "0ae24141a77f42eb96ed0f8d144f612d7a8045e04f7aa47dcaa8d1750f886907"
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "implementation_modified": false,
+  "verdict": "SUPPORTED within stated static/conditional correspondence contract and currently modeled paths",
+  "residual_implementation_defect_witness": null,
+  "current_sources": {
+    "managed_coverage.py": {
+      "bytes": 176786,
+      "sha256": "5bd47df8af257dd75d44936bbd1c145c84581ad253619fb3c7878da191f61aff"
+    },
+    "correspondence.py": {
+      "bytes": 12683,
+      "sha256": "ecc61d135640b5305dd066d4c55e70c6b9b5faad55ac99081530ea4b4b28e177"
+    }
+  },
+  "current_receipt": {
+    "bytes": 2180446,
+    "sha256": "feefd0f5282b51608c7fd95ab24518aa1be9e491aa24f004ed588b1906c7aab9"
+  },
+  "source_findings": {
+    "ordered_hops": [
+      "manager-return",
+      "session-return",
+      "dispatch-result",
+      "converted-result",
+      "dispatch-return",
+      "client-return"
+    ],
+    "data_is_deepcopy": false,
+    "fresh_container_per_visited_path": true,
+    "repeated_mutable_input_aliases_split": true,
+    "output_mutable_merging_or_input_sharing_rejected": true,
+    "exact_primitive_types": [
+      "str",
+      "int",
+      "bool",
+      "NoneType"
+    ],
+    "dict_key_type": "exact str",
+    "order": "insertion order",
+    "cycles": "no finite normal unfolding; no inferred runtime terminal event",
+    "data_oracle": "AST-extracted unmodified pure body on constructed objects; no operational application/session method calls"
+  },
+  "validation": {
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "mandatory_relation": true,
+    "actual_predecessor_derive_client_invoked": true,
+    "exact_saved_serialization_accepted": true,
+    "semantic_and_derivation_reject_coordinated_substitutions": true,
+    "public_receipt_mutations_reject": true,
+    "returned_objects_do_not_change_expectations": true,
+    "typed_HEAD_compared_before_broad_evidence_equality": true,
+    "new_HEAD_authentication_rule": false
+  },
+  "independent_results": {
+    "primary_checks": 273,
+    "primary_groups": 5,
+    "recovered_checks": 196,
+    "recovered_groups": 4,
+    "separate_public_CLI_process": 1,
+    "reviewer_failed_attempt_counts": [
+      17
+    ],
+    "failed_attempts_in_completed_totals": false
+  },
+  "supplied_results": {
+    "primary": 171,
+    "recovered": 173,
+    "fresh_process_assertions": 5,
+    "inspected_not_rerun": true
+  },
+  "preservation": {
+    "predecessor_members": 1508,
+    "prior_review_non_input_members": 133,
+    "prior_producer_functions_byte_identical": 62,
+    "runtime_sources_changed": 0,
+    "prior_context_fields_and_obligations_unchanged": true,
+    "prior_independent_classification": [
+      172,
+      131
+    ],
+    "earlier_independent_forwarding": [
+      217,
+      149
+    ],
+    "earlier_CLI_and_failures": "PRESERVED",
+    "historical_progress_reconciliation": "PRESERVED; duplication mechanism UNKNOWN",
+    "present_nested_archive_occurrences": 18,
+    "historical_omissions": "QUALIFICATIONS PRESERVED; see composition.json",
+    "supplied_intermediate_outer_archive_newly_verified": false
+  },
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "observation_limits": {
+    "traced_invocations": 18,
+    "separate_frameless_Client_state_observer": 1,
+    "observer_joined_to_return_chain": false,
+    "runtime_client_state_chain": "UNAVAILABLE",
+    "actual_call_count": null,
+    "physical_copy_reference_identity": null,
+    "conversion_failure_unwind_cleanup_observations": "UNAVAILABLE",
+    "missing_launcher_provenance": "PRESERVED",
+    "constructed_cases_are_runtime_evidence": false,
+    "frontier_is_unobserved_later_call_time": false,
+    "empty_journal_is_lifetime_zero": false,
+    "resource_completion_established": false,
+    "complete_repetition_coverage": false,
+    "outer_callback_cleanup": "PARTIAL; unchanged",
+    "arbitrary_Python_introspection_resistance": false,
+    "new_host_or_wheel_qualification": false
+  },
+  "boundaries": {
+    "all_eleven_obligations": "PRESERVED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "admission": false
+  },
+  "operations": {
+    "requests": 0,
+    "signatures": 0,
+    "database_connections": 0,
+    "session_operations": 0,
+    "acquisitions": 0,
+    "runtime_changes": false,
+    "completed_suite_reruns": false,
+    "dependency_changes": false,
+    "host_probe": false,
+    "Git_operations": false,
+    "policy_adoption": false
+  },
+  "packaging_failures": [
+    {
+      "phase": "checkpoint verification; not candidate testing",
+      "exception_type": "ValueError",
+      "message": "Attempt to use ZIP archive that was already closed",
+      "origin": "verify returned a ZipFile from inside a with block; caller then attempted embedded input read",
+      "observed_source": "execution-tool traceback",
+      "outer_crc_exact_membership_and_hash_checks_completed": true,
+      "embedded_input_not_reached_in_this_attempt": true,
+      "candidate_test_rerun": false,
+      "candidate_code_changed": false,
+      "attempt_archive": {
+        "bytes": 60784574,
+        "sha256": "a74f6ef63443289688e69fbf7671236391ebc17e8baa2f347ec472df8323631f",
+        "entries": 86
+      },
+      "preserved_records": [
+        "original verifier source",
+        "original outer manifest",
+        "exception and phase record"
+      ],
+      "correction": "fresh verifier reads embedded members while archive remains open; code/verify_checkpoint_v2.py"
+    }
+  ]
+}

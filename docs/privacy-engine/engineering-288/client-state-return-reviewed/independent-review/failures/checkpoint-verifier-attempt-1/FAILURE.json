@@ -1,0 +1,22 @@
+{
+  "phase": "checkpoint verification; not candidate testing",
+  "exception_type": "ValueError",
+  "message": "Attempt to use ZIP archive that was already closed",
+  "origin": "verify returned a ZipFile from inside a with block; caller then attempted embedded input read",
+  "observed_source": "execution-tool traceback",
+  "outer_crc_exact_membership_and_hash_checks_completed": true,
+  "embedded_input_not_reached_in_this_attempt": true,
+  "candidate_test_rerun": false,
+  "candidate_code_changed": false,
+  "attempt_archive": {
+    "bytes": 60784574,
+    "sha256": "a74f6ef63443289688e69fbf7671236391ebc17e8baa2f347ec472df8323631f",
+    "entries": 86
+  },
+  "preserved_records": [
+    "original verifier source",
+    "original outer manifest",
+    "exception and phase record"
+  ],
+  "correction": "fresh verifier reads embedded members while archive remains open; code/verify_checkpoint_v2.py"
+}

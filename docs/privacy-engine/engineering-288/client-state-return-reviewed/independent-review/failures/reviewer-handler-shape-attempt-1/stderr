@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/cs-review/code/source_guard_checks.py", line 16, in <module>
+    rec.check('handler attribution remains outside own protected try',lambda:cat['source']['stages']['retain-error']['guards']==[{'kind':'handler','type':'BaseException'}])
+  File "/workspace/scratch/ace5c9b2f18b/cs-review/code/common.py", line 46, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+                  ^^^^^^^^^^^^^^
+AssertionError: handler attribution remains outside own protected try

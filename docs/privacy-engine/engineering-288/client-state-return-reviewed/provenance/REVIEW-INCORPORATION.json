@@ -1,0 +1,99 @@
+{
+  "Engineering_supplied": {
+    "fresh_process_assertions": 5,
+    "inspected_not_rerun": true,
+    "primary": 171,
+    "recovered": 173
+  },
+  "boundaries": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "all_eleven_obligations": "PRESERVED",
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "implementation_changes": false,
+  "independent": {
+    "failed_attempts_in_completed_totals": false,
+    "primary_checks": 273,
+    "primary_groups": 5,
+    "recovered_checks": 196,
+    "recovered_groups": 4,
+    "reviewer_failed_attempt_counts": [
+      17
+    ],
+    "separate_public_CLI_process": 1
+  },
+  "independent_packaging_failures": [
+    {
+      "attempt_archive": {
+        "bytes": 60784574,
+        "entries": 86,
+        "sha256": "a74f6ef63443289688e69fbf7671236391ebc17e8baa2f347ec472df8323631f"
+      },
+      "candidate_code_changed": false,
+      "candidate_test_rerun": false,
+      "correction": "fresh verifier reads embedded members while archive remains open; code/verify_checkpoint_v2.py",
+      "embedded_input_not_reached_in_this_attempt": true,
+      "exception_type": "ValueError",
+      "message": "Attempt to use ZIP archive that was already closed",
+      "observed_source": "execution-tool traceback",
+      "origin": "verify returned a ZipFile from inside a with block; caller then attempted embedded input read",
+      "outer_crc_exact_membership_and_hash_checks_completed": true,
+      "phase": "checkpoint verification; not candidate testing",
+      "preserved_records": [
+        "original verifier source",
+        "original outer manifest",
+        "exception and phase record"
+      ]
+    }
+  ],
+  "new_checks_reviews_runtime_operations": 0,
+  "observation_limits": {
+    "actual_call_count": null,
+    "arbitrary_Python_introspection_resistance": false,
+    "complete_repetition_coverage": false,
+    "constructed_cases_are_runtime_evidence": false,
+    "conversion_failure_unwind_cleanup_observations": "UNAVAILABLE",
+    "empty_journal_is_lifetime_zero": false,
+    "frontier_is_unobserved_later_call_time": false,
+    "missing_launcher_provenance": "PRESERVED",
+    "new_host_or_wheel_qualification": false,
+    "observer_joined_to_return_chain": false,
+    "outer_callback_cleanup": "PARTIAL; unchanged",
+    "physical_copy_reference_identity": null,
+    "resource_completion_established": false,
+    "runtime_client_state_chain": "UNAVAILABLE",
+    "separate_frameless_Client_state_observer": 1,
+    "traced_invocations": 18
+  },
+  "preservation": {
+    "earlier_CLI_and_failures": "PRESERVED",
+    "earlier_independent_forwarding": [
+      217,
+      149
+    ],
+    "historical_omissions": "QUALIFICATIONS PRESERVED; see composition.json",
+    "historical_progress_reconciliation": "PRESERVED; duplication mechanism UNKNOWN",
+    "predecessor_members": 1508,
+    "present_nested_archive_occurrences": 18,
+    "prior_context_fields_and_obligations_unchanged": true,
+    "prior_independent_classification": [
+      172,
+      131
+    ],
+    "prior_producer_functions_byte_identical": 62,
+    "prior_review_non_input_members": 133,
+    "runtime_sources_changed": 0,
+    "supplied_intermediate_outer_archive_newly_verified": false
+  },
+  "verdict": "SUPPORTED within stated static/conditional correspondence contract and currently modeled paths"
+}

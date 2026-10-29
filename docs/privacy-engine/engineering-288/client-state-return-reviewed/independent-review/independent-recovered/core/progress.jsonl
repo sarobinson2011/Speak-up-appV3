@@ -1,0 +1,185 @@
+{"check": "source client state passes token, state, None exactly", "result": "PASS"}
+{"check": "source session forwards same manager result without conversion", "result": "PASS"}
+{"check": "source state selection, exact shape and conversion occur inside BaseException catch", "result": "PASS"}
+{"check": "source owner lookup and guard precede protected branch", "result": "PASS"}
+{"check": "source handler retains original and only then intentional fixed helper", "result": "PASS"}
+{"check": "catalogue keys/types/hops match independently parsed source chain", "result": "PASS"}
+{"check": "generated source declaration validates against defining bytes", "result": "PASS"}
+{"check": "source anchor and order client-call", "result": "PASS"}
+{"check": "source anchor and order client-return", "result": "PASS"}
+{"check": "source anchor and order owner-lookup", "result": "PASS"}
+{"check": "source anchor and order owner-guard", "result": "PASS"}
+{"check": "source anchor and order operation-check", "result": "PASS"}
+{"check": "source anchor and order session-call", "result": "PASS"}
+{"check": "source anchor and order manager-call", "result": "PASS"}
+{"check": "source anchor and order session-return", "result": "PASS"}
+{"check": "source anchor and order state-shape", "result": "PASS"}
+{"check": "source anchor and order conversion", "result": "PASS"}
+{"check": "source anchor and order dispatch-return", "result": "PASS"}
+{"check": "source anchor and order retain-error", "result": "PASS"}
+{"check": "pure source and graph exact detachment 0", "result": "PASS"}
+{"check": "pure source and graph exact detachment 1", "result": "PASS"}
+{"check": "pure source and graph exact detachment 2", "result": "PASS"}
+{"check": "pure source and graph exact detachment 3", "result": "PASS"}
+{"check": "pure source and graph exact detachment 4", "result": "PASS"}
+{"check": "pure source and graph exact detachment 5", "result": "PASS"}
+{"check": "pure source and graph exact detachment 6", "result": "PASS"}
+{"check": "pure source and graph exact detachment 7", "result": "PASS"}
+{"check": "pure source and graph exact detachment 8", "result": "PASS"}
+{"check": "mutable root copied 8", "result": "PASS"}
+{"check": "pure source and graph exact detachment 9", "result": "PASS"}
+{"check": "mutable root copied 9", "result": "PASS"}
+{"check": "pure source and graph exact detachment 10", "result": "PASS"}
+{"check": "mutable root copied 10", "result": "PASS"}
+{"check": "pure source and graph exact detachment 11", "result": "PASS"}
+{"check": "mutable root copied 11", "result": "PASS"}
+{"check": "pure source and graph exact detachment 12", "result": "PASS"}
+{"check": "mutable root copied 12", "result": "PASS"}
+{"check": "pure source and graph exact detachment 13", "result": "PASS"}
+{"check": "mutable root copied 13", "result": "PASS"}
+{"check": "repeated nested alias splits at every visited path", "result": "PASS"}
+{"check": "single output repeated aliases split including nested empty containers", "result": "PASS"}
+{"check": "detachment rejects deepcopy memo", "result": "REJECTED", "error": "DATA-OUTPUT-ALIAS-MEMO-OR-MERGE"}
+{"check": "detachment rejects shallow copy", "result": "REJECTED", "error": "DATA-OUTPUT-ALIAS-MEMO-OR-MERGE"}
+{"check": "detachment rejects same object", "result": "REJECTED", "error": "DATA-OUTPUT-ALIAS-MEMO-OR-MERGE"}
+{"check": "distinct equal input containers cannot merge", "result": "REJECTED", "error": "DATA-OUTPUT-ALIAS-MEMO-OR-MERGE"}
+{"check": "exact graph key-order", "result": "REJECTED", "error": "DATA-KEY-ORDER"}
+{"check": "exact graph bool-int", "result": "REJECTED", "error": "DATA-EXACT-ATOM-VALUE"}
+{"check": "exact graph container-kind", "result": "REJECTED", "error": "DATA-CONTAINER-SHAPE"}
+{"check": "exact graph changed-value", "result": "REJECTED", "error": "DATA-EXACT-ATOM-VALUE"}
+{"check": "source exact-type unsupported 0", "result": "PASS"}
+{"check": "source exact-type unsupported 1", "result": "PASS"}
+{"check": "source exact-type unsupported 2", "result": "PASS"}
+{"check": "source exact-type unsupported 3", "result": "PASS"}
+{"check": "source exact-type unsupported 4", "result": "PASS"}
+{"check": "source exact-type unsupported 5", "result": "PASS"}
+{"check": "source exact-type unsupported 6", "result": "PASS"}
+{"check": "source exact-type unsupported 7", "result": "PASS"}
+{"check": "source exact-type unsupported 8", "result": "PASS"}
+{"check": "source exact-type unsupported 9", "result": "PASS"}
+{"check": "source exact-type unsupported 10", "result": "PASS"}
+{"check": "source exact-type unsupported 11", "result": "PASS"}
+{"check": "source exact-type unsupported 12", "result": "PASS"}
+{"check": "source exact-type unsupported 13", "result": "PASS"}
+{"check": "unsupported subclasses invoke no repr or copy hooks", "result": "PASS"}
+{"check": "cycle analysis asserts no exact terminal exception 0", "result": "PASS"}
+{"check": "cycle cannot claim finite normal output 0", "result": "REJECTED", "error": "DATA-CONTAINER-SHAPE"}
+{"check": "cycle analysis asserts no exact terminal exception 1", "result": "PASS"}
+{"check": "cycle cannot claim finite normal output 1", "result": "REJECTED", "error": "DATA-CONTAINER-SHAPE"}
+{"check": "graph structural rejection extra-node", "result": "REJECTED", "error": "DATA-UNREACHABLE-NODE"}
+{"check": "graph structural rejection missing-node", "result": "REJECTED", "error": "DATA-REFERENCE"}
+{"check": "graph structural rejection wrong-atom-type", "result": "REJECTED", "error": "DATA-EXACT-PRIMITIVE"}
+{"check": "graph structural rejection duplicate-key", "result": "REJECTED", "error": "DATA-DUPLICATE-KEY"}
+{"check": "full current predecessor validation before independent cases", "result": "PASS"}
+{"check": "derived receipt equals exact saved current bytes", "result": "PASS"}
+{"check": "predecessor context contents preserved without edits", "result": "PASS"}
+{"check": "both ordered contexts and observer remains unjoined", "result": "PASS"}
+{"check": "legitimate bound constructed state SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "six ordered hops exact HEAD and reference-copy split SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "normal is not runtime/authorization proof SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "equal HEAD values retain distinct invocation occurrence identities SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "path input missing-copy SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-COPY-PREMISE"}
+{"check": "path input missing-manager SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-MANAGER-PREMISE"}
+{"check": "path input wrong-method SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-METHOD"}
+{"check": "path input wrong-args SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-ARGS"}
+{"check": "path input wrong-phase SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-READINESS"}
+{"check": "path input int-bool SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/counts/query"}
+{"check": "path input missing-shape SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-STAGE:state-shape"}
+{"check": "path input wrong-instance SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-frontier SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-context SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-invocation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input result-ref-same SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-DETACHED-REFERENCE"}
+{"check": "path input shallow-graph SYMBOLIC-U-ONE", "result": "REJECTED", "error": "DATA-INPUT-OUTPUT-MUTABLE-SHARING"}
+{"check": "path input stale-owner SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-REFERENCE-EDGE:owner.wrapper"}
+{"check": "coordinated values and graph cannot replace validated HEAD SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-ORIGIN:/head"}
+{"check": "output contradiction missing-hop SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction reordered-hop SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction wrong-argument SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction wrong-destination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction false-observation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction false-readiness SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction copy-memo-claim SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "path classification owner-lookup raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "path classification owner-lookup process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "termination cannot establish callback owner-lookup SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification session-call raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "path classification session-call process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "termination cannot establish callback session-call SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification conversion raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "path classification conversion process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "termination cannot establish callback conversion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification client-return raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "path classification client-return process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "termination cannot establish callback client-return SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "storage/helper distinction retain-error raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "storage/helper distinction fixed-failure raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "storage/helper distinction retain-error process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "storage/helper distinction fixed-failure process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "conversion failure preserves conditional original cleanup route SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "manager exceptional result supplies no successful return SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "intentional prior-failure refusal is not unexpected raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "projection nested mutations isolated SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "checked semantic rows omitted-link SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-LINK-COVERAGE"}
+{"check": "checked semantic rows reordered-link SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-LINK-FIELDS"}
+{"check": "checked semantic rows wrong-anchor SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "checked semantic rows observer-join SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "checked semantic rows runtime-claim SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "legitimate bound constructed state SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "six ordered hops exact HEAD and reference-copy split SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "normal is not runtime/authorization proof SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "equal HEAD values retain distinct invocation occurrence identities SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "path input missing-copy SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-COPY-PREMISE"}
+{"check": "path input missing-manager SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-MANAGER-PREMISE"}
+{"check": "path input wrong-method SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-METHOD"}
+{"check": "path input wrong-args SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-ARGS"}
+{"check": "path input wrong-phase SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-READINESS"}
+{"check": "path input int-bool SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/counts/query"}
+{"check": "path input missing-shape SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-STAGE:state-shape"}
+{"check": "path input wrong-instance SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-frontier SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-context SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input wrong-invocation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-SCOPE"}
+{"check": "path input result-ref-same SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-DETACHED-REFERENCE"}
+{"check": "path input shallow-graph SYMBOLIC-U-TWO", "result": "REJECTED", "error": "DATA-INPUT-OUTPUT-MUTABLE-SHARING"}
+{"check": "path input stale-owner SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-REFERENCE-EDGE:owner.wrapper"}
+{"check": "coordinated values and graph cannot replace validated HEAD SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-ORIGIN:/head"}
+{"check": "output contradiction missing-hop SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction reordered-hop SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction wrong-argument SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction wrong-destination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction false-observation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction false-readiness SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "output contradiction copy-memo-claim SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "path classification owner-lookup raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "path classification owner-lookup process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "termination cannot establish callback owner-lookup SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification session-call raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "path classification session-call process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "termination cannot establish callback session-call SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification conversion raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "path classification conversion process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "termination cannot establish callback conversion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "path classification client-return raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "path classification client-return process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "termination cannot establish callback client-return SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "storage/helper distinction retain-error raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "storage/helper distinction fixed-failure raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "storage/helper distinction retain-error process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "storage/helper distinction fixed-failure process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "conversion failure preserves conditional original cleanup route SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "manager exceptional result supplies no successful return SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "intentional prior-failure refusal is not unexpected raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "projection nested mutations isolated SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "checked semantic rows omitted-link SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-LINK-COVERAGE"}
+{"check": "checked semantic rows reordered-link SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-LINK-FIELDS"}
+{"check": "checked semantic rows wrong-anchor SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "checked semantic rows observer-join SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "checked semantic rows runtime-claim SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-CORRESPONDENCE"}
+{"check": "semantic context domain omit-context", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-DOMAIN"}
+{"check": "semantic context domain duplicate-context", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-FIELDS"}
+{"check": "semantic context domain reverse-context", "result": "REJECTED", "error": "CLIENT-STATE-CONTEXT-FIELDS"}
+{"check": "validated evidence missing", "result": "REJECTED", "error": "CLIENT-STATE-MISSING-EXPORT"}
+{"check": "validated evidence stale", "result": "REJECTED", "error": "CLIENT-STATE-MISSING-HEAD"}
+{"check": "validated evidence wrong-type", "result": "REJECTED", "error": "CLIENT-STATE-EVIDENCE-TYPES"}
+{"check": "actual mandatory predecessor invocation observed", "result": "PASS"}

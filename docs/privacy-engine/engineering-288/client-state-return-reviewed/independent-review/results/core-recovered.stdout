@@ -1,0 +1,185 @@
+1 source client state passes token, state, None exactly PASS
+2 source session forwards same manager result without conversion PASS
+3 source state selection, exact shape and conversion occur inside BaseException catch PASS
+4 source owner lookup and guard precede protected branch PASS
+5 source handler retains original and only then intentional fixed helper PASS
+6 catalogue keys/types/hops match independently parsed source chain PASS
+7 generated source declaration validates against defining bytes PASS
+8 source anchor and order client-call PASS
+9 source anchor and order client-return PASS
+10 source anchor and order owner-lookup PASS
+11 source anchor and order owner-guard PASS
+12 source anchor and order operation-check PASS
+13 source anchor and order session-call PASS
+14 source anchor and order manager-call PASS
+15 source anchor and order session-return PASS
+16 source anchor and order state-shape PASS
+17 source anchor and order conversion PASS
+18 source anchor and order dispatch-return PASS
+19 source anchor and order retain-error PASS
+20 pure source and graph exact detachment 0 PASS
+21 pure source and graph exact detachment 1 PASS
+22 pure source and graph exact detachment 2 PASS
+23 pure source and graph exact detachment 3 PASS
+24 pure source and graph exact detachment 4 PASS
+25 pure source and graph exact detachment 5 PASS
+26 pure source and graph exact detachment 6 PASS
+27 pure source and graph exact detachment 7 PASS
+28 pure source and graph exact detachment 8 PASS
+29 mutable root copied 8 PASS
+30 pure source and graph exact detachment 9 PASS
+31 mutable root copied 9 PASS
+32 pure source and graph exact detachment 10 PASS
+33 mutable root copied 10 PASS
+34 pure source and graph exact detachment 11 PASS
+35 mutable root copied 11 PASS
+36 pure source and graph exact detachment 12 PASS
+37 mutable root copied 12 PASS
+38 pure source and graph exact detachment 13 PASS
+39 mutable root copied 13 PASS
+40 repeated nested alias splits at every visited path PASS
+41 single output repeated aliases split including nested empty containers PASS
+42 detachment rejects deepcopy memo REJECTED
+43 detachment rejects shallow copy REJECTED
+44 detachment rejects same object REJECTED
+45 distinct equal input containers cannot merge REJECTED
+46 exact graph key-order REJECTED
+47 exact graph bool-int REJECTED
+48 exact graph container-kind REJECTED
+49 exact graph changed-value REJECTED
+50 source exact-type unsupported 0 PASS
+51 source exact-type unsupported 1 PASS
+52 source exact-type unsupported 2 PASS
+53 source exact-type unsupported 3 PASS
+54 source exact-type unsupported 4 PASS
+55 source exact-type unsupported 5 PASS
+56 source exact-type unsupported 6 PASS
+57 source exact-type unsupported 7 PASS
+58 source exact-type unsupported 8 PASS
+59 source exact-type unsupported 9 PASS
+60 source exact-type unsupported 10 PASS
+61 source exact-type unsupported 11 PASS
+62 source exact-type unsupported 12 PASS
+63 source exact-type unsupported 13 PASS
+64 unsupported subclasses invoke no repr or copy hooks PASS
+65 cycle analysis asserts no exact terminal exception 0 PASS
+66 cycle cannot claim finite normal output 0 REJECTED
+67 cycle analysis asserts no exact terminal exception 1 PASS
+68 cycle cannot claim finite normal output 1 REJECTED
+69 graph structural rejection extra-node REJECTED
+70 graph structural rejection missing-node REJECTED
+71 graph structural rejection wrong-atom-type REJECTED
+72 graph structural rejection duplicate-key REJECTED
+73 full current predecessor validation before independent cases PASS
+74 derived receipt equals exact saved current bytes PASS
+75 predecessor context contents preserved without edits PASS
+76 both ordered contexts and observer remains unjoined PASS
+77 legitimate bound constructed state SYMBOLIC-U-ONE PASS
+78 six ordered hops exact HEAD and reference-copy split SYMBOLIC-U-ONE PASS
+79 normal is not runtime/authorization proof SYMBOLIC-U-ONE PASS
+80 equal HEAD values retain distinct invocation occurrence identities SYMBOLIC-U-ONE PASS
+81 path input missing-copy SYMBOLIC-U-ONE REJECTED
+82 path input missing-manager SYMBOLIC-U-ONE REJECTED
+83 path input wrong-method SYMBOLIC-U-ONE REJECTED
+84 path input wrong-args SYMBOLIC-U-ONE REJECTED
+85 path input wrong-phase SYMBOLIC-U-ONE REJECTED
+86 path input int-bool SYMBOLIC-U-ONE REJECTED
+87 path input missing-shape SYMBOLIC-U-ONE REJECTED
+88 path input wrong-instance SYMBOLIC-U-ONE REJECTED
+89 path input wrong-frontier SYMBOLIC-U-ONE REJECTED
+90 path input wrong-context SYMBOLIC-U-ONE REJECTED
+91 path input wrong-invocation SYMBOLIC-U-ONE REJECTED
+92 path input result-ref-same SYMBOLIC-U-ONE REJECTED
+93 path input shallow-graph SYMBOLIC-U-ONE REJECTED
+94 path input stale-owner SYMBOLIC-U-ONE REJECTED
+95 coordinated values and graph cannot replace validated HEAD SYMBOLIC-U-ONE REJECTED
+96 output contradiction missing-hop SYMBOLIC-U-ONE REJECTED
+97 output contradiction reordered-hop SYMBOLIC-U-ONE REJECTED
+98 output contradiction wrong-argument SYMBOLIC-U-ONE REJECTED
+99 output contradiction wrong-destination SYMBOLIC-U-ONE REJECTED
+100 output contradiction false-observation SYMBOLIC-U-ONE REJECTED
+101 output contradiction false-readiness SYMBOLIC-U-ONE REJECTED
+102 output contradiction copy-memo-claim SYMBOLIC-U-ONE REJECTED
+103 path classification owner-lookup raise SYMBOLIC-U-ONE PASS
+104 path classification owner-lookup process-termination SYMBOLIC-U-ONE PASS
+105 termination cannot establish callback owner-lookup SYMBOLIC-U-ONE REJECTED
+106 path classification session-call raise SYMBOLIC-U-ONE PASS
+107 path classification session-call process-termination SYMBOLIC-U-ONE PASS
+108 termination cannot establish callback session-call SYMBOLIC-U-ONE REJECTED
+109 path classification conversion raise SYMBOLIC-U-ONE PASS
+110 path classification conversion process-termination SYMBOLIC-U-ONE PASS
+111 termination cannot establish callback conversion SYMBOLIC-U-ONE REJECTED
+112 path classification client-return raise SYMBOLIC-U-ONE PASS
+113 path classification client-return process-termination SYMBOLIC-U-ONE PASS
+114 termination cannot establish callback client-return SYMBOLIC-U-ONE REJECTED
+115 storage/helper distinction retain-error raise SYMBOLIC-U-ONE PASS
+116 storage/helper distinction fixed-failure raise SYMBOLIC-U-ONE PASS
+117 storage/helper distinction retain-error process-termination SYMBOLIC-U-ONE PASS
+118 storage/helper distinction fixed-failure process-termination SYMBOLIC-U-ONE PASS
+119 conversion failure preserves conditional original cleanup route SYMBOLIC-U-ONE PASS
+120 manager exceptional result supplies no successful return SYMBOLIC-U-ONE PASS
+121 intentional prior-failure refusal is not unexpected raise SYMBOLIC-U-ONE PASS
+122 projection nested mutations isolated SYMBOLIC-U-ONE PASS
+123 checked semantic rows omitted-link SYMBOLIC-U-ONE REJECTED
+124 checked semantic rows reordered-link SYMBOLIC-U-ONE REJECTED
+125 checked semantic rows wrong-anchor SYMBOLIC-U-ONE REJECTED
+126 checked semantic rows observer-join SYMBOLIC-U-ONE REJECTED
+127 checked semantic rows runtime-claim SYMBOLIC-U-ONE REJECTED
+128 legitimate bound constructed state SYMBOLIC-U-TWO PASS
+129 six ordered hops exact HEAD and reference-copy split SYMBOLIC-U-TWO PASS
+130 normal is not runtime/authorization proof SYMBOLIC-U-TWO PASS
+131 equal HEAD values retain distinct invocation occurrence identities SYMBOLIC-U-TWO PASS
+132 path input missing-copy SYMBOLIC-U-TWO REJECTED
+133 path input missing-manager SYMBOLIC-U-TWO REJECTED
+134 path input wrong-method SYMBOLIC-U-TWO REJECTED
+135 path input wrong-args SYMBOLIC-U-TWO REJECTED
+136 path input wrong-phase SYMBOLIC-U-TWO REJECTED
+137 path input int-bool SYMBOLIC-U-TWO REJECTED
+138 path input missing-shape SYMBOLIC-U-TWO REJECTED
+139 path input wrong-instance SYMBOLIC-U-TWO REJECTED
+140 path input wrong-frontier SYMBOLIC-U-TWO REJECTED
+141 path input wrong-context SYMBOLIC-U-TWO REJECTED
+142 path input wrong-invocation SYMBOLIC-U-TWO REJECTED
+143 path input result-ref-same SYMBOLIC-U-TWO REJECTED
+144 path input shallow-graph SYMBOLIC-U-TWO REJECTED
+145 path input stale-owner SYMBOLIC-U-TWO REJECTED
+146 coordinated values and graph cannot replace validated HEAD SYMBOLIC-U-TWO REJECTED
+147 output contradiction missing-hop SYMBOLIC-U-TWO REJECTED
+148 output contradiction reordered-hop SYMBOLIC-U-TWO REJECTED
+149 output contradiction wrong-argument SYMBOLIC-U-TWO REJECTED
+150 output contradiction wrong-destination SYMBOLIC-U-TWO REJECTED
+151 output contradiction false-observation SYMBOLIC-U-TWO REJECTED
+152 output contradiction false-readiness SYMBOLIC-U-TWO REJECTED
+153 output contradiction copy-memo-claim SYMBOLIC-U-TWO REJECTED
+154 path classification owner-lookup raise SYMBOLIC-U-TWO PASS
+155 path classification owner-lookup process-termination SYMBOLIC-U-TWO PASS
+156 termination cannot establish callback owner-lookup SYMBOLIC-U-TWO REJECTED
+157 path classification session-call raise SYMBOLIC-U-TWO PASS
+158 path classification session-call process-termination SYMBOLIC-U-TWO PASS
+159 termination cannot establish callback session-call SYMBOLIC-U-TWO REJECTED
+160 path classification conversion raise SYMBOLIC-U-TWO PASS
+161 path classification conversion process-termination SYMBOLIC-U-TWO PASS
+162 termination cannot establish callback conversion SYMBOLIC-U-TWO REJECTED
+163 path classification client-return raise SYMBOLIC-U-TWO PASS
+164 path classification client-return process-termination SYMBOLIC-U-TWO PASS
+165 termination cannot establish callback client-return SYMBOLIC-U-TWO REJECTED
+166 storage/helper distinction retain-error raise SYMBOLIC-U-TWO PASS
+167 storage/helper distinction fixed-failure raise SYMBOLIC-U-TWO PASS
+168 storage/helper distinction retain-error process-termination SYMBOLIC-U-TWO PASS
+169 storage/helper distinction fixed-failure process-termination SYMBOLIC-U-TWO PASS
+170 conversion failure preserves conditional original cleanup route SYMBOLIC-U-TWO PASS
+171 manager exceptional result supplies no successful return SYMBOLIC-U-TWO PASS
+172 intentional prior-failure refusal is not unexpected raise SYMBOLIC-U-TWO PASS
+173 projection nested mutations isolated SYMBOLIC-U-TWO PASS
+174 checked semantic rows omitted-link SYMBOLIC-U-TWO REJECTED
+175 checked semantic rows reordered-link SYMBOLIC-U-TWO REJECTED
+176 checked semantic rows wrong-anchor SYMBOLIC-U-TWO REJECTED
+177 checked semantic rows observer-join SYMBOLIC-U-TWO REJECTED
+178 checked semantic rows runtime-claim SYMBOLIC-U-TWO REJECTED
+179 semantic context domain omit-context REJECTED
+180 semantic context domain duplicate-context REJECTED
+181 semantic context domain reverse-context REJECTED
+182 validated evidence missing REJECTED
+183 validated evidence stale REJECTED
+184 validated evidence wrong-type REJECTED
+185 actual mandatory predecessor invocation observed PASS

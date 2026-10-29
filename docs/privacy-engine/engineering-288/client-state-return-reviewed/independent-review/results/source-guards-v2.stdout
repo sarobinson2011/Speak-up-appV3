@@ -1,0 +1,38 @@
+1 AST-derived dispatch catch operation-check PASS
+2 AST-derived normal continuation operation-check PASS
+3 AST-derived dispatch catch session-call PASS
+4 AST-derived normal continuation session-call PASS
+5 AST-derived dispatch catch state-shape PASS
+6 AST-derived normal continuation state-shape PASS
+7 AST-derived dispatch catch conversion PASS
+8 AST-derived normal continuation conversion PASS
+9 AST-derived dispatch catch dispatch-return PASS
+10 AST-derived normal continuation dispatch-return PASS
+11 source has no direct dispatch try guard client-call PASS
+12 source has no direct dispatch try guard client-return PASS
+13 source has no direct dispatch try guard owner-lookup PASS
+14 source has no direct dispatch try guard owner-guard PASS
+15 source has no direct dispatch try guard manager-call PASS
+16 source has no direct dispatch try guard session-return PASS
+17 source has no direct dispatch try guard fixed-failure PASS
+18 handler attribution remains outside own protected try PASS
+19 source validation rejects weaken-shape REJECTED
+20 source validation rejects omit-guard REJECTED
+21 source validation rejects reorder-prefix REJECTED
+22 source validation rejects change-type REJECTED
+23 source validation rejects deepcopy-semantics REJECTED
+24 source validation rejects omit-hop REJECTED
+25 exact state shape missing-root-field SYMBOLIC-U-ONE REJECTED
+26 exact state shape extra-root-field SYMBOLIC-U-ONE REJECTED
+27 exact state shape state-list SYMBOLIC-U-ONE REJECTED
+28 exact state shape nested-list-for-dict SYMBOLIC-U-ONE REJECTED
+29 exact state shape nested-None SYMBOLIC-U-ONE REJECTED
+30 exact state shape wrong-integer-type SYMBOLIC-U-ONE REJECTED
+31 coordinated terminal claims cannot replace normal source path SYMBOLIC-U-ONE REJECTED
+32 exact state shape missing-root-field SYMBOLIC-U-TWO REJECTED
+33 exact state shape extra-root-field SYMBOLIC-U-TWO REJECTED
+34 exact state shape state-list SYMBOLIC-U-TWO REJECTED
+35 exact state shape nested-list-for-dict SYMBOLIC-U-TWO REJECTED
+36 exact state shape nested-None SYMBOLIC-U-TWO REJECTED
+37 exact state shape wrong-integer-type SYMBOLIC-U-TWO REJECTED
+38 coordinated terminal claims cannot replace normal source path SYMBOLIC-U-TWO REJECTED

@@ -1,0 +1,716 @@
+{
+  "result": "PASS",
+  "checks": 173,
+  "rows": [
+    {
+      "check": "independent source: session direct no-argument state forwarding",
+      "result": "PASS"
+    },
+    {
+      "check": "independent source: client state literal and None packet",
+      "result": "PASS"
+    },
+    {
+      "check": "independent source: state result shape and conversion inside catch",
+      "result": "PASS"
+    },
+    {
+      "check": "independent source: exact primitive/list/dict branches and unsupported raise",
+      "result": "PASS"
+    },
+    {
+      "check": "independent source: no deepcopy or memo and no extra forwarding args",
+      "result": "PASS"
+    },
+    {
+      "check": "source-regenerated catalogue accepts",
+      "result": "PASS"
+    },
+    {
+      "check": "source contract rejects missing branch",
+      "result": "PASS"
+    },
+    {
+      "check": "source contract rejects wrong primitive type",
+      "result": "PASS"
+    },
+    {
+      "check": "source contract rejects deepcopy alias claim",
+      "result": "PASS"
+    },
+    {
+      "check": "source contract rejects omitted hop",
+      "result": "PASS"
+    },
+    {
+      "check": "source contract rejects stale source origin",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 0",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 0",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 1",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 1",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 2",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 2",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 3",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 3",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 4",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 4",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 5",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 5",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 6",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 6",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 7",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 7",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 8",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 8",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate exact data domain 9",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate detachment graph 9",
+      "result": "PASS"
+    },
+    {
+      "check": "source rejection domain float",
+      "result": "PASS"
+    },
+    {
+      "check": "source rejection domain bytes",
+      "result": "PASS"
+    },
+    {
+      "check": "source rejection domain tuple",
+      "result": "PASS"
+    },
+    {
+      "check": "source rejection domain int-key",
+      "result": "PASS"
+    },
+    {
+      "check": "source rejection domain subclass",
+      "result": "PASS"
+    },
+    {
+      "check": "unsupported objects invoke no copy or repr hooks",
+      "result": "PASS"
+    },
+    {
+      "check": "repeated input alias is unfolded by path",
+      "result": "PASS"
+    },
+    {
+      "check": "output occurrences exceed distinct aliased input containers",
+      "result": "PASS"
+    },
+    {
+      "check": "reject deepcopy memo alias",
+      "result": "PASS"
+    },
+    {
+      "check": "reject shallow copy",
+      "result": "PASS"
+    },
+    {
+      "check": "reject unchanged input",
+      "result": "PASS"
+    },
+    {
+      "check": "reject merging distinct output copies",
+      "result": "PASS"
+    },
+    {
+      "check": "reject detachment bool/int type",
+      "result": "PASS"
+    },
+    {
+      "check": "reject detachment changed value",
+      "result": "PASS"
+    },
+    {
+      "check": "reject detachment key order",
+      "result": "PASS"
+    },
+    {
+      "check": "cycle has no finite normal traversal but no invented exception",
+      "result": "PASS"
+    },
+    {
+      "check": "cycle normal-copy claim rejects",
+      "result": "PASS"
+    },
+    {
+      "check": "mandatory predecessor-bound semantic rows",
+      "result": "PASS"
+    },
+    {
+      "check": "current derivation assembly",
+      "result": "PASS"
+    },
+    {
+      "check": "recovered exact saved derivation",
+      "result": "PASS"
+    },
+    {
+      "check": "both contexts independent and predecessor preserved",
+      "result": "PASS"
+    },
+    {
+      "check": "no fabricated runtime or observer joins",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate source-bound forwarding SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "six ordered hops and exact validated state SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "reference/copy split and request-independent invocation SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects missing hop SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects reordered hops SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects wrong method SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects extra packet SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects copy reference substitution SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects invented observation SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects wrong destination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects false exception evidence SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing copy SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing manager SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong method delegation SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong nested type SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong instance scope SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing stage SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects extra stage SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects shallow copy SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects same copy reference SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated substituted state graph and manager reject SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong-instance independent anchor rejects SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-lookup raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-lookup process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-guard raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-guard process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path operation-check raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path operation-check process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path manager-call raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path manager-call process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path state-shape raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path state-shape process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path conversion raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path conversion process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path dispatch-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path dispatch-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-return raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-return process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper retain-error raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper retain-error process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper fixed-failure raise SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper fixed-failure process-termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional existing evidence route after conversion failure SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "existing manager exception guard is reused SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "no callback after termination SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "nested returned mutations leave projection expectations isolated SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects missing link SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects reordered links SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects wrong instance SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects stale head SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects fabricated observer join SYMBOLIC-U-ONE",
+      "result": "PASS"
+    },
+    {
+      "check": "legitimate source-bound forwarding SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "six ordered hops and exact validated state SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "reference/copy split and request-independent invocation SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects missing hop SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects reordered hops SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects wrong method SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects extra packet SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects copy reference substitution SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects invented observation SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects wrong destination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "output rejects false exception evidence SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing copy SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing manager SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong method delegation SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong nested type SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects wrong instance scope SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects missing stage SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects extra stage SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects shallow copy SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "input rejects same copy reference SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated substituted state graph and manager reject SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "wrong-instance independent anchor rejects SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-lookup raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-lookup process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-guard raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path owner-guard process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path operation-check raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path operation-check process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path manager-call raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path manager-call process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path session-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path state-shape raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path state-shape process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path conversion raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path conversion process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path dispatch-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path dispatch-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-return raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "state path client-return process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper retain-error raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper retain-error process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper fixed-failure raise SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "storage/helper fixed-failure process-termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional existing evidence route after conversion failure SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "existing manager exception guard is reused SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "no callback after termination SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "nested returned mutations leave projection expectations isolated SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects missing link SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects reordered links SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects wrong instance SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects stale head SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic row rejects fabricated observer join SYMBOLIC-U-TWO",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated evidence substitution rejects before broad archive equality",
+      "result": "PASS"
+    },
+    {
+      "check": "missing HEAD evidence rejects",
+      "result": "PASS"
+    },
+    {
+      "check": "nested semantic output mutation preserves independent contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "public omitted mandatory relation rejects",
+      "result": "PASS"
+    },
+    {
+      "check": "old predecessor public receipt rejects as current",
+      "result": "PASS"
+    },
+    {
+      "check": "recovered public validator accepts current saved receipt",
+      "result": "PASS"
+    }
+  ],
+  "error": null,
+  "seconds": 489.9049078980024,
+  "mode": "recovered",
+  "source": {
+    "managed_coverage.py": {
+      "bytes": 176786,
+      "sha256": "5bd47df8af257dd75d44936bbd1c145c84581ad253619fb3c7878da191f61aff"
+    },
+    "correspondence.py": {
+      "bytes": 12683,
+      "sha256": "ecc61d135640b5305dd066d4c55e70c6b9b5faad55ac99081530ea4b4b28e177"
+    }
+  },
+  "constructed_not_runtime": true,
+  "requests": 0,
+  "database_connections": 0,
+  "session_operations": 0,
+  "completed_suites_rerun": false
+}

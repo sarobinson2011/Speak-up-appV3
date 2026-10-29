@@ -1,0 +1,175 @@
+1 independent source: session direct no-argument state forwarding
+2 independent source: client state literal and None packet
+3 independent source: state result shape and conversion inside catch
+4 independent source: exact primitive/list/dict branches and unsupported raise
+5 independent source: no deepcopy or memo and no extra forwarding args
+6 source-regenerated catalogue accepts
+7 source contract rejects missing branch
+8 source contract rejects wrong primitive type
+9 source contract rejects deepcopy alias claim
+10 source contract rejects omitted hop
+11 source contract rejects stale source origin
+12 legitimate exact data domain 0
+13 legitimate detachment graph 0
+14 legitimate exact data domain 1
+15 legitimate detachment graph 1
+16 legitimate exact data domain 2
+17 legitimate detachment graph 2
+18 legitimate exact data domain 3
+19 legitimate detachment graph 3
+20 legitimate exact data domain 4
+21 legitimate detachment graph 4
+22 legitimate exact data domain 5
+23 legitimate detachment graph 5
+24 legitimate exact data domain 6
+25 legitimate detachment graph 6
+26 legitimate exact data domain 7
+27 legitimate detachment graph 7
+28 legitimate exact data domain 8
+29 legitimate detachment graph 8
+30 legitimate exact data domain 9
+31 legitimate detachment graph 9
+32 source rejection domain float
+33 source rejection domain bytes
+34 source rejection domain tuple
+35 source rejection domain int-key
+36 source rejection domain subclass
+37 unsupported objects invoke no copy or repr hooks
+38 repeated input alias is unfolded by path
+39 output occurrences exceed distinct aliased input containers
+40 reject deepcopy memo alias
+41 reject shallow copy
+42 reject unchanged input
+43 reject merging distinct output copies
+44 reject detachment bool/int type
+45 reject detachment changed value
+46 reject detachment key order
+47 cycle has no finite normal traversal but no invented exception
+48 cycle normal-copy claim rejects
+49 mandatory predecessor-bound semantic rows
+50 current derivation assembly
+51 recovered exact saved derivation
+52 both contexts independent and predecessor preserved
+53 no fabricated runtime or observer joins
+54 legitimate source-bound forwarding SYMBOLIC-U-ONE
+55 six ordered hops and exact validated state SYMBOLIC-U-ONE
+56 reference/copy split and request-independent invocation SYMBOLIC-U-ONE
+57 output rejects missing hop SYMBOLIC-U-ONE
+58 output rejects reordered hops SYMBOLIC-U-ONE
+59 output rejects wrong method SYMBOLIC-U-ONE
+60 output rejects extra packet SYMBOLIC-U-ONE
+61 output rejects copy reference substitution SYMBOLIC-U-ONE
+62 output rejects invented observation SYMBOLIC-U-ONE
+63 output rejects wrong destination SYMBOLIC-U-ONE
+64 output rejects false exception evidence SYMBOLIC-U-ONE
+65 input rejects missing copy SYMBOLIC-U-ONE
+66 input rejects missing manager SYMBOLIC-U-ONE
+67 input rejects wrong method delegation SYMBOLIC-U-ONE
+68 input rejects wrong nested type SYMBOLIC-U-ONE
+69 input rejects wrong instance scope SYMBOLIC-U-ONE
+70 input rejects missing stage SYMBOLIC-U-ONE
+71 input rejects extra stage SYMBOLIC-U-ONE
+72 input rejects shallow copy SYMBOLIC-U-ONE
+73 input rejects same copy reference SYMBOLIC-U-ONE
+74 coordinated substituted state graph and manager reject SYMBOLIC-U-ONE
+75 wrong-instance independent anchor rejects SYMBOLIC-U-ONE
+76 state path client-call raise SYMBOLIC-U-ONE
+77 state path client-call process-termination SYMBOLIC-U-ONE
+78 state path owner-lookup raise SYMBOLIC-U-ONE
+79 state path owner-lookup process-termination SYMBOLIC-U-ONE
+80 state path owner-guard raise SYMBOLIC-U-ONE
+81 state path owner-guard process-termination SYMBOLIC-U-ONE
+82 state path operation-check raise SYMBOLIC-U-ONE
+83 state path operation-check process-termination SYMBOLIC-U-ONE
+84 state path session-call raise SYMBOLIC-U-ONE
+85 state path session-call process-termination SYMBOLIC-U-ONE
+86 state path manager-call raise SYMBOLIC-U-ONE
+87 state path manager-call process-termination SYMBOLIC-U-ONE
+88 state path session-return raise SYMBOLIC-U-ONE
+89 state path session-return process-termination SYMBOLIC-U-ONE
+90 state path state-shape raise SYMBOLIC-U-ONE
+91 state path state-shape process-termination SYMBOLIC-U-ONE
+92 state path conversion raise SYMBOLIC-U-ONE
+93 state path conversion process-termination SYMBOLIC-U-ONE
+94 state path dispatch-return raise SYMBOLIC-U-ONE
+95 state path dispatch-return process-termination SYMBOLIC-U-ONE
+96 state path client-return raise SYMBOLIC-U-ONE
+97 state path client-return process-termination SYMBOLIC-U-ONE
+98 storage/helper retain-error raise SYMBOLIC-U-ONE
+99 storage/helper retain-error process-termination SYMBOLIC-U-ONE
+100 storage/helper fixed-failure raise SYMBOLIC-U-ONE
+101 storage/helper fixed-failure process-termination SYMBOLIC-U-ONE
+102 conditional existing evidence route after conversion failure SYMBOLIC-U-ONE
+103 existing manager exception guard is reused SYMBOLIC-U-ONE
+104 no callback after termination SYMBOLIC-U-ONE
+105 nested returned mutations leave projection expectations isolated SYMBOLIC-U-ONE
+106 semantic row rejects missing link SYMBOLIC-U-ONE
+107 semantic row rejects reordered links SYMBOLIC-U-ONE
+108 semantic row rejects wrong instance SYMBOLIC-U-ONE
+109 semantic row rejects stale head SYMBOLIC-U-ONE
+110 semantic row rejects fabricated observer join SYMBOLIC-U-ONE
+111 legitimate source-bound forwarding SYMBOLIC-U-TWO
+112 six ordered hops and exact validated state SYMBOLIC-U-TWO
+113 reference/copy split and request-independent invocation SYMBOLIC-U-TWO
+114 output rejects missing hop SYMBOLIC-U-TWO
+115 output rejects reordered hops SYMBOLIC-U-TWO
+116 output rejects wrong method SYMBOLIC-U-TWO
+117 output rejects extra packet SYMBOLIC-U-TWO
+118 output rejects copy reference substitution SYMBOLIC-U-TWO
+119 output rejects invented observation SYMBOLIC-U-TWO
+120 output rejects wrong destination SYMBOLIC-U-TWO
+121 output rejects false exception evidence SYMBOLIC-U-TWO
+122 input rejects missing copy SYMBOLIC-U-TWO
+123 input rejects missing manager SYMBOLIC-U-TWO
+124 input rejects wrong method delegation SYMBOLIC-U-TWO
+125 input rejects wrong nested type SYMBOLIC-U-TWO
+126 input rejects wrong instance scope SYMBOLIC-U-TWO
+127 input rejects missing stage SYMBOLIC-U-TWO
+128 input rejects extra stage SYMBOLIC-U-TWO
+129 input rejects shallow copy SYMBOLIC-U-TWO
+130 input rejects same copy reference SYMBOLIC-U-TWO
+131 coordinated substituted state graph and manager reject SYMBOLIC-U-TWO
+132 wrong-instance independent anchor rejects SYMBOLIC-U-TWO
+133 state path client-call raise SYMBOLIC-U-TWO
+134 state path client-call process-termination SYMBOLIC-U-TWO
+135 state path owner-lookup raise SYMBOLIC-U-TWO
+136 state path owner-lookup process-termination SYMBOLIC-U-TWO
+137 state path owner-guard raise SYMBOLIC-U-TWO
+138 state path owner-guard process-termination SYMBOLIC-U-TWO
+139 state path operation-check raise SYMBOLIC-U-TWO
+140 state path operation-check process-termination SYMBOLIC-U-TWO
+141 state path session-call raise SYMBOLIC-U-TWO
+142 state path session-call process-termination SYMBOLIC-U-TWO
+143 state path manager-call raise SYMBOLIC-U-TWO
+144 state path manager-call process-termination SYMBOLIC-U-TWO
+145 state path session-return raise SYMBOLIC-U-TWO
+146 state path session-return process-termination SYMBOLIC-U-TWO
+147 state path state-shape raise SYMBOLIC-U-TWO
+148 state path state-shape process-termination SYMBOLIC-U-TWO
+149 state path conversion raise SYMBOLIC-U-TWO
+150 state path conversion process-termination SYMBOLIC-U-TWO
+151 state path dispatch-return raise SYMBOLIC-U-TWO
+152 state path dispatch-return process-termination SYMBOLIC-U-TWO
+153 state path client-return raise SYMBOLIC-U-TWO
+154 state path client-return process-termination SYMBOLIC-U-TWO
+155 storage/helper retain-error raise SYMBOLIC-U-TWO
+156 storage/helper retain-error process-termination SYMBOLIC-U-TWO
+157 storage/helper fixed-failure raise SYMBOLIC-U-TWO
+158 storage/helper fixed-failure process-termination SYMBOLIC-U-TWO
+159 conditional existing evidence route after conversion failure SYMBOLIC-U-TWO
+160 existing manager exception guard is reused SYMBOLIC-U-TWO
+161 no callback after termination SYMBOLIC-U-TWO
+162 nested returned mutations leave projection expectations isolated SYMBOLIC-U-TWO
+163 semantic row rejects missing link SYMBOLIC-U-TWO
+164 semantic row rejects reordered links SYMBOLIC-U-TWO
+165 semantic row rejects wrong instance SYMBOLIC-U-TWO
+166 semantic row rejects stale head SYMBOLIC-U-TWO
+167 semantic row rejects fabricated observer join SYMBOLIC-U-TWO
+168 coordinated evidence substitution rejects before broad archive equality
+169 missing HEAD evidence rejects
+170 nested semantic output mutation preserves independent contexts
+171 public omitted mandatory relation rejects
+172 old predecessor public receipt rejects as current
+173 recovered public validator accepts current saved receipt
+{"result": "PASS", "checks": 173, "seconds": 489.9049078980024, "error": null}
+{"all_recovered_input_bytes_unchanged": true, "seconds_with_extraction": 492.90520489299524}

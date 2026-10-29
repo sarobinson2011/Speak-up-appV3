@@ -1,0 +1,38 @@
+{"check": "AST-derived dispatch catch operation-check", "result": "PASS"}
+{"check": "AST-derived normal continuation operation-check", "result": "PASS"}
+{"check": "AST-derived dispatch catch session-call", "result": "PASS"}
+{"check": "AST-derived normal continuation session-call", "result": "PASS"}
+{"check": "AST-derived dispatch catch state-shape", "result": "PASS"}
+{"check": "AST-derived normal continuation state-shape", "result": "PASS"}
+{"check": "AST-derived dispatch catch conversion", "result": "PASS"}
+{"check": "AST-derived normal continuation conversion", "result": "PASS"}
+{"check": "AST-derived dispatch catch dispatch-return", "result": "PASS"}
+{"check": "AST-derived normal continuation dispatch-return", "result": "PASS"}
+{"check": "source has no direct dispatch try guard client-call", "result": "PASS"}
+{"check": "source has no direct dispatch try guard client-return", "result": "PASS"}
+{"check": "source has no direct dispatch try guard owner-lookup", "result": "PASS"}
+{"check": "source has no direct dispatch try guard owner-guard", "result": "PASS"}
+{"check": "source has no direct dispatch try guard manager-call", "result": "PASS"}
+{"check": "source has no direct dispatch try guard session-return", "result": "PASS"}
+{"check": "source has no direct dispatch try guard fixed-failure", "result": "PASS"}
+{"check": "handler attribution remains outside own protected try", "result": "PASS"}
+{"check": "source validation rejects weaken-shape", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "source validation rejects omit-guard", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "source validation rejects reorder-prefix", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "source validation rejects change-type", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "source validation rejects deepcopy-semantics", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "source validation rejects omit-hop", "result": "REJECTED", "error": "CLIENT-STATE-SOURCE-CORRESPONDENCE"}
+{"check": "exact state shape missing-root-field SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape extra-root-field SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape state-list SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape nested-list-for-dict SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/counts"}
+{"check": "exact state shape nested-None SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/resources"}
+{"check": "exact state shape wrong-integer-type SYMBOLIC-U-ONE", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/seq"}
+{"check": "coordinated terminal claims cannot replace normal source path SYMBOLIC-U-ONE", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
+{"check": "exact state shape missing-root-field SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape extra-root-field SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape state-list SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-FIELDS"}
+{"check": "exact state shape nested-list-for-dict SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/counts"}
+{"check": "exact state shape nested-None SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/resources"}
+{"check": "exact state shape wrong-integer-type SYMBOLIC-U-TWO", "result": "REJECTED", "error": "STATE-VALUE-TYPE:/seq"}
+{"check": "coordinated terminal claims cannot replace normal source path SYMBOLIC-U-TWO", "result": "REJECTED", "error": "CLIENT-STATE-PROJECTION-CORRESPONDENCE"}
