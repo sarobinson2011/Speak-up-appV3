@@ -1,0 +1,260 @@
+{"check": "source independently fixes stages, ancestry, guards and unlink default", "result": "PASS"}
+{"check": "mandatory token checker and underlying status derivation actually invoked", "result": "PASS"}
+{"check": "receipt exactly reproduces saved bytes in ordered contexts", "result": "PASS"}
+{"check": "prior context fields preserved exactly", "result": "PASS"}
+{"check": "0 normal chain and independent milestone oracle", "result": "PASS"}
+{"check": "0 source branches control=False continuity=True", "result": "PASS"}
+{"check": "0 owner removal remains conditional True", "result": "PASS"}
+{"check": "0 source branches control=True continuity=False", "result": "PASS"}
+{"check": "0 owner removal remains conditional False", "result": "PASS"}
+{"check": "0 normal close source-admitted CLOSED", "result": "PASS"}
+{"check": "0 close reference subject CLOSED", "result": "PASS"}
+{"check": "0 normal close source-admitted CLEANUP_UNCERTAIN", "result": "PASS"}
+{"check": "0 close reference subject CLEANUP_UNCERTAIN", "result": "PASS"}
+{"check": "0 normal close source-admitted QUARANTINED", "result": "PASS"}
+{"check": "0 close reference subject QUARANTINED", "result": "PASS"}
+{"check": "0 FileNotFoundError absent", "result": "PASS"}
+{"check": "0 FileNotFoundError UNKNOWN", "result": "PASS"}
+{"check": "0 present namespace permits normal no-argument unlink", "result": "PASS"}
+{"check": "0 no exit after token finally-enter unobserved", "result": "PASS"}
+{"check": "0 invented exit after incomplete token finally-enter", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 no exit after token removal-attempt process-termination", "result": "PASS"}
+{"check": "0 invented exit after incomplete token removal-attempt", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 no exit after token removal-complete unobserved", "result": "PASS"}
+{"check": "0 invented exit after incomplete token removal-complete", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix session-resume unobserved", "result": "PASS"}
+{"check": "0 false continuation session-resume unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix session-resume process-termination", "result": "PASS"}
+{"check": "0 false continuation session-resume process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix launcher-resume unobserved", "result": "PASS"}
+{"check": "0 false continuation launcher-resume unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix launcher-resume process-termination", "result": "PASS"}
+{"check": "0 false continuation launcher-resume process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix close-attempt unobserved", "result": "PASS"}
+{"check": "0 false continuation close-attempt unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix close-attempt process-termination", "result": "PASS"}
+{"check": "0 false continuation close-attempt process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix close-complete unobserved", "result": "PASS"}
+{"check": "0 false continuation close-complete unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix close-complete process-termination", "result": "PASS"}
+{"check": "0 false continuation close-complete process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix managed-clear unobserved", "result": "PASS"}
+{"check": "0 false continuation managed-clear unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix managed-clear process-termination", "result": "PASS"}
+{"check": "0 false continuation managed-clear process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix unlink-attempt unobserved", "result": "PASS"}
+{"check": "0 false continuation unlink-attempt unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix unlink-attempt process-termination", "result": "PASS"}
+{"check": "0 false continuation unlink-attempt process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix unlink-complete unobserved", "result": "PASS"}
+{"check": "0 false continuation unlink-complete unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 prefix unlink-complete process-termination", "result": "PASS"}
+{"check": "0 false continuation unlink-complete process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 underlying close raise blocks clear and unlink", "result": "PASS"}
+{"check": "0 lock-exit failure after reference clear is still incomplete close", "result": "PASS"}
+{"check": "0 cleared reference and CLOSED phase insufficient for close completion", "result": "PASS"}
+{"check": "0 partial close interpreter does not invent exception", "result": "PASS"}
+{"check": "0 false normal close raise", "result": "REJECTED", "error": "EXIT-CLOSE-RAISE-CORRESPONDENCE"}
+{"check": "0 false normal close partial", "result": "REJECTED", "error": "EXIT-CLOSE-PREFIX-CORRESPONDENCE"}
+{"check": "0 modeled exception frontier close-attempt", "result": "PASS"}
+{"check": "0 modeled exception frontier managed-clear", "result": "PASS"}
+{"check": "0 modeled exception frontier unlink-attempt", "result": "PASS"}
+{"check": "0 modeled exception frontier unlink-complete", "result": "PASS"}
+{"check": "0 binding ('invocation',)", "result": "REJECTED", "error": "EXIT-TOKEN-INVOCATION"}
+{"check": "0 binding ('context',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "0 binding ('anchor', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "0 binding ('anchor', 'instance', 'ownership_incarnation')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "0 binding ('close_case', 'scope', 'acquisition')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "0 binding ('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "0 binding ('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "0 binding ('close_case', 'method')", "result": "REJECTED", "error": "EXIT-CLOSE-RECEIVER-METHOD"}
+{"check": "0 binding ('projection', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "0 binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "0 binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "0 binding ('projection', 'marker_path', 'component')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 binding ('projection', 'marker_path', 'root')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 binding ('projection', 'marker_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 binding ('projection', 'marker_path', 'physical_resolved_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 binding ('projection', 'session_binding', 'recorded_destination')", "result": "REJECTED", "error": "EXIT-VALIDATED:session_binding"}
+{"check": "0 binding ('projection', 'session_binding', 'instance', 'binding')", "result": "REJECTED", "error": "EXIT-VALIDATED:session_binding"}
+{"check": "0 same-value distinct invocation", "result": "PASS"}
+{"check": "0 occurrence identities distinguish repeated equal operations", "result": "PASS"}
+{"check": "0 foreign pop predecessor", "result": "REJECTED", "error": "EXIT-TOKEN-INVOCATION"}
+{"check": "0 coordinated foreign reports", "result": "REJECTED", "error": "EXIT-VALIDATED:token_result"}
+{"check": "0 coordinated marker reports still bound to source", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 omitted session-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted launcher-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted close-attempt", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted close-complete", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted managed-clear", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted unlink-attempt", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 omitted unlink-complete", "result": "REJECTED", "error": "EXIT-MISSING-STEP:unlink-complete"}
+{"check": "0 reordered adjacent 0", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 reordered adjacent 2", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 reordered adjacent 3", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 reordered adjacent 4", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 reordered adjacent 5", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 duplicate completion", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "0 normal completion requires close relation", "result": "REJECTED", "error": "EXIT-MISSING-CLOSE-RELATION"}
+{"check": "0 absent cannot produce successful unlink", "result": "REJECTED", "error": "EXIT-ABSENT-UNLINK-NOT-SUPPRESSED"}
+{"check": "0 present contradicts missing-file", "result": "REJECTED", "error": "EXIT-MARKER-FACT-CONTRADICTION"}
+{"check": "0 exact type ('invocation',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('projection', 'session_binding')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('close_case', 'initial', '_phase')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('projection', 'marker_path', 'session_binding', 'start_record', 'identity', 'bytes')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('outcomes',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('output', 'events')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('output', 'completion')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 subclassed nested literal keys", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "0 unsupported output close_normal_completion_in_model", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output marker_removal_completed_in_model", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output physical_closure_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output durability_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output outer_context_exit_or_lock_release_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output retained_error", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output actual_admission", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output observer_join", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported output runtime_exit_chain", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 premature clear", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 termination cannot claim Python exception", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 nested returned aliases cannot change expectations", "result": "PASS"}
+{"check": "0 semantic claim ('conditional_links',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('session_binding', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('marker_path', 'component')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('scope', 'invocation')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('runtime_exit_chain',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('classification',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 producer validation consumes independently checked premises", "result": "PASS"}
+{"check": "1 normal chain and independent milestone oracle", "result": "PASS"}
+{"check": "1 source branches control=False continuity=True", "result": "PASS"}
+{"check": "1 owner removal remains conditional True", "result": "PASS"}
+{"check": "1 source branches control=True continuity=False", "result": "PASS"}
+{"check": "1 owner removal remains conditional False", "result": "PASS"}
+{"check": "1 normal close source-admitted CLOSED", "result": "PASS"}
+{"check": "1 close reference subject CLOSED", "result": "PASS"}
+{"check": "1 normal close source-admitted CLEANUP_UNCERTAIN", "result": "PASS"}
+{"check": "1 close reference subject CLEANUP_UNCERTAIN", "result": "PASS"}
+{"check": "1 normal close source-admitted QUARANTINED", "result": "PASS"}
+{"check": "1 close reference subject QUARANTINED", "result": "PASS"}
+{"check": "1 FileNotFoundError absent", "result": "PASS"}
+{"check": "1 FileNotFoundError UNKNOWN", "result": "PASS"}
+{"check": "1 present namespace permits normal no-argument unlink", "result": "PASS"}
+{"check": "1 no exit after token finally-enter unobserved", "result": "PASS"}
+{"check": "1 invented exit after incomplete token finally-enter", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 no exit after token removal-attempt process-termination", "result": "PASS"}
+{"check": "1 invented exit after incomplete token removal-attempt", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 no exit after token removal-complete unobserved", "result": "PASS"}
+{"check": "1 invented exit after incomplete token removal-complete", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix session-resume unobserved", "result": "PASS"}
+{"check": "1 false continuation session-resume unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix session-resume process-termination", "result": "PASS"}
+{"check": "1 false continuation session-resume process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix launcher-resume unobserved", "result": "PASS"}
+{"check": "1 false continuation launcher-resume unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix launcher-resume process-termination", "result": "PASS"}
+{"check": "1 false continuation launcher-resume process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix close-attempt unobserved", "result": "PASS"}
+{"check": "1 false continuation close-attempt unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix close-attempt process-termination", "result": "PASS"}
+{"check": "1 false continuation close-attempt process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix close-complete unobserved", "result": "PASS"}
+{"check": "1 false continuation close-complete unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix close-complete process-termination", "result": "PASS"}
+{"check": "1 false continuation close-complete process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix managed-clear unobserved", "result": "PASS"}
+{"check": "1 false continuation managed-clear unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix managed-clear process-termination", "result": "PASS"}
+{"check": "1 false continuation managed-clear process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix unlink-attempt unobserved", "result": "PASS"}
+{"check": "1 false continuation unlink-attempt unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix unlink-attempt process-termination", "result": "PASS"}
+{"check": "1 false continuation unlink-attempt process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix unlink-complete unobserved", "result": "PASS"}
+{"check": "1 false continuation unlink-complete unobserved", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 prefix unlink-complete process-termination", "result": "PASS"}
+{"check": "1 false continuation unlink-complete process-termination", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 underlying close raise blocks clear and unlink", "result": "PASS"}
+{"check": "1 lock-exit failure after reference clear is still incomplete close", "result": "PASS"}
+{"check": "1 cleared reference and CLOSED phase insufficient for close completion", "result": "PASS"}
+{"check": "1 partial close interpreter does not invent exception", "result": "PASS"}
+{"check": "1 false normal close raise", "result": "REJECTED", "error": "EXIT-CLOSE-RAISE-CORRESPONDENCE"}
+{"check": "1 false normal close partial", "result": "REJECTED", "error": "EXIT-CLOSE-PREFIX-CORRESPONDENCE"}
+{"check": "1 modeled exception frontier close-attempt", "result": "PASS"}
+{"check": "1 modeled exception frontier managed-clear", "result": "PASS"}
+{"check": "1 modeled exception frontier unlink-attempt", "result": "PASS"}
+{"check": "1 modeled exception frontier unlink-complete", "result": "PASS"}
+{"check": "1 binding ('invocation',)", "result": "REJECTED", "error": "EXIT-TOKEN-INVOCATION"}
+{"check": "1 binding ('context',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "1 binding ('anchor', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "1 binding ('anchor', 'instance', 'ownership_incarnation')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "1 binding ('close_case', 'scope', 'acquisition')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "1 binding ('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "1 binding ('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "1 binding ('close_case', 'method')", "result": "REJECTED", "error": "EXIT-CLOSE-RECEIVER-METHOD"}
+{"check": "1 binding ('projection', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "1 binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "1 binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "1 binding ('projection', 'marker_path', 'component')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 binding ('projection', 'marker_path', 'root')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 binding ('projection', 'marker_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 binding ('projection', 'marker_path', 'physical_resolved_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 binding ('projection', 'session_binding', 'recorded_destination')", "result": "REJECTED", "error": "EXIT-VALIDATED:session_binding"}
+{"check": "1 binding ('projection', 'session_binding', 'instance', 'binding')", "result": "REJECTED", "error": "EXIT-VALIDATED:session_binding"}
+{"check": "1 same-value distinct invocation", "result": "PASS"}
+{"check": "1 occurrence identities distinguish repeated equal operations", "result": "PASS"}
+{"check": "1 foreign pop predecessor", "result": "REJECTED", "error": "EXIT-TOKEN-INVOCATION"}
+{"check": "1 coordinated foreign reports", "result": "REJECTED", "error": "EXIT-VALIDATED:token_result"}
+{"check": "1 coordinated marker reports still bound to source", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 omitted session-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted launcher-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted close-attempt", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted close-complete", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted managed-clear", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted unlink-attempt", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 omitted unlink-complete", "result": "REJECTED", "error": "EXIT-MISSING-STEP:unlink-complete"}
+{"check": "1 reordered adjacent 0", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 reordered adjacent 2", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 reordered adjacent 3", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 reordered adjacent 4", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 reordered adjacent 5", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 duplicate completion", "result": "REJECTED", "error": "EXIT-UNREACHED-STEPS"}
+{"check": "1 normal completion requires close relation", "result": "REJECTED", "error": "EXIT-MISSING-CLOSE-RELATION"}
+{"check": "1 absent cannot produce successful unlink", "result": "REJECTED", "error": "EXIT-ABSENT-UNLINK-NOT-SUPPRESSED"}
+{"check": "1 present contradicts missing-file", "result": "REJECTED", "error": "EXIT-MARKER-FACT-CONTRADICTION"}
+{"check": "1 exact type ('invocation',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('projection', 'session_binding')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('close_case', 'initial', '_phase')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('projection', 'marker_path', 'session_binding', 'start_record', 'identity', 'bytes')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('outcomes',)", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('output', 'events')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('output', 'completion')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 subclassed nested literal keys", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "1 unsupported output close_normal_completion_in_model", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output marker_removal_completed_in_model", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output physical_closure_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output durability_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output outer_context_exit_or_lock_release_established", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output retained_error", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output actual_admission", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output observer_join", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported output runtime_exit_chain", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 premature clear", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 termination cannot claim Python exception", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 nested returned aliases cannot change expectations", "result": "PASS"}
+{"check": "1 semantic claim ('conditional_links',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('session_binding', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('marker_path', 'component')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('scope', 'invocation')", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('runtime_exit_chain',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('classification',)", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 producer validation consumes independently checked premises", "result": "PASS"}
+{"check": "catalogue omitted guards", "result": "REJECTED", "error": "EXIT-SOURCE-CORRESPONDENCE"}
+{"check": "catalogue omitted reference_edges", "result": "REJECTED", "error": "EXIT-SOURCE-CORRESPONDENCE"}
+{"check": "catalogue omitted declarations", "result": "REJECTED", "error": "EXIT-SOURCE-CORRESPONDENCE"}
+{"check": "semantic context domain 0", "result": "REJECTED", "error": "EXIT-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic context domain 2", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic context domain 2", "result": "REJECTED", "error": "EXIT-SEMANTIC-CORRESPONDENCE"}
+{"check": "actual evidence missing", "result": "REJECTED", "error": "EXIT-VALIDATED-EVIDENCE"}
+{"check": "actual evidence altered", "result": "REJECTED", "error": "EXIT-VALIDATED-EVIDENCE"}
+{"check": "returned bundle reversal and nested mutation isolate expectations", "result": "PASS"}
+{"check": "all eleven obligations and UNKNOWNs preserved", "result": "PASS"}

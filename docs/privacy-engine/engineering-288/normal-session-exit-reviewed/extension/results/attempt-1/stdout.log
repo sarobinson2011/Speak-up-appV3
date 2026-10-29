@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/session-exit/tests/focused.py", line 15, in <module>
+    rec.check('mandatory token checker and underlying status chain invoked',lambda:sum(x['function']=='derive_status' for x in CALLS)==1 and sum(x['function']=='_checked' and x['file'].endswith('retained/token/code/correspondence.py') for x in CALLS)==1)
+  File "/workspace/scratch/3da0de3fef10/session-exit/tests/offline.py", line 46, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+                  ^^^^^^^^^^^^^^
+AssertionError: mandatory token checker and underlying status chain invoked

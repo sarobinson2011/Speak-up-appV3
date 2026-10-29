@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/processes.py", line 9, in <module>
+    rec.save('input-verification.json',verify_root(root));guard(root);m=load(root/'code/correspondence.py');saved=(root/'results/primary/normal-session-exit-correspondence.json').read_bytes();data=m.inputs(root);cat=m.catalogue(data)
+                                       ^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/common.py", line 41, in verify_root
+    assert files==expected and actual_dirs==dirs
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

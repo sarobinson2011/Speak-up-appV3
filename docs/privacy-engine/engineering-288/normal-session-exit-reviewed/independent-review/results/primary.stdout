@@ -1,0 +1,261 @@
+1 source independently fixes stages, ancestry, guards and unlink default PASS
+Computing mandatory saved-evidence basis
+2 mandatory token checker and underlying status derivation actually invoked PASS
+3 receipt exactly reproduces saved bytes in ordered contexts PASS
+4 prior context fields preserved exactly PASS
+5 0 normal chain and independent milestone oracle PASS
+6 0 source branches control=False continuity=True PASS
+7 0 owner removal remains conditional True PASS
+8 0 source branches control=True continuity=False PASS
+9 0 owner removal remains conditional False PASS
+10 0 normal close source-admitted CLOSED PASS
+11 0 close reference subject CLOSED PASS
+12 0 normal close source-admitted CLEANUP_UNCERTAIN PASS
+13 0 close reference subject CLEANUP_UNCERTAIN PASS
+14 0 normal close source-admitted QUARANTINED PASS
+15 0 close reference subject QUARANTINED PASS
+16 0 FileNotFoundError absent PASS
+17 0 FileNotFoundError UNKNOWN PASS
+18 0 present namespace permits normal no-argument unlink PASS
+19 0 no exit after token finally-enter unobserved PASS
+20 0 invented exit after incomplete token finally-enter REJECTED
+21 0 no exit after token removal-attempt process-termination PASS
+22 0 invented exit after incomplete token removal-attempt REJECTED
+23 0 no exit after token removal-complete unobserved PASS
+24 0 invented exit after incomplete token removal-complete REJECTED
+25 0 prefix session-resume unobserved PASS
+26 0 false continuation session-resume unobserved REJECTED
+27 0 prefix session-resume process-termination PASS
+28 0 false continuation session-resume process-termination REJECTED
+29 0 prefix launcher-resume unobserved PASS
+30 0 false continuation launcher-resume unobserved REJECTED
+31 0 prefix launcher-resume process-termination PASS
+32 0 false continuation launcher-resume process-termination REJECTED
+33 0 prefix close-attempt unobserved PASS
+34 0 false continuation close-attempt unobserved REJECTED
+35 0 prefix close-attempt process-termination PASS
+36 0 false continuation close-attempt process-termination REJECTED
+37 0 prefix close-complete unobserved PASS
+38 0 false continuation close-complete unobserved REJECTED
+39 0 prefix close-complete process-termination PASS
+40 0 false continuation close-complete process-termination REJECTED
+41 0 prefix managed-clear unobserved PASS
+42 0 false continuation managed-clear unobserved REJECTED
+43 0 prefix managed-clear process-termination PASS
+44 0 false continuation managed-clear process-termination REJECTED
+45 0 prefix unlink-attempt unobserved PASS
+46 0 false continuation unlink-attempt unobserved REJECTED
+47 0 prefix unlink-attempt process-termination PASS
+48 0 false continuation unlink-attempt process-termination REJECTED
+49 0 prefix unlink-complete unobserved PASS
+50 0 false continuation unlink-complete unobserved REJECTED
+51 0 prefix unlink-complete process-termination PASS
+52 0 false continuation unlink-complete process-termination REJECTED
+53 0 underlying close raise blocks clear and unlink PASS
+54 0 lock-exit failure after reference clear is still incomplete close PASS
+55 0 cleared reference and CLOSED phase insufficient for close completion PASS
+56 0 partial close interpreter does not invent exception PASS
+57 0 false normal close raise REJECTED
+58 0 false normal close partial REJECTED
+59 0 modeled exception frontier close-attempt PASS
+60 0 modeled exception frontier managed-clear PASS
+61 0 modeled exception frontier unlink-attempt PASS
+62 0 modeled exception frontier unlink-complete PASS
+63 0 binding ('invocation',) REJECTED
+64 0 binding ('context',) REJECTED
+65 0 binding ('anchor', 'instance', 'session_label') REJECTED
+66 0 binding ('anchor', 'instance', 'ownership_incarnation') REJECTED
+67 0 binding ('close_case', 'scope', 'acquisition') REJECTED
+68 0 binding ('close_case', 'scope', 'instance') REJECTED
+69 0 binding ('close_case', 'scope', 'invocation') REJECTED
+70 0 binding ('close_case', 'method') REJECTED
+71 0 binding ('projection', 'references', 'owner', 'symbol') REJECTED
+72 0 binding ('projection', 'references', 'manager', 'symbol') REJECTED
+73 0 binding ('projection', 'references', 'session', 'symbol') REJECTED
+74 0 binding ('projection', 'marker_path', 'component') REJECTED
+75 0 binding ('projection', 'marker_path', 'root') REJECTED
+76 0 binding ('projection', 'marker_path', 'nominal_recorded_path') REJECTED
+77 0 binding ('projection', 'marker_path', 'physical_resolved_path') REJECTED
+78 0 binding ('projection', 'session_binding', 'recorded_destination') REJECTED
+79 0 binding ('projection', 'session_binding', 'instance', 'binding') REJECTED
+80 0 same-value distinct invocation PASS
+81 0 occurrence identities distinguish repeated equal operations PASS
+82 0 foreign pop predecessor REJECTED
+83 0 coordinated foreign reports REJECTED
+84 0 coordinated marker reports still bound to source REJECTED
+85 0 omitted session-resume REJECTED
+86 0 omitted launcher-resume REJECTED
+87 0 omitted close-attempt REJECTED
+88 0 omitted close-complete REJECTED
+89 0 omitted managed-clear REJECTED
+90 0 omitted unlink-attempt REJECTED
+91 0 omitted unlink-complete REJECTED
+92 0 reordered adjacent 0 REJECTED
+93 0 reordered adjacent 2 REJECTED
+94 0 reordered adjacent 3 REJECTED
+95 0 reordered adjacent 4 REJECTED
+96 0 reordered adjacent 5 REJECTED
+97 0 duplicate completion REJECTED
+98 0 normal completion requires close relation REJECTED
+99 0 absent cannot produce successful unlink REJECTED
+100 0 present contradicts missing-file REJECTED
+101 0 exact type ('invocation',) REJECTED
+102 0 exact type ('projection', 'session_binding') REJECTED
+103 0 exact type ('close_case', 'initial', '_phase') REJECTED
+104 0 exact type ('projection', 'marker_path', 'session_binding', 'start_record', 'identity', 'bytes') REJECTED
+105 0 exact type ('outcomes',) REJECTED
+106 0 exact type ('output', 'events') REJECTED
+107 0 exact type ('output', 'completion') REJECTED
+108 0 subclassed nested literal keys REJECTED
+109 0 unsupported output close_normal_completion_in_model REJECTED
+110 0 unsupported output marker_removal_completed_in_model REJECTED
+111 0 unsupported output physical_closure_established REJECTED
+112 0 unsupported output durability_established REJECTED
+113 0 unsupported output outer_context_exit_or_lock_release_established REJECTED
+114 0 unsupported output retained_error REJECTED
+115 0 unsupported output actual_admission REJECTED
+116 0 unsupported output observer_join REJECTED
+117 0 unsupported output runtime_exit_chain REJECTED
+118 0 premature clear REJECTED
+119 0 termination cannot claim Python exception REJECTED
+120 0 nested returned aliases cannot change expectations PASS
+121 0 semantic claim ('conditional_links',) REJECTED
+122 0 semantic claim ('session_binding', 'instance', 'session_label') REJECTED
+123 0 semantic claim ('marker_path', 'component') REJECTED
+124 0 semantic claim ('scope', 'invocation') REJECTED
+125 0 semantic claim ('runtime_exit_chain',) REJECTED
+126 0 semantic claim ('classification',) REJECTED
+127 0 producer validation consumes independently checked premises PASS
+128 1 normal chain and independent milestone oracle PASS
+129 1 source branches control=False continuity=True PASS
+130 1 owner removal remains conditional True PASS
+131 1 source branches control=True continuity=False PASS
+132 1 owner removal remains conditional False PASS
+133 1 normal close source-admitted CLOSED PASS
+134 1 close reference subject CLOSED PASS
+135 1 normal close source-admitted CLEANUP_UNCERTAIN PASS
+136 1 close reference subject CLEANUP_UNCERTAIN PASS
+137 1 normal close source-admitted QUARANTINED PASS
+138 1 close reference subject QUARANTINED PASS
+139 1 FileNotFoundError absent PASS
+140 1 FileNotFoundError UNKNOWN PASS
+141 1 present namespace permits normal no-argument unlink PASS
+142 1 no exit after token finally-enter unobserved PASS
+143 1 invented exit after incomplete token finally-enter REJECTED
+144 1 no exit after token removal-attempt process-termination PASS
+145 1 invented exit after incomplete token removal-attempt REJECTED
+146 1 no exit after token removal-complete unobserved PASS
+147 1 invented exit after incomplete token removal-complete REJECTED
+148 1 prefix session-resume unobserved PASS
+149 1 false continuation session-resume unobserved REJECTED
+150 1 prefix session-resume process-termination PASS
+151 1 false continuation session-resume process-termination REJECTED
+152 1 prefix launcher-resume unobserved PASS
+153 1 false continuation launcher-resume unobserved REJECTED
+154 1 prefix launcher-resume process-termination PASS
+155 1 false continuation launcher-resume process-termination REJECTED
+156 1 prefix close-attempt unobserved PASS
+157 1 false continuation close-attempt unobserved REJECTED
+158 1 prefix close-attempt process-termination PASS
+159 1 false continuation close-attempt process-termination REJECTED
+160 1 prefix close-complete unobserved PASS
+161 1 false continuation close-complete unobserved REJECTED
+162 1 prefix close-complete process-termination PASS
+163 1 false continuation close-complete process-termination REJECTED
+164 1 prefix managed-clear unobserved PASS
+165 1 false continuation managed-clear unobserved REJECTED
+166 1 prefix managed-clear process-termination PASS
+167 1 false continuation managed-clear process-termination REJECTED
+168 1 prefix unlink-attempt unobserved PASS
+169 1 false continuation unlink-attempt unobserved REJECTED
+170 1 prefix unlink-attempt process-termination PASS
+171 1 false continuation unlink-attempt process-termination REJECTED
+172 1 prefix unlink-complete unobserved PASS
+173 1 false continuation unlink-complete unobserved REJECTED
+174 1 prefix unlink-complete process-termination PASS
+175 1 false continuation unlink-complete process-termination REJECTED
+176 1 underlying close raise blocks clear and unlink PASS
+177 1 lock-exit failure after reference clear is still incomplete close PASS
+178 1 cleared reference and CLOSED phase insufficient for close completion PASS
+179 1 partial close interpreter does not invent exception PASS
+180 1 false normal close raise REJECTED
+181 1 false normal close partial REJECTED
+182 1 modeled exception frontier close-attempt PASS
+183 1 modeled exception frontier managed-clear PASS
+184 1 modeled exception frontier unlink-attempt PASS
+185 1 modeled exception frontier unlink-complete PASS
+186 1 binding ('invocation',) REJECTED
+187 1 binding ('context',) REJECTED
+188 1 binding ('anchor', 'instance', 'session_label') REJECTED
+189 1 binding ('anchor', 'instance', 'ownership_incarnation') REJECTED
+190 1 binding ('close_case', 'scope', 'acquisition') REJECTED
+191 1 binding ('close_case', 'scope', 'instance') REJECTED
+192 1 binding ('close_case', 'scope', 'invocation') REJECTED
+193 1 binding ('close_case', 'method') REJECTED
+194 1 binding ('projection', 'references', 'owner', 'symbol') REJECTED
+195 1 binding ('projection', 'references', 'manager', 'symbol') REJECTED
+196 1 binding ('projection', 'references', 'session', 'symbol') REJECTED
+197 1 binding ('projection', 'marker_path', 'component') REJECTED
+198 1 binding ('projection', 'marker_path', 'root') REJECTED
+199 1 binding ('projection', 'marker_path', 'nominal_recorded_path') REJECTED
+200 1 binding ('projection', 'marker_path', 'physical_resolved_path') REJECTED
+201 1 binding ('projection', 'session_binding', 'recorded_destination') REJECTED
+202 1 binding ('projection', 'session_binding', 'instance', 'binding') REJECTED
+203 1 same-value distinct invocation PASS
+204 1 occurrence identities distinguish repeated equal operations PASS
+205 1 foreign pop predecessor REJECTED
+206 1 coordinated foreign reports REJECTED
+207 1 coordinated marker reports still bound to source REJECTED
+208 1 omitted session-resume REJECTED
+209 1 omitted launcher-resume REJECTED
+210 1 omitted close-attempt REJECTED
+211 1 omitted close-complete REJECTED
+212 1 omitted managed-clear REJECTED
+213 1 omitted unlink-attempt REJECTED
+214 1 omitted unlink-complete REJECTED
+215 1 reordered adjacent 0 REJECTED
+216 1 reordered adjacent 2 REJECTED
+217 1 reordered adjacent 3 REJECTED
+218 1 reordered adjacent 4 REJECTED
+219 1 reordered adjacent 5 REJECTED
+220 1 duplicate completion REJECTED
+221 1 normal completion requires close relation REJECTED
+222 1 absent cannot produce successful unlink REJECTED
+223 1 present contradicts missing-file REJECTED
+224 1 exact type ('invocation',) REJECTED
+225 1 exact type ('projection', 'session_binding') REJECTED
+226 1 exact type ('close_case', 'initial', '_phase') REJECTED
+227 1 exact type ('projection', 'marker_path', 'session_binding', 'start_record', 'identity', 'bytes') REJECTED
+228 1 exact type ('outcomes',) REJECTED
+229 1 exact type ('output', 'events') REJECTED
+230 1 exact type ('output', 'completion') REJECTED
+231 1 subclassed nested literal keys REJECTED
+232 1 unsupported output close_normal_completion_in_model REJECTED
+233 1 unsupported output marker_removal_completed_in_model REJECTED
+234 1 unsupported output physical_closure_established REJECTED
+235 1 unsupported output durability_established REJECTED
+236 1 unsupported output outer_context_exit_or_lock_release_established REJECTED
+237 1 unsupported output retained_error REJECTED
+238 1 unsupported output actual_admission REJECTED
+239 1 unsupported output observer_join REJECTED
+240 1 unsupported output runtime_exit_chain REJECTED
+241 1 premature clear REJECTED
+242 1 termination cannot claim Python exception REJECTED
+243 1 nested returned aliases cannot change expectations PASS
+244 1 semantic claim ('conditional_links',) REJECTED
+245 1 semantic claim ('session_binding', 'instance', 'session_label') REJECTED
+246 1 semantic claim ('marker_path', 'component') REJECTED
+247 1 semantic claim ('scope', 'invocation') REJECTED
+248 1 semantic claim ('runtime_exit_chain',) REJECTED
+249 1 semantic claim ('classification',) REJECTED
+250 1 producer validation consumes independently checked premises PASS
+251 catalogue omitted guards REJECTED
+252 catalogue omitted reference_edges REJECTED
+253 catalogue omitted declarations REJECTED
+254 semantic context domain 0 REJECTED
+255 semantic context domain 2 REJECTED
+256 semantic context domain 2 REJECTED
+257 actual evidence missing REJECTED
+258 actual evidence altered REJECTED
+259 returned bundle reversal and nested mutation isolate expectations PASS
+260 all eleven obligations and UNKNOWNs preserved PASS

@@ -1,0 +1,269 @@
+--- reviewed-token/code/correspondence.py
++++ normal-session-exit/code/correspondence.py
+@@ -1,12 +1,12 @@
+-"""Mandatory normal _run token correspondence over the reviewed IS-01 chain.
++"""Mandatory bounded normal session-exit correspondence over the reviewed token chain.
+ Saved evidence only. No application method or database connection is invoked.
+ """
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 205451, 'sha256': '4d485ad7df99bf6d0cd05c41d7091f126090eadc9ebcff39a80e1d25e623e5bc'}
+-PREDECESSOR_MANIFEST={'bytes':525136,'sha256':'ee20ab983c00fda52e6ada13ba8f34aec6aaf94ea3980c69da98fd34f42f4b2c'}
+-PREDECESSOR_RECEIPT={'bytes':2776568,'sha256':'4db6c9d4da0110055f483fdf5ef958a12edd9362b8315704ff0cf5143470c468'}
++PRODUCER_PIN={'bytes': 216678, 'sha256': 'dc0217d5395de31fc2f72c456a7b156116652b8c9d395a4931e631a7342861c8'}
++PREDECESSOR_MANIFEST={'bytes':577591,'sha256':'37bed36d549e530632d0939e379f53a49815a3145f30e13d49256de08397bf6a'}
++PREDECESSOR_RECEIPT={'bytes':3328177,'sha256':'1184bbf9366a2c7a8ced902836566b6610a8844cbf97698e78d10e6e91107145'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -28,90 +28,90 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/status'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'TOKEN-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'TOKEN-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'TOKEN-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/token'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'EXIT-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'EXIT-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'EXIT-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'TOKEN-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'TOKEN-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'TOKEN-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'TOKEN-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'EXIT-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'EXIT-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'EXIT-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'EXIT-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'TOKEN-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'TOKEN-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_token_status_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_token_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'EXIT-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'EXIT-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_exit_token_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_exit_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+-def sources(data):return data['prior_module'].sources(data['prior_data'])
++def sources(data):return (*data['prior_module'].sources(data['prior_data']),inner(data)['manager'])
+ def dependencies(data):
+- p=data['prior_module'];pd=data['prior_data'];status=p.catalogue(pd)
+- state=pd['prior_module'];sd=pd['prior_data'];client=sd['prior_module'].catalogue(sd['prior_data'])
+- return status,client
+-
+-def catalogue(data):return data['coverage'].compile_token_registration(*sources(data),*dependencies(data),inner(data)['ctx']['binding'])
++ p=data['prior_module'];d=inner(data);v=d['values'];g=d['guards'];c=data['coverage']
++ return p.catalogue(data['prior_data']),c.compile_reference_transfers(d['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],d['authority'])
++def catalogue(data):return data['coverage'].compile_session_exit(*sources(data),*dependencies(data))
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];prior=p.derive_status(pd,p.catalogue(pd))
+- saved=(fresh['prior_root']/'results/fresh/corrected-receipt.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'TOKEN-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
++ fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data']
++ # These are exactly derive_token's validation and assembly, executed once.
++ # Retaining its validated basis permits selected invocation checking against
++ # the same evidence without taking expectations from candidate reports.
++ rows,tb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,tb)
++ saved=(fresh['prior_root']/'results/primary/token-registration-correspondence.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'EXIT-VALIDATED-PREDECESSOR-RECEIPT')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'token_basis':tb,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
++def session_binding(basis,anchor):
++ e=basis['evidence'];start='evidence/SMOKE-ABOUT-TO-START.json';binding='evidence/session-records/binding.json';s=json.loads(e[start]);b=json.loads(e[binding]);require(type(s['destination']) is str,'EXIT-DESTINATION-TYPE')
++ require(b['configuration']['config']['session']==anchor['instance']['session_label'],'EXIT-SESSION-INSTANCE');same(b['launcher'],basis['catalogue']['source']['launcher'],'EXIT-SESSION-SOURCE')
++ return {'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'recorded_destination':s['destination'],'start_record':{'path':start,'identity':identity(e[start]),'pointer':'/destination'},'binding_record':{'path':binding,'identity':identity(e[binding]),'pointer':'/configuration/config/session'},'source_owner_lock':copy.deepcopy(basis['catalogue']['source']['owner_lock_destination']),'physical_resolved_destination':None,'resolution':'owner_lock yields dest after parent.resolve(); recorded destination is nominal, no host resolution performed'}
++def marker_path(basis,anchor,scope):
++ sb=session_binding(basis,anchor);component=basis['catalogue']['source']['marker_component']
++ return {'kind':'SOURCE-QUALIFIED-SESSION-MARKER','scope':copy.deepcopy(scope),'session_binding':sb,'root':'owner-lock-yielded-dest','component':component,'expression':basis['catalogue']['source']['marker_expression'],'nominal_recorded_path':sb['recorded_destination'].rstrip('/')+'/'+component,'physical_resolved_path':None}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(c['context'] for c in basis['prior']['contexts'])==CONTEXTS,'TOKEN-CONTEXT-DOMAIN')
+- for context in basis['prior']['contexts']:
+-  status=context['internal_status_return_correspondence'];anchor=status['instance_anchor']
+-  same(anchor,context['client_state_return_correspondence']['validated_state_anchor'],'TOKEN-VALIDATED-INSTANCE')
+-  same(status['declaration']['source']['sources']['entry'],cat['source']['entry'],'TOKEN-VALIDATED-SOURCE')
+-  rows.append({'context':context['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),
+-   'reference_basis':copy.deepcopy(status['validated_reference_basis']),
+-   'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'scope':{'context':context['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':None,'request_identifier':None},
+-   'runtime_registration_revocation_links':None,'actual_invocation_count':None,'physical_identity_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,
+-   'separate_observer':copy.deepcopy(status['separate_observer']),'observer_join':None,'outer_lifecycle_complete':False,
+-   'gap':'No _run token/owner creation, registry insertion, callback completion, finally-entry or pop-attempt/completion runtime frames. Selected finite cases remain constructed; exceptional/cleanup continuations remain partial.'})
++ cat=basis['catalogue'];rows=[];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'EXIT-CONTEXT-DOMAIN')
++ for row in basis['prior']['contexts']:
++  token=row['token_registration_correspondence'];anchor=token['instance_anchor'];same(token['declaration']['source']['entry'],cat['source']['entry'],'EXIT-VALIDATED-ENTRY');same(row['reference_declarations']['source']['source']['sha256'],cat['source']['manager']['sha256'],'EXIT-VALIDATED-MANAGER')
++  scope=copy.deepcopy(token['scope']);scope.pop('request_identifier');path='evidence/confirmed-close.json';closed=json.loads(basis['evidence'][path])
++  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),'scope':scope,'session_binding':session_binding(basis,anchor),'marker_path':marker_path(basis,anchor,scope),
++   'reference_basis':copy.deepcopy(token['reference_basis']),'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
++   'saved_close_evidence':{'path':path,'identity':identity(basis['evidence'][path]),'value':closed,'join_to_selected_constructed_invocation':None,'meaning':'Predecessor-validated saved manager close and marker observations; not runtime token-pop/local-clear/unlink forwarding frames'},
++   'selected_owner_continuity':'Explicit constructed premise, not runtime exclusivity','runtime_exit_chain':None,'physical_identity_observation':None,'actual_invocation_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'observer_join':None,'separate_observer':copy.deepcopy(token['separate_observer']),'outer_lifecycle_complete':False,
++   'gap':'No runtime normal-pop to selected launcher close/local clear/unlink chain; path resolution, physical identity, durability, exceptional/outer cleanup and continuity remain unestablished.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'TOKEN-SEMANTIC-CLAIMS');want=_rows(basis)
+- require(type(claims) is list and len(claims)==2,'TOKEN-CLAIM-CONTEXT-DOMAIN');same(claims,want,'TOKEN-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'EXIT-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'EXIT-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'EXIT-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'TOKEN-EVIDENCE-TYPES')
+- # Compare to the actual validated predecessor's complete evidence, not to a
+- # set of mutually agreeing candidate reports or their claimed archive pins.
+- require(candidate==basis['evidence'],'TOKEN-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'EXIT-EVIDENCE-TYPES');require(candidate==basis['evidence'],'EXIT-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'TOKEN-CATALOGUE');exact(claims,'TOKEN-CLAIMS')
+- basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'TOKEN-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['manager']) is bytes and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'TOKEN-CANDIDATE-SOURCE-TYPES')
+- require(sources(data)==sources(basis['fresh']) and d['manager']==fd['manager'] and d['ctx']['c']==fd['ctx']['c'],'TOKEN-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'TOKEN-CANDIDATE-BINDING')
++ exact(submitted_catalogue,'EXIT-CATALOGUE');exact(claims,'EXIT-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'EXIT-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'EXIT-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'EXIT-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'EXIT-CANDIDATE-BINDING')
+  _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows)
+- result=copy.deepcopy(basis['prior']);result['format']='I164-TOKEN-REGISTRATION-CORRESPONDENCE-1';result['prior_internal_status_components']=result.pop('extension_components');result['prior_internal_status_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['token_registration_correspondence']=copy.deepcopy(row)
+- result['new_token_registration_limits']={'normal_conditional_slice':True,'runtime_registration_revocation':'UNAVAILABLE','observer_join':None,'physical_identity':None,'outer_lifecycle_complete':False,'registry_continuity_is_explicit_conditional_premise':True,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+- return result
+-def derive_token(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-NORMAL-SESSION-EXIT-CORRESPONDENCE-1';result['prior_token_components']=result.pop('extension_components');result['prior_token_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['normal_session_exit_correspondence']=copy.deepcopy(row)
++ result['new_normal_exit_limits']={'normal_conditional_slice':True,'runtime_exit_chain':'UNAVAILABLE','observer_join':None,'physical_identity':None,'durability':None,'outer_lifecycle_complete':False,'registry_continuity_is_explicit_conditional_premise':True,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_exit(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+-def invocation_scope(anchor,invocation):
+- exact(anchor,'TOKEN-ANCHOR');exact(invocation,'TOKEN-INVOCATION');require(type(invocation) is str and bool(invocation),'TOKEN-INVOCATION')
+- return {'context':anchor['context'],'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'frontier':anchor['recovery_occurrence'],'invocation':invocation}
++def close_scope(anchor,invocation):return {'acquisition':anchor['record']['acquisition'],'instance':'validated-instance:'+hashlib.sha256(enc(anchor['instance'])).hexdigest(),'invocation':invocation+'/managed-close'}
++def _premises(basis,case):
++ exact(case,'EXIT-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','close_case','outcomes','marker_at_unlink','projection','output'} and case['kind']=='CONSTRUCTED-NORMAL-SESSION-EXIT','EXIT-CONSTRUCTED-CASE')
++ selected=[r for r in _rows(basis) if r['context']==case['context']];require(len(selected)==1,'EXIT-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'EXIT-CONSTRUCTED-ANCHOR')
++ p=basis['fresh']['prior_module'];tc=case['token_case'];require(type(tc) is dict,'EXIT-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'EXIT-TOKEN-INVOCATION');token=p._construct_checked(basis['token_basis'],tc)['projection'];scope=p.invocation_scope(anchor,case['invocation'])
++ cc=case['close_case'];cr=None
++ if cc is not None:
++  require(type(cc) is dict,'EXIT-CLOSE-CASE');same(cc.get('scope'),close_scope(anchor,case['invocation']),'EXIT-CLOSE-SCOPE');require(cc.get('context')==case['context'] and cc.get('method')=='close','EXIT-CLOSE-RECEIVER-METHOD')
++  d=inner(basis['fresh']);g=d['guards'];cr=basis['fresh']['coverage'].constructed_reference_path(d['manager'],g['guard_relationships'],g['guard_oracle'],cc)
++ return {'scope':scope,'references':copy.deepcopy(token['reference_bindings']),'session_binding':session_binding(basis,anchor),'marker_path':marker_path(basis,anchor,scope),'token_result':token,'close_result':cr,'outcomes':copy.deepcopy(case['outcomes']),'marker_at_unlink':case['marker_at_unlink']}
+ def _construct_checked(basis,case):
+- exact(case,'TOKEN-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','control_present','owner_failure_none','registry_continuity','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-TOKEN-REGISTRATION','TOKEN-CONSTRUCTED-CASE')
+- rows=_rows(basis);selected=[r for r in rows if r['context']==case['context']];require(len(selected)==1,'TOKEN-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'TOKEN-CONSTRUCTED-ANCHOR')
+- scope=invocation_scope(anchor,case['invocation']);validated={'occurrence':case['invocation'],'scope':scope,**{k:copy.deepcopy(case[k]) for k in ('control_present','owner_failure_none','registry_continuity','outcomes')}}
+- c=basis['fresh']['coverage'];p=c.token_registration_projection(basis['catalogue'],case['projection'],validated)
+- c.validate_token_registration_projection(basis['catalogue'],case['projection'],validated,case['output'])
+- return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'projection':p,'premises':'Explicit finite constructed outcomes and registry continuity, source-derived references; selected acquisition frontier is not runtime execution evidence','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.session_exit_projection(cat,case['projection'],v);c.validate_session_exit_projection(cat,case['projection'],v,case['output'])
++ return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Explicit finite constructed outcomes, close-path initial references and selected-owner continuity; evidence-qualified source references are not runtime physical identity','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'TOKEN-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'EXIT-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_token(data,catalogue(data))
++ data=inputs(root);return derive_exit(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'TOKEN-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-TOKEN-REGISTRATION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'token_registration_correspondence' in c for c in v['contexts']),'TOKEN-MANDATORY-RELATION')
+- require(saved==enc(derive(root)),'TOKEN-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_registration_revocation':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'EXIT-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-NORMAL-SESSION-EXIT-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'normal_session_exit_correspondence' in c for c in v['contexts']),'EXIT-MANDATORY-RELATION');require(saved==enc(derive(root)),'EXIT-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_exit_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))
+--- reviewed-token/code/managed_coverage.py
++++ normal-session-exit/code/managed_coverage.py
+@@ -2043,6 +2043,97 @@
+  status_exact_tree(submitted,'TOKEN-SUBMITTED-OUTPUT');status_typed_same(submitted,token_registration_projection(catalogue,case,validated),'TOKEN-PROJECTION-CORRESPONDENCE');return True
+ 
+ 
++# Normal session-exit correspondence, additive to the reviewed token producer.
++def session_exit_source(launcher,entry,manager,token):
++ need(all(type(v) is bytes for v in (launcher,entry,manager)),'EXIT-SOURCE-TYPE');status_exact_tree(token,'EXIT-TOKEN-CATALOGUE')
++ status_typed_same({'bytes':len(entry),'sha256':digest(entry)},token['source']['entry'],'EXIT-ENTRY-BINDING')
++ lt,ll=_client_locate(launcher);et,el=_client_locate(entry);mt,ml=_client_locate(manager)
++ def fn(tree,name):return next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name)
++ run=fn(et,'_run');session=fn(lt,'session');launch=fn(lt,'_session');lock=fn(lt,'owner_lock')
++ # Existing token validation has checked full _run/client/launcher error source.
++ # Independently traverse the actual launcher tail and public generator bridge.
++ with_=run.body[2].body[0];protected=with_.body[-1];pop=protected.finalbody[0]
++ tr=launch.body[-1].body[-1];need(isinstance(tr,ast.Try),'EXIT-LAUNCHER-TRY');yield_,close,clear,unlink=tr.body[-4:]
++ status_typed_same([ast.unparse(x) for x in (yield_,close,clear,unlink)],['yield ManagedSession(managed)','managed.close()','managed = None',"(dest / 'ACTIVE.json').unlink()"],'EXIT-LAUNCHER-SEQUENCE')
++ bridge=session.body[-1];need(isinstance(bridge,ast.With),'EXIT-PUBLIC-BRIDGE');status_typed_same(ast.unparse(bridge),'with _session(*args, **kwargs) as managed:\n    yield managed','EXIT-PUBLIC-BRIDGE-SOURCE')
++ status_typed_same(ast.unparse(with_.items[0].context_expr),'launcher.session(candidate, draft, runtime, destination, create=create)','EXIT-RUN-SESSION')
++ status_typed_same(ast.unparse(pop),'_OWNERS.pop(token, None)','EXIT-POP-SOURCE')
++ need(not unlink.value.args and not unlink.value.keywords,'EXIT-UNLINK-ARGUMENTS')
++ need(isinstance(unlink.value.func.value,ast.BinOp) and isinstance(unlink.value.func.value.op,ast.Div),'EXIT-MARKER-EXPRESSION')
++ need(ast.unparse(unlink.value.func.value.left)=='dest' and type(unlink.value.func.value.right.value) is str,'EXIT-MARKER-ROOT')
++ cls=next(n for n in mt.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority');mc=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='close')
++ status_typed_same(ast.unparse(mc),"def close(self):\n    with self._lock:\n        self._quarantine('explicit close')\n        self._dispose()\n        self._phase = 'CLOSED'\n        self._reason = 'close confirmed; no serving connection'",'EXIT-MANAGED-CLOSE-SOURCE')
++ selected=[('session-resume',bridge.body[0]),('launcher-resume',yield_),('close-attempt',close.value),('close-complete',close),('managed-clear',clear),('unlink-attempt',unlink.value),('unlink-complete',unlink)]
++ pin={'bytes':len(launcher),'sha256':digest(launcher)}
++ return {'launcher':pin,'entry':{'bytes':len(entry),'sha256':digest(entry)},'manager':{'bytes':len(manager),'sha256':digest(manager)},'stages':{n:{**ll(node),'source':copy.deepcopy(pin)} for n,node in selected},'order':[n for n,_ in selected],
++  'run_context':el(with_),'pop':el(pop),'session_bridge':ll(bridge),'owner_lock_destination':ll(lock),'manager_close':ml(mc),
++  'marker_component':unlink.value.func.value.right.value,'marker_expression':ast.unparse(unlink.value.func.value),'unlink_args':[],'unlink_kwargs':{},'missing_ok_argument':'omitted; pathlib.Path.unlink default False','missing_file':'FileNotFoundError is not suppressed by this unlink call; launcher handler remains an exceptional frontier',
++  'close_return':None,'local_clear':ast.literal_eval(clear.value),'normal_phase':mc.body[0].body[-2].value.value,'normal_reason':mc.body[0].body[-1].value.value,
++  'exception_region':ll(tr.handlers[0]),'outer_lifecycle_complete':False}
++
++def compile_session_exit(launcher,entry,manager,token,reference):
++ status_exact_tree(reference,'EXIT-REFERENCE-CATALOGUE');source=session_exit_source(launcher,entry,manager,token)
++ status_typed_same(source['manager'],{k:reference['source']['source'][k] for k in ('bytes','sha256')},'EXIT-REFERENCE-SOURCE')
++ need(any(p['function']=='close' for p in reference['source']['programs']),'EXIT-CLOSE-REFERENCE-PROGRAM')
++ return {'format':'I164-NORMAL-SESSION-EXIT-STATIC-1','source':source,
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'token_precondition':'Same selected invocation; validated normal-pop-completion. Selected-owner removal retains the separate continuity premise.',
++  'reference_edges':[['run.wrapper','session'],['launcher.yielded_wrapper','session'],['launcher.managed','manager'],['session.managed','manager']],
++  'reference_close_program':copy.deepcopy(next(p for p in reference['source']['programs'] if p['function']=='close')),
++  'guards':['ordinary resumption after normal pop','close attempt only after launcher resumption','normal close completion independently checked by existing managed reference-path interpreter','local managed clear only after normal close return','unlink attempt only after local clear','normal unlink completion is not implied by marker absence'],
++  'preserved_distinctions':['source references versus physical identity','local managed clear versus underlying close','marker unlink attempt versus completion','normal call versus durable closure','namespace absence versus successful earlier operations','earlier acknowledged facts versus later uncertainty'],
++  'exceptional_and_outer_cleanup':'Existing source anchored, not expanded','runtime_exit_chain':None,'actual_admission':False}
++
++def validate_session_exit(launcher,entry,manager,token,reference,submitted):
++ status_exact_tree(submitted,'EXIT-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_session_exit(launcher,entry,manager,token,reference),'EXIT-SOURCE-CORRESPONDENCE');return True
++
++def session_exit_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'EXIT-EXACT-TYPE')
++ keys={'scope','references','session_binding','marker_path','token_result','close_result','outcomes','marker_at_unlink'}
++ need(type(case) is dict and set(case)==keys and type(validated) is dict and set(validated)==keys,'EXIT-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'EXIT-VALIDATED:'+k)
++ scope=case['scope'];token=case['token_result'];status_typed_same(token['scope'],scope,'EXIT-TOKEN-SCOPE')
++ need(type(case['outcomes']) is list and type(case['marker_at_unlink']) is str and case['marker_at_unlink'] in ('present','absent','UNKNOWN'),'EXIT-INPUT-TYPES')
++ normal=token['completion']=='normal-pop-completion' and token['removal_completed_in_model'] is True
++ events=[];done=set();completion='predecessor-not-normal';terminal=None;cr=case['close_result'];close_reached=False
++ if normal:
++  for i,stage in enumerate(catalogue['source']['order']):
++   need(i<len(case['outcomes']),'EXIT-MISSING-STEP:'+stage);r=case['outcomes'][i]
++   need(type(r) is dict and set(r)=={'stage','outcome'} and type(r['stage']) is str and r['stage']==stage,'EXIT-STEP-ORDER')
++   kind=r['outcome'];allowed=('normal','raise','process-termination','unobserved')+(('missing-file',) if stage=='unlink-complete' else ())
++   need(type(kind) is str and kind in allowed,'EXIT-OUTCOME');terminal=kind
++   if stage=='close-complete':
++    close_reached=True
++    if cr is None:need(kind in ('process-termination','unobserved'),'EXIT-MISSING-CLOSE-RELATION')
++    elif cr['completion']=='normal':
++     need(kind=='normal','EXIT-CONTRADICTED-CLOSE-COMPLETION');need(cr['final']=={'_live':None,'_retired':None,'_phase':catalogue['source']['normal_phase']},'EXIT-NORMAL-CLOSE-STATE')
++    elif cr['completion']=='abrupt':need(kind=='raise','EXIT-CLOSE-RAISE-CORRESPONDENCE')
++    else:need(cr['completion']=='partial-prefix' and kind in ('process-termination','unobserved'),'EXIT-CLOSE-PREFIX-CORRESPONDENCE')
++   if stage=='unlink-complete':
++    need(not (case['marker_at_unlink']=='absent' and kind=='normal'),'EXIT-ABSENT-UNLINK-NOT-SUPPRESSED')
++    need(not (case['marker_at_unlink']=='present' and kind=='missing-file'),'EXIT-MARKER-FACT-CONTRADICTION')
++   events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(catalogue['source']['stages'][stage]),'outcome':kind,'manager':copy.deepcopy(case['references']['manager']),'wrapper':copy.deepcopy(case['references']['session']),'session_binding':copy.deepcopy(case['session_binding']),'marker_path':copy.deepcopy(case['marker_path']),'runtime_frame':None})
++   if kind!='normal':completion={'raise':'exceptional-frontier','missing-file':'unlink-FileNotFoundError-frontier','process-termination':'process-termination','unobserved':'unobserved-continuation'}[kind];break
++   done.add(stage)
++   if stage=='unlink-complete':completion='normal-marker-unlink-completion'
++ need(len(events)==len(case['outcomes']),'EXIT-UNREACHED-STEPS')
++ if not close_reached:need(cr is None,'EXIT-UNREACHED-CLOSE-RELATION')
++ clear='managed-clear' in done;closed='close-complete' in done;unlinked='unlink-complete' in done
++ exc=True if terminal in ('raise','missing-file') else False if terminal=='normal' else None
++ return {'kind':'CONSTRUCTED-NORMAL-SESSION-EXIT','scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(case['references']),'session_binding':copy.deepcopy(case['session_binding']),'marker_path':copy.deepcopy(case['marker_path']),
++  'validated_token_prefix':copy.deepcopy(token),'selected_owner_removed_in_model':token['selected_owner_removed_in_model'],'continuity_premise':copy.deepcopy(token['selected_slot_before_removal']['continuity']),
++  'events':events,'completion':completion,'close_attempt_entered_in_model':'close-attempt' in done,'close_normal_completion_in_model':closed,'managed_close_return':None,'managed_close_relation':copy.deepcopy(cr),
++  'launcher_local_cleared_in_model':clear,'launcher_local_managed_after':None if clear else copy.deepcopy(case['references']['manager']),
++  'wrapper_manager_reference_after':copy.deepcopy(case['references']['manager']),'unlink_attempt_entered_in_model':'unlink-attempt' in done,'marker_removal_completed_in_model':unlinked,
++  'marker_namespace_fact':'ABSENT-AT-UNLINK-COMPLETION' if unlinked else 'ABSENT-REPORTED-BY-UNLINK' if terminal=='missing-file' else 'UNKNOWN',
++  'exception_class':'FileNotFoundError' if terminal=='missing-file' else None,'terminal_python_exception_in_model':exc,'runtime_unwind_evidence':'UNAVAILABLE','runtime_exit_chain':None,
++  'completion_flags_mean':'True = acknowledged in this conditional prefix; False = not established, not proof of no effects','physical_closure_established':False,'durability_established':False,'runtime_exclusivity_established':False,'marker_absence_persists':None,
++  'outer_context_exit_or_lock_release_established':False,'outer_cleanup_completion':None,'retained_error':None,'runtime_observation':False,'observer_join':None,'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_session_exit_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'EXIT-SUBMITTED-OUTPUT');status_typed_same(submitted,session_exit_projection(catalogue,case,validated),'EXIT-OUTPUT-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()

@@ -1,0 +1,9 @@
+# I164 normal session-exit correspondence 1
+
+Construction by SU-Engineering[288D], for independent review. This is a bounded additive static/constructed correspondence extension, not runtime behavior or qualification. `code/correspondence.py` is the current mandatory validation entry. It requires both SYMBOLIC-U-ONE and SYMBOLIC-U-TWO, the reviewed normal-token predecessor, and the new normal session-exit relation. `code/managed_coverage.py` adds five functions; inherited producer functions remain unchanged.
+
+The exact manifested member tree of the reviewed token checkpoint is retained at `retained/token/`. Its independent review's non-input members are retained separately at `retained/review/`. `provenance/input-verification.json` records CRC, membership and byte verification of both supplied ZIPs; these were inspected, not rerun. `provenance/prior-review.json` is the exact independent verdict. All earlier evidence, source identities, failures and controls remain inside those retained trees.
+
+Read `SEMANTICS.md` for the conditional meaning and limits, `RECOVERY.md` for exact offline recovery, `provenance/changed-files.json` and `provenance/intentional.diff` for intentional changes, and `RESULTS.json` for new controls, failures and their separation from previous results. `MANIFEST.json` binds every final checkpoint member except itself. No Git save is performed.
+
+All eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, retention and allowances remain unchanged. SOURCE-ONLY remains in force. The cumulative-envelope option is unadopted. Readiness and final binding remain blocked; admission is disabled. No repetition completeness, physical identity, exclusive custody, durability, new host qualification or arbitrary-introspection protection is established.

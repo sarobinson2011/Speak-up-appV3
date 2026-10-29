@@ -1,0 +1,235 @@
+1 mandatory token checker and underlying status chain invoked PASS
+2 both required contexts exact PASS
+3 prior fields exact and untouched PASS
+4 independent source normal tail order PASS
+5 unlink no existence guard and no missing_ok override PASS
+6 independent expected stage coverage PASS
+7 normal pop close clear unlink SYMBOLIC-U-ONE PASS
+8 source admitted close without READY CLOSED SYMBOLIC-U-ONE PASS
+9 source admitted close without READY QUARANTINED SYMBOLIC-U-ONE PASS
+10 source admitted close without READY CLEANUP_UNCERTAIN SYMBOLIC-U-ONE PASS
+11 source admitted close without READY OPEN_FAILED SYMBOLIC-U-ONE PASS
+12 source admitted close without READY VALIDATION_FAILED SYMBOLIC-U-ONE PASS
+13 unknown continuity still permits normal launcher continuation SYMBOLIC-U-ONE PASS
+14 continuity not upgraded to selected owner removal PASS
+15 absent unlink raises after close and clear SYMBOLIC-U-ONE PASS
+16 missing marker not unlink completion or durability PASS
+17 non-normal predecessor cannot enter session exit SYMBOLIC-U-ONE PASS
+18 saved marker absence cannot synthesize exit steps PASS
+19 session-resume process-termination SYMBOLIC-U-ONE PASS
+20 no Python unwind cleanup inference session-resume process-termination SYMBOLIC-U-ONE PASS
+21 false continuation session-resume process-termination SYMBOLIC-U-ONE REJECTED
+22 session-resume unobserved SYMBOLIC-U-ONE PASS
+23 no Python unwind cleanup inference session-resume unobserved SYMBOLIC-U-ONE PASS
+24 false continuation session-resume unobserved SYMBOLIC-U-ONE REJECTED
+25 launcher-resume process-termination SYMBOLIC-U-ONE PASS
+26 no Python unwind cleanup inference launcher-resume process-termination SYMBOLIC-U-ONE PASS
+27 false continuation launcher-resume process-termination SYMBOLIC-U-ONE REJECTED
+28 launcher-resume unobserved SYMBOLIC-U-ONE PASS
+29 no Python unwind cleanup inference launcher-resume unobserved SYMBOLIC-U-ONE PASS
+30 false continuation launcher-resume unobserved SYMBOLIC-U-ONE REJECTED
+31 close-attempt process-termination SYMBOLIC-U-ONE PASS
+32 no Python unwind cleanup inference close-attempt process-termination SYMBOLIC-U-ONE PASS
+33 false continuation close-attempt process-termination SYMBOLIC-U-ONE REJECTED
+34 close-attempt unobserved SYMBOLIC-U-ONE PASS
+35 no Python unwind cleanup inference close-attempt unobserved SYMBOLIC-U-ONE PASS
+36 false continuation close-attempt unobserved SYMBOLIC-U-ONE REJECTED
+37 close-complete process-termination SYMBOLIC-U-ONE PASS
+38 no Python unwind cleanup inference close-complete process-termination SYMBOLIC-U-ONE PASS
+39 false continuation close-complete process-termination SYMBOLIC-U-ONE REJECTED
+40 close-complete unobserved SYMBOLIC-U-ONE PASS
+41 no Python unwind cleanup inference close-complete unobserved SYMBOLIC-U-ONE PASS
+42 false continuation close-complete unobserved SYMBOLIC-U-ONE REJECTED
+43 managed-clear process-termination SYMBOLIC-U-ONE PASS
+44 no Python unwind cleanup inference managed-clear process-termination SYMBOLIC-U-ONE PASS
+45 false continuation managed-clear process-termination SYMBOLIC-U-ONE REJECTED
+46 managed-clear unobserved SYMBOLIC-U-ONE PASS
+47 no Python unwind cleanup inference managed-clear unobserved SYMBOLIC-U-ONE PASS
+48 false continuation managed-clear unobserved SYMBOLIC-U-ONE REJECTED
+49 unlink-attempt process-termination SYMBOLIC-U-ONE PASS
+50 no Python unwind cleanup inference unlink-attempt process-termination SYMBOLIC-U-ONE PASS
+51 false continuation unlink-attempt process-termination SYMBOLIC-U-ONE REJECTED
+52 unlink-attempt unobserved SYMBOLIC-U-ONE PASS
+53 no Python unwind cleanup inference unlink-attempt unobserved SYMBOLIC-U-ONE PASS
+54 false continuation unlink-attempt unobserved SYMBOLIC-U-ONE REJECTED
+55 unlink-complete process-termination SYMBOLIC-U-ONE PASS
+56 no Python unwind cleanup inference unlink-complete process-termination SYMBOLIC-U-ONE PASS
+57 false continuation unlink-complete process-termination SYMBOLIC-U-ONE REJECTED
+58 unlink-complete unobserved SYMBOLIC-U-ONE PASS
+59 no Python unwind cleanup inference unlink-complete unobserved SYMBOLIC-U-ONE PASS
+60 false continuation unlink-complete unobserved SYMBOLIC-U-ONE REJECTED
+61 managed close failure frontier SYMBOLIC-U-ONE PASS
+62 failed managed close forbids local clear and marker removal PASS
+63 explicit exception frontier session-resume SYMBOLIC-U-ONE PASS
+64 explicit exception frontier launcher-resume SYMBOLIC-U-ONE PASS
+65 explicit exception frontier close-attempt SYMBOLIC-U-ONE PASS
+66 explicit exception frontier managed-clear SYMBOLIC-U-ONE PASS
+67 explicit exception frontier unlink-attempt SYMBOLIC-U-ONE PASS
+68 explicit exception frontier unlink-complete SYMBOLIC-U-ONE PASS
+69 wrong binding ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-ONE REJECTED
+70 wrong binding ('projection', 'references', 'session', 'symbol') SYMBOLIC-U-ONE REJECTED
+71 wrong binding ('projection', 'marker_path', 'component') SYMBOLIC-U-ONE REJECTED
+72 wrong binding ('projection', 'marker_path', 'root') SYMBOLIC-U-ONE REJECTED
+73 wrong binding ('projection', 'marker_path', 'nominal_recorded_path') SYMBOLIC-U-ONE REJECTED
+74 wrong binding ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-ONE REJECTED
+75 wrong binding ('close_case', 'scope', 'instance') SYMBOLIC-U-ONE REJECTED
+76 wrong binding ('close_case', 'scope', 'invocation') SYMBOLIC-U-ONE REJECTED
+77 wrong binding ('anchor', 'instance', 'binding') SYMBOLIC-U-ONE REJECTED
+78 coordinated foreign invocation SYMBOLIC-U-ONE REJECTED
+79 distinct invocation retains distinct exit occurrences SYMBOLIC-U-ONE PASS
+80 foreign normal-pop predecessor SYMBOLIC-U-ONE REJECTED
+81 wrong method close predecessor SYMBOLIC-U-ONE REJECTED
+82 coordinated close report substitution SYMBOLIC-U-ONE REJECTED
+83 omitted session-resume SYMBOLIC-U-ONE REJECTED
+84 omitted launcher-resume SYMBOLIC-U-ONE REJECTED
+85 omitted close-attempt SYMBOLIC-U-ONE REJECTED
+86 omitted close-complete SYMBOLIC-U-ONE REJECTED
+87 omitted managed-clear SYMBOLIC-U-ONE REJECTED
+88 omitted unlink-attempt SYMBOLIC-U-ONE REJECTED
+89 omitted unlink-complete SYMBOLIC-U-ONE REJECTED
+90 unlink before local clear SYMBOLIC-U-ONE REJECTED
+91 absent no-argument unlink cannot return normal SYMBOLIC-U-ONE REJECTED
+92 present contradicts missing-file outcome SYMBOLIC-U-ONE REJECTED
+93 normal close without validated close correspondence SYMBOLIC-U-ONE REJECTED
+94 unsupported output physical_closure_established SYMBOLIC-U-ONE REJECTED
+95 unsupported output runtime_exclusivity_established SYMBOLIC-U-ONE REJECTED
+96 unsupported output durability_established SYMBOLIC-U-ONE REJECTED
+97 unsupported output observer_join SYMBOLIC-U-ONE REJECTED
+98 unsupported output outer_cleanup_completion SYMBOLIC-U-ONE REJECTED
+99 unsupported output selected_owner_removed_in_model SYMBOLIC-U-ONE REJECTED
+100 exact type ('invocation',) SYMBOLIC-U-ONE REJECTED
+101 exact type ('projection', 'references') SYMBOLIC-U-ONE REJECTED
+102 exact type ('outcomes',) SYMBOLIC-U-ONE REJECTED
+103 exact type ('output', 'completion') SYMBOLIC-U-ONE REJECTED
+104 exact type ('output', 'events') SYMBOLIC-U-ONE REJECTED
+105 exact type ('projection', 'session_binding', 'start_record', 'identity', 'bytes') SYMBOLIC-U-ONE REJECTED
+106 nested subclassed literal keys SYMBOLIC-U-ONE REJECTED
+107 boolean integer substitution SYMBOLIC-U-ONE REJECTED
+108 nested returned mutations cannot change expectations SYMBOLIC-U-ONE PASS
+109 semantic altered ('conditional_links',) SYMBOLIC-U-ONE REJECTED
+110 semantic altered ('marker_path', 'component') SYMBOLIC-U-ONE REJECTED
+111 semantic altered ('saved_close_evidence', 'value', 'active_marker_absent') SYMBOLIC-U-ONE REJECTED
+112 semantic altered ('scope', 'invocation') SYMBOLIC-U-ONE REJECTED
+113 semantic altered ('runtime_exit_chain',) SYMBOLIC-U-ONE REJECTED
+114 semantic altered ('context',) SYMBOLIC-U-ONE REJECTED
+115 direct producer output acceptance SYMBOLIC-U-ONE PASS
+116 direct producer exact output gate SYMBOLIC-U-ONE REJECTED
+117 normal pop close clear unlink SYMBOLIC-U-TWO PASS
+118 source admitted close without READY CLOSED SYMBOLIC-U-TWO PASS
+119 source admitted close without READY QUARANTINED SYMBOLIC-U-TWO PASS
+120 source admitted close without READY CLEANUP_UNCERTAIN SYMBOLIC-U-TWO PASS
+121 source admitted close without READY OPEN_FAILED SYMBOLIC-U-TWO PASS
+122 source admitted close without READY VALIDATION_FAILED SYMBOLIC-U-TWO PASS
+123 unknown continuity still permits normal launcher continuation SYMBOLIC-U-TWO PASS
+124 continuity not upgraded to selected owner removal PASS
+125 absent unlink raises after close and clear SYMBOLIC-U-TWO PASS
+126 missing marker not unlink completion or durability PASS
+127 non-normal predecessor cannot enter session exit SYMBOLIC-U-TWO PASS
+128 saved marker absence cannot synthesize exit steps PASS
+129 session-resume process-termination SYMBOLIC-U-TWO PASS
+130 no Python unwind cleanup inference session-resume process-termination SYMBOLIC-U-TWO PASS
+131 false continuation session-resume process-termination SYMBOLIC-U-TWO REJECTED
+132 session-resume unobserved SYMBOLIC-U-TWO PASS
+133 no Python unwind cleanup inference session-resume unobserved SYMBOLIC-U-TWO PASS
+134 false continuation session-resume unobserved SYMBOLIC-U-TWO REJECTED
+135 launcher-resume process-termination SYMBOLIC-U-TWO PASS
+136 no Python unwind cleanup inference launcher-resume process-termination SYMBOLIC-U-TWO PASS
+137 false continuation launcher-resume process-termination SYMBOLIC-U-TWO REJECTED
+138 launcher-resume unobserved SYMBOLIC-U-TWO PASS
+139 no Python unwind cleanup inference launcher-resume unobserved SYMBOLIC-U-TWO PASS
+140 false continuation launcher-resume unobserved SYMBOLIC-U-TWO REJECTED
+141 close-attempt process-termination SYMBOLIC-U-TWO PASS
+142 no Python unwind cleanup inference close-attempt process-termination SYMBOLIC-U-TWO PASS
+143 false continuation close-attempt process-termination SYMBOLIC-U-TWO REJECTED
+144 close-attempt unobserved SYMBOLIC-U-TWO PASS
+145 no Python unwind cleanup inference close-attempt unobserved SYMBOLIC-U-TWO PASS
+146 false continuation close-attempt unobserved SYMBOLIC-U-TWO REJECTED
+147 close-complete process-termination SYMBOLIC-U-TWO PASS
+148 no Python unwind cleanup inference close-complete process-termination SYMBOLIC-U-TWO PASS
+149 false continuation close-complete process-termination SYMBOLIC-U-TWO REJECTED
+150 close-complete unobserved SYMBOLIC-U-TWO PASS
+151 no Python unwind cleanup inference close-complete unobserved SYMBOLIC-U-TWO PASS
+152 false continuation close-complete unobserved SYMBOLIC-U-TWO REJECTED
+153 managed-clear process-termination SYMBOLIC-U-TWO PASS
+154 no Python unwind cleanup inference managed-clear process-termination SYMBOLIC-U-TWO PASS
+155 false continuation managed-clear process-termination SYMBOLIC-U-TWO REJECTED
+156 managed-clear unobserved SYMBOLIC-U-TWO PASS
+157 no Python unwind cleanup inference managed-clear unobserved SYMBOLIC-U-TWO PASS
+158 false continuation managed-clear unobserved SYMBOLIC-U-TWO REJECTED
+159 unlink-attempt process-termination SYMBOLIC-U-TWO PASS
+160 no Python unwind cleanup inference unlink-attempt process-termination SYMBOLIC-U-TWO PASS
+161 false continuation unlink-attempt process-termination SYMBOLIC-U-TWO REJECTED
+162 unlink-attempt unobserved SYMBOLIC-U-TWO PASS
+163 no Python unwind cleanup inference unlink-attempt unobserved SYMBOLIC-U-TWO PASS
+164 false continuation unlink-attempt unobserved SYMBOLIC-U-TWO REJECTED
+165 unlink-complete process-termination SYMBOLIC-U-TWO PASS
+166 no Python unwind cleanup inference unlink-complete process-termination SYMBOLIC-U-TWO PASS
+167 false continuation unlink-complete process-termination SYMBOLIC-U-TWO REJECTED
+168 unlink-complete unobserved SYMBOLIC-U-TWO PASS
+169 no Python unwind cleanup inference unlink-complete unobserved SYMBOLIC-U-TWO PASS
+170 false continuation unlink-complete unobserved SYMBOLIC-U-TWO REJECTED
+171 managed close failure frontier SYMBOLIC-U-TWO PASS
+172 failed managed close forbids local clear and marker removal PASS
+173 explicit exception frontier session-resume SYMBOLIC-U-TWO PASS
+174 explicit exception frontier launcher-resume SYMBOLIC-U-TWO PASS
+175 explicit exception frontier close-attempt SYMBOLIC-U-TWO PASS
+176 explicit exception frontier managed-clear SYMBOLIC-U-TWO PASS
+177 explicit exception frontier unlink-attempt SYMBOLIC-U-TWO PASS
+178 explicit exception frontier unlink-complete SYMBOLIC-U-TWO PASS
+179 wrong binding ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-TWO REJECTED
+180 wrong binding ('projection', 'references', 'session', 'symbol') SYMBOLIC-U-TWO REJECTED
+181 wrong binding ('projection', 'marker_path', 'component') SYMBOLIC-U-TWO REJECTED
+182 wrong binding ('projection', 'marker_path', 'root') SYMBOLIC-U-TWO REJECTED
+183 wrong binding ('projection', 'marker_path', 'nominal_recorded_path') SYMBOLIC-U-TWO REJECTED
+184 wrong binding ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-TWO REJECTED
+185 wrong binding ('close_case', 'scope', 'instance') SYMBOLIC-U-TWO REJECTED
+186 wrong binding ('close_case', 'scope', 'invocation') SYMBOLIC-U-TWO REJECTED
+187 wrong binding ('anchor', 'instance', 'binding') SYMBOLIC-U-TWO REJECTED
+188 coordinated foreign invocation SYMBOLIC-U-TWO REJECTED
+189 distinct invocation retains distinct exit occurrences SYMBOLIC-U-TWO PASS
+190 foreign normal-pop predecessor SYMBOLIC-U-TWO REJECTED
+191 wrong method close predecessor SYMBOLIC-U-TWO REJECTED
+192 coordinated close report substitution SYMBOLIC-U-TWO REJECTED
+193 omitted session-resume SYMBOLIC-U-TWO REJECTED
+194 omitted launcher-resume SYMBOLIC-U-TWO REJECTED
+195 omitted close-attempt SYMBOLIC-U-TWO REJECTED
+196 omitted close-complete SYMBOLIC-U-TWO REJECTED
+197 omitted managed-clear SYMBOLIC-U-TWO REJECTED
+198 omitted unlink-attempt SYMBOLIC-U-TWO REJECTED
+199 omitted unlink-complete SYMBOLIC-U-TWO REJECTED
+200 unlink before local clear SYMBOLIC-U-TWO REJECTED
+201 absent no-argument unlink cannot return normal SYMBOLIC-U-TWO REJECTED
+202 present contradicts missing-file outcome SYMBOLIC-U-TWO REJECTED
+203 normal close without validated close correspondence SYMBOLIC-U-TWO REJECTED
+204 unsupported output physical_closure_established SYMBOLIC-U-TWO REJECTED
+205 unsupported output runtime_exclusivity_established SYMBOLIC-U-TWO REJECTED
+206 unsupported output durability_established SYMBOLIC-U-TWO REJECTED
+207 unsupported output observer_join SYMBOLIC-U-TWO REJECTED
+208 unsupported output outer_cleanup_completion SYMBOLIC-U-TWO REJECTED
+209 unsupported output selected_owner_removed_in_model SYMBOLIC-U-TWO REJECTED
+210 exact type ('invocation',) SYMBOLIC-U-TWO REJECTED
+211 exact type ('projection', 'references') SYMBOLIC-U-TWO REJECTED
+212 exact type ('outcomes',) SYMBOLIC-U-TWO REJECTED
+213 exact type ('output', 'completion') SYMBOLIC-U-TWO REJECTED
+214 exact type ('output', 'events') SYMBOLIC-U-TWO REJECTED
+215 exact type ('projection', 'session_binding', 'start_record', 'identity', 'bytes') SYMBOLIC-U-TWO REJECTED
+216 nested subclassed literal keys SYMBOLIC-U-TWO REJECTED
+217 boolean integer substitution SYMBOLIC-U-TWO REJECTED
+218 nested returned mutations cannot change expectations SYMBOLIC-U-TWO PASS
+219 semantic altered ('conditional_links',) SYMBOLIC-U-TWO REJECTED
+220 semantic altered ('marker_path', 'component') SYMBOLIC-U-TWO REJECTED
+221 semantic altered ('saved_close_evidence', 'value', 'active_marker_absent') SYMBOLIC-U-TWO REJECTED
+222 semantic altered ('scope', 'invocation') SYMBOLIC-U-TWO REJECTED
+223 semantic altered ('runtime_exit_chain',) SYMBOLIC-U-TWO REJECTED
+224 semantic altered ('context',) SYMBOLIC-U-TWO REJECTED
+225 direct producer output acceptance SYMBOLIC-U-TWO PASS
+226 direct producer exact output gate SYMBOLIC-U-TWO REJECTED
+227 source omitted declaration REJECTED
+228 source omitted guard REJECTED
+229 source reordered REJECTED
+230 source missing-file suppression REJECTED
+231 source stale source REJECTED
+232 evidence mutation changed actual bytes PASS
+233 altered saved evidence despite agreeing report REJECTED
+234 bundle output aliases isolated PASS
+235 saved close observer unjoined and unknown counts retained PASS

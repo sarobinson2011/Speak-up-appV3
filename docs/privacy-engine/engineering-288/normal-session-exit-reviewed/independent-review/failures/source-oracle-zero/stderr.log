@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/focused.py", line 13, in <module>
+    rec.save('source-oracle.json',rec.check('source independently fixes stages, ancestry, guards and unlink default',lambda:source_checks(m,data,cat)))
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/common.py", line 52, in check
+    v=fn();assert v is not False,label;self.row(label,'PASS');return v
+      ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/focused.py", line 13, in <lambda>
+    rec.save('source-oracle.json',rec.check('source independently fixes stages, ancestry, guards and unlink default',lambda:source_checks(m,data,cat)))
+                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ns-review/code/oracle.py", line 31, in source_checks
+    std=inspect.getsource(pathlib.Path.unlink);st=ast.parse(inspect.cleandoc(std));sf=st.body[0]
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py", line 52, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 2
+    """
+    ^^
+IndentationError: expected an indented block after function definition on line 1

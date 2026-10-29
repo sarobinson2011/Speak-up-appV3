@@ -1,0 +1,43 @@
+{"check": "recovered independent source/guard oracle", "result": "PASS"}
+{"check": "recovered exact receipt", "result": "PASS"}
+{"check": "0 recovered normal with explicit UNKNOWN continuity", "result": "PASS"}
+{"check": "0 recovered absent-file frontier keeps earlier facts", "result": "PASS"}
+{"check": "0 false missing-file summary ('output', 'marker_removal_completed_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 false missing-file summary ('output', 'authorization_renewed')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 false missing-file summary ('output', 'marker_namespace_fact')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "0 recovered binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "0 recovered binding ('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "0 recovered binding ('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "0 recovered binding ('projection', 'marker_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "0 recovered binding ('anchor', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "0 recovered omitted session-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 recovered omitted close-complete", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 recovered omitted managed-clear", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "0 recovered omitted unlink-complete", "result": "REJECTED", "error": "EXIT-MISSING-STEP:unlink-complete"}
+{"check": "0 recovered unobserved close is not closure", "result": "PASS"}
+{"check": "0 recovered unobserved escalation ('output', 'close_normal_completion_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered unobserved escalation ('output', 'terminal_python_exception_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered unobserved escalation ('output', 'outer_cleanup_completion')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered nested output isolated", "result": "PASS"}
+{"check": "1 recovered normal with explicit UNKNOWN continuity", "result": "PASS"}
+{"check": "1 recovered absent-file frontier keeps earlier facts", "result": "PASS"}
+{"check": "1 false missing-file summary ('output', 'marker_removal_completed_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 false missing-file summary ('output', 'authorization_renewed')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 false missing-file summary ('output', 'marker_namespace_fact')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "1 recovered binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "EXIT-VALIDATED:references"}
+{"check": "1 recovered binding ('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "1 recovered binding ('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "EXIT-CLOSE-SCOPE"}
+{"check": "1 recovered binding ('projection', 'marker_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "EXIT-VALIDATED:marker_path"}
+{"check": "1 recovered binding ('anchor', 'instance', 'session_label')", "result": "REJECTED", "error": "EXIT-CONSTRUCTED-ANCHOR"}
+{"check": "1 recovered omitted session-resume", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 recovered omitted close-complete", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 recovered omitted managed-clear", "result": "REJECTED", "error": "EXIT-STEP-ORDER"}
+{"check": "1 recovered omitted unlink-complete", "result": "REJECTED", "error": "EXIT-MISSING-STEP:unlink-complete"}
+{"check": "1 recovered unobserved close is not closure", "result": "PASS"}
+{"check": "1 recovered unobserved escalation ('output', 'close_normal_completion_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered unobserved escalation ('output', 'terminal_python_exception_in_model')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered unobserved escalation ('output', 'outer_cleanup_completion')", "result": "REJECTED", "error": "EXIT-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered nested output isolated", "result": "PASS"}
+{"check": "recovered returned context ordering isolated", "result": "PASS"}
