@@ -1,0 +1,89 @@
+{
+  "result": "PASS",
+  "reused_verified_prior_archive": {
+    "bytes": 70593959,
+    "sha256": "c9c8d2106617970e8008fadc3c60f61813c64e7ce07e24a60bc92ac1029b954a"
+  },
+  "reused_verified_prior_review_archive": {
+    "bytes": 71870780,
+    "sha256": "c6c1952bde68aef3e9434968cd8838cfcbd4ab606e39fcaba112e6f73dada3df"
+  },
+  "preserved_predecessor_members": 2331,
+  "preserved_prior_review_noninput_members": 103,
+  "inherited_producer_functions_unchanged": 89,
+  "added_functions": [
+    "compile_owner_finalization",
+    "owner_descriptor_lineage",
+    "owner_finalization_projection",
+    "owner_finalization_source",
+    "validate_owner_finalization",
+    "validate_owner_finalization_projection"
+  ],
+  "declared_changes_and_exact_diff": "PASS",
+  "runtime_sources_changed": 0,
+  "source_identities": {
+    "lab_bootstrap.py": {
+      "bytes": 11481,
+      "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+    },
+    "live_connection.py": {
+      "bytes": 5717,
+      "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+    },
+    "prospective_entry.py": {
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    }
+  },
+  "all_prior_context_fields_historical_identities_relationships_ordinals_findings_unchanged": true,
+  "obligations": 11,
+  "obligations_identity": {
+    "bytes": 56813,
+    "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+  },
+  "inventory_unknown_totals": 4,
+  "lifetime_unknown_totals": 14,
+  "new_receipt": {
+    "bytes": 4348225,
+    "sha256": "6f2d1ac375017fd2f92923522aeba36defb89992d7fd071dd385e11d991d3c42"
+  },
+  "supplied_failed_attempt": {
+    "cause": "UNESTABLISHED",
+    "command": "python3 -I -B owner-finalization/tests/process_checks.py owner-finalization owner-finalization-process-results/derive derive",
+    "completed_assertions": 0,
+    "counted_in_completed_totals": false,
+    "exit_code": 137,
+    "preservation": "Exact partial output and stdout retained; no completed check rerun",
+    "progress_log_present": false,
+    "recorded_utc": "2026-10-29T15:34:53.198145+00:00",
+    "result_json_present": false,
+    "shell_message": "Killed",
+    "status": "INTERRUPTED"
+  },
+  "supplied_recovery_cut_selection_members": 2459,
+  "supplied_recovery_cut_all_member_bytes_unchanged": true,
+  "supplied_recovery_cut_manifest_identity": {
+    "bytes": 685947,
+    "sha256": "ee966f6746f1c2dfa4478b5d05df205b6cd13395dadb56bb57ccf27902c71be3"
+  },
+  "supplied_recovery_cut_outer_identity": {
+    "CRC": "PASS",
+    "all_hashes": "PASS",
+    "bytes": 74047490,
+    "entries": 2460,
+    "manifest_identity": {
+      "bytes": 685947,
+      "sha256": "ee966f6746f1c2dfa4478b5d05df205b6cd13395dadb56bb57ccf27902c71be3"
+    },
+    "manifested_files": 2459,
+    "safe_unique_regular_membership": "PASS",
+    "sha256": "df0392e30335948e3cd6b01f6209857a7b0c42cba9393fedc9abd774539d84b4"
+  },
+  "supplied_recovery_cut_outer_newly_verified": false,
+  "historical_forensic_partial_identity": {
+    "bytes": 25690112,
+    "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e"
+  },
+  "historical_forensic_partial_outside_strict_predecessor": true,
+  "historical_compact_omissions": "Recorded in manifest audit; unchanged prior recovery qualifications reused, not erased"
+}

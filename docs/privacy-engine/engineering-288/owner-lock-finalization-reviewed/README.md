@@ -1,0 +1,11 @@
+# Reviewed owner-lock descriptor finalization
+
+Formal-Lab[6] supports the bounded mandatory SOURCE-ONLY normal owner-lock finalization contract, implementation unchanged. Its 323 independent controls include 265 primary, 49 recovered, 3 fresh semantic/derive, 2 fresh constructed and 4 fresh public/CLI checks; the actual CLI is included once. Engineering's 218 primary, 57 recovered and 9 process checks remain separate, inspected rather than rerun. Engineering's zero-assertion interrupted derivation attempt (exit 137, cause UNESTABLISHED) and all historical failures remain preserved outside completed totals. This review recorded no failed independent control attempt.
+
+Finalizer entry, close attempt and normal completion remain distinct. Descriptor identity is invocation-qualified source-result lineage, not a descriptor number or physical resource. Conditional selected-owner continuity, missing runtime producer/finalizer frames, nominal-only lock paths, physical lock-release/exclusivity/durability gaps and unexpanded exceptional/outer cleanup remain explicit. The separate observer remains unjoined. Modeled completion does not discharge obligations or renew authorization.
+
+Only this new reviewed extension and compact provenance are selected. The previously saved normal-exit/token/status milestones are not recopied or committed again. Exact large evidence remains in the external review and its embedded target, with identities and omitted-member locations retained. No deletion, compaction, substitution or evidence-retention permission follows. The historical unexplained partial remains outside the predecessor's strict root; its exact bytes and failures remain in the target archive.
+
+This selection includes the exact current 4,348,225-byte receipt; it is not a standalone recovered execution root. Use RECOVERY.md. The prepared host command reuses a matching successful receipt or already-committed selection, otherwise commits only this prefix and pushes once, preserving unrelated work. No completed check is rerun. NEXT-TASK.md identifies one unfinished construction slice; it is not implemented.
+
+All eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, retention and allowances remain unchanged. SOURCE-ONLY remains; cumulative-envelope unadopted; readiness/final binding blocked; admission disabled.

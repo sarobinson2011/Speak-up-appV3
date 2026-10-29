@@ -1,0 +1,237 @@
+--- reviewed-exit/code/managed_coverage.py
++++ owner-finalization/code/managed_coverage.py
+@@ -2134,6 +2134,85 @@
+  status_exact_tree(submitted,'EXIT-SUBMITTED-OUTPUT');status_typed_same(submitted,session_exit_projection(catalogue,case,validated),'EXIT-OUTPUT-CORRESPONDENCE');return True
+ 
+ 
++# Bounded owner-lock descriptor finalization; no OS operation is executed.
++def owner_finalization_source(launcher,exit_catalogue):
++ need(type(launcher) is bytes,'OWNER-SOURCE-TYPE');status_exact_tree(exit_catalogue,'OWNER-EXIT-CATALOGUE')
++ pin={'bytes':len(launcher),'sha256':digest(launcher)};status_typed_same(pin,exit_catalogue['source']['launcher'],'OWNER-EXIT-SOURCE')
++ tree,loc=_client_locate(launcher);funcs={n.name:n for n in tree.body if isinstance(n,ast.FunctionDef)};lock=funcs['owner_lock'];launch=funcs['_session']
++ expected=ast.parse("""@contextlib.contextmanager
++def owner_lock(destination):
++ dest=Path(destination).absolute();require(dest.name not in ('','.','..'),'DESTINATION')
++ parent=dest.parent.resolve();require(parent.is_dir(),'MISSING-PARENT')
++ dest=parent/dest.name
++ fd=os.open(parent/('.'+dest.name+'.owner.lock'),os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
++ try:
++  try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
++  except BlockingIOError:raise Blocked('OWNER-LOCK-CONTENDED')
++  yield dest
++ finally:os.close(fd)
++""").body[0]
++ status_typed_same(ast.dump(lock,include_attributes=False),ast.dump(expected,include_attributes=False),'OWNER-DEFINING-SHAPE')
++ alloc=lock.body[-2];tr=lock.body[-1];yield_=tr.body[-1];close=tr.finalbody[0];outer=launch.body[-1]
++ need(isinstance(outer,ast.With) and ast.unparse(outer.items[0].context_expr)=='owner_lock(destination)' and ast.unparse(outer.items[0].optional_vars)=='dest','OWNER-SESSION-CONTEXT')
++ need(outer is launch.body[-1] and isinstance(outer.body[-1],ast.Try),'OWNER-NORMAL-TAIL')
++ tail=outer.body[-1].body[-1];status_typed_same(loc(tail),{k:v for k,v in exit_catalogue['source']['stages']['unlink-complete'].items() if k!='source'},'OWNER-VALIDATED-UNLINK')
++ status_typed_same(ast.unparse(tail),"(dest / 'ACTIVE.json').unlink()",'OWNER-NORMAL-PREDECESSOR')
++ need(any(g['kind']=='try' and g['region']=='finalbody' for g in loc(close)['guards']),'OWNER-FINALBODY-GUARD')
++ stage_nodes=[('owner-finalizer-enter',tr),('descriptor-close-attempt',close.value),('descriptor-close-complete',close)]
++ return {'launcher':pin,'owner_lock':loc(lock),'owner_lock_call':loc(outer.items[0].context_expr),'descriptor_assignment':loc(alloc),'descriptor_call':loc(alloc.value),'descriptor_slot':alloc.targets[0].id,'close_argument':loc(close.value.args[0]),'close_callee':ast.unparse(close.value.func),'close_arguments':[ast.unparse(a) for a in close.value.args],'close_keywords':[],
++  'open_arguments':[ast.unparse(a) for a in alloc.value.args],'open_keywords':[],'path_expression':ast.unparse(alloc.value.args[0]),'path_prefix':alloc.value.args[0].right.left.left.value,'path_suffix':alloc.value.args[0].right.right.value,'yield':loc(yield_),'normal_predecessor':loc(tail),'session_with':loc(outer),
++  'order':[n for n,_ in stage_nodes],'stages':{n:{**loc(node),'source':copy.deepcopy(pin),'semantic_region':'finally-entry' if n=='owner-finalizer-enter' else 'finalbody'} for n,node in stage_nodes},
++  'return_use':'os.close(fd) is an expression statement; its return value is discarded, not captured','source_binding_rule':'fd is the result of this owner_lock invocation\'s os.open; no intervening fd assignment in the defining source','normal_guard':'Validated normal unlink completion, normal completion of enclosing launcher try/body and ordinary resumption of this owner_lock generator','exceptional_finalizer':'The source finally also applies to exceptional exits; those routes are outside this normal-only construction, not ruled out'}
++
++def compile_owner_finalization(launcher,exit_catalogue):
++ source=owner_finalization_source(launcher,exit_catalogue)
++ return {'format':'I164-OWNER-LOCK-FINALIZATION-STATIC-1','source':source,'descriptor_declaration':{'id':'owner-lock-descriptor-result','source_origin':copy.deepcopy(source['descriptor_assignment']),'call_origin':copy.deepcopy(source['descriptor_call']),'slot':source['descriptor_slot'],'type':'source-qualified os.open result passed as fd to os.close; numeric value unobserved','classification':'UNKNOWN','multiplicity':None,'ordinal':None},
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'normal_predecessor':'Only normal-marker-unlink-completion enters this normal-only relation','other_predecessor':'No stages in this slice; exceptional finalization remains unexpanded, not disproved','ordered_normal_prefix':'Every following stage requires the previous modeled stage to complete normally','failure_or_unknown':'Stop immediately; no later completion or automatic retry'},
++  'identity_rule':'Context, acquisition, instance, selected invocation, owner_lock call and os.open origin qualify lineage. A descriptor number, path or equal value is not resource identity.',
++  'limits':['SOURCE-ONLY static/constructed relation','No runtime descriptor, physical resource identity, physical lock-release, exclusive ownership or durability claim','No complete exceptional/outer lifecycle','No new logging, allowance, retention or authorization'],
++  'runtime_finalizer_chain':None,'actual_admission':False}
++
++def validate_owner_finalization(launcher,exit_catalogue,submitted):
++ status_exact_tree(submitted,'OWNER-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_owner_finalization(launcher,exit_catalogue),'OWNER-SOURCE-CORRESPONDENCE');return True
++
++def owner_descriptor_lineage(catalogue,scope,session_binding,marker_path):
++ for v in (catalogue,scope,session_binding,marker_path):status_exact_tree(v,'OWNER-LINEAGE-TYPES')
++ source=catalogue['source'];inv=scope['invocation'];need(inv is None or type(inv) is str and bool(inv),'OWNER-INVOCATION')
++ dest=session_binding['recorded_destination'];need(type(dest) is str and '/' in dest,'OWNER-RECORDED-DESTINATION');parent,name=dest.rstrip('/').rsplit('/',1)
++ return {'kind':'SOURCE-QUALIFIED-OWNER-DESCRIPTOR','scope':copy.deepcopy(scope),'owner_lock_occurrence':None if inv is None else inv+'/owner-lock','descriptor_result_occurrence':None if inv is None else inv+'/owner-lock/os.open-result','slot':source['descriptor_slot'],'producer':copy.deepcopy(source['descriptor_call']),'assignment':copy.deepcopy(source['descriptor_assignment']),'source':copy.deepcopy(source['launcher']),'owner_lock_call':copy.deepcopy(source['owner_lock_call']),
++  'session_binding':copy.deepcopy(session_binding),'marker_path':copy.deepcopy(marker_path),'lock_path':{'root':'owner_lock resolved parent','expression':source['path_expression'],'nominal_recorded_path':parent+'/'+source['path_prefix']+name+source['path_suffix'],'physical_resolved_path':None},
++  'close_argument_origin':copy.deepcopy(source['close_argument']),'source_lineage':'Same local fd result; no intervening reassignment in the pinned source','numeric_value':None,'runtime_descriptor_identity':None,'physical_resource_identity':None,'exclusive_owner_established':False}
++
++def owner_finalization_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'OWNER-EXACT-TYPE')
++ keys={'scope','session_binding','marker_path','references','exit_result','descriptor','outcomes'}
++ need(type(case) is dict and set(case)==keys and type(validated) is dict and set(validated)==keys,'OWNER-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'OWNER-VALIDATED:'+k)
++ scope=case['scope'];prior=case['exit_result'];status_typed_same(scope,prior['scope'],'OWNER-PREDECESSOR-SCOPE')
++ status_typed_same(case['descriptor'],owner_descriptor_lineage(catalogue,scope,case['session_binding'],case['marker_path']),'OWNER-DESCRIPTOR-LINEAGE')
++ normal=prior['completion']=='normal-marker-unlink-completion' and prior['marker_removal_completed_in_model'] is True
++ need(type(case['outcomes']) is list,'OWNER-OUTCOMES');events=[];done=set();terminal=None;completion='outside-normal-finalization-slice'
++ if normal:
++  for i,stage in enumerate(catalogue['source']['order']):
++   need(i<len(case['outcomes']),'OWNER-MISSING-STEP:'+stage);row=case['outcomes'][i]
++   need(type(row) is dict and set(row)=={'stage','outcome'} and type(row['stage']) is str and row['stage']==stage,'OWNER-STEP-ORDER');outcome=row['outcome']
++   need(type(outcome) is str and outcome in ('normal','raise','process-termination','unobserved'),'OWNER-OUTCOME');terminal=outcome
++   events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'source':copy.deepcopy(catalogue['source']['stages'][stage]),'stage':stage,'outcome':outcome,'descriptor_result_occurrence':case['descriptor']['descriptor_result_occurrence'],'descriptor':copy.deepcopy(case['descriptor']),'manager':copy.deepcopy(case['references']['manager']),'session':copy.deepcopy(case['references']['session']),'runtime_frame':None})
++   if outcome!='normal':completion={'raise':'exceptional-frontier','process-termination':'process-termination','unobserved':'unobserved-continuation'}[outcome];break
++   done.add(stage)
++   if stage=='descriptor-close-complete':completion='normal-descriptor-close-completion'
++ need(len(events)==len(case['outcomes']),'OWNER-UNREACHED-STEPS')
++ return {'kind':'CONSTRUCTED-OWNER-LOCK-FINALIZATION','scope':copy.deepcopy(scope),'descriptor_lineage':copy.deepcopy(case['descriptor']),'reference_bindings':copy.deepcopy(case['references']),'validated_normal_exit_prefix':copy.deepcopy(prior),'events':events,'completion':completion,'normal_route_applicable':normal,
++  'finalizer_entry_completed_in_model':'owner-finalizer-enter' in done,'descriptor_close_attempt_entered_in_model':'descriptor-close-attempt' in done,'descriptor_close_normal_completion_in_model':'descriptor-close-complete' in done,
++  'descriptor_close_return_use':catalogue['source']['return_use'],'descriptor_close_return_observation':None,'selected_owner_removed_in_model':prior['selected_owner_removed_in_model'],'continuity_premise':copy.deepcopy(prior['continuity_premise']),
++  'terminal_python_exception_in_model':True if terminal=='raise' else False if terminal=='normal' else None,'completion_flags_mean':'True = acknowledged in this conditional prefix; False = not established, not proof of no effects. Outside this normal slice does not rule out exceptional finalization.',
++  'physical_descriptor_closure_established':False,'physical_lock_release_established':False,'exclusive_ownership_established':False,'runtime_descriptor_finalization':None,'runtime_unwind_evidence':'UNAVAILABLE','durability_established':False,'complete_outer_context_exit_established':False,'exceptional_outer_cleanup_completion':None,'retained_error':None,'runtime_observation':False,'observer_join':None,'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_owner_finalization_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'OWNER-SUBMITTED-OUTPUT');status_typed_same(submitted,owner_finalization_projection(catalogue,case,validated),'OWNER-OUTPUT-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()
+--- reviewed-exit/code/correspondence.py
++++ owner-finalization/code/correspondence.py
+@@ -1,12 +1,12 @@
+-"""Mandatory bounded normal session-exit correspondence over the reviewed token chain.
++"""Mandatory bounded normal owner-lock descriptor finalization over the reviewed exit chain.
+ Saved evidence only. No application method or database connection is invoked.
+ """
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 216678, 'sha256': 'dc0217d5395de31fc2f72c456a7b156116652b8c9d395a4931e631a7342861c8'}
+-PREDECESSOR_MANIFEST={'bytes':577591,'sha256':'37bed36d549e530632d0939e379f53a49815a3145f30e13d49256de08397bf6a'}
+-PREDECESSOR_RECEIPT={'bytes':3328177,'sha256':'1184bbf9366a2c7a8ced902836566b6610a8844cbf97698e78d10e6e91107145'}
++PRODUCER_PIN={'bytes': 227678, 'sha256': '2f9807a5c75a9a8ff4307312bb341cf173cfc5dd92f5c99cd14b856a73274955'}
++PREDECESSOR_MANIFEST={'bytes':633328,'sha256':'8dcadeb9a5f023fb9c614facf47c7e02929a0a2b231abc277599ecddc7f6cdd8'}
++PREDECESSOR_RECEIPT={'bytes':4032928,'sha256':'928726175efbb720b03dc722de67477fa7ea3b3ce43b4c37bbeb2c9a730fea07'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -28,90 +28,70 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/token'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'EXIT-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'EXIT-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'EXIT-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/exit'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'OWNER-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'OWNER-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'OWNER-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'EXIT-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'EXIT-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'EXIT-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'EXIT-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'OWNER-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'OWNER-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'OWNER-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'OWNER-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'EXIT-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'EXIT-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_exit_token_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_exit_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'OWNER-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'OWNER-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_owner_exit_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_owner_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+-def sources(data):return (*data['prior_module'].sources(data['prior_data']),inner(data)['manager'])
+-def dependencies(data):
+- p=data['prior_module'];d=inner(data);v=d['values'];g=d['guards'];c=data['coverage']
+- return p.catalogue(data['prior_data']),c.compile_reference_transfers(d['manager'],v['candidate/managed-route/model.json'],v['candidate/managed-route/producers.json'],g['guard_relationships'],g['guard_oracle'],d['authority'])
+-def catalogue(data):return data['coverage'].compile_session_exit(*sources(data),*dependencies(data))
++def sources(data):return data['prior_module'].sources(data['prior_data'])
++def dependency(data):return data['prior_module'].catalogue(data['prior_data'])
++def catalogue(data):return data['coverage'].compile_owner_finalization(sources(data)[0],dependency(data))
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data']
+- # These are exactly derive_token's validation and assembly, executed once.
+- # Retaining its validated basis permits selected invocation checking against
+- # the same evidence without taking expectations from candidate reports.
+- rows,tb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,tb)
+- saved=(fresh['prior_root']/'results/primary/token-registration-correspondence.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'EXIT-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'token_basis':tb,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
+-def session_binding(basis,anchor):
+- e=basis['evidence'];start='evidence/SMOKE-ABOUT-TO-START.json';binding='evidence/session-records/binding.json';s=json.loads(e[start]);b=json.loads(e[binding]);require(type(s['destination']) is str,'EXIT-DESTINATION-TYPE')
+- require(b['configuration']['config']['session']==anchor['instance']['session_label'],'EXIT-SESSION-INSTANCE');same(b['launcher'],basis['catalogue']['source']['launcher'],'EXIT-SESSION-SOURCE')
+- return {'acquisition':anchor['record']['acquisition'],'instance':copy.deepcopy(anchor['instance']),'recorded_destination':s['destination'],'start_record':{'path':start,'identity':identity(e[start]),'pointer':'/destination'},'binding_record':{'path':binding,'identity':identity(e[binding]),'pointer':'/configuration/config/session'},'source_owner_lock':copy.deepcopy(basis['catalogue']['source']['owner_lock_destination']),'physical_resolved_destination':None,'resolution':'owner_lock yields dest after parent.resolve(); recorded destination is nominal, no host resolution performed'}
+-def marker_path(basis,anchor,scope):
+- sb=session_binding(basis,anchor);component=basis['catalogue']['source']['marker_component']
+- return {'kind':'SOURCE-QUALIFIED-SESSION-MARKER','scope':copy.deepcopy(scope),'session_binding':sb,'root':'owner-lock-yielded-dest','component':component,'expression':basis['catalogue']['source']['marker_expression'],'nominal_recorded_path':sb['recorded_destination'].rstrip('/')+'/'+component,'physical_resolved_path':None}
++ fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,eb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,eb)
++ # Exactly the predecessor derive_exit validation/assembly, preserving its basis
++ # so the selected invocation consumes the same authenticated evidence chain.
++ saved=(fresh['prior_root']/'results/primary/normal-session-exit-correspondence.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'OWNER-VALIDATED-PREDECESSOR-RECEIPT')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'exit_basis':eb,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
+ def _rows(basis):
+- cat=basis['catalogue'];rows=[];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'EXIT-CONTEXT-DOMAIN')
++ rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'OWNER-CONTEXT-DOMAIN')
+  for row in basis['prior']['contexts']:
+-  token=row['token_registration_correspondence'];anchor=token['instance_anchor'];same(token['declaration']['source']['entry'],cat['source']['entry'],'EXIT-VALIDATED-ENTRY');same(row['reference_declarations']['source']['source']['sha256'],cat['source']['manager']['sha256'],'EXIT-VALIDATED-MANAGER')
+-  scope=copy.deepcopy(token['scope']);scope.pop('request_identifier');path='evidence/confirmed-close.json';closed=json.loads(basis['evidence'][path])
+-  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),'scope':scope,'session_binding':session_binding(basis,anchor),'marker_path':marker_path(basis,anchor,scope),
+-   'reference_basis':copy.deepcopy(token['reference_basis']),'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'saved_close_evidence':{'path':path,'identity':identity(basis['evidence'][path]),'value':closed,'join_to_selected_constructed_invocation':None,'meaning':'Predecessor-validated saved manager close and marker observations; not runtime token-pop/local-clear/unlink forwarding frames'},
+-   'selected_owner_continuity':'Explicit constructed premise, not runtime exclusivity','runtime_exit_chain':None,'physical_identity_observation':None,'actual_invocation_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'observer_join':None,'separate_observer':copy.deepcopy(token['separate_observer']),'outer_lifecycle_complete':False,
+-   'gap':'No runtime normal-pop to selected launcher close/local clear/unlink chain; path resolution, physical identity, durability, exceptional/outer cleanup and continuity remain unestablished.'})
++  previous=row['normal_session_exit_correspondence'];anchor=previous['instance_anchor'];same(previous['declaration']['source']['launcher'],cat['source']['launcher'],'OWNER-VALIDATED-LAUNCHER');scope=copy.deepcopy(previous['scope']);sb=previous['session_binding'];mp=previous['marker_path']
++  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),'scope':scope,'session_binding':copy.deepcopy(sb),'marker_path':copy.deepcopy(mp),'descriptor_lineage':basis['fresh']['coverage'].owner_descriptor_lineage(cat,scope,sb,mp),
++   'reference_basis':copy.deepcopy(previous['reference_basis']),'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
++   'saved_close_evidence':copy.deepcopy(previous['saved_close_evidence']),'selected_owner_continuity':previous['selected_owner_continuity'],'runtime_finalizer_chain':None,'numeric_descriptor_observation':None,'physical_resource_identity':None,'actual_invocation_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'observer_join':None,'separate_observer':copy.deepcopy(previous['separate_observer']),'outer_lifecycle_complete':False,
++   'gap':'No runtime descriptor producer/finalizer/close-attempt/completion chain; exception/outer cleanup, physical resource/lock release, continuity, exclusivity and durability remain unestablished.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'EXIT-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'EXIT-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'EXIT-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'OWNER-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'OWNER-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'OWNER-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'EXIT-EVIDENCE-TYPES');require(candidate==basis['evidence'],'EXIT-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'OWNER-EVIDENCE-TYPES');require(candidate==basis['evidence'],'OWNER-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'EXIT-CATALOGUE');exact(claims,'EXIT-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'EXIT-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'EXIT-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'EXIT-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'EXIT-CANDIDATE-BINDING')
+- _compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ exact(submitted_catalogue,'OWNER-CATALOGUE');exact(claims,'OWNER-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'OWNER-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'OWNER-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'OWNER-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'OWNER-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-NORMAL-SESSION-EXIT-CORRESPONDENCE-1';result['prior_token_components']=result.pop('extension_components');result['prior_token_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['normal_session_exit_correspondence']=copy.deepcopy(row)
+- result['new_normal_exit_limits']={'normal_conditional_slice':True,'runtime_exit_chain':'UNAVAILABLE','observer_join':None,'physical_identity':None,'durability':None,'outer_lifecycle_complete':False,'registry_continuity_is_explicit_conditional_premise':True,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_exit(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-OWNER-LOCK-FINALIZATION-1';result['prior_normal_exit_components']=result.pop('extension_components');result['prior_normal_exit_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['owner_lock_finalization_correspondence']=copy.deepcopy(row)
++ result['new_owner_finalization_limits']={'normal_conditional_slice':True,'runtime_finalizer_chain':'UNAVAILABLE','numeric_descriptor_observation':None,'physical_resource_identity':None,'physical_lock_release':False,'runtime_exclusivity':False,'observer_join':None,'outer_lifecycle_complete':False,'selected_owner_continuity':'Explicit conditional premise, not qualification','complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_owner(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+-def close_scope(anchor,invocation):return {'acquisition':anchor['record']['acquisition'],'instance':'validated-instance:'+hashlib.sha256(enc(anchor['instance'])).hexdigest(),'invocation':invocation+'/managed-close'}
+ def _premises(basis,case):
+- exact(case,'EXIT-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','close_case','outcomes','marker_at_unlink','projection','output'} and case['kind']=='CONSTRUCTED-NORMAL-SESSION-EXIT','EXIT-CONSTRUCTED-CASE')
+- selected=[r for r in _rows(basis) if r['context']==case['context']];require(len(selected)==1,'EXIT-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'EXIT-CONSTRUCTED-ANCHOR')
+- p=basis['fresh']['prior_module'];tc=case['token_case'];require(type(tc) is dict,'EXIT-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'EXIT-TOKEN-INVOCATION');token=p._construct_checked(basis['token_basis'],tc)['projection'];scope=p.invocation_scope(anchor,case['invocation'])
+- cc=case['close_case'];cr=None
+- if cc is not None:
+-  require(type(cc) is dict,'EXIT-CLOSE-CASE');same(cc.get('scope'),close_scope(anchor,case['invocation']),'EXIT-CLOSE-SCOPE');require(cc.get('context')==case['context'] and cc.get('method')=='close','EXIT-CLOSE-RECEIVER-METHOD')
+-  d=inner(basis['fresh']);g=d['guards'];cr=basis['fresh']['coverage'].constructed_reference_path(d['manager'],g['guard_relationships'],g['guard_oracle'],cc)
+- return {'scope':scope,'references':copy.deepcopy(token['reference_bindings']),'session_binding':session_binding(basis,anchor),'marker_path':marker_path(basis,anchor,scope),'token_result':token,'close_result':cr,'outcomes':copy.deepcopy(case['outcomes']),'marker_at_unlink':case['marker_at_unlink']}
++ exact(case,'OWNER-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','exit_case','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-OWNER-LOCK-FINALIZATION','OWNER-CONSTRUCTED-CASE');selected=[r for r in _rows(basis) if r['context']==case['context']];require(len(selected)==1,'OWNER-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'OWNER-CONSTRUCTED-ANCHOR')
++ ec=case['exit_case'];require(type(ec) is dict,'OWNER-EXIT-CASE');same({k:ec.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'OWNER-EXIT-INVOCATION');p=basis['fresh']['prior_module'];previous=p._construct_checked(basis['exit_basis'],ec)['projection'];scope=previous['scope'];sb=previous['session_binding'];mp=previous['marker_path']
++ return {'scope':copy.deepcopy(scope),'session_binding':copy.deepcopy(sb),'marker_path':copy.deepcopy(mp),'references':copy.deepcopy(previous['reference_bindings']),'exit_result':previous,'descriptor':basis['fresh']['coverage'].owner_descriptor_lineage(basis['catalogue'],scope,sb,mp),'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.session_exit_projection(cat,case['projection'],v);c.validate_session_exit_projection(cat,case['projection'],v,case['output'])
+- return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Explicit finite constructed outcomes, close-path initial references and selected-owner continuity; evidence-qualified source references are not runtime physical identity','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.owner_finalization_projection(cat,case['projection'],v);c.validate_owner_finalization_projection(cat,case['projection'],v,case['output'])
++ return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Finite constructed normal-route outcomes; same-invocation source-result fd lineage, not observed descriptor/resource identity. Selected-owner continuity remains conditional.','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'EXIT-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'OWNER-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_exit(data,catalogue(data))
++ data=inputs(root);return derive_owner(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'EXIT-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-NORMAL-SESSION-EXIT-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'normal_session_exit_correspondence' in c for c in v['contexts']),'EXIT-MANDATORY-RELATION');require(saved==enc(derive(root)),'EXIT-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_exit_chain':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'OWNER-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-OWNER-LOCK-FINALIZATION-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'owner_lock_finalization_correspondence' in c for c in v['contexts']),'OWNER-MANDATORY-RELATION');require(saved==enc(derive(root)),'OWNER-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_finalizer_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

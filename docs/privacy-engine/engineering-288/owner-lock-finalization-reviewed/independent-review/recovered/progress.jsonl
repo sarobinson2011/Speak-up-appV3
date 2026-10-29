@@ -1,0 +1,49 @@
+{"check": "fresh recovered source/guard oracle", "result": "PASS"}
+{"check": "recovered exact two-context receipt", "result": "PASS"}
+{"check": "0 normal source path with unknown owner continuity", "result": "PASS"}
+{"check": "0 recovered frontier owner-finalizer-enter unobserved", "result": "PASS"}
+{"check": "0 false normal completion owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered frontier descriptor-close-attempt process-termination", "result": "PASS"}
+{"check": "0 false normal completion descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered frontier descriptor-close-complete raise", "result": "PASS"}
+{"check": "0 false normal completion descriptor-close-complete", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 exceptional predecessor remains unexpanded not disproved", "result": "PASS"}
+{"check": "0 false normal-route join", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 omitted owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 duplicate owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 omitted descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 duplicate descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 omitted descriptor-close-complete", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "0 duplicate descriptor-close-complete", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 recovered substitution ('projection', 'descriptor', 'numeric_value')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 recovered substitution ('projection', 'descriptor', 'scope', 'invocation')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 recovered substitution ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 recovered substitution ('exit_case', 'invocation')", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "0 recovered substitution ('output', 'physical_lock_release_established')", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 recovered substitution ('output', 'descriptor_close_attempt_entered_in_model')", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 nested result isolation", "result": "PASS"}
+{"check": "0 missing semantic relation", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 normal source path with unknown owner continuity", "result": "PASS"}
+{"check": "1 recovered frontier owner-finalizer-enter unobserved", "result": "PASS"}
+{"check": "1 false normal completion owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered frontier descriptor-close-attempt process-termination", "result": "PASS"}
+{"check": "1 false normal completion descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered frontier descriptor-close-complete raise", "result": "PASS"}
+{"check": "1 false normal completion descriptor-close-complete", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 exceptional predecessor remains unexpanded not disproved", "result": "PASS"}
+{"check": "1 false normal-route join", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 omitted owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 duplicate owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 omitted descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 duplicate descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 omitted descriptor-close-complete", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "1 duplicate descriptor-close-complete", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 recovered substitution ('projection', 'descriptor', 'numeric_value')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 recovered substitution ('projection', 'descriptor', 'scope', 'invocation')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 recovered substitution ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 recovered substitution ('exit_case', 'invocation')", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "1 recovered substitution ('output', 'physical_lock_release_established')", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 recovered substitution ('output', 'descriptor_close_attempt_entered_in_model')", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 nested result isolation", "result": "PASS"}
+{"check": "1 missing semantic relation", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "recovered bundle expectation isolation", "result": "PASS"}

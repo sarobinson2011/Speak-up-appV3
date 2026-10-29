@@ -1,0 +1,218 @@
+1 actual mandatory predecessor and status chain consumed PASS
+2 both symbolic contexts independently present PASS
+3 all prior context fields unchanged PASS
+4 fd producer precedes guarded yield PASS
+5 exact finalizer call and unchanged selected fd PASS
+6 single fd binding no source reassignment PASS
+7 owner context contains normal unlink tail PASS
+8 independent expected stage coverage PASS
+9 descriptor source location independently matches PASS
+10 normal selected descriptor finalization SYMBOLIC-U-ONE PASS
+11 three milestones established only in constructed normal path SYMBOLIC-U-ONE PASS
+12 unknown owner continuity preserved SYMBOLIC-U-ONE PASS
+13 unknown continuity is not exclusive ownership SYMBOLIC-U-ONE PASS
+14 owner-finalizer-enter raise SYMBOLIC-U-ONE PASS
+15 no final close completion from owner-finalizer-enter raise SYMBOLIC-U-ONE PASS
+16 false completed-close owner-finalizer-enter raise SYMBOLIC-U-ONE REJECTED
+17 false continuation owner-finalizer-enter raise SYMBOLIC-U-ONE REJECTED
+18 owner-finalizer-enter process-termination SYMBOLIC-U-ONE PASS
+19 no final close completion from owner-finalizer-enter process-termination SYMBOLIC-U-ONE PASS
+20 false completed-close owner-finalizer-enter process-termination SYMBOLIC-U-ONE REJECTED
+21 false continuation owner-finalizer-enter process-termination SYMBOLIC-U-ONE REJECTED
+22 owner-finalizer-enter unobserved SYMBOLIC-U-ONE PASS
+23 no final close completion from owner-finalizer-enter unobserved SYMBOLIC-U-ONE PASS
+24 false completed-close owner-finalizer-enter unobserved SYMBOLIC-U-ONE REJECTED
+25 false continuation owner-finalizer-enter unobserved SYMBOLIC-U-ONE REJECTED
+26 descriptor-close-attempt raise SYMBOLIC-U-ONE PASS
+27 no final close completion from descriptor-close-attempt raise SYMBOLIC-U-ONE PASS
+28 false completed-close descriptor-close-attempt raise SYMBOLIC-U-ONE REJECTED
+29 false continuation descriptor-close-attempt raise SYMBOLIC-U-ONE REJECTED
+30 descriptor-close-attempt process-termination SYMBOLIC-U-ONE PASS
+31 no final close completion from descriptor-close-attempt process-termination SYMBOLIC-U-ONE PASS
+32 false completed-close descriptor-close-attempt process-termination SYMBOLIC-U-ONE REJECTED
+33 false continuation descriptor-close-attempt process-termination SYMBOLIC-U-ONE REJECTED
+34 descriptor-close-attempt unobserved SYMBOLIC-U-ONE PASS
+35 no final close completion from descriptor-close-attempt unobserved SYMBOLIC-U-ONE PASS
+36 false completed-close descriptor-close-attempt unobserved SYMBOLIC-U-ONE REJECTED
+37 false continuation descriptor-close-attempt unobserved SYMBOLIC-U-ONE REJECTED
+38 descriptor-close-complete raise SYMBOLIC-U-ONE PASS
+39 no final close completion from descriptor-close-complete raise SYMBOLIC-U-ONE PASS
+40 false completed-close descriptor-close-complete raise SYMBOLIC-U-ONE REJECTED
+41 false continuation descriptor-close-complete raise SYMBOLIC-U-ONE REJECTED
+42 descriptor-close-complete process-termination SYMBOLIC-U-ONE PASS
+43 no final close completion from descriptor-close-complete process-termination SYMBOLIC-U-ONE PASS
+44 false completed-close descriptor-close-complete process-termination SYMBOLIC-U-ONE REJECTED
+45 false continuation descriptor-close-complete process-termination SYMBOLIC-U-ONE REJECTED
+46 descriptor-close-complete unobserved SYMBOLIC-U-ONE PASS
+47 no final close completion from descriptor-close-complete unobserved SYMBOLIC-U-ONE PASS
+48 false completed-close descriptor-close-complete unobserved SYMBOLIC-U-ONE REJECTED
+49 false continuation descriptor-close-complete unobserved SYMBOLIC-U-ONE REJECTED
+50 outside normal route ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE PASS
+51 exceptional finalizer not modeled or disproved ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE PASS
+52 unsupported normal-route join ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE REJECTED
+53 outside normal route ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE PASS
+54 exceptional finalizer not modeled or disproved ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE PASS
+55 unsupported normal-route join ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE REJECTED
+56 outside normal route ('managed-clear', 'unobserved') SYMBOLIC-U-ONE PASS
+57 exceptional finalizer not modeled or disproved ('managed-clear', 'unobserved') SYMBOLIC-U-ONE PASS
+58 unsupported normal-route join ('managed-clear', 'unobserved') SYMBOLIC-U-ONE REJECTED
+59 omitted owner-finalizer-enter SYMBOLIC-U-ONE REJECTED
+60 omitted descriptor-close-attempt SYMBOLIC-U-ONE REJECTED
+61 omitted descriptor-close-complete SYMBOLIC-U-ONE REJECTED
+62 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') SYMBOLIC-U-ONE REJECTED
+63 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') SYMBOLIC-U-ONE REJECTED
+64 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') SYMBOLIC-U-ONE REJECTED
+65 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') SYMBOLIC-U-ONE REJECTED
+66 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') SYMBOLIC-U-ONE REJECTED
+67 duplicated completion SYMBOLIC-U-ONE REJECTED
+68 substituted ('projection', 'descriptor', 'slot') SYMBOLIC-U-ONE REJECTED
+69 substituted ('projection', 'descriptor', 'producer', 'site') SYMBOLIC-U-ONE REJECTED
+70 substituted ('projection', 'descriptor', 'source', 'sha256') SYMBOLIC-U-ONE REJECTED
+71 substituted ('projection', 'descriptor', 'owner_lock_occurrence') SYMBOLIC-U-ONE REJECTED
+72 substituted ('projection', 'descriptor', 'descriptor_result_occurrence') SYMBOLIC-U-ONE REJECTED
+73 substituted ('projection', 'descriptor', 'scope', 'invocation') SYMBOLIC-U-ONE REJECTED
+74 substituted ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') SYMBOLIC-U-ONE REJECTED
+75 substituted ('projection', 'descriptor', 'numeric_value') SYMBOLIC-U-ONE REJECTED
+76 substituted ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-ONE REJECTED
+77 substituted ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-ONE REJECTED
+78 substituted ('anchor', 'instance', 'binding') SYMBOLIC-U-ONE REJECTED
+79 distinct call-result lineage despite no numeric evidence SYMBOLIC-U-ONE PASS
+80 coordinated foreign descriptor reports SYMBOLIC-U-ONE REJECTED
+81 foreign predecessor invocation SYMBOLIC-U-ONE REJECTED
+82 coordinated stale predecessor report SYMBOLIC-U-ONE REJECTED
+83 unsupported physical_descriptor_closure_established SYMBOLIC-U-ONE REJECTED
+84 unsupported physical_lock_release_established SYMBOLIC-U-ONE REJECTED
+85 unsupported exclusive_ownership_established SYMBOLIC-U-ONE REJECTED
+86 unsupported durability_established SYMBOLIC-U-ONE REJECTED
+87 unsupported complete_outer_context_exit_established SYMBOLIC-U-ONE REJECTED
+88 unsupported authorization_renewed SYMBOLIC-U-ONE REJECTED
+89 unsupported actual_admission SYMBOLIC-U-ONE REJECTED
+90 exact type ('invocation',) SYMBOLIC-U-ONE REJECTED
+91 exact type ('projection', 'descriptor') SYMBOLIC-U-ONE REJECTED
+92 exact type ('outcomes',) SYMBOLIC-U-ONE REJECTED
+93 exact type ('output', 'completion') SYMBOLIC-U-ONE REJECTED
+94 exact type ('output', 'events') SYMBOLIC-U-ONE REJECTED
+95 exact type ('projection', 'descriptor', 'source', 'bytes') SYMBOLIC-U-ONE REJECTED
+96 subclassed descriptor keys SYMBOLIC-U-ONE REJECTED
+97 bool-int completion confusion SYMBOLIC-U-ONE REJECTED
+98 number alone cannot substitute lineage SYMBOLIC-U-ONE REJECTED
+99 nested returned mutations isolated SYMBOLIC-U-ONE PASS
+100 semantic substituted ('conditional_links',) SYMBOLIC-U-ONE REJECTED
+101 semantic substituted ('descriptor_lineage', 'numeric_value') SYMBOLIC-U-ONE REJECTED
+102 semantic substituted ('descriptor_lineage', 'producer', 'site') SYMBOLIC-U-ONE REJECTED
+103 semantic substituted ('runtime_finalizer_chain',) SYMBOLIC-U-ONE REJECTED
+104 semantic substituted ('classification',) SYMBOLIC-U-ONE REJECTED
+105 semantic substituted ('context',) SYMBOLIC-U-ONE REJECTED
+106 semantic exact type before normalization SYMBOLIC-U-ONE REJECTED
+107 direct typed projection SYMBOLIC-U-ONE PASS
+108 direct output substitution SYMBOLIC-U-ONE REJECTED
+109 direct pre-serialization subclass gate SYMBOLIC-U-ONE REJECTED
+110 normal selected descriptor finalization SYMBOLIC-U-TWO PASS
+111 three milestones established only in constructed normal path SYMBOLIC-U-TWO PASS
+112 unknown owner continuity preserved SYMBOLIC-U-TWO PASS
+113 unknown continuity is not exclusive ownership SYMBOLIC-U-TWO PASS
+114 owner-finalizer-enter raise SYMBOLIC-U-TWO PASS
+115 no final close completion from owner-finalizer-enter raise SYMBOLIC-U-TWO PASS
+116 false completed-close owner-finalizer-enter raise SYMBOLIC-U-TWO REJECTED
+117 false continuation owner-finalizer-enter raise SYMBOLIC-U-TWO REJECTED
+118 owner-finalizer-enter process-termination SYMBOLIC-U-TWO PASS
+119 no final close completion from owner-finalizer-enter process-termination SYMBOLIC-U-TWO PASS
+120 false completed-close owner-finalizer-enter process-termination SYMBOLIC-U-TWO REJECTED
+121 false continuation owner-finalizer-enter process-termination SYMBOLIC-U-TWO REJECTED
+122 owner-finalizer-enter unobserved SYMBOLIC-U-TWO PASS
+123 no final close completion from owner-finalizer-enter unobserved SYMBOLIC-U-TWO PASS
+124 false completed-close owner-finalizer-enter unobserved SYMBOLIC-U-TWO REJECTED
+125 false continuation owner-finalizer-enter unobserved SYMBOLIC-U-TWO REJECTED
+126 descriptor-close-attempt raise SYMBOLIC-U-TWO PASS
+127 no final close completion from descriptor-close-attempt raise SYMBOLIC-U-TWO PASS
+128 false completed-close descriptor-close-attempt raise SYMBOLIC-U-TWO REJECTED
+129 false continuation descriptor-close-attempt raise SYMBOLIC-U-TWO REJECTED
+130 descriptor-close-attempt process-termination SYMBOLIC-U-TWO PASS
+131 no final close completion from descriptor-close-attempt process-termination SYMBOLIC-U-TWO PASS
+132 false completed-close descriptor-close-attempt process-termination SYMBOLIC-U-TWO REJECTED
+133 false continuation descriptor-close-attempt process-termination SYMBOLIC-U-TWO REJECTED
+134 descriptor-close-attempt unobserved SYMBOLIC-U-TWO PASS
+135 no final close completion from descriptor-close-attempt unobserved SYMBOLIC-U-TWO PASS
+136 false completed-close descriptor-close-attempt unobserved SYMBOLIC-U-TWO REJECTED
+137 false continuation descriptor-close-attempt unobserved SYMBOLIC-U-TWO REJECTED
+138 descriptor-close-complete raise SYMBOLIC-U-TWO PASS
+139 no final close completion from descriptor-close-complete raise SYMBOLIC-U-TWO PASS
+140 false completed-close descriptor-close-complete raise SYMBOLIC-U-TWO REJECTED
+141 false continuation descriptor-close-complete raise SYMBOLIC-U-TWO REJECTED
+142 descriptor-close-complete process-termination SYMBOLIC-U-TWO PASS
+143 no final close completion from descriptor-close-complete process-termination SYMBOLIC-U-TWO PASS
+144 false completed-close descriptor-close-complete process-termination SYMBOLIC-U-TWO REJECTED
+145 false continuation descriptor-close-complete process-termination SYMBOLIC-U-TWO REJECTED
+146 descriptor-close-complete unobserved SYMBOLIC-U-TWO PASS
+147 no final close completion from descriptor-close-complete unobserved SYMBOLIC-U-TWO PASS
+148 false completed-close descriptor-close-complete unobserved SYMBOLIC-U-TWO REJECTED
+149 false continuation descriptor-close-complete unobserved SYMBOLIC-U-TWO REJECTED
+150 outside normal route ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO PASS
+151 exceptional finalizer not modeled or disproved ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO PASS
+152 unsupported normal-route join ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO REJECTED
+153 outside normal route ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO PASS
+154 exceptional finalizer not modeled or disproved ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO PASS
+155 unsupported normal-route join ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO REJECTED
+156 outside normal route ('managed-clear', 'unobserved') SYMBOLIC-U-TWO PASS
+157 exceptional finalizer not modeled or disproved ('managed-clear', 'unobserved') SYMBOLIC-U-TWO PASS
+158 unsupported normal-route join ('managed-clear', 'unobserved') SYMBOLIC-U-TWO REJECTED
+159 omitted owner-finalizer-enter SYMBOLIC-U-TWO REJECTED
+160 omitted descriptor-close-attempt SYMBOLIC-U-TWO REJECTED
+161 omitted descriptor-close-complete SYMBOLIC-U-TWO REJECTED
+162 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') SYMBOLIC-U-TWO REJECTED
+163 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') SYMBOLIC-U-TWO REJECTED
+164 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') SYMBOLIC-U-TWO REJECTED
+165 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') SYMBOLIC-U-TWO REJECTED
+166 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') SYMBOLIC-U-TWO REJECTED
+167 duplicated completion SYMBOLIC-U-TWO REJECTED
+168 substituted ('projection', 'descriptor', 'slot') SYMBOLIC-U-TWO REJECTED
+169 substituted ('projection', 'descriptor', 'producer', 'site') SYMBOLIC-U-TWO REJECTED
+170 substituted ('projection', 'descriptor', 'source', 'sha256') SYMBOLIC-U-TWO REJECTED
+171 substituted ('projection', 'descriptor', 'owner_lock_occurrence') SYMBOLIC-U-TWO REJECTED
+172 substituted ('projection', 'descriptor', 'descriptor_result_occurrence') SYMBOLIC-U-TWO REJECTED
+173 substituted ('projection', 'descriptor', 'scope', 'invocation') SYMBOLIC-U-TWO REJECTED
+174 substituted ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') SYMBOLIC-U-TWO REJECTED
+175 substituted ('projection', 'descriptor', 'numeric_value') SYMBOLIC-U-TWO REJECTED
+176 substituted ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-TWO REJECTED
+177 substituted ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-TWO REJECTED
+178 substituted ('anchor', 'instance', 'binding') SYMBOLIC-U-TWO REJECTED
+179 distinct call-result lineage despite no numeric evidence SYMBOLIC-U-TWO PASS
+180 coordinated foreign descriptor reports SYMBOLIC-U-TWO REJECTED
+181 foreign predecessor invocation SYMBOLIC-U-TWO REJECTED
+182 coordinated stale predecessor report SYMBOLIC-U-TWO REJECTED
+183 unsupported physical_descriptor_closure_established SYMBOLIC-U-TWO REJECTED
+184 unsupported physical_lock_release_established SYMBOLIC-U-TWO REJECTED
+185 unsupported exclusive_ownership_established SYMBOLIC-U-TWO REJECTED
+186 unsupported durability_established SYMBOLIC-U-TWO REJECTED
+187 unsupported complete_outer_context_exit_established SYMBOLIC-U-TWO REJECTED
+188 unsupported authorization_renewed SYMBOLIC-U-TWO REJECTED
+189 unsupported actual_admission SYMBOLIC-U-TWO REJECTED
+190 exact type ('invocation',) SYMBOLIC-U-TWO REJECTED
+191 exact type ('projection', 'descriptor') SYMBOLIC-U-TWO REJECTED
+192 exact type ('outcomes',) SYMBOLIC-U-TWO REJECTED
+193 exact type ('output', 'completion') SYMBOLIC-U-TWO REJECTED
+194 exact type ('output', 'events') SYMBOLIC-U-TWO REJECTED
+195 exact type ('projection', 'descriptor', 'source', 'bytes') SYMBOLIC-U-TWO REJECTED
+196 subclassed descriptor keys SYMBOLIC-U-TWO REJECTED
+197 bool-int completion confusion SYMBOLIC-U-TWO REJECTED
+198 number alone cannot substitute lineage SYMBOLIC-U-TWO REJECTED
+199 nested returned mutations isolated SYMBOLIC-U-TWO PASS
+200 semantic substituted ('conditional_links',) SYMBOLIC-U-TWO REJECTED
+201 semantic substituted ('descriptor_lineage', 'numeric_value') SYMBOLIC-U-TWO REJECTED
+202 semantic substituted ('descriptor_lineage', 'producer', 'site') SYMBOLIC-U-TWO REJECTED
+203 semantic substituted ('runtime_finalizer_chain',) SYMBOLIC-U-TWO REJECTED
+204 semantic substituted ('classification',) SYMBOLIC-U-TWO REJECTED
+205 semantic substituted ('context',) SYMBOLIC-U-TWO REJECTED
+206 semantic exact type before normalization SYMBOLIC-U-TWO REJECTED
+207 direct typed projection SYMBOLIC-U-TWO PASS
+208 direct output substitution SYMBOLIC-U-TWO REJECTED
+209 direct pre-serialization subclass gate SYMBOLIC-U-TWO REJECTED
+210 source-derived oracle missing declaration REJECTED
+211 source-derived oracle missing guard REJECTED
+212 source-derived oracle wrong callee REJECTED
+213 source-derived oracle wrong argument REJECTED
+214 source-derived oracle wrong order REJECTED
+215 source-derived oracle wrong producer REJECTED
+216 candidate evidence must match consumed predecessor REJECTED
+217 receipt output mutation cannot alter expectations PASS
+218 unknowns and unjoined observer preserved PASS

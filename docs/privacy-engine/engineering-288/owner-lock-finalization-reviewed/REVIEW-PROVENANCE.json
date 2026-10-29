@@ -1,0 +1,259 @@
+{
+  "counts_separate": true,
+  "historical_forensic_partial": {
+    "identity": {
+      "bytes": 25690112,
+      "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e"
+    },
+    "location_in_target": "retained/review/failures/recovered-membership/forensic-extra.bin",
+    "origin": "UNESTABLISHED",
+    "original_failure_records_preserved": true,
+    "outside_strict_predecessor": true
+  },
+  "independent": {
+    "completed_controls": 323,
+    "failed_control_attempts": 0,
+    "groups": {
+      "fresh-constructed": {
+        "checks": 2,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 683,
+          "sha256": "e1af8efaeb074724f273cfb0b73dd782a2364e0cbc37151072f9cf2b65239cf0"
+        },
+        "seconds": 273.63602494299994
+      },
+      "fresh-public": {
+        "checks": 4,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 3
+        },
+        "result_identity": {
+          "bytes": 909,
+          "sha256": "f87837a57bc44e94b21f905086f015117d5597060cf37dec5a53a65c2c7f9f44"
+        },
+        "seconds": 297.93127880799875
+      },
+      "fresh-semantic": {
+        "checks": 3,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 2,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 790,
+          "sha256": "d4e0070511b1ba9639229a3c6bd79851ea3db9f7fd77e5d2e334798405db981a"
+        },
+        "seconds": 405.9422076970004
+      },
+      "primary": {
+        "checks": 265,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 59,
+          "REJECTED": 206
+        },
+        "result_identity": {
+          "bytes": 31221,
+          "sha256": "42273a8464f8f2cf4af314ce82506443100188f37da2764a32d4a632537f6ba3"
+        },
+        "seconds": 263.57896402400365
+      },
+      "recovered": {
+        "checks": 49,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "implementation": "cpython",
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 15,
+          "REJECTED": 34
+        },
+        "result_identity": {
+          "bytes": 5647,
+          "sha256": "f765a82b33b12a449667ecf8e638e17f73b9e2b5a3c72830409f55be9fab3b31"
+        },
+        "seconds": 158.6565112390017
+      }
+    },
+    "process_recovery_CLI_included_not_additional": true
+  },
+  "limits": {
+    "authorization_renewed": false,
+    "complete_outer_context_exit": false,
+    "complete_repetition_coverage": false,
+    "contract": "Static source relation plus finite constructed normal continuation, not runtime execution",
+    "descriptor_lineage": "Invocation-qualified source result and local-slot use; not a numeric descriptor or physical resource identity",
+    "durability": false,
+    "exceptional_and_outer_cleanup": "UNEXPANDED; absence from the normal slice does not disprove exceptional finalization",
+    "host_path_resolution": null,
+    "numeric_descriptor_observation": null,
+    "obligations_discharged": false,
+    "physical_descriptor_closure": false,
+    "physical_lock_release": false,
+    "physical_resource_identity": null,
+    "runtime_exclusivity": false,
+    "runtime_finalizer_chain": "UNAVAILABLE",
+    "runtime_unwind": "UNAVAILABLE",
+    "saved_traced_invocations": 18,
+    "selected_owner_continuity": "Explicit conditional premise; unknown continuity does not identify the popped owner",
+    "separate_frameless_Client_state_observer": "UNJOINED"
+  },
+  "milestone": "Reviewed normal owner-lock descriptor finalization",
+  "new_save_reuse": "No exact owner-lock-finalization receipt or command returned by available title searches. Host command checks matching successful receipts and exact committed selections before saving; search is not proof of host state.",
+  "operations_this_preparation": {
+    "Git_commits_or_pushes": 0,
+    "acquisitions": 0,
+    "database_connections": 0,
+    "next_task_implemented": false,
+    "pipeline_runs": 0,
+    "review_runs": 0,
+    "session_operations": 0,
+    "test_runs": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "added_producer_functions": [
+      "compile_owner_finalization",
+      "owner_descriptor_lineage",
+      "owner_finalization_projection",
+      "owner_finalization_source",
+      "validate_owner_finalization",
+      "validate_owner_finalization_projection"
+    ],
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inherited_producer_functions": 89,
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "predecessor_members": 2331,
+    "prior_closures_evidence_historical_identities_relationships_ordinals": "UNCHANGED",
+    "prior_review_noninput_members": 103,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "runtime_sources_changed": 0,
+    "streams": "UNCOMPUTED"
+  },
+  "prior_normal_exit_save": {
+    "commit": "5ca53d33a7106302c9cdb97f7da082875c57ac56",
+    "identity": {
+      "bytes": 4010,
+      "sha256": "5d81c30521197eee1872d92a76f45cadca667dcea4a88384ec7adcff0221bc51"
+    },
+    "prefix": "docs/privacy-engine/engineering-288/normal-session-exit-reviewed",
+    "receipt_library_file_id": "libfile_b5b90e4b0df88191b7f884ace4152cd7",
+    "remote_main": "5ca53d33a7106302c9cdb97f7da082875c57ac56",
+    "repeat_save": false,
+    "selection": {
+      "bytes": 5662305,
+      "files": 177,
+      "manifest": {
+        "bytes": 29242,
+        "sha256": "22856bbd79bceff9567b9b9e8a44d0b07b37b74c318ec7949101d17d9544e52b"
+      }
+    }
+  },
+  "recovery_identity_limits": {
+    "final_target_exact_embedded_archive_verified": true,
+    "prior_outer_archives": "Prior direct verification and review provenance retained; not freshly acquired here",
+    "supplied_intermediate_outer_newly_verified": false
+  },
+  "review": {
+    "CRC": "PASS",
+    "all_hashes": "PASS",
+    "entries": 69,
+    "identity": {
+      "bytes": 72716975,
+      "sha256": "ad56746db089bddf2bcdd814f57b957aa2ef434a50f820bbade988bcde961e41"
+    },
+    "manifest": {
+      "bytes": 9380,
+      "sha256": "1c08c019cada1d583b2e786f661327e74d65494f18e77d46d400692ec065c540"
+    },
+    "manifested_files": 68,
+    "safe_unique_regular_membership": "PASS"
+  },
+  "supplied_inspected_not_rerun": {
+    "CLI_included_in_process": true,
+    "interrupted_derivation_attempt": {
+      "cause": "UNESTABLISHED",
+      "command": "python3 -I -B owner-finalization/tests/process_checks.py owner-finalization owner-finalization-process-results/derive derive",
+      "completed_assertions": 0,
+      "counted_in_completed_totals": false,
+      "exit_code": 137,
+      "preservation": "Exact partial output and stdout retained; no completed check rerun",
+      "progress_log_present": false,
+      "recorded_utc": "2026-10-29T15:34:53.198145+00:00",
+      "result_json_present": false,
+      "shell_message": "Killed",
+      "status": "INTERRUPTED"
+    },
+    "primary": 218,
+    "process": 9,
+    "recovered_root": 57
+  },
+  "target": {
+    "CRC": "PASS",
+    "all_hashes": "PASS",
+    "entries": 2495,
+    "identity": {
+      "bytes": 74161617,
+      "sha256": "09f8b6d8c527f4032977f4e2862ba9a23e0e678a6f8294a5050603a26fb43a9b"
+    },
+    "manifest": {
+      "bytes": 690980,
+      "sha256": "5d3bd027372da6610ce1a05fec8fb75fcf19acb303b58692d61b038a5e6e1c4c"
+    },
+    "manifested_files": 2494,
+    "safe_unique_regular_membership": "PASS"
+  },
+  "verdict": "SUPPORTED within the bounded mandatory SOURCE-ONLY normal owner-lock descriptor-finalization correspondence contract"
+}

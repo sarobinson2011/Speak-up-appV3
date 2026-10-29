@@ -1,0 +1,20 @@
+{
+  "completed_checks_not_repeated": true,
+  "failed_attempts": [
+    {
+      "cause": "UNESTABLISHED",
+      "command": "python3 -I -B owner-finalization/tests/process_checks.py owner-finalization owner-finalization-process-results/derive derive",
+      "completed_assertions": 0,
+      "counted_in_completed_totals": false,
+      "exit_code": 137,
+      "preservation": "Exact partial output and stdout retained; no completed check rerun",
+      "progress_log_present": false,
+      "recorded_utc": "2026-10-29T15:34:53.198145+00:00",
+      "result_json_present": false,
+      "shell_message": "Killed",
+      "status": "INTERRUPTED"
+    }
+  ],
+  "prior_attempts_record_scope": "provenance/attempts.json was frozen before process checks; its empty current list is that earlier checkpoint, not the final process accounting",
+  "successful_derivation_attempt": "results/derive"
+}

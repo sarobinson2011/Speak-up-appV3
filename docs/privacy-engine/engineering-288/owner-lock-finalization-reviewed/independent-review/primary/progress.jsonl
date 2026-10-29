@@ -1,0 +1,265 @@
+{"check": "independent source assignment, guards, finalbody and ordered coverage", "result": "PASS"}
+{"check": "mandatory predecessor checker and underlying status chain actually execute", "result": "PASS"}
+{"check": "both contexts and exact canonical receipt", "result": "PASS"}
+{"check": "every predecessor context field preserved", "result": "PASS"}
+{"check": "0 normal path independently checked against ordered milestone oracle", "result": "PASS"}
+{"check": "0 optional control=False conditional continuity=True", "result": "PASS"}
+{"check": "0 optional control=True conditional continuity=False", "result": "PASS"}
+{"check": "0 stopped prefix owner-finalizer-enter raise", "result": "PASS"}
+{"check": "0 false normal close owner-finalizer-enter raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation owner-finalizer-enter raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 stopped prefix owner-finalizer-enter process-termination", "result": "PASS"}
+{"check": "0 false normal close owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 stopped prefix owner-finalizer-enter unobserved", "result": "PASS"}
+{"check": "0 false normal close owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 stopped prefix descriptor-close-attempt raise", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-attempt raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-attempt raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 stopped prefix descriptor-close-attempt process-termination", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 stopped prefix descriptor-close-attempt unobserved", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 stopped prefix descriptor-close-complete raise", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-complete raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-complete raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 stopped prefix descriptor-close-complete process-termination", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 stopped prefix descriptor-close-complete unobserved", "result": "PASS"}
+{"check": "0 false normal close descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 invented continuation descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 termination or absence not Python exception descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 exceptional or incomplete predecessor ('unlink-complete', 'missing-file')", "result": "PASS"}
+{"check": "0 earlier close facts retained ('unlink-complete', 'missing-file')", "result": "PASS"}
+{"check": "0 unsupported normal finalizer join ('unlink-complete', 'missing-file')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 exceptional or incomplete predecessor ('unlink-complete', 'raise')", "result": "PASS"}
+{"check": "0 earlier close facts retained ('unlink-complete', 'raise')", "result": "PASS"}
+{"check": "0 unsupported normal finalizer join ('unlink-complete', 'raise')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 exceptional or incomplete predecessor ('unlink-complete', 'process-termination')", "result": "PASS"}
+{"check": "0 earlier close facts retained ('unlink-complete', 'process-termination')", "result": "PASS"}
+{"check": "0 unsupported normal finalizer join ('unlink-complete', 'process-termination')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 exceptional or incomplete predecessor ('managed-clear', 'unobserved')", "result": "PASS"}
+{"check": "0 earlier close facts retained ('managed-clear', 'unobserved')", "result": "PASS"}
+{"check": "0 unsupported normal finalizer join ('managed-clear', 'unobserved')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 missing owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 duplicated owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 missing descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 duplicated descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 missing descriptor-close-complete", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "0 duplicated descriptor-close-complete", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "0 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "0 wrong binding ('invocation',)", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "0 wrong binding ('context',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "0 wrong binding ('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "0 wrong binding ('exit_case', 'invocation')", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'scope', 'acquisition')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'scope', 'instance', 'ownership_incarnation')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'owner_lock_occurrence')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'descriptor_result_occurrence')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'slot')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'producer', 'site')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'close_argument_origin', 'expression')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'lock_path', 'physical_resolved_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'numeric_value')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'descriptor', 'physical_resource_identity')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 wrong binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "0 wrong binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "0 wrong binding ('projection', 'session_binding', 'recorded_destination')", "result": "REJECTED", "error": "OWNER-VALIDATED:session_binding"}
+{"check": "0 repeated equal operation with new invocation", "result": "PASS"}
+{"check": "0 distinct descriptor occurrence and event identity", "result": "PASS"}
+{"check": "0 coordinated foreign projections", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "0 coordinated other context", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "0 foreign actual predecessor", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "0 coordinated invented numeric descriptor", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 bare descriptor number not lineage", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "0 coordinated changed predecessor", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "0 unsupported conclusion physical_descriptor_closure_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion physical_lock_release_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion exclusive_ownership_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion durability_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion complete_outer_context_exit_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion obligations_discharged", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion authorization_renewed", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unsupported conclusion actual_admission", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unobserved output descriptor_close_return_observation", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unobserved output runtime_descriptor_finalization", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unobserved output observer_join", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unobserved output retained_error", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 unobserved output exceptional_outer_cleanup_completion", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 exact type ('invocation',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('outcomes',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('projection', 'descriptor')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('projection', 'descriptor', 'slot')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('projection', 'descriptor', 'source', 'bytes')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('output', 'events')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 exact type ('output', 'completion')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "0 nested literal-key subclass", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "0 integer instead of boolean normal_route_applicable", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 integer instead of boolean finalizer_entry_completed_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 integer instead of boolean descriptor_close_attempt_entered_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 integer instead of boolean descriptor_close_normal_completion_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 undeclared outcome cannot silently normalize", "result": "REJECTED", "error": "OWNER-OUTCOME"}
+{"check": "0 nested returned mutations leave expectations pristine", "result": "PASS"}
+{"check": "0 lineage copy isolation", "result": "PASS"}
+{"check": "0 direct semantic projection accepts validated premises", "result": "PASS"}
+{"check": "0 direct output stale descriptor", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "0 semantic claim ('conditional_links',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('descriptor_lineage', 'numeric_value')", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('descriptor_lineage', 'owner_lock_occurrence')", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('runtime_finalizer_chain',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('classification',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "0 semantic claim ('multiplicity',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 normal path independently checked against ordered milestone oracle", "result": "PASS"}
+{"check": "1 optional control=False conditional continuity=True", "result": "PASS"}
+{"check": "1 optional control=True conditional continuity=False", "result": "PASS"}
+{"check": "1 stopped prefix owner-finalizer-enter raise", "result": "PASS"}
+{"check": "1 false normal close owner-finalizer-enter raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation owner-finalizer-enter raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 stopped prefix owner-finalizer-enter process-termination", "result": "PASS"}
+{"check": "1 false normal close owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception owner-finalizer-enter process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 stopped prefix owner-finalizer-enter unobserved", "result": "PASS"}
+{"check": "1 false normal close owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception owner-finalizer-enter unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 stopped prefix descriptor-close-attempt raise", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-attempt raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-attempt raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 stopped prefix descriptor-close-attempt process-termination", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception descriptor-close-attempt process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 stopped prefix descriptor-close-attempt unobserved", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception descriptor-close-attempt unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 stopped prefix descriptor-close-complete raise", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-complete raise", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-complete raise", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 stopped prefix descriptor-close-complete process-termination", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception descriptor-close-complete process-termination", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 stopped prefix descriptor-close-complete unobserved", "result": "PASS"}
+{"check": "1 false normal close descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 invented continuation descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 termination or absence not Python exception descriptor-close-complete unobserved", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 exceptional or incomplete predecessor ('unlink-complete', 'missing-file')", "result": "PASS"}
+{"check": "1 earlier close facts retained ('unlink-complete', 'missing-file')", "result": "PASS"}
+{"check": "1 unsupported normal finalizer join ('unlink-complete', 'missing-file')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 exceptional or incomplete predecessor ('unlink-complete', 'raise')", "result": "PASS"}
+{"check": "1 earlier close facts retained ('unlink-complete', 'raise')", "result": "PASS"}
+{"check": "1 unsupported normal finalizer join ('unlink-complete', 'raise')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 exceptional or incomplete predecessor ('unlink-complete', 'process-termination')", "result": "PASS"}
+{"check": "1 earlier close facts retained ('unlink-complete', 'process-termination')", "result": "PASS"}
+{"check": "1 unsupported normal finalizer join ('unlink-complete', 'process-termination')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 exceptional or incomplete predecessor ('managed-clear', 'unobserved')", "result": "PASS"}
+{"check": "1 earlier close facts retained ('managed-clear', 'unobserved')", "result": "PASS"}
+{"check": "1 unsupported normal finalizer join ('managed-clear', 'unobserved')", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 missing owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 duplicated owner-finalizer-enter", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 missing descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 duplicated descriptor-close-attempt", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 missing descriptor-close-complete", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "1 duplicated descriptor-close-complete", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "1 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter')", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "1 wrong binding ('invocation',)", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "1 wrong binding ('context',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "1 wrong binding ('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "1 wrong binding ('exit_case', 'invocation')", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'scope', 'acquisition')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'scope', 'instance', 'ownership_incarnation')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'owner_lock_occurrence')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'descriptor_result_occurrence')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'slot')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'producer', 'site')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'close_argument_origin', 'expression')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'lock_path', 'physical_resolved_path')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'numeric_value')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'descriptor', 'physical_resource_identity')", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 wrong binding ('projection', 'references', 'manager', 'symbol')", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "1 wrong binding ('projection', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "1 wrong binding ('projection', 'session_binding', 'recorded_destination')", "result": "REJECTED", "error": "OWNER-VALIDATED:session_binding"}
+{"check": "1 repeated equal operation with new invocation", "result": "PASS"}
+{"check": "1 distinct descriptor occurrence and event identity", "result": "PASS"}
+{"check": "1 coordinated foreign projections", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "1 coordinated other context", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "1 foreign actual predecessor", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "1 coordinated invented numeric descriptor", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 bare descriptor number not lineage", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "1 coordinated changed predecessor", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "1 unsupported conclusion physical_descriptor_closure_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion physical_lock_release_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion exclusive_ownership_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion durability_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion complete_outer_context_exit_established", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion obligations_discharged", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion authorization_renewed", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unsupported conclusion actual_admission", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unobserved output descriptor_close_return_observation", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unobserved output runtime_descriptor_finalization", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unobserved output observer_join", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unobserved output retained_error", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 unobserved output exceptional_outer_cleanup_completion", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 exact type ('invocation',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('outcomes',)", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('projection', 'descriptor')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('projection', 'descriptor', 'slot')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('projection', 'descriptor', 'source', 'bytes')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('output', 'events')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 exact type ('output', 'completion')", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "1 nested literal-key subclass", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "1 integer instead of boolean normal_route_applicable", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 integer instead of boolean finalizer_entry_completed_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 integer instead of boolean descriptor_close_attempt_entered_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 integer instead of boolean descriptor_close_normal_completion_in_model", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 undeclared outcome cannot silently normalize", "result": "REJECTED", "error": "OWNER-OUTCOME"}
+{"check": "1 nested returned mutations leave expectations pristine", "result": "PASS"}
+{"check": "1 lineage copy isolation", "result": "PASS"}
+{"check": "1 direct semantic projection accepts validated premises", "result": "PASS"}
+{"check": "1 direct output stale descriptor", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "1 semantic claim ('conditional_links',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('descriptor_lineage', 'numeric_value')", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('descriptor_lineage', 'owner_lock_occurrence')", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('runtime_finalizer_chain',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('classification',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "1 semantic claim ('multiplicity',)", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "source oracle rejects missing stage", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source oracle rejects missing guard", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source oracle rejects different close argument", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source oracle rejects missing fd declaration", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source oracle rejects weakened order", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source mutation non-noop finally:os.close(fd+1)", "result": "PASS"}
+{"check": "coordinated source and pin alteration finally:os.close(fd+1)", "result": "REJECTED", "error": "OWNER-DEFINING-SHAPE"}
+{"check": "source mutation non-noop finally:pass", "result": "PASS"}
+{"check": "coordinated source and pin alteration finally:pass", "result": "REJECTED", "error": "OWNER-DEFINING-SHAPE"}
+{"check": "source mutation non-noop 0o666)", "result": "PASS"}
+{"check": "coordinated source and pin alteration 0o666)", "result": "REJECTED", "error": "OWNER-DEFINING-SHAPE"}
+{"check": "semantic exact context domain 0", "result": "REJECTED", "error": "OWNER-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic exact context domain 2", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic exact context domain 2", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "missing current evidence evidence/confirmed-close.json", "result": "REJECTED", "error": "OWNER-VALIDATED-EVIDENCE"}
+{"check": "missing current evidence evidence/session-records/binding.json", "result": "REJECTED", "error": "OWNER-VALIDATED-EVIDENCE"}
+{"check": "altered actual evidence bytes", "result": "REJECTED", "error": "OWNER-VALIDATED-EVIDENCE"}
+{"check": "bundle reversal and nested aliases isolated", "result": "PASS"}
+{"check": "obligations UNKNOWNs and observer preserved", "result": "PASS"}

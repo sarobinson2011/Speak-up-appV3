@@ -1,0 +1,218 @@
+{"check": "actual mandatory predecessor and status chain consumed", "result": "PASS"}
+{"check": "both symbolic contexts independently present", "result": "PASS"}
+{"check": "all prior context fields unchanged", "result": "PASS"}
+{"check": "fd producer precedes guarded yield", "result": "PASS"}
+{"check": "exact finalizer call and unchanged selected fd", "result": "PASS"}
+{"check": "single fd binding no source reassignment", "result": "PASS"}
+{"check": "owner context contains normal unlink tail", "result": "PASS"}
+{"check": "independent expected stage coverage", "result": "PASS"}
+{"check": "descriptor source location independently matches", "result": "PASS"}
+{"check": "normal selected descriptor finalization SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "three milestones established only in constructed normal path SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unknown owner continuity preserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unknown continuity is not exclusive ownership SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "owner-finalizer-enter raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "owner-finalizer-enter process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "owner-finalizer-enter unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete raise SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete raise SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete process-termination SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete process-termination SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete unobserved SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete unobserved SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unsupported normal-route join ('unlink-complete', 'missing-file') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unsupported normal-route join ('unlink-complete', 'process-termination') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('managed-clear', 'unobserved') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('managed-clear', 'unobserved') SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "unsupported normal-route join ('managed-clear', 'unobserved') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "omitted owner-finalizer-enter SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "omitted descriptor-close-attempt SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "omitted descriptor-close-complete SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "duplicated completion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "substituted ('projection', 'descriptor', 'slot') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'producer', 'site') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'source', 'sha256') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'owner_lock_occurrence') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'descriptor_result_occurrence') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'scope', 'invocation') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'numeric_value') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "substituted ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:session_binding"}
+{"check": "substituted ('anchor', 'instance', 'binding') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "distinct call-result lineage despite no numeric evidence SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "coordinated foreign descriptor reports SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "foreign predecessor invocation SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "coordinated stale predecessor report SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "unsupported physical_descriptor_closure_established SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported physical_lock_release_established SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported exclusive_ownership_established SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported durability_established SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported complete_outer_context_exit_established SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported authorization_renewed SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported actual_admission SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "exact type ('invocation',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('projection', 'descriptor') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('outcomes',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('output', 'completion') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('output', 'events') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('projection', 'descriptor', 'source', 'bytes') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "subclassed descriptor keys SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "bool-int completion confusion SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "number alone cannot substitute lineage SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "nested returned mutations isolated SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "semantic substituted ('conditional_links',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('descriptor_lineage', 'numeric_value') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('descriptor_lineage', 'producer', 'site') SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('runtime_finalizer_chain',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('classification',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('context',) SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic exact type before normalization SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "direct typed projection SYMBOLIC-U-ONE", "result": "PASS"}
+{"check": "direct output substitution SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "direct pre-serialization subclass gate SYMBOLIC-U-ONE", "result": "REJECTED", "error": "OWNER-EXACT-TYPE:VALUE-TYPE"}
+{"check": "normal selected descriptor finalization SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "three milestones established only in constructed normal path SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unknown owner continuity preserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unknown continuity is not exclusive ownership SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "owner-finalizer-enter raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "owner-finalizer-enter process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "owner-finalizer-enter unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from owner-finalizer-enter unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close owner-finalizer-enter unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation owner-finalizer-enter unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-attempt unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-attempt unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-attempt unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-attempt unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete raise SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete raise SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete process-termination SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete process-termination SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "descriptor-close-complete unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "no final close completion from descriptor-close-complete unobserved SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "false completed-close descriptor-close-complete unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "false continuation descriptor-close-complete unobserved SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unsupported normal-route join ('unlink-complete', 'missing-file') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unsupported normal-route join ('unlink-complete', 'process-termination') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "outside normal route ('managed-clear', 'unobserved') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "exceptional finalizer not modeled or disproved ('managed-clear', 'unobserved') SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "unsupported normal-route join ('managed-clear', 'unobserved') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "omitted owner-finalizer-enter SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "omitted descriptor-close-attempt SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "omitted descriptor-close-complete SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-MISSING-STEP:descriptor-close-complete"}
+{"check": "reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-STEP-ORDER"}
+{"check": "duplicated completion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-UNREACHED-STEPS"}
+{"check": "substituted ('projection', 'descriptor', 'slot') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'producer', 'site') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'source', 'sha256') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'owner_lock_occurrence') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'descriptor_result_occurrence') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'scope', 'invocation') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'descriptor', 'numeric_value') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "substituted ('projection', 'references', 'manager', 'symbol') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:references"}
+{"check": "substituted ('projection', 'session_binding', 'recorded_destination') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:session_binding"}
+{"check": "substituted ('anchor', 'instance', 'binding') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-ANCHOR"}
+{"check": "distinct call-result lineage despite no numeric evidence SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "coordinated foreign descriptor reports SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "foreign predecessor invocation SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-EXIT-INVOCATION"}
+{"check": "coordinated stale predecessor report SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:exit_result"}
+{"check": "unsupported physical_descriptor_closure_established SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported physical_lock_release_established SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported exclusive_ownership_established SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported durability_established SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported complete_outer_context_exit_established SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported authorization_renewed SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported actual_admission SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "exact type ('invocation',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('projection', 'descriptor') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('outcomes',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('output', 'completion') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('output', 'events') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type ('projection', 'descriptor', 'source', 'bytes') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "subclassed descriptor keys SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "bool-int completion confusion SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "number alone cannot substitute lineage SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-VALIDATED:descriptor"}
+{"check": "nested returned mutations isolated SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "semantic substituted ('conditional_links',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('descriptor_lineage', 'numeric_value') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('descriptor_lineage', 'producer', 'site') SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('runtime_finalizer_chain',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('classification',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic substituted ('context',) SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic exact type before normalization SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "direct typed projection SYMBOLIC-U-TWO", "result": "PASS"}
+{"check": "direct output substitution SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-OUTPUT-CORRESPONDENCE"}
+{"check": "direct pre-serialization subclass gate SYMBOLIC-U-TWO", "result": "REJECTED", "error": "OWNER-EXACT-TYPE:VALUE-TYPE"}
+{"check": "source-derived oracle missing declaration", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source-derived oracle missing guard", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source-derived oracle wrong callee", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source-derived oracle wrong argument", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source-derived oracle wrong order", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "source-derived oracle wrong producer", "result": "REJECTED", "error": "OWNER-SOURCE-CORRESPONDENCE"}
+{"check": "candidate evidence must match consumed predecessor", "result": "REJECTED", "error": "OWNER-VALIDATED-EVIDENCE"}
+{"check": "receipt output mutation cannot alter expectations", "result": "PASS"}
+{"check": "unknowns and unjoined observer preserved", "result": "PASS"}

@@ -1,0 +1,280 @@
+{
+  "checkpoint": "Formal-Lab6-I164-normal-session-exit-independent-review",
+  "review_date": "2026-10-29",
+  "target": "I164-normal-session-exit-correspondence-1.zip",
+  "input": {
+    "bytes": 70593959,
+    "entries": 2331,
+    "sha256": "c9c8d2106617970e8008fadc3c60f61813c64e7ce07e24a60bc92ac1029b954a",
+    "manifested_hashes": 2330
+  },
+  "review_author": "Formal-Lab[6]",
+  "construction_author": "SU-Engineering[288D]",
+  "author_independent": true,
+  "implementation_changed": false,
+  "verdict": "SUPPORTED within the bounded mandatory SOURCE-ONLY normal session-exit correspondence contract",
+  "smallest_residual_witness": null,
+  "integrity": {
+    "CRC": "PASS",
+    "safe_exact_membership": "PASS",
+    "all_manifested_hashes": "PASS",
+    "declared_changes": "PASS",
+    "recovery_dependencies": "PASS",
+    "present_nested_archive_occurrences": 18,
+    "interpretable_manifest_documents": 33,
+    "strict_verified_roots": {
+      "ns-input": {
+        "files": 2331,
+        "directories": 699,
+        "membership_types_and_hashes": "PASS"
+      },
+      "ns-recovered-v2": {
+        "files": 2331,
+        "directories": 699,
+        "membership_types_and_hashes": "PASS"
+      }
+    },
+    "prior_outer_archives_newly_verified": false,
+    "supplied_intermediate_outer_archive_newly_verified": false,
+    "supplied_intermediate_unchanged_members": 2296,
+    "supplied_intermediate_documented_README_change": {
+      "README.md": {
+        "intermediate": {
+          "bytes": 1785,
+          "sha256": "4079027b1648d7ecccb26189ee0e584f54e4d7b445490fd599776a8c3bc1b7cf"
+        },
+        "final": {
+          "bytes": 1815,
+          "sha256": "58b281372e0c821f57aaf4b70ba41d6829d53bc4230f44012ac739dc638f191c"
+        }
+      }
+    }
+  },
+  "preservation": {
+    "token_predecessor_members": 2178,
+    "prior_review_noninput_members": 82,
+    "inherited_producer_functions": 84,
+    "added_producer_functions": [
+      "compile_session_exit",
+      "session_exit_projection",
+      "session_exit_source",
+      "validate_session_exit",
+      "validate_session_exit_projection"
+    ],
+    "runtime_sources_changed": 0,
+    "historical_identities_relationships_ordinals_and_prior_closures": "UNCHANGED",
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "retention": "UNCHANGED",
+    "allowances": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "backup": "KERNEL-ONLY",
+    "streams": "UNCOMPUTED",
+    "readiness": "BLOCKED",
+    "final_binding": "BLOCKED",
+    "actual_admission": false
+  },
+  "new_receipt": {
+    "bytes": 4032928,
+    "sha256": "928726175efbb720b03dc722de67477fa7ea3b3ce43b4c37bbeb2c9a730fea07"
+  },
+  "independent": {
+    "primary": {
+      "checks": 260,
+      "outcomes": {
+        "PASS": 92,
+        "REJECTED": 168
+      },
+      "result_identity": {
+        "bytes": 25629,
+        "sha256": "a455dd248043c520d39b9c976b1916eecf7871653c0ef70a9321c98459703634"
+      },
+      "seconds": 187.7315380930013,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      }
+    },
+    "recovered": {
+      "checks": 43,
+      "outcomes": {
+        "PASS": 11,
+        "REJECTED": 32
+      },
+      "result_identity": {
+        "bytes": 5308,
+        "sha256": "bcf2b3584b6ae6db8d05eca60dd9abb2891d4455024566fd9813b9ff124c7773"
+      },
+      "seconds": 144.18444870099484,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      }
+    },
+    "fresh-semantic": {
+      "checks": 3,
+      "outcomes": {
+        "PASS": 2,
+        "REJECTED": 1
+      },
+      "result_identity": {
+        "bytes": 785,
+        "sha256": "a5d7aff1baa845d8d24897fca6ead38a7aff41a6ce1e3236858b397f7b2061e5"
+      },
+      "seconds": 361.3805056709971,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      }
+    },
+    "fresh-constructed": {
+      "checks": 2,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 1
+      },
+      "result_identity": {
+        "bytes": 663,
+        "sha256": "769665d916255066c5eb686c0eb374ca3e801f2b9871443857274daa50ae6b07"
+      },
+      "seconds": 247.72522716399544,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      }
+    },
+    "fresh-public": {
+      "checks": 4,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 3
+      },
+      "result_identity": {
+        "bytes": 831,
+        "sha256": "5b8a0dc016431711116ac38261a440850ed11dd28e896a2c3c4f790701a28ec8"
+      },
+      "seconds": 397.63329335099843,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "implementation": "cpython",
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      }
+    }
+  },
+  "independent_completed_controls": 312,
+  "actual_CLI_check_included": true,
+  "supplied_not_rerun": {
+    "primary": 235,
+    "fresh_process": 9,
+    "recovered_root": 35,
+    "failed_instrumentation_attempt_checks": 0,
+    "failed_attempt_excluded": true
+  },
+  "reviewer_failures_excluded": [
+    {
+      "path": "failures/source-oracle-zero",
+      "checks": 0,
+      "reason": "Reviewer dedentation of library source fragment failed before first completed control; only reviewer oracle corrected."
+    },
+    {
+      "path": "failures/prefix-audit",
+      "checks": 0,
+      "reason": "Reviewer prefix equality incorrectly included a newly documented comment; inherited executable source and exact declared diff checked separately."
+    },
+    {
+      "path": "failures/recovery-cut-audit",
+      "checks": 0,
+      "reason": "Reviewer initially expected all intermediate-cut bytes identical; supplied note explicitly documents the README-only clarification."
+    },
+    {
+      "path": "failures/recovered-membership",
+      "attempts": 2,
+      "checks": 0,
+      "reason": "Both strict root gates rejected the same undeclared regular partial file before code consumption. Origin unestablished; bytes preserved outside strict roots; a new exact extraction was used."
+    }
+  ],
+  "forensic_root": {
+    "root": "/workspace/scratch/ace5c9b2f18b/ns-recovered",
+    "manifested_members_unchanged": 2331,
+    "extra_records": [
+      {
+        "relative_path": "retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.mBen2K",
+        "bytes": 25690112,
+        "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e",
+        "mode": 33152,
+        "mtime_ns": 1793284117330588640,
+        "ctime_ns": 1793284118426381689,
+        "atime_ns": 1793284124730483847,
+        "origin": "UNESTABLISHED",
+        "source_root_left_unchanged": true
+      }
+    ],
+    "preserved_without_normalization": true
+  },
+  "limits": {
+    "contract": "Source-derived conditional normal continuation; finite constructed outcomes, not observed application execution",
+    "selected_owner_continuity": "Explicit constructed premise; unknown continuity does not identify the popped owner",
+    "physical_object_identity": null,
+    "host_path_resolution": null,
+    "normal_exit_runtime_chain": "UNAVAILABLE",
+    "saved_traced_invocations": 18,
+    "separate_frameless_Client_state_observer": "UNJOINED",
+    "normal_close_relation": "Source interpreter; opaque operation outcomes remain constructed premises",
+    "physical_closure": false,
+    "durability": false,
+    "runtime_exclusivity": false,
+    "persistent_marker_absence": null,
+    "exceptional_and_outer_cleanup": "UNEXPANDED",
+    "runtime_unwind": "UNAVAILABLE",
+    "owner_lock_release_or_outer_context_exit": "NOT ESTABLISHED",
+    "complete_repetition_coverage": false,
+    "operational_obligations_discharged": false,
+    "authorization_renewed": false
+  },
+  "operations": {
+    "requests": 0,
+    "database_connections": 0,
+    "session_operations": 0,
+    "new_acquisitions": 0,
+    "host_smokes": 0,
+    "completed_suite_reruns": 0,
+    "completed_review_reruns": 0,
+    "lifecycle_reruns": 0,
+    "implementation_changes": 0,
+    "policy_changes": 0
+  },
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  }
+}

@@ -1,0 +1,266 @@
+1 independent source assignment, guards, finalbody and ordered coverage PASS
+Validating actual predecessor chain over saved evidence
+2 mandatory predecessor checker and underlying status chain actually execute PASS
+3 both contexts and exact canonical receipt PASS
+4 every predecessor context field preserved PASS
+5 0 normal path independently checked against ordered milestone oracle PASS
+6 0 optional control=False conditional continuity=True PASS
+7 0 optional control=True conditional continuity=False PASS
+8 0 stopped prefix owner-finalizer-enter raise PASS
+9 0 false normal close owner-finalizer-enter raise REJECTED
+10 0 invented continuation owner-finalizer-enter raise REJECTED
+11 0 stopped prefix owner-finalizer-enter process-termination PASS
+12 0 false normal close owner-finalizer-enter process-termination REJECTED
+13 0 invented continuation owner-finalizer-enter process-termination REJECTED
+14 0 termination or absence not Python exception owner-finalizer-enter process-termination REJECTED
+15 0 stopped prefix owner-finalizer-enter unobserved PASS
+16 0 false normal close owner-finalizer-enter unobserved REJECTED
+17 0 invented continuation owner-finalizer-enter unobserved REJECTED
+18 0 termination or absence not Python exception owner-finalizer-enter unobserved REJECTED
+19 0 stopped prefix descriptor-close-attempt raise PASS
+20 0 false normal close descriptor-close-attempt raise REJECTED
+21 0 invented continuation descriptor-close-attempt raise REJECTED
+22 0 stopped prefix descriptor-close-attempt process-termination PASS
+23 0 false normal close descriptor-close-attempt process-termination REJECTED
+24 0 invented continuation descriptor-close-attempt process-termination REJECTED
+25 0 termination or absence not Python exception descriptor-close-attempt process-termination REJECTED
+26 0 stopped prefix descriptor-close-attempt unobserved PASS
+27 0 false normal close descriptor-close-attempt unobserved REJECTED
+28 0 invented continuation descriptor-close-attempt unobserved REJECTED
+29 0 termination or absence not Python exception descriptor-close-attempt unobserved REJECTED
+30 0 stopped prefix descriptor-close-complete raise PASS
+31 0 false normal close descriptor-close-complete raise REJECTED
+32 0 invented continuation descriptor-close-complete raise REJECTED
+33 0 stopped prefix descriptor-close-complete process-termination PASS
+34 0 false normal close descriptor-close-complete process-termination REJECTED
+35 0 invented continuation descriptor-close-complete process-termination REJECTED
+36 0 termination or absence not Python exception descriptor-close-complete process-termination REJECTED
+37 0 stopped prefix descriptor-close-complete unobserved PASS
+38 0 false normal close descriptor-close-complete unobserved REJECTED
+39 0 invented continuation descriptor-close-complete unobserved REJECTED
+40 0 termination or absence not Python exception descriptor-close-complete unobserved REJECTED
+41 0 exceptional or incomplete predecessor ('unlink-complete', 'missing-file') PASS
+42 0 earlier close facts retained ('unlink-complete', 'missing-file') PASS
+43 0 unsupported normal finalizer join ('unlink-complete', 'missing-file') REJECTED
+44 0 exceptional or incomplete predecessor ('unlink-complete', 'raise') PASS
+45 0 earlier close facts retained ('unlink-complete', 'raise') PASS
+46 0 unsupported normal finalizer join ('unlink-complete', 'raise') REJECTED
+47 0 exceptional or incomplete predecessor ('unlink-complete', 'process-termination') PASS
+48 0 earlier close facts retained ('unlink-complete', 'process-termination') PASS
+49 0 unsupported normal finalizer join ('unlink-complete', 'process-termination') REJECTED
+50 0 exceptional or incomplete predecessor ('managed-clear', 'unobserved') PASS
+51 0 earlier close facts retained ('managed-clear', 'unobserved') PASS
+52 0 unsupported normal finalizer join ('managed-clear', 'unobserved') REJECTED
+53 0 missing owner-finalizer-enter REJECTED
+54 0 duplicated owner-finalizer-enter REJECTED
+55 0 missing descriptor-close-attempt REJECTED
+56 0 duplicated descriptor-close-attempt REJECTED
+57 0 missing descriptor-close-complete REJECTED
+58 0 duplicated descriptor-close-complete REJECTED
+59 0 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') REJECTED
+60 0 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') REJECTED
+61 0 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') REJECTED
+62 0 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') REJECTED
+63 0 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') REJECTED
+64 0 wrong binding ('invocation',) REJECTED
+65 0 wrong binding ('context',) REJECTED
+66 0 wrong binding ('anchor', 'instance', 'binding') REJECTED
+67 0 wrong binding ('exit_case', 'invocation') REJECTED
+68 0 wrong binding ('projection', 'descriptor', 'scope', 'acquisition') REJECTED
+69 0 wrong binding ('projection', 'descriptor', 'scope', 'instance', 'ownership_incarnation') REJECTED
+70 0 wrong binding ('projection', 'descriptor', 'owner_lock_occurrence') REJECTED
+71 0 wrong binding ('projection', 'descriptor', 'descriptor_result_occurrence') REJECTED
+72 0 wrong binding ('projection', 'descriptor', 'slot') REJECTED
+73 0 wrong binding ('projection', 'descriptor', 'producer', 'site') REJECTED
+74 0 wrong binding ('projection', 'descriptor', 'close_argument_origin', 'expression') REJECTED
+75 0 wrong binding ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') REJECTED
+76 0 wrong binding ('projection', 'descriptor', 'lock_path', 'physical_resolved_path') REJECTED
+77 0 wrong binding ('projection', 'descriptor', 'numeric_value') REJECTED
+78 0 wrong binding ('projection', 'descriptor', 'physical_resource_identity') REJECTED
+79 0 wrong binding ('projection', 'references', 'manager', 'symbol') REJECTED
+80 0 wrong binding ('projection', 'references', 'session', 'symbol') REJECTED
+81 0 wrong binding ('projection', 'session_binding', 'recorded_destination') REJECTED
+82 0 repeated equal operation with new invocation PASS
+83 0 distinct descriptor occurrence and event identity PASS
+84 0 coordinated foreign projections REJECTED
+85 0 coordinated other context REJECTED
+86 0 foreign actual predecessor REJECTED
+87 0 coordinated invented numeric descriptor REJECTED
+88 0 bare descriptor number not lineage REJECTED
+89 0 coordinated changed predecessor REJECTED
+90 0 unsupported conclusion physical_descriptor_closure_established REJECTED
+91 0 unsupported conclusion physical_lock_release_established REJECTED
+92 0 unsupported conclusion exclusive_ownership_established REJECTED
+93 0 unsupported conclusion durability_established REJECTED
+94 0 unsupported conclusion complete_outer_context_exit_established REJECTED
+95 0 unsupported conclusion obligations_discharged REJECTED
+96 0 unsupported conclusion authorization_renewed REJECTED
+97 0 unsupported conclusion actual_admission REJECTED
+98 0 unobserved output descriptor_close_return_observation REJECTED
+99 0 unobserved output runtime_descriptor_finalization REJECTED
+100 0 unobserved output observer_join REJECTED
+101 0 unobserved output retained_error REJECTED
+102 0 unobserved output exceptional_outer_cleanup_completion REJECTED
+103 0 exact type ('invocation',) REJECTED
+104 0 exact type ('outcomes',) REJECTED
+105 0 exact type ('projection', 'descriptor') REJECTED
+106 0 exact type ('projection', 'descriptor', 'slot') REJECTED
+107 0 exact type ('projection', 'descriptor', 'source', 'bytes') REJECTED
+108 0 exact type ('output', 'events') REJECTED
+109 0 exact type ('output', 'completion') REJECTED
+110 0 nested literal-key subclass REJECTED
+111 0 integer instead of boolean normal_route_applicable REJECTED
+112 0 integer instead of boolean finalizer_entry_completed_in_model REJECTED
+113 0 integer instead of boolean descriptor_close_attempt_entered_in_model REJECTED
+114 0 integer instead of boolean descriptor_close_normal_completion_in_model REJECTED
+115 0 undeclared outcome cannot silently normalize REJECTED
+116 0 nested returned mutations leave expectations pristine PASS
+117 0 lineage copy isolation PASS
+118 0 direct semantic projection accepts validated premises PASS
+119 0 direct output stale descriptor REJECTED
+120 0 semantic claim ('conditional_links',) REJECTED
+121 0 semantic claim ('descriptor_lineage', 'numeric_value') REJECTED
+122 0 semantic claim ('descriptor_lineage', 'owner_lock_occurrence') REJECTED
+123 0 semantic claim ('runtime_finalizer_chain',) REJECTED
+124 0 semantic claim ('classification',) REJECTED
+125 0 semantic claim ('multiplicity',) REJECTED
+126 1 normal path independently checked against ordered milestone oracle PASS
+127 1 optional control=False conditional continuity=True PASS
+128 1 optional control=True conditional continuity=False PASS
+129 1 stopped prefix owner-finalizer-enter raise PASS
+130 1 false normal close owner-finalizer-enter raise REJECTED
+131 1 invented continuation owner-finalizer-enter raise REJECTED
+132 1 stopped prefix owner-finalizer-enter process-termination PASS
+133 1 false normal close owner-finalizer-enter process-termination REJECTED
+134 1 invented continuation owner-finalizer-enter process-termination REJECTED
+135 1 termination or absence not Python exception owner-finalizer-enter process-termination REJECTED
+136 1 stopped prefix owner-finalizer-enter unobserved PASS
+137 1 false normal close owner-finalizer-enter unobserved REJECTED
+138 1 invented continuation owner-finalizer-enter unobserved REJECTED
+139 1 termination or absence not Python exception owner-finalizer-enter unobserved REJECTED
+140 1 stopped prefix descriptor-close-attempt raise PASS
+141 1 false normal close descriptor-close-attempt raise REJECTED
+142 1 invented continuation descriptor-close-attempt raise REJECTED
+143 1 stopped prefix descriptor-close-attempt process-termination PASS
+144 1 false normal close descriptor-close-attempt process-termination REJECTED
+145 1 invented continuation descriptor-close-attempt process-termination REJECTED
+146 1 termination or absence not Python exception descriptor-close-attempt process-termination REJECTED
+147 1 stopped prefix descriptor-close-attempt unobserved PASS
+148 1 false normal close descriptor-close-attempt unobserved REJECTED
+149 1 invented continuation descriptor-close-attempt unobserved REJECTED
+150 1 termination or absence not Python exception descriptor-close-attempt unobserved REJECTED
+151 1 stopped prefix descriptor-close-complete raise PASS
+152 1 false normal close descriptor-close-complete raise REJECTED
+153 1 invented continuation descriptor-close-complete raise REJECTED
+154 1 stopped prefix descriptor-close-complete process-termination PASS
+155 1 false normal close descriptor-close-complete process-termination REJECTED
+156 1 invented continuation descriptor-close-complete process-termination REJECTED
+157 1 termination or absence not Python exception descriptor-close-complete process-termination REJECTED
+158 1 stopped prefix descriptor-close-complete unobserved PASS
+159 1 false normal close descriptor-close-complete unobserved REJECTED
+160 1 invented continuation descriptor-close-complete unobserved REJECTED
+161 1 termination or absence not Python exception descriptor-close-complete unobserved REJECTED
+162 1 exceptional or incomplete predecessor ('unlink-complete', 'missing-file') PASS
+163 1 earlier close facts retained ('unlink-complete', 'missing-file') PASS
+164 1 unsupported normal finalizer join ('unlink-complete', 'missing-file') REJECTED
+165 1 exceptional or incomplete predecessor ('unlink-complete', 'raise') PASS
+166 1 earlier close facts retained ('unlink-complete', 'raise') PASS
+167 1 unsupported normal finalizer join ('unlink-complete', 'raise') REJECTED
+168 1 exceptional or incomplete predecessor ('unlink-complete', 'process-termination') PASS
+169 1 earlier close facts retained ('unlink-complete', 'process-termination') PASS
+170 1 unsupported normal finalizer join ('unlink-complete', 'process-termination') REJECTED
+171 1 exceptional or incomplete predecessor ('managed-clear', 'unobserved') PASS
+172 1 earlier close facts retained ('managed-clear', 'unobserved') PASS
+173 1 unsupported normal finalizer join ('managed-clear', 'unobserved') REJECTED
+174 1 missing owner-finalizer-enter REJECTED
+175 1 duplicated owner-finalizer-enter REJECTED
+176 1 missing descriptor-close-attempt REJECTED
+177 1 duplicated descriptor-close-attempt REJECTED
+178 1 missing descriptor-close-complete REJECTED
+179 1 duplicated descriptor-close-complete REJECTED
+180 1 reordered ('owner-finalizer-enter', 'descriptor-close-complete', 'descriptor-close-attempt') REJECTED
+181 1 reordered ('descriptor-close-attempt', 'owner-finalizer-enter', 'descriptor-close-complete') REJECTED
+182 1 reordered ('descriptor-close-attempt', 'descriptor-close-complete', 'owner-finalizer-enter') REJECTED
+183 1 reordered ('descriptor-close-complete', 'owner-finalizer-enter', 'descriptor-close-attempt') REJECTED
+184 1 reordered ('descriptor-close-complete', 'descriptor-close-attempt', 'owner-finalizer-enter') REJECTED
+185 1 wrong binding ('invocation',) REJECTED
+186 1 wrong binding ('context',) REJECTED
+187 1 wrong binding ('anchor', 'instance', 'binding') REJECTED
+188 1 wrong binding ('exit_case', 'invocation') REJECTED
+189 1 wrong binding ('projection', 'descriptor', 'scope', 'acquisition') REJECTED
+190 1 wrong binding ('projection', 'descriptor', 'scope', 'instance', 'ownership_incarnation') REJECTED
+191 1 wrong binding ('projection', 'descriptor', 'owner_lock_occurrence') REJECTED
+192 1 wrong binding ('projection', 'descriptor', 'descriptor_result_occurrence') REJECTED
+193 1 wrong binding ('projection', 'descriptor', 'slot') REJECTED
+194 1 wrong binding ('projection', 'descriptor', 'producer', 'site') REJECTED
+195 1 wrong binding ('projection', 'descriptor', 'close_argument_origin', 'expression') REJECTED
+196 1 wrong binding ('projection', 'descriptor', 'lock_path', 'nominal_recorded_path') REJECTED
+197 1 wrong binding ('projection', 'descriptor', 'lock_path', 'physical_resolved_path') REJECTED
+198 1 wrong binding ('projection', 'descriptor', 'numeric_value') REJECTED
+199 1 wrong binding ('projection', 'descriptor', 'physical_resource_identity') REJECTED
+200 1 wrong binding ('projection', 'references', 'manager', 'symbol') REJECTED
+201 1 wrong binding ('projection', 'references', 'session', 'symbol') REJECTED
+202 1 wrong binding ('projection', 'session_binding', 'recorded_destination') REJECTED
+203 1 repeated equal operation with new invocation PASS
+204 1 distinct descriptor occurrence and event identity PASS
+205 1 coordinated foreign projections REJECTED
+206 1 coordinated other context REJECTED
+207 1 foreign actual predecessor REJECTED
+208 1 coordinated invented numeric descriptor REJECTED
+209 1 bare descriptor number not lineage REJECTED
+210 1 coordinated changed predecessor REJECTED
+211 1 unsupported conclusion physical_descriptor_closure_established REJECTED
+212 1 unsupported conclusion physical_lock_release_established REJECTED
+213 1 unsupported conclusion exclusive_ownership_established REJECTED
+214 1 unsupported conclusion durability_established REJECTED
+215 1 unsupported conclusion complete_outer_context_exit_established REJECTED
+216 1 unsupported conclusion obligations_discharged REJECTED
+217 1 unsupported conclusion authorization_renewed REJECTED
+218 1 unsupported conclusion actual_admission REJECTED
+219 1 unobserved output descriptor_close_return_observation REJECTED
+220 1 unobserved output runtime_descriptor_finalization REJECTED
+221 1 unobserved output observer_join REJECTED
+222 1 unobserved output retained_error REJECTED
+223 1 unobserved output exceptional_outer_cleanup_completion REJECTED
+224 1 exact type ('invocation',) REJECTED
+225 1 exact type ('outcomes',) REJECTED
+226 1 exact type ('projection', 'descriptor') REJECTED
+227 1 exact type ('projection', 'descriptor', 'slot') REJECTED
+228 1 exact type ('projection', 'descriptor', 'source', 'bytes') REJECTED
+229 1 exact type ('output', 'events') REJECTED
+230 1 exact type ('output', 'completion') REJECTED
+231 1 nested literal-key subclass REJECTED
+232 1 integer instead of boolean normal_route_applicable REJECTED
+233 1 integer instead of boolean finalizer_entry_completed_in_model REJECTED
+234 1 integer instead of boolean descriptor_close_attempt_entered_in_model REJECTED
+235 1 integer instead of boolean descriptor_close_normal_completion_in_model REJECTED
+236 1 undeclared outcome cannot silently normalize REJECTED
+237 1 nested returned mutations leave expectations pristine PASS
+238 1 lineage copy isolation PASS
+239 1 direct semantic projection accepts validated premises PASS
+240 1 direct output stale descriptor REJECTED
+241 1 semantic claim ('conditional_links',) REJECTED
+242 1 semantic claim ('descriptor_lineage', 'numeric_value') REJECTED
+243 1 semantic claim ('descriptor_lineage', 'owner_lock_occurrence') REJECTED
+244 1 semantic claim ('runtime_finalizer_chain',) REJECTED
+245 1 semantic claim ('classification',) REJECTED
+246 1 semantic claim ('multiplicity',) REJECTED
+247 source oracle rejects missing stage REJECTED
+248 source oracle rejects missing guard REJECTED
+249 source oracle rejects different close argument REJECTED
+250 source oracle rejects missing fd declaration REJECTED
+251 source oracle rejects weakened order REJECTED
+252 source mutation non-noop finally:os.close(fd+1) PASS
+253 coordinated source and pin alteration finally:os.close(fd+1) REJECTED
+254 source mutation non-noop finally:pass PASS
+255 coordinated source and pin alteration finally:pass REJECTED
+256 source mutation non-noop 0o666) PASS
+257 coordinated source and pin alteration 0o666) REJECTED
+258 semantic exact context domain 0 REJECTED
+259 semantic exact context domain 2 REJECTED
+260 semantic exact context domain 2 REJECTED
+261 missing current evidence evidence/confirmed-close.json REJECTED
+262 missing current evidence evidence/session-records/binding.json REJECTED
+263 altered actual evidence bytes REJECTED
+264 bundle reversal and nested aliases isolated PASS
+265 obligations UNKNOWNs and observer preserved PASS

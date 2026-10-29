@@ -1,0 +1,12 @@
+# Verify and recover the review
+
+Use a new persistent directory. Preserve the exact target and every failed record. No completed suite rerun is needed to consume this review.
+
+1. Verify the externally reported review ZIP byte count, SHA-256, entry count and CRC. Refuse unsafe paths, duplicates, links, special files or unmanifested members. Verify every review MANIFEST.json hash.
+2. The embedded input/I164-owner-lock-finalization-correspondence-1.zip must be exactly 74,161,617 bytes / 2,495 entries / SHA-256 09f8b6d8c527f4032977f4e2862ba9a23e0e678a6f8294a5050603a26fb43a9b. It is the unchanged original input.
+3. Inspect code/integrity.py. Its bounded form is `python3 -I -B REVIEW/code/integrity.py NEW_ROOT REVIEW/input/I164-owner-lock-finalization-correspondence-1.zip`. It verifies identity, CRC, safe exact membership and all 2,494 hashes before extracting. It refuses an existing destination. It does not execute application/session code.
+4. The target's mandatory public saved-input command is `python3 -I -B NEW_ROOT/code/correspondence.py --root NEW_ROOT --receipt NEW_ROOT/results/primary/owner-lock-finalization.json`. The recorded environment is CPython 3.12.14 / Cryptography 50.0.2. This validates saved inputs only, not an actual lock or session. Results, call counters and reviewer source oracles are included so repeating completed work is unnecessary.
+5. code/audit.py records the direct preservation comparison made using the previously verified original normal-exit ZIP and its independent review, still available at review time. Their exact hashes are in CHECKPOINT.json. The current target is self-contained for mandatory validation through decoded predecessor trees. Original outer ZIP identities must never be recreated by recompression or claimed from continuity metadata alone; repeating the optional direct-original comparison would require those exact original ZIPs.
+6. The current construction's interrupted attempt remains inside the input at failures/derive-attempt-1, excluded from completed totals. The historical forensic partial file remains under retained/review/failures/recovered-membership, outside the strict retained/exit tree. Do not place it at its old undeclared candidate path or relax membership to admit it.
+
+The strict current/recovered roots and original input archive passed final byte checks. Implementation and earlier evidence were not changed. The review does not authorize runtime/session operations, policy changes or admission.

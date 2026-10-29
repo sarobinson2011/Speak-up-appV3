@@ -1,0 +1,331 @@
+{
+  "actual_offline_CLI_included_in_public_group": true,
+  "checkpoint": "I164-owner-lock-finalization-correspondence-1",
+  "completed_new_engineering_controls": 284,
+  "construction_author": "SU-Engineering[288D]",
+  "current_failed_attempts": [
+    {
+      "cause": "UNESTABLISHED",
+      "command": "python3 -I -B owner-finalization/tests/process_checks.py owner-finalization owner-finalization-process-results/derive derive",
+      "completed_assertions": 0,
+      "counted_in_completed_totals": false,
+      "exit_code": 137,
+      "preservation": "Exact partial output and stdout retained; no completed check rerun",
+      "progress_log_present": false,
+      "recorded_utc": "2026-10-29T15:34:53.198145+00:00",
+      "result_json_present": false,
+      "shell_message": "Killed",
+      "status": "INTERRUPTED"
+    }
+  ],
+  "engineering_primary": {
+    "checks": 218,
+    "outcomes": {
+      "PASS": 73,
+      "REJECTED": 145
+    },
+    "result_identity": {
+      "bytes": 26834,
+      "sha256": "ebe562f259413e9f39328419b22ee2a7ff40f73f281c98a87b7b08d99b91dd47"
+    },
+    "seconds": 222.24243847499747
+  },
+  "engineering_process_groups": {
+    "constructed": {
+      "checks": 2,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 1
+      },
+      "result_identity": {
+        "bytes": 695,
+        "sha256": "4e626735c23f8ba237232f029465df831229253399eceeb75088f79c8a833584"
+      },
+      "seconds": 298.06111952799984
+    },
+    "derive": {
+      "checks": 2,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 1
+      },
+      "result_identity": {
+        "bytes": 695,
+        "sha256": "1fac6e060603d0dff832bd56ac94436afee9e9f702b979a7fced2851ba611d2a"
+      },
+      "seconds": 256.40733345100307
+    },
+    "public": {
+      "checks": 3,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 2
+      },
+      "result_identity": {
+        "bytes": 779,
+        "sha256": "56de57bde8fb96d045ad9ba2c3e03e8a469e76dc49c37bab74e38b4d4af99c02"
+      },
+      "seconds": 322.30194490699796
+    },
+    "recovered": {
+      "checks": 57,
+      "outcomes": {
+        "PASS": 23,
+        "REJECTED": 34
+      },
+      "result_identity": {
+        "bytes": 6701,
+        "sha256": "6d1c5a7892fbb9c85d4e0cb46488d0f2504c9ea30434777b0f4fbca6e0b0816c"
+      },
+      "seconds": 188.3776687359932
+    },
+    "semantic": {
+      "checks": 2,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 1
+      },
+      "result_identity": {
+        "bytes": 685,
+        "sha256": "963e4c808bee78611aee94b0167d5a7dfef04fa1e87b807905f72c3ec6b7337e"
+      },
+      "seconds": 297.8235601619963
+    }
+  },
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "independent_review_of_new_extension": "PENDING",
+  "limits": {
+    "complete_outer_context_exit": false,
+    "complete_repetition_coverage": false,
+    "descriptor_numbers_do_not_identify_resources": true,
+    "durability": false,
+    "exceptional_finalization_and_outer_cleanup": "UNEXPANDED, not ruled out",
+    "exclusive_ownership": false,
+    "numeric_descriptor_observation": null,
+    "physical_lock_release": false,
+    "physical_resource_identity": null,
+    "runtime_finalizer_chain": null,
+    "saved_trace_invocations": 18,
+    "selected_owner_continuity": "Explicit constructed premise",
+    "separate_unjoined_Client_state_observer": 1,
+    "static_constructed_only": true
+  },
+  "new_receipt": {
+    "bytes": 4348225,
+    "sha256": "6f2d1ac375017fd2f92923522aeba36defb89992d7fd071dd385e11d991d3c42"
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_review_reruns": 0,
+    "completed_suite_reruns": 0,
+    "database_connections": 0,
+    "host_smoke": 0,
+    "pipelines": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED"
+  },
+  "prior_results_retained_not_rerun": {
+    "forensic_partial_inside_new_declared_review_tree_outside_strict_predecessor_root": true,
+    "independent_and_supplied_results_separate": true,
+    "independent_normal_exit": {
+      "controls": 312,
+      "groups": {
+        "fresh-constructed": {
+          "checks": 2,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 1,
+            "REJECTED": 1
+          },
+          "result_identity": {
+            "bytes": 663,
+            "sha256": "769665d916255066c5eb686c0eb374ca3e801f2b9871443857274daa50ae6b07"
+          },
+          "seconds": 247.72522716399544
+        },
+        "fresh-public": {
+          "checks": 4,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 1,
+            "REJECTED": 3
+          },
+          "result_identity": {
+            "bytes": 831,
+            "sha256": "5b8a0dc016431711116ac38261a440850ed11dd28e896a2c3c4f790701a28ec8"
+          },
+          "seconds": 397.63329335099843
+        },
+        "fresh-semantic": {
+          "checks": 3,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 2,
+            "REJECTED": 1
+          },
+          "result_identity": {
+            "bytes": 785,
+            "sha256": "a5d7aff1baa845d8d24897fca6ead38a7aff41a6ce1e3236858b397f7b2061e5"
+          },
+          "seconds": 361.3805056709971
+        },
+        "primary": {
+          "checks": 260,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 92,
+            "REJECTED": 168
+          },
+          "result_identity": {
+            "bytes": 25629,
+            "sha256": "a455dd248043c520d39b9c976b1916eecf7871653c0ef70a9321c98459703634"
+          },
+          "seconds": 187.7315380930013
+        },
+        "recovered": {
+          "checks": 43,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 11,
+            "REJECTED": 32
+          },
+          "result_identity": {
+            "bytes": 5308,
+            "sha256": "bcf2b3584b6ae6db8d05eca60dd9abb2891d4455024566fd9813b9ff124c7773"
+          },
+          "seconds": 144.18444870099484
+        }
+      },
+      "process_recovery_CLI_included_not_extra": true,
+      "reviewer_failures_excluded": [
+        {
+          "checks": 0,
+          "path": "failures/source-oracle-zero",
+          "reason": "Reviewer dedentation of library source fragment failed before first completed control; only reviewer oracle corrected."
+        },
+        {
+          "checks": 0,
+          "path": "failures/prefix-audit",
+          "reason": "Reviewer prefix equality incorrectly included a newly documented comment; inherited executable source and exact declared diff checked separately."
+        },
+        {
+          "checks": 0,
+          "path": "failures/recovery-cut-audit",
+          "reason": "Reviewer initially expected all intermediate-cut bytes identical; supplied note explicitly documents the README-only clarification."
+        },
+        {
+          "attempts": 2,
+          "checks": 0,
+          "path": "failures/recovered-membership",
+          "reason": "Both strict root gates rejected the same undeclared regular partial file before code consumption. Origin unestablished; bytes preserved outside strict roots; a new exact extraction was used."
+        }
+      ]
+    },
+    "prior_engineering_normal_exit": {
+      "failed_attempt_excluded": true,
+      "failed_instrumentation_attempt_checks": 0,
+      "fresh_process": 9,
+      "primary": 235,
+      "recovered_root": 35
+    },
+    "undeclared_partial": {
+      "extra_records": [
+        {
+          "atime_ns": 1793284124730483847,
+          "bytes": 25690112,
+          "ctime_ns": 1793284118426381689,
+          "mode": 33152,
+          "mtime_ns": 1793284117330588640,
+          "origin": "UNESTABLISHED",
+          "relative_path": "retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.mBen2K",
+          "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e",
+          "source_root_left_unchanged": true
+        }
+      ],
+      "manifested_members_unchanged": 2331,
+      "preserved_without_normalization": true,
+      "root": "/workspace/scratch/ace5c9b2f18b/ns-recovered"
+    }
+  },
+  "recovery": {
+    "cut": {
+      "CRC": "PASS",
+      "all_hashes": "PASS",
+      "bytes": 74047490,
+      "entries": 2460,
+      "manifest_identity": {
+        "bytes": 685947,
+        "sha256": "ee966f6746f1c2dfa4478b5d05df205b6cd13395dadb56bb57ccf27902c71be3"
+      },
+      "manifested_files": 2459,
+      "safe_unique_regular_membership": "PASS",
+      "sha256": "df0392e30335948e3cd6b01f6209857a7b0c42cba9393fedc9abd774539d84b4"
+    },
+    "cut_nonmanifest_members_unchanged_in_final": 2459,
+    "final_additions": "Fresh/recovered results, preserved zero-check interruption, exact cut manifest/identity, final summary and provenance only",
+    "implementation_primary_receipt_and_control_code_unchanged_after_recovery": true,
+    "strict_root_checked_before_input_consumption": true
+  },
+  "scope": "Normal marker-unlink completion -> same owner_lock finalizer entry -> selected source-lineage descriptor close attempt -> normal close completion in both contexts"
+}
