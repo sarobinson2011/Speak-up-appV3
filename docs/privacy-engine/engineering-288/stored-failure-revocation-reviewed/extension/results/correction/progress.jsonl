@@ -1,0 +1,66 @@
+{"check": "original source admits stored error after helper raise 0handle", "result": "PASS"}
+{"check": "original pure checker rejects source-admitted continuation 0handle", "result": "REJECTED", "error": "STORED-VALIDATED-STORAGE"}
+{"check": "original source admits stored error after helper raise 0state", "result": "PASS"}
+{"check": "original pure checker rejects source-admitted continuation 0state", "result": "REJECTED", "error": "STORED-VALIDATED-STORAGE"}
+{"check": "original source admits stored error after helper raise 1handle", "result": "PASS"}
+{"check": "original pure checker rejects source-admitted continuation 1handle", "result": "REJECTED", "error": "STORED-VALIDATED-STORAGE"}
+{"check": "original source admits stored error after helper raise 1state", "result": "PASS"}
+{"check": "original pure checker rejects source-admitted continuation 1state", "result": "REJECTED", "error": "STORED-VALIDATED-STORAGE"}
+{"check": "corrected mandatory both contexts and original prerequisite", "result": "PASS"}
+{"check": "helper unexpected raise then callback return 0handle", "result": "PASS"}
+{"check": "original storage and original rethrow survive helper error 0handle", "result": "PASS"}
+{"check": "helper escape unknown continuity 0handle", "result": "PASS"}
+{"check": "corrected cleanup frontier 0handleremoval-attemptraise", "result": "PASS"}
+{"check": "false corrected revocation 0handleremoval-attemptraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 0handleremoval-completeraise", "result": "PASS"}
+{"check": "false corrected revocation 0handleremoval-completeraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 0handlefinally-enterprocess-termination", "result": "PASS"}
+{"check": "false corrected revocation 0handlefinally-enterprocess-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "helper termination cannot yield normal callback 0handle", "result": "REJECTED", "error": "CLIENT-TERMINATION-CONTINUATION"}
+{"check": "helper exception cannot replace stored original 0handle", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "corrected exact-type boundary 0handle", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "corrected result isolation 0handle", "result": "PASS"}
+{"check": "helper unexpected raise then callback return 0state", "result": "PASS"}
+{"check": "original storage and original rethrow survive helper error 0state", "result": "PASS"}
+{"check": "helper escape unknown continuity 0state", "result": "PASS"}
+{"check": "corrected cleanup frontier 0stateremoval-attemptraise", "result": "PASS"}
+{"check": "false corrected revocation 0stateremoval-attemptraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 0stateremoval-completeraise", "result": "PASS"}
+{"check": "false corrected revocation 0stateremoval-completeraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 0statefinally-enterprocess-termination", "result": "PASS"}
+{"check": "false corrected revocation 0statefinally-enterprocess-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "helper termination cannot yield normal callback 0state", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "helper exception cannot replace stored original 0state", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "corrected exact-type boundary 0state", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "corrected result isolation 0state", "result": "PASS"}
+{"check": "adjacent fixed failure remains admitted 0", "result": "PASS"}
+{"check": "corrected semantic omission 0", "result": "REJECTED", "error": "STORED-SEMANTIC-CORRESPONDENCE"}
+{"check": "helper unexpected raise then callback return 1handle", "result": "PASS"}
+{"check": "original storage and original rethrow survive helper error 1handle", "result": "PASS"}
+{"check": "helper escape unknown continuity 1handle", "result": "PASS"}
+{"check": "corrected cleanup frontier 1handleremoval-attemptraise", "result": "PASS"}
+{"check": "false corrected revocation 1handleremoval-attemptraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 1handleremoval-completeraise", "result": "PASS"}
+{"check": "false corrected revocation 1handleremoval-completeraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 1handlefinally-enterprocess-termination", "result": "PASS"}
+{"check": "false corrected revocation 1handlefinally-enterprocess-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "helper termination cannot yield normal callback 1handle", "result": "REJECTED", "error": "CLIENT-TERMINATION-CONTINUATION"}
+{"check": "helper exception cannot replace stored original 1handle", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "corrected exact-type boundary 1handle", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "corrected result isolation 1handle", "result": "PASS"}
+{"check": "helper unexpected raise then callback return 1state", "result": "PASS"}
+{"check": "original storage and original rethrow survive helper error 1state", "result": "PASS"}
+{"check": "helper escape unknown continuity 1state", "result": "PASS"}
+{"check": "corrected cleanup frontier 1stateremoval-attemptraise", "result": "PASS"}
+{"check": "false corrected revocation 1stateremoval-attemptraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 1stateremoval-completeraise", "result": "PASS"}
+{"check": "false corrected revocation 1stateremoval-completeraise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "corrected cleanup frontier 1statefinally-enterprocess-termination", "result": "PASS"}
+{"check": "false corrected revocation 1statefinally-enterprocess-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "helper termination cannot yield normal callback 1state", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "helper exception cannot replace stored original 1state", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "corrected exact-type boundary 1state", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "corrected result isolation 1state", "result": "PASS"}
+{"check": "adjacent fixed failure remains admitted 1", "result": "PASS"}
+{"check": "corrected semantic omission 1", "result": "REJECTED", "error": "STORED-SEMANTIC-CORRESPONDENCE"}
+{"check": "corrected independent source catalogue omission", "result": "REJECTED", "error": "STORED-SOURCE-CORRESPONDENCE"}

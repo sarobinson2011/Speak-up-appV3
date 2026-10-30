@@ -1,0 +1,366 @@
+1 mandatory prior chain and both contexts PASS
+2 prior receipt and all prior context fields preserved PASS
+3 independent source guard and cause semantics PASS
+4 independent finally pop AST and exact coverage PASS
+5 source TypeError provenance handle SYMBOLIC-U-ONE PASS
+6 conditional session-call failure provenance state SYMBOLIC-U-ONE PASS
+7 conditional session-call failure handle SYMBOLIC-U-ONE PASS
+8 without optional control SYMBOLIC-U-ONE PASS
+9 unknown registry continuity admitted SYMBOLIC-U-ONE PASS
+10 unknown continuity cannot establish selected owner removal SYMBOLIC-U-ONE PASS
+11 normal pop preserves pending original without run success SYMBOLIC-U-ONE PASS
+12 stored-error-rethrow raise SYMBOLIC-U-ONE PASS
+13 prior storage survives stored-error-rethrowraise SYMBOLIC-U-ONE PASS
+14 evaluation exception normal pop is not original propagation SYMBOLIC-U-ONE PASS
+15 false run_success_established stored-error-rethrowraise SYMBOLIC-U-ONE REJECTED
+16 false original_reaches_launcher_established stored-error-rethrowraise SYMBOLIC-U-ONE REJECTED
+17 false database_cleanup_completion stored-error-rethrowraise SYMBOLIC-U-ONE REJECTED
+18 false authorization_renewed stored-error-rethrowraise SYMBOLIC-U-ONE REJECTED
+19 stored-error-rethrow process-termination SYMBOLIC-U-ONE PASS
+20 prior storage survives stored-error-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+21 frontier supplies no removal completion stored-error-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+22 no terminal Python exception inference stored-error-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+23 false run_success_established stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+24 false original_reaches_launcher_established stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+25 false database_cleanup_completion stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+26 false authorization_renewed stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+27 false completed removal stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+28 false continuation stored-error-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+29 stored-error-rethrow unobserved SYMBOLIC-U-ONE PASS
+30 prior storage survives stored-error-rethrowunobserved SYMBOLIC-U-ONE PASS
+31 frontier supplies no removal completion stored-error-rethrowunobserved SYMBOLIC-U-ONE PASS
+32 no terminal Python exception inference stored-error-rethrowunobserved SYMBOLIC-U-ONE PASS
+33 false run_success_established stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+34 false original_reaches_launcher_established stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+35 false database_cleanup_completion stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+36 false authorization_renewed stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+37 false completed removal stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+38 false continuation stored-error-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+39 finally-enter raise SYMBOLIC-U-ONE PASS
+40 prior storage survives finally-enterraise SYMBOLIC-U-ONE PASS
+41 frontier supplies no removal completion finally-enterraise SYMBOLIC-U-ONE PASS
+42 false run_success_established finally-enterraise SYMBOLIC-U-ONE REJECTED
+43 false original_reaches_launcher_established finally-enterraise SYMBOLIC-U-ONE REJECTED
+44 false database_cleanup_completion finally-enterraise SYMBOLIC-U-ONE REJECTED
+45 false authorization_renewed finally-enterraise SYMBOLIC-U-ONE REJECTED
+46 false completed removal finally-enterraise SYMBOLIC-U-ONE REJECTED
+47 cleanup failure cannot guarantee original propagation finally-enter SYMBOLIC-U-ONE REJECTED
+48 false continuation finally-enterraise SYMBOLIC-U-ONE REJECTED
+49 finally-enter process-termination SYMBOLIC-U-ONE PASS
+50 prior storage survives finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+51 frontier supplies no removal completion finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+52 no terminal Python exception inference finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+53 false run_success_established finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+54 false original_reaches_launcher_established finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+55 false database_cleanup_completion finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+56 false authorization_renewed finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+57 false completed removal finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+58 false continuation finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+59 finally-enter unobserved SYMBOLIC-U-ONE PASS
+60 prior storage survives finally-enterunobserved SYMBOLIC-U-ONE PASS
+61 frontier supplies no removal completion finally-enterunobserved SYMBOLIC-U-ONE PASS
+62 no terminal Python exception inference finally-enterunobserved SYMBOLIC-U-ONE PASS
+63 false run_success_established finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+64 false original_reaches_launcher_established finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+65 false database_cleanup_completion finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+66 false authorization_renewed finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+67 false completed removal finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+68 false continuation finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+69 removal-attempt raise SYMBOLIC-U-ONE PASS
+70 prior storage survives removal-attemptraise SYMBOLIC-U-ONE PASS
+71 frontier supplies no removal completion removal-attemptraise SYMBOLIC-U-ONE PASS
+72 false run_success_established removal-attemptraise SYMBOLIC-U-ONE REJECTED
+73 false original_reaches_launcher_established removal-attemptraise SYMBOLIC-U-ONE REJECTED
+74 false database_cleanup_completion removal-attemptraise SYMBOLIC-U-ONE REJECTED
+75 false authorization_renewed removal-attemptraise SYMBOLIC-U-ONE REJECTED
+76 false completed removal removal-attemptraise SYMBOLIC-U-ONE REJECTED
+77 cleanup failure cannot guarantee original propagation removal-attempt SYMBOLIC-U-ONE REJECTED
+78 false continuation removal-attemptraise SYMBOLIC-U-ONE REJECTED
+79 removal-attempt process-termination SYMBOLIC-U-ONE PASS
+80 prior storage survives removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+81 frontier supplies no removal completion removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+82 no terminal Python exception inference removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+83 false run_success_established removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+84 false original_reaches_launcher_established removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+85 false database_cleanup_completion removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+86 false authorization_renewed removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+87 false completed removal removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+88 false continuation removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+89 removal-attempt unobserved SYMBOLIC-U-ONE PASS
+90 prior storage survives removal-attemptunobserved SYMBOLIC-U-ONE PASS
+91 frontier supplies no removal completion removal-attemptunobserved SYMBOLIC-U-ONE PASS
+92 no terminal Python exception inference removal-attemptunobserved SYMBOLIC-U-ONE PASS
+93 false run_success_established removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+94 false original_reaches_launcher_established removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+95 false database_cleanup_completion removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+96 false authorization_renewed removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+97 false completed removal removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+98 false continuation removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+99 removal-complete raise SYMBOLIC-U-ONE PASS
+100 prior storage survives removal-completeraise SYMBOLIC-U-ONE PASS
+101 frontier supplies no removal completion removal-completeraise SYMBOLIC-U-ONE PASS
+102 false run_success_established removal-completeraise SYMBOLIC-U-ONE REJECTED
+103 false original_reaches_launcher_established removal-completeraise SYMBOLIC-U-ONE REJECTED
+104 false database_cleanup_completion removal-completeraise SYMBOLIC-U-ONE REJECTED
+105 false authorization_renewed removal-completeraise SYMBOLIC-U-ONE REJECTED
+106 false completed removal removal-completeraise SYMBOLIC-U-ONE REJECTED
+107 cleanup failure cannot guarantee original propagation removal-complete SYMBOLIC-U-ONE REJECTED
+108 false continuation removal-completeraise SYMBOLIC-U-ONE REJECTED
+109 removal-complete process-termination SYMBOLIC-U-ONE PASS
+110 prior storage survives removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+111 frontier supplies no removal completion removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+112 no terminal Python exception inference removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+113 false run_success_established removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+114 false original_reaches_launcher_established removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+115 false database_cleanup_completion removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+116 false authorization_renewed removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+117 false completed removal removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+118 false continuation removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+119 removal-complete unobserved SYMBOLIC-U-ONE PASS
+120 prior storage survives removal-completeunobserved SYMBOLIC-U-ONE PASS
+121 frontier supplies no removal completion removal-completeunobserved SYMBOLIC-U-ONE PASS
+122 no terminal Python exception inference removal-completeunobserved SYMBOLIC-U-ONE PASS
+123 false run_success_established removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+124 false original_reaches_launcher_established removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+125 false database_cleanup_completion removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+126 false authorization_renewed removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+127 false completed removal removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+128 false continuation removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+129 missing stored-error-rethrow SYMBOLIC-U-ONE REJECTED
+130 duplicate stored-error-rethrow SYMBOLIC-U-ONE REJECTED
+131 missing finally-enter SYMBOLIC-U-ONE REJECTED
+132 duplicate finally-enter SYMBOLIC-U-ONE REJECTED
+133 missing removal-attempt SYMBOLIC-U-ONE REJECTED
+134 duplicate removal-attempt SYMBOLIC-U-ONE REJECTED
+135 missing removal-complete SYMBOLIC-U-ONE REJECTED
+136 duplicate removal-complete SYMBOLIC-U-ONE REJECTED
+137 reordered steps SYMBOLIC-U-ONE REJECTED
+138 source raise cannot become normal return SYMBOLIC-U-ONE REJECTED
+139 binding ('failure_result', 'original_exception', 'reference') SYMBOLIC-U-ONE REJECTED
+140 binding ('projection', 'stored_error_binding', 'error', 'reference') SYMBOLIC-U-ONE REJECTED
+141 binding ('projection', 'stored_error_binding', 'owner', 'symbol') SYMBOLIC-U-ONE REJECTED
+142 binding ('projection', 'references', 'token', 'symbol') SYMBOLIC-U-ONE REJECTED
+143 binding ('failure_input', 'references', 'owner', 'symbol') SYMBOLIC-U-ONE REJECTED
+144 binding ('failure_input', 'references', 'token', 'symbol') SYMBOLIC-U-ONE REJECTED
+145 binding ('failure_input', 'occurrence') SYMBOLIC-U-ONE REJECTED
+146 binding ('token_case', 'invocation') SYMBOLIC-U-ONE REJECTED
+147 binding ('projection', 'scope', 'acquisition') SYMBOLIC-U-ONE REJECTED
+148 binding ('projection', 'scope', 'instance', 'binding') SYMBOLIC-U-ONE REJECTED
+149 binding ('anchor', 'instance', 'binding') SYMBOLIC-U-ONE REJECTED
+150 binding ('failure_input', 'callback') SYMBOLIC-U-ONE REJECTED
+151 binding ('failure_input', 'cleanup', 'revoke') SYMBOLIC-U-ONE REJECTED
+152 binding ('projection', 'stored_error_binding', 'guard_slot_premise') SYMBOLIC-U-ONE REJECTED
+153 no invented stored failure after termination handle SYMBOLIC-U-ONE REJECTED
+154 coordinated owner substitution handle SYMBOLIC-U-ONE REJECTED
+155 no invented stored failure after termination state SYMBOLIC-U-ONE REJECTED
+156 coordinated owner substitution state SYMBOLIC-U-ONE REJECTED
+157 coordinated original error reports SYMBOLIC-U-ONE REJECTED
+158 coordinated cross invocation SYMBOLIC-U-ONE REJECTED
+159 equal error contents distinct occurrences SYMBOLIC-U-ONE PASS
+160 unknown continuity does not repair selected owner removal SYMBOLIC-U-ONE REJECTED
+161 exact type input str SYMBOLIC-U-ONE REJECTED
+162 exact type input container SYMBOLIC-U-ONE REJECTED
+163 exact type nested list SYMBOLIC-U-ONE REJECTED
+164 exact type output bool as int SYMBOLIC-U-ONE REJECTED
+165 exact type output string SYMBOLIC-U-ONE REJECTED
+166 exact type output nested dict SYMBOLIC-U-ONE REJECTED
+167 exact type failure type SYMBOLIC-U-ONE REJECTED
+168 literal key subclass pre-normalization SYMBOLIC-U-ONE REJECTED
+169 nested output key subclass SYMBOLIC-U-ONE REJECTED
+170 semantic ('conditional_links',) SYMBOLIC-U-ONE REJECTED
+171 semantic ('classification',) SYMBOLIC-U-ONE REJECTED
+172 semantic ('original_exception_observation',) SYMBOLIC-U-ONE REJECTED
+173 semantic ('guard_slot_premise',) SYMBOLIC-U-ONE REJECTED
+174 semantic ('scope', 'invocation') SYMBOLIC-U-ONE REJECTED
+175 semantic ('context',) SYMBOLIC-U-ONE REJECTED
+176 semantic type before JSON SYMBOLIC-U-ONE REJECTED
+177 nested mutable output isolation SYMBOLIC-U-ONE PASS
+178 direct validator pristine SYMBOLIC-U-ONE PASS
+179 direct validator missing events SYMBOLIC-U-ONE REJECTED
+180 direct returned alias isolation SYMBOLIC-U-ONE PASS
+181 source TypeError provenance handle SYMBOLIC-U-TWO PASS
+182 conditional session-call failure provenance state SYMBOLIC-U-TWO PASS
+183 conditional session-call failure handle SYMBOLIC-U-TWO PASS
+184 without optional control SYMBOLIC-U-TWO PASS
+185 unknown registry continuity admitted SYMBOLIC-U-TWO PASS
+186 unknown continuity cannot establish selected owner removal SYMBOLIC-U-TWO PASS
+187 normal pop preserves pending original without run success SYMBOLIC-U-TWO PASS
+188 stored-error-rethrow raise SYMBOLIC-U-TWO PASS
+189 prior storage survives stored-error-rethrowraise SYMBOLIC-U-TWO PASS
+190 evaluation exception normal pop is not original propagation SYMBOLIC-U-TWO PASS
+191 false run_success_established stored-error-rethrowraise SYMBOLIC-U-TWO REJECTED
+192 false original_reaches_launcher_established stored-error-rethrowraise SYMBOLIC-U-TWO REJECTED
+193 false database_cleanup_completion stored-error-rethrowraise SYMBOLIC-U-TWO REJECTED
+194 false authorization_renewed stored-error-rethrowraise SYMBOLIC-U-TWO REJECTED
+195 stored-error-rethrow process-termination SYMBOLIC-U-TWO PASS
+196 prior storage survives stored-error-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+197 frontier supplies no removal completion stored-error-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+198 no terminal Python exception inference stored-error-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+199 false run_success_established stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+200 false original_reaches_launcher_established stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+201 false database_cleanup_completion stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+202 false authorization_renewed stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+203 false completed removal stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+204 false continuation stored-error-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+205 stored-error-rethrow unobserved SYMBOLIC-U-TWO PASS
+206 prior storage survives stored-error-rethrowunobserved SYMBOLIC-U-TWO PASS
+207 frontier supplies no removal completion stored-error-rethrowunobserved SYMBOLIC-U-TWO PASS
+208 no terminal Python exception inference stored-error-rethrowunobserved SYMBOLIC-U-TWO PASS
+209 false run_success_established stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+210 false original_reaches_launcher_established stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+211 false database_cleanup_completion stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+212 false authorization_renewed stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+213 false completed removal stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+214 false continuation stored-error-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+215 finally-enter raise SYMBOLIC-U-TWO PASS
+216 prior storage survives finally-enterraise SYMBOLIC-U-TWO PASS
+217 frontier supplies no removal completion finally-enterraise SYMBOLIC-U-TWO PASS
+218 false run_success_established finally-enterraise SYMBOLIC-U-TWO REJECTED
+219 false original_reaches_launcher_established finally-enterraise SYMBOLIC-U-TWO REJECTED
+220 false database_cleanup_completion finally-enterraise SYMBOLIC-U-TWO REJECTED
+221 false authorization_renewed finally-enterraise SYMBOLIC-U-TWO REJECTED
+222 false completed removal finally-enterraise SYMBOLIC-U-TWO REJECTED
+223 cleanup failure cannot guarantee original propagation finally-enter SYMBOLIC-U-TWO REJECTED
+224 false continuation finally-enterraise SYMBOLIC-U-TWO REJECTED
+225 finally-enter process-termination SYMBOLIC-U-TWO PASS
+226 prior storage survives finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+227 frontier supplies no removal completion finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+228 no terminal Python exception inference finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+229 false run_success_established finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+230 false original_reaches_launcher_established finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+231 false database_cleanup_completion finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+232 false authorization_renewed finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+233 false completed removal finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+234 false continuation finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+235 finally-enter unobserved SYMBOLIC-U-TWO PASS
+236 prior storage survives finally-enterunobserved SYMBOLIC-U-TWO PASS
+237 frontier supplies no removal completion finally-enterunobserved SYMBOLIC-U-TWO PASS
+238 no terminal Python exception inference finally-enterunobserved SYMBOLIC-U-TWO PASS
+239 false run_success_established finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+240 false original_reaches_launcher_established finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+241 false database_cleanup_completion finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+242 false authorization_renewed finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+243 false completed removal finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+244 false continuation finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+245 removal-attempt raise SYMBOLIC-U-TWO PASS
+246 prior storage survives removal-attemptraise SYMBOLIC-U-TWO PASS
+247 frontier supplies no removal completion removal-attemptraise SYMBOLIC-U-TWO PASS
+248 false run_success_established removal-attemptraise SYMBOLIC-U-TWO REJECTED
+249 false original_reaches_launcher_established removal-attemptraise SYMBOLIC-U-TWO REJECTED
+250 false database_cleanup_completion removal-attemptraise SYMBOLIC-U-TWO REJECTED
+251 false authorization_renewed removal-attemptraise SYMBOLIC-U-TWO REJECTED
+252 false completed removal removal-attemptraise SYMBOLIC-U-TWO REJECTED
+253 cleanup failure cannot guarantee original propagation removal-attempt SYMBOLIC-U-TWO REJECTED
+254 false continuation removal-attemptraise SYMBOLIC-U-TWO REJECTED
+255 removal-attempt process-termination SYMBOLIC-U-TWO PASS
+256 prior storage survives removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+257 frontier supplies no removal completion removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+258 no terminal Python exception inference removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+259 false run_success_established removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+260 false original_reaches_launcher_established removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+261 false database_cleanup_completion removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+262 false authorization_renewed removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+263 false completed removal removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+264 false continuation removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+265 removal-attempt unobserved SYMBOLIC-U-TWO PASS
+266 prior storage survives removal-attemptunobserved SYMBOLIC-U-TWO PASS
+267 frontier supplies no removal completion removal-attemptunobserved SYMBOLIC-U-TWO PASS
+268 no terminal Python exception inference removal-attemptunobserved SYMBOLIC-U-TWO PASS
+269 false run_success_established removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+270 false original_reaches_launcher_established removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+271 false database_cleanup_completion removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+272 false authorization_renewed removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+273 false completed removal removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+274 false continuation removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+275 removal-complete raise SYMBOLIC-U-TWO PASS
+276 prior storage survives removal-completeraise SYMBOLIC-U-TWO PASS
+277 frontier supplies no removal completion removal-completeraise SYMBOLIC-U-TWO PASS
+278 false run_success_established removal-completeraise SYMBOLIC-U-TWO REJECTED
+279 false original_reaches_launcher_established removal-completeraise SYMBOLIC-U-TWO REJECTED
+280 false database_cleanup_completion removal-completeraise SYMBOLIC-U-TWO REJECTED
+281 false authorization_renewed removal-completeraise SYMBOLIC-U-TWO REJECTED
+282 false completed removal removal-completeraise SYMBOLIC-U-TWO REJECTED
+283 cleanup failure cannot guarantee original propagation removal-complete SYMBOLIC-U-TWO REJECTED
+284 false continuation removal-completeraise SYMBOLIC-U-TWO REJECTED
+285 removal-complete process-termination SYMBOLIC-U-TWO PASS
+286 prior storage survives removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+287 frontier supplies no removal completion removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+288 no terminal Python exception inference removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+289 false run_success_established removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+290 false original_reaches_launcher_established removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+291 false database_cleanup_completion removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+292 false authorization_renewed removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+293 false completed removal removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+294 false continuation removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+295 removal-complete unobserved SYMBOLIC-U-TWO PASS
+296 prior storage survives removal-completeunobserved SYMBOLIC-U-TWO PASS
+297 frontier supplies no removal completion removal-completeunobserved SYMBOLIC-U-TWO PASS
+298 no terminal Python exception inference removal-completeunobserved SYMBOLIC-U-TWO PASS
+299 false run_success_established removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+300 false original_reaches_launcher_established removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+301 false database_cleanup_completion removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+302 false authorization_renewed removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+303 false completed removal removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+304 false continuation removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+305 missing stored-error-rethrow SYMBOLIC-U-TWO REJECTED
+306 duplicate stored-error-rethrow SYMBOLIC-U-TWO REJECTED
+307 missing finally-enter SYMBOLIC-U-TWO REJECTED
+308 duplicate finally-enter SYMBOLIC-U-TWO REJECTED
+309 missing removal-attempt SYMBOLIC-U-TWO REJECTED
+310 duplicate removal-attempt SYMBOLIC-U-TWO REJECTED
+311 missing removal-complete SYMBOLIC-U-TWO REJECTED
+312 duplicate removal-complete SYMBOLIC-U-TWO REJECTED
+313 reordered steps SYMBOLIC-U-TWO REJECTED
+314 source raise cannot become normal return SYMBOLIC-U-TWO REJECTED
+315 binding ('failure_result', 'original_exception', 'reference') SYMBOLIC-U-TWO REJECTED
+316 binding ('projection', 'stored_error_binding', 'error', 'reference') SYMBOLIC-U-TWO REJECTED
+317 binding ('projection', 'stored_error_binding', 'owner', 'symbol') SYMBOLIC-U-TWO REJECTED
+318 binding ('projection', 'references', 'token', 'symbol') SYMBOLIC-U-TWO REJECTED
+319 binding ('failure_input', 'references', 'owner', 'symbol') SYMBOLIC-U-TWO REJECTED
+320 binding ('failure_input', 'references', 'token', 'symbol') SYMBOLIC-U-TWO REJECTED
+321 binding ('failure_input', 'occurrence') SYMBOLIC-U-TWO REJECTED
+322 binding ('token_case', 'invocation') SYMBOLIC-U-TWO REJECTED
+323 binding ('projection', 'scope', 'acquisition') SYMBOLIC-U-TWO REJECTED
+324 binding ('projection', 'scope', 'instance', 'binding') SYMBOLIC-U-TWO REJECTED
+325 binding ('anchor', 'instance', 'binding') SYMBOLIC-U-TWO REJECTED
+326 binding ('failure_input', 'callback') SYMBOLIC-U-TWO REJECTED
+327 binding ('failure_input', 'cleanup', 'revoke') SYMBOLIC-U-TWO REJECTED
+328 binding ('projection', 'stored_error_binding', 'guard_slot_premise') SYMBOLIC-U-TWO REJECTED
+329 no invented stored failure after termination handle SYMBOLIC-U-TWO REJECTED
+330 coordinated owner substitution handle SYMBOLIC-U-TWO REJECTED
+331 no invented stored failure after termination state SYMBOLIC-U-TWO REJECTED
+332 coordinated owner substitution state SYMBOLIC-U-TWO REJECTED
+333 coordinated original error reports SYMBOLIC-U-TWO REJECTED
+334 coordinated cross invocation SYMBOLIC-U-TWO REJECTED
+335 equal error contents distinct occurrences SYMBOLIC-U-TWO PASS
+336 unknown continuity does not repair selected owner removal SYMBOLIC-U-TWO REJECTED
+337 exact type input str SYMBOLIC-U-TWO REJECTED
+338 exact type input container SYMBOLIC-U-TWO REJECTED
+339 exact type nested list SYMBOLIC-U-TWO REJECTED
+340 exact type output bool as int SYMBOLIC-U-TWO REJECTED
+341 exact type output string SYMBOLIC-U-TWO REJECTED
+342 exact type output nested dict SYMBOLIC-U-TWO REJECTED
+343 exact type failure type SYMBOLIC-U-TWO REJECTED
+344 literal key subclass pre-normalization SYMBOLIC-U-TWO REJECTED
+345 nested output key subclass SYMBOLIC-U-TWO REJECTED
+346 semantic ('conditional_links',) SYMBOLIC-U-TWO REJECTED
+347 semantic ('classification',) SYMBOLIC-U-TWO REJECTED
+348 semantic ('original_exception_observation',) SYMBOLIC-U-TWO REJECTED
+349 semantic ('guard_slot_premise',) SYMBOLIC-U-TWO REJECTED
+350 semantic ('scope', 'invocation') SYMBOLIC-U-TWO REJECTED
+351 semantic ('context',) SYMBOLIC-U-TWO REJECTED
+352 semantic type before JSON SYMBOLIC-U-TWO REJECTED
+353 nested mutable output isolation SYMBOLIC-U-TWO PASS
+354 direct validator pristine SYMBOLIC-U-TWO PASS
+355 direct validator missing events SYMBOLIC-U-TWO REJECTED
+356 direct returned alias isolation SYMBOLIC-U-TWO PASS
+357 independent source validator declaration omission REJECTED
+358 independent source validator guard omission REJECTED
+359 independent source validator order substitution REJECTED
+360 independent source validator wrong pop key REJECTED
+361 independent source validator wrong guard REJECTED
+362 independent source validator stale source REJECTED
+363 missing evidence binding REJECTED
+364 mixed evidence bytes REJECTED
+365 bundle mutation isolation PASS
+366 unknowns observers and obligations unchanged PASS

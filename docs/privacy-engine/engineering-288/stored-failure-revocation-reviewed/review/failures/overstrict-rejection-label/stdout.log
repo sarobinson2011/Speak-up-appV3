@@ -1,0 +1,98 @@
+Validating predecessor dependencies for new mandatory relation
+1 current mandatory two-context derivation equals exact saved receipt PASS
+2 independent AST guards sequence and discarded pop return PASS
+3 source selected callback normal branch and handler distinct cause PASS
+4 source AST location run PASS
+5 source AST location callback PASS
+6 source AST location guard PASS
+7 source AST location raise PASS
+8 source AST location finally PASS
+9 source AST location pop PASS
+10 source AST location storage PASS
+11 source four-stage order and exact pop semantics PASS
+12 legitimate fixed failure 0/handle PASS
+13 stored original survives caught helper escape 0/handle PASS
+14 no control and unknown registry continuity 0/handle PASS
+15 equal error values remain distinct occurrences 0/handle PASS
+16 frontier 0/handle/stored-error-rethrow/raise PASS
+17 false original propagation 0/handle/stored-error-rethrow/raise REJECTED
+18 frontier 0/handle/stored-error-rethrow/process-termination PASS
+19 false original propagation 0/handle/stored-error-rethrow/process-termination REJECTED
+20 frontier 0/handle/stored-error-rethrow/unobserved PASS
+21 false original propagation 0/handle/stored-error-rethrow/unobserved REJECTED
+22 frontier 0/handle/finally-enter/raise PASS
+23 false original propagation 0/handle/finally-enter/raise REJECTED
+24 frontier 0/handle/finally-enter/process-termination PASS
+25 false original propagation 0/handle/finally-enter/process-termination REJECTED
+26 frontier 0/handle/finally-enter/unobserved PASS
+27 false original propagation 0/handle/finally-enter/unobserved REJECTED
+28 frontier 0/handle/removal-attempt/raise PASS
+29 false original propagation 0/handle/removal-attempt/raise REJECTED
+30 frontier 0/handle/removal-attempt/process-termination PASS
+31 false original propagation 0/handle/removal-attempt/process-termination REJECTED
+32 frontier 0/handle/removal-attempt/unobserved PASS
+33 false original propagation 0/handle/removal-attempt/unobserved REJECTED
+34 frontier 0/handle/removal-complete/raise PASS
+35 false original propagation 0/handle/removal-complete/raise REJECTED
+36 frontier 0/handle/removal-complete/process-termination PASS
+37 false original propagation 0/handle/removal-complete/process-termination REJECTED
+38 frontier 0/handle/removal-complete/unobserved PASS
+39 false original propagation 0/handle/removal-complete/unobserved REJECTED
+40 binding/false completion 0/handle('failure_result', 'original_exception', 'reference') REJECTED
+41 binding/false completion 0/handle('failure_input', 'references', 'owner', 'symbol') REJECTED
+42 binding/false completion 0/handle('failure_input', 'references', 'token', 'symbol') REJECTED
+43 binding/false completion 0/handle('token_case', 'invocation') REJECTED
+44 binding/false completion 0/handle('anchor', 'instance', 'binding') REJECTED
+45 binding/false completion 0/handle('output', 'removal_completed_in_model') REJECTED
+46 binding/false completion 0/handle('output', 'run_success_established') REJECTED
+47 missing field 0/handle/outcomes REJECTED
+48 missing field 0/handle/projection REJECTED
+49 missing field 0/handle/failure_result REJECTED
+50 missing field 0/handle/token_case REJECTED
+51 coordinated step 0/handle/omit REJECTED
+52 coordinated step 0/handle/duplicate REJECTED
+53 coordinated step 0/handle/reverse REJECTED
+54 exact types 0/handle('output', 'source_original_rethrow_completed_in_model') REJECTED
+55 exact types 0/handle('failure_result', 'retained_original') REJECTED
+56 exact types 0/handle('projection', 'outcomes', 0, 'stage') REJECTED
+57 exact types 0/handle('token_case', 'registry_continuity') REJECTED
+58 exact types 0/handle('failure_result', 'original_exception', 'reference') REJECTED
+59 container subclasses 0/handle('output', 'events') REJECTED
+60 container subclasses 0/handle('projection', 'references') REJECTED
+61 literal-key subclass 0/handle REJECTED
+62 coordinated error substitution 0/handle REJECTED
+63 coordinated instance substitution 0/handle REJECTED
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/common.py", line 55, in no
+    try:test()
+        ^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/focused.py", line 62, in <lambda>
+    q=change(fx,('failure_input','outcomes','fixed-failure'),'process-termination');rec.no('helper termination cannot return callback '+label,lambda q=q:m._construct_checked(b,q),'STORED-NO-VALIDATED-FAILURE')
+                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 123, in _construct_checked
+    v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.stored_failure_projection(cat,case['projection'],v);c.validate_stored_failure_projection(cat,case['projection'],v,case['output'])
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 119, in _premises
+    failure=_failure(basis,case,token);refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue']
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 111, in _failure
+    validated=copy.deepcopy(p);validated['scope']=copy.deepcopy(b['handle_scope']);validated['references']=copy.deepcopy(b['handle_references']);result=c.client_handle_projection(cat,basis['verification'],p,validated)
+                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/managed_coverage.py", line 1585, in client_handle_projection
+    if completion=='process-termination':need(callback=='unobserved' and all(v=='unobserved' for v in cleanup.values()),'CLIENT-TERMINATION-CONTINUATION')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/managed_coverage.py", line 70, in need
+    if not value:raise ValueError(code)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLIENT-TERMINATION-CONTINUATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/focused.py", line 62, in <module>
+    q=change(fx,('failure_input','outcomes','fixed-failure'),'process-termination');rec.no('helper termination cannot return callback '+label,lambda q=q:m._construct_checked(b,q),'STORED-NO-VALIDATED-FAILURE')
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/common.py", line 57, in no
+    if reason:assert reason in str(e),(n,str(e),reason)
+                     ^^^^^^^^^^^^^^^^
+AssertionError: ('helper termination cannot return callback 0/handle', 'CLIENT-TERMINATION-CONTINUATION', 'STORED-NO-VALIDATED-FAILURE')

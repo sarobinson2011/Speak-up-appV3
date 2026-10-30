@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/common.py", line 55, in no
+    try:test()
+        ^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/focused.py", line 62, in <lambda>
+    q=change(fx,('failure_input','outcomes','fixed-failure'),'process-termination');rec.no('helper termination cannot return callback '+label,lambda q=q:m._construct_checked(b,q),'STORED-NO-VALIDATED-FAILURE')
+                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 123, in _construct_checked
+    v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.stored_failure_projection(cat,case['projection'],v);c.validate_stored_failure_projection(cat,case['projection'],v,case['output'])
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 119, in _premises
+    failure=_failure(basis,case,token);refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue']
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/correspondence.py", line 111, in _failure
+    validated=copy.deepcopy(p);validated['scope']=copy.deepcopy(b['handle_scope']);validated['references']=copy.deepcopy(b['handle_references']);result=c.client_handle_projection(cat,basis['verification'],p,validated)
+                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/managed_coverage.py", line 1585, in client_handle_projection
+    if completion=='process-termination':need(callback=='unobserved' and all(v=='unobserved' for v in cleanup.values()),'CLIENT-TERMINATION-CONTINUATION')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-stored-20261030/primary/code/managed_coverage.py", line 70, in need
+    if not value:raise ValueError(code)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLIENT-TERMINATION-CONTINUATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/focused.py", line 62, in <module>
+    q=change(fx,('failure_input','outcomes','fixed-failure'),'process-termination');rec.no('helper termination cannot return callback '+label,lambda q=q:m._construct_checked(b,q),'STORED-NO-VALIDATED-FAILURE')
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/sr-review/code/common.py", line 57, in no
+    if reason:assert reason in str(e),(n,str(e),reason)
+                     ^^^^^^^^^^^^^^^^
+AssertionError: ('helper termination cannot return callback 0/handle', 'CLIENT-TERMINATION-CONTINUATION', 'STORED-NO-VALIDATED-FAILURE')

@@ -1,0 +1,63 @@
+{"check": "current mandatory two-context derivation equals exact saved receipt", "result": "PASS"}
+{"check": "independent AST guards sequence and discarded pop return", "result": "PASS"}
+{"check": "source selected callback normal branch and handler distinct cause", "result": "PASS"}
+{"check": "source AST location run", "result": "PASS"}
+{"check": "source AST location callback", "result": "PASS"}
+{"check": "source AST location guard", "result": "PASS"}
+{"check": "source AST location raise", "result": "PASS"}
+{"check": "source AST location finally", "result": "PASS"}
+{"check": "source AST location pop", "result": "PASS"}
+{"check": "source AST location storage", "result": "PASS"}
+{"check": "source four-stage order and exact pop semantics", "result": "PASS"}
+{"check": "legitimate fixed failure 0/handle", "result": "PASS"}
+{"check": "stored original survives caught helper escape 0/handle", "result": "PASS"}
+{"check": "no control and unknown registry continuity 0/handle", "result": "PASS"}
+{"check": "equal error values remain distinct occurrences 0/handle", "result": "PASS"}
+{"check": "frontier 0/handle/stored-error-rethrow/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/stored-error-rethrow/raise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/stored-error-rethrow/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/stored-error-rethrow/process-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/stored-error-rethrow/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/stored-error-rethrow/unobserved", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/finally-enter/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/raise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/finally-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/process-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/finally-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/unobserved", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-attempt/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/raise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-attempt/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/process-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-attempt/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/unobserved", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-complete/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/raise", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-complete/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/process-termination", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier 0/handle/removal-complete/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/unobserved", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "binding/false completion 0/handle('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "binding/false completion 0/handle('failure_input', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "STORED-FAILURE-REFERENCES"}
+{"check": "binding/false completion 0/handle('failure_input', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "STORED-FAILURE-REFERENCES"}
+{"check": "binding/false completion 0/handle('token_case', 'invocation')", "result": "REJECTED", "error": "STORED-TOKEN-INVOCATION"}
+{"check": "binding/false completion 0/handle('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "STORED-CONSTRUCTED-ANCHOR"}
+{"check": "binding/false completion 0/handle('output', 'removal_completed_in_model')", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "binding/false completion 0/handle('output', 'run_success_established')", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "missing field 0/handle/outcomes", "result": "REJECTED", "error": "STORED-CONSTRUCTED-CASE"}
+{"check": "missing field 0/handle/projection", "result": "REJECTED", "error": "STORED-CONSTRUCTED-CASE"}
+{"check": "missing field 0/handle/failure_result", "result": "REJECTED", "error": "STORED-CONSTRUCTED-CASE"}
+{"check": "missing field 0/handle/token_case", "result": "REJECTED", "error": "STORED-CONSTRUCTED-CASE"}
+{"check": "coordinated step 0/handle/omit", "result": "REJECTED", "error": "STORED-STEP-ORDER"}
+{"check": "coordinated step 0/handle/duplicate", "result": "REJECTED", "error": "STORED-STEP-ORDER"}
+{"check": "coordinated step 0/handle/reverse", "result": "REJECTED", "error": "STORED-STEP-ORDER"}
+{"check": "exact types 0/handle('output', 'source_original_rethrow_completed_in_model')", "result": "REJECTED", "error": "STORED-OUTPUT-CORRESPONDENCE"}
+{"check": "exact types 0/handle('failure_result', 'retained_original')", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "exact types 0/handle('projection', 'outcomes', 0, 'stage')", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types 0/handle('token_case', 'registry_continuity')", "result": "REJECTED", "error": "TOKEN-PREMISE:registry_continuity"}
+{"check": "exact types 0/handle('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "container subclasses 0/handle('output', 'events')", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "container subclasses 0/handle('projection', 'references')", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "literal-key subclass 0/handle", "result": "REJECTED", "error": "STORED-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "coordinated error substitution 0/handle", "result": "REJECTED", "error": "STORED-FAILURE-RESULT"}
+{"check": "coordinated instance substitution 0/handle", "result": "REJECTED", "error": "STORED-CONSTRUCTED-ANCHOR"}

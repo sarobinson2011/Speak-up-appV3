@@ -1,0 +1,9 @@
+# Reviewed stored-failure rethrow-to-token-revocation correspondence
+
+Formal-Lab[6] supports this bounded mandatory SOURCE-ONLY static/constructed relation. The current implementation is unchanged. Independent 374 current-code controls and four original-checker reproductions remain separate from Engineering's corrected 66/37/3 and initial-build 366/75/7 results. Five reviewer failed attempts (four zero-assertion, one 63-control partial), two undeclared forensic partial files with UNESTABLISHED origins, Engineering's zero-assertion failure, initial helper-escape witnesses and inherited interruptions remain preserved outside completed totals. Exact records are retained here where compact; all original bytes remain in the external review and its exact embedded input.
+
+Normal callback return does not establish successful _run completion. Stored-error provenance, invocation/owner/token bindings and conditional owner continuity are preserved. Cleanup failure does not guarantee original propagation or completed token removal. Finally entry, removal attempt and completion are distinct. Runtime observations, reference identity, durable revocation, exclusivity, physical cleanup and remaining outer-cleanup coverage are unavailable/unexpanded. The observer remains unjoined.
+
+See review/REPORT.md and review/CHECKPOINT.json for scoped support, extension/SEMANTICS.md for the source relation, provenance/EXTERNAL-RECOVERY.json for exact external dependencies, and NEXT-TASK.txt for the unimplemented next slice. No source runtime method, policy, allowance or retention rule changes here.
+
+All eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, retention, allowances, accounting/reservations and uncertainty protections remain unchanged. SOURCE-ONLY; cumulative-envelope unadopted; readiness/final binding blocked; admission disabled.

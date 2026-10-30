@@ -1,0 +1,66 @@
+1 original source admits stored error after helper raise 0handle PASS
+2 original pure checker rejects source-admitted continuation 0handle REJECTED
+3 original source admits stored error after helper raise 0state PASS
+4 original pure checker rejects source-admitted continuation 0state REJECTED
+5 original source admits stored error after helper raise 1handle PASS
+6 original pure checker rejects source-admitted continuation 1handle REJECTED
+7 original source admits stored error after helper raise 1state PASS
+8 original pure checker rejects source-admitted continuation 1state REJECTED
+9 corrected mandatory both contexts and original prerequisite PASS
+10 helper unexpected raise then callback return 0handle PASS
+11 original storage and original rethrow survive helper error 0handle PASS
+12 helper escape unknown continuity 0handle PASS
+13 corrected cleanup frontier 0handleremoval-attemptraise PASS
+14 false corrected revocation 0handleremoval-attemptraise REJECTED
+15 corrected cleanup frontier 0handleremoval-completeraise PASS
+16 false corrected revocation 0handleremoval-completeraise REJECTED
+17 corrected cleanup frontier 0handlefinally-enterprocess-termination PASS
+18 false corrected revocation 0handlefinally-enterprocess-termination REJECTED
+19 helper termination cannot yield normal callback 0handle REJECTED
+20 helper exception cannot replace stored original 0handle REJECTED
+21 corrected exact-type boundary 0handle REJECTED
+22 corrected result isolation 0handle PASS
+23 helper unexpected raise then callback return 0state PASS
+24 original storage and original rethrow survive helper error 0state PASS
+25 helper escape unknown continuity 0state PASS
+26 corrected cleanup frontier 0stateremoval-attemptraise PASS
+27 false corrected revocation 0stateremoval-attemptraise REJECTED
+28 corrected cleanup frontier 0stateremoval-completeraise PASS
+29 false corrected revocation 0stateremoval-completeraise REJECTED
+30 corrected cleanup frontier 0statefinally-enterprocess-termination PASS
+31 false corrected revocation 0statefinally-enterprocess-termination REJECTED
+32 helper termination cannot yield normal callback 0state REJECTED
+33 helper exception cannot replace stored original 0state REJECTED
+34 corrected exact-type boundary 0state REJECTED
+35 corrected result isolation 0state PASS
+36 adjacent fixed failure remains admitted 0 PASS
+37 corrected semantic omission 0 REJECTED
+38 helper unexpected raise then callback return 1handle PASS
+39 original storage and original rethrow survive helper error 1handle PASS
+40 helper escape unknown continuity 1handle PASS
+41 corrected cleanup frontier 1handleremoval-attemptraise PASS
+42 false corrected revocation 1handleremoval-attemptraise REJECTED
+43 corrected cleanup frontier 1handleremoval-completeraise PASS
+44 false corrected revocation 1handleremoval-completeraise REJECTED
+45 corrected cleanup frontier 1handlefinally-enterprocess-termination PASS
+46 false corrected revocation 1handlefinally-enterprocess-termination REJECTED
+47 helper termination cannot yield normal callback 1handle REJECTED
+48 helper exception cannot replace stored original 1handle REJECTED
+49 corrected exact-type boundary 1handle REJECTED
+50 corrected result isolation 1handle PASS
+51 helper unexpected raise then callback return 1state PASS
+52 original storage and original rethrow survive helper error 1state PASS
+53 helper escape unknown continuity 1state PASS
+54 corrected cleanup frontier 1stateremoval-attemptraise PASS
+55 false corrected revocation 1stateremoval-attemptraise REJECTED
+56 corrected cleanup frontier 1stateremoval-completeraise PASS
+57 false corrected revocation 1stateremoval-completeraise REJECTED
+58 corrected cleanup frontier 1statefinally-enterprocess-termination PASS
+59 false corrected revocation 1statefinally-enterprocess-termination REJECTED
+60 helper termination cannot yield normal callback 1state REJECTED
+61 helper exception cannot replace stored original 1state REJECTED
+62 corrected exact-type boundary 1state REJECTED
+63 corrected result isolation 1state PASS
+64 adjacent fixed failure remains admitted 1 PASS
+65 corrected semantic omission 1 REJECTED
+66 corrected independent source catalogue omission REJECTED

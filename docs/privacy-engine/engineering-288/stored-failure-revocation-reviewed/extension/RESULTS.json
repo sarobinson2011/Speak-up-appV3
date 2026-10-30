@@ -1,0 +1,370 @@
+{
+  "canonical_corrected_receipt": {
+    "bytes": 5337262,
+    "path": "results/correction/stored-failure-revocation.json",
+    "sha256": "2523144c01a3bfa57d7e85b51ec3c907dab787ff23057bb4be5763ac9edc4548"
+  },
+  "checkpoint": "I164-stored-failure-revocation-correspondence-1",
+  "construction_author": "SU-Engineering[288D]",
+  "corrected_build_controls": {
+    "focused_includes_eight_original_witness_checks": true,
+    "fresh_includes_actual_offline_CLI_once": true,
+    "groups": {
+      "focused": {
+        "checks": 66,
+        "outcomes": {
+          "PASS": 35,
+          "REJECTED": 31
+        },
+        "result_identity": {
+          "bytes": 7271,
+          "sha256": "ba9a8800e4ce3ee759585ced4641f4450b9176657330574ef8675f003b268c37"
+        },
+        "seconds": 195.81059858299705
+      },
+      "fresh": {
+        "checks": 3,
+        "outcomes": {
+          "PASS": 2,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 805,
+          "sha256": "85ff5880dc9bb419cc5bf1e329bf7df0b463f9b8679c5b0c9602b9e5cdb2d2bd"
+        },
+        "seconds": 353.7677098780041
+      },
+      "recovered": {
+        "checks": 37,
+        "outcomes": {
+          "PASS": 15,
+          "REJECTED": 22
+        },
+        "result_identity": {
+          "bytes": 4657,
+          "sha256": "7b3fdcaf706defa2aafc874e518fbb1e7bba7bfbe5125fe4817b304db9fb98b2"
+        },
+        "seconds": 187.78923547599697
+      }
+    },
+    "scope": "Focused guard-domain correction and required new fresh/recovered checks; initial baseline suites not rerun",
+    "total": 106
+  },
+  "current_implementation_preservation": {
+    "additive_producer_functions": 5,
+    "declared_changes": "provenance/changed-files.json",
+    "historical_validators_modified": 0,
+    "inherited_producer_functions_and_classes": 95,
+    "predecessor_members": 2495,
+    "prior_review_noninput_members": 68,
+    "runtime_sources_changed": 0
+  },
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "failed_attempts_excluded": [
+    {
+      "checks": 0,
+      "path": "failures/source-arity",
+      "reason": "Adapter initially supplied manager source as an extra compiler argument; corrected tuple selection",
+      "result_identity": {
+        "bytes": 1376,
+        "sha256": "d053c434ff99c9606fbf2304667335def8c5efda9add6566b863cad6346216c4"
+      },
+      "retained_code_and_log": true
+    }
+  ],
+  "guard_domain_correction": {
+    "baseline_code_and_exact_member_tree_preserved": true,
+    "reason": "Original error can remain stored after the fixed-failure helper raises unexpectedly; callback can catch that later exception and return normally. Such retained_original unqualified-escape is now admitted alongside fixed-client-failure.",
+    "termination_cannot_establish_normal_callback": true,
+    "witness_scope": "Original pure-checker omission, not historical public validation or runtime evidence",
+    "witnesses": "results/correction/original-witnesses.json"
+  },
+  "independent_review_of_new_extension": "PENDING",
+  "initial_build_completed_controls": {
+    "applies_to": "Exact initial member tree in provenance/initial-member-map.json",
+    "completed_campaigns_rerun": false,
+    "groups": {
+      "constructed": {
+        "checks": 2,
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 714,
+          "sha256": "72a4db8c4adf66afe4e7538ca53d34f0672bb1e90534bc666bcfc0917e50b2b8"
+        },
+        "seconds": 347.3999851580011
+      },
+      "fresh": {
+        "checks": 2,
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 734,
+          "sha256": "5084d63385d876a71cb798ada5c1eb6b32ffb88fae72e705d19d0e197fe5a45b"
+        },
+        "seconds": 347.3777738200006
+      },
+      "primary": {
+        "checks": 366,
+        "outcomes": {
+          "PASS": 116,
+          "REJECTED": 250
+        },
+        "result_identity": {
+          "bytes": 44946,
+          "sha256": "70a51ec6fc4cf41b0e416c95c65aa89bfce8e636eb51f402bbbd1fff4a731865"
+        },
+        "seconds": 316.78237591200013
+      },
+      "public": {
+        "checks": 3,
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 2
+        },
+        "result_identity": {
+          "bytes": 808,
+          "sha256": "64e49ddbf403990809c0ae5532ff1e9a71d39638d4432a64ef03e7fb58d8460d"
+        },
+        "seconds": 372.56473999200534
+      },
+      "recovered": {
+        "checks": 75,
+        "outcomes": {
+          "PASS": 31,
+          "REJECTED": 44
+        },
+        "result_identity": {
+          "bytes": 8149,
+          "sha256": "2f7dc0661951c059e3c16f66aa9b77b0ea557f0934055d5fe3561785603d1cb6"
+        },
+        "seconds": 185.84171260300354
+      }
+    },
+    "not_final_corrected_build_results": true,
+    "total": 448
+  },
+  "limits": {
+    "actual_original_error_observation": null,
+    "complete_repetition_coverage": false,
+    "durability": false,
+    "exclusive_ownership": false,
+    "guard_slot_error_continuity": "Explicit selected source-state premise; not intervening-history evidence or arbitrary callback safety",
+    "later_cleanup_failure_guarantees_original_propagation": false,
+    "other_callback_failures_and_outer_cleanup": "UNEXPANDED",
+    "physical_lock_release": false,
+    "physical_reference_identity": null,
+    "prior_storage_erased_by_later_failure": false,
+    "run_success_established": false,
+    "runtime_rethrow_revocation_chain": null,
+    "saved_trace_invocations": 18,
+    "selected_owner_registry_continuity": "Explicit conditional premise",
+    "separate_unjoined_Client_state_observer": 1,
+    "static_constructed_only": true
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_review_reruns": 0,
+    "completed_suite_reruns": 0,
+    "database_connections": 0,
+    "host_smoke": 0,
+    "pipelines": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_results_retained_not_rerun": {
+    "all_earlier_failed_attempts_preserved": true,
+    "historical_forensic_partial": {
+      "identity": {
+        "bytes": 25690112,
+        "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e"
+      },
+      "location_in_target": "retained/review/failures/recovered-membership/forensic-extra.bin",
+      "origin": "UNESTABLISHED",
+      "original_failure_records_preserved": true,
+      "outside_strict_predecessor": true
+    },
+    "independent_and_supplied_results_separate": true,
+    "independent_owner_finalization": {
+      "controls": 323,
+      "failed_control_attempts": 0,
+      "groups": {
+        "fresh-constructed": {
+          "checks": 2,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 1,
+            "REJECTED": 1
+          },
+          "result_identity": {
+            "bytes": 683,
+            "sha256": "e1af8efaeb074724f273cfb0b73dd782a2364e0cbc37151072f9cf2b65239cf0"
+          },
+          "seconds": 273.63602494299994
+        },
+        "fresh-public": {
+          "checks": 4,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 1,
+            "REJECTED": 3
+          },
+          "result_identity": {
+            "bytes": 909,
+            "sha256": "f87837a57bc44e94b21f905086f015117d5597060cf37dec5a53a65c2c7f9f44"
+          },
+          "seconds": 297.93127880799875
+        },
+        "fresh-semantic": {
+          "checks": 3,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 2,
+            "REJECTED": 1
+          },
+          "result_identity": {
+            "bytes": 790,
+            "sha256": "d4e0070511b1ba9639229a3c6bd79851ea3db9f7fd77e5d2e334798405db981a"
+          },
+          "seconds": 405.9422076970004
+        },
+        "primary": {
+          "checks": 265,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 59,
+            "REJECTED": 206
+          },
+          "result_identity": {
+            "bytes": 31221,
+            "sha256": "42273a8464f8f2cf4af314ce82506443100188f37da2764a32d4a632537f6ba3"
+          },
+          "seconds": 263.57896402400365
+        },
+        "recovered": {
+          "checks": 49,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "implementation": "cpython",
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "outcomes": {
+            "PASS": 15,
+            "REJECTED": 34
+          },
+          "result_identity": {
+            "bytes": 5647,
+            "sha256": "f765a82b33b12a449667ecf8e638e17f73b9e2b5a3c72830409f55be9fab3b31"
+          },
+          "seconds": 158.6565112390017
+        }
+      },
+      "process_recovery_CLI_included": true
+    },
+    "supplied_owner_finalization": {
+      "CLI_included_in_process": true,
+      "interrupted_derivation_attempt": {
+        "cause": "UNESTABLISHED",
+        "command": "python3 -I -B owner-finalization/tests/process_checks.py owner-finalization owner-finalization-process-results/derive derive",
+        "completed_assertions": 0,
+        "counted_in_completed_totals": false,
+        "exit_code": 137,
+        "preservation": "Exact partial output and stdout retained; no completed check rerun",
+        "progress_log_present": false,
+        "recorded_utc": "2026-10-29T15:34:53.198145+00:00",
+        "result_json_present": false,
+        "shell_message": "Killed",
+        "status": "INTERRUPTED"
+      },
+      "primary": 218,
+      "process": 9,
+      "recovered_root": 57
+    }
+  },
+  "recovery": {
+    "corrected_cut": {
+      "CRC": "PASS",
+      "all_hashes": "PASS",
+      "bytes": 76192219,
+      "entries": 2644,
+      "manifest_identity": {
+        "bytes": 751380,
+        "sha256": "b86ed6a87e017032e638c69add3d9c627a7a08522ea72a966bd5e5a58da1d84b"
+      },
+      "manifested_files": 2643,
+      "safe_unique_regular_membership": "PASS",
+      "sha256": "3d51af7ff69ebb2d6016cf15e543c0fa870fb608355be638879ffc5628304f32"
+    },
+    "corrected_cut_nonmanifest_members_unchanged_in_final": 2643,
+    "corrected_implementation_receipt_and_controls_unchanged_after_recovery": true,
+    "final_additions": "Final fresh/recovered results, exact corrected cut manifest/identity, summary and provenance only",
+    "initial_build_member_map": "provenance/initial-member-map.json",
+    "initial_outer_archive_identity_retained": true,
+    "original_outer_ZIP_reconstruction_claimed": false,
+    "strict_root_checked_before_input_consumption": true
+  },
+  "scope": "Normal callback return after validated original storage -> selected stored rethrow -> finally entry -> same token removal attempt/completion, both symbolic contexts"
+}

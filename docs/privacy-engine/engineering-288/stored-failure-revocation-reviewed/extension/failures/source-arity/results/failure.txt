@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/stored-failure/tests/focused.py", line 14, in <module>
+    mon=guard(root,rec.path);m=module(root/'code/correspondence.py');mon(m);data=m.inputs(root);cat=m.catalogue(data);rows,basis=m._checked(data,cat);c=data['coverage'];bundle=m._assemble(data,rows,basis)
+                                                                                                    ^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/stored-failure/code/correspondence.py", line 53, in catalogue
+    def catalogue(data):return data['coverage'].compile_stored_failure(*sources(data),*dependencies(data))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compile_stored_failure() takes 5 positional arguments but 6 were given

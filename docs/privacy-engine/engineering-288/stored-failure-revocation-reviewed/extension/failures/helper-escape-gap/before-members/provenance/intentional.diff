@@ -1,0 +1,247 @@
+--- reviewed-owner/code/managed_coverage.py
++++ stored-failure/code/managed_coverage.py
+@@ -2213,6 +2213,80 @@
+  status_exact_tree(submitted,'OWNER-SUBMITTED-OUTPUT');status_typed_same(submitted,owner_finalization_projection(catalogue,case,validated),'OWNER-OUTPUT-CORRESPONDENCE');return True
+ 
+ 
++def stored_failure_source(launcher,entry,token,handle,state):
++ """Select the exceptional continuation independently from defining source."""
++ for v in (token,handle,state):status_exact_tree(v,'STORED-SOURCE-INPUT')
++ checked=client_handle_source(launcher,entry,handle['manager_relation'])
++ pin={'bytes':len(entry),'sha256':digest(entry)}
++ status_typed_same(token['source']['entry'],pin,'STORED-TOKEN-SOURCE')
++ status_typed_same(state['source']['sources'],checked['sources'],'STORED-STATE-SOURCE')
++ tree,loc=_client_locate(entry);funcs={n.name:n for n in tree.body if isinstance(n,ast.FunctionDef)};run=funcs['_run'];dispatch=funcs['_dispatch']
++ protected=run.body[2].body[0].body[-1];control,callback,guard=protected.body;raise_=guard.body[0];pop=protected.finalbody[0];storage=dispatch.body[2].handlers[0].body[0]
++ need(isinstance(callback,ast.Try) and ast.unparse(callback.body[0])=='client(Client(token))','STORED-CALLBACK')
++ need(ast.unparse(guard.test)=='owner.failure is not None' and ast.unparse(raise_)=='raise owner.failure' and raise_.cause is None,'STORED-RETHROW')
++ need(not protected.handlers and len(protected.finalbody)==1 and ast.unparse(pop)=='_OWNERS.pop(token, None)','STORED-FINALLY')
++ need(ast.unparse(storage)=='owner.failure = error','STORED-ERROR-STORAGE')
++ status_typed_same(loc(raise_),token['source']['stored_failure_raise'],'STORED-PRIOR-RAISE-ANCHOR')
++ status_typed_same(loc(guard.test),{k:v for k,v in token['source']['stages']['owner-failure-guard'].items() if k!='source'},'STORED-PRIOR-GUARD')
++ stages=[('stored-error-rethrow',raise_),('finally-enter',protected),('removal-attempt',pop.value),('removal-complete',pop)]
++ return {'sources':checked['sources'],'run':loc(run),'storage':loc(storage),'callback':loc(callback.body[0]),'guard':loc(guard.test),'raise':loc(raise_),'finally':loc(protected),'pop':loc(pop),
++  'order':[n for n,_ in stages],'stages':{n:{**loc(node),'source':copy.deepcopy(pin),'semantic_region':'finally-entry' if n=='finally-enter' else 'source-statement'} for n,node in stages},
++  'guard_expression':ast.unparse(guard.test),'raise_expression':ast.unparse(raise_),'explicit_cause':None,'explicit_cause_clause_present':False,'pop_key':ast.unparse(pop.value.args[0]),'pop_default':ast.literal_eval(pop.value.args[1]),'pop_return_consumed':False,
++  'predecessor':'Validated token stored-failure-exceptional-frontier after normal client callback and non-None failure guard','storage_origin':'Existing validated Client.handle or Client.state failure projector, not a supplied error summary',
++  'guard_slot_premise':'The selected local owner.failure at this guard is the same validated stored original error. Constructed source-state premise, not proof of arbitrary callback behavior or intervening history.',
++  'cleanup_rule':'A raised original/evaluation exception enters the enclosing finally under ordinary Python continuation; later finally/removal raise replaces the pending outward exception for this prefix. Termination/unobserved continuation supplies no unwind.'}
++
++def compile_stored_failure(launcher,entry,token,handle,state):
++ source=stored_failure_source(launcher,entry,token,handle,state)
++ return {'format':'I164-STORED-FAILURE-STATIC-1','source':source,'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'callback':'normal return with validated earlier storage; not successful _run completion','guard':'owner.failure is the selected stored original, not None','rethrow':['raised-original: intentional source raise, not normal function return','raise: conditional evaluation/interruption exception, not guaranteed original','process-termination: no finally inference','unobserved: no finally inference'],'finally':['normal continuation to next point','raise ends this prefix with a replacement error','process-termination or unobserved stops without completion']},
++  'reference_rule':'Parent invocation-qualified owner/token; child operation-qualified original error joined by explicit source forwarding/storage relations, not equal-message or observed physical identity.',
++  'limits':['Static/constructed only','Selected-owner registry continuity remains an explicit premise','Guard-slot error continuity is an explicit constructed source-state premise','No complete outer handler, launcher cleanup, database close, retained evidence bytes, physical lock release, exclusivity or authorization'],
++  'runtime_rethrow_revocation_chain':None,'actual_admission':False}
++
++def validate_stored_failure(launcher,entry,token,handle,state,submitted):
++ status_exact_tree(submitted,'STORED-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_stored_failure(launcher,entry,token,handle,state),'STORED-SOURCE-CORRESPONDENCE');return True
++
++def stored_failure_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'STORED-EXACT-TYPE')
++ keys={'scope','references','token_prefix','failure_provenance','stored_error_binding','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'STORED-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'STORED-VALIDATED:'+k)
++ scope=case['scope'];prefix=case['token_prefix'];failure=case['failure_provenance'];binding=case['stored_error_binding'];original=binding['error']
++ status_typed_same(scope,prefix['scope'],'STORED-PREFIX-SCOPE');status_typed_same(case['references'],prefix['reference_bindings'],'STORED-PREFIX-REFERENCES')
++ need(prefix['completion']=='stored-failure-exceptional-frontier' and prefix['client_callback_completed_in_model'] is True,'STORED-PREFIX-FRONTIER')
++ need(failure['retained_original'] is True and failure['completion']=='fixed-client-failure' and original is not None,'STORED-VALIDATED-STORAGE')
++ status_typed_same(original,failure['original_exception'],'STORED-ERROR-PROVENANCE');status_typed_same(binding['owner'],case['references']['owner'],'STORED-ERROR-OWNER')
++ need(binding['guard_slot_premise']==catalogue['source']['guard_slot_premise'],'STORED-GUARD-PREMISE')
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'STORED-OUTCOMES');events=[];done=set();pending=None;cleanup_error=None;completion=None;terminal=None;rethrow=False
++ for i,stage in enumerate(catalogue['source']['order']):
++  need(i<len(outcomes),'STORED-MISSING-STEP:'+stage);row=outcomes[i];need(type(row) is dict and set(row)=={'stage','outcome'} and row['stage']==stage,'STORED-STEP-ORDER')
++  outcome=row['outcome'];allowed=('raised-original','raise','process-termination','unobserved') if i==0 else ('normal','raise','process-termination','unobserved');need(type(outcome) is str and outcome in allowed,'STORED-STAGE-OUTCOME');terminal=outcome
++  event={'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(catalogue['source']['stages'][stage]),'outcome':outcome,'owner':copy.deepcopy(case['references']['owner']),'token':copy.deepcopy(case['references']['token']),'pending_error_on_entry':copy.deepcopy(pending),'runtime_frame':None};events.append(event)
++  if outcome in ('process-termination','unobserved'):
++   completion=outcome;break
++  if stage=='stored-error-rethrow':
++   if outcome=='raised-original':rethrow=True;done.add(stage);pending=copy.deepcopy(original)
++   else:pending={'kind':'conditional-rethrow-evaluation-exception','reference':scope['invocation']+'/rethrow-evaluation-error','exact_type':None,'source':copy.deepcopy(catalogue['source']['stages'][stage])}
++   continue
++  if outcome=='raise':
++   cleanup_error={'kind':'conditional-finally-exception','reference':scope['invocation']+'/'+stage+'/error','exact_type':None,'source':copy.deepcopy(catalogue['source']['stages'][stage])};pending=copy.deepcopy(cleanup_error);completion='cleanup-exceptional-frontier';break
++  done.add(stage)
++  if stage=='removal-complete':completion='normal-removal-pending-original' if rethrow else 'normal-removal-pending-evaluation-error'
++ need(len(events)==len(outcomes),'STORED-UNREACHED-STEPS');popped='removal-complete' in done
++ continuity=copy.deepcopy(prefix['selected_slot_before_removal']);selected=True if popped and continuity['continuity']=='explicit constructed premise' else None
++ return {'kind':'CONSTRUCTED-STORED-FAILURE-REVOCATION','scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(case['references']),'validated_token_prefix':copy.deepcopy(prefix),'validated_failure_provenance':copy.deepcopy(failure),'stored_error_binding':copy.deepcopy(binding),'original_error':copy.deepcopy(original),'events':events,'completion':completion,
++  'failure_storage_previously_completed_in_model':True,'callback_returned_normally_in_model':True,'run_success_established':False,'source_original_rethrow_completed_in_model':rethrow,'finally_entry_completed_in_model':'finally-enter' in done,'removal_attempt_entered_in_model':'removal-attempt' in done,'removal_completed_in_model':popped,
++  'selected_slot_before_removal':continuity,'selected_owner_removed_in_model':selected,'slot_after_pop_in_model':'ABSENT-AT-POP-COMPLETION' if popped else 'UNKNOWN','pop_result_observation':None,'revocation_persists':None,
++  'last_pending_error_in_model':copy.deepcopy(pending),'cleanup_error_in_model':cleanup_error,'outward_error_after_finally_in_model':copy.deepcopy(pending) if popped else None,'original_outward_after_finally_established_in_model':popped and rethrow,'original_reaches_launcher_established':False,'terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
++  'exception_context_observation':None,'runtime_unwind_evidence':'UNAVAILABLE','runtime_observation':False,'physical_reference_identity':None,'runtime_rethrow_revocation_chain':None,'outer_cleanup_completion':None,'database_cleanup_completion':None,'retained_failure_record_bytes':None,'physical_lock_release_established':False,'exclusive_ownership_established':False,'durability_established':False,'observer_join':None,
++  'completion_flags_mean':'Established only in this constructed prefix; false does not prove absence of unobserved effects. Prior storage is preserved across every later frontier. No original propagation guarantee after replacement cleanup error or termination.',
++  'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_stored_failure_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'STORED-SUBMITTED-OUTPUT');status_typed_same(submitted,stored_failure_projection(catalogue,case,validated),'STORED-OUTPUT-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()
+--- reviewed-owner/code/correspondence.py
++++ stored-failure/code/correspondence.py
+@@ -1,12 +1,12 @@
+-"""Mandatory bounded normal owner-lock descriptor finalization over the reviewed exit chain.
++"""Mandatory stored-failure rethrow-to-token-revocation over the reviewed normal-finalization chain.
+ Saved evidence only. No application method or database connection is invoked.
+ """
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 227678, 'sha256': '2f9807a5c75a9a8ff4307312bb341cf173cfc5dd92f5c99cd14b856a73274955'}
+-PREDECESSOR_MANIFEST={'bytes':633328,'sha256':'8dcadeb9a5f023fb9c614facf47c7e02929a0a2b231abc277599ecddc7f6cdd8'}
+-PREDECESSOR_RECEIPT={'bytes':4032928,'sha256':'928726175efbb720b03dc722de67477fa7ea3b3ce43b4c37bbeb2c9a730fea07'}
++PRODUCER_PIN={'bytes': 238369, 'sha256': '94ec72e419daf90b5b5d34b5c52af345d0bf6fb6325b96b887251274b877e542'}
++PREDECESSOR_MANIFEST={'bytes': 690980, 'sha256': '5d3bd027372da6610ce1a05fec8fb75fcf19acb303b58692d61b038a5e6e1c4c'}
++PREDECESSOR_RECEIPT={'bytes': 4348225, 'sha256': '6f2d1ac375017fd2f92923522aeba36defb89992d7fd071dd385e11d991d3c42'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -28,70 +28,106 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/exit'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'OWNER-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'OWNER-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'OWNER-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/owner'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'STORED-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'STORED-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'STORED-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'OWNER-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'OWNER-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'OWNER-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'OWNER-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'STORED-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'STORED-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'STORED-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'STORED-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'OWNER-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'OWNER-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_owner_exit_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_owner_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'STORED-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'STORED-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_stored_owner_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_stored_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+ def sources(data):return data['prior_module'].sources(data['prior_data'])
+-def dependency(data):return data['prior_module'].catalogue(data['prior_data'])
+-def catalogue(data):return data['coverage'].compile_owner_finalization(sources(data)[0],dependency(data))
++def routes(data):
++ owner=data['prior_data'];exit_=owner['prior_data'];token=exit_['prior_data'];status=token['prior_data'];state=status['prior_data'];client=state['prior_data']
++ return {'token_module':exit_['prior_module'],'token_data':token,'state_module':status['prior_module'],'state_data':state,'client_module':state['prior_module'],'client_data':client,'handle_module':client['prior_module'],'handle_data':client['prior_data']}
++def dependencies(data):
++ r=routes(data);return r['token_module'].catalogue(r['token_data']),r['client_module'].catalogue(r['client_data']),r['state_module'].catalogue(r['state_data'])
++def catalogue(data):return data['coverage'].compile_stored_failure(*sources(data)[:2],*dependencies(data))
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,eb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,eb)
+- # Exactly the predecessor derive_exit validation/assembly, preserving its basis
+- # so the selected invocation consumes the same authenticated evidence chain.
+- saved=(fresh['prior_root']/'results/primary/normal-session-exit-correspondence.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'OWNER-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'exit_basis':eb,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e'])}
++ fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,ob=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,ob)
++ saved=(fresh['prior_root']/'results/primary/owner-lock-finalization.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'STORED-VALIDATED-PREDECESSOR-RECEIPT')
++ r=routes(fresh);_,authority,anchor,observations=r['handle_module'].sources(r['handle_data'])
++ return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'owner_basis':ob,'token_basis':ob['exit_basis']['token_basis'],'routes':r,'verification':fresh['coverage'].handle_authentication(authority,anchor,observations)}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'OWNER-CONTEXT-DOMAIN')
++ rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'STORED-CONTEXT-DOMAIN')
+  for row in basis['prior']['contexts']:
+-  previous=row['normal_session_exit_correspondence'];anchor=previous['instance_anchor'];same(previous['declaration']['source']['launcher'],cat['source']['launcher'],'OWNER-VALIDATED-LAUNCHER');scope=copy.deepcopy(previous['scope']);sb=previous['session_binding'];mp=previous['marker_path']
+-  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),'scope':scope,'session_binding':copy.deepcopy(sb),'marker_path':copy.deepcopy(mp),'descriptor_lineage':basis['fresh']['coverage'].owner_descriptor_lineage(cat,scope,sb,mp),
+-   'reference_basis':copy.deepcopy(previous['reference_basis']),'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'saved_close_evidence':copy.deepcopy(previous['saved_close_evidence']),'selected_owner_continuity':previous['selected_owner_continuity'],'runtime_finalizer_chain':None,'numeric_descriptor_observation':None,'physical_resource_identity':None,'actual_invocation_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'observer_join':None,'separate_observer':copy.deepcopy(previous['separate_observer']),'outer_lifecycle_complete':False,
+-   'gap':'No runtime descriptor producer/finalizer/close-attempt/completion chain; exception/outer cleanup, physical resource/lock release, continuity, exclusivity and durability remain unestablished.'})
++  token=row['token_registration_correspondence'];anchor=token['instance_anchor'];same(anchor,row['client_state_return_correspondence']['validated_state_anchor'],'STORED-VALIDATED-STATE-INSTANCE');same(token['declaration']['source']['entry'],cat['source']['sources']['entry'],'STORED-VALIDATED-SOURCE')
++  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(anchor),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
++   'failure_predecessors':{k:{'declaration':copy.deepcopy(row['client_'+k+'_return_correspondence']['declaration']),'runtime_chain':None} for k in ('handle','state')},
++   'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
++   'runtime_stored_failure_chain':None,'original_exception_observation':None,'physical_reference_observation':None,'actual_invocation_count':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'separate_observer':copy.deepcopy(token['separate_observer']),'observer_join':None,
++   'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','guard_slot_premise':cat['source']['guard_slot_premise'],'outer_cleanup_complete':False,'gap':'No runtime storage/callback/rethrow/finally/pop chain. Other callback failures, outer cleanup, physical identity, custody and durability remain unexpanded/unestablished.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'OWNER-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'OWNER-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'OWNER-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'STORED-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'STORED-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'STORED-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'OWNER-EVIDENCE-TYPES');require(candidate==basis['evidence'],'OWNER-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'STORED-EVIDENCE-TYPES');require(candidate==basis['evidence'],'STORED-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'OWNER-CATALOGUE');exact(claims,'OWNER-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'OWNER-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'OWNER-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'OWNER-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'OWNER-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ exact(submitted_catalogue,'STORED-CATALOGUE');exact(claims,'STORED-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'STORED-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'STORED-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'STORED-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'STORED-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-OWNER-LOCK-FINALIZATION-1';result['prior_normal_exit_components']=result.pop('extension_components');result['prior_normal_exit_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['owner_lock_finalization_correspondence']=copy.deepcopy(row)
+- result['new_owner_finalization_limits']={'normal_conditional_slice':True,'runtime_finalizer_chain':'UNAVAILABLE','numeric_descriptor_observation':None,'physical_resource_identity':None,'physical_lock_release':False,'runtime_exclusivity':False,'observer_join':None,'outer_lifecycle_complete':False,'selected_owner_continuity':'Explicit conditional premise, not qualification','complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_owner(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-STORED-FAILURE-REVOCATION-1';result['prior_owner_finalization_components']=result.pop('extension_components');result['prior_owner_finalization_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['stored_failure_revocation_correspondence']=copy.deepcopy(row)
++ result['new_stored_failure_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','guard_slot_error_continuity':'Explicit source-state premise, not intervening-history evidence','observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_stored(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
++def _selected(basis,context):
++ rows=[r for r in basis['prior']['contexts'] if r['context']==context];require(len(rows)==1,'STORED-CONSTRUCTED-CONTEXT');return rows[0]
++def failure_inputs(basis,context,invocation,token):
++ """Canonical reference correspondences, not physical identity observations."""
++ row=_selected(basis,context);refs=token['reference_bindings'];scope=token['scope'];child=invocation+'/client-operation';state_scope={**copy.deepcopy(scope),'invocation':child}
++ handle_scope=copy.deepcopy(row['client_handle_return_correspondence']['validated_scope']);handle_scope['instance']=copy.deepcopy(row['client_handle_return_correspondence']['instance_request_context'])
++ def references(kind):
++  sc=state_scope if kind=='state' else handle_scope;out={}
++  for role in ('client','token','owner','session','manager'):
++   out[role]={'scope':copy.deepcopy(sc),'symbol':refs[role]['symbol']}
++   if kind=='state':out[role]['kind']=role+'-reference'
++  for a,b in (('client.token','token'),('owners[token]','owner'),('owner.wrapper','session'),('session.managed','manager')):out[a]=copy.deepcopy(out[b])
++  out['owner_failed']=False
++  if kind=='state':
++   for role in ('manager-result','data-result'):out[role]={'kind':'state-result-reference','scope':copy.deepcopy(sc),'symbol':child+'/'+role}
++  return out
++ return {'child':child,'state_scope':state_scope,'handle_scope':handle_scope,'state_references':references('state'),'handle_references':references('handle')}
++def _failure(basis,case,token):
++ route=case['failure_route'];require(route in ('handle','state'),'STORED-FAILURE-ROUTE');p=case['failure_input'];require(type(p) is dict,'STORED-FAILURE-INPUT');b=failure_inputs(basis,case['context'],case['invocation'],token);row=_selected(basis,case['context']);c=basis['fresh']['coverage'];cat=row['client_'+route+'_return_correspondence']['declaration']
++ same(p.get('scope'),b[route+'_scope'],'STORED-FAILURE-SCOPE');same(p.get('references'),b[route+'_references'],'STORED-FAILURE-REFERENCES');require(p.get('occurrence')==b['child'] and p.get('callback')=='returns','STORED-FAILURE-INVOCATION-CALLBACK');same(p.get('cleanup'),dict.fromkeys(('revoke','format','cleanup','write','outer_fail'),'unobserved'),'STORED-NO-OPAQUE-CLEANUP-JOIN')
++ if route=='state':
++  anchor=row['client_state_return_correspondence']['validated_state_anchor'];result=c.client_state_projection(cat,p,{'scope':b['state_scope'],'state':anchor['validated_state']})
++ else:
++  # Finite arguments/outcomes are constructed premises. Scope/reference/error
++  # expectations come from validated predecessor evidence and source checks.
++  validated=copy.deepcopy(p);validated['scope']=copy.deepcopy(b['handle_scope']);validated['references']=copy.deepcopy(b['handle_references']);result=c.client_handle_projection(cat,basis['verification'],p,validated)
++ require(result['retained_original'] is True and result['completion']=='fixed-client-failure' and type(result['original_exception']) is dict,'STORED-NO-VALIDATED-FAILURE')
++ require(result['original_exception']['reference']==b['child']+'/error','STORED-ERROR-OCCURRENCE');same(case['failure_result'],result,'STORED-FAILURE-RESULT')
++ return result
+ def _premises(basis,case):
+- exact(case,'OWNER-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','exit_case','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-OWNER-LOCK-FINALIZATION','OWNER-CONSTRUCTED-CASE');selected=[r for r in _rows(basis) if r['context']==case['context']];require(len(selected)==1,'OWNER-CONSTRUCTED-CONTEXT');anchor=selected[0]['instance_anchor'];same(case['anchor'],anchor,'OWNER-CONSTRUCTED-ANCHOR')
+- ec=case['exit_case'];require(type(ec) is dict,'OWNER-EXIT-CASE');same({k:ec.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'OWNER-EXIT-INVOCATION');p=basis['fresh']['prior_module'];previous=p._construct_checked(basis['exit_basis'],ec)['projection'];scope=previous['scope'];sb=previous['session_binding'];mp=previous['marker_path']
+- return {'scope':copy.deepcopy(scope),'session_binding':copy.deepcopy(sb),'marker_path':copy.deepcopy(mp),'references':copy.deepcopy(previous['reference_bindings']),'exit_result':previous,'descriptor':basis['fresh']['coverage'].owner_descriptor_lineage(basis['catalogue'],scope,sb,mp),'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'STORED-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','failure_route','failure_input','failure_result','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-STORED-FAILURE-REVOCATION','STORED-CONSTRUCTED-CASE')
++ row=_selected(basis,case['context']);anchor=row['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'STORED-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'STORED-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'STORED-TOKEN-INVOCATION')
++ token=basis['routes']['token_module']._construct_checked(basis['token_basis'],tc)['projection'];require(token['completion']=='stored-failure-exceptional-frontier' and token['client_callback_completed_in_model'] is True,'STORED-TOKEN-FRONTIER')
++ failure=_failure(basis,case,token);refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue']
++ binding={'scope':copy.deepcopy(scope),'owner':copy.deepcopy(refs['owner']),'slot':'owner.failure','error':copy.deepcopy(failure['original_exception']),'child_operation':case['failure_input']['occurrence'],'route':case['failure_route'],'storage_source':copy.deepcopy(cat['source']['storage']),'source':copy.deepcopy(cat['source']['sources']['entry']),'guard_slot_premise':cat['source']['guard_slot_premise'],'runtime_reference_observation':None,'physical_object_identity':None}
++ return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_prefix':token,'failure_provenance':failure,'stored_error_binding':binding,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.owner_finalization_projection(cat,case['projection'],v);c.validate_owner_finalization_projection(cat,case['projection'],v,case['output'])
+- return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Finite constructed normal-route outcomes; same-invocation source-result fd lineage, not observed descriptor/resource identity. Selected-owner continuity remains conditional.','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.stored_failure_projection(cat,case['projection'],v);c.validate_stored_failure_projection(cat,case['projection'],v,case['output'])
++ return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Finite constructed callback normal return and same stored original at guard, source-qualified error/owner/token references, explicit selected-owner registry continuity. Not observed history or arbitrary callback safety.','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'OWNER-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'STORED-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_owner(data,catalogue(data))
++ data=inputs(root);return derive_stored(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'OWNER-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-OWNER-LOCK-FINALIZATION-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'owner_lock_finalization_correspondence' in c for c in v['contexts']),'OWNER-MANDATORY-RELATION');require(saved==enc(derive(root)),'OWNER-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_finalizer_chain':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'STORED-RECEIPT-BYTES');v=json.loads(saved);require(type(v) is dict and v.get('format')=='I164-STORED-FAILURE-REVOCATION-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and 'stored_failure_revocation_correspondence' in c for c in v['contexts']),'STORED-MANDATORY-RELATION');require(saved==enc(derive(root)),'STORED-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_stored_failure_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))
