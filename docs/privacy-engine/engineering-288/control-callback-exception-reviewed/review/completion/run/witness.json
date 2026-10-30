@@ -1,0 +1,83 @@
+{
+  "altered": {
+    "bytes": 7426416,
+    "sha256": "6bd6924dc819574dd2587b108ce1747ef7aaca7481ec0af4430d6f146f56c66d"
+  },
+  "changes": [
+    [
+      [
+        "contexts",
+        0,
+        "control_exception_revocation_correspondence",
+        "client_handler_applicable"
+      ],
+      false,
+      true
+    ],
+    [
+      [
+        "contexts",
+        0,
+        "control_exception_revocation_correspondence",
+        "declaration",
+        "source",
+        "new_explicit_cause_assignment"
+      ],
+      false,
+      true
+    ],
+    [
+      [
+        "contexts",
+        0,
+        "control_exception_revocation_correspondence",
+        "exception_chain_observation"
+      ],
+      null,
+      {
+        "existing_cause": null
+      }
+    ],
+    [
+      [
+        "contexts",
+        1,
+        "control_exception_revocation_correspondence",
+        "client_handler_applicable"
+      ],
+      false,
+      true
+    ],
+    [
+      [
+        "contexts",
+        1,
+        "control_exception_revocation_correspondence",
+        "declaration",
+        "source",
+        "new_explicit_cause_assignment"
+      ],
+      false,
+      true
+    ],
+    [
+      [
+        "contexts",
+        1,
+        "control_exception_revocation_correspondence",
+        "exception_chain_observation"
+      ],
+      null,
+      {
+        "existing_cause": null
+      }
+    ]
+  ],
+  "expected_error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+  "no_baseline_rerun": true,
+  "original": {
+    "bytes": 7426382,
+    "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+  },
+  "validator": "correspondence.validate(root, altered_bytes)"
+}

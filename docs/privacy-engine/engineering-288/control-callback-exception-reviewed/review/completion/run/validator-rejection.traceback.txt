@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/cc-public-completion-20261030/only_pending_check.py", line 78, in <module>
+    returned = m.validate(ROOT, altered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-control-20261030/recovered/code/correspondence.py", line 101, in validate
+    require(type(v) is dict and v.get('format')=='I164-CONTROL-EXCEPTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONTROL-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONTROL-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_control_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
+                                                                                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-control-20261030/recovered/code/correspondence.py", line 12, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CONTROL-STALE-OR-ALTERED-RECEIPT

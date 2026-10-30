@@ -1,0 +1,641 @@
+{
+  "author_independent": true,
+  "boundaries": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "candidate_source_preservation_at_recovery": {
+    "primary": {
+      "code/correspondence.py": {
+        "bytes": 13197,
+        "sha256": "fda42f3806dd1c367687e9f33b6b80f8707b28eaec6e245966f3334f310261fb"
+      },
+      "code/managed_coverage.py": {
+        "bytes": 275943,
+        "sha256": "4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06"
+      },
+      "source-evidence/prospective_entry.py": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "recovered": {
+      "code/correspondence.py": {
+        "bytes": 13197,
+        "sha256": "fda42f3806dd1c367687e9f33b6b80f8707b28eaec6e245966f3334f310261fb"
+      },
+      "code/managed_coverage.py": {
+        "bytes": 275943,
+        "sha256": "4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06"
+      },
+      "source-evidence/prospective_entry.py": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    }
+  },
+  "checkpoint": "Formal-Lab6-I164-control-callback-exception-INCOMPLETE-recovery",
+  "closure_established": false,
+  "construction_author": "SU-Engineering[288D]",
+  "created_utc": "2026-10-30T17:50:46.792960+00:00",
+  "exit_status": null,
+  "independent_result_groups": {
+    "coordinated": {
+      "corroborated_progress_stdout_rows": 103,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "missing_progress_and_stdout": [
+        {
+          "ordinal": 104,
+          "record": {
+            "check": "direct submitted-output coordinated claim (1, 'owner_failure_guard_evaluated_in_model')",
+            "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+            "result": "REJECTED"
+          }
+        },
+        {
+          "ordinal": 105,
+          "record": {
+            "check": "direct submitted-output coordinated claim (1, 'client_handler_entered_in_model')",
+            "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+            "result": "REJECTED"
+          }
+        },
+        {
+          "ordinal": 106,
+          "record": {
+            "check": "direct submitted-output coordinated claim (1, 'new_explicit_cause_assignment_established_in_model')",
+            "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+            "result": "REJECTED"
+          }
+        }
+      ],
+      "progress_identity": {
+        "bytes": 12598,
+        "sha256": "f0321fa6c008431987b1c9cfd31e334431a727029cd61893ee1c96be2222d58b"
+      },
+      "record_reconciliation": "QUALIFIED 106/103/103; missing rows not repaired; cause UNESTABLISHED",
+      "result_identity": {
+        "bytes": 13041,
+        "sha256": "628afa2fe07227ca3ae59f55ba009996b6503deb87d6b2ea3f7c7495c47297a3"
+      },
+      "result_outcomes": {
+        "PASS": 2,
+        "REJECTED": 104
+      },
+      "result_recorded_controls": 106,
+      "stdout_identity": {
+        "bytes": 6496,
+        "sha256": "55329b7d6d9a4dc9af9326cd0c0cb9d28beb4a5c54aaf56932d5890dd732b6c2"
+      }
+    },
+    "fresh-semantic": {
+      "corroborated_progress_stdout_rows": 2,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "missing_progress_and_stdout": [],
+      "progress_identity": {
+        "bytes": 202,
+        "sha256": "edcfe67df1a3063b597d127e63f615d998f375985db85de26880879f016c75c3"
+      },
+      "record_reconciliation": "PASS",
+      "result_identity": {
+        "bytes": 551,
+        "sha256": "7af85d78ee1597443a63d1b81ae9c9215ad948590922e86de45c6dcde66b2516"
+      },
+      "result_outcomes": {
+        "PASS": 1,
+        "REJECTED": 1
+      },
+      "result_recorded_controls": 2,
+      "stdout_identity": {
+        "bytes": 115,
+        "sha256": "2ad58eaa05c2552d9efde00cc6b8c0e766c7d138a5dedcd14e25b7982cfcf015"
+      }
+    },
+    "primary": {
+      "corroborated_progress_stdout_rows": 184,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "missing_progress_and_stdout": [],
+      "progress_identity": {
+        "bytes": 20771,
+        "sha256": "051b0c9d07198377ddb1e9730768c493e821e17523e0ec0f9faaab92b88b53e6"
+      },
+      "record_reconciliation": "PASS",
+      "result_identity": {
+        "bytes": 20311,
+        "sha256": "43b8844650f0baca92ea3347721448e36a7b5936de1abbf79e9f8b25ce748f74"
+      },
+      "result_outcomes": {
+        "PASS": 51,
+        "REJECTED": 133
+      },
+      "result_recorded_controls": 184,
+      "stdout_identity": {
+        "bytes": 11308,
+        "sha256": "d59d438a2e5b95800317edbdbd884dd9d60a616490ff0793a06099f882ce56fc"
+      }
+    },
+    "recovered": {
+      "corroborated_progress_stdout_rows": 158,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "missing_progress_and_stdout": [],
+      "progress_identity": {
+        "bytes": 17543,
+        "sha256": "ed2a70b5579ffc03009911d19fff8ceeface0520cc7f5698d81de1e880008d36"
+      },
+      "record_reconciliation": "PASS",
+      "result_identity": {
+        "bytes": 17199,
+        "sha256": "a6f007d298adfea9522d04269ed592aa1d300c62f4823e3db207e168755e01ca"
+      },
+      "result_outcomes": {
+        "PASS": 43,
+        "REJECTED": 115
+      },
+      "result_recorded_controls": 158,
+      "stdout_identity": {
+        "bytes": 9408,
+        "sha256": "cabcbef0087edc7e83cef8d94bced79139881f193c703fbd6d5ce3d7c378f7e0"
+      }
+    },
+    "source": {
+      "corroborated_progress_stdout_rows": 70,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "missing_progress_and_stdout": [],
+      "progress_identity": {
+        "bytes": 7626,
+        "sha256": "f7471dd5995cf9b93d5ab99d2858577afbea98b58ab6ebbbfb37c92a0ca0fbad"
+      },
+      "record_reconciliation": "PASS",
+      "result_identity": {
+        "bytes": 7772,
+        "sha256": "8dfeaad055d48119bac36ac4b44e6f3fd26be43bf2ee08ad5ce0e7da2c8657c3"
+      },
+      "result_outcomes": {
+        "PASS": 38,
+        "REJECTED": 32
+      },
+      "result_recorded_controls": 70,
+      "stdout_identity": {
+        "bytes": 4711,
+        "sha256": "13c5e8cbc1b99ae72a7ac11f0e455fad6b9b18178465225e918ca471fc45ee5d"
+      }
+    }
+  },
+  "input": {
+    "bytes": 124424355,
+    "sha256": "ed07f4ceb638f1c967cb3936b0051f5c0c8d781c95d26838b7bdc7baba7f4c20"
+  },
+  "input_entries": 3069,
+  "input_manifested_hashes": 3068,
+  "limitations": {
+    "control_constructor_exception_continuation": "OUTSIDE SLICE",
+    "existing_cause_context_suppression": "UNKNOWN",
+    "full_outer_cleanup": "UNEXPANDED",
+    "no_final_public_rejection_inferred_from_other_passes": true,
+    "observer": "Separate Client.state call remains UNJOINED",
+    "physical_reference_identity": "UNESTABLISHED",
+    "runtime_control_finally_removal_observations": "UNAVAILABLE",
+    "saved_traced_invocations": 18,
+    "selected_owner_continuity": "CONDITIONAL"
+  },
+  "partial_public_log_reconciliation": "Nine progress rows match captured stdout exactly; no group RESULT exists",
+  "partial_public_logged_rows": 9,
+  "partial_public_rows_in_completed_total": false,
+  "pending_check": {
+    "actual_result": "UNRECOVERED / UNCONFIRMED",
+    "also_unfinished": "End-of-public-group recovered-root verification and final RESULT/call-record write",
+    "entry_point": "correspondence.validate(root, enc(q))",
+    "expected_result": "ValueError containing CONTROL-STALE-OR-ALTERED-RECEIPT",
+    "label": "public coordinated client-handler and cause invention",
+    "mutated_receipt_origin": "In-memory value described by the preserved driver; no saved mutated input bytes recovered",
+    "mutated_receipt_saved": false,
+    "mutation": "For both contexts, set control_exception_revocation_correspondence.exception_chain_observation to {existing_cause: null}, client_handler_applicable to true, and declaration.source.new_explicit_cause_assignment to true. Validate the changed serialized receipt.",
+    "mutation_source_identity": {
+      "bytes": 2936,
+      "mtime_ns": 1793379553446576603,
+      "sha256": "cf867d8c80aa98b04e38378db8b8e6a6ab23b620cda3d829a2cef8a69f794342"
+    },
+    "ordinal_in_public_driver": 10
+  },
+  "preserved_recovery_packaging_failure": {
+    "controls_run": 0,
+    "existing_records_changed": false,
+    "path": "failures/packaging-record-reconciliation",
+    "reason": "Detected existing 106/103/103 independent logging discrepancy"
+  },
+  "preserved_review_harness_failure": {
+    "controls": 0,
+    "included_in_completed_total": false,
+    "path": "review-files/failures/audit-membership-level"
+  },
+  "previous_composition_audit": {
+    "added_definitions": [
+      "compile_control_exception",
+      "control_exception_binding",
+      "control_exception_projection",
+      "control_exception_source",
+      "validate_control_exception",
+      "validate_control_exception_projection"
+    ],
+    "all_prior_receipt_fields_preserved": true,
+    "all_reviewed_context_relations_preserved": true,
+    "declared_diff_exact": true,
+    "frozen_nonmanifest_members_preserved": 3040,
+    "inherited_definitions": 111,
+    "intermediate_cut_outer_identity_freshly_verified": false,
+    "new_file_pins": 12,
+    "new_receipt": {
+      "bytes": 7426382,
+      "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+    },
+    "no_completed_suite_reruns": true,
+    "nonfunction_AST_unchanged": true,
+    "outside_synchronizer_scope_claim": "Explicitly qualified by preserved clarification; not independently established",
+    "prior_Engineering_primary_qualification": [
+      308,
+      307,
+      303
+    ],
+    "prior_cause": "UNESTABLISHED",
+    "prior_independent_controls_retained_not_rerun": 459,
+    "prior_missing_progress_ordinal": 304,
+    "prior_missing_stdout_ordinals": [
+      304,
+      305,
+      306,
+      307,
+      308
+    ],
+    "prior_separate_recovered_public": [
+      78,
+      5
+    ],
+    "source_identities": {
+      "lab_bootstrap.py": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      },
+      "live_connection.py": {
+        "bytes": 5717,
+        "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+      },
+      "prospective_entry.py": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "supplied_results_inspected": {
+      "primary": {
+        "controls": 276,
+        "identity": {
+          "bytes": 36404,
+          "sha256": "78e415b330ad2371f4d9eb9cdafd19a793cb861b7a1d24e7e0c8c88dc32cb122"
+        },
+        "outcomes": {
+          "PASS": 81,
+          "REJECTED": 195
+        },
+        "progress_stdout_result_exact": true
+      },
+      "public": {
+        "controls": 7,
+        "identity": {
+          "bytes": 1305,
+          "sha256": "2d04f753d7977ad817aaad99c72f554f443cc24c47a7c0e8f2810d58da09b46e"
+        },
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 6
+        },
+        "progress_stdout_result_exact": true
+      },
+      "recovered": {
+        "controls": 64,
+        "identity": {
+          "bytes": 8162,
+          "sha256": "6f73d56e45e1bdc968f0da0dc466bbff71608fe093956cedb0b81b4b3ce78380"
+        },
+        "outcomes": {
+          "PASS": 26,
+          "REJECTED": 38
+        },
+        "progress_stdout_result_exact": true
+      }
+    },
+    "synchronizer_causation": "UNESTABLISHED",
+    "zero_control_failures": [
+      {
+        "attempt": "initial-membership",
+        "controls": 0,
+        "origin": "UNESTABLISHED",
+        "outside_strict_predecessor": true,
+        "partials": [
+          {
+            "declared_in_failed_outer_manifest": true,
+            "identity": {
+              "bytes": 7864320,
+              "sha256": "4f12d2c7acdc1208abe4404fb3e1705062b27dbb92c09320827f8f4818bd8875"
+            },
+            "original_extra_path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/.closure-review.zip.6crpjg",
+            "preserved_path": "failures/initial-membership/partials/1",
+            "undeclared_in_strict_predecessor": true
+          },
+          {
+            "declared_in_failed_outer_manifest": true,
+            "identity": {
+              "bytes": 2776568,
+              "sha256": "3ddfe77e11359132d3106dcd1b9434150fbed4fedaecfe49f0d1996f1d5798d9"
+            },
+            "original_extra_path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/results/primary/.corrected-receipt.json.1ksLFB",
+            "preserved_path": "failures/initial-membership/partials/2",
+            "undeclared_in_strict_predecessor": true
+          },
+          {
+            "declared_in_failed_outer_manifest": true,
+            "identity": {
+              "bytes": 6553600,
+              "sha256": "c2d528bb3ca359220fa7163f967cffea0041616592f3cf68645696d01b168fe8"
+            },
+            "original_extra_path": "retained/bare/retained/callback/retained/review/failures/second-root-membership/.undeclared-partial.bin.3tKGvl",
+            "preserved_path": "failures/initial-membership/partials/3",
+            "undeclared_in_strict_predecessor": true
+          }
+        ],
+        "result_identity": {
+          "bytes": 3085,
+          "sha256": "eb432dfb89205c4f285dd274164149b0f7481a8ce6728b785b7131778763819d"
+        }
+      },
+      {
+        "attempt": "second-membership",
+        "controls": 0,
+        "origin": "UNESTABLISHED",
+        "outside_strict_predecessor": true,
+        "partials": [
+          {
+            "declared_in_failed_outer_manifest": false,
+            "identity": {
+              "bytes": 25952256,
+              "sha256": "e04f51b2f8236886c5d4d7a0b1b67ee53b233bde6eebc824d1721444500d8645"
+            },
+            "original_extra_path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/.closure-review.zip.esDQwu",
+            "preserved_path": "failures/second-membership/partial.bin",
+            "undeclared_in_strict_predecessor": true
+          }
+        ],
+        "result_identity": {
+          "bytes": 3613,
+          "sha256": "b82c98bf10d5f3becbb31e1a816f38a29600882faff1cca3612886c4b82c1549"
+        }
+      }
+    ]
+  },
+  "previous_integrity_records": {
+    "primary": {
+      "CRC": "PASS",
+      "all_member_comparisons": "EXACT",
+      "archive": {
+        "bytes": 124424355,
+        "sha256": "ed07f4ceb638f1c967cb3936b0051f5c0c8d781c95d26838b7bdc7baba7f4c20"
+      },
+      "cut_members_unchanged": 3040,
+      "declared_composition": "2938 predecessor + 64 prior-review non-input + 67 current = 3069",
+      "entries": 3069,
+      "extracted_bytes": 543413358,
+      "final_added_members": 27,
+      "manifest": {
+        "bytes": 951101,
+        "sha256": "ab067a786180c5b4c194c1f181908e13185ad879efeff050f0b4e69c04dc2b74"
+      },
+      "manifested_hashes": 3068,
+      "predecessor": {
+        "bytes": 88596749,
+        "sha256": "c24b08d598115b1118121aeb6c9d42bbdd780a58a98375a29b96224e8c825876"
+      },
+      "preserved_predecessor_members": 2938,
+      "preserved_prior_review_members": 64,
+      "prior_review": {
+        "bytes": 86457161,
+        "sha256": "cd33f568c226319866e2c03aec678bc623e364369b962f261176ec54743fb6ba"
+      },
+      "root": {
+        "directories": 853,
+        "files": 3069,
+        "hashes": "PASS",
+        "safe_exact_membership": "PASS"
+      },
+      "root_path": "/workspace/review-evidence/FL6-control-20261030/primary",
+      "safe_exact_membership": "PASS"
+    },
+    "recovered": {
+      "CRC": "PASS",
+      "all_member_comparisons": "EXACT",
+      "archive": {
+        "bytes": 124424355,
+        "sha256": "ed07f4ceb638f1c967cb3936b0051f5c0c8d781c95d26838b7bdc7baba7f4c20"
+      },
+      "cut_members_unchanged": 3040,
+      "declared_composition": "2938 predecessor + 64 prior-review non-input + 67 current = 3069",
+      "entries": 3069,
+      "extracted_bytes": 543413358,
+      "final_added_members": 27,
+      "manifest": {
+        "bytes": 951101,
+        "sha256": "ab067a786180c5b4c194c1f181908e13185ad879efeff050f0b4e69c04dc2b74"
+      },
+      "manifested_hashes": 3068,
+      "predecessor": {
+        "bytes": 88596749,
+        "sha256": "c24b08d598115b1118121aeb6c9d42bbdd780a58a98375a29b96224e8c825876"
+      },
+      "preserved_predecessor_members": 2938,
+      "preserved_prior_review_members": 64,
+      "prior_review": {
+        "bytes": 86457161,
+        "sha256": "cd33f568c226319866e2c03aec678bc623e364369b962f261176ec54743fb6ba"
+      },
+      "root": {
+        "directories": 853,
+        "files": 3069,
+        "hashes": "PASS",
+        "safe_exact_membership": "PASS"
+      },
+      "root_path": "/workspace/review-evidence/FL6-control-20261030/recovered",
+      "safe_exact_membership": "PASS"
+    }
+  },
+  "process_inspection": {
+    "classification": "NO_MATCHING_PROCESS; FINAL_PUBLIC_RESULT_AND_EXIT_STATUS_UNAVAILABLE",
+    "exit_status": null,
+    "exit_status_reason": "No final status available from the prior tool session or saved records",
+    "groups": {
+      "coordinated": {
+        "checks": 106,
+        "error": null,
+        "result": "PASS",
+        "result_sha256": "628afa2fe07227ca3ae59f55ba009996b6503deb87d6b2ea3f7c7495c47297a3"
+      },
+      "fresh-public": {
+        "result_file_present": false
+      },
+      "fresh-semantic": {
+        "checks": 2,
+        "error": null,
+        "result": "PASS",
+        "result_sha256": "7af85d78ee1597443a63d1b81ae9c9215ad948590922e86de45c6dcde66b2516"
+      },
+      "primary": {
+        "checks": 184,
+        "error": null,
+        "result": "PASS",
+        "result_sha256": "43b8844650f0baca92ea3347721448e36a7b5936de1abbf79e9f8b25ce748f74"
+      },
+      "recovered": {
+        "checks": 158,
+        "error": null,
+        "result": "PASS",
+        "result_sha256": "a6f007d298adfea9522d04269ed592aa1d300c62f4823e3db207e168755e01ca"
+      },
+      "source": {
+        "checks": 70,
+        "error": null,
+        "result": "PASS",
+        "result_sha256": "8dfeaad055d48119bac36ac4b44e6f3fd26be43bf2ee08ad5ce0e7da2c8657c3"
+      }
+    },
+    "last_known_pid": 11584,
+    "last_known_tool_session": 83132,
+    "matching_validator_processes": [],
+    "observed_utc": "2026-10-30T17:45:01.386591+00:00",
+    "pending_public": {
+      "CLI-result.json": {
+        "bytes": 253,
+        "mtime_ns": 1793380973292879651,
+        "sha256": "92aedfc6f5277aafbca3e3fcf3882ad8f11ea450289242f45d6421e624da0734"
+      },
+      "CLI.stdout": {
+        "bytes": 266,
+        "mtime_ns": 1793380973292597553,
+        "sha256": "d66a420c79004775d15d0f675089f9b45b0631890bc1516de530840b1ed57f0a"
+      },
+      "RESULT.json": {
+        "present": false
+      },
+      "failure.txt": {
+        "present": false
+      },
+      "final-verification.json": {
+        "present": false
+      },
+      "progress.jsonl": {
+        "bytes": 1065,
+        "mtime_ns": 1793380974580598431,
+        "sha256": "68d9ca1008d94c70f5457da0cfd664087859fe9a1a136a8fe210ad28247347da"
+      },
+      "recorded_rows": 9
+    },
+    "root_directories_present": {
+      "primary": true,
+      "recovered": true
+    },
+    "tool_session_lookup": "Unknown process id 83132"
+  },
+  "progress_stdout_corroborated_independent_rows": 517,
+  "public_pristine_CLI_result": {
+    "actual_admission": false,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "receipt": {
+      "bytes": 7426382,
+      "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+    },
+    "result": "PASS",
+    "runtime_control_exception_revocation_chain": "UNAVAILABLE"
+  },
+  "result_recorded_independent_controls_preserved": 520,
+  "review_author": "Formal-Lab[6]",
+  "review_verdict": "INCOMPLETE \u2014 final public rejection unconfirmed; no closure verdict issued",
+  "supplied_results": {
+    "four_forensic_partials": "PRESERVED",
+    "historical_gap_cause": "UNESTABLISHED",
+    "historical_missing_progress_ordinal": 304,
+    "historical_missing_stdout_ordinals": [
+      304,
+      305,
+      306,
+      307,
+      308
+    ],
+    "historical_primary_discrepancy": [
+      308,
+      307,
+      303
+    ],
+    "historical_separate_recovered_public": [
+      78,
+      5
+    ],
+    "log_reconciliation": "Previously inspected and preserved; not rerun",
+    "primary": 276,
+    "public_process": 7,
+    "recovered_root": 64,
+    "two_zero_control_failures": "PRESERVED"
+  },
+  "target": "I164-control-callback-exception-correspondence-1.zip",
+  "termination_cause": "UNESTABLISHED; interrupted wait is not evidence of a particular process exit or signal",
+  "this_continuation": {
+    "Engineering_campaign_reruns": 0,
+    "acquisitions": 0,
+    "candidate_code_changes": 0,
+    "completed_control_reruns": 0,
+    "database_connections": 0,
+    "duplicate_validator_launches": 0,
+    "new_validator_processes": 0,
+    "runtime_or_session_operations": 0,
+    "scope": "Bounded process/log inspection, record reconciliation and integrity-verified recovery packaging only"
+  },
+  "unsupported_unqualified_execution_total_adopted": false
+}

@@ -1,0 +1,184 @@
+1 fresh mandatory validation of actual predecessor chain PASS
+2 fresh derived receipt matches all saved bytes PASS
+3 preserved mandatory relation (0, 'token_registration_correspondence') PASS
+4 preserved mandatory relation (0, 'stored_failure_revocation_correspondence') PASS
+5 preserved mandatory relation (0, 'callback_stored_failure_correspondence') PASS
+6 preserved mandatory relation (0, 'callback_bare_rethrow_correspondence') PASS
+7 preserved mandatory relation (1, 'token_registration_correspondence') PASS
+8 preserved mandatory relation (1, 'stored_failure_revocation_correspondence') PASS
+9 preserved mandatory relation (1, 'callback_stored_failure_correspondence') PASS
+10 preserved mandatory relation (1, 'callback_bare_rethrow_correspondence') PASS
+11 normal control exceptional continuation 0 PASS
+12 no selected owner failure guard (0, False, True) PASS
+13 no selected owner failure guard (0, True, False) PASS
+14 no selected owner failure guard (0, False, False) PASS
+15 distinct invocation with equal kinds 0 PASS
+16 equal error role does not merge occurrences 0 PASS
+17 frontier (0, 'finally-enter', 'raise') PASS
+18 false completion (0, 'finally-enter', 'raise') REJECTED
+19 false outward control propagation (0, 'finally-enter', 'raise') REJECTED
+20 frontier (0, 'finally-enter', 'process-termination') PASS
+21 false completion (0, 'finally-enter', 'process-termination') REJECTED
+22 false outward control propagation (0, 'finally-enter', 'process-termination') REJECTED
+23 frontier (0, 'finally-enter', 'unobserved') PASS
+24 false completion (0, 'finally-enter', 'unobserved') REJECTED
+25 false outward control propagation (0, 'finally-enter', 'unobserved') REJECTED
+26 frontier (0, 'removal-attempt', 'raise') PASS
+27 false completion (0, 'removal-attempt', 'raise') REJECTED
+28 false outward control propagation (0, 'removal-attempt', 'raise') REJECTED
+29 frontier (0, 'removal-attempt', 'process-termination') PASS
+30 false completion (0, 'removal-attempt', 'process-termination') REJECTED
+31 false outward control propagation (0, 'removal-attempt', 'process-termination') REJECTED
+32 frontier (0, 'removal-attempt', 'unobserved') PASS
+33 false completion (0, 'removal-attempt', 'unobserved') REJECTED
+34 false outward control propagation (0, 'removal-attempt', 'unobserved') REJECTED
+35 frontier (0, 'removal-complete', 'raise') PASS
+36 false completion (0, 'removal-complete', 'raise') REJECTED
+37 false outward control propagation (0, 'removal-complete', 'raise') REJECTED
+38 frontier (0, 'removal-complete', 'process-termination') PASS
+39 false completion (0, 'removal-complete', 'process-termination') REJECTED
+40 false outward control propagation (0, 'removal-complete', 'process-termination') REJECTED
+41 frontier (0, 'removal-complete', 'unobserved') PASS
+42 false completion (0, 'removal-complete', 'unobserved') REJECTED
+43 false outward control propagation (0, 'removal-complete', 'unobserved') REJECTED
+44 coordinated missing stage (0, 0) REJECTED
+45 coordinated duplicate stage (0, 0) REJECTED
+46 coordinated missing stage (0, 1) REJECTED
+47 coordinated duplicate stage (0, 1) REJECTED
+48 coordinated missing stage (0, 2) REJECTED
+49 coordinated duplicate stage (0, 2) REJECTED
+50 coordinated reordered stage (0, 0) REJECTED
+51 coordinated reordered stage (0, 1) REJECTED
+52 wrong binding (0, ('control_error', 'local_handler_binding')) REJECTED
+53 wrong binding (0, ('control_error', 'existing_cause')) REJECTED
+54 wrong binding (0, ('control_error', 'existing_context')) REJECTED
+55 wrong binding (0, ('control_error', 'existing_suppression')) REJECTED
+56 wrong binding (0, ('control_error', 'reference')) REJECTED
+57 wrong binding (0, ('control_error', 'callback_occurrence')) REJECTED
+58 wrong binding (0, ('invocation',)) REJECTED
+59 wrong binding (0, ('context',)) REJECTED
+60 wrong binding (0, ('anchor', 'context')) REJECTED
+61 wrong binding (0, ('token_case', 'control_present')) REJECTED
+62 coordinated binding (0, 'owner') REJECTED
+63 coordinated binding (0, 'token') REJECTED
+64 coordinated binding (0, 'control') REJECTED
+65 coordinated binding (0, 'error') REJECTED
+66 coordinated binding (0, 'acquisition') REJECTED
+67 coordinated wrong callback-error occurrence 0 REJECTED
+68 unsupported claim (0, 'subsequent_client_execution_in_model') REJECTED
+69 unsupported claim (0, 'client_handler_entered_in_model') REJECTED
+70 unsupported claim (0, 'owner_failure_guard_evaluated_in_model') REJECTED
+71 unsupported claim (0, 'new_explicit_cause_assignment_established_in_model') REJECTED
+72 unsupported claim (0, 'runtime_observation') REJECTED
+73 unsupported claim (0, 'control_reaches_launcher_established') REJECTED
+74 unsupported claim (0, 'actual_admission') REJECTED
+75 unsupported claim (0, 'obligations_discharged') REJECTED
+76 unsupported claim (0, 'run_success_established') REJECTED
+77 invented chain evidence (0, 'existing_cause') REJECTED
+78 invented chain evidence (0, 'existing_context') REJECTED
+79 invented chain evidence (0, 'existing_suppression') REJECTED
+80 invented chain evidence (0, 'cleanup_context_link') REJECTED
+81 invented chain evidence (0, 'physical_reference_observation') REJECTED
+82 exact nested type (0, ('control_error', 'role')) REJECTED
+83 exact nested type (0, ('outcomes',)) REJECTED
+84 exact nested type (0, ('control_error',)) REJECTED
+85 exact nested type (0, ('output', 'control_callback_raised_in_model')) REJECTED
+86 exact nested type (0, ('output', 'subsequent_client_execution_in_model')) REJECTED
+87 subclassed literal key 0 REJECTED
+88 returned result does not alter pristine expectations 0 PASS
+89 producer output boundary 0 REJECTED
+90 normal control exceptional continuation 1 PASS
+91 no selected owner failure guard (1, False, True) PASS
+92 no selected owner failure guard (1, True, False) PASS
+93 no selected owner failure guard (1, False, False) PASS
+94 distinct invocation with equal kinds 1 PASS
+95 equal error role does not merge occurrences 1 PASS
+96 frontier (1, 'finally-enter', 'raise') PASS
+97 false completion (1, 'finally-enter', 'raise') REJECTED
+98 false outward control propagation (1, 'finally-enter', 'raise') REJECTED
+99 frontier (1, 'finally-enter', 'process-termination') PASS
+100 false completion (1, 'finally-enter', 'process-termination') REJECTED
+101 false outward control propagation (1, 'finally-enter', 'process-termination') REJECTED
+102 frontier (1, 'finally-enter', 'unobserved') PASS
+103 false completion (1, 'finally-enter', 'unobserved') REJECTED
+104 false outward control propagation (1, 'finally-enter', 'unobserved') REJECTED
+105 frontier (1, 'removal-attempt', 'raise') PASS
+106 false completion (1, 'removal-attempt', 'raise') REJECTED
+107 false outward control propagation (1, 'removal-attempt', 'raise') REJECTED
+108 frontier (1, 'removal-attempt', 'process-termination') PASS
+109 false completion (1, 'removal-attempt', 'process-termination') REJECTED
+110 false outward control propagation (1, 'removal-attempt', 'process-termination') REJECTED
+111 frontier (1, 'removal-attempt', 'unobserved') PASS
+112 false completion (1, 'removal-attempt', 'unobserved') REJECTED
+113 false outward control propagation (1, 'removal-attempt', 'unobserved') REJECTED
+114 frontier (1, 'removal-complete', 'raise') PASS
+115 false completion (1, 'removal-complete', 'raise') REJECTED
+116 false outward control propagation (1, 'removal-complete', 'raise') REJECTED
+117 frontier (1, 'removal-complete', 'process-termination') PASS
+118 false completion (1, 'removal-complete', 'process-termination') REJECTED
+119 false outward control propagation (1, 'removal-complete', 'process-termination') REJECTED
+120 frontier (1, 'removal-complete', 'unobserved') PASS
+121 false completion (1, 'removal-complete', 'unobserved') REJECTED
+122 false outward control propagation (1, 'removal-complete', 'unobserved') REJECTED
+123 coordinated missing stage (1, 0) REJECTED
+124 coordinated duplicate stage (1, 0) REJECTED
+125 coordinated missing stage (1, 1) REJECTED
+126 coordinated duplicate stage (1, 1) REJECTED
+127 coordinated missing stage (1, 2) REJECTED
+128 coordinated duplicate stage (1, 2) REJECTED
+129 coordinated reordered stage (1, 0) REJECTED
+130 coordinated reordered stage (1, 1) REJECTED
+131 wrong binding (1, ('control_error', 'local_handler_binding')) REJECTED
+132 wrong binding (1, ('control_error', 'existing_cause')) REJECTED
+133 wrong binding (1, ('control_error', 'existing_context')) REJECTED
+134 wrong binding (1, ('control_error', 'existing_suppression')) REJECTED
+135 wrong binding (1, ('control_error', 'reference')) REJECTED
+136 wrong binding (1, ('control_error', 'callback_occurrence')) REJECTED
+137 wrong binding (1, ('invocation',)) REJECTED
+138 wrong binding (1, ('context',)) REJECTED
+139 wrong binding (1, ('anchor', 'context')) REJECTED
+140 wrong binding (1, ('token_case', 'control_present')) REJECTED
+141 coordinated binding (1, 'owner') REJECTED
+142 coordinated binding (1, 'token') REJECTED
+143 coordinated binding (1, 'control') REJECTED
+144 coordinated binding (1, 'error') REJECTED
+145 coordinated binding (1, 'acquisition') REJECTED
+146 coordinated wrong callback-error occurrence 1 REJECTED
+147 unsupported claim (1, 'subsequent_client_execution_in_model') REJECTED
+148 unsupported claim (1, 'client_handler_entered_in_model') REJECTED
+149 unsupported claim (1, 'owner_failure_guard_evaluated_in_model') REJECTED
+150 unsupported claim (1, 'new_explicit_cause_assignment_established_in_model') REJECTED
+151 unsupported claim (1, 'runtime_observation') REJECTED
+152 unsupported claim (1, 'control_reaches_launcher_established') REJECTED
+153 unsupported claim (1, 'actual_admission') REJECTED
+154 unsupported claim (1, 'obligations_discharged') REJECTED
+155 unsupported claim (1, 'run_success_established') REJECTED
+156 invented chain evidence (1, 'existing_cause') REJECTED
+157 invented chain evidence (1, 'existing_context') REJECTED
+158 invented chain evidence (1, 'existing_suppression') REJECTED
+159 invented chain evidence (1, 'cleanup_context_link') REJECTED
+160 invented chain evidence (1, 'physical_reference_observation') REJECTED
+161 exact nested type (1, ('control_error', 'role')) REJECTED
+162 exact nested type (1, ('outcomes',)) REJECTED
+163 exact nested type (1, ('control_error',)) REJECTED
+164 exact nested type (1, ('output', 'control_callback_raised_in_model')) REJECTED
+165 exact nested type (1, ('output', 'subsequent_client_execution_in_model')) REJECTED
+166 subclassed literal key 1 REJECTED
+167 returned result does not alter pristine expectations 1 PASS
+168 producer output boundary 1 REJECTED
+169 mutated returned contexts and nested order REJECTED
+170 fresh rows unaffected by result mutations PASS
+171 semantic omitted context REJECTED
+172 semantic duplicated context REJECTED
+173 semantic invented runtime frames REJECTED
+174 semantic imported owner failure guard REJECTED
+175 authenticated missing evidence REJECTED
+176 authenticated altered evidence REJECTED
+177 preserved bare public bridge core 0 PASS
+178 preserved bare public bridge core 1 PASS
+179 preserved stored-client bridge core 0 PASS
+180 preserved stored-client bridge core 3 PASS
+181 preserved stored-normal bridge core 0 PASS
+182 preserved stored-normal bridge core 3 PASS
+183 preserved normal-token bridge core 0 PASS
+184 preserved normal-token bridge core 1 PASS

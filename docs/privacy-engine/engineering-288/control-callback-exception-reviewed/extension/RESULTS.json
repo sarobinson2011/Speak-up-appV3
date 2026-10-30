@@ -1,0 +1,276 @@
+{
+  "actual_CLI_counted_once_in_public_group": true,
+  "checkpoint": "I164-control-callback-exception-correspondence-1",
+  "construction_author": "SU-Engineering[288D]",
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "frozen_members_unchanged": true,
+  "implementation": {
+    "added_producer_functions": [
+      "compile_control_exception",
+      "control_exception_binding",
+      "control_exception_projection",
+      "control_exception_source",
+      "validate_control_exception",
+      "validate_control_exception_projection"
+    ],
+    "historical_validators_modified": 0,
+    "inherited_producer_functions_classes_unchanged": 111,
+    "intentional_implementation_changes": {
+      "code/correspondence.py": {
+        "after": {
+          "bytes": 13197,
+          "sha256": "fda42f3806dd1c367687e9f33b6b80f8707b28eaec6e245966f3334f310261fb"
+        },
+        "before": {
+          "bytes": 13337,
+          "sha256": "bddcfa2bc5153ab2e1b3f3b51a7452614dd2c28c81f5e721f7e0415d5674f3b8"
+        }
+      },
+      "code/managed_coverage.py": {
+        "after": {
+          "bytes": 275943,
+          "sha256": "4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06"
+        },
+        "before": {
+          "bytes": 263743,
+          "sha256": "c684cb3e599b4a5d0c9616436f6f4b341f96c47eaf10cee6b4194d0d6a357622"
+        }
+      }
+    },
+    "runtime_sources_changed": 0
+  },
+  "independent_review": "PENDING",
+  "limits": {
+    "control_constructor_exception_expansion": false,
+    "control_exception_producer_history": "UNAVAILABLE",
+    "durability_exclusivity_qualification": "UNESTABLISHED",
+    "existing_cause_context_suppression": "UNKNOWN",
+    "outer_cleanup_complete": false,
+    "owner_failure_guard_applicable": false,
+    "physical_reference_identity": "UNESTABLISHED",
+    "repetition_lifetime_completeness": false,
+    "runtime_control_exception_revocation_chain": "UNAVAILABLE",
+    "saved_traced_invocations": 18,
+    "selected_owner_continuity": "Explicit conditional premise; not runtime exclusivity",
+    "separate_unjoined_observer": 1,
+    "subsequent_client_execution_established": false
+  },
+  "new_engineering_completed_controls": 347,
+  "new_engineering_controls": {
+    "primary": {
+      "checks": 276,
+      "outcomes": {
+        "PASS": 81,
+        "REJECTED": 195
+      },
+      "progress_and_stdout_reconciled": true,
+      "result_identity": {
+        "bytes": 36404,
+        "sha256": "78e415b330ad2371f4d9eb9cdafd19a793cb861b7a1d24e7e0c8c88dc32cb122"
+      },
+      "seconds": 3503.663416899006
+    },
+    "public": {
+      "checks": 7,
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 6
+      },
+      "progress_and_stdout_reconciled": true,
+      "result_identity": {
+        "bytes": 1305,
+        "sha256": "2d04f753d7977ad817aaad99c72f554f443cc24c47a7c0e8f2810d58da09b46e"
+      },
+      "seconds": 2540.0996507750024
+    },
+    "recovered": {
+      "checks": 64,
+      "outcomes": {
+        "PASS": 26,
+        "REJECTED": 38
+      },
+      "progress_and_stdout_reconciled": true,
+      "result_identity": {
+        "bytes": 8162,
+        "sha256": "6f73d56e45e1bdc968f0da0dc466bbff71608fe093956cedb0b81b4b3ce78380"
+      },
+      "seconds": 1250.8110589860007
+    }
+  },
+  "new_failed_attempts": [
+    {
+      "candidate_changed": false,
+      "checks": 0,
+      "extra_entries": [
+        {
+          "bytes": 7864320,
+          "path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/.closure-review.zip.6crpjg",
+          "sha256": "4f12d2c7acdc1208abe4404fb3e1705062b27dbb92c09320827f8f4818bd8875",
+          "stat": {
+            "ctime_ns": 1793373343956473787,
+            "mode": 33152,
+            "mtime_ns": 1793373343060035229
+          }
+        },
+        {
+          "bytes": 2776568,
+          "path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/results/primary/.corrected-receipt.json.1ksLFB",
+          "sha256": "3ddfe77e11359132d3106dcd1b9434150fbed4fedaecfe49f0d1996f1d5798d9",
+          "stat": {
+            "ctime_ns": 1793373346720352066,
+            "mode": 33152,
+            "mtime_ns": 1793373346571880562
+          }
+        },
+        {
+          "bytes": 6553600,
+          "path": "retained/bare/retained/callback/retained/review/failures/second-root-membership/.undeclared-partial.bin.3tKGvl",
+          "sha256": "c2d528bb3ca359220fa7163f967cffea0041616592f3cf68645696d01b168fe8",
+          "stat": {
+            "ctime_ns": 1793373340755605370,
+            "mode": 33152,
+            "mtime_ns": 1793373340436150773
+          }
+        }
+      ],
+      "failed_root_preserved_unrepaired": "/workspace/scratch/3da0de3fef10/control-work/checkpoint",
+      "new_root_from_exact_retained_archive": true,
+      "no_automatic_repair": true,
+      "origin": "UNESTABLISHED",
+      "original_root_manifest": {
+        "bytes": 944579,
+        "sha256": "bfc895b8e60a4e981fea2440c7db15df21b8d716e3b8283552488cd7d1bf01f8"
+      }
+    },
+    {
+      "bytes": 25952256,
+      "candidate_changed": false,
+      "checks": 0,
+      "failed_root_preserved_unrepaired": "/workspace/scratch/3da0de3fef10/control-work/candidate",
+      "initial_root_membership_passed": true,
+      "input_archive_member": false,
+      "origin": "UNESTABLISHED",
+      "path": "retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/inputs/.closure-review.zip.esDQwu",
+      "sha256": "e04f51b2f8236886c5d4d7a0b1b67ee53b233bde6eebc824d1721444500d8645",
+      "stat": {
+        "ctime_ns": 1793373862315019802,
+        "mode": 33152,
+        "mtime_ns": 1793373861492709394
+      }
+    }
+  ],
+  "new_receipt": {
+    "bytes": 7426382,
+    "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_review_reruns": 0,
+    "completed_suite_reruns": 0,
+    "database_connections": 0,
+    "pipelines": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_results_not_rerun": {
+    "Engineering_primary_result_progress_stdout": [
+      308,
+      307,
+      303
+    ],
+    "cause": "UNESTABLISHED",
+    "independent_controls": 459,
+    "missing_progress_ordinal": 304,
+    "missing_progress_record": {
+      "check": "adjacent normal-callback stored failure preserved 1",
+      "result": "PASS"
+    },
+    "missing_stdout_ordinals": [
+      304,
+      305,
+      306,
+      307,
+      308
+    ],
+    "original_reconciliation": {
+      "all_available_progress_rows_match_result_exactly": true,
+      "cause": "UNESTABLISHED; no inference of filesystem durability or absence of intervening access",
+      "control_reruns": 0,
+      "exact_progress_corroborated_controls": 307,
+      "identities": {
+        "RESULT.json": {
+          "bytes": 37322,
+          "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256"
+        },
+        "final-verification.json": {
+          "bytes": 83,
+          "sha256": "c65d735dfcd70d7f4f18aad3164503d6ad1e04ec1d480baf6d4809d0e25860a0"
+        },
+        "progress.jsonl": {
+          "bytes": 38101,
+          "sha256": "8bbacb477f72271647c06429041c4a5f44c7158ef017f17d130b81c004aac501"
+        }
+      },
+      "observed_utc": "2026-10-30T11:46:40.205522+00:00",
+      "original_files_repaired_or_rewritten": false,
+      "process_present": false,
+      "progress_missing_record": {
+        "check": "adjacent normal-callback stored failure preserved 1",
+        "result": "PASS"
+      },
+      "progress_missing_result_ordinal": 304,
+      "qualification": "308 is the final RESULT record count; it is not a claim that all controls also appear in every progress/output stream",
+      "result_recorded_completed_controls": 308,
+      "status": "RECONCILED_WITH_EXPLICIT_LOG_GAPS",
+      "stdout_corroborated_prefix_controls": 303,
+      "stdout_identity": {
+        "bytes": 23197,
+        "sha256": "cc38a1930dfc93e9ae5f6afb8c4fcf5c1428dea9b0991a567f93af6ad775d0b3"
+      },
+      "stdout_missing_result_ordinals": [
+        304,
+        305,
+        306,
+        307,
+        308
+      ]
+    },
+    "prior_failures_and_partials": "PRESERVED EXACTLY",
+    "review": {
+      "bytes": 13746,
+      "sha256": "07f182be7966066174cee0b0bb91d39b7864fba901e99226000fd254288c8dfc"
+    },
+    "separate_recovered_public": [
+      78,
+      5
+    ]
+  }
+}

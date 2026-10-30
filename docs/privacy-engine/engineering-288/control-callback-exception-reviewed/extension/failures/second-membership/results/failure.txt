@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/tests/focused.py", line 13, in <module>
+    rec.save('input-verification.json',verify_root(root));monitor=guard(root,rec.path);m=module(root/'code/correspondence.py');monitor(m);data=m.inputs(root);cat=m.catalogue(data)
+                                                                                                                                               ^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/code/correspondence.py", line 43, in inputs
+    prior=module(base/'code/correspondence.py','_bare_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_control_coverage')}
+                                                                                                                                            ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 44, in inputs
+    root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'BARE-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'BARE-PRODUCER-PIN')
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 40, in predecessor_root
+    walk(base);require(files==expected and seen==dirs,'BARE-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'BARE-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                     ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'BARE-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                     ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'BARE-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                     ^^^^^^^
+  [Previous line repeated 29 more times]
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 39, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'BARE-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/candidate/retained/bare/code/correspondence.py", line 14, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: BARE-UNDECLARED-OR-NONREGULAR

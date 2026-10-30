@@ -1,0 +1,184 @@
+{"check": "fresh mandatory validation of actual predecessor chain", "result": "PASS"}
+{"check": "fresh derived receipt matches all saved bytes", "result": "PASS"}
+{"check": "preserved mandatory relation (0, 'token_registration_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (0, 'stored_failure_revocation_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (0, 'callback_stored_failure_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (0, 'callback_bare_rethrow_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (1, 'token_registration_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (1, 'stored_failure_revocation_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (1, 'callback_stored_failure_correspondence')", "result": "PASS"}
+{"check": "preserved mandatory relation (1, 'callback_bare_rethrow_correspondence')", "result": "PASS"}
+{"check": "normal control exceptional continuation 0", "result": "PASS"}
+{"check": "no selected owner failure guard (0, False, True)", "result": "PASS"}
+{"check": "no selected owner failure guard (0, True, False)", "result": "PASS"}
+{"check": "no selected owner failure guard (0, False, False)", "result": "PASS"}
+{"check": "distinct invocation with equal kinds 0", "result": "PASS"}
+{"check": "equal error role does not merge occurrences 0", "result": "PASS"}
+{"check": "frontier (0, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (0, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated missing stage (0, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated duplicate stage (0, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated missing stage (0, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated duplicate stage (0, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated missing stage (0, 2)", "result": "REJECTED", "error": "CONTROL-MISSING-STEP:removal-complete"}
+{"check": "coordinated duplicate stage (0, 2)", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "coordinated reordered stage (0, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated reordered stage (0, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "wrong binding (0, ('control_error', 'local_handler_binding'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('control_error', 'existing_cause'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('control_error', 'existing_context'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('control_error', 'existing_suppression'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('control_error', 'reference'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('control_error', 'callback_occurrence'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (0, ('invocation',))", "result": "REJECTED", "error": "CONTROL-TOKEN-INVOCATION"}
+{"check": "wrong binding (0, ('context',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding (0, ('anchor', 'context'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding (0, ('token_case', 'control_present'))", "result": "REJECTED", "error": "TOKEN-PREMISE:control_present"}
+{"check": "coordinated binding (0, 'owner')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (0, 'token')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (0, 'control')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (0, 'error')", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "coordinated binding (0, 'acquisition')", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "coordinated wrong callback-error occurrence 0", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "unsupported claim (0, 'subsequent_client_execution_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'client_handler_entered_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'owner_failure_guard_evaluated_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'new_explicit_cause_assignment_established_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'runtime_observation')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'control_reaches_launcher_established')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'actual_admission')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'obligations_discharged')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (0, 'run_success_established')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (0, 'existing_cause')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (0, 'existing_context')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (0, 'existing_suppression')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (0, 'cleanup_context_link')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (0, 'physical_reference_observation')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested type (0, ('control_error', 'role'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (0, ('outcomes',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (0, ('control_error',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (0, ('output', 'control_callback_raised_in_model'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (0, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "subclassed literal key 0", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "returned result does not alter pristine expectations 0", "result": "PASS"}
+{"check": "producer output boundary 0", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "normal control exceptional continuation 1", "result": "PASS"}
+{"check": "no selected owner failure guard (1, False, True)", "result": "PASS"}
+{"check": "no selected owner failure guard (1, True, False)", "result": "PASS"}
+{"check": "no selected owner failure guard (1, False, False)", "result": "PASS"}
+{"check": "distinct invocation with equal kinds 1", "result": "PASS"}
+{"check": "equal error role does not merge occurrences 1", "result": "PASS"}
+{"check": "frontier (1, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "false outward control propagation (1, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated missing stage (1, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated duplicate stage (1, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated missing stage (1, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated duplicate stage (1, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated missing stage (1, 2)", "result": "REJECTED", "error": "CONTROL-MISSING-STEP:removal-complete"}
+{"check": "coordinated duplicate stage (1, 2)", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "coordinated reordered stage (1, 0)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "coordinated reordered stage (1, 1)", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "wrong binding (1, ('control_error', 'local_handler_binding'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('control_error', 'existing_cause'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('control_error', 'existing_context'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('control_error', 'existing_suppression'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('control_error', 'reference'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('control_error', 'callback_occurrence'))", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "wrong binding (1, ('invocation',))", "result": "REJECTED", "error": "CONTROL-TOKEN-INVOCATION"}
+{"check": "wrong binding (1, ('context',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding (1, ('anchor', 'context'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding (1, ('token_case', 'control_present'))", "result": "REJECTED", "error": "TOKEN-PREMISE:control_present"}
+{"check": "coordinated binding (1, 'owner')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (1, 'token')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (1, 'control')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated binding (1, 'error')", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "coordinated binding (1, 'acquisition')", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-ANCHOR"}
+{"check": "coordinated wrong callback-error occurrence 1", "result": "REJECTED", "error": "CONTROL-CALLBACK-ERROR"}
+{"check": "unsupported claim (1, 'subsequent_client_execution_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'client_handler_entered_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'owner_failure_guard_evaluated_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'new_explicit_cause_assignment_established_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'runtime_observation')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'control_reaches_launcher_established')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'actual_admission')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'obligations_discharged')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported claim (1, 'run_success_established')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (1, 'existing_cause')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (1, 'existing_context')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (1, 'existing_suppression')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (1, 'cleanup_context_link')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain evidence (1, 'physical_reference_observation')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested type (1, ('control_error', 'role'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (1, ('outcomes',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (1, ('control_error',))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (1, ('output', 'control_callback_raised_in_model'))", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type (1, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "subclassed literal key 1", "result": "REJECTED", "error": "CONTROL-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "returned result does not alter pristine expectations 1", "result": "PASS"}
+{"check": "producer output boundary 1", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "mutated returned contexts and nested order", "result": "REJECTED", "error": "CONTROL-SEMANTIC-CORRESPONDENCE"}
+{"check": "fresh rows unaffected by result mutations", "result": "PASS"}
+{"check": "semantic omitted context", "result": "REJECTED", "error": "CONTROL-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic duplicated context", "result": "REJECTED", "error": "CONTROL-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic invented runtime frames", "result": "REJECTED", "error": "CONTROL-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic imported owner failure guard", "result": "REJECTED", "error": "CONTROL-SEMANTIC-CORRESPONDENCE"}
+{"check": "authenticated missing evidence", "result": "REJECTED", "error": "CONTROL-VALIDATED-EVIDENCE"}
+{"check": "authenticated altered evidence", "result": "REJECTED", "error": "CONTROL-VALIDATED-EVIDENCE"}
+{"check": "preserved bare public bridge core 0", "result": "PASS"}
+{"check": "preserved bare public bridge core 1", "result": "PASS"}
+{"check": "preserved stored-client bridge core 0", "result": "PASS"}
+{"check": "preserved stored-client bridge core 3", "result": "PASS"}
+{"check": "preserved stored-normal bridge core 0", "result": "PASS"}
+{"check": "preserved stored-normal bridge core 3", "result": "PASS"}
+{"check": "preserved normal-token bridge core 0", "result": "PASS"}
+{"check": "preserved normal-token bridge core 1", "result": "PASS"}

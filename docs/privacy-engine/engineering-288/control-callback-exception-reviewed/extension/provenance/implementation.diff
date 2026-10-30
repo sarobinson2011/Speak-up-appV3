@@ -1,0 +1,233 @@
+--- previous/code/managed_coverage.py
++++ new/code/managed_coverage.py
+@@ -2439,6 +2439,88 @@
+ def validate_callback_bare_projection(catalogue,case,validated,submitted):
+  status_exact_tree(submitted,'BARE-SUBMITTED-OUTPUT');status_typed_same(submitted,callback_bare_projection(catalogue,case,validated),'BARE-OUTPUT-CORRESPONDENCE');return True
+ 
++# Additive control-callback exceptional continuation. Historical functions unchanged.
++def control_exception_source(launcher,entry,bare,callback,stored,token,handle,state):
++ validate_callback_bare(launcher,entry,callback,stored,token,handle,state,bare)
++ tree,loc=_client_locate(entry);run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='_run')
++ protected=run.body[2].body[0].body[-1]
++ need(isinstance(protected,ast.Try) and not protected.handlers and not protected.orelse and len(protected.body)==3 and len(protected.finalbody)==1,'CONTROL-PROTECTED-TRY')
++ control,client,postclient=protected.body;pop=protected.finalbody[0]
++ need(isinstance(control,ast.If) and not control.orelse and len(control.body)==1,'CONTROL-GUARD-SHAPE')
++ guard=control.test;stmt=control.body[0];call=stmt.value
++ need(isinstance(guard,ast.Compare) and isinstance(guard.left,ast.Name) and guard.left.id=='control' and len(guard.ops)==len(guard.comparators)==1 and isinstance(guard.ops[0],ast.IsNot) and isinstance(guard.comparators[0],ast.Constant) and guard.comparators[0].value is None,'CONTROL-EXACT-NONNONE-GUARD')
++ need(isinstance(stmt,ast.Expr) and isinstance(call,ast.Call) and ast.unparse(call)=='control(_Control(token))','CONTROL-SELECTED-CALL')
++ need(isinstance(client,ast.Try) and ast.unparse(client.body[0])=='client(Client(token))' and client.lineno>stmt.end_lineno,'CONTROL-CLIENT-HANDLER-NOT-CONTAINING-CONTROL')
++ need(ast.unparse(pop)=='_OWNERS.pop(token, None)' and isinstance(pop,ast.Expr),'CONTROL-POP')
++ pin={'bytes':len(entry),'sha256':digest(entry)}
++ for name,node in [('control-guard',guard),('control-create',call.args[0]),('control-callback',stmt),('finally-enter',protected),('removal-attempt',pop.value),('removal-complete',pop)]:
++  status_typed_same(token['source']['stages'][name],{**loc(node),'source':copy.deepcopy(pin)},'CONTROL-REUSED-STAGE:'+name)
++ points=[('finally-enter',protected),('removal-attempt',pop.value),('removal-complete',pop)]
++ return {'sources':copy.deepcopy(stored['source']['sources']),'run':loc(run),'control_guard':loc(guard),'guard_expression':ast.unparse(guard),'selected_guard_result':True,'control_constructor':loc(call.args[0]),'control_call':loc(stmt),'callee_expression':ast.unparse(call.func),'argument_expression':ast.unparse(call.args[0]),'client_handler':loc(client.handlers[0]),
++  'order':[n for n,_ in points],'stages':{n:{**loc(node),'source':copy.deepcopy(pin),'semantic_region':'finally-entry' if n=='finally-enter' else 'source-statement'} for n,node in points},
++  'prefix_order':token['source']['order'][:token['source']['order'].index('control-callback')+1],
++  'client_handler_applies':False,'owner_failure_guard_applies':False,'new_explicit_cause_assignment':False,'local_exception_binding':None,
++  'pop_key':ast.unparse(pop.value.args[0]),'pop_default':ast.literal_eval(pop.value.args[1]),'pop_return_consumed':False,
++  'continuation':'Selected control constructor completed and actual control callback raises. Ordinary Python continuation enters this finally; the subsequent client try and post-client guard are not reached on this route. Cleanup may replace pending propagation; termination is not unwind.',
++  'continuity':'Selected registry key/owner continuity is an explicit conditional premise, not exclusive ownership or arbitrary callback safety.'}
++
++def compile_control_exception(launcher,entry,bare,callback,stored,token,handle,state):
++ source=control_exception_source(launcher,entry,bare,callback,stored,token,handle,state)
++ return {'format':'I164-CONTROL-EXCEPTION-STATIC-1','source':source,'token_relation':copy.deepcopy(token),
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'prefix':'control is not None; _Control(token) construction completed; selected control callback raises','continuation':'Ordinary continuation enters finally; each later stage requires preceding normal completion','cleanup_raise':'Stop with separate pending cleanup exception; original control exception remains an earlier established role','termination_or_unobserved':'Stop without inferred Python unwind, later removal or outward propagation','client':'No subsequent client creation/callback/handler or owner.failure guard on this route'},
++  'preserved_relations':['token_registration_correspondence','stored_failure_revocation_correspondence','callback_stored_failure_correspondence','callback_bare_rethrow_correspondence'],
++  'limits':['Static constructed scope; unavailable runtime control/finally/removal chain','Existing cause/context/suppression UNKNOWN, not cleared or absent','Constructor failure and full outer cleanup remain unexpanded','Symbolic role/reference correspondence is not observed physical identity','No owner.failure condition or history inferred'],
++  'runtime_control_exception_revocation_chain':None,'actual_admission':False}
++
++def validate_control_exception(launcher,entry,bare,callback,stored,token,handle,state,submitted):
++ status_exact_tree(submitted,'CONTROL-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_control_exception(launcher,entry,bare,callback,stored,token,handle,state),'CONTROL-SOURCE-CORRESPONDENCE');return True
++
++def control_exception_binding(catalogue,scope):
++ status_exact_tree(scope,'CONTROL-ERROR-SCOPE')
++ return {'role':'selected-control-callback-exception','scope':copy.deepcopy(scope),'occurrence':scope['invocation']+'/control-callback/exception','reference':scope['invocation']+'/control-callback/error','callback_occurrence':scope['invocation']+'/control-callback','callback_argument_reference':copy.deepcopy(token_reference_premises(scope,True)['control']),'source':copy.deepcopy(catalogue['source']['control_call']),
++  'callee':'selected control argument of this _run invocation','local_handler_binding':None,'exact_type':None,'exact_value_bytes':None,'producer_history':'UNAVAILABLE','existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_reference_observation':None}
++
++def control_exception_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'CONTROL-EXACT-TYPE')
++ keys={'scope','references','token_inputs','token_prefix','control_error','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'CONTROL-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'CONTROL-VALIDATED:'+k)
++ scope=case['scope'];refs=case['references'];prefix=case['token_prefix'];ti=case['token_inputs'];error=case['control_error'];source=catalogue['source']
++ status_typed_same(refs,token_reference_premises(scope,True),'CONTROL-REFERENCE-ROLES');status_typed_same(scope,ti['scope'],'CONTROL-TOKEN-SCOPE')
++ need(ti['control_present'] is True,'CONTROL-REQUIRES-CONTROL')
++ expected_steps=[{'stage':n,'outcome':'raise' if n=='control-callback' else 'normal'} for n in source['prefix_order']]
++ status_typed_same(ti['outcomes'],expected_steps,'CONTROL-SELECTED-PREFIX')
++ tv={k:copy.deepcopy(v) for k,v in ti.items() if k!='references'}
++ status_typed_same(prefix,token_registration_projection(catalogue['token_relation'],ti,tv),'CONTROL-VALIDATED-TOKEN-PREFIX')
++ status_typed_same(refs,prefix['reference_bindings'],'CONTROL-PREFIX-REFERENCES')
++ need(prefix['registration_completed_in_model'] is True and prefix['completion']=='unexpected-raise' and prefix['control_callback_completed_in_model'] is False and prefix['client_callback_completed_in_model'] is False,'CONTROL-REGISTERED-RAISE-FRONTIER')
++ status_typed_same(error,control_exception_binding(catalogue,scope),'CONTROL-SELECTED-ERROR')
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'CONTROL-OUTCOMES');events=[];done=set();pending=copy.deepcopy(error);cleanup=None;terminal=None;completion=None
++ for i,stage in enumerate(source['order']):
++  need(i<len(outcomes),'CONTROL-MISSING-STEP:'+stage);row=outcomes[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and row['stage']==stage,'CONTROL-STEP-ORDER');kind=row['outcome']
++  need(type(kind) is str and kind in ('normal','raise','process-termination','unobserved'),'CONTROL-STAGE-OUTCOME');terminal=kind
++  events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(source['stages'][stage]),'outcome':kind,'owner':copy.deepcopy(refs['owner']),'token':copy.deepcopy(refs['token']),'control':copy.deepcopy(refs['control']),'pending_error_on_entry':copy.deepcopy(pending),'runtime_frame':None})
++  if kind in ('process-termination','unobserved'):completion=kind;break
++  if kind=='raise':
++   cleanup={'role':'conditional-finally-exception','reference':scope['invocation']+'/'+stage+'/error','scope':copy.deepcopy(scope),'source':copy.deepcopy(source['stages'][stage]),'exact_type':None,'physical_identity':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN'};pending=copy.deepcopy(cleanup);completion='cleanup-exceptional-frontier';break
++  done.add(stage)
++  if stage=='removal-complete':completion='normal-removal-pending-control-error'
++ need(len(events)==len(outcomes),'CONTROL-UNREACHED-STEPS');popped='removal-complete' in done;continuity=copy.deepcopy(prefix['selected_slot_before_removal']);removed=True if popped and continuity['continuity']=='explicit constructed premise' else None
++ return {'kind':'CONSTRUCTED-CONTROL-EXCEPTION','scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'validated_token_prefix':copy.deepcopy(prefix),'control_error':copy.deepcopy(error),'events':events,'completion':completion,
++  'control_callback_raised_in_model':True,'control_callback_returned_normally_in_model':False,'subsequent_client_execution_in_model':False,'client_handler_entered_in_model':False,'owner_failure_guard_evaluated_in_model':False,'new_explicit_cause_assignment_established_in_model':False,
++  'exception_chain_observation':{'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','cleanup_context_link':'UNKNOWN','physical_reference_observation':None},'cleanup_error_in_model':cleanup,
++  'finally_entry_completed_in_model':'finally-enter' in done,'removal_attempt_entered_in_model':'removal-attempt' in done,'removal_completed_in_model':popped,'selected_slot_before_removal':continuity,'selected_owner_removed_in_model':removed,'slot_after_pop_in_model':'ABSENT-AT-POP-COMPLETION' if popped else 'UNKNOWN','pop_result_observation':None,'revocation_persists':None,
++  'last_pending_error_in_model':copy.deepcopy(pending),'outward_error_after_finally_in_model':copy.deepcopy(error) if popped else None,'control_outward_after_finally_established_in_model':popped,'control_reaches_launcher_established':False,'terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
++  'prior_failure_storage_history':'UNKNOWN; no selected owner.failure guard here; previously established evidence is retained unchanged','role_relationship':'Separate semantic error roles and invocation-qualified occurrences; no physical equality or inequality inference','run_success_established':False,'runtime_observation':False,'runtime_control_exception_revocation_chain':None,'runtime_unwind_evidence':'UNAVAILABLE','physical_reference_identity':None,'outer_cleanup_completion':None,'database_cleanup_completion':None,'retained_failure_record_bytes':None,'physical_lock_release_established':False,'exclusive_ownership_established':False,'durability_established':False,'observer_join':None,
++  'completion_flags_mean':'Only acknowledged conditional prefix facts; false does not disprove unobserved effects. Earlier registration and selected control raise survive later uncertainty. Pending propagation is not an observed outward exception.',
++  'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_control_exception_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'CONTROL-SUBMITTED-OUTPUT');status_typed_same(submitted,control_exception_projection(catalogue,case,validated),'CONTROL-OUTPUT-CORRESPONDENCE');return True
++
++
+ def main():
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');a=p.parse_args()
+--- previous/code/correspondence.py
++++ new/code/correspondence.py
+@@ -1,12 +1,10 @@
+-"""Mandatory exact-None callback bare-rethrow relation over both reviewed stored-failure branches.
+-Saved evidence only. No application method or database connection is invoked.
+-"""
++"""Mandatory control-callback exception-to-finally/removal correspondence. Saved inputs only."""
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 263743, 'sha256': 'c684cb3e599b4a5d0c9616436f6f4b341f96c47eaf10cee6b4194d0d6a357622'}
+-PREDECESSOR_MANIFEST={'bytes': 819714, 'sha256': 'dd9371b8c8520a3950f3fc26915884be9e0f2f6239a97ab7c6dbd00d6323223a'}
+-PREDECESSOR_RECEIPT={'bytes': 6418679, 'sha256': 'c5504cf29408dad2e916a2dedd43b654f88fd2e88bb26682e0ceaa31ee2268a0'}
++PRODUCER_PIN={'bytes': 275943, 'sha256': '4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06'}
++PREDECESSOR_MANIFEST={'bytes': 890147, 'sha256': '8e4139615c328790f34857737e03cbea4295d25bc09d9d34389ebf6056716589'}
++PREDECESSOR_RECEIPT={'bytes': 6854670, 'sha256': '30dfb6840ab7e3bdab7bc812ab76923dd3380002149ec05a6423f54e9920ee89'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -28,78 +26,79 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/callback'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'BARE-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'BARE-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'BARE-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/bare'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CONTROL-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CONTROL-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CONTROL-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'BARE-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'BARE-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'BARE-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'BARE-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'CONTROL-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'CONTROL-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'CONTROL-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CONTROL-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'BARE-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'BARE-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_callback_stored_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_callback_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CONTROL-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CONTROL-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_bare_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_control_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+ def sources(data):return data['prior_module'].sources(data['prior_data'])
+ def dependencies(data):
+  p=data['prior_module'];pd=data['prior_data'];return (p.catalogue(pd),*p.dependencies(pd))
+-def catalogue(data):return data['coverage'].compile_callback_bare(*sources(data)[:2],*dependencies(data))
++def catalogue(data):return data['coverage'].compile_control_exception(*sources(data)[:2],*dependencies(data))
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,cb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,cb)
+- saved=(fresh['prior_root']/'results/primary/callback-stored-failure.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'BARE-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'callback_basis':cb,'callback_module':p,'stored_basis':cb['stored_basis']}
++ fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,bb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,bb)
++ saved=(fresh['prior_root']/'results/primary/callback-bare-rethrow.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CONTROL-VALIDATED-PREDECESSOR-RECEIPT')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'bare_basis':bb,'bare_module':p,'stored_basis':bb['stored_basis']}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'BARE-CONTEXT-DOMAIN')
++ rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CONTROL-CONTEXT-DOMAIN')
+  for row in basis['prior']['contexts']:
+-  callback=row['callback_stored_failure_correspondence'];token=row['token_registration_correspondence'];same(callback['instance_anchor'],token['instance_anchor'],'BARE-VALIDATED-INSTANCE');same(callback['declaration']['source']['sources'],cat['source']['sources'],'BARE-VALIDATED-SOURCE')
+-  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(callback['instance_anchor']),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
++  bare=row['callback_bare_rethrow_correspondence'];token=row['token_registration_correspondence'];same(bare['instance_anchor'],token['instance_anchor'],'CONTROL-VALIDATED-INSTANCE');same(bare['declaration']['source']['sources'],cat['source']['sources'],'CONTROL-VALIDATED-SOURCE')
++  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(token['instance_anchor']),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
+    'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'reviewed_stored_failure_relations_preserved':['stored_failure_revocation_correspondence','callback_stored_failure_correspondence'],'guard_slot_premise':cat['source']['guard_slot_premise'],'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','runtime_callback_bare_revocation_chain':None,'callback_exception_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(callback['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime callback/error/bare-raise/finally/pop chain or existing cause/context observations. Control failures and full outer cleanup remain unexpanded.'})
++   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','owner_failure_guard_applicable':False,'client_handler_applicable':False,'runtime_control_exception_revocation_chain':None,'control_exception_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(bare['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime control callback/error/finally/pop chain or existing cause/context observations. Control constructor failures and full outer cleanup remain unexpanded.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'BARE-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'BARE-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'BARE-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'CONTROL-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CONTROL-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CONTROL-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'BARE-EVIDENCE-TYPES');require(candidate==basis['evidence'],'BARE-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CONTROL-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CONTROL-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'BARE-CATALOGUE');exact(claims,'BARE-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'BARE-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'BARE-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'BARE-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'BARE-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ exact(submitted_catalogue,'CONTROL-CATALOGUE');exact(claims,'CONTROL-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CONTROL-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CONTROL-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CONTROL-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CONTROL-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CALLBACK-BARE-RETHROW-1';result['prior_callback_stored_components']=result.pop('extension_components');result['prior_callback_stored_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['callback_bare_rethrow_correspondence']=copy.deepcopy(row)
+- result['new_callback_bare_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','guard_slot_continuity':'Explicit exact-None premise at selected guard, not absence of historical storage','callback_exception_producer_history':'UNAVAILABLE','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_bare(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CONTROL-EXCEPTION-CORRESPONDENCE-1';result['prior_callback_bare_components']=result.pop('extension_components');result['prior_callback_bare_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['control_exception_revocation_correspondence']=copy.deepcopy(row)
++ result['new_control_exception_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','owner_failure_guard_applicable':False,'subsequent_client_handler_applicable':False,'control_exception_producer_history':'UNAVAILABLE','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_control(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+-def _selected(basis,context):
+- rows=[r for r in basis['prior']['contexts'] if r['context']==context];require(len(rows)==1,'BARE-CONSTRUCTED-CONTEXT');return rows[0]
+ def _premises(basis,case):
+- exact(case,'BARE-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','callback_error','none_guard_binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CALLBACK-BARE-RETHROW','BARE-CONSTRUCTED-CASE')
+- row=_selected(basis,case['context']);anchor=row['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'BARE-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'BARE-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'BARE-TOKEN-INVOCATION')
+- sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['owner_failure_none'] is True,'BARE-SELECTED-NONE-SLICE');require(token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='client-callback' and token['events'][-1]['outcome']=='raise','BARE-TOKEN-FRONTIER')
+- refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue'];client=basis['fresh']['coverage'].callback_error_binding(cat,scope);same(case['callback_error'],client,'BARE-CAUGHT-ERROR')
+- binding={'scope':copy.deepcopy(scope),'owner':copy.deepcopy(refs['owner']),'slot':'owner.failure','slot_value':None,'slot_exact_type':'NoneType','guard_expression':cat['source']['guard_expression'],'guard_result':False,'guard_source':copy.deepcopy(cat['source']['guard']),'source':copy.deepcopy(cat['source']['sources']['entry']),'premise':cat['source']['guard_slot_premise'],'runtime_reference_observation':None,'prior_storage_history':'UNKNOWN; no retained evidence is erased'}
+- same(case['none_guard_binding'],binding,'BARE-SELECTED-GUARD-BINDING')
+- return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_prefix':token,'none_guard_binding':binding,'callback_error':client,'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'CONTROL-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','control_error','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CONTROL-EXCEPTION','CONTROL-CONSTRUCTED-CASE')
++ rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CONTROL-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CONTROL-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CONTROL-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CONTROL-TOKEN-INVOCATION')
++ sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['control_present'] is True and token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['control_callback_completed_in_model'] is False and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='control-callback' and token['events'][-1]['outcome']=='raise','CONTROL-TOKEN-FRONTIER')
++ refs=token['reference_bindings'];scope=token['scope'];error=basis['fresh']['coverage'].control_exception_binding(basis['catalogue'],scope);same(case['control_error'],error,'CONTROL-CALLBACK-ERROR')
++ return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'control_error':error,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.callback_bare_projection(cat,case['projection'],v);c.validate_callback_bare_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Conditional caught callback error, exact None at selected same-owner guard and selected-owner registry continuity. Bare raise preserves that selected error role without asserting existing cause/context absence. Not runtime history.','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.control_exception_projection(cat,case['projection'],v);c.validate_control_exception_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected control callback raises after control construction, under conditional selected-owner continuity. No client handler or owner.failure guard is selected. Existing exception chain/history remain unknown; role identity is not runtime object identity.','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'BARE-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+-def constructed_normal_callback(data,submitted_catalogue,case):
+- exact(case,'BARE-PRIOR-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);cb=basis['callback_basis'];return cb['stored_module']._construct_checked(cb['stored_basis'],case)
++ exact(case,'CONTROL-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++def constructed_prior(data,submitted_catalogue,branch,case):
++ exact(case,'CONTROL-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('bare','stored-client','stored-normal','normal-token'),'CONTROL-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
++def _construct_prior(basis,branch,case):
++ exact(case,'CONTROL-PRIOR-CONSTRUCTED-INPUT');bb=basis['bare_basis'];sb=basis['stored_basis']
++ if branch=='bare':return basis['bare_module']._construct_checked(bb,case)
++ if branch=='stored-client':return bb['callback_module']._construct_checked(bb['callback_basis'],case)
++ if branch=='stored-normal':return bb['callback_basis']['stored_module']._construct_checked(sb,case)
++ if branch=='normal-token':return sb['routes']['token_module']._construct_checked(sb['token_basis'],case)
++ raise ValueError('CONTROL-PRIOR-BRANCH')
+ def derive(root=ROOT):
+- data=inputs(root);return derive_bare(data,catalogue(data))
++ data=inputs(root);return derive_control(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'BARE-RECEIPT-BYTES');v=json.loads(saved);required={'callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence'}
+- require(type(v) is dict and v.get('format')=='I164-CALLBACK-BARE-RETHROW-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'BARE-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'BARE-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_callback_bare_revocation_chain':'UNAVAILABLE','actual_admission':False}
+-def constructed_stored_callback(data,submitted_catalogue,case):
+- exact(case,'BARE-PRIOR-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return basis['callback_module']._construct_checked(basis['callback_basis'],case)
++ require(type(saved) is bytes,'CONTROL-RECEIPT-BYTES');v=json.loads(saved);required={'control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
++ require(type(v) is dict and v.get('format')=='I164-CONTROL-EXCEPTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONTROL-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONTROL-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_control_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

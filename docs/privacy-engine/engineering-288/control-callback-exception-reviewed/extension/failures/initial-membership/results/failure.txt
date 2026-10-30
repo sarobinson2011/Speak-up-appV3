@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/tests/focused.py", line 13, in <module>
+    rec.save('input-verification.json',verify_root(root));monitor=guard(root,rec.path);m=module(root/'code/correspondence.py');monitor(m);data=m.inputs(root);cat=m.catalogue(data)
+                                                                                                                                               ^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 42, in inputs
+    root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CONTROL-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CONTROL-PRODUCER-PIN')
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 38, in predecessor_root
+    walk(base);require(files==expected and seen==dirs,'CONTROL-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CONTROL-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                        ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CONTROL-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                        ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CONTROL-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                        ^^^^^^^
+  [Previous line repeated 31 more times]
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 37, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'CONTROL-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/control-work/checkpoint/code/correspondence.py", line 12, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CONTROL-UNDECLARED-OR-NONREGULAR

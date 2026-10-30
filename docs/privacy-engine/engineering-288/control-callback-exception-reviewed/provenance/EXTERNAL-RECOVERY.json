@@ -1,0 +1,533 @@
+{
+  "accounting": {
+    "Engineering": {
+      "primary": 276,
+      "public_process": 7,
+      "recovered_root": 64
+    },
+    "historical_public_rows": 9,
+    "no_unqualified_combined_total": true,
+    "prior": {
+      "cause_of_coordinated_gap": "UNESTABLISHED",
+      "checks_rerun": 0,
+      "corroborated_progress_stdout_rows": 517,
+      "groups": {
+        "coordinated": {
+          "corroborated_progress_stdout_rows": 103,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "missing_progress_and_stdout": [
+            {
+              "ordinal": 104,
+              "record": {
+                "check": "direct submitted-output coordinated claim (1, 'owner_failure_guard_evaluated_in_model')",
+                "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+                "result": "REJECTED"
+              }
+            },
+            {
+              "ordinal": 105,
+              "record": {
+                "check": "direct submitted-output coordinated claim (1, 'client_handler_entered_in_model')",
+                "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+                "result": "REJECTED"
+              }
+            },
+            {
+              "ordinal": 106,
+              "record": {
+                "check": "direct submitted-output coordinated claim (1, 'new_explicit_cause_assignment_established_in_model')",
+                "error": "CONTROL-OUTPUT-CORRESPONDENCE",
+                "result": "REJECTED"
+              }
+            }
+          ],
+          "progress_identity": {
+            "bytes": 12598,
+            "sha256": "f0321fa6c008431987b1c9cfd31e334431a727029cd61893ee1c96be2222d58b"
+          },
+          "record_reconciliation": "QUALIFIED 106/103/103; missing rows not repaired; cause UNESTABLISHED",
+          "result_identity": {
+            "bytes": 13041,
+            "sha256": "628afa2fe07227ca3ae59f55ba009996b6503deb87d6b2ea3f7c7495c47297a3"
+          },
+          "result_outcomes": {
+            "PASS": 2,
+            "REJECTED": 104
+          },
+          "result_recorded_controls": 106,
+          "stdout_identity": {
+            "bytes": 6496,
+            "sha256": "55329b7d6d9a4dc9af9326cd0c0cb9d28beb4a5c54aaf56932d5890dd732b6c2"
+          }
+        },
+        "fresh-semantic": {
+          "corroborated_progress_stdout_rows": 2,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "missing_progress_and_stdout": [],
+          "progress_identity": {
+            "bytes": 202,
+            "sha256": "edcfe67df1a3063b597d127e63f615d998f375985db85de26880879f016c75c3"
+          },
+          "record_reconciliation": "PASS",
+          "result_identity": {
+            "bytes": 551,
+            "sha256": "7af85d78ee1597443a63d1b81ae9c9215ad948590922e86de45c6dcde66b2516"
+          },
+          "result_outcomes": {
+            "PASS": 1,
+            "REJECTED": 1
+          },
+          "result_recorded_controls": 2,
+          "stdout_identity": {
+            "bytes": 115,
+            "sha256": "2ad58eaa05c2552d9efde00cc6b8c0e766c7d138a5dedcd14e25b7982cfcf015"
+          }
+        },
+        "primary": {
+          "corroborated_progress_stdout_rows": 184,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "missing_progress_and_stdout": [],
+          "progress_identity": {
+            "bytes": 20771,
+            "sha256": "051b0c9d07198377ddb1e9730768c493e821e17523e0ec0f9faaab92b88b53e6"
+          },
+          "record_reconciliation": "PASS",
+          "result_identity": {
+            "bytes": 20311,
+            "sha256": "43b8844650f0baca92ea3347721448e36a7b5936de1abbf79e9f8b25ce748f74"
+          },
+          "result_outcomes": {
+            "PASS": 51,
+            "REJECTED": 133
+          },
+          "result_recorded_controls": 184,
+          "stdout_identity": {
+            "bytes": 11308,
+            "sha256": "d59d438a2e5b95800317edbdbd884dd9d60a616490ff0793a06099f882ce56fc"
+          }
+        },
+        "recovered": {
+          "corroborated_progress_stdout_rows": 158,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "missing_progress_and_stdout": [],
+          "progress_identity": {
+            "bytes": 17543,
+            "sha256": "ed2a70b5579ffc03009911d19fff8ceeface0520cc7f5698d81de1e880008d36"
+          },
+          "record_reconciliation": "PASS",
+          "result_identity": {
+            "bytes": 17199,
+            "sha256": "a6f007d298adfea9522d04269ed592aa1d300c62f4823e3db207e168755e01ca"
+          },
+          "result_outcomes": {
+            "PASS": 43,
+            "REJECTED": 115
+          },
+          "result_recorded_controls": 158,
+          "stdout_identity": {
+            "bytes": 9408,
+            "sha256": "cabcbef0087edc7e83cef8d94bced79139881f193c703fbd6d5ce3d7c378f7e0"
+          }
+        },
+        "source": {
+          "corroborated_progress_stdout_rows": 70,
+          "environment": {
+            "cryptography": "50.0.2",
+            "dont_write_bytecode": true,
+            "isolated": 1,
+            "optimization": 0,
+            "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+          },
+          "missing_progress_and_stdout": [],
+          "progress_identity": {
+            "bytes": 7626,
+            "sha256": "f7471dd5995cf9b93d5ab99d2858577afbea98b58ab6ebbbfb37c92a0ca0fbad"
+          },
+          "record_reconciliation": "PASS",
+          "result_identity": {
+            "bytes": 7772,
+            "sha256": "8dfeaad055d48119bac36ac4b44e6f3fd26be43bf2ee08ad5ce0e7da2c8657c3"
+          },
+          "result_outcomes": {
+            "PASS": 38,
+            "REJECTED": 32
+          },
+          "result_recorded_controls": 70,
+          "stdout_identity": {
+            "bytes": 4711,
+            "sha256": "13c5e8cbc1b99ae72a7ac11f0e455fad6b9b18178465225e918ca471fc45ee5d"
+          }
+        }
+      },
+      "partial_public_rows": 9,
+      "records_repaired": false,
+      "result_recorded_rows": 520
+    },
+    "separate_confirmed_check": {
+      "check": {
+        "check": "public coordinated client-handler and cause invention",
+        "error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+        "exception_type": "ValueError",
+        "result": "REJECTED",
+        "validator_invocations": 1
+      },
+      "count_combined_with_prior": false,
+      "exit_status": {
+        "finished_utc": "2026-10-30T18:25:52.452775+00:00",
+        "pid": 7,
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 1254.9316590050003,
+        "timed_out": false
+      },
+      "result": {
+        "checks": 1,
+        "database_connections": 0,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "reused_baselines": true,
+        "rows": [
+          {
+            "check": "public coordinated client-handler and cause invention",
+            "error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+            "exception_type": "ValueError",
+            "result": "REJECTED",
+            "validator_invocations": 1
+          }
+        ],
+        "runtime_operations": 0,
+        "seconds": 1254.4318326840003,
+        "session_operations": 0,
+        "status": "PASS",
+        "validator_invocations": 1
+      }
+    }
+  },
+  "all_original_records_preserved": true,
+  "altered_receipt": {
+    "git_included": false,
+    "identity": {
+      "bytes": 7426416,
+      "sha256": "6bd6924dc819574dd2587b108ce1747ef7aaca7481ec0af4430d6f146f56c66d"
+    },
+    "member_in_review": "completion/run/coordinated-claims-receipt.json"
+  },
+  "construction": {
+    "entries": 3069,
+    "git_included": false,
+    "identity": {
+      "bytes": 124424355,
+      "sha256": "ed07f4ceb638f1c967cb3936b0051f5c0c8d781c95d26838b7bdc7baba7f4c20"
+    },
+    "integrity_basis": "Reused completed Engineering and Formal-Lab target checks; exact embedded archive bytes matched here",
+    "member_in_incomplete": "input/I164-control-callback-exception-correspondence-1.zip"
+  },
+  "current_receipt": {
+    "git_included": false,
+    "identity": {
+      "bytes": 7426382,
+      "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+    },
+    "member_in_construction": "results/primary/control-exception.json"
+  },
+  "excluded_compact_members": [
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 1550584,
+        "sha256": "9a4f6bb42e8811db939a6db41fe0c31856ee0fa07b9afa63698192504581c4f2"
+      },
+      "member": "completion/run/calls.json",
+      "selection_origin": "review"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 7426416,
+        "sha256": "6bd6924dc819574dd2587b108ce1747ef7aaca7481ec0af4430d6f146f56c66d"
+      },
+      "member": "completion/run/coordinated-claims-receipt.json",
+      "selection_origin": "review"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "member": "review-files/results/coordinated/calls.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 1481852,
+        "sha256": "2d8749f19e97504931fce929d2b6456f15f61dc8762a393823de37390faa048c"
+      },
+      "member": "review-files/results/fresh-semantic/calls.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 1481853,
+        "sha256": "4b79db63fad9c8d91b91568658c14a45971b3038c8592889b109b437dd968bfe"
+      },
+      "member": "review-files/results/primary/calls.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 503848,
+        "sha256": "7776bb1c530109c3bb122369aa76a282ee664f3150e3e9be26ad42b122c8263e"
+      },
+      "member": "review-files/results/primary/fixtures.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 1488699,
+        "sha256": "73c3f3c68b4df479dfacbc34586aa175bcd5b2591673cb18873892af51a9cee5"
+      },
+      "member": "review-files/results/recovered/calls.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 503848,
+        "sha256": "7776bb1c530109c3bb122369aa76a282ee664f3150e3e9be26ad42b122c8263e"
+      },
+      "member": "review-files/results/recovered/fixtures.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "member": "review-files/results/source/calls.json",
+      "selection_origin": "incomplete"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 951101,
+        "sha256": "ab067a786180c5b4c194c1f181908e13185ad879efeff050f0b4e69c04dc2b74"
+      },
+      "member": "MANIFEST.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 944579,
+        "sha256": "bfc895b8e60a4e981fea2440c7db15df21b8d716e3b8283552488cd7d1bf01f8"
+      },
+      "member": "failures/initial-membership/failed-root-MANIFEST.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 7864320,
+        "sha256": "4f12d2c7acdc1208abe4404fb3e1705062b27dbb92c09320827f8f4818bd8875"
+      },
+      "member": "failures/initial-membership/partials/1",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 2776568,
+        "sha256": "3ddfe77e11359132d3106dcd1b9434150fbed4fedaecfe49f0d1996f1d5798d9"
+      },
+      "member": "failures/initial-membership/partials/2",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 6553600,
+        "sha256": "c2d528bb3ca359220fa7163f967cffea0041616592f3cf68645696d01b168fe8"
+      },
+      "member": "failures/initial-membership/partials/3",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "member": "failures/initial-membership/results/calls.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 945069,
+        "sha256": "3a6efe04720043060624bac2ab9e0efb1f6ab8ceb63e933f151cfbcaf8fb1cab"
+      },
+      "member": "failures/second-membership/failed-root-MANIFEST.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 25952256,
+        "sha256": "e04f51b2f8236886c5d4d7a0b1b67ee53b233bde6eebc824d1721444500d8645"
+      },
+      "member": "failures/second-membership/partial.bin",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "member": "failures/second-membership/results/calls.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 947080,
+        "sha256": "36015f844f236f106c001543c75ee51140cf4ba2fa8a127e336396234d3c834c"
+      },
+      "member": "provenance/recovery-cut-manifest.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 4363,
+        "sha256": "48737331304f71a9d2dd284495778001dad65f6c55d9ee91307d5d406d41d9dc"
+      },
+      "member": "results/primary/calls.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 7426382,
+        "sha256": "b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5"
+      },
+      "member": "results/primary/control-exception.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 508520,
+        "sha256": "0191990dfb83231f66a6ba4380c3601542d4c565f96d64e4453abf86fc36e8c2"
+      },
+      "member": "results/primary/fixtures.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 4641,
+        "sha256": "95de4c66c70779ad170a83a53e63678a35ba06a4c4c96b95c10f7720c14aaa95"
+      },
+      "member": "results/public/calls.json",
+      "selection_origin": "extension"
+    },
+    {
+      "git_selected": false,
+      "identity": {
+        "bytes": 3949,
+        "sha256": "b652c3c4172da7290a8dee7ba63e17c3d651e105fac6e27a76686342f444a422"
+      },
+      "member": "results/recovered/calls.json",
+      "selection_origin": "extension"
+    }
+  ],
+  "incomplete": {
+    "CRC": "PASS",
+    "entries": 71,
+    "git_included": false,
+    "hashes": "PASS",
+    "identity": {
+      "bytes": 122064627,
+      "sha256": "1821bf45816c834bceada2e14f8899f947b7b238473da60d94346e4303083895"
+    },
+    "manifest": {
+      "bytes": 10764,
+      "sha256": "8abd0490a8ae01804e9fbcfc51025b910c2671a0acebeba2cc97cb7966a09030"
+    },
+    "manifested_hashes": 70,
+    "member_in_review": "retained/INCOMPLETE-recovery.zip",
+    "safe_exact_regular_membership": "PASS",
+    "status_preserved": "INCOMPLETE historical attempt"
+  },
+  "last_check_layer": "Public post-derivation receipt comparison, not another layer",
+  "old_process_result_exit": "UNRECOVERED",
+  "previous_milestone": {
+    "commit": "0b37cfc32f1bd8d9640072d94e9f3f3a244292c3",
+    "prefix": "docs/privacy-engine/engineering-288/callback-exception-bare-rethrow-reviewed",
+    "receipt": "provenance/prior-bare-rethrow-save.json",
+    "saved_again": false,
+    "selection": {
+      "bytes": 928561,
+      "files": 126,
+      "manifest": {
+        "bytes": 20102,
+        "sha256": "e6d8ee59a016f544441873bb51630fdcef7a62b49e08547a6e5adce801094afd"
+      }
+    }
+  },
+  "reruns": 0,
+  "retained_previous_milestones_not_copied_again": 3002,
+  "review": {
+    "CRC": "PASS",
+    "entries": 30,
+    "git_included": false,
+    "hashes": "PASS",
+    "identity": {
+      "bytes": 122719216,
+      "sha256": "056f198bb178235e4b607eab22652cdeff5c105471880a4bacee74fd848b9229"
+    },
+    "manifest": {
+      "bytes": 4134,
+      "sha256": "5dae26586aeaa2e95b3c012351c4f474431631b04ede0faedf3a56c428dfa9c2"
+    },
+    "manifested_hashes": 29,
+    "name": "Formal-Lab6-I164-control-callback-exception-independent-review.zip",
+    "safe_exact_regular_membership": "PASS"
+  }
+}

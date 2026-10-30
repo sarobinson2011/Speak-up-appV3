@@ -1,0 +1,103 @@
+{"check": "coordinated prefix omission (0, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (0, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (0, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (0, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (0, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (0, 5)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (0, 5)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (0, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (0, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (0, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (0, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (0, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (0, 'registration_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (0, 'control_callback_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (0, 'client_callback_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (0, 'finally_entered_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (0, 'removal_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "wrong control frontier (0, 'process-termination')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "wrong control frontier (0, 'unobserved')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "wrong control frontier (0, 'normal')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "prefix exact bool (0, 'owner_failure_none', 0)", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "prefix exact bool (0, 'owner_failure_none', 1)", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "prefix exact bool (0, 'control_present', 0)", "result": "REJECTED", "error": "CONTROL-REQUIRES-CONTROL"}
+{"check": "prefix exact bool (0, 'control_present', 1)", "result": "REJECTED", "error": "CONTROL-REQUIRES-CONTROL"}
+{"check": "prefix exact bool (0, 'registry_continuity', 0)", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "prefix exact bool (0, 'registry_continuity', 1)", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "all paired reference copies substituted (0, 'owner')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "all paired reference copies substituted (0, 'token')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "all paired reference copies substituted (0, 'control')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "both error reports substituted (0, 'reference')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'callback_occurrence')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'callee')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'existing_cause')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'existing_context')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'existing_suppression')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (0, 'local_handler_binding')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "invented continuation after stopped frontier (0, 'raise')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented continuation after stopped frontier (0, 'process-termination')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented continuation after stopped frontier (0, 'unobserved')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented client or stored-error step (0, 'client-create')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (0, 'client-callback')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (0, 'callback-handler-enter')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (0, 'owner-failure-guard')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "legitimate shared input aliases and returned isolation 0", "result": "PASS"}
+{"check": "coordinated cyclic input 0", "result": "REJECTED", "error": "CONTROL-EXACT-TYPE:CYCLE"}
+{"check": "direct submitted-output coordinated claim (0, 'owner_failure_guard_evaluated_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "direct submitted-output coordinated claim (0, 'client_handler_entered_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "direct submitted-output coordinated claim (0, 'new_explicit_cause_assignment_established_in_model')", "result": "REJECTED", "error": "CONTROL-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated prefix omission (1, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (1, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (1, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (1, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (1, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix omission (1, 5)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix duplicate (1, 5)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (1, 0)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (1, 1)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (1, 2)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (1, 3)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "coordinated prefix reorder (1, 4)", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (1, 'registration_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (1, 'control_callback_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (1, 'client_callback_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (1, 'finally_entered_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "mutually altered token prefix must be recomputed (1, 'removal_completed_in_model')", "result": "REJECTED", "error": "CONTROL-VALIDATED-TOKEN-PREFIX"}
+{"check": "wrong control frontier (1, 'process-termination')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "wrong control frontier (1, 'unobserved')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "wrong control frontier (1, 'normal')", "result": "REJECTED", "error": "CONTROL-SELECTED-PREFIX"}
+{"check": "prefix exact bool (1, 'owner_failure_none', 0)", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "prefix exact bool (1, 'owner_failure_none', 1)", "result": "REJECTED", "error": "TOKEN-BOOL:owner_failure_none"}
+{"check": "prefix exact bool (1, 'control_present', 0)", "result": "REJECTED", "error": "CONTROL-REQUIRES-CONTROL"}
+{"check": "prefix exact bool (1, 'control_present', 1)", "result": "REJECTED", "error": "CONTROL-REQUIRES-CONTROL"}
+{"check": "prefix exact bool (1, 'registry_continuity', 0)", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "prefix exact bool (1, 'registry_continuity', 1)", "result": "REJECTED", "error": "TOKEN-BOOL:registry_continuity"}
+{"check": "all paired reference copies substituted (1, 'owner')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "all paired reference copies substituted (1, 'token')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "all paired reference copies substituted (1, 'control')", "result": "REJECTED", "error": "CONTROL-REFERENCE-ROLES"}
+{"check": "both error reports substituted (1, 'reference')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'callback_occurrence')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'callee')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'existing_cause')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'existing_context')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'existing_suppression')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "both error reports substituted (1, 'local_handler_binding')", "result": "REJECTED", "error": "CONTROL-SELECTED-ERROR"}
+{"check": "invented continuation after stopped frontier (1, 'raise')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented continuation after stopped frontier (1, 'process-termination')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented continuation after stopped frontier (1, 'unobserved')", "result": "REJECTED", "error": "CONTROL-UNREACHED-STEPS"}
+{"check": "invented client or stored-error step (1, 'client-create')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (1, 'client-callback')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (1, 'callback-handler-enter')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "invented client or stored-error step (1, 'owner-failure-guard')", "result": "REJECTED", "error": "CONTROL-STEP-ORDER"}
+{"check": "legitimate shared input aliases and returned isolation 1", "result": "PASS"}
+{"check": "coordinated cyclic input 1", "result": "REJECTED", "error": "CONTROL-EXACT-TYPE:CYCLE"}

@@ -1,0 +1,13 @@
+# Compact save and exact recovery
+
+SELECTION-MANIFEST.json covers this compact selection only. Copied original manifests intentionally still refer to members held externally. Do not execute tests, validators or the archived draft/recovery packagers from this partial selection.
+
+The exact external Formal-Lab6-I164-control-callback-exception-independent-review.zip is 122,719,216 bytes, SHA-256 056f198bb178235e4b607eab22652cdeff5c105471880a4bacee74fd848b9229. Its retained/INCOMPLETE-recovery.zip is 122,064,627 bytes, SHA-256 1821bf45816c834bceada2e14f8899f947b7b238473da60d94346e4303083895. That unchanged archive contains input/I164-control-callback-exception-correspondence-1.zip, 124,424,355 bytes, SHA-256 ed07f4ceb638f1c967cb3936b0051f5c0c8d781c95d26838b7bdc7baba7f4c20. The full reviewed source/dependency trees, original partials and both baseline and altered receipts remain in that lineage. Recompression does not reconstruct original archive bytes.
+
+Use the exact archive/member identities in provenance/EXTERNAL-RECOVERY.json. If separately authorized to recover a full root, verify safe unique regular membership, manifest hashes and CRC before extraction into a new empty persistent directory. Preserve forensic partials in their declared evidence locations, outside strict predecessor roots. Reuse completed results. This save authorizes no campaign rerun, session/database operation, acquisition or qualification.
+
+Current review/completion records and historical incomplete records remain separate. Original public-process exit/result is unrecovered. The 520/517 and 106/103/103 qualifications, nine partial public rows, separately confirmed one check, and independent versus supplied controls must not be collapsed into a new total. The final confirmed rejection belongs to the public receipt comparison only.
+
+The host command first reuses matching successful receipts or an exact already-saved selection. Otherwise it verifies the previous bare-rethrow milestone, the exact external review in Downloads and origin/main; writes only the new prefix; explicitly stages selected ignored logs; commits only selected paths; checks unrelated staged/working state; and pushes once without force or retry. Failure or conflicting prior-save evidence is preserved, not automatically repaired.
+
+The host repository /home/steve/dev/Speak-up-appV3 is unavailable in this preparation environment. Commit/push remain pending until host execution or a matching success receipt. Existing commit/push authorization is reused. No Git, candidate code, tests, reviews or pipelines were run while preparing this selection.

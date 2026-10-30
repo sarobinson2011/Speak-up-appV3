@@ -1,0 +1,277 @@
+Validating mandatory saved predecessor evidence once for the new slice
+1 both contexts mandatory PASS
+2 all reviewed context relations byte-value preserved PASS
+3 independent source control call outside client handler PASS
+4 source-derived stages and excluded client guards PASS
+5 legitimate control raise and normal removal 0 PASS
+6 selected error pending after normal finally 0 PASS
+7 no client guard imported and owner continuity conditional (0, False, True) PASS
+8 no client guard imported and owner continuity conditional (0, True, False) PASS
+9 no client guard imported and owner continuity conditional (0, False, False) PASS
+10 distinct control/error occurrences 0 PASS
+11 legitimate frontier (0, 'finally-enter', 'raise') PASS
+12 earlier prefix facts survive (0, 'finally-enter', 'raise') PASS
+13 cleanup error distinct role without physical inequality (0, 'finally-enter') PASS
+14 false frontier completion (0, 'finally-enter', 'raise', 'removal_completed_in_model') REJECTED
+15 false frontier completion (0, 'finally-enter', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+16 false frontier completion (0, 'finally-enter', 'raise', 'run_success_established') REJECTED
+17 continuation after stopped frontier (0, 'finally-enter', 'raise') REJECTED
+18 legitimate frontier (0, 'finally-enter', 'process-termination') PASS
+19 earlier prefix facts survive (0, 'finally-enter', 'process-termination') PASS
+20 termination supplies no terminal exception/unwind (0, 'finally-enter', 'process-termination') PASS
+21 false frontier completion (0, 'finally-enter', 'process-termination', 'removal_completed_in_model') REJECTED
+22 false frontier completion (0, 'finally-enter', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+23 false frontier completion (0, 'finally-enter', 'process-termination', 'run_success_established') REJECTED
+24 continuation after stopped frontier (0, 'finally-enter', 'process-termination') REJECTED
+25 legitimate frontier (0, 'finally-enter', 'unobserved') PASS
+26 earlier prefix facts survive (0, 'finally-enter', 'unobserved') PASS
+27 termination supplies no terminal exception/unwind (0, 'finally-enter', 'unobserved') PASS
+28 false frontier completion (0, 'finally-enter', 'unobserved', 'removal_completed_in_model') REJECTED
+29 false frontier completion (0, 'finally-enter', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+30 false frontier completion (0, 'finally-enter', 'unobserved', 'run_success_established') REJECTED
+31 continuation after stopped frontier (0, 'finally-enter', 'unobserved') REJECTED
+32 legitimate frontier (0, 'removal-attempt', 'raise') PASS
+33 earlier prefix facts survive (0, 'removal-attempt', 'raise') PASS
+34 cleanup error distinct role without physical inequality (0, 'removal-attempt') PASS
+35 false frontier completion (0, 'removal-attempt', 'raise', 'removal_completed_in_model') REJECTED
+36 false frontier completion (0, 'removal-attempt', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+37 false frontier completion (0, 'removal-attempt', 'raise', 'run_success_established') REJECTED
+38 continuation after stopped frontier (0, 'removal-attempt', 'raise') REJECTED
+39 legitimate frontier (0, 'removal-attempt', 'process-termination') PASS
+40 earlier prefix facts survive (0, 'removal-attempt', 'process-termination') PASS
+41 termination supplies no terminal exception/unwind (0, 'removal-attempt', 'process-termination') PASS
+42 false frontier completion (0, 'removal-attempt', 'process-termination', 'removal_completed_in_model') REJECTED
+43 false frontier completion (0, 'removal-attempt', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+44 false frontier completion (0, 'removal-attempt', 'process-termination', 'run_success_established') REJECTED
+45 continuation after stopped frontier (0, 'removal-attempt', 'process-termination') REJECTED
+46 legitimate frontier (0, 'removal-attempt', 'unobserved') PASS
+47 earlier prefix facts survive (0, 'removal-attempt', 'unobserved') PASS
+48 termination supplies no terminal exception/unwind (0, 'removal-attempt', 'unobserved') PASS
+49 false frontier completion (0, 'removal-attempt', 'unobserved', 'removal_completed_in_model') REJECTED
+50 false frontier completion (0, 'removal-attempt', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+51 false frontier completion (0, 'removal-attempt', 'unobserved', 'run_success_established') REJECTED
+52 continuation after stopped frontier (0, 'removal-attempt', 'unobserved') REJECTED
+53 legitimate frontier (0, 'removal-complete', 'raise') PASS
+54 earlier prefix facts survive (0, 'removal-complete', 'raise') PASS
+55 cleanup error distinct role without physical inequality (0, 'removal-complete') PASS
+56 false frontier completion (0, 'removal-complete', 'raise', 'removal_completed_in_model') REJECTED
+57 false frontier completion (0, 'removal-complete', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+58 false frontier completion (0, 'removal-complete', 'raise', 'run_success_established') REJECTED
+59 continuation after stopped frontier (0, 'removal-complete', 'raise') REJECTED
+60 legitimate frontier (0, 'removal-complete', 'process-termination') PASS
+61 earlier prefix facts survive (0, 'removal-complete', 'process-termination') PASS
+62 termination supplies no terminal exception/unwind (0, 'removal-complete', 'process-termination') PASS
+63 false frontier completion (0, 'removal-complete', 'process-termination', 'removal_completed_in_model') REJECTED
+64 false frontier completion (0, 'removal-complete', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+65 false frontier completion (0, 'removal-complete', 'process-termination', 'run_success_established') REJECTED
+66 continuation after stopped frontier (0, 'removal-complete', 'process-termination') REJECTED
+67 legitimate frontier (0, 'removal-complete', 'unobserved') PASS
+68 earlier prefix facts survive (0, 'removal-complete', 'unobserved') PASS
+69 termination supplies no terminal exception/unwind (0, 'removal-complete', 'unobserved') PASS
+70 false frontier completion (0, 'removal-complete', 'unobserved', 'removal_completed_in_model') REJECTED
+71 false frontier completion (0, 'removal-complete', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+72 false frontier completion (0, 'removal-complete', 'unobserved', 'run_success_established') REJECTED
+73 continuation after stopped frontier (0, 'removal-complete', 'unobserved') REJECTED
+74 wrong binding or unsupported claim (0, ('control_error', 'reference')) REJECTED
+75 wrong binding or unsupported claim (0, ('control_error', 'callback_occurrence')) REJECTED
+76 wrong binding or unsupported claim (0, ('control_error', 'callee')) REJECTED
+77 wrong binding or unsupported claim (0, ('control_error', 'scope', 'invocation')) REJECTED
+78 wrong binding or unsupported claim (0, ('control_error', 'callback_argument_reference', 'symbol')) REJECTED
+79 wrong binding or unsupported claim (0, ('control_error', 'local_handler_binding')) REJECTED
+80 wrong binding or unsupported claim (0, ('control_error', 'source', 'site')) REJECTED
+81 wrong binding or unsupported claim (0, ('token_case', 'invocation')) REJECTED
+82 wrong binding or unsupported claim (0, ('anchor',)) REJECTED
+83 wrong binding or unsupported claim (0, ('context',)) REJECTED
+84 wrong binding or unsupported claim (0, ('projection', 'references', 'owner', 'symbol')) REJECTED
+85 wrong binding or unsupported claim (0, ('projection', 'references', 'token', 'symbol')) REJECTED
+86 wrong binding or unsupported claim (0, ('projection', 'references', 'control', 'symbol')) REJECTED
+87 wrong binding or unsupported claim (0, ('projection', 'scope', 'invocation')) REJECTED
+88 wrong binding or unsupported claim (0, ('output', 'subsequent_client_execution_in_model')) REJECTED
+89 wrong binding or unsupported claim (0, ('output', 'client_handler_entered_in_model')) REJECTED
+90 wrong binding or unsupported claim (0, ('output', 'owner_failure_guard_evaluated_in_model')) REJECTED
+91 wrong binding or unsupported claim (0, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+92 wrong binding or unsupported claim (0, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+93 wrong binding or unsupported claim (0, ('output', 'exception_chain_observation', 'existing_context')) REJECTED
+94 wrong binding or unsupported claim (0, ('output', 'exception_chain_observation', 'existing_suppression')) REJECTED
+95 wrong binding or unsupported claim (0, ('output', 'exception_chain_observation', 'cleanup_context_link')) REJECTED
+96 wrong binding or unsupported claim (0, ('output', 'outward_error_after_finally_in_model', 'reference')) REJECTED
+97 wrong binding or unsupported claim (0, ('output', 'control_reaches_launcher_established')) REJECTED
+98 wrong binding or unsupported claim (0, ('output', 'run_success_established')) REJECTED
+99 wrong binding or unsupported claim (0, ('output', 'prior_failure_storage_history')) REJECTED
+100 wrong binding or unsupported claim (0, ('output', 'observer_join')) REJECTED
+101 wrong binding or unsupported claim (0, ('output', 'revocation_persists')) REJECTED
+102 wrong binding or unsupported claim (0, ('output', 'physical_lock_release_established')) REJECTED
+103 wrong binding or unsupported claim (0, ('output', 'authorization_renewed')) REJECTED
+104 coordinated missing stage (0, 0) REJECTED
+105 duplicate stage (0, 0) REJECTED
+106 coordinated missing stage (0, 1) REJECTED
+107 duplicate stage (0, 1) REJECTED
+108 coordinated missing stage (0, 2) REJECTED
+109 duplicate stage (0, 2) REJECTED
+110 reordered entry and attempt 0 REJECTED
+111 cross-invocation result 0 REJECTED
+112 coordinated error substitution 0 REJECTED
+113 exact nested type/key (0, ('context',)) REJECTED
+114 exact nested type/key (0, ('control_error',)) REJECTED
+115 exact nested type/key (0, ('outcomes',)) REJECTED
+116 exact nested type/key (0, ('outcomes', 0, 'stage')) REJECTED
+117 exact nested type/key (0, ('output', 'removal_completed_in_model')) REJECTED
+118 exact nested type/key (0, ('control_error',)) REJECTED
+119 exact nested type/key (0, ('output', 'control_error')) REJECTED
+120 exact nested type/key (0, ('projection', 'token_inputs', 'control_present')) REJECTED
+121 exact nested type/key (0, ('output', 'events', 0, 'source', 'source', 'bytes')) REJECTED
+122 projector rejects mutually consistent wrong exception 0 REJECTED
+123 projector recomputes prefix instead of trusting paired reports 0 REJECTED
+124 submitted-output boundary 0 REJECTED
+125 nested result mutations cannot change expectations 0 PASS
+126 semantic client-handler substitution 0 REJECTED
+127 legitimate control raise and normal removal 1 PASS
+128 selected error pending after normal finally 1 PASS
+129 no client guard imported and owner continuity conditional (1, False, True) PASS
+130 no client guard imported and owner continuity conditional (1, True, False) PASS
+131 no client guard imported and owner continuity conditional (1, False, False) PASS
+132 distinct control/error occurrences 1 PASS
+133 legitimate frontier (1, 'finally-enter', 'raise') PASS
+134 earlier prefix facts survive (1, 'finally-enter', 'raise') PASS
+135 cleanup error distinct role without physical inequality (1, 'finally-enter') PASS
+136 false frontier completion (1, 'finally-enter', 'raise', 'removal_completed_in_model') REJECTED
+137 false frontier completion (1, 'finally-enter', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+138 false frontier completion (1, 'finally-enter', 'raise', 'run_success_established') REJECTED
+139 continuation after stopped frontier (1, 'finally-enter', 'raise') REJECTED
+140 legitimate frontier (1, 'finally-enter', 'process-termination') PASS
+141 earlier prefix facts survive (1, 'finally-enter', 'process-termination') PASS
+142 termination supplies no terminal exception/unwind (1, 'finally-enter', 'process-termination') PASS
+143 false frontier completion (1, 'finally-enter', 'process-termination', 'removal_completed_in_model') REJECTED
+144 false frontier completion (1, 'finally-enter', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+145 false frontier completion (1, 'finally-enter', 'process-termination', 'run_success_established') REJECTED
+146 continuation after stopped frontier (1, 'finally-enter', 'process-termination') REJECTED
+147 legitimate frontier (1, 'finally-enter', 'unobserved') PASS
+148 earlier prefix facts survive (1, 'finally-enter', 'unobserved') PASS
+149 termination supplies no terminal exception/unwind (1, 'finally-enter', 'unobserved') PASS
+150 false frontier completion (1, 'finally-enter', 'unobserved', 'removal_completed_in_model') REJECTED
+151 false frontier completion (1, 'finally-enter', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+152 false frontier completion (1, 'finally-enter', 'unobserved', 'run_success_established') REJECTED
+153 continuation after stopped frontier (1, 'finally-enter', 'unobserved') REJECTED
+154 legitimate frontier (1, 'removal-attempt', 'raise') PASS
+155 earlier prefix facts survive (1, 'removal-attempt', 'raise') PASS
+156 cleanup error distinct role without physical inequality (1, 'removal-attempt') PASS
+157 false frontier completion (1, 'removal-attempt', 'raise', 'removal_completed_in_model') REJECTED
+158 false frontier completion (1, 'removal-attempt', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+159 false frontier completion (1, 'removal-attempt', 'raise', 'run_success_established') REJECTED
+160 continuation after stopped frontier (1, 'removal-attempt', 'raise') REJECTED
+161 legitimate frontier (1, 'removal-attempt', 'process-termination') PASS
+162 earlier prefix facts survive (1, 'removal-attempt', 'process-termination') PASS
+163 termination supplies no terminal exception/unwind (1, 'removal-attempt', 'process-termination') PASS
+164 false frontier completion (1, 'removal-attempt', 'process-termination', 'removal_completed_in_model') REJECTED
+165 false frontier completion (1, 'removal-attempt', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+166 false frontier completion (1, 'removal-attempt', 'process-termination', 'run_success_established') REJECTED
+167 continuation after stopped frontier (1, 'removal-attempt', 'process-termination') REJECTED
+168 legitimate frontier (1, 'removal-attempt', 'unobserved') PASS
+169 earlier prefix facts survive (1, 'removal-attempt', 'unobserved') PASS
+170 termination supplies no terminal exception/unwind (1, 'removal-attempt', 'unobserved') PASS
+171 false frontier completion (1, 'removal-attempt', 'unobserved', 'removal_completed_in_model') REJECTED
+172 false frontier completion (1, 'removal-attempt', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+173 false frontier completion (1, 'removal-attempt', 'unobserved', 'run_success_established') REJECTED
+174 continuation after stopped frontier (1, 'removal-attempt', 'unobserved') REJECTED
+175 legitimate frontier (1, 'removal-complete', 'raise') PASS
+176 earlier prefix facts survive (1, 'removal-complete', 'raise') PASS
+177 cleanup error distinct role without physical inequality (1, 'removal-complete') PASS
+178 false frontier completion (1, 'removal-complete', 'raise', 'removal_completed_in_model') REJECTED
+179 false frontier completion (1, 'removal-complete', 'raise', 'control_outward_after_finally_established_in_model') REJECTED
+180 false frontier completion (1, 'removal-complete', 'raise', 'run_success_established') REJECTED
+181 continuation after stopped frontier (1, 'removal-complete', 'raise') REJECTED
+182 legitimate frontier (1, 'removal-complete', 'process-termination') PASS
+183 earlier prefix facts survive (1, 'removal-complete', 'process-termination') PASS
+184 termination supplies no terminal exception/unwind (1, 'removal-complete', 'process-termination') PASS
+185 false frontier completion (1, 'removal-complete', 'process-termination', 'removal_completed_in_model') REJECTED
+186 false frontier completion (1, 'removal-complete', 'process-termination', 'control_outward_after_finally_established_in_model') REJECTED
+187 false frontier completion (1, 'removal-complete', 'process-termination', 'run_success_established') REJECTED
+188 continuation after stopped frontier (1, 'removal-complete', 'process-termination') REJECTED
+189 legitimate frontier (1, 'removal-complete', 'unobserved') PASS
+190 earlier prefix facts survive (1, 'removal-complete', 'unobserved') PASS
+191 termination supplies no terminal exception/unwind (1, 'removal-complete', 'unobserved') PASS
+192 false frontier completion (1, 'removal-complete', 'unobserved', 'removal_completed_in_model') REJECTED
+193 false frontier completion (1, 'removal-complete', 'unobserved', 'control_outward_after_finally_established_in_model') REJECTED
+194 false frontier completion (1, 'removal-complete', 'unobserved', 'run_success_established') REJECTED
+195 continuation after stopped frontier (1, 'removal-complete', 'unobserved') REJECTED
+196 wrong binding or unsupported claim (1, ('control_error', 'reference')) REJECTED
+197 wrong binding or unsupported claim (1, ('control_error', 'callback_occurrence')) REJECTED
+198 wrong binding or unsupported claim (1, ('control_error', 'callee')) REJECTED
+199 wrong binding or unsupported claim (1, ('control_error', 'scope', 'invocation')) REJECTED
+200 wrong binding or unsupported claim (1, ('control_error', 'callback_argument_reference', 'symbol')) REJECTED
+201 wrong binding or unsupported claim (1, ('control_error', 'local_handler_binding')) REJECTED
+202 wrong binding or unsupported claim (1, ('control_error', 'source', 'site')) REJECTED
+203 wrong binding or unsupported claim (1, ('token_case', 'invocation')) REJECTED
+204 wrong binding or unsupported claim (1, ('anchor',)) REJECTED
+205 wrong binding or unsupported claim (1, ('context',)) REJECTED
+206 wrong binding or unsupported claim (1, ('projection', 'references', 'owner', 'symbol')) REJECTED
+207 wrong binding or unsupported claim (1, ('projection', 'references', 'token', 'symbol')) REJECTED
+208 wrong binding or unsupported claim (1, ('projection', 'references', 'control', 'symbol')) REJECTED
+209 wrong binding or unsupported claim (1, ('projection', 'scope', 'invocation')) REJECTED
+210 wrong binding or unsupported claim (1, ('output', 'subsequent_client_execution_in_model')) REJECTED
+211 wrong binding or unsupported claim (1, ('output', 'client_handler_entered_in_model')) REJECTED
+212 wrong binding or unsupported claim (1, ('output', 'owner_failure_guard_evaluated_in_model')) REJECTED
+213 wrong binding or unsupported claim (1, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+214 wrong binding or unsupported claim (1, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+215 wrong binding or unsupported claim (1, ('output', 'exception_chain_observation', 'existing_context')) REJECTED
+216 wrong binding or unsupported claim (1, ('output', 'exception_chain_observation', 'existing_suppression')) REJECTED
+217 wrong binding or unsupported claim (1, ('output', 'exception_chain_observation', 'cleanup_context_link')) REJECTED
+218 wrong binding or unsupported claim (1, ('output', 'outward_error_after_finally_in_model', 'reference')) REJECTED
+219 wrong binding or unsupported claim (1, ('output', 'control_reaches_launcher_established')) REJECTED
+220 wrong binding or unsupported claim (1, ('output', 'run_success_established')) REJECTED
+221 wrong binding or unsupported claim (1, ('output', 'prior_failure_storage_history')) REJECTED
+222 wrong binding or unsupported claim (1, ('output', 'observer_join')) REJECTED
+223 wrong binding or unsupported claim (1, ('output', 'revocation_persists')) REJECTED
+224 wrong binding or unsupported claim (1, ('output', 'physical_lock_release_established')) REJECTED
+225 wrong binding or unsupported claim (1, ('output', 'authorization_renewed')) REJECTED
+226 coordinated missing stage (1, 0) REJECTED
+227 duplicate stage (1, 0) REJECTED
+228 coordinated missing stage (1, 1) REJECTED
+229 duplicate stage (1, 1) REJECTED
+230 coordinated missing stage (1, 2) REJECTED
+231 duplicate stage (1, 2) REJECTED
+232 reordered entry and attempt 1 REJECTED
+233 cross-invocation result 1 REJECTED
+234 coordinated error substitution 1 REJECTED
+235 exact nested type/key (1, ('context',)) REJECTED
+236 exact nested type/key (1, ('control_error',)) REJECTED
+237 exact nested type/key (1, ('outcomes',)) REJECTED
+238 exact nested type/key (1, ('outcomes', 0, 'stage')) REJECTED
+239 exact nested type/key (1, ('output', 'removal_completed_in_model')) REJECTED
+240 exact nested type/key (1, ('control_error',)) REJECTED
+241 exact nested type/key (1, ('output', 'control_error')) REJECTED
+242 exact nested type/key (1, ('projection', 'token_inputs', 'control_present')) REJECTED
+243 exact nested type/key (1, ('output', 'events', 0, 'source', 'source', 'bytes')) REJECTED
+244 projector rejects mutually consistent wrong exception 1 REJECTED
+245 projector recomputes prefix instead of trusting paired reports 1 REJECTED
+246 submitted-output boundary 1 REJECTED
+247 nested result mutations cannot change expectations 1 PASS
+248 semantic client-handler substitution 1 REJECTED
+249 semantic claim omit-context REJECTED
+250 semantic claim omit-declaration REJECTED
+251 semantic claim omit-guard REJECTED
+252 semantic claim both-wrong-order REJECTED
+253 semantic claim subclass-key REJECTED
+254 mutated returned rows rejected REJECTED
+255 pristine receipt after mutable returned objects PASS
+256 stale/mixed predecessor evidence REJECTED
+257 existing branch preserved by new mandatory entry ('bare', 0) PASS
+258 existing branch preserved by new mandatory entry ('bare', 1) PASS
+259 existing branch preserved by new mandatory entry ('stored-client', 0) PASS
+260 existing branch preserved by new mandatory entry ('stored-client', 1) PASS
+261 existing branch preserved by new mandatory entry ('stored-normal', 0) PASS
+262 existing branch preserved by new mandatory entry ('stored-normal', 1) PASS
+263 existing branch preserved by new mandatory entry ('normal-token', 0) PASS
+264 existing branch preserved by new mandatory entry ('normal-token', 1) PASS
+265 source independently rejects wrong-control-guard REJECTED
+266 source independently rejects wrong-callback REJECTED
+267 source independently rejects wrong-token REJECTED
+268 source independently rejects wrong-pop REJECTED
+269 source independently rejects invented-cause REJECTED
+270 catalogue coordinated omission declaration REJECTED
+271 catalogue coordinated omission guard REJECTED
+272 catalogue coordinated omission source REJECTED
+273 catalogue coordinated omission token REJECTED
+274 public semantic exact types before normalization REJECTED
+275 public constructed exact types before normalization REJECTED
+276 public derivation exact types before normalization REJECTED
