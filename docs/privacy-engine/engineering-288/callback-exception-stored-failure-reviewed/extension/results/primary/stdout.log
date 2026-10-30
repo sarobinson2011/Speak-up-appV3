@@ -1,0 +1,423 @@
+1 mandatory predecessor chain and both contexts PASS
+2 all prior context fields including normal callback preserved PASS
+3 independent handler guard raise and explicit cause PASS
+4 independent coverage and excluded bare rethrow PASS
+5 validated stored provenance handle SYMBOLIC-U-ONE PASS
+6 stored error survives helper escape handle SYMBOLIC-U-ONE PASS
+7 validated stored provenance state SYMBOLIC-U-ONE PASS
+8 stored error survives helper escape state SYMBOLIC-U-ONE PASS
+9 handle underlying-call conditional failure SYMBOLIC-U-ONE PASS
+10 optional control omitted SYMBOLIC-U-ONE PASS
+11 unknown registry continuity SYMBOLIC-U-ONE PASS
+12 unknown owner cannot establish selected removal SYMBOLIC-U-ONE PASS
+13 caught error is explicit cause of stored original only SYMBOLIC-U-ONE PASS
+14 separate roles do not assert physical inequality SYMBOLIC-U-ONE PASS
+15 callback-handler-enter raise SYMBOLIC-U-ONE PASS
+16 storage survives callback-handler-enterraise SYMBOLIC-U-ONE PASS
+17 handler evaluation error goes to finally callback-handler-enter SYMBOLIC-U-ONE PASS
+18 no successful run callback-handler-enterraise SYMBOLIC-U-ONE REJECTED
+19 callback-handler-enter process-termination SYMBOLIC-U-ONE PASS
+20 storage survives callback-handler-enterprocess-termination SYMBOLIC-U-ONE PASS
+21 no inferred completed removal callback-handler-enterprocess-termination SYMBOLIC-U-ONE PASS
+22 no terminal Python unwind callback-handler-enterprocess-termination SYMBOLIC-U-ONE PASS
+23 false completed removal callback-handler-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+24 no successful run callback-handler-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+25 false continuation callback-handler-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+26 callback-handler-enter unobserved SYMBOLIC-U-ONE PASS
+27 storage survives callback-handler-enterunobserved SYMBOLIC-U-ONE PASS
+28 no inferred completed removal callback-handler-enterunobserved SYMBOLIC-U-ONE PASS
+29 no terminal Python unwind callback-handler-enterunobserved SYMBOLIC-U-ONE PASS
+30 false completed removal callback-handler-enterunobserved SYMBOLIC-U-ONE REJECTED
+31 no successful run callback-handler-enterunobserved SYMBOLIC-U-ONE REJECTED
+32 false continuation callback-handler-enterunobserved SYMBOLIC-U-ONE REJECTED
+33 callback-failure-guard raise SYMBOLIC-U-ONE PASS
+34 storage survives callback-failure-guardraise SYMBOLIC-U-ONE PASS
+35 handler evaluation error goes to finally callback-failure-guard SYMBOLIC-U-ONE PASS
+36 no successful run callback-failure-guardraise SYMBOLIC-U-ONE REJECTED
+37 callback-failure-guard process-termination SYMBOLIC-U-ONE PASS
+38 storage survives callback-failure-guardprocess-termination SYMBOLIC-U-ONE PASS
+39 no inferred completed removal callback-failure-guardprocess-termination SYMBOLIC-U-ONE PASS
+40 no terminal Python unwind callback-failure-guardprocess-termination SYMBOLIC-U-ONE PASS
+41 false completed removal callback-failure-guardprocess-termination SYMBOLIC-U-ONE REJECTED
+42 no successful run callback-failure-guardprocess-termination SYMBOLIC-U-ONE REJECTED
+43 false continuation callback-failure-guardprocess-termination SYMBOLIC-U-ONE REJECTED
+44 callback-failure-guard unobserved SYMBOLIC-U-ONE PASS
+45 storage survives callback-failure-guardunobserved SYMBOLIC-U-ONE PASS
+46 no inferred completed removal callback-failure-guardunobserved SYMBOLIC-U-ONE PASS
+47 no terminal Python unwind callback-failure-guardunobserved SYMBOLIC-U-ONE PASS
+48 false completed removal callback-failure-guardunobserved SYMBOLIC-U-ONE REJECTED
+49 no successful run callback-failure-guardunobserved SYMBOLIC-U-ONE REJECTED
+50 false continuation callback-failure-guardunobserved SYMBOLIC-U-ONE REJECTED
+51 callback-stored-rethrow raise SYMBOLIC-U-ONE PASS
+52 storage survives callback-stored-rethrowraise SYMBOLIC-U-ONE PASS
+53 handler evaluation error goes to finally callback-stored-rethrow SYMBOLIC-U-ONE PASS
+54 no successful run callback-stored-rethrowraise SYMBOLIC-U-ONE REJECTED
+55 callback-stored-rethrow process-termination SYMBOLIC-U-ONE PASS
+56 storage survives callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+57 no inferred completed removal callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+58 no terminal Python unwind callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE PASS
+59 false completed removal callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+60 no successful run callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+61 false continuation callback-stored-rethrowprocess-termination SYMBOLIC-U-ONE REJECTED
+62 callback-stored-rethrow unobserved SYMBOLIC-U-ONE PASS
+63 storage survives callback-stored-rethrowunobserved SYMBOLIC-U-ONE PASS
+64 no inferred completed removal callback-stored-rethrowunobserved SYMBOLIC-U-ONE PASS
+65 no terminal Python unwind callback-stored-rethrowunobserved SYMBOLIC-U-ONE PASS
+66 false completed removal callback-stored-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+67 no successful run callback-stored-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+68 false continuation callback-stored-rethrowunobserved SYMBOLIC-U-ONE REJECTED
+69 finally-enter raise SYMBOLIC-U-ONE PASS
+70 storage survives finally-enterraise SYMBOLIC-U-ONE PASS
+71 no inferred completed removal finally-enterraise SYMBOLIC-U-ONE PASS
+72 completed cause assignment survives cleanup frontier finally-enterraise SYMBOLIC-U-ONE PASS
+73 no guarantee original propagation finally-enterraise SYMBOLIC-U-ONE REJECTED
+74 false completed removal finally-enterraise SYMBOLIC-U-ONE REJECTED
+75 no successful run finally-enterraise SYMBOLIC-U-ONE REJECTED
+76 false continuation finally-enterraise SYMBOLIC-U-ONE REJECTED
+77 finally-enter process-termination SYMBOLIC-U-ONE PASS
+78 storage survives finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+79 no inferred completed removal finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+80 no terminal Python unwind finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+81 completed cause assignment survives cleanup frontier finally-enterprocess-termination SYMBOLIC-U-ONE PASS
+82 no guarantee original propagation finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+83 false completed removal finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+84 no successful run finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+85 false continuation finally-enterprocess-termination SYMBOLIC-U-ONE REJECTED
+86 finally-enter unobserved SYMBOLIC-U-ONE PASS
+87 storage survives finally-enterunobserved SYMBOLIC-U-ONE PASS
+88 no inferred completed removal finally-enterunobserved SYMBOLIC-U-ONE PASS
+89 no terminal Python unwind finally-enterunobserved SYMBOLIC-U-ONE PASS
+90 completed cause assignment survives cleanup frontier finally-enterunobserved SYMBOLIC-U-ONE PASS
+91 no guarantee original propagation finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+92 false completed removal finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+93 no successful run finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+94 false continuation finally-enterunobserved SYMBOLIC-U-ONE REJECTED
+95 removal-attempt raise SYMBOLIC-U-ONE PASS
+96 storage survives removal-attemptraise SYMBOLIC-U-ONE PASS
+97 no inferred completed removal removal-attemptraise SYMBOLIC-U-ONE PASS
+98 completed cause assignment survives cleanup frontier removal-attemptraise SYMBOLIC-U-ONE PASS
+99 no guarantee original propagation removal-attemptraise SYMBOLIC-U-ONE REJECTED
+100 false completed removal removal-attemptraise SYMBOLIC-U-ONE REJECTED
+101 no successful run removal-attemptraise SYMBOLIC-U-ONE REJECTED
+102 false continuation removal-attemptraise SYMBOLIC-U-ONE REJECTED
+103 removal-attempt process-termination SYMBOLIC-U-ONE PASS
+104 storage survives removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+105 no inferred completed removal removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+106 no terminal Python unwind removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+107 completed cause assignment survives cleanup frontier removal-attemptprocess-termination SYMBOLIC-U-ONE PASS
+108 no guarantee original propagation removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+109 false completed removal removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+110 no successful run removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+111 false continuation removal-attemptprocess-termination SYMBOLIC-U-ONE REJECTED
+112 removal-attempt unobserved SYMBOLIC-U-ONE PASS
+113 storage survives removal-attemptunobserved SYMBOLIC-U-ONE PASS
+114 no inferred completed removal removal-attemptunobserved SYMBOLIC-U-ONE PASS
+115 no terminal Python unwind removal-attemptunobserved SYMBOLIC-U-ONE PASS
+116 completed cause assignment survives cleanup frontier removal-attemptunobserved SYMBOLIC-U-ONE PASS
+117 no guarantee original propagation removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+118 false completed removal removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+119 no successful run removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+120 false continuation removal-attemptunobserved SYMBOLIC-U-ONE REJECTED
+121 removal-complete raise SYMBOLIC-U-ONE PASS
+122 storage survives removal-completeraise SYMBOLIC-U-ONE PASS
+123 no inferred completed removal removal-completeraise SYMBOLIC-U-ONE PASS
+124 completed cause assignment survives cleanup frontier removal-completeraise SYMBOLIC-U-ONE PASS
+125 no guarantee original propagation removal-completeraise SYMBOLIC-U-ONE REJECTED
+126 false completed removal removal-completeraise SYMBOLIC-U-ONE REJECTED
+127 no successful run removal-completeraise SYMBOLIC-U-ONE REJECTED
+128 false continuation removal-completeraise SYMBOLIC-U-ONE REJECTED
+129 removal-complete process-termination SYMBOLIC-U-ONE PASS
+130 storage survives removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+131 no inferred completed removal removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+132 no terminal Python unwind removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+133 completed cause assignment survives cleanup frontier removal-completeprocess-termination SYMBOLIC-U-ONE PASS
+134 no guarantee original propagation removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+135 false completed removal removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+136 no successful run removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+137 false continuation removal-completeprocess-termination SYMBOLIC-U-ONE REJECTED
+138 removal-complete unobserved SYMBOLIC-U-ONE PASS
+139 storage survives removal-completeunobserved SYMBOLIC-U-ONE PASS
+140 no inferred completed removal removal-completeunobserved SYMBOLIC-U-ONE PASS
+141 no terminal Python unwind removal-completeunobserved SYMBOLIC-U-ONE PASS
+142 completed cause assignment survives cleanup frontier removal-completeunobserved SYMBOLIC-U-ONE PASS
+143 no guarantee original propagation removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+144 false completed removal removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+145 no successful run removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+146 false continuation removal-completeunobserved SYMBOLIC-U-ONE REJECTED
+147 missing callback-handler-enter SYMBOLIC-U-ONE REJECTED
+148 duplicate callback-handler-enter SYMBOLIC-U-ONE REJECTED
+149 missing callback-failure-guard SYMBOLIC-U-ONE REJECTED
+150 duplicate callback-failure-guard SYMBOLIC-U-ONE REJECTED
+151 missing callback-stored-rethrow SYMBOLIC-U-ONE REJECTED
+152 duplicate callback-stored-rethrow SYMBOLIC-U-ONE REJECTED
+153 missing finally-enter SYMBOLIC-U-ONE REJECTED
+154 duplicate finally-enter SYMBOLIC-U-ONE REJECTED
+155 missing removal-attempt SYMBOLIC-U-ONE REJECTED
+156 duplicate removal-attempt SYMBOLIC-U-ONE REJECTED
+157 missing removal-complete SYMBOLIC-U-ONE REJECTED
+158 duplicate removal-complete SYMBOLIC-U-ONE REJECTED
+159 reordered stages SYMBOLIC-U-ONE REJECTED
+160 raise becomes normal return SYMBOLIC-U-ONE REJECTED
+161 binding ('callback_error', 'reference') SYMBOLIC-U-ONE REJECTED
+162 binding ('output', 'established_explicit_cause', 'explicit_cause', 'reference') SYMBOLIC-U-ONE REJECTED
+163 binding ('output', 'established_explicit_cause', 'raised_error', 'reference') SYMBOLIC-U-ONE REJECTED
+164 binding ('projection', 'stored_error_binding', 'owner', 'symbol') SYMBOLIC-U-ONE REJECTED
+165 binding ('projection', 'references', 'token', 'symbol') SYMBOLIC-U-ONE REJECTED
+166 binding ('token_case', 'invocation') SYMBOLIC-U-ONE REJECTED
+167 binding ('failure_input', 'references', 'owner', 'symbol') SYMBOLIC-U-ONE REJECTED
+168 binding ('failure_input', 'occurrence') SYMBOLIC-U-ONE REJECTED
+169 binding ('failure_input', 'callback') SYMBOLIC-U-ONE REJECTED
+170 binding ('failure_input', 'cleanup', 'revoke') SYMBOLIC-U-ONE REJECTED
+171 binding ('anchor', 'instance', 'binding') SYMBOLIC-U-ONE REJECTED
+172 binding ('projection', 'scope', 'acquisition') SYMBOLIC-U-ONE REJECTED
+173 binding ('projection', 'stored_error_binding', 'guard_slot_premise') SYMBOLIC-U-ONE REJECTED
+174 binding ('output', 'authorization_renewed') SYMBOLIC-U-ONE REJECTED
+175 binding ('output', 'original_reaches_launcher_established') SYMBOLIC-U-ONE REJECTED
+176 binding ('output', 'database_cleanup_completion') SYMBOLIC-U-ONE REJECTED
+177 binding ('output', 'established_explicit_cause', 'suppress_context_in_model') SYMBOLIC-U-ONE REJECTED
+178 binding ('output', 'callback_error', 'physical_identity_relative_to_stored') SYMBOLIC-U-ONE REJECTED
+179 no storage after termination handle SYMBOLIC-U-ONE REJECTED
+180 termination cannot become caught callback raise handle SYMBOLIC-U-ONE REJECTED
+181 no storage after termination state SYMBOLIC-U-ONE REJECTED
+182 termination cannot become caught callback raise state SYMBOLIC-U-ONE REJECTED
+183 coordinated cause substitution SYMBOLIC-U-ONE REJECTED
+184 coordinated original substitution SYMBOLIC-U-ONE REJECTED
+185 coordinated cross invocation SYMBOLIC-U-ONE REJECTED
+186 equal original messages distinct occurrence roles SYMBOLIC-U-ONE PASS
+187 unknown continuity cannot establish selected owner removal SYMBOLIC-U-ONE REJECTED
+188 exact type callback string SYMBOLIC-U-ONE REJECTED
+189 exact type cause dict SYMBOLIC-U-ONE REJECTED
+190 exact type nested list SYMBOLIC-U-ONE REJECTED
+191 exact type output bool as int SYMBOLIC-U-ONE REJECTED
+192 exact type failure string SYMBOLIC-U-ONE REJECTED
+193 exact type input dict SYMBOLIC-U-ONE REJECTED
+194 input key subclass SYMBOLIC-U-ONE REJECTED
+195 output key subclass SYMBOLIC-U-ONE REJECTED
+196 semantic ('conditional_links',) SYMBOLIC-U-ONE REJECTED
+197 semantic ('classification',) SYMBOLIC-U-ONE REJECTED
+198 semantic ('declaration', 'source', 'cause_expression') SYMBOLIC-U-ONE REJECTED
+199 semantic ('declaration', 'guard_branches', 'callback') SYMBOLIC-U-ONE REJECTED
+200 semantic ('guard_slot_premise',) SYMBOLIC-U-ONE REJECTED
+201 semantic ('context',) SYMBOLIC-U-ONE REJECTED
+202 semantic nested exact type SYMBOLIC-U-ONE REJECTED
+203 nested return mutation isolation SYMBOLIC-U-ONE PASS
+204 direct pristine SYMBOLIC-U-ONE PASS
+205 direct changed cause REJECTED
+206 direct expectations isolated SYMBOLIC-U-ONE PASS
+207 adjacent reviewed normal callback remains accepted SYMBOLIC-U-ONE PASS
+208 validated stored provenance handle SYMBOLIC-U-TWO PASS
+209 stored error survives helper escape handle SYMBOLIC-U-TWO PASS
+210 validated stored provenance state SYMBOLIC-U-TWO PASS
+211 stored error survives helper escape state SYMBOLIC-U-TWO PASS
+212 handle underlying-call conditional failure SYMBOLIC-U-TWO PASS
+213 optional control omitted SYMBOLIC-U-TWO PASS
+214 unknown registry continuity SYMBOLIC-U-TWO PASS
+215 unknown owner cannot establish selected removal SYMBOLIC-U-TWO PASS
+216 caught error is explicit cause of stored original only SYMBOLIC-U-TWO PASS
+217 separate roles do not assert physical inequality SYMBOLIC-U-TWO PASS
+218 callback-handler-enter raise SYMBOLIC-U-TWO PASS
+219 storage survives callback-handler-enterraise SYMBOLIC-U-TWO PASS
+220 handler evaluation error goes to finally callback-handler-enter SYMBOLIC-U-TWO PASS
+221 no successful run callback-handler-enterraise SYMBOLIC-U-TWO REJECTED
+222 callback-handler-enter process-termination SYMBOLIC-U-TWO PASS
+223 storage survives callback-handler-enterprocess-termination SYMBOLIC-U-TWO PASS
+224 no inferred completed removal callback-handler-enterprocess-termination SYMBOLIC-U-TWO PASS
+225 no terminal Python unwind callback-handler-enterprocess-termination SYMBOLIC-U-TWO PASS
+226 false completed removal callback-handler-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+227 no successful run callback-handler-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+228 false continuation callback-handler-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+229 callback-handler-enter unobserved SYMBOLIC-U-TWO PASS
+230 storage survives callback-handler-enterunobserved SYMBOLIC-U-TWO PASS
+231 no inferred completed removal callback-handler-enterunobserved SYMBOLIC-U-TWO PASS
+232 no terminal Python unwind callback-handler-enterunobserved SYMBOLIC-U-TWO PASS
+233 false completed removal callback-handler-enterunobserved SYMBOLIC-U-TWO REJECTED
+234 no successful run callback-handler-enterunobserved SYMBOLIC-U-TWO REJECTED
+235 false continuation callback-handler-enterunobserved SYMBOLIC-U-TWO REJECTED
+236 callback-failure-guard raise SYMBOLIC-U-TWO PASS
+237 storage survives callback-failure-guardraise SYMBOLIC-U-TWO PASS
+238 handler evaluation error goes to finally callback-failure-guard SYMBOLIC-U-TWO PASS
+239 no successful run callback-failure-guardraise SYMBOLIC-U-TWO REJECTED
+240 callback-failure-guard process-termination SYMBOLIC-U-TWO PASS
+241 storage survives callback-failure-guardprocess-termination SYMBOLIC-U-TWO PASS
+242 no inferred completed removal callback-failure-guardprocess-termination SYMBOLIC-U-TWO PASS
+243 no terminal Python unwind callback-failure-guardprocess-termination SYMBOLIC-U-TWO PASS
+244 false completed removal callback-failure-guardprocess-termination SYMBOLIC-U-TWO REJECTED
+245 no successful run callback-failure-guardprocess-termination SYMBOLIC-U-TWO REJECTED
+246 false continuation callback-failure-guardprocess-termination SYMBOLIC-U-TWO REJECTED
+247 callback-failure-guard unobserved SYMBOLIC-U-TWO PASS
+248 storage survives callback-failure-guardunobserved SYMBOLIC-U-TWO PASS
+249 no inferred completed removal callback-failure-guardunobserved SYMBOLIC-U-TWO PASS
+250 no terminal Python unwind callback-failure-guardunobserved SYMBOLIC-U-TWO PASS
+251 false completed removal callback-failure-guardunobserved SYMBOLIC-U-TWO REJECTED
+252 no successful run callback-failure-guardunobserved SYMBOLIC-U-TWO REJECTED
+253 false continuation callback-failure-guardunobserved SYMBOLIC-U-TWO REJECTED
+254 callback-stored-rethrow raise SYMBOLIC-U-TWO PASS
+255 storage survives callback-stored-rethrowraise SYMBOLIC-U-TWO PASS
+256 handler evaluation error goes to finally callback-stored-rethrow SYMBOLIC-U-TWO PASS
+257 no successful run callback-stored-rethrowraise SYMBOLIC-U-TWO REJECTED
+258 callback-stored-rethrow process-termination SYMBOLIC-U-TWO PASS
+259 storage survives callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+260 no inferred completed removal callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+261 no terminal Python unwind callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO PASS
+262 false completed removal callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+263 no successful run callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+264 false continuation callback-stored-rethrowprocess-termination SYMBOLIC-U-TWO REJECTED
+265 callback-stored-rethrow unobserved SYMBOLIC-U-TWO PASS
+266 storage survives callback-stored-rethrowunobserved SYMBOLIC-U-TWO PASS
+267 no inferred completed removal callback-stored-rethrowunobserved SYMBOLIC-U-TWO PASS
+268 no terminal Python unwind callback-stored-rethrowunobserved SYMBOLIC-U-TWO PASS
+269 false completed removal callback-stored-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+270 no successful run callback-stored-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+271 false continuation callback-stored-rethrowunobserved SYMBOLIC-U-TWO REJECTED
+272 finally-enter raise SYMBOLIC-U-TWO PASS
+273 storage survives finally-enterraise SYMBOLIC-U-TWO PASS
+274 no inferred completed removal finally-enterraise SYMBOLIC-U-TWO PASS
+275 completed cause assignment survives cleanup frontier finally-enterraise SYMBOLIC-U-TWO PASS
+276 no guarantee original propagation finally-enterraise SYMBOLIC-U-TWO REJECTED
+277 false completed removal finally-enterraise SYMBOLIC-U-TWO REJECTED
+278 no successful run finally-enterraise SYMBOLIC-U-TWO REJECTED
+279 false continuation finally-enterraise SYMBOLIC-U-TWO REJECTED
+280 finally-enter process-termination SYMBOLIC-U-TWO PASS
+281 storage survives finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+282 no inferred completed removal finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+283 no terminal Python unwind finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+284 completed cause assignment survives cleanup frontier finally-enterprocess-termination SYMBOLIC-U-TWO PASS
+285 no guarantee original propagation finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+286 false completed removal finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+287 no successful run finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+288 false continuation finally-enterprocess-termination SYMBOLIC-U-TWO REJECTED
+289 finally-enter unobserved SYMBOLIC-U-TWO PASS
+290 storage survives finally-enterunobserved SYMBOLIC-U-TWO PASS
+291 no inferred completed removal finally-enterunobserved SYMBOLIC-U-TWO PASS
+292 no terminal Python unwind finally-enterunobserved SYMBOLIC-U-TWO PASS
+293 completed cause assignment survives cleanup frontier finally-enterunobserved SYMBOLIC-U-TWO PASS
+294 no guarantee original propagation finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+295 false completed removal finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+296 no successful run finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+297 false continuation finally-enterunobserved SYMBOLIC-U-TWO REJECTED
+298 removal-attempt raise SYMBOLIC-U-TWO PASS
+299 storage survives removal-attemptraise SYMBOLIC-U-TWO PASS
+300 no inferred completed removal removal-attemptraise SYMBOLIC-U-TWO PASS
+301 completed cause assignment survives cleanup frontier removal-attemptraise SYMBOLIC-U-TWO PASS
+302 no guarantee original propagation removal-attemptraise SYMBOLIC-U-TWO REJECTED
+303 false completed removal removal-attemptraise SYMBOLIC-U-TWO REJECTED
+304 no successful run removal-attemptraise SYMBOLIC-U-TWO REJECTED
+305 false continuation removal-attemptraise SYMBOLIC-U-TWO REJECTED
+306 removal-attempt process-termination SYMBOLIC-U-TWO PASS
+307 storage survives removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+308 no inferred completed removal removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+309 no terminal Python unwind removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+310 completed cause assignment survives cleanup frontier removal-attemptprocess-termination SYMBOLIC-U-TWO PASS
+311 no guarantee original propagation removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+312 false completed removal removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+313 no successful run removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+314 false continuation removal-attemptprocess-termination SYMBOLIC-U-TWO REJECTED
+315 removal-attempt unobserved SYMBOLIC-U-TWO PASS
+316 storage survives removal-attemptunobserved SYMBOLIC-U-TWO PASS
+317 no inferred completed removal removal-attemptunobserved SYMBOLIC-U-TWO PASS
+318 no terminal Python unwind removal-attemptunobserved SYMBOLIC-U-TWO PASS
+319 completed cause assignment survives cleanup frontier removal-attemptunobserved SYMBOLIC-U-TWO PASS
+320 no guarantee original propagation removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+321 false completed removal removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+322 no successful run removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+323 false continuation removal-attemptunobserved SYMBOLIC-U-TWO REJECTED
+324 removal-complete raise SYMBOLIC-U-TWO PASS
+325 storage survives removal-completeraise SYMBOLIC-U-TWO PASS
+326 no inferred completed removal removal-completeraise SYMBOLIC-U-TWO PASS
+327 completed cause assignment survives cleanup frontier removal-completeraise SYMBOLIC-U-TWO PASS
+328 no guarantee original propagation removal-completeraise SYMBOLIC-U-TWO REJECTED
+329 false completed removal removal-completeraise SYMBOLIC-U-TWO REJECTED
+330 no successful run removal-completeraise SYMBOLIC-U-TWO REJECTED
+331 false continuation removal-completeraise SYMBOLIC-U-TWO REJECTED
+332 removal-complete process-termination SYMBOLIC-U-TWO PASS
+333 storage survives removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+334 no inferred completed removal removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+335 no terminal Python unwind removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+336 completed cause assignment survives cleanup frontier removal-completeprocess-termination SYMBOLIC-U-TWO PASS
+337 no guarantee original propagation removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+338 false completed removal removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+339 no successful run removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+340 false continuation removal-completeprocess-termination SYMBOLIC-U-TWO REJECTED
+341 removal-complete unobserved SYMBOLIC-U-TWO PASS
+342 storage survives removal-completeunobserved SYMBOLIC-U-TWO PASS
+343 no inferred completed removal removal-completeunobserved SYMBOLIC-U-TWO PASS
+344 no terminal Python unwind removal-completeunobserved SYMBOLIC-U-TWO PASS
+345 completed cause assignment survives cleanup frontier removal-completeunobserved SYMBOLIC-U-TWO PASS
+346 no guarantee original propagation removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+347 false completed removal removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+348 no successful run removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+349 false continuation removal-completeunobserved SYMBOLIC-U-TWO REJECTED
+350 missing callback-handler-enter SYMBOLIC-U-TWO REJECTED
+351 duplicate callback-handler-enter SYMBOLIC-U-TWO REJECTED
+352 missing callback-failure-guard SYMBOLIC-U-TWO REJECTED
+353 duplicate callback-failure-guard SYMBOLIC-U-TWO REJECTED
+354 missing callback-stored-rethrow SYMBOLIC-U-TWO REJECTED
+355 duplicate callback-stored-rethrow SYMBOLIC-U-TWO REJECTED
+356 missing finally-enter SYMBOLIC-U-TWO REJECTED
+357 duplicate finally-enter SYMBOLIC-U-TWO REJECTED
+358 missing removal-attempt SYMBOLIC-U-TWO REJECTED
+359 duplicate removal-attempt SYMBOLIC-U-TWO REJECTED
+360 missing removal-complete SYMBOLIC-U-TWO REJECTED
+361 duplicate removal-complete SYMBOLIC-U-TWO REJECTED
+362 reordered stages SYMBOLIC-U-TWO REJECTED
+363 raise becomes normal return SYMBOLIC-U-TWO REJECTED
+364 binding ('callback_error', 'reference') SYMBOLIC-U-TWO REJECTED
+365 binding ('output', 'established_explicit_cause', 'explicit_cause', 'reference') SYMBOLIC-U-TWO REJECTED
+366 binding ('output', 'established_explicit_cause', 'raised_error', 'reference') SYMBOLIC-U-TWO REJECTED
+367 binding ('projection', 'stored_error_binding', 'owner', 'symbol') SYMBOLIC-U-TWO REJECTED
+368 binding ('projection', 'references', 'token', 'symbol') SYMBOLIC-U-TWO REJECTED
+369 binding ('token_case', 'invocation') SYMBOLIC-U-TWO REJECTED
+370 binding ('failure_input', 'references', 'owner', 'symbol') SYMBOLIC-U-TWO REJECTED
+371 binding ('failure_input', 'occurrence') SYMBOLIC-U-TWO REJECTED
+372 binding ('failure_input', 'callback') SYMBOLIC-U-TWO REJECTED
+373 binding ('failure_input', 'cleanup', 'revoke') SYMBOLIC-U-TWO REJECTED
+374 binding ('anchor', 'instance', 'binding') SYMBOLIC-U-TWO REJECTED
+375 binding ('projection', 'scope', 'acquisition') SYMBOLIC-U-TWO REJECTED
+376 binding ('projection', 'stored_error_binding', 'guard_slot_premise') SYMBOLIC-U-TWO REJECTED
+377 binding ('output', 'authorization_renewed') SYMBOLIC-U-TWO REJECTED
+378 binding ('output', 'original_reaches_launcher_established') SYMBOLIC-U-TWO REJECTED
+379 binding ('output', 'database_cleanup_completion') SYMBOLIC-U-TWO REJECTED
+380 binding ('output', 'established_explicit_cause', 'suppress_context_in_model') SYMBOLIC-U-TWO REJECTED
+381 binding ('output', 'callback_error', 'physical_identity_relative_to_stored') SYMBOLIC-U-TWO REJECTED
+382 no storage after termination handle SYMBOLIC-U-TWO REJECTED
+383 termination cannot become caught callback raise handle SYMBOLIC-U-TWO REJECTED
+384 no storage after termination state SYMBOLIC-U-TWO REJECTED
+385 termination cannot become caught callback raise state SYMBOLIC-U-TWO REJECTED
+386 coordinated cause substitution SYMBOLIC-U-TWO REJECTED
+387 coordinated original substitution SYMBOLIC-U-TWO REJECTED
+388 coordinated cross invocation SYMBOLIC-U-TWO REJECTED
+389 equal original messages distinct occurrence roles SYMBOLIC-U-TWO PASS
+390 unknown continuity cannot establish selected owner removal SYMBOLIC-U-TWO REJECTED
+391 exact type callback string SYMBOLIC-U-TWO REJECTED
+392 exact type cause dict SYMBOLIC-U-TWO REJECTED
+393 exact type nested list SYMBOLIC-U-TWO REJECTED
+394 exact type output bool as int SYMBOLIC-U-TWO REJECTED
+395 exact type failure string SYMBOLIC-U-TWO REJECTED
+396 exact type input dict SYMBOLIC-U-TWO REJECTED
+397 input key subclass SYMBOLIC-U-TWO REJECTED
+398 output key subclass SYMBOLIC-U-TWO REJECTED
+399 semantic ('conditional_links',) SYMBOLIC-U-TWO REJECTED
+400 semantic ('classification',) SYMBOLIC-U-TWO REJECTED
+401 semantic ('declaration', 'source', 'cause_expression') SYMBOLIC-U-TWO REJECTED
+402 semantic ('declaration', 'guard_branches', 'callback') SYMBOLIC-U-TWO REJECTED
+403 semantic ('guard_slot_premise',) SYMBOLIC-U-TWO REJECTED
+404 semantic ('context',) SYMBOLIC-U-TWO REJECTED
+405 semantic nested exact type SYMBOLIC-U-TWO REJECTED
+406 nested return mutation isolation SYMBOLIC-U-TWO PASS
+407 direct pristine SYMBOLIC-U-TWO PASS
+408 direct changed cause REJECTED
+409 direct expectations isolated SYMBOLIC-U-TWO PASS
+410 adjacent reviewed normal callback remains accepted SYMBOLIC-U-TWO PASS
+411 independent catalogue declaration omission REJECTED
+412 independent catalogue guard omission REJECTED
+413 independent catalogue order substitution REJECTED
+414 independent catalogue wrong cause REJECTED
+415 independent catalogue cause absent REJECTED
+416 source-defined branch substitution raise client_error from owner.failure REJECTED
+417 source-defined branch substitution except Exception as client_error: REJECTED
+418 source-defined branch substitution raise owner.failure from None REJECTED
+419 missing predecessor evidence REJECTED
+420 mixed predecessor evidence REJECTED
+421 bundle expectations isolated PASS
+422 both contexts mandatory REJECTED
+423 unknowns obligations and unjoined observer unchanged PASS

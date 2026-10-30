@@ -1,0 +1,338 @@
+Validate current mandatory predecessor chain
+1 exact canonical two-context derivation PASS
+2 valid source raise with explicit cause 0/handle PASS
+3 helper escape unknown continuity no control 0/handle PASS
+4 distinct equal-error occurrences and callback roles 0/handle PASS
+5 source frontier 0/handle/callback-handler-enter/raise PASS
+6 false original propagation 0/handle/callback-handler-enter/raise REJECTED
+7 source frontier 0/handle/callback-handler-enter/process-termination PASS
+8 false original propagation 0/handle/callback-handler-enter/process-termination REJECTED
+9 source frontier 0/handle/callback-handler-enter/unobserved PASS
+10 false original propagation 0/handle/callback-handler-enter/unobserved REJECTED
+11 source frontier 0/handle/callback-failure-guard/raise PASS
+12 false original propagation 0/handle/callback-failure-guard/raise REJECTED
+13 source frontier 0/handle/callback-failure-guard/process-termination PASS
+14 false original propagation 0/handle/callback-failure-guard/process-termination REJECTED
+15 source frontier 0/handle/callback-failure-guard/unobserved PASS
+16 false original propagation 0/handle/callback-failure-guard/unobserved REJECTED
+17 source frontier 0/handle/callback-stored-rethrow/raise PASS
+18 false original propagation 0/handle/callback-stored-rethrow/raise REJECTED
+19 source frontier 0/handle/callback-stored-rethrow/process-termination PASS
+20 false original propagation 0/handle/callback-stored-rethrow/process-termination REJECTED
+21 source frontier 0/handle/callback-stored-rethrow/unobserved PASS
+22 false original propagation 0/handle/callback-stored-rethrow/unobserved REJECTED
+23 source frontier 0/handle/finally-enter/raise PASS
+24 false original propagation 0/handle/finally-enter/raise REJECTED
+25 source frontier 0/handle/finally-enter/process-termination PASS
+26 false original propagation 0/handle/finally-enter/process-termination REJECTED
+27 source frontier 0/handle/finally-enter/unobserved PASS
+28 false original propagation 0/handle/finally-enter/unobserved REJECTED
+29 source frontier 0/handle/removal-attempt/raise PASS
+30 false original propagation 0/handle/removal-attempt/raise REJECTED
+31 source frontier 0/handle/removal-attempt/process-termination PASS
+32 false original propagation 0/handle/removal-attempt/process-termination REJECTED
+33 source frontier 0/handle/removal-attempt/unobserved PASS
+34 false original propagation 0/handle/removal-attempt/unobserved REJECTED
+35 source frontier 0/handle/removal-complete/raise PASS
+36 false original propagation 0/handle/removal-complete/raise REJECTED
+37 source frontier 0/handle/removal-complete/process-termination PASS
+38 false original propagation 0/handle/removal-complete/process-termination REJECTED
+39 source frontier 0/handle/removal-complete/unobserved PASS
+40 false original propagation 0/handle/removal-complete/unobserved REJECTED
+41 wrong binding or false completion 0/handle('callback_error', 'reference') REJECTED
+42 wrong binding or false completion 0/handle('failure_result', 'original_exception', 'reference') REJECTED
+43 wrong binding or false completion 0/handle('failure_input', 'references', 'owner', 'symbol') REJECTED
+44 wrong binding or false completion 0/handle('failure_input', 'references', 'token', 'symbol') REJECTED
+45 wrong binding or false completion 0/handle('token_case', 'invocation') REJECTED
+46 wrong binding or false completion 0/handle('anchor', 'instance', 'binding') REJECTED
+47 wrong binding or false completion 0/handle('output', 'run_success_established') REJECTED
+48 wrong binding or false completion 0/handle('output', 'removal_completed_in_model') REJECTED
+49 cause direction reversal 0/handle REJECTED
+50 coordinated callback substitution 0/handle REJECTED
+51 coordinated stored-original substitution 0/handle REJECTED
+52 coordinated missing/reordered stages 0/handle/omit-handler REJECTED
+53 coordinated missing/reordered stages 0/handle/omit-guard REJECTED
+54 coordinated missing/reordered stages 0/handle/omit-finally REJECTED
+55 coordinated missing/reordered stages 0/handle/duplicate-pop REJECTED
+56 coordinated missing/reordered stages 0/handle/reverse REJECTED
+57 missing required field 0/handle/callback_error REJECTED
+58 missing required field 0/handle/failure_result REJECTED
+59 missing required field 0/handle/token_case REJECTED
+60 missing required field 0/handle/projection REJECTED
+61 exact type 0/handle('callback_error', 'binding_name') REJECTED
+62 exact type 0/handle('callback_error', 'catch_family') REJECTED
+63 exact type 0/handle('projection', 'outcomes', 2, 'outcome') REJECTED
+64 exact type 0/handle('failure_result', 'retained_original') REJECTED
+65 exact type 0/handle('token_case', 'owner_failure_none') REJECTED
+66 exact type 0/handle('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+67 literal key subclass 0/handle REJECTED
+68 dict subclass 0/handle REJECTED
+69 list subclass 0/handle REJECTED
+70 unsupported observation or semantics 0/handle('callback_error', 'exact_type') REJECTED
+71 unsupported observation or semantics 0/handle('callback_error', 'physical_identity_relative_to_stored') REJECTED
+72 unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'physical_identity_relative_to_stored') REJECTED
+73 unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+74 unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'implicit_context_observation') REJECTED
+75 unsupported observation or semantics 0/handle('output', 'database_cleanup_completion') REJECTED
+76 normal-callback evidence cannot substitute 0/handle REJECTED
+77 helper termination cannot become caught callback error 0/handle REJECTED
+78 opaque cleanup cannot supply revocation 0/handle REJECTED
+79 source raise cannot become normal completion 0/handle REJECTED
+80 handler failure must skip later handler points 0/handle REJECTED
+81 later termination cannot erase established cause 0/handle REJECTED
+82 nested result mutations leave expectations intact 0/handle PASS
+83 valid source raise with explicit cause 0/state PASS
+84 helper escape unknown continuity no control 0/state PASS
+85 distinct equal-error occurrences and callback roles 0/state PASS
+86 source frontier 0/state/callback-handler-enter/raise PASS
+87 false original propagation 0/state/callback-handler-enter/raise REJECTED
+88 source frontier 0/state/callback-handler-enter/process-termination PASS
+89 false original propagation 0/state/callback-handler-enter/process-termination REJECTED
+90 source frontier 0/state/callback-handler-enter/unobserved PASS
+91 false original propagation 0/state/callback-handler-enter/unobserved REJECTED
+92 source frontier 0/state/callback-failure-guard/raise PASS
+93 false original propagation 0/state/callback-failure-guard/raise REJECTED
+94 source frontier 0/state/callback-failure-guard/process-termination PASS
+95 false original propagation 0/state/callback-failure-guard/process-termination REJECTED
+96 source frontier 0/state/callback-failure-guard/unobserved PASS
+97 false original propagation 0/state/callback-failure-guard/unobserved REJECTED
+98 source frontier 0/state/callback-stored-rethrow/raise PASS
+99 false original propagation 0/state/callback-stored-rethrow/raise REJECTED
+100 source frontier 0/state/callback-stored-rethrow/process-termination PASS
+101 false original propagation 0/state/callback-stored-rethrow/process-termination REJECTED
+102 source frontier 0/state/callback-stored-rethrow/unobserved PASS
+103 false original propagation 0/state/callback-stored-rethrow/unobserved REJECTED
+104 source frontier 0/state/finally-enter/raise PASS
+105 false original propagation 0/state/finally-enter/raise REJECTED
+106 source frontier 0/state/finally-enter/process-termination PASS
+107 false original propagation 0/state/finally-enter/process-termination REJECTED
+108 source frontier 0/state/finally-enter/unobserved PASS
+109 false original propagation 0/state/finally-enter/unobserved REJECTED
+110 source frontier 0/state/removal-attempt/raise PASS
+111 false original propagation 0/state/removal-attempt/raise REJECTED
+112 source frontier 0/state/removal-attempt/process-termination PASS
+113 false original propagation 0/state/removal-attempt/process-termination REJECTED
+114 source frontier 0/state/removal-attempt/unobserved PASS
+115 false original propagation 0/state/removal-attempt/unobserved REJECTED
+116 source frontier 0/state/removal-complete/raise PASS
+117 false original propagation 0/state/removal-complete/raise REJECTED
+118 source frontier 0/state/removal-complete/process-termination PASS
+119 false original propagation 0/state/removal-complete/process-termination REJECTED
+120 source frontier 0/state/removal-complete/unobserved PASS
+121 false original propagation 0/state/removal-complete/unobserved REJECTED
+122 wrong binding or false completion 0/state('callback_error', 'reference') REJECTED
+123 wrong binding or false completion 0/state('failure_result', 'original_exception', 'reference') REJECTED
+124 wrong binding or false completion 0/state('failure_input', 'references', 'owner', 'symbol') REJECTED
+125 wrong binding or false completion 0/state('failure_input', 'references', 'token', 'symbol') REJECTED
+126 wrong binding or false completion 0/state('token_case', 'invocation') REJECTED
+127 wrong binding or false completion 0/state('anchor', 'instance', 'binding') REJECTED
+128 wrong binding or false completion 0/state('output', 'run_success_established') REJECTED
+129 wrong binding or false completion 0/state('output', 'removal_completed_in_model') REJECTED
+130 cause direction reversal 0/state REJECTED
+131 coordinated callback substitution 0/state REJECTED
+132 coordinated stored-original substitution 0/state REJECTED
+133 coordinated missing/reordered stages 0/state/omit-handler REJECTED
+134 coordinated missing/reordered stages 0/state/omit-guard REJECTED
+135 coordinated missing/reordered stages 0/state/omit-finally REJECTED
+136 coordinated missing/reordered stages 0/state/duplicate-pop REJECTED
+137 coordinated missing/reordered stages 0/state/reverse REJECTED
+138 missing required field 0/state/callback_error REJECTED
+139 missing required field 0/state/failure_result REJECTED
+140 missing required field 0/state/token_case REJECTED
+141 missing required field 0/state/projection REJECTED
+142 exact type 0/state('callback_error', 'binding_name') REJECTED
+143 exact type 0/state('callback_error', 'catch_family') REJECTED
+144 exact type 0/state('projection', 'outcomes', 2, 'outcome') REJECTED
+145 exact type 0/state('failure_result', 'retained_original') REJECTED
+146 exact type 0/state('token_case', 'owner_failure_none') REJECTED
+147 exact type 0/state('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+148 literal key subclass 0/state REJECTED
+149 dict subclass 0/state REJECTED
+150 list subclass 0/state REJECTED
+151 unsupported observation or semantics 0/state('callback_error', 'exact_type') REJECTED
+152 unsupported observation or semantics 0/state('callback_error', 'physical_identity_relative_to_stored') REJECTED
+153 unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'physical_identity_relative_to_stored') REJECTED
+154 unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+155 unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'implicit_context_observation') REJECTED
+156 unsupported observation or semantics 0/state('output', 'database_cleanup_completion') REJECTED
+157 normal-callback evidence cannot substitute 0/state REJECTED
+158 helper termination cannot become caught callback error 0/state REJECTED
+159 opaque cleanup cannot supply revocation 0/state REJECTED
+160 source raise cannot become normal completion 0/state REJECTED
+161 handler failure must skip later handler points 0/state REJECTED
+162 later termination cannot erase established cause 0/state REJECTED
+163 nested result mutations leave expectations intact 0/state PASS
+164 semantic wrong cause 0 REJECTED
+165 semantic coverage omission 0 REJECTED
+166 reviewed normal-callback case still accepted through validated basis 0 PASS
+167 valid source raise with explicit cause 1/handle PASS
+168 helper escape unknown continuity no control 1/handle PASS
+169 distinct equal-error occurrences and callback roles 1/handle PASS
+170 source frontier 1/handle/callback-handler-enter/raise PASS
+171 false original propagation 1/handle/callback-handler-enter/raise REJECTED
+172 source frontier 1/handle/callback-handler-enter/process-termination PASS
+173 false original propagation 1/handle/callback-handler-enter/process-termination REJECTED
+174 source frontier 1/handle/callback-handler-enter/unobserved PASS
+175 false original propagation 1/handle/callback-handler-enter/unobserved REJECTED
+176 source frontier 1/handle/callback-failure-guard/raise PASS
+177 false original propagation 1/handle/callback-failure-guard/raise REJECTED
+178 source frontier 1/handle/callback-failure-guard/process-termination PASS
+179 false original propagation 1/handle/callback-failure-guard/process-termination REJECTED
+180 source frontier 1/handle/callback-failure-guard/unobserved PASS
+181 false original propagation 1/handle/callback-failure-guard/unobserved REJECTED
+182 source frontier 1/handle/callback-stored-rethrow/raise PASS
+183 false original propagation 1/handle/callback-stored-rethrow/raise REJECTED
+184 source frontier 1/handle/callback-stored-rethrow/process-termination PASS
+185 false original propagation 1/handle/callback-stored-rethrow/process-termination REJECTED
+186 source frontier 1/handle/callback-stored-rethrow/unobserved PASS
+187 false original propagation 1/handle/callback-stored-rethrow/unobserved REJECTED
+188 source frontier 1/handle/finally-enter/raise PASS
+189 false original propagation 1/handle/finally-enter/raise REJECTED
+190 source frontier 1/handle/finally-enter/process-termination PASS
+191 false original propagation 1/handle/finally-enter/process-termination REJECTED
+192 source frontier 1/handle/finally-enter/unobserved PASS
+193 false original propagation 1/handle/finally-enter/unobserved REJECTED
+194 source frontier 1/handle/removal-attempt/raise PASS
+195 false original propagation 1/handle/removal-attempt/raise REJECTED
+196 source frontier 1/handle/removal-attempt/process-termination PASS
+197 false original propagation 1/handle/removal-attempt/process-termination REJECTED
+198 source frontier 1/handle/removal-attempt/unobserved PASS
+199 false original propagation 1/handle/removal-attempt/unobserved REJECTED
+200 source frontier 1/handle/removal-complete/raise PASS
+201 false original propagation 1/handle/removal-complete/raise REJECTED
+202 source frontier 1/handle/removal-complete/process-termination PASS
+203 false original propagation 1/handle/removal-complete/process-termination REJECTED
+204 source frontier 1/handle/removal-complete/unobserved PASS
+205 false original propagation 1/handle/removal-complete/unobserved REJECTED
+206 wrong binding or false completion 1/handle('callback_error', 'reference') REJECTED
+207 wrong binding or false completion 1/handle('failure_result', 'original_exception', 'reference') REJECTED
+208 wrong binding or false completion 1/handle('failure_input', 'references', 'owner', 'symbol') REJECTED
+209 wrong binding or false completion 1/handle('failure_input', 'references', 'token', 'symbol') REJECTED
+210 wrong binding or false completion 1/handle('token_case', 'invocation') REJECTED
+211 wrong binding or false completion 1/handle('anchor', 'instance', 'binding') REJECTED
+212 wrong binding or false completion 1/handle('output', 'run_success_established') REJECTED
+213 wrong binding or false completion 1/handle('output', 'removal_completed_in_model') REJECTED
+214 cause direction reversal 1/handle REJECTED
+215 coordinated callback substitution 1/handle REJECTED
+216 coordinated stored-original substitution 1/handle REJECTED
+217 coordinated missing/reordered stages 1/handle/omit-handler REJECTED
+218 coordinated missing/reordered stages 1/handle/omit-guard REJECTED
+219 coordinated missing/reordered stages 1/handle/omit-finally REJECTED
+220 coordinated missing/reordered stages 1/handle/duplicate-pop REJECTED
+221 coordinated missing/reordered stages 1/handle/reverse REJECTED
+222 missing required field 1/handle/callback_error REJECTED
+223 missing required field 1/handle/failure_result REJECTED
+224 missing required field 1/handle/token_case REJECTED
+225 missing required field 1/handle/projection REJECTED
+226 exact type 1/handle('callback_error', 'binding_name') REJECTED
+227 exact type 1/handle('callback_error', 'catch_family') REJECTED
+228 exact type 1/handle('projection', 'outcomes', 2, 'outcome') REJECTED
+229 exact type 1/handle('failure_result', 'retained_original') REJECTED
+230 exact type 1/handle('token_case', 'owner_failure_none') REJECTED
+231 exact type 1/handle('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+232 literal key subclass 1/handle REJECTED
+233 dict subclass 1/handle REJECTED
+234 list subclass 1/handle REJECTED
+235 unsupported observation or semantics 1/handle('callback_error', 'exact_type') REJECTED
+236 unsupported observation or semantics 1/handle('callback_error', 'physical_identity_relative_to_stored') REJECTED
+237 unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'physical_identity_relative_to_stored') REJECTED
+238 unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+239 unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'implicit_context_observation') REJECTED
+240 unsupported observation or semantics 1/handle('output', 'database_cleanup_completion') REJECTED
+241 normal-callback evidence cannot substitute 1/handle REJECTED
+242 helper termination cannot become caught callback error 1/handle REJECTED
+243 opaque cleanup cannot supply revocation 1/handle REJECTED
+244 source raise cannot become normal completion 1/handle REJECTED
+245 handler failure must skip later handler points 1/handle REJECTED
+246 later termination cannot erase established cause 1/handle REJECTED
+247 nested result mutations leave expectations intact 1/handle PASS
+248 valid source raise with explicit cause 1/state PASS
+249 helper escape unknown continuity no control 1/state PASS
+250 distinct equal-error occurrences and callback roles 1/state PASS
+251 source frontier 1/state/callback-handler-enter/raise PASS
+252 false original propagation 1/state/callback-handler-enter/raise REJECTED
+253 source frontier 1/state/callback-handler-enter/process-termination PASS
+254 false original propagation 1/state/callback-handler-enter/process-termination REJECTED
+255 source frontier 1/state/callback-handler-enter/unobserved PASS
+256 false original propagation 1/state/callback-handler-enter/unobserved REJECTED
+257 source frontier 1/state/callback-failure-guard/raise PASS
+258 false original propagation 1/state/callback-failure-guard/raise REJECTED
+259 source frontier 1/state/callback-failure-guard/process-termination PASS
+260 false original propagation 1/state/callback-failure-guard/process-termination REJECTED
+261 source frontier 1/state/callback-failure-guard/unobserved PASS
+262 false original propagation 1/state/callback-failure-guard/unobserved REJECTED
+263 source frontier 1/state/callback-stored-rethrow/raise PASS
+264 false original propagation 1/state/callback-stored-rethrow/raise REJECTED
+265 source frontier 1/state/callback-stored-rethrow/process-termination PASS
+266 false original propagation 1/state/callback-stored-rethrow/process-termination REJECTED
+267 source frontier 1/state/callback-stored-rethrow/unobserved PASS
+268 false original propagation 1/state/callback-stored-rethrow/unobserved REJECTED
+269 source frontier 1/state/finally-enter/raise PASS
+270 false original propagation 1/state/finally-enter/raise REJECTED
+271 source frontier 1/state/finally-enter/process-termination PASS
+272 false original propagation 1/state/finally-enter/process-termination REJECTED
+273 source frontier 1/state/finally-enter/unobserved PASS
+274 false original propagation 1/state/finally-enter/unobserved REJECTED
+275 source frontier 1/state/removal-attempt/raise PASS
+276 false original propagation 1/state/removal-attempt/raise REJECTED
+277 source frontier 1/state/removal-attempt/process-termination PASS
+278 false original propagation 1/state/removal-attempt/process-termination REJECTED
+279 source frontier 1/state/removal-attempt/unobserved PASS
+280 false original propagation 1/state/removal-attempt/unobserved REJECTED
+281 source frontier 1/state/removal-complete/raise PASS
+282 false original propagation 1/state/removal-complete/raise REJECTED
+283 source frontier 1/state/removal-complete/process-termination PASS
+284 false original propagation 1/state/removal-complete/process-termination REJECTED
+285 source frontier 1/state/removal-complete/unobserved PASS
+286 false original propagation 1/state/removal-complete/unobserved REJECTED
+287 wrong binding or false completion 1/state('callback_error', 'reference') REJECTED
+288 wrong binding or false completion 1/state('failure_result', 'original_exception', 'reference') REJECTED
+289 wrong binding or false completion 1/state('failure_input', 'references', 'owner', 'symbol') REJECTED
+290 wrong binding or false completion 1/state('failure_input', 'references', 'token', 'symbol') REJECTED
+291 wrong binding or false completion 1/state('token_case', 'invocation') REJECTED
+292 wrong binding or false completion 1/state('anchor', 'instance', 'binding') REJECTED
+293 wrong binding or false completion 1/state('output', 'run_success_established') REJECTED
+294 wrong binding or false completion 1/state('output', 'removal_completed_in_model') REJECTED
+295 cause direction reversal 1/state REJECTED
+296 coordinated callback substitution 1/state REJECTED
+297 coordinated stored-original substitution 1/state REJECTED
+298 coordinated missing/reordered stages 1/state/omit-handler REJECTED
+299 coordinated missing/reordered stages 1/state/omit-guard REJECTED
+300 coordinated missing/reordered stages 1/state/omit-finally REJECTED
+301 coordinated missing/reordered stages 1/state/duplicate-pop REJECTED
+302 coordinated missing/reordered stages 1/state/reverse REJECTED
+303 missing required field 1/state/callback_error REJECTED
+304 missing required field 1/state/failure_result REJECTED
+305 missing required field 1/state/token_case REJECTED
+306 missing required field 1/state/projection REJECTED
+307 exact type 1/state('callback_error', 'binding_name') REJECTED
+308 exact type 1/state('callback_error', 'catch_family') REJECTED
+309 exact type 1/state('projection', 'outcomes', 2, 'outcome') REJECTED
+310 exact type 1/state('failure_result', 'retained_original') REJECTED
+311 exact type 1/state('token_case', 'owner_failure_none') REJECTED
+312 exact type 1/state('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+313 literal key subclass 1/state REJECTED
+314 dict subclass 1/state REJECTED
+315 list subclass 1/state REJECTED
+316 unsupported observation or semantics 1/state('callback_error', 'exact_type') REJECTED
+317 unsupported observation or semantics 1/state('callback_error', 'physical_identity_relative_to_stored') REJECTED
+318 unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'physical_identity_relative_to_stored') REJECTED
+319 unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'suppress_context_in_model') REJECTED
+320 unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'implicit_context_observation') REJECTED
+321 unsupported observation or semantics 1/state('output', 'database_cleanup_completion') REJECTED
+322 normal-callback evidence cannot substitute 1/state REJECTED
+323 helper termination cannot become caught callback error 1/state REJECTED
+324 opaque cleanup cannot supply revocation 1/state REJECTED
+325 source raise cannot become normal completion 1/state REJECTED
+326 handler failure must skip later handler points 1/state REJECTED
+327 later termination cannot erase established cause 1/state REJECTED
+328 nested result mutations leave expectations intact 1/state PASS
+329 semantic wrong cause 1 REJECTED
+330 semantic coverage omission 1 REJECTED
+331 reviewed normal-callback case still accepted through validated basis 1 PASS
+332 semantic contexts omit REJECTED
+333 semantic contexts duplicate REJECTED
+334 semantic contexts reverse REJECTED
+335 semantic exact types before normalization REJECTED
+336 semantic cleanup escalation REJECTED
+337 returned contexts and nested rows cannot change canonical receipt PASS

@@ -1,0 +1,337 @@
+{"check": "exact canonical two-context derivation", "result": "PASS"}
+{"check": "valid source raise with explicit cause 0/handle", "result": "PASS"}
+{"check": "helper escape unknown continuity no control 0/handle", "result": "PASS"}
+{"check": "distinct equal-error occurrences and callback roles 0/handle", "result": "PASS"}
+{"check": "source frontier 0/handle/callback-handler-enter/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-handler-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-handler-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-handler-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-handler-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-handler-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-failure-guard/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-failure-guard/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-failure-guard/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-failure-guard/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-failure-guard/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-failure-guard/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-stored-rethrow/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-stored-rethrow/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-stored-rethrow/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-stored-rethrow/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/callback-stored-rethrow/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/callback-stored-rethrow/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/finally-enter/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/finally-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/finally-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/finally-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-attempt/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-attempt/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-attempt/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-attempt/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-complete/raise", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-complete/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/handle/removal-complete/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/handle/removal-complete/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 0/handle('callback_error', 'reference')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "wrong binding or false completion 0/handle('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "wrong binding or false completion 0/handle('failure_input', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 0/handle('failure_input', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 0/handle('token_case', 'invocation')", "result": "REJECTED", "error": "CALLBACK-TOKEN-INVOCATION"}
+{"check": "wrong binding or false completion 0/handle('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or false completion 0/handle('output', 'run_success_established')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 0/handle('output', 'removal_completed_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "cause direction reversal 0/handle", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated callback substitution 0/handle", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "coordinated stored-original substitution 0/handle", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "coordinated missing/reordered stages 0/handle/omit-handler", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/handle/omit-guard", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/handle/omit-finally", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/handle/duplicate-pop", "result": "REJECTED", "error": "CALLBACK-UNREACHED-STEPS"}
+{"check": "coordinated missing/reordered stages 0/handle/reverse", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "missing required field 0/handle/callback_error", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/handle/failure_result", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/handle/token_case", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/handle/projection", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "exact type 0/handle('callback_error', 'binding_name')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/handle('callback_error', 'catch_family')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/handle('projection', 'outcomes', 2, 'outcome')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/handle('failure_result', 'retained_original')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "exact type 0/handle('token_case', 'owner_failure_none')", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "exact type 0/handle('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "literal key subclass 0/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "dict subclass 0/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "list subclass 0/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "unsupported observation or semantics 0/handle('callback_error', 'exact_type')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 0/handle('callback_error', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/handle('output', 'established_explicit_cause', 'implicit_context_observation')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/handle('output', 'database_cleanup_completion')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "normal-callback evidence cannot substitute 0/handle", "result": "REJECTED", "error": "CALLBACK-FAILURE-INVOCATION-RAISE"}
+{"check": "helper termination cannot become caught callback error 0/handle", "result": "REJECTED", "error": "CLIENT-TERMINATION-CONTINUATION"}
+{"check": "opaque cleanup cannot supply revocation 0/handle", "result": "REJECTED", "error": "CALLBACK-NO-OPAQUE-CLEANUP-JOIN"}
+{"check": "source raise cannot become normal completion 0/handle", "result": "REJECTED", "error": "CALLBACK-STAGE-OUTCOME"}
+{"check": "handler failure must skip later handler points 0/handle", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "later termination cannot erase established cause 0/handle", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations leave expectations intact 0/handle", "result": "PASS"}
+{"check": "valid source raise with explicit cause 0/state", "result": "PASS"}
+{"check": "helper escape unknown continuity no control 0/state", "result": "PASS"}
+{"check": "distinct equal-error occurrences and callback roles 0/state", "result": "PASS"}
+{"check": "source frontier 0/state/callback-handler-enter/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-handler-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-handler-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-handler-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-handler-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-handler-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-failure-guard/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-failure-guard/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-failure-guard/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-failure-guard/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-failure-guard/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-failure-guard/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-stored-rethrow/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-stored-rethrow/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-stored-rethrow/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-stored-rethrow/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/callback-stored-rethrow/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/callback-stored-rethrow/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/finally-enter/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/finally-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/finally-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/finally-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/finally-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/finally-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-attempt/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-attempt/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-attempt/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-attempt/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-attempt/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-attempt/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-complete/raise", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-complete/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-complete/process-termination", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-complete/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 0/state/removal-complete/unobserved", "result": "PASS"}
+{"check": "false original propagation 0/state/removal-complete/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 0/state('callback_error', 'reference')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "wrong binding or false completion 0/state('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "wrong binding or false completion 0/state('failure_input', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 0/state('failure_input', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 0/state('token_case', 'invocation')", "result": "REJECTED", "error": "CALLBACK-TOKEN-INVOCATION"}
+{"check": "wrong binding or false completion 0/state('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or false completion 0/state('output', 'run_success_established')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 0/state('output', 'removal_completed_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "cause direction reversal 0/state", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated callback substitution 0/state", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "coordinated stored-original substitution 0/state", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "coordinated missing/reordered stages 0/state/omit-handler", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/state/omit-guard", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/state/omit-finally", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 0/state/duplicate-pop", "result": "REJECTED", "error": "CALLBACK-UNREACHED-STEPS"}
+{"check": "coordinated missing/reordered stages 0/state/reverse", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "missing required field 0/state/callback_error", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/state/failure_result", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/state/token_case", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 0/state/projection", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "exact type 0/state('callback_error', 'binding_name')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/state('callback_error', 'catch_family')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/state('projection', 'outcomes', 2, 'outcome')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 0/state('failure_result', 'retained_original')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "exact type 0/state('token_case', 'owner_failure_none')", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "exact type 0/state('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "literal key subclass 0/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "dict subclass 0/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "list subclass 0/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "unsupported observation or semantics 0/state('callback_error', 'exact_type')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 0/state('callback_error', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/state('output', 'established_explicit_cause', 'implicit_context_observation')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 0/state('output', 'database_cleanup_completion')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "normal-callback evidence cannot substitute 0/state", "result": "REJECTED", "error": "CALLBACK-FAILURE-INVOCATION-RAISE"}
+{"check": "helper termination cannot become caught callback error 0/state", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "opaque cleanup cannot supply revocation 0/state", "result": "REJECTED", "error": "CALLBACK-NO-OPAQUE-CLEANUP-JOIN"}
+{"check": "source raise cannot become normal completion 0/state", "result": "REJECTED", "error": "CALLBACK-STAGE-OUTCOME"}
+{"check": "handler failure must skip later handler points 0/state", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "later termination cannot erase established cause 0/state", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations leave expectations intact 0/state", "result": "PASS"}
+{"check": "semantic wrong cause 0", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coverage omission 0", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "reviewed normal-callback case still accepted through validated basis 0", "result": "PASS"}
+{"check": "valid source raise with explicit cause 1/handle", "result": "PASS"}
+{"check": "helper escape unknown continuity no control 1/handle", "result": "PASS"}
+{"check": "distinct equal-error occurrences and callback roles 1/handle", "result": "PASS"}
+{"check": "source frontier 1/handle/callback-handler-enter/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-handler-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-handler-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-handler-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-handler-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-handler-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-failure-guard/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-failure-guard/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-failure-guard/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-failure-guard/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-failure-guard/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-failure-guard/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-stored-rethrow/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-stored-rethrow/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-stored-rethrow/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-stored-rethrow/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/callback-stored-rethrow/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/callback-stored-rethrow/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/finally-enter/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/finally-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/finally-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/finally-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/finally-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/finally-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-attempt/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-attempt/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-attempt/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-attempt/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-attempt/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-attempt/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-complete/raise", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-complete/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-complete/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-complete/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/handle/removal-complete/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/handle/removal-complete/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 1/handle('callback_error', 'reference')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "wrong binding or false completion 1/handle('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "wrong binding or false completion 1/handle('failure_input', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 1/handle('failure_input', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 1/handle('token_case', 'invocation')", "result": "REJECTED", "error": "CALLBACK-TOKEN-INVOCATION"}
+{"check": "wrong binding or false completion 1/handle('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or false completion 1/handle('output', 'run_success_established')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 1/handle('output', 'removal_completed_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "cause direction reversal 1/handle", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated callback substitution 1/handle", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "coordinated stored-original substitution 1/handle", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "coordinated missing/reordered stages 1/handle/omit-handler", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/handle/omit-guard", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/handle/omit-finally", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/handle/duplicate-pop", "result": "REJECTED", "error": "CALLBACK-UNREACHED-STEPS"}
+{"check": "coordinated missing/reordered stages 1/handle/reverse", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "missing required field 1/handle/callback_error", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/handle/failure_result", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/handle/token_case", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/handle/projection", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "exact type 1/handle('callback_error', 'binding_name')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/handle('callback_error', 'catch_family')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/handle('projection', 'outcomes', 2, 'outcome')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/handle('failure_result', 'retained_original')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "exact type 1/handle('token_case', 'owner_failure_none')", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "exact type 1/handle('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "literal key subclass 1/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "dict subclass 1/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "list subclass 1/handle", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "unsupported observation or semantics 1/handle('callback_error', 'exact_type')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 1/handle('callback_error', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/handle('output', 'established_explicit_cause', 'implicit_context_observation')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/handle('output', 'database_cleanup_completion')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "normal-callback evidence cannot substitute 1/handle", "result": "REJECTED", "error": "CALLBACK-FAILURE-INVOCATION-RAISE"}
+{"check": "helper termination cannot become caught callback error 1/handle", "result": "REJECTED", "error": "CLIENT-TERMINATION-CONTINUATION"}
+{"check": "opaque cleanup cannot supply revocation 1/handle", "result": "REJECTED", "error": "CALLBACK-NO-OPAQUE-CLEANUP-JOIN"}
+{"check": "source raise cannot become normal completion 1/handle", "result": "REJECTED", "error": "CALLBACK-STAGE-OUTCOME"}
+{"check": "handler failure must skip later handler points 1/handle", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "later termination cannot erase established cause 1/handle", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations leave expectations intact 1/handle", "result": "PASS"}
+{"check": "valid source raise with explicit cause 1/state", "result": "PASS"}
+{"check": "helper escape unknown continuity no control 1/state", "result": "PASS"}
+{"check": "distinct equal-error occurrences and callback roles 1/state", "result": "PASS"}
+{"check": "source frontier 1/state/callback-handler-enter/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-handler-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-handler-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-handler-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-handler-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-handler-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-failure-guard/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-failure-guard/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-failure-guard/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-failure-guard/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-failure-guard/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-failure-guard/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-stored-rethrow/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-stored-rethrow/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-stored-rethrow/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-stored-rethrow/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/callback-stored-rethrow/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/callback-stored-rethrow/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/finally-enter/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/finally-enter/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/finally-enter/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/finally-enter/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/finally-enter/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/finally-enter/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-attempt/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-attempt/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-attempt/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-attempt/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-attempt/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-attempt/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-complete/raise", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-complete/raise", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-complete/process-termination", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-complete/process-termination", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier 1/state/removal-complete/unobserved", "result": "PASS"}
+{"check": "false original propagation 1/state/removal-complete/unobserved", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 1/state('callback_error', 'reference')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "wrong binding or false completion 1/state('failure_result', 'original_exception', 'reference')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "wrong binding or false completion 1/state('failure_input', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 1/state('failure_input', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CALLBACK-FAILURE-REFERENCES"}
+{"check": "wrong binding or false completion 1/state('token_case', 'invocation')", "result": "REJECTED", "error": "CALLBACK-TOKEN-INVOCATION"}
+{"check": "wrong binding or false completion 1/state('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or false completion 1/state('output', 'run_success_established')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or false completion 1/state('output', 'removal_completed_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "cause direction reversal 1/state", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated callback substitution 1/state", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "coordinated stored-original substitution 1/state", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "coordinated missing/reordered stages 1/state/omit-handler", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/state/omit-guard", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/state/omit-finally", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "coordinated missing/reordered stages 1/state/duplicate-pop", "result": "REJECTED", "error": "CALLBACK-UNREACHED-STEPS"}
+{"check": "coordinated missing/reordered stages 1/state/reverse", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "missing required field 1/state/callback_error", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/state/failure_result", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/state/token_case", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "missing required field 1/state/projection", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-CASE"}
+{"check": "exact type 1/state('callback_error', 'binding_name')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/state('callback_error', 'catch_family')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/state('projection', 'outcomes', 2, 'outcome')", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact type 1/state('failure_result', 'retained_original')", "result": "REJECTED", "error": "CALLBACK-FAILURE-RESULT"}
+{"check": "exact type 1/state('token_case', 'owner_failure_none')", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "exact type 1/state('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "literal key subclass 1/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "dict subclass 1/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "list subclass 1/state", "result": "REJECTED", "error": "CALLBACK-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "unsupported observation or semantics 1/state('callback_error', 'exact_type')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 1/state('callback_error', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-CAUGHT-ERROR"}
+{"check": "unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'physical_identity_relative_to_stored')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'suppress_context_in_model')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/state('output', 'established_explicit_cause', 'implicit_context_observation')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported observation or semantics 1/state('output', 'database_cleanup_completion')", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "normal-callback evidence cannot substitute 1/state", "result": "REJECTED", "error": "CALLBACK-FAILURE-INVOCATION-RAISE"}
+{"check": "helper termination cannot become caught callback error 1/state", "result": "REJECTED", "error": "CLIENT-STATE-TERMINATION-CONTINUATION"}
+{"check": "opaque cleanup cannot supply revocation 1/state", "result": "REJECTED", "error": "CALLBACK-NO-OPAQUE-CLEANUP-JOIN"}
+{"check": "source raise cannot become normal completion 1/state", "result": "REJECTED", "error": "CALLBACK-STAGE-OUTCOME"}
+{"check": "handler failure must skip later handler points 1/state", "result": "REJECTED", "error": "CALLBACK-STEP-ORDER"}
+{"check": "later termination cannot erase established cause 1/state", "result": "REJECTED", "error": "CALLBACK-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations leave expectations intact 1/state", "result": "PASS"}
+{"check": "semantic wrong cause 1", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coverage omission 1", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "reviewed normal-callback case still accepted through validated basis 1", "result": "PASS"}
+{"check": "semantic contexts omit", "result": "REJECTED", "error": "CALLBACK-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic contexts duplicate", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic contexts reverse", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic exact types before normalization", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "semantic cleanup escalation", "result": "REJECTED", "error": "CALLBACK-SEMANTIC-CORRESPONDENCE"}
+{"check": "returned contexts and nested rows cannot change canonical receipt", "result": "PASS"}

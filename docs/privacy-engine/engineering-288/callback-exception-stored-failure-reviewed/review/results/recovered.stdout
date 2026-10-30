@@ -1,0 +1,122 @@
+Validate current mandatory predecessor chain
+1 exact canonical two-context derivation PASS
+2 valid source raise with explicit cause 0/handle PASS
+3 helper escape unknown continuity no control 0/handle PASS
+4 distinct equal-error occurrences and callback roles 0/handle PASS
+5 source frontier 0/handle/callback-failure-guard/raise PASS
+6 false original propagation 0/handle/callback-failure-guard/raise REJECTED
+7 source frontier 0/handle/callback-failure-guard/process-termination PASS
+8 false original propagation 0/handle/callback-failure-guard/process-termination REJECTED
+9 source frontier 0/handle/callback-stored-rethrow/raise PASS
+10 false original propagation 0/handle/callback-stored-rethrow/raise REJECTED
+11 source frontier 0/handle/callback-stored-rethrow/process-termination PASS
+12 false original propagation 0/handle/callback-stored-rethrow/process-termination REJECTED
+13 source frontier 0/handle/removal-complete/raise PASS
+14 false original propagation 0/handle/removal-complete/raise REJECTED
+15 source frontier 0/handle/removal-complete/process-termination PASS
+16 false original propagation 0/handle/removal-complete/process-termination REJECTED
+17 wrong binding or false completion 0/handle('callback_error', 'reference') REJECTED
+18 wrong binding or false completion 0/handle('failure_result', 'original_exception', 'reference') REJECTED
+19 wrong binding or false completion 0/handle('failure_input', 'references', 'owner', 'symbol') REJECTED
+20 wrong binding or false completion 0/handle('failure_input', 'references', 'token', 'symbol') REJECTED
+21 wrong binding or false completion 0/handle('token_case', 'invocation') REJECTED
+22 wrong binding or false completion 0/handle('anchor', 'instance', 'binding') REJECTED
+23 wrong binding or false completion 0/handle('output', 'run_success_established') REJECTED
+24 wrong binding or false completion 0/handle('output', 'removal_completed_in_model') REJECTED
+25 cause direction reversal 0/handle REJECTED
+26 coordinated callback substitution 0/handle REJECTED
+27 coordinated stored-original substitution 0/handle REJECTED
+28 nested result mutations leave expectations intact 0/handle PASS
+29 valid source raise with explicit cause 0/state PASS
+30 helper escape unknown continuity no control 0/state PASS
+31 distinct equal-error occurrences and callback roles 0/state PASS
+32 source frontier 0/state/callback-failure-guard/raise PASS
+33 false original propagation 0/state/callback-failure-guard/raise REJECTED
+34 source frontier 0/state/callback-failure-guard/process-termination PASS
+35 false original propagation 0/state/callback-failure-guard/process-termination REJECTED
+36 source frontier 0/state/callback-stored-rethrow/raise PASS
+37 false original propagation 0/state/callback-stored-rethrow/raise REJECTED
+38 source frontier 0/state/callback-stored-rethrow/process-termination PASS
+39 false original propagation 0/state/callback-stored-rethrow/process-termination REJECTED
+40 source frontier 0/state/removal-complete/raise PASS
+41 false original propagation 0/state/removal-complete/raise REJECTED
+42 source frontier 0/state/removal-complete/process-termination PASS
+43 false original propagation 0/state/removal-complete/process-termination REJECTED
+44 wrong binding or false completion 0/state('callback_error', 'reference') REJECTED
+45 wrong binding or false completion 0/state('failure_result', 'original_exception', 'reference') REJECTED
+46 wrong binding or false completion 0/state('failure_input', 'references', 'owner', 'symbol') REJECTED
+47 wrong binding or false completion 0/state('failure_input', 'references', 'token', 'symbol') REJECTED
+48 wrong binding or false completion 0/state('token_case', 'invocation') REJECTED
+49 wrong binding or false completion 0/state('anchor', 'instance', 'binding') REJECTED
+50 wrong binding or false completion 0/state('output', 'run_success_established') REJECTED
+51 wrong binding or false completion 0/state('output', 'removal_completed_in_model') REJECTED
+52 cause direction reversal 0/state REJECTED
+53 coordinated callback substitution 0/state REJECTED
+54 coordinated stored-original substitution 0/state REJECTED
+55 nested result mutations leave expectations intact 0/state PASS
+56 semantic wrong cause 0 REJECTED
+57 semantic coverage omission 0 REJECTED
+58 reviewed normal-callback case still accepted through validated basis 0 PASS
+59 valid source raise with explicit cause 1/handle PASS
+60 helper escape unknown continuity no control 1/handle PASS
+61 distinct equal-error occurrences and callback roles 1/handle PASS
+62 source frontier 1/handle/callback-failure-guard/raise PASS
+63 false original propagation 1/handle/callback-failure-guard/raise REJECTED
+64 source frontier 1/handle/callback-failure-guard/process-termination PASS
+65 false original propagation 1/handle/callback-failure-guard/process-termination REJECTED
+66 source frontier 1/handle/callback-stored-rethrow/raise PASS
+67 false original propagation 1/handle/callback-stored-rethrow/raise REJECTED
+68 source frontier 1/handle/callback-stored-rethrow/process-termination PASS
+69 false original propagation 1/handle/callback-stored-rethrow/process-termination REJECTED
+70 source frontier 1/handle/removal-complete/raise PASS
+71 false original propagation 1/handle/removal-complete/raise REJECTED
+72 source frontier 1/handle/removal-complete/process-termination PASS
+73 false original propagation 1/handle/removal-complete/process-termination REJECTED
+74 wrong binding or false completion 1/handle('callback_error', 'reference') REJECTED
+75 wrong binding or false completion 1/handle('failure_result', 'original_exception', 'reference') REJECTED
+76 wrong binding or false completion 1/handle('failure_input', 'references', 'owner', 'symbol') REJECTED
+77 wrong binding or false completion 1/handle('failure_input', 'references', 'token', 'symbol') REJECTED
+78 wrong binding or false completion 1/handle('token_case', 'invocation') REJECTED
+79 wrong binding or false completion 1/handle('anchor', 'instance', 'binding') REJECTED
+80 wrong binding or false completion 1/handle('output', 'run_success_established') REJECTED
+81 wrong binding or false completion 1/handle('output', 'removal_completed_in_model') REJECTED
+82 cause direction reversal 1/handle REJECTED
+83 coordinated callback substitution 1/handle REJECTED
+84 coordinated stored-original substitution 1/handle REJECTED
+85 nested result mutations leave expectations intact 1/handle PASS
+86 valid source raise with explicit cause 1/state PASS
+87 helper escape unknown continuity no control 1/state PASS
+88 distinct equal-error occurrences and callback roles 1/state PASS
+89 source frontier 1/state/callback-failure-guard/raise PASS
+90 false original propagation 1/state/callback-failure-guard/raise REJECTED
+91 source frontier 1/state/callback-failure-guard/process-termination PASS
+92 false original propagation 1/state/callback-failure-guard/process-termination REJECTED
+93 source frontier 1/state/callback-stored-rethrow/raise PASS
+94 false original propagation 1/state/callback-stored-rethrow/raise REJECTED
+95 source frontier 1/state/callback-stored-rethrow/process-termination PASS
+96 false original propagation 1/state/callback-stored-rethrow/process-termination REJECTED
+97 source frontier 1/state/removal-complete/raise PASS
+98 false original propagation 1/state/removal-complete/raise REJECTED
+99 source frontier 1/state/removal-complete/process-termination PASS
+100 false original propagation 1/state/removal-complete/process-termination REJECTED
+101 wrong binding or false completion 1/state('callback_error', 'reference') REJECTED
+102 wrong binding or false completion 1/state('failure_result', 'original_exception', 'reference') REJECTED
+103 wrong binding or false completion 1/state('failure_input', 'references', 'owner', 'symbol') REJECTED
+104 wrong binding or false completion 1/state('failure_input', 'references', 'token', 'symbol') REJECTED
+105 wrong binding or false completion 1/state('token_case', 'invocation') REJECTED
+106 wrong binding or false completion 1/state('anchor', 'instance', 'binding') REJECTED
+107 wrong binding or false completion 1/state('output', 'run_success_established') REJECTED
+108 wrong binding or false completion 1/state('output', 'removal_completed_in_model') REJECTED
+109 cause direction reversal 1/state REJECTED
+110 coordinated callback substitution 1/state REJECTED
+111 coordinated stored-original substitution 1/state REJECTED
+112 nested result mutations leave expectations intact 1/state PASS
+113 semantic wrong cause 1 REJECTED
+114 semantic coverage omission 1 REJECTED
+115 reviewed normal-callback case still accepted through validated basis 1 PASS
+116 semantic contexts omit REJECTED
+117 semantic contexts duplicate REJECTED
+118 semantic contexts reverse REJECTED
+119 semantic exact types before normalization REJECTED
+120 semantic cleanup escalation REJECTED
+121 returned contexts and nested rows cannot change canonical receipt PASS

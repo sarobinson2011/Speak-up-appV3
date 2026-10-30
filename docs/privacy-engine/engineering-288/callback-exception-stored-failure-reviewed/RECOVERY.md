@@ -1,0 +1,9 @@
+# Compact selection and external recovery
+
+This Git prefix is a compact selection of an already reviewed checkpoint, not an executable recovered root. Do not invoke its archived tests, validators or CLI. Complete original construction, review, receipts, large fixtures, forensic partials and inherited roots remain in the exact external review ZIP and its embedded input; see provenance/EXTERNAL-RECOVERY.json. No original archive is recompressed and presented as its original bytes.
+
+SELECTION-MANIFEST.json binds the Git-selected bytes. review/MANIFEST.json remains the complete original review manifest, so references to omitted external members are intentional. Original construction manifests and omitted evidence remain external. Prior stored-failure and earlier Git milestones are not copied or saved again.
+
+The prepared host saver first looks for a matching successful receipt or already committed reviewed checkpoint. It reuses verified matching support without another commit/push, stops on incomplete or conflicting records, and verifies the preceding saved milestone. Otherwise it writes only this new prefix and commits only its paths. It preserves unrelated index/working files, checks ordinary origin/main ancestry, never force-pushes and never retries an uncertain push. Existing repository instructions or in-progress Git operations cause a stop requiring inspection. Large ZIPs, database files and partial binaries are excluded from Git.
+
+The repository /home/steve/dev/Speak-up-appV3 and its remote are not available in the preparation environment. Commit/push therefore remain host-pending until a matching successful receipt is supplied or the prepared save completes on Steve's host under existing authorization. No approval renewal is requested. The preceding stored-failure receipt is evidence of its own saved milestone, not this one.

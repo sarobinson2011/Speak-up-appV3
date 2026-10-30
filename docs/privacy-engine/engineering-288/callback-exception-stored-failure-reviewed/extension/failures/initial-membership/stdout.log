@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/callback-failure/tests/focused.py", line 13, in <module>
+    mon=guard(root,rec.path);m=module(root/'code/correspondence.py');mon(m);data=m.inputs(root);cat=m.catalogue(data);rows,basis=m._checked(data,cat);c=data['coverage'];bundle=m._assemble(data,rows,basis)
+                                                                                 ^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 44, in inputs
+    root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CALLBACK-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CALLBACK-PRODUCER-PIN')
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 40, in predecessor_root
+    walk(base);require(files==expected and seen==dirs,'CALLBACK-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CALLBACK-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                         ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CALLBACK-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                         ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 38, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CALLBACK-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                         ^^^^^^^
+  [Previous line repeated 33 more times]
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 39, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'CALLBACK-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-failure/code/correspondence.py", line 14, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CALLBACK-UNDECLARED-OR-NONREGULAR
