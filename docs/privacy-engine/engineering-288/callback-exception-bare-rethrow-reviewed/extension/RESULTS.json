@@ -1,0 +1,440 @@
+{
+  "actual_offline_CLI_included_once_in_public_group": true,
+  "checkpoint": "I164-callback-exception-bare-rethrow-correspondence-1",
+  "construction_author": "SU-Engineering[288D]",
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "implementation": {
+    "both_reviewed_stored_failure_relations_mandatory": true,
+    "declared_changes": "provenance/changed-files.json",
+    "historical_validators_modified": 0,
+    "inherited_producer_functions_classes_unchanged": 106,
+    "new_producer_functions": 5,
+    "predecessor_members": 2807,
+    "review_noninput_members": 65,
+    "runtime_sources_changed": 0
+  },
+  "independent_review": "PENDING",
+  "limits": {
+    "callback_error_identity": "Preserved semantic role; physical reference observations unavailable",
+    "callback_exception_producer_type_value_history": "UNAVAILABLE",
+    "callback_propagation_guaranteed_after_cleanup_failure_or_termination": false,
+    "complete_repetition_lifetime_coverage": false,
+    "control_callback_failures_full_outer_cleanup_exceptional_owner_finalization": "UNEXPANDED",
+    "existing_cause_context_suppression": "UNKNOWN; bare raise adds no new explicit cause",
+    "guard_slot_continuity": "Selected same-owner slot exactly None at this guard; no history implied",
+    "physical_revocation_lock_release_exclusivity_durability": "UNESTABLISHED",
+    "prior_failure_storage_history": "UNKNOWN; no earlier evidence erased",
+    "run_success_established": false,
+    "runtime_callback_bare_revocation_chain": null,
+    "runtime_unwind_evidence": "UNAVAILABLE",
+    "saved_traced_invocations": 18,
+    "selected_owner_continuity": "Explicit conditional premise",
+    "separate_unjoined_Client_state_observer": 1,
+    "static_constructed_only": true
+  },
+  "new_engineering_controls": {
+    "primary": {
+      "checks": 308,
+      "count_basis": "Final RESULT record; primary progress gap explicitly retained",
+      "outcomes": {
+        "PASS": 95,
+        "REJECTED": 213
+      },
+      "progress_corroborated_controls": 307,
+      "result_identity": {
+        "bytes": 37322,
+        "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256"
+      },
+      "seconds": 736.2364759369993,
+      "stdout_corroborated_controls": 303
+    },
+    "public": {
+      "checks": 5,
+      "count_basis": "Exact RESULT/progress/captured-stdout correspondence",
+      "outcomes": {
+        "PASS": 1,
+        "REJECTED": 4
+      },
+      "progress_corroborated_controls": 5,
+      "result_identity": {
+        "bytes": 1094,
+        "sha256": "fa6a8e7eef0cedfdbfb49266bc3e2b9ef6325b125a5a22b606c492cb0d5768f0"
+      },
+      "seconds": 1306.5143619579976,
+      "stdout_corroborated_controls": 5
+    },
+    "recovered": {
+      "checks": 78,
+      "count_basis": "Exact RESULT/progress/captured-stdout correspondence",
+      "outcomes": {
+        "PASS": 32,
+        "REJECTED": 46
+      },
+      "progress_corroborated_controls": 78,
+      "result_identity": {
+        "bytes": 9972,
+        "sha256": "35c06fb83e7ddaa8dfe7c623bf7eca018b7a9569c3ed898a428a70f2ef835a30"
+      },
+      "seconds": 660.2464555820006,
+      "stdout_corroborated_controls": 78
+    }
+  },
+  "new_engineering_result_recorded_completed_controls": 391,
+  "new_failed_control_attempts": [
+    {
+      "checks": 0,
+      "failed_root_preserved_unrepaired": true,
+      "mode": "public",
+      "path": "failures/process-membership/public",
+      "reason": "Exact filesystem gate rejected one undeclared regular partial before candidate consumption"
+    },
+    {
+      "checks": 0,
+      "failed_root_preserved_unrepaired": true,
+      "mode": "recovered",
+      "path": "failures/process-membership/recovered",
+      "reason": "Exact filesystem gate rejected one undeclared regular partial before candidate consumption"
+    }
+  ],
+  "new_receipt": {
+    "bytes": 6854670,
+    "sha256": "30dfb6840ab7e3bdab7bc812ab76923dd3380002149ec05a6423f54e9920ee89"
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_review_reruns": 0,
+    "completed_suite_reruns": 0,
+    "database_connections": 0,
+    "host_smoke": 0,
+    "pipelines": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "packaging_failure_excluded_from_controls": {
+    "attempts": 1,
+    "cause": "Primary result/progress mismatch; no input mutation or archive creation by failed attempt",
+    "path": "failures/packaging-reconciliation"
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "obligations_identity": {
+      "bytes": 56813,
+      "sha256": "2c92141711e260a2ef0271635562cbac5a71aae82ac7e1a52b5dbc6f228d3a45"
+    },
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "primary_log_reconciliation": {
+    "all_available_progress_rows_match_result_exactly": true,
+    "cause": "UNESTABLISHED; no inference of filesystem durability or absence of intervening access",
+    "control_reruns": 0,
+    "exact_progress_corroborated_controls": 307,
+    "identities": {
+      "RESULT.json": {
+        "bytes": 37322,
+        "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256"
+      },
+      "final-verification.json": {
+        "bytes": 83,
+        "sha256": "c65d735dfcd70d7f4f18aad3164503d6ad1e04ec1d480baf6d4809d0e25860a0"
+      },
+      "progress.jsonl": {
+        "bytes": 38101,
+        "sha256": "8bbacb477f72271647c06429041c4a5f44c7158ef017f17d130b81c004aac501"
+      }
+    },
+    "observed_utc": "2026-10-30T11:46:40.205522+00:00",
+    "original_files_repaired_or_rewritten": false,
+    "process_present": false,
+    "progress_missing_record": {
+      "check": "adjacent normal-callback stored failure preserved 1",
+      "result": "PASS"
+    },
+    "progress_missing_result_ordinal": 304,
+    "qualification": "308 is the final RESULT record count; it is not a claim that all controls also appear in every progress/output stream",
+    "result_recorded_completed_controls": 308,
+    "status": "RECONCILED_WITH_EXPLICIT_LOG_GAPS",
+    "stdout_corroborated_prefix_controls": 303,
+    "stdout_identity": {
+      "bytes": 23197,
+      "sha256": "cc38a1930dfc93e9ae5f6afb8c4fcf5c1428dea9b0991a567f93af6ad775d0b3"
+    },
+    "stdout_missing_result_ordinals": [
+      304,
+      305,
+      306,
+      307,
+      308
+    ]
+  },
+  "prior_results_retained_not_rerun": {
+    "Engineering_423_70_4": {
+      "primary": {
+        "checks": 423,
+        "outcomes": {
+          "PASS": 186,
+          "REJECTED": 237
+        },
+        "result_identity": {
+          "bytes": 49010,
+          "sha256": "6c1a50be4c744157338c29a940628c3850d149d68a67345b18db9414fa3b2ca4"
+        },
+        "seconds": 741.8145783529999
+      },
+      "public": {
+        "checks": 4,
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 3
+        },
+        "result_identity": {
+          "bytes": 1005,
+          "sha256": "8792cef67d025b53880a08257b574707de50103e30abbe63e871ae2261a58ba4"
+        },
+        "seconds": 840.9618843549997
+      },
+      "recovered": {
+        "checks": 70,
+        "outcomes": {
+          "PASS": 24,
+          "REJECTED": 46
+        },
+        "result_identity": {
+          "bytes": 8781,
+          "sha256": "ec5879b108f795eeb6c6b9cd5efef5c17caf099be723d893f7721d6face0a935"
+        },
+        "seconds": 407.4551224330007
+      }
+    },
+    "Engineering_zero_assertion_failure": [
+      {
+        "checks": 0,
+        "failed_root_preserved": true,
+        "failure": "Exact predecessor gate rejected undeclared regular partial before candidate consumption",
+        "origin": "UNESTABLISHED",
+        "partial_evidence": {
+          "completed_assertions": 0,
+          "extra_entries": [
+            {
+              "bytes": 27000832,
+              "ctime_ns": 1793351229807982658,
+              "mode": 33152,
+              "mtime_ns": 1793351228957752170,
+              "path": "retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.OcclsD",
+              "sha256": "83b8f28be31221022e346d7ae698b8e3440e39261d261707e0db8a24f40058ad"
+            }
+          ],
+          "input_gate_refused_before_candidate_consumption": true,
+          "origin": "UNESTABLISHED"
+        },
+        "path": "failures/initial-membership",
+        "repaired": false
+      }
+    ],
+    "Formal_Lab6_groups": {
+      "completion": {
+        "checks": 24,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "REJECTED": 24
+        },
+        "result_identity": {
+          "bytes": 5017,
+          "sha256": "58875482ffeefc7a499e3b2f6c4582103b9f6007e3a32c3550ae6709eb6830b6"
+        },
+        "seconds": 4.366493534998881
+      },
+      "fresh-normal": {
+        "checks": 3,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 2,
+          "REJECTED": 1
+        },
+        "result_identity": {
+          "bytes": 678,
+          "sha256": "71fda7d09def2b4b268d5a3ddb3cbb6bb03e9768e22c092d86ef229670d8823b"
+        },
+        "seconds": 925.2459509479977
+      },
+      "fresh-public": {
+        "checks": 6,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 1,
+          "REJECTED": 5
+        },
+        "result_identity": {
+          "bytes": 1052,
+          "sha256": "8fd88e38a8d484880c561d231bd3bb1f69189ce357d24cb2fa9e33f9cd8a72bc"
+        },
+        "seconds": 906.3429570499993
+      },
+      "primary": {
+        "checks": 337,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 92,
+          "REJECTED": 245
+        },
+        "result_identity": {
+          "bytes": 41276,
+          "sha256": "81d46ce718490138d8622c3dc0724018bb7701fd7229c1c362d2b16c9925612d"
+        },
+        "seconds": 541.5533287670005
+      },
+      "recovered": {
+        "checks": 121,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 44,
+          "REJECTED": 77
+        },
+        "result_identity": {
+          "bytes": 14658,
+          "sha256": "62258dfb91890ef094d821bfdb94cc5b370ba1e51d33388724fee2c9c60958a1"
+        },
+        "seconds": 546.3243230410008
+      },
+      "source-controls": {
+        "checks": 46,
+        "environment": {
+          "cryptography": "50.0.2",
+          "dont_write_bytecode": true,
+          "isolated": 1,
+          "optimization": 0,
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+        },
+        "outcomes": {
+          "PASS": 26,
+          "REJECTED": 20
+        },
+        "result_identity": {
+          "bytes": 4649,
+          "sha256": "658b53477d5d7cb865a91df93063c1bd5c3df6986a6b373caf9042821e533188"
+        },
+        "seconds": 3.984889250999913
+      }
+    },
+    "Formal_Lab6_independent_total": 537,
+    "independent_and_supplied_separate": true,
+    "older_failed_interrupted_partial_records": "Retained exact, outside current completed totals"
+  },
+  "recovery": {
+    "clean_root": {
+      "cut": {
+        "CRC": "PASS",
+        "all_hashes": "PASS",
+        "bytes": 85904997,
+        "entries": 2908,
+        "manifest_identity": {
+          "bytes": 885693,
+          "sha256": "208dc7c07cfc750cea03fd684a295207bb7203d58385cac4e928b8b040a96472"
+        },
+        "manifested_files": 2907,
+        "safe_unique_regular_membership": "PASS",
+        "sha256": "b6ced23a1c891b12ae43b2ed79946ac599d8c399f8fded7a36c6daec130d5e40"
+      },
+      "exact_directories": 821,
+      "exact_files": 2908,
+      "failed_root_repaired": false,
+      "membership_and_hashes": "PASS",
+      "new_root": "callback-bare-recovered-clean",
+      "tests_rerun": false
+    },
+    "code_primary_receipt_controls_unchanged_after_recovery": true,
+    "cut": {
+      "CRC": "PASS",
+      "all_hashes": "PASS",
+      "bytes": 85904997,
+      "entries": 2908,
+      "manifest_identity": {
+        "bytes": 885693,
+        "sha256": "208dc7c07cfc750cea03fd684a295207bb7203d58385cac4e928b8b040a96472"
+      },
+      "manifested_files": 2907,
+      "safe_unique_regular_membership": "PASS",
+      "sha256": "b6ced23a1c891b12ae43b2ed79946ac599d8c399f8fded7a36c6daec130d5e40"
+    },
+    "cut_nonmanifest_members_unchanged_in_final": 2907,
+    "final_additions": "Completed process results, preserved failed process attempts and undeclared partial, final provenance only",
+    "original_outer_archive_reconstruction_claimed": false,
+    "strict_root_checked_before_candidate_consumption": true
+  },
+  "scope": "Selected callback BaseException, exact-None same-owner guard, bare rethrow preserving callback role without new cause assignment, finally/removal attempt/completion in both contexts",
+  "unexpected_partial": {
+    "ctime_ns": 1793360873291063264,
+    "failed_root_preserved_unrepaired": true,
+    "history_exclusivity_durability_established": false,
+    "identity": {
+      "bytes": 25690112,
+      "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e"
+    },
+    "membership_discrepancy": {
+      "actual": 2909,
+      "bad_types": [],
+      "expected": 2908,
+      "extra_dirs": [],
+      "extra_files": [
+        "retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.BBfUlc"
+      ],
+      "missing_dirs": [],
+      "missing_files": []
+    },
+    "mode": 33152,
+    "mtime_ns": 1793360872170645582,
+    "observed_utc": "2026-10-30T11:50:11.935871+00:00",
+    "origin": "UNESTABLISHED",
+    "path": "callback-bare-recovered/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/basis/candidate/managed-route/.directory-relations.json.BBfUlc",
+    "stable_during_this_read": true
+  }
+}

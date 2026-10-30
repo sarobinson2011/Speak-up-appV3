@@ -1,0 +1,133 @@
+{"check": "fresh mandatory source/evidence validation", "result": "PASS"}
+{"check": "derived current receipt equals exact saved bytes", "result": "PASS"}
+{"check": "prior relation exact 0 stored_failure_revocation_correspondence", "result": "PASS"}
+{"check": "prior relation exact 0 callback_stored_failure_correspondence", "result": "PASS"}
+{"check": "prior relation exact 1 stored_failure_revocation_correspondence", "result": "PASS"}
+{"check": "prior relation exact 1 callback_stored_failure_correspondence", "result": "PASS"}
+{"check": "normal bare path 0", "result": "PASS"}
+{"check": "optional control/continuity (0, False, True)", "result": "PASS"}
+{"check": "optional control/continuity (0, True, False)", "result": "PASS"}
+{"check": "distinct constructed invocation 0", "result": "PASS"}
+{"check": "equal kind does not merge occurrence 0", "result": "PASS"}
+{"check": "frontier (0, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false completion (0, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (0, 'existing_cause')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (0, 'existing_context')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (0, 'existing_suppression')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (0, 'physical_reference_observation')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented explicit cause 0", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong selected binding (0, ('none_guard_binding', 'slot_value'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (0, ('none_guard_binding', 'guard_result'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (0, ('none_guard_binding', 'slot_exact_type'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (0, ('none_guard_binding', 'slot'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (0, ('callback_error', 'reference'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "wrong selected binding (0, ('callback_error', 'scope', 'invocation'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "wrong selected binding (0, ('context',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "wrong selected binding (0, ('anchor', 'context'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "wrong selected binding (0, ('token_case', 'owner_failure_none'))", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "missing stage (0, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "duplicate stage (0, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "missing stage (0, 4)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "duplicate stage (0, 4)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "reordered stage (0, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "coordinated error 0", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "coordinated owner 0", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated token 0", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated acquisition 0", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "coordinated non-None slot 0", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "coordinated no registration 0", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported status (0, 'runtime_observation')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (0, 'callback_reaches_launcher_established')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (0, 'run_success_established')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (0, 'actual_admission')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (0, 'obligations_discharged')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested types (0, ('callback_error', 'role'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (0, ('outcomes',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (0, ('none_guard_binding',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (0, ('output', 'callback_raised_in_model'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (0, ('output', 'bare_raise_semantics', 'adds_explicit_cause'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "subclassed literal key 0", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "returned nested mutation isolates expectations 0", "result": "PASS"}
+{"check": "producer submitted-output false normal 0", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "normal bare path 1", "result": "PASS"}
+{"check": "optional control/continuity (1, False, True)", "result": "PASS"}
+{"check": "optional control/continuity (1, True, False)", "result": "PASS"}
+{"check": "distinct constructed invocation 1", "result": "PASS"}
+{"check": "equal kind does not merge occurrence 1", "result": "PASS"}
+{"check": "frontier (1, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "frontier (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false completion (1, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (1, 'existing_cause')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (1, 'existing_context')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (1, 'existing_suppression')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented chain (1, 'physical_reference_observation')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "invented explicit cause 1", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong selected binding (1, ('none_guard_binding', 'slot_value'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (1, ('none_guard_binding', 'guard_result'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (1, ('none_guard_binding', 'slot_exact_type'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (1, ('none_guard_binding', 'slot'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "wrong selected binding (1, ('callback_error', 'reference'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "wrong selected binding (1, ('callback_error', 'scope', 'invocation'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "wrong selected binding (1, ('context',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "wrong selected binding (1, ('anchor', 'context'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "wrong selected binding (1, ('token_case', 'owner_failure_none'))", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "missing stage (1, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "duplicate stage (1, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "missing stage (1, 4)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "duplicate stage (1, 4)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "reordered stage (1, 1)", "result": "REJECTED", "error": "BARE-VALIDATED:outcomes"}
+{"check": "coordinated error 1", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "coordinated owner 1", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated token 1", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated acquisition 1", "result": "REJECTED", "error": "BARE-CONSTRUCTED-ANCHOR"}
+{"check": "coordinated non-None slot 1", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "coordinated no registration 1", "result": "REJECTED", "error": "TOKEN-PROJECTION-CORRESPONDENCE"}
+{"check": "unsupported status (1, 'runtime_observation')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (1, 'callback_reaches_launcher_established')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (1, 'run_success_established')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (1, 'actual_admission')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported status (1, 'obligations_discharged')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested types (1, ('callback_error', 'role'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (1, ('outcomes',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (1, ('none_guard_binding',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (1, ('output', 'callback_raised_in_model'))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested types (1, ('output', 'bare_raise_semantics', 'adds_explicit_cause'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "subclassed literal key 1", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "returned nested mutation isolates expectations 1", "result": "PASS"}
+{"check": "producer submitted-output false normal 1", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "semantic returned context/order mutation rejected", "result": "REJECTED", "error": "BARE-SEMANTIC-CORRESPONDENCE"}
+{"check": "fresh rows retain declared contexts", "result": "PASS"}
+{"check": "missing semantic context", "result": "REJECTED", "error": "BARE-CLAIM-CONTEXT-DOMAIN"}
+{"check": "duplicate semantic context", "result": "REJECTED", "error": "BARE-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic observation escalation", "result": "REJECTED", "error": "BARE-SEMANTIC-CORRESPONDENCE"}

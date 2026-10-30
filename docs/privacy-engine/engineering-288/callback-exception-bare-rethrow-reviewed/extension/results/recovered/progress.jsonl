@@ -1,0 +1,78 @@
+{"check": "recovered exact receipt", "result": "PASS"}
+{"check": "recovered legitimate bare callback 0", "result": "PASS"}
+{"check": "recovered binding/type (0, ('callback_error', 'reference'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "recovered binding/type (0, ('none_guard_binding', 'slot_value'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (0, ('none_guard_binding', 'guard_result'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (0, ('none_guard_binding', 'owner', 'symbol'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (0, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "BARE-VALIDATED:references"}
+{"check": "recovered binding/type (0, ('token_case', 'invocation'))", "result": "REJECTED", "error": "BARE-TOKEN-INVOCATION"}
+{"check": "recovered binding/type (0, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (0, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (0, ('output', 'reraised_error_in_model', 'reference'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (0, ('callback_error',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "recovered legitimate frontier (0, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'finally-enter', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'removal-complete', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (0, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered conditional selected-owner removal 0", "result": "PASS"}
+{"check": "recovered nested mutable output isolation 0", "result": "PASS"}
+{"check": "recovered semantic guard substitution 0", "result": "REJECTED", "error": "BARE-SEMANTIC-CORRESPONDENCE"}
+{"check": "recovered legitimate bare callback 1", "result": "PASS"}
+{"check": "recovered binding/type (1, ('callback_error', 'reference'))", "result": "REJECTED", "error": "BARE-CAUGHT-ERROR"}
+{"check": "recovered binding/type (1, ('none_guard_binding', 'slot_value'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (1, ('none_guard_binding', 'guard_result'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (1, ('none_guard_binding', 'owner', 'symbol'))", "result": "REJECTED", "error": "BARE-SELECTED-GUARD-BINDING"}
+{"check": "recovered binding/type (1, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "BARE-VALIDATED:references"}
+{"check": "recovered binding/type (1, ('token_case', 'invocation'))", "result": "REJECTED", "error": "BARE-TOKEN-INVOCATION"}
+{"check": "recovered binding/type (1, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (1, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (1, ('output', 'reraised_error_in_model', 'reference'))", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered binding/type (1, ('callback_error',))", "result": "REJECTED", "error": "BARE-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "recovered legitimate frontier (1, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'finally-enter', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'removal-complete', 'raise')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "recovered false callback propagation (1, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "BARE-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered conditional selected-owner removal 1", "result": "PASS"}
+{"check": "recovered nested mutable output isolation 1", "result": "PASS"}
+{"check": "recovered semantic guard substitution 1", "result": "REJECTED", "error": "BARE-SEMANTIC-CORRESPONDENCE"}
+{"check": "recovered bundle expectations isolated", "result": "PASS"}

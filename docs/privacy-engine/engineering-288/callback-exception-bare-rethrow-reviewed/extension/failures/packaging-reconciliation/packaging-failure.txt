@@ -1,0 +1,10 @@
+First freeze attempt stopped before modifying the candidate root.
+Command: python3 -I -B callback-bare-tools/freeze.py
+Exit: 1
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/callback-bare-tools/freeze.py", line 5, in <module>
+    rows=[json.loads(x) for x in (out/'progress.jsonl').read_text().splitlines()];assert rows==v['rows'] and len(rows)==v['checks']
+                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+The preceding saved-result read reported PASS, 308 controls, 736.2364759369993 seconds, no error. The stdout snapshot ended at control 303. The exact progress mismatch had not yet been characterized. No controls were rerun; no archive was created by this attempt. Cause remains UNESTABLISHED pending read-only reconciliation.

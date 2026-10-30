@@ -1,0 +1,43 @@
+{
+  "all_available_progress_rows_match_result_exactly": true,
+  "cause": "UNESTABLISHED; no inference of filesystem durability or absence of intervening access",
+  "control_reruns": 0,
+  "exact_progress_corroborated_controls": 307,
+  "identities": {
+    "RESULT.json": {
+      "bytes": 37322,
+      "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256"
+    },
+    "final-verification.json": {
+      "bytes": 83,
+      "sha256": "c65d735dfcd70d7f4f18aad3164503d6ad1e04ec1d480baf6d4809d0e25860a0"
+    },
+    "progress.jsonl": {
+      "bytes": 38101,
+      "sha256": "8bbacb477f72271647c06429041c4a5f44c7158ef017f17d130b81c004aac501"
+    }
+  },
+  "observed_utc": "2026-10-30T11:46:40.205522+00:00",
+  "original_files_repaired_or_rewritten": false,
+  "process_present": false,
+  "progress_missing_record": {
+    "check": "adjacent normal-callback stored failure preserved 1",
+    "result": "PASS"
+  },
+  "progress_missing_result_ordinal": 304,
+  "qualification": "308 is the final RESULT record count; it is not a claim that all controls also appear in every progress/output stream",
+  "result_recorded_completed_controls": 308,
+  "status": "RECONCILED_WITH_EXPLICIT_LOG_GAPS",
+  "stdout_corroborated_prefix_controls": 303,
+  "stdout_identity": {
+    "bytes": 23197,
+    "sha256": "cc38a1930dfc93e9ae5f6afb8c4fcf5c1428dea9b0991a567f93af6ad775d0b3"
+  },
+  "stdout_missing_result_ordinals": [
+    304,
+    305,
+    306,
+    307,
+    308
+  ]
+}

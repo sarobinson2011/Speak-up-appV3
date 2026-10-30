@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/process_checks.py", line 9, in <module>
+    rec.save('input-verification.json',verify_root(root));monitor=guard(root,rec.path);m=module(root/'code/correspondence.py');monitor(m);saved=(root/'results/primary/callback-bare-rethrow.json').read_bytes()
+                                       ^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/offline.py", line 75, in verify_root
+    assert files==expected and seen==dirs
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

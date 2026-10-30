@@ -1,0 +1,106 @@
+{
+  "observed_utc": "2026-10-30T11:45:33.153209+00:00",
+  "identities": {
+    "callback-bare-runs/primary/RESULT.json": {
+      "bytes": 37322,
+      "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256",
+      "mtime_ns": 1793360672389616802
+    },
+    "callback-bare-runs/primary/progress.jsonl": {
+      "bytes": 38101,
+      "sha256": "8bbacb477f72271647c06429041c4a5f44c7158ef017f17d130b81c004aac501",
+      "mtime_ns": 1793360670295898064
+    },
+    "callback-bare-tools/primary.log": {
+      "bytes": 23197,
+      "sha256": "cc38a1930dfc93e9ae5f6afb8c4fcf5c1428dea9b0991a567f93af6ad775d0b3",
+      "mtime_ns": 1793360565108497466
+    },
+    "callback-bare-tools/packaging-failure.txt": {
+      "bytes": 860,
+      "sha256": "6d6850bbc38dcedc9392e5979fc917688a2bc04531008002a5ef799dcd891849",
+      "mtime_ns": 1793360732793172104
+    }
+  },
+  "result_rows": 308,
+  "progress_rows": 307,
+  "exact_match": false,
+  "result_suffix": [
+    {
+      "check": "adjacent stored-callback relation preserved 0",
+      "result": "PASS"
+    },
+    {
+      "check": "adjacent normal-callback stored failure preserved 0",
+      "result": "PASS"
+    },
+    {
+      "check": "adjacent stored-callback relation preserved 1",
+      "result": "PASS"
+    },
+    {
+      "check": "adjacent normal-callback stored failure preserved 1",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source independent explicit-callback",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    },
+    {
+      "check": "defining source independent new-cause",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    },
+    {
+      "check": "defining source independent equality-guard",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    },
+    {
+      "check": "defining source independent wrong-pop",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    }
+  ],
+  "progress_suffix": [
+    {
+      "check": "predecessor evidence mutation",
+      "result": "REJECTED",
+      "error": "BARE-VALIDATED-EVIDENCE"
+    },
+    {
+      "check": "adjacent stored-callback relation preserved 0",
+      "result": "PASS"
+    },
+    {
+      "check": "adjacent normal-callback stored failure preserved 0",
+      "result": "PASS"
+    },
+    {
+      "check": "adjacent stored-callback relation preserved 1",
+      "result": "PASS"
+    },
+    {
+      "check": "defining source independent explicit-callback",
+      "result": "REJECTED",
+      "error": "CLIENT-DEFINING-SHAPE:_run"
+    },
+    {
+      "check": "defining source independent new-cause",
+      "result": "REJECTED",
+      "error": "CLIENT-DEFINING-SHAPE:_run"
+    },
+    {
+      "check": "defining source independent equality-guard",
+      "result": "REJECTED",
+      "error": "CLIENT-DEFINING-SHAPE:_run"
+    },
+    {
+      "check": "defining source independent wrong-pop",
+      "result": "REJECTED",
+      "error": "CLIENT-DEFINING-SHAPE:_run"
+    }
+  ],
+  "process_still_present": false
+}

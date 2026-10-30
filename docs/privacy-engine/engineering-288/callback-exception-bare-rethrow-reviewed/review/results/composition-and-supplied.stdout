@@ -1,0 +1,113 @@
+{
+  "all_prior_receipt_fields_preserved": true,
+  "declared_diff_exact": true,
+  "inherited_definitions": 106,
+  "intermediate_cut_nonmanifest_members_unchanged": 2907,
+  "intermediate_outer_archive_freshly_verified": false,
+  "new_definitions": [
+    "callback_bare_projection",
+    "callback_bare_source",
+    "compile_callback_bare",
+    "validate_callback_bare",
+    "validate_callback_bare_projection"
+  ],
+  "nonfunction_AST_unchanged": true,
+  "packaging_failure_original_records_exact": true,
+  "partial_location": "failures/process-membership; outside strict predecessor root",
+  "partial_origin": "UNESTABLISHED",
+  "preserved_predecessor_members": 2807,
+  "preserved_prior_review_members": 65,
+  "primary_qualification": "308 result-recorded; 307 exact progress rows; 303 exact stdout rows. Missing row/lines not repaired; origin UNESTABLISHED. No unsupported aggregate accepted.",
+  "prior_results_rerun": false,
+  "source_identities": {
+    "lab_bootstrap.py": {
+      "bytes": 11481,
+      "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+    },
+    "live_connection.py": {
+      "bytes": 5717,
+      "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+    },
+    "prospective_entry.py": {
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    }
+  },
+  "supplied_records": {
+    "primary": {
+      "actual_result_rows": 308,
+      "missing_progress": [
+        {
+          "ordinal": 304,
+          "record": {
+            "check": "adjacent normal-callback stored failure preserved 1",
+            "result": "PASS"
+          }
+        }
+      ],
+      "missing_stdout_ordinals": [
+        304,
+        305,
+        306,
+        307,
+        308
+      ],
+      "progress_rows": 307,
+      "result_count": 308,
+      "result_identity": {
+        "bytes": 37322,
+        "sha256": "73823aa132e96f86608dd8cf0bcab5f12f576488937b4ef81f31ae21beb51256"
+      },
+      "row_correspondence": "PASS",
+      "stdout_rows": 303
+    },
+    "public": {
+      "actual_result_rows": 5,
+      "missing_progress": [],
+      "missing_stdout_ordinals": [],
+      "progress_rows": 5,
+      "result_count": 5,
+      "result_identity": {
+        "bytes": 1094,
+        "sha256": "fa6a8e7eef0cedfdbfb49266bc3e2b9ef6325b125a5a22b606c492cb0d5768f0"
+      },
+      "row_correspondence": "PASS",
+      "stdout_rows": 5
+    },
+    "recovered": {
+      "actual_result_rows": 78,
+      "missing_progress": [],
+      "missing_stdout_ordinals": [],
+      "progress_rows": 78,
+      "result_count": 78,
+      "result_identity": {
+        "bytes": 9972,
+        "sha256": "35c06fb83e7ddaa8dfe7c623bf7eca018b7a9569c3ed898a428a70f2ef835a30"
+      },
+      "row_correspondence": "PASS",
+      "stdout_rows": 78
+    }
+  },
+  "undeclared_partial": {
+    "bytes": 25690112,
+    "sha256": "ed75ee885f67eca2938340b1aa5c423a9e60c04bceedfd3f90933cba0c44345e"
+  },
+  "zero_assertion_failures": {
+    "public": {
+      "checks": 0,
+      "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/process_checks.py\", line 9, in <module>\n    rec.save('input-verification.json',verify_root(root));monitor=guard(root,rec.path);m=module(root/'code/correspondence.py');monitor(m);saved=(root/'results/primary/callback-bare-rethrow.json').read_bytes()\n                                       ^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/offline.py\", line 75, in verify_root\n    assert files==expected and seen==dirs\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "identity": {
+        "bytes": 1124,
+        "sha256": "c27db338b4eb6c991bd9a09ec1f51f3f9380485874eeeabed237d01e739e5455"
+      }
+    },
+    "recovered": {
+      "checks": 0,
+      "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/process_checks.py\", line 9, in <module>\n    rec.save('input-verification.json',verify_root(root));monitor=guard(root,rec.path);m=module(root/'code/correspondence.py');monitor(m);saved=(root/'results/primary/callback-bare-rethrow.json').read_bytes()\n                                       ^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/callback-bare-recovered/tests/offline.py\", line 75, in verify_root\n    assert files==expected and seen==dirs\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "identity": {
+        "bytes": 1127,
+        "sha256": "1479469e06cdf00ef869be651516f4d6b159a7fa11532a320fb08711cc49fa78"
+      }
+    }
+  }
+}

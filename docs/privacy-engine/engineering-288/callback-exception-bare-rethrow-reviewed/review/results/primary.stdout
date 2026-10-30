@@ -1,0 +1,195 @@
+1 fresh mandatory source/evidence validation PASS
+2 derived current receipt equals exact saved bytes PASS
+3 prior relation exact 0 stored_failure_revocation_correspondence PASS
+4 prior relation exact 0 callback_stored_failure_correspondence PASS
+5 prior relation exact 1 stored_failure_revocation_correspondence PASS
+6 prior relation exact 1 callback_stored_failure_correspondence PASS
+7 normal bare path 0 PASS
+8 optional control/continuity (0, False, True) PASS
+9 optional control/continuity (0, True, False) PASS
+10 distinct constructed invocation 0 PASS
+11 equal kind does not merge occurrence 0 PASS
+12 frontier (0, 'callback-handler-enter', 'raise') PASS
+13 false completion (0, 'callback-handler-enter', 'raise') REJECTED
+14 frontier (0, 'callback-handler-enter', 'process-termination') PASS
+15 false completion (0, 'callback-handler-enter', 'process-termination') REJECTED
+16 frontier (0, 'callback-handler-enter', 'unobserved') PASS
+17 false completion (0, 'callback-handler-enter', 'unobserved') REJECTED
+18 frontier (0, 'callback-none-guard', 'raise') PASS
+19 false completion (0, 'callback-none-guard', 'raise') REJECTED
+20 frontier (0, 'callback-none-guard', 'process-termination') PASS
+21 false completion (0, 'callback-none-guard', 'process-termination') REJECTED
+22 frontier (0, 'callback-none-guard', 'unobserved') PASS
+23 false completion (0, 'callback-none-guard', 'unobserved') REJECTED
+24 frontier (0, 'callback-bare-rethrow', 'raise') PASS
+25 false completion (0, 'callback-bare-rethrow', 'raise') REJECTED
+26 frontier (0, 'callback-bare-rethrow', 'process-termination') PASS
+27 false completion (0, 'callback-bare-rethrow', 'process-termination') REJECTED
+28 frontier (0, 'callback-bare-rethrow', 'unobserved') PASS
+29 false completion (0, 'callback-bare-rethrow', 'unobserved') REJECTED
+30 frontier (0, 'finally-enter', 'raise') PASS
+31 false completion (0, 'finally-enter', 'raise') REJECTED
+32 frontier (0, 'finally-enter', 'process-termination') PASS
+33 false completion (0, 'finally-enter', 'process-termination') REJECTED
+34 frontier (0, 'finally-enter', 'unobserved') PASS
+35 false completion (0, 'finally-enter', 'unobserved') REJECTED
+36 frontier (0, 'removal-attempt', 'raise') PASS
+37 false completion (0, 'removal-attempt', 'raise') REJECTED
+38 frontier (0, 'removal-attempt', 'process-termination') PASS
+39 false completion (0, 'removal-attempt', 'process-termination') REJECTED
+40 frontier (0, 'removal-attempt', 'unobserved') PASS
+41 false completion (0, 'removal-attempt', 'unobserved') REJECTED
+42 frontier (0, 'removal-complete', 'raise') PASS
+43 false completion (0, 'removal-complete', 'raise') REJECTED
+44 frontier (0, 'removal-complete', 'process-termination') PASS
+45 false completion (0, 'removal-complete', 'process-termination') REJECTED
+46 frontier (0, 'removal-complete', 'unobserved') PASS
+47 false completion (0, 'removal-complete', 'unobserved') REJECTED
+48 invented chain (0, 'existing_cause') REJECTED
+49 invented chain (0, 'existing_context') REJECTED
+50 invented chain (0, 'existing_suppression') REJECTED
+51 invented chain (0, 'physical_reference_observation') REJECTED
+52 invented explicit cause 0 REJECTED
+53 wrong selected binding (0, ('none_guard_binding', 'slot_value')) REJECTED
+54 wrong selected binding (0, ('none_guard_binding', 'guard_result')) REJECTED
+55 wrong selected binding (0, ('none_guard_binding', 'slot_exact_type')) REJECTED
+56 wrong selected binding (0, ('none_guard_binding', 'slot')) REJECTED
+57 wrong selected binding (0, ('callback_error', 'reference')) REJECTED
+58 wrong selected binding (0, ('callback_error', 'scope', 'invocation')) REJECTED
+59 wrong selected binding (0, ('context',)) REJECTED
+60 wrong selected binding (0, ('anchor', 'context')) REJECTED
+61 wrong selected binding (0, ('token_case', 'owner_failure_none')) REJECTED
+62 missing stage (0, 0) REJECTED
+63 duplicate stage (0, 0) REJECTED
+64 missing stage (0, 1) REJECTED
+65 duplicate stage (0, 1) REJECTED
+66 missing stage (0, 2) REJECTED
+67 duplicate stage (0, 2) REJECTED
+68 missing stage (0, 3) REJECTED
+69 duplicate stage (0, 3) REJECTED
+70 missing stage (0, 4) REJECTED
+71 duplicate stage (0, 4) REJECTED
+72 missing stage (0, 5) REJECTED
+73 duplicate stage (0, 5) REJECTED
+74 reordered stage (0, 0) REJECTED
+75 reordered stage (0, 1) REJECTED
+76 reordered stage (0, 2) REJECTED
+77 reordered stage (0, 3) REJECTED
+78 reordered stage (0, 4) REJECTED
+79 coordinated error 0 REJECTED
+80 coordinated owner 0 REJECTED
+81 coordinated token 0 REJECTED
+82 coordinated acquisition 0 REJECTED
+83 coordinated non-None slot 0 REJECTED
+84 coordinated no registration 0 REJECTED
+85 unsupported status (0, 'runtime_observation') REJECTED
+86 unsupported status (0, 'callback_reaches_launcher_established') REJECTED
+87 unsupported status (0, 'run_success_established') REJECTED
+88 unsupported status (0, 'actual_admission') REJECTED
+89 unsupported status (0, 'obligations_discharged') REJECTED
+90 exact nested types (0, ('callback_error', 'role')) REJECTED
+91 exact nested types (0, ('outcomes',)) REJECTED
+92 exact nested types (0, ('none_guard_binding',)) REJECTED
+93 exact nested types (0, ('output', 'callback_raised_in_model')) REJECTED
+94 exact nested types (0, ('output', 'bare_raise_semantics', 'adds_explicit_cause')) REJECTED
+95 subclassed literal key 0 REJECTED
+96 returned nested mutation isolates expectations 0 PASS
+97 producer submitted-output false normal 0 REJECTED
+98 normal bare path 1 PASS
+99 optional control/continuity (1, False, True) PASS
+100 optional control/continuity (1, True, False) PASS
+101 distinct constructed invocation 1 PASS
+102 equal kind does not merge occurrence 1 PASS
+103 frontier (1, 'callback-handler-enter', 'raise') PASS
+104 false completion (1, 'callback-handler-enter', 'raise') REJECTED
+105 frontier (1, 'callback-handler-enter', 'process-termination') PASS
+106 false completion (1, 'callback-handler-enter', 'process-termination') REJECTED
+107 frontier (1, 'callback-handler-enter', 'unobserved') PASS
+108 false completion (1, 'callback-handler-enter', 'unobserved') REJECTED
+109 frontier (1, 'callback-none-guard', 'raise') PASS
+110 false completion (1, 'callback-none-guard', 'raise') REJECTED
+111 frontier (1, 'callback-none-guard', 'process-termination') PASS
+112 false completion (1, 'callback-none-guard', 'process-termination') REJECTED
+113 frontier (1, 'callback-none-guard', 'unobserved') PASS
+114 false completion (1, 'callback-none-guard', 'unobserved') REJECTED
+115 frontier (1, 'callback-bare-rethrow', 'raise') PASS
+116 false completion (1, 'callback-bare-rethrow', 'raise') REJECTED
+117 frontier (1, 'callback-bare-rethrow', 'process-termination') PASS
+118 false completion (1, 'callback-bare-rethrow', 'process-termination') REJECTED
+119 frontier (1, 'callback-bare-rethrow', 'unobserved') PASS
+120 false completion (1, 'callback-bare-rethrow', 'unobserved') REJECTED
+121 frontier (1, 'finally-enter', 'raise') PASS
+122 false completion (1, 'finally-enter', 'raise') REJECTED
+123 frontier (1, 'finally-enter', 'process-termination') PASS
+124 false completion (1, 'finally-enter', 'process-termination') REJECTED
+125 frontier (1, 'finally-enter', 'unobserved') PASS
+126 false completion (1, 'finally-enter', 'unobserved') REJECTED
+127 frontier (1, 'removal-attempt', 'raise') PASS
+128 false completion (1, 'removal-attempt', 'raise') REJECTED
+129 frontier (1, 'removal-attempt', 'process-termination') PASS
+130 false completion (1, 'removal-attempt', 'process-termination') REJECTED
+131 frontier (1, 'removal-attempt', 'unobserved') PASS
+132 false completion (1, 'removal-attempt', 'unobserved') REJECTED
+133 frontier (1, 'removal-complete', 'raise') PASS
+134 false completion (1, 'removal-complete', 'raise') REJECTED
+135 frontier (1, 'removal-complete', 'process-termination') PASS
+136 false completion (1, 'removal-complete', 'process-termination') REJECTED
+137 frontier (1, 'removal-complete', 'unobserved') PASS
+138 false completion (1, 'removal-complete', 'unobserved') REJECTED
+139 invented chain (1, 'existing_cause') REJECTED
+140 invented chain (1, 'existing_context') REJECTED
+141 invented chain (1, 'existing_suppression') REJECTED
+142 invented chain (1, 'physical_reference_observation') REJECTED
+143 invented explicit cause 1 REJECTED
+144 wrong selected binding (1, ('none_guard_binding', 'slot_value')) REJECTED
+145 wrong selected binding (1, ('none_guard_binding', 'guard_result')) REJECTED
+146 wrong selected binding (1, ('none_guard_binding', 'slot_exact_type')) REJECTED
+147 wrong selected binding (1, ('none_guard_binding', 'slot')) REJECTED
+148 wrong selected binding (1, ('callback_error', 'reference')) REJECTED
+149 wrong selected binding (1, ('callback_error', 'scope', 'invocation')) REJECTED
+150 wrong selected binding (1, ('context',)) REJECTED
+151 wrong selected binding (1, ('anchor', 'context')) REJECTED
+152 wrong selected binding (1, ('token_case', 'owner_failure_none')) REJECTED
+153 missing stage (1, 0) REJECTED
+154 duplicate stage (1, 0) REJECTED
+155 missing stage (1, 1) REJECTED
+156 duplicate stage (1, 1) REJECTED
+157 missing stage (1, 2) REJECTED
+158 duplicate stage (1, 2) REJECTED
+159 missing stage (1, 3) REJECTED
+160 duplicate stage (1, 3) REJECTED
+161 missing stage (1, 4) REJECTED
+162 duplicate stage (1, 4) REJECTED
+163 missing stage (1, 5) REJECTED
+164 duplicate stage (1, 5) REJECTED
+165 reordered stage (1, 0) REJECTED
+166 reordered stage (1, 1) REJECTED
+167 reordered stage (1, 2) REJECTED
+168 reordered stage (1, 3) REJECTED
+169 reordered stage (1, 4) REJECTED
+170 coordinated error 1 REJECTED
+171 coordinated owner 1 REJECTED
+172 coordinated token 1 REJECTED
+173 coordinated acquisition 1 REJECTED
+174 coordinated non-None slot 1 REJECTED
+175 coordinated no registration 1 REJECTED
+176 unsupported status (1, 'runtime_observation') REJECTED
+177 unsupported status (1, 'callback_reaches_launcher_established') REJECTED
+178 unsupported status (1, 'run_success_established') REJECTED
+179 unsupported status (1, 'actual_admission') REJECTED
+180 unsupported status (1, 'obligations_discharged') REJECTED
+181 exact nested types (1, ('callback_error', 'role')) REJECTED
+182 exact nested types (1, ('outcomes',)) REJECTED
+183 exact nested types (1, ('none_guard_binding',)) REJECTED
+184 exact nested types (1, ('output', 'callback_raised_in_model')) REJECTED
+185 exact nested types (1, ('output', 'bare_raise_semantics', 'adds_explicit_cause')) REJECTED
+186 subclassed literal key 1 REJECTED
+187 returned nested mutation isolates expectations 1 PASS
+188 producer submitted-output false normal 1 REJECTED
+189 semantic returned context/order mutation rejected REJECTED
+190 fresh rows retain declared contexts PASS
+191 missing semantic context REJECTED
+192 duplicate semantic context REJECTED
+193 semantic observation escalation REJECTED
+194 fresh semantic after nested mutation stays pristine PASS
+195 fresh semantic altered authenticated evidence REJECTED
