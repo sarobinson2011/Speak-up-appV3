@@ -1,0 +1,36 @@
+{
+  "observation_utc": "2026-10-30T20:13:56.183693+00:00",
+  "own_pid": 5,
+  "cgroup": {
+    "memory.current": "3656273920\n",
+    "memory.events": "low 0\nhigh 0\nmax 25995\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "memory.peak": "8590974976\n",
+    "memory.max": "8589934592\n"
+  },
+  "visible_processes": [
+    {
+      "pid": "5",
+      "cmdline": "/bin/bash /usr/local/scripts/sync_share.sh "
+    },
+    {
+      "pid": "15303",
+      "cmdline": "bwrap --as-pid-1 --new-session --die-with-parent --bind / / --dev /dev --bind-try /dev/shm /dev/shm --unshare-user --unshare-ipc --unshare-pid --unshare-net --cap-drop ALL --argv0 codex-linux-sandbox -- /opt/codex/bin/codex --sandbox-policy-cwd /workspace/scratch/3da0de3fef10 --command-cwd /workspace/scratch/3da0de3fef10 --permission-profile {\"type\":\"managed\",\"file_system\":{\"type\":\"unrestricted\"},\"network\":\"restricted\"} --apply-seccomp-then-exec --managed-network {\"loopbackPorts\":[36869,38521],\"allowLocalBinding\":true,\"allowUnixSockets\":[],\"dangerouslyAllowAllUnixSockets\":false} --proxy-route-"
+    },
+    {
+      "pid": "15304",
+      "cmdline": "/root/.codex/tmp/arg0-linux/codex-arg0vpcdi6/codex-linux-sandbox --sandbox-policy-cwd /workspace/scratch/3da0de3fef10 --command-cwd /workspace/scratch/3da0de3fef10 --permission-profile {\"type\":\"managed\",\"file_system\":{\"type\":\"unrestricted\"},\"network\":\"restricted\"} --managed-network {\"loopbackPorts\":[36869,38521],\"allowLocalBinding\":true,\"allowUnixSockets\":[],\"dangerouslyAllowAllUnixSockets\":false} -- /bin/bash -lc python3 -I -B - <<'PY'\nfrom pathlib import Path\nimport json,os,datetime\nout={'observation_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'own_pid':os.getpid(),'cgroup'"
+    },
+    {
+      "pid": "15305",
+      "cmdline": "/root/.codex/tmp/arg0-linux/codex-arg0vpcdi6/codex-linux-sandbox --sandbox-policy-cwd /workspace/scratch/3da0de3fef10 --command-cwd /workspace/scratch/3da0de3fef10 --permission-profile {\"type\":\"managed\",\"file_system\":{\"type\":\"unrestricted\"},\"network\":\"restricted\"} --managed-network {\"loopbackPorts\":[36869,38521],\"allowLocalBinding\":true,\"allowUnixSockets\":[],\"dangerouslyAllowAllUnixSockets\":false} -- /bin/bash -lc python3 -I -B - <<'PY'\nfrom pathlib import Path\nimport json,os,datetime\nout={'observation_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'own_pid':os.getpid(),'cgroup'"
+    },
+    {
+      "pid": "15308",
+      "cmdline": "codex-linux-sandbox --sandbox-policy-cwd /workspace/scratch/3da0de3fef10 --command-cwd /workspace/scratch/3da0de3fef10 --permission-profile {\"type\":\"managed\",\"file_system\":{\"type\":\"unrestricted\"},\"network\":\"restricted\"} --apply-seccomp-then-exec --managed-network {\"loopbackPorts\":[36869,38521],\"allowLocalBinding\":true,\"allowUnixSockets\":[],\"dangerouslyAllowAllUnixSockets\":false} --proxy-route-spec {\"routes\":[{\"env_key\":\"ALL_PROXY\",\"control_fd\":4},{\"env_key\":\"BUNDLE_HTTPS_PROXY\",\"control_fd\":5},{\"env_key\":\"BUNDLE_HTTP_PROXY\",\"control_fd\":5},{\"env_key\":\"DOCKER_HTTPS_PROXY\",\"control_fd\":5},{\"env_"
+    },
+    {
+      "pid": "15309",
+      "cmdline": "/bin/bash -lc python3 -I -B - <<'PY'\nfrom pathlib import Path\nimport json,os,datetime\nout={'observation_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'own_pid':os.getpid(),'cgroup':{},'visible_processes':[]}\nfor n in ('memory.current','memory.events','memory.peak','memory.max'):\n try:out['cgroup'][n]=Path('/sys/fs/cgroup',n).read_text()\n except OSError as e:out['cgroup'][n]=type(e).__name__\ntry:\n for p in Path('/proc').iterdir():\n  if p.name.isdigit():\n   try:\n    cmd=(p/'cmdline').read_bytes().replace(b'\\0',b' ').decode(errors='replace')\n    if 'control-construction' in cmd or"
+    }
+  ]
+}

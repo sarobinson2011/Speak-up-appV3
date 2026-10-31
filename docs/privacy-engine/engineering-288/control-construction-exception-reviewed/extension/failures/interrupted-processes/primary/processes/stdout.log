@@ -1,0 +1,289 @@
+Loading mandatory predecessor input chain
+Deriving construction declarations from defining source
+Validating predecessor evidence for this new slice once
+1 both required symbolic contexts PASS
+2 all predecessor context relations unchanged PASS
+3 independent AST argument construction precedes control invocation PASS
+4 independent exact guarded prefix and continuation coverage PASS
+5 legitimate construction raise through normal removal 0 PASS
+6 no completed capability or callback execution 0 PASS
+7 normal finally leaves construction error pending 0 PASS
+8 conditional continuity and unreached owner guard (0, False, True) PASS
+9 conditional continuity and unreached owner guard (0, True, False) PASS
+10 conditional continuity and unreached owner guard (0, False, False) PASS
+11 distinct selected attempts despite equal source 0 PASS
+12 legitimate frontier (0, 'finally-enter', 'raise') PASS
+13 earlier registration and error survive uncertainty (0, 'finally-enter', 'raise') PASS
+14 cleanup role can replace pending construction error (0, 'finally-enter') PASS
+15 false cleanup or propagation completion (0, 'finally-enter', 'raise', 'removal_completed_in_model') REJECTED
+16 false cleanup or propagation completion (0, 'finally-enter', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+17 false cleanup or propagation completion (0, 'finally-enter', 'raise', 'run_success_established') REJECTED
+18 no later stage after stopped frontier (0, 'finally-enter', 'raise') REJECTED
+19 legitimate frontier (0, 'finally-enter', 'process-termination') PASS
+20 earlier registration and error survive uncertainty (0, 'finally-enter', 'process-termination') PASS
+21 termination is not terminal exception or unwind (0, 'finally-enter', 'process-termination') PASS
+22 false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'removal_completed_in_model') REJECTED
+23 false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+24 false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'run_success_established') REJECTED
+25 no later stage after stopped frontier (0, 'finally-enter', 'process-termination') REJECTED
+26 legitimate frontier (0, 'finally-enter', 'unobserved') PASS
+27 earlier registration and error survive uncertainty (0, 'finally-enter', 'unobserved') PASS
+28 termination is not terminal exception or unwind (0, 'finally-enter', 'unobserved') PASS
+29 false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'removal_completed_in_model') REJECTED
+30 false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+31 false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'run_success_established') REJECTED
+32 no later stage after stopped frontier (0, 'finally-enter', 'unobserved') REJECTED
+33 legitimate frontier (0, 'removal-attempt', 'raise') PASS
+34 earlier registration and error survive uncertainty (0, 'removal-attempt', 'raise') PASS
+35 cleanup role can replace pending construction error (0, 'removal-attempt') PASS
+36 false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'removal_completed_in_model') REJECTED
+37 false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+38 false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'run_success_established') REJECTED
+39 no later stage after stopped frontier (0, 'removal-attempt', 'raise') REJECTED
+40 legitimate frontier (0, 'removal-attempt', 'process-termination') PASS
+41 earlier registration and error survive uncertainty (0, 'removal-attempt', 'process-termination') PASS
+42 termination is not terminal exception or unwind (0, 'removal-attempt', 'process-termination') PASS
+43 false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'removal_completed_in_model') REJECTED
+44 false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+45 false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'run_success_established') REJECTED
+46 no later stage after stopped frontier (0, 'removal-attempt', 'process-termination') REJECTED
+47 legitimate frontier (0, 'removal-attempt', 'unobserved') PASS
+48 earlier registration and error survive uncertainty (0, 'removal-attempt', 'unobserved') PASS
+49 termination is not terminal exception or unwind (0, 'removal-attempt', 'unobserved') PASS
+50 false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'removal_completed_in_model') REJECTED
+51 false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+52 false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'run_success_established') REJECTED
+53 no later stage after stopped frontier (0, 'removal-attempt', 'unobserved') REJECTED
+54 legitimate frontier (0, 'removal-complete', 'raise') PASS
+55 earlier registration and error survive uncertainty (0, 'removal-complete', 'raise') PASS
+56 cleanup role can replace pending construction error (0, 'removal-complete') PASS
+57 false cleanup or propagation completion (0, 'removal-complete', 'raise', 'removal_completed_in_model') REJECTED
+58 false cleanup or propagation completion (0, 'removal-complete', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+59 false cleanup or propagation completion (0, 'removal-complete', 'raise', 'run_success_established') REJECTED
+60 no later stage after stopped frontier (0, 'removal-complete', 'raise') REJECTED
+61 legitimate frontier (0, 'removal-complete', 'process-termination') PASS
+62 earlier registration and error survive uncertainty (0, 'removal-complete', 'process-termination') PASS
+63 termination is not terminal exception or unwind (0, 'removal-complete', 'process-termination') PASS
+64 false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'removal_completed_in_model') REJECTED
+65 false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+66 false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'run_success_established') REJECTED
+67 no later stage after stopped frontier (0, 'removal-complete', 'process-termination') REJECTED
+68 legitimate frontier (0, 'removal-complete', 'unobserved') PASS
+69 earlier registration and error survive uncertainty (0, 'removal-complete', 'unobserved') PASS
+70 termination is not terminal exception or unwind (0, 'removal-complete', 'unobserved') PASS
+71 false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'removal_completed_in_model') REJECTED
+72 false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+73 false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'run_success_established') REJECTED
+74 no later stage after stopped frontier (0, 'removal-complete', 'unobserved') REJECTED
+75 wrong binding or invented execution (0, ('construction_error', 'reference')) REJECTED
+76 wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'occurrence')) REJECTED
+77 wrong binding or invented execution (0, ('construction_error', 'scope', 'invocation')) REJECTED
+78 wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'argument_token', 'symbol')) REJECTED
+79 wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol')) REJECTED
+80 wrong binding or invented execution (0, ('construction_error', 'local_handler_binding')) REJECTED
+81 wrong binding or invented execution (0, ('construction_error', 'failure_mechanism')) REJECTED
+82 wrong binding or invented execution (0, ('construction_error', 'initializer_progress')) REJECTED
+83 wrong binding or invented execution (0, ('construction_error', 'completed_object_reference')) REJECTED
+84 wrong binding or invented execution (0, ('token_case', 'invocation')) REJECTED
+85 wrong binding or invented execution (0, ('anchor',)) REJECTED
+86 wrong binding or invented execution (0, ('context',)) REJECTED
+87 wrong binding or invented execution (0, ('projection', 'references', 'owner', 'symbol')) REJECTED
+88 wrong binding or invented execution (0, ('projection', 'references', 'token', 'symbol')) REJECTED
+89 wrong binding or invented execution (0, ('projection', 'scope', 'invocation')) REJECTED
+90 wrong binding or invented execution (0, ('output', 'construction_completed_in_model')) REJECTED
+91 wrong binding or invented execution (0, ('output', 'completed_control_object_reference')) REJECTED
+92 wrong binding or invented execution (0, ('output', 'allocation_progress')) REJECTED
+93 wrong binding or invented execution (0, ('output', 'initializer_progress')) REJECTED
+94 wrong binding or invented execution (0, ('output', 'control_callback_executed_in_model')) REJECTED
+95 wrong binding or invented execution (0, ('output', 'subsequent_client_execution_in_model')) REJECTED
+96 wrong binding or invented execution (0, ('output', 'client_handler_entered_in_model')) REJECTED
+97 wrong binding or invented execution (0, ('output', 'owner_failure_guard_evaluated_in_model')) REJECTED
+98 wrong binding or invented execution (0, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+99 wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+100 wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_context')) REJECTED
+101 wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_suppression')) REJECTED
+102 wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'cleanup_context_link')) REJECTED
+103 wrong binding or invented execution (0, ('output', 'outward_error_after_finally_in_model', 'reference')) REJECTED
+104 wrong binding or invented execution (0, ('output', 'construction_reaches_launcher_established')) REJECTED
+105 wrong binding or invented execution (0, ('output', 'prior_failure_storage_history')) REJECTED
+106 wrong binding or invented execution (0, ('output', 'observer_join')) REJECTED
+107 wrong binding or invented execution (0, ('output', 'revocation_persists')) REJECTED
+108 wrong binding or invented execution (0, ('output', 'physical_lock_release_established')) REJECTED
+109 wrong binding or invented execution (0, ('output', 'authorization_renewed')) REJECTED
+110 coordinated missing stage (0, 0) REJECTED
+111 duplicate stage (0, 0) REJECTED
+112 coordinated missing stage (0, 1) REJECTED
+113 duplicate stage (0, 1) REJECTED
+114 coordinated missing stage (0, 2) REJECTED
+115 duplicate stage (0, 2) REJECTED
+116 reordered finally and removal 0 REJECTED
+117 cross invocation result 0 REJECTED
+118 coordinated exception substitution 0 REJECTED
+119 exact nested type or key (0, ('context',)) REJECTED
+120 exact nested type or key (0, ('construction_error',)) REJECTED
+121 exact nested type or key (0, ('outcomes',)) REJECTED
+122 exact nested type or key (0, ('outcomes', 0, 'stage')) REJECTED
+123 exact nested type or key (0, ('output', 'removal_completed_in_model')) REJECTED
+124 exact nested type or key (0, ('construction_error',)) REJECTED
+125 exact nested type or key (0, ('output', 'construction_error')) REJECTED
+126 exact nested type or key (0, ('projection', 'token_inputs', 'control_present')) REJECTED
+127 exact nested type or key (0, ('output', 'events', 0, 'source', 'source', 'bytes')) REJECTED
+128 direct projector coordinated error (0, 'reference') REJECTED
+129 direct projector coordinated error (0, 'failure_mechanism') REJECTED
+130 direct projector coordinated error (0, 'completed_object_reference') REJECTED
+131 projector recomputes prefix 0 REJECTED
+132 submitted output invented completion 0 REJECTED
+133 nested result mutations isolated 0 PASS
+134 coordinated semantic completion claim 0 REJECTED
+135 legitimate construction raise through normal removal 1 PASS
+136 no completed capability or callback execution 1 PASS
+137 normal finally leaves construction error pending 1 PASS
+138 conditional continuity and unreached owner guard (1, False, True) PASS
+139 conditional continuity and unreached owner guard (1, True, False) PASS
+140 conditional continuity and unreached owner guard (1, False, False) PASS
+141 distinct selected attempts despite equal source 1 PASS
+142 legitimate frontier (1, 'finally-enter', 'raise') PASS
+143 earlier registration and error survive uncertainty (1, 'finally-enter', 'raise') PASS
+144 cleanup role can replace pending construction error (1, 'finally-enter') PASS
+145 false cleanup or propagation completion (1, 'finally-enter', 'raise', 'removal_completed_in_model') REJECTED
+146 false cleanup or propagation completion (1, 'finally-enter', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+147 false cleanup or propagation completion (1, 'finally-enter', 'raise', 'run_success_established') REJECTED
+148 no later stage after stopped frontier (1, 'finally-enter', 'raise') REJECTED
+149 legitimate frontier (1, 'finally-enter', 'process-termination') PASS
+150 earlier registration and error survive uncertainty (1, 'finally-enter', 'process-termination') PASS
+151 termination is not terminal exception or unwind (1, 'finally-enter', 'process-termination') PASS
+152 false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'removal_completed_in_model') REJECTED
+153 false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+154 false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'run_success_established') REJECTED
+155 no later stage after stopped frontier (1, 'finally-enter', 'process-termination') REJECTED
+156 legitimate frontier (1, 'finally-enter', 'unobserved') PASS
+157 earlier registration and error survive uncertainty (1, 'finally-enter', 'unobserved') PASS
+158 termination is not terminal exception or unwind (1, 'finally-enter', 'unobserved') PASS
+159 false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'removal_completed_in_model') REJECTED
+160 false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+161 false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'run_success_established') REJECTED
+162 no later stage after stopped frontier (1, 'finally-enter', 'unobserved') REJECTED
+163 legitimate frontier (1, 'removal-attempt', 'raise') PASS
+164 earlier registration and error survive uncertainty (1, 'removal-attempt', 'raise') PASS
+165 cleanup role can replace pending construction error (1, 'removal-attempt') PASS
+166 false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'removal_completed_in_model') REJECTED
+167 false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+168 false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'run_success_established') REJECTED
+169 no later stage after stopped frontier (1, 'removal-attempt', 'raise') REJECTED
+170 legitimate frontier (1, 'removal-attempt', 'process-termination') PASS
+171 earlier registration and error survive uncertainty (1, 'removal-attempt', 'process-termination') PASS
+172 termination is not terminal exception or unwind (1, 'removal-attempt', 'process-termination') PASS
+173 false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'removal_completed_in_model') REJECTED
+174 false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+175 false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'run_success_established') REJECTED
+176 no later stage after stopped frontier (1, 'removal-attempt', 'process-termination') REJECTED
+177 legitimate frontier (1, 'removal-attempt', 'unobserved') PASS
+178 earlier registration and error survive uncertainty (1, 'removal-attempt', 'unobserved') PASS
+179 termination is not terminal exception or unwind (1, 'removal-attempt', 'unobserved') PASS
+180 false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'removal_completed_in_model') REJECTED
+181 false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+182 false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'run_success_established') REJECTED
+183 no later stage after stopped frontier (1, 'removal-attempt', 'unobserved') REJECTED
+184 legitimate frontier (1, 'removal-complete', 'raise') PASS
+185 earlier registration and error survive uncertainty (1, 'removal-complete', 'raise') PASS
+186 cleanup role can replace pending construction error (1, 'removal-complete') PASS
+187 false cleanup or propagation completion (1, 'removal-complete', 'raise', 'removal_completed_in_model') REJECTED
+188 false cleanup or propagation completion (1, 'removal-complete', 'raise', 'construction_outward_after_finally_established_in_model') REJECTED
+189 false cleanup or propagation completion (1, 'removal-complete', 'raise', 'run_success_established') REJECTED
+190 no later stage after stopped frontier (1, 'removal-complete', 'raise') REJECTED
+191 legitimate frontier (1, 'removal-complete', 'process-termination') PASS
+192 earlier registration and error survive uncertainty (1, 'removal-complete', 'process-termination') PASS
+193 termination is not terminal exception or unwind (1, 'removal-complete', 'process-termination') PASS
+194 false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'removal_completed_in_model') REJECTED
+195 false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'construction_outward_after_finally_established_in_model') REJECTED
+196 false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'run_success_established') REJECTED
+197 no later stage after stopped frontier (1, 'removal-complete', 'process-termination') REJECTED
+198 legitimate frontier (1, 'removal-complete', 'unobserved') PASS
+199 earlier registration and error survive uncertainty (1, 'removal-complete', 'unobserved') PASS
+200 termination is not terminal exception or unwind (1, 'removal-complete', 'unobserved') PASS
+201 false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'removal_completed_in_model') REJECTED
+202 false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'construction_outward_after_finally_established_in_model') REJECTED
+203 false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'run_success_established') REJECTED
+204 no later stage after stopped frontier (1, 'removal-complete', 'unobserved') REJECTED
+205 wrong binding or invented execution (1, ('construction_error', 'reference')) REJECTED
+206 wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'occurrence')) REJECTED
+207 wrong binding or invented execution (1, ('construction_error', 'scope', 'invocation')) REJECTED
+208 wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'argument_token', 'symbol')) REJECTED
+209 wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol')) REJECTED
+210 wrong binding or invented execution (1, ('construction_error', 'local_handler_binding')) REJECTED
+211 wrong binding or invented execution (1, ('construction_error', 'failure_mechanism')) REJECTED
+212 wrong binding or invented execution (1, ('construction_error', 'initializer_progress')) REJECTED
+213 wrong binding or invented execution (1, ('construction_error', 'completed_object_reference')) REJECTED
+214 wrong binding or invented execution (1, ('token_case', 'invocation')) REJECTED
+215 wrong binding or invented execution (1, ('anchor',)) REJECTED
+216 wrong binding or invented execution (1, ('context',)) REJECTED
+217 wrong binding or invented execution (1, ('projection', 'references', 'owner', 'symbol')) REJECTED
+218 wrong binding or invented execution (1, ('projection', 'references', 'token', 'symbol')) REJECTED
+219 wrong binding or invented execution (1, ('projection', 'scope', 'invocation')) REJECTED
+220 wrong binding or invented execution (1, ('output', 'construction_completed_in_model')) REJECTED
+221 wrong binding or invented execution (1, ('output', 'completed_control_object_reference')) REJECTED
+222 wrong binding or invented execution (1, ('output', 'allocation_progress')) REJECTED
+223 wrong binding or invented execution (1, ('output', 'initializer_progress')) REJECTED
+224 wrong binding or invented execution (1, ('output', 'control_callback_executed_in_model')) REJECTED
+225 wrong binding or invented execution (1, ('output', 'subsequent_client_execution_in_model')) REJECTED
+226 wrong binding or invented execution (1, ('output', 'client_handler_entered_in_model')) REJECTED
+227 wrong binding or invented execution (1, ('output', 'owner_failure_guard_evaluated_in_model')) REJECTED
+228 wrong binding or invented execution (1, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+229 wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+230 wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_context')) REJECTED
+231 wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_suppression')) REJECTED
+232 wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'cleanup_context_link')) REJECTED
+233 wrong binding or invented execution (1, ('output', 'outward_error_after_finally_in_model', 'reference')) REJECTED
+234 wrong binding or invented execution (1, ('output', 'construction_reaches_launcher_established')) REJECTED
+235 wrong binding or invented execution (1, ('output', 'prior_failure_storage_history')) REJECTED
+236 wrong binding or invented execution (1, ('output', 'observer_join')) REJECTED
+237 wrong binding or invented execution (1, ('output', 'revocation_persists')) REJECTED
+238 wrong binding or invented execution (1, ('output', 'physical_lock_release_established')) REJECTED
+239 wrong binding or invented execution (1, ('output', 'authorization_renewed')) REJECTED
+240 coordinated missing stage (1, 0) REJECTED
+241 duplicate stage (1, 0) REJECTED
+242 coordinated missing stage (1, 1) REJECTED
+243 duplicate stage (1, 1) REJECTED
+244 coordinated missing stage (1, 2) REJECTED
+245 duplicate stage (1, 2) REJECTED
+246 reordered finally and removal 1 REJECTED
+247 cross invocation result 1 REJECTED
+248 coordinated exception substitution 1 REJECTED
+249 exact nested type or key (1, ('context',)) REJECTED
+250 exact nested type or key (1, ('construction_error',)) REJECTED
+251 exact nested type or key (1, ('outcomes',)) REJECTED
+252 exact nested type or key (1, ('outcomes', 0, 'stage')) REJECTED
+253 exact nested type or key (1, ('output', 'removal_completed_in_model')) REJECTED
+254 exact nested type or key (1, ('construction_error',)) REJECTED
+255 exact nested type or key (1, ('output', 'construction_error')) REJECTED
+256 exact nested type or key (1, ('projection', 'token_inputs', 'control_present')) REJECTED
+257 exact nested type or key (1, ('output', 'events', 0, 'source', 'source', 'bytes')) REJECTED
+258 direct projector coordinated error (1, 'reference') REJECTED
+259 direct projector coordinated error (1, 'failure_mechanism') REJECTED
+260 direct projector coordinated error (1, 'completed_object_reference') REJECTED
+261 projector recomputes prefix 1 REJECTED
+262 submitted output invented completion 1 REJECTED
+263 nested result mutations isolated 1 PASS
+264 coordinated semantic completion claim 1 REJECTED
+265 semantic missing-context REJECTED
+266 semantic missing-declaration REJECTED
+267 semantic missing-guard REJECTED
+268 semantic reordered-both REJECTED
+269 semantic subclass-key REJECTED
+270 mutated returned rows reject REJECTED
+271 pristine receipt after output mutations PASS
+272 mixed predecessor evidence REJECTED
+273 new mandatory entry preserves branch ('control', 0) PASS
+274 new mandatory entry preserves branch ('control', 1) PASS
+275 new mandatory entry preserves branch ('bare', 0) PASS
+276 new mandatory entry preserves branch ('bare', 1) PASS
+277 new mandatory entry preserves branch ('stored-client', 0) PASS
+278 new mandatory entry preserves branch ('stored-client', 1) PASS
+279 new mandatory entry preserves branch ('stored-normal', 0) PASS
+280 new mandatory entry preserves branch ('stored-normal', 1) PASS
+281 new mandatory entry preserves branch ('normal-token', 0) PASS
+282 new mandatory entry preserves branch ('normal-token', 1) PASS
+283 public semantic exact type before normalization REJECTED
+284 public constructed exact type before normalization REJECTED
+285 public derivation exact type before normalization REJECTED
+Checking independently source-derived rejection of altered construction argument

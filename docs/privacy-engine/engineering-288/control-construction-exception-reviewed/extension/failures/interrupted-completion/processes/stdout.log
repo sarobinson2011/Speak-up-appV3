@@ -1,0 +1,73 @@
+Fresh public validation against recovered immutable root; no checker replacement
+1 fresh recovered public validator accepts pristine receipt PASS
+2 recovered exact derived receipt PASS
+3 recovered legitimate selected control 0 PASS
+4 recovered altered binding/type (0, ('construction_error', 'reference')) REJECTED
+5 recovered altered binding/type (0, ('construction_error', 'construction_attempt', 'occurrence')) REJECTED
+6 recovered altered binding/type (0, ('projection', 'references', 'owner', 'symbol')) REJECTED
+7 recovered altered binding/type (0, ('projection', 'references', 'token', 'symbol')) REJECTED
+8 recovered altered binding/type (0, ('token_case', 'invocation')) REJECTED
+9 recovered altered binding/type (0, ('output', 'subsequent_client_execution_in_model')) REJECTED
+10 recovered altered binding/type (0, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+11 recovered altered binding/type (0, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+12 recovered altered binding/type (0, ('construction_error',)) REJECTED
+13 recovered legitimate frontier (0, 'finally-enter', 'raise') PASS
+14 recovered false completion (0, 'finally-enter', 'raise') REJECTED
+15 recovered legitimate frontier (0, 'finally-enter', 'process-termination') PASS
+16 recovered false completion (0, 'finally-enter', 'process-termination') REJECTED
+17 recovered legitimate frontier (0, 'finally-enter', 'unobserved') PASS
+18 recovered false completion (0, 'finally-enter', 'unobserved') REJECTED
+19 recovered legitimate frontier (0, 'removal-attempt', 'raise') PASS
+20 recovered false completion (0, 'removal-attempt', 'raise') REJECTED
+21 recovered legitimate frontier (0, 'removal-attempt', 'process-termination') PASS
+22 recovered false completion (0, 'removal-attempt', 'process-termination') REJECTED
+23 recovered legitimate frontier (0, 'removal-attempt', 'unobserved') PASS
+24 recovered false completion (0, 'removal-attempt', 'unobserved') REJECTED
+25 recovered legitimate frontier (0, 'removal-complete', 'raise') PASS
+26 recovered false completion (0, 'removal-complete', 'raise') REJECTED
+27 recovered legitimate frontier (0, 'removal-complete', 'process-termination') PASS
+28 recovered false completion (0, 'removal-complete', 'process-termination') REJECTED
+29 recovered legitimate frontier (0, 'removal-complete', 'unobserved') PASS
+30 recovered false completion (0, 'removal-complete', 'unobserved') REJECTED
+31 recovered continuity without client-slot guard 0 PASS
+32 recovered nested mutable result isolation 0 PASS
+33 recovered semantic invented cause REJECTED
+34 recovered legitimate selected control 1 PASS
+35 recovered altered binding/type (1, ('construction_error', 'reference')) REJECTED
+36 recovered altered binding/type (1, ('construction_error', 'construction_attempt', 'occurrence')) REJECTED
+37 recovered altered binding/type (1, ('projection', 'references', 'owner', 'symbol')) REJECTED
+38 recovered altered binding/type (1, ('projection', 'references', 'token', 'symbol')) REJECTED
+39 recovered altered binding/type (1, ('token_case', 'invocation')) REJECTED
+40 recovered altered binding/type (1, ('output', 'subsequent_client_execution_in_model')) REJECTED
+41 recovered altered binding/type (1, ('output', 'exception_chain_observation', 'existing_cause')) REJECTED
+42 recovered altered binding/type (1, ('output', 'new_explicit_cause_assignment_established_in_model')) REJECTED
+43 recovered altered binding/type (1, ('construction_error',)) REJECTED
+44 recovered legitimate frontier (1, 'finally-enter', 'raise') PASS
+45 recovered false completion (1, 'finally-enter', 'raise') REJECTED
+46 recovered legitimate frontier (1, 'finally-enter', 'process-termination') PASS
+47 recovered false completion (1, 'finally-enter', 'process-termination') REJECTED
+48 recovered legitimate frontier (1, 'finally-enter', 'unobserved') PASS
+49 recovered false completion (1, 'finally-enter', 'unobserved') REJECTED
+50 recovered legitimate frontier (1, 'removal-attempt', 'raise') PASS
+51 recovered false completion (1, 'removal-attempt', 'raise') REJECTED
+52 recovered legitimate frontier (1, 'removal-attempt', 'process-termination') PASS
+53 recovered false completion (1, 'removal-attempt', 'process-termination') REJECTED
+54 recovered legitimate frontier (1, 'removal-attempt', 'unobserved') PASS
+55 recovered false completion (1, 'removal-attempt', 'unobserved') REJECTED
+56 recovered legitimate frontier (1, 'removal-complete', 'raise') PASS
+57 recovered false completion (1, 'removal-complete', 'raise') REJECTED
+58 recovered legitimate frontier (1, 'removal-complete', 'process-termination') PASS
+59 recovered false completion (1, 'removal-complete', 'process-termination') REJECTED
+60 recovered legitimate frontier (1, 'removal-complete', 'unobserved') PASS
+61 recovered false completion (1, 'removal-complete', 'unobserved') REJECTED
+62 recovered continuity without client-slot guard 1 PASS
+63 recovered nested mutable result isolation 1 PASS
+64 recovered semantic invented cause REJECTED
+65 recovered receipt expectations isolated PASS
+66 public mandatory relation control_construction_revocation_correspondence REJECTED
+67 public mandatory relation control_exception_revocation_correspondence REJECTED
+68 public mandatory relation callback_bare_rethrow_correspondence REJECTED
+69 public mandatory relation callback_stored_failure_correspondence REJECTED
+70 public mandatory relation stored_failure_revocation_correspondence REJECTED
+71 public mandatory relation token_registration_correspondence REJECTED
+One unfinished public both-context coordinated-claim rejection

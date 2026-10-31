@@ -1,0 +1,292 @@
+{
+  "checkpoint": "I164-control-construction-exception-correspondence-1",
+  "completion_partial_rows": {
+    "completed_group": false,
+    "counted_in_completed_groups": false,
+    "progress_and_stdout_corroborated": 71,
+    "replayed": false,
+    "result_and_exit": "UNRECOVERED",
+    "row_partitions": {
+      "focused_recovered": [
+        2,
+        65
+      ],
+      "fresh_public_pristine": [
+        1,
+        1
+      ],
+      "public_mandatory_rejections": [
+        66,
+        71
+      ]
+    }
+  },
+  "construction_author": "SU-Engineering[288D]",
+  "final_public_check_layer": {
+    "error": "CONSTRUCTION-STALE-OR-ALTERED-RECEIPT",
+    "layer": "Public post-derivation receipt comparison in correspondence.validate",
+    "other_layer_result_inferred": false,
+    "type": "ValueError",
+    "validator_invocations": 1
+  },
+  "frozen_members_unchanged": true,
+  "implementation": {
+    "inherited_producer_definitions_unchanged": 117,
+    "intentional_changes": {
+      "code/correspondence.py": {
+        "after": {
+          "bytes": 13557,
+          "sha256": "ded2ed5aff06994394ced66bffd8ccd7395ff164bbd2d3b42e78e3adafe3f5f1"
+        },
+        "before": {
+          "bytes": 13197,
+          "sha256": "fda42f3806dd1c367687e9f33b6b80f8707b28eaec6e245966f3334f310261fb"
+        }
+      },
+      "code/managed_coverage.py": {
+        "after": {
+          "bytes": 289416,
+          "sha256": "11d4b5166ebc48b0929c3e24949325e5a9683ff55aea178afbdd5346e4d1d9fc"
+        },
+        "before": {
+          "bytes": 275943,
+          "sha256": "4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06"
+        }
+      }
+    },
+    "new_producer_definitions": 6,
+    "prior_reviewed_root_changes": 0,
+    "runtime_source_changes": 0
+  },
+  "independent_review": "PENDING",
+  "interrupted_completion": {
+    "CLI_execution_claimed": false,
+    "cause": "UNESTABLISHED",
+    "completed_group": false,
+    "completion_plan": "Only unfinished public comparison, one fresh isolated process on unchanged recovered input; no completed-row replay",
+    "exact_target_argv_processes_found_in_readonly_proc_inspection": 0,
+    "last_progress": {
+      "pid": 5,
+      "running": true,
+      "seconds": 3542.0
+    },
+    "observed_utc": "2026-10-30T21:23:16.627722+00:00",
+    "outstanding_check": "public coordinated completed construction and callback claim",
+    "recorded_and_stdout_corroborated_rows": 71,
+    "result_and_exit": "UNRECOVERED",
+    "row_partitions": {
+      "focused_recovered": [
+        2,
+        65
+      ],
+      "fresh_public_pristine": [
+        1,
+        1
+      ],
+      "public_mandatory_rejections": [
+        66,
+        71
+      ]
+    },
+    "rows_will_not_be_replayed": true,
+    "unavailable_tool_session": 15669
+  },
+  "limits": {
+    "allocation_initializer_progress": "UNESTABLISHED",
+    "existing_cause_context_suppression": "UNKNOWN",
+    "failure_mechanism": "UNESTABLISHED",
+    "outer_cleanup_complete": false,
+    "physical_identity_exclusivity_durability_qualification": "UNESTABLISHED",
+    "repetition_lifetime_completeness": false,
+    "runtime_construction_error_finally_removal_chain": "UNAVAILABLE",
+    "selected_owner_continuity": "Explicit conditional premise",
+    "separate_Client_state_observer": "UNJOINED",
+    "static_conditional_only": true
+  },
+  "new_engineering_completed_groups": {
+    "public-final-completion": {
+      "checks": 1,
+      "exit": {
+        "finished_utc": "2026-10-30T21:50:57.699397+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 1660.000415524999,
+        "timed_out": false
+      },
+      "outcomes": {
+        "PASS": 0,
+        "REJECTED": 1
+      },
+      "progress_stdout_reconciled": true,
+      "result": {
+        "bytes": 689,
+        "sha256": "86b60dcc4d63ea8fe78186b35cf0e580d8b28c8c1f7daa7ff0e0988b350dc495"
+      },
+      "seconds": 1659.5130531499963
+    },
+    "source-completion": {
+      "checks": 1,
+      "exit": {
+        "finished_utc": "2026-10-30T20:21:46.272079+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 357.0003805219967,
+        "timed_out": false
+      },
+      "outcomes": {
+        "PASS": 0,
+        "REJECTED": 1
+      },
+      "progress_stdout_reconciled": true,
+      "result": {
+        "bytes": 624,
+        "sha256": "9bcecb74037b0578e8f1a6a79ab0a007ef467f1ebb9f4c02ec6c284d55a8af45"
+      },
+      "seconds": 356.6406621579954
+    }
+  },
+  "new_engineering_interrupted_attempts": {
+    "cause": "UNESTABLISHED",
+    "completed_controls_will_not_be_repeated": true,
+    "completion_plan": "Only unfinished final primary source control and zero-row recovered/public attempts; sequential isolated processes. Original attempts remain partial and are not promoted into completed totals.",
+    "memory_peak_at_limit_but_oom_counters_zero": "Not evidence of a specific cause",
+    "observed_utc": "2026-10-30T20:15:48.199523+00:00",
+    "records": {
+      "primary": {
+        "completed_group": false,
+        "last_recorded_progress": {
+          "pid": 5,
+          "running": true,
+          "seconds": 2070.2
+        },
+        "recorded_and_stdout_corroborated_rows": 285,
+        "result_and_exit": "UNRECOVERED"
+      },
+      "public": {
+        "completed_group": false,
+        "last_recorded_progress": {
+          "pid": 5,
+          "running": true,
+          "seconds": 210.0
+        },
+        "recorded_and_stdout_corroborated_rows": 0,
+        "result_and_exit": "UNRECOVERED"
+      },
+      "recovered": {
+        "completed_group": false,
+        "last_recorded_progress": {
+          "pid": 5,
+          "running": true,
+          "seconds": 210.0
+        },
+        "recorded_and_stdout_corroborated_rows": 0,
+        "result_and_exit": "UNRECOVERED"
+      }
+    },
+    "target_processes_not_found_in_readonly_proc_inspection": true,
+    "tool_handles_unavailable": [
+      25054,
+      6527,
+      5016
+    ]
+  },
+  "new_failed_attempt_files": [
+    "failures/interrupted-processes/RECORD.json",
+    "failures/interrupted-processes/inspection.json",
+    "failures/interrupted-completion/RECORD.json",
+    "failures/interrupted-processes/primary/processes/stdout.log",
+    "failures/interrupted-processes/primary/processes/process.json",
+    "failures/interrupted-processes/primary/processes/supervisor-progress.jsonl",
+    "failures/interrupted-processes/primary/processes/launch.json",
+    "failures/interrupted-processes/primary/processes/stderr.log",
+    "failures/interrupted-processes/primary/results/fixtures.json",
+    "failures/interrupted-processes/primary/results/progress.jsonl",
+    "failures/interrupted-processes/primary/results/control-construction.json",
+    "failures/interrupted-processes/primary/results/input-verification.json",
+    "failures/interrupted-processes/public/processes/stdout.log",
+    "failures/interrupted-processes/public/processes/process.json",
+    "failures/interrupted-processes/public/processes/supervisor-progress.jsonl",
+    "failures/interrupted-processes/public/processes/launch.json",
+    "failures/interrupted-processes/public/processes/stderr.log",
+    "failures/interrupted-processes/public/results/input-verification.json",
+    "failures/interrupted-processes/recovered/processes/stdout.log",
+    "failures/interrupted-processes/recovered/processes/process.json",
+    "failures/interrupted-processes/recovered/processes/supervisor-progress.jsonl",
+    "failures/interrupted-processes/recovered/processes/launch.json",
+    "failures/interrupted-processes/recovered/processes/stderr.log",
+    "failures/interrupted-processes/recovered/results/input-verification.json",
+    "failures/interrupted-completion/processes/stdout.log",
+    "failures/interrupted-completion/processes/process.json",
+    "failures/interrupted-completion/processes/supervisor-progress.jsonl",
+    "failures/interrupted-completion/processes/launch.json",
+    "failures/interrupted-completion/processes/stderr.log",
+    "failures/interrupted-completion/results/progress.jsonl",
+    "failures/interrupted-completion/results/input-verification.json"
+  ],
+  "new_receipt": {
+    "bytes": 8000877,
+    "sha256": "d8a46dbf6aa29299a4a96a4c0132af217c9093e165c49409797112556f40b518"
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_review_reruns": 0,
+    "completed_suite_reruns": 0,
+    "database_connections": 0,
+    "pipelines": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED"
+  },
+  "primary_partial_rows": {
+    "completed_group": false,
+    "counted_in_completed_groups": false,
+    "progress_and_stdout_corroborated": 285,
+    "replayed": false,
+    "result_and_exit": "UNRECOVERED"
+  },
+  "prior_independent_scope": {
+    "cause_of_missing_rows": "UNESTABLISHED",
+    "combined_unqualified_total": null,
+    "coordinated_RESULT_progress_stdout": [
+      106,
+      103,
+      103
+    ],
+    "corroborated_rows": 517,
+    "historical_partial_public_rows": 9,
+    "interrupted_old_public_result_exit": "UNRECOVERED",
+    "qualified_result_only_ordinals": [
+      104,
+      105,
+      106
+    ],
+    "rerun": false,
+    "result_recorded_rows": 520,
+    "separate_check_error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+    "separate_check_layer": "Public receipt comparison only",
+    "separately_confirmed_public_check": 1,
+    "verdict": "SCOPED SUPPORT WITH RETAINED ACCOUNTING QUALIFICATIONS"
+  },
+  "prior_supplied_results": {
+    "primary": 276,
+    "public_process": 7,
+    "recovered_root": 64,
+    "rerun": false,
+    "separate_from_current": true
+  },
+  "validation_accounting": "Two separate one-check completed groups. The original 285 rows and later 71 rows remain corroborated interrupted evidence; no unqualified combined completed total."
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/ccn-review/code/focused.py", line 24, in <module>
+    try:m.validate(root,mutated)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-construction-20261031/recovered/code/correspondence.py", line 98, in validate
+    require(type(v) is dict and v.get('format')=='I164-CONTROL-CONSTRUCTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONSTRUCTION-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONSTRUCTION-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_construction_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
+                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-construction-20261031/recovered/code/correspondence.py", line 12, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CONSTRUCTION-STALE-OR-ALTERED-RECEIPT

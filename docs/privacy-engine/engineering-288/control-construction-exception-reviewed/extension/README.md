@@ -1,0 +1,1 @@
+One bounded SOURCE-ONLY control-construction exception continuation in both symbolic contexts. Read SEMANTICS.md and RECOVERY.md. Predecessor code and evidence are unchanged. Current controls are constructed static cases, never runtime execution observations. Independent review remains pending.

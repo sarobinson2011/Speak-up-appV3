@@ -1,0 +1,21 @@
+{
+  "stage": "Read-only packaging assertion; no controls executed",
+  "error": "Whole contexts arrays were compared for equality despite the declared new mandatory relation in each context",
+  "actual_changed_old_top_fields": [
+    "contexts",
+    "extension_components",
+    "format"
+  ],
+  "actual_context_additions": [
+    [
+      "control_construction_revocation_correspondence"
+    ],
+    [
+      "control_construction_revocation_correspondence"
+    ]
+  ],
+  "prior_context_fields_changed": 0,
+  "candidate_defect": false,
+  "correction": "Check exact old fields and exactly the one declared context addition; retain format/component envelope changes",
+  "tests_replayed": 0
+}

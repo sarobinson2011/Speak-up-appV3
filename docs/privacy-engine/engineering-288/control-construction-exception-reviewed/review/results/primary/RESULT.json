@@ -1,0 +1,781 @@
+{
+  "CLI_execution_claimed": false,
+  "checks": 159,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "mode": "primary",
+  "public_basis_calls_observed": 1,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "fresh public accepts actual current receipt in both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "fresh authenticated derivation equals exact saved receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "independently assembled construction case and oracle 0",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation remains source-admitted 0",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (0, False, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (0, False, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (0, True, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (0, True, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "independent terminal oracle (0, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'finally-enter', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'finally-enter', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'finally-enter', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-attempt', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-attempt', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-attempt', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-complete', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-complete', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (0, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (0, 'removal-complete', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'reference'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'construction_attempt', 'occurrence'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('invocation',))",
+      "error": "CONSTRUCTION-TOKEN-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('context',))",
+      "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('anchor', 'recovery_occurrence'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'scope', 'acquisition'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'exact_type'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'failure_mechanism'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'initializer_progress'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error', 'completed_object_reference'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('projection', 'references', 'control'))",
+      "error": "CONSTRUCTION-VALIDATED:references",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('token_case', 'control_present'))",
+      "error": "TOKEN-PREMISE:control_present",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('projection', 'scope', 'invocation'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('token_case', 'registry_continuity'))",
+      "error": "TOKEN-PREMISE:registry_continuity",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('output', 'events'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (0, ('construction_error',))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated references cannot authenticate each other (0, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated references cannot authenticate each other (0, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated construction-error substitution 0",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (0, [{'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-MISSING-STEP:removal-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (0, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (0, [{'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'removal-complete', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (0, [{'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'removal-complete', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (0, [])",
+      "error": "CONSTRUCTION-OUTCOMES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no continuation after cleanup failure 0",
+      "error": "CONSTRUCTION-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'construction_completed_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'control_callback_executed_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'subsequent_client_execution_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'client_handler_entered_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'new_explicit_cause_assignment_established_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'authorization_renewed')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'actual_admission')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no absence of existing cause 0",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "subclass literal keys 0",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned results cannot alter expectation 0",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'construction_completed')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'control_callback_execution')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'client_callback_execution')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'exception_chain_observation')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'classification')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (0, 'multiplicity')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic wrong-instance anchor 0",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omitted mandatory link 0",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independently assembled construction case and oracle 1",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation remains source-admitted 1",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (1, False, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (1, False, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (1, True, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "unreached owner guard and conditional continuity (1, True, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "independent terminal oracle (1, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'finally-enter', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'finally-enter', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'finally-enter', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-attempt', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-attempt', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-attempt', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-complete', 'raise')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-complete', 'process-termination')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent terminal oracle (1, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "terminal cannot claim completed removal (1, 'removal-complete', 'unobserved')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'reference'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'construction_attempt', 'occurrence'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('invocation',))",
+      "error": "CONSTRUCTION-TOKEN-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('context',))",
+      "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('anchor', 'recovery_occurrence'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'scope', 'acquisition'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'exact_type'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'failure_mechanism'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'initializer_progress'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error', 'completed_object_reference'))",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('projection', 'references', 'control'))",
+      "error": "CONSTRUCTION-VALIDATED:references",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('token_case', 'control_present'))",
+      "error": "TOKEN-PREMISE:control_present",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('projection', 'scope', 'invocation'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('token_case', 'registry_continuity'))",
+      "error": "TOKEN-PREMISE:registry_continuity",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('output', 'events'))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding or exact-type rejection (1, ('construction_error',))",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated references cannot authenticate each other (1, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated references cannot authenticate each other (1, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated construction-error substitution 1",
+      "error": "CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (1, [{'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-MISSING-STEP:removal-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (1, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (1, [{'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'removal-complete', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (1, [{'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'removal-complete', 'outcome': 'normal'}])",
+      "error": "CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source continuation order (1, [])",
+      "error": "CONSTRUCTION-OUTCOMES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no continuation after cleanup failure 1",
+      "error": "CONSTRUCTION-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'construction_completed_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'control_callback_executed_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'subsequent_client_execution_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'client_handler_entered_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'new_explicit_cause_assignment_established_in_model')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'authorization_renewed')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'actual_admission')",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no absence of existing cause 1",
+      "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "subclass literal keys 1",
+      "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned results cannot alter expectation 1",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'construction_completed')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'control_callback_execution')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'client_callback_execution')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'exception_chain_observation')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'classification')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unobserved claim (1, 'multiplicity')",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic wrong-instance anchor 1",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omitted mandatory link 1",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context reversal",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic missing context",
+      "error": "CONSTRUCTION-CLAIM-CONTEXT-DOMAIN",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic duplicate context",
+      "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic expectations remain unchanged",
+      "result": "PASS"
+    },
+    {
+      "check": "derived receipt alias isolation",
+      "result": "PASS"
+    },
+    {
+      "check": "authenticated evidence alteration",
+      "error": "CONSTRUCTION-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "authenticated evidence omission",
+      "error": "CONSTRUCTION-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'control_construction_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'control_exception_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'callback_bare_rethrow_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'callback_stored_failure_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'stored_failure_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (0, 'token_registration_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'control_construction_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'control_exception_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'callback_bare_rethrow_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'callback_stored_failure_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'stored_failure_revocation_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory (1, 'token_registration_correspondence')",
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    }
+  ],
+  "runtime_operations": 0,
+  "seconds": 1143.5539472449996,
+  "session_operations": 0
+}

@@ -1,0 +1,71 @@
+{"check": "fresh recovered public validator accepts pristine receipt", "result": "PASS"}
+{"check": "recovered exact derived receipt", "result": "PASS"}
+{"check": "recovered legitimate selected control 0", "result": "PASS"}
+{"check": "recovered altered binding/type (0, ('construction_error', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "recovered altered binding/type (0, ('construction_error', 'construction_attempt', 'occurrence'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "recovered altered binding/type (0, ('projection', 'references', 'owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "recovered altered binding/type (0, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "recovered altered binding/type (0, ('token_case', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "recovered altered binding/type (0, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (0, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (0, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (0, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "recovered legitimate frontier (0, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (0, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (0, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (0, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (0, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (0, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered continuity without client-slot guard 0", "result": "PASS"}
+{"check": "recovered nested mutable result isolation 0", "result": "PASS"}
+{"check": "recovered semantic invented cause", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "recovered legitimate selected control 1", "result": "PASS"}
+{"check": "recovered altered binding/type (1, ('construction_error', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "recovered altered binding/type (1, ('construction_error', 'construction_attempt', 'occurrence'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "recovered altered binding/type (1, ('projection', 'references', 'owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "recovered altered binding/type (1, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "recovered altered binding/type (1, ('token_case', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "recovered altered binding/type (1, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (1, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (1, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered altered binding/type (1, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "recovered legitimate frontier (1, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (1, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (1, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (1, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered legitimate frontier (1, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "recovered false completion (1, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "recovered continuity without client-slot guard 1", "result": "PASS"}
+{"check": "recovered nested mutable result isolation 1", "result": "PASS"}
+{"check": "recovered semantic invented cause", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "recovered receipt expectations isolated", "result": "PASS"}
+{"check": "public mandatory relation control_construction_revocation_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation control_exception_revocation_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation callback_bare_rethrow_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation callback_stored_failure_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation stored_failure_revocation_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation token_registration_correspondence", "result": "REJECTED", "error": "CONSTRUCTION-MANDATORY-RELATIONS"}

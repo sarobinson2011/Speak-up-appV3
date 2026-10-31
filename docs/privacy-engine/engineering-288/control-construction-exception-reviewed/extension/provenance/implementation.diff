@@ -1,0 +1,227 @@
+--- retained/control/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -2530,3 +2530,90 @@
+  if a.check:validate_bundle(a.root,read_bundle(a.root))
+  print('PASS bounded managed integration; no runtime execution; readiness BLOCKED')
+ if __name__=='__main__':main()
++
++
++# Additive construction-expression exceptional continuation; inherited functions unchanged.
++def control_construction_source(launcher,entry,control,bare,callback,stored,token,handle,state):
++ validate_control_exception(launcher,entry,bare,callback,stored,token,handle,state,control)
++ tree,loc=_client_locate(entry);run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='_run')
++ protected=run.body[2].body[0].body[-1];guard,client,post=protected.body;statement=guard.body[0];call=statement.value;construction=call.args[0];pop=protected.finalbody[0]
++ need(isinstance(protected,ast.Try) and not protected.handlers and not protected.orelse and len(protected.finalbody)==1,'CONSTRUCTION-PROTECTED-TRY')
++ need(ast.unparse(guard.test)=='control is not None' and ast.unparse(call)=='control(_Control(token))' and isinstance(construction,ast.Call) and ast.unparse(construction.func)=='_Control' and not construction.keywords,'CONSTRUCTION-EXPRESSION')
++ need(isinstance(client,ast.Try) and client.lineno>statement.end_lineno and ast.unparse(client.body[0])=='client(Client(token))','CONSTRUCTION-OUTSIDE-CLIENT-HANDLER')
++ cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='_Control');init=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='__init__')
++ need([n.arg for n in init.args.args]==['self','token'] and len(init.body)==1 and ast.unparse(init.body[0])=='self.__token = token','CONSTRUCTION-INITIALIZER-SOURCE')
++ pin={'bytes':len(entry),'sha256':digest(entry)}
++ points=[('finally-enter',protected),('removal-attempt',pop.value),('removal-complete',pop)]
++ prefix=token['source']['order'][:token['source']['order'].index('control-create')+1]
++ need(prefix==['owner-create','token-create','registry-insert','control-guard','control-create'],'CONSTRUCTION-PREFIX-ORDER')
++ status_typed_same(token['source']['stages']['control-create'],{**loc(construction),'source':copy.deepcopy(pin)},'CONSTRUCTION-REUSED-ATTEMPT')
++ for name,node in points:
++  status_typed_same(control['source']['stages'][name],{**loc(node),'source':copy.deepcopy(pin),'semantic_region':'finally-entry' if name=='finally-enter' else 'source-statement'},'CONSTRUCTION-REUSED-REVOCATION:'+name)
++ return {'sources':copy.deepcopy(control['source']['sources']),'run':loc(run),'control_guard':loc(guard.test),'guard_expression':ast.unparse(guard.test),'selected_guard_result':True,
++  'construction_expression':loc(construction),'constructor_expression':ast.unparse(construction.func),'argument_expression':ast.unparse(construction.args[0]),'initializer_source':loc(init),'initializer_assignment_source':loc(init.body[0]),
++  'control_call_not_reached':loc(statement),'client_handler_not_reached':loc(client.handlers[0]),'prefix_order':prefix,
++  'order':[n for n,_ in points],'stages':{n:copy.deepcopy(control['source']['stages'][n]) for n,_ in points},
++  'evaluation_order':['evaluate control callable expression','evaluate _Control(token) argument expression','invoke control only after argument evaluation returns normally'],
++  'selected_frontier':'Exception escapes the selected _Control(token) expression; no concrete failure mechanism or constructor substep is asserted',
++  'allocation_progress_established':False,'initializer_entry_established':False,'initializer_assignment_established':False,'completed_control_object_established':False,
++  'control_callback_execution_established':False,'client_callback_execution_established':False,'client_handler_applies':False,'owner_failure_guard_applies':False,'new_explicit_cause_assignment':False,
++  'pop_key':ast.unparse(pop.value.args[0]),'pop_default':ast.literal_eval(pop.value.args[1]),'pop_return_consumed':False,
++  'continuation':'Ordinary exceptional continuation from argument construction enters the enclosing finally. Later cleanup may replace pending propagation. Termination is not exception unwind.',
++  'continuity':copy.deepcopy(control['source']['continuity'])}
++
++def compile_control_construction(launcher,entry,control,bare,callback,stored,token,handle,state):
++ source=control_construction_source(launcher,entry,control,bare,callback,stored,token,handle,state)
++ return {'format':'I164-CONTROL-CONSTRUCTION-STATIC-1','source':source,'token_relation':copy.deepcopy(token),
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'prefix':'control is not None; selected _Control(token) argument expression raises before control invocation','continuation':'Ordinary continuation enters finally; later stages require preceding normal completion','cleanup_raise':'Separate cleanup exception may supersede pending construction error','termination_or_unobserved':'Stop without inferred unwind, completed removal or outward propagation','callbacks':'Neither selected control nor subsequent client callback executes on this route','constructor_progress':'No allocation, initializer entry, assignment or completed object inferred'},
++  'preserved_relations':['control_exception_revocation_correspondence',*control['preserved_relations']],
++  'reference_meaning':'Inherited control/client symbols are conditional role names, not completed or observed objects on this branch',
++  'limits':['Static constructed scope; runtime construction/finally/removal observations unavailable','Existing cause/context/suppression UNKNOWN','Failure mechanism and constructor substep history unavailable','Full outer cleanup remains unexpanded','No owner.failure condition or history inferred'],
++  'runtime_construction_exception_revocation_chain':None,'actual_admission':False}
++
++def validate_control_construction(launcher,entry,control,bare,callback,stored,token,handle,state,submitted):
++ status_exact_tree(submitted,'CONSTRUCTION-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_control_construction(launcher,entry,control,bare,callback,stored,token,handle,state),'CONSTRUCTION-SOURCE-CORRESPONDENCE');return True
++
++def control_construction_binding(catalogue,scope):
++ status_exact_tree(scope,'CONSTRUCTION-ERROR-SCOPE');refs=token_reference_premises(scope,True)
++ return {'role':'selected-control-construction-expression-exception','scope':copy.deepcopy(scope),'occurrence':scope['invocation']+'/control-create/exception','reference':scope['invocation']+'/control-create/error',
++  'construction_attempt':{'occurrence':scope['invocation']+'/control-create','source':copy.deepcopy(catalogue['source']['construction_expression']),'argument_token':copy.deepcopy(refs['token']),'registered_owner':copy.deepcopy(refs['owner'])},
++  'local_handler_binding':None,'exact_type':None,'exact_value_bytes':None,'failure_mechanism':None,'allocation_progress':None,'initializer_progress':None,'completed_object_reference':None,
++  'producer_history':'UNAVAILABLE','existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_reference_observation':None}
++
++def control_construction_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'CONSTRUCTION-EXACT-TYPE')
++ keys={'scope','references','token_inputs','token_prefix','construction_error','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'CONSTRUCTION-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'CONSTRUCTION-VALIDATED:'+k)
++ scope=case['scope'];refs=case['references'];prefix=case['token_prefix'];ti=case['token_inputs'];error=case['construction_error'];source=catalogue['source']
++ status_typed_same(refs,token_reference_premises(scope,True),'CONSTRUCTION-REFERENCE-ROLES');status_typed_same(scope,ti['scope'],'CONSTRUCTION-TOKEN-SCOPE');need(ti['control_present'] is True,'CONSTRUCTION-REQUIRES-CONTROL')
++ expected=[{'stage':n,'outcome':'raise' if n=='control-create' else 'normal'} for n in source['prefix_order']]
++ status_typed_same(ti['outcomes'],expected,'CONSTRUCTION-SELECTED-PREFIX')
++ tv={k:copy.deepcopy(v) for k,v in ti.items() if k!='references'}
++ status_typed_same(prefix,token_registration_projection(catalogue['token_relation'],ti,tv),'CONSTRUCTION-VALIDATED-TOKEN-PREFIX')
++ status_typed_same(refs,prefix['reference_bindings'],'CONSTRUCTION-PREFIX-REFERENCES')
++ need(prefix['registration_completed_in_model'] is True and prefix['completion']=='unexpected-raise' and prefix['events'][-1]['stage']=='control-create' and prefix['events'][-1]['outcome']=='raise' and prefix['control_callback_completed_in_model'] is False and prefix['client_callback_completed_in_model'] is False,'CONSTRUCTION-REGISTERED-RAISE-FRONTIER')
++ status_typed_same(error,control_construction_binding(catalogue,scope),'CONSTRUCTION-SELECTED-ERROR')
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'CONSTRUCTION-OUTCOMES');events=[];done=set();pending=copy.deepcopy(error);cleanup=None;terminal=None;completion=None
++ for i,stage in enumerate(source['order']):
++  need(i<len(outcomes),'CONSTRUCTION-MISSING-STEP:'+stage);row=outcomes[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and row['stage']==stage,'CONSTRUCTION-STEP-ORDER');kind=row['outcome'];need(type(kind) is str and kind in ('normal','raise','process-termination','unobserved'),'CONSTRUCTION-STAGE-OUTCOME');terminal=kind
++  events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(source['stages'][stage]),'outcome':kind,'owner':copy.deepcopy(refs['owner']),'token':copy.deepcopy(refs['token']),'pending_error_on_entry':copy.deepcopy(pending),'runtime_frame':None})
++  if kind in ('process-termination','unobserved'):completion=kind;break
++  if kind=='raise':
++   cleanup={'role':'conditional-finally-exception','reference':scope['invocation']+'/'+stage+'/error','scope':copy.deepcopy(scope),'source':copy.deepcopy(source['stages'][stage]),'exact_type':None,'physical_identity':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN'};pending=copy.deepcopy(cleanup);completion='cleanup-exceptional-frontier';break
++  done.add(stage)
++  if stage=='removal-complete':completion='normal-removal-pending-construction-error'
++ need(len(events)==len(outcomes),'CONSTRUCTION-UNREACHED-STEPS');popped='removal-complete' in done;continuity=copy.deepcopy(prefix['selected_slot_before_removal']);removed=True if popped and continuity['continuity']=='explicit constructed premise' else None
++ return {'kind':'CONSTRUCTED-CONTROL-CONSTRUCTION-EXCEPTION','scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'reference_meaning':catalogue['reference_meaning'],'validated_token_prefix':copy.deepcopy(prefix),'construction_error':copy.deepcopy(error),'events':events,'completion':completion,
++  'construction_expression_raised_in_model':True,'construction_completed_in_model':False,'completed_control_object_reference':None,'allocation_progress':None,'initializer_progress':None,'control_callback_executed_in_model':False,'subsequent_client_execution_in_model':False,'client_handler_entered_in_model':False,'owner_failure_guard_evaluated_in_model':False,'new_explicit_cause_assignment_established_in_model':False,
++  'exception_chain_observation':{'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','cleanup_context_link':'UNKNOWN','physical_reference_observation':None},'cleanup_error_in_model':cleanup,
++  'finally_entry_completed_in_model':'finally-enter' in done,'removal_attempt_entered_in_model':'removal-attempt' in done,'removal_completed_in_model':popped,'selected_slot_before_removal':continuity,'selected_owner_removed_in_model':removed,'slot_after_pop_in_model':'ABSENT-AT-POP-COMPLETION' if popped else 'UNKNOWN','pop_result_observation':None,'revocation_persists':None,
++  'last_pending_error_in_model':copy.deepcopy(pending),'outward_error_after_finally_in_model':copy.deepcopy(error) if popped else None,'construction_outward_after_finally_established_in_model':popped,'construction_reaches_launcher_established':False,'terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
++  'prior_failure_storage_history':'UNKNOWN; no selected owner.failure guard here; previously established evidence is retained unchanged','role_relationship':'Separate semantic error roles and invocation-qualified occurrences; no physical equality or inequality inference','run_success_established':False,'runtime_observation':False,'runtime_construction_exception_revocation_chain':None,'runtime_unwind_evidence':'UNAVAILABLE','physical_reference_identity':None,'outer_cleanup_completion':None,'database_cleanup_completion':None,'retained_failure_record_bytes':None,'physical_lock_release_established':False,'exclusive_ownership_established':False,'durability_established':False,'observer_join':None,
++  'completion_flags_mean':'Only conditional acknowledged completions; no allocation or initializer substep inferred. Earlier registration and selected construction-expression raise survive later uncertainty. Pending propagation is not observed outward propagation.',
++  'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_control_construction_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'CONSTRUCTION-SUBMITTED-OUTPUT');status_typed_same(submitted,control_construction_projection(catalogue,case,validated),'CONSTRUCTION-OUTPUT-CORRESPONDENCE');return True
+--- retained/control/code/correspondence.py
++++ code/correspondence.py
+@@ -1,10 +1,10 @@
+-"""Mandatory control-callback exception-to-finally/removal correspondence. Saved inputs only."""
++"""Mandatory control-construction exception-to-finally/removal correspondence. Saved inputs only."""
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 275943, 'sha256': '4c41e45bf4472168c7ddcf418834c564301b8251cde18e17e465594e7c81dd06'}
+-PREDECESSOR_MANIFEST={'bytes': 890147, 'sha256': '8e4139615c328790f34857737e03cbea4295d25bc09d9d34389ebf6056716589'}
+-PREDECESSOR_RECEIPT={'bytes': 6854670, 'sha256': '30dfb6840ab7e3bdab7bc812ab76923dd3380002149ec05a6423f54e9920ee89'}
++PRODUCER_PIN={'bytes': 289416, 'sha256': '11d4b5166ebc48b0929c3e24949325e5a9683ff55aea178afbdd5346e4d1d9fc'}
++PREDECESSOR_MANIFEST={'bytes': 951101, 'sha256': 'ab067a786180c5b4c194c1f181908e13185ad879efeff050f0b4e69c04dc2b74'}
++PREDECESSOR_RECEIPT={'bytes': 7426382, 'sha256': 'b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -26,79 +26,76 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/bare'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CONTROL-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CONTROL-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CONTROL-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/control'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CONSTRUCTION-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CONSTRUCTION-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CONSTRUCTION-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'CONTROL-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'CONTROL-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'CONTROL-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CONTROL-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'CONSTRUCTION-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'CONSTRUCTION-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CONSTRUCTION-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CONTROL-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CONTROL-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_bare_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_control_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CONSTRUCTION-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CONSTRUCTION-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_control_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_construction_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+ def sources(data):return data['prior_module'].sources(data['prior_data'])
+ def dependencies(data):
+  p=data['prior_module'];pd=data['prior_data'];return (p.catalogue(pd),*p.dependencies(pd))
+-def catalogue(data):return data['coverage'].compile_control_exception(*sources(data)[:2],*dependencies(data))
++def catalogue(data):return data['coverage'].compile_control_construction(*sources(data)[:2],*dependencies(data))
+ def _basis(data):
+  fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,bb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,bb)
+- saved=(fresh['prior_root']/'results/primary/callback-bare-rethrow.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CONTROL-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'bare_basis':bb,'bare_module':p,'stored_basis':bb['stored_basis']}
++ saved=(fresh['prior_root']/'results/primary/control-exception.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CONSTRUCTION-VALIDATED-PREDECESSOR-RECEIPT')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'control_basis':bb,'control_module':p,'stored_basis':bb['stored_basis']}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CONTROL-CONTEXT-DOMAIN')
++ rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CONSTRUCTION-CONTEXT-DOMAIN')
+  for row in basis['prior']['contexts']:
+-  bare=row['callback_bare_rethrow_correspondence'];token=row['token_registration_correspondence'];same(bare['instance_anchor'],token['instance_anchor'],'CONTROL-VALIDATED-INSTANCE');same(bare['declaration']['source']['sources'],cat['source']['sources'],'CONTROL-VALIDATED-SOURCE')
++  control=row['control_exception_revocation_correspondence'];token=row['token_registration_correspondence'];same(control['instance_anchor'],token['instance_anchor'],'CONSTRUCTION-VALIDATED-INSTANCE');same(control['declaration']['source']['sources'],cat['source']['sources'],'CONSTRUCTION-VALIDATED-SOURCE')
+   rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(token['instance_anchor']),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
+    'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','owner_failure_guard_applicable':False,'client_handler_applicable':False,'runtime_control_exception_revocation_chain':None,'control_exception_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(bare['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime control callback/error/finally/pop chain or existing cause/context observations. Control constructor failures and full outer cleanup remain unexpanded.'})
++   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','owner_failure_guard_applicable':False,'client_handler_applicable':False,'construction_completed':False,'completed_control_object_reference':None,'control_callback_execution':False,'client_callback_execution':False,'constructor_substep_history':None,'runtime_construction_exception_revocation_chain':None,'control_construction_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(control['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime construction expression/error/finally/pop chain, allocation/initializer progress or existing cause/context observations. Full outer cleanup remains unexpanded.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'CONTROL-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CONTROL-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CONTROL-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'CONSTRUCTION-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CONSTRUCTION-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CONSTRUCTION-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CONTROL-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CONTROL-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CONSTRUCTION-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CONSTRUCTION-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'CONTROL-CATALOGUE');exact(claims,'CONTROL-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CONTROL-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CONTROL-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CONTROL-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CONTROL-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ exact(submitted_catalogue,'CONSTRUCTION-CATALOGUE');exact(claims,'CONSTRUCTION-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CONSTRUCTION-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CONSTRUCTION-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CONSTRUCTION-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CONSTRUCTION-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CONTROL-EXCEPTION-CORRESPONDENCE-1';result['prior_callback_bare_components']=result.pop('extension_components');result['prior_callback_bare_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['control_exception_revocation_correspondence']=copy.deepcopy(row)
+- result['new_control_exception_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','owner_failure_guard_applicable':False,'subsequent_client_handler_applicable':False,'control_exception_producer_history':'UNAVAILABLE','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_control(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CONTROL-CONSTRUCTION-CORRESPONDENCE-1';result['prior_control_components']=result.pop('extension_components');result['prior_control_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['control_construction_revocation_correspondence']=copy.deepcopy(row)
++ result['new_control_construction_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','owner_failure_guard_applicable':False,'subsequent_client_handler_applicable':False,'construction_completion_established':False,'control_callback_execution_established':False,'client_callback_execution_established':False,'control_construction_producer_history':'UNAVAILABLE','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_construction(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+ def _premises(basis,case):
+- exact(case,'CONTROL-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','control_error','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CONTROL-EXCEPTION','CONTROL-CONSTRUCTED-CASE')
+- rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CONTROL-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CONTROL-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CONTROL-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CONTROL-TOKEN-INVOCATION')
+- sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['control_present'] is True and token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['control_callback_completed_in_model'] is False and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='control-callback' and token['events'][-1]['outcome']=='raise','CONTROL-TOKEN-FRONTIER')
+- refs=token['reference_bindings'];scope=token['scope'];error=basis['fresh']['coverage'].control_exception_binding(basis['catalogue'],scope);same(case['control_error'],error,'CONTROL-CALLBACK-ERROR')
+- return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'control_error':error,'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'CONSTRUCTION-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','construction_error','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CONTROL-CONSTRUCTION-EXCEPTION','CONSTRUCTION-CONSTRUCTED-CASE')
++ rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CONSTRUCTION-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CONSTRUCTION-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CONSTRUCTION-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CONSTRUCTION-TOKEN-INVOCATION')
++ sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['control_present'] is True and token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['control_callback_completed_in_model'] is False and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='control-create' and token['events'][-1]['outcome']=='raise','CONSTRUCTION-TOKEN-FRONTIER')
++ refs=token['reference_bindings'];scope=token['scope'];error=basis['fresh']['coverage'].control_construction_binding(basis['catalogue'],scope);same(case['construction_error'],error,'CONSTRUCTION-EXPRESSION-ERROR')
++ return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'construction_error':error,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.control_exception_projection(cat,case['projection'],v);c.validate_control_exception_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected control callback raises after control construction, under conditional selected-owner continuity. No client handler or owner.failure guard is selected. Existing exception chain/history remain unknown; role identity is not runtime object identity.','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.control_construction_projection(cat,case['projection'],v);c.validate_control_construction_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected _Control(token) expression raises before either callback, under conditional selected-owner continuity. No client handler or owner.failure guard is selected. Existing exception chain/history remain unknown; role identity is not runtime object identity.','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'CONTROL-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'CONSTRUCTION-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def constructed_prior(data,submitted_catalogue,branch,case):
+- exact(case,'CONTROL-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('bare','stored-client','stored-normal','normal-token'),'CONTROL-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
++ exact(case,'CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('control','bare','stored-client','stored-normal','normal-token'),'CONSTRUCTION-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
+ def _construct_prior(basis,branch,case):
+- exact(case,'CONTROL-PRIOR-CONSTRUCTED-INPUT');bb=basis['bare_basis'];sb=basis['stored_basis']
+- if branch=='bare':return basis['bare_module']._construct_checked(bb,case)
+- if branch=='stored-client':return bb['callback_module']._construct_checked(bb['callback_basis'],case)
+- if branch=='stored-normal':return bb['callback_basis']['stored_module']._construct_checked(sb,case)
+- if branch=='normal-token':return sb['routes']['token_module']._construct_checked(sb['token_basis'],case)
+- raise ValueError('CONTROL-PRIOR-BRANCH')
++ exact(case,'CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');p=basis['control_module'];b=basis['control_basis']
++ if branch=='control':return p._construct_checked(b,case)
++ return p._construct_prior(b,branch,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_control(data,catalogue(data))
++ data=inputs(root);return derive_construction(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'CONTROL-RECEIPT-BYTES');v=json.loads(saved);required={'control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
+- require(type(v) is dict and v.get('format')=='I164-CONTROL-EXCEPTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONTROL-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONTROL-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_control_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'CONSTRUCTION-RECEIPT-BYTES');v=json.loads(saved);required={'control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
++ require(type(v) is dict and v.get('format')=='I164-CONTROL-CONSTRUCTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONSTRUCTION-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONSTRUCTION-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_construction_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

@@ -1,0 +1,285 @@
+{"check": "both required symbolic contexts", "result": "PASS"}
+{"check": "all predecessor context relations unchanged", "result": "PASS"}
+{"check": "independent AST argument construction precedes control invocation", "result": "PASS"}
+{"check": "independent exact guarded prefix and continuation coverage", "result": "PASS"}
+{"check": "legitimate construction raise through normal removal 0", "result": "PASS"}
+{"check": "no completed capability or callback execution 0", "result": "PASS"}
+{"check": "normal finally leaves construction error pending 0", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (0, False, True)", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (0, True, False)", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (0, False, False)", "result": "PASS"}
+{"check": "distinct selected attempts despite equal source 0", "result": "PASS"}
+{"check": "legitimate frontier (0, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (0, 'finally-enter')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'finally-enter', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (0, 'removal-attempt')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-attempt', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (0, 'removal-complete')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (0, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (0, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (0, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (0, 'removal-complete', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (0, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'occurrence'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'scope', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'local_handler_binding'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'failure_mechanism'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'initializer_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('construction_error', 'completed_object_reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (0, ('token_case', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "wrong binding or invented execution (0, ('anchor',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented execution (0, ('context',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented execution (0, ('projection', 'references', 'owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "wrong binding or invented execution (0, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "wrong binding or invented execution (0, ('projection', 'scope', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:scope"}
+{"check": "wrong binding or invented execution (0, ('output', 'construction_completed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'completed_control_object_reference'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'allocation_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'initializer_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'control_callback_executed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'client_handler_entered_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'owner_failure_guard_evaluated_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_context'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'existing_suppression'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'exception_chain_observation', 'cleanup_context_link'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'outward_error_after_finally_in_model', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'construction_reaches_launcher_established'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'prior_failure_storage_history'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'observer_join'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'revocation_persists'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'physical_lock_release_established'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (0, ('output', 'authorization_renewed'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated missing stage (0, 0)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "duplicate stage (0, 0)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "coordinated missing stage (0, 1)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "duplicate stage (0, 1)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "coordinated missing stage (0, 2)", "result": "REJECTED", "error": "CONSTRUCTION-MISSING-STEP:removal-complete"}
+{"check": "duplicate stage (0, 2)", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "reordered finally and removal 0", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "cross invocation result 0", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated exception substitution 0", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact nested type or key (0, ('context',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (0, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (0, ('outcomes',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (0, ('outcomes', 0, 'stage'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (0, ('output', 'removal_completed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested type or key (0, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact nested type or key (0, ('output', 'construction_error'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact nested type or key (0, ('projection', 'token_inputs', 'control_present'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:token_inputs"}
+{"check": "exact nested type or key (0, ('output', 'events', 0, 'source', 'source', 'bytes'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "direct projector coordinated error (0, 'reference')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "direct projector coordinated error (0, 'failure_mechanism')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "direct projector coordinated error (0, 'completed_object_reference')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "projector recomputes prefix 0", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED-TOKEN-PREFIX"}
+{"check": "submitted output invented completion 0", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations isolated 0", "result": "PASS"}
+{"check": "coordinated semantic completion claim 0", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "legitimate construction raise through normal removal 1", "result": "PASS"}
+{"check": "no completed capability or callback execution 1", "result": "PASS"}
+{"check": "normal finally leaves construction error pending 1", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (1, False, True)", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (1, True, False)", "result": "PASS"}
+{"check": "conditional continuity and unreached owner guard (1, False, False)", "result": "PASS"}
+{"check": "distinct selected attempts despite equal source 1", "result": "PASS"}
+{"check": "legitimate frontier (1, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (1, 'finally-enter')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'finally-enter', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (1, 'removal-attempt')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-attempt', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "cleanup role can replace pending construction error (1, 'removal-complete')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'raise', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'raise', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'raise', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'process-termination', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "legitimate frontier (1, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "earlier registration and error survive uncertainty (1, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "termination is not terminal exception or unwind (1, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'removal_completed_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "false cleanup or propagation completion (1, 'removal-complete', 'unobserved', 'run_success_established')", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "no later stage after stopped frontier (1, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'occurrence'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'scope', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'local_handler_binding'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'failure_mechanism'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'initializer_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('construction_error', 'completed_object_reference'))", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "wrong binding or invented execution (1, ('token_case', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "wrong binding or invented execution (1, ('anchor',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented execution (1, ('context',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented execution (1, ('projection', 'references', 'owner', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "wrong binding or invented execution (1, ('projection', 'references', 'token', 'symbol'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:references"}
+{"check": "wrong binding or invented execution (1, ('projection', 'scope', 'invocation'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:scope"}
+{"check": "wrong binding or invented execution (1, ('output', 'construction_completed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'completed_control_object_reference'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'allocation_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'initializer_progress'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'control_callback_executed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'subsequent_client_execution_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'client_handler_entered_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'owner_failure_guard_evaluated_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'new_explicit_cause_assignment_established_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_cause'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_context'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'existing_suppression'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'exception_chain_observation', 'cleanup_context_link'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'outward_error_after_finally_in_model', 'reference'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'construction_reaches_launcher_established'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'prior_failure_storage_history'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'observer_join'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'revocation_persists'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'physical_lock_release_established'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented execution (1, ('output', 'authorization_renewed'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated missing stage (1, 0)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "duplicate stage (1, 0)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "coordinated missing stage (1, 1)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "duplicate stage (1, 1)", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "coordinated missing stage (1, 2)", "result": "REJECTED", "error": "CONSTRUCTION-MISSING-STEP:removal-complete"}
+{"check": "duplicate stage (1, 2)", "result": "REJECTED", "error": "CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "reordered finally and removal 1", "result": "REJECTED", "error": "CONSTRUCTION-STEP-ORDER"}
+{"check": "cross invocation result 1", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated exception substitution 1", "result": "REJECTED", "error": "CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact nested type or key (1, ('context',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (1, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (1, ('outcomes',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (1, ('outcomes', 0, 'stage'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact nested type or key (1, ('output', 'removal_completed_in_model'))", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "exact nested type or key (1, ('construction_error',))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact nested type or key (1, ('output', 'construction_error'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact nested type or key (1, ('projection', 'token_inputs', 'control_present'))", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED:token_inputs"}
+{"check": "exact nested type or key (1, ('output', 'events', 0, 'source', 'source', 'bytes'))", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "direct projector coordinated error (1, 'reference')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "direct projector coordinated error (1, 'failure_mechanism')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "direct projector coordinated error (1, 'completed_object_reference')", "result": "REJECTED", "error": "CONSTRUCTION-SELECTED-ERROR"}
+{"check": "projector recomputes prefix 1", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED-TOKEN-PREFIX"}
+{"check": "submitted output invented completion 1", "result": "REJECTED", "error": "CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "nested result mutations isolated 1", "result": "PASS"}
+{"check": "coordinated semantic completion claim 1", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic missing-context", "result": "REJECTED", "error": "CONSTRUCTION-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic missing-declaration", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic missing-guard", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic reordered-both", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic subclass-key", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CLAIMS:KEY-TYPE"}
+{"check": "mutated returned rows reject", "result": "REJECTED", "error": "CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "pristine receipt after output mutations", "result": "PASS"}
+{"check": "mixed predecessor evidence", "result": "REJECTED", "error": "CONSTRUCTION-VALIDATED-EVIDENCE"}
+{"check": "new mandatory entry preserves branch ('control', 0)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('control', 1)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('bare', 0)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('bare', 1)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('stored-client', 0)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('stored-client', 1)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('stored-normal', 0)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('stored-normal', 1)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('normal-token', 0)", "result": "PASS"}
+{"check": "new mandatory entry preserves branch ('normal-token', 1)", "result": "PASS"}
+{"check": "public semantic exact type before normalization", "result": "REJECTED", "error": "CONSTRUCTION-CATALOGUE:VALUE-TYPE"}
+{"check": "public constructed exact type before normalization", "result": "REJECTED", "error": "CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "public derivation exact type before normalization", "result": "REJECTED", "error": "CONSTRUCTION-CATALOGUE:VALUE-TYPE"}

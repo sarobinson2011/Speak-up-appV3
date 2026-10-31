@@ -1,0 +1,8 @@
+{
+  "stage": "Preparation-only syntax check after writing audit_completion.py",
+  "error": "NameError: name 'ast' is not defined",
+  "cause": "Review preparation heredoc omitted import ast; generated audit program itself imports ast",
+  "controls_run_by_failed_preparation": 0,
+  "generated_file_written_before_error": true,
+  "subsequent_supervisor_launch": "One launch; no retry or candidate change"
+}
