@@ -1,0 +1,103 @@
+{
+  "entry": {
+    "bytes": 9485,
+    "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+  },
+  "guards": [
+    {
+      "handlers": [
+        "BaseException"
+      ],
+      "kind": "try",
+      "region": "body"
+    },
+    {
+      "contexts": [
+        "launcher.session(candidate, draft, runtime, destination, create=create)"
+      ],
+      "kind": "with"
+    },
+    {
+      "handlers": [],
+      "kind": "try",
+      "region": "body"
+    },
+    {
+      "handlers": [
+        "BaseException"
+      ],
+      "kind": "try",
+      "region": "body"
+    }
+  ],
+  "independent_source_claim": "Conditional Client argument failure before invocation, same-owner exact-None premise, existing-cause uncertainty, three separate finally/removal boundaries",
+  "locations": {
+    "client_call_not_reached": {
+      "expression": "client(Client(token))",
+      "site": "179:20:179:41:Expr"
+    },
+    "construction_expression": {
+      "expression": "Client(token)",
+      "site": "179:27:179:40:Call"
+    },
+    "control_guard": {
+      "expression": "control is not None",
+      "site": "176:19:176:38:Compare"
+    },
+    "guard": {
+      "expression": "owner.failure is not None",
+      "site": "181:23:181:48:Compare"
+    },
+    "handler": {
+      "expression": "except BaseException as client_error:\n                    if owner.failure is not None:\n                        raise owner.failure from client_error\n                    raise",
+      "site": "180:16:183:25:ExceptHandler"
+    },
+    "initializer_assignment_source": {
+      "expression": "self.__token = token",
+      "site": "112:8:112:28:Assign"
+    },
+    "initializer_source": {
+      "expression": "def __init__(self, token):\n        self.__token = token",
+      "site": "111:4:112:28:FunctionDef"
+    },
+    "raise": {
+      "expression": "raise",
+      "site": "183:20:183:25:Raise"
+    },
+    "run": {
+      "expression": "def _run(launcher, candidate, draft, runtime, destination, client, create, control):\n    \"\"\"Trusted orchestration seam; production callers use run/run_controlled.\"\"\"\n    failed = False\n    try:\n        with launcher.session(candidate, draft, runtime, destination, create=create) as wrapper:\n            owner = _Owner(wrapper); token = object(); _OWNERS[token] = owner\n            try:\n                if control is not None:\n                    control(_Control(token))  # Explicit separately authorized use.\n                try:\n                    client(Client(token))\n                except BaseException as client_error:\n                    if owner.failure is not None:\n                        raise owner.failure from client_error\n                    raise\n                if owner.failure is not None:\n                    raise owner.failure\n            finally:\n                # Revoke before close, including failed/uncertain cleanup.\n                _OWNERS.pop(token, None)\n        # Callback returns are deliberately not forwarded to another recipient.\n    except BaseException:\n        # Original launcher already handled original failure/cleanup evidence.\n        # Do not print it, transform its retained record, or infer nonexecution.\n        failed = True\n    if failed:\n        _fail()",
+      "site": "169:0:195:15:FunctionDef"
+    }
+  },
+  "registration_prefix": [
+    "owner = _Owner(wrapper)",
+    "token = object()",
+    "_OWNERS[token] = owner"
+  ],
+  "stage_locations": {
+    "callback-bare-rethrow": {
+      "expression": "raise",
+      "site": "183:20:183:25:Raise"
+    },
+    "callback-handler-enter": {
+      "expression": "except BaseException as client_error:\n                    if owner.failure is not None:\n                        raise owner.failure from client_error\n                    raise",
+      "site": "180:16:183:25:ExceptHandler"
+    },
+    "callback-none-guard": {
+      "expression": "owner.failure is not None",
+      "site": "181:23:181:48:Compare"
+    },
+    "finally-enter": {
+      "expression": "try:\n                if control is not None:\n                    control(_Control(token))  # Explicit separately authorized use.\n                try:\n                    client(Client(token))\n                except BaseException as client_error:\n                    if owner.failure is not None:\n                        raise owner.failure from client_error\n                    raise\n                if owner.failure is not None:\n                    raise owner.failure\n            finally:\n                # Revoke before close, including failed/uncertain cleanup.\n                _OWNERS.pop(token, None)",
+      "site": "175:12:188:40:Try"
+    },
+    "removal-attempt": {
+      "expression": "_OWNERS.pop(token, None)",
+      "site": "188:16:188:40:Call"
+    },
+    "removal-complete": {
+      "expression": "_OWNERS.pop(token, None)",
+      "site": "188:16:188:40:Expr"
+    }
+  }
+}

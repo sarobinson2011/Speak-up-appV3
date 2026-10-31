@@ -1,0 +1,1 @@
+Reviewed Client construction failure through exact-None handling. One compact save of this newly reviewed extension only. Read provenance/review-incorporation.json,review/REPORT.txt,RECOVERY.txt and NEXT-TASK.txt. No earlier Git save or completed check is repeated; no next-task implementation is included.

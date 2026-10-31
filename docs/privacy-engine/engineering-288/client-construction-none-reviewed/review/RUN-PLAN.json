@@ -1,0 +1,45 @@
+{
+  "authorship": "Separate reviewer; did not author candidate construction",
+  "construction_author": "SU-Engineering[288D]",
+  "full_public_negative_derivation_per_mutant": false,
+  "gates": [
+    "explicit process exit",
+    "exact intended ValueError for negative controls",
+    "timeout or harness failure never successful rejection",
+    "preserve partial rows and failures"
+  ],
+  "no_prior_suite_reexecution": true,
+  "no_validator_replacement": true,
+  "processes": [
+    {
+      "label": "source-audit",
+      "purpose": "Independent defining-source expectations; source validator mutations; supplied log and preservation audit",
+      "timeout_seconds": 600
+    },
+    {
+      "label": "fresh-recovered",
+      "purpose": "One actual unchanged public validation on recovered root, followed by new bounded checked-core controls using its passively observed authenticated basis",
+      "timeout_seconds": 3600
+    }
+  ],
+  "prohibited_operations": [
+    "candidate modifications",
+    "session/database/acquisition operations",
+    "policy changes",
+    "Git saves",
+    "prior completed campaigns"
+  ],
+  "reviewer": "Formal-Lab[6]",
+  "scope": "Client(token) failure, both control prefixes, exact-None selected-owner premise, bare rethrow and token-removal stages",
+  "source_analysis_not_runtime_evidence": true,
+  "supplied_counts_not_independent": [
+    498,
+    210
+  ],
+  "target": "I164-client-construction-none-correspondence-1.zip",
+  "target_identity": {
+    "bytes": 134972464,
+    "entries": 3414,
+    "sha256": "550a9f0bf5e0643d79bbf7ac48a098015a06f05dc79ccde7f3eeb34a8cfbd1fe"
+  }
+}

@@ -1,0 +1,237 @@
+--- retained/control-construction/code/managed_coverage.py
++++ code/managed_coverage.py
+@@ -2617,3 +2617,102 @@
+ 
+ def validate_control_construction_projection(catalogue,case,validated,submitted):
+  status_exact_tree(submitted,'CONSTRUCTION-SUBMITTED-OUTPUT');status_typed_same(submitted,control_construction_projection(catalogue,case,validated),'CONSTRUCTION-OUTPUT-CORRESPONDENCE');return True
++
++
++# Additive Client construction / exact-None continuation. Inherited definitions unchanged.
++def client_construction_source(launcher,entry,construction,control,bare,callback,stored,token,handle,state):
++ validate_control_construction(launcher,entry,control,bare,callback,stored,token,handle,state,construction)
++ tree,loc=_client_locate(entry);run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='_run')
++ protected=run.body[2].body[0].body[-1];control_guard,client_try,post=protected.body;statement=client_try.body[0];call=statement.value;attempt=call.args[0];handler=client_try.handlers[0];guard=handler.body[0];raise_=handler.body[1];pop=protected.finalbody[0]
++ need(isinstance(client_try,ast.Try) and len(client_try.body)==len(client_try.handlers)==1 and not client_try.orelse and not client_try.finalbody,'CLIENT-CONSTRUCTION-INNER-TRY')
++ need(ast.unparse(call)=='client(Client(token))' and isinstance(attempt,ast.Call) and ast.unparse(attempt.func)=='Client' and len(attempt.args)==1 and not attempt.keywords,'CLIENT-CONSTRUCTION-EXPRESSION')
++ need(ast.unparse(handler.type)=='BaseException' and handler.name=='client_error' and len(handler.body)==2,'CLIENT-CONSTRUCTION-HANDLER')
++ need(ast.unparse(guard.test)=='owner.failure is not None' and not guard.orelse and isinstance(raise_,ast.Raise) and raise_.exc is None and raise_.cause is None,'CLIENT-CONSTRUCTION-NONE-BARE')
++ cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Client');init=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='__init__')
++ need([n.arg for n in init.args.args]==['self','token'] and len(init.body)==1 and ast.unparse(init.body[0])=='self.__token = token','CLIENT-CONSTRUCTION-INITIALIZER-SOURCE')
++ pin={'bytes':len(entry),'sha256':digest(entry)}
++ prefix=['owner-create','token-create','registry-insert','control-guard','control-create','control-callback','client-create']
++ need(token['source']['order'][:len(prefix)]==prefix,'CLIENT-CONSTRUCTION-PREFIX-ORDER')
++ status_typed_same(token['source']['stages']['client-create'],{**loc(attempt),'source':copy.deepcopy(pin)},'CLIENT-CONSTRUCTION-ATTEMPT-ORIGIN')
++ points=[('callback-handler-enter',handler),('callback-none-guard',guard.test),('callback-bare-rethrow',raise_),('finally-enter',protected),('removal-attempt',pop.value),('removal-complete',pop)]
++ for name,node in points:
++  region='handler-entry' if name=='callback-handler-enter' else ('finally-entry' if name=='finally-enter' else 'source-statement')
++  status_typed_same(bare['source']['stages'][name],{**loc(node),'source':copy.deepcopy(pin),'semantic_region':region},'CLIENT-CONSTRUCTION-REUSED-STAGE:'+name)
++ return {'sources':copy.deepcopy(construction['source']['sources']),'run':loc(run),'construction_expression':loc(attempt),'constructor_expression':ast.unparse(attempt.func),'argument_expression':ast.unparse(attempt.args[0]),'initializer_source':loc(init),'initializer_assignment_source':loc(init.body[0]),
++  'client_call_not_reached':loc(statement),'handler':loc(handler),'exception_binding':handler.name,'catch_family':ast.unparse(handler.type),'guard':loc(guard.test),'guard_expression':ast.unparse(guard.test),'selected_guard_result':False,'selected_slot_expression':'owner.failure','selected_slot_value':None,'selected_slot_exact_type':'NoneType','raise':loc(raise_),'raise_syntax':ast.unparse(raise_),'bare_raise_has_explicit_cause_clause':False,
++  'prefix_order_control_present':prefix,'prefix_order_control_absent':[n for n in prefix if n not in ('control-create','control-callback')],'control_guard':loc(control_guard.test),'control_guard_expression':ast.unparse(control_guard.test),
++  'order':[n for n,_ in points],'stages':{n:copy.deepcopy(bare['source']['stages'][n]) for n,_ in points},'guard_slot_premise':bare['source']['guard_slot_premise'],'reused_revocation':copy.deepcopy(bare['source']['reused_revocation']),
++  'evaluation_order':['Earlier selected control path completes normally or is absent','Evaluate client callable expression','Evaluate Client(token) argument expression inside the client try','Invoke client only if argument construction returns normally'],
++  'selected_frontier':'Exception escapes selected Client(token) expression; ordinary continuation binds it as client_error. No allocation/initializer substep or failure mechanism inferred.',
++  'allocation_progress_established':False,'initializer_entry_established':False,'initializer_assignment_established':False,'completed_client_object_established':False,'client_callback_execution_established':False,'new_explicit_cause_assignment':False,
++  'error_continuity':'The construction error is the selected caught error; bare raise reraises that active error under the exact-None guard. Handler evaluation or cleanup can replace pending propagation. Existing cause/context/suppression remain UNKNOWN.',
++  'stage_names':'Reused callback-handler/guard/rethrow stage names identify the existing source handler; they do not assert client-callback invocation.',
++  'continuity':copy.deepcopy(construction['source']['continuity'])}
++
++def compile_client_construction(launcher,entry,construction,control,bare,callback,stored,token,handle,state):
++ source=client_construction_source(launcher,entry,construction,control,bare,callback,stored,token,handle,state)
++ return {'format':'I164-CLIENT-CONSTRUCTION-NONE-STATIC-1','source':source,'token_relation':copy.deepcopy(token),
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'prefix_control_absent':'control is None; selected client construction raises','prefix_control_present':'control is not None; its construction and callback completed normally before selected client construction raises','slot':'Selected same-owner failure slot is exactly None under explicit guard-slot continuity; no historical absence inferred','bare_raise':'Reraise the active construction exception, adding no explicit cause','handler_evaluation':'A raise in handler/guard/rethrow evaluation skips remaining handler stages and conditionally proceeds to finally with replacement error','cleanup':'Later finally/pop raise can replace propagation, without completed removal','termination_or_unobserved':'No inferred Python unwind, continuation, cleanup or outward propagation','client':'No completed Client or selected client-callback execution established'},
++  'preserved_relations':['control_construction_revocation_correspondence',*construction['preserved_relations']],
++  'reference_meaning':'Inherited client symbol denotes a conditional role, not a completed or observed Client; earlier control progress is preserved separately when established in the selected prefix',
++  'limits':['Static constructed scope; runtime construction/handler/rethrow/removal chain unavailable','Exact None is a guard-slot premise, not proof of no earlier storage','Existing cause/context/suppression UNKNOWN','No concrete failure mechanism or allocation/initializer progress','Non-None constructor branch and full outer cleanup remain outside this slice'],
++  'runtime_client_construction_revocation_chain':None,'actual_admission':False}
++
++def validate_client_construction(launcher,entry,construction,control,bare,callback,stored,token,handle,state,submitted):
++ status_exact_tree(submitted,'CLIENT-CONSTRUCTION-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_client_construction(launcher,entry,construction,control,bare,callback,stored,token,handle,state),'CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE');return True
++
++def client_construction_binding(catalogue,scope,control_present):
++ status_exact_tree(scope,'CLIENT-CONSTRUCTION-ERROR-SCOPE');refs=token_reference_premises(scope,control_present)
++ return {'role':'selected-client-construction-expression-exception','scope':copy.deepcopy(scope),'occurrence':scope['invocation']+'/client-create/exception','reference':scope['invocation']+'/client-create/error',
++  'construction_attempt':{'occurrence':scope['invocation']+'/client-create','source':copy.deepcopy(catalogue['source']['construction_expression']),'argument_token':copy.deepcopy(refs['token']),'registered_owner':copy.deepcopy(refs['owner'])},
++  'handler_binding_name_from_source':catalogue['source']['exception_binding'],'handler_binding_established_by_this_role':False,'exact_type':None,'exact_value_bytes':None,'failure_mechanism':None,'allocation_progress':None,'initializer_progress':None,'completed_object_reference':None,'producer_history':'UNAVAILABLE','existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_reference_observation':None}
++
++def client_construction_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'CLIENT-CONSTRUCTION-EXACT-TYPE')
++ keys={'scope','references','token_inputs','token_prefix','none_guard_binding','construction_error','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'CLIENT-CONSTRUCTION-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'CLIENT-CONSTRUCTION-VALIDATED:'+k)
++ scope=case['scope'];refs=case['references'];prefix=case['token_prefix'];ti=case['token_inputs'];binding=case['none_guard_binding'];error=case['construction_error'];source=catalogue['source']
++ need(type(ti['control_present']) is bool and ti['owner_failure_none'] is True,'CLIENT-CONSTRUCTION-SELECTED-PREMISES');control=ti['control_present']
++ status_typed_same(refs,token_reference_premises(scope,control),'CLIENT-CONSTRUCTION-REFERENCE-ROLES');status_typed_same(scope,ti['scope'],'CLIENT-CONSTRUCTION-TOKEN-SCOPE')
++ order=source['prefix_order_control_present' if control else 'prefix_order_control_absent'];expected=[{'stage':n,'outcome':'raise' if n=='client-create' else 'normal'} for n in order]
++ status_typed_same(ti['outcomes'],expected,'CLIENT-CONSTRUCTION-SELECTED-PREFIX');tv={k:copy.deepcopy(v) for k,v in ti.items() if k!='references'}
++ status_typed_same(prefix,token_registration_projection(catalogue['token_relation'],ti,tv),'CLIENT-CONSTRUCTION-VALIDATED-TOKEN-PREFIX');status_typed_same(refs,prefix['reference_bindings'],'CLIENT-CONSTRUCTION-PREFIX-REFERENCES')
++ need(prefix['registration_completed_in_model'] is True and prefix['completion']=='unexpected-raise' and prefix['events'][-1]['stage']=='client-create' and prefix['events'][-1]['outcome']=='raise' and prefix['client_callback_completed_in_model'] is False,'CLIENT-CONSTRUCTION-REGISTERED-RAISE-FRONTIER')
++ need(prefix['control_callback_completed_in_model'] is (True if control else None),'CLIENT-CONSTRUCTION-EARLIER-CONTROL')
++ status_typed_same(error,client_construction_binding(catalogue,scope,control),'CLIENT-CONSTRUCTION-SELECTED-ERROR')
++ expected_guard={'scope':copy.deepcopy(scope),'owner':copy.deepcopy(refs['owner']),'slot':'owner.failure','slot_value':None,'slot_exact_type':'NoneType','guard_expression':source['guard_expression'],'guard_result':False,'guard_source':copy.deepcopy(source['guard']),'source':copy.deepcopy(source['sources']['entry']),'premise':source['guard_slot_premise'],'runtime_reference_observation':None,'prior_storage_history':'UNKNOWN; no retained evidence is erased'}
++ status_typed_same(binding,expected_guard,'CLIENT-CONSTRUCTION-NONE-GUARD')
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'CLIENT-CONSTRUCTION-OUTCOMES');order=source['order'];cursor=0;index=0;events=[];done=set();pending=copy.deepcopy(error);evaluation=None;cleanup=None;completion=None;terminal=None
++ while cursor<len(order):
++  stage=order[cursor];need(index<len(outcomes),'CLIENT-CONSTRUCTION-MISSING-STEP:'+stage);row=outcomes[index];index+=1
++  need(type(row) is dict and set(row)=={'stage','outcome'} and row['stage']==stage,'CLIENT-CONSTRUCTION-STEP-ORDER');kind=row['outcome']
++  allowed=('reraised-construction','raise','process-termination','unobserved') if stage=='callback-bare-rethrow' else ('normal','raise','process-termination','unobserved')
++  need(type(kind) is str and kind in allowed,'CLIENT-CONSTRUCTION-STAGE-OUTCOME');terminal=kind
++  events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(source['stages'][stage]),'outcome':kind,'owner':copy.deepcopy(refs['owner']),'token':copy.deepcopy(refs['token']),'pending_error_on_entry':copy.deepcopy(pending),'runtime_frame':None})
++  if kind in ('process-termination','unobserved'):completion=kind;break
++  if cursor<3:
++   if kind=='raise':
++    evaluation={'role':'conditional-handler-evaluation-exception','reference':scope['invocation']+'/'+stage+'/error','scope':copy.deepcopy(scope),'source':copy.deepcopy(source['stages'][stage]),'exact_type':None,'physical_identity':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN'};pending=copy.deepcopy(evaluation);cursor=3;continue
++   done.add(stage)
++   if stage=='callback-bare-rethrow':pending=copy.deepcopy(error)
++  elif kind=='raise':
++   cleanup={'role':'conditional-finally-exception','reference':scope['invocation']+'/'+stage+'/error','scope':copy.deepcopy(scope),'source':copy.deepcopy(source['stages'][stage]),'exact_type':None,'physical_identity':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN'};pending=copy.deepcopy(cleanup);completion='cleanup-exceptional-frontier';break
++  else:done.add(stage)
++  cursor+=1
++  if stage=='removal-complete':completion='normal-removal-pending-construction-error' if 'callback-bare-rethrow' in done else 'normal-removal-pending-evaluation-error'
++ need(index==len(outcomes),'CLIENT-CONSTRUCTION-UNREACHED-STEPS');popped='removal-complete' in done;reraised='callback-bare-rethrow' in done;caught='callback-handler-enter' in done;continuity=copy.deepcopy(prefix['selected_slot_before_removal']);removed=True if popped and continuity['continuity']=='explicit constructed premise' else None
++ return {'kind':'CONSTRUCTED-CLIENT-CONSTRUCTION-NONE','scope':copy.deepcopy(scope),'reference_bindings':copy.deepcopy(refs),'reference_meaning':catalogue['reference_meaning'],'validated_token_prefix':copy.deepcopy(prefix),'construction_error':copy.deepcopy(error),'none_guard_binding':copy.deepcopy(binding),'events':events,'completion':completion,
++  'construction_expression_raised_in_model':True,'construction_completed_in_model':False,'completed_client_object_reference':None,'allocation_progress':None,'initializer_progress':None,'client_callback_executed_in_model':False,
++  'earlier_control_present':control,'earlier_control_construction_completed_in_model':True if control else None,'earlier_control_callback_completed_in_model':prefix['control_callback_completed_in_model'],
++  'handler_entry_completed_in_model':caught,'caught_error_in_model':copy.deepcopy(error) if caught else None,'caught_name_in_model':source['exception_binding'] if caught else None,'none_guard_completed_in_model':'callback-none-guard' in done,'bare_rethrow_effect_established_in_model':reraised,'reraised_error_in_model':copy.deepcopy(error) if reraised else None,
++  'bare_raise_semantics':{'adds_explicit_cause':False,'preserves_active_exception':True,'establishes_absent_existing_cause_or_context':False},'exception_chain_observation':{'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','cleanup_context_link':'UNKNOWN','physical_reference_observation':None},'new_explicit_cause_assignment_established_in_model':False,'handler_evaluation_error_in_model':evaluation,'cleanup_error_in_model':cleanup,
++  'finally_entry_completed_in_model':'finally-enter' in done,'removal_attempt_entered_in_model':'removal-attempt' in done,'removal_completed_in_model':popped,'selected_slot_before_removal':continuity,'selected_owner_removed_in_model':removed,'slot_after_pop_in_model':'ABSENT-AT-POP-COMPLETION' if popped else 'UNKNOWN','pop_result_observation':None,'revocation_persists':None,
++  'last_pending_error_in_model':copy.deepcopy(pending),'outward_error_after_finally_in_model':copy.deepcopy(pending) if popped else None,'construction_outward_after_finally_established_in_model':popped and reraised,'construction_reaches_launcher_established':False,'terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
++  'prior_failure_storage_history':'UNKNOWN; the exact None guard does not erase earlier established storage or evidence','role_relationship':'Construction and caught-error roles share the selected error; later evaluation/cleanup roles do not prove physical inequality','run_success_established':False,'runtime_observation':False,'runtime_client_construction_revocation_chain':None,'runtime_unwind_evidence':'UNAVAILABLE','physical_reference_identity':None,'outer_cleanup_completion':None,'database_cleanup_completion':None,'retained_failure_record_bytes':None,'physical_lock_release_established':False,'exclusive_ownership_established':False,'durability_established':False,'observer_join':None,
++  'completion_flags_mean':'Conditional acknowledged model progress only. Earlier registration, construction-error and selected control completion survive later uncertainty. No allocation/initializer progress or guaranteed outward propagation.',
++  'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_client_construction_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'CLIENT-CONSTRUCTION-SUBMITTED-OUTPUT');status_typed_same(submitted,client_construction_projection(catalogue,case,validated),'CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE');return True
+--- retained/control-construction/code/correspondence.py
++++ code/correspondence.py
+@@ -1,10 +1,10 @@
+-"""Mandatory control-construction exception-to-finally/removal correspondence. Saved inputs only."""
++"""Mandatory client-construction exact-None handler-to-finally/removal correspondence. Saved inputs only."""
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 289416, 'sha256': '11d4b5166ebc48b0929c3e24949325e5a9683ff55aea178afbdd5346e4d1d9fc'}
+-PREDECESSOR_MANIFEST={'bytes': 951101, 'sha256': 'ab067a786180c5b4c194c1f181908e13185ad879efeff050f0b4e69c04dc2b74'}
+-PREDECESSOR_RECEIPT={'bytes': 7426382, 'sha256': 'b2344acaa2370d94a03f59c7f505df84c423f41dc4937ec81d6f939a01240eb5'}
++PRODUCER_PIN={'bytes': 307101, 'sha256': 'a879216a176955cc60c76150f1bdc2bfd7bff7b2dfab3b3340361fbe5cb6b2ab'}
++PREDECESSOR_MANIFEST={'bytes': 1034275, 'sha256': '6c2b8a3bf2600bff776eeaec35a91653f8b39118d0c6172152cb392fa33115cb'}
++PREDECESSOR_RECEIPT={'bytes': 8000877, 'sha256': 'd8a46dbf6aa29299a4a96a4c0132af217c9093e165c49409797112556f40b518'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+@@ -26,76 +26,78 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/control'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CONSTRUCTION-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CONSTRUCTION-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CONSTRUCTION-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/control-construction'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-CONSTRUCTION-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CLIENT-CONSTRUCTION-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CLIENT-CONSTRUCTION-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'CONSTRUCTION-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'CONSTRUCTION-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CONSTRUCTION-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-CONSTRUCTION-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'CLIENT-CONSTRUCTION-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CLIENT-CONSTRUCTION-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CONSTRUCTION-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CONSTRUCTION-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_control_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_construction_coverage')}
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CLIENT-CONSTRUCTION-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CLIENT-CONSTRUCTION-PRODUCER-PIN')
++ prior=module(base/'code/correspondence.py','_control_construction_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_client_construction_coverage')}
+ def inner(data):return data['prior_module'].inner(data['prior_data'])
+ def sources(data):return data['prior_module'].sources(data['prior_data'])
+ def dependencies(data):
+  p=data['prior_module'];pd=data['prior_data'];return (p.catalogue(pd),*p.dependencies(pd))
+-def catalogue(data):return data['coverage'].compile_control_construction(*sources(data)[:2],*dependencies(data))
++def catalogue(data):return data['coverage'].compile_client_construction(*sources(data)[:2],*dependencies(data))
+ def _basis(data):
+  fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,bb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,bb)
+- saved=(fresh['prior_root']/'results/primary/control-exception.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CONSTRUCTION-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'control_basis':bb,'control_module':p,'stored_basis':bb['stored_basis']}
++ saved=(fresh['prior_root']/'results/primary/control-construction.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CLIENT-CONSTRUCTION-VALIDATED-PREDECESSOR-RECEIPT')
++ return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'construction_basis':bb,'construction_module':p,'stored_basis':bb['stored_basis']}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CONSTRUCTION-CONTEXT-DOMAIN')
++ rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CLIENT-CONSTRUCTION-CONTEXT-DOMAIN')
+  for row in basis['prior']['contexts']:
+-  control=row['control_exception_revocation_correspondence'];token=row['token_registration_correspondence'];same(control['instance_anchor'],token['instance_anchor'],'CONSTRUCTION-VALIDATED-INSTANCE');same(control['declaration']['source']['sources'],cat['source']['sources'],'CONSTRUCTION-VALIDATED-SOURCE')
++  prior=row['control_construction_revocation_correspondence'];token=row['token_registration_correspondence'];same(prior['instance_anchor'],token['instance_anchor'],'CLIENT-CONSTRUCTION-VALIDATED-INSTANCE');same(prior['declaration']['source']['sources'],cat['source']['sources'],'CLIENT-CONSTRUCTION-VALIDATED-SOURCE')
+   rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(token['instance_anchor']),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
+    'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','owner_failure_guard_applicable':False,'client_handler_applicable':False,'construction_completed':False,'completed_control_object_reference':None,'control_callback_execution':False,'client_callback_execution':False,'constructor_substep_history':None,'runtime_construction_exception_revocation_chain':None,'control_construction_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(control['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime construction expression/error/finally/pop chain, allocation/initializer progress or existing cause/context observations. Full outer cleanup remains unexpanded.'})
++   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'prefix_variants':['control-absent','control-construction-and-callback-completed-normally'],'guard_slot_continuity':'Explicit same-owner exact-None premise; not historical absence of storage','selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','client_handler_applicable':True,'construction_completed':False,'completed_client_object_reference':None,'client_callback_execution':False,'earlier_control_execution':'Conditional on selected validated prefix; no new runtime observation','constructor_substep_history':None,'runtime_client_construction_revocation_chain':None,'client_construction_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(prior['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime Client construction/error/handler/bare-rethrow/pop chain or constructor progress. Non-None constructor handler branch and full outer cleanup remain unexpanded.'})
+  return rows
+ def _check_rows(basis,claims):
+- exact(claims,'CONSTRUCTION-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CONSTRUCTION-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CONSTRUCTION-SEMANTIC-CORRESPONDENCE')
++ exact(claims,'CLIENT-CONSTRUCTION-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CLIENT-CONSTRUCTION-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CONSTRUCTION-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CONSTRUCTION-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CLIENT-CONSTRUCTION-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE')
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'CONSTRUCTION-CATALOGUE');exact(claims,'CONSTRUCTION-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CONSTRUCTION-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CONSTRUCTION-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CONSTRUCTION-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CONSTRUCTION-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
++ exact(submitted_catalogue,'CLIENT-CONSTRUCTION-CATALOGUE');exact(claims,'CLIENT-CONSTRUCTION-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CLIENT-CONSTRUCTION-CATALOGUE-SOURCE')
++ d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CLIENT-CONSTRUCTION-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CLIENT-CONSTRUCTION-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CLIENT-CONSTRUCTION-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CONTROL-CONSTRUCTION-CORRESPONDENCE-1';result['prior_control_components']=result.pop('extension_components');result['prior_control_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['control_construction_revocation_correspondence']=copy.deepcopy(row)
+- result['new_control_construction_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','selected_owner_continuity':'Explicit premise','owner_failure_guard_applicable':False,'subsequent_client_handler_applicable':False,'construction_completion_established':False,'control_callback_execution_established':False,'client_callback_execution_established':False,'control_construction_producer_history':'UNAVAILABLE','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_construction(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CLIENT-CONSTRUCTION-NONE-CORRESPONDENCE-1';result['prior_control_construction_components']=result.pop('extension_components');result['prior_control_construction_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx['client_construction_none_correspondence']=copy.deepcopy(row)
++ result['new_client_construction_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','guard_slot_continuity':'Explicit same-owner exact-None premise','selected_owner_continuity':'Explicit premise','construction_completion_established':False,'client_callback_execution_established':False,'earlier_control_progress':'Preserve selected validated prefix separately','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'non_none_constructor_branch_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_client_construction(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+ def _premises(basis,case):
+- exact(case,'CONSTRUCTION-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','construction_error','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CONTROL-CONSTRUCTION-EXCEPTION','CONSTRUCTION-CONSTRUCTED-CASE')
+- rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CONSTRUCTION-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CONSTRUCTION-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CONSTRUCTION-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CONSTRUCTION-TOKEN-INVOCATION')
+- sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['control_present'] is True and token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['control_callback_completed_in_model'] is False and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='control-create' and token['events'][-1]['outcome']=='raise','CONSTRUCTION-TOKEN-FRONTIER')
+- refs=token['reference_bindings'];scope=token['scope'];error=basis['fresh']['coverage'].control_construction_binding(basis['catalogue'],scope);same(case['construction_error'],error,'CONSTRUCTION-EXPRESSION-ERROR')
+- return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'construction_error':error,'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','construction_error','none_guard_binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CLIENT-CONSTRUCTION-NONE','CLIENT-CONSTRUCTION-CONSTRUCTED-CASE')
++ rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CLIENT-CONSTRUCTION-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CLIENT-CONSTRUCTION-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CLIENT-CONSTRUCTION-TOKEN-INVOCATION')
++ sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['owner_failure_none'] is True,'CLIENT-CONSTRUCTION-SELECTED-NONE-SLICE');require(token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='client-create' and token['events'][-1]['outcome']=='raise','CLIENT-CONSTRUCTION-TOKEN-FRONTIER')
++ refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue'];error=basis['fresh']['coverage'].client_construction_binding(cat,scope,tc['control_present']);same(case['construction_error'],error,'CLIENT-CONSTRUCTION-EXPRESSION-ERROR')
++ binding={'scope':copy.deepcopy(scope),'owner':copy.deepcopy(refs['owner']),'slot':'owner.failure','slot_value':None,'slot_exact_type':'NoneType','guard_expression':cat['source']['guard_expression'],'guard_result':False,'guard_source':copy.deepcopy(cat['source']['guard']),'source':copy.deepcopy(cat['source']['sources']['entry']),'premise':cat['source']['guard_slot_premise'],'runtime_reference_observation':None,'prior_storage_history':'UNKNOWN; no retained evidence is erased'}
++ same(case['none_guard_binding'],binding,'CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING')
++ return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'construction_error':error,'none_guard_binding':binding,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.control_construction_projection(cat,case['projection'],v);c.validate_control_construction_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected _Control(token) expression raises before either callback, under conditional selected-owner continuity. No client handler or owner.failure guard is selected. Existing exception chain/history remain unknown; role identity is not runtime object identity.','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.client_construction_projection(cat,case['projection'],v);c.validate_client_construction_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected Client(token) expression raises before client callback; control absent or its selected earlier path completed normally. Same-owner exact-None guard and selected-owner continuity are explicit conditional premises. No allocation, initializer history, physical identity or existing cause/context absence is inferred.','runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'CONSTRUCTION-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def constructed_prior(data,submitted_catalogue,branch,case):
+- exact(case,'CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('control','bare','stored-client','stored-normal','normal-token'),'CONSTRUCTION-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
++ exact(case,'CLIENT-CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('control-construction','control','bare','stored-client','stored-normal','normal-token'),'CLIENT-CONSTRUCTION-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
+ def _construct_prior(basis,branch,case):
+- exact(case,'CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');p=basis['control_module'];b=basis['control_basis']
+- if branch=='control':return p._construct_checked(b,case)
++ exact(case,'CLIENT-CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');p=basis['construction_module'];b=basis['construction_basis']
++ if branch=='control-construction':return p._construct_checked(b,case)
+  return p._construct_prior(b,branch,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_construction(data,catalogue(data))
++ data=inputs(root);return derive_client_construction(data,catalogue(data))
+ def validate(root,saved):
+- require(type(saved) is bytes,'CONSTRUCTION-RECEIPT-BYTES');v=json.loads(saved);required={'control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
+- require(type(v) is dict and v.get('format')=='I164-CONTROL-CONSTRUCTION-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CONSTRUCTION-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CONSTRUCTION-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_construction_exception_revocation_chain':'UNAVAILABLE','actual_admission':False}
++ require(type(saved) is bytes,'CLIENT-CONSTRUCTION-RECEIPT-BYTES');v=json.loads(saved);required={'client_construction_none_correspondence','control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
++ require(type(v) is dict and v.get('format')=='I164-CLIENT-CONSTRUCTION-NONE-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CLIENT-CONSTRUCTION-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CLIENT-CONSTRUCTION-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_client_construction_revocation_chain':'UNAVAILABLE','actual_admission':False}
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

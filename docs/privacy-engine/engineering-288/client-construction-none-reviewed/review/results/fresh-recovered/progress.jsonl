@@ -1,0 +1,299 @@
+{"check": "fresh recovered public validation accepts current receipt in both contexts", "result": "PASS"}
+{"check": "authenticated derivation exactly reproduces saved receipt", "result": "PASS"}
+{"check": "source-derived case and independent oracle (0, False)", "result": "PASS"}
+{"check": "selected owner removal remains conditional (0, False)", "result": "PASS"}
+{"check": "distinct invocation does not collapse equal modeled values (0, False)", "result": "PASS"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, False, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, False, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "handler replacement followed by cleanup replacement (0, False, 'callback-handler-enter')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (0, False, 'callback-none-guard')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (0, False, 'callback-bare-rethrow')", "result": "PASS"}
+{"check": "control history cannot be erased or invented (0, False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "source-derived case and independent oracle (0, True)", "result": "PASS"}
+{"check": "selected owner removal remains conditional (0, True)", "result": "PASS"}
+{"check": "distinct invocation does not collapse equal modeled values (0, True)", "result": "PASS"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (0, True, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (0, True, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "handler replacement followed by cleanup replacement (0, True, 'callback-handler-enter')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (0, True, 'callback-none-guard')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (0, True, 'callback-bare-rethrow')", "result": "PASS"}
+{"check": "control history cannot be erased or invented (0, True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "binding exact-type or unsupported mechanism (0, ('invocation',), 'foreign-invocation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "binding exact-type or unsupported mechanism (0, ('context',), 'SYMBOLIC-U-TWO')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('anchor', 'recovery_occurrence'), 'stale-frontier')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'scope', 'acquisition'), 'foreign-acquisition')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'reference'), 'foreign-error')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'), 'foreign-token')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'), 'foreign-owner')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'owner', 'symbol'), 'foreign-owner')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot_value'), False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot_value'), 0)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'guard_result'), True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'guard_result'), 0)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'prior_storage_history'), 'ABSENT')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (0, ('token_case', 'owner_failure_none'), False)", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "binding exact-type or unsupported mechanism (0, ('token_case', 'owner_failure_none'), 1)", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot'), 'owner.failure')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error',), {'role': 'selected-client-construction-expression-exception', 'scope': {'context': 'SYMBOLIC-U-ONE', 'acquisition': 'sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8', ", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (0, ('outcomes',), [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'fina", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'failure_mechanism'), 'MemoryError')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'initializer_progress'), True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'completed_object_reference'), 'client-object')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated reference substitution (0, 'owner')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated reference substitution (0, 'token')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated construction error substitution 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated exact-None substitution 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "literal-key subclasses reject before normalization 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'ou", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MISSING-STEP:removal-complete"}
+{"check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome':", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (0, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-constru", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome'", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (0, [])", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTCOMES"}
+{"check": "omitted duplicated reordered or invented stage (0, [{'stage': 'client-callback', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'rera", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "no continuation after cleanup failure 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "unsupported output escalation (0, 'construction_completed_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'client_callback_executed_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'new_explicit_cause_assignment_established_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'construction_reaches_launcher_established')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'run_success_established')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'runtime_observation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'obligations_discharged')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'authorization_renewed')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (0, 'actual_admission')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "bare rethrow cannot erase existing-cause uncertainty 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned projection mutation leaves expectations intact 0", "result": "PASS"}
+{"check": "semantic coordinated unsupported claim (0, 'construction_completed')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (0, 'client_callback_execution')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (0, 'exception_chain_observation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (0, 'prior_failure_storage_history')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (0, 'classification')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (0, 'multiplicity')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic wrong-instance predecessor 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic omitted link 0", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "source-derived case and independent oracle (1, False)", "result": "PASS"}
+{"check": "selected owner removal remains conditional (1, False)", "result": "PASS"}
+{"check": "distinct invocation does not collapse equal modeled values (1, False)", "result": "PASS"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, False, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, False, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "handler replacement followed by cleanup replacement (1, False, 'callback-handler-enter')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (1, False, 'callback-none-guard')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (1, False, 'callback-bare-rethrow')", "result": "PASS"}
+{"check": "control history cannot be erased or invented (1, False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "source-derived case and independent oracle (1, True)", "result": "PASS"}
+{"check": "selected owner removal remains conditional (1, True)", "result": "PASS"}
+{"check": "distinct invocation does not collapse equal modeled values (1, True)", "result": "PASS"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'finally-enter', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'finally-enter', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'finally-enter', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'finally-enter', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'finally-enter', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'finally-enter', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-attempt', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-attempt', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-attempt', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-complete', 'raise')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-complete', 'raise')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-complete', 'process-termination')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-complete', 'process-termination')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "failure or uncertainty oracle (1, True, 'removal-complete', 'unobserved')", "result": "PASS"}
+{"check": "unestablished continuation rejects (1, True, 'removal-complete', 'unobserved')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "handler replacement followed by cleanup replacement (1, True, 'callback-handler-enter')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (1, True, 'callback-none-guard')", "result": "PASS"}
+{"check": "handler replacement followed by cleanup replacement (1, True, 'callback-bare-rethrow')", "result": "PASS"}
+{"check": "control history cannot be erased or invented (1, True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "binding exact-type or unsupported mechanism (1, ('invocation',), 'foreign-invocation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-TOKEN-INVOCATION"}
+{"check": "binding exact-type or unsupported mechanism (1, ('context',), 'SYMBOLIC-U-ONE')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('anchor', 'recovery_occurrence'), 'stale-frontier')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'scope', 'acquisition'), 'foreign-acquisition')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'reference'), 'foreign-error')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'), 'foreign-token')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'), 'foreign-owner')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'owner', 'symbol'), 'foreign-owner')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot_value'), False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot_value'), 0)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'guard_result'), True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'guard_result'), 0)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'prior_storage_history'), 'ABSENT')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "binding exact-type or unsupported mechanism (1, ('token_case', 'owner_failure_none'), False)", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "binding exact-type or unsupported mechanism (1, ('token_case', 'owner_failure_none'), 1)", "result": "REJECTED", "error": "TOKEN-PREMISE:owner_failure_none"}
+{"check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot'), 'owner.failure')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error',), {'role': 'selected-client-construction-expression-exception', 'scope': {'context': 'SYMBOLIC-U-TWO', 'acquisition': 'sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8', ", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (1, ('outcomes',), [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'fina", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'failure_mechanism'), 'MemoryError')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'initializer_progress'), True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'completed_object_reference'), 'client-object')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated reference substitution (1, 'owner')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated reference substitution (1, 'token')", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated construction error substitution 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated exact-None substitution 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING"}
+{"check": "literal-key subclasses reject before normalization 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'ou", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MISSING-STEP:removal-complete"}
+{"check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome':", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (1, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-constru", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome'", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "omitted duplicated reordered or invented stage (1, [])", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTCOMES"}
+{"check": "omitted duplicated reordered or invented stage (1, [{'stage': 'client-callback', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'rera", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-STEP-ORDER"}
+{"check": "no continuation after cleanup failure 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-UNREACHED-STEPS"}
+{"check": "unsupported output escalation (1, 'construction_completed_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'client_callback_executed_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'new_explicit_cause_assignment_established_in_model')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'construction_reaches_launcher_established')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'run_success_established')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'runtime_observation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'obligations_discharged')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'authorization_renewed')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "unsupported output escalation (1, 'actual_admission')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "bare rethrow cannot erase existing-cause uncertainty 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned projection mutation leaves expectations intact 1", "result": "PASS"}
+{"check": "semantic coordinated unsupported claim (1, 'construction_completed')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (1, 'client_callback_execution')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (1, 'exception_chain_observation')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (1, 'prior_failure_storage_history')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (1, 'classification')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic coordinated unsupported claim (1, 'multiplicity')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic wrong-instance predecessor 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic omitted link 1", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic context order", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic missing context", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-CLAIM-CONTEXT-DOMAIN"}
+{"check": "semantic duplicate context", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE"}
+{"check": "returned semantic rows cannot alter new expectations", "result": "PASS"}
+{"check": "nested derived receipt mutation cannot alter expectations", "result": "PASS"}
+{"check": "altered authenticated evidence", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE"}
+{"check": "omitted authenticated evidence", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE"}
+{"check": "public mandatory relation (0, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (0, 'token_registration_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}
+{"check": "public mandatory relation (1, 'token_registration_correspondence')", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS"}

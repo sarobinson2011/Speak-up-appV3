@@ -1,0 +1,306 @@
+{
+  "checks": 68,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "independently derived location (0, 'run')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'construction_expression')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'initializer_source')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'initializer_assignment_source')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'client_call_not_reached')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'handler')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (0, 'control_guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "argument construction protected by client handler 0",
+      "result": "PASS"
+    },
+    {
+      "check": "source exact None branch and bare raise 0",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived both prefix sequences 0",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'finally-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'removal-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (0, 'removal-complete')",
+      "result": "PASS"
+    },
+    {
+      "check": "six mandatory semantic boundaries retain source order 0",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'allocation_progress_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'initializer_entry_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'initializer_assignment_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'completed_client_object_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'client_callback_execution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (0, 'new_explicit_cause_assignment')",
+      "result": "PASS"
+    },
+    {
+      "check": "all original context fields and ordinals preserved 0",
+      "result": "PASS"
+    },
+    {
+      "check": "current catalogue accepts actual defining source 0",
+      "result": "PASS"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (0, 'guard_expression')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (0, 'selected_slot_value')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (0, 'selected_guard_result')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (0, 'client_callback_execution_established')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (0, 'argument_expression')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated source guard omission 0",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "substituted producer source cannot inherit shape client(Client(token))",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    },
+    {
+      "check": "substituted producer source cannot inherit shape if owner.failure is not None:",
+      "error": "CLIENT-DEFINING-SHAPE:_run",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independently derived location (1, 'run')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'construction_expression')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'initializer_source')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'initializer_assignment_source')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'client_call_not_reached')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'handler')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived location (1, 'control_guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "argument construction protected by client handler 1",
+      "result": "PASS"
+    },
+    {
+      "check": "source exact None branch and bare raise 1",
+      "result": "PASS"
+    },
+    {
+      "check": "independently derived both prefix sequences 1",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'finally-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'removal-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent stage coordinate (1, 'removal-complete')",
+      "result": "PASS"
+    },
+    {
+      "check": "six mandatory semantic boundaries retain source order 1",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'allocation_progress_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'initializer_entry_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'initializer_assignment_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'completed_client_object_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'client_callback_execution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "source does not establish (1, 'new_explicit_cause_assignment')",
+      "result": "PASS"
+    },
+    {
+      "check": "all original context fields and ordinals preserved 1",
+      "result": "PASS"
+    },
+    {
+      "check": "current catalogue accepts actual defining source 1",
+      "result": "PASS"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (1, 'guard_expression')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (1, 'selected_slot_value')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (1, 'selected_guard_result')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (1, 'client_callback_execution_established')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived catalogue rejects alteration (1, 'argument_expression')",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated source guard omission 1",
+      "error": "CLIENT-CONSTRUCTION-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "New source-derived catalogue controls and read-only preservation/supplied-record audit; no prior campaign reruns",
+  "seconds": 6.765279167000699,
+  "session_operations": 0
+}

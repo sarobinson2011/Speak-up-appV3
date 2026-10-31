@@ -1,0 +1,139 @@
+{
+  "Engineering": {
+    "both_campaign_final_RESULT_and_exit": "UNRECOVERED",
+    "interrupted_completion_partition": {
+      "focused_recovered": 64,
+      "mandatory_public_rejections": 6,
+      "pristine_public": 1
+    },
+    "interrupted_completion_rows": 71,
+    "interrupted_primary_rows": 285,
+    "interruption_cause": "UNESTABLISHED",
+    "outside_completed_group_totals": true,
+    "rerun": false,
+    "separately_completed_groups": {
+      "public_final_completion": 1,
+      "source_completion": 1
+    },
+    "unqualified_combined_total": null,
+    "zero_row_recovered_public_attempts": "PRESERVED"
+  },
+  "candidate_archive": {
+    "bytes": 127845952,
+    "sha256": "ae720b26da6eb537209215e7545bd08e3e46c803650d02158631a935260aaf10"
+  },
+  "construction_author": "SU-Engineering[288D]",
+  "independent": {
+    "CLI_execution_claimed": false,
+    "completed_primary": 159,
+    "completed_recovered_root": 80,
+    "failed_source_audit": {
+      "campaign_exit": 1,
+      "corroborated_rows": 61,
+      "failure": "Reviewer diff-concatenation order assertion; exact contents match in declared order",
+      "outside_completed_totals": true
+    },
+    "packaging_assertion_failure": {
+      "controls": 0,
+      "preserved": true
+    },
+    "preparation_import_failure": {
+      "controls": 0,
+      "preserved": true
+    },
+    "rerun": false,
+    "subsequent_preservation_audit": {
+      "completed": true,
+      "controls_replayed": 0
+    },
+    "unqualified_combined_total": null,
+    "verdict": "SCOPED SUPPORT WITH RETAINED ACCOUNTING AND OBSERVATION QUALIFICATIONS"
+  },
+  "milestone": "I164-control-construction-exception-correspondence-1",
+  "new_milestone_save": "No matching attached or Library receipt found on 2026-10-31; host command inspects all matching receipts and committed selections before writing. Not proof of host absence.",
+  "older_accounting": "520 result-recorded/517 corroborated; coordinated 106/103/103 with rows104-106 qualified; nine historical partial public rows plus one separately confirmed public check. Older 308/307/303 discrepancy, missing rows, unknown cause, separate78/5 and earlier failures remain unchanged. No repaired or combined historical total.",
+  "operations_here": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "database_connections": 0,
+    "lifecycle_smoke": 0,
+    "next_task_implementation": 0,
+    "pipelines": 0,
+    "reviews": 0,
+    "session_operations": 0,
+    "tests": 0
+  },
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "PRESERVED; no cross-acquisition occurrence joins",
+    "conditional_selected_owner_continuity": "EXPLICIT PREMISE; not runtime exclusivity",
+    "cumulative_envelope": "UNADOPTED",
+    "existing_cause_context_suppression": "UNKNOWN",
+    "final_binding": "BLOCKED",
+    "inventory_unknowns": 4,
+    "lifetime_unknowns": 14,
+    "obligations_preserved": 11,
+    "observer_to_chain_join": null,
+    "outer_cleanup_coverage": "INCOMPLETE",
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "runtime_construction_exception_revocation_observations": "UNAVAILABLE",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_save": {
+    "commit": "014f4008c7d4438ca7a3a6369c24f72a74cab760",
+    "manifest": {
+      "bytes": 24855,
+      "sha256": "808cb1aade9ead3643e9af2fb6b565010c9e7dff891ecd4849794394fcd35fe3"
+    },
+    "push_status": "CONFIRMED",
+    "receipt_library_id": "libfile_7be0ac8a1e208191b86d177cdd71fcbe",
+    "repeated": false,
+    "status": "PASS"
+  },
+  "public_rejection_layers": [
+    {
+      "checks": 1,
+      "error": "CONSTRUCTION-STALE-OR-ALTERED-RECEIPT",
+      "layer": "Public post-derivation receipt comparison, correspondence.validate line 98",
+      "owner": "Formal-Lab current recovered",
+      "proof": "review/results/recovered/public-rejection.json"
+    },
+    {
+      "checks": 1,
+      "error": "CONSTRUCTION-STALE-OR-ALTERED-RECEIPT",
+      "layer": "Public post-derivation receipt comparison, correspondence.validate line 98",
+      "owner": "Engineering separately completed current public check",
+      "proof": "extension/results/public-final-completion/validator-rejection.json"
+    },
+    {
+      "checks": 6,
+      "completed_group": false,
+      "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+      "layer": "Public required-relation/receipt-shape gate before derive(root), correspondence.validate line 98",
+      "owner": "Engineering interrupted 71-row group",
+      "proof": "extension/failures/interrupted-completion/results/progress.jsonl"
+    },
+    {
+      "checks": 1,
+      "error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+      "layer": "Prior public post-derivation receipt comparison, predecessor correspondence.validate line 101",
+      "owner": "Prior independent separately confirmed control-callback check",
+      "proof": "prior reviewed milestone; unchanged"
+    }
+  ],
+  "read_only_intake": "Exact outer/nested identities, safe membership, CRC and manifested hashes verified; no model checks run",
+  "review_archive": {
+    "bytes": 125975482,
+    "sha256": "9e8b9d4664cc4abe55d93ca84a5db51e0991b30299d974903ec5beefa369843b"
+  },
+  "reviewer": "Formal-Lab[6]",
+  "source_completion_rejection": {
+    "error": "CLIENT-DEFINING-SHAPE:_run",
+    "layer": "Defining-source AST/shape check; not a public receipt rejection"
+  }
+}

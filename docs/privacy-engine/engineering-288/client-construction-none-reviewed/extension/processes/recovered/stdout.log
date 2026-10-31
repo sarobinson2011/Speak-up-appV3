@@ -1,0 +1,212 @@
+PHASE authenticated mandatory chain; saved evidence only
+1 fresh recovered actual public validator accepts pristine receipt PASS
+2 recovered authenticated derivation equals saved exact bytes PASS
+PHASE focused constructed controls; using the returned authenticated basis, no checker replacement
+3 legitimate prefix (0, False) PASS
+4 distinct occurrence (0, False) PASS
+5 binding/type/unsupported claim (0, False)('construction_error', 'reference') REJECTED
+6 binding/type/unsupported claim (0, False)('construction_error', 'construction_attempt', 'registered_owner', 'symbol') REJECTED
+7 binding/type/unsupported claim (0, False)('construction_error', 'handler_binding_established_by_this_role') REJECTED
+8 binding/type/unsupported claim (0, False)('token_case', 'invocation') REJECTED
+9 binding/type/unsupported claim (0, False)('none_guard_binding', 'guard_result') REJECTED
+10 binding/type/unsupported claim (0, False)('output', 'client_callback_executed_in_model') REJECTED
+11 binding/type/unsupported claim (0, False)('output', 'earlier_control_callback_completed_in_model') REJECTED
+12 binding/type/unsupported claim (0, False)('output', 'exception_chain_observation', 'existing_context') REJECTED
+13 binding/type/unsupported claim (0, False)('output', 'authorization_renewed') REJECTED
+14 source-admitted frontier (0, False)('callback-handler-enter', 'raise') PASS
+15 no guaranteed construction propagation (0, False)('callback-handler-enter', 'raise') REJECTED
+16 source-admitted frontier (0, False)('callback-none-guard', 'raise') PASS
+17 no guaranteed construction propagation (0, False)('callback-none-guard', 'raise') REJECTED
+18 source-admitted frontier (0, False)('callback-bare-rethrow', 'raise') PASS
+19 no guaranteed construction propagation (0, False)('callback-bare-rethrow', 'raise') REJECTED
+20 source-admitted frontier (0, False)('finally-enter', 'raise') PASS
+21 no guaranteed construction propagation (0, False)('finally-enter', 'raise') REJECTED
+22 no fabricated completed removal (0, False)('finally-enter', 'raise') REJECTED
+23 source-admitted frontier (0, False)('removal-attempt', 'raise') PASS
+24 no guaranteed construction propagation (0, False)('removal-attempt', 'raise') REJECTED
+25 no fabricated completed removal (0, False)('removal-attempt', 'raise') REJECTED
+26 source-admitted frontier (0, False)('removal-complete', 'raise') PASS
+27 no guaranteed construction propagation (0, False)('removal-complete', 'raise') REJECTED
+28 no fabricated completed removal (0, False)('removal-complete', 'raise') REJECTED
+29 coordinated omitted stage (0, False)0 REJECTED
+30 coordinated omitted stage (0, False)2 REJECTED
+31 coordinated omitted stage (0, False)5 REJECTED
+32 reordered handler/guard (0, False) REJECTED
+33 duplicate cleanup completion (0, False) REJECTED
+34 cross invocation output (0, False) REJECTED
+35 coordinated reference substitution (0, False)owner REJECTED
+36 coordinated reference substitution (0, False)token REJECTED
+37 coordinated error substitution (0, False) REJECTED
+38 continuity remains conditional (0, False) PASS
+39 exact-type boundary (0, False)('construction_error', 'existing_cause') REJECTED
+40 exact-type boundary (0, False)('construction_error',) REJECTED
+41 exact-type boundary (0, False)('outcomes',) REJECTED
+42 exact-type boundary (0, False)('none_guard_binding',) REJECTED
+43 exact-type boundary (0, False)('output', 'events') REJECTED
+44 nested returned mutation isolation (0, False) PASS
+45 projector exact None binding (0, False) REJECTED
+46 submitted-output exact type (0, False) REJECTED
+47 legitimate prefix (0, True) PASS
+48 distinct occurrence (0, True) PASS
+49 binding/type/unsupported claim (0, True)('construction_error', 'reference') REJECTED
+50 binding/type/unsupported claim (0, True)('construction_error', 'construction_attempt', 'registered_owner', 'symbol') REJECTED
+51 binding/type/unsupported claim (0, True)('construction_error', 'handler_binding_established_by_this_role') REJECTED
+52 binding/type/unsupported claim (0, True)('token_case', 'invocation') REJECTED
+53 binding/type/unsupported claim (0, True)('none_guard_binding', 'guard_result') REJECTED
+54 binding/type/unsupported claim (0, True)('output', 'client_callback_executed_in_model') REJECTED
+55 binding/type/unsupported claim (0, True)('output', 'earlier_control_callback_completed_in_model') REJECTED
+56 binding/type/unsupported claim (0, True)('output', 'exception_chain_observation', 'existing_context') REJECTED
+57 binding/type/unsupported claim (0, True)('output', 'authorization_renewed') REJECTED
+58 source-admitted frontier (0, True)('callback-handler-enter', 'raise') PASS
+59 no guaranteed construction propagation (0, True)('callback-handler-enter', 'raise') REJECTED
+60 source-admitted frontier (0, True)('callback-none-guard', 'raise') PASS
+61 no guaranteed construction propagation (0, True)('callback-none-guard', 'raise') REJECTED
+62 source-admitted frontier (0, True)('callback-bare-rethrow', 'raise') PASS
+63 no guaranteed construction propagation (0, True)('callback-bare-rethrow', 'raise') REJECTED
+64 source-admitted frontier (0, True)('finally-enter', 'raise') PASS
+65 no guaranteed construction propagation (0, True)('finally-enter', 'raise') REJECTED
+66 no fabricated completed removal (0, True)('finally-enter', 'raise') REJECTED
+67 source-admitted frontier (0, True)('removal-attempt', 'raise') PASS
+68 no guaranteed construction propagation (0, True)('removal-attempt', 'raise') REJECTED
+69 no fabricated completed removal (0, True)('removal-attempt', 'raise') REJECTED
+70 source-admitted frontier (0, True)('removal-complete', 'raise') PASS
+71 no guaranteed construction propagation (0, True)('removal-complete', 'raise') REJECTED
+72 no fabricated completed removal (0, True)('removal-complete', 'raise') REJECTED
+73 coordinated omitted stage (0, True)0 REJECTED
+74 coordinated omitted stage (0, True)2 REJECTED
+75 coordinated omitted stage (0, True)5 REJECTED
+76 reordered handler/guard (0, True) REJECTED
+77 duplicate cleanup completion (0, True) REJECTED
+78 cross invocation output (0, True) REJECTED
+79 coordinated reference substitution (0, True)owner REJECTED
+80 coordinated reference substitution (0, True)token REJECTED
+81 coordinated error substitution (0, True) REJECTED
+82 continuity remains conditional (0, True) PASS
+83 exact-type boundary (0, True)('construction_error', 'existing_cause') REJECTED
+84 exact-type boundary (0, True)('construction_error',) REJECTED
+85 exact-type boundary (0, True)('outcomes',) REJECTED
+86 exact-type boundary (0, True)('none_guard_binding',) REJECTED
+87 exact-type boundary (0, True)('output', 'events') REJECTED
+88 nested returned mutation isolation (0, True) PASS
+89 projector exact None binding (0, True) REJECTED
+90 submitted-output exact type (0, True) REJECTED
+91 legitimate prefix (1, False) PASS
+92 distinct occurrence (1, False) PASS
+93 binding/type/unsupported claim (1, False)('construction_error', 'reference') REJECTED
+94 binding/type/unsupported claim (1, False)('construction_error', 'construction_attempt', 'registered_owner', 'symbol') REJECTED
+95 binding/type/unsupported claim (1, False)('construction_error', 'handler_binding_established_by_this_role') REJECTED
+96 binding/type/unsupported claim (1, False)('token_case', 'invocation') REJECTED
+97 binding/type/unsupported claim (1, False)('none_guard_binding', 'guard_result') REJECTED
+98 binding/type/unsupported claim (1, False)('output', 'client_callback_executed_in_model') REJECTED
+99 binding/type/unsupported claim (1, False)('output', 'earlier_control_callback_completed_in_model') REJECTED
+100 binding/type/unsupported claim (1, False)('output', 'exception_chain_observation', 'existing_context') REJECTED
+101 binding/type/unsupported claim (1, False)('output', 'authorization_renewed') REJECTED
+102 source-admitted frontier (1, False)('callback-handler-enter', 'raise') PASS
+103 no guaranteed construction propagation (1, False)('callback-handler-enter', 'raise') REJECTED
+104 source-admitted frontier (1, False)('callback-none-guard', 'raise') PASS
+105 no guaranteed construction propagation (1, False)('callback-none-guard', 'raise') REJECTED
+106 source-admitted frontier (1, False)('callback-bare-rethrow', 'raise') PASS
+107 no guaranteed construction propagation (1, False)('callback-bare-rethrow', 'raise') REJECTED
+108 source-admitted frontier (1, False)('finally-enter', 'raise') PASS
+109 no guaranteed construction propagation (1, False)('finally-enter', 'raise') REJECTED
+110 no fabricated completed removal (1, False)('finally-enter', 'raise') REJECTED
+111 source-admitted frontier (1, False)('removal-attempt', 'raise') PASS
+112 no guaranteed construction propagation (1, False)('removal-attempt', 'raise') REJECTED
+113 no fabricated completed removal (1, False)('removal-attempt', 'raise') REJECTED
+114 source-admitted frontier (1, False)('removal-complete', 'raise') PASS
+115 no guaranteed construction propagation (1, False)('removal-complete', 'raise') REJECTED
+116 no fabricated completed removal (1, False)('removal-complete', 'raise') REJECTED
+117 coordinated omitted stage (1, False)0 REJECTED
+118 coordinated omitted stage (1, False)2 REJECTED
+119 coordinated omitted stage (1, False)5 REJECTED
+120 reordered handler/guard (1, False) REJECTED
+121 duplicate cleanup completion (1, False) REJECTED
+122 cross invocation output (1, False) REJECTED
+123 coordinated reference substitution (1, False)owner REJECTED
+124 coordinated reference substitution (1, False)token REJECTED
+125 coordinated error substitution (1, False) REJECTED
+126 continuity remains conditional (1, False) PASS
+127 exact-type boundary (1, False)('construction_error', 'existing_cause') REJECTED
+128 exact-type boundary (1, False)('construction_error',) REJECTED
+129 exact-type boundary (1, False)('outcomes',) REJECTED
+130 exact-type boundary (1, False)('none_guard_binding',) REJECTED
+131 exact-type boundary (1, False)('output', 'events') REJECTED
+132 nested returned mutation isolation (1, False) PASS
+133 projector exact None binding (1, False) REJECTED
+134 submitted-output exact type (1, False) REJECTED
+135 legitimate prefix (1, True) PASS
+136 distinct occurrence (1, True) PASS
+137 binding/type/unsupported claim (1, True)('construction_error', 'reference') REJECTED
+138 binding/type/unsupported claim (1, True)('construction_error', 'construction_attempt', 'registered_owner', 'symbol') REJECTED
+139 binding/type/unsupported claim (1, True)('construction_error', 'handler_binding_established_by_this_role') REJECTED
+140 binding/type/unsupported claim (1, True)('token_case', 'invocation') REJECTED
+141 binding/type/unsupported claim (1, True)('none_guard_binding', 'guard_result') REJECTED
+142 binding/type/unsupported claim (1, True)('output', 'client_callback_executed_in_model') REJECTED
+143 binding/type/unsupported claim (1, True)('output', 'earlier_control_callback_completed_in_model') REJECTED
+144 binding/type/unsupported claim (1, True)('output', 'exception_chain_observation', 'existing_context') REJECTED
+145 binding/type/unsupported claim (1, True)('output', 'authorization_renewed') REJECTED
+146 source-admitted frontier (1, True)('callback-handler-enter', 'raise') PASS
+147 no guaranteed construction propagation (1, True)('callback-handler-enter', 'raise') REJECTED
+148 source-admitted frontier (1, True)('callback-none-guard', 'raise') PASS
+149 no guaranteed construction propagation (1, True)('callback-none-guard', 'raise') REJECTED
+150 source-admitted frontier (1, True)('callback-bare-rethrow', 'raise') PASS
+151 no guaranteed construction propagation (1, True)('callback-bare-rethrow', 'raise') REJECTED
+152 source-admitted frontier (1, True)('finally-enter', 'raise') PASS
+153 no guaranteed construction propagation (1, True)('finally-enter', 'raise') REJECTED
+154 no fabricated completed removal (1, True)('finally-enter', 'raise') REJECTED
+155 source-admitted frontier (1, True)('removal-attempt', 'raise') PASS
+156 no guaranteed construction propagation (1, True)('removal-attempt', 'raise') REJECTED
+157 no fabricated completed removal (1, True)('removal-attempt', 'raise') REJECTED
+158 source-admitted frontier (1, True)('removal-complete', 'raise') PASS
+159 no guaranteed construction propagation (1, True)('removal-complete', 'raise') REJECTED
+160 no fabricated completed removal (1, True)('removal-complete', 'raise') REJECTED
+161 coordinated omitted stage (1, True)0 REJECTED
+162 coordinated omitted stage (1, True)2 REJECTED
+163 coordinated omitted stage (1, True)5 REJECTED
+164 reordered handler/guard (1, True) REJECTED
+165 duplicate cleanup completion (1, True) REJECTED
+166 cross invocation output (1, True) REJECTED
+167 coordinated reference substitution (1, True)owner REJECTED
+168 coordinated reference substitution (1, True)token REJECTED
+169 coordinated error substitution (1, True) REJECTED
+170 continuity remains conditional (1, True) PASS
+171 exact-type boundary (1, True)('construction_error', 'existing_cause') REJECTED
+172 exact-type boundary (1, True)('construction_error',) REJECTED
+173 exact-type boundary (1, True)('outcomes',) REJECTED
+174 exact-type boundary (1, True)('none_guard_binding',) REJECTED
+175 exact-type boundary (1, True)('output', 'events') REJECTED
+176 nested returned mutation isolation (1, True) PASS
+177 projector exact None binding (1, True) REJECTED
+178 submitted-output exact type (1, True) REJECTED
+179 semantic claim independent expectation (0, ('construction_completed',)) REJECTED
+180 semantic claim independent expectation (0, ('client_callback_execution',)) REJECTED
+181 semantic claim independent expectation (0, ('declaration', 'source', 'selected_slot_value')) REJECTED
+182 semantic claim independent expectation (0, ('declaration', 'source', 'construction_expression', 'site')) REJECTED
+183 semantic claim independent expectation (0, ('declaration', 'guard_branches', 'prefix_control_absent')) REJECTED
+184 semantic claim independent expectation (0, ('scope',)) REJECTED
+185 semantic claim independent expectation (0, ('declaration', 'source', 'selected_slot_exact_type')) REJECTED
+186 semantic claim independent expectation (1, ('construction_completed',)) REJECTED
+187 semantic claim independent expectation (1, ('client_callback_execution',)) REJECTED
+188 semantic claim independent expectation (1, ('declaration', 'source', 'selected_slot_value')) REJECTED
+189 semantic claim independent expectation (1, ('declaration', 'source', 'construction_expression', 'site')) REJECTED
+190 semantic claim independent expectation (1, ('declaration', 'guard_branches', 'prefix_control_absent')) REJECTED
+191 semantic claim independent expectation (1, ('scope',)) REJECTED
+192 semantic claim independent expectation (1, ('declaration', 'source', 'selected_slot_exact_type')) REJECTED
+193 both-context coordinated semantic substitution REJECTED
+194 semantic returned expectations isolated PASS
+195 receipt expectations isolated PASS
+196 stale predecessor evidence REJECTED
+197 missing predecessor evidence REJECTED
+198 public mandatory relation (0, 'client_construction_none_correspondence') REJECTED
+199 public mandatory relation (0, 'control_construction_revocation_correspondence') REJECTED
+200 public mandatory relation (0, 'callback_bare_rethrow_correspondence') REJECTED
+201 public mandatory relation (1, 'client_construction_none_correspondence') REJECTED
+202 public mandatory relation (1, 'control_construction_revocation_correspondence') REJECTED
+203 public mandatory relation (1, 'callback_bare_rethrow_correspondence') REJECTED
+204 public exact bytes input REJECTED
+205 independent constructor source identity PASS
+206 independent exact None and bare raise source PASS
+207 both prefix branches source covered PASS
+208 old context fields byte-preserved PASS
+209 retained control construction route remains connected 0 PASS
+210 retained control construction route remains connected 1 PASS

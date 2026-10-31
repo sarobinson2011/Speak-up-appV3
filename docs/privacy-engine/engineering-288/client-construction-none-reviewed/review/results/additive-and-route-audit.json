@@ -1,0 +1,12 @@
+{
+  "completed_prior_cases_rerun": 0,
+  "new_addition_bytes": 17683,
+  "new_producer_identity": {
+    "bytes": 307101,
+    "sha256": "a879216a176955cc60c76150f1bdc2bfd7bff7b2dfab3b3340361fbe5cb6b2ab"
+  },
+  "prefix_bytes": 289416,
+  "prior_dispatch_route": "New control-construction route calls validated predecessor core; other reviewed branches forward to unchanged predecessor dispatcher",
+  "producer_existing_bytes_exact_prefix": true,
+  "route_evidence": "def _construct_prior(basis, branch, case):\n    exact(case, 'CLIENT-CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT')\n    p = basis['construction_module']\n    b = basis['construction_basis']\n    if branch == 'control-construction':\n        return p._construct_checked(b, case)\n    return p._construct_prior(b, branch, case)"
+}

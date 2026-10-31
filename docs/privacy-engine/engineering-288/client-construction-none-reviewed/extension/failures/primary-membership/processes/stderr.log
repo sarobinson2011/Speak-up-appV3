@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/tests/focused.py", line 19, in <module>
+    data=m.inputs(root);cat=m.catalogue(data);rows,basis=m._checked(data,cat);saved=m.enc(m._assemble(data,rows,basis));rec.save('client-construction-none.json',json.loads(saved));rec.check('actual mandatory derivation creates both contexts',lambda:[c['context'] for c in json.loads(saved)['contexts']]==list(m.CONTEXTS))
+         ^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 42, in inputs
+    root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CLIENT-CONSTRUCTION-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CLIENT-CONSTRUCTION-PRODUCER-PIN')
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 38, in predecessor_root
+    walk(base);require(files==expected and seen==dirs,'CLIENT-CONSTRUCTION-PREDECESSOR-MEMBERSHIP')
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                                    ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                                    ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 36, in walk
+    if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+                                                                                                    ^^^^^^^
+  [Previous line repeated 37 more times]
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 37, in walk
+    else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-CONSTRUCTION-UNDECLARED-OR-NONREGULAR');files.add(n)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/client-construction/input/code/correspondence.py", line 12, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLIENT-CONSTRUCTION-UNDECLARED-OR-NONREGULAR

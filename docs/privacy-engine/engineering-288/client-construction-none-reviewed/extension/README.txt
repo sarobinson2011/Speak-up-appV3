@@ -1,0 +1,1 @@
+One bounded static Client(token) construction failure / exact-None handler / bare-rethrow / token-removal correspondence. Both symbolic contexts; control absent or normally completed earlier control path. Read SEMANTICS.txt, RECOVERY.txt, provenance/changed-files.json and final RESULTS.json. Independent review pending. No application runtime changes.

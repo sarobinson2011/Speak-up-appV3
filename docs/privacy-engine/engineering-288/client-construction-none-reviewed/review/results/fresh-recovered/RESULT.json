@@ -1,0 +1,1415 @@
+{
+  "CLI_execution_claimed": false,
+  "checks": 299,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "public_full_derivations": 1,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "fresh recovered public validation accepts current receipt in both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "authenticated derivation exactly reproduces saved receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "source-derived case and independent oracle (0, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "selected owner removal remains conditional (0, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation does not collapse equal modeled values (0, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-handler-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-handler-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-none-guard', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-none-guard', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'callback-bare-rethrow', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'callback-bare-rethrow', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'finally-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'finally-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'finally-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-attempt', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-attempt', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-attempt', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-complete', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-complete', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, False, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, False, 'removal-complete', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, False, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, False, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, False, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "control history cannot be erased or invented (0, False)",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived case and independent oracle (0, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "selected owner removal remains conditional (0, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation does not collapse equal modeled values (0, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-handler-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-handler-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-none-guard', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-none-guard', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'callback-bare-rethrow', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'callback-bare-rethrow', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'finally-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'finally-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'finally-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-attempt', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-attempt', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-attempt', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-complete', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-complete', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (0, True, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (0, True, 'removal-complete', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, True, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, True, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (0, True, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "control history cannot be erased or invented (0, True)",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('invocation',), 'foreign-invocation')",
+      "error": "CLIENT-CONSTRUCTION-TOKEN-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('context',), 'SYMBOLIC-U-TWO')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('anchor', 'recovery_occurrence'), 'stale-frontier')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'scope', 'acquisition'), 'foreign-acquisition')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'reference'), 'foreign-error')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'), 'foreign-token')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'), 'foreign-owner')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'owner', 'symbol'), 'foreign-owner')",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot_value'), False)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot_value'), 0)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'guard_result'), True)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'guard_result'), 0)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'prior_storage_history'), 'ABSENT')",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('token_case', 'owner_failure_none'), False)",
+      "error": "TOKEN-PREMISE:owner_failure_none",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('token_case', 'owner_failure_none'), 1)",
+      "error": "TOKEN-PREMISE:owner_failure_none",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('none_guard_binding', 'slot'), 'owner.failure')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error',), {'role': 'selected-client-construction-expression-exception', 'scope': {'context': 'SYMBOLIC-U-ONE', 'acquisition': 'sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8', ",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('outcomes',), [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'fina",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'failure_mechanism'), 'MemoryError')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'initializer_progress'), True)",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (0, ('construction_error', 'completed_object_reference'), 'client-object')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (0, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (0, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated construction error substitution 0",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated exact-None substitution 0",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal-key subclasses reject before normalization 0",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'ou",
+      "error": "CLIENT-CONSTRUCTION-MISSING-STEP:removal-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome':",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-constru",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome'",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [])",
+      "error": "CLIENT-CONSTRUCTION-OUTCOMES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (0, [{'stage': 'client-callback', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'rera",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no continuation after cleanup failure 0",
+      "error": "CLIENT-CONSTRUCTION-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'construction_completed_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'client_callback_executed_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'new_explicit_cause_assignment_established_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'construction_reaches_launcher_established')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'run_success_established')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'runtime_observation')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'obligations_discharged')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'authorization_renewed')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (0, 'actual_admission')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "bare rethrow cannot erase existing-cause uncertainty 0",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned projection mutation leaves expectations intact 0",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'construction_completed')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'client_callback_execution')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'exception_chain_observation')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'prior_failure_storage_history')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'classification')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (0, 'multiplicity')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic wrong-instance predecessor 0",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omitted link 0",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived case and independent oracle (1, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "selected owner removal remains conditional (1, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation does not collapse equal modeled values (1, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-handler-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-handler-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-none-guard', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-none-guard', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'callback-bare-rethrow', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'callback-bare-rethrow', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'finally-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'finally-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'finally-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-attempt', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-attempt', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-attempt', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-complete', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-complete', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, False, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, False, 'removal-complete', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, False, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, False, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, False, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "control history cannot be erased or invented (1, False)",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source-derived case and independent oracle (1, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "selected owner removal remains conditional (1, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "distinct invocation does not collapse equal modeled values (1, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-handler-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-handler-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-none-guard', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-none-guard', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'callback-bare-rethrow', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'callback-bare-rethrow', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'finally-enter', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'finally-enter', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'finally-enter', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'finally-enter', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'finally-enter', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'finally-enter', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-attempt', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-attempt', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-attempt', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-complete', 'raise')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-complete', 'process-termination')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "failure or uncertainty oracle (1, True, 'removal-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "unestablished continuation rejects (1, True, 'removal-complete', 'unobserved')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, True, 'callback-handler-enter')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, True, 'callback-none-guard')",
+      "result": "PASS"
+    },
+    {
+      "check": "handler replacement followed by cleanup replacement (1, True, 'callback-bare-rethrow')",
+      "result": "PASS"
+    },
+    {
+      "check": "control history cannot be erased or invented (1, True)",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('invocation',), 'foreign-invocation')",
+      "error": "CLIENT-CONSTRUCTION-TOKEN-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('context',), 'SYMBOLIC-U-ONE')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('anchor', 'recovery_occurrence'), 'stale-frontier')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'scope', 'acquisition'), 'foreign-acquisition')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'reference'), 'foreign-error')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'construction_attempt', 'argument_token', 'symbol'), 'foreign-token')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'construction_attempt', 'registered_owner', 'symbol'), 'foreign-owner')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'owner', 'symbol'), 'foreign-owner')",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot_value'), False)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot_value'), 0)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'guard_result'), True)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'guard_result'), 0)",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'prior_storage_history'), 'ABSENT')",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('token_case', 'owner_failure_none'), False)",
+      "error": "TOKEN-PREMISE:owner_failure_none",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('token_case', 'owner_failure_none'), 1)",
+      "error": "TOKEN-PREMISE:owner_failure_none",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('none_guard_binding', 'slot'), 'owner.failure')",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error',), {'role': 'selected-client-construction-expression-exception', 'scope': {'context': 'SYMBOLIC-U-TWO', 'acquisition': 'sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8', ",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('outcomes',), [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'fina",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'failure_mechanism'), 'MemoryError')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'initializer_progress'), True)",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "binding exact-type or unsupported mechanism (1, ('construction_error', 'completed_object_reference'), 'client-object')",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (1, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (1, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated construction error substitution 1",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated exact-None substitution 1",
+      "error": "CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal-key subclasses reject before normalization 1",
+      "error": "CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'ou",
+      "error": "CLIENT-CONSTRUCTION-MISSING-STEP:removal-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-construction'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome':",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [{'stage': 'removal-complete', 'outcome': 'normal'}, {'stage': 'removal-attempt', 'outcome': 'normal'}, {'stage': 'finally-enter', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'reraised-constru",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [{'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome'",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [])",
+      "error": "CLIENT-CONSTRUCTION-OUTCOMES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted duplicated reordered or invented stage (1, [{'stage': 'client-callback', 'outcome': 'normal'}, {'stage': 'callback-handler-enter', 'outcome': 'normal'}, {'stage': 'callback-none-guard', 'outcome': 'normal'}, {'stage': 'callback-bare-rethrow', 'outcome': 'rera",
+      "error": "CLIENT-CONSTRUCTION-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "no continuation after cleanup failure 1",
+      "error": "CLIENT-CONSTRUCTION-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'construction_completed_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'client_callback_executed_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'new_explicit_cause_assignment_established_in_model')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'construction_reaches_launcher_established')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'run_success_established')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'runtime_observation')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'obligations_discharged')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'authorization_renewed')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output escalation (1, 'actual_admission')",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "bare rethrow cannot erase existing-cause uncertainty 1",
+      "error": "CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned projection mutation leaves expectations intact 1",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'construction_completed')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'client_callback_execution')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'exception_chain_observation')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'prior_failure_storage_history')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'classification')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic coordinated unsupported claim (1, 'multiplicity')",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic wrong-instance predecessor 1",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omitted link 1",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context order",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic missing context",
+      "error": "CLIENT-CONSTRUCTION-CLAIM-CONTEXT-DOMAIN",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic duplicate context",
+      "error": "CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "returned semantic rows cannot alter new expectations",
+      "result": "PASS"
+    },
+    {
+      "check": "nested derived receipt mutation cannot alter expectations",
+      "result": "PASS"
+    },
+    {
+      "check": "altered authenticated evidence",
+      "error": "CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted authenticated evidence",
+      "error": "CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'client_construction_none_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'control_construction_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'control_exception_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'callback_bare_rethrow_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'callback_stored_failure_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'stored_failure_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (0, 'token_registration_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'client_construction_none_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'control_construction_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'control_exception_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'callback_bare_rethrow_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'callback_stored_failure_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'stored_failure_revocation_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory relation (1, 'token_registration_correspondence')",
+      "error": "CLIENT-CONSTRUCTION-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "Fresh recovered public positive plus bounded checked cores using its actual authenticated basis; no separate full-public negative derivation per mutant",
+  "seconds": 2252.8179281429984,
+  "session_operations": 0
+}
