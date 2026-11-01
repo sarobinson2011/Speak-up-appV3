@@ -1,0 +1,76 @@
+{
+  "CRC": "PASS",
+  "entries": 3771,
+  "frozen_members": {
+    "ld01/preparation/frozen-manifest.json": 3653,
+    "ld01/provenance/recovery-cut-manifest.json": 3655
+  },
+  "implementation": {
+    "after": {
+      "bytes": 14726,
+      "sha256": "70b5aba7e573100f3d73d5d710ad5f2f990f1d3c6b9dcc684828dd833914dc76"
+    },
+    "before": {
+      "bytes": 14283,
+      "sha256": "732d5d42928151ba4ee8efa163499a25e9400ad43d6ae05fcccbaf64be3c04b5"
+    },
+    "historical_results": "UNCHANGED",
+    "only_existing_implementation_change": "code/correspondence.py:_public_predecessor",
+    "other_function_AST_and_outside_bytes": "UNCHANGED",
+    "predecessor_public_validator": "UNCHANGED",
+    "producer": "UNCHANGED",
+    "runtime_sources": "UNCHANGED"
+  },
+  "input": {
+    "bytes": 139583348,
+    "sha256": "e4accc10b74390d08266853a0da649c8e4c235ce839bbf2b9bb9548926f7c97c"
+  },
+  "intermediate_compressed_archives_freshly_verified": false,
+  "manifest": {
+    "bytes": 1313785,
+    "sha256": "a0a0f40e02254798c0e5b8e3e35d8b46850fa9ac0721e32f3043ab211c28a679"
+  },
+  "manifested_hashes": 3770,
+  "only_changed_function": "_public_predecessor",
+  "original_declared_members_preserved": 3556,
+  "prior_review_noninput_files_verified": 79,
+  "receipt": {
+    "corrected": {
+      "bytes": 10456658,
+      "sha256": "d5b11ed9c09fa335c05c8a2f26201a71bc263466d5a1d48ad51b4994bd1c50cd"
+    },
+    "original": {
+      "bytes": 10456658,
+      "sha256": "f500f19ddddfd3cd00304708fb8ada0ee149642e5359f619ed0fbe86d9273bdc"
+    },
+    "preparation_not_validation": true,
+    "sole_path": "/extension_components/correspondence.py"
+  },
+  "roots": {
+    "original": {
+      "directories": 1009,
+      "exact_membership": "PASS",
+      "files": 3556,
+      "hashes": "PASS",
+      "root": "/workspace/review-evidence/FL6-LD01-20261101/original"
+    },
+    "primary": {
+      "directories": 1051,
+      "exact_membership": "PASS",
+      "files": 3771,
+      "hashes": "PASS",
+      "root": "/workspace/review-evidence/FL6-LD01-20261101/primary"
+    },
+    "recovered": {
+      "directories": 1051,
+      "exact_membership": "PASS",
+      "files": 3771,
+      "hashes": "PASS",
+      "root": "/workspace/review-evidence/FL6-LD01-20261101/recovered"
+    }
+  },
+  "safe_exact_membership": "PASS",
+  "sole_changed_existing_member": [
+    "code/correspondence.py"
+  ]
+}

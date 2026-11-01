@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/ld01-review/code/audit.py", line 22, in <module>
+    a=prior/'results'/actual;p=prior/'processes'/actual;g=reconcile(a/'RESULT.json',a/'progress.jsonl',p/'stdout.log',p/'exit-status.json');assert g['rows']==priorcp['independent_groups'][label]['rows'];assert g['result_identity']==priorcp['independent_groups'][label]['result_identity'];priorgroups[label]=g
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ld01-review/code/audit.py", line 8, in reconcile
+    r=js(result.read_bytes());rows=[js(x) for x in progress.read_text().splitlines()];printed=[x for x in stdout.read_text().splitlines() if x and x.split(' ',1)[0].isdigit()];e=js(exit.read_bytes());assert r['rows']==rows and r['checks']==len(rows)==len(printed)
+                                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/review-evidence/FL6-LD01-20261101/primary/retained/ld01-review/review/results/audit-completion/progress.jsonl'

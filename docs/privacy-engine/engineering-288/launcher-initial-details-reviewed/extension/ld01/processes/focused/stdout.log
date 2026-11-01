@@ -1,0 +1,78 @@
+1 only _public_predecessor AST changed PASS
+2 all bytes outside changed function unchanged PASS
+3 unchanged actual predecessor public call PASS
+4 unchanged public result basis and receipt checks PASS
+5 unchanged passive basis-return callback PASS
+6 reservation and callback setup inside protecting try PASS
+7 marker and basis-code bookkeeping before acquisition PASS
+8 recorded monitoring API returns identical reserved name object PASS
+9 same interruption escapes after cleanup line-captures PASS
+10 candidate released lease callback and events line-captures PASS
+11 no synthetic predecessor execution before interrupted frontier line-captures PASS
+12 same interruption escapes after cleanup line-lease PASS
+13 candidate released lease callback and events line-lease PASS
+14 no synthetic predecessor execution before interrupted frontier line-lease PASS
+15 same interruption escapes after cleanup line-try PASS
+16 candidate released lease callback and events line-try PASS
+17 no synthetic predecessor execution before interrupted frontier line-try PASS
+18 same interruption escapes after cleanup line-acquire PASS
+19 candidate released lease callback and events line-acquire PASS
+20 no synthetic predecessor execution before interrupted frontier line-acquire PASS
+21 same interruption escapes after cleanup line-capture PASS
+22 candidate released lease callback and events line-capture PASS
+23 no synthetic predecessor execution before interrupted frontier line-capture PASS
+24 same interruption escapes after cleanup line-register PASS
+25 candidate released lease callback and events line-register PASS
+26 no synthetic predecessor execution before interrupted frontier line-register PASS
+27 same interruption escapes after cleanup line-local PASS
+28 candidate released lease callback and events line-local PASS
+29 no synthetic predecessor execution before interrupted frontier line-local PASS
+30 same interruption escapes after cleanup line-predecessor PASS
+31 candidate released lease callback and events line-predecessor PASS
+32 no synthetic predecessor execution before interrupted frontier line-predecessor PASS
+33 same interruption escapes after cleanup c_call-use_tool_id PASS
+34 candidate released lease callback and events c_call-use_tool_id PASS
+35 no synthetic predecessor execution before interrupted frontier c_call-use_tool_id PASS
+36 same interruption escapes after cleanup c_return-use_tool_id PASS
+37 candidate released lease callback and events c_return-use_tool_id PASS
+38 no synthetic predecessor execution before interrupted frontier c_return-use_tool_id PASS
+39 same interruption escapes after cleanup c_call-register_callback PASS
+40 candidate released lease callback and events c_call-register_callback PASS
+41 no synthetic predecessor execution before interrupted frontier c_call-register_callback PASS
+42 same interruption escapes after cleanup c_return-register_callback PASS
+43 candidate released lease callback and events c_return-register_callback PASS
+44 no synthetic predecessor execution before interrupted frontier c_return-register_callback PASS
+45 same interruption escapes after cleanup c_call-set_local_events PASS
+46 candidate released lease callback and events c_call-set_local_events PASS
+47 no synthetic predecessor execution before interrupted frontier c_call-set_local_events PASS
+48 same interruption escapes after cleanup c_return-set_local_events PASS
+49 candidate released lease callback and events c_return-set_local_events PASS
+50 no synthetic predecessor execution before interrupted frontier c_return-set_local_events PASS
+51 exact synthetic predecessor exception preserved predecessor-failureValueError PASS
+52 release after synthetic predecessor exception predecessor-failureValueError PASS
+53 exact synthetic predecessor exception preserved predecessor-failureKeyboardInterrupt PASS
+54 release after synthetic predecessor exception predecessor-failureKeyboardInterrupt PASS
+55 exact synthetic predecessor exception preserved predecessor-failureSystemExit PASS
+56 release after synthetic predecessor exception predecessor-failureSystemExit PASS
+57 exact synthetic predecessor exception preserved basis-failureKeyboardInterrupt PASS
+58 release after synthetic predecessor exception basis-failureKeyboardInterrupt PASS
+59 missing synthetic basis remains fail-closed REJECTED
+60 missing basis rejection releases lease PASS
+61 synthetic normal return captures exact basis PASS
+62 returned public metadata remains detached PASS
+63 normal synthetic completion releases lease PASS
+64 genuine contention preserves gate REJECTED
+65 foreign lease survives existing PASS
+66 foreign global and local events unchanged existing PASS
+67 foreign callback unchanged existing PASS
+68 foreign reservation prevents predecessor call existing PASS
+69 foreign lease survives before-acquisition PASS
+70 foreign global and local events unchanged before-acquisition PASS
+71 foreign callback unchanged before-acquisition PASS
+72 foreign reservation prevents predecessor call before-acquisition PASS
+73 foreign lease survives equal-valued-marker PASS
+74 foreign global and local events unchanged equal-valued-marker PASS
+75 foreign callback unchanged equal-valued-marker PASS
+76 foreign reservation prevents predecessor call equal-valued-marker PASS
+77 nested invocation cannot release outer lease PASS
+78 outer owner releases normally PASS

@@ -1,0 +1,24 @@
+{
+  "candidate_code_changed": false,
+  "constructed_not_runtime_observation": true,
+  "effect": "Fail-closed process-local reuse failure; no false receipt acceptance or admission",
+  "finding": "LD-01",
+  "minimal_repair_direction": "Extend guaranteed release to the whole successful-lease lifetime, including setup before callback registration; implementation not changed here.",
+  "observed": {
+    "file": "/workspace/i164-ld01-correction/retained/original/code/correspondence.py",
+    "function": "_public_predecessor",
+    "line": 58,
+    "offset": 176,
+    "tool_owner_before_interrupt": "launcher-details-authenticated-predecessor"
+  },
+  "original_trace_preserved": true,
+  "scope": "Monitoring setup failure cleanup",
+  "source": {
+    "bytes": 14283,
+    "sha256": "732d5d42928151ba4ee8efa163499a25e9400ad43d6ae05fcccbaf64be3c04b5"
+  },
+  "subsequent_rejection_layer": "Monitoring contention gate before predecessor public validation; not receipt comparison",
+  "target": "I164-launcher-initial-details-correspondence-1.zip",
+  "verdict": "NOT-CLOSED",
+  "witness": "Reserve monitoring slot2, then inject KeyboardInterrupt at source-derived callback-definition line before try/finally. The lease remains owned; unchanged pristine public validation then rejects DETAILS-MONITORING-CONTENTION."
+}

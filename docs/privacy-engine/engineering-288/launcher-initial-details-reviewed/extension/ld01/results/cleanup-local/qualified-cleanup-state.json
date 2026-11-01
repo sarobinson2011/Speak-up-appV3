@@ -1,0 +1,24 @@
+{
+  "after": {
+    "callback_was_absent": true,
+    "global_events": 0,
+    "local_events": 4,
+    "owner": null,
+    "probe_changed_callback": false
+  },
+  "callback_probe_restores_any_observed_callback": true,
+  "candidate_cleanup_complete": false,
+  "injection": {
+    "c_function": "set_local_events",
+    "event": "c_call",
+    "lease_in_frame": "launcher-details-authenticated-predecessor:139747850056448",
+    "line": 74,
+    "offset": 1364,
+    "owner_before": "launcher-details-authenticated-predecessor:139747850056448",
+    "owner_is_invocation_marker": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/i164-ld01-correction/input/code/correspondence.py\", line 68, in _public_predecessor\n    result=p.validate(data['prior_root'],data['prior_saved'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/i164-ld01-correction/input/ld01/tests/lease_cases.py\", line 14, in validate\n    if mode=='predecessor-failure':raise error\n                                   ^^^^^^^^^^^\nValueError: LD01-SYNTHETIC-ORIGINAL\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/i164-ld01-correction/input/ld01/tests/lease_cases.py\", line 47, in interrupt\n    try:m._public_predecessor(data)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/i164-ld01-correction/input/code/correspondence.py\", line 74, in _public_predecessor\n    sm.set_local_events(2,basis_code,0)\n  File \"/workspace/i164-ld01-correction/input/ld01/tests/lease_cases.py\", line 41, in inject\n    raise error\nKeyboardInterrupt: LD01-CONSTRUCTED-CLEANUP-INTERRUPTION\n"
+  },
+  "no_post_failure_reuse_demonstrated": true,
+  "reviewer_lease_release": false,
+  "termination_or_restart_not_candidate_cleanup": true
+}

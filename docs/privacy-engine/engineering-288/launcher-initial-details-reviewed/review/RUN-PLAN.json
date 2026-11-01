@@ -1,0 +1,42 @@
+{
+  "scope": "LD-01 closure only; prior bounded source correspondence reused",
+  "author": "Formal-Lab[6]",
+  "implementation_author": "SU-Engineering[288D]",
+  "candidate_modified": false,
+  "target": "I164-LD01-monitoring-lease-correction-1.zip",
+  "new_groups": {
+    "focused": {
+      "timeout_seconds": 300,
+      "scope": "real monitoring API with synthetic predecessors"
+    },
+    "original-witness": {
+      "timeout_seconds": 120,
+      "scope": "one preserved baseline witness on exact original root"
+    },
+    "qualified-cleanup": {
+      "groups": [
+        "local",
+        "callback",
+        "release",
+        "repeated"
+      ],
+      "timeout_seconds_each": 120,
+      "successful_release_or_reuse_claim": false
+    },
+    "public-recovered": {
+      "timeout_seconds": 3600,
+      "tool_session_id": 3212,
+      "process_label": "public-recovered",
+      "scope": "one actual current public validation in the same process following two candidate-cleaned interruptions",
+      "no_duplicate": true
+    }
+  },
+  "explicit_limits": [
+    "no completed campaign replay",
+    "no implementation/runtime changes",
+    "no requests/acquisitions/database/session operations",
+    "no Git save or policy change",
+    "SOURCE-ONLY",
+    "admission disabled"
+  ]
+}

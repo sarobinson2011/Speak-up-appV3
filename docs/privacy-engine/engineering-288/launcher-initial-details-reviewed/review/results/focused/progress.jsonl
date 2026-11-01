@@ -1,0 +1,52 @@
+{"check": "try covers use_tool_id before callback construction", "result": "PASS"}
+{"check": "capture buffer code binding and marker prepared before acquisition", "result": "PASS"}
+{"check": "release uses exact get_tool marker identity", "result": "PASS"}
+{"check": "three cleanup attempts are nested in finally order", "result": "PASS"}
+{"check": "actual unchanged public validator and authenticated reassembly retained", "result": "PASS"}
+{"check": "synthetic successful one-return monitoring", "result": "PASS"}
+{"check": "synthetic normal completion leaves checked state clean", "result": "PASS"}
+{"check": "returned synthetic objects do not alter next expectations", "result": "PASS"}
+{"check": "pre-existing owner rejects before predecessor work", "result": "REJECTED", "error": "DETAILS-MONITORING-CONTENTION"}
+{"check": "foreign reservation and exact marker object preserved", "result": "PASS"}
+{"check": "foreign global and local event masks preserved", "result": "PASS"}
+{"check": "foreign callback preserved", "result": "PASS"}
+{"check": "native failed acquisition (False, 'line')", "result": "PASS"}
+{"check": "ownership discrimination despite equal values (False, 'line')", "result": "PASS"}
+{"check": "failed acquisition preserves masks (False, 'line')", "result": "PASS"}
+{"check": "failed acquisition preserves callback and skips predecessor (False, 'line')", "result": "PASS"}
+{"check": "native failed acquisition (True, 'line')", "result": "PASS"}
+{"check": "ownership discrimination despite equal values (True, 'line')", "result": "PASS"}
+{"check": "failed acquisition preserves masks (True, 'line')", "result": "PASS"}
+{"check": "failed acquisition preserves callback and skips predecessor (True, 'line')", "result": "PASS"}
+{"check": "native failed acquisition (False, 'c_call')", "result": "PASS"}
+{"check": "ownership discrimination despite equal values (False, 'c_call')", "result": "PASS"}
+{"check": "failed acquisition preserves masks (False, 'c_call')", "result": "PASS"}
+{"check": "failed acquisition preserves callback and skips predecessor (False, 'c_call')", "result": "PASS"}
+{"check": "native failed acquisition (True, 'c_call')", "result": "PASS"}
+{"check": "ownership discrimination despite equal values (True, 'c_call')", "result": "PASS"}
+{"check": "failed acquisition preserves masks (True, 'c_call')", "result": "PASS"}
+{"check": "failed acquisition preserves callback and skips predecessor (True, 'c_call')", "result": "PASS"}
+{"check": "nested invocation rejects without disturbing outer lease", "result": "PASS"}
+{"check": "outer validator still captures normal return and cleans resources", "result": "PASS"}
+{"check": "partial setup preserves original error register_callback-c_call", "result": "PASS"}
+{"check": "partial setup cleans checked state register_callback-c_call", "result": "PASS"}
+{"check": "partial setup preserves original error register_callback-c_return", "result": "PASS"}
+{"check": "partial setup cleans checked state register_callback-c_return", "result": "PASS"}
+{"check": "partial setup preserves original error set_local_events-c_call", "result": "PASS"}
+{"check": "partial setup cleans checked state set_local_events-c_call", "result": "PASS"}
+{"check": "partial setup preserves original error set_local_events-c_return", "result": "PASS"}
+{"check": "partial setup cleans checked state set_local_events-c_return", "result": "PASS"}
+{"check": "predecessor error identity and existing cause retained before-RuntimeError", "result": "PASS"}
+{"check": "predecessor failure cleanup before-RuntimeError", "result": "PASS"}
+{"check": "predecessor error identity and existing cause retained after-KeyboardInterrupt", "result": "PASS"}
+{"check": "predecessor failure cleanup after-KeyboardInterrupt", "result": "PASS"}
+{"check": "predecessor error identity and existing cause retained after-SystemExit", "result": "PASS"}
+{"check": "predecessor failure cleanup after-SystemExit", "result": "PASS"}
+{"check": "synthetic validation failure missing", "result": "REJECTED", "error": "DETAILS-PUBLIC-PREDECESSOR-RESULT"}
+{"check": "validation failure releases checked state missing", "result": "PASS"}
+{"check": "synthetic validation failure extra", "result": "REJECTED", "error": "DETAILS-UNEXPECTED-BASIS-RETURN"}
+{"check": "validation failure releases checked state extra", "result": "PASS"}
+{"check": "synthetic validation failure wrong-result", "result": "REJECTED", "error": "DETAILS-PUBLIC-PREDECESSOR-RESULT"}
+{"check": "validation failure releases checked state wrong-result", "result": "PASS"}
+{"check": "synthetic validation failure wrong-basis", "result": "REJECTED", "error": "DETAILS-AUTHENTICATED-BASIS-RECEIPT"}
+{"check": "validation failure releases checked state wrong-basis", "result": "PASS"}

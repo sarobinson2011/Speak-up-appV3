@@ -1,0 +1,7 @@
+{
+  "actual_validation": "Separate fresh-recovered process must call exact unchanged predecessor public validator once",
+  "reviewer_monitor_slot": 4,
+  "slot": 2,
+  "source_wiring": "def _basis(data):\n    fresh = inputs(data['root'])\n    pb, public = _public_predecessor(fresh)\n    p = fresh['prior_module']\n    require(sources(fresh) == p.sources(pb['fresh'])[:2], 'DETAILS-AUTHENTICATED-SOURCES')\n    cat = fresh['coverage'].compile_launcher_details(*sources(fresh), pb['catalogue'])\n    return {'fresh': fresh, 'prior': copy.deepcopy(fresh['prior']), 'prior_basis': pb, 'prior_module': p, 'public_predecessor': public, 'catalogue': cat, 'evidence': dict(pb['evidence'])}",
+  "synthetic_tests": "Monitoring plumbing only; not actual predecessor authentication"
+}

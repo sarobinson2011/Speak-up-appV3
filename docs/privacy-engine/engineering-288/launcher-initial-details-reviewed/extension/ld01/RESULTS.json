@@ -1,0 +1,264 @@
+{
+  "actual_reuse": "Both actual full positives occur in the same process as corrected interruption, with candidate cleanup already observed and no reviewer release/restart",
+  "author": "SU-Engineering[288D]",
+  "checkpoint": "I164-LD01-monitoring-lease-correction-1",
+  "failure_qualification": "Cleanup failure and termination do not establish completed release; synthetic qualified residual states are separate; original witness reviewer cleanup is not candidate cleanup",
+  "frozen_corrected_inputs_unchanged": true,
+  "historical_qualifications": "All retained without repaired or combined totals",
+  "implementation": {
+    "after": {
+      "bytes": 14726,
+      "sha256": "70b5aba7e573100f3d73d5d710ad5f2f990f1d3c6b9dcc684828dd833914dc76"
+    },
+    "before": {
+      "bytes": 14283,
+      "sha256": "732d5d42928151ba4ee8efa163499a25e9400ad43d6ae05fcccbaf64be3c04b5"
+    },
+    "historical_results": "UNCHANGED",
+    "only_existing_implementation_change": "code/correspondence.py:_public_predecessor",
+    "other_function_AST_and_outside_bytes": "UNCHANGED",
+    "predecessor_public_validator": "UNCHANGED",
+    "producer": "UNCHANGED",
+    "runtime_sources": "UNCHANGED"
+  },
+  "independent_closure": "PENDING; author controls do not independently close LD-01",
+  "name_identity_scope": "Recorded CPython3.12.14 profile; no generic alternative-runtime or adversarial concurrent ownership guarantee",
+  "new_groups_separate": {
+    "acquisition-races": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:19:23.623510+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2.771831188998476,
+        "timed_out": false
+      },
+      "kind": "New actual reservation failure controls with synthetic predecessor",
+      "recorded_rows": 10,
+      "result": {
+        "bytes": 1622,
+        "sha256": "e67e4a34b81b98b76ee02edb0c4228940545783d04d246f6533d8827d148de54"
+      },
+      "scope": "Separate LD01 actual acquisition-failure races with synthetic predecessor; preserves completed focused group without replay",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "cleanup-callback": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:17:52.005865+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2.5734868649960845,
+        "timed_out": false
+      },
+      "kind": "Qualified cleanup-failure observations; no successful cleanup/reuse claim",
+      "recorded_rows": 2,
+      "result": {
+        "bytes": 839,
+        "sha256": "d05825299cdbfdc4cd76dfb6e0f3f323712a28fb95d56a153737db426b44bbec"
+      },
+      "scope": "Qualified synthetic cleanup-failure observation; not a candidate successful-release or reuse control",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "cleanup-local": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:17:52.401563+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2.9727593310017255,
+        "timed_out": false
+      },
+      "kind": "Qualified cleanup-failure observations; no successful cleanup/reuse claim",
+      "recorded_rows": 2,
+      "result": {
+        "bytes": 857,
+        "sha256": "5c7275b005d3ac431d5f1c33e46612f37c9706b78957400ce8e7b1bf10f1cec7"
+      },
+      "scope": "Qualified synthetic cleanup-failure observation; not a candidate successful-release or reuse control",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "cleanup-release": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:17:52.551829+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 3.1230195259995526,
+        "timed_out": false
+      },
+      "kind": "Qualified cleanup-failure observations; no successful cleanup/reuse claim",
+      "recorded_rows": 2,
+      "result": {
+        "bytes": 849,
+        "sha256": "d2046bbe58d2d84c7ba7e7f46c2999db31ca9d934df6c140308d2ed40914ac86"
+      },
+      "scope": "Qualified synthetic cleanup-failure observation; not a candidate successful-release or reuse control",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "focused": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:17:52.705447+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 3.2733556540042628,
+        "timed_out": false
+      },
+      "kind": "New source/real-monitoring controls with synthetic predecessor",
+      "recorded_rows": 78,
+      "result": {
+        "bytes": 9691,
+        "sha256": "0ca8ad506babe1bbdd7edf7b1f8f9608fab66bb14311e4b42f053ddcd24195bd"
+      },
+      "scope": "LD01 source wiring and real-monitoring controls with synthetic predecessor only; no full predecessor authentication",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "original-witness": {
+      "exit": {
+        "finished_utc": "2026-10-31T17:11:19.572737+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 7.540246690005006,
+        "timed_out": false
+      },
+      "kind": "Two original defect observations; not passing acceptance controls",
+      "recorded_rows": 2,
+      "result": {
+        "bytes": 923,
+        "sha256": "65c16d066b948895011af11732d65f7894c4ec8255e3903decbc8bd3447b1e75"
+      },
+      "scope": "One new bounded constructed interruption witness; observed defect rows are not passing acceptance controls; no full predecessor review replay",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "primary": {
+      "actual_current_public_positives": 1,
+      "actual_public_contention_gate_negatives": 1,
+      "actual_unchanged_predecessor_public_positives": 1,
+      "exit": {
+        "finished_utc": "2026-10-31T18:02:31.051143+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2478.907092718,
+        "timed_out": false
+      },
+      "full_public_negative_derivations_claimed": 0,
+      "kind": "Actual same-process public reuse after corrected source-boundary interruption",
+      "recorded_calls": {
+        "current": {
+          "_basis": 2,
+          "_checked": 2,
+          "validate": 2
+        },
+        "predecessor": {
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        }
+      },
+      "recorded_rows": 12,
+      "result": {
+        "bytes": 2304,
+        "sha256": "d2add18ce46905c4eb1bd485c3e48c37c4aab58328f23c76f93e26dac1643ec3"
+      },
+      "scope": "LD01 actual same-process pristine public reuse after candidate cleanup; unchanged predecessor validator; saved inputs only",
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "recovered": {
+      "actual_current_public_positives": 1,
+      "actual_public_contention_gate_negatives": 1,
+      "actual_unchanged_predecessor_public_positives": 1,
+      "exit": {
+        "finished_utc": "2026-10-31T18:03:05.416908+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2513.2728249920037,
+        "timed_out": false
+      },
+      "full_public_negative_derivations_claimed": 0,
+      "kind": "Actual same-process public reuse after corrected C-return interruption in recovered root",
+      "recorded_calls": {
+        "current": {
+          "_basis": 2,
+          "_checked": 2,
+          "validate": 2
+        },
+        "predecessor": {
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        }
+      },
+      "recorded_rows": 12,
+      "result": {
+        "bytes": 2310,
+        "sha256": "d0dc3faa413b7497df07419eec8ea3eeef758bf4b2605a669d66b40e98876ee2"
+      },
+      "scope": "LD01 actual same-process pristine public reuse after candidate cleanup; unchanged predecessor validator; saved inputs only",
+      "stdout_progress_RESULT_reconciled": true
+    }
+  },
+  "original_declared_members_recoverable_exactly": true,
+  "preservation": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": true,
+    "actual_admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "Separate; unchanged",
+    "both_contexts_and_control_prefixes": "UNCHANGED",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN_totals": 4,
+    "lifetime_UNKNOWN_totals": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "stop_before_launcher_cleanup_loop_169": true,
+    "streams": "UNCOMPUTED"
+  },
+  "prior_Engineering": {
+    "primary": 862,
+    "recovered": 391,
+    "source": 66,
+    "zero_control_failures": 3
+  },
+  "prior_bounded_source_support": "PRESERVED",
+  "prior_independent": {
+    "completed": 523,
+    "defect_observations": 2,
+    "qualified_rows": 80,
+    "subsequent_audit": "zero-replay"
+  },
+  "prior_review_verdict": "NOT ACCEPTED AS COMPLETE \u2014 LD-01",
+  "prohibited_operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_campaign_replays": 0,
+    "database_connections": 0,
+    "policy_changes": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "receipt_update": {
+    "actual_public_validation_required": true,
+    "after": {
+      "bytes": 14726,
+      "sha256": "70b5aba7e573100f3d73d5d710ad5f2f990f1d3c6b9dcc684828dd833914dc76"
+    },
+    "before": {
+      "bytes": 14283,
+      "sha256": "732d5d42928151ba4ee8efa163499a25e9400ad43d6ae05fcccbaf64be3c04b5"
+    },
+    "contexts_and_model_correspondence_unchanged": true,
+    "corrected_receipt": {
+      "bytes": 10456658,
+      "sha256": "d5b11ed9c09fa335c05c8a2f26201a71bc263466d5a1d48ad51b4994bd1c50cd"
+    },
+    "no_submitted_receipt_repair": true,
+    "old_receipt": {
+      "bytes": 10456658,
+      "sha256": "f500f19ddddfd3cd00304708fb8ada0ee149642e5359f619ed0fbe86d9273bdc"
+    },
+    "preparation_not_validation": true,
+    "sole_changed_path": "/extension_components/correspondence.py"
+  },
+  "runtime_observations": "UNAVAILABLE",
+  "validation_layers": "Actual public contention-gate negatives; real API interruption/synthetic predecessor controls; authenticated receipt-comparison-core stale receipt; no full public negative derivation claimed"
+}

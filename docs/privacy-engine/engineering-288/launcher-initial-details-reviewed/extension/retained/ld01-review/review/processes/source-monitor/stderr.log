@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/lid-review/code/source_monitor.py", line 87, in <module>
+    assert b==a+b'\n\n'+(root/'tools/producer-addition.py').read_bytes();aa=ast.parse(a);bb=ast.parse(b);assert len(bb.body)==len(aa.body)+6 and sum(isinstance(x,ast.FunctionDef) for x in aa.body)==129 and all(ast.dump(x)==ast.dump(y) for x,y in zip(aa.body,bb.body))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

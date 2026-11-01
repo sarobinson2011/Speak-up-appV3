@@ -1,0 +1,862 @@
+{"check": "new mandatory derivation accepts both contexts after actual predecessor public validation", "result": "PASS"}
+{"check": "legitimate complete initial details (0, False)", "result": "PASS"}
+{"check": "distinct invocation remains distinct (0, False)", "result": "PASS"}
+{"check": "selected owner continuity remains conditional (0, False)", "result": "PASS"}
+{"check": "unestablished delivery does not reach handler (0, False)", "result": "PASS"}
+{"check": "false continuation without delivery premise (0, False)", "result": "REJECTED", "error": "DETAILS-UNESTABLISHED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('context',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented claim (0, False)('invocation',)", "result": "REJECTED", "error": "DETAILS-PARENT-INVOCATION"}
+{"check": "wrong binding or invented claim (0, False)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented claim (0, False)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, False)('parent_output', 'removal_completed_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, False)('parent_output', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'selected_error', 'construction_attempt', 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'instance_anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'launcher_name')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('delivery_binding', 'route', 2, 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'dynamic_fields', 1, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'dynamic_fields', 2, 'formatted_bytes')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'cleanup_loop_entered')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'normal_managed_close_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'managed_clear_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'ACTIVE_unlink_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'failure_file_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'outward_propagation_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'runtime_handler_arrival')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'authorization_renewed')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, False)('output', 'launcher_e_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('run-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('run-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('run-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('run-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('run-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('run-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-inner-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-inner-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-inner-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-inner-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('session-inner-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('session-inner-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('private-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('private-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('private-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('private-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('private-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('private-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('launcher-handler-entry', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('launcher-handler-entry', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('launcher-handler-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('launcher-handler-entry', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('launcher-handler-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('launcher-handler-entry', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-evaluation-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-evaluation-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-evaluation-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-evaluation-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-evaluation-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-evaluation-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-key-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-key-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-value-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-value-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-dict-completion', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-dict-completion', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-dict-completion', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-dict-completion', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-dict-completion', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-dict-completion', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-complete', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-complete', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-complete', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, False)('details-assignment-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, False)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "predecessor supports handler replacement with completed removal (0, False)callback-handler-enter", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, False)callback-handler-enter", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (0, False)callback-none-guard", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, False)callback-none-guard", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (0, False)callback-bare-rethrow", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, False)callback-bare-rethrow", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "missing stage (0, False)0", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)1", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)2", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)3", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)4", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)5", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)6", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)7", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)8", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)9", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)10", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)11", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)12", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)13", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)14", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)15", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)16", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)17", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)18", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)19", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, False)20", "result": "REJECTED", "error": "DETAILS-MISSING-STEP:details-assignment-complete"}
+{"check": "reordered bridge/evaluation/assignment (0, False)(1, 2)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, False)(6, 7)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, False)(8, 10)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, False)(19, 20)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "no normal-exit splice (0, False)close-attempt", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (0, False)managed-clear", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (0, False)unlink-complete", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "coordinated owner/token (0, False)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated owner/token (0, False)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated constructor error (0, False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact-type boundary (0, False)('delivery_binding', 'existing_cause')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, False)('delivery_binding',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, False)('outcomes',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, False)('output', 'details_in_model', 'known_literal_fields')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact-type boundary (0, False)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "returned nested mutation does not change expectations (0, False)", "result": "PASS"}
+{"check": "direct submitted-output exact type (0, False)", "result": "REJECTED", "error": "DETAILS-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "cross invocation result (0, False)", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "legitimate complete initial details (0, True)", "result": "PASS"}
+{"check": "distinct invocation remains distinct (0, True)", "result": "PASS"}
+{"check": "selected owner continuity remains conditional (0, True)", "result": "PASS"}
+{"check": "unestablished delivery does not reach handler (0, True)", "result": "PASS"}
+{"check": "false continuation without delivery premise (0, True)", "result": "REJECTED", "error": "DETAILS-UNESTABLISHED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('context',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented claim (0, True)('invocation',)", "result": "REJECTED", "error": "DETAILS-PARENT-INVOCATION"}
+{"check": "wrong binding or invented claim (0, True)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented claim (0, True)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, True)('parent_output', 'removal_completed_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, True)('parent_output', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'selected_error', 'construction_attempt', 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'instance_anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'launcher_name')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('delivery_binding', 'route', 2, 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'dynamic_fields', 1, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'dynamic_fields', 2, 'formatted_bytes')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'cleanup_loop_entered')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'normal_managed_close_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'managed_clear_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'ACTIVE_unlink_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'failure_file_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'outward_propagation_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'runtime_handler_arrival')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'authorization_renewed')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (0, True)('output', 'launcher_e_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('run-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('run-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('run-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('run-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('run-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('run-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-inner-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-inner-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-inner-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-inner-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('session-inner-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('session-inner-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('private-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('private-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('private-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('private-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('private-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('private-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('launcher-handler-entry', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('launcher-handler-entry', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('launcher-handler-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('launcher-handler-entry', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('launcher-handler-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('launcher-handler-entry', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-evaluation-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-evaluation-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-evaluation-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-evaluation-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-evaluation-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-evaluation-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-key-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-key-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-value-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-value-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-dict-completion', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-dict-completion', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-dict-completion', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-dict-completion', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-dict-completion', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-dict-completion', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-complete', 'raise')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-complete', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-complete', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (0, True)('details-assignment-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (0, True)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "predecessor supports handler replacement with completed removal (0, True)callback-handler-enter", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, True)callback-handler-enter", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (0, True)callback-none-guard", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, True)callback-none-guard", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (0, True)callback-bare-rethrow", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (0, True)callback-bare-rethrow", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "missing stage (0, True)0", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)1", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)2", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)3", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)4", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)5", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)6", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)7", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)8", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)9", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)10", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)11", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)12", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)13", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)14", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)15", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)16", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)17", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)18", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)19", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (0, True)20", "result": "REJECTED", "error": "DETAILS-MISSING-STEP:details-assignment-complete"}
+{"check": "reordered bridge/evaluation/assignment (0, True)(1, 2)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, True)(6, 7)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, True)(8, 10)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (0, True)(19, 20)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "no normal-exit splice (0, True)close-attempt", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (0, True)managed-clear", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (0, True)unlink-complete", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "coordinated owner/token (0, True)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated owner/token (0, True)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated constructor error (0, True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact-type boundary (0, True)('delivery_binding', 'existing_cause')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, True)('delivery_binding',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, True)('outcomes',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (0, True)('output', 'details_in_model', 'known_literal_fields')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact-type boundary (0, True)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "returned nested mutation does not change expectations (0, True)", "result": "PASS"}
+{"check": "direct submitted-output exact type (0, True)", "result": "REJECTED", "error": "DETAILS-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "cross invocation result (0, True)", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "legitimate complete initial details (1, False)", "result": "PASS"}
+{"check": "distinct invocation remains distinct (1, False)", "result": "PASS"}
+{"check": "selected owner continuity remains conditional (1, False)", "result": "PASS"}
+{"check": "unestablished delivery does not reach handler (1, False)", "result": "PASS"}
+{"check": "false continuation without delivery premise (1, False)", "result": "REJECTED", "error": "DETAILS-UNESTABLISHED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('context',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented claim (1, False)('invocation',)", "result": "REJECTED", "error": "DETAILS-PARENT-INVOCATION"}
+{"check": "wrong binding or invented claim (1, False)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented claim (1, False)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, False)('parent_output', 'removal_completed_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, False)('parent_output', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'selected_error', 'construction_attempt', 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'instance_anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'launcher_name')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('delivery_binding', 'route', 2, 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'dynamic_fields', 1, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'dynamic_fields', 2, 'formatted_bytes')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'cleanup_loop_entered')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'normal_managed_close_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'managed_clear_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'ACTIVE_unlink_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'failure_file_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'outward_propagation_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'runtime_handler_arrival')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'authorization_renewed')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, False)('output', 'launcher_e_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('run-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('run-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('run-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('run-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('run-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('run-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-inner-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-inner-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-inner-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-inner-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('session-inner-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('session-inner-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('private-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('private-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('private-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('private-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('private-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('private-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('launcher-handler-entry', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('launcher-handler-entry', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('launcher-handler-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('launcher-handler-entry', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('launcher-handler-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('launcher-handler-entry', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-evaluation-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-evaluation-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-evaluation-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-evaluation-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-evaluation-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-evaluation-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-key-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-key-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-value-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-value-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-dict-completion', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-dict-completion', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-dict-completion', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-dict-completion', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-dict-completion', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-dict-completion', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-complete', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-complete', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-complete', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, False)('details-assignment-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, False)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "predecessor supports handler replacement with completed removal (1, False)callback-handler-enter", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, False)callback-handler-enter", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (1, False)callback-none-guard", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, False)callback-none-guard", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (1, False)callback-bare-rethrow", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, False)callback-bare-rethrow", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "missing stage (1, False)0", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)1", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)2", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)3", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)4", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)5", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)6", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)7", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)8", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)9", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)10", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)11", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)12", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)13", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)14", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)15", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)16", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)17", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)18", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)19", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, False)20", "result": "REJECTED", "error": "DETAILS-MISSING-STEP:details-assignment-complete"}
+{"check": "reordered bridge/evaluation/assignment (1, False)(1, 2)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, False)(6, 7)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, False)(8, 10)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, False)(19, 20)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "no normal-exit splice (1, False)close-attempt", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (1, False)managed-clear", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (1, False)unlink-complete", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "coordinated owner/token (1, False)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated owner/token (1, False)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated constructor error (1, False)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact-type boundary (1, False)('delivery_binding', 'existing_cause')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, False)('delivery_binding',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, False)('outcomes',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, False)('output', 'details_in_model', 'known_literal_fields')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact-type boundary (1, False)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "returned nested mutation does not change expectations (1, False)", "result": "PASS"}
+{"check": "direct submitted-output exact type (1, False)", "result": "REJECTED", "error": "DETAILS-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "cross invocation result (1, False)", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "legitimate complete initial details (1, True)", "result": "PASS"}
+{"check": "distinct invocation remains distinct (1, True)", "result": "PASS"}
+{"check": "selected owner continuity remains conditional (1, True)", "result": "PASS"}
+{"check": "unestablished delivery does not reach handler (1, True)", "result": "PASS"}
+{"check": "false continuation without delivery premise (1, True)", "result": "REJECTED", "error": "DETAILS-UNESTABLISHED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('context',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding or invented claim (1, True)('invocation',)", "result": "REJECTED", "error": "DETAILS-PARENT-INVOCATION"}
+{"check": "wrong binding or invented claim (1, True)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding or invented claim (1, True)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, True)('parent_output', 'removal_completed_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, True)('parent_output', 'construction_outward_after_finally_established_in_model')", "result": "REJECTED", "error": "DETAILS-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'selected_error', 'construction_attempt', 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'references', 'session', 'symbol')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'instance_anchor', 'instance', 'binding')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'launcher_name')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('delivery_binding', 'route', 2, 'source', 'site')", "result": "REJECTED", "error": "DETAILS-EXPECTED-DELIVERY"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'dynamic_fields', 1, 'exact_value')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'dynamic_fields', 2, 'formatted_bytes')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'cleanup_loop_entered')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'normal_managed_close_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'managed_clear_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'ACTIVE_unlink_spliced')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'failure_file_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'outward_propagation_established')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'runtime_handler_arrival')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'authorization_renewed')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding or invented claim (1, True)('output', 'launcher_e_in_model', 'reference')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('run-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('run-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('run-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('run-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('run-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('run-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-inner-with-exception-exit', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-inner-with-exception-exit', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-inner-with-exception-exit', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-inner-with-exception-exit', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('session-inner-with-exception-exit', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('session-inner-with-exception-exit', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('private-yield-delivery', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('private-yield-delivery', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('private-yield-delivery', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('private-yield-delivery', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('private-yield-delivery', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('private-yield-delivery', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('launcher-handler-entry', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('launcher-handler-entry', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('launcher-handler-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('launcher-handler-entry', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('launcher-handler-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('launcher-handler-entry', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-evaluation-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-evaluation-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-evaluation-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-evaluation-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-evaluation-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-evaluation-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-error', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-error', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-error', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-error', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-error', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-error', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-message', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-message', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-message', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-message', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-message', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-message', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-traceback', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-traceback', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-traceback', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-traceback', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-traceback', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-traceback', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-nonexecution_established', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-nonexecution_established', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-nonexecution_established', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-nonexecution_established', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-nonexecution_established', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-nonexecution_established', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-new_authorization', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-new_authorization', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-new_authorization', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-new_authorization', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-new_authorization', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-new_authorization', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-key-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-key-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-cleanup', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-cleanup', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-cleanup', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-cleanup', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-value-cleanup', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-value-cleanup', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-dict-completion', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-dict-completion', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-dict-completion', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-dict-completion', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-dict-completion', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-dict-completion', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-attempt', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-attempt', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-attempt', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-attempt', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-complete', 'raise')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-complete', 'raise')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-complete', 'process-termination')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "conditional frontier (1, True)('details-assignment-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false completed details (1, True)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "predecessor supports handler replacement with completed removal (1, True)callback-handler-enter", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, True)callback-handler-enter", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (1, True)callback-none-guard", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, True)callback-none-guard", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "predecessor supports handler replacement with completed removal (1, True)callback-bare-rethrow", "result": "PASS"}
+{"check": "completed pop is insufficient for selected constructor (1, True)callback-bare-rethrow", "result": "REJECTED", "error": "DETAILS-PARENT-COMPLETION"}
+{"check": "missing stage (1, True)0", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)1", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)2", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)3", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)4", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)5", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)6", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)7", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)8", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)9", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)10", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)11", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)12", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)13", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)14", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)15", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)16", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)17", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)18", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)19", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "missing stage (1, True)20", "result": "REJECTED", "error": "DETAILS-MISSING-STEP:details-assignment-complete"}
+{"check": "reordered bridge/evaluation/assignment (1, True)(1, 2)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, True)(6, 7)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, True)(8, 10)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "reordered bridge/evaluation/assignment (1, True)(19, 20)", "result": "REJECTED", "error": "DETAILS-STEP-ORDER"}
+{"check": "no normal-exit splice (1, True)close-attempt", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (1, True)managed-clear", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "no normal-exit splice (1, True)unlink-complete", "result": "REJECTED", "error": "DETAILS-UNREACHED-STEPS"}
+{"check": "coordinated owner/token (1, True)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated owner/token (1, True)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated constructor error (1, True)", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "exact-type boundary (1, True)('delivery_binding', 'existing_cause')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, True)('delivery_binding',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, True)('outcomes',)", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact-type boundary (1, True)('output', 'details_in_model', 'known_literal_fields')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact-type boundary (1, True)('output', 'details_in_model', 'known_literal_fields', 'cleanup')", "result": "REJECTED", "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "returned nested mutation does not change expectations (1, True)", "result": "PASS"}
+{"check": "direct submitted-output exact type (1, True)", "result": "REJECTED", "error": "DETAILS-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "cross invocation result (1, True)", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('declaration', 'source', 'catch_binding'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('declaration', 'source', 'order'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('runtime_handler_details_chain',))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('declaration', 'guard_branches', 'parent'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('instance_anchor', 'instance', 'binding'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('exact_generated_message',))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (0, ('declaration', 'source', 'fields', 0, 'name'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "semantic claim (1, ('declaration', 'source', 'catch_binding'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('declaration', 'source', 'order'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('runtime_handler_details_chain',))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('declaration', 'guard_branches', 'parent'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('instance_anchor', 'instance', 'binding'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('exact_generated_message',))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic claim (1, ('declaration', 'source', 'fields', 0, 'name'))", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "both-context coordinated semantic omission", "result": "REJECTED", "error": "DETAILS-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic expectation isolation", "result": "PASS"}
+{"check": "assembled receipt expectation isolation", "result": "PASS"}
+{"check": "checked receipt positive", "result": "PASS"}
+{"check": "coordinated receipt at checked comparison only", "result": "REJECTED", "error": "DETAILS-STALE-OR-ALTERED-RECEIPT"}
+{"check": "stale underlying evidence", "result": "REJECTED", "error": "DETAILS-VALIDATED-EVIDENCE"}
+{"check": "missing underlying evidence", "result": "REJECTED", "error": "DETAILS-VALIDATED-EVIDENCE"}
+{"check": "coordinated stale predecessor report", "result": "REJECTED", "error": "DETAILS-CANDIDATE-PREDECESSOR"}
+{"check": "mixed source input", "result": "REJECTED", "error": "DETAILS-CANDIDATE-SOURCE"}
+{"check": "public missing mandatory relation (0, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'launcher_initial_details_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (0, 'token_registration_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'launcher_initial_details_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public missing mandatory relation (1, 'token_registration_correspondence')", "result": "REJECTED", "error": "DETAILS-MANDATORY-RELATIONS"}
+{"check": "public exact bytes input", "result": "REJECTED", "error": "DETAILS-RECEIPT-BYTES"}
+{"check": "all prior context fields remain byte-exact", "result": "PASS"}

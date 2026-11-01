@@ -1,0 +1,29 @@
+{
+  "after": {
+    "callback_present": false,
+    "global_events": 0,
+    "local_events": 0,
+    "owner": null,
+    "probe_restored_found_callback": false
+  },
+  "candidate_replaced": false,
+  "constructed": true,
+  "exception_preserved": true,
+  "observation": {
+    "api": null,
+    "capture_defined": false,
+    "event": "line",
+    "file": "/workspace/review-evidence/FL6-LD01-20261101/recovered/code/correspondence.py",
+    "global_events": 0,
+    "line": 64,
+    "local_events": 0,
+    "marker_present": true,
+    "marker_type": "str",
+    "mode": "source-boundary",
+    "offset": 268,
+    "owner": "launcher-details-authenticated-predecessor:140053679761344",
+    "owner_is_marker": true
+  },
+  "reviewer_release": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/ace5c9b2f18b/ld01-review/code/lease_probe.py\", line 31, in interrupt\n    try:m._public_predecessor(data)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/review-evidence/FL6-LD01-20261101/recovered/code/correspondence.py\", line 64, in _public_predecessor\n    def capture(code,offset,value):\n  File \"/workspace/scratch/ace5c9b2f18b/ld01-review/code/lease_probe.py\", line 23, in trace\n    if frame.f_code is target and event=='line' and frame.f_lineno==line and not seen:record(frame,event)\n                                                                                      ^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/ace5c9b2f18b/ld01-review/code/lease_probe.py\", line 21, in record\n    raise raised\nKeyboardInterrupt: Formal-Lab6 independent source-boundary\n"
+}

@@ -1,0 +1,298 @@
+--- reviewed/managed_coverage.py
++++ proposed/managed_coverage.py
+@@ -2716,3 +2716,113 @@
+ 
+ def validate_client_construction_projection(catalogue,case,validated,submitted):
+  status_exact_tree(submitted,'CLIENT-CONSTRUCTION-SUBMITTED-OUTPUT');status_typed_same(submitted,client_construction_projection(catalogue,case,validated),'CLIENT-CONSTRUCTION-OUTPUT-CORRESPONDENCE');return True
++
++
++# Bounded constructor-error delivery and initial launcher details; no runtime execution.
++def launcher_details_source(launcher,entry,client_construction):
++ for raw in (launcher,entry):need(type(raw) is bytes,'DETAILS-SOURCE-BYTES')
++ status_exact_tree(client_construction,'DETAILS-PARENT-CATALOGUE')
++ pins={'launcher':{'bytes':len(launcher),'sha256':digest(launcher)},'entry':{'bytes':len(entry),'sha256':digest(entry)}}
++ status_typed_same(client_construction['source']['sources'],pins,'DETAILS-PARENT-SOURCES')
++ lt,ll=_client_locate(launcher);et,el=_client_locate(entry)
++ def function(tree,name):
++  found=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name];need(len(found)==1,'DETAILS-FUNCTION:'+name);return found[0]
++ run=function(et,'_run');session=function(lt,'session');private=function(lt,'_session')
++ rw=[n for n in ast.walk(run) if isinstance(n,ast.With) and ast.unparse(n.items[0].context_expr).startswith('launcher.session(')]
++ need(len(rw)==1 and len(rw[0].items)==1,'DETAILS-RUN-WITH');rw=rw[0]
++ need(ast.unparse(rw.items[0].context_expr)=='launcher.session(candidate, draft, runtime, destination, create=create)' and ast.unparse(rw.items[0].optional_vars)=='wrapper','DETAILS-RUN-ROUTE')
++ for fn in (session,private):need([ast.unparse(d) for d in fn.decorator_list]==['contextlib.contextmanager'],'DETAILS-GENERATOR-DECORATOR')
++ sw=session.body[-1];need(isinstance(sw,ast.With) and len(sw.items)==1 and ast.unparse(sw.items[0].context_expr)=='_session(*args, **kwargs)' and ast.unparse(sw.items[0].optional_vars)=='managed','DETAILS-PUBLIC-PRIVATE-BRIDGE')
++ need(len(sw.body)==1 and isinstance(sw.body[0],ast.Expr) and isinstance(sw.body[0].value,ast.Yield) and ast.unparse(sw.body[0].value.value)=='managed','DETAILS-PUBLIC-YIELD');sy=sw.body[0]
++ protected=[n for n in ast.walk(private) if isinstance(n,ast.Try) and any(h.name=='e' and ast.unparse(h.type)=='BaseException' for h in n.handlers)]
++ need(len(protected)==1,'DETAILS-PRIVATE-CATCH');tr=protected[0];need(len(tr.handlers)==1,'DETAILS-PRIVATE-HANDLERS');handler=tr.handlers[0]
++ py=[n for n in tr.body if isinstance(n,ast.Expr) and isinstance(n.value,ast.Yield)]
++ need(len(py)==1 and ast.unparse(py[0].value.value)=='ManagedSession(managed)','DETAILS-PRIVATE-YIELD');py=py[0]
++ need([ast.unparse(n) for n in tr.body[tr.body.index(py)+1:]]==['managed.close()','managed = None',"(dest / 'ACTIVE.json').unlink()"],'DETAILS-NORMAL-ROUTE-IDENTITY')
++ assignment=handler.body[0];need(isinstance(assignment,ast.Assign) and len(assignment.targets)==1 and ast.unparse(assignment.targets[0])=='details' and isinstance(assignment.value,ast.Dict),'DETAILS-ASSIGNMENT')
++ d=assignment.value;need(all(isinstance(k,ast.Constant) and type(k.value) is str for k in d.keys),'DETAILS-LITERAL-KEYS')
++ names=[k.value for k in d.keys()];expressions=[ast.unparse(v) for v in d.values]
++ need(names==['error','message','traceback','nonexecution_established','new_authorization','cleanup'],'DETAILS-FIELD-DOMAIN')
++ need(expressions==['type(e).__name__','str(e)','traceback.format_exc()','False','False','[]'],'DETAILS-FIELD-ORIGINS')
++ need(isinstance(handler.body[1],ast.For),'DETAILS-STOP-BEFORE-LOOP')
++ status_typed_same(client_construction['source']['run'],el(run),'DETAILS-PARENT-RUN')
++ points=[('run-with-exception-exit',el(rw),pins['entry'],'conditional-context-exit'),('session-yield-delivery',ll(sy),pins['launcher'],'conditional-generator-delivery'),('session-inner-with-exception-exit',ll(sw),pins['launcher'],'conditional-context-exit'),('private-yield-delivery',ll(py),pins['launcher'],'conditional-generator-delivery'),('launcher-handler-entry',ll(handler),pins['launcher'],'handler-entry'),('details-evaluation-attempt',ll(assignment),pins['launcher'],'statement-evaluation-entry')]
++ fields=[]
++ for key,value in zip(d.keys,d.values):
++  name=key.value;points.extend([('details-key-'+name,ll(key),pins['launcher'],'key-evaluation'),('details-value-'+name,ll(value),pins['launcher'],'value-evaluation')])
++  fields.append({'name':name,'key_source':{**ll(key),'source':copy.deepcopy(pins['launcher'])},'value_source':{**ll(value),'source':copy.deepcopy(pins['launcher'])},'expression':ast.unparse(value),'error_relation':'delivered e argument' if name in ('error','message') else 'selected active caught exception, conditional continuity' if name=='traceback' else 'source literal'})
++ points.extend([('details-dict-completion',ll(d),pins['launcher'],'dictionary-construction-completion'),('details-assignment-attempt',ll(assignment.targets[0]),pins['launcher'],'local-binding-attempt'),('details-assignment-complete',ll(assignment),pins['launcher'],'local-binding-completion')])
++ return {'sources':pins,'run':el(run),'public_session':ll(session),'private_session':ll(private),'catch_binding':handler.name,'catch_family':ast.unparse(handler.type),'fields':fields,'order':[n for n,_,_,_ in points],
++  'stages':{n:{**loc,'source':copy.deepcopy(pin),'semantic_region':region} for n,loc,pin,region in points},'stop_before':{**ll(handler.body[1]),'source':copy.deepcopy(pins['launcher'])},
++  'excluded_normal_stages':[ll(n) for n in tr.body[tr.body.index(py)+1:]],
++  'propagation':'Explicit conditional ordinary context-manager exception delivery through both decorated generators; no runtime arrival follows from source anchors or completed pop',
++  'evaluation_order':'Dictionary key then value pairs in defining-source order, then dictionary completion and local details binding; boundaries do not assert allocation or Python opcode history',
++  'dynamic_values':'No concrete error name, message, traceback, formatted bytes or dynamic result type supplied by source correspondence',
++  'scope':'Stop at initial details assignment; no cleanup-loop entry, write, outer propagation, lock release or authority change'}
++
++def compile_launcher_details(launcher,entry,client_construction):
++ source=launcher_details_source(launcher,entry,client_construction)
++ return {'format':'I164-LAUNCHER-INITIAL-DETAILS-STATIC-1','source':source,
++  'parent_catalogue':{'format':client_construction['format'],'identity':{'sha256':digest((json.dumps(client_construction,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode())}},
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'parent':'Reviewed exact-None bare rethrow, normal pop and original constructor error still pending; completed pop alone is insufficient','prefixes':['control absent','earlier control construction/callback completed normally'],'delivery':'Selected exception continuity is explicit conditional premise; unknown continuity establishes no handler arrival','evaluation':'Normal acknowledges only selected source-expression evaluation; exact generated values remain unknown','raise':'Replacement exception frontier; preserve earlier established constructor error and handler binding','termination':'No inferred Python exception or unwind','unobserved':'No further established progress','completion':'Known literal fields and initially empty cleanup list represented only after complete details assignment','excluded':'No normal managed close/clear/unlink, cleanup-loop, write, outward propagation or authority claim'},
++  'preserved_relations':['client_construction_none_correspondence',*client_construction['preserved_relations']],
++  'runtime_handler_details_observations':None,'non_none_construction_complete':False,'outer_cleanup_complete':False,'actual_admission':False}
++
++def validate_launcher_details(launcher,entry,client_construction,submitted):
++ status_exact_tree(submitted,'DETAILS-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_launcher_details(launcher,entry,client_construction),'DETAILS-SOURCE-CORRESPONDENCE');return True
++
++def launcher_delivery_binding(catalogue,parent,anchor,continuity):
++ for v in (catalogue,parent,anchor,continuity):status_exact_tree(v,'DETAILS-DELIVERY-TYPES')
++ need(type(continuity) is str and continuity in ('explicit conditional premise','UNESTABLISHED'),'DETAILS-CONTINUITY-DOMAIN')
++ source=catalogue['source'];scope=parent['scope'];refs=parent['reference_bindings']
++ return {'scope':copy.deepcopy(scope),'instance_anchor':copy.deepcopy(anchor),'selected_error':copy.deepcopy(parent['construction_error']),
++  'references':{n:copy.deepcopy(refs[n]) for n in ('owner','token','session','manager')},
++  'route':[{'stage':n,'source':copy.deepcopy(source['stages'][n])} for n in source['order'][:5]],
++  'launcher_name':source['catch_binding'],'continuity':continuity,'active_exception_continuity':'Conditional same selected error across ordinary delivery and normal evaluation; no observation',
++  'runtime_delivery':None,'physical_object_identity':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN'}
++
++def launcher_details_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'DETAILS-EXACT-TYPE')
++ keys={'scope','anchor','parent_result','delivery_binding','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'DETAILS-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'DETAILS-VALIDATED:'+k)
++ parent=case['parent_result'];scope=case['scope'];anchor=case['anchor'];source=catalogue['source'];delivery=case['delivery_binding'];error=parent['construction_error']
++ status_typed_same(scope,parent['scope'],'DETAILS-PARENT-SCOPE');status_typed_same(anchor['instance'],scope['instance'],'DETAILS-INSTANCE');need(anchor['context']==scope['context'],'DETAILS-CONTEXT')
++ need(parent['kind']=='CONSTRUCTED-CLIENT-CONSTRUCTION-NONE' and parent['completion']=='normal-removal-pending-construction-error','DETAILS-PARENT-COMPLETION')
++ need(parent['handler_entry_completed_in_model'] is True and parent['none_guard_completed_in_model'] is True and parent['bare_rethrow_effect_established_in_model'] is True and parent['removal_completed_in_model'] is True,'DETAILS-PARENT-REQUIRED-STEPS')
++ need(parent['handler_evaluation_error_in_model'] is None and parent['cleanup_error_in_model'] is None and parent['construction_outward_after_finally_established_in_model'] is True,'DETAILS-PENDING-ORIGINAL-ERROR')
++ for k in ('caught_error_in_model','reraised_error_in_model','last_pending_error_in_model','outward_error_after_finally_in_model'):status_typed_same(parent[k],error,'DETAILS-PARENT-ERROR:'+k)
++ need(parent['construction_completed_in_model'] is False and parent['client_callback_executed_in_model'] is False,'DETAILS-PARENT-NO-CLIENT')
++ status_typed_same(delivery,launcher_delivery_binding(catalogue,parent,anchor,delivery['continuity']),'DETAILS-DELIVERY-BINDING')
++ outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'DETAILS-OUTCOMES')
++ if delivery['continuity']=='UNESTABLISHED':status_typed_same(outcomes,[{'stage':source['order'][0],'outcome':'unobserved'}],'DETAILS-UNESTABLISHED-DELIVERY')
++ events=[];done=set();replacement=None;terminal=None;completion=None
++ for i,stage in enumerate(source['order']):
++  need(i<len(outcomes),'DETAILS-MISSING-STEP:'+stage);row=outcomes[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and type(row['stage']) is str and row['stage']==stage,'DETAILS-STEP-ORDER')
++  kind=row['outcome'];need(type(kind) is str and kind in ('normal','raise','process-termination','unobserved'),'DETAILS-OUTCOME');terminal=kind
++  events.append({'id':scope['invocation']+'/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(source['stages'][stage]),'outcome':kind,'selected_error':copy.deepcopy(error),'owner':copy.deepcopy(delivery['references']['owner']),'token':copy.deepcopy(delivery['references']['token']),'runtime_frame':None})
++  if kind!='normal':
++   if kind=='raise':replacement={'role':'conditional-launcher-delivery-or-evaluation-error','reference':scope['invocation']+'/'+stage+'/error','scope':copy.deepcopy(scope),'origin':copy.deepcopy(source['stages'][stage]),'exact_type':None,'exact_value_bytes':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','physical_identity':None}
++   completion={'raise':'replacement-exception-frontier','process-termination':'process-termination','unobserved':'unobserved-continuation'}[kind];break
++  done.add(stage)
++  if stage==source['order'][-1]:completion='initial-details-assignment-complete'
++ need(len(events)==len(outcomes),'DETAILS-UNREACHED-STEPS')
++ assigned='details-assignment-complete' in done;entered='launcher-handler-entry' in done;details=None
++ if assigned:
++  details={'role':'conditional-initial-launcher-details','reference':scope['invocation']+'/launcher/details','scope':copy.deepcopy(scope),'assignment_source':copy.deepcopy(source['stages']['details-assignment-complete']),
++   'dynamic_fields':[{'name':f['name'],'expression':f['expression'],'source':copy.deepcopy(f['value_source']),'selected_error':copy.deepcopy(error),'binding':f['error_relation'],'exact_value':None,'exact_type':None,'formatted_bytes':None,'observation':'UNAVAILABLE'} for f in source['fields'][:3]],
++   'known_literal_fields':{'nonexecution_established':False,'new_authorization':False,'cleanup':[]},'cleanup_reference':{'scope':copy.deepcopy(scope),'symbol':scope['invocation']+'/launcher/details/initial-cleanup-list','meaning':'source-created empty list at this assignment; no observed physical identity'},
++   'complete_runtime_dictionary_observed':False,'exact_serialized_bytes':None}
++ return {'kind':'CONSTRUCTED-LAUNCHER-INITIAL-DETAILS','scope':copy.deepcopy(scope),'instance_anchor':copy.deepcopy(anchor),'validated_parent':copy.deepcopy(parent),'delivery_binding':copy.deepcopy(delivery),'events':events,'completion':completion,
++  'earlier_constructor_exception':copy.deepcopy(error),'earlier_control_completed_in_model':parent['earlier_control_callback_completed_in_model'],'selected_owner_continuity':copy.deepcopy(parent['selected_slot_before_removal']),
++  'handler_entry_completed_in_model':entered,'launcher_e_in_model':copy.deepcopy(error) if entered else None,'active_caught_error_in_model':copy.deepcopy(error) if entered else None,
++  'details_evaluation_attempt_in_model':'details-evaluation-attempt' in done,'details_dictionary_completed_in_model':'details-dict-completion' in done,'details_assignment_attempt_in_model':'details-assignment-attempt' in done,'details_assignment_completed_in_model':assigned,'details_in_model':details,
++  'replacement_error_in_model':replacement,'last_pending_error_in_model':copy.deepcopy(replacement or error),'terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
++  'existing_cause_context_suppression':'UNKNOWN; no new chain observation','new_explicit_cause_assignment_established':False,'runtime_handler_arrival':None,'runtime_handler_details_chain':None,'runtime_unwind_evidence':'UNAVAILABLE','physical_reference_identity':None,
++  'cleanup_loop_entered':False,'normal_managed_close_spliced':False,'managed_clear_spliced':False,'ACTIVE_unlink_spliced':False,'retained_failure_record_bytes':None,'failure_file_established':False,'outward_propagation_established':False,'physical_closure_established':False,'physical_lock_release_established':False,'durability_established':False,'outer_cleanup_complete':False,
++  'completion_flags_mean':'Acknowledged conditional modeled progress only; false means not established, not absence of partial effects','runtime_observation':False,'observer_join':None,'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_launcher_details_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'DETAILS-SUBMITTED-OUTPUT');status_typed_same(submitted,launcher_details_projection(catalogue,case,validated),'DETAILS-OUTPUT-CORRESPONDENCE');return True
+--- reviewed/correspondence.py
++++ proposed/correspondence.py
+@@ -1,11 +1,13 @@
+-"""Mandatory client-construction exact-None handler-to-finally/removal correspondence. Saved inputs only."""
+-import copy,hashlib,json,os,stat,types
++"""Mandatory bounded launcher-handler/initial-details correspondence. Saved inputs only."""
++import copy,hashlib,json,os,stat,sys,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 307101, 'sha256': 'a879216a176955cc60c76150f1bdc2bfd7bff7b2dfab3b3340361fbe5cb6b2ab'}
+-PREDECESSOR_MANIFEST={'bytes': 1034275, 'sha256': '6c2b8a3bf2600bff776eeaec35a91653f8b39118d0c6172152cb392fa33115cb'}
+-PREDECESSOR_RECEIPT={'bytes': 8000877, 'sha256': 'd8a46dbf6aa29299a4a96a4c0132af217c9093e165c49409797112556f40b518'}
++PRODUCER_PIN={'bytes': 323001, 'sha256': 'e9ba2ca06eca461771a1015333d8f94451825159616a76991d9d4a4b6f4858a6'}  # Filled once when freezing this new input root.
++PREDECESSOR_MANIFEST={'bytes':1157393,'sha256':'1a8349ecee728a16c2e5c5d9806b5eeb09f301f1d817ce1a282b14af317e4134'}
++PREDECESSOR_RECEIPT={'bytes':8723742,'sha256':'23004fec192169630993d1290c5c205126d1457d2deae08f3b0d21ef5c960454'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
++RELATION='launcher_initial_details_correspondence'
++REQUIRED={RELATION,'client_construction_none_correspondence','control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+ def require(ok,code):
+@@ -26,78 +28,109 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/control-construction'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLIENT-CONSTRUCTION-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CLIENT-CONSTRUCTION-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CLIENT-CONSTRUCTION-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/client-construction'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'DETAILS-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'DETAILS-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'DETAILS-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'CLIENT-CONSTRUCTION-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'CLIENT-CONSTRUCTION-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'CLIENT-CONSTRUCTION-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CLIENT-CONSTRUCTION-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'DETAILS-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'DETAILS-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'DETAILS-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'DETAILS-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode),'CLIENT-CONSTRUCTION-PRODUCER-TYPE');require(identity(path.read_bytes())==PRODUCER_PIN,'CLIENT-CONSTRUCTION-PRODUCER-PIN')
+- prior=module(base/'code/correspondence.py','_control_construction_predecessor');return {'root':root,'prior_root':base,'prior_module':prior,'prior_data':prior.inputs(base),'coverage':module(path,'_client_construction_coverage')}
+-def inner(data):return data['prior_module'].inner(data['prior_data'])
+-def sources(data):return data['prior_module'].sources(data['prior_data'])
+-def dependencies(data):
+- p=data['prior_module'];pd=data['prior_data'];return (p.catalogue(pd),*p.dependencies(pd))
+-def catalogue(data):return data['coverage'].compile_client_construction(*sources(data)[:2],*dependencies(data))
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode) and identity(path.read_bytes())==PRODUCER_PIN,'DETAILS-PRODUCER-PIN')
++ saved=(base/'results/primary/client-construction-none.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT,'DETAILS-PREDECESSOR-RECEIPT-PIN')
++ raws=[]
++ for name in ('lab_bootstrap.py','prospective_entry.py'):
++  p=root/'source-evidence'/name;require(stat.S_ISREG(p.lstat().st_mode),'DETAILS-SOURCE-TYPE');b=p.read_bytes();require(b==(base/'source-evidence'/name).read_bytes(),'DETAILS-SOURCE-IDENTITY');raws.append(b)
++ return {'root':root,'prior_root':base,'prior_module':module(base/'code/correspondence.py','_client_construction_predecessor'),'prior_saved':saved,'prior':json.loads(saved),'sources':tuple(raws),'coverage':module(path,'_launcher_details_coverage')}
++def sources(data):return data['sources']
++def catalogue(data):return data['coverage'].compile_launcher_details(*sources(data),data['prior']['contexts'][0]['client_construction_none_correspondence']['declaration'])
++def _public_predecessor(data):
++ """One actual unmodified public validation; passive return observation only.
++ No predecessor function, source, output or validation expectation is replaced.
++ A busy monitoring slot or missing return is a conflict, not a fallback route.
++ """
++ p=data['prior_module'];sm=getattr(sys,'monitoring',None);require(sm is not None,'DETAILS-MONITORING-UNAVAILABLE');require(sm.get_tool(2) is None,'DETAILS-MONITORING-CONTENTION');captures=[];sm.use_tool_id(2,'launcher-details-authenticated-predecessor')
++ def capture(code,offset,value):
++  require(code is p._basis.__code__ and len(captures)==0,'DETAILS-UNEXPECTED-BASIS-RETURN');captures.append(value)
++ try:
++  sm.register_callback(2,sm.events.PY_RETURN,capture);sm.set_local_events(2,p._basis.__code__,sm.events.PY_RETURN)
++  result=p.validate(data['prior_root'],data['prior_saved'])
++ finally:
++  sm.set_local_events(2,p._basis.__code__,0);sm.register_callback(2,sm.events.PY_RETURN,None);sm.free_tool_id(2)
++ require(result.get('result')=='PASS' and result.get('contexts')==list(CONTEXTS) and result.get('receipt')==PREDECESSOR_RECEIPT and len(captures)==1,'DETAILS-PUBLIC-PREDECESSOR-RESULT')
++ basis=captures[0];require(p.enc(p._assemble(basis['fresh'],p._rows(basis),basis))==data['prior_saved'],'DETAILS-AUTHENTICATED-BASIS-RECEIPT')
++ return basis,copy.deepcopy(result)
+ def _basis(data):
+- fresh=inputs(data['root']);p=fresh['prior_module'];pd=fresh['prior_data'];rows,bb=p._checked(pd,p.catalogue(pd));prior=p._assemble(pd,rows,bb)
+- saved=(fresh['prior_root']/'results/primary/control-construction.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT and enc(prior)==saved,'CLIENT-CONSTRUCTION-VALIDATED-PREDECESSOR-RECEIPT')
+- return {'fresh':fresh,'prior':prior,'saved':saved,'catalogue':catalogue(fresh),'evidence':dict(inner(fresh)['ctx']['e']),'construction_basis':bb,'construction_module':p,'stored_basis':bb['stored_basis']}
++ fresh=inputs(data['root']);pb,public=_public_predecessor(fresh);p=fresh['prior_module']
++ require(sources(fresh)==p.sources(pb['fresh'])[:2],'DETAILS-AUTHENTICATED-SOURCES')
++ cat=fresh['coverage'].compile_launcher_details(*sources(fresh),pb['catalogue'])
++ return {'fresh':fresh,'prior':copy.deepcopy(fresh['prior']),'prior_basis':pb,'prior_module':p,'public_predecessor':public,'catalogue':cat,'evidence':dict(pb['evidence'])}
+ def _rows(basis):
+- rows=[];cat=basis['catalogue'];require(tuple(r['context'] for r in basis['prior']['contexts'])==CONTEXTS,'CLIENT-CONSTRUCTION-CONTEXT-DOMAIN')
+- for row in basis['prior']['contexts']:
+-  prior=row['control_construction_revocation_correspondence'];token=row['token_registration_correspondence'];same(prior['instance_anchor'],token['instance_anchor'],'CLIENT-CONSTRUCTION-VALIDATED-INSTANCE');same(prior['declaration']['source']['sources'],cat['source']['sources'],'CLIENT-CONSTRUCTION-VALIDATED-SOURCE')
+-  rows.append({'context':row['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(token['instance_anchor']),'predecessor_receipt':identity(basis['saved']),'scope':copy.deepcopy(token['scope']),'reference_basis':copy.deepcopy(token['reference_basis']),
++ require(tuple(x['context'] for x in basis['prior']['contexts'])==CONTEXTS,'DETAILS-CONTEXT-DOMAIN');out=[]
++ for old in basis['prior']['contexts']:
++  parent=old['client_construction_none_correspondence'];cat=basis['catalogue']
++  out.append({'context':old['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(parent['instance_anchor']),'scope':copy.deepcopy(parent['scope']),'reference_basis':copy.deepcopy(parent['reference_basis']),
++   'predecessor_receipt':PREDECESSOR_RECEIPT.copy(),'predecessor_public_validation':copy.deepcopy(basis['public_predecessor']),
+    'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'reviewed_relations_preserved':copy.deepcopy(cat['preserved_relations']),'prefix_variants':['control-absent','control-construction-and-callback-completed-normally'],'guard_slot_continuity':'Explicit same-owner exact-None premise; not historical absence of storage','selected_owner_continuity':'Explicit conditional premise; not runtime exclusivity','client_handler_applicable':True,'construction_completed':False,'completed_client_object_reference':None,'client_callback_execution':False,'earlier_control_execution':'Conditional on selected validated prefix; no new runtime observation','constructor_substep_history':None,'runtime_client_construction_revocation_chain':None,'client_construction_producer_history':None,'exception_chain_observation':None,'prior_failure_storage_history':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(prior['separate_observer']),'outer_cleanup_complete':False,'gap':'No runtime Client construction/error/handler/bare-rethrow/pop chain or constructor progress. Non-None constructor handler branch and full outer cleanup remain unexpanded.'})
+- return rows
+-def _check_rows(basis,claims):
+- exact(claims,'CLIENT-CONSTRUCTION-SEMANTIC-CLAIMS');require(type(claims) is list and len(claims)==2,'CLIENT-CONSTRUCTION-CLAIM-CONTEXT-DOMAIN');same(claims,_rows(basis),'CLIENT-CONSTRUCTION-SEMANTIC-CORRESPONDENCE')
++   'required_parent':'Original constructor error remains pending after reviewed exact-None bare rethrow and normal removal; pop completion alone does not suffice',
++   'runtime_handler_details_chain':None,'exact_generated_error_name':None,'exact_generated_message':None,'exact_generated_traceback':None,'exact_details_bytes':None,'physical_reference_observation':None,
++   'exception_delivery_continuity':'Explicit conditional premise; no runtime arrival established','selected_owner_continuity':'Preserved conditional premise; not exclusivity','existing_cause_context_suppression':'UNKNOWN',
++   'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(parent['separate_observer']),
++   'cleanup_loop_coverage':False,'non_none_constructor_branch_complete':False,'outer_cleanup_complete':False,'gap':'No runtime constructor-to-handler/details chain, exact generated strings or cleanup/evidence-write completion.'})
++ return out
++def _check_rows(basis,claims):exact(claims,'DETAILS-SEMANTIC-CLAIMS');same(claims,_rows(basis),'DETAILS-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CLIENT-CONSTRUCTION-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CLIENT-CONSTRUCTION-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'DETAILS-EVIDENCE-TYPES');require(candidate==basis['evidence'],'DETAILS-VALIDATED-EVIDENCE')
++def _check_candidate(basis,data,submitted_catalogue,claims=None,evidence=None):
++ exact(submitted_catalogue,'DETAILS-CATALOGUE');exact(claims,'DETAILS-CLAIMS')
++ same(submitted_catalogue,basis['catalogue'],'DETAILS-CATALOGUE-SOURCE');require(sources(data)==sources(basis['fresh']) and all(type(x) is bytes for x in sources(data)),'DETAILS-CANDIDATE-SOURCE');same(data['prior'],basis['prior'],'DETAILS-CANDIDATE-PREDECESSOR')
++ require(type(data['prior_saved']) is bytes and data['prior_saved']==basis['fresh']['prior_saved'],'DETAILS-CANDIDATE-RECEIPT')
++ if evidence is not None:_compare_evidence(basis,evidence)
++ if claims is not None:_check_rows(basis,claims)
++ return _rows(basis)
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'CLIENT-CONSTRUCTION-CATALOGUE');exact(claims,'CLIENT-CONSTRUCTION-CLAIMS');basis=_basis(data);same(submitted_catalogue,basis['catalogue'],'CLIENT-CONSTRUCTION-CATALOGUE-SOURCE')
+- d=inner(data);fd=inner(basis['fresh']);require(all(type(x) is bytes for x in sources(data)) and type(d['ctx']['c']) is dict and all(type(k) is str and type(v) is bytes for k,v in d['ctx']['c'].items()),'CLIENT-CONSTRUCTION-CANDIDATE-SOURCE-TYPES');require(sources(data)==sources(basis['fresh']) and d['ctx']['c']==fd['ctx']['c'],'CLIENT-CONSTRUCTION-CANDIDATE-SOURCE');same(d['ctx']['binding'],fd['ctx']['binding'],'CLIENT-CONSTRUCTION-CANDIDATE-BINDING');_compare_evidence(basis,d['ctx']['e'] if evidence is None else evidence)
+- if claims is not None:_check_rows(basis,claims)
+- return _rows(basis),basis
++ exact(submitted_catalogue,'DETAILS-CATALOGUE');exact(claims,'DETAILS-CLAIMS');basis=_basis(data)
++ return _check_candidate(basis,data,submitted_catalogue,claims,evidence),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-CLIENT-CONSTRUCTION-NONE-CORRESPONDENCE-1';result['prior_control_construction_components']=result.pop('extension_components');result['prior_control_construction_receipt']=identity(basis['saved']);result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+- for ctx,row in zip(result['contexts'],rows):ctx['client_construction_none_correspondence']=copy.deepcopy(row)
+- result['new_client_construction_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','guard_slot_continuity':'Explicit same-owner exact-None premise','selected_owner_continuity':'Explicit premise','construction_completion_established':False,'client_callback_execution_established':False,'earlier_control_progress':'Preserve selected validated prefix separately','existing_cause_context_suppression':'UNKNOWN','physical_identity_or_inequality':None,'observer_join':None,'outer_cleanup_complete':False,'non_none_constructor_branch_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_client_construction(data,submitted_catalogue,claims=None,evidence=None):
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-LAUNCHER-INITIAL-DETAILS-CORRESPONDENCE-1';result['prior_client_construction_components']=result.pop('extension_components');result['prior_client_construction_receipt']=PREDECESSOR_RECEIPT.copy();result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ for ctx,row in zip(result['contexts'],rows):ctx[RELATION]=copy.deepcopy(row)
++ result['new_launcher_details_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','exact_generated_strings_bytes':None,'non_none_constructor_branch_complete':False,'outer_cleanup_complete':False,'cleanup_loop_entered':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_launcher_details(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
+ def _premises(basis,case):
+- exact(case,'CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','token_case','construction_error','none_guard_binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-CLIENT-CONSTRUCTION-NONE','CLIENT-CONSTRUCTION-CONSTRUCTED-CASE')
+- rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CLIENT-CONSTRUCTION-CONSTRUCTED-CONTEXT');anchor=rows[0]['token_registration_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CLIENT-CONSTRUCTION-CONSTRUCTED-ANCHOR');tc=case['token_case'];require(type(tc) is dict,'CLIENT-CONSTRUCTION-TOKEN-CASE');same({k:tc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CLIENT-CONSTRUCTION-TOKEN-INVOCATION')
+- sb=basis['stored_basis'];token=sb['routes']['token_module']._construct_checked(sb['token_basis'],tc)['projection'];require(tc['owner_failure_none'] is True,'CLIENT-CONSTRUCTION-SELECTED-NONE-SLICE');require(token['registration_completed_in_model'] is True and token['completion']=='unexpected-raise' and token['client_callback_completed_in_model'] is False and token['events'][-1]['stage']=='client-create' and token['events'][-1]['outcome']=='raise','CLIENT-CONSTRUCTION-TOKEN-FRONTIER')
+- refs=token['reference_bindings'];scope=token['scope'];cat=basis['catalogue'];error=basis['fresh']['coverage'].client_construction_binding(cat,scope,tc['control_present']);same(case['construction_error'],error,'CLIENT-CONSTRUCTION-EXPRESSION-ERROR')
+- binding={'scope':copy.deepcopy(scope),'owner':copy.deepcopy(refs['owner']),'slot':'owner.failure','slot_value':None,'slot_exact_type':'NoneType','guard_expression':cat['source']['guard_expression'],'guard_result':False,'guard_source':copy.deepcopy(cat['source']['guard']),'source':copy.deepcopy(cat['source']['sources']['entry']),'premise':cat['source']['guard_slot_premise'],'runtime_reference_observation':None,'prior_storage_history':'UNKNOWN; no retained evidence is erased'}
+- same(case['none_guard_binding'],binding,'CLIENT-CONSTRUCTION-SELECTED-GUARD-BINDING')
+- return {'scope':copy.deepcopy(scope),'references':copy.deepcopy(refs),'token_inputs':copy.deepcopy(tc['projection']),'token_prefix':token,'construction_error':error,'none_guard_binding':binding,'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'DETAILS-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','delivery_binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-LAUNCHER-INITIAL-DETAILS','DETAILS-CONSTRUCTED-CASE')
++ rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'DETAILS-CONSTRUCTED-CONTEXT');anchor=rows[0]['client_construction_none_correspondence']['instance_anchor'];same(case['anchor'],anchor,'DETAILS-CONSTRUCTED-ANCHOR')
++ pc=case['parent_case'];require(type(pc) is dict,'DETAILS-PARENT-CASE');same({k:pc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'DETAILS-PARENT-INVOCATION')
++ parent=basis['prior_module']._construct_checked(basis['prior_basis'],pc)['projection'];same(case['parent_output'],parent,'DETAILS-VALIDATED-PARENT-OUTPUT')
++ binding=case['delivery_binding'];require(type(binding) is dict and 'continuity' in binding,'DETAILS-DELIVERY-INPUT')
++ expected=basis['fresh']['coverage'].launcher_delivery_binding(basis['catalogue'],parent,anchor,binding['continuity']);same(binding,expected,'DETAILS-EXPECTED-DELIVERY')
++ return {'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(anchor),'parent_result':parent,'delivery_binding':expected,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.client_construction_projection(cat,case['projection'],v);c.validate_client_construction_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'premises':'Selected Client(token) expression raises before client callback; control absent or its selected earlier path completed normally. Same-owner exact-None guard and selected-owner continuity are explicit conditional premises. No allocation, initializer history, physical identity or existing cause/context absence is inferred.','runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.launcher_details_projection(cat,case['projection'],v);c.validate_launcher_details_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'CLIENT-CONSTRUCTION-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'DETAILS-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++def _construct_prior(basis,branch,case):
++ exact(case,'DETAILS-PRIOR-INPUT');require(type(branch) is str and branch in ('client-construction','control-construction','control','bare','stored-client','stored-normal','normal-token'),'DETAILS-PRIOR-BRANCH')
++ if branch=='client-construction':return basis['prior_module']._construct_checked(basis['prior_basis'],case)
++ return basis['prior_module']._construct_prior(basis['prior_basis'],branch,case)
+ def constructed_prior(data,submitted_catalogue,branch,case):
+- exact(case,'CLIENT-CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');require(type(branch) is str and branch in ('control-construction','control','bare','stored-client','stored-normal','normal-token'),'CLIENT-CONSTRUCTION-PRIOR-BRANCH');_,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
+-def _construct_prior(basis,branch,case):
+- exact(case,'CLIENT-CONSTRUCTION-PRIOR-CONSTRUCTED-INPUT');p=basis['construction_module'];b=basis['construction_basis']
+- if branch=='control-construction':return p._construct_checked(b,case)
+- return p._construct_prior(b,branch,case)
++ _,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_client_construction(data,catalogue(data))
++ data=inputs(root);return derive_launcher_details(data,catalogue(data))
++def _receipt_shape(saved):
++ require(type(saved) is bytes,'DETAILS-RECEIPT-BYTES');v=json.loads(saved)
++ require(type(v) is dict and v.get('format')=='I164-LAUNCHER-INITIAL-DETAILS-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'DETAILS-MANDATORY-RELATIONS');return v
++def _receipt_checked(basis,saved):
++ _receipt_shape(saved);require(saved==enc(_assemble(basis['fresh'],_rows(basis),basis)),'DETAILS-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_handler_details_chain':'UNAVAILABLE','actual_admission':False}
+ def validate(root,saved):
+- require(type(saved) is bytes,'CLIENT-CONSTRUCTION-RECEIPT-BYTES');v=json.loads(saved);required={'client_construction_none_correspondence','control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
+- require(type(v) is dict and v.get('format')=='I164-CLIENT-CONSTRUCTION-NONE-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and required<=set(c) for c in v['contexts']),'CLIENT-CONSTRUCTION-MANDATORY-RELATIONS');require(saved==enc(derive(root)),'CLIENT-CONSTRUCTION-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_client_construction_revocation_chain':'UNAVAILABLE','actual_admission':False}
++ _receipt_shape(saved);data=inputs(root);_,basis=_checked(data,catalogue(data));return _receipt_checked(basis,saved)
+ if __name__=='__main__':
+  import argparse
+  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);a=p.parse_args();print(json.dumps(validate(a.root,a.receipt.read_bytes()),sort_keys=True))

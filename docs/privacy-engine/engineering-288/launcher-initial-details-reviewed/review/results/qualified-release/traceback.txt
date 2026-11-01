@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/workspace/review-evidence/FL6-LD01-20261101/primary/code/correspondence.py", line 68, in _public_predecessor
+    result=p.validate(data['prior_root'],data['prior_saved'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/ld01-review/code/synthetic.py", line 12, in validate
+    if mode=='before':raise error
+                      ^^^^^^^^^^^
+ValueError: FL6-original-predecessor-error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/ld01-review/code/qualified_cleanup.py", line 23, in <module>
+    try:m._public_predecessor(data)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-LD01-20261101/primary/code/correspondence.py", line 79, in _public_predecessor
+    sm.free_tool_id(2)
+  File "/workspace/scratch/ace5c9b2f18b/ld01-review/code/qualified_cleanup.py", line 14, in interrupt_cleanup
+    seen.append({'step':selected,'hook':'profile c_call','line':frame.f_lineno,'offset':frame.f_lasti});raise one
+                                                                                                        ^^^^^^^^^
+KeyboardInterrupt: FL6-first-cleanup-interruption

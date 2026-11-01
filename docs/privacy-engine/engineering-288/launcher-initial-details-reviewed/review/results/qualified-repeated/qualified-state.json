@@ -1,0 +1,43 @@
+{
+  "after": {
+    "callback_present": true,
+    "global_events": 0,
+    "local_events": 4,
+    "owner": null,
+    "probe_restored_found_callback": true
+  },
+  "candidate_cleanup_complete": false,
+  "exception_chain": [
+    {
+      "message": "FL6-second-cleanup-interruption",
+      "type": "KeyboardInterrupt"
+    },
+    {
+      "message": "FL6-first-cleanup-interruption",
+      "type": "KeyboardInterrupt"
+    },
+    {
+      "message": "FL6-original-predecessor-error",
+      "type": "ValueError"
+    }
+  ],
+  "free_slot_not_proof_of_complete_cleanup": true,
+  "injections": [
+    {
+      "hook": "profile c_call",
+      "line": 74,
+      "offset": 1364,
+      "step": "local"
+    },
+    {
+      "hook": "audit before callback unregister",
+      "line": 77,
+      "offset": 1606,
+      "step": "callback"
+    }
+  ],
+  "kind": "repeated",
+  "post_failure_reuse_tested": false,
+  "process_exit_not_candidate_cleanup": true,
+  "reviewer_release": false
+}

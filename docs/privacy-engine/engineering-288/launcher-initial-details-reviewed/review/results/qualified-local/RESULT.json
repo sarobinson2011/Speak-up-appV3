@@ -1,0 +1,32 @@
+{
+  "candidate_cleanup_complete": false,
+  "checks": 2,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "process_termination_or_exit_not_cleanup_evidence": true,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "cleanup exception supersedes pending predecessor error; original retained in constructed chain",
+      "kind": "local",
+      "result": "QUALIFIED-OBSERVATION"
+    },
+    {
+      "check": "residual monitoring state preserved without reviewer release or successful reuse claim",
+      "kind": "local",
+      "result": "QUALIFIED-OBSERVATION"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "Qualified real-monitoring cleanup-failure observations with synthetic predecessor; outside successful cleanup/reuse claims",
+  "seconds": 2.5678849730002185,
+  "session_operations": 0
+}

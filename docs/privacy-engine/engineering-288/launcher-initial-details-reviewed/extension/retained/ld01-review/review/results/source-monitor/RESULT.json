@@ -1,0 +1,358 @@
+{
+  "checks": 80,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/ace5c9b2f18b/lid-review/code/source_monitor.py\", line 87, in <module>\n    assert b==a+b'\\n\\n'+(root/'tools/producer-addition.py').read_bytes();aa=ast.parse(a);bb=ast.parse(b);assert len(bb.body)==len(aa.body)+6 and sum(isinstance(x,ast.FunctionDef) for x in aa.body)==129 and all(ast.dump(x)==ast.dump(y) for x,y in zip(aa.body,bb.body))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "result": "FAILED-ATTEMPT",
+  "rows": [
+    {
+      "check": "source order independent of catalogue 0",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'run-with-exception-exit')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'session-yield-delivery')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'session-inner-with-exception-exit')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'private-yield-delivery')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'launcher-handler-entry')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-evaluation-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-error')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-error')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-message')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-message')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-traceback')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-traceback')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-nonexecution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-nonexecution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-new_authorization')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-new_authorization')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-key-cleanup')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-value-cleanup')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-dict-completion')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-assignment-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (0, 'details-assignment-complete')",
+      "result": "PASS"
+    },
+    {
+      "check": "field expression origins and literal types 0",
+      "result": "PASS"
+    },
+    {
+      "check": "normal close clear unlink excluded; stop before cleanup 0",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN duties and inherited context fields retained 0",
+      "result": "PASS"
+    },
+    {
+      "check": "catalogue accepted under exact defining source 0",
+      "result": "PASS"
+    },
+    {
+      "check": "source mapping altered (0, 'catch_binding')",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source mapping altered (0, 'order')",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "False is not integer zero 0",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated omission cannot redefine source requirements 0",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "changed source with coordinated source pin 'message':str(e)",
+      "error": "DETAILS-FIELD-ORIGINS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "changed source with coordinated source pin 'new_authorization':False",
+      "error": "DETAILS-FIELD-ORIGINS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "changed source with coordinated source pin with _session(*args,**kwargs) as managed:",
+      "error": "DETAILS-PUBLIC-PRIVATE-BRIDGE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "changed source with coordinated source pin except BaseException as e:",
+      "error": "DETAILS-PRIVATE-CATCH",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source order independent of catalogue 1",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'run-with-exception-exit')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'session-yield-delivery')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'session-inner-with-exception-exit')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'private-yield-delivery')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'launcher-handler-entry')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-evaluation-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-error')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-error')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-message')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-message')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-traceback')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-traceback')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-nonexecution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-nonexecution_established')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-new_authorization')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-new_authorization')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-key-cleanup')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-value-cleanup')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-dict-completion')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-assignment-attempt')",
+      "result": "PASS"
+    },
+    {
+      "check": "independent coordinate and defining bytes (1, 'details-assignment-complete')",
+      "result": "PASS"
+    },
+    {
+      "check": "field expression origins and literal types 1",
+      "result": "PASS"
+    },
+    {
+      "check": "normal close clear unlink excluded; stop before cleanup 1",
+      "result": "PASS"
+    },
+    {
+      "check": "UNKNOWN duties and inherited context fields retained 1",
+      "result": "PASS"
+    },
+    {
+      "check": "catalogue accepted under exact defining source 1",
+      "result": "PASS"
+    },
+    {
+      "check": "source mapping altered (1, 'catch_binding')",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source mapping altered (1, 'order')",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "False is not integer zero 1",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated omission cannot redefine source requirements 1",
+      "error": "DETAILS-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "synthetic monitoring captures exact returned object",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic returned result is detached",
+      "result": "PASS"
+    },
+    {
+      "check": "monitoring released on normal",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic monitoring rejects missing",
+      "error": "DETAILS-PUBLIC-PREDECESSOR-RESULT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "monitoring released on missing",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic monitoring rejects extra",
+      "error": "DETAILS-UNEXPECTED-BASIS-RETURN",
+      "result": "REJECTED"
+    },
+    {
+      "check": "monitoring released on extra",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic monitoring rejects raise",
+      "error": "REVIEWER-SYNTHETIC-PREDECESSOR-FAILURE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "monitoring released on raise",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic monitoring rejects wrong-result",
+      "error": "DETAILS-PUBLIC-PREDECESSOR-RESULT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "monitoring released on wrong-result",
+      "result": "PASS"
+    },
+    {
+      "check": "synthetic monitoring rejects wrong-basis",
+      "error": "DETAILS-AUTHENTICATED-BASIS-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "monitoring released on wrong-basis",
+      "result": "PASS"
+    },
+    {
+      "check": "monitoring contention rejects before predecessor call",
+      "error": "DETAILS-MONITORING-CONTENTION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "contention preserves other owner and makes no call",
+      "result": "PASS"
+    },
+    {
+      "check": "public basis reloads inputs before unchanged public predecessor and source check",
+      "result": "PASS"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "Independent source derivation; synthetic monitoring plumbing, not actual predecessor authentication; read-only preservation and supplied-record reconciliation",
+  "seconds": 3.0920248960028403,
+  "session_operations": 0
+}

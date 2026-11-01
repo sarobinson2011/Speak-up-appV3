@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/i164-launcher-details-offline/input/tests/source_controls.py", line 10, in <module>
+    rec.save('input-verification.json',verify_root(root));guard(root,rec.path);m=module(root/'code/correspondence.py');data=m.inputs(root);cat=m.catalogue(data);c=data['coverage'];parent=data['prior']['contexts'][0]['client_construction_none_correspondence']['declaration']
+                                                                                                                                               ^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-launcher-details-offline/input/code/correspondence.py", line 51, in catalogue
+    def catalogue(data):return data['coverage'].compile_launcher_details(*sources(data),data['prior']['contexts'][0]['client_construction_none_correspondence']['declaration'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-launcher-details-offline/input/code/managed_coverage.py", line 2764, in compile_launcher_details
+    source=launcher_details_source(launcher,entry,client_construction)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-launcher-details-offline/input/code/managed_coverage.py", line 2744, in launcher_details_source
+    names=[k.value for k in d.keys()];expressions=[ast.unparse(v) for v in d.values]
+                            ^^^^^^^^
+TypeError: 'list' object is not callable

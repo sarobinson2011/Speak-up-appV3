@@ -1,0 +1,2 @@
+One bounded mandatory static correspondence for the selected original Client(token) construction exception, after reviewed exact-None bare rethrow and normal token removal, through conditional generator delivery to launcher e and initial details construction. Both symbolic contexts and both reviewed control prefixes. Stops before cleanup loop. Independent review pending. Runtime sources unchanged.
+Read SEMANTICS.txt, RECOVERY.txt, final RESULTS.json and provenance/changed-files.json. Prior qualified review/accounting records and confirmed Git receipt are retained unchanged.

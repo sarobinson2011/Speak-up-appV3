@@ -1,0 +1,22 @@
+{
+  "after": {
+    "callback_was_absent": true,
+    "global_events": 0,
+    "local_events": 0,
+    "owner": null,
+    "probe_changed_callback": false
+  },
+  "candidate_functions_replaced": false,
+  "injection": {
+    "c_function": "use_tool_id",
+    "event": "c_return",
+    "lease_in_frame": "launcher-details-authenticated-predecessor:139993957772416",
+    "line": 63,
+    "offset": 258,
+    "owner_before": "launcher-details-authenticated-predecessor:139993957772416",
+    "owner_is_invocation_marker": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/i164-ld01-correction/recovered/ld01/tests/lease_cases.py\", line 47, in interrupt\n    try:m._public_predecessor(data)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/i164-ld01-correction/recovered/code/correspondence.py\", line 63, in _public_predecessor\n    sm.use_tool_id(2,lease)\n  File \"/workspace/i164-ld01-correction/recovered/ld01/tests/lease_cases.py\", line 41, in inject\n    raise error\nKeyboardInterrupt: LD01-CONSTRUCTED-INTERRUPTION\n"
+  },
+  "reviewer_release": false,
+  "same_process_reuse_follows": true
+}

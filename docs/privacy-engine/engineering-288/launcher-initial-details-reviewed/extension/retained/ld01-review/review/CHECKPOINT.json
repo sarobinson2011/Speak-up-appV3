@@ -1,0 +1,531 @@
+{
+  "actual_admission": false,
+  "author_independent": true,
+  "bounded_source_correspondence": "Supported by inspected defining sources and the recorded focused controls; overall requested slice retains LD-01",
+  "checkpoint": "Formal-Lab6-I164-launcher-initial-details-independent-review",
+  "completed_campaigns_rerun": 0,
+  "construction_author": "SU-Engineering[288D]",
+  "finding": {
+    "candidate_code_changed": false,
+    "constructed_not_runtime_observation": true,
+    "effect": "Fail-closed process-local reuse failure; no false receipt acceptance or admission",
+    "finding": "LD-01",
+    "minimal_repair_direction": "Extend guaranteed release to the whole successful-lease lifetime, including setup before callback registration; implementation not changed here.",
+    "observed": {
+      "file": "/workspace/review-evidence/FL6-launcher-details-20261031/primary/code/correspondence.py",
+      "function": "_public_predecessor",
+      "line": 58,
+      "offset": 176,
+      "tool_owner_before_interrupt": "launcher-details-authenticated-predecessor"
+    },
+    "original_trace_preserved": true,
+    "scope": "Monitoring setup failure cleanup",
+    "source": {
+      "bytes": 14283,
+      "sha256": "732d5d42928151ba4ee8efa163499a25e9400ad43d6ae05fcccbaf64be3c04b5"
+    },
+    "subsequent_rejection_layer": "Monitoring contention gate before predecessor public validation; not receipt comparison",
+    "target": "I164-launcher-initial-details-correspondence-1.zip",
+    "verdict": "NOT-CLOSED",
+    "witness": "Reserve monitoring slot2, then inject KeyboardInterrupt at source-derived callback-definition line before try/finally. The lease remains owned; unchanged pristine public validation then rejects DETAILS-MONITORING-CONTENTION."
+  },
+  "historical_qualifications": {
+    "Engineering": {
+      "extra_entry_cause": "UNESTABLISHED",
+      "failures_outside_completed_totals": true,
+      "membership_failure_controls": 0,
+      "membership_failure_exit": 1,
+      "preparation_failure_controls": 0,
+      "primary_controls": 498,
+      "primary_exit": 0,
+      "recovery_exit": 0,
+      "recovery_process_controls": 210,
+      "rerun": false,
+      "unqualified_combined_total": null
+    },
+    "candidate_archive": {
+      "bytes": 134972464,
+      "sha256": "550a9f0bf5e0643d79bbf7ac48a098015a06f05dc79ccde7f3eeb34a8cfbd1fe"
+    },
+    "construction_author": "SU-Engineering[288D]",
+    "earlier_Engineering": {
+      "both_campaign_final_RESULT_and_exit": "UNRECOVERED",
+      "interrupted_completion_partition": {
+        "focused_recovered": 64,
+        "mandatory_public_rejections": 6,
+        "pristine_public": 1
+      },
+      "interrupted_completion_rows": 71,
+      "interrupted_primary_rows": 285,
+      "interruption_cause": "UNESTABLISHED",
+      "outside_completed_group_totals": true,
+      "rerun": false,
+      "separately_completed_groups": {
+        "public_final_completion": 1,
+        "source_completion": 1
+      },
+      "unqualified_combined_total": null,
+      "zero_row_recovered_public_attempts": "PRESERVED"
+    },
+    "earlier_independent": {
+      "CLI_execution_claimed": false,
+      "completed_primary": 159,
+      "completed_recovered_root": 80,
+      "failed_source_audit": {
+        "campaign_exit": 1,
+        "corroborated_rows": 61,
+        "failure": "Reviewer diff-concatenation order assertion; exact contents match in declared order",
+        "outside_completed_totals": true
+      },
+      "packaging_assertion_failure": {
+        "controls": 0,
+        "preserved": true
+      },
+      "preparation_import_failure": {
+        "controls": 0,
+        "preserved": true
+      },
+      "rerun": false,
+      "subsequent_preservation_audit": {
+        "completed": true,
+        "controls_replayed": 0
+      },
+      "unqualified_combined_total": null,
+      "verdict": "SCOPED SUPPORT WITH RETAINED ACCOUNTING AND OBSERVATION QUALIFICATIONS"
+    },
+    "historical_public_layers": [
+      {
+        "checks": 1,
+        "error": "CONSTRUCTION-STALE-OR-ALTERED-RECEIPT",
+        "layer": "Public post-derivation receipt comparison, correspondence.validate line 98",
+        "owner": "Formal-Lab current recovered",
+        "proof": "review/results/recovered/public-rejection.json"
+      },
+      {
+        "checks": 1,
+        "error": "CONSTRUCTION-STALE-OR-ALTERED-RECEIPT",
+        "layer": "Public post-derivation receipt comparison, correspondence.validate line 98",
+        "owner": "Engineering separately completed current public check",
+        "proof": "extension/results/public-final-completion/validator-rejection.json"
+      },
+      {
+        "checks": 6,
+        "completed_group": false,
+        "error": "CONSTRUCTION-MANDATORY-RELATIONS",
+        "layer": "Public required-relation/receipt-shape gate before derive(root), correspondence.validate line 98",
+        "owner": "Engineering interrupted 71-row group",
+        "proof": "extension/failures/interrupted-completion/results/progress.jsonl"
+      },
+      {
+        "checks": 1,
+        "error": "CONTROL-STALE-OR-ALTERED-RECEIPT",
+        "layer": "Prior public post-derivation receipt comparison, predecessor correspondence.validate line 101",
+        "owner": "Prior independent separately confirmed control-callback check",
+        "proof": "prior reviewed milestone; unchanged"
+      }
+    ],
+    "independent": {
+      "failed_independent_groups": 0,
+      "recovered_exit": 0,
+      "recovered_positive": 102,
+      "recovered_rejected": 197,
+      "recovered_root_controls": 299,
+      "rerun": false,
+      "source_controls": 68,
+      "source_exit": 0,
+      "unqualified_combined_total": null,
+      "verdict": "SCOPED SUPPORT WITH RETAINED OBSERVATION AND ACCOUNTING QUALIFICATIONS"
+    },
+    "intake": "Exact attached archive identity, 53 safe unique regular entries, CRC and all52 manifested hashes verified read-only. Exact nested candidate identity matched; unchanged dependency verification reused. No model/reviewer code executed.",
+    "milestone": "I164-client-construction-none-correspondence-1",
+    "new_save_receipt_search": "No matching supplied or Library receipt found on 2026-10-31. Not proof of host absence; command rechecks Downloads and committed selections before writing.",
+    "older_accounting": "520 result-recorded/517 corroborated; coordinated 106/103/103 with rows104-106 qualified; nine historical partial public rows plus one separately confirmed public check. Older 308/307/303 discrepancy, missing rows, unknown cause, separate78/5 and earlier failures remain unchanged. No repaired or combined historical total.",
+    "operations_here": {
+      "Git_saves": 0,
+      "acquisitions": 0,
+      "database_connections": 0,
+      "lifecycle_smoke": 0,
+      "next_task_implementation": 0,
+      "pipelines": 0,
+      "reviews": 0,
+      "session_operations": 0,
+      "tests": 0
+    },
+    "preservation": {
+      "Decision_B": "UNCHANGED",
+      "SOURCE_ONLY": "UNCHANGED",
+      "actual_admission": false,
+      "allowances": "UNCHANGED",
+      "backup": "KERNEL-ONLY",
+      "both_acquisitions": "PRESERVED; no cross-acquisition occurrence joins",
+      "conditional_selected_owner_continuity": "EXPLICIT PREMISE; not runtime exclusivity",
+      "cumulative_envelope": "UNADOPTED",
+      "existing_cause_context_suppression": "UNKNOWN",
+      "final_binding": "BLOCKED",
+      "inventory_unknowns": 4,
+      "lifetime_unknowns": 14,
+      "non_None_construction_handling": "OUTSIDE REVIEWED SLICE; unresolved",
+      "obligations_preserved": 11,
+      "observer_to_chain_join": null,
+      "outer_cleanup_coverage": "INCOMPLETE",
+      "readiness": "BLOCKED",
+      "retention": "UNCHANGED",
+      "runtime_construction_handler_revocation_observations": "UNAVAILABLE",
+      "same_owner_exact_None": "EXPLICIT guard-slot premise; not absent historical failure storage",
+      "streams": "UNCOMPUTED"
+    },
+    "prior_save": {
+      "commit": "38ab42062b7718159801fb9334868ab2cc5a636a",
+      "manifest": {
+        "bytes": 28000,
+        "sha256": "c2f12548a89a0f1cdf87335bd9a288acb2422d4bfa72e76f239ef771aaad81c1"
+      },
+      "push_status": "CONFIRMED",
+      "receipt": {
+        "bytes": 6687,
+        "sha256": "0150dd38be8886aa6542c79449424ba0ced98c9e6c50c2df4ddf554037a55bde"
+      },
+      "repeated": false,
+      "status": "PASS"
+    },
+    "review_archive": {
+      "bytes": 132110474,
+      "sha256": "a3713fd85e59cea3cb060e7d576ac9a451b0d2dbb4d28be2db6638de83a7c4fe"
+    },
+    "reviewer": "Formal-Lab[6]",
+    "validation_layers": {
+      "basis_capture": "One actual unchanged _basis return; no function replacement",
+      "current_adapter": "/workspace/review-evidence/FL6-client-none-20261031/recovered/code/correspondence.py",
+      "current_call_counts": {
+        "_assemble": 4,
+        "_basis": 1,
+        "_checked": 1,
+        "derive_client_construction": 1,
+        "validate": 15
+      },
+      "full_public_negative_derivations": 0,
+      "full_public_positive": 1,
+      "main_result": {
+        "controls": 299,
+        "exit": 0,
+        "expected_rejections": 197,
+        "positive": 102
+      },
+      "new_constructor_runtime_invocations": 0,
+      "public_prederivation_required_relation_negatives": 14,
+      "statement": "Checked-core mutants are not separate full public derivations"
+    }
+  },
+  "independent_groups": {
+    "audit-completion": {
+      "completed_group": true,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-10-31T16:07:13.293260+00:00",
+        "pid": 6,
+        "returncode": 0,
+        "seconds": 1.9733110550005222,
+        "timed_out": false
+      },
+      "outside_completed_totals": false,
+      "result_identity": {
+        "bytes": 584,
+        "sha256": "4e885a7f5db67a3aa4dbc44214e2df499e6bfe3423febe93889a0e135ff4654f"
+      },
+      "row_kinds": {},
+      "row_result_stdout_reconciled": true,
+      "rows": 0,
+      "scope": "Complete only unfinished read-only preservation/supplied-record audit after retained reviewer separator assumption failure"
+    },
+    "fresh-recovered": {
+      "completed_group": true,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-10-31T16:45:20.016983+00:00",
+        "pid": 6,
+        "returncode": 0,
+        "seconds": 2512.3658207399967,
+        "timed_out": false
+      },
+      "outside_completed_totals": false,
+      "result_identity": {
+        "bytes": 83653,
+        "sha256": "582d7702394c5f7aad36cbf9c01a7032356dad1e5cc3d1ddd028c4946937c9f0"
+      },
+      "row_kinds": {
+        "PASS": 180,
+        "REJECTED": 343
+      },
+      "row_result_stdout_reconciled": true,
+      "rows": 523,
+      "scope": "One actual current full public positive and actual unchanged predecessor public validation; authenticated-basis checked cores, pre-derivation gates and receipt-comparison cores separately identified"
+    },
+    "monitor-interruption": {
+      "completed_group": true,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-10-31T16:12:47.008990+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 8.195604855005513,
+        "timed_out": false
+      },
+      "outside_completed_totals": false,
+      "result_identity": {
+        "bytes": 923,
+        "sha256": "8bfbc2a9b641dbd3088676768ae19d8a23e5ce07e1b52122d32822c0de11c1df"
+      },
+      "row_kinds": {
+        "DEFECT-CORROBORATED": 1,
+        "DEFECT-OBSERVED": 1
+      },
+      "row_result_stdout_reconciled": true,
+      "rows": 2,
+      "scope": "One new bounded constructed interruption witness; observed defect rows are not passing acceptance controls; no full predecessor review replay"
+    },
+    "source-monitor-qualified": {
+      "completed_group": false,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-10-31T16:06:18.284968+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 3.3773825600001146,
+        "timed_out": false
+      },
+      "outside_completed_totals": true,
+      "result_identity": {
+        "bytes": 11261,
+        "sha256": "bec32375b2f9ef328197eba38ae7caad8dcf4ddbac273babe5b19e32944c912a"
+      },
+      "row_kinds": {
+        "PASS": 62,
+        "REJECTED": 18
+      },
+      "row_result_stdout_reconciled": true,
+      "rows": 80,
+      "scope": "Independent source derivation; synthetic monitoring plumbing, not actual predecessor authentication; read-only preservation and supplied-record reconciliation"
+    }
+  },
+  "integrity": {
+    "CRC": "PASS",
+    "entries": 3556,
+    "extracted_bytes": 678891310,
+    "frozen_members": 3483,
+    "input": {
+      "bytes": 137529057,
+      "sha256": "aad7b718ce6c6b8f4827d68622447ec3872cf3b6bbfd7d41effaf5db7667bdb1"
+    },
+    "intermediate_cut_outer_bytes_freshly_verified": false,
+    "manifest": {
+      "bytes": 1279025,
+      "sha256": "8a09c3fa6a7036ea043009c9dc3b8aa7485e1d243a143878cd8c5d4af77ecc6b"
+    },
+    "manifested_hashes": 3555,
+    "new_members": 90,
+    "recovery_cut_members": 3487,
+    "retained_bytes": "EXACT",
+    "retained_review_noninput_members": 52,
+    "retained_target_members": 3414,
+    "roots": {
+      "primary": {
+        "all_hashes": "PASS",
+        "directories": 1009,
+        "files": 3556,
+        "path": "/workspace/review-evidence/FL6-launcher-details-20261031/primary",
+        "safe_exact_membership": "PASS"
+      },
+      "recovered": {
+        "all_hashes": "PASS",
+        "directories": 1009,
+        "files": 3556,
+        "path": "/workspace/review-evidence/FL6-launcher-details-20261031/recovered",
+        "safe_exact_membership": "PASS"
+      }
+    },
+    "safe_exact_membership": "PASS"
+  },
+  "limits": [
+    "One constructed monitoring setup interruption demonstrates process-local fail-closed reuse failure; not an observed operational interruption or false acceptance",
+    "No application constructor-to-launcher or formatting runtime chain observed",
+    "Conditional delivery and owner continuity; no physical identity or inequality inferred",
+    "Dynamic error-name/message/traceback values, types and formatted bytes unavailable",
+    "Non-None constructor handling and remaining outer cleanup outside this slice",
+    "No normal managed-close, managed-clear or ACTIVE-unlink execution inherited by exceptional route",
+    "Earlier traced invocations and separate observer remain unjoined",
+    "SOURCE-ONLY; cumulative-envelope unadopted; backup kernel-only; streams UNCOMPUTED; readiness/final binding blocked; admission disabled",
+    "Eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, retention, allowances and both acquisitions preserved",
+    "Installed-wheel authentication, original-record reconciliation and prepared-host41.0.7 compatibility not newly established"
+  ],
+  "predecessor_public_result": {
+    "actual_admission": false,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "receipt": {
+      "bytes": 8723742,
+      "sha256": "23004fec192169630993d1290c5c205126d1457d2deae08f3b0d21ef5c960454"
+    },
+    "result": "PASS",
+    "runtime_client_construction_revocation_chain": "UNAVAILABLE"
+  },
+  "preserved_limits": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "actual_admission": false,
+    "all_eleven_obligations_preserved": true,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cleanup_loop_entered": false,
+    "complete_repetition_coverage": false,
+    "cumulative_envelope": "UNADOPTED",
+    "exact_generated_strings_bytes": null,
+    "final_binding": "BLOCKED",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "non_none_constructor_branch_complete": false,
+    "outer_cleanup_complete": false,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "runtime_chain": "UNAVAILABLE",
+    "static_conditional_slice": true,
+    "streams": "UNCOMPUTED"
+  },
+  "prohibited_operations_performed": 0,
+  "public_result": {
+    "actual_admission": false,
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "receipt": {
+      "bytes": 10456658,
+      "sha256": "f500f19ddddfd3cd00304708fb8ada0ee149642e5359f619ed0fbe86d9273bdc"
+    },
+    "result": "PASS",
+    "runtime_handler_details_chain": "UNAVAILABLE"
+  },
+  "reviewer": "Formal-Lab[6]",
+  "reviewer_failure": {
+    "cause": "Reviewer assumed old bytes plus two separator newlines; exact supplied freeze/refreeze source uses one separator newline plus an addition that already starts with newline. Prior bytes preserved exactly. Diff labels are reviewed/name and proposed/name.",
+    "completed_controls_replayed": 0,
+    "continuation": "audit-completion only performs unfinished read-only comparisons and supplied-log reconciliation",
+    "corroborated_rows": 80,
+    "exit": 1,
+    "failed_group": "source-monitor",
+    "failed_stage": "Read-only preservation audit after all 80 source/monitor rows",
+    "implementation_changes": 0,
+    "outside_completed_group_totals": true,
+    "owner": "Formal-Lab[6]"
+  },
+  "supplied_Engineering_groups": {
+    "primary": {
+      "controls": 862,
+      "exit": {
+        "finished_utc": "2026-10-31T15:07:07.037619+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2715.1062088649996,
+        "timed_out": false
+      },
+      "result_identity": {
+        "bytes": 111201,
+        "sha256": "a662bdc927b5cd89223f520afe6b9e94efac291ebfcbe101a3fa729074031f04"
+      },
+      "scope": "New launcher initial-details adapter controls; no prior campaign replay"
+    },
+    "recovered": {
+      "controls": 391,
+      "exit": {
+        "finished_utc": "2026-10-31T15:47:57.396036+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 2398.3922923339996,
+        "timed_out": false
+      },
+      "result_identity": {
+        "bytes": 49274,
+        "sha256": "857fdb842e81ada1f3fa5432723ff1b77c1dc0fff78471e411e00daff6b55435"
+      },
+      "scope": "New launcher initial-details adapter controls; no prior campaign replay"
+    },
+    "source-corrected": {
+      "controls": 66,
+      "exit": {
+        "finished_utc": "2026-10-31T14:21:30.494914+00:00",
+        "retries": 0,
+        "returncode": 0,
+        "seconds": 10.197038561997033,
+        "timed_out": false
+      },
+      "result_identity": {
+        "bytes": 6763,
+        "sha256": "f90551db9222153a6ac99f212cd5445d6656dff9c99e80f862a99f9b8f8d3670"
+      },
+      "scope": "New source/producer controls; no current predecessor public validation in this group"
+    }
+  },
+  "supplied_failures": {
+    "failures/preparation-textencoder/RECORD.txt": "Preparation-only tool orchestration failed with ReferenceError: TextEncoder is not defined before any filesystem or model action in that call. Zero controls. This is a new preparation failure, separate from the historical constructor milestone's same-named failure. No campaign was launched or retried.\n",
+    "failures/recovery-cut-preparation/RECORD.json": "{\n  \"stage\": \"recovery-cut preparation\",\n  \"controls\": 0,\n  \"exit\": 1,\n  \"failure\": \"IndentationError: unexpected indent at package.py line 57; extra closing brace on preceding line\",\n  \"archive_created\": false,\n  \"validated_inputs_changed\": false,\n  \"completed_checks_repeated\": false\n}\n",
+    "failures/source-initial/RECORD.json": "{\n  \"stage\": \"new source-only catalogue construction\",\n  \"controls\": 0,\n  \"exit\": 1,\n  \"failure\": \"TypeError: ast.Dict.keys list was called as a function\",\n  \"completed_campaign\": false,\n  \"repair\": \"Change d.keys() to d.keys in the new producer only; predecessor and runtime sources unchanged\",\n  \"recovery\": \"Original MANIFEST and changed files retained here; all other original input members remain unchanged in final root.\"\n}\n"
+  },
+  "target": "I164-launcher-initial-details-correspondence-1.zip",
+  "target_entries": 3556,
+  "target_identity": {
+    "bytes": 137529057,
+    "sha256": "aad7b718ce6c6b8f4827d68622447ec3872cf3b6bbfd7d41effaf5db7667bdb1"
+  },
+  "target_manifested_hashes": 3555,
+  "unqualified_combined_control_total": null,
+  "validation_layers": {
+    "CLI_execution_claimed": false,
+    "actual_current_full_public_positive": 1,
+    "actual_unchanged_predecessor_public_validation": 1,
+    "call_counts": {
+      "current": {
+        "_assemble": 12,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 17
+      },
+      "predecessor": {
+        "_assemble": 2,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 1
+      }
+    },
+    "full_public_negative_derivations": 0,
+    "monitor_witness_subsequent_public_rejection": "Monitoring-contention gate, before predecessor public validation; no receipt comparison reached",
+    "monitoring_synthetic_checks": "Separate plumbing only; not authenticated predecessor evidence",
+    "other_negatives": "Authenticated-basis checked-core mutants and receipt-comparison-core calls only",
+    "public_prederivation_required_relation_negatives": 16
+  },
+  "verdict": "NOT ACCEPTED AS COMPLETE: LD-01 MONITORING SETUP CLEANUP GAP"
+}

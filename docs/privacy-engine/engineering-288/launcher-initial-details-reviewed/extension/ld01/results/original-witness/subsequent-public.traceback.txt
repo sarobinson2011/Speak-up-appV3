@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/workspace/i164-ld01-correction/tools/original-witness/monitor_interrupt.py", line 31, in <module>
+    try:m.validate(root,saved)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-ld01-correction/retained/original/code/correspondence.py", line 133, in validate
+    _receipt_shape(saved);data=inputs(root);_,basis=_checked(data,catalogue(data));return _receipt_checked(basis,saved)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-ld01-correction/retained/original/code/correspondence.py", line 97, in _checked
+    exact(submitted_catalogue,'DETAILS-CATALOGUE');exact(claims,'DETAILS-CLAIMS');basis=_basis(data)
+                                                                                        ^^^^^^^^^^^^
+  File "/workspace/i164-ld01-correction/retained/original/code/correspondence.py", line 69, in _basis
+    fresh=inputs(data['root']);pb,public=_public_predecessor(fresh);p=fresh['prior_module']
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-ld01-correction/retained/original/code/correspondence.py", line 57, in _public_predecessor
+    p=data['prior_module'];sm=getattr(sys,'monitoring',None);require(sm is not None,'DETAILS-MONITORING-UNAVAILABLE');require(sm.get_tool(2) is None,'DETAILS-MONITORING-CONTENTION');captures=[];sm.use_tool_id(2,'launcher-details-authenticated-predecessor')
+                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/i164-ld01-correction/retained/original/code/correspondence.py", line 14, in require
+    if not ok:raise ValueError(code)
+              ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: DETAILS-MONITORING-CONTENTION

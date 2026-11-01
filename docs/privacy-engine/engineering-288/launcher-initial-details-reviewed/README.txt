@@ -1,0 +1,14 @@
+Reviewed launcher-initial-details milestone with LD-01 closure
+
+LD-01 CLOSED within the retained CPython 3.12.14 cooperative monitoring contract.
+Read provenance/review-incorporation.json and review/REPORT.txt first. The bounded launcher-initial-details source support carries forward unchanged. Historical NOT ACCEPTED AS COMPLETE — LD-01 and original PENDING author documents remain byte-exact; they are historical states linked to this subsequent independent closure, not conflicting new verdicts.
+
+The active correction entry is extension/LD01-START-HERE.txt with extension/ld01/README.txt, RECOVERY.txt and RESULTS.json. The current adapter is extension/code/correspondence.py. The active saved receipt is the exact external candidate member ld01/receipts/corrected-launcher-details.json; its identity and recovery lineage are pinned in provenance/external-evidence.json. Do not use the historical root receipt or rewrite either receipt. This compact selection is not a runnable complete validator root.
+
+Independent 52 focused synthetic-predecessor monitoring controls and 15 same-process/recovered-root checks remain distinct. Four separate two-row qualified cleanup-observation groups, two original-defect rows, the read-only audit failure and zero-replay completion remain outside successful cleanup/reuse claims. Engineering's 78/10/12/12, three two-row qualified groups and original-defect observations remain separate. Prior 523 completed/80 qualified and their audit continuation, Engineering 66/862/391 and zero-control failures, and all older accounting qualifications are retained without aggregation or repair.
+
+Actual pristine same-process public reuse through the unchanged predecessor is supported. No full public negative derivation is claimed. Rejection layers are exactly those in review/results/validation-layers.json. A free slot alone does not establish complete monitoring-state cleanup. Cleanup failure, repeated interruption, termination, alternate interpreters, hostile replacement and unavailable qualification remain qualified.
+
+Both contexts/prefixes and both acquisitions remain distinct. This saved milestone stops before launcher cleanup loop 169. Runtime and outer-cleanup gaps, all eleven obligations, four inventory and fourteen lifetime UNKNOWN totals, Decision B, retention and allowances remain. SOURCE-ONLY; cumulative-envelope unadopted; backup kernel-only; streams UNCOMPUTED; readiness/final binding blocked; admission disabled.
+
+The confirmed ec348e12149af04fd0566f4a6acff505b56bdc7f save is reused, never repeated. New save command uses only this prefix, preserves unrelated work, disables local Git hooks, marks the commit [skip ci], pushes once without force or retry and retains a separate host receipt. It first reuses a matching confirmed receipt or already-saved exact checkpoint. Existing incomplete/conflicting records stop the command without repair.

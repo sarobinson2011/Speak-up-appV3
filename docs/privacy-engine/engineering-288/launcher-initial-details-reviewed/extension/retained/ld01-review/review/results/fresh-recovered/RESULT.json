@@ -1,0 +1,2457 @@
+{
+  "CLI_execution_claimed": false,
+  "checks": 523,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "full_public_negative_derivations": 0,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "fresh recovered full current public accepts both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "candidate monitoring slot released after actual predecessor validation",
+      "result": "PASS"
+    },
+    {
+      "check": "authenticated basis reproduces saved current receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "independent construction and oracle (0, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, False){'owner_continuity': False}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, False){'continuity': 'UNESTABLISHED'}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, False){'invocation': 'fl6-distinct-launcher-details'}",
+      "result": "PASS"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'run-with-exception-exit', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'run-with-exception-exit', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'run-with-exception-exit', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'run-with-exception-exit', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'run-with-exception-exit', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'run-with-exception-exit', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-yield-delivery', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-yield-delivery', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-yield-delivery', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-yield-delivery', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-yield-delivery', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-yield-delivery', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-inner-with-exception-exit', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-inner-with-exception-exit', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-inner-with-exception-exit', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-inner-with-exception-exit', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'session-inner-with-exception-exit', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'session-inner-with-exception-exit', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'private-yield-delivery', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'private-yield-delivery', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'private-yield-delivery', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'private-yield-delivery', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'private-yield-delivery', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'private-yield-delivery', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'launcher-handler-entry', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'launcher-handler-entry', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'launcher-handler-entry', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'launcher-handler-entry', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'launcher-handler-entry', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'launcher-handler-entry', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-evaluation-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-evaluation-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-evaluation-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-evaluation-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-evaluation-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-evaluation-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-error', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-error', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-error', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-error', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-error', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-error', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-error', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-error', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-error', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-error', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-error', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-error', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-traceback', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-traceback', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-traceback', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-traceback', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-traceback', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-traceback', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-traceback', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-traceback', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-traceback', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-traceback', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-traceback', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-traceback', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-nonexecution_established', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-nonexecution_established', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-nonexecution_established', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-nonexecution_established', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-nonexecution_established', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-nonexecution_established', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-nonexecution_established', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-nonexecution_established', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-nonexecution_established', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-nonexecution_established', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-nonexecution_established', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-nonexecution_established', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-new_authorization', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-new_authorization', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-new_authorization', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-new_authorization', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-new_authorization', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-new_authorization', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-new_authorization', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-new_authorization', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-new_authorization', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-new_authorization', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-new_authorization', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-new_authorization', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-cleanup', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-cleanup', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-cleanup', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-cleanup', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-key-cleanup', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-key-cleanup', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-cleanup', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-cleanup', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-cleanup', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-cleanup', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-value-cleanup', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-value-cleanup', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-dict-completion', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-dict-completion', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-dict-completion', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-dict-completion', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-dict-completion', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-dict-completion', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-complete', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-complete', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, False, 'details-assignment-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, False, 'details-assignment-complete', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, False)callback-handler-enter",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, False)callback-none-guard",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, False)callback-bare-rethrow",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "cleanup replacement cannot enter selected route (0, False)",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent construction and oracle (0, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, True){'owner_continuity': False}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, True){'continuity': 'UNESTABLISHED'}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (0, True){'invocation': 'fl6-distinct-launcher-details'}",
+      "result": "PASS"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'launcher-handler-entry', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'launcher-handler-entry', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'launcher-handler-entry', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'launcher-handler-entry', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'launcher-handler-entry', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'launcher-handler-entry', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-value-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-value-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-value-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-value-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-value-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-value-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-dict-completion', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-dict-completion', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-dict-completion', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-dict-completion', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-dict-completion', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-dict-completion', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-complete', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-complete', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (0, True, 'details-assignment-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (0, True, 'details-assignment-complete', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, True)callback-handler-enter",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, True)callback-none-guard",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (0, True)callback-bare-rethrow",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "cleanup replacement cannot enter selected route (0, True)",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('invocation',))",
+      "error": "DETAILS-PARENT-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('anchor', 'recovery_occurrence'))",
+      "error": "DETAILS-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('context',))",
+      "error": "DETAILS-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'selected_error', 'reference'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'references', 'owner', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'references', 'token', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'references', 'manager', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'scope', 'acquisition'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'launcher_name'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'runtime_delivery'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'existing_cause'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'continuity'))",
+      "error": "DETAILS-CONTINUITY-DOMAIN",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('outcomes',))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding',))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (0, ('delivery_binding', 'launcher_name'))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (0, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (0, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (0, 'manager')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated selected-error substitution 0",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal-key subclasses 0",
+      "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'run-with-exception-exit')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'session-yield-delivery')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'session-inner-with-exception-exit')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'private-yield-delivery')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'launcher-handler-entry')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-evaluation-attempt')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-error')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-error')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-message')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-message')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-traceback')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-traceback')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-nonexecution_established')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-nonexecution_established')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-new_authorization')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-new_authorization')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-key-cleanup')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-value-cleanup')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-dict-completion')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-assignment-attempt')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (0, 'details-assignment-complete')",
+      "error": "DETAILS-MISSING-STEP:details-assignment-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 0",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 0",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 0",
+      "error": "DETAILS-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unknown delivery cannot advance to handler 0",
+      "error": "DETAILS-UNESTABLISHED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "replacement skips subsequent evaluation 0",
+      "error": "DETAILS-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'cleanup_loop_entered')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'normal_managed_close_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'managed_clear_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'ACTIVE_unlink_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'failure_file_established')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'outward_propagation_established')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'runtime_observation')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'obligations_discharged')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'authorization_renewed')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (0, 'actual_admission')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('known_literal_fields', 'nonexecution_established'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('known_literal_fields', 'new_authorization'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('known_literal_fields', 'cleanup'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('dynamic_fields', 0, 'exact_value'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('dynamic_fields', 1, 'exact_type'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('dynamic_fields', 2, 'formatted_bytes'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('dynamic_fields', 2, 'selected_error', 'reference'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (0, ('complete_runtime_dictionary_observed',))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested result mutation cannot alter expectations 0",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'runtime_handler_details_chain')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'exact_generated_message')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'classification')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'multiplicity')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'cleanup_loop_coverage')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (0, 'existing_cause_context_suppression')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent construction and oracle (1, False)",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, False){'owner_continuity': False}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, False){'continuity': 'UNESTABLISHED'}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, False){'invocation': 'fl6-distinct-launcher-details'}",
+      "result": "PASS"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'run-with-exception-exit', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'run-with-exception-exit', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'run-with-exception-exit', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'run-with-exception-exit', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'run-with-exception-exit', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'run-with-exception-exit', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-yield-delivery', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-yield-delivery', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-yield-delivery', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-yield-delivery', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-yield-delivery', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-yield-delivery', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-inner-with-exception-exit', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-inner-with-exception-exit', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-inner-with-exception-exit', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-inner-with-exception-exit', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'session-inner-with-exception-exit', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'session-inner-with-exception-exit', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'private-yield-delivery', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'private-yield-delivery', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'private-yield-delivery', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'private-yield-delivery', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'private-yield-delivery', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'private-yield-delivery', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'launcher-handler-entry', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'launcher-handler-entry', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'launcher-handler-entry', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'launcher-handler-entry', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'launcher-handler-entry', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'launcher-handler-entry', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-evaluation-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-evaluation-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-evaluation-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-evaluation-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-evaluation-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-evaluation-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-error', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-error', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-error', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-error', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-error', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-error', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-error', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-error', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-error', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-error', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-error', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-error', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-traceback', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-traceback', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-traceback', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-traceback', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-traceback', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-traceback', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-traceback', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-traceback', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-traceback', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-traceback', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-traceback', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-traceback', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-nonexecution_established', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-nonexecution_established', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-nonexecution_established', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-nonexecution_established', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-nonexecution_established', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-nonexecution_established', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-nonexecution_established', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-nonexecution_established', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-nonexecution_established', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-nonexecution_established', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-nonexecution_established', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-nonexecution_established', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-new_authorization', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-new_authorization', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-new_authorization', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-new_authorization', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-new_authorization', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-new_authorization', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-new_authorization', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-new_authorization', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-new_authorization', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-new_authorization', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-new_authorization', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-new_authorization', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-cleanup', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-cleanup', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-cleanup', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-cleanup', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-key-cleanup', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-key-cleanup', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-cleanup', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-cleanup', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-cleanup', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-cleanup', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-value-cleanup', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-value-cleanup', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-dict-completion', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-dict-completion', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-dict-completion', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-dict-completion', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-dict-completion', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-dict-completion', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-complete', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-complete', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, False, 'details-assignment-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, False, 'details-assignment-complete', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, False)callback-handler-enter",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, False)callback-none-guard",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, False)callback-bare-rethrow",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "cleanup replacement cannot enter selected route (1, False)",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent construction and oracle (1, True)",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, True){'owner_continuity': False}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, True){'continuity': 'UNESTABLISHED'}",
+      "result": "PASS"
+    },
+    {
+      "check": "conditional or distinct occurrence (1, True){'invocation': 'fl6-distinct-launcher-details'}",
+      "result": "PASS"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'launcher-handler-entry', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'launcher-handler-entry', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'launcher-handler-entry', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'launcher-handler-entry', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'launcher-handler-entry', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'launcher-handler-entry', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-value-message', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-value-message', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-value-message', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-value-message', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-value-message', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-value-message', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-dict-completion', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-dict-completion', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-dict-completion', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-dict-completion', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-dict-completion', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-dict-completion', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-attempt', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-attempt', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-attempt', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-attempt', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-attempt', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-attempt', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-complete', 'raise')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-complete', 'raise')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-complete', 'process-termination')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-complete', 'process-termination')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent frontier oracle (1, True, 'details-assignment-complete', 'unobserved')",
+      "result": "PASS"
+    },
+    {
+      "check": "false completion (1, True, 'details-assignment-complete', 'unobserved')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, True)callback-handler-enter",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, True)callback-none-guard",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "completed removal with replacement cannot select constructor (1, True)callback-bare-rethrow",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "cleanup replacement cannot enter selected route (1, True)",
+      "error": "DETAILS-PARENT-COMPLETION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('invocation',))",
+      "error": "DETAILS-PARENT-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('anchor', 'recovery_occurrence'))",
+      "error": "DETAILS-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('context',))",
+      "error": "DETAILS-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'selected_error', 'reference'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'references', 'owner', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'references', 'token', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'references', 'manager', 'symbol'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'scope', 'acquisition'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'launcher_name'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'runtime_delivery'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'existing_cause'))",
+      "error": "DETAILS-EXPECTED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'continuity'))",
+      "error": "DETAILS-CONTINUITY-DOMAIN",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('outcomes',))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding',))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lineage type or unsupported claim (1, ('delivery_binding', 'launcher_name'))",
+      "error": "DETAILS-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (1, 'owner')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (1, 'token')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated reference substitution (1, 'manager')",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated selected-error substitution 1",
+      "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal-key subclasses 1",
+      "error": "DETAILS-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'run-with-exception-exit')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'session-yield-delivery')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'session-inner-with-exception-exit')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'private-yield-delivery')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'launcher-handler-entry')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-evaluation-attempt')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-error')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-error')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-message')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-message')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-traceback')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-traceback')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-nonexecution_established')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-nonexecution_established')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-new_authorization')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-new_authorization')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-key-cleanup')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-value-cleanup')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-dict-completion')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-assignment-attempt')",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "source stage omission (1, 'details-assignment-complete')",
+      "error": "DETAILS-MISSING-STEP:details-assignment-complete",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 1",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 1",
+      "error": "DETAILS-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordering duplication or normal-path splice 1",
+      "error": "DETAILS-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unknown delivery cannot advance to handler 1",
+      "error": "DETAILS-UNESTABLISHED-DELIVERY",
+      "result": "REJECTED"
+    },
+    {
+      "check": "replacement skips subsequent evaluation 1",
+      "error": "DETAILS-UNREACHED-STEPS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'cleanup_loop_entered')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'normal_managed_close_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'managed_clear_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'ACTIVE_unlink_spliced')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'failure_file_established')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'outward_propagation_established')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'runtime_observation')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'obligations_discharged')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'authorization_renewed')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output (1, 'actual_admission')",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('known_literal_fields', 'nonexecution_established'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('known_literal_fields', 'new_authorization'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('known_literal_fields', 'cleanup'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('dynamic_fields', 0, 'exact_value'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('dynamic_fields', 1, 'exact_type'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('dynamic_fields', 2, 'formatted_bytes'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('dynamic_fields', 2, 'selected_error', 'reference'))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact literals or unavailable dynamic values (1, ('complete_runtime_dictionary_observed',))",
+      "error": "DETAILS-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested result mutation cannot alter expectations 1",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'runtime_handler_details_chain')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'exact_generated_message')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'classification')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'multiplicity')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'cleanup_loop_coverage')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated semantic claims (1, 'existing_cause_context_suppression')",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic contexts reordered",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic contexts missing",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic contexts duplicated",
+      "error": "DETAILS-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "fresh semantic expectations isolated",
+      "result": "PASS"
+    },
+    {
+      "check": "public and derived nested returns isolated",
+      "result": "PASS"
+    },
+    {
+      "check": "candidate input substitution prior",
+      "error": "DETAILS-CANDIDATE-PREDECESSOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate input substitution prior_saved",
+      "error": "DETAILS-CANDIDATE-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate input substitution sources",
+      "error": "DETAILS-CANDIDATE-SOURCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "altered saved evidence",
+      "error": "DETAILS-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted saved evidence",
+      "error": "DETAILS-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'callback_bare_rethrow_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'callback_stored_failure_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'client_construction_none_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'control_construction_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'control_exception_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'launcher_initial_details_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'stored_failure_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (0, 'token_registration_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core coordinated claims (0, 'runtime_handler_details_chain')",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core coordinated claims (0, 'classification')",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'callback_bare_rethrow_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'callback_stored_failure_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'client_construction_none_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'control_construction_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'control_exception_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'launcher_initial_details_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'stored_failure_revocation_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public mandatory pre-derivation (1, 'token_registration_correspondence')",
+      "error": "DETAILS-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core coordinated claims (1, 'runtime_handler_details_chain')",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core coordinated claims (1, 'classification')",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core reversed",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core duplicate",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt-comparison core source-binding",
+      "error": "DETAILS-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "comparison core still accepts pristine bytes",
+      "result": "PASS"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "One actual current full public positive and actual unchanged predecessor public validation; authenticated-basis checked cores, pre-derivation gates and receipt-comparison cores separately identified",
+  "seconds": 2508.590804839001,
+  "session_operations": 0
+}
