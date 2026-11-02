@@ -1,0 +1,433 @@
+{
+  "Git_operations": 0,
+  "historical": {
+    "Engineering_EC01_controls": {
+      "PASS": 55,
+      "REJECTED": 50,
+      "controls": 105,
+      "exit": {
+        "automatic_retries": 0,
+        "finished_utc": "2026-11-01T16:45:05.336253+00:00",
+        "returncode": 0,
+        "seconds": 2326.564213976999,
+        "streams_bytes_observed": {
+          "stderr.log": 0,
+          "stdout.log": 7089
+        },
+        "timed_out": false
+      },
+      "layer_counts": {
+        "actual unchanged predecessor public positive": 1,
+        "actual-authenticated-basis _construct_checked/output-comparison core": 47,
+        "authenticated-basis assembly comparison": 1,
+        "authenticated-basis receipt-comparison core": 1,
+        "corrected-expression AST": 1,
+        "defining-source AST": 1,
+        "exact-type gate before constructed parent validation": 12,
+        "full current public positive": 1,
+        "producer output-comparison core with predecessor-validated premises from actual authenticated basis": 12,
+        "saved-byte/receipt comparison": 1,
+        "source-byte diff": 2,
+        "source-grounded frontier oracle": 16,
+        "source-grounded test oracle over authenticated result": 4,
+        "test oracle only": 4,
+        "test-oracle source diff": 1
+      },
+      "new_execution_calls": 0,
+      "result_identity": {
+        "bytes": 22255,
+        "sha256": "00781f9fb00e24a0642f7b717f5dec329ffe07eae6eecddbc32d881819db78fc"
+      },
+      "rows_stdout_result_reconciled": true
+    },
+    "closure_identity": {
+      "bytes": 154107404,
+      "entries": 52,
+      "sha256": "7971a5cd95ef8775ff05e2db0ef5c3521903586c0d530b9e590b4bb54029fcef"
+    },
+    "confirmed_saved_and_pushed_commit": "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+    "current_independent_review": "PENDING",
+    "historical_Engineering": {
+      "primary": {
+        "completed": false,
+        "discrepancy_cause": "UNKNOWN",
+        "progress": 1300,
+        "stdout": 165
+      },
+      "recovered": {
+        "completed": true,
+        "discrepancy_cause": null,
+        "progress": 341,
+        "stdout": 341
+      },
+      "source-1": {
+        "completed": true,
+        "discrepancy_cause": null,
+        "progress": 46,
+        "stdout": 46
+      }
+    },
+    "historical_audit": {
+      "completed_group": false,
+      "correction": {
+        "completed_group": true,
+        "exit": {
+          "finished_utc": "2026-11-01T15:08:24.487324+00:00",
+          "pid": 5,
+          "returncode": 0,
+          "seconds": 2.374060729998746,
+          "timed_out": false
+        },
+        "rows": 0,
+        "validator_projector_calls": 0
+      },
+      "exit": {
+        "finished_utc": "2026-11-01T15:07:39.206109+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 0.8196810990011727,
+        "timed_out": false
+      },
+      "rows": 0,
+      "validator_projector_calls": 0
+    },
+    "historical_incomplete_primary": {
+      "cause": "UNKNOWN",
+      "completed": false,
+      "missing": [
+        "stdout166\u20131300",
+        "RESULT.json",
+        "calls.json",
+        "final-verification.json"
+      ],
+      "progress": 1300,
+      "stdout": 165,
+      "withdrawn_corroboration_claim": "Retained unchanged; not adopted"
+    },
+    "historical_independent": {
+      "public-recovered": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:35:08.016266+00:00",
+          "pid": 10,
+          "returncode": 0,
+          "seconds": 2439.956919127002,
+          "timed_out": false
+        },
+        "kinds": {
+          "DEFECT-OBSERVED": 4,
+          "PASS": 43,
+          "REJECTED": 123
+        },
+        "result": "PASS",
+        "rows": 170
+      },
+      "source-completion": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:05:40.631564+00:00",
+          "pid": 5,
+          "returncode": 0,
+          "seconds": 4.779847028999939,
+          "timed_out": false
+        },
+        "kinds": {
+          "PASS": 17,
+          "REJECTED": 4
+        },
+        "result": "PASS",
+        "rows": 21
+      },
+      "source-slot3": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:04:43.409856+00:00",
+          "pid": 5,
+          "returncode": 1,
+          "seconds": 4.479841348998889,
+          "timed_out": false
+        },
+        "kinds": {
+          "PASS": 46,
+          "REJECTED": 4
+        },
+        "result": "FAILED-ATTEMPT",
+        "rows": 50
+      }
+    },
+    "historical_rejection": "NOT ACCEPTED AS COMPLETE: EC-01 normal-append terminal-exception classification is inconsistent with the retained pending constructor error",
+    "host_completion_evidence": "Matching supplied PASS/CONFIRMED receipt; no new Git operation",
+    "host_save_receipt": {
+      "bytes": 11429,
+      "sha256": "0f6dcb10e51c174f51aeae40b9f47039a560e564a7ac54001f8a735b1f04d192"
+    },
+    "independent_EC01_controls": {
+      "actual_monitored_calls": {
+        "current": {
+          "_assemble": 4,
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        },
+        "unchanged_predecessor": {
+          "_assemble": 2,
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        }
+      },
+      "actual_unchanged_predecessor_public_positives": 1,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-11-01T18:43:00.532988+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2380.611644478995,
+        "timed_out": false
+      },
+      "full_current_public_positives": 1,
+      "full_public_negative_derivations": 0,
+      "layer_counts_excluding_first_three_public_positive_checks": {
+        "actual post-public normal monitoring-state inspection; no interruption campaign": 2,
+        "actual-authenticated-basis _construct_checked and output-comparison core": 79,
+        "authenticated-basis receipt-comparison core": 1,
+        "authenticated-basis receipt-comparison core; no public negative derivation": 1,
+        "defining-source AST, not execution": 1,
+        "exact result comparison; historical execution reused": 1,
+        "exact retained witness-byte comparison": 1,
+        "exact-type input gate before predecessor construction validation": 3,
+        "submitted-object preservation after authenticated-basis rejection": 1
+      },
+      "public_negative_calls": 0,
+      "row_types": {
+        "PASS": 34,
+        "REJECTED": 59
+      },
+      "rows": 93,
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "new_results_separate": true,
+    "old_confirmed_commit_reused": "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1",
+    "preserved": {
+      "Decision_B": "UNCHANGED",
+      "SOURCE_ONLY": "UNCHANGED",
+      "admission": false,
+      "allowances": "UNCHANGED",
+      "backup": "KERNEL-ONLY",
+      "both_acquisitions": "SEPARATE",
+      "cumulative_envelope": "UNADOPTED",
+      "final_binding": "BLOCKED",
+      "inventory_UNKNOWN": 4,
+      "lifetime_UNKNOWN": 14,
+      "obligations": 11,
+      "readiness": "BLOCKED",
+      "retention": "UNCHANGED",
+      "streams": "UNCOMPUTED"
+    },
+    "prior_closure": "EC-01 CLOSED within the retained bounded conditional SOURCE-ONLY correspondence contract",
+    "reviewer_preparation_failure": {
+      "candidate_executions": 0,
+      "controls": 0,
+      "error": "SyntaxError at audit.py line 26: closing parenthesis ')' does not match opening parenthesis '{'",
+      "exit": 1,
+      "fix": "Remove one unmatched closing parenthesis in the reviewer audit dictionary; no candidate code change",
+      "kind": "reviewer read-only audit syntax-preparation failure",
+      "operation": "ast.parse before launching audit",
+      "preserved_source": "audit.py"
+    },
+    "zero_replay_audit": {
+      "candidate_executions": 0,
+      "controls": 0,
+      "exit": {
+        "finished_utc": "2026-11-01T18:08:39.358937+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2.1751359929985483,
+        "timed_out": false
+      }
+    }
+  },
+  "host_save_receipt": {
+    "bytes": 11429,
+    "sha256": "0f6dcb10e51c174f51aeae40b9f47039a560e564a7ac54001f8a735b1f04d192"
+  },
+  "kind": "Read-only record/source audit; no controls or candidate execution",
+  "new_functions": [
+    "error_report_source",
+    "compile_error_report",
+    "validate_error_report",
+    "error_report_binding",
+    "error_report_projection",
+    "validate_error_report_projection"
+  ],
+  "new_supplied_failures": {
+    "byte_recovery": {
+      "controls": 0,
+      "extras": [
+        {
+          "bytes": 3145728,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/results/primary/.launcher-details.json.FaUIQV",
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        {
+          "bytes": 7077888,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/review/failures/initial-root-membership/.unexpected-0.bin.PSOS4Q",
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        {
+          "bytes": 4980736,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/failures/process-membership/.undeclared-partial.bin.tpnTf4",
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        }
+      ],
+      "preservation": "Original failed preparation tree retained unchanged; a separate input tree copies only exact manifest-declared bytes, then undergoes strict membership verification.",
+      "reason": "Byte-recovery exact-membership check encountered undeclared local files",
+      "result": "FAILED-PREPARATION",
+      "returncode": 1,
+      "validator_calls": 0
+    },
+    "packaging": {
+      "cause": "UNKNOWN",
+      "controls_replayed": 0,
+      "first_attempt_new_controls": 0,
+      "observed_utc": "2026-11-02T10:15:55.146553+00:00",
+      "packaging_first_attempt_exit": 1,
+      "progress_row_reconstructed": false,
+      "progress_rows": 391,
+      "qualified_row": {
+        "check": "returned context mutations leave both expected contexts intact",
+        "layer": "actual-authenticated-basis semantic catalogue/claims core",
+        "ordinal": 392,
+        "progress_record": "UNAVAILABLE",
+        "result": "PASS",
+        "supported_by": [
+          "RESULT.json",
+          "stdout.log"
+        ]
+      },
+      "recorded_identities": {
+        "processes/focused-recovered/stdout.log": {
+          "bytes": 26817,
+          "sha256": "d8feb505aeb4d3bd7876d1efc6a6f6cbc9bb64a49c370ac39e5b372cca580f50"
+        },
+        "results/focused-recovered/RESULT.json": {
+          "bytes": 98993,
+          "sha256": "71afcba6051c42f9cda86194b5753fdab0e1889d5f901903be1e52555f245e6b"
+        },
+        "results/focused-recovered/progress.jsonl": {
+          "bytes": 85188,
+          "sha256": "913ef2102b0c08102b5ee5a5eaecd1c3d77f764c935d530fccb73a1d14190440"
+        }
+      },
+      "result_rows": 392,
+      "stdout_corroborated_rows": 392,
+      "three_way_correspondence_rows": "1\u2013391"
+    },
+    "undeclared_copies_verified": [
+      {
+        "identity": {
+          "bytes": 3145728,
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 3145728,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/results/primary/.launcher-details.json.FaUIQV",
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-0.bin"
+      },
+      {
+        "identity": {
+          "bytes": 7077888,
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 7077888,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/review/failures/initial-root-membership/.unexpected-0.bin.PSOS4Q",
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-1.bin"
+      },
+      {
+        "identity": {
+          "bytes": 4980736,
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 4980736,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/failures/process-membership/.undeclared-partial.bin.tpnTf4",
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-2.bin"
+      }
+    ]
+  },
+  "preparation_is_validation": false,
+  "prepared_receipt": {
+    "bytes": 15694813,
+    "sha256": "726e80b38028c6e3958b4e346696a7296307ca0109b65e17318eb7f580d6072f"
+  },
+  "prior_closure": "EC-01 CLOSED within the retained bounded conditional SOURCE-ONLY correspondence contract",
+  "producer_append_only": true,
+  "slot4_helper_same_AST_as_retained_slot3_except_slot_error_labels_lease_marker": true,
+  "supplied": {
+    "RESULT_stdout_kinds": {
+      "PASS": 130,
+      "REJECTED": 262
+    },
+    "RESULT_stdout_rows": 392,
+    "cause": "UNKNOWN",
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-02T10:14:36.865239+00:00",
+      "returncode": 0,
+      "seconds": 2388.209715685999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 26817
+      },
+      "timed_out": false
+    },
+    "layers": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked core (revalidates selected parent)": 108,
+      "actual-authenticated-basis semantic catalogue/claims core": 9,
+      "adapter constants/source": 1,
+      "authenticated-basis receipt assembly comparison": 1,
+      "authenticated-basis receipt-comparison core; no public negative derivation": 2,
+      "defining-source AST; independent of generated catalogue": 1,
+      "exact source-prefix bytes": 1,
+      "exact-type input gate before constructed predecessor validation": 16,
+      "full current public positive": 1,
+      "independent source-grounded outcome oracle over authenticated result": 8,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises": 144,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + defining-source coverage": 23,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + independent source oracle": 72,
+      "public required-relation gate before inputs/derivation": 4
+    },
+    "no_reconstruction": true,
+    "progress_kinds": {
+      "PASS": 129,
+      "REJECTED": 262
+    },
+    "progress_rows": 391,
+    "row392": {
+      "check": "returned context mutations leave both expected contexts intact",
+      "layer": "actual-authenticated-basis semantic catalogue/claims core",
+      "result": "PASS"
+    },
+    "row392_progress": "UNAVAILABLE"
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "Engineering_EC01": {
+    "PASS": 55,
+    "REJECTED": 50,
+    "controls": 105,
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-01T16:45:05.336253+00:00",
+      "returncode": 0,
+      "seconds": 2326.564213976999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 7089
+      },
+      "timed_out": false
+    },
+    "layer_counts": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked/output-comparison core": 47,
+      "authenticated-basis assembly comparison": 1,
+      "authenticated-basis receipt-comparison core": 1,
+      "corrected-expression AST": 1,
+      "defining-source AST": 1,
+      "exact-type gate before constructed parent validation": 12,
+      "full current public positive": 1,
+      "producer output-comparison core with predecessor-validated premises from actual authenticated basis": 12,
+      "saved-byte/receipt comparison": 1,
+      "source-byte diff": 2,
+      "source-grounded frontier oracle": 16,
+      "source-grounded test oracle over authenticated result": 4,
+      "test oracle only": 4,
+      "test-oracle source diff": 1
+    },
+    "new_execution_calls": 0,
+    "result_identity": {
+      "bytes": 22255,
+      "sha256": "00781f9fb00e24a0642f7b717f5dec329ffe07eae6eecddbc32d881819db78fc"
+    },
+    "rows_stdout_result_reconciled": true
+  },
+  "Engineering_historical": {
+    "primary": {
+      "completed": false,
+      "discrepancy_cause": "UNKNOWN",
+      "progress": 1300,
+      "stdout": 165
+    },
+    "recovered": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 341,
+      "stdout": 341
+    },
+    "source-1": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 46,
+      "stdout": 46
+    }
+  },
+  "SOURCE_ONLY": "UNCHANGED",
+  "acquisitions": 0,
+  "actual_admission": false,
+  "author": "SU-Engineering[288D]",
+  "backup": "KERNEL-ONLY",
+  "before_commit": "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1",
+  "closure_identity": {
+    "bytes": 154107404,
+    "entries": 52,
+    "location": "separately retained outer archive; includes all other exact archives below",
+    "sha256": "7971a5cd95ef8775ff05e2db0ef5c3521903586c0d530b9e590b4bb54029fcef"
+  },
+  "commit": "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+  "cumulative_envelope": "UNADOPTED",
+  "current_work": "Read-only incorporation and compact save preparation; no validators, campaigns or runtime/session/database operations executed",
+  "database_connections": 0,
+  "evidence_directory": "/home/steve/dev/Engineering-288-execution/I164-reviewed-exceptional-cleanup-EC01-git-20261102T090648Z-a63290be",
+  "external_evidence": {
+    "Formal-Lab6-I164-EC01-independent-closure": {
+      "git_included": false,
+      "identity": {
+        "bytes": 154107404,
+        "sha256": "7971a5cd95ef8775ff05e2db0ef5c3521903586c0d530b9e590b4bb54029fcef"
+      },
+      "matching_paths": [
+        "/home/steve/Downloads/Formal-Lab6-I164-EC01-independent-closure.zip"
+      ]
+    }
+  },
+  "final_binding": "BLOCKED",
+  "finished_utc": "2026-11-02T09:06:56.934452+00:00",
+  "full_public_negative_derivations": 0,
+  "historical_verdict_preserved": "NOT ACCEPTED AS COMPLETE: EC-01 normal-append terminal-exception classification is inconsistent with the retained pending constructor error",
+  "historical_zero_control_audit": {
+    "completed_group": false,
+    "correction": {
+      "completed_group": true,
+      "exit": {
+        "finished_utc": "2026-11-01T15:08:24.487324+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2.374060729998746,
+        "timed_out": false
+      },
+      "rows": 0,
+      "validator_projector_calls": 0
+    },
+    "exit": {
+      "finished_utc": "2026-11-01T15:07:39.206109+00:00",
+      "pid": 5,
+      "returncode": 1,
+      "seconds": 0.8196810990011727,
+      "timed_out": false
+    },
+    "rows": 0,
+    "validator_projector_calls": 0
+  },
+  "host_save_status_at_preparation": "UNCONFIRMED until matching host receipt; command first reuses a matching successful receipt or committed selection",
+  "independent_EC01": {
+    "actual_monitored_calls": {
+      "current": {
+        "_assemble": 4,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 1
+      },
+      "unchanged_predecessor": {
+        "_assemble": 2,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 1
+      }
+    },
+    "actual_unchanged_predecessor_public_positives": 1,
+    "environment": {
+      "cryptography": "50.0.2",
+      "dont_write_bytecode": true,
+      "isolated": 1,
+      "optimization": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "exit": {
+      "finished_utc": "2026-11-01T18:43:00.532988+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2380.611644478995,
+      "timed_out": false
+    },
+    "full_current_public_positives": 1,
+    "full_public_negative_derivations": 0,
+    "layer_counts_excluding_first_three_public_positive_checks": {
+      "actual post-public normal monitoring-state inspection; no interruption campaign": 2,
+      "actual-authenticated-basis _construct_checked and output-comparison core": 79,
+      "authenticated-basis receipt-comparison core": 1,
+      "authenticated-basis receipt-comparison core; no public negative derivation": 1,
+      "defining-source AST, not execution": 1,
+      "exact result comparison; historical execution reused": 1,
+      "exact retained witness-byte comparison": 1,
+      "exact-type input gate before predecessor construction validation": 3,
+      "submitted-object preservation after authenticated-basis rejection": 1
+    },
+    "public_negative_calls": 0,
+    "row_types": {
+      "PASS": 34,
+      "REJECTED": 59
+    },
+    "rows": 93,
+    "stdout_progress_RESULT_reconciled": true
+  },
+  "independent_historical": {
+    "public-recovered": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:35:08.016266+00:00",
+        "pid": 10,
+        "returncode": 0,
+        "seconds": 2439.956919127002,
+        "timed_out": false
+      },
+      "kinds": {
+        "DEFECT-OBSERVED": 4,
+        "PASS": 43,
+        "REJECTED": 123
+      },
+      "result": "PASS",
+      "rows": 170
+    },
+    "source-completion": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:05:40.631564+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 4.779847028999939,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 17,
+        "REJECTED": 4
+      },
+      "result": "PASS",
+      "rows": 21
+    },
+    "source-slot3": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:04:43.409856+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 4.479841348998889,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 46,
+        "REJECTED": 4
+      },
+      "result": "FAILED-ATTEMPT",
+      "rows": 50
+    }
+  },
+  "independent_reviewer": "Formal-Lab[6]",
+  "inventory_unknowns": 4,
+  "lifetime_unknowns": 14,
+  "limits": [
+    "Constructed source correspondence, not observed cleanup/append execution",
+    "Conditional owner/local/method/list continuity; no physical identity/exclusivity proof",
+    "Initial reference states and opaque outcomes are premises, not feasible-runtime-history proof",
+    "No line172 or later cleanup expansion; no normal overall return or final rethrow established",
+    "Non-None construction and outer-cleanup gaps retained; observer unjoined",
+    "Monitoring qualifications remain limited to cooperative CPython3.12.14; cleanup failure/repeated interruption/termination/alternate interpreter/hostile replacement gaps retained",
+    "No new prepared-host or installed-wheel qualification"
+  ],
+  "next_task_implemented": false,
+  "no_unqualified_combined_total": true,
+  "obligations_preserved": 11,
+  "pipeline_runs": 0,
+  "prefix": "docs/privacy-engine/engineering-288/exceptional-cleanup-append-reviewed",
+  "preserved": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "SEPARATE",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN": 4,
+    "lifetime_UNKNOWN": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "primary_discrepancy_cause": "UNKNOWN",
+  "primary_missing_records": [
+    "RESULT.json",
+    "calls.json",
+    "final-verification.json",
+    "stdout rows166\u20131300"
+  ],
+  "prior_confirmed_save": "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1",
+  "prior_milestones": [
+    {
+      "already_saved": true,
+      "prefix": "docs/privacy-engine/engineering-288/launcher-initial-details-reviewed",
+      "save_repeated": false,
+      "selection_manifest": {
+        "bytes": 72287,
+        "sha256": "a8a2a9fcd5b72bae061a48a3cfc579625a3667b303accd9dcc4d2dfebb4b948f"
+      },
+      "verified_files": 423
+    }
+  ],
+  "prior_save_repeated": false,
+  "push_performed": true,
+  "push_status": "CONFIRMED",
+  "readiness": "BLOCKED",
+  "remote_main": "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+  "repo": "/home/steve/dev/Speak-up-appV3",
+  "review_runs": 0,
+  "reviewer_preparation_failure": {
+    "candidate_executions": 0,
+    "controls": 0,
+    "error": "SyntaxError at audit.py line 26: closing parenthesis ')' does not match opening parenthesis '{'",
+    "exit": 1,
+    "fix": "Remove one unmatched closing parenthesis in the reviewer audit dictionary; no candidate code change",
+    "kind": "reviewer read-only audit syntax-preparation failure",
+    "operation": "ast.parse before launching audit",
+    "preserved_source": "audit.py"
+  },
+  "reviewer_zero_replay_audit": {
+    "candidate_executions": 0,
+    "controls": 0,
+    "exit": {
+      "finished_utc": "2026-11-01T18:08:39.358937+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2.1751359929985483,
+      "timed_out": false
+    }
+  },
+  "runtime_changes": 0,
+  "seconds": 8.515631788992323,
+  "selection": {
+    "bytes": 2967113,
+    "files": 257,
+    "manifest": {
+      "bytes": 43972,
+      "sha256": "dbfc819a8dd4d1210176a7a570e68c0c8bbe96ca9ea8d1fac9098bfb6fd06748"
+    }
+  },
+  "session_operations": 0,
+  "status": "PASS",
+  "streams": "UNCOMPUTED",
+  "test_runs": 0,
+  "tree": "e2f537a97364d7edc83ab9e571eef31f44e37c18",
+  "unrelated_after": {
+    "index": {
+      "bytes": 1491177,
+      "sha256": "f4816096d152beb7a08090d7d592763d32ee56eb33480d5d4f987760c87c26de"
+    },
+    "status": {
+      "bytes": 13465,
+      "sha256": "ea5dcd46edb4441a3623663f86e7c1f5373fa7236e9a6d1e1ae2e15eef727300"
+    },
+    "unstaged_diff": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "unrelated_before": {
+    "index": {
+      "bytes": 1491177,
+      "sha256": "f4816096d152beb7a08090d7d592763d32ee56eb33480d5d4f987760c87c26de"
+    },
+    "status": {
+      "bytes": 13465,
+      "sha256": "ea5dcd46edb4441a3623663f86e7c1f5373fa7236e9a6d1e1ae2e15eef727300"
+    },
+    "unstaged_diff": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "verdict": "EC-01 CLOSED within the retained bounded conditional SOURCE-ONLY correspondence contract",
+  "withdrawn_full_corroboration_claim": "Preserved in historical-extension/failures/packaging-1; not adopted"
+}

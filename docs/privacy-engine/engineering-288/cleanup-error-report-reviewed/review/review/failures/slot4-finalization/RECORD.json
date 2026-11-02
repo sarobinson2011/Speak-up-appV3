@@ -1,0 +1,17 @@
+{
+  "classification": "REVIEWER-HARNESS-FINALIZATION-FAILURE",
+  "result_rows": 13,
+  "PASS": 12,
+  "QUALIFIED": 1,
+  "exit": 1,
+  "timed_out": false,
+  "error": "ValueError: tool 4 is not in use",
+  "source": "monitor.py:97, reviewer attempt to clear local events after candidate freed the reservation",
+  "candidate_defect": false,
+  "completed_group": false,
+  "completed_rows_replayed": false,
+  "qualified_observation": "Candidate nested cleanup cleared callback and freed slot after first cleanup interruption; local event bits remained. This is expressly retained as incomplete monitoring cleanup.",
+  "process_ended": true,
+  "separate_actual_public_process": "Not interrupted or restarted",
+  "remaining_test_local_state": "Not cleared by reviewer before process exit; do not claim successful cleanup"
+}

@@ -1,0 +1,232 @@
+{
+  "byte_only_delivery_recovery": {
+    "exit": {
+      "candidate_execution": false,
+      "returncode": 0,
+      "seconds": 8.48746467700039,
+      "timed_out": false
+    },
+    "result": {
+      "candidate_executed": false,
+      "directories": 1110,
+      "files": 4015,
+      "manifest": {
+        "bytes": 1485862,
+        "sha256": "5136aad4ca70ebb9adfef7c262ead6644f1ae2f163aa3cb789a7abc44d1b183d"
+      },
+      "status": "PASS"
+    }
+  },
+  "changed_file_identities": {
+    "changed_active_counterparts": {
+      "code/correspondence.py": {
+        "after": {
+          "bytes": 14742,
+          "sha256": "07acf4bbb4c472ab3b167b8e631a1fff0c58e854d7128d11d6338976b45e2bf0"
+        },
+        "before": {
+          "bytes": 15971,
+          "sha256": "9417f4a0e90d35cb927adc0f5c1f307c73b4e8c81adbf3681696f2548474d310"
+        },
+        "predecessor_bytes_unchanged_at": "retained/cleanup/code/correspondence.py"
+      },
+      "code/managed_coverage.py": {
+        "after": {
+          "bytes": 359095,
+          "sha256": "9ff824c19f06f6077e2b6cf0bb3ac613c4193d96a6457ec6c02b85440f205793"
+        },
+        "before": {
+          "bytes": 342189,
+          "sha256": "a0e8bc4a3486e7c6e128ff2e2f707e5830cb967570189d39d5073011512f9c55"
+        },
+        "predecessor_bytes_unchanged_at": "retained/cleanup/code/managed_coverage.py"
+      },
+      "tests/cases.py": {
+        "after": {
+          "bytes": 6545,
+          "sha256": "7ccfc32a35198453a664d4591cd138dedcdc8081503bbe573c10337910048c99"
+        },
+        "before": {
+          "bytes": 4270,
+          "sha256": "48830748c20ecd199c8ccceb338b8c24a689a71fbaaa2831755a0060b4da9c6b"
+        },
+        "predecessor_bytes_unchanged_at": "retained/cleanup/tests/cases.py"
+      }
+    },
+    "monitoring": "New passive slot4 inherits whole-lease cooperative release pattern; predecessor slots3/2 unchanged and qualified",
+    "new_files": [
+      "tests/focused.py",
+      "tests/common.py"
+    ],
+    "predecessor_changes": 0,
+    "producer_change": "Append only; complete reviewed producer prefix unchanged including EC01",
+    "runtime_source_changes": 0
+  },
+  "confirmed_saves_reused": [
+    "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+    "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1"
+  ],
+  "current_receipt": {
+    "bytes": 15694813,
+    "sha256": "726e80b38028c6e3958b4e346696a7296307ca0109b65e17318eb7f580d6072f"
+  },
+  "input_root": {
+    "directories": 1110,
+    "files": 4015,
+    "manifest": {
+      "bytes": 1485862,
+      "sha256": "5136aad4ca70ebb9adfef7c262ead6644f1ae2f163aa3cb789a7abc44d1b183d"
+    },
+    "membership_types_hashes": "PASS"
+  },
+  "limitations": [
+    "Conditional selected-error/owner/local/name/list/method continuity",
+    "No physical reference identity, runtime catch/evaluation/append observations or physical cleanup",
+    "Concrete generated error names/messages/bytes unavailable",
+    "Earlier append partial effects remain UNKNOWN even after normal error-report append",
+    "No handler exit/later iterations/loop completion/failure write/final rethrow/owner finalization",
+    "Original/selected/replacement exceptions remain distinct; cause/context/suppression qualifications retained",
+    "Non-None construction and remaining outer cleanup not completed",
+    "Cooperative CPython3.12.14 monitoring qualifications unchanged; installed runtime not newly qualified"
+  ],
+  "new_focused": {
+    "accounting": {
+      "cause": "UNKNOWN",
+      "controls_replayed": 0,
+      "first_attempt_new_controls": 0,
+      "observed_utc": "2026-11-02T10:15:55.146553+00:00",
+      "packaging_first_attempt_exit": 1,
+      "progress_row_reconstructed": false,
+      "progress_rows": 391,
+      "qualified_row": {
+        "check": "returned context mutations leave both expected contexts intact",
+        "layer": "actual-authenticated-basis semantic catalogue/claims core",
+        "ordinal": 392,
+        "progress_record": "UNAVAILABLE",
+        "result": "PASS",
+        "supported_by": [
+          "RESULT.json",
+          "stdout.log"
+        ]
+      },
+      "recorded_identities": {
+        "processes/focused-recovered/stdout.log": {
+          "bytes": 26817,
+          "sha256": "d8feb505aeb4d3bd7876d1efc6a6f6cbc9bb64a49c370ac39e5b372cca580f50"
+        },
+        "results/focused-recovered/RESULT.json": {
+          "bytes": 98993,
+          "sha256": "71afcba6051c42f9cda86194b5753fdab0e1889d5f901903be1e52555f245e6b"
+        },
+        "results/focused-recovered/progress.jsonl": {
+          "bytes": 85188,
+          "sha256": "913ef2102b0c08102b5ee5a5eaecd1c3d77f764c935d530fccb73a1d14190440"
+        }
+      },
+      "result_rows": 392,
+      "stdout_corroborated_rows": 392,
+      "three_way_correspondence_rows": "1\u2013391"
+    },
+    "actual_unchanged_predecessor_public_positive": 1,
+    "all_progress_rows_available": false,
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-02T10:14:36.865239+00:00",
+      "returncode": 0,
+      "seconds": 2388.209715685999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 26817
+      },
+      "timed_out": false
+    },
+    "full_current_public_positive": 1,
+    "full_public_negative_derivations": 0,
+    "kinds_result_and_stdout": {
+      "PASS": 130,
+      "REJECTED": 262
+    },
+    "kinds_three_way_rows": {
+      "PASS": 129,
+      "REJECTED": 262
+    },
+    "layers_result_and_stdout": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked core (revalidates selected parent)": 108,
+      "actual-authenticated-basis semantic catalogue/claims core": 9,
+      "adapter constants/source": 1,
+      "authenticated-basis receipt assembly comparison": 1,
+      "authenticated-basis receipt-comparison core; no public negative derivation": 2,
+      "defining-source AST; independent of generated catalogue": 1,
+      "exact source-prefix bytes": 1,
+      "exact-type input gate before constructed predecessor validation": 16,
+      "full current public positive": 1,
+      "independent source-grounded outcome oracle over authenticated result": 8,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises": 144,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + defining-source coverage": 23,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + independent source oracle": 72,
+      "public required-relation gate before inputs/derivation": 4
+    },
+    "progress_rows": 391,
+    "result_recorded_and_stdout_corroborated": 392,
+    "stdout_RESULT_reconciled": true
+  },
+  "new_preparation_failure": {
+    "controls": 0,
+    "extras": [
+      {
+        "bytes": 3145728,
+        "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+        "path": "retained/details/results/primary/.launcher-details.json.FaUIQV",
+        "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+      },
+      {
+        "bytes": 7077888,
+        "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+        "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/review/failures/initial-root-membership/.unexpected-0.bin.PSOS4Q",
+        "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+      },
+      {
+        "bytes": 4980736,
+        "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+        "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/failures/process-membership/.undeclared-partial.bin.tpnTf4",
+        "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+      }
+    ],
+    "preservation": "Original failed preparation tree retained unchanged; a separate input tree copies only exact manifest-declared bytes, then undergoes strict membership verification.",
+    "reason": "Byte-recovery exact-membership check encountered undeclared local files",
+    "result": "FAILED-PREPARATION",
+    "returncode": 1,
+    "validator_calls": 0
+  },
+  "new_semantic_failures": null,
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "completed_campaign_replays": 0,
+    "database_connections": 0,
+    "requests": 0,
+    "runtime_changes": 0,
+    "session_operations": 0
+  },
+  "preserved": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "SEPARATE",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN": 4,
+    "lifetime_UNKNOWN": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_accounting": "See new/provenance/review-and-save-incorporation.json and exact retained closure; no totals combined or missing records repaired",
+  "scope": "Bounded selected protected-operation failure to line172 caught binding/evaluation/append; both contexts/control prefixes",
+  "status": "AUTHOR PROCESS EXIT0 WITH RETAINED PROGRESS-ROW QUALIFICATION; INDEPENDENT REVIEW PENDING",
+  "target": "I164-cleanup-error-report-correspondence-1"
+}

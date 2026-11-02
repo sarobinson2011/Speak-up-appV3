@@ -1,0 +1,2682 @@
+{
+  "actual_monitored_call_counts": {
+    "current": {
+      "_assemble": 5,
+      "_basis": 1,
+      "_checked": 1,
+      "validate": 1
+    },
+    "unchanged_predecessor": {
+      "_assemble": 2,
+      "_basis": 1,
+      "_checked": 1,
+      "validate": 1
+    }
+  },
+  "confirmed_save_reused": "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+  "current_receipt": {
+    "bytes": 15694813,
+    "sha256": "726e80b38028c6e3958b4e346696a7296307ca0109b65e17318eb7f580d6072f"
+  },
+  "fresh_independent_public_core_group_with_record_qualification": {
+    "discrepancy_cause": "UNKNOWN",
+    "environment": {
+      "cryptography": "50.0.2",
+      "dont_write_bytecode": true,
+      "isolated": 1,
+      "optimization": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "error": null,
+    "exit": {
+      "finished_utc": "2026-11-02T11:41:24.211259+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2416.167664348999,
+      "timed_out": false
+    },
+    "kinds": {
+      "PASS": 39,
+      "REJECTED": 107
+    },
+    "layers": {
+      "actual post-public normal monitoring inspection; not interruption campaign": 3,
+      "actual unchanged predecessor public validation": 1,
+      "actual-authenticated parent + source-protected-failure gate": 2,
+      "actual-authenticated-basis _construct_checked; selected parent revalidated": 36,
+      "actual-authenticated-basis output comparison after selected parent revalidation": 71,
+      "actual-authenticated-basis predecessor receipt-byte comparison": 1,
+      "actual-authenticated-basis predecessor report comparison": 1,
+      "actual-authenticated-basis receipt comparison": 3,
+      "actual-authenticated-basis semantic catalogue/claims comparison": 7,
+      "actual-authenticated-basis source-byte comparison": 1,
+      "authenticated evidence byte comparison": 1,
+      "authenticated-basis receipt assembly": 1,
+      "context/anchor/parent invocation gate before selected-parent validation": 2,
+      "defining-source AST versus authenticated catalogue; not runtime execution": 1,
+      "exact-type input gate before selected-parent construction": 4,
+      "full current public validation on recovered root": 1,
+      "independent outcome oracle over authenticated result": 4,
+      "producer source rederivation, current authenticated parent catalogue": 1,
+      "receipt shape/mandatory relation gate; no public derivation": 1,
+      "source step/order gate after actual parent validation": 4
+    },
+    "missing_progress_ordinals": [
+      126
+    ],
+    "missing_stdout_ordinals": [
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146
+    ],
+    "progress_rows": 145,
+    "record_support_by_row": [
+      {
+        "check": "actual current public positive both contexts",
+        "layer": "full current public validation on recovered root",
+        "ordinal": 1,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "actual unchanged EC01 predecessor public positive",
+        "layer": "actual unchanged predecessor public validation",
+        "ordinal": 2,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "exact prepared receipt equals actual authenticated assembly",
+        "layer": "authenticated-basis receipt assembly",
+        "ordinal": 3,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "independent source order positions guards and protected failure domain",
+        "layer": "defining-source AST versus authenticated catalogue; not runtime execution",
+        "ordinal": 4,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control0/close legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 5,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control0/close cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 6,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control0/close selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 7,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control0/append legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 8,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control0/append reporting preserves prior UNKNOWN append effects",
+        "layer": "independent outcome oracle over authenticated result",
+        "ordinal": 9,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control0/append cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 10,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control0/append selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 11,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control1/close legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 12,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control1/close cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 13,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control1/close selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 14,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control1/append legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 15,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control1/append reporting preserves prior UNKNOWN append effects",
+        "layer": "independent outcome oracle over authenticated result",
+        "ordinal": 16,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context0/control1/append cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 17,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0/control1/append selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 18,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control0/close legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 19,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control0/close cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 20,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control0/close selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 21,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control0/append legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 22,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control0/append reporting preserves prior UNKNOWN append effects",
+        "layer": "independent outcome oracle over authenticated result",
+        "ordinal": 23,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control0/append cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 24,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control0/append selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 25,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control1/close legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 26,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control1/close cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 27,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control1/close selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 28,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control1/append legitimate error reporting",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 29,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control1/append reporting preserves prior UNKNOWN append effects",
+        "layer": "independent outcome oracle over authenticated result",
+        "ordinal": 30,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1/control1/append cannot turn reporting into normal overall return",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 31,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1/control1/append selected error cannot disappear",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 32,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "lookup legitimate protected evaluation failure",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 33,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "append-lookup legitimate protected evaluation failure",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 34,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "handler-type-evaluation/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 35,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "handler-type-evaluation/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 36,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-type-evaluation/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 37,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-type-evaluation/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 38,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-match/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 39,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "handler-match/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 40,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-match/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 41,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-match/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 42,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-selection/unobserved respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 43,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "handler-selection/unobserved cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 44,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-selection/unobserved cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 45,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-selection/unobserved rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 46,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-entry/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 47,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "handler-entry/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 48,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-entry/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 49,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "handler-entry/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 50,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-attempt/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 51,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "caught-error-binding-attempt/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 52,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-attempt/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 53,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-attempt/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 54,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-complete/process-termination respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 55,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "caught-error-binding-complete/process-termination cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 56,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-complete/process-termination cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 57,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "caught-error-binding-complete/process-termination rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 58,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-method-evaluation/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 59,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "report-method-evaluation/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 60,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-method-evaluation/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 61,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-method-evaluation/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 62,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-type-call-return/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 63,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "error-type-call-return/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 64,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-type-call-return/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 65,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-type-call-return/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 66,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-name-attribute/unobserved respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 67,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "error-name-attribute/unobserved cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 68,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-name-attribute/unobserved cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 69,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-name-attribute/unobserved rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 70,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-str-call-return/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 71,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "error-str-call-return/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 72,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-str-call-return/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 73,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "error-str-call-return/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 74,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-item-complete/process-termination respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 75,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "report-item-complete/process-termination cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 76,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-item-complete/process-termination cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 77,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-item-complete/process-termination rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 78,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-attempt/raise respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 79,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "report-append-attempt/raise cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 80,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-attempt/raise cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 81,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-attempt/raise rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 82,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-complete/unobserved respects acknowledgements and distinct errors",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 83,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "report-append-complete/unobserved cannot invent append completion",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 84,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-complete/unobserved cannot replace pending role by constructor role",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 85,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "report-append-complete/unobserved rejects wrong terminal exception classification",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 86,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0 unknown continuity makes no handler progress",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 87,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "context1 unknown continuity makes no handler progress",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 88,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "managed-guard-result failure cannot acquire line172 handler",
+        "layer": "actual-authenticated parent + source-protected-failure gate",
+        "ordinal": 89,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "selected-try-entry failure cannot acquire line172 handler",
+        "layer": "actual-authenticated parent + source-protected-failure gate",
+        "ordinal": 90,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong name binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 91,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong owner binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 92,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong token binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 93,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong selected error binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 94,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong occurrence binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 95,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong list role binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 96,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated wrong instance binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 97,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated substituted parent report is revalidated",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 98,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "wrong context cannot inherit selected parent",
+        "layer": "context/anchor/parent invocation gate before selected-parent validation",
+        "ordinal": 99,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "wrong invocation cannot inherit selected parent",
+        "layer": "context/anchor/parent invocation gate before selected-parent validation",
+        "ordinal": 100,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "wrong underlying instance binding",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 101,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "omitted first stage",
+        "layer": "source step/order gate after actual parent validation",
+        "ordinal": 102,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "callable after argument",
+        "layer": "source step/order gate after actual parent validation",
+        "ordinal": 103,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "omitted final completion",
+        "layer": "source step/order gate after actual parent validation",
+        "ordinal": 104,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "duplicate stage",
+        "layer": "source step/order gate after actual parent validation",
+        "ordinal": 105,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "continuation after first nonnormal frontier",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 106,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output prior partial effects",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 107,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output partial flag",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 108,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output complete list",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 109,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output list contents",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 110,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output close erased",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 111,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output close failure invented",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 112,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output generated name",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 113,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output generated message bytes",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 114,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output False int alias",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 115,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output terminal int alias",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 116,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output handler exit",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 117,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output later iteration",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 118,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output failure-file writing",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 119,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output final rethrow",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 120,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output owner finalization",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 121,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "unsupported output admission",
+        "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+        "ordinal": 122,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "str subclass",
+        "layer": "exact-type input gate before selected-parent construction",
+        "ordinal": 123,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "list subclass",
+        "layer": "exact-type input gate before selected-parent construction",
+        "ordinal": 124,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "dict subclass",
+        "layer": "exact-type input gate before selected-parent construction",
+        "ordinal": 125,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "literal key subclass",
+        "layer": "exact-type input gate before selected-parent construction",
+        "ordinal": 126,
+        "records": [
+          "RESULT.json"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "nested returned mutations leave pristine constructed expectations",
+        "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+        "ordinal": 127,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "coordinated catalogue omission rejects from defining source",
+        "layer": "producer source rederivation, current authenticated parent catalogue",
+        "ordinal": 128,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated catalogue omission rejects authenticated semantic core",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 129,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "mixed defining-source bytes reject",
+        "layer": "actual-authenticated-basis source-byte comparison",
+        "ordinal": 130,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "stale predecessor receipt bytes reject",
+        "layer": "actual-authenticated-basis predecessor receipt-byte comparison",
+        "ordinal": 131,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "mixed predecessor context report rejects",
+        "layer": "actual-authenticated-basis predecessor report comparison",
+        "ordinal": 132,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context0 claim escalation",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 133,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "context1 claim escalation",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 134,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "omitted required context",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 135,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "reordered context claims",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 136,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated UNKNOWN-to-zero qualification claim",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 137,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "altered authenticated evidence",
+        "layer": "authenticated evidence byte comparison",
+        "ordinal": 138,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "partial legacy receipt substitute",
+        "layer": "receipt shape/mandatory relation gate; no public derivation",
+        "ordinal": 139,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "coordinated receipt escalation",
+        "layer": "actual-authenticated-basis receipt comparison",
+        "ordinal": 140,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "receipt cannot erase unknown totals and enable admission",
+        "layer": "actual-authenticated-basis receipt comparison",
+        "ordinal": 141,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "REJECTED"
+      },
+      {
+        "check": "returned nested contexts cannot mutate expected mandatory rows",
+        "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+        "ordinal": 142,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "pristine receipt still accepted after result mutations",
+        "layer": "actual-authenticated-basis receipt comparison",
+        "ordinal": 143,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "normal actual-public monitoring cleanup slot4",
+        "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+        "ordinal": 144,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "normal actual-public monitoring cleanup slot3",
+        "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+        "ordinal": 145,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "normal actual-public monitoring cleanup slot2",
+        "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+        "ordinal": 146,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl"
+        ],
+        "result": "PASS"
+      }
+    ],
+    "result": "PASS",
+    "rows": 146,
+    "stdout_progress_RESULT_reconciled": false,
+    "stdout_rows": 125
+  },
+  "fresh_slot4_failed_attempt_separate": {
+    "discrepancy_cause": null,
+    "environment": {
+      "cryptography": "50.0.2",
+      "dont_write_bytecode": true,
+      "isolated": 1,
+      "optimization": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/ace5c9b2f18b/l172-review/code/monitor.py\", line 100, in <module>\n    try:main()\n        ^^^^^^\n  File \"/workspace/scratch/ace5c9b2f18b/l172-review/code/monitor.py\", line 97, in main\n    sm.set_local_events(4,p._basis.__code__,0)\nValueError: tool 4 is not in use\n",
+    "exit": {
+      "finished_utc": "2026-11-02T11:11:22.427845+00:00",
+      "pid": 5,
+      "returncode": 1,
+      "seconds": 2.3210080820008443,
+      "timed_out": false
+    },
+    "kinds": {
+      "PASS": 12,
+      "QUALIFIED": 1
+    },
+    "layers": {
+      "real CPython3.12 monitoring API; synthetic predecessor, not authentication": 13
+    },
+    "missing_progress_ordinals": [],
+    "missing_stdout_ordinals": [],
+    "progress_rows": 13,
+    "record_support_by_row": [
+      {
+        "check": "normal path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 1,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "nested path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 2,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "missing path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 3,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "extra path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 4,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "wrong-assembly path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 5,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "validation-failure path releases own monitoring state",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 6,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "C-return interruption after use_tool_id and synthetic reuse",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 7,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "C-return interruption after register_callback and synthetic reuse",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 8,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "C-return interruption after set_local_events and synthetic reuse",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 9,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "preexisting leaves foreign reservation and monitoring state intact",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 10,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "race-different leaves foreign reservation and monitoring state intact",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 11,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "race-equal-distinct leaves foreign reservation and monitoring state intact",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 12,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "PASS"
+      },
+      {
+        "check": "cleanup interruption leaves local monitoring state despite free slot",
+        "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication",
+        "ordinal": 13,
+        "records": [
+          "RESULT.json",
+          "progress.jsonl",
+          "stdout.log"
+        ],
+        "result": "QUALIFIED"
+      }
+    ],
+    "result": "FAILED-ATTEMPT",
+    "rows": 13,
+    "stdout_progress_RESULT_reconciled": true,
+    "stdout_rows": 13
+  },
+  "fresh_slot4_finalization_failure": {
+    "PASS": 12,
+    "QUALIFIED": 1,
+    "candidate_defect": false,
+    "classification": "REVIEWER-HARNESS-FINALIZATION-FAILURE",
+    "completed_group": false,
+    "completed_rows_replayed": false,
+    "error": "ValueError: tool 4 is not in use",
+    "exit": 1,
+    "process_ended": true,
+    "qualified_observation": "Candidate nested cleanup cleared callback and freed slot after first cleanup interruption; local event bits remained. This is expressly retained as incomplete monitoring cleanup.",
+    "remaining_test_local_state": "Not cleared by reviewer before process exit; do not claim successful cleanup",
+    "result_rows": 13,
+    "separate_actual_public_process": "Not interrupted or restarted",
+    "source": "monitor.py:97, reviewer attempt to clear local events after candidate freed the reservation",
+    "timed_out": false
+  },
+  "fresh_slot4_qualified_observation": {
+    "actual_authentication": false,
+    "callback_cleared": true,
+    "error": "cleanup local reset interrupted",
+    "local_events_remain": 4,
+    "owner_free": true,
+    "result": "QUALIFIED-OBSERVATION",
+    "reviewer_clears_remaining_test_local_events_after_observation": true,
+    "successful_complete_cleanup": false,
+    "synthetic_predecessor": true
+  },
+  "input": {
+    "bytes": 159370715,
+    "sha256": "2b6d61b3f9dc756740a0c66f4bdf70a729cfb77d43beb495424965331aa72bd1"
+  },
+  "input_entries": 83,
+  "input_manifested_hashes": 82,
+  "integrity_and_recovery": {
+    "CRC": "PASS",
+    "LD01": {
+      "directories": 1051,
+      "files": 3771,
+      "manifest": {
+        "bytes": 1313785,
+        "sha256": "a0a0f40e02254798c0e5b8e3e35d8b46850fa9ac0721e32f3043ab211c28a679"
+      },
+      "membership_types_hashes": "PASS"
+    },
+    "candidate_executions": 0,
+    "changed_active_counterparts": {
+      "changed_active_counterparts": {
+        "code/correspondence.py": {
+          "after": {
+            "bytes": 14742,
+            "sha256": "07acf4bbb4c472ab3b167b8e631a1fff0c58e854d7128d11d6338976b45e2bf0"
+          },
+          "before": {
+            "bytes": 15971,
+            "sha256": "9417f4a0e90d35cb927adc0f5c1f307c73b4e8c81adbf3681696f2548474d310"
+          },
+          "predecessor_bytes_unchanged_at": "retained/cleanup/code/correspondence.py"
+        },
+        "code/managed_coverage.py": {
+          "after": {
+            "bytes": 359095,
+            "sha256": "9ff824c19f06f6077e2b6cf0bb3ac613c4193d96a6457ec6c02b85440f205793"
+          },
+          "before": {
+            "bytes": 342189,
+            "sha256": "a0e8bc4a3486e7c6e128ff2e2f707e5830cb967570189d39d5073011512f9c55"
+          },
+          "predecessor_bytes_unchanged_at": "retained/cleanup/code/managed_coverage.py"
+        },
+        "tests/cases.py": {
+          "after": {
+            "bytes": 6545,
+            "sha256": "7ccfc32a35198453a664d4591cd138dedcdc8081503bbe573c10337910048c99"
+          },
+          "before": {
+            "bytes": 4270,
+            "sha256": "48830748c20ecd199c8ccceb338b8c24a689a71fbaaa2831755a0060b4da9c6b"
+          },
+          "predecessor_bytes_unchanged_at": "retained/cleanup/tests/cases.py"
+        }
+      },
+      "monitoring": "New passive slot4 inherits whole-lease cooperative release pattern; predecessor slots3/2 unchanged and qualified",
+      "new_files": [
+        "tests/focused.py",
+        "tests/common.py"
+      ],
+      "predecessor_changes": 0,
+      "producer_change": "Append only; complete reviewed producer prefix unchanged including EC01",
+      "runtime_source_changes": 0
+    },
+    "declared_additions": 15,
+    "dependencies": [
+      {
+        "bytes": 154107404,
+        "sha256": "7971a5cd95ef8775ff05e2db0ef5c3521903586c0d530b9e590b4bb54029fcef"
+      },
+      {
+        "bytes": 153799952,
+        "sha256": "ae83c5eeb7bf4ab09943f66f239bea3c7802777899f4fe6417e10e39dc9b1f71"
+      },
+      {
+        "bytes": 156078207,
+        "sha256": "212d2f0886cb09cddb119470ba908e2142bb141a6eb6bdca83a3e5f83b82cbcb"
+      },
+      {
+        "bytes": 155659416,
+        "sha256": "14bfe3fcc3da3f5f8e2ab6cfb3c820229f1520b439b9ebaf5f6bad83daf25c50"
+      }
+    ],
+    "entries": 83,
+    "input": {
+      "bytes": 159370715,
+      "sha256": "2b6d61b3f9dc756740a0c66f4bdf70a729cfb77d43beb495424965331aa72bd1"
+    },
+    "manifested_hashes": 82,
+    "predecessor_members_preserved": 3999,
+    "recovered_root": {
+      "directories": 1110,
+      "files": 4015,
+      "manifest": {
+        "bytes": 1485862,
+        "sha256": "5136aad4ca70ebb9adfef7c262ead6644f1ae2f163aa3cb789a7abc44d1b183d"
+      },
+      "membership_types_hashes": "PASS"
+    },
+    "reused_independent_helpers": {
+      "cases.py": {
+        "bytes": 9080,
+        "sha256": "fda4d8e62d0082163000acf835e3319cd4a7d1990e62d3abe75df5af1ce93f47"
+      },
+      "common.py": {
+        "bytes": 4822,
+        "sha256": "8b3cf8c5ba73061e51836e35103571a9c07816bc24c22463ccb92d473e52fe95"
+      },
+      "parent_cases.py": {
+        "bytes": 7503,
+        "sha256": "c07fa7d1abf882a9b5ab011a7f7fe8278bfbd0105472a16063ef35fa9982dab9"
+      },
+      "parent_details.py": {
+        "bytes": 5477,
+        "sha256": "39c2045f8414a8e30a4a376496e7d53e7f6aa8bbcde83ba617c300c64dcbe837"
+      },
+      "supervise.py": {
+        "bytes": 1680,
+        "sha256": "6bf0a82f7d8eb524546422a5e9cf8dee6756a100b2edba37c9cf994b094c7735"
+      }
+    },
+    "reviewed_producer_prefix_unchanged": true,
+    "runtime_source_bytes_unchanged": true,
+    "safe_exact_membership": "PASS",
+    "unchanged_predecessor": {
+      "directories": 1103,
+      "files": 3999,
+      "manifest": {
+        "bytes": 1415643,
+        "sha256": "dd11a30a719b7058ed084ad700c27cf66abd9040d37235f2b6ad9a5152c44e53"
+      },
+      "membership_types_hashes": "PASS"
+    }
+  },
+  "limits": [
+    "Source/constructed correspondence only; no new application runtime catch/evaluation/append observations",
+    "Original, selected and replacement error roles are modeled source-qualified records, not observed exception object identities",
+    "Last acknowledged active caught error is not a terminal interpreter-state observation; active_at_terminal_observed remains None",
+    "Conditional selected-error/owner/local/name/details/list/method continuity remains a premise",
+    "Generated names/messages/formatted bytes remain unavailable",
+    "Prior UNKNOWN append effects remain UNKNOWN after acknowledged reporting; complete list contents and physical effects unestablished",
+    "Stop after selected append or first nonnormal frontier; no handler exit/later iteration/loop completion/failure writing/final rethrow/owner finalization",
+    "Non-None construction and remaining outer cleanup gaps remain open; observer unjoined",
+    "Cooperative CPython3.12.14 only; cleanup failure, repeated interruption, termination, alternate interpreters and hostile replacement remain qualified",
+    "No new prepared-host or installed-wheel qualification"
+  ],
+  "new_record_availability_qualification": {
+    "RESULT_kinds": {
+      "PASS": 39,
+      "REJECTED": 107
+    },
+    "RESULT_rows": 146,
+    "all_available_progress_rows_match_RESULT": true,
+    "all_available_stdout_rows_match_RESULT": true,
+    "candidate_defect_established": false,
+    "cause": "UNKNOWN",
+    "classification": "RECORD-AVAILABILITY-QUALIFICATION",
+    "controls_replayed": false,
+    "exit": {
+      "finished_utc": "2026-11-02T11:41:24.211259+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2416.167664348999,
+      "timed_out": false
+    },
+    "frozen_identities": {
+      "RESULT.json": {
+        "bytes": 35353,
+        "sha256": "04acaeee4cfa5487cff430d8730fa8ce989fc21378dad44d9115029835d2cf8f"
+      },
+      "calls.json": {
+        "bytes": 2154879,
+        "sha256": "6c68aba970070e4c242199b41eddd4bc1066d023d5a7aaf1abe8cd6bd7518d09"
+      },
+      "events.jsonl": {
+        "bytes": 400,
+        "sha256": "46765e2d8600c5ee9394d16fafcb3a27f4f63c03d0c9b1293490d8138da0e7ee"
+      },
+      "exit-status.json": {
+        "bytes": 142,
+        "sha256": "eabe93802ca9af85579fe62ab8e9412afb309b58ff8d9f1e4fb166ff86966cc0"
+      },
+      "final-verification.json": {
+        "bytes": 204,
+        "sha256": "f3af999cae537f1e00206c83c2180475e2736e821dfad328da54e1e506876e82"
+      },
+      "progress.jsonl": {
+        "bytes": 29769,
+        "sha256": "e9f9d3f83cfc5d1ab133256eaeec1fbc36495ec838b5d385ef36470f2027b547"
+      },
+      "stderr.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout.log": {
+        "bytes": 9105,
+        "sha256": "ff6faa663e9a7177ad72a77af908f99fd97e9d5bb78984ec3cb2cb5fdcd59a13"
+      }
+    },
+    "missing_progress": [
+      {
+        "check": "literal key subclass",
+        "error": "REPORT-CONSTRUCTED-INPUT:KEY-TYPE",
+        "layer": "exact-type input gate before selected-parent construction",
+        "ordinal": 126,
+        "result": "REJECTED"
+      }
+    ],
+    "missing_rows_reconstructed": false,
+    "missing_stdout_inclusive": [
+      126,
+      146
+    ],
+    "progress_rows": 145,
+    "stdout_rows": 125,
+    "three_way_rows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125
+    ],
+    "verdict_implication": "No unqualified completed total; row-specific support retained. Source and actual public evidence assessed separately."
+  },
+  "no_unqualified_combined_total": true,
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "candidate_implementation_changes": 0,
+    "completed_campaign_replays": 0,
+    "database_connections": 0,
+    "missing_historical_rows_reconstructed": 0,
+    "requests": 0,
+    "session_operations": 0
+  },
+  "preserved": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "SEPARATE",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN": 4,
+    "lifetime_UNKNOWN": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_accounting_and_closures_reused": {
+    "Engineering_EC01_controls": {
+      "PASS": 55,
+      "REJECTED": 50,
+      "controls": 105,
+      "exit": {
+        "automatic_retries": 0,
+        "finished_utc": "2026-11-01T16:45:05.336253+00:00",
+        "returncode": 0,
+        "seconds": 2326.564213976999,
+        "streams_bytes_observed": {
+          "stderr.log": 0,
+          "stdout.log": 7089
+        },
+        "timed_out": false
+      },
+      "layer_counts": {
+        "actual unchanged predecessor public positive": 1,
+        "actual-authenticated-basis _construct_checked/output-comparison core": 47,
+        "authenticated-basis assembly comparison": 1,
+        "authenticated-basis receipt-comparison core": 1,
+        "corrected-expression AST": 1,
+        "defining-source AST": 1,
+        "exact-type gate before constructed parent validation": 12,
+        "full current public positive": 1,
+        "producer output-comparison core with predecessor-validated premises from actual authenticated basis": 12,
+        "saved-byte/receipt comparison": 1,
+        "source-byte diff": 2,
+        "source-grounded frontier oracle": 16,
+        "source-grounded test oracle over authenticated result": 4,
+        "test oracle only": 4,
+        "test-oracle source diff": 1
+      },
+      "new_execution_calls": 0,
+      "result_identity": {
+        "bytes": 22255,
+        "sha256": "00781f9fb00e24a0642f7b717f5dec329ffe07eae6eecddbc32d881819db78fc"
+      },
+      "rows_stdout_result_reconciled": true
+    },
+    "closure_identity": {
+      "bytes": 154107404,
+      "entries": 52,
+      "sha256": "7971a5cd95ef8775ff05e2db0ef5c3521903586c0d530b9e590b4bb54029fcef"
+    },
+    "confirmed_saved_and_pushed_commit": "c2fb30a1a427db2a1066df4d40e17574fa51bcbf",
+    "current_independent_review": "PENDING",
+    "historical_Engineering": {
+      "primary": {
+        "completed": false,
+        "discrepancy_cause": "UNKNOWN",
+        "progress": 1300,
+        "stdout": 165
+      },
+      "recovered": {
+        "completed": true,
+        "discrepancy_cause": null,
+        "progress": 341,
+        "stdout": 341
+      },
+      "source-1": {
+        "completed": true,
+        "discrepancy_cause": null,
+        "progress": 46,
+        "stdout": 46
+      }
+    },
+    "historical_audit": {
+      "completed_group": false,
+      "correction": {
+        "completed_group": true,
+        "exit": {
+          "finished_utc": "2026-11-01T15:08:24.487324+00:00",
+          "pid": 5,
+          "returncode": 0,
+          "seconds": 2.374060729998746,
+          "timed_out": false
+        },
+        "rows": 0,
+        "validator_projector_calls": 0
+      },
+      "exit": {
+        "finished_utc": "2026-11-01T15:07:39.206109+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 0.8196810990011727,
+        "timed_out": false
+      },
+      "rows": 0,
+      "validator_projector_calls": 0
+    },
+    "historical_incomplete_primary": {
+      "cause": "UNKNOWN",
+      "completed": false,
+      "missing": [
+        "stdout166\u20131300",
+        "RESULT.json",
+        "calls.json",
+        "final-verification.json"
+      ],
+      "progress": 1300,
+      "stdout": 165,
+      "withdrawn_corroboration_claim": "Retained unchanged; not adopted"
+    },
+    "historical_independent": {
+      "public-recovered": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:35:08.016266+00:00",
+          "pid": 10,
+          "returncode": 0,
+          "seconds": 2439.956919127002,
+          "timed_out": false
+        },
+        "kinds": {
+          "DEFECT-OBSERVED": 4,
+          "PASS": 43,
+          "REJECTED": 123
+        },
+        "result": "PASS",
+        "rows": 170
+      },
+      "source-completion": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:05:40.631564+00:00",
+          "pid": 5,
+          "returncode": 0,
+          "seconds": 4.779847028999939,
+          "timed_out": false
+        },
+        "kinds": {
+          "PASS": 17,
+          "REJECTED": 4
+        },
+        "result": "PASS",
+        "rows": 21
+      },
+      "source-slot3": {
+        "exit": {
+          "finished_utc": "2026-11-01T15:04:43.409856+00:00",
+          "pid": 5,
+          "returncode": 1,
+          "seconds": 4.479841348998889,
+          "timed_out": false
+        },
+        "kinds": {
+          "PASS": 46,
+          "REJECTED": 4
+        },
+        "result": "FAILED-ATTEMPT",
+        "rows": 50
+      }
+    },
+    "historical_rejection": "NOT ACCEPTED AS COMPLETE: EC-01 normal-append terminal-exception classification is inconsistent with the retained pending constructor error",
+    "host_completion_evidence": "Matching supplied PASS/CONFIRMED receipt; no new Git operation",
+    "host_save_receipt": {
+      "bytes": 11429,
+      "sha256": "0f6dcb10e51c174f51aeae40b9f47039a560e564a7ac54001f8a735b1f04d192"
+    },
+    "independent_EC01_controls": {
+      "actual_monitored_calls": {
+        "current": {
+          "_assemble": 4,
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        },
+        "unchanged_predecessor": {
+          "_assemble": 2,
+          "_basis": 1,
+          "_checked": 1,
+          "validate": 1
+        }
+      },
+      "actual_unchanged_predecessor_public_positives": 1,
+      "environment": {
+        "cryptography": "50.0.2",
+        "dont_write_bytecode": true,
+        "isolated": 1,
+        "optimization": 0,
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+      },
+      "exit": {
+        "finished_utc": "2026-11-01T18:43:00.532988+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2380.611644478995,
+        "timed_out": false
+      },
+      "full_current_public_positives": 1,
+      "full_public_negative_derivations": 0,
+      "layer_counts_excluding_first_three_public_positive_checks": {
+        "actual post-public normal monitoring-state inspection; no interruption campaign": 2,
+        "actual-authenticated-basis _construct_checked and output-comparison core": 79,
+        "authenticated-basis receipt-comparison core": 1,
+        "authenticated-basis receipt-comparison core; no public negative derivation": 1,
+        "defining-source AST, not execution": 1,
+        "exact result comparison; historical execution reused": 1,
+        "exact retained witness-byte comparison": 1,
+        "exact-type input gate before predecessor construction validation": 3,
+        "submitted-object preservation after authenticated-basis rejection": 1
+      },
+      "public_negative_calls": 0,
+      "row_types": {
+        "PASS": 34,
+        "REJECTED": 59
+      },
+      "rows": 93,
+      "stdout_progress_RESULT_reconciled": true
+    },
+    "new_results_separate": true,
+    "old_confirmed_commit_reused": "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1",
+    "preserved": {
+      "Decision_B": "UNCHANGED",
+      "SOURCE_ONLY": "UNCHANGED",
+      "admission": false,
+      "allowances": "UNCHANGED",
+      "backup": "KERNEL-ONLY",
+      "both_acquisitions": "SEPARATE",
+      "cumulative_envelope": "UNADOPTED",
+      "final_binding": "BLOCKED",
+      "inventory_UNKNOWN": 4,
+      "lifetime_UNKNOWN": 14,
+      "obligations": 11,
+      "readiness": "BLOCKED",
+      "retention": "UNCHANGED",
+      "streams": "UNCOMPUTED"
+    },
+    "prior_closure": "EC-01 CLOSED within the retained bounded conditional SOURCE-ONLY correspondence contract",
+    "reviewer_preparation_failure": {
+      "candidate_executions": 0,
+      "controls": 0,
+      "error": "SyntaxError at audit.py line 26: closing parenthesis ')' does not match opening parenthesis '{'",
+      "exit": 1,
+      "fix": "Remove one unmatched closing parenthesis in the reviewer audit dictionary; no candidate code change",
+      "kind": "reviewer read-only audit syntax-preparation failure",
+      "operation": "ast.parse before launching audit",
+      "preserved_source": "audit.py"
+    },
+    "zero_replay_audit": {
+      "candidate_executions": 0,
+      "controls": 0,
+      "exit": {
+        "finished_utc": "2026-11-01T18:08:39.358937+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2.1751359929985483,
+        "timed_out": false
+      }
+    }
+  },
+  "read_only_audit": {
+    "candidate_executions": 0,
+    "controls": 0,
+    "exit": {
+      "finished_utc": "2026-11-02T11:15:59.586732+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 0.6677044910011318,
+      "timed_out": false
+    }
+  },
+  "reviewer": "Formal-Lab[6], independent of the SU-Engineering[288D] construction author",
+  "smallest_residual_witness": null,
+  "supplied_accounting_separate": {
+    "RESULT_stdout_kinds": {
+      "PASS": 130,
+      "REJECTED": 262
+    },
+    "RESULT_stdout_rows": 392,
+    "cause": "UNKNOWN",
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-02T10:14:36.865239+00:00",
+      "returncode": 0,
+      "seconds": 2388.209715685999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 26817
+      },
+      "timed_out": false
+    },
+    "layers": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked core (revalidates selected parent)": 108,
+      "actual-authenticated-basis semantic catalogue/claims core": 9,
+      "adapter constants/source": 1,
+      "authenticated-basis receipt assembly comparison": 1,
+      "authenticated-basis receipt-comparison core; no public negative derivation": 2,
+      "defining-source AST; independent of generated catalogue": 1,
+      "exact source-prefix bytes": 1,
+      "exact-type input gate before constructed predecessor validation": 16,
+      "full current public positive": 1,
+      "independent source-grounded outcome oracle over authenticated result": 8,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises": 144,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + defining-source coverage": 23,
+      "producer output-comparison core with actual-authenticated predecessor-validated premises + independent source oracle": 72,
+      "public required-relation gate before inputs/derivation": 4
+    },
+    "no_reconstruction": true,
+    "progress_kinds": {
+      "PASS": 129,
+      "REJECTED": 262
+    },
+    "progress_rows": 391,
+    "row392": {
+      "check": "returned context mutations leave both expected contexts intact",
+      "layer": "actual-authenticated-basis semantic catalogue/claims core",
+      "result": "PASS"
+    },
+    "row392_progress": "UNAVAILABLE"
+  },
+  "supplied_failures_separate": {
+    "byte_recovery": {
+      "controls": 0,
+      "extras": [
+        {
+          "bytes": 3145728,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/results/primary/.launcher-details.json.FaUIQV",
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        {
+          "bytes": 7077888,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/review/failures/initial-root-membership/.unexpected-0.bin.PSOS4Q",
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        {
+          "bytes": 4980736,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/failures/process-membership/.undeclared-partial.bin.tpnTf4",
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        }
+      ],
+      "preservation": "Original failed preparation tree retained unchanged; a separate input tree copies only exact manifest-declared bytes, then undergoes strict membership verification.",
+      "reason": "Byte-recovery exact-membership check encountered undeclared local files",
+      "result": "FAILED-PREPARATION",
+      "returncode": 1,
+      "validator_calls": 0
+    },
+    "packaging": {
+      "cause": "UNKNOWN",
+      "controls_replayed": 0,
+      "first_attempt_new_controls": 0,
+      "observed_utc": "2026-11-02T10:15:55.146553+00:00",
+      "packaging_first_attempt_exit": 1,
+      "progress_row_reconstructed": false,
+      "progress_rows": 391,
+      "qualified_row": {
+        "check": "returned context mutations leave both expected contexts intact",
+        "layer": "actual-authenticated-basis semantic catalogue/claims core",
+        "ordinal": 392,
+        "progress_record": "UNAVAILABLE",
+        "result": "PASS",
+        "supported_by": [
+          "RESULT.json",
+          "stdout.log"
+        ]
+      },
+      "recorded_identities": {
+        "processes/focused-recovered/stdout.log": {
+          "bytes": 26817,
+          "sha256": "d8feb505aeb4d3bd7876d1efc6a6f6cbc9bb64a49c370ac39e5b372cca580f50"
+        },
+        "results/focused-recovered/RESULT.json": {
+          "bytes": 98993,
+          "sha256": "71afcba6051c42f9cda86194b5753fdab0e1889d5f901903be1e52555f245e6b"
+        },
+        "results/focused-recovered/progress.jsonl": {
+          "bytes": 85188,
+          "sha256": "913ef2102b0c08102b5ee5a5eaecd1c3d77f764c935d530fccb73a1d14190440"
+        }
+      },
+      "result_rows": 392,
+      "stdout_corroborated_rows": 392,
+      "three_way_correspondence_rows": "1\u2013391"
+    },
+    "undeclared_copies_verified": [
+      {
+        "identity": {
+          "bytes": 3145728,
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 3145728,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/results/primary/.launcher-details.json.FaUIQV",
+          "sha256": "3979439c152e8240d7d55e7a2a7be2d9f61092b6c95db335bb1a1c685c222d8a"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-0.bin"
+      },
+      {
+        "identity": {
+          "bytes": 7077888,
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 7077888,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/review/failures/initial-root-membership/.unexpected-0.bin.PSOS4Q",
+          "sha256": "653f36208c84d5e6c308e502529e0f98119a78f8fa3675a74d1c59c17a903b8c"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-1.bin"
+      },
+      {
+        "identity": {
+          "bytes": 4980736,
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        },
+        "matches_first_observation": true,
+        "original": {
+          "bytes": 4980736,
+          "origin": "UNKNOWN; undeclared local preparation file; no validator/control ran",
+          "path": "retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/failures/process-membership/.undeclared-partial.bin.tpnTf4",
+          "sha256": "2d1e5d5b0868f66840d28f712a7c2267d697f4c2281719154a39cab2edac1531"
+        },
+        "retained_copy": "failures/byte-recovery/undeclared-2.bin"
+      }
+    ]
+  },
+  "target": "I164-cleanup-error-report-correspondence-1.zip",
+  "validation_layers": "Every independent row retains its actual layer. Exactly one current and unchanged predecessor public positive; no public negative call or full public negative derivation. Other negatives use actual-authenticated cores, source rederivation, or exact-type/shape gates.",
+  "verdict": "SUPPORTED within the bounded conditional SOURCE-ONLY line172 correspondence contract, with explicit execution-record qualifications; no candidate defect demonstrated"
+}

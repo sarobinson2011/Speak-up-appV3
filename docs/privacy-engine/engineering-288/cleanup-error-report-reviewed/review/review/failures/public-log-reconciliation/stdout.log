@@ -1,0 +1,128 @@
+EVENT {"event": "actual-public-start", "seconds": 1.857312942000135, "hard_timeout": 4500, "control_deadline": 3900}
+EVENT {"event": "actual_basis_return_observed", "seconds": 2167.5588984059996, "catalogue_format": "I164-CLEANUP-ERROR-REPORT-STATIC-1"}
+1 actual current public positive both contexts PASS
+2 actual unchanged EC01 predecessor public positive PASS
+3 exact prepared receipt equals actual authenticated assembly PASS
+EVENT {"event": "focused-independent-start", "seconds": 2169.537571372999, "actual_authenticated_basis": true}
+4 independent source order positions guards and protected failure domain PASS
+5 context0/control0/close legitimate error reporting PASS
+6 context0/control0/close cannot turn reporting into normal overall return REJECTED
+7 context0/control0/close selected error cannot disappear REJECTED
+8 context0/control0/append legitimate error reporting PASS
+9 context0/control0/append reporting preserves prior UNKNOWN append effects PASS
+10 context0/control0/append cannot turn reporting into normal overall return REJECTED
+11 context0/control0/append selected error cannot disappear REJECTED
+12 context0/control1/close legitimate error reporting PASS
+13 context0/control1/close cannot turn reporting into normal overall return REJECTED
+14 context0/control1/close selected error cannot disappear REJECTED
+15 context0/control1/append legitimate error reporting PASS
+16 context0/control1/append reporting preserves prior UNKNOWN append effects PASS
+17 context0/control1/append cannot turn reporting into normal overall return REJECTED
+18 context0/control1/append selected error cannot disappear REJECTED
+19 context1/control0/close legitimate error reporting PASS
+20 context1/control0/close cannot turn reporting into normal overall return REJECTED
+21 context1/control0/close selected error cannot disappear REJECTED
+22 context1/control0/append legitimate error reporting PASS
+23 context1/control0/append reporting preserves prior UNKNOWN append effects PASS
+24 context1/control0/append cannot turn reporting into normal overall return REJECTED
+25 context1/control0/append selected error cannot disappear REJECTED
+26 context1/control1/close legitimate error reporting PASS
+27 context1/control1/close cannot turn reporting into normal overall return REJECTED
+28 context1/control1/close selected error cannot disappear REJECTED
+29 context1/control1/append legitimate error reporting PASS
+30 context1/control1/append reporting preserves prior UNKNOWN append effects PASS
+31 context1/control1/append cannot turn reporting into normal overall return REJECTED
+32 context1/control1/append selected error cannot disappear REJECTED
+33 lookup legitimate protected evaluation failure PASS
+34 append-lookup legitimate protected evaluation failure PASS
+35 handler-type-evaluation/raise respects acknowledgements and distinct errors PASS
+36 handler-type-evaluation/raise cannot invent append completion REJECTED
+37 handler-type-evaluation/raise cannot replace pending role by constructor role REJECTED
+38 handler-type-evaluation/raise rejects wrong terminal exception classification REJECTED
+39 handler-match/raise respects acknowledgements and distinct errors PASS
+40 handler-match/raise cannot invent append completion REJECTED
+41 handler-match/raise cannot replace pending role by constructor role REJECTED
+42 handler-match/raise rejects wrong terminal exception classification REJECTED
+43 handler-selection/unobserved respects acknowledgements and distinct errors PASS
+44 handler-selection/unobserved cannot invent append completion REJECTED
+45 handler-selection/unobserved cannot replace pending role by constructor role REJECTED
+46 handler-selection/unobserved rejects wrong terminal exception classification REJECTED
+47 handler-entry/raise respects acknowledgements and distinct errors PASS
+48 handler-entry/raise cannot invent append completion REJECTED
+49 handler-entry/raise cannot replace pending role by constructor role REJECTED
+50 handler-entry/raise rejects wrong terminal exception classification REJECTED
+51 caught-error-binding-attempt/raise respects acknowledgements and distinct errors PASS
+52 caught-error-binding-attempt/raise cannot invent append completion REJECTED
+53 caught-error-binding-attempt/raise cannot replace pending role by constructor role REJECTED
+54 caught-error-binding-attempt/raise rejects wrong terminal exception classification REJECTED
+55 caught-error-binding-complete/process-termination respects acknowledgements and distinct errors PASS
+56 caught-error-binding-complete/process-termination cannot invent append completion REJECTED
+57 caught-error-binding-complete/process-termination cannot replace pending role by constructor role REJECTED
+58 caught-error-binding-complete/process-termination rejects wrong terminal exception classification REJECTED
+59 report-method-evaluation/raise respects acknowledgements and distinct errors PASS
+60 report-method-evaluation/raise cannot invent append completion REJECTED
+61 report-method-evaluation/raise cannot replace pending role by constructor role REJECTED
+62 report-method-evaluation/raise rejects wrong terminal exception classification REJECTED
+63 error-type-call-return/raise respects acknowledgements and distinct errors PASS
+64 error-type-call-return/raise cannot invent append completion REJECTED
+65 error-type-call-return/raise cannot replace pending role by constructor role REJECTED
+66 error-type-call-return/raise rejects wrong terminal exception classification REJECTED
+67 error-name-attribute/unobserved respects acknowledgements and distinct errors PASS
+68 error-name-attribute/unobserved cannot invent append completion REJECTED
+69 error-name-attribute/unobserved cannot replace pending role by constructor role REJECTED
+70 error-name-attribute/unobserved rejects wrong terminal exception classification REJECTED
+71 error-str-call-return/raise respects acknowledgements and distinct errors PASS
+72 error-str-call-return/raise cannot invent append completion REJECTED
+73 error-str-call-return/raise cannot replace pending role by constructor role REJECTED
+74 error-str-call-return/raise rejects wrong terminal exception classification REJECTED
+75 report-item-complete/process-termination respects acknowledgements and distinct errors PASS
+76 report-item-complete/process-termination cannot invent append completion REJECTED
+77 report-item-complete/process-termination cannot replace pending role by constructor role REJECTED
+78 report-item-complete/process-termination rejects wrong terminal exception classification REJECTED
+79 report-append-attempt/raise respects acknowledgements and distinct errors PASS
+80 report-append-attempt/raise cannot invent append completion REJECTED
+81 report-append-attempt/raise cannot replace pending role by constructor role REJECTED
+82 report-append-attempt/raise rejects wrong terminal exception classification REJECTED
+83 report-append-complete/unobserved respects acknowledgements and distinct errors PASS
+84 report-append-complete/unobserved cannot invent append completion REJECTED
+85 report-append-complete/unobserved cannot replace pending role by constructor role REJECTED
+86 report-append-complete/unobserved rejects wrong terminal exception classification REJECTED
+87 context0 unknown continuity makes no handler progress PASS
+88 context1 unknown continuity makes no handler progress PASS
+89 managed-guard-result failure cannot acquire line172 handler REJECTED
+90 selected-try-entry failure cannot acquire line172 handler REJECTED
+91 coordinated wrong name binding REJECTED
+92 coordinated wrong owner binding REJECTED
+93 coordinated wrong token binding REJECTED
+94 coordinated wrong selected error binding REJECTED
+95 coordinated wrong occurrence binding REJECTED
+96 coordinated wrong list role binding REJECTED
+97 coordinated wrong instance binding REJECTED
+98 coordinated substituted parent report is revalidated REJECTED
+99 wrong context cannot inherit selected parent REJECTED
+100 wrong invocation cannot inherit selected parent REJECTED
+101 wrong underlying instance binding REJECTED
+102 omitted first stage REJECTED
+103 callable after argument REJECTED
+104 omitted final completion REJECTED
+105 duplicate stage REJECTED
+106 continuation after first nonnormal frontier REJECTED
+107 unsupported output prior partial effects REJECTED
+108 unsupported output partial flag REJECTED
+109 unsupported output complete list REJECTED
+110 unsupported output list contents REJECTED
+111 unsupported output close erased REJECTED
+112 unsupported output close failure invented REJECTED
+113 unsupported output generated name REJECTED
+114 unsupported output generated message bytes REJECTED
+115 unsupported output False int alias REJECTED
+116 unsupported output terminal int alias REJECTED
+117 unsupported output handler exit REJECTED
+118 unsupported output later iteration REJECTED
+119 unsupported output failure-file writing REJECTED
+120 unsupported output final rethrow REJECTED
+121 unsupported output owner finalization REJECTED
+122 unsupported output admission REJECTED
+123 str subclass REJECTED
+124 list subclass REJECTED
+125 dict subclass REJECTED

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 61, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 58, in main
+    walk(root);assert found==files and seen==dirs
+    ^^^^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 56, in walk
+    if stat.S_ISDIR(mode):assert n in dirs;seen.add(n);walk(q)
+                                                       ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 56, in walk
+    if stat.S_ISDIR(mode):assert n in dirs;seen.add(n);walk(q)
+                                                       ^^^^^^^
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 56, in walk
+    if stat.S_ISDIR(mode):assert n in dirs;seen.add(n);walk(q)
+                                                       ^^^^^^^
+  [Previous line repeated 1 more time]
+  File "/workspace/scratch/3da0de3fef10/ec01-save-work/author/tools/recover.py", line 57, in walk
+    else:assert stat.S_ISREG(mode) and n in files;found.add(n)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

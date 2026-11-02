@@ -1,0 +1,858 @@
+{
+  "checks": 146,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "full_public_negative_derivations": 0,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "actual current public positive both contexts",
+      "layer": "full current public validation on recovered root",
+      "result": "PASS"
+    },
+    {
+      "check": "actual unchanged EC01 predecessor public positive",
+      "layer": "actual unchanged predecessor public validation",
+      "result": "PASS"
+    },
+    {
+      "check": "exact prepared receipt equals actual authenticated assembly",
+      "layer": "authenticated-basis receipt assembly",
+      "result": "PASS"
+    },
+    {
+      "check": "independent source order positions guards and protected failure domain",
+      "layer": "defining-source AST versus authenticated catalogue; not runtime execution",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0/close legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0/close cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control0/close selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control0/append legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0/append reporting preserves prior UNKNOWN append effects",
+      "layer": "independent outcome oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0/append cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control0/append selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control1/close legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control1/close cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control1/close selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control1/append legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control1/append reporting preserves prior UNKNOWN append effects",
+      "layer": "independent outcome oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control1/append cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control1/append selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control0/close legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control0/close cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control0/close selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control0/append legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control0/append reporting preserves prior UNKNOWN append effects",
+      "layer": "independent outcome oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control0/append cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control0/append selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control1/close legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control1/close cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control1/close selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control1/append legitimate error reporting",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control1/append reporting preserves prior UNKNOWN append effects",
+      "layer": "independent outcome oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control1/append cannot turn reporting into normal overall return",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control1/append selected error cannot disappear",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "lookup legitimate protected evaluation failure",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "append-lookup legitimate protected evaluation failure",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "handler-type-evaluation/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "handler-type-evaluation/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-type-evaluation/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-type-evaluation/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-match/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "handler-match/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-match/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-match/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-selection/unobserved respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "handler-selection/unobserved cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-selection/unobserved cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-selection/unobserved rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-entry/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "handler-entry/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-entry/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "handler-entry/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-attempt/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "caught-error-binding-attempt/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-attempt/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-attempt/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-complete/process-termination respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "caught-error-binding-complete/process-termination cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-complete/process-termination cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "caught-error-binding-complete/process-termination rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-method-evaluation/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "report-method-evaluation/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-method-evaluation/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-method-evaluation/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-type-call-return/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "error-type-call-return/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-type-call-return/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-type-call-return/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-name-attribute/unobserved respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "error-name-attribute/unobserved cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-name-attribute/unobserved cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-name-attribute/unobserved rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-str-call-return/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "error-str-call-return/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-str-call-return/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "error-str-call-return/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-item-complete/process-termination respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "report-item-complete/process-termination cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-item-complete/process-termination cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-item-complete/process-termination rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-attempt/raise respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "report-append-attempt/raise cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-attempt/raise cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-attempt/raise rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-complete/unobserved respects acknowledgements and distinct errors",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "report-append-complete/unobserved cannot invent append completion",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-complete/unobserved cannot replace pending role by constructor role",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "report-append-complete/unobserved rejects wrong terminal exception classification",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 unknown continuity makes no handler progress",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 unknown continuity makes no handler progress",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "managed-guard-result failure cannot acquire line172 handler",
+      "error": "REPORT-PROTECTED-FAILURE",
+      "layer": "actual-authenticated parent + source-protected-failure gate",
+      "result": "REJECTED"
+    },
+    {
+      "check": "selected-try-entry failure cannot acquire line172 handler",
+      "error": "REPORT-PROTECTED-FAILURE",
+      "layer": "actual-authenticated parent + source-protected-failure gate",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong name binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong owner binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong token binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong selected error binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong occurrence binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong list role binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated wrong instance binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated substituted parent report is revalidated",
+      "error": "REPORT-VALIDATED-PARENT-OUTPUT",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong context cannot inherit selected parent",
+      "error": "REPORT-CONSTRUCTED-ANCHOR",
+      "layer": "context/anchor/parent invocation gate before selected-parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong invocation cannot inherit selected parent",
+      "error": "REPORT-PARENT-INVOCATION",
+      "layer": "context/anchor/parent invocation gate before selected-parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong underlying instance binding",
+      "error": "REPORT-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted first stage",
+      "error": "REPORT-STEP-ORDER",
+      "layer": "source step/order gate after actual parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "callable after argument",
+      "error": "REPORT-STEP-ORDER",
+      "layer": "source step/order gate after actual parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted final completion",
+      "error": "REPORT-MISSING-STEP:report-append-complete",
+      "layer": "source step/order gate after actual parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "duplicate stage",
+      "error": "REPORT-STEP-ORDER",
+      "layer": "source step/order gate after actual parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "continuation after first nonnormal frontier",
+      "error": "REPORT-UNREACHED-STEPS",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output prior partial effects",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output partial flag",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output complete list",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output list contents",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output close erased",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output close failure invented",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output generated name",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output generated message bytes",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output False int alias",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output terminal int alias",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output handler exit",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output later iteration",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output failure-file writing",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output final rethrow",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output owner finalization",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "unsupported output admission",
+      "error": "REPORT-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output comparison after selected parent revalidation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "str subclass",
+      "error": "REPORT-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type input gate before selected-parent construction",
+      "result": "REJECTED"
+    },
+    {
+      "check": "list subclass",
+      "error": "REPORT-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type input gate before selected-parent construction",
+      "result": "REJECTED"
+    },
+    {
+      "check": "dict subclass",
+      "error": "REPORT-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type input gate before selected-parent construction",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal key subclass",
+      "error": "REPORT-CONSTRUCTED-INPUT:KEY-TYPE",
+      "layer": "exact-type input gate before selected-parent construction",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned mutations leave pristine constructed expectations",
+      "layer": "actual-authenticated-basis _construct_checked; selected parent revalidated",
+      "result": "PASS"
+    },
+    {
+      "check": "coordinated catalogue omission rejects from defining source",
+      "error": "REPORT-SOURCE-CORRESPONDENCE",
+      "layer": "producer source rederivation, current authenticated parent catalogue",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated catalogue omission rejects authenticated semantic core",
+      "error": "REPORT-CATALOGUE-SOURCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "mixed defining-source bytes reject",
+      "error": "REPORT-CANDIDATE-SOURCE",
+      "layer": "actual-authenticated-basis source-byte comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "stale predecessor receipt bytes reject",
+      "error": "REPORT-CANDIDATE-RECEIPT",
+      "layer": "actual-authenticated-basis predecessor receipt-byte comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "mixed predecessor context report rejects",
+      "error": "REPORT-CANDIDATE-PREDECESSOR",
+      "layer": "actual-authenticated-basis predecessor report comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 claim escalation",
+      "error": "REPORT-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 claim escalation",
+      "error": "REPORT-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "omitted required context",
+      "error": "REPORT-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "reordered context claims",
+      "error": "REPORT-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated UNKNOWN-to-zero qualification claim",
+      "error": "REPORT-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "altered authenticated evidence",
+      "error": "REPORT-VALIDATED-EVIDENCE",
+      "layer": "authenticated evidence byte comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "partial legacy receipt substitute",
+      "error": "REPORT-MANDATORY-RELATIONS",
+      "layer": "receipt shape/mandatory relation gate; no public derivation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated receipt escalation",
+      "error": "REPORT-STALE-OR-ALTERED-RECEIPT",
+      "layer": "actual-authenticated-basis receipt comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt cannot erase unknown totals and enable admission",
+      "error": "REPORT-STALE-OR-ALTERED-RECEIPT",
+      "layer": "actual-authenticated-basis receipt comparison",
+      "result": "REJECTED"
+    },
+    {
+      "check": "returned nested contexts cannot mutate expected mandatory rows",
+      "layer": "actual-authenticated-basis semantic catalogue/claims comparison",
+      "result": "PASS"
+    },
+    {
+      "check": "pristine receipt still accepted after result mutations",
+      "layer": "actual-authenticated-basis receipt comparison",
+      "result": "PASS"
+    },
+    {
+      "check": "normal actual-public monitoring cleanup slot4",
+      "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+      "result": "PASS"
+    },
+    {
+      "check": "normal actual-public monitoring cleanup slot3",
+      "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+      "result": "PASS"
+    },
+    {
+      "check": "normal actual-public monitoring cleanup slot2",
+      "layer": "actual post-public normal monitoring inspection; not interruption campaign",
+      "result": "PASS"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "Only bounded line172 correspondence; prior reviews reused",
+  "seconds": 2413.2243129339986,
+  "session_operations": 0
+}

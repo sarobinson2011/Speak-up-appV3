@@ -1,0 +1,124 @@
+{
+  "no_handler_exit": true,
+  "normal_terminal_exception": true,
+  "order": [
+    "handler-type-evaluation",
+    "handler-match",
+    "handler-selection",
+    "handler-entry",
+    "caught-error-binding-attempt",
+    "caught-error-binding-complete",
+    "report-details-evaluation",
+    "report-key-evaluation",
+    "report-list-resolution",
+    "report-method-evaluation",
+    "report-item-name",
+    "error-type-callable",
+    "error-type-argument",
+    "error-type-call-attempt",
+    "error-type-call-return",
+    "error-name-attribute",
+    "error-str-callable",
+    "error-str-argument",
+    "error-str-call-attempt",
+    "error-str-call-return",
+    "report-item-complete",
+    "report-append-attempt",
+    "report-append-complete"
+  ],
+  "origins": {
+    "caught-error-binding-attempt": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "caught-error-binding-complete": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "error-name-attribute": {
+      "expression": "type(close_error).__name__",
+      "site": "172:88:172:114:Attribute"
+    },
+    "error-str-argument": {
+      "expression": "close_error",
+      "site": "172:119:172:130:Name"
+    },
+    "error-str-call-attempt": {
+      "expression": "str(close_error)",
+      "site": "172:115:172:131:Call"
+    },
+    "error-str-call-return": {
+      "expression": "str(close_error)",
+      "site": "172:115:172:131:Call"
+    },
+    "error-str-callable": {
+      "expression": "str",
+      "site": "172:115:172:118:Name"
+    },
+    "error-type-argument": {
+      "expression": "close_error",
+      "site": "172:93:172:104:Name"
+    },
+    "error-type-call-attempt": {
+      "expression": "type(close_error)",
+      "site": "172:88:172:105:Call"
+    },
+    "error-type-call-return": {
+      "expression": "type(close_error)",
+      "site": "172:88:172:105:Call"
+    },
+    "error-type-callable": {
+      "expression": "type",
+      "site": "172:88:172:92:Name"
+    },
+    "handler-entry": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "handler-match": {
+      "expression": "BaseException",
+      "site": "172:27:172:40:Name"
+    },
+    "handler-selection": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "handler-type-evaluation": {
+      "expression": "BaseException",
+      "site": "172:27:172:40:Name"
+    },
+    "report-append-attempt": {
+      "expression": "details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:56:172:133:Call"
+    },
+    "report-append-complete": {
+      "expression": "details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:56:172:133:Expr"
+    },
+    "report-details-evaluation": {
+      "expression": "details",
+      "site": "172:56:172:63:Name"
+    },
+    "report-item-complete": {
+      "expression": "[name,type(close_error).__name__,str(close_error)]",
+      "site": "172:82:172:132:List"
+    },
+    "report-item-name": {
+      "expression": "name",
+      "site": "172:83:172:87:Name"
+    },
+    "report-key-evaluation": {
+      "expression": "'cleanup'",
+      "site": "172:64:172:73:Constant"
+    },
+    "report-list-resolution": {
+      "expression": "details['cleanup']",
+      "site": "172:56:172:74:Subscript"
+    },
+    "report-method-evaluation": {
+      "expression": "details['cleanup'].append",
+      "site": "172:56:172:81:Attribute"
+    }
+  },
+  "termination_unobserved_terminal": null
+}

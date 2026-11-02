@@ -1,0 +1,28 @@
+This compact Git selection preserves exact new implementation, review records,
+provenance and limitations. It does not replace the large external checkpoints.
+Read README.txt, review/REVIEW.txt, review/CHECKPOINT.json, review/RECOVERY.txt,
+provenance/review-incorporation.json and provenance/external-evidence.json.
+
+Retain Formal-Lab6-I164-cleanup-error-report-independent-review.zip separately:
+160663290 bytes;83 entries;SHA256
+156f5a7cca4b3966ac348d3bf6a0636a69ebd1c66375bb0c1277d929e4e37251.
+Its input/I164-cleanup-error-report-correspondence-1.zip contains exact reviewed
+source additions, prepared receipt and all nested predecessor archives. Use its
+byte-only tools/recover.py only if recovery is needed into a NEW persistent empty
+directory. Reuse completed validation and controls; recovery executes no candidate.
+Do not use this compact selection as the strict recovered input tree.
+
+Current active code: recovered/code/correspondence.py. Current receipt:
+recovered/receipts/prepared-error-report.json,15694813 bytes,SHA256
+726e80b38028c6e3958b4e346696a7296307ca0109b65e17318eb7f580d6072f.
+Recovery manifest:1485862 bytes,SHA256
+5136aad4ca70ebb9adfef7c262ead6644f1ae2f163aa3cb789a7abc44d1b183d.
+Original receipts and earlier NOT ACCEPTED findings remain historical evidence.
+Preserve all missing/qualified records; no retry or reconstruction to fill gaps.
+
+The separately supplied self-contained Git command checks matching successful
+receipts and already-saved selections before writing. It preserves unrelated work,
+commits only the exact compact selection and pushes once without force or retry.
+On conflict or interruption, preserve the receipt/evidence and inspect; do not
+delete receipts to bypass a stop. No validator, pipeline, review, database, session
+or runtime operation is part of the save. Host completion requires its receipt.
