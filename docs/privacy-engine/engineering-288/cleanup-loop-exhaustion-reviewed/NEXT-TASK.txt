@@ -1,0 +1,73 @@
+Smallest unfinished relationship — assessed, not implemented
+
+Recommended bounded task:
+Predecessor-validated normal cleanup-loop exhaustion -> selected line174
+write_new callable and argument evaluation -> call attempt. Stop before
+write_new's body, including the file open at lab_bootstrap.py:24.
+
+Actual source requirement
+extension/source-evidence/lab_bootstrap.py:174 evaluates:
+write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)
+The selected route is still inside the outer constructor-error handler.
+The original error remains pending after the reviewed inner-handler exit
+and loop exhaustion. A further explicit normal continuation is required;
+the completed loop alone is not evidence that line174 ran.
+
+The source binds dest through _session's owner_lock context at line137 and
+owner_lock's normalized path/yield at lines109–116. The second call argument
+is the existing details object from line168, including the exact cleanup-list
+role, retained acknowledged facts and UNKNOWN earlier partial append effects.
+write_new is defined at lines23–25; its open/write/flush/fsync body is outside
+this smallest proposed slice. Line175 suppression and line176 rethrow are
+also outside it, as are owner finalization and physical-cleanup claims.
+
+Confirmed mandatory-mapping gap, not inferred from adjacency
+1. extension/code/managed_coverage.py:3110–3143 cleanup_loop_source derives
+   only handler departure, body completion, final iterator advance, ordinary
+   exhaustion and cleanup-loop-complete. compile_cleanup_loop at3144–3153
+   declares those stages; cleanup_loop_projection at3182–3216 stops before
+   line174 and explicitly leaves line174_evaluation_established False.
+2. extension/code/correspondence.py:94–100 compiles and authenticates that
+   loop catalogue through the actual predecessor. Lines135–144 revalidate
+   the selected parent and enforce the loop projection. Lines155–161 make
+   the relation mandatory in the public receipt path. No occurrence-specific
+   relation connects that validated loop result to line174's evaluated
+   callable, argument roles or call attempt.
+3. Existing client_handle_source at managed_coverage.py:1413–1427 already
+   checks the whole outer handler's source shape, including write_new.
+   client_handle_projection at1566–1580 and client_state_projection have
+   coarse constructed cleanup/write outcome classifications. Those existing
+   checks must be reused; they do not bind the selected validated exhaustion
+   occurrence to line174's source-ordered operand/evaluation chain. Therefore
+   this is a specific executable correspondence gap, not a missing source
+   anchor or an inference from unavailable runtime observations.
+
+What the proposed relationship adds
+Derive evaluation order independently from the exact source AST and retained
+Python contract, including callable evaluation; the first path operand;
+failure-name concatenations; str(os.getpid()); str(len(list(...iterdir())));
+the final path operation; details lookup; and call attempt. Bind the selected
+context, control prefix, invocation, instance, owner/token lineage, dest and
+details/list roles through the unchanged actual predecessor. Distinguish
+argument-evaluation failure from a reached call; stop at the first failure,
+interruption, termination or unobserved frontier. Keep pending original and
+replacement errors distinct and preserve EC-01's classifications.
+
+PID, directory contents/count, concrete filename, formatted bytes and actual
+operation remain unobserved. Source order does not establish successful
+evaluation, unique naming, file creation, durability or renewed authority.
+Any helper-binding/continuity assumptions must be explicit within the retained
+cooperative contract, not evidence of hostile-replacement protection.
+
+Retained inputs suffice for this bounded static conditional construction:
+the exact defining source, current mandatory validator, reviewed predecessor,
+instance/occurrence roles and qualified retained Python contract are present.
+No new acquisition, project policy, numerical limit or runtime observation is
+needed to implement that static relation. Runtime arrival, concrete path
+operands and I/O outcomes would require separately authorized exact execution
+evidence from the integration/host evidence owner; they remain unavailable
+and are not implementation defects. Do not collect them for this assessment.
+
+No implementation was made. No completed controls or campaigns were rerun.
+Both acquisitions, eleven duties, 4/14 UNKNOWN totals, Decision B, retention,
+allowances and all readiness/admission boundaries remain unchanged.

@@ -1,0 +1,45 @@
+{
+  "entry_count": 2,
+  "entry_order": [
+    "raw",
+    "managed"
+  ],
+  "normal_terminal_python_exception": true,
+  "order": [
+    "inner-handler-departure-attempt",
+    "inner-handler-exit-complete",
+    "selected-loop-body-complete",
+    "final-iterator-advance-attempt",
+    "ordinary-iterator-exhaustion",
+    "cleanup-loop-complete"
+  ],
+  "origins": {
+    "cleanup-loop-complete": {
+      "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "169:12:172:133:For"
+    },
+    "final-iterator-advance-attempt": {
+      "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "169:12:172:133:For"
+    },
+    "inner-handler-departure-attempt": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "inner-handler-exit-complete": {
+      "expression": "except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "172:20:172:133:ExceptHandler"
+    },
+    "ordinary-iterator-exhaustion": {
+      "expression": "[('raw',raw),('managed',managed)]",
+      "site": "169:28:169:61:List"
+    },
+    "selected-loop-body-complete": {
+      "expression": "if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+      "site": "170:16:172:133:If"
+    }
+  },
+  "selected_index": 1,
+  "stop_before_line": 174,
+  "termination_unobserved": null
+}

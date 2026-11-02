@@ -1,0 +1,14 @@
+{
+  "url": "https://docs.python.org/3.12/reference/compound_stmts.html",
+  "retrieved_date": "2026-11-02",
+  "page_label": "Python 3.12.16 documentation",
+  "review_runtime": "CPython 3.12.14",
+  "source_reference": "turn2view0",
+  "sections": [
+    "8.3",
+    "8.4.1"
+  ],
+  "paraphrase": "The iterable expression is evaluated once. Its iterator supplies items that bind the loop targets; exhaustion ends the loop, and target names remain bound. Reaching an except suite end continues after the try. The as-target is cleared on departure; the handled exception is restored to its previous value. These language rules do not supply exact hidden opcode order, physical destruction, runtime observations, or feasibility of a conditional exception.",
+  "application": "With exact two-entry list and iterator continuity, validated raw=None skips the first body and managed is second/last. Normal departure clears close_error and restores the outer constructor exception as handled. Its retained evidence remains separate. This slice stops before the following write try at line174.",
+  "qualification": "3.12-family reference supports language assumptions, not independent qualification of every interpreter or actual execution."
+}

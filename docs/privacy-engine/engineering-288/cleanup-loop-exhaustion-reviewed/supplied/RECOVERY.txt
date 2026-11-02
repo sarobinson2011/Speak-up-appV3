@@ -1,0 +1,48 @@
+Read README.txt, CHECKPOINT.json and RESULTS.txt first. Independent review pending.
+Do not replay completed campaigns to reconcile historical missing records.
+
+1. Verify the delivered ZIP identity supplied with the download. Require safe,
+   unique regular-file membership, MANIFEST.json membership, CRC and file hashes.
+   Preserve every archive, result, failure and partial file unchanged.
+2. Extract into a new persistent evidence directory. Run the included byte-only
+   tools/recover.py with the exact retained Python3.12.14 profile and a new absent
+   target directory; it opens archives/files only, never database connections:
+
+   python3 -I -B /ABSOLUTE/EXTRACTED/tools/recover.py /ABSOLUTE/NEW/RECOVERED-ROOT
+
+   This reconstructs the unchanged line172 predecessor under retained/report,
+   including its nested reviewed dependencies, then adds only declared new files.
+   It refuses undeclared directories, nonregular entries, changed bytes or reuse
+   of an existing target. A failed recovery is preserved; do not repair or retry
+   automatically. It executes no candidate code or historical campaign.
+3. ROOT-MANIFEST.json describes the exact reconstructed root. The adapter is
+   code/correspondence.py; appended producer code is code/managed_coverage.py.
+   The new prepared receipt is receipts/prepared-cleanup-loop.json. Historical
+   prepared-error-report.json remains inside retained/report unchanged.
+4. Reuse the supplied completed controls and explicit exits. No execution is
+   needed merely to inspect this checkpoint. Independent review may, under its
+   own authorization, use the current public entry:
+
+   python3 -I -B /ABSOLUTE/NEW/RECOVERED-ROOT/code/correspondence.py \
+     --root /ABSOLUTE/NEW/RECOVERED-ROOT \
+     --receipt /ABSOLUTE/NEW/RECOVERED-ROOT/receipts/prepared-cleanup-loop.json
+
+   This is an offline source/evidence validator, not host/session execution.
+   Its unchanged predecessor chain can take35–45minutes. Reserve finalization
+   time, use a fresh bounded process and retain incremental logs/exit records.
+   Do not automatically retry contention, timeout or failure. Monitoring requires
+   retained CPython3.12.14 cooperative slot ownership. The new wrapper uses slot5;
+   predecessor slots4/3/2 remain unchanged. The supplied guard uses slot0. Hostile
+   replacement, repeated interruption, cleanup failure and alternate interpreters
+   remain qualified. No claim follows from a free slot alone.
+5. New focused controls are tests/focused.py. Their supplied invocation, root,
+   profile, timing, records and exit are in new/processes/focused-recovered/. Do
+   not rerun them to reconstruct missing records or declare independent closure.
+   Distinguish public validation, public required-relation gates, authenticated
+   constructed/source/output cores and receipt comparison exactly as labelled.
+
+Review focus: source-derived finite two-entry relationship; predecessor completion;
+explicit normal continuation; caught-name/retained/pending error distinctions;
+first nonnormal frontier; preserved UNKNOWN partial effects; no line174 evaluation;
+exact typing, immutable expectations and both contexts/prefixes/failure origins.
+No later relationship or runtime observation is established by this checkpoint.
