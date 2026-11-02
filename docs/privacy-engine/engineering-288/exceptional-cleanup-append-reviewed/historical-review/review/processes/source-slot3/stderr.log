@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/eca-review/code/common.py", line 24, in no
+    assert time.monotonic()-self.start<3150,'REVIEW-SOFT-DEADLINE';fn()
+                                                                   ^^^^
+  File "/workspace/scratch/ace5c9b2f18b/eca-review/code/source_monitor.py", line 68, in <lambda>
+    r.no('repinned non-identity guard rejected by grammar',lambda:d['coverage'].compile_cleanup_append(changed,*d['sources'][1:],parent,d['prior']['contexts'][0]['reference_declarations']),'CLEANUP-EXACT-NONNONE')
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py", line 2899, in compile_cleanup_append
+    source=cleanup_append_source(launcher,entry,manager,details,reference)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py", line 2841, in cleanup_append_source
+    status_typed_same({**loc(loop),'source':pins['launcher']},details['source']['stop_before'],'CLEANUP-PARENT-FRONTIER')
+  File "/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py", line 1826, in status_typed_same
+    status_exact_tree(a,code);status_exact_tree(b,code);same(a,b,code)
+                                                        ^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py", line 71, in same
+    def same(a,b,code):need(enc(a)==enc(b),code)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py", line 70, in need
+    if not value:raise ValueError(code)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: CLEANUP-PARENT-FRONTIER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/eca-review/code/source_monitor.py", line 68, in <module>
+    r.no('repinned non-identity guard rejected by grammar',lambda:d['coverage'].compile_cleanup_append(changed,*d['sources'][1:],parent,d['prior']['contexts'][0]['reference_declarations']),'CLEANUP-EXACT-NONNONE')
+  File "/workspace/scratch/ace5c9b2f18b/eca-review/code/common.py", line 26, in no
+    if code:assert code in str(e),(n,str(e),code)
+                   ^^^^^^^^^^^^^^
+AssertionError: ('repinned non-identity guard rejected by grammar', 'CLEANUP-PARENT-FRONTIER', 'CLEANUP-EXACT-NONNONE')

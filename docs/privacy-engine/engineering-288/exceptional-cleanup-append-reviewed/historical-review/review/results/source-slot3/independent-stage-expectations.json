@@ -1,0 +1,142 @@
+{
+  "append-call-attempt": {
+    "expression": "details['cleanup'].append([name,'close returned'])",
+    "site": "171:36:171:86:Call"
+  },
+  "append-complete": {
+    "expression": "details['cleanup'].append([name,'close returned'])",
+    "site": "171:36:171:86:Expr"
+  },
+  "append-details-evaluation": {
+    "expression": "details",
+    "site": "171:36:171:43:Name"
+  },
+  "append-item-complete": {
+    "expression": "[name,'close returned']",
+    "site": "171:62:171:85:List"
+  },
+  "append-item-message": {
+    "expression": "'close returned'",
+    "site": "171:68:171:84:Constant"
+  },
+  "append-item-name": {
+    "expression": "name",
+    "site": "171:63:171:67:Name"
+  },
+  "append-key-evaluation": {
+    "expression": "'cleanup'",
+    "site": "171:44:171:53:Constant"
+  },
+  "append-list-resolution": {
+    "expression": "details['cleanup']",
+    "site": "171:36:171:54:Subscript"
+  },
+  "append-method-evaluation": {
+    "expression": "details['cleanup'].append",
+    "site": "171:36:171:61:Attribute"
+  },
+  "close-call-attempt": {
+    "expression": "obj.close()",
+    "site": "171:24:171:35:Call"
+  },
+  "close-method-evaluation": {
+    "expression": "obj.close",
+    "site": "171:24:171:33:Attribute"
+  },
+  "close-normal-return": {
+    "expression": "obj.close()",
+    "site": "171:24:171:35:Expr"
+  },
+  "close-object-evaluation": {
+    "expression": "obj",
+    "site": "171:24:171:27:Name"
+  },
+  "input-managed-name": {
+    "expression": "'managed'",
+    "site": "169:42:169:51:Constant"
+  },
+  "input-managed-object": {
+    "expression": "managed",
+    "site": "169:52:169:59:Name"
+  },
+  "input-managed-pair": {
+    "expression": "('managed',managed)",
+    "site": "169:41:169:60:Tuple"
+  },
+  "input-raw-name": {
+    "expression": "'raw'",
+    "site": "169:30:169:35:Constant"
+  },
+  "input-raw-object": {
+    "expression": "raw",
+    "site": "169:36:169:39:Name"
+  },
+  "input-raw-pair": {
+    "expression": "('raw',raw)",
+    "site": "169:29:169:40:Tuple"
+  },
+  "loop-input-evaluation": {
+    "expression": "[('raw',raw),('managed',managed)]",
+    "site": "169:28:169:61:List"
+  },
+  "loop-inputs-complete": {
+    "expression": "[('raw',raw),('managed',managed)]",
+    "site": "169:28:169:61:List"
+  },
+  "loop-iterator-attempt": {
+    "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+    "site": "169:12:172:133:For"
+  },
+  "managed-bind-name": {
+    "expression": "name",
+    "site": "169:16:169:20:Name"
+  },
+  "managed-bind-obj": {
+    "expression": "obj",
+    "site": "169:21:169:24:Name"
+  },
+  "managed-guard-none": {
+    "expression": "None",
+    "site": "170:30:170:34:Constant"
+  },
+  "managed-guard-object": {
+    "expression": "obj",
+    "site": "170:19:170:22:Name"
+  },
+  "managed-guard-result": {
+    "expression": "obj is not None",
+    "site": "170:19:170:34:Compare"
+  },
+  "managed-item-next": {
+    "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+    "site": "169:12:172:133:For"
+  },
+  "raw-bind-name": {
+    "expression": "name",
+    "site": "169:16:169:20:Name"
+  },
+  "raw-bind-obj": {
+    "expression": "obj",
+    "site": "169:21:169:24:Name"
+  },
+  "raw-guard-none": {
+    "expression": "None",
+    "site": "170:30:170:34:Constant"
+  },
+  "raw-guard-object": {
+    "expression": "obj",
+    "site": "170:19:170:22:Name"
+  },
+  "raw-guard-result": {
+    "expression": "obj is not None",
+    "site": "170:19:170:34:Compare"
+  },
+  "raw-item-next": {
+    "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+    "site": "169:12:172:133:For"
+  },
+  "selected-try-entry": {
+    "expression": "try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+    "site": "171:20:172:133:Try"
+  }
+}

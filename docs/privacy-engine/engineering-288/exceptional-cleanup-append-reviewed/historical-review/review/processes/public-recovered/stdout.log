@@ -1,0 +1,174 @@
+EVENT {"event": "actual-public-validation-start", "seconds": 1.4303694359987276, "soft_deadline_seconds": 3150, "hard_timeout_seconds": 3600, "whole_chain_current_inputs": true}
+EVENT {"event": "actual_basis_return_observed", "seconds": 2309.1034826979994, "catalogue_format": "I164-EXCEPTIONAL-CLEANUP-APPEND-STATIC-1"}
+1 actual current public accepts both contexts PASS
+2 actual unchanged LD01 predecessor public accepted PASS
+3 actual authenticated current assembly equals saved receipt PASS
+EVENT {"event": "focused-checks-start", "seconds": 2311.300839891999, "uses_actual_authenticated_basis": true}
+4 actual authenticated public normal completion cleaned slot 3 PASS
+5 actual authenticated public normal completion cleaned slot 2 PASS
+6 independently source-ordered 35 stages PASS
+7 context0/control0 normal mapping except EC-01 independently corroborated PASS
+8 context0/control0 EC-01 accepted inconsistent terminal exception flag DEFECT-OBSERVED
+9 context0/control0 source-consistent single-field replacement rejected REJECTED
+10 context0/control1 normal mapping except EC-01 independently corroborated PASS
+11 context0/control1 EC-01 accepted inconsistent terminal exception flag DEFECT-OBSERVED
+12 context0/control1 source-consistent single-field replacement rejected REJECTED
+13 context1/control0 normal mapping except EC-01 independently corroborated PASS
+14 context1/control0 EC-01 accepted inconsistent terminal exception flag DEFECT-OBSERVED
+15 context1/control0 source-consistent single-field replacement rejected REJECTED
+16 context1/control1 normal mapping except EC-01 independently corroborated PASS
+17 context1/control1 EC-01 accepted inconsistent terminal exception flag DEFECT-OBSERVED
+18 context1/control1 source-consistent single-field replacement rejected REJECTED
+19 context0 frontier input-managed-object/raise PASS
+20 context0 frontier raw-guard-result/unobserved PASS
+21 context0 frontier managed-bind-obj/process-termination PASS
+22 context0 frontier selected-try-entry/raise PASS
+23 context0 frontier close-method-evaluation/raise PASS
+24 context0 frontier close-call-attempt/unobserved PASS
+25 context0 frontier close-normal-return/raise PASS
+26 context0 frontier close-normal-return/unobserved PASS
+27 context0 frontier append-details-evaluation/raise PASS
+28 context0 frontier append-method-evaluation/process-termination PASS
+29 context0 frontier append-call-attempt/raise PASS
+30 context0 frontier append-complete/unobserved PASS
+31 context0 unknown continuity establishes no selection PASS
+32 context0 empty retired reference conditionally normal; EC01 retained PASS
+33 context0 reject input binding/selected_index REJECTED
+34 context0 reject input binding/name REJECTED
+35 context0 reject input binding/ordered_values/0/value REJECTED
+36 context0 reject input binding/object REJECTED
+37 context0 reject input binding/close_receiver REJECTED
+38 context0 reject input binding/guard/result REJECTED
+39 context0 reject input binding/guard/right REJECTED
+40 context0 reject input binding/guard/expression REJECTED
+41 context0 reject input binding/method REJECTED
+42 context0 reject input binding/cleanup_list REJECTED
+43 context0 reject input binding/append_item/0 REJECTED
+44 context0 reject input binding/append_item/1 REJECTED
+45 context0 reject input binding/runtime_object_identity REJECTED
+46 context0 reject input invocation REJECTED
+47 context0 reject input anchor/context REJECTED
+48 context0 reject input context REJECTED
+49 context0 reject close method/state REJECTED
+50 context0 reject close context/SYMBOLIC-U-TWO REJECTED
+51 context0 reject close scope/{'acquisition': 'sha256:bbea8f904a9 REJECTED
+52 context0 reject close scope/{'acquisition': 'wrong-acquisition' REJECTED
+53 context0 reject close scope/{'acquisition': 'sha256:bbea8f904a9 REJECTED
+54 context0 missing inherited close relation REJECTED
+55 context0 omitted ordered stage 0 REJECTED
+56 context0 omitted ordered stage 24 REJECTED
+57 context0 omitted ordered stage 33 REJECTED
+58 context0 reordered close stages REJECTED
+59 context0 duplicated close attempt REJECTED
+60 context0 reject output close_normal_return_completed_in_model REJECTED
+61 context0 reject output append_completed_in_model REJECTED
+62 context0 reject output close_itself_failed_established_in_model REJECTED
+63 context0 reject output inner_handler_entry_established REJECTED
+64 context0 reject output complete_cleanup_established REJECTED
+65 context0 reject output final_rethrow_established REJECTED
+66 context0 reject output actual_admission REJECTED
+67 context0 reject output details_after_acknowledged_steps/known_literal_fields/cleanup REJECTED
+68 context0 reject output details_after_acknowledged_steps/known_literal_fields/nonexecution_established REJECTED
+69 context0 reject output details_after_acknowledged_steps/dynamic_fields/0/exact_value REJECTED
+70 context0 append failure cannot rewrite close_itself_failed_established_in_model REJECTED
+71 context0 append failure cannot rewrite close_normal_return_completed_in_model REJECTED
+72 context0 append failure cannot rewrite inner_handler_entry_established REJECTED
+73 context0 append failure cannot rewrite last_pending_error_in_model REJECTED
+74 context0 coordinated wrong manager role REJECTED
+75 context0 coordinated append-item substitution REJECTED
+76 context0 coordinated disappearance of constructor error REJECTED
+77 context0 nested returned mutation leaves pristine expectations PASS
+78 context1 frontier input-managed-object/raise PASS
+79 context1 frontier raw-guard-result/unobserved PASS
+80 context1 frontier managed-bind-obj/process-termination PASS
+81 context1 frontier selected-try-entry/raise PASS
+82 context1 frontier close-method-evaluation/raise PASS
+83 context1 frontier close-call-attempt/unobserved PASS
+84 context1 frontier close-normal-return/raise PASS
+85 context1 frontier close-normal-return/unobserved PASS
+86 context1 frontier append-details-evaluation/raise PASS
+87 context1 frontier append-method-evaluation/process-termination PASS
+88 context1 frontier append-call-attempt/raise PASS
+89 context1 frontier append-complete/unobserved PASS
+90 context1 unknown continuity establishes no selection PASS
+91 context1 empty retired reference conditionally normal; EC01 retained PASS
+92 context1 reject input binding/selected_index REJECTED
+93 context1 reject input binding/name REJECTED
+94 context1 reject input binding/ordered_values/0/value REJECTED
+95 context1 reject input binding/object REJECTED
+96 context1 reject input binding/close_receiver REJECTED
+97 context1 reject input binding/guard/result REJECTED
+98 context1 reject input binding/guard/right REJECTED
+99 context1 reject input binding/guard/expression REJECTED
+100 context1 reject input binding/method REJECTED
+101 context1 reject input binding/cleanup_list REJECTED
+102 context1 reject input binding/append_item/0 REJECTED
+103 context1 reject input binding/append_item/1 REJECTED
+104 context1 reject input binding/runtime_object_identity REJECTED
+105 context1 reject input invocation REJECTED
+106 context1 reject input anchor/context REJECTED
+107 context1 reject input context REJECTED
+108 context1 reject close method/state REJECTED
+109 context1 reject close context/SYMBOLIC-U-ONE REJECTED
+110 context1 reject close scope/{'acquisition': 'sha256:bbea8f904a9 REJECTED
+111 context1 reject close scope/{'acquisition': 'wrong-acquisition' REJECTED
+112 context1 reject close scope/{'acquisition': 'sha256:bbea8f904a9 REJECTED
+113 context1 missing inherited close relation REJECTED
+114 context1 omitted ordered stage 0 REJECTED
+115 context1 omitted ordered stage 24 REJECTED
+116 context1 omitted ordered stage 33 REJECTED
+117 context1 reordered close stages REJECTED
+118 context1 duplicated close attempt REJECTED
+119 context1 reject output close_normal_return_completed_in_model REJECTED
+120 context1 reject output append_completed_in_model REJECTED
+121 context1 reject output close_itself_failed_established_in_model REJECTED
+122 context1 reject output inner_handler_entry_established REJECTED
+123 context1 reject output complete_cleanup_established REJECTED
+124 context1 reject output final_rethrow_established REJECTED
+125 context1 reject output actual_admission REJECTED
+126 context1 reject output details_after_acknowledged_steps/known_literal_fields/cleanup REJECTED
+127 context1 reject output details_after_acknowledged_steps/known_literal_fields/nonexecution_established REJECTED
+128 context1 reject output details_after_acknowledged_steps/dynamic_fields/0/exact_value REJECTED
+129 context1 append failure cannot rewrite close_itself_failed_established_in_model REJECTED
+130 context1 append failure cannot rewrite close_normal_return_completed_in_model REJECTED
+131 context1 append failure cannot rewrite inner_handler_entry_established REJECTED
+132 context1 append failure cannot rewrite last_pending_error_in_model REJECTED
+133 context1 coordinated wrong manager role REJECTED
+134 context1 coordinated append-item substitution REJECTED
+135 context1 coordinated disappearance of constructor error REJECTED
+136 context1 nested returned mutation leaves pristine expectations PASS
+137 exact type string-subclass REJECTED
+138 exact type bool-as-int REJECTED
+139 exact type index-bool REJECTED
+140 exact type list-subclass REJECTED
+141 exact type dict-subclass REJECTED
+142 exact type nested-output-subclass REJECTED
+143 literal key subclass REJECTED
+144 authenticated semantic rows accepted PASS
+145 semantic context0/classification REJECTED
+146 semantic context0/multiplicity REJECTED
+147 semantic context0/actual_invocation_count REJECTED
+148 semantic context0/runtime_cleanup_append_chain REJECTED
+149 semantic context0/outer_cleanup_complete REJECTED
+150 semantic context0/conditional_links REJECTED
+151 context0 coordinated omitted declaration REJECTED
+152 public context0 missing mandatory relation BEFORE derivation REJECTED
+153 semantic context1/classification REJECTED
+154 semantic context1/multiplicity REJECTED
+155 semantic context1/actual_invocation_count REJECTED
+156 semantic context1/runtime_cleanup_append_chain REJECTED
+157 semantic context1/outer_cleanup_complete REJECTED
+158 semantic context1/conditional_links REJECTED
+159 context1 coordinated omitted declaration REJECTED
+160 public context1 missing mandatory relation BEFORE derivation REJECTED
+161 candidate missing evidence REJECTED
+162 candidate stale source REJECTED
+163 candidate mixed predecessor contexts REJECTED
+164 candidate altered predecessor receipt REJECTED
+165 receipt comparison core reverse contexts REJECTED
+166 receipt comparison core UNKNOWN to zero REJECTED
+167 receipt comparison core admission escalation REJECTED
+168 receipt comparison core changed receipt code pin REJECTED
+169 semantic returned nested aliases isolated PASS
+170 public returned aliases isolated in receipt comparison core PASS
+EVENT {"event": "finished", "seconds": 2437.6934246329984}

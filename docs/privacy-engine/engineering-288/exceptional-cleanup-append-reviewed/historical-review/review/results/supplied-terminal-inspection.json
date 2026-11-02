@@ -1,0 +1,52 @@
+{
+  "kind": "Read-only inspection of supplied constructed fixtures, not independent execution",
+  "source_file": "results/recovered/fixtures.json",
+  "identity": {
+    "bytes": 19220428,
+    "sha256": "f664d6e3ef0ec41a10ca6a3b59e618613a9058064335e783040cfd9a2a3e0ee5"
+  },
+  "rows": [
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "invocation": "constructed-cleanup-A",
+      "earlier_control": null,
+      "completion": "selected-normal-append",
+      "terminal_python_exception_in_model": false,
+      "pending_original_retained": true,
+      "parent_active_original": true,
+      "parent_terminal_exception": true
+    },
+    {
+      "context": "SYMBOLIC-U-ONE",
+      "invocation": "constructed-cleanup-A",
+      "earlier_control": true,
+      "completion": "selected-normal-append",
+      "terminal_python_exception_in_model": false,
+      "pending_original_retained": true,
+      "parent_active_original": true,
+      "parent_terminal_exception": true
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "invocation": "constructed-cleanup-A",
+      "earlier_control": null,
+      "completion": "selected-normal-append",
+      "terminal_python_exception_in_model": false,
+      "pending_original_retained": true,
+      "parent_active_original": true,
+      "parent_terminal_exception": true
+    },
+    {
+      "context": "SYMBOLIC-U-TWO",
+      "invocation": "constructed-cleanup-A",
+      "earlier_control": true,
+      "completion": "selected-normal-append",
+      "terminal_python_exception_in_model": false,
+      "pending_original_retained": true,
+      "parent_active_original": true,
+      "parent_terminal_exception": true
+    }
+  ],
+  "new_validation_calls": 0,
+  "normal_terminal_flag_not_asserted_by_supplied_oracle": "tests/cases.py:oracle only checks the flag for non-raise exceptional terminal cases; normal case omits it"
+}

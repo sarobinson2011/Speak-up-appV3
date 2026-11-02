@@ -1,0 +1,93 @@
+{"check": "actual corrected public positive both contexts", "result": "PASS"}
+{"check": "actual unchanged predecessor public positive", "result": "PASS"}
+{"check": "authenticated current assembly matches exact new receipt", "result": "PASS"}
+{"check": "independent source: active constructor handler and normal suboperations", "result": "PASS"}
+{"check": "retained witness counterpart changes exactly the terminal flag", "result": "PASS"}
+{"check": "retained original False witness rejected unchanged", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "rejected original witness is not silently repaired", "result": "PASS"}
+{"check": "retained one-field-corrected witness accepts", "result": "PASS"}
+{"check": "corrected witness obeys independent pending-exception oracle", "result": "PASS"}
+{"check": "new accepted witness differs from historical result in one field only", "result": "PASS"}
+{"check": "context0/control0 normal preserves pending original and no overall completion", "result": "PASS"}
+{"check": "context0/control0 wrong terminal value False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control0 wrong terminal value None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control0 wrong terminal value 1", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control0 wrong terminal value 'True'", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control0 omitted terminal classification", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control1 normal preserves pending original and no overall completion", "result": "PASS"}
+{"check": "context0/control1 wrong terminal value False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control1 wrong terminal value None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control1 wrong terminal value 1", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control1 wrong terminal value 'True'", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0/control1 omitted terminal classification", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control0 normal preserves pending original and no overall completion", "result": "PASS"}
+{"check": "context1/control0 wrong terminal value False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control0 wrong terminal value None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control0 wrong terminal value 1", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control0 wrong terminal value 'True'", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control0 omitted terminal classification", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control1 normal preserves pending original and no overall completion", "result": "PASS"}
+{"check": "context1/control1 wrong terminal value False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control1 wrong terminal value None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control1 wrong terminal value 1", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control1 wrong terminal value 'True'", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1/control1 omitted terminal classification", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 input-managed-object/raise preserves source semantics", "result": "PASS"}
+{"check": "context0 input-managed-object/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 input-managed-object/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 close-normal-return/raise preserves source semantics", "result": "PASS"}
+{"check": "context0 close-normal-return/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 close-normal-return/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-call-attempt/raise preserves source semantics", "result": "PASS"}
+{"check": "context0 append-call-attempt/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-call-attempt/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append failure cannot erase acknowledged close append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-complete/raise preserves source semantics", "result": "PASS"}
+{"check": "context0 append-complete/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-complete/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append failure cannot erase acknowledged close append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 close-normal-return/unobserved preserves source semantics", "result": "PASS"}
+{"check": "context0 close-normal-return/unobserved rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 close-normal-return/unobserved rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-call-attempt/process-termination preserves source semantics", "result": "PASS"}
+{"check": "context0 append-call-attempt/process-termination rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-call-attempt/process-termination rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-complete/unobserved preserves source semantics", "result": "PASS"}
+{"check": "context0 append-complete/unobserved rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 append-complete/unobserved rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context0 unknown continuity retains None and no progress", "result": "PASS"}
+{"check": "context0 nested returned mutations leave pristine expectations", "result": "PASS"}
+{"check": "context0 coordinated error disappearance rejects", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 input-managed-object/raise preserves source semantics", "result": "PASS"}
+{"check": "context1 input-managed-object/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 input-managed-object/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 close-normal-return/raise preserves source semantics", "result": "PASS"}
+{"check": "context1 close-normal-return/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 close-normal-return/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-call-attempt/raise preserves source semantics", "result": "PASS"}
+{"check": "context1 append-call-attempt/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-call-attempt/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append failure cannot erase acknowledged close append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-complete/raise preserves source semantics", "result": "PASS"}
+{"check": "context1 append-complete/raise rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-complete/raise rejects flag None", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append failure cannot erase acknowledged close append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 close-normal-return/unobserved preserves source semantics", "result": "PASS"}
+{"check": "context1 close-normal-return/unobserved rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 close-normal-return/unobserved rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-call-attempt/process-termination preserves source semantics", "result": "PASS"}
+{"check": "context1 append-call-attempt/process-termination rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-call-attempt/process-termination rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-complete/unobserved preserves source semantics", "result": "PASS"}
+{"check": "context1 append-complete/unobserved rejects flag False", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 append-complete/unobserved rejects flag True", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "context1 unknown continuity retains None and no progress", "result": "PASS"}
+{"check": "context1 nested returned mutations leave pristine expectations", "result": "PASS"}
+{"check": "context1 coordinated error disappearance rejects", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "subclassed nested error role", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "subclassed output container", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "subclassed literal flag key", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "historical receipt stays historical and rejects corrected pins", "result": "REJECTED", "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT"}
+{"check": "mutable public result cannot change current receipt expectation", "result": "PASS"}
+{"check": "normal authenticated completion monitoring state slot 3", "result": "PASS"}
+{"check": "normal authenticated completion monitoring state slot 2", "result": "PASS"}

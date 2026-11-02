@@ -1,0 +1,203 @@
+Formal-Lab[6] independent review for Engineering-Anchor[2]
+
+Target: I164-exceptional-cleanup-append-correspondence-1.zip
+Construction author: SU-Engineering[288D]. Reviewer: Formal-Lab[6].
+This reviewer did not author or change the construction. Candidate implementation,
+runtime sources, saved evidence and submitted receipts remain unchanged.
+
+VERDICT: NOT ACCEPTED AS COMPLETE — EC-01 remains in the normal-append projection.
+
+The source mappings, predecessor authentication, selected cleanup bindings and
+tested failure distinctions have bounded support described below. A normal
+constructed append nevertheless produces and accepts an inconsistent terminal
+exception classification. This is a new bounded correspondence finding; it does
+not reopen LD-01 or the unchanged predecessor reviews, assert a runtime exception
+was lost, or assert readiness/admission was enabled.
+
+Input integrity and recovery
+
+The input is exactly 155,659,416 bytes, 3,982 entries, SHA-256
+14bfe3fcc3da3f5f8e2ab6cfb3c820229f1520b439b9ebaf5f6bad83daf25c50.
+CRC, unique safe regular membership and all 3,981 manifested member hashes passed.
+Two separately recovered strict roots contain 3,982 files and 1,095 directories.
+The current manifest is 1,413,126 bytes, SHA-256
+735a9e4ad7994da04ed1c607eb8f25f59fc440c915f218a5a24137691f6c7590.
+
+All 3,771 files of the strict LD-01 predecessor, its manifest, and 132 retained
+non-input closure-review members matched their declared identities. All 3,923
+frozen input members matched. Flattened predecessor recovery does not reproduce
+original compressed archive bytes; no unchanged old archive is called freshly
+verified. The successful current public chain independently confirms that the
+retained dependencies suffice for this saved-input validation in the recorded
+environment. See review/results/integrity.json and audit-completion/AUDIT.json.
+
+The two intentional implementation-file changes match provenance/changed-files.json
+and the exact implementation.diff. The producer retains its first 322,999 bytes,
+135 inherited functions and their AST locations, and appends six functions.
+The original runtime sources and actual predecessor validator are unchanged.
+All inherited receipt context fields, relations and identities are preserved;
+the new mandatory relation is additive. Confirmed save
+c43954ff5ee384c6fb6e7a85d83eb36bfea342d1 is reused; no Git operation occurred.
+
+EC-01: smallest confirmed witness
+
+Use the independently constructed, entirely normal cleanup/append case in
+review/results/public-recovered/EC01-smallest-case.json. It was checked against
+the exact basis captured from this review's actual current public validation,
+which itself invoked the unchanged LD-01 predecessor public validator.
+
+The accepted projection has:
+  completion = selected-normal-append
+  last_pending_error_in_model = earlier_constructor_exception
+  validated_parent.active_caught_error_in_model = that same constructor error
+  validated_parent.terminal_python_exception_in_model = True
+  terminal_python_exception_in_model = False
+
+The source remains inside lab_bootstrap.py's except BaseException as e at
+167–171. Close/append progress neither handles away that selected original nor
+establishes a normal overall return. The retained details projection explicitly
+keeps the terminal-exception classification True on this normal subpath
+(managed_coverage.py:2822). The new expression at managed_coverage.py:2952 instead
+reduces it to the last cleanup-stage outcome and emits False. This is inconsistent
+with the retained pending-error semantics, even though other fields correctly
+preserve the original error.
+
+The witness is confirmed in both contexts and both control prefixes. Changing
+only /output/terminal_python_exception_in_model from False to True is rejected
+with CLEANUP-OUTPUT-CORRESPONDENCE. Accepted results, the one-field counterpart
+and exact witness metadata are retained. The layer is _construct_checked and
+the producer's output-comparison core, using an actually authenticated basis.
+No full public negative derivation was run or claimed. The saved public receipt
+is a legitimate static declaration receipt and passed; this is not a claim that
+its bytes were altered or that a full public receipt falsely reported runtime
+execution. Static inspection and the supplied four normal fixtures exhibit the
+same inconsistency. Engineering's oracle omits the normal terminal-flag check.
+
+The smallest correction needed is to make this classification correspond to the
+retained pending constructor error after normal close/append, preserving the
+distinct termination/unobserved qualifications. No correction was implemented.
+
+Source-backed support within this slice
+
+Independent AST traversal corroborates the 35 ordered stages at 169–171:
+list/tuple input construction; raw then managed iteration and local bindings;
+identity-based obj is not None; selected try entry; close receiver, method,
+attempt and normal return; then append target/subscript/method, item elements,
+item construction, call attempt and completion. Source anchors are static
+origins, not opcode histories or observed runtime arrivals.
+
+The completed-details predecessor, original selected constructor error, scope,
+instance and invocation are checked through the actual unchanged predecessor.
+The selected post-yield raw role is None; the handoff manager is the selected
+non-None role. The cleanup list is the exact parent details role. Its appended
+item is exactly ['managed', 'close returned']; dynamic error/message/traceback
+origins and the exact False fields remain unchanged. No concrete generated
+error text, formatted bytes or physical reference identities are invented.
+
+The close case is passed to the inherited source-derived reference interpreter,
+with exact context, acquisition, instance, invocation and method correspondence.
+Normal, abrupt and partial outcomes were exercised. Initial references and
+opaque outcomes remain conditional constructed premises, not evidence of
+feasible runtime history. A modeled normal close is separate from physical
+connection closure or released ownership.
+
+Close and append share one try. Tested append failures retain the established
+normal close return and do not establish that close failed. Handler eligibility
+is separate from handler entry. Interrupted/unobserved append-call frontiers
+retain last acknowledged details and UNKNOWN partial effects; absence of an
+acknowledged append does not establish absence of effects. Line172 is unexpanded.
+Missing/reordered/duplicated stages, wrong roles/scopes, coordinated substitutions,
+exact-type violations, invented completion and changed submitted results reject
+at the recorded checked-core layers. Nested returned mutations do not change
+subsequent pristine expectations in the tested paths.
+
+Mandatory integration and monitoring
+
+One fresh isolated process validated the actual saved receipt on the separately
+recovered root through the current public entry and unchanged predecessor. It
+captured the current basis passively; no predecessor function or result was
+replaced. Both contexts remained mandatory. Checked-core mutants use that exact
+live returned basis. The prepared receipt is merely submitted input; no receipt
+was silently repaired and preparation is not validation.
+
+The new slot3 helper is AST-equivalent to the reviewed LD-01 slot2 helper after
+only the explicit slot, error-namespace and live-marker-prefix changes. The lease
+is acquired within the protected try, and release is guarded by get_tool identity
+with the distinct live marker. Nested finally blocks attempt local-mask clearing,
+callback removal and reservation release. New real-API synthetic-predecessor
+checks cover C-return interruption after acquisition/setup, same-process reuse,
+different/equal-valued foreign markers during failed acquisition, slot2 separation,
+missing/extra returns, altered basis reassembly and predecessor exceptions.
+
+These synthetic checks are not predecessor authentication. The separate actual
+public positive supplies that evidence. After its normal completion, this review
+checked slot2 and slot3 owners, global/local masks and callbacks; all were clear.
+No claim is made that this actual public positive followed a new slot3 interruption
+in the same process. The earlier LD-01 same-process result is reused unchanged.
+Cleanup failures, repeated interruption, termination, alternate interpreters and
+hostile concurrent replacement remain qualified. A free slot alone is insufficient.
+
+Independent accounting and failures
+
+The completed fresh recovered/public group contains 170 recorded and
+stdout-corroborated rows: 43 PASS, 123 REJECTED and
+four DEFECT-OBSERVED rows; exit 0. The four rejections of the source-consistent
+single-field counterpart are evidence of EC-01, not protective rejection support.
+The harness's successful exit is not an acceptance verdict for the implementation.
+
+The source attempt stopped after 50 corroborated rows (46 PASS, four REJECTED):
+one review fixture adjusted source pins but retained an old parent-frontier
+excerpt, so rejection occurred at CLEANUP-PARENT-FRONTIER instead of the intended
+guard grammar check. Its assertion failure and exit 1 are preserved. Those 50
+rows were not replayed and are not a completed group. A separate completion
+finished only that pending check and the unstarted slot3 checks: 21 rows
+(17 PASS, four REJECTED), exit 0. The guard mutation then reached
+CLEANUP-EXACT-NONNONE. A zero-control read-only audit also initially failed on
+diff header names; the corrected read-only completion made no validator/projector
+calls and added no controls. Both failed scripts and outputs remain intact.
+
+Fresh full public negatives: zero. Two actual public negatives were required-
+relation gates before derivation. Other negatives used authenticated-basis
+constructed/semantic/candidate or receipt-comparison cores. Exact layer metadata,
+monitored call counts, incremental stdout/progress, stderr and explicit exits are
+included. The main process had a 3,600-second hard timeout and a 3,150-second
+control deadline to reserve finalization time. There is no unqualified combined
+control total across completed, qualified, defect, supplied or historical groups.
+
+Supplied accounting, kept separate
+
+Engineering's 46 source controls and 341 recovered-root controls completed
+separately and their saved rows, stdout and exit0 records reconcile. Primary
+timed out at 3,600 seconds, exit -15: 1,300 progress-recorded rows but only 165
+corroborated stdout rows. Stdout166–1300 is unavailable; cause UNKNOWN.
+Primary RESULT.json, calls.json and final-verification.json are absent. It is
+not a completed primary campaign. Both saved public positives passed and bind
+the identical receipt; they do not complete the primary campaign. Public negatives
+were pre-derivation gates; other negatives used authenticated-basis cores.
+
+The withdrawn all-row-corroboration claim, preparation/packaging/document-patch
+failures, undeclared partial files outside strict inputs and zero-replay audit
+remain preserved unchanged. No missing log, call trace or result was reconstructed.
+Historical LD-01, launcher-details and earlier counts/qualifications remain
+separate. None of those campaigns, reviews or pipelines was rerun.
+
+Limits and retained boundaries
+
+Actual test environment: 3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]; Cryptography
+50.0.2; isolated Python, bytecode writes disabled,
+optimization 0. This does not newly establish installed-wheel authentication,
+host provenance or compatibility with another interpreter/dependency profile.
+
+All new cases are constructed source correspondence, not observed application
+execution. Runtime selected close/append, physical identity/closure/durability,
+non-None constructor handling and remaining outer-cleanup evidence are unavailable
+or outside scope. Continuity of selected owner, locals, method and list is an
+explicit premise. The separate observer stays unjoined. Both acquisitions remain
+separate; all eleven obligations, four inventory and fourteen lifetime UNKNOWN
+totals, Decision B, retention and allowances remain unchanged.
+
+SOURCE-ONLY; cumulative-envelope unadopted; backup kernel-only; streams UNCOMPUTED;
+readiness/final binding blocked; admission disabled. No implementation/runtime
+change, request, acquisition, database/session operation, Git save or policy
+change occurred. The checkpoint preserves the exact input archive and all new
+review evidence, including failures, for Engineering-Anchor[2].

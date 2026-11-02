@@ -1,0 +1,10 @@
+{
+  "kind": "reviewer read-only audit syntax-preparation failure",
+  "operation": "ast.parse before launching audit",
+  "exit": 1,
+  "controls": 0,
+  "candidate_executions": 0,
+  "error": "SyntaxError at audit.py line 26: closing parenthesis ')' does not match opening parenthesis '{'",
+  "preserved_source": "audit.py",
+  "fix": "Remove one unmatched closing parenthesis in the reviewer audit dictionary; no candidate code change"
+}

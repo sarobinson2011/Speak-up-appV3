@@ -1,0 +1,156 @@
+{
+  "all_adapter_function_bodies_and_locations_unchanged": true,
+  "author_oracle_executed": false,
+  "corrected_expression": "None if terminal in ('process-termination', 'unobserved') else True",
+  "historical_Engineering_separate": {
+    "primary": {
+      "completed": false,
+      "discrepancy_cause": "UNKNOWN",
+      "progress": 1300,
+      "stdout": 165
+    },
+    "recovered": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 341,
+      "stdout": 341
+    },
+    "source-1": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 46,
+      "stdout": 46
+    }
+  },
+  "historical_independent_separate": {
+    "public-recovered": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:35:08.016266+00:00",
+        "pid": 10,
+        "returncode": 0,
+        "seconds": 2439.956919127002,
+        "timed_out": false
+      },
+      "kinds": {
+        "DEFECT-OBSERVED": 4,
+        "PASS": 43,
+        "REJECTED": 123
+      },
+      "result": "PASS",
+      "rows": 170
+    },
+    "source-completion": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:05:40.631564+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 4.779847028999939,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 17,
+        "REJECTED": 4
+      },
+      "result": "PASS",
+      "rows": 21
+    },
+    "source-slot3": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:04:43.409856+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 4.479841348998889,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 46,
+        "REJECTED": 4
+      },
+      "result": "FAILED-ATTEMPT",
+      "rows": 50
+    }
+  },
+  "historical_missing_records_reconstructed": false,
+  "historical_verdict": "NOT ACCEPTED AS COMPLETE: EC-01 normal-append terminal-exception classification is inconsistent with the retained pending constructor error",
+  "independent_factory_reuse_byte_exact": true,
+  "kind": "Read-only source, preservation and supplied-record audit",
+  "new_Git_save": false,
+  "new_controls": 0,
+  "original_manifest_bytes_exact": true,
+  "prior_LD01_closure_reused": true,
+  "root": {
+    "directories": 1103,
+    "exact_membership_types_hashes": "PASS",
+    "files": 3999,
+    "manifest": {
+      "bytes": 1415643,
+      "sha256": "dd11a30a719b7058ed084ad700c27cf66abd9040d37235f2b6ad9a5152c44e53"
+    },
+    "root": "/workspace/review-evidence/FL6-EC01-20261101/recovered"
+  },
+  "source_167_171": "        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])",
+  "supplied": {
+    "PASS": 55,
+    "REJECTED": 50,
+    "controls": 105,
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-01T16:45:05.336253+00:00",
+      "returncode": 0,
+      "seconds": 2326.564213976999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 7089
+      },
+      "timed_out": false
+    },
+    "layer_counts": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked/output-comparison core": 47,
+      "authenticated-basis assembly comparison": 1,
+      "authenticated-basis receipt-comparison core": 1,
+      "corrected-expression AST": 1,
+      "defining-source AST": 1,
+      "exact-type gate before constructed parent validation": 12,
+      "full current public positive": 1,
+      "producer output-comparison core with predecessor-validated premises from actual authenticated basis": 12,
+      "saved-byte/receipt comparison": 1,
+      "source-byte diff": 2,
+      "source-grounded frontier oracle": 16,
+      "source-grounded test oracle over authenticated result": 4,
+      "test oracle only": 4,
+      "test-oracle source diff": 1
+    },
+    "new_execution_calls": 0,
+    "result_identity": {
+      "bytes": 22255,
+      "sha256": "00781f9fb00e24a0642f7b717f5dec329ffe07eae6eecddbc32d881819db78fc"
+    },
+    "rows_stdout_result_reconciled": true
+  },
+  "validator_projector_calls": 0,
+  "zero_control_audit_failure_and_correction": {
+    "completed_group": false,
+    "correction": {
+      "completed_group": true,
+      "exit": {
+        "finished_utc": "2026-11-01T15:08:24.487324+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2.374060729998746,
+        "timed_out": false
+      },
+      "rows": 0,
+      "validator_projector_calls": 0
+    },
+    "exit": {
+      "finished_utc": "2026-11-01T15:07:39.206109+00:00",
+      "pid": 5,
+      "returncode": 1,
+      "seconds": 0.8196810990011727,
+      "timed_out": false
+    },
+    "rows": 0,
+    "validator_projector_calls": 0
+  }
+}

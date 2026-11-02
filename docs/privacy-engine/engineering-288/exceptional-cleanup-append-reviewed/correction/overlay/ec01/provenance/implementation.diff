@@ -1,0 +1,34 @@
+--- historical/code/managed_coverage.py
++++ corrected/code/managed_coverage.py
+@@ -2949,7 +2949,7 @@
+   'raw_guard_false_completed_in_model':'raw-guard-result' in done,'selected_name_bound_in_model':'managed-bind-name' in done,'selected_object_bound_in_model':'managed-bind-obj' in done,'selected_non_none_guard_completed_in_model':'managed-guard-result' in done,
+   'close_method_evaluation_completed_in_model':'close-method-evaluation' in done,'close_attempt_entered_in_model':any(e['stage']=='close-call-attempt' for e in events),'close_normal_return_completed_in_model':closed,'managed_close_relation':copy.deepcopy(cr),'close_return_value_observed':None,'close_return_use':source['close_return_use'],
+   'append_evaluation_entered_in_model':any(e['stage']=='append-details-evaluation' for e in events),'append_attempt_entered_in_model':any(e['stage']=='append-call-attempt' for e in events),'append_completed_in_model':appended,'details_after_acknowledged_steps':details,'cleanup_list_after_frontier':'exact constructed appended item' if appended else 'UNKNOWN partial effects' if terminal!='normal' and any(e['stage']=='append-call-attempt' for e in events) else 'no append call reached in this modeled prefix',
+-  'replacement_error_in_model':replacement,'last_pending_error_in_model':copy.deepcopy(replacement or error),'close_itself_failed_established_in_model':close_reached and cr is not None and cr['completion']=='abrupt','terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True if terminal=='raise' else False,
++  'replacement_error_in_model':replacement,'last_pending_error_in_model':copy.deepcopy(replacement or error),'close_itself_failed_established_in_model':close_reached and cr is not None and cr['completion']=='abrupt','terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True,
+   'inner_handler_entry_established':False,'error_report_append_expanded':False,'later_iteration_established':False,'loop_completion_established':False,'failure_file_established':False,'final_rethrow_established':False,'owner_finalization_established':False,'managed_local_clear_established':False,'ACTIVE_unlink_established':False,
+   'completion_flags_mean':'Acknowledged conditional modeled progress; false does not prove absence of partial effects','existing_cause_context_suppression':'UNKNOWN; selected original remains represented; no new exception chain evidence','runtime_cleanup_append_chain':None,'runtime_observation':False,'physical_reference_identity':None,'physical_closure_established':False,'durability_established':False,'released_ownership_established':False,'complete_cleanup_established':False,'observer_join':None,'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
+ 
+--- historical/code/correspondence.py
++++ corrected/code/correspondence.py
+@@ -2,7 +2,7 @@
+ import copy,hashlib,json,os,stat,sys,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 342221, 'sha256': 'bf3ff2a787554f111bc7c35b20805a4aed0b0874272d707cad86632e4f612ffc'}
++PRODUCER_PIN={'bytes': 342189, 'sha256': 'a0e8bc4a3486e7c6e128ff2e2f707e5830cb967570189d39d5073011512f9c55'}
+ PREDECESSOR_MANIFEST={'bytes': 1313785, 'sha256': 'a0a0f40e02254798c0e5b8e3e35d8b46850fa9ac0721e32f3043ab211c28a679'}
+ PREDECESSOR_RECEIPT={'bytes': 10456658, 'sha256': 'd5b11ed9c09fa335c05c8a2f26201a71bc263466d5a1d48ad51b4994bd1c50cd'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+--- historical/tests/cases.py
++++ corrected/tests/cases.py
+@@ -30,6 +30,9 @@
+  assert known['cleanup']==([['managed','close returned']] if 'append-complete' in done else [])
+  assert out['details_after_acknowledged_steps']['cleanup_reference']==out['validated_parent']['details_in_model']['cleanup_reference']
+  assert all(out[k] is False for k in ('runtime_observation','inner_handler_entry_established','error_report_append_expanded','later_iteration_established','loop_completion_established','failure_file_established','final_rethrow_established','owner_finalization_established','managed_local_clear_established','ACTIVE_unlink_established','physical_closure_established','released_ownership_established','durability_established','complete_cleanup_established','authorization_renewed','actual_admission'))
++ # EC-01: lab_bootstrap.py:167-171 remains in the constructor-error handler.
++ # A normal cleanup append does not establish normal overall return.
++ if terminal is None:assert out['terminal_python_exception_in_model'] is True
+  if terminal:
+   assert (out['replacement_error_in_model'] is not None)==(terminal[1]=='raise')
+   if terminal[1]=='raise':

@@ -1,0 +1,343 @@
+PHASE actual current public validation through unchanged mandatory LD01 predecessor
+1 actual full current public positive PASS
+2 actual unchanged predecessor public receipt identity PASS
+3 fresh authenticated derivation matches prepared bytes PASS
+PHASE new focused controls against authenticated returned basis; no full negative derivation
+4 legitimate selected managed normal append (0, False) PASS
+5 distinct occurrence preserved (0, False) PASS
+6 unknown local continuity stops before selection (0, False) PASS
+7 no false continuation from missing continuity (0, False) REJECTED
+8 wrong binding/claim (0, False)('context',) REJECTED
+9 wrong binding/claim (0, False)('anchor', 'instance', 'binding') REJECTED
+10 wrong binding/claim (0, False)('parent_output', 'details_assignment_completed_in_model') REJECTED
+11 wrong binding/claim (0, False)('binding', 'selected_index') REJECTED
+12 wrong binding/claim (0, False)('binding', 'object', 'symbol') REJECTED
+13 wrong binding/claim (0, False)('binding', 'references', 'token', 'symbol') REJECTED
+14 wrong binding/claim (0, False)('binding', 'guard', 'right') REJECTED
+15 wrong binding/claim (0, False)('binding', 'close_receiver', 'symbol') REJECTED
+16 wrong binding/claim (0, False)('binding', 'method_origin', 'site') REJECTED
+17 wrong binding/claim (0, False)('binding', 'append_item') REJECTED
+18 wrong binding/claim (0, False)('close_case', 'method') REJECTED
+19 wrong binding/claim (0, False)('close_case', 'scope', 'invocation') REJECTED
+20 wrong binding/claim (0, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established') REJECTED
+21 wrong binding/claim (0, False)('output', 'close_return_value_observed') REJECTED
+22 wrong binding/claim (0, False)('output', 'loop_completion_established') REJECTED
+23 wrong binding/claim (0, False)('output', 'failure_file_established') REJECTED
+24 wrong binding/claim (0, False)('output', 'owner_finalization_established') REJECTED
+25 source frontier (0, False)('loop-input-evaluation', 'raise') PASS
+26 no false append completion (0, False)('loop-input-evaluation', 'raise') REJECTED
+27 source frontier (0, False)('input-managed-object', 'raise') PASS
+28 no false append completion (0, False)('input-managed-object', 'raise') REJECTED
+29 source frontier (0, False)('raw-guard-result', 'raise') PASS
+30 no false append completion (0, False)('raw-guard-result', 'raise') REJECTED
+31 source frontier (0, False)('managed-bind-obj', 'raise') PASS
+32 no false append completion (0, False)('managed-bind-obj', 'raise') REJECTED
+33 source frontier (0, False)('managed-guard-result', 'raise') PASS
+34 no false append completion (0, False)('managed-guard-result', 'raise') REJECTED
+35 source frontier (0, False)('close-method-evaluation', 'raise') PASS
+36 no false append completion (0, False)('close-method-evaluation', 'raise') REJECTED
+37 source frontier (0, False)('close-call-attempt', 'raise') PASS
+38 no false append completion (0, False)('close-call-attempt', 'raise') REJECTED
+39 source frontier (0, False)('append-list-resolution', 'raise') PASS
+40 no false append completion (0, False)('append-list-resolution', 'raise') REJECTED
+41 append failure cannot erase close return or become close failure (0, False)append-list-resolution REJECTED
+42 source frontier (0, False)('append-call-attempt', 'raise') PASS
+43 no false append completion (0, False)('append-call-attempt', 'raise') REJECTED
+44 append failure cannot erase close return or become close failure (0, False)append-call-attempt REJECTED
+45 source frontier (0, False)('append-complete', 'raise') PASS
+46 no false append completion (0, False)('append-complete', 'raise') REJECTED
+47 append failure cannot erase close return or become close failure (0, False)append-complete REJECTED
+48 missing stage (0, False)0 REJECTED
+49 missing stage (0, False)5 REJECTED
+50 missing stage (0, False)13 REJECTED
+51 missing stage (0, False)21 REJECTED
+52 missing stage (0, False)34 REJECTED
+53 reordered stages (0, False)(1, 4) REJECTED
+54 reordered stages (0, False)(-1, -2) REJECTED
+55 reordered stages (0, False)(-9, -10) REJECTED
+56 reordered stages (0, False)(21, 22) REJECTED
+57 coordinated role (0, False)owner REJECTED
+58 coordinated role (0, False)token REJECTED
+59 coordinated role (0, False)manager REJECTED
+60 coordinated role (0, False)session REJECTED
+61 coordinated (0, False)error REJECTED
+62 coordinated (0, False)cleanup-list REJECTED
+63 coordinated (0, False)instance REJECTED
+64 exact types before comparison (0, False)('binding', 'name') REJECTED
+65 exact types before comparison (0, False)('binding', 'selected_index') REJECTED
+66 exact types before comparison (0, False)('binding',) REJECTED
+67 exact types before comparison (0, False)('outcomes',) REJECTED
+68 exact types before comparison (0, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields') REJECTED
+69 exact types before comparison (0, False)('output', 'binding', 'append_item') REJECTED
+70 cross-invocation output (0, False) REJECTED
+71 nested returned mutation cannot change expectations (0, False) PASS
+72 direct submitted-output exact types (0, False) REJECTED
+73 incomplete/replaced predecessor (0, False)('details-value-message', 'raise') REJECTED
+74 incomplete/replaced predecessor (0, False)('details-assignment-complete', 'unobserved') REJECTED
+75 legitimate selected managed normal append (0, True) PASS
+76 distinct occurrence preserved (0, True) PASS
+77 unknown local continuity stops before selection (0, True) PASS
+78 no false continuation from missing continuity (0, True) REJECTED
+79 wrong binding/claim (0, True)('context',) REJECTED
+80 wrong binding/claim (0, True)('anchor', 'instance', 'binding') REJECTED
+81 wrong binding/claim (0, True)('parent_output', 'details_assignment_completed_in_model') REJECTED
+82 wrong binding/claim (0, True)('binding', 'selected_index') REJECTED
+83 wrong binding/claim (0, True)('binding', 'object', 'symbol') REJECTED
+84 wrong binding/claim (0, True)('binding', 'references', 'token', 'symbol') REJECTED
+85 wrong binding/claim (0, True)('binding', 'guard', 'right') REJECTED
+86 wrong binding/claim (0, True)('binding', 'close_receiver', 'symbol') REJECTED
+87 wrong binding/claim (0, True)('binding', 'method_origin', 'site') REJECTED
+88 wrong binding/claim (0, True)('binding', 'append_item') REJECTED
+89 wrong binding/claim (0, True)('close_case', 'method') REJECTED
+90 wrong binding/claim (0, True)('close_case', 'scope', 'invocation') REJECTED
+91 wrong binding/claim (0, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established') REJECTED
+92 wrong binding/claim (0, True)('output', 'close_return_value_observed') REJECTED
+93 wrong binding/claim (0, True)('output', 'loop_completion_established') REJECTED
+94 wrong binding/claim (0, True)('output', 'failure_file_established') REJECTED
+95 wrong binding/claim (0, True)('output', 'owner_finalization_established') REJECTED
+96 source frontier (0, True)('loop-input-evaluation', 'raise') PASS
+97 no false append completion (0, True)('loop-input-evaluation', 'raise') REJECTED
+98 source frontier (0, True)('input-managed-object', 'raise') PASS
+99 no false append completion (0, True)('input-managed-object', 'raise') REJECTED
+100 source frontier (0, True)('raw-guard-result', 'raise') PASS
+101 no false append completion (0, True)('raw-guard-result', 'raise') REJECTED
+102 source frontier (0, True)('managed-bind-obj', 'raise') PASS
+103 no false append completion (0, True)('managed-bind-obj', 'raise') REJECTED
+104 source frontier (0, True)('managed-guard-result', 'raise') PASS
+105 no false append completion (0, True)('managed-guard-result', 'raise') REJECTED
+106 source frontier (0, True)('close-method-evaluation', 'raise') PASS
+107 no false append completion (0, True)('close-method-evaluation', 'raise') REJECTED
+108 source frontier (0, True)('close-call-attempt', 'raise') PASS
+109 no false append completion (0, True)('close-call-attempt', 'raise') REJECTED
+110 source frontier (0, True)('append-list-resolution', 'raise') PASS
+111 no false append completion (0, True)('append-list-resolution', 'raise') REJECTED
+112 append failure cannot erase close return or become close failure (0, True)append-list-resolution REJECTED
+113 source frontier (0, True)('append-call-attempt', 'raise') PASS
+114 no false append completion (0, True)('append-call-attempt', 'raise') REJECTED
+115 append failure cannot erase close return or become close failure (0, True)append-call-attempt REJECTED
+116 source frontier (0, True)('append-complete', 'raise') PASS
+117 no false append completion (0, True)('append-complete', 'raise') REJECTED
+118 append failure cannot erase close return or become close failure (0, True)append-complete REJECTED
+119 missing stage (0, True)0 REJECTED
+120 missing stage (0, True)5 REJECTED
+121 missing stage (0, True)13 REJECTED
+122 missing stage (0, True)21 REJECTED
+123 missing stage (0, True)34 REJECTED
+124 reordered stages (0, True)(1, 4) REJECTED
+125 reordered stages (0, True)(-1, -2) REJECTED
+126 reordered stages (0, True)(-9, -10) REJECTED
+127 reordered stages (0, True)(21, 22) REJECTED
+128 coordinated role (0, True)owner REJECTED
+129 coordinated role (0, True)token REJECTED
+130 coordinated role (0, True)manager REJECTED
+131 coordinated role (0, True)session REJECTED
+132 coordinated (0, True)error REJECTED
+133 coordinated (0, True)cleanup-list REJECTED
+134 coordinated (0, True)instance REJECTED
+135 exact types before comparison (0, True)('binding', 'name') REJECTED
+136 exact types before comparison (0, True)('binding', 'selected_index') REJECTED
+137 exact types before comparison (0, True)('binding',) REJECTED
+138 exact types before comparison (0, True)('outcomes',) REJECTED
+139 exact types before comparison (0, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields') REJECTED
+140 exact types before comparison (0, True)('output', 'binding', 'append_item') REJECTED
+141 cross-invocation output (0, True) REJECTED
+142 nested returned mutation cannot change expectations (0, True) PASS
+143 direct submitted-output exact types (0, True) REJECTED
+144 incomplete/replaced predecessor (0, True)('details-value-message', 'raise') REJECTED
+145 incomplete/replaced predecessor (0, True)('details-assignment-complete', 'unobserved') REJECTED
+146 legitimate selected managed normal append (1, False) PASS
+147 distinct occurrence preserved (1, False) PASS
+148 unknown local continuity stops before selection (1, False) PASS
+149 no false continuation from missing continuity (1, False) REJECTED
+150 wrong binding/claim (1, False)('context',) REJECTED
+151 wrong binding/claim (1, False)('anchor', 'instance', 'binding') REJECTED
+152 wrong binding/claim (1, False)('parent_output', 'details_assignment_completed_in_model') REJECTED
+153 wrong binding/claim (1, False)('binding', 'selected_index') REJECTED
+154 wrong binding/claim (1, False)('binding', 'object', 'symbol') REJECTED
+155 wrong binding/claim (1, False)('binding', 'references', 'token', 'symbol') REJECTED
+156 wrong binding/claim (1, False)('binding', 'guard', 'right') REJECTED
+157 wrong binding/claim (1, False)('binding', 'close_receiver', 'symbol') REJECTED
+158 wrong binding/claim (1, False)('binding', 'method_origin', 'site') REJECTED
+159 wrong binding/claim (1, False)('binding', 'append_item') REJECTED
+160 wrong binding/claim (1, False)('close_case', 'method') REJECTED
+161 wrong binding/claim (1, False)('close_case', 'scope', 'invocation') REJECTED
+162 wrong binding/claim (1, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established') REJECTED
+163 wrong binding/claim (1, False)('output', 'close_return_value_observed') REJECTED
+164 wrong binding/claim (1, False)('output', 'loop_completion_established') REJECTED
+165 wrong binding/claim (1, False)('output', 'failure_file_established') REJECTED
+166 wrong binding/claim (1, False)('output', 'owner_finalization_established') REJECTED
+167 source frontier (1, False)('loop-input-evaluation', 'raise') PASS
+168 no false append completion (1, False)('loop-input-evaluation', 'raise') REJECTED
+169 source frontier (1, False)('input-managed-object', 'raise') PASS
+170 no false append completion (1, False)('input-managed-object', 'raise') REJECTED
+171 source frontier (1, False)('raw-guard-result', 'raise') PASS
+172 no false append completion (1, False)('raw-guard-result', 'raise') REJECTED
+173 source frontier (1, False)('managed-bind-obj', 'raise') PASS
+174 no false append completion (1, False)('managed-bind-obj', 'raise') REJECTED
+175 source frontier (1, False)('managed-guard-result', 'raise') PASS
+176 no false append completion (1, False)('managed-guard-result', 'raise') REJECTED
+177 source frontier (1, False)('close-method-evaluation', 'raise') PASS
+178 no false append completion (1, False)('close-method-evaluation', 'raise') REJECTED
+179 source frontier (1, False)('close-call-attempt', 'raise') PASS
+180 no false append completion (1, False)('close-call-attempt', 'raise') REJECTED
+181 source frontier (1, False)('append-list-resolution', 'raise') PASS
+182 no false append completion (1, False)('append-list-resolution', 'raise') REJECTED
+183 append failure cannot erase close return or become close failure (1, False)append-list-resolution REJECTED
+184 source frontier (1, False)('append-call-attempt', 'raise') PASS
+185 no false append completion (1, False)('append-call-attempt', 'raise') REJECTED
+186 append failure cannot erase close return or become close failure (1, False)append-call-attempt REJECTED
+187 source frontier (1, False)('append-complete', 'raise') PASS
+188 no false append completion (1, False)('append-complete', 'raise') REJECTED
+189 append failure cannot erase close return or become close failure (1, False)append-complete REJECTED
+190 missing stage (1, False)0 REJECTED
+191 missing stage (1, False)5 REJECTED
+192 missing stage (1, False)13 REJECTED
+193 missing stage (1, False)21 REJECTED
+194 missing stage (1, False)34 REJECTED
+195 reordered stages (1, False)(1, 4) REJECTED
+196 reordered stages (1, False)(-1, -2) REJECTED
+197 reordered stages (1, False)(-9, -10) REJECTED
+198 reordered stages (1, False)(21, 22) REJECTED
+199 coordinated role (1, False)owner REJECTED
+200 coordinated role (1, False)token REJECTED
+201 coordinated role (1, False)manager REJECTED
+202 coordinated role (1, False)session REJECTED
+203 coordinated (1, False)error REJECTED
+204 coordinated (1, False)cleanup-list REJECTED
+205 coordinated (1, False)instance REJECTED
+206 exact types before comparison (1, False)('binding', 'name') REJECTED
+207 exact types before comparison (1, False)('binding', 'selected_index') REJECTED
+208 exact types before comparison (1, False)('binding',) REJECTED
+209 exact types before comparison (1, False)('outcomes',) REJECTED
+210 exact types before comparison (1, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields') REJECTED
+211 exact types before comparison (1, False)('output', 'binding', 'append_item') REJECTED
+212 cross-invocation output (1, False) REJECTED
+213 nested returned mutation cannot change expectations (1, False) PASS
+214 direct submitted-output exact types (1, False) REJECTED
+215 incomplete/replaced predecessor (1, False)('details-value-message', 'raise') REJECTED
+216 incomplete/replaced predecessor (1, False)('details-assignment-complete', 'unobserved') REJECTED
+217 legitimate selected managed normal append (1, True) PASS
+218 distinct occurrence preserved (1, True) PASS
+219 unknown local continuity stops before selection (1, True) PASS
+220 no false continuation from missing continuity (1, True) REJECTED
+221 wrong binding/claim (1, True)('context',) REJECTED
+222 wrong binding/claim (1, True)('anchor', 'instance', 'binding') REJECTED
+223 wrong binding/claim (1, True)('parent_output', 'details_assignment_completed_in_model') REJECTED
+224 wrong binding/claim (1, True)('binding', 'selected_index') REJECTED
+225 wrong binding/claim (1, True)('binding', 'object', 'symbol') REJECTED
+226 wrong binding/claim (1, True)('binding', 'references', 'token', 'symbol') REJECTED
+227 wrong binding/claim (1, True)('binding', 'guard', 'right') REJECTED
+228 wrong binding/claim (1, True)('binding', 'close_receiver', 'symbol') REJECTED
+229 wrong binding/claim (1, True)('binding', 'method_origin', 'site') REJECTED
+230 wrong binding/claim (1, True)('binding', 'append_item') REJECTED
+231 wrong binding/claim (1, True)('close_case', 'method') REJECTED
+232 wrong binding/claim (1, True)('close_case', 'scope', 'invocation') REJECTED
+233 wrong binding/claim (1, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established') REJECTED
+234 wrong binding/claim (1, True)('output', 'close_return_value_observed') REJECTED
+235 wrong binding/claim (1, True)('output', 'loop_completion_established') REJECTED
+236 wrong binding/claim (1, True)('output', 'failure_file_established') REJECTED
+237 wrong binding/claim (1, True)('output', 'owner_finalization_established') REJECTED
+238 source frontier (1, True)('loop-input-evaluation', 'raise') PASS
+239 no false append completion (1, True)('loop-input-evaluation', 'raise') REJECTED
+240 source frontier (1, True)('input-managed-object', 'raise') PASS
+241 no false append completion (1, True)('input-managed-object', 'raise') REJECTED
+242 source frontier (1, True)('raw-guard-result', 'raise') PASS
+243 no false append completion (1, True)('raw-guard-result', 'raise') REJECTED
+244 source frontier (1, True)('managed-bind-obj', 'raise') PASS
+245 no false append completion (1, True)('managed-bind-obj', 'raise') REJECTED
+246 source frontier (1, True)('managed-guard-result', 'raise') PASS
+247 no false append completion (1, True)('managed-guard-result', 'raise') REJECTED
+248 source frontier (1, True)('close-method-evaluation', 'raise') PASS
+249 no false append completion (1, True)('close-method-evaluation', 'raise') REJECTED
+250 source frontier (1, True)('close-call-attempt', 'raise') PASS
+251 no false append completion (1, True)('close-call-attempt', 'raise') REJECTED
+252 source frontier (1, True)('append-list-resolution', 'raise') PASS
+253 no false append completion (1, True)('append-list-resolution', 'raise') REJECTED
+254 append failure cannot erase close return or become close failure (1, True)append-list-resolution REJECTED
+255 source frontier (1, True)('append-call-attempt', 'raise') PASS
+256 no false append completion (1, True)('append-call-attempt', 'raise') REJECTED
+257 append failure cannot erase close return or become close failure (1, True)append-call-attempt REJECTED
+258 source frontier (1, True)('append-complete', 'raise') PASS
+259 no false append completion (1, True)('append-complete', 'raise') REJECTED
+260 append failure cannot erase close return or become close failure (1, True)append-complete REJECTED
+261 missing stage (1, True)0 REJECTED
+262 missing stage (1, True)5 REJECTED
+263 missing stage (1, True)13 REJECTED
+264 missing stage (1, True)21 REJECTED
+265 missing stage (1, True)34 REJECTED
+266 reordered stages (1, True)(1, 4) REJECTED
+267 reordered stages (1, True)(-1, -2) REJECTED
+268 reordered stages (1, True)(-9, -10) REJECTED
+269 reordered stages (1, True)(21, 22) REJECTED
+270 coordinated role (1, True)owner REJECTED
+271 coordinated role (1, True)token REJECTED
+272 coordinated role (1, True)manager REJECTED
+273 coordinated role (1, True)session REJECTED
+274 coordinated (1, True)error REJECTED
+275 coordinated (1, True)cleanup-list REJECTED
+276 coordinated (1, True)instance REJECTED
+277 exact types before comparison (1, True)('binding', 'name') REJECTED
+278 exact types before comparison (1, True)('binding', 'selected_index') REJECTED
+279 exact types before comparison (1, True)('binding',) REJECTED
+280 exact types before comparison (1, True)('outcomes',) REJECTED
+281 exact types before comparison (1, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields') REJECTED
+282 exact types before comparison (1, True)('output', 'binding', 'append_item') REJECTED
+283 cross-invocation output (1, True) REJECTED
+284 nested returned mutation cannot change expectations (1, True) PASS
+285 direct submitted-output exact types (1, True) REJECTED
+286 incomplete/replaced predecessor (1, True)('details-value-message', 'raise') REJECTED
+287 incomplete/replaced predecessor (1, True)('details-assignment-complete', 'unobserved') REJECTED
+288 legitimate managed close starting references CLOSED PASS
+289 legitimate managed close starting references QUARANTINED PASS
+290 legitimate managed close starting references CLEANUP_UNCERTAIN PASS
+291 source-derived close exception distinct (0, False) PASS
+292 close failure cannot become return (0, False) REJECTED
+293 source-derived close exception distinct (0, True) PASS
+294 close failure cannot become return (0, True) REJECTED
+295 source-derived close exception distinct (1, False) PASS
+296 close failure cannot become return (1, False) REJECTED
+297 source-derived close exception distinct (1, True) PASS
+298 close failure cannot become return (1, True) REJECTED
+299 close result binding ('close_case',) REJECTED
+300 close result binding ('projection', 'close_result', 'completion') REJECTED
+301 close result binding ('projection', 'close_result', 'final', '_phase') REJECTED
+302 semantic core claim (0, ('declaration', 'source', 'selected_name')) REJECTED
+303 semantic core claim (0, ('declaration', 'source', 'guard_results', 'managed')) REJECTED
+304 semantic core claim (0, ('declaration', 'source', 'order')) REJECTED
+305 semantic core claim (0, ('runtime_cleanup_append_chain',)) REJECTED
+306 semantic core claim (0, ('instance_anchor', 'instance', 'binding')) REJECTED
+307 semantic core claim (0, ('declaration', 'source', 'append_message')) REJECTED
+308 semantic core claim (1, ('declaration', 'source', 'selected_name')) REJECTED
+309 semantic core claim (1, ('declaration', 'source', 'guard_results', 'managed')) REJECTED
+310 semantic core claim (1, ('declaration', 'source', 'order')) REJECTED
+311 semantic core claim (1, ('runtime_cleanup_append_chain',)) REJECTED
+312 semantic core claim (1, ('instance_anchor', 'instance', 'binding')) REJECTED
+313 semantic core claim (1, ('declaration', 'source', 'append_message')) REJECTED
+314 coordinated both-context catalogue/claims REJECTED
+315 source-derived catalogue independently required REJECTED
+316 semantic output expectation isolation PASS
+317 receipt construction expectation isolation PASS
+318 coordinated receipt comparison core REJECTED
+319 stale predecessor summary core REJECTED
+320 altered authenticated evidence core REJECTED
+321 missing evidence core REJECTED
+322 public missing required relation (0, 'callback_bare_rethrow_correspondence') REJECTED
+323 public missing required relation (0, 'callback_stored_failure_correspondence') REJECTED
+324 public missing required relation (0, 'client_construction_none_correspondence') REJECTED
+325 public missing required relation (0, 'control_construction_revocation_correspondence') REJECTED
+326 public missing required relation (0, 'control_exception_revocation_correspondence') REJECTED
+327 public missing required relation (0, 'exceptional_cleanup_append_correspondence') REJECTED
+328 public missing required relation (0, 'launcher_initial_details_correspondence') REJECTED
+329 public missing required relation (0, 'stored_failure_revocation_correspondence') REJECTED
+330 public missing required relation (0, 'token_registration_correspondence') REJECTED
+331 public missing required relation (1, 'callback_bare_rethrow_correspondence') REJECTED
+332 public missing required relation (1, 'callback_stored_failure_correspondence') REJECTED
+333 public missing required relation (1, 'client_construction_none_correspondence') REJECTED
+334 public missing required relation (1, 'control_construction_revocation_correspondence') REJECTED
+335 public missing required relation (1, 'control_exception_revocation_correspondence') REJECTED
+336 public missing required relation (1, 'exceptional_cleanup_append_correspondence') REJECTED
+337 public missing required relation (1, 'launcher_initial_details_correspondence') REJECTED
+338 public missing required relation (1, 'stored_failure_revocation_correspondence') REJECTED
+339 public missing required relation (1, 'token_registration_correspondence') REJECTED
+340 public exact receipt bytes REJECTED
+341 all inherited context relations preserved PASS

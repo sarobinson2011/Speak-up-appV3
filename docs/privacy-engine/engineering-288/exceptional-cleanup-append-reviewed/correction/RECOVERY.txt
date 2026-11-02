@@ -1,0 +1,22 @@
+EC-01 correction recovery
+
+1. Verify the delivered outer ZIP's exact identity, safe unique regular membership, CRC and every MANIFEST.json identity. Extract it into a new empty directory. Do not overwrite existing evidence.
+2. Read README.txt and RESULTS.json. The full historical review is retained/Formal-Lab6-I164-exceptional-cleanup-append-independent-review.zip:
+   156078207 bytes,85 entries, SHA256 212d2f0886cb09cddb119470ba908e2142bb141a6eb6bdca83a3e5f83b82cbcb.
+   Its embedded original candidate is155659416 bytes,3982 entries, SHA256 14bfe3fcc3da3f5f8e2ab6cfb3c820229f1520b439b9ebaf5f6bad83daf25c50.
+   Original manifests, receipts, witness files, rejected verdict, missing records and failures stay historical and unchanged.
+3. Byte-only recovery, if a filesystem root is needed:
+     python3 -I -B CHECKPOINT/tools/recover.py NEW_EMPTY_ROOT
+   The script verifies both exact archives and their manifests, extracts the original candidate, applies only OVERLAY-MANIFEST.json members, and verifies ROOT-MANIFEST.json including exact directory membership and entry types. It runs no validators, projectors or application code.
+4. Read NEW_EMPTY_ROOT/ec01/START-HERE.txt. Active adapter:
+   NEW_EMPTY_ROOT/code/correspondence.py
+   New separately prepared receipt:
+   NEW_EMPTY_ROOT/ec01/receipts/prepared-cleanup-append.json
+   The original receipt remains at results/recovered/cleanup-append.json and is historical for the corrected code. Do not overwrite it or substitute it for the corrected receipt.
+5. Inspect saved new results/process logs without replay. Each rejection row identifies its actual layer. The independent original witness is retained exactly; corrected-code observations and the newly validated receipt are separate. No missing historical record is reconstructed. A successful author harness is not independent closure.
+6. Only if separately authorized for a new focused closure review, the public validation entry is:
+     python3 -I -B NEW_EMPTY_ROOT/code/correspondence.py --root NEW_EMPTY_ROOT --receipt NEW_EMPTY_ROOT/ec01/receipts/prepared-cleanup-append.json
+   It must invoke the unchanged actual predecessor. Use the retained cooperative CPython3.12.14 monitoring environment and explicit process bounds with finalization time. Qualification of the installed host/interpreter/wheel is not supplied by this recipe. Slots2/3 contention stops. Do not replace predecessor functions/results or use a synthetic/cached authenticated basis.
+   The prior public path has taken about40–45 minutes. This document does not authorize repeating the supplied campaign, a review, acquisition, database/session operation, or Git save.
+
+LD-01 remains within its existing scope; cleanup failure, repeated interruption, termination, alternate interpreters and hostile replacement remain qualified. All obligations, UNKNOWN totals and authority boundaries remain unchanged; admission disabled.

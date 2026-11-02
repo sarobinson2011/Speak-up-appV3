@@ -1,0 +1,39 @@
+Recovery of this independent checkpoint (verification only)
+
+1. Verify the checkpoint identity reported with its delivery. Read its ZIP central
+   directory before extraction: unique relative regular filenames only; reject
+   traversal, absolute paths, links, special files, duplicate names and encryption.
+   Check CRC and exact membership MANIFEST.json plus every manifested name, then
+   check every listed byte count/SHA-256. Extract into a new empty persistent
+   directory, never /tmp. Do not overwrite candidate or existing evidence.
+2. Verify input/I164-exceptional-cleanup-append-correspondence-1.zip is exactly
+   155659416 bytes, 3982 entries, SHA-256
+   14bfe3fcc3da3f5f8e2ab6cfb3c820229f1520b439b9ebaf5f6bad83daf25c50.
+   Apply the same safe membership/CRC/manifest procedure, including all3981
+   manifested hashes, into another new empty root. Its recovered layout contains
+   the exact retained/details predecessor and retained closure-review records.
+   Preserve partial/failure files at their declared evidence paths, never inject
+   them into a strict predecessor input root.
+3. Read REVIEW.txt and CHECKPOINT.json, then the candidate START-HERE.txt, README.txt,
+   RESULTS.json and RECOVERY.txt. Current candidate entry is code/correspondence.py;
+   submitted saved receipt is results/recovered/cleanup-append.json. The exact
+   predecessor is retained/details/code/correspondence.py and uses
+   ld01/receipts/corrected-launcher-details.json under that root. Historical root
+   results/receipts retain their original status and are not current substitutes.
+4. Review supplied records without executing them. Read review/results/integrity.json,
+   audit-completion/AUDIT.json, the independent RESULT/progress/stdout/exit records,
+   validation-layers.json and EC01 witness files. The accepted output and one-field
+   source-consistent counterpart are preserved separately; no input was repaired.
+5. No code execution is needed to recover or assess the saved checkpoint. The
+   included reviewer scripts document the checks actually run, not authorization
+   to rerun completed work. A separately authorized future focused check must use
+   saved inputs, the retained CPython3.12.14/Cryptography50.0.2 environment, a fresh
+   isolated process, bounded timeout, incremental logs and explicit exit. Slots2/3
+   require the cooperative ownership conditions; conflicts stop. Do not replace
+   the actual public predecessor with a saved result, synthetic fixture or mutable
+   caller-provided basis. The historical compressed archives are not recreated by
+   flattened recovery and are not claimed freshly verified.
+
+This checkpoint does not authorize implementation changes, session/database
+operations, new acquisition, completed-campaign replay, Git saves or policy change.
+Preserve all stated UNKNOWNs and boundaries. Admission remains disabled.

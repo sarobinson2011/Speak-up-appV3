@@ -1,0 +1,15 @@
+{
+  "final_rethrow_or_later_cleanup_established": false,
+  "handler": {
+    "error": "e",
+    "line": 167,
+    "type": "BaseException"
+  },
+  "normal_subpath": [
+    "obj.close()",
+    "details['cleanup'].append([name, 'close returned'])"
+  ],
+  "normal_terminal_expected": true,
+  "reason": "Validated original remains pending inside handler; normal suboperations do not establish normal overall return.",
+  "termination_unobserved_expected": null
+}

@@ -1,0 +1,67 @@
+{
+  "actual_public_positive": "Saved PASS through unchanged predecessor; identical receipt to completed recovered run. Does not establish successful primary campaign completion.",
+  "exact_interrupted_instruction": "UNOBSERVED; interruption occurred after the saved validation-layer record and before final input-verification/result records were saved.",
+  "exit": {
+    "finished_utc": "2026-11-01T10:42:57.111963+00:00",
+    "retries": 0,
+    "returncode": -15,
+    "seconds": 3600.0642528949993,
+    "timed_out": true
+  },
+  "last_recorded_control": {
+    "check": "all inherited context relations preserved",
+    "result": "PASS"
+  },
+  "last_saved_phase": "validation-layers.json and fixtures.json are complete JSON; final-verification.json, calls.json and RESULT.json are absent.",
+  "new_failure": "Supervisor-enforced 3600-second deadline, exit -15; stderr empty; no assertion failure recorded. This does not turn the interrupted attempt into a PASS.",
+  "partial_files": "All original primary files and process logs preserved unchanged; no synthetic RESULT.json, reconstructed stdout or resumed campaign. Earlier all-1300 corroboration claim withdrawn.",
+  "progress_recorded_rows": 1300,
+  "read_only_completion_audit": {
+    "control_replays": 0,
+    "exact_membership_types_and_frozen_hashes": "PASS",
+    "input_directories": 1082,
+    "input_files": 3924,
+    "observed_utc": "2026-11-01T10:48:04.793598+00:00",
+    "primary_saved_json_files": {
+      "actual-public-result.json": {
+        "bytes": 240,
+        "sha256": "5080c5b1aec041cb4d8111e99f67f7288996e03b0da154d21c30877e6059486c"
+      },
+      "cleanup-append.json": {
+        "bytes": 13408039,
+        "sha256": "f37342856f6b0f3ef9d79714a0d412e0273f09b85eb5a1adb5670a1f4accdefb"
+      },
+      "fixtures.json": {
+        "bytes": 19220428,
+        "sha256": "f664d6e3ef0ec41a10ca6a3b59e618613a9058064335e783040cfd9a2a3e0ee5"
+      },
+      "input-verification.json": {
+        "bytes": 84,
+        "sha256": "f59b441e3c02c344c25e0a38674a2d7fe7b980830f4cf88161c7aabb5e7fca1a"
+      },
+      "managed-close-reference-example.json": {
+        "bytes": 10823,
+        "sha256": "bf589e6adc753162c2cfa60a12a16a701187c62049dbe5f98899fa81880b05f6"
+      },
+      "predecessor-public-result.json": {
+        "bytes": 241,
+        "sha256": "d1a8969ab4fc1afa92bfd0a488d22dfc0749ac2ae20fd0acd8a02c7c9fcf1865"
+      },
+      "validation-layers.json": {
+        "bytes": 292,
+        "sha256": "5418ea16c54b264e52a529f78e6201b7801b08ce4ae8d5363933f783a8b4704f"
+      }
+    },
+    "progress_stdout_reconciliation": "First 165 rows match exactly; stdout for progress rows166\u20131300 is unavailable. Cause UNKNOWN. No stream repaired.",
+    "qualification": "Post-process observation only; no intervening-history or monitoring-cleanup guarantee; lost process call log is not reconstructed.",
+    "validator_or_projector_calls": 0
+  },
+  "rows_outside_completed_group_totals": true,
+  "saved_stdout_corroborated_rows": 165,
+  "saved_stdout_discrepancy_cause": "UNKNOWN",
+  "saved_stdout_missing_progress_row_numbers_inclusive": [
+    166,
+    1300
+  ],
+  "status": "INTERRUPTED_AT_PROCESS_DEADLINE WITH SAVED-STDOUT DISCREPANCY; NOT A COMPLETED PRIMARY CAMPAIGN"
+}

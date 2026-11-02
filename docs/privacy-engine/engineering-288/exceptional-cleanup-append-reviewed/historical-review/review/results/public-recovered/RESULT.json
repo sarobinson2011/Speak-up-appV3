@@ -1,0 +1,837 @@
+{
+  "CLI_execution_claimed": false,
+  "checks": 170,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "full_public_negative_derivations": 0,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "actual current public accepts both contexts",
+      "result": "PASS"
+    },
+    {
+      "check": "actual unchanged LD01 predecessor public accepted",
+      "result": "PASS"
+    },
+    {
+      "check": "actual authenticated current assembly equals saved receipt",
+      "result": "PASS"
+    },
+    {
+      "check": "actual authenticated public normal completion cleaned slot 3",
+      "result": "PASS"
+    },
+    {
+      "check": "actual authenticated public normal completion cleaned slot 2",
+      "result": "PASS"
+    },
+    {
+      "check": "independently source-ordered 35 stages",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0 normal mapping except EC-01 independently corroborated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control0 EC-01 accepted inconsistent terminal exception flag",
+      "flag": false,
+      "layer": "authenticated-basis constructed core and producer output comparison",
+      "pending_original_retained": true,
+      "result": "DEFECT-OBSERVED"
+    },
+    {
+      "check": "context0/control0 source-consistent single-field replacement rejected",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0/control1 normal mapping except EC-01 independently corroborated",
+      "result": "PASS"
+    },
+    {
+      "check": "context0/control1 EC-01 accepted inconsistent terminal exception flag",
+      "flag": false,
+      "layer": "authenticated-basis constructed core and producer output comparison",
+      "pending_original_retained": true,
+      "result": "DEFECT-OBSERVED"
+    },
+    {
+      "check": "context0/control1 source-consistent single-field replacement rejected",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control0 normal mapping except EC-01 independently corroborated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control0 EC-01 accepted inconsistent terminal exception flag",
+      "flag": false,
+      "layer": "authenticated-basis constructed core and producer output comparison",
+      "pending_original_retained": true,
+      "result": "DEFECT-OBSERVED"
+    },
+    {
+      "check": "context1/control0 source-consistent single-field replacement rejected",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1/control1 normal mapping except EC-01 independently corroborated",
+      "result": "PASS"
+    },
+    {
+      "check": "context1/control1 EC-01 accepted inconsistent terminal exception flag",
+      "flag": false,
+      "layer": "authenticated-basis constructed core and producer output comparison",
+      "pending_original_retained": true,
+      "result": "DEFECT-OBSERVED"
+    },
+    {
+      "check": "context1/control1 source-consistent single-field replacement rejected",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 frontier input-managed-object/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier raw-guard-result/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier managed-bind-obj/process-termination",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier selected-try-entry/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier close-method-evaluation/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier close-call-attempt/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier close-normal-return/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier close-normal-return/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier append-details-evaluation/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier append-method-evaluation/process-termination",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier append-call-attempt/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 frontier append-complete/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 unknown continuity establishes no selection",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 empty retired reference conditionally normal; EC01 retained",
+      "result": "PASS"
+    },
+    {
+      "check": "context0 reject input binding/selected_index",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/name",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/ordered_values/0/value",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/object",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/close_receiver",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/guard/result",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/guard/right",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/guard/expression",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/method",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/cleanup_list",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/append_item/0",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/append_item/1",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input binding/runtime_object_identity",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input invocation",
+      "error": "CLEANUP-PARENT-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input anchor/context",
+      "error": "CLEANUP-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject input context",
+      "error": "CLEANUP-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject close method/state",
+      "error": "CLEANUP-CLOSE-RECEIVER-METHOD",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject close context/SYMBOLIC-U-TWO",
+      "error": "CLEANUP-CLOSE-RECEIVER-METHOD",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject close scope/{'acquisition': 'sha256:bbea8f904a9",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject close scope/{'acquisition': 'wrong-acquisition'",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject close scope/{'acquisition': 'sha256:bbea8f904a9",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 missing inherited close relation",
+      "error": "CLEANUP-VALIDATED:close_result",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 omitted ordered stage 0",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 omitted ordered stage 24",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 omitted ordered stage 33",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reordered close stages",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 duplicated close attempt",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output close_normal_return_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output append_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output close_itself_failed_established_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output inner_handler_entry_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output complete_cleanup_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output final_rethrow_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output actual_admission",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output details_after_acknowledged_steps/known_literal_fields/cleanup",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output details_after_acknowledged_steps/known_literal_fields/nonexecution_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 reject output details_after_acknowledged_steps/dynamic_fields/0/exact_value",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 append failure cannot rewrite close_itself_failed_established_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 append failure cannot rewrite close_normal_return_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 append failure cannot rewrite inner_handler_entry_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 append failure cannot rewrite last_pending_error_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 coordinated wrong manager role",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 coordinated append-item substitution",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 coordinated disappearance of constructor error",
+      "error": "CLEANUP-VALIDATED-PARENT-OUTPUT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 nested returned mutation leaves pristine expectations",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier input-managed-object/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier raw-guard-result/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier managed-bind-obj/process-termination",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier selected-try-entry/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier close-method-evaluation/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier close-call-attempt/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier close-normal-return/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier close-normal-return/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier append-details-evaluation/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier append-method-evaluation/process-termination",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier append-call-attempt/raise",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 frontier append-complete/unobserved",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 unknown continuity establishes no selection",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 empty retired reference conditionally normal; EC01 retained",
+      "result": "PASS"
+    },
+    {
+      "check": "context1 reject input binding/selected_index",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/name",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/ordered_values/0/value",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/object",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/close_receiver",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/guard/result",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/guard/right",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/guard/expression",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/method",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/cleanup_list",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/append_item/0",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/append_item/1",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input binding/runtime_object_identity",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input invocation",
+      "error": "CLEANUP-PARENT-INVOCATION",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input anchor/context",
+      "error": "CLEANUP-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject input context",
+      "error": "CLEANUP-CONSTRUCTED-ANCHOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject close method/state",
+      "error": "CLEANUP-CLOSE-RECEIVER-METHOD",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject close context/SYMBOLIC-U-ONE",
+      "error": "CLEANUP-CLOSE-RECEIVER-METHOD",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject close scope/{'acquisition': 'sha256:bbea8f904a9",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject close scope/{'acquisition': 'wrong-acquisition'",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject close scope/{'acquisition': 'sha256:bbea8f904a9",
+      "error": "CLEANUP-CLOSE-SCOPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 missing inherited close relation",
+      "error": "CLEANUP-VALIDATED:close_result",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 omitted ordered stage 0",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 omitted ordered stage 24",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 omitted ordered stage 33",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reordered close stages",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 duplicated close attempt",
+      "error": "CLEANUP-STEP-ORDER",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output close_normal_return_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output append_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output close_itself_failed_established_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output inner_handler_entry_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output complete_cleanup_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output final_rethrow_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output actual_admission",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output details_after_acknowledged_steps/known_literal_fields/cleanup",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output details_after_acknowledged_steps/known_literal_fields/nonexecution_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 reject output details_after_acknowledged_steps/dynamic_fields/0/exact_value",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 append failure cannot rewrite close_itself_failed_established_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 append failure cannot rewrite close_normal_return_completed_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 append failure cannot rewrite inner_handler_entry_established",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 append failure cannot rewrite last_pending_error_in_model",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 coordinated wrong manager role",
+      "error": "TOKEN-REFERENCES",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 coordinated append-item substitution",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 coordinated disappearance of constructor error",
+      "error": "CLEANUP-VALIDATED-PARENT-OUTPUT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 nested returned mutation leaves pristine expectations",
+      "result": "PASS"
+    },
+    {
+      "check": "exact type string-subclass",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact type bool-as-int",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact type index-bool",
+      "error": "CLEANUP-EXPECTED-BINDING",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact type list-subclass",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact type dict-subclass",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact type nested-output-subclass",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "literal key subclass",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "authenticated semantic rows accepted",
+      "result": "PASS"
+    },
+    {
+      "check": "semantic context0/classification",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context0/multiplicity",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context0/actual_invocation_count",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context0/runtime_cleanup_append_chain",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context0/outer_cleanup_complete",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context0/conditional_links",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context0 coordinated omitted declaration",
+      "error": "CLEANUP-CATALOGUE-SOURCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public context0 missing mandatory relation BEFORE derivation",
+      "error": "CLEANUP-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/classification",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/multiplicity",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/actual_invocation_count",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/runtime_cleanup_append_chain",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/outer_cleanup_complete",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic context1/conditional_links",
+      "error": "CLEANUP-SEMANTIC-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "context1 coordinated omitted declaration",
+      "error": "CLEANUP-CATALOGUE-SOURCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "public context1 missing mandatory relation BEFORE derivation",
+      "error": "CLEANUP-MANDATORY-RELATIONS",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate missing evidence",
+      "error": "CLEANUP-VALIDATED-EVIDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate stale source",
+      "error": "CLEANUP-CANDIDATE-SOURCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate mixed predecessor contexts",
+      "error": "CLEANUP-CANDIDATE-PREDECESSOR",
+      "result": "REJECTED"
+    },
+    {
+      "check": "candidate altered predecessor receipt",
+      "error": "CLEANUP-CANDIDATE-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt comparison core reverse contexts",
+      "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt comparison core UNKNOWN to zero",
+      "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt comparison core admission escalation",
+      "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "receipt comparison core changed receipt code pin",
+      "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT",
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic returned nested aliases isolated",
+      "result": "PASS"
+    },
+    {
+      "check": "public returned aliases isolated in receipt comparison core",
+      "result": "PASS"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "One actual current full public positive; actual unchanged predecessor; bounded authenticated-basis independent controls; recorded defects separate from successful controls",
+  "seconds": 2437.710550890999,
+  "session_operations": 0
+}

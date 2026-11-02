@@ -1,0 +1,1018 @@
+[
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": false,
+    "flag": true,
+    "kind": "raise",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": {
+      "eligible_inner_handler": "close_error",
+      "exact_type": null,
+      "exact_value_bytes": null,
+      "existing_cause": "UNKNOWN",
+      "existing_context": "UNKNOWN",
+      "existing_suppression": "UNKNOWN",
+      "failure_region": "protected-append",
+      "handler_entry_established": false,
+      "origin": {
+        "continuation": [
+          {
+            "normal_prefix": [
+              {
+                "expression": "\"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"",
+                "site": "128:4:132:7:Expr"
+              },
+              {
+                "expression": "_profile.load_profile()",
+                "site": "133:4:133:27:Expr"
+              },
+              {
+                "expression": "c,d=inputs(candidate,draft)",
+                "site": "134:4:134:31:Assign"
+              },
+              {
+                "expression": "r=validate_runtime(runtime)",
+                "site": "134:32:134:59:Assign"
+              },
+              {
+                "expression": "cfg=read(P/'laboratory-configuration.json')",
+                "site": "135:4:135:47:Assign"
+              },
+              {
+                "expression": "b=binding(c,d,r,cfg)",
+                "site": "135:48:135:68:Assign"
+              },
+              {
+                "expression": "authority,open_session=load_runtime(c,r)",
+                "site": "136:4:136:44:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "def _session(candidate,draft,runtime,destination,*,create=False):\n    \"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"\n    _profile.load_profile()\n    c,d=inputs(candidate,draft);r=validate_runtime(runtime)\n    cfg=read(P/'laboratory-configuration.json');b=binding(c,d,r,cfg)\n    authority,open_session=load_runtime(c,r)\n    with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "127:0:176:17:FunctionDef"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')",
+                "site": "138:8:147:153:If"
+              },
+              {
+                "expression": "db=dest/'state/session.sqlite'",
+                "site": "148:8:148:38:Assign"
+              },
+              {
+                "expression": "owners=dest/'state/ownership.sqlite'",
+                "site": "148:39:148:75:Assign"
+              },
+              {
+                "expression": "raw=None",
+                "site": "148:76:148:84:Assign"
+              },
+              {
+                "expression": "managed=None",
+                "site": "148:85:148:97:Assign"
+              },
+              {
+                "expression": "write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})",
+                "site": "149:8:149:116:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "137:4:176:17:With"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}",
+                "site": "168:12:168:170:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "167:8:176:17:ExceptHandler"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "170:16:172:133:If"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "obj.close()",
+                "site": "171:24:171:35:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "171:20:172:133:Try"
+            },
+            "region": "body"
+          }
+        ],
+        "expression": "details['cleanup'].append([name,'close returned'])",
+        "guards": [
+          {
+            "contexts": [
+              "owner_lock(destination)"
+            ],
+            "kind": "with"
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "handlers"
+          },
+          {
+            "binding": "e",
+            "kind": "handler",
+            "type": "BaseException"
+          },
+          {
+            "kind": "For",
+            "region": "body",
+            "source": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            }
+          },
+          {
+            "arm": "body",
+            "kind": "if",
+            "test": {
+              "expression": "obj is not None",
+              "site": "170:19:170:34:Compare"
+            }
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "body"
+          }
+        ],
+        "semantic_region": "protected-append",
+        "site": "171:36:171:86:Call",
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      },
+      "reference": "ec01-frontier/cleanup/append-call-attempt/error",
+      "role": "conditional-cleanup-error",
+      "runtime_observation": false,
+      "scope": {
+        "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+        "context": "SYMBOLIC-U-ONE",
+        "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+        "instance": {
+          "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "managed_constructor_frame": 9,
+          "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+          "session_label": "I164-lab-crypto5002-prospective-001",
+          "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+        },
+        "invocation": "ec01-frontier"
+      }
+    },
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": false,
+    "flag": null,
+    "kind": "process-termination",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": false,
+    "flag": null,
+    "kind": "unobserved",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": true,
+    "flag": true,
+    "kind": "raise",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": {
+      "eligible_inner_handler": "close_error",
+      "exact_type": null,
+      "exact_value_bytes": null,
+      "existing_cause": "UNKNOWN",
+      "existing_context": "UNKNOWN",
+      "existing_suppression": "UNKNOWN",
+      "failure_region": "protected-append",
+      "handler_entry_established": false,
+      "origin": {
+        "continuation": [
+          {
+            "normal_prefix": [
+              {
+                "expression": "\"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"",
+                "site": "128:4:132:7:Expr"
+              },
+              {
+                "expression": "_profile.load_profile()",
+                "site": "133:4:133:27:Expr"
+              },
+              {
+                "expression": "c,d=inputs(candidate,draft)",
+                "site": "134:4:134:31:Assign"
+              },
+              {
+                "expression": "r=validate_runtime(runtime)",
+                "site": "134:32:134:59:Assign"
+              },
+              {
+                "expression": "cfg=read(P/'laboratory-configuration.json')",
+                "site": "135:4:135:47:Assign"
+              },
+              {
+                "expression": "b=binding(c,d,r,cfg)",
+                "site": "135:48:135:68:Assign"
+              },
+              {
+                "expression": "authority,open_session=load_runtime(c,r)",
+                "site": "136:4:136:44:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "def _session(candidate,draft,runtime,destination,*,create=False):\n    \"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"\n    _profile.load_profile()\n    c,d=inputs(candidate,draft);r=validate_runtime(runtime)\n    cfg=read(P/'laboratory-configuration.json');b=binding(c,d,r,cfg)\n    authority,open_session=load_runtime(c,r)\n    with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "127:0:176:17:FunctionDef"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')",
+                "site": "138:8:147:153:If"
+              },
+              {
+                "expression": "db=dest/'state/session.sqlite'",
+                "site": "148:8:148:38:Assign"
+              },
+              {
+                "expression": "owners=dest/'state/ownership.sqlite'",
+                "site": "148:39:148:75:Assign"
+              },
+              {
+                "expression": "raw=None",
+                "site": "148:76:148:84:Assign"
+              },
+              {
+                "expression": "managed=None",
+                "site": "148:85:148:97:Assign"
+              },
+              {
+                "expression": "write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})",
+                "site": "149:8:149:116:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "137:4:176:17:With"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}",
+                "site": "168:12:168:170:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "167:8:176:17:ExceptHandler"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "170:16:172:133:If"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "obj.close()",
+                "site": "171:24:171:35:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "171:20:172:133:Try"
+            },
+            "region": "body"
+          }
+        ],
+        "expression": "details['cleanup'].append([name,'close returned'])",
+        "guards": [
+          {
+            "contexts": [
+              "owner_lock(destination)"
+            ],
+            "kind": "with"
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "handlers"
+          },
+          {
+            "binding": "e",
+            "kind": "handler",
+            "type": "BaseException"
+          },
+          {
+            "kind": "For",
+            "region": "body",
+            "source": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            }
+          },
+          {
+            "arm": "body",
+            "kind": "if",
+            "test": {
+              "expression": "obj is not None",
+              "site": "170:19:170:34:Compare"
+            }
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "body"
+          }
+        ],
+        "semantic_region": "protected-append",
+        "site": "171:36:171:86:Call",
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      },
+      "reference": "ec01-frontier/cleanup/append-call-attempt/error",
+      "role": "conditional-cleanup-error",
+      "runtime_observation": false,
+      "scope": {
+        "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+        "context": "SYMBOLIC-U-ONE",
+        "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+        "instance": {
+          "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "managed_constructor_frame": 9,
+          "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+          "session_label": "I164-lab-crypto5002-prospective-001",
+          "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+        },
+        "invocation": "ec01-frontier"
+      }
+    },
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": true,
+    "flag": null,
+    "kind": "process-termination",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-ONE",
+    "control": true,
+    "flag": null,
+    "kind": "unobserved",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-ONE",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-ONE:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": false,
+    "flag": true,
+    "kind": "raise",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": {
+      "eligible_inner_handler": "close_error",
+      "exact_type": null,
+      "exact_value_bytes": null,
+      "existing_cause": "UNKNOWN",
+      "existing_context": "UNKNOWN",
+      "existing_suppression": "UNKNOWN",
+      "failure_region": "protected-append",
+      "handler_entry_established": false,
+      "origin": {
+        "continuation": [
+          {
+            "normal_prefix": [
+              {
+                "expression": "\"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"",
+                "site": "128:4:132:7:Expr"
+              },
+              {
+                "expression": "_profile.load_profile()",
+                "site": "133:4:133:27:Expr"
+              },
+              {
+                "expression": "c,d=inputs(candidate,draft)",
+                "site": "134:4:134:31:Assign"
+              },
+              {
+                "expression": "r=validate_runtime(runtime)",
+                "site": "134:32:134:59:Assign"
+              },
+              {
+                "expression": "cfg=read(P/'laboratory-configuration.json')",
+                "site": "135:4:135:47:Assign"
+              },
+              {
+                "expression": "b=binding(c,d,r,cfg)",
+                "site": "135:48:135:68:Assign"
+              },
+              {
+                "expression": "authority,open_session=load_runtime(c,r)",
+                "site": "136:4:136:44:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "def _session(candidate,draft,runtime,destination,*,create=False):\n    \"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"\n    _profile.load_profile()\n    c,d=inputs(candidate,draft);r=validate_runtime(runtime)\n    cfg=read(P/'laboratory-configuration.json');b=binding(c,d,r,cfg)\n    authority,open_session=load_runtime(c,r)\n    with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "127:0:176:17:FunctionDef"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')",
+                "site": "138:8:147:153:If"
+              },
+              {
+                "expression": "db=dest/'state/session.sqlite'",
+                "site": "148:8:148:38:Assign"
+              },
+              {
+                "expression": "owners=dest/'state/ownership.sqlite'",
+                "site": "148:39:148:75:Assign"
+              },
+              {
+                "expression": "raw=None",
+                "site": "148:76:148:84:Assign"
+              },
+              {
+                "expression": "managed=None",
+                "site": "148:85:148:97:Assign"
+              },
+              {
+                "expression": "write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})",
+                "site": "149:8:149:116:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "137:4:176:17:With"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}",
+                "site": "168:12:168:170:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "167:8:176:17:ExceptHandler"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "170:16:172:133:If"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "obj.close()",
+                "site": "171:24:171:35:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "171:20:172:133:Try"
+            },
+            "region": "body"
+          }
+        ],
+        "expression": "details['cleanup'].append([name,'close returned'])",
+        "guards": [
+          {
+            "contexts": [
+              "owner_lock(destination)"
+            ],
+            "kind": "with"
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "handlers"
+          },
+          {
+            "binding": "e",
+            "kind": "handler",
+            "type": "BaseException"
+          },
+          {
+            "kind": "For",
+            "region": "body",
+            "source": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            }
+          },
+          {
+            "arm": "body",
+            "kind": "if",
+            "test": {
+              "expression": "obj is not None",
+              "site": "170:19:170:34:Compare"
+            }
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "body"
+          }
+        ],
+        "semantic_region": "protected-append",
+        "site": "171:36:171:86:Call",
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      },
+      "reference": "ec01-frontier/cleanup/append-call-attempt/error",
+      "role": "conditional-cleanup-error",
+      "runtime_observation": false,
+      "scope": {
+        "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+        "context": "SYMBOLIC-U-TWO",
+        "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+        "instance": {
+          "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "managed_constructor_frame": 9,
+          "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+          "session_label": "I164-lab-crypto5002-prospective-001",
+          "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+        },
+        "invocation": "ec01-frontier"
+      }
+    },
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": false,
+    "flag": null,
+    "kind": "process-termination",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": false,
+    "flag": null,
+    "kind": "unobserved",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": true,
+    "flag": true,
+    "kind": "raise",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": {
+      "eligible_inner_handler": "close_error",
+      "exact_type": null,
+      "exact_value_bytes": null,
+      "existing_cause": "UNKNOWN",
+      "existing_context": "UNKNOWN",
+      "existing_suppression": "UNKNOWN",
+      "failure_region": "protected-append",
+      "handler_entry_established": false,
+      "origin": {
+        "continuation": [
+          {
+            "normal_prefix": [
+              {
+                "expression": "\"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"",
+                "site": "128:4:132:7:Expr"
+              },
+              {
+                "expression": "_profile.load_profile()",
+                "site": "133:4:133:27:Expr"
+              },
+              {
+                "expression": "c,d=inputs(candidate,draft)",
+                "site": "134:4:134:31:Assign"
+              },
+              {
+                "expression": "r=validate_runtime(runtime)",
+                "site": "134:32:134:59:Assign"
+              },
+              {
+                "expression": "cfg=read(P/'laboratory-configuration.json')",
+                "site": "135:4:135:47:Assign"
+              },
+              {
+                "expression": "b=binding(c,d,r,cfg)",
+                "site": "135:48:135:68:Assign"
+              },
+              {
+                "expression": "authority,open_session=load_runtime(c,r)",
+                "site": "136:4:136:44:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "def _session(candidate,draft,runtime,destination,*,create=False):\n    \"\"\"Private mechanics, public session() enforces the environment.\n    Separate tests exercise mechanics under their explicitly recorded environment.\n    Lock spans raw creation, confirmed close, managed reopening, caller handoff,\n    and final managed close. Unconfirmed cleanup blocks later opening.\n    \"\"\"\n    _profile.load_profile()\n    c,d=inputs(candidate,draft);r=validate_runtime(runtime)\n    cfg=read(P/'laboratory-configuration.json');b=binding(c,d,r,cfg)\n    authority,open_session=load_runtime(c,r)\n    with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "127:0:176:17:FunctionDef"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')",
+                "site": "138:8:147:153:If"
+              },
+              {
+                "expression": "db=dest/'state/session.sqlite'",
+                "site": "148:8:148:38:Assign"
+              },
+              {
+                "expression": "owners=dest/'state/ownership.sqlite'",
+                "site": "148:39:148:75:Assign"
+              },
+              {
+                "expression": "raw=None",
+                "site": "148:76:148:84:Assign"
+              },
+              {
+                "expression": "managed=None",
+                "site": "148:85:148:97:Assign"
+              },
+              {
+                "expression": "write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})",
+                "site": "149:8:149:116:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "with owner_lock(destination) as dest:\n        if create:\n            require(not os.path.lexists(dest),'DESTINATION-EXISTS')\n            dest.mkdir(mode=0o700);(dest/'state').mkdir();(dest/'evidence').mkdir()\n            write_new(dest/'binding.json',b);write_new(dest/'BOOTSTRAP-STARTED.json',{'stage':'before database creation'})\n        else:\n            require(dest.is_dir() and not dest.is_symlink(),'MISSING-SESSION')\n            require(enc(read(dest/'binding.json'))==enc(b),'SESSION-BINDING')\n            require((dest/'BOOTSTRAP-COMPLETE.json').is_file(),'PARTIAL-BOOTSTRAP')\n            require(not (dest/'ACTIVE.json').exists() and not list((dest/'evidence').glob('failure-*')),'UNCERTAIN-PRIOR-OWNER')\n            require(all((dest/'state'/n).is_file() and not (dest/'state'/n).is_symlink() for n in ['session.sqlite','ownership.sqlite']),'MISSING-STATE')\n        db=dest/'state/session.sqlite';owners=dest/'state/ownership.sqlite';raw=None;managed=None\n        write_new(dest/'ACTIVE.json',{'pid':os.getpid(),'operation':'bootstrap' if create else 'managed reopening'})\n        try:\n            if create:\n                # Retain partially initialized raw object for cleanup. Never return it.\n                raw=authority.Authority.__new__(authority.Authority)\n                authority.Authority.__init__(raw,db,cfg['config'],True,ownership_path=owners)\n                raw.close();raw=None\n                write_new(dest/'RAW-CREATION-CLOSED.json',{'close_returned':True})\n            managed,_=open_session(c,db,cfg['config'],ownership_path=owners)\n            state=managed.state();status=managed.status()\n            require(status['actual_admission'] is False,'ADMISSION')\n            if create:\n                require(state['seq']==0 and state['head']=='0'*64 and state['u']=={} and state['active'] is None,'GENESIS')\n                require(all(type(v) is int and v==0 for k in ['counts','partitions','resources'] for v in state[k].values()),'GENESIS-ACCOUNTING')\n                write_new(dest/'BOOTSTRAP-COMPLETE.json',{'state':state,'status':status,'raw_serving_exposed':False})\n            yield ManagedSession(managed)\n            managed.close();managed=None\n            (dest/'ACTIVE.json').unlink()\n        except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "137:4:176:17:With"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}",
+                "site": "168:12:168:170:Assign"
+              }
+            ],
+            "owner": {
+              "expression": "except BaseException as e:\n            details={'error':type(e).__name__,'message':str(e),'traceback':traceback.format_exc(),'nonexecution_established':False,'new_authorization':False,'cleanup':[]}\n            for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])\n            # Preserve ACTIVE even if cleanup succeeds: interrupted ownership requires explicit recovery decision.\n            try:write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)\n            except BaseException:pass\n            raise",
+              "site": "167:8:176:17:ExceptHandler"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [],
+            "owner": {
+              "expression": "if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "170:16:172:133:If"
+            },
+            "region": "body"
+          },
+          {
+            "normal_prefix": [
+              {
+                "expression": "obj.close()",
+                "site": "171:24:171:35:Expr"
+              }
+            ],
+            "owner": {
+              "expression": "try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "171:20:172:133:Try"
+            },
+            "region": "body"
+          }
+        ],
+        "expression": "details['cleanup'].append([name,'close returned'])",
+        "guards": [
+          {
+            "contexts": [
+              "owner_lock(destination)"
+            ],
+            "kind": "with"
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "handlers"
+          },
+          {
+            "binding": "e",
+            "kind": "handler",
+            "type": "BaseException"
+          },
+          {
+            "kind": "For",
+            "region": "body",
+            "source": {
+              "expression": "for name,obj in [('raw',raw),('managed',managed)]:\n                if obj is not None:\n                    try:obj.close();details['cleanup'].append([name,'close returned'])\n                    except BaseException as close_error:details['cleanup'].append([name,type(close_error).__name__,str(close_error)])",
+              "site": "169:12:172:133:For"
+            }
+          },
+          {
+            "arm": "body",
+            "kind": "if",
+            "test": {
+              "expression": "obj is not None",
+              "site": "170:19:170:34:Compare"
+            }
+          },
+          {
+            "handlers": [
+              "BaseException"
+            ],
+            "kind": "try",
+            "region": "body"
+          }
+        ],
+        "semantic_region": "protected-append",
+        "site": "171:36:171:86:Call",
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      },
+      "reference": "ec01-frontier/cleanup/append-call-attempt/error",
+      "role": "conditional-cleanup-error",
+      "runtime_observation": false,
+      "scope": {
+        "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+        "context": "SYMBOLIC-U-TWO",
+        "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+        "instance": {
+          "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+          "managed_constructor_frame": 9,
+          "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+          "session_label": "I164-lab-crypto5002-prospective-001",
+          "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+        },
+        "invocation": "ec01-frontier"
+      }
+    },
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": true,
+    "flag": null,
+    "kind": "process-termination",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  },
+  {
+    "context": "SYMBOLIC-U-TWO",
+    "control": true,
+    "flag": null,
+    "kind": "unobserved",
+    "partial_effects": "UNKNOWN partial effects",
+    "replacement": null,
+    "scope": {
+      "acquisition": "sha256:bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8",
+      "context": "SYMBOLIC-U-TWO",
+      "frontier": "bbea8f904a91b5c13b4b79653b702154352c68471f0ed8e51035cdf27becc6e8:SYMBOLIC-U-TWO:frame:10",
+      "instance": {
+        "binding": "085e80f8551b53bddf5a5202d0700dadeb0a02fdb6ad2ff573e489b1a19eb1af",
+        "managed_constructor_frame": 9,
+        "ownership_incarnation": "410483eeffbe344a7fc0bbdaaaeabcbecdb1470768afe398befb9d4b2d5caf49",
+        "session_label": "I164-lab-crypto5002-prospective-001",
+        "workspace": "/home/steve/dev/Engineering-288-execution/I164-status-smoke-20261026T140935Z-55023eb7"
+      },
+      "invocation": "ec01-frontier"
+    }
+  }
+]

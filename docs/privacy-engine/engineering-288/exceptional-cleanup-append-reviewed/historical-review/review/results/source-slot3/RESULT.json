@@ -1,0 +1,224 @@
+{
+  "checks": 50,
+  "constructed_not_runtime": true,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/ace5c9b2f18b/eca-review/code/common.py\", line 24, in no\n    assert time.monotonic()-self.start<3150,'REVIEW-SOFT-DEADLINE';fn()\n                                                                   ^^^^\n  File \"/workspace/scratch/ace5c9b2f18b/eca-review/code/source_monitor.py\", line 68, in <lambda>\n    r.no('repinned non-identity guard rejected by grammar',lambda:d['coverage'].compile_cleanup_append(changed,*d['sources'][1:],parent,d['prior']['contexts'][0]['reference_declarations']),'CLEANUP-EXACT-NONNONE')\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py\", line 2899, in compile_cleanup_append\n    source=cleanup_append_source(launcher,entry,manager,details,reference)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py\", line 2841, in cleanup_append_source\n    status_typed_same({**loc(loop),'source':pins['launcher']},details['source']['stop_before'],'CLEANUP-PARENT-FRONTIER')\n  File \"/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py\", line 1826, in status_typed_same\n    status_exact_tree(a,code);status_exact_tree(b,code);same(a,b,code)\n                                                        ^^^^^^^^^^^^^^\n  File \"/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py\", line 71, in same\n    def same(a,b,code):need(enc(a)==enc(b),code)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/review-evidence/FL6-cleanup-append-20261101/primary/code/managed_coverage.py\", line 70, in need\n    if not value:raise ValueError(code)\n                 ^^^^^^^^^^^^^^^^^^^^^^\nValueError: CLEANUP-PARENT-FRONTIER\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/scratch/ace5c9b2f18b/eca-review/code/source_monitor.py\", line 68, in <module>\n    r.no('repinned non-identity guard rejected by grammar',lambda:d['coverage'].compile_cleanup_append(changed,*d['sources'][1:],parent,d['prior']['contexts'][0]['reference_declarations']),'CLEANUP-EXACT-NONNONE')\n  File \"/workspace/scratch/ace5c9b2f18b/eca-review/code/common.py\", line 26, in no\n    if code:assert code in str(e),(n,str(e),code)\n                   ^^^^^^^^^^^^^^\nAssertionError: ('repinned non-identity guard rejected by grammar', 'CLEANUP-PARENT-FRONTIER', 'CLEANUP-EXACT-NONNONE')\n",
+  "result": "FAILED-ATTEMPT",
+  "rows": [
+    {
+      "check": "defining handler retains active BaseException e",
+      "result": "PASS"
+    },
+    {
+      "check": "ordered loop inputs and tuple target from source",
+      "result": "PASS"
+    },
+    {
+      "check": "raw exactly None conditional post-yield prefix",
+      "result": "PASS"
+    },
+    {
+      "check": "selected handoff and manager are source-local bindings",
+      "result": "PASS"
+    },
+    {
+      "check": "exact identity non-None guard, no truthiness",
+      "result": "PASS"
+    },
+    {
+      "check": "close and append in same try; line172 excluded",
+      "result": "PASS"
+    },
+    {
+      "check": "append callable evaluated before exact list arguments",
+      "result": "PASS"
+    },
+    {
+      "check": "details dynamic origins and exact False constants preserved",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage loop-input-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-raw-name",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-raw-object",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-raw-pair",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-managed-name",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-managed-object",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage input-managed-pair",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage loop-inputs-complete",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage loop-iterator-attempt",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-item-next",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-bind-name",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-bind-obj",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-guard-object",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-guard-none",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage raw-guard-result",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-item-next",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-bind-name",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-bind-obj",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-guard-object",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-guard-none",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage managed-guard-result",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage selected-try-entry",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage close-object-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage close-method-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage close-call-attempt",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage close-normal-return",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-details-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-key-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-list-resolution",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-method-evaluation",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-item-name",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-item-message",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-item-complete",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-call-attempt",
+      "result": "PASS"
+    },
+    {
+      "check": "source coordinates and evaluation stage append-complete",
+      "result": "PASS"
+    },
+    {
+      "check": "catalogue order and all UNKNOWN dispositions",
+      "result": "PASS"
+    },
+    {
+      "check": "protected-region attribution derived from enclosing AST",
+      "result": "PASS"
+    },
+    {
+      "check": "static compiler accepts exact candidate catalogue",
+      "result": "PASS"
+    },
+    {
+      "check": "static catalogue mutation guard_expression",
+      "error": "CLEANUP-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "static catalogue mutation selected_name",
+      "error": "CLEANUP-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "static catalogue mutation append_message",
+      "error": "CLEANUP-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    },
+    {
+      "check": "static catalogue mutation close_method",
+      "error": "CLEANUP-SOURCE-CORRESPONDENCE",
+      "result": "REJECTED"
+    }
+  ],
+  "runtime_operations": 0,
+  "scope": "Independent source/AST controls and real slot3 API checks with synthetic predecessors; not actual predecessor authentication; inherited LD01 controls not replayed",
+  "seconds": 4.293900431999646,
+  "session_operations": 0
+}

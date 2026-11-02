@@ -1,0 +1,1300 @@
+{"check": "actual full current public positive", "result": "PASS"}
+{"check": "actual unchanged predecessor public receipt identity", "result": "PASS"}
+{"check": "fresh authenticated derivation matches prepared bytes", "result": "PASS"}
+{"check": "legitimate selected managed normal append (0, False)", "result": "PASS"}
+{"check": "distinct occurrence preserved (0, False)", "result": "PASS"}
+{"check": "unknown local continuity stops before selection (0, False)", "result": "PASS"}
+{"check": "no false continuation from missing continuity (0, False)", "result": "REJECTED", "error": "CLEANUP-UNKNOWN-CONTINUITY"}
+{"check": "wrong binding/claim (0, False)('context',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding/claim (0, False)('invocation',)", "result": "REJECTED", "error": "CLEANUP-PARENT-INVOCATION"}
+{"check": "wrong binding/claim (0, False)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding/claim (0, False)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (0, False)('parent_output', 'details_assignment_completed_in_model')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (0, False)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'ordered_values', 0, 'value')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'object', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'guard', 'result')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'guard', 'right')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'guard', 'expression')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'close_receiver', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'method')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'method_origin', 'site')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'cleanup_list', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, False)('close_case', 'method')", "result": "REJECTED", "error": "CLEANUP-CLOSE-RECEIVER-METHOD"}
+{"check": "wrong binding/claim (0, False)('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (0, False)('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (0, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'details_after_acknowledged_steps', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'close_return_value_observed')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'physical_closure_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'loop_completion_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'error_report_append_expanded')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'failure_file_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'final_rethrow_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, False)('output', 'owner_finalization_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-input-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-input-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-input-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-input-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-input-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-input-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-raw-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-raw-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('input-managed-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('input-managed-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-inputs-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-inputs-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-inputs-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-inputs-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-inputs-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-inputs-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-iterator-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-iterator-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-iterator-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-iterator-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('loop-iterator-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('loop-iterator-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('raw-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('raw-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('managed-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('managed-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "source frontier (0, False)('selected-try-entry', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('selected-try-entry', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('selected-try-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('selected-try-entry', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('selected-try-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('selected-try-entry', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-object-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-object-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-object-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-object-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-object-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-object-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-normal-return', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-normal-return', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('close-normal-return', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('close-normal-return', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-details-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-details-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-details-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-details-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-details-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-details-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-details-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-key-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-key-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-key-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-key-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-key-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-key-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-key-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-list-resolution', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-list-resolution', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-list-resolution", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-list-resolution', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-list-resolution', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-list-resolution', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-list-resolution', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-method-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-item-name", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-message', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-item-message", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-message', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-message', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-message', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-message', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-item-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-item-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-item-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, False)append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, False)('append-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, False)('append-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "missing stage (0, False)0", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)1", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)2", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)3", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)4", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)5", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)6", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)7", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)8", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)9", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)10", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)11", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)12", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)13", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)14", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)15", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)16", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)17", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)18", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)19", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)20", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)21", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)22", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)23", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)24", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)25", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)26", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)27", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)28", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)29", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)30", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)31", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)32", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)33", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, False)34", "result": "REJECTED", "error": "CLEANUP-MISSING-STEP:append-complete"}
+{"check": "reordered stages (0, False)(1, 4)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, False)(-1, -2)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, False)(-9, -10)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, False)(21, 22)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "coordinated role (0, False)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, False)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, False)manager", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, False)session", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated (0, False)error", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated (0, False)cleanup-list", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated (0, False)instance", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "exact types before comparison (0, False)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, False)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, False)('binding',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, False)('outcomes',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact types before comparison (0, False)('output', 'binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "cross-invocation output (0, False)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned mutation cannot change expectations (0, False)", "result": "PASS"}
+{"check": "direct submitted-output exact types (0, False)", "result": "REJECTED", "error": "CLEANUP-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "incomplete/replaced predecessor (0, False)('details-value-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "incomplete/replaced predecessor (0, False)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "legitimate selected managed normal append (0, True)", "result": "PASS"}
+{"check": "distinct occurrence preserved (0, True)", "result": "PASS"}
+{"check": "unknown local continuity stops before selection (0, True)", "result": "PASS"}
+{"check": "no false continuation from missing continuity (0, True)", "result": "REJECTED", "error": "CLEANUP-UNKNOWN-CONTINUITY"}
+{"check": "wrong binding/claim (0, True)('context',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding/claim (0, True)('invocation',)", "result": "REJECTED", "error": "CLEANUP-PARENT-INVOCATION"}
+{"check": "wrong binding/claim (0, True)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding/claim (0, True)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (0, True)('parent_output', 'details_assignment_completed_in_model')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (0, True)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'ordered_values', 0, 'value')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'object', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'guard', 'result')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'guard', 'right')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'guard', 'expression')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'close_receiver', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'method')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'method_origin', 'site')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'cleanup_list', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (0, True)('close_case', 'method')", "result": "REJECTED", "error": "CLEANUP-CLOSE-RECEIVER-METHOD"}
+{"check": "wrong binding/claim (0, True)('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (0, True)('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (0, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'details_after_acknowledged_steps', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'close_return_value_observed')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'physical_closure_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'loop_completion_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'error_report_append_expanded')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'failure_file_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'final_rethrow_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (0, True)('output', 'owner_finalization_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-input-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-input-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-input-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-input-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-input-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-input-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-raw-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-raw-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('input-managed-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('input-managed-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-inputs-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-inputs-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-inputs-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-inputs-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-inputs-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-inputs-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-iterator-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-iterator-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-iterator-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-iterator-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('loop-iterator-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('loop-iterator-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('raw-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('raw-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('managed-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('managed-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('selected-try-entry', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('selected-try-entry', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('selected-try-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('selected-try-entry', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('selected-try-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('selected-try-entry', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-object-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-object-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-object-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-object-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-object-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-object-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-normal-return', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-normal-return', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('close-normal-return', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('close-normal-return', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-details-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-details-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-details-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-details-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-details-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-details-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-details-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-key-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-key-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-key-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-key-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-key-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-key-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-key-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-list-resolution', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-list-resolution', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-list-resolution", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-list-resolution', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-list-resolution', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-list-resolution', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-list-resolution', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-method-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-item-name", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-message', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-item-message", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-message', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-message', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-message', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-message', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-item-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-item-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-item-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (0, True)append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (0, True)('append-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (0, True)('append-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "missing stage (0, True)0", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)1", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)2", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)3", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)4", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)5", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)6", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)7", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)8", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)9", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)10", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)11", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)12", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)13", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)14", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)15", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)16", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)17", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)18", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)19", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)20", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)21", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)22", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)23", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)24", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)25", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)26", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)27", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)28", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)29", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)30", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)31", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)32", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)33", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (0, True)34", "result": "REJECTED", "error": "CLEANUP-MISSING-STEP:append-complete"}
+{"check": "reordered stages (0, True)(1, 4)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, True)(-1, -2)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, True)(-9, -10)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (0, True)(21, 22)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "coordinated role (0, True)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, True)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, True)manager", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (0, True)session", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated (0, True)error", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated (0, True)cleanup-list", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated (0, True)instance", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "exact types before comparison (0, True)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, True)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, True)('binding',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, True)('outcomes',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (0, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact types before comparison (0, True)('output', 'binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "cross-invocation output (0, True)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned mutation cannot change expectations (0, True)", "result": "PASS"}
+{"check": "direct submitted-output exact types (0, True)", "result": "REJECTED", "error": "CLEANUP-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "incomplete/replaced predecessor (0, True)('details-value-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "incomplete/replaced predecessor (0, True)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "legitimate selected managed normal append (1, False)", "result": "PASS"}
+{"check": "distinct occurrence preserved (1, False)", "result": "PASS"}
+{"check": "unknown local continuity stops before selection (1, False)", "result": "PASS"}
+{"check": "no false continuation from missing continuity (1, False)", "result": "REJECTED", "error": "CLEANUP-UNKNOWN-CONTINUITY"}
+{"check": "wrong binding/claim (1, False)('context',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding/claim (1, False)('invocation',)", "result": "REJECTED", "error": "CLEANUP-PARENT-INVOCATION"}
+{"check": "wrong binding/claim (1, False)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding/claim (1, False)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (1, False)('parent_output', 'details_assignment_completed_in_model')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (1, False)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'ordered_values', 0, 'value')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'object', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'guard', 'result')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'guard', 'right')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'guard', 'expression')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'close_receiver', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'method')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'method_origin', 'site')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'cleanup_list', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, False)('close_case', 'method')", "result": "REJECTED", "error": "CLEANUP-CLOSE-RECEIVER-METHOD"}
+{"check": "wrong binding/claim (1, False)('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (1, False)('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (1, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'details_after_acknowledged_steps', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'close_return_value_observed')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'physical_closure_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'loop_completion_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'error_report_append_expanded')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'failure_file_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'final_rethrow_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, False)('output', 'owner_finalization_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-input-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-input-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-input-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-input-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-input-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-input-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-raw-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-raw-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('input-managed-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('input-managed-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-inputs-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-inputs-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-inputs-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-inputs-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-inputs-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-inputs-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-iterator-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-iterator-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-iterator-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-iterator-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('loop-iterator-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('loop-iterator-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('raw-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('raw-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('managed-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('managed-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('selected-try-entry', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('selected-try-entry', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('selected-try-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('selected-try-entry', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('selected-try-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('selected-try-entry', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-object-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-object-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-object-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-object-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-object-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-object-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-normal-return', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-normal-return', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('close-normal-return', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('close-normal-return', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-details-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-details-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-details-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-details-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-details-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-details-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-details-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-key-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-key-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-key-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-key-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-key-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-key-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-key-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-list-resolution', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-list-resolution', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-list-resolution", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-list-resolution', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-list-resolution', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-list-resolution', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-list-resolution', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-method-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-item-name", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-message', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-item-message", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-message', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-message', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-message', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-message', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-item-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-item-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-item-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, False)append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, False)('append-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, False)('append-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "missing stage (1, False)0", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)1", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)2", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)3", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)4", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)5", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)6", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)7", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)8", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)9", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)10", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)11", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)12", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)13", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)14", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)15", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)16", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)17", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)18", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)19", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)20", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)21", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)22", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)23", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)24", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)25", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)26", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)27", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)28", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)29", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)30", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)31", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)32", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)33", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, False)34", "result": "REJECTED", "error": "CLEANUP-MISSING-STEP:append-complete"}
+{"check": "reordered stages (1, False)(1, 4)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, False)(-1, -2)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, False)(-9, -10)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, False)(21, 22)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "coordinated role (1, False)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, False)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, False)manager", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, False)session", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated (1, False)error", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated (1, False)cleanup-list", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated (1, False)instance", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "exact types before comparison (1, False)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, False)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, False)('binding',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, False)('outcomes',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, False)('output', 'details_after_acknowledged_steps', 'known_literal_fields')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact types before comparison (1, False)('output', 'binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "cross-invocation output (1, False)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned mutation cannot change expectations (1, False)", "result": "PASS"}
+{"check": "direct submitted-output exact types (1, False)", "result": "REJECTED", "error": "CLEANUP-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "incomplete/replaced predecessor (1, False)('details-value-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "incomplete/replaced predecessor (1, False)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "legitimate selected managed normal append (1, True)", "result": "PASS"}
+{"check": "distinct occurrence preserved (1, True)", "result": "PASS"}
+{"check": "unknown local continuity stops before selection (1, True)", "result": "PASS"}
+{"check": "no false continuation from missing continuity (1, True)", "result": "REJECTED", "error": "CLEANUP-UNKNOWN-CONTINUITY"}
+{"check": "wrong binding/claim (1, True)('context',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-CONTEXT"}
+{"check": "wrong binding/claim (1, True)('invocation',)", "result": "REJECTED", "error": "CLEANUP-PARENT-INVOCATION"}
+{"check": "wrong binding/claim (1, True)('anchor', 'instance', 'binding')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "wrong binding/claim (1, True)('parent_output', 'last_pending_error_in_model', 'reference')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (1, True)('parent_output', 'details_assignment_completed_in_model')", "result": "REJECTED", "error": "CLEANUP-VALIDATED-PARENT-OUTPUT"}
+{"check": "wrong binding/claim (1, True)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'ordered_values', 0, 'value')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'object', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'references', 'owner', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'references', 'token', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'guard', 'result')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'guard', 'right')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'guard', 'expression')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'close_receiver', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'method')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'method_origin', 'site')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'cleanup_list', 'symbol')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('binding', 'selected_error', 'reference')", "result": "REJECTED", "error": "CLEANUP-EXPECTED-BINDING"}
+{"check": "wrong binding/claim (1, True)('close_case', 'method')", "result": "REJECTED", "error": "CLEANUP-CLOSE-RECEIVER-METHOD"}
+{"check": "wrong binding/claim (1, True)('close_case', 'scope', 'instance')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (1, True)('close_case', 'scope', 'invocation')", "result": "REJECTED", "error": "CLEANUP-CLOSE-SCOPE"}
+{"check": "wrong binding/claim (1, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'new_authorization')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields', 'nonexecution_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'details_after_acknowledged_steps', 'dynamic_fields', 0, 'exact_value')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'close_return_value_observed')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'physical_closure_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'loop_completion_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'error_report_append_expanded')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'failure_file_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'final_rethrow_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "wrong binding/claim (1, True)('output', 'owner_finalization_established')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-input-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-input-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-input-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-input-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-input-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-input-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-raw-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-raw-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-pair', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-pair', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-pair', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-pair', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('input-managed-pair', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('input-managed-pair', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-inputs-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-inputs-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-inputs-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-inputs-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-inputs-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-inputs-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-iterator-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-iterator-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-iterator-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-iterator-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('loop-iterator-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('loop-iterator-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('raw-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('raw-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-item-next', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-item-next', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-item-next', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-item-next', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-item-next', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-item-next', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-obj', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-obj', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-obj', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-obj', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-bind-obj', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-bind-obj', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-object', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-object', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-object', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-object', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-object', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-object', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-none', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-none', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-none', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-none', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-none', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-none', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-result', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-result', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-result', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-result', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('managed-guard-result', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('managed-guard-result', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('selected-try-entry', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('selected-try-entry', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('selected-try-entry', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('selected-try-entry', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('selected-try-entry', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('selected-try-entry', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-object-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-object-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-object-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-object-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-object-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-object-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-normal-return', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-normal-return', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('close-normal-return', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('close-normal-return', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-details-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-details-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-details-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-details-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-details-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-details-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-details-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-key-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-key-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-key-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-key-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-key-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-key-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-key-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-list-resolution', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-list-resolution', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-list-resolution", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-list-resolution', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-list-resolution', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-list-resolution', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-list-resolution', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-method-evaluation', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-method-evaluation', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-method-evaluation", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-method-evaluation', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-method-evaluation', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-method-evaluation', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-method-evaluation', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-name', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-name', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-item-name", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-name', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-name', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-name', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-name', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-message', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-item-message", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-message', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-message', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-message', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-message', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-item-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-item-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-item-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-call-attempt', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-call-attempt', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-call-attempt", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-call-attempt', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-call-attempt', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-call-attempt', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-call-attempt', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-complete', 'raise')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-complete', 'raise')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "append failure cannot erase close return or become close failure (1, True)append-complete", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-complete', 'process-termination')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-complete', 'process-termination')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source frontier (1, True)('append-complete', 'unobserved')", "result": "PASS"}
+{"check": "no false append completion (1, True)('append-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "missing stage (1, True)0", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)1", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)2", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)3", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)4", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)5", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)6", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)7", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)8", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)9", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)10", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)11", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)12", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)13", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)14", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)15", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)16", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)17", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)18", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)19", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)20", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)21", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)22", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)23", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)24", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)25", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)26", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)27", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)28", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)29", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)30", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)31", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)32", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)33", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "missing stage (1, True)34", "result": "REJECTED", "error": "CLEANUP-MISSING-STEP:append-complete"}
+{"check": "reordered stages (1, True)(1, 4)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, True)(-1, -2)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, True)(-9, -10)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "reordered stages (1, True)(21, 22)", "result": "REJECTED", "error": "CLEANUP-STEP-ORDER"}
+{"check": "coordinated role (1, True)owner", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, True)token", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, True)manager", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated role (1, True)session", "result": "REJECTED", "error": "TOKEN-REFERENCES"}
+{"check": "coordinated (1, True)error", "result": "REJECTED", "error": "CLIENT-CONSTRUCTION-EXPRESSION-ERROR"}
+{"check": "coordinated (1, True)cleanup-list", "result": "REJECTED", "error": "DETAILS-OUTPUT-CORRESPONDENCE"}
+{"check": "coordinated (1, True)instance", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-ANCHOR"}
+{"check": "exact types before comparison (1, True)('binding', 'name')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, True)('binding', 'selected_index')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, True)('binding',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, True)('outcomes',)", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "exact types before comparison (1, True)('output', 'details_after_acknowledged_steps', 'known_literal_fields')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE"}
+{"check": "exact types before comparison (1, True)('output', 'binding', 'append_item')", "result": "REJECTED", "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE"}
+{"check": "cross-invocation output (1, True)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "nested returned mutation cannot change expectations (1, True)", "result": "PASS"}
+{"check": "direct submitted-output exact types (1, True)", "result": "REJECTED", "error": "CLEANUP-SUBMITTED-OUTPUT:VALUE-TYPE"}
+{"check": "incomplete/replaced predecessor (1, True)('details-value-message', 'raise')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "incomplete/replaced predecessor (1, True)('details-assignment-complete', 'unobserved')", "result": "REJECTED", "error": "CLEANUP-DETAILS-REQUIRED"}
+{"check": "legitimate managed close starting references CLOSED", "result": "PASS"}
+{"check": "legitimate managed close starting references QUARANTINED", "result": "PASS"}
+{"check": "legitimate managed close starting references CLEANUP_UNCERTAIN", "result": "PASS"}
+{"check": "source-derived close exception distinct (0, False)", "result": "PASS"}
+{"check": "close failure cannot become return (0, False)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source-derived close exception distinct (0, True)", "result": "PASS"}
+{"check": "close failure cannot become return (0, True)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source-derived close exception distinct (1, False)", "result": "PASS"}
+{"check": "close failure cannot become return (1, False)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "source-derived close exception distinct (1, True)", "result": "PASS"}
+{"check": "close failure cannot become return (1, True)", "result": "REJECTED", "error": "CLEANUP-OUTPUT-CORRESPONDENCE"}
+{"check": "close result binding ('close_case',)", "result": "REJECTED", "error": "CLEANUP-VALIDATED:close_result"}
+{"check": "close result binding ('projection', 'close_result', 'completion')", "result": "REJECTED", "error": "CLEANUP-VALIDATED:close_result"}
+{"check": "close result binding ('projection', 'close_result', 'final', '_phase')", "result": "REJECTED", "error": "CLEANUP-VALIDATED:close_result"}
+{"check": "semantic core claim (0, ('declaration', 'source', 'selected_name'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (0, ('declaration', 'source', 'guard_results', 'managed'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (0, ('declaration', 'source', 'order'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (0, ('runtime_cleanup_append_chain',))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (0, ('instance_anchor', 'instance', 'binding'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (0, ('declaration', 'source', 'append_message'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "semantic core claim (1, ('declaration', 'source', 'selected_name'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (1, ('declaration', 'source', 'guard_results', 'managed'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (1, ('declaration', 'source', 'order'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (1, ('runtime_cleanup_append_chain',))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (1, ('instance_anchor', 'instance', 'binding'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "semantic core claim (1, ('declaration', 'source', 'append_message'))", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CLAIMS:VALUE-TYPE"}
+{"check": "coordinated both-context catalogue/claims", "result": "REJECTED", "error": "CLEANUP-SEMANTIC-CORRESPONDENCE"}
+{"check": "source-derived catalogue independently required", "result": "REJECTED", "error": "CLEANUP-CATALOGUE-SOURCE"}
+{"check": "semantic output expectation isolation", "result": "PASS"}
+{"check": "receipt construction expectation isolation", "result": "PASS"}
+{"check": "coordinated receipt comparison core", "result": "REJECTED", "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT"}
+{"check": "stale predecessor summary core", "result": "REJECTED", "error": "CLEANUP-CANDIDATE-PREDECESSOR"}
+{"check": "altered authenticated evidence core", "result": "REJECTED", "error": "CLEANUP-VALIDATED-EVIDENCE"}
+{"check": "missing evidence core", "result": "REJECTED", "error": "CLEANUP-VALIDATED-EVIDENCE"}
+{"check": "public missing required relation (0, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'exceptional_cleanup_append_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'launcher_initial_details_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (0, 'token_registration_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'callback_bare_rethrow_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'callback_stored_failure_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'client_construction_none_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'control_construction_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'control_exception_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'exceptional_cleanup_append_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'launcher_initial_details_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'stored_failure_revocation_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public missing required relation (1, 'token_registration_correspondence')", "result": "REJECTED", "error": "CLEANUP-MANDATORY-RELATIONS"}
+{"check": "public exact receipt bytes", "result": "REJECTED", "error": "CLEANUP-RECEIPT-BYTES"}
+{"check": "all inherited context relations preserved", "result": "PASS"}

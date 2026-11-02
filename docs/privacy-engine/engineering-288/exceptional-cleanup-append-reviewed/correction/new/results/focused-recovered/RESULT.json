@@ -1,0 +1,600 @@
+{
+  "Git_saves": 0,
+  "acquisitions": 0,
+  "checks": 105,
+  "completed_campaigns_replayed": false,
+  "database_connections": 0,
+  "environment": {
+    "cryptography": "50.0.2",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "full_public_negative_derivations": 0,
+  "independent_closure": "PENDING",
+  "requests": 0,
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "only EC01 projector expression changes in producer",
+      "layer": "source-byte diff",
+      "result": "PASS"
+    },
+    {
+      "check": "adapter changes only producer pin; public predecessor and monitoring unchanged",
+      "layer": "source-byte diff",
+      "result": "PASS"
+    },
+    {
+      "check": "only missing normal terminal oracle is added",
+      "layer": "test-oracle source diff",
+      "result": "PASS"
+    },
+    {
+      "check": "normal close/append remains inside selected BaseException handler",
+      "layer": "defining-source AST",
+      "result": "PASS"
+    },
+    {
+      "check": "True covers pending original/replacement; None qualification unchanged",
+      "layer": "corrected-expression AST",
+      "result": "PASS"
+    },
+    {
+      "check": "new prepared receipt validated through actual current public entry",
+      "layer": "full current public positive",
+      "result": "PASS"
+    },
+    {
+      "check": "unchanged actual predecessor public validator passed",
+      "layer": "actual unchanged predecessor public positive",
+      "result": "PASS"
+    },
+    {
+      "check": "authenticated derivation matches newly prepared receipt exactly",
+      "layer": "authenticated-basis assembly comparison",
+      "result": "PASS"
+    },
+    {
+      "check": "historical receipt untouched; only new component pins prepared",
+      "layer": "saved-byte/receipt comparison",
+      "result": "PASS"
+    },
+    {
+      "check": "retained independent source-consistent counterpart now accepted",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "retained witness original still pending; only flag differs",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "retained independent old False witness now rejected",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "corrected normal result (0, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "source-grounded normal terminal oracle (0, False)",
+      "layer": "source-grounded test oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "old False normal flag (0, False)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "oracle catches previously omitted False flag (0, False)",
+      "error": "",
+      "layer": "test oracle only",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, False)None",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, False)1",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, False)'True'",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, False)subclassed integer",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, False)subclassed literal key",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, False)nested subclassed error reference",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned mutations leave normal expectations isolated (0, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "append frontier (0, False)raise",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, False)raise",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, False)raise",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (0, False)process-termination",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, False)process-termination",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, False)process-termination",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (0, False)unobserved",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, False)unobserved",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, False)unobserved",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "close replacement exception retains True (0, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "close failure remains distinct from append failure (0, False)",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "False after close replacement exception (0, False)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "corrected normal result (0, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "source-grounded normal terminal oracle (0, True)",
+      "layer": "source-grounded test oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "old False normal flag (0, True)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "oracle catches previously omitted False flag (0, True)",
+      "error": "",
+      "layer": "test oracle only",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, True)None",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, True)1",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (0, True)'True'",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, True)subclassed integer",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, True)subclassed literal key",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (0, True)nested subclassed error reference",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned mutations leave normal expectations isolated (0, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "append frontier (0, True)raise",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, True)raise",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, True)raise",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (0, True)process-termination",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, True)process-termination",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, True)process-termination",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (0, True)unobserved",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (0, True)unobserved",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (0, True)unobserved",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "close replacement exception retains True (0, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "close failure remains distinct from append failure (0, True)",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "False after close replacement exception (0, True)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "corrected normal result (1, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "source-grounded normal terminal oracle (1, False)",
+      "layer": "source-grounded test oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "old False normal flag (1, False)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "oracle catches previously omitted False flag (1, False)",
+      "error": "",
+      "layer": "test oracle only",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, False)None",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, False)1",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, False)'True'",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, False)subclassed integer",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, False)subclassed literal key",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, False)nested subclassed error reference",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned mutations leave normal expectations isolated (1, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "append frontier (1, False)raise",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, False)raise",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, False)raise",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (1, False)process-termination",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, False)process-termination",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, False)process-termination",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (1, False)unobserved",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, False)unobserved",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, False)unobserved",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "close replacement exception retains True (1, False)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "close failure remains distinct from append failure (1, False)",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "False after close replacement exception (1, False)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "corrected normal result (1, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "source-grounded normal terminal oracle (1, True)",
+      "layer": "source-grounded test oracle over authenticated result",
+      "result": "PASS"
+    },
+    {
+      "check": "old False normal flag (1, True)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "oracle catches previously omitted False flag (1, True)",
+      "error": "",
+      "layer": "test oracle only",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, True)None",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, True)1",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "wrong exact terminal value (1, True)'True'",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "producer output-comparison core with predecessor-validated premises from actual authenticated basis",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, True)subclassed integer",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, True)subclassed literal key",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:KEY-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact typing (1, True)nested subclassed error reference",
+      "error": "CLEANUP-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type gate before constructed parent validation",
+      "result": "REJECTED"
+    },
+    {
+      "check": "nested returned mutations leave normal expectations isolated (1, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "append frontier (1, True)raise",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, True)raise",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, True)raise",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (1, True)process-termination",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, True)process-termination",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, True)process-termination",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "append frontier (1, True)unobserved",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "pending/replacement/None classification (1, True)unobserved",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "contradictory frontier flag (1, True)unobserved",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "close replacement exception retains True (1, True)",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "PASS"
+    },
+    {
+      "check": "close failure remains distinct from append failure (1, True)",
+      "layer": "source-grounded frontier oracle",
+      "result": "PASS"
+    },
+    {
+      "check": "False after close replacement exception (1, True)",
+      "error": "CLEANUP-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis _construct_checked/output-comparison core",
+      "result": "REJECTED"
+    },
+    {
+      "check": "historical receipt not silently substituted for corrected receipt",
+      "error": "CLEANUP-STALE-OR-ALTERED-RECEIPT",
+      "layer": "authenticated-basis receipt-comparison core",
+      "result": "REJECTED"
+    }
+  ],
+  "scope": "Only new EC-01 correction controls; source/constructed correspondence, not runtime observation",
+  "seconds": 2322.351904350002,
+  "session_operations": 0
+}

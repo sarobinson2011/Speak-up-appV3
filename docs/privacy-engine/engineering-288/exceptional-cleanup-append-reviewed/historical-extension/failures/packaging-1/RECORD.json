@@ -1,0 +1,19 @@
+{
+  "kind": "zero-control packaging/reconciliation failure",
+  "controls_executed": 0,
+  "candidate_code_changes": 0,
+  "archive_created": false,
+  "exit": 1,
+  "observed_utc": "2026-11-01T10:47:32.645486+00:00",
+  "error": "AssertionError: primary progress had 1300 rows but saved numbered stdout had only 165, so full-row corroboration assertion failed.",
+  "partial_root_preserved": "cleanup-normal-work/packaging-attempt-1",
+  "partial_root_contents": "Exact copies of already frozen input files plus frozen manifest/recovery-input identity; no result assembly or archive was reached. These bytes remain represented by the frozen input manifest and the final checkpoint.",
+  "process_progress_rows": 1300,
+  "saved_stdout_rows": 165,
+  "saved_stdout_missing_progress_row_numbers": [
+    166,
+    1300
+  ],
+  "cause_of_stdout_discrepancy": "UNKNOWN",
+  "repair_or_control_replay": false
+}

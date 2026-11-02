@@ -1,0 +1,351 @@
+--- prior/code/managed_coverage.py
++++ current/code/managed_coverage.py
+@@ -2826,3 +2826,132 @@
+ 
+ def validate_launcher_details_projection(catalogue,case,validated,submitted):
+  status_exact_tree(submitted,'DETAILS-SUBMITTED-OUTPUT');status_typed_same(submitted,launcher_details_projection(catalogue,case,validated),'DETAILS-OUTPUT-CORRESPONDENCE');return True
++
++
++# Bounded exceptional cleanup selection, close and normal append. No runtime calls.
++def cleanup_append_source(launcher,entry,manager,details,reference):
++ for raw in (launcher,entry,manager):need(type(raw) is bytes,'CLEANUP-SOURCE-BYTES')
++ for v in (details,reference):status_exact_tree(v,'CLEANUP-PARENT-CATALOGUE')
++ pins={n:{'bytes':len(raw),'sha256':digest(raw)} for n,raw in [('launcher',launcher),('entry',entry),('manager',manager)]}
++ status_typed_same(details['source']['sources'],{n:pins[n] for n in ('launcher','entry')},'CLEANUP-DETAILS-SOURCES')
++ status_typed_same(pins['manager'],{k:reference['source']['source'][k] for k in ('bytes','sha256')},'CLEANUP-MANAGER-SOURCE')
++ tree,loc=_client_locate(launcher);mt,ml=_client_locate(manager)
++ fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='_session');outer=fn.body[-1];tr=outer.body[-1];handler=tr.handlers[0];loop=handler.body[1]
++ need(isinstance(tr,ast.Try) and handler.name=='e' and ast.unparse(handler.type)=='BaseException','CLEANUP-OUTER-HANDLER')
++ status_typed_same({**loc(loop),'source':pins['launcher']},details['source']['stop_before'],'CLEANUP-PARENT-FRONTIER')
++ need(isinstance(loop,ast.For) and not loop.orelse and len(loop.body)==1 and ast.unparse(loop.target)=='(name, obj)','CLEANUP-LOOP-SHAPE')
++ need(isinstance(loop.iter,ast.List) and len(loop.iter.elts)==2,'CLEANUP-INPUT-SHAPE')
++ inputs=[]
++ for pair in loop.iter.elts:
++  need(isinstance(pair,ast.Tuple) and len(pair.elts)==2 and isinstance(pair.elts[0],ast.Constant) and type(pair.elts[0].value) is str and isinstance(pair.elts[1],ast.Name),'CLEANUP-INPUT-PAIR')
++  inputs.append({'name':pair.elts[0].value,'slot':pair.elts[1].id,'name_origin':loc(pair.elts[0]),'object_origin':loc(pair.elts[1]),'pair_origin':loc(pair)})
++ status_typed_same([[v['name'],v['slot']] for v in inputs],[['raw','raw'],['managed','managed']],'CLEANUP-ORDERED-INPUTS')
++ guard=loop.body[0];need(isinstance(guard,ast.If) and not guard.orelse and len(guard.body)==1,'CLEANUP-GUARD-SHAPE')
++ test=guard.test;need(isinstance(test,ast.Compare) and isinstance(test.left,ast.Name) and test.left.id=='obj' and len(test.ops)==len(test.comparators)==1 and isinstance(test.ops[0],ast.IsNot) and isinstance(test.comparators[0],ast.Constant) and test.comparators[0].value is None,'CLEANUP-EXACT-NONNONE')
++ protected=guard.body[0];need(isinstance(protected,ast.Try) and len(protected.body)==2 and len(protected.handlers)==1 and not protected.orelse and not protected.finalbody,'CLEANUP-SHARED-TRY')
++ close,append=protected.body;error_handler=protected.handlers[0]
++ need(ast.unparse(close)=='obj.close()' and isinstance(close,ast.Expr) and isinstance(close.value,ast.Call) and not close.value.args and not close.value.keywords,'CLEANUP-CLOSE-EXPRESSION')
++ need(ast.unparse(append)=="details['cleanup'].append([name, 'close returned'])" and isinstance(append,ast.Expr) and isinstance(append.value,ast.Call) and len(append.value.args)==1 and not append.value.keywords,'CLEANUP-APPEND-EXPRESSION')
++ need(error_handler.name=='close_error' and ast.unparse(error_handler.type)=='BaseException','CLEANUP-INNER-HANDLER')
++ # Local slot origins and the successful handoff frontier are read from source.
++ raw_init=[n for n in outer.body if isinstance(n,ast.Assign) and ast.unparse(n)=='raw = None'];managed_init=[n for n in outer.body if isinstance(n,ast.Assign) and ast.unparse(n)=='managed = None']
++ need(len(raw_init)==len(managed_init)==1,'CLEANUP-LOCAL-INITIALIZATION')
++ create=tr.body[0];need(isinstance(create,ast.If) and ast.unparse(create.test)=='create' and not create.orelse,'CLEANUP-CREATE-PREFIX')
++ status_typed_same([ast.unparse(n) for n in create.body[:4]],['raw = authority.Authority.__new__(authority.Authority)',"authority.Authority.__init__(raw, db, cfg['config'], True, ownership_path=owners)",'raw.close()','raw = None'],'CLEANUP-RAW-CLEAR-PREFIX')
++ managed=tr.body[1];need(ast.unparse(managed)=="managed, _ = open_session(c, db, cfg['config'], ownership_path=owners)",'CLEANUP-MANAGED-BINDING')
++ yielded=tr.body[-4];need(ast.unparse(yielded)=='yield ManagedSession(managed)','CLEANUP-HANDOFF')
++ cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='ManagedSession');init=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='__init__')
++ need(ast.unparse(init)=='def __init__(self, managed):\n    self.__managed = managed','CLEANUP-SESSION-REFERENCE')
++ # No local raw/managed rebind in the selected handler before loop selection.
++ need(not any(isinstance(n,ast.Name) and isinstance(n.ctx,ast.Store) and n.id in ('raw','managed') for n in ast.walk(handler.body[0])),'CLEANUP-DETAILS-LOCAL-REBIND')
++ mcls=next(n for n in mt.body if isinstance(n,ast.ClassDef) and n.name=='ManagedAuthority');mc=next(n for n in mcls.body if isinstance(n,ast.FunctionDef) and n.name=='close')
++ rp=[p for p in reference['source']['programs'] if p['function']=='close'];need(len(rp)==1,'CLEANUP-REFERENCE-CLOSE-PROGRAM')
++ need(rp[0]['ast']==ast.dump(mc,include_attributes=False),'CLEANUP-REFERENCE-CLOSE-AST')
++ points=[]
++ def point(name,node,region='loop-selection'):points.append((name,node,region))
++ point('loop-input-evaluation',loop.iter)
++ for pair,record in zip(loop.iter.elts,inputs):
++  label=record['name'];point('input-'+label+'-name',pair.elts[0]);point('input-'+label+'-object',pair.elts[1]);point('input-'+label+'-pair',pair)
++ point('loop-inputs-complete',loop.iter);point('loop-iterator-attempt',loop)
++ for record in inputs:
++  label=record['name'];point(label+'-item-next',loop)
++  for target in loop.target.elts:point(label+'-bind-'+target.id,target)
++  point(label+'-guard-object',test.left);point(label+'-guard-none',test.comparators[0]);point(label+'-guard-result',test)
++ # Expression traversal follows Python's callable-first, arguments-next order.
++ point('selected-try-entry',protected,'try-entry')
++ point('close-object-evaluation',close.value.func.value,'protected-close');point('close-method-evaluation',close.value.func,'protected-close');point('close-call-attempt',close.value,'protected-close');point('close-normal-return',close,'protected-close')
++ call=append.value;sub=call.func.value;item=call.args[0]
++ need(isinstance(sub,ast.Subscript) and isinstance(item,ast.List) and len(item.elts)==2,'CLEANUP-APPEND-PARTS')
++ point('append-details-evaluation',sub.value,'protected-append');point('append-key-evaluation',sub.slice,'protected-append');point('append-list-resolution',sub,'protected-append');point('append-method-evaluation',call.func,'protected-append')
++ for expression in item.elts:
++  point('append-item-'+('name' if isinstance(expression,ast.Name) else 'message'),expression,'protected-append')
++ point('append-item-complete',item,'protected-append');point('append-call-attempt',call,'protected-append');point('append-complete',append,'protected-append')
++ return {'sources':pins,'ordered_inputs':inputs,'selected_name':inputs[1]['name'],'selected_slot':inputs[1]['slot'],'guard_expression':ast.unparse(test),'guard_semantics':'identity is not None; no truthiness substitution','guard_results':{'raw':False,'managed':True},
++  'raw_origins':{'initial':loc(raw_init[0]),'create_close':loc(create.body[2]),'create_clear':loc(create.body[3])},'managed_initial':loc(managed_init[0]),'managed_assignment':loc(managed),'handoff':loc(yielded),'wrapper_reference':loc(init),
++  'manager_close':{**ml(mc),'source':pins['manager']},'reference_close_program':copy.deepcopy(rp[0]),'close_method':close.value.func.attr,'close_arguments':[],'close_keywords':[],'close_return_use':'discarded expression result; no concrete return value asserted',
++  'append_target_expression':ast.unparse(sub),'append_item_expressions':[ast.unparse(n) for n in item.elts],'append_message':item.elts[1].value,'inner_handler':{**loc(error_handler),'source':pins['launcher']},'inner_handler_name':error_handler.name,'same_try':loc(protected),
++  'order':[n for n,_,_ in points],'stages':{n:{**loc(node),'source':copy.deepcopy(pins['launcher']),'semantic_region':region} for n,node,region in points},
++  'continuity_premise':'Explicit conditional continuity of launcher locals, selected manager/method and details cleanup-list roles from validated handoff and completed details assignment. Not runtime identity, exclusivity, absence of mutation or qualification.',
++  'raw_admissibility':'At the selected post-yield constructor-error route raw is None: initialized None on reopening, or cleared only after raw close returned on creation. A surviving partially constructed raw belongs to a different earlier route.',
++  'stop':'Selected normal append only; no line172 error-report append, later iteration/loop completion, failure write, rethrow or owner-lock finalization'}
++
++def compile_cleanup_append(launcher,entry,manager,details,reference):
++ source=cleanup_append_source(launcher,entry,manager,details,reference)
++ return {'format':'I164-EXCEPTIONAL-CLEANUP-APPEND-STATIC-1','source':source,'parent_catalogue_identity':{'sha256':digest((json.dumps(details,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode())},
++  'declarations':[{'id':n,'source_origin':copy.deepcopy(source['stages'][n]),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for n in source['order']],
++  'guard_branches':{'parent':'Completed initial details assignment; original selected constructor error pending; no replacement','prefixes':['control absent','earlier control construction and callback completed normally'],'locals':'Same validated handoff under explicit continuity; raw None skipped, managed non-None selected','guard':'obj is not None by identity','normal':'Source-ordered progress; managed close return independently checked by reference-path interpreter before append','close_or_append_raise':'Distinct origins within same try; close_error handler is eligible but not entered/expanded by this slice','earlier_raise':'Loop input/iteration/binding/guard failures are outside the inner close_error try','termination':'No inferred Python exception or unwind','unobserved':'No further completion; absence of partial effects not established','continuity_unknown':'No loop-selection progress established'},
++  'preserved_relations':['launcher_initial_details_correspondence',*details['preserved_relations']], 'runtime_cleanup_append_chain':None,'actual_admission':False}
++
++def validate_cleanup_append(launcher,entry,manager,details,reference,submitted):
++ status_exact_tree(submitted,'CLEANUP-SUBMITTED-CATALOGUE');status_typed_same(submitted,compile_cleanup_append(launcher,entry,manager,details,reference),'CLEANUP-SOURCE-CORRESPONDENCE');return True
++
++def cleanup_append_binding(catalogue,parent,anchor,continuity):
++ for v in (catalogue,parent,anchor,continuity):status_exact_tree(v,'CLEANUP-BINDING-TYPES')
++ need(type(continuity) is str and continuity in ('explicit conditional premise','UNESTABLISHED'),'CLEANUP-CONTINUITY')
++ scope=parent['scope'];refs=parent['delivery_binding']['references'];details=parent['details_in_model'];need(type(details) is dict,'CLEANUP-DETAILS-REQUIRED')
++ return {'scope':copy.deepcopy(scope),'instance_anchor':copy.deepcopy(anchor),'selected_error':copy.deepcopy(parent['earlier_constructor_exception']),'references':copy.deepcopy(refs),'ordered_values':[{'name':'raw','value':None,'exact_type':'NoneType'},{'name':'managed','value':copy.deepcopy(refs['manager']),'meaning':'source-qualified manager reference, not an observed Python object'}],
++  'selected_index':1,'name':catalogue['source']['selected_name'],'object':copy.deepcopy(refs['manager']),'guard':{'expression':catalogue['source']['guard_expression'],'left':copy.deepcopy(refs['manager']),'right':None,'right_exact_type':'NoneType','result':True},
++  'close_receiver':copy.deepcopy(refs['manager']),'method':catalogue['source']['close_method'],'method_origin':copy.deepcopy(catalogue['source']['manager_close']),'cleanup_list':copy.deepcopy(details['cleanup_reference']),'append_item':[catalogue['source']['selected_name'],catalogue['source']['append_message']],
++  'continuity':continuity,'premise':catalogue['source']['continuity_premise'],'runtime_object_identity':None}
++
++def cleanup_append_projection(catalogue,case,validated):
++ for v in (catalogue,case,validated):status_exact_tree(v,'CLEANUP-EXACT-TYPE')
++ keys={'scope','anchor','parent_result','binding','close_result','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'CLEANUP-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'CLEANUP-VALIDATED:'+k)
++ parent=case['parent_result'];source=catalogue['source'];scope=case['scope'];anchor=case['anchor'];binding=case['binding'];error=parent['earlier_constructor_exception']
++ need(parent['kind']=='CONSTRUCTED-LAUNCHER-INITIAL-DETAILS' and parent['details_assignment_completed_in_model'] is True and parent['replacement_error_in_model'] is None,'CLEANUP-COMPLETED-DETAILS')
++ status_typed_same(parent['last_pending_error_in_model'],error,'CLEANUP-PENDING-ORIGINAL');status_typed_same(parent['active_caught_error_in_model'],error,'CLEANUP-ACTIVE-ORIGINAL');status_typed_same(scope,parent['scope'],'CLEANUP-PARENT-SCOPE');status_typed_same(anchor,parent['instance_anchor'],'CLEANUP-INSTANCE')
++ status_typed_same(binding,cleanup_append_binding(catalogue,parent,anchor,binding['continuity']),'CLEANUP-SELECTED-BINDING')
++ need(parent['cleanup_loop_entered'] is False,'CLEANUP-PARENT-FRONTIER');outcomes=case['outcomes'];need(type(outcomes) is list and bool(outcomes),'CLEANUP-OUTCOMES')
++ if binding['continuity']=='UNESTABLISHED':status_typed_same(outcomes,[{'stage':source['order'][0],'outcome':'unobserved'}],'CLEANUP-UNKNOWN-CONTINUITY')
++ events=[];done=set();replacement=None;terminal=None;close_reached=False;cr=case['close_result']
++ for i,stage in enumerate(source['order']):
++  need(i<len(outcomes),'CLEANUP-MISSING-STEP:'+stage);row=outcomes[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and type(row['stage']) is str and row['stage']==stage,'CLEANUP-STEP-ORDER');kind=row['outcome'];need(type(kind) is str and kind in ('normal','raise','process-termination','unobserved'),'CLEANUP-OUTCOME');terminal=kind
++  if stage=='close-normal-return':
++   close_reached=True
++   if cr is None:need(kind in ('process-termination','unobserved'),'CLEANUP-MISSING-CLOSE-RELATION')
++   elif cr['completion']=='normal':need(kind=='normal' and cr['final']=={'_live':None,'_retired':None,'_phase':'CLOSED'},'CLEANUP-CLOSE-NORMAL-CORRESPONDENCE')
++   elif cr['completion']=='abrupt':need(kind=='raise','CLEANUP-CLOSE-RAISE-CORRESPONDENCE')
++   else:need(cr['completion']=='partial-prefix' and kind in ('process-termination','unobserved'),'CLEANUP-CLOSE-PARTIAL-CORRESPONDENCE')
++  origin=source['stages'][stage];events.append({'id':scope['invocation']+'/cleanup/'+stage,'scope':copy.deepcopy(scope),'stage':stage,'source':copy.deepcopy(origin),'outcome':kind,'selected_object':copy.deepcopy(binding['object']),'selected_error':copy.deepcopy(error),'runtime_frame':None})
++  if kind!='normal':
++   if kind=='raise':replacement={'role':'conditional-cleanup-error','reference':scope['invocation']+'/cleanup/'+stage+'/error','scope':copy.deepcopy(scope),'origin':copy.deepcopy(origin),'failure_region':origin['semantic_region'],'eligible_inner_handler':source['inner_handler_name'] if origin['semantic_region'] in ('protected-close','protected-append') else None,'handler_entry_established':False,'exact_type':None,'exact_value_bytes':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_observation':False}
++   break
++  done.add(stage)
++ need(len(outcomes)==len(events),'CLEANUP-UNREACHED-STEPS')
++ if not close_reached:need(cr is None,'CLEANUP-UNREACHED-CLOSE-RELATION')
++ closed='close-normal-return' in done;appended='append-complete' in done;details=copy.deepcopy(parent['details_in_model'])
++ if appended:details['known_literal_fields']['cleanup'].append(copy.deepcopy(binding['append_item']))
++ return {'kind':'CONSTRUCTED-EXCEPTIONAL-CLEANUP-APPEND','scope':copy.deepcopy(scope),'instance_anchor':copy.deepcopy(anchor),'validated_parent':copy.deepcopy(parent),'binding':copy.deepcopy(binding),'events':events,'completion':'selected-normal-append' if appended else {'raise':'exception-frontier','process-termination':'process-termination','unobserved':'unobserved-continuation'}[terminal],
++  'earlier_constructor_exception':copy.deepcopy(error),'earlier_control_completed_in_model':parent['earlier_control_completed_in_model'],'selected_owner_continuity':copy.deepcopy(parent['selected_owner_continuity']),
++  'raw_guard_false_completed_in_model':'raw-guard-result' in done,'selected_name_bound_in_model':'managed-bind-name' in done,'selected_object_bound_in_model':'managed-bind-obj' in done,'selected_non_none_guard_completed_in_model':'managed-guard-result' in done,
++  'close_method_evaluation_completed_in_model':'close-method-evaluation' in done,'close_attempt_entered_in_model':any(e['stage']=='close-call-attempt' for e in events),'close_normal_return_completed_in_model':closed,'managed_close_relation':copy.deepcopy(cr),'close_return_value_observed':None,'close_return_use':source['close_return_use'],
++  'append_evaluation_entered_in_model':any(e['stage']=='append-details-evaluation' for e in events),'append_attempt_entered_in_model':any(e['stage']=='append-call-attempt' for e in events),'append_completed_in_model':appended,'details_after_acknowledged_steps':details,'cleanup_list_after_frontier':'exact constructed appended item' if appended else 'UNKNOWN partial effects' if terminal!='normal' and any(e['stage']=='append-call-attempt' for e in events) else 'no append call reached in this modeled prefix',
++  'replacement_error_in_model':replacement,'last_pending_error_in_model':copy.deepcopy(replacement or error),'close_itself_failed_established_in_model':close_reached and cr is not None and cr['completion']=='abrupt','terminal_python_exception_in_model':None if terminal in ('process-termination','unobserved') else True if terminal=='raise' else False,
++  'inner_handler_entry_established':False,'error_report_append_expanded':False,'later_iteration_established':False,'loop_completion_established':False,'failure_file_established':False,'final_rethrow_established':False,'owner_finalization_established':False,'managed_local_clear_established':False,'ACTIVE_unlink_established':False,
++  'completion_flags_mean':'Acknowledged conditional modeled progress; false does not prove absence of partial effects','existing_cause_context_suppression':'UNKNOWN; selected original remains represented; no new exception chain evidence','runtime_cleanup_append_chain':None,'runtime_observation':False,'physical_reference_identity':None,'physical_closure_established':False,'durability_established':False,'released_ownership_established':False,'complete_cleanup_established':False,'observer_join':None,'obligations_discharged':False,'external_nonexecution_established':False,'authorization_renewed':False,'actual_admission':False}
++
++def validate_cleanup_append_projection(catalogue,case,validated,submitted):
++ status_exact_tree(submitted,'CLEANUP-SUBMITTED-OUTPUT');status_typed_same(submitted,cleanup_append_projection(catalogue,case,validated),'CLEANUP-OUTPUT-CORRESPONDENCE');return True
+--- prior/code/correspondence.py
++++ current/code/correspondence.py
+@@ -1,13 +1,13 @@
+-"""Mandatory bounded launcher-handler/initial-details correspondence. Saved inputs only."""
++"""Mandatory bounded exceptional cleanup/normal append correspondence. Saved inputs only."""
+ import copy,hashlib,json,os,stat,sys,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+-PRODUCER_PIN={'bytes': 322999, 'sha256': 'c34c8fef0cd16d04622027689f40dcbe058c0c4faa41ac4e50a96ab7cf63737b'}
+-PREDECESSOR_MANIFEST={'bytes':1157393,'sha256':'1a8349ecee728a16c2e5c5d9806b5eeb09f301f1d817ce1a282b14af317e4134'}
+-PREDECESSOR_RECEIPT={'bytes':8723742,'sha256':'23004fec192169630993d1290c5c205126d1457d2deae08f3b0d21ef5c960454'}
++PRODUCER_PIN={'bytes': 342221, 'sha256': 'bf3ff2a787554f111bc7c35b20805a4aed0b0874272d707cad86632e4f612ffc'}
++PREDECESSOR_MANIFEST={'bytes': 1313785, 'sha256': 'a0a0f40e02254798c0e5b8e3e35d8b46850fa9ac0721e32f3043ab211c28a679'}
++PREDECESSOR_RECEIPT={'bytes': 10456658, 'sha256': 'd5b11ed9c09fa335c05c8a2f26201a71bc263466d5a1d48ad51b4994bd1c50cd'}
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+-RELATION='launcher_initial_details_correspondence'
+-REQUIRED={RELATION,'client_construction_none_correspondence','control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
++RELATION='exceptional_cleanup_append_correspondence'
++REQUIRED={RELATION,'launcher_initial_details_correspondence','client_construction_none_correspondence','control_construction_revocation_correspondence','control_exception_revocation_correspondence','callback_bare_rethrow_correspondence','callback_stored_failure_correspondence','stored_failure_revocation_correspondence','token_registration_correspondence'}
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+ def require(ok,code):
+@@ -28,122 +28,133 @@
+ def module(p,name):
+  m=types.ModuleType(name);m.__file__=str(p);exec(compile(p.read_bytes(),str(p),'exec'),m.__dict__);return m
+ def predecessor_root(root):
+- root=Path(root);base=root/'retained/client-construction'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'DETAILS-ROOT-TYPE')
+- mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'DETAILS-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'DETAILS-PREDECESSOR-MANIFEST')
++ root=Path(root);base=root/'retained/details'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'CLEANUP-ROOT-TYPE')
++ mp=base/'MANIFEST.json';require(stat.S_ISREG(mp.lstat().st_mode),'CLEANUP-MANIFEST-TYPE');raw=mp.read_bytes();require(identity(raw)==PREDECESSOR_MANIFEST,'CLEANUP-PREDECESSOR-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest)|{'MANIFEST.json'};dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};files=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'DETAILS-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'DETAILS-UNDECLARED-OR-NONREGULAR');files.add(n)
+- walk(base);require(files==expected and seen==dirs,'DETAILS-PREDECESSOR-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'DETAILS-PREDECESSOR-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'CLEANUP-UNDECLARED-DIRECTORY');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'CLEANUP-UNDECLARED-OR-NONREGULAR');files.add(n)
++ walk(base);require(files==expected and seen==dirs,'CLEANUP-PREDECESSOR-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'CLEANUP-PREDECESSOR-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+- root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode) and identity(path.read_bytes())==PRODUCER_PIN,'DETAILS-PRODUCER-PIN')
+- saved=(base/'results/primary/client-construction-none.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT,'DETAILS-PREDECESSOR-RECEIPT-PIN')
++ root=Path(root);base=predecessor_root(root);path=root/'code/managed_coverage.py';require(stat.S_ISREG(path.lstat().st_mode) and identity(path.read_bytes())==PRODUCER_PIN,'CLEANUP-PRODUCER-PIN')
++ saved=(base/'ld01/receipts/corrected-launcher-details.json').read_bytes();require(identity(saved)==PREDECESSOR_RECEIPT,'CLEANUP-PREDECESSOR-RECEIPT-PIN')
+  raws=[]
+- for name in ('lab_bootstrap.py','prospective_entry.py'):
+-  p=root/'source-evidence'/name;require(stat.S_ISREG(p.lstat().st_mode),'DETAILS-SOURCE-TYPE');b=p.read_bytes();require(b==(base/'source-evidence'/name).read_bytes(),'DETAILS-SOURCE-IDENTITY');raws.append(b)
+- return {'root':root,'prior_root':base,'prior_module':module(base/'code/correspondence.py','_client_construction_predecessor'),'prior_saved':saved,'prior':json.loads(saved),'sources':tuple(raws),'coverage':module(path,'_launcher_details_coverage')}
++ for name in ('lab_bootstrap.py','prospective_entry.py','live_connection.py'):
++  p=root/'source-evidence'/name;require(stat.S_ISREG(p.lstat().st_mode),'CLEANUP-SOURCE-TYPE');b=p.read_bytes();
++  if name=='live_connection.py':require(identity(b)=={k:json.loads(saved)['contexts'][0]['reference_declarations']['source']['source'][k] for k in ('bytes','sha256')},'CLEANUP-MANAGER-IDENTITY')
++  else:require(b==(base/'source-evidence'/name).read_bytes(),'CLEANUP-SOURCE-IDENTITY')
++  raws.append(b)
++ return {'root':root,'prior_root':base,'prior_module':module(base/'code/correspondence.py','_launcher_details_predecessor'),'prior_saved':saved,'prior':json.loads(saved),'sources':tuple(raws),'coverage':module(path,'_cleanup_append_coverage')}
+ def sources(data):return data['sources']
+-def catalogue(data):return data['coverage'].compile_launcher_details(*sources(data),data['prior']['contexts'][0]['client_construction_none_correspondence']['declaration'])
++def catalogue(data):return data['coverage'].compile_cleanup_append(*sources(data),data['prior']['contexts'][0]['launcher_initial_details_correspondence']['declaration'],data['prior']['contexts'][0]['reference_declarations'])
+ def _public_predecessor(data):
+  """One actual unmodified public validation; passive return observation only.
+  No predecessor function, source, output or validation expectation is replaced.
+  A busy monitoring slot or missing return is a conflict, not a fallback route.
+  """
+- p=data['prior_module'];sm=getattr(sys,'monitoring',None);require(sm is not None,'DETAILS-MONITORING-UNAVAILABLE');require(sm.get_tool(2) is None,'DETAILS-MONITORING-CONTENTION')
++ p=data['prior_module'];sm=getattr(sys,'monitoring',None);require(sm is not None,'CLEANUP-MONITORING-UNAVAILABLE');require(sm.get_tool(3) is None,'CLEANUP-MONITORING-CONTENTION')
+  captures=[];basis_code=p._basis.__code__
+  # Private live name object identifies this invocation even if interruption
+  # occurs after C-level reservation but before another Python statement.
+- lease='launcher-details-authenticated-predecessor:'+str(id(captures))
++ lease='cleanup-append-authenticated-predecessor:'+str(id(captures))
+  try:
+-  sm.use_tool_id(2,lease)
++  sm.use_tool_id(3,lease)
+   def capture(code,offset,value):
+-   require(code is p._basis.__code__ and len(captures)==0,'DETAILS-UNEXPECTED-BASIS-RETURN');captures.append(value)
+-  sm.register_callback(2,sm.events.PY_RETURN,capture)
+-  sm.set_local_events(2,basis_code,sm.events.PY_RETURN)
++   require(code is p._basis.__code__ and len(captures)==0,'CLEANUP-UNEXPECTED-BASIS-RETURN');captures.append(value)
++  sm.register_callback(3,sm.events.PY_RETURN,capture)
++  sm.set_local_events(3,basis_code,sm.events.PY_RETURN)
+   result=p.validate(data['prior_root'],data['prior_saved'])
+  finally:
+   # Do not release a foreign reservation, including a failed acquisition race.
+   # CPython's recorded name object is the lease marker; no value-only match.
+-  if sm.get_tool(2) is lease:
++  if sm.get_tool(3) is lease:
+    try:
+-    sm.set_local_events(2,basis_code,0)
++    sm.set_local_events(3,basis_code,0)
+    finally:
+     try:
+-     sm.register_callback(2,sm.events.PY_RETURN,None)
++     sm.register_callback(3,sm.events.PY_RETURN,None)
+     finally:
+-     sm.free_tool_id(2)
+- require(result.get('result')=='PASS' and result.get('contexts')==list(CONTEXTS) and result.get('receipt')==PREDECESSOR_RECEIPT and len(captures)==1,'DETAILS-PUBLIC-PREDECESSOR-RESULT')
+- basis=captures[0];require(p.enc(p._assemble(basis['fresh'],p._rows(basis),basis))==data['prior_saved'],'DETAILS-AUTHENTICATED-BASIS-RECEIPT')
++     sm.free_tool_id(3)
++ require(result.get('result')=='PASS' and result.get('contexts')==list(CONTEXTS) and result.get('receipt')==PREDECESSOR_RECEIPT and len(captures)==1,'CLEANUP-PUBLIC-PREDECESSOR-RESULT')
++ basis=captures[0];require(p.enc(p._assemble(basis['fresh'],p._rows(basis),basis))==data['prior_saved'],'CLEANUP-AUTHENTICATED-BASIS-RECEIPT')
+  return basis,copy.deepcopy(result)
++def _inner(pb):return pb['prior_module'].inner(pb['prior_basis']['fresh'])
+ def _basis(data):
+- fresh=inputs(data['root']);pb,public=_public_predecessor(fresh);p=fresh['prior_module']
+- require(sources(fresh)==p.sources(pb['fresh'])[:2],'DETAILS-AUTHENTICATED-SOURCES')
+- cat=fresh['coverage'].compile_launcher_details(*sources(fresh),pb['catalogue'])
+- return {'fresh':fresh,'prior':copy.deepcopy(fresh['prior']),'prior_basis':pb,'prior_module':p,'public_predecessor':public,'catalogue':cat,'evidence':dict(pb['evidence'])}
++ fresh=inputs(data['root']);pb,public=_public_predecessor(fresh);p=fresh['prior_module'];inner=_inner(pb)
++ require(sources(fresh)==(*p.sources(pb['fresh'])[:2],inner['manager']),'CLEANUP-AUTHENTICATED-SOURCES')
++ reference=pb['prior']['contexts'][0]['reference_declarations']
++ for row in pb['prior']['contexts']:same(row['reference_declarations'],reference,'CLEANUP-AUTHENTICATED-REFERENCE-CONTEXTS')
++ cat=fresh['coverage'].compile_cleanup_append(*sources(fresh),pb['catalogue'],reference)
++ return {'fresh':fresh,'prior':copy.deepcopy(fresh['prior']),'prior_basis':pb,'prior_module':p,'public_predecessor':public,'catalogue':cat,'evidence':dict(pb['evidence']),'inner':inner}
+ def _rows(basis):
+- require(tuple(x['context'] for x in basis['prior']['contexts'])==CONTEXTS,'DETAILS-CONTEXT-DOMAIN');out=[]
++ require(tuple(x['context'] for x in basis['prior']['contexts'])==CONTEXTS,'CLEANUP-CONTEXT-DOMAIN');out=[]
+  for old in basis['prior']['contexts']:
+-  parent=old['client_construction_none_correspondence'];cat=basis['catalogue']
++  parent=old['launcher_initial_details_correspondence'];cat=basis['catalogue']
+   out.append({'context':old['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(parent['instance_anchor']),'scope':copy.deepcopy(parent['scope']),'reference_basis':copy.deepcopy(parent['reference_basis']),
+    'predecessor_receipt':PREDECESSOR_RECEIPT.copy(),'predecessor_public_validation':copy.deepcopy(basis['public_predecessor']),
+    'conditional_links':[{'declaration':d['id'],'source_origin':copy.deepcopy(d['source_origin']),'invocation':None,'frame':None,'observed_value':None} for d in cat['declarations']],
+-   'required_parent':'Original constructor error remains pending after reviewed exact-None bare rethrow and normal removal; pop completion alone does not suffice',
+-   'runtime_handler_details_chain':None,'exact_generated_error_name':None,'exact_generated_message':None,'exact_generated_traceback':None,'exact_details_bytes':None,'physical_reference_observation':None,
+-   'exception_delivery_continuity':'Explicit conditional premise; no runtime arrival established','selected_owner_continuity':'Preserved conditional premise; not exclusivity','existing_cause_context_suppression':'UNKNOWN',
+-   'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(parent['separate_observer']),
+-   'cleanup_loop_coverage':False,'non_none_constructor_branch_complete':False,'outer_cleanup_complete':False,'gap':'No runtime constructor-to-handler/details chain, exact generated strings or cleanup/evidence-write completion.'})
++   'required_parent':'Completed details assignment with selected original constructor error pending and no replacement',
++   'local_reference_continuity':'Explicit conditional premise; selected raw None and handoff manager, not an arbitrary object or observed identity',
++   'close_return_vs_append':'Separate operations in one try; later append failure preserves established normal close return',
++   'runtime_cleanup_append_chain':None,'physical_reference_observation':None,'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'observer_join':None,'separate_observer':copy.deepcopy(parent['separate_observer']),
++   'error_report_append_expanded':False,'later_iterations_complete':False,'outer_cleanup_complete':False,'gap':'No runtime selected-object close/append chain or physical cleanup/retention proof; line172 and later remain unexpanded.'})
+  return out
+-def _check_rows(basis,claims):exact(claims,'DETAILS-SEMANTIC-CLAIMS');same(claims,_rows(basis),'DETAILS-SEMANTIC-CORRESPONDENCE')
++def _check_rows(basis,claims):exact(claims,'CLEANUP-SEMANTIC-CLAIMS');same(claims,_rows(basis),'CLEANUP-SEMANTIC-CORRESPONDENCE')
+ def _compare_evidence(basis,candidate):
+- require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'DETAILS-EVIDENCE-TYPES');require(candidate==basis['evidence'],'DETAILS-VALIDATED-EVIDENCE')
++ require(type(candidate) is dict and all(type(k) is str and type(v) is bytes for k,v in candidate.items()),'CLEANUP-EVIDENCE-TYPES');require(candidate==basis['evidence'],'CLEANUP-VALIDATED-EVIDENCE')
+ def _check_candidate(basis,data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'DETAILS-CATALOGUE');exact(claims,'DETAILS-CLAIMS')
+- same(submitted_catalogue,basis['catalogue'],'DETAILS-CATALOGUE-SOURCE');require(sources(data)==sources(basis['fresh']) and all(type(x) is bytes for x in sources(data)),'DETAILS-CANDIDATE-SOURCE');same(data['prior'],basis['prior'],'DETAILS-CANDIDATE-PREDECESSOR')
+- require(type(data['prior_saved']) is bytes and data['prior_saved']==basis['fresh']['prior_saved'],'DETAILS-CANDIDATE-RECEIPT')
++ exact(submitted_catalogue,'CLEANUP-CATALOGUE');exact(claims,'CLEANUP-CLAIMS')
++ same(submitted_catalogue,basis['catalogue'],'CLEANUP-CATALOGUE-SOURCE');require(sources(data)==sources(basis['fresh']) and all(type(x) is bytes for x in sources(data)),'CLEANUP-CANDIDATE-SOURCE');same(data['prior'],basis['prior'],'CLEANUP-CANDIDATE-PREDECESSOR')
++ require(type(data['prior_saved']) is bytes and data['prior_saved']==basis['fresh']['prior_saved'],'CLEANUP-CANDIDATE-RECEIPT')
+  if evidence is not None:_compare_evidence(basis,evidence)
+  if claims is not None:_check_rows(basis,claims)
+  return _rows(basis)
+ def _checked(data,submitted_catalogue,claims=None,evidence=None):
+- exact(submitted_catalogue,'DETAILS-CATALOGUE');exact(claims,'DETAILS-CLAIMS');basis=_basis(data)
++ exact(submitted_catalogue,'CLEANUP-CATALOGUE');exact(claims,'CLEANUP-CLAIMS');basis=_basis(data)
+  return _check_candidate(basis,data,submitted_catalogue,claims,evidence),basis
+ def semantic(data,submitted_catalogue,claims=None,evidence=None):
+  rows,_=_checked(data,submitted_catalogue,claims,evidence);return copy.deepcopy(rows)
+ def _assemble(data,rows,basis):
+- _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-LAUNCHER-INITIAL-DETAILS-CORRESPONDENCE-1';result['prior_client_construction_components']=result.pop('extension_components');result['prior_client_construction_receipt']=PREDECESSOR_RECEIPT.copy();result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
++ _check_rows(basis,rows);result=copy.deepcopy(basis['prior']);result['format']='I164-EXCEPTIONAL-CLEANUP-APPEND-CORRESPONDENCE-1';result['prior_launcher_details_components']=result.pop('extension_components');result['prior_launcher_details_receipt']=PREDECESSOR_RECEIPT.copy();result['extension_components']={n:identity((Path(data['root'])/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+  for ctx,row in zip(result['contexts'],rows):ctx[RELATION]=copy.deepcopy(row)
+- result['new_launcher_details_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','exact_generated_strings_bytes':None,'non_none_constructor_branch_complete':False,'outer_cleanup_complete':False,'cleanup_loop_entered':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
+-def derive_launcher_details(data,submitted_catalogue,claims=None,evidence=None):
++ result['new_cleanup_append_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','exact_generated_strings_bytes':None,'non_none_constructor_branch_complete':False,'outer_cleanup_complete':False,'error_report_append_expanded':False,'later_iterations_complete':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False};return result
++def derive_cleanup_append(data,submitted_catalogue,claims=None,evidence=None):
+  rows,basis=_checked(data,submitted_catalogue,claims,evidence);return _assemble(data,rows,basis)
++def close_scope(anchor,invocation):return {'acquisition':anchor['record']['acquisition'],'instance':'validated-instance:'+hashlib.sha256(enc(anchor['instance'])).hexdigest(),'invocation':invocation+'/exceptional-managed-close'}
+ def _premises(basis,case):
+- exact(case,'DETAILS-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','delivery_binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-LAUNCHER-INITIAL-DETAILS','DETAILS-CONSTRUCTED-CASE')
+- rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'DETAILS-CONSTRUCTED-CONTEXT');anchor=rows[0]['client_construction_none_correspondence']['instance_anchor'];same(case['anchor'],anchor,'DETAILS-CONSTRUCTED-ANCHOR')
+- pc=case['parent_case'];require(type(pc) is dict,'DETAILS-PARENT-CASE');same({k:pc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'DETAILS-PARENT-INVOCATION')
+- parent=basis['prior_module']._construct_checked(basis['prior_basis'],pc)['projection'];same(case['parent_output'],parent,'DETAILS-VALIDATED-PARENT-OUTPUT')
+- binding=case['delivery_binding'];require(type(binding) is dict and 'continuity' in binding,'DETAILS-DELIVERY-INPUT')
+- expected=basis['fresh']['coverage'].launcher_delivery_binding(basis['catalogue'],parent,anchor,binding['continuity']);same(binding,expected,'DETAILS-EXPECTED-DELIVERY')
+- return {'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(anchor),'parent_result':parent,'delivery_binding':expected,'outcomes':copy.deepcopy(case['outcomes'])}
++ exact(case,'CLEANUP-CONSTRUCTED-INPUT');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','binding','close_case','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-EXCEPTIONAL-CLEANUP-APPEND','CLEANUP-CONSTRUCTED-CASE')
++ rows=[r for r in basis['prior']['contexts'] if r['context']==case['context']];require(len(rows)==1,'CLEANUP-CONSTRUCTED-CONTEXT');anchor=rows[0]['launcher_initial_details_correspondence']['instance_anchor'];same(case['anchor'],anchor,'CLEANUP-CONSTRUCTED-ANCHOR')
++ pc=case['parent_case'];require(type(pc) is dict,'CLEANUP-PARENT-CASE');same({k:pc.get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'CLEANUP-PARENT-INVOCATION')
++ parent=basis['prior_module']._construct_checked(basis['prior_basis'],pc)['projection'];same(case['parent_output'],parent,'CLEANUP-VALIDATED-PARENT-OUTPUT')
++ binding=case['binding'];require(type(binding) is dict and 'continuity' in binding,'CLEANUP-BINDING-INPUT')
++ expected=basis['fresh']['coverage'].cleanup_append_binding(basis['catalogue'],parent,anchor,binding['continuity']);same(binding,expected,'CLEANUP-EXPECTED-BINDING')
++ cc=case['close_case'];cr=None
++ if cc is not None:
++  exact(cc,'CLEANUP-CLOSE-CASE');require(type(cc) is dict,'CLEANUP-CLOSE-CASE');same(cc.get('scope'),close_scope(anchor,case['invocation']),'CLEANUP-CLOSE-SCOPE');require(cc.get('context')==case['context'] and cc.get('method')=='close','CLEANUP-CLOSE-RECEIVER-METHOD')
++  d=basis['inner'];g=d['guards'];cr=basis['fresh']['coverage'].constructed_reference_path(d['manager'],g['guard_relationships'],g['guard_oracle'],cc)
++ return {'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(anchor),'parent_result':parent,'binding':expected,'close_result':cr,'outcomes':copy.deepcopy(case['outcomes'])}
+ def _construct_checked(basis,case):
+- v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.launcher_details_projection(cat,case['projection'],v);c.validate_launcher_details_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'runtime_observation':False}
++ v=_premises(basis,case);c=basis['fresh']['coverage'];cat=basis['catalogue'];out=c.cleanup_append_projection(cat,case['projection'],v);c.validate_cleanup_append_projection(cat,case['projection'],v,case['output']);return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(case['anchor']),'projection':out,'runtime_observation':False}
+ def constructed_projection(data,submitted_catalogue,case):
+- exact(case,'DETAILS-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
++ exact(case,'CLEANUP-CONSTRUCTED-INPUT');_,basis=_checked(data,submitted_catalogue);return _construct_checked(basis,case)
+ def _construct_prior(basis,branch,case):
+- exact(case,'DETAILS-PRIOR-INPUT');require(type(branch) is str and branch in ('client-construction','control-construction','control','bare','stored-client','stored-normal','normal-token'),'DETAILS-PRIOR-BRANCH')
+- if branch=='client-construction':return basis['prior_module']._construct_checked(basis['prior_basis'],case)
++ exact(case,'CLEANUP-PRIOR-INPUT');require(type(branch) is str and branch in ('details','client-construction','control-construction','control','bare','stored-client','stored-normal','normal-token'),'CLEANUP-PRIOR-BRANCH')
++ if branch=='details':return basis['prior_module']._construct_checked(basis['prior_basis'],case)
+  return basis['prior_module']._construct_prior(basis['prior_basis'],branch,case)
+ def constructed_prior(data,submitted_catalogue,branch,case):
+  _,basis=_checked(data,submitted_catalogue);return _construct_prior(basis,branch,case)
+ def derive(root=ROOT):
+- data=inputs(root);return derive_launcher_details(data,catalogue(data))
++ data=inputs(root);return derive_cleanup_append(data,catalogue(data))
+ def _receipt_shape(saved):
+- require(type(saved) is bytes,'DETAILS-RECEIPT-BYTES');v=json.loads(saved)
+- require(type(v) is dict and v.get('format')=='I164-LAUNCHER-INITIAL-DETAILS-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'DETAILS-MANDATORY-RELATIONS');return v
++ require(type(saved) is bytes,'CLEANUP-RECEIPT-BYTES');v=json.loads(saved)
++ require(type(v) is dict and v.get('format')=='I164-EXCEPTIONAL-CLEANUP-APPEND-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'CLEANUP-MANDATORY-RELATIONS');return v
+ def _receipt_checked(basis,saved):
+- _receipt_shape(saved);require(saved==enc(_assemble(basis['fresh'],_rows(basis),basis)),'DETAILS-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_handler_details_chain':'UNAVAILABLE','actual_admission':False}
++ _receipt_shape(saved);require(saved==enc(_assemble(basis['fresh'],_rows(basis),basis)),'CLEANUP-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_cleanup_append_chain':'UNAVAILABLE','actual_admission':False}
+ def validate(root,saved):
+  _receipt_shape(saved);data=inputs(root);_,basis=_checked(data,catalogue(data));return _receipt_checked(basis,saved)
+ if __name__=='__main__':

@@ -1,0 +1,315 @@
+{
+  "confirmed_save_reused": "c43954ff5ee384c6fb6e7a85d83eb36bfea342d1",
+  "entries": 57,
+  "fresh_independent": {
+    "actual_monitored_calls": {
+      "current": {
+        "_assemble": 4,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 1
+      },
+      "unchanged_predecessor": {
+        "_assemble": 2,
+        "_basis": 1,
+        "_checked": 1,
+        "validate": 1
+      }
+    },
+    "actual_unchanged_predecessor_public_positives": 1,
+    "environment": {
+      "cryptography": "50.0.2",
+      "dont_write_bytecode": true,
+      "isolated": 1,
+      "optimization": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "exit": {
+      "finished_utc": "2026-11-01T18:43:00.532988+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2380.611644478995,
+      "timed_out": false
+    },
+    "full_current_public_positives": 1,
+    "full_public_negative_derivations": 0,
+    "layer_counts_excluding_first_three_public_positive_checks": {
+      "actual post-public normal monitoring-state inspection; no interruption campaign": 2,
+      "actual-authenticated-basis _construct_checked and output-comparison core": 79,
+      "authenticated-basis receipt-comparison core": 1,
+      "authenticated-basis receipt-comparison core; no public negative derivation": 1,
+      "defining-source AST, not execution": 1,
+      "exact result comparison; historical execution reused": 1,
+      "exact retained witness-byte comparison": 1,
+      "exact-type input gate before predecessor construction validation": 3,
+      "submitted-object preservation after authenticated-basis rejection": 1
+    },
+    "public_negative_calls": 0,
+    "row_types": {
+      "PASS": 34,
+      "REJECTED": 59
+    },
+    "rows": 93,
+    "stdout_progress_RESULT_reconciled": true
+  },
+  "historical_Engineering_separate": {
+    "primary": {
+      "completed": false,
+      "discrepancy_cause": "UNKNOWN",
+      "progress": 1300,
+      "stdout": 165
+    },
+    "recovered": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 341,
+      "stdout": 341
+    },
+    "source-1": {
+      "completed": true,
+      "discrepancy_cause": null,
+      "progress": 46,
+      "stdout": 46
+    }
+  },
+  "historical_NOT_ACCEPTED_verdict_preserved": "NOT ACCEPTED AS COMPLETE: EC-01 normal-append terminal-exception classification is inconsistent with the retained pending constructor error",
+  "historical_independent_separate": {
+    "public-recovered": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:35:08.016266+00:00",
+        "pid": 10,
+        "returncode": 0,
+        "seconds": 2439.956919127002,
+        "timed_out": false
+      },
+      "kinds": {
+        "DEFECT-OBSERVED": 4,
+        "PASS": 43,
+        "REJECTED": 123
+      },
+      "result": "PASS",
+      "rows": 170
+    },
+    "source-completion": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:05:40.631564+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 4.779847028999939,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 17,
+        "REJECTED": 4
+      },
+      "result": "PASS",
+      "rows": 21
+    },
+    "source-slot3": {
+      "exit": {
+        "finished_utc": "2026-11-01T15:04:43.409856+00:00",
+        "pid": 5,
+        "returncode": 1,
+        "seconds": 4.479841348998889,
+        "timed_out": false
+      },
+      "kinds": {
+        "PASS": 46,
+        "REJECTED": 4
+      },
+      "result": "FAILED-ATTEMPT",
+      "rows": 50
+    }
+  },
+  "historical_receipt": {
+    "bytes": 13408039,
+    "sha256": "f37342856f6b0f3ef9d79714a0d412e0273f09b85eb5a1adb5670a1f4accdefb"
+  },
+  "historical_zero_control_audit_failure_correction": {
+    "completed_group": false,
+    "correction": {
+      "completed_group": true,
+      "exit": {
+        "finished_utc": "2026-11-01T15:08:24.487324+00:00",
+        "pid": 5,
+        "returncode": 0,
+        "seconds": 2.374060729998746,
+        "timed_out": false
+      },
+      "rows": 0,
+      "validator_projector_calls": 0
+    },
+    "exit": {
+      "finished_utc": "2026-11-01T15:07:39.206109+00:00",
+      "pid": 5,
+      "returncode": 1,
+      "seconds": 0.8196810990011727,
+      "timed_out": false
+    },
+    "rows": 0,
+    "validator_projector_calls": 0
+  },
+  "input": {
+    "bytes": 153799952,
+    "sha256": "ae83c5eeb7bf4ab09943f66f239bea3c7802777899f4fe6417e10e39dc9b1f71"
+  },
+  "limits": [
+    "Constructed source correspondence, not observed cleanup/append execution",
+    "Conditional owner/local/method/list continuity; no physical identity/exclusivity proof",
+    "Initial reference states and opaque outcomes are premises, not feasible-runtime-history proof",
+    "No line172 or later cleanup expansion; no normal overall return or final rethrow established",
+    "Non-None construction and outer-cleanup gaps retained; observer unjoined",
+    "Monitoring qualifications remain limited to cooperative CPython3.12.14; cleanup failure/repeated interruption/termination/alternate interpreter/hostile replacement gaps retained",
+    "No new prepared-host or installed-wheel qualification"
+  ],
+  "manifested_hashes": 56,
+  "new_preparation_failure": {
+    "candidate_executions": 0,
+    "controls": 0,
+    "error": "SyntaxError at audit.py line 26: closing parenthesis ')' does not match opening parenthesis '{'",
+    "exit": 1,
+    "fix": "Remove one unmatched closing parenthesis in the reviewer audit dictionary; no candidate code change",
+    "kind": "reviewer read-only audit syntax-preparation failure",
+    "operation": "ast.parse before launching audit",
+    "preserved_source": "audit.py"
+  },
+  "new_read_only_audit": {
+    "candidate_executions": 0,
+    "controls": 0,
+    "exit": {
+      "finished_utc": "2026-11-01T18:08:39.358937+00:00",
+      "pid": 5,
+      "returncode": 0,
+      "seconds": 2.1751359929985483,
+      "timed_out": false
+    }
+  },
+  "only_three_existing_content_files_changed": {
+    "code/correspondence.py": {
+      "after": {
+        "bytes": 15971,
+        "sha256": "9417f4a0e90d35cb927adc0f5c1f307c73b4e8c81adbf3681696f2548474d310"
+      },
+      "before": {
+        "bytes": 15971,
+        "sha256": "2f7909d13896d07790b78ae9d0bff5986dc7ec0bbf85b529009805ec3e0935bd"
+      }
+    },
+    "code/managed_coverage.py": {
+      "after": {
+        "bytes": 342189,
+        "sha256": "a0e8bc4a3486e7c6e128ff2e2f707e5830cb967570189d39d5073011512f9c55"
+      },
+      "before": {
+        "bytes": 342221,
+        "sha256": "bf3ff2a787554f111bc7c35b20805a4aed0b0874272d707cad86632e4f612ffc"
+      }
+    },
+    "tests/cases.py": {
+      "after": {
+        "bytes": 4270,
+        "sha256": "48830748c20ecd199c8ccceb338b8c24a689a71fbaaa2831755a0060b4da9c6b"
+      },
+      "before": {
+        "bytes": 4046,
+        "sha256": "a27880c3d5dae0293e25d23b2c9e3fd3976fe5aeeb79bcf74761f9ce193d5945"
+      }
+    }
+  },
+  "operations": {
+    "Git_saves": 0,
+    "acquisitions": 0,
+    "application_runtime_changes": 0,
+    "completed_campaign_replays": 0,
+    "database_connections": 0,
+    "historical_missing_records_reconstructed": 0,
+    "implementation_changes": 0,
+    "requests": 0,
+    "session_operations": 0
+  },
+  "preparation_is_validation": false,
+  "prepared_receipt": {
+    "bytes": 13408039,
+    "sha256": "4b84be0804b2a0a5dd0cef421403fa2e608a703899c97196f4063b11b04df952"
+  },
+  "preserved": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "SEPARATE",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_UNKNOWN": 4,
+    "lifetime_UNKNOWN": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "prior_support_and_LD01": "Reused unchanged; no earlier suite replay",
+  "receipt_only_changed_component_pins": [
+    "extension_components.managed_coverage.py",
+    "extension_components.correspondence.py"
+  ],
+  "residual_witness": null,
+  "retained_independent_review": {
+    "bytes": 156078207,
+    "sha256": "212d2f0886cb09cddb119470ba908e2142bb141a6eb6bdca83a3e5f83b82cbcb"
+  },
+  "reviewer": "Formal-Lab[6], author-independent of SU-Engineering[288D] construction",
+  "root_manifest_change": "Replaced by exact ROOT-MANIFEST.json as declared; original manifest preserved byte-exact",
+  "root_verification": {
+    "directories": 1103,
+    "exact_membership_types_hashes": "PASS",
+    "files": 3999,
+    "manifest": {
+      "bytes": 1415643,
+      "sha256": "dd11a30a719b7058ed084ad700c27cf66abd9040d37235f2b6ad9a5152c44e53"
+    },
+    "root": "/workspace/review-evidence/FL6-EC01-20261101/recovered"
+  },
+  "supplied_controls_separate": {
+    "PASS": 55,
+    "REJECTED": 50,
+    "controls": 105,
+    "exit": {
+      "automatic_retries": 0,
+      "finished_utc": "2026-11-01T16:45:05.336253+00:00",
+      "returncode": 0,
+      "seconds": 2326.564213976999,
+      "streams_bytes_observed": {
+        "stderr.log": 0,
+        "stdout.log": 7089
+      },
+      "timed_out": false
+    },
+    "layer_counts": {
+      "actual unchanged predecessor public positive": 1,
+      "actual-authenticated-basis _construct_checked/output-comparison core": 47,
+      "authenticated-basis assembly comparison": 1,
+      "authenticated-basis receipt-comparison core": 1,
+      "corrected-expression AST": 1,
+      "defining-source AST": 1,
+      "exact-type gate before constructed parent validation": 12,
+      "full current public positive": 1,
+      "producer output-comparison core with predecessor-validated premises from actual authenticated basis": 12,
+      "saved-byte/receipt comparison": 1,
+      "source-byte diff": 2,
+      "source-grounded frontier oracle": 16,
+      "source-grounded test oracle over authenticated result": 4,
+      "test oracle only": 4,
+      "test-oracle source diff": 1
+    },
+    "new_execution_calls": 0,
+    "result_identity": {
+      "bytes": 22255,
+      "sha256": "00781f9fb00e24a0642f7b717f5dec329ffe07eae6eecddbc32d881819db78fc"
+    },
+    "rows_stdout_result_reconciled": true
+  },
+  "target": "I164-EC01-terminal-exception-correction-1.zip",
+  "unqualified_combined_total": null,
+  "verdict": "EC-01 CLOSED within the retained bounded conditional SOURCE-ONLY correspondence contract"
+}

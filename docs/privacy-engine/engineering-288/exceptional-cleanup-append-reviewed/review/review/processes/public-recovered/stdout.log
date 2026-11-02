@@ -1,0 +1,97 @@
+EVENT {"event": "actual-current-public-start", "seconds": 1.5384971940002288, "soft_control_deadline_seconds": 3150, "hard_timeout_seconds": 3600}
+EVENT {"event": "actual_basis_return_observed", "seconds": 2292.195021749001, "catalogue_format": "I164-EXCEPTIONAL-CLEANUP-APPEND-STATIC-1"}
+1 actual corrected public positive both contexts PASS
+2 actual unchanged predecessor public positive PASS
+3 authenticated current assembly matches exact new receipt PASS
+EVENT {"event": "focused-closure-start", "seconds": 2295.471936725, "actual_returned_basis": true}
+4 independent source: active constructor handler and normal suboperations PASS
+5 retained witness counterpart changes exactly the terminal flag PASS
+6 retained original False witness rejected unchanged REJECTED
+7 rejected original witness is not silently repaired PASS
+8 retained one-field-corrected witness accepts PASS
+9 corrected witness obeys independent pending-exception oracle PASS
+10 new accepted witness differs from historical result in one field only PASS
+11 context0/control0 normal preserves pending original and no overall completion PASS
+12 context0/control0 wrong terminal value False REJECTED
+13 context0/control0 wrong terminal value None REJECTED
+14 context0/control0 wrong terminal value 1 REJECTED
+15 context0/control0 wrong terminal value 'True' REJECTED
+16 context0/control0 omitted terminal classification REJECTED
+17 context0/control1 normal preserves pending original and no overall completion PASS
+18 context0/control1 wrong terminal value False REJECTED
+19 context0/control1 wrong terminal value None REJECTED
+20 context0/control1 wrong terminal value 1 REJECTED
+21 context0/control1 wrong terminal value 'True' REJECTED
+22 context0/control1 omitted terminal classification REJECTED
+23 context1/control0 normal preserves pending original and no overall completion PASS
+24 context1/control0 wrong terminal value False REJECTED
+25 context1/control0 wrong terminal value None REJECTED
+26 context1/control0 wrong terminal value 1 REJECTED
+27 context1/control0 wrong terminal value 'True' REJECTED
+28 context1/control0 omitted terminal classification REJECTED
+29 context1/control1 normal preserves pending original and no overall completion PASS
+30 context1/control1 wrong terminal value False REJECTED
+31 context1/control1 wrong terminal value None REJECTED
+32 context1/control1 wrong terminal value 1 REJECTED
+33 context1/control1 wrong terminal value 'True' REJECTED
+34 context1/control1 omitted terminal classification REJECTED
+35 context0 input-managed-object/raise preserves source semantics PASS
+36 context0 input-managed-object/raise rejects flag False REJECTED
+37 context0 input-managed-object/raise rejects flag None REJECTED
+38 context0 close-normal-return/raise preserves source semantics PASS
+39 context0 close-normal-return/raise rejects flag False REJECTED
+40 context0 close-normal-return/raise rejects flag None REJECTED
+41 context0 append-call-attempt/raise preserves source semantics PASS
+42 context0 append-call-attempt/raise rejects flag False REJECTED
+43 context0 append-call-attempt/raise rejects flag None REJECTED
+44 context0 append failure cannot erase acknowledged close append-call-attempt REJECTED
+45 context0 append-complete/raise preserves source semantics PASS
+46 context0 append-complete/raise rejects flag False REJECTED
+47 context0 append-complete/raise rejects flag None REJECTED
+48 context0 append failure cannot erase acknowledged close append-complete REJECTED
+49 context0 close-normal-return/unobserved preserves source semantics PASS
+50 context0 close-normal-return/unobserved rejects flag False REJECTED
+51 context0 close-normal-return/unobserved rejects flag True REJECTED
+52 context0 append-call-attempt/process-termination preserves source semantics PASS
+53 context0 append-call-attempt/process-termination rejects flag False REJECTED
+54 context0 append-call-attempt/process-termination rejects flag True REJECTED
+55 context0 append-complete/unobserved preserves source semantics PASS
+56 context0 append-complete/unobserved rejects flag False REJECTED
+57 context0 append-complete/unobserved rejects flag True REJECTED
+58 context0 unknown continuity retains None and no progress PASS
+59 context0 nested returned mutations leave pristine expectations PASS
+60 context0 coordinated error disappearance rejects REJECTED
+61 context1 input-managed-object/raise preserves source semantics PASS
+62 context1 input-managed-object/raise rejects flag False REJECTED
+63 context1 input-managed-object/raise rejects flag None REJECTED
+64 context1 close-normal-return/raise preserves source semantics PASS
+65 context1 close-normal-return/raise rejects flag False REJECTED
+66 context1 close-normal-return/raise rejects flag None REJECTED
+67 context1 append-call-attempt/raise preserves source semantics PASS
+68 context1 append-call-attempt/raise rejects flag False REJECTED
+69 context1 append-call-attempt/raise rejects flag None REJECTED
+70 context1 append failure cannot erase acknowledged close append-call-attempt REJECTED
+71 context1 append-complete/raise preserves source semantics PASS
+72 context1 append-complete/raise rejects flag False REJECTED
+73 context1 append-complete/raise rejects flag None REJECTED
+74 context1 append failure cannot erase acknowledged close append-complete REJECTED
+75 context1 close-normal-return/unobserved preserves source semantics PASS
+76 context1 close-normal-return/unobserved rejects flag False REJECTED
+77 context1 close-normal-return/unobserved rejects flag True REJECTED
+78 context1 append-call-attempt/process-termination preserves source semantics PASS
+79 context1 append-call-attempt/process-termination rejects flag False REJECTED
+80 context1 append-call-attempt/process-termination rejects flag True REJECTED
+81 context1 append-complete/unobserved preserves source semantics PASS
+82 context1 append-complete/unobserved rejects flag False REJECTED
+83 context1 append-complete/unobserved rejects flag True REJECTED
+84 context1 unknown continuity retains None and no progress PASS
+85 context1 nested returned mutations leave pristine expectations PASS
+86 context1 coordinated error disappearance rejects REJECTED
+87 subclassed nested error role REJECTED
+88 subclassed output container REJECTED
+89 subclassed literal flag key REJECTED
+90 historical receipt stays historical and rejects corrected pins REJECTED
+91 mutable public result cannot change current receipt expectation PASS
+92 normal authenticated completion monitoring state slot 3 PASS
+93 normal authenticated completion monitoring state slot 2 PASS
+EVENT {"event": "finished", "seconds": 2377.612917205006}
