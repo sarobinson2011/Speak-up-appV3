@@ -1,0 +1,28 @@
+{
+  "result_record_matches_prerun_checkpoint": true,
+  "zero_controls": 0,
+  "exact_error": {
+    "message": "WC-MANDATORY-RELATIONS",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/tests/source_checks.py\", line 9, in <module>\n    r.save('environment.json',environment());r.save('root.json',verify_root(root));m=module(root/'code/correspondence.py');d=m.inputs(root);cat=m.catalogue(d);c=d['coverage'];saved=m._receipt_shape((root/'receipts/prepared-write-call-replacement.json').read_bytes())\n                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/code/correspondence.py\", line 157, in _receipt_shape\n    require(type(v) is dict and v.get('format')=='I164-CLEANUP-WC-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'WC-MANDATORY-RELATIONS');return v\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/code/correspondence.py\", line 16, in require\n    if not ok:raise ValueError(code)\n              ^^^^^^^^^^^^^^^^^^^^^^\nValueError: WC-MANDATORY-RELATIONS\n",
+    "type": "ValueError"
+  },
+  "explicit_exit": {
+    "automatic_retries": 0,
+    "exit": 1,
+    "failure": null,
+    "seconds": 4.126382384998578,
+    "streams": {
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "timed_out": false,
+    "utc": "2026-11-03T08:03:04.392817+00:00"
+  },
+  "campaign_replayed": false
+}

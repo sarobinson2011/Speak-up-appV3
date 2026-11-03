@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/l174-review/code/intake.py", line 46, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/l174-review/code/intake.py", line 38, in main
+    for p in (root/'fixtures/loop').glob('*.json'):assert p.read_bytes()==review.read('review/results/public-recovered/fixture-'+p.name)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

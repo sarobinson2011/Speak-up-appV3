@@ -1,0 +1,9 @@
+{
+  "receipt_changes": [
+    "/extension_components/correspondence.py/bytes",
+    "/extension_components/correspondence.py/sha256"
+  ],
+  "adapter_change": "--- retained erroneous adapter\n+++ active corrected adapter\n@@ -154,7 +154,7 @@\n  data=inputs(root);return derive_write_call(data,catalogue(data))\n def _receipt_shape(saved):\n  require(type(saved) is bytes,'WC-RECEIPT-BYTES');v=json.loads(saved)\n- require(type(v) is dict and v.get('format')=='I164-CLEANUP-WC-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'WC-MANDATORY-RELATIONS');return v\n+ require(type(v) is dict and v.get('format')=='I164-WRITE-CALL-REPLACEMENT-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'WC-MANDATORY-RELATIONS');return v\n def _receipt_checked(basis,saved):\n  _receipt_shape(saved);require(saved==enc(_assemble(basis['fresh'],_rows(basis),basis)),'WC-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'runtime_write_call_chain':'UNAVAILABLE','actual_admission':False}\n def validate(root,saved):\n",
+  "meaning": "Historical preparation correction only; not silent validation repair. Active receipt identity checked separately.",
+  "other_existing_fields_unchanged": true
+}

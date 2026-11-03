@@ -1,0 +1,410 @@
+{
+  "Git_operations": 0,
+  "active_files": {
+    "code/correspondence.py": {
+      "bytes": 16300,
+      "sha256": "910dfa78d494de068992f5c7caa00d0a0e1b03ba8d2ed592bea75945d3df5641"
+    },
+    "code/managed_coverage.py": {
+      "bytes": 390668,
+      "sha256": "275ffd661afa020a33bc2dbf7bd24cd6371ec08d3a81f38af73b087f52377ba3"
+    },
+    "fixtures/loop/0-False-append.json": {
+      "bytes": 28688960,
+      "sha256": "72c47d57f4beae54e8dccf7b2e5aff0a631c56f58af78e9081b7bc15e8d793ec"
+    },
+    "fixtures/loop/0-False-close.json": {
+      "bytes": 26957278,
+      "sha256": "529c0f3b68377e47646602d8285b4065b56bfd3db53c1112abbafa683c1328f6"
+    },
+    "fixtures/loop/0-True-append.json": {
+      "bytes": 29004856,
+      "sha256": "bf746d1d553839d9bcaf841c00cddca90678e7a43a64db11f5a93b92f3ad3433"
+    },
+    "fixtures/loop/0-True-close.json": {
+      "bytes": 27273662,
+      "sha256": "45965299a88cddfde47ef01cae0ee9cbcee2c5bca6717150f4f31cbdea6f7da8"
+    },
+    "fixtures/loop/1-False-append.json": {
+      "bytes": 28688960,
+      "sha256": "31569dd4593b33237a289675e72b1fa936fdd80dfbfddcaa74c05a1c7953fc88"
+    },
+    "fixtures/loop/1-False-close.json": {
+      "bytes": 26957278,
+      "sha256": "96af207f13ce8637e92a98b979227f442078d610d34af442065336dbfd063f94"
+    },
+    "fixtures/loop/1-True-append.json": {
+      "bytes": 29004856,
+      "sha256": "837511a113ea5deded6c6c7ea09d4f4c89f7cddf1ff90bdb9958bef7ef013374"
+    },
+    "fixtures/loop/1-True-close.json": {
+      "bytes": 27273662,
+      "sha256": "6cccef420b745b6d998fb62c2f6a75c3e3fdf7f7d93fe97bf74c4226bf99459e"
+    },
+    "receipts/prepared-write-call-replacement.json": {
+      "bytes": 17227133,
+      "sha256": "6d27fa6e1bc6acb56b492f959efea87f15b3febb3d9e299e7f42275178bc1579"
+    },
+    "source-evidence/lab_bootstrap.py": {
+      "bytes": 11481,
+      "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+    },
+    "source-evidence/live_connection.py": {
+      "bytes": 5717,
+      "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+    },
+    "source-evidence/prospective_entry.py": {
+      "bytes": 9485,
+      "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+    },
+    "tests/cases.py": {
+      "bytes": 3993,
+      "sha256": "92b3065b1d3ef7d18045eb029278618d9c8f562667f1a4319e47c87c4c49163e"
+    },
+    "tests/common.py": {
+      "bytes": 6065,
+      "sha256": "b7c13463ae772a3873aaaeddee2de2c13a924f0f1b058df646d1ffc63e635260"
+    },
+    "tests/public_checks.py": {
+      "bytes": 8713,
+      "sha256": "080f843b322bb55d4f2035456dc8bcc2e02d62d0e8aae4901fecc5f8a4708ec2"
+    },
+    "tests/source_checks.py": {
+      "bytes": 2285,
+      "sha256": "29fea00461af9200905792c5aa938555377f87202ac03c96abd57349f65c4512"
+    }
+  },
+  "authority": "Both acquisitions;11 obligations;4/14 UNKNOWN;DecisionB/retention/allowances unchanged;SOURCE-ONLY;cumulative-envelope unadopted;backup kernel-only;streams UNCOMPUTED;readiness/final binding blocked;admission disabled",
+  "baseline_review": {
+    "bytes": 176585667,
+    "entries": 275,
+    "sha256": "da62fa43eaf66a37d86830bdbb3aa93a3f9f91aa3258237713cde69a196e53c7"
+  },
+  "confirmed_git_save": "88c9fba36bdb243212439acd3027ea934ceda115",
+  "directories": 1124,
+  "environment": {
+    "meaning": "Current offline checker environment is separately recorded; no claim of retained 50.0.2 environment equivalence or host runtime qualification. No environment replacement or package installation performed. Actual unchanged public validator remains authoritative and will be allowed to fail closed.",
+    "observed_cryptography": "50.0.0",
+    "observed_python": "3.12.14",
+    "read_only_import_inspection": [
+      {
+        "lines": [
+          {
+            "line": 158,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{c:sum(x['category']==c for x in rows) for c in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state-review/code/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 140,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{c:sum(x['category']==c for x in rows) for c in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding-review/code/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 140,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{c:sum(x['category']==c for x in rows) for c in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding-review/failures/source-oracle-attempt-1/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 183,
+            "text": "result={'result':'PASS bounded six-field correspondence','assertions':len(checks),'checks':checks,'source_audit_counts':source['counts'],'source':pins,'receipt':identity(raw),'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'no_new_status_observations':True,'constructed_controls_not_execution_evidence':True,'supplied_suites_executed':False,'completed_review_reruns':False,'host_session_execution':False,'database_connections':0}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/field-independent-review/code/independent_controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 232,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/candidate/compiler/managed_observations.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 13,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey,Ed25519PublicKey"
+          },
+          {
+            "line": 14,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/candidate/support/reference/runtime/authority.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 13,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey,Ed25519PublicKey"
+          },
+          {
+            "line": 14,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/sources/authority.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 9,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/sources/correspondence.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 23,
+            "text": "from cryptography.hazmat.backends.openssl.backend import backend"
+          },
+          {
+            "line": 27,
+            "text": "'executable_identity':ident(Path(sys.executable).resolve()),'cryptography_openssl':backend.openssl_version_text(),"
+          },
+          {
+            "line": 29,
+            "text": "for name in ('cryptography','cffi','pycparser'):"
+          },
+          {
+            "line": 48,
+            "text": "for name in ('cryptography','cffi','pycparser'):"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/retained/launcher/code/environment5002.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 178,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{c:sum(x['category']==c for x in rows) for c in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config-review/code/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 178,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{c:sum(x['category']==c for x in rows) for c in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config-review/failures/source-oracle-attempt-1/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 4,
+            "text": "from cryptography.exceptions import InvalidSignature"
+          },
+          {
+            "line": 5,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey,Ed25519PrivateKey"
+          },
+          {
+            "line": 6,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          },
+          {
+            "line": 94,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{cc:sum(x['category']==cc for x in rows) for cc in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'case':a.case,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'requests_issued':0,'new_signatures':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle-review/code/entry_controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 4,
+            "text": "from cryptography.exceptions import InvalidSignature"
+          },
+          {
+            "line": 5,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey,Ed25519PrivateKey"
+          },
+          {
+            "line": 6,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          },
+          {
+            "line": 192,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{cc:sum(x['category']==cc for x in rows) for cc in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'requests_issued':0,'new_signatures':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle-review/code/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 4,
+            "text": "from cryptography.exceptions import InvalidSignature"
+          },
+          {
+            "line": 5,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey,Ed25519PrivateKey"
+          },
+          {
+            "line": 6,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          },
+          {
+            "line": 164,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{cc:sum(x['category']==cc for x in rows) for cc in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'requests_issued':0,'new_signatures':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle-review/code/core_controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 4,
+            "text": "from cryptography.exceptions import InvalidSignature"
+          },
+          {
+            "line": 5,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey"
+          },
+          {
+            "line": 191,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{cc:sum(x['category']==cc for x in rows) for cc in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'requests_issued':0,'new_signatures':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle-review/failures/public-key-lookup-attempt-1/controls.py"
+      },
+      {
+        "lines": [
+          {
+            "line": 4,
+            "text": "from cryptography.exceptions import InvalidSignature"
+          },
+          {
+            "line": 5,
+            "text": "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey,Ed25519PrivateKey"
+          },
+          {
+            "line": 6,
+            "text": "from cryptography.hazmat.primitives import serialization"
+          },
+          {
+            "line": 192,
+            "text": "sys.settrace(None);r={'result':'PASS' if error is None else 'FAIL','assertions':len(rows),'categories':{cc:sum(x['category']==cc for x in rows) for cc in sorted({x['category'] for x in rows})},'checks':rows,'error':error,'recovered':a.recovered,'environment':{'python':sys.version,'optimization':sys.flags.optimize,'cryptography_installed':importlib.metadata.version('cryptography')},'source':locals().get('source'),'database_connections':0,'session_operations':0,'requests_issued':0,'new_signatures':0,'completed_review_reruns':False,'constructed_cases_are_execution_evidence':False}"
+          }
+        ],
+        "path": "retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle-review/failures/interrupted-execution-attempt-2/controls.py"
+      }
+    ],
+    "retained_host_evidence_profile": "3.12.14 / 50.0.2 unchanged"
+  },
+  "files": 4044,
+  "format": "I164-LINE174-NEW-REPLACEMENT-PRERUN-2",
+  "independent_review": "PENDING",
+  "initial_checkpoint": {
+    "checkpoint": {
+      "CRC_membership_hashes": "PASS",
+      "bytes": 182294686,
+      "entries": 38,
+      "name": "I164-line174-NEW-replacement-prerun-1.zip",
+      "sha256": "53526de2623e9f45bedda8722329d2a3806d4a8b6a98efa28baebe97d07511fa",
+      "status": "PREPARED; NEW REPLACEMENT VALIDATION NOT YET RUN"
+    },
+    "file_id": "file_00000000a878820eac606d0b7411074a",
+    "library_file_id": "libfile_08cc07f247588191a104aa439577d008",
+    "local_metadata_applied": true,
+    "meaning": "Observed Library upload acknowledgment before long public validation",
+    "status": "succeeded"
+  },
+  "new_public_attempts": 0,
+  "old_attempt_outcomes": "UNKNOWN; missing bytes not recreated",
+  "preserved_zero_control_failure": {
+    "checks": 0,
+    "environment": {
+      "cryptography": "50.0.0",
+      "dont_write_bytecode": true,
+      "implementation": "cpython",
+      "isolated": 1,
+      "optimization": 0,
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "error": {
+      "message": "WC-MANDATORY-RELATIONS",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/tests/source_checks.py\", line 9, in <module>\n    r.save('environment.json',environment());r.save('root.json',verify_root(root));m=module(root/'code/correspondence.py');d=m.inputs(root);cat=m.catalogue(d);c=d['coverage'];saved=m._receipt_shape((root/'receipts/prepared-write-call-replacement.json').read_bytes())\n                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/code/correspondence.py\", line 157, in _receipt_shape\n    require(type(v) is dict and v.get('format')=='I164-CLEANUP-WC-CORRESPONDENCE-1' and type(v.get('contexts')) is list and len(v['contexts'])==2 and all(type(c) is dict and REQUIRED<=set(c) for c in v['contexts']),'WC-MANDATORY-RELATIONS');return v\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/3da0de3fef10/line174-replacement-20261103/construction/root/code/correspondence.py\", line 16, in require\n    if not ok:raise ValueError(code)\n              ^^^^^^^^^^^^^^^^^^^^^^\nValueError: WC-MANDATORY-RELATIONS\n",
+      "type": "ValueError"
+    },
+    "full_public_negative_derivations": 0,
+    "independent_closure": "PENDING",
+    "result": "FAILED-ATTEMPT",
+    "rows": [],
+    "scope": "Only NEW replacement line174 controls; no verification credit from unavailable old bytes",
+    "seconds": 4.012536402002297
+  },
+  "receipt_format_correction": {
+    "changed_files": {
+      "code/correspondence.py": {
+        "bytes": 16300,
+        "sha256": "910dfa78d494de068992f5c7caa00d0a0e1b03ba8d2ed592bea75945d3df5641"
+      },
+      "receipts/prepared-write-call-replacement.json": {
+        "bytes": 17227133,
+        "sha256": "6d27fa6e1bc6acb56b492f959efea87f15b3febb3d9e299e7f42275178bc1579"
+      }
+    },
+    "original_preserved_in": "failures/receipt-format and immutable pre-run checkpoint1",
+    "producer_and_tests_unchanged": true,
+    "reason": "New replacement preflight stopped at receipt-format gate; zero controls; no predecessor public attempt",
+    "runtime_changed": false
+  },
+  "root_manifest": {
+    "bytes": 1610560,
+    "sha256": "219e8b5acb24abf708c04bb3824a3e259f7b808b213d92ab566b2d4e00d4213d"
+  },
+  "scope": "line174 evaluation and call attempt; body excluded",
+  "source_controls": {
+    "RESULT_rows": 29,
+    "all_four_agree": true,
+    "exit": {
+      "automatic_retries": 0,
+      "exit": 0,
+      "failure": null,
+      "seconds": 14.480839873998775,
+      "streams": {
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 5594,
+          "sha256": "0e9a72d7974e5396f8d92260acefde978cc5ba9f98be1ee837b275fadae86722"
+        }
+      },
+      "timed_out": false,
+      "utc": "2026-11-03T08:06:14.589963+00:00"
+    },
+    "individual_rows": 29,
+    "kinds": {
+      "PASS": 13,
+      "REJECTED": 16
+    },
+    "layer": "source/saved-parent constructed checks; no predecessor authentication",
+    "prior_36_checks_reused": false,
+    "progress_rows": 29,
+    "result": "PASS",
+    "stdout_rows": 29
+  },
+  "status": "SOURCE CHECKS COMPLETED; PUBLIC VALIDATION NOT STARTED",
+  "utc": "2026-11-03T08:07:10.643171+00:00"
+}

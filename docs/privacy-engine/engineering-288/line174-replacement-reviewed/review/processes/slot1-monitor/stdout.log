@@ -1,0 +1,13 @@
+ROW {"check": "normal path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 1, "result": "PASS"}
+ROW {"check": "nested path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 2, "result": "PASS"}
+ROW {"check": "missing path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 3, "result": "PASS"}
+ROW {"check": "extra path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 4, "result": "PASS"}
+ROW {"check": "wrong-assembly path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 5, "result": "PASS"}
+ROW {"check": "validation-failure path releases own monitoring state", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 6, "result": "PASS"}
+ROW {"check": "C-return interruption after use_tool_id and synthetic reuse", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 7, "result": "PASS"}
+ROW {"check": "C-return interruption after register_callback and synthetic reuse", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 8, "result": "PASS"}
+ROW {"check": "C-return interruption after set_local_events and synthetic reuse", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 9, "result": "PASS"}
+ROW {"check": "preexisting leaves foreign reservation and monitoring state intact", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 10, "result": "PASS"}
+ROW {"check": "race-different leaves foreign reservation and monitoring state intact", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 11, "result": "PASS"}
+ROW {"check": "race-equal-distinct leaves foreign reservation and monitoring state intact", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 12, "result": "PASS"}
+ROW {"check": "cleanup interruption leaves local monitoring state despite free slot", "layer": "real CPython3.12 monitoring API; synthetic predecessor, not authentication", "ordinal": 13, "result": "QUALIFIED"}

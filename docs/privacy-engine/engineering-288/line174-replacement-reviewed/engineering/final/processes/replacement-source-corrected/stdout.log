@@ -1,0 +1,29 @@
+CHECK {"check": "independent defining-source evaluation order", "layer": "independent source AST oracle", "ordinal": 1, "result": "PASS"}
+CHECK {"check": "complete retained producer prefix unchanged", "layer": "byte identity", "ordinal": 2, "result": "PASS"}
+CHECK {"check": "runtime source unchanged lab_bootstrap.py", "layer": "byte identity", "ordinal": 3, "result": "PASS"}
+CHECK {"check": "runtime source unchanged prospective_entry.py", "layer": "byte identity", "ordinal": 4, "result": "PASS"}
+CHECK {"check": "runtime source unchanged live_connection.py", "layer": "byte identity", "ordinal": 5, "result": "PASS"}
+CHECK {"check": "normal source-constructed 0-False-close", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 6, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 0-False-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 7, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 0-False-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 8, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 0-False-append", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 9, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 0-False-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 10, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 0-False-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 11, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 0-True-close", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 12, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 0-True-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 13, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 0-True-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 14, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 0-True-append", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 15, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 0-True-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 16, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 0-True-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 17, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 1-False-close", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 18, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 1-False-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 19, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 1-False-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 20, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 1-False-append", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 21, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 1-False-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 22, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 1-False-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 23, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 1-True-close", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 24, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 1-True-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 25, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 1-True-close", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 26, "result": "REJECTED"}
+CHECK {"check": "normal source-constructed 1-True-append", "layer": "saved-parent constructed source oracle; not authenticated", "ordinal": 27, "result": "PASS"}
+CHECK {"check": "reject contradictory terminal_python_exception_in_model 1-True-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 28, "result": "REJECTED"}
+CHECK {"check": "reject contradictory write_new_body_entry_established 1-True-append", "error": "WC-OUTPUT-CORRESPONDENCE", "layer": "source-constructed output comparison; not authenticated", "ordinal": 29, "result": "REJECTED"}

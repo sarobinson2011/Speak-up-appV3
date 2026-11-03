@@ -1,0 +1,2075 @@
+{
+  "checks": 314,
+  "environment": {
+    "cryptography": "50.0.0",
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "optimization": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "error": null,
+  "full_public_negative_derivations": 0,
+  "independent_closure": "PENDING",
+  "result": "PASS",
+  "rows": [
+    {
+      "check": "fresh recovered actual current public positive",
+      "layer": "full public positive",
+      "ordinal": 1,
+      "result": "PASS"
+    },
+    {
+      "check": "exact actual unchanged predecessor result",
+      "layer": "actual predecessor public result",
+      "ordinal": 2,
+      "result": "PASS"
+    },
+    {
+      "check": "prepared receipt equals actual authenticated assembly",
+      "layer": "authenticated receipt comparison",
+      "ordinal": 3,
+      "result": "PASS"
+    },
+    {
+      "check": "normal selected route 0-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 4,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 0-False-close",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 5,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 6,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 7,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 8,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 9,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 10,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 11,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 0-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 12,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 0-False-close",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 13,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 0-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 14,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 0-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 15,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 0-False-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 16,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 0-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 17,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 0-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 18,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 0-False-close",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 19,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 0-False-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 20,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 0-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 21,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 0-False-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 22,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-close raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 23,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 24,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-close catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 25,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 26,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-close process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 27,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-close unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 28,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-close unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 29,
+      "result": "REJECTED"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:continuation",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 30,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 31,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 32,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.left.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 33,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 34,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 35,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 36,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.arg0.callable.base",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 37,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 38,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 39,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 40,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 41,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left.right.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 42,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 43,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 44,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 45,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 46,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 47,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 48,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 49,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 50,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 51,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 52,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 53,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 54,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 55,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 56,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 57,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 58,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 59,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left.right.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 60,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 61,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 62,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 63,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg0",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 64,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:arg1",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 65,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 0-False-close write:call-attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 66,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 0-False-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 67,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 0-False-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 68,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 0-False-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 69,
+      "result": "PASS"
+    },
+    {
+      "check": "order 0-False-close missing",
+      "error": "WC-MISSING-STEP",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 70,
+      "result": "REJECTED"
+    },
+    {
+      "check": "order 0-False-close reordered",
+      "error": "WC-ORDER",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 71,
+      "result": "REJECTED"
+    },
+    {
+      "check": "order 0-False-close extra",
+      "error": "WC-UNREACHED-STEPS",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 72,
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact input type 0-False-close ['binding', 'continuity']",
+      "error": "WC-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type constructed gate",
+      "ordinal": 73,
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact input type 0-False-close ['outcomes']",
+      "error": "WC-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type constructed gate",
+      "ordinal": 74,
+      "result": "REJECTED"
+    },
+    {
+      "check": "subclass key 0-False-close",
+      "error": "WC-OUTPUT-TYPE:KEY-TYPE",
+      "layer": "exact-type output gate",
+      "ordinal": 75,
+      "result": "REJECTED"
+    },
+    {
+      "check": "unestablished continuation 0-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 76,
+      "result": "PASS"
+    },
+    {
+      "check": "normal selected route 0-False-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 77,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 0-False-append",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 78,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 79,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 80,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 81,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 82,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 83,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 84,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 0-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 85,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 0-False-append",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 86,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 0-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 87,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 0-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 88,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 0-False-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 89,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 0-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 90,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 0-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 91,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 0-False-append",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 92,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 0-False-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 93,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 0-False-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 94,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 0-False-append raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 95,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-append raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 96,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-append catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 97,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-append catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 98,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-append process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 99,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-append process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 100,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-False-append unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 101,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-False-append unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 102,
+      "result": "REJECTED"
+    },
+    {
+      "check": "normal selected route 0-True-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 103,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 0-True-close",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 104,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 105,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 106,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 107,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 108,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 109,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 110,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 0-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 111,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 0-True-close",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 112,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 0-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 113,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 0-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 114,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 0-True-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 115,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 0-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 116,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 0-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 117,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 0-True-close",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 118,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 0-True-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 119,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 0-True-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 120,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 0-True-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 121,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-close raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 122,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 123,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-close catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 124,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 125,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-close process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 126,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-close unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 127,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-close unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 128,
+      "result": "REJECTED"
+    },
+    {
+      "check": "normal selected route 0-True-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 129,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 0-True-append",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 130,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 131,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 132,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 133,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 134,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 135,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 136,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 0-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 137,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 0-True-append",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 138,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 0-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 139,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 0-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 140,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 0-True-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 141,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 0-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 142,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 0-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 143,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 0-True-append",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 144,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 0-True-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 145,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 0-True-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 146,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 0-True-append raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 147,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-append raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 148,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-append catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 149,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-append catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 150,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-append process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 151,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-append process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 152,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 0-True-append unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 153,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 0-True-append unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 154,
+      "result": "REJECTED"
+    },
+    {
+      "check": "missing relation 0",
+      "error": "WC-MANDATORY-RELATIONS",
+      "layer": "public required-relation gate before predecessor",
+      "ordinal": 155,
+      "result": "REJECTED"
+    },
+    {
+      "check": "altered receipt 0",
+      "error": "WC-STALE-OR-ALTERED-RECEIPT",
+      "layer": "authenticated-basis receipt comparison; not full public negative derivation",
+      "ordinal": 156,
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omission 0",
+      "error": "WC-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic/source comparison core",
+      "ordinal": 157,
+      "result": "REJECTED"
+    },
+    {
+      "check": "normal selected route 1-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 158,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 1-False-close",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 159,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 160,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 161,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 162,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 163,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 164,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 165,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 1-False-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 166,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 1-False-close",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 167,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 1-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 168,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 1-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 169,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 1-False-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 170,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 1-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 171,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 1-False-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 172,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 1-False-close",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 173,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 1-False-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 174,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 1-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 175,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 1-False-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 176,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-close raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 177,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 178,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-close catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 179,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 180,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-close process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 181,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-close unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 182,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-close unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 183,
+      "result": "REJECTED"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:continuation",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 184,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 185,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 186,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.left.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 187,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 188,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 189,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 190,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.arg0.callable.base",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 191,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 192,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 193,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 194,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 195,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left.right.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 196,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 197,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 198,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 199,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 200,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 201,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 202,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 203,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 204,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable.base",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 205,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.callable",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 206,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 207,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 208,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 209,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 210,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 211,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.arg0.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 212,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 213,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left.right.return",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 214,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.left",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 215,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 216,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0.right",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 217,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg0",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 218,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:arg1",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 219,
+      "result": "PASS"
+    },
+    {
+      "check": "stop at first unobserved 1-False-close write:call-attempt",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 220,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 1-False-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 221,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 1-False-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 222,
+      "result": "PASS"
+    },
+    {
+      "check": "early evaluation frontier 1-False-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 223,
+      "result": "PASS"
+    },
+    {
+      "check": "order 1-False-close missing",
+      "error": "WC-MISSING-STEP",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 224,
+      "result": "REJECTED"
+    },
+    {
+      "check": "order 1-False-close reordered",
+      "error": "WC-ORDER",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 225,
+      "result": "REJECTED"
+    },
+    {
+      "check": "order 1-False-close extra",
+      "error": "WC-UNREACHED-STEPS",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 226,
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact input type 1-False-close ['binding', 'continuity']",
+      "error": "WC-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type constructed gate",
+      "ordinal": 227,
+      "result": "REJECTED"
+    },
+    {
+      "check": "exact input type 1-False-close ['outcomes']",
+      "error": "WC-CONSTRUCTED-INPUT:VALUE-TYPE",
+      "layer": "exact-type constructed gate",
+      "ordinal": 228,
+      "result": "REJECTED"
+    },
+    {
+      "check": "subclass key 1-False-close",
+      "error": "WC-OUTPUT-TYPE:KEY-TYPE",
+      "layer": "exact-type output gate",
+      "ordinal": 229,
+      "result": "REJECTED"
+    },
+    {
+      "check": "unestablished continuation 1-False-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 230,
+      "result": "PASS"
+    },
+    {
+      "check": "normal selected route 1-False-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 231,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 1-False-append",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 232,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 233,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 234,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 235,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 236,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 237,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 238,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 1-False-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 239,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 1-False-append",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 240,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 1-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 241,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 1-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 242,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 1-False-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 243,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 1-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 244,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 1-False-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 245,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 1-False-append",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 246,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 1-False-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 247,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 1-False-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 248,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 1-False-append raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 249,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-append raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 250,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-append catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 251,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-append catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 252,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-append process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 253,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-append process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 254,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-False-append unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 255,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-False-append unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 256,
+      "result": "REJECTED"
+    },
+    {
+      "check": "normal selected route 1-True-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 257,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 1-True-close",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 258,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 259,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 260,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 261,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 262,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 263,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 264,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 1-True-close",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 265,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 1-True-close",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 266,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 1-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 267,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 1-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 268,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 1-True-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 269,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 1-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 270,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 1-True-close",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 271,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 1-True-close",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 272,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 1-True-close",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 273,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 1-True-close",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 274,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 1-True-close raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 275,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-close raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 276,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-close catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 277,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-close catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 278,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-close process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 279,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-close process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 280,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-close unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 281,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-close unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 282,
+      "result": "REJECTED"
+    },
+    {
+      "check": "normal selected route 1-True-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 283,
+      "result": "PASS"
+    },
+    {
+      "check": "pending error/list/stop oracle 1-True-append",
+      "layer": "source-grounded oracle on authenticated constructed output",
+      "ordinal": 284,
+      "result": "PASS"
+    },
+    {
+      "check": "output terminal_python_exception_in_model 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 285,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output write_new_body_entry_established 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 286,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output pid_value 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 287,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output directory_count_value 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 288,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output filename_value 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 289,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output cleanup_list_state 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 290,
+      "result": "REJECTED"
+    },
+    {
+      "check": "output last_pending_error_in_model 1-True-append",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 291,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['invocation'] 1-True-append",
+      "error": "WC-PARENT-INVOCATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 292,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'token', 'symbol'] 1-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 293,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'references', 'owner', 'symbol'] 1-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 294,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['session_binding', 'recorded_destination'] 1-True-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 295,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'details_role', 'reference'] 1-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 296,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['binding', 'cleanup_list', 'reference'] 1-True-append",
+      "error": "WC-EXPECTED-BINDING",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 297,
+      "result": "REJECTED"
+    },
+    {
+      "check": "bound input ['parent_output', 'loop_completion_established'] 1-True-append",
+      "error": "WC-VALIDATED-PARENT",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 298,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated destination 1-True-append",
+      "error": "WC-VALIDATED-DESTINATION",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 299,
+      "result": "REJECTED"
+    },
+    {
+      "check": "result mutation isolation 1-True-append",
+      "layer": "actual-authenticated-basis constructed core; unchanged predecessor revalidates parent",
+      "ordinal": 300,
+      "result": "PASS"
+    },
+    {
+      "check": "terminal frontier 1-True-append raise",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 301,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-append raise",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 302,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-append catchable-interruption",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 303,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-append catchable-interruption",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 304,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-append process-termination",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 305,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-append process-termination",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 306,
+      "result": "REJECTED"
+    },
+    {
+      "check": "terminal frontier 1-True-append unobserved",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 307,
+      "result": "PASS"
+    },
+    {
+      "check": "false terminal attempt 1-True-append unobserved",
+      "error": "WC-OUTPUT-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis output core; reuses validated selected parent",
+      "ordinal": 308,
+      "result": "REJECTED"
+    },
+    {
+      "check": "missing relation 1",
+      "error": "WC-MANDATORY-RELATIONS",
+      "layer": "public required-relation gate before predecessor",
+      "ordinal": 309,
+      "result": "REJECTED"
+    },
+    {
+      "check": "altered receipt 1",
+      "error": "WC-STALE-OR-ALTERED-RECEIPT",
+      "layer": "authenticated-basis receipt comparison; not full public negative derivation",
+      "ordinal": 310,
+      "result": "REJECTED"
+    },
+    {
+      "check": "semantic omission 1",
+      "error": "WC-SEMANTIC-CORRESPONDENCE",
+      "layer": "actual-authenticated-basis semantic/source comparison core",
+      "ordinal": 311,
+      "result": "REJECTED"
+    },
+    {
+      "check": "coordinated catalogue/claims omission",
+      "error": "WC-CATALOGUE-SOURCE",
+      "layer": "actual-authenticated-basis semantic/source comparison core",
+      "ordinal": 312,
+      "result": "REJECTED"
+    },
+    {
+      "check": "independent source rejects coordinated catalogue",
+      "error": "WC-SOURCE-CORRESPONDENCE",
+      "layer": "source-recomputed catalogue comparison",
+      "ordinal": 313,
+      "result": "REJECTED"
+    },
+    {
+      "check": "both-context returned expectation isolation",
+      "layer": "actual-authenticated-basis semantic/source comparison core",
+      "ordinal": 314,
+      "result": "PASS"
+    }
+  ],
+  "scope": "Only NEW replacement line174 controls; no verification credit from unavailable old bytes",
+  "seconds": 2832.4031338509994
+}

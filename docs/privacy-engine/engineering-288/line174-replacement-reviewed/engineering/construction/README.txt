@@ -1,0 +1,7 @@
+NEW replacement line174 construction. FOCUSED VERIFICATION COMPLETED. Independent review PENDING.
+
+Code, fixtures, source identities and byte recovery are in retained/I164-line174-NEW-replacement-prerun-2.zip, saved before public validation. It preserves the erroneous adapter/receipt bytes and zero-control failure; the original pre-run1 archive remains separately saved as libfile_08cc07f247588191a104aa439577d008. Active changed-file identities are in the inner CHECKPOINT.json active_files and ADDITIONS-MANIFEST.json; earlier provenance remains historical. The 29 completed new source checks are separate from the one new recovered public attempt. Results and explicit exits are in results/I164-line174-NEW-replacement-final-records.zip. Inspect exact reconciliation; no missing records reconstructed.
+
+Current offline environment: CPython3.12.14 / Cryptography50.0.0. Retained host evidence remains3.12.14/50.0.2; no equivalence or operational qualification is claimed. Runtime observations remain unavailable. Stop before write_new body; no open/write/flush/fsync, line175 suppression, line176 rethrow or owner finalization established.
+
+Old interrupted implementations and validation outcomes remain unavailable/UNKNOWN. Earlier reported36 checks do not verify these new bytes. No completed historical campaign, Git save, database/session operation or acquisition was repeated. Admission disabled.
