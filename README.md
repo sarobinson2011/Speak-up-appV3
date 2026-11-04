@@ -1,161 +1,37 @@
-# Speak-up-appV3
+# Speak Up
 
-Privacy-preserving petition system built around the rule:
+Speak Up is a privacy-preserving petition application built around the Privacy Engine’s principle of **private actors, public actions**. The engine is designed to let an eligible member prove that an action is valid while keeping the membership secret private. Speak Up applies that design to petitions. It generates a Groth16 proof in the browser, uses a per-petition nullifier to prevent repeat signing, and relies on on-chain verification. Indexing, proof-path delivery and relaying support that flow.
 
-> Private actors, public actions.
+## Project status
 
-The current project direction is an **M2-only Strong Privacy MVP**.
+The application has a recorded M2-only Aurora testnet baseline. The Privacy Engine’s parameterized Generation 4 definition is accepted at the reviewed definition scope. The Generation 4 implementation evidence here is source-only and laboratory scoped. Final model binding and readiness remain blocked, and admission remains disabled. The threat model describes the assumptions behind privacy, including secret custody and the limits of relaying and path distribution.
 
-`STATE.md` is the canonical source of truth for architecture, invariants, deployed addresses, development governance, and current implementation status.
+## Try a local example
 
-If this README or any supporting document conflicts with `STATE.md`, **STATE.md wins**.
+With Git and Node.js 22 available, clone the repository and run the checked-in REFLECT publication-object fixture from the checkout root.
 
----
-
-## Current Architecture
-
-The active system is organized into separate layers:
-
-- **M2** — identity / proof semantics
-- **Enrollment** — economic admission / eligibility semantics
-- **Custody** — local `memberSecret` custody and portability semantics
-- **TEMPEST** — execution / submission semantics
-- **REFLECT** — path / publication semantics
-- **Backend** — non-authoritative indexing, path distribution, and relay support
-
-Core identity path:
-
-    memberSecret -> leaf -> nullifier
-
-Continuity rule:
-
-    continuity = possession of the same original memberSecret
-
-Wallets are runtime convenience handles only.  
-Wallets are not identity, recovery, or continuity authorities.
-
----
-
-## Current Privacy Model
-
-The system allows users to sign petitions with Strong Privacy:
-
-- proof generation happens client-side
-- on-chain verification is authoritative
-- uniqueness is enforced by nullifier
-- the user wallet is not the on-chain signing sender
-- backend services remain non-authoritative
-- comments are disabled in the MVP
-
-Current ZK stack:
-
-- Circom
-- Groth16
-- BN254
-- Poseidon
-- public input order locked in `STATE.md` and `docs/ZK_CIRCUIT_SPEC.md`
-
----
-
-## Quick Start
-
-    # 1. Setup
+    git clone https://github.com/sarobinson2011/Speak-up-appV3.git
     cd Speak-up-appV3
-    cp .env.example .env
-    # Edit .env with your local values
+    node backend/src/services/reflect/publicationObjects.test.js
 
-    # 2. Contracts
-    cd contracts
-    forge build
-    forge test
+Expected output is `reflect publication object validation ok` with exit code 0. The fixture uses Node’s built-ins and local modules, and exercises publication objects and proof-path reconstruction without a service, wallet or database. The command and expected result are derived from the source and retained validation record. This documentation review did not rerun it.
 
-    # 3. Backend
-    cd ../backend
-    npm install
-    npm run dev
+## Explore or contribute
 
-    # 4. Frontend
-    cd ../frontend
-    npm install
-    npm run dev
+- [STATE.md](STATE.md) is authoritative for architecture, invariants and project status.
+- [Privacy Engine design](docs/PRIVACY_ENGINE_DEFINITION.md), [threat model](docs/PRIVACY_THREAT_MODEL.md) and [accepted G4 definition baseline](docs/privacy-engine/generation-004/accepted-definition/engineering-287/README.md).
+- [Developer guide](docs/DEVELOPER_GUIDE.md) covers implementation entry points, request shapes, examples, evidence and contributions.
+- [Report a problem or discuss a change](https://github.com/sarobinson2011/Speak-up-appV3/issues). Include the commit, environment and a reproducible example.
+- [Licensing and third-party terms](docs/LICENSING.md).
 
----
+Development and scoped verification are human-directed and AI-assisted. Formal-Lab is a separate review role within that workflow. The checkpoint records identify reviewer provenance and the scope of each check.
 
-## Project Structure
+## Tip jar
 
-    .
-    ├── backend/        # Node/Express backend: indexer, path service, relay support
-    ├── contracts/      # Foundry smart contracts
-    ├── docs/           # Supporting documentation
-    ├── frontend/       # React + Vite frontend
-    ├── scripts/        # Project scripts
-    ├── zk/             # ZK circuits/artifacts
-    ├── STATE.md        # Canonical project truth
-    └── ZK_ARTIFACTS_MANIFEST.json
+I’m building this to help people. If it’s helped you, taught you something, or you just like what I’m doing, then please feel free to chuck a little ETH in the jar.  Many thanks.
 
----
+Using it, sharing it, or helping improve it is also appreciated. 👍
 
-## Documentation Map
+**Native ETH on Ethereum mainnet, Base mainnet or Arbitrum One.** Use the same receiving address on any of these networks:
 
-Canonical authority:
-
-- `STATE.md`
-
-Current supporting docs:
-
-- `docs/CONTINUITY_CUSTODY_MODEL_V1.md`
-- `docs/PRIVACY_ENGINE_DEFINITION.md`
-- `docs/PRIVACY_THREAT_MODEL.md`
-- `docs/ZK_CIRCUIT_SPEC.md`
-- `docs/ZK_ARTIFACT_PROVENANCE.md`
-- `docs/tempest/*`
-- `docs/reflect/*`
-
-Historical/supporting docs may remain in `docs/`.
-
-Historical documents are useful context, but they must not be read as redefining current architecture if they conflict with `STATE.md`.
-
----
-
-## Development Governance
-
-Active development currently happens through the human Steve + GPT `Engineering[n]` process on `main`.
-
-Development discipline:
-
-- observe before editing
-- make bounded changes
-- preserve layer boundaries
-- update `STATE.md` before architectural changes
-- validate deterministically
-- commit and tag clean checkpoints
-
-Historical autonomous-agent / second-laptop workflows are not the active development authority unless explicitly reintroduced in `STATE.md`.
-
----
-
-## Tech Stack
-
-- **Contracts:** Solidity, Foundry, OpenZeppelin upgradeable patterns
-- **Backend:** Node.js, Express, ethers.js, SQLite indexing
-- **Frontend:** React, Vite, ethers.js
-- **ZK:** Circom, Groth16, snarkjs, Poseidon
-- **Network:** Aurora Testnet
-
----
-
-## Security Notes
-
-The project is privacy-sensitive.
-
-Do not introduce wording, code, comments, logs, route names, or documentation that implies:
-
-- wallet-based identity
-- account recovery
-- backend custody
-- relay continuity
-- REFLECT continuity
-- identity reconstruction
-- hidden linkage semantics
-
-When in doubt, check `STATE.md`.
+`0x8cA41B152eDA1C8c4F9df9AF98E07888EDc17416`
