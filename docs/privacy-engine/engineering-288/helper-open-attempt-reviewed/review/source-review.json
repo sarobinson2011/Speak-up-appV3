@@ -1,0 +1,85 @@
+{
+  "application_execution": 0,
+  "author_oracle_execution": 0,
+  "both_contexts": "source sites and values agree with actual pinned source",
+  "candidate_validator_execution": 0,
+  "helper_source": "def write_new(p,x):\n    with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+  "independently_located_order": [
+    {
+      "meaning": "conditional continuation from authenticated parent",
+      "site": [
+        174,
+        16,
+        174,
+        136,
+        "Call"
+      ]
+    },
+    {
+      "meaning": "conditional helper entry acknowledgement",
+      "site": [
+        23,
+        0,
+        25,
+        54,
+        "FunctionDef"
+      ]
+    },
+    {
+      "meaning": "one positional parameter/reference relation, not two observed assignments",
+      "site": [
+        23,
+        0,
+        25,
+        54,
+        "FunctionDef"
+      ]
+    },
+    {
+      "meaning": "look up open callable",
+      "site": [
+        24,
+        9,
+        24,
+        13,
+        "Name"
+      ]
+    },
+    {
+      "meaning": "look up parameter p",
+      "site": [
+        24,
+        14,
+        24,
+        15,
+        "Name"
+      ]
+    },
+    {
+      "meaning": "evaluate exact string literal xb",
+      "site": [
+        24,
+        16,
+        24,
+        20,
+        "Constant"
+      ]
+    },
+    {
+      "meaning": "attempt open call; return excluded",
+      "site": [
+        24,
+        9,
+        24,
+        21,
+        "Call"
+      ]
+    }
+  ],
+  "limits": "SOURCE-ONLY conditional correspondence; runtime entry, concrete path, physical references and open effects remain unobserved",
+  "parent_call": "write_new(dest/'evidence'/('failure-'+str(os.getpid())+'-'+str(len(list((dest/'evidence').iterdir())))+'.json'),details)",
+  "source": {
+    "bytes": 11481,
+    "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+  }
+}
