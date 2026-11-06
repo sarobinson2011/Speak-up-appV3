@@ -1,0 +1,45 @@
+{
+  "anchors_and_parent_catalogue": "exact retained receipt extraction in both contexts",
+  "documentation_count_mismatch": {
+    "actual": 5,
+    "claim": "Six new functions are appended.",
+    "file": "source/DIFFERENCES.txt",
+    "scope": "nonblocking documentation count discrepancy; candidate left unchanged",
+    "witness": "AST of bytes after the exact 405785-byte reviewed producer prefix contains the five listed definitions"
+  },
+  "excluded_target_site": [
+    24,
+    25,
+    24,
+    26,
+    "Name"
+  ],
+  "helper_source": "def write_new(p,x):\n    with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+  "limitation": "No candidate functions were invoked; semantic assessment is source reasoning plus inspected completed execution records, not a fresh control campaign",
+  "new_functions": [
+    "compile_open_return",
+    "validate_open_return",
+    "open_return_binding",
+    "open_return_projection",
+    "validate_open_return_projection"
+  ],
+  "open_call_site": [
+    24,
+    9,
+    24,
+    21,
+    "Call"
+  ],
+  "source_identity": {
+    "bytes": 11481,
+    "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+  },
+  "unchanged_parent_receipt_fields": "exact equality in both contexts and all inherited top-level fields",
+  "with_statement_site": [
+    24,
+    4,
+    25,
+    54,
+    "With"
+  ]
+}

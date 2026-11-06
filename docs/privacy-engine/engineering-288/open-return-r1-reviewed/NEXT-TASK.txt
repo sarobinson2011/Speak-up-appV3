@@ -1,0 +1,27 @@
+ASSESSMENT ONLY
+
+Carry the authenticated R1 modeled normal-return context operand at
+lab_bootstrap.py:24 into the ordered context protocol lookups for __enter__
+and __exit__. The accepted R1 projection ends at with-context-operand.
+managed_coverage.py:3489 leaves context_protocol_lookup_established false;
+3495 binds the symbolic operand to With.items[0].context_expr.
+correspondence.py:83 retains this boundary in the public receipt.
+
+The Python 3.12 language reference and the upstream CPython v3.12.14 BEFORE_WITH
+implementation put __enter__ lookup first, then __exit__ lookup, then invocation
+of __enter__. Use this order for the pinned conditional contract, with an explicit
+premise for continuation and each lookup outcome. Stop before either method is
+invoked. Model only symbolic method roles and preserve possible missing-method
+or raising lookup paths, catchable interruption, termination and unobserved
+frontiers. Preserve earlier acknowledged effects and the original pending
+error without inventing physical references or missing error details. Only a
+validated normal-return operand can reach these lookups. Context entry, f
+binding, file effects, runtime arrival and later cleanup remain unestablished.
+
+The exact source and accepted symbolic operand suffice for this static slice.
+They leave actual method binding, callable identity and descriptor effects
+unobserved. No next-slice implementation is included.
+
+References
+https://docs.python.org/3.12/reference/compound_stmts.html#the-with-statement
+https://github.com/python/cpython/blob/v3.12.14/Python/bytecodes.c

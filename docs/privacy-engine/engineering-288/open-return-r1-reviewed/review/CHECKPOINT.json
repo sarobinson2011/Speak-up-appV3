@@ -1,0 +1,207 @@
+{
+  "Decision_B": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "admission": false,
+  "all_eleven_obligations": "PRESERVED",
+  "allowances": "UNCHANGED",
+  "backup": "KERNEL-ONLY",
+  "both_acquisitions": "PRESERVED SEPARATELY",
+  "candidate_changed": false,
+  "candidate_implementation_defect_demonstrated": false,
+  "computation_events": {
+    "entered": 17801,
+    "meaning": "computation only; not check counts",
+    "returned": 17801
+  },
+  "created_utc": "2026-11-06T11:31:26.107781+00:00",
+  "cumulative_envelope": "UNADOPTED",
+  "documentation_discrepancy": {
+    "actual": 5,
+    "claim": "Six new functions are appended.",
+    "file": "source/DIFFERENCES.txt",
+    "scope": "nonblocking documentation count discrepancy; candidate left unchanged",
+    "witness": "AST of bytes after the exact 405785-byte reviewed producer prefix contains the five listed definitions"
+  },
+  "final_binding": "BLOCKED",
+  "focused_controls": {
+    "PASS": 100,
+    "REJECTED": 240,
+    "authenticated_basis_captures": 0,
+    "corroborated": 340,
+    "exit": 0,
+    "full_public_validations": 0,
+    "rerun": false
+  },
+  "fresh_execution_required_for_this_verdict": false,
+  "historical_331": "reported only; raw archive/results unavailable; not evidence for R1",
+  "host_public": {
+    "actual_receipt_equals_pinned_expected_bytes": true,
+    "exit": 0,
+    "finished_utc": "2026-11-06T09:45:09.948673+00:00",
+    "full_public_negative_derivations": 0,
+    "helper_thin_validate_calls": 0,
+    "helper_validation": "composition of unchanged _receipt_shape/_checked/_receipt_checked",
+    "positives": 1,
+    "r1_basis_captures": 1,
+    "receipt": {
+      "bytes": 17607505,
+      "sha256": "5c56b5f07619fd566d13f5cb21755915ccb78fb8096617a4ecba0707d214458c"
+    },
+    "timed_out": false,
+    "unchanged_deeper_write_call_public_calls": 1
+  },
+  "inputs": {
+    "focused": {
+      "CRC": "PASS",
+      "entries": 695,
+      "identity": {
+        "bytes": 314095,
+        "sha256": "baf01a2bb5cce0f9cced284739305f144e47051cbb37254367f9c717965bdced"
+      },
+      "manifested_hashes": 694,
+      "safe_exact_membership": "PASS"
+    },
+    "host": {
+      "directories": 7,
+      "empty_directories": [
+        "validation/process/stderr-chunks"
+      ],
+      "entries": 557,
+      "gzip_CRC_and_tar_headers": "PASS",
+      "identity": {
+        "bytes": 1583945,
+        "sha256": "df690ddd470646f33f751b5eef7880e1c0c2442dc25dbd688872a099f549c2fe"
+      },
+      "manifests": {
+        "MANIFEST.json": {
+          "absent_reference_paths": [
+            "code/common_r1.py",
+            "code/expected-runtime.json",
+            "code/host_prepare_launch.py",
+            "code/manager_exit.py",
+            "code/prepare_expected.py",
+            "code/public_positive.py",
+            "code/recovery.py",
+            "code/runtime_profile.py",
+            "code/service_entry_r1.py",
+            "code/supervisor.py",
+            "expected/ASSEMBLED-ROOT-MANIFEST.json",
+            "expected/ASSEMBLY.json",
+            "expected/expected-r1-receipt.json",
+            "inputs/I164-open-return-reconstruction-1-source.zip",
+            "observer-reference/_event_filter.c",
+            "observer-reference/_event_filter.cpython-312-x86_64-linux-gnu.so",
+            "observer-reference/common.py",
+            "observer-reference/native_observer.py",
+            "observer-reference/observer.py",
+            "observer-reference/public_checks.py"
+          ],
+          "declared": 39,
+          "matched": 19
+        }
+      },
+      "regular_files": 550,
+      "safe_membership": "PASS; regular files/directories only"
+    },
+    "launcher": {
+      "CRC": "PASS",
+      "entries": 60,
+      "identity": {
+        "bytes": 204417990,
+        "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+      },
+      "manifested_hashes": 59,
+      "safe_exact_membership": "PASS"
+    },
+    "preparation": {
+      "CRC": "PASS",
+      "entries": 40,
+      "identity": {
+        "bytes": 2733332,
+        "sha256": "23f2d0005de78bf4ff1cb2ccc4ad61b514adc5feafdd6e4f36af7227f2d6caad"
+      },
+      "manifested_hashes": 39,
+      "safe_exact_membership": "PASS"
+    },
+    "source": {
+      "CRC": "PASS",
+      "entries": 27,
+      "identity": {
+        "bytes": 1338052,
+        "sha256": "679d065888ec7988da83649b76f236fc2316cf0a5c742f542ce327a4d12a391e"
+      },
+      "manifested_hashes": 26,
+      "safe_exact_membership": "PASS"
+    }
+  },
+  "inventory_UNKNOWN_totals": 4,
+  "lifetime_UNKNOWN_totals": 14,
+  "predecessor_groups": "443 host / 30 source retained separately, no campaign replay; all earlier failures and UNKNOWNs preserved",
+  "readiness": "BLOCKED",
+  "recovery_dependency": "Exact already-supplied 204417990-byte launcher ZIP required for full root recovery; included small inputs suffice for saved-record inspection",
+  "retention": "UNCHANGED",
+  "reviewer": "Formal-Lab[6], author-independent of R1 construction",
+  "reviewer_execution": {
+    "application_or_helper_calls": 0,
+    "audit_failures": 0,
+    "byte_only_recovery": "completed exit0 with finite timeout",
+    "candidate_checks": 0,
+    "host_attempts": 0,
+    "public_runs": 0
+  },
+  "root": {
+    "adapter": {
+      "bytes": 8634,
+      "sha256": "2662be8ae674c13f718d82f35d50470fd53dfac78d22c7e07c4dccdd084910f9"
+    },
+    "appended_bytes": 10136,
+    "candidate_execution": 0,
+    "directories": 1142,
+    "files": 4090,
+    "helper_parent_manifest": {
+      "bytes": 1694211,
+      "sha256": "5852ec258fbf3543215754c5fdac3d01d475a0e2bd190da4493b07f1ac91071b"
+    },
+    "manifest": {
+      "bytes": 1783461,
+      "sha256": "e7e6d8ab8aad1697d1556c823a80fbf7f6b5d282a76790e3e52c2cc4254cf45b"
+    },
+    "native_observer_reference": "all six exact retained files match recovered harness",
+    "producer": {
+      "bytes": 415921,
+      "sha256": "9ec997a0fc72ae3d69ddd9da02fbb4c5676e91153c4d75d2c9eac05793f05cb0"
+    },
+    "producer_prefix": {
+      "bytes": 405785,
+      "sha256": "ebe179920f8051ff259648a0ec3b0bedbee61352a078865098f0a034a22538b6"
+    },
+    "result": "PASS",
+    "runtime": {
+      "lab_bootstrap.py": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      },
+      "live_connection.py": {
+        "bytes": 5717,
+        "sha256": "7344170ca01a2dbbd3afbeb4a6a55c0b95db0edb1a8d74e4fa4638b6dcfc6da5"
+      },
+      "prospective_entry.py": {
+        "bytes": 9485,
+        "sha256": "a1d80c523ae220228a6b27cac42b5e57a006336e858a8e7db0a75355d6cf2ae9"
+      }
+    },
+    "source_members_preserved": 27,
+    "unchanged_helper_parent_members": 4063,
+    "unchanged_parent_adapter": {
+      "bytes": 15250,
+      "sha256": "c9a5c5ae5cae0d2b0efcdbea41247e141eef992cfe17585636a898d245fc2f69"
+    }
+  },
+  "runtime_observations": "UNAVAILABLE; symbolic outcome correspondence only",
+  "runtime_scope": "recorded pinned CPython3.12.14/Cryptography50.0.0; retained50.0.2 distinct; no new broad host or physical qualification",
+  "source_fixture_qualification": "Source-constructed, not authenticated parent returns; simplified earlier facts do not establish changed historical dispositions",
+  "stop": "normal return supplies symbolic With.items[0].context_expr; before protocol lookup, context entry or f binding",
+  "streams": "UNCOMPUTED",
+  "target": "I164-R1-FULL-PUBLIC-POSITIVE-1-20261106",
+  "verdict": "SUPPORTED within bounded conditional SOURCE-ONLY open-return/context-operand correspondence"
+}
