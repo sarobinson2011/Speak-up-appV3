@@ -1,0 +1,179 @@
+{
+  "Decision_B": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "admission": false,
+  "allowances": "UNCHANGED",
+  "backup": "KERNEL-ONLY",
+  "both_acquisitions": "PRESERVED",
+  "candidate_defect_demonstrated": false,
+  "candidate_unchanged": true,
+  "cumulative_envelope": "UNADOPTED",
+  "date_utc": "2026-11-07T09:23:07.024978+00:00",
+  "engineering_focused": {
+    "PASS": 188,
+    "REJECTED": 233,
+    "exit": 0,
+    "reused_not_replayed": true,
+    "rows": 421
+  },
+  "final_binding": "BLOCKED",
+  "fresh_authenticated_basis_core_controls": 0,
+  "full_public_negative_derivations": 0,
+  "historical_qualifications": "Preserved in REVIEW.txt, source HISTORY.json, unchanged reused R1 review and retained launcher dependency",
+  "identity": "I164-CONTEXT-SPECIAL-LOOKUP-1-INDEPENDENT-REVIEW",
+  "independent_results": {
+    "chunks": 117,
+    "counts": {
+      "PASS": 57,
+      "REJECTED": 60
+    },
+    "environment": {
+      "cryptography_installed": "50.0.0",
+      "cryptography_used_by_new_controls": false,
+      "dont_write_bytecode": true,
+      "implementation": "cpython",
+      "isolated": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "explicit_exit": {
+      "automatic_retries": 0,
+      "exit": 0,
+      "finished_utc": "2026-11-07T09:16:38.841689+00:00",
+      "seconds": 4.567712484000367,
+      "streams": {
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 30706,
+          "sha256": "d3a7afff25af0418119f76294ba91a4f470642d79617d423a55b46b12a097f3a"
+        }
+      },
+      "timed_out": false
+    },
+    "final_candidate_exact_manifest": {
+      "directories": 1155,
+      "files": 4124,
+      "result": "UNCHANGED"
+    },
+    "four_way_record_agreement": true,
+    "full_public_negative_derivations": 0,
+    "layers": {
+      "constructed model input constraints; not authenticated basis": {
+        "REJECTED": 26
+      },
+      "constructed output comparison; not authenticated basis": {
+        "REJECTED": 16
+      },
+      "constructed typed output comparison; not authenticated basis": {
+        "REJECTED": 2
+      },
+      "direct receipt-shape gate before derivation": {
+        "REJECTED": 5
+      },
+      "direct receipt-shape gate only": {
+        "PASS": 1
+      },
+      "direct receipt-shape helper isolation": {
+        "PASS": 1
+      },
+      "exact-type input gate before normalization": {
+        "REJECTED": 6
+      },
+      "exact-type submitted-output gate": {
+        "REJECTED": 2
+      },
+      "independent defining-source inspection": {
+        "PASS": 7
+      },
+      "independent source-model expectations": {
+        "PASS": 48
+      },
+      "source catalogue comparison against pinned source": {
+        "REJECTED": 3
+      }
+    },
+    "new_authenticated_basis_core_controls": 0,
+    "new_public_runs": 0,
+    "pure_source_fixture_limitation": "Retained source-only R1 builder is scaffolding; reviewer changes only new synthetic absent-control premise to None. Expectations derived independently from C/source, not author oracle.",
+    "reviewer_failures": [],
+    "rows": 117,
+    "status": "PASS",
+    "streams": {
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 30706,
+        "sha256": "d3a7afff25af0418119f76294ba91a4f470642d79617d423a55b46b12a097f3a"
+      }
+    }
+  },
+  "inputs": {
+    "embedded_focused": {
+      "bytes": 493709,
+      "entries": 1291,
+      "filename": "I164-context-special-lookup-1-results.zip",
+      "host_member": "reference/I164-context-special-lookup-1-results.zip",
+      "sha256": "2104b28f70680183726f10708c3c91a540722922600437e5bec0dbc6ba059749"
+    },
+    "embedded_source": {
+      "bytes": 2672808,
+      "entries": 34,
+      "filename": "I164-context-special-lookup-1-source.zip",
+      "host_member": "inputs/I164-context-special-lookup-1-source.zip",
+      "sha256": "7de018b48462776eb880468aea2a0d3048e4d2668bda2e5f5ec3a5126e250fb5"
+    },
+    "external_launcher": {
+      "bytes": 204417990,
+      "entries": 60,
+      "filename": "I164-helper-open-persistent-host-launcher-review-2.zip",
+      "included": false,
+      "library_file_id": "libfile_fde3_f-f9fd72efc654819194987af266042001_39c64cf85e608191bb9545db7327fd84",
+      "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+    },
+    "host": {
+      "bytes": 6199798,
+      "entries": 601,
+      "filename": "I164-context-special-lookup-public-1-host-evidence.tar(1).gz",
+      "included": "upload/I164-context-special-lookup-public-1-host-evidence.tar(1).gz",
+      "library_file_id": "libfile_fde3_f-04220b94cab081919305c8c075386607_39c64cf85e608191bb9545db7327fd84",
+      "sha256": "b7a80f0a7ac9b0d106bbf607cf93814e12f11922ebd8e64a976126765eeaf07f"
+    },
+    "reused_R1_review": {
+      "bytes": 5144527,
+      "entries": 58,
+      "filename": "I164-open-return-R1-public-positive-1-independent-review.zip",
+      "included": false,
+      "library_file_id": "libfile_fde3_f-7e03eaea39608191aff88c58a5e0252f_39c64cf85e608191bb9545db7327fd84",
+      "sha256": "030e43b22f5a3f7b3d16dadc6c187abbc211c2a972b8ac411ef1295302241a25"
+    }
+  },
+  "inventory_UNKNOWN_totals": 4,
+  "lifetime_UNKNOWN_totals": 14,
+  "obligations": 11,
+  "physical_lookup_effects": "UNOBSERVED",
+  "readiness": "BLOCKED",
+  "retention": "UNCHANGED",
+  "reviewer": "Formal-Lab[6], independent of construction author",
+  "runtime_lookup_chain": "UNAVAILABLE",
+  "saved_host_public_positive": {
+    "basis_captures": 1,
+    "both_contexts": true,
+    "calls": 1,
+    "child_exit": 0,
+    "completed_utc": "2026-11-07T08:30:47.897168+00:00",
+    "receipt_bytes": 17794442,
+    "receipt_sha256": "a34dd110037e9e3ea1216ac0cdbf25b9a7e6e3984a31321f51bb63537e65cbd3",
+    "reused_not_replayed": true,
+    "timed_out": false
+  },
+  "scope_stop": "after selected __exit__ special-lookup result; before invocation of either method, context entry or f binding",
+  "smallest_witness": null,
+  "source_build_equivalence": "NOT ESTABLISHED",
+  "streams": "UNCOMPUTED",
+  "verdict": "SUPPORTED within bounded conditional SOURCE-ONLY context-special-lookup correspondence"
+}

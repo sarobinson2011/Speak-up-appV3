@@ -1,0 +1,9 @@
+{
+  "stage": "host tar byte extraction preparation",
+  "exit": 1,
+  "exception": "IndexError: tuple index out of range at root-name inspection",
+  "cause": "tar root entry normalizes to empty PurePosixPath.parts",
+  "files_extracted": 0,
+  "candidate_or_review_controls": 0,
+  "disposition": "Preserved; handle explicit tar root directory without changing evidence"
+}

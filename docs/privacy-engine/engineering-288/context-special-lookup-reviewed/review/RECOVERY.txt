@@ -1,0 +1,53 @@
+REVIEW CHECKPOINT RECOVERY — no automatic validation or application execution
+
+1. Verify the checkpoint's external bytes/SHA-256 and ZIP CRC, safe exact regular
+   membership and every MANIFEST.json entry. Extract to a NEW persistent directory,
+   never /tmp. Preserve existing files and all partial/failure records.
+2. Read context-lookup-review/REVIEW.txt, CHECKPOINT.json, INPUTS.json and the saved
+   audit JSONs. Independent raw rows, incremental progress, chunks, stdout/stderr,
+   explicit exits, fixture descriptions and reviewer code are included. Do not run
+   run_independent.py or independent_controls.py to read this completed review.
+3. The exact 6,199,798-byte host tar is included under upload/. Verify its SHA-256
+   b7a80f0a7ac9b0d106bbf607cf93814e12f11922ebd8e64a976126765eeaf07f.
+   It includes all 47 preparation-manifest members, the exact 34-entry source ZIP,
+   the 1,291-entry focused-results ZIP, completed host streams/records/exits and
+   the preparation-generation failure. Source-first/preparation-only text remains
+   historical and is read in chronology with final results.
+4. Full byte-only candidate recovery needs the retained external launcher ZIP:
+   I164-helper-open-persistent-host-launcher-review-2.zip
+   204,417,990 bytes /60 entries,
+   b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c.
+   The reused independent R1 review is also identified externally:
+   I164-open-return-R1-public-positive-1-independent-review.zip
+   5,144,527 bytes /58 entries,
+   030e43b22f5a3f7b3d16dadc6c187abbc211c2a972b8ac411ef1295302241a25.
+   Exact retrieval identifiers and sizes are in INPUTS.json. Copies are not added
+   to this compact checkpoint. Do not use historical source/result archives with
+   matching names but different bytes.
+5. If byte-only recovery is needed, use a separate absent recovery workspace. Copy
+   the exact host tar into its upload/ directory using the archived filename. Put
+   the two externally verified ZIPs at the workspace root, with exact filenames.
+   Create an otherwise empty context-lookup-review/ directory containing copies
+   of audit_archives.py and recover_review.py from this checkpoint. First run only
+   audit_archives.py, then recover_review.py with -B. The second starts only the
+   unchanged standard-library recovery utility under a 300-second timeout. It does
+   not import candidate/application code or call any validator. Keep outputs and
+   explicit exit records if recovery fails; do not retry silently.
+6. The new exact assembled manifest is recovered from
+   host/expected/ASSEMBLED-ROOT-MANIFEST.json: 1,837,333 bytes, SHA-256
+   0145fe8c0ae5a2c6c5d71e7b94830f5000ac4a8a990858f0886884437fe5293b.
+   It describes 4,124 regular files and 1,155 derived directories. The retained R1
+   root has 4,090 files/1,142 directories, manifest 1,783,461 bytes, SHA-256
+   e7e6d8ab8aad1697d1556c823a80fbf7f6b5d282a76790e3e52c2cc4254cf45b.
+   Recovery restores the 27-file R1 source plus 4,063-file helper parent, then the
+   34-file new source plus R1. Check exact types, members and hashes; do not treat
+   compact source MANIFESTs as the complete assembled-root manifest.
+7. Saved audits are sufficient to inspect this review. No host launch, new public
+   validation, author campaign, old review, dummy, observer, helper, method invocation,
+   database/session operation, acquisition, Git save or policy change is authorized
+   by these recovery instructions. The original preparation ZIP's outer digest is
+   a consistent recorded identity only; no container reconstruction is required.
+
+All authority boundaries, historical accounting qualifications and UNKNOWN totals
+remain in force. This checkpoint establishes bounded conditional SOURCE-ONLY
+correspondence support; runtime arrival and physical effects remain unobserved.

@@ -1,0 +1,155 @@
+{
+  "actual_basis_capture": {
+    "capture_count": 1,
+    "event": "actual-authenticated-basis-returned",
+    "meaning": "Exact returned object; public receipt comparison still required",
+    "seconds": 3173.6443506549986,
+    "utc": "2026-11-07T08:30:33.644200+00:00"
+  },
+  "actual_provenance": {
+    "R1_basis_source": "actual unchanged R1 _basis return inside lookup _basis",
+    "R1_receipt": {
+      "bytes": 17607505,
+      "sha256": "5c56b5f07619fd566d13f5cb21755915ccb78fb8096617a4ecba0707d214458c"
+    },
+    "R1_validation": {
+      "actual_admission": false,
+      "contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-TWO"
+      ],
+      "receipt": {
+        "bytes": 17607505,
+        "sha256": "5c56b5f07619fd566d13f5cb21755915ccb78fb8096617a4ecba0707d214458c"
+      },
+      "result": "PASS"
+    },
+    "capture_source": "actual return of new lookup _basis captured by unchanged native observer using exact code identity",
+    "contexts": [
+      "SYMBOLIC-U-ONE",
+      "SYMBOLIC-U-TWO"
+    ],
+    "deeper_public_predecessor": {
+      "actual_admission": false,
+      "contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-TWO"
+      ],
+      "receipt": {
+        "bytes": 17227133,
+        "sha256": "6d27fa6e1bc6acb56b492f959efea87f15b3febb3d9e299e7f42275178bc1579"
+      },
+      "result": "PASS",
+      "runtime_write_call_chain": "UNAVAILABLE"
+    },
+    "helper_basis_source": "actual unchanged helper _checked return inside R1 _basis",
+    "helper_receipt": {
+      "bytes": 17426465,
+      "sha256": "5780038e972c1360e0b67f2f7f3a1bb5a9a2d5551fd2c3b9c14a81250d1224ee"
+    },
+    "helper_validation": {
+      "actual_admission": false,
+      "contexts": [
+        "SYMBOLIC-U-ONE",
+        "SYMBOLIC-U-TWO"
+      ],
+      "receipt": {
+        "bytes": 17426465,
+        "sha256": "5780038e972c1360e0b67f2f7f3a1bb5a9a2d5551fd2c3b9c14a81250d1224ee"
+      },
+      "result": "PASS",
+      "runtime_helper_open_chain": "UNAVAILABLE"
+    },
+    "meaning": "Unchanged substantive authentication and receipt-comparison path, actual returned objects; no stub, serialized basis or saved PASS substitution.",
+    "thin_R1_validate_wrapper_called": false
+  },
+  "child_exit": {
+    "automatic_retries": 0,
+    "child_exit": 0,
+    "child_identity": null,
+    "finished_utc": "2026-11-07T08:30:47.897168+00:00",
+    "kill_sent": false,
+    "outcome_requires_result_reconciliation": true,
+    "scope": "I164-CONTEXT-LOOKUP-FULL-PUBLIC-POSITIVE-1-20261106; exactly one new lookup public positive; no focused or historical replays",
+    "seconds": 3188.0288762389973,
+    "streams": {
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 99442,
+        "sha256": "f430f305b6fb301ff297324d4cb516b35159c7e7c441c7c84bf286ac36b77f80"
+      }
+    },
+    "supervisor_failure": null,
+    "termination_requested": null,
+    "timed_out": false
+  },
+  "chunks": {
+    "stderr": 0,
+    "stdout": 262
+  },
+  "events": {
+    "actual-authenticated-basis-returned": 1,
+    "computation-progress": 207,
+    "lookup-full-public-positive-complete": 1,
+    "lookup-full-public-positive-start": 1,
+    "native-observer-stop": 1,
+    "public-validator-departed": 26,
+    "public-validator-entered": 26
+  },
+  "full_public_negative_derivations": 0,
+  "last_computation_event": {
+    "abrupt_or_None_qualified": 0,
+    "active": 0,
+    "entered": 17806,
+    "event": "computation-progress",
+    "meaning": "Actual selected source-function events; return is not acceptance or runtime execution evidence",
+    "returned": 17806,
+    "seconds": 3179.8144654979988,
+    "sequence": 207,
+    "utc": "2026-11-07T08:30:39.814317+00:00"
+  },
+  "manager_exit": {
+    "EXIT_CODE": "exited",
+    "EXIT_STATUS": "0",
+    "SERVICE_RESULT": "success",
+    "meaning": "Service-manager observation only; distinct from supervisor child exit and public result",
+    "utc": "2026-11-07T08:30:48.000592+00:00"
+  },
+  "observer_events_are_controls": false,
+  "public_calls": {
+    "code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/retained/report/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/retained/report/retained/cleanup/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/retained/report/retained/cleanup/retained/details/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/retained/report/retained/cleanup/retained/details/retained/client-construction/code/correspondence.py": 1,
+    "retained/r1/retained/helper-open/retained/write-call/retained/loop/retained/report/retained/cleanup/retained/details/retained/client-construction/retained/control-construction/retained/control/retained/bare/retained/callback/retained/stored/retained/owner/retained/exit/retained/token/retained/status/original/retained/state/retained/client/original/retained/handle/retained/state/retained/config/retained/binding/retained/hf01/original/retained/references/retained/fields/retained/occurrence/retained/correction/code/correspondence.py": 19
+  },
+  "public_positives": 1,
+  "receipt": {
+    "bytes": 17794442,
+    "sha256": "a34dd110037e9e3ea1216ac0cdbf25b9a7e6e3984a31321f51bb63537e65cbd3"
+  },
+  "receipt_bytes_equal": true,
+  "reviewer_launches": 0,
+  "service_exit": {
+    "exit": 0,
+    "meaning": "Service wrapper only; public result and supervisor/manager exits remain separate",
+    "utc": "2026-11-07T08:30:47.901335+00:00"
+  },
+  "status": "PASS",
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 99442,
+      "sha256": "f430f305b6fb301ff297324d4cb516b35159c7e7c441c7c84bf286ac36b77f80"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "R1_focused_checks_reused": 340,
+  "R1_public_positive_reused": 1,
+  "R1_root_manifest": {
+    "bytes": 1783461,
+    "sha256": "e7e6d8ab8aad1697d1556c823a80fbf7f6b5d282a76790e3e52c2cc4254cf45b"
+  },
+  "actual_admission": false,
+  "assembled_root_manifest": {
+    "bytes": 1837333,
+    "sha256": "0145fe8c0ae5a2c6c5d71e7b94830f5000ac4a8a990858f0886884437fe5293b"
+  },
+  "attempt": "I164-CONTEXT-LOOKUP-FULL-PUBLIC-POSITIVE-1-20261106",
+  "contexts": [
+    "SYMBOLIC-U-ONE",
+    "SYMBOLIC-U-TWO"
+  ],
+  "deadline_basis": {
+    "explanation": "Approximately 53 minutes for the retained single R1 full public positive under the same runtime/native observer. The new wrapper adds one static layer and byte checks around the same unchanged authentication computation. 60\u201390 minutes is an estimate, not a guarantee. Retain 110-minute soft, 115-minute supervisor and 120-minute service deadlines to reserve finalization; no retry.",
+    "saved_R1_child_exit": 0,
+    "saved_R1_child_seconds": 3181.031228776992,
+    "saved_R1_timed_out": false
+  },
+  "estimate_minutes": [
+    60,
+    90
+  ],
+  "expected_receipt": {
+    "bytes": 17794442,
+    "sha256": "a34dd110037e9e3ea1216ac0cdbf25b9a7e6e3984a31321f51bb63537e65cbd3"
+  },
+  "full_public_negative_derivations": 0,
+  "hard_seconds": 6900,
+  "historical_reported_unavailable": 331,
+  "launcher_archive": {
+    "bytes": 204417990,
+    "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+  },
+  "lookup_focused_checks_reused": 421,
+  "lookup_public_calls_after_separate_authorization": 1,
+  "manager_seconds": 7200,
+  "predecessor_checks_reused_separately": {
+    "host": 443,
+    "source": 30
+  },
+  "preflight": "Exact installed CPython 3.12.14 Linux x86_64 ABI, interpreter/header/native and selected dependency file profile; Ubuntu24.04, systemd>=254, existing Linger=yes. Stop on mismatch; no installation or override. Retained service profile matches the expected comparable profile, not a fresh host measurement.",
+  "python": "/srv/Engineering-288-execution/steve/I164-helper-open-runtime-20260825/python/bin/python3",
+  "r1_receipt": {
+    "bytes": 17607505,
+    "sha256": "5c56b5f07619fd566d13f5cb21755915ccb78fb8096617a4ecba0707d214458c"
+  },
+  "r1_source_archive": {
+    "bytes": 1338052,
+    "sha256": "679d065888ec7988da83649b76f236fc2316cf0a5c742f542ce327a4d12a391e"
+  },
+  "soft_seconds": 6600,
+  "source_archive": {
+    "bytes": 2672808,
+    "sha256": "7de018b48462776eb880468aea2a0d3048e4d2668bda2e5f5ec3a5126e250fb5"
+  },
+  "status": "PREPARED ONLY; separate launch authorization required",
+  "unit": "i164-context-special-lookup-public-1-20261106.service",
+  "workspace": "/srv/Engineering-288-execution/steve/I164-context-special-lookup-public-1-20261106"
+}

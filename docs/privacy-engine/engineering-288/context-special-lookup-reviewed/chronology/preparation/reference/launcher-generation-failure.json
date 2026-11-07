@@ -1,0 +1,9 @@
+{
+  "stage": "external launcher text generation",
+  "exit": 1,
+  "candidate_or_public_execution": 0,
+  "files_written_by_failed_Python_script": 0,
+  "error": "File <stdin>, line31: SyntaxError: unterminated triple-quoted f-string literal (detected at line39); /bin/bash: -c: line44: unexpected EOF while looking for matching quote",
+  "cause": "outer shell heredoc delimiter PY collided with the same literal delimiter inside generated command text",
+  "disposition": "Preserved preparation-only failure; candidate, expected receipt and completed421 checks unchanged. Correct generator delimiter, not candidate implementation. No validation replay."
+}

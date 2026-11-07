@@ -1,0 +1,91 @@
+{
+  "chunks": 117,
+  "counts": {
+    "PASS": 57,
+    "REJECTED": 60
+  },
+  "environment": {
+    "cryptography_installed": "50.0.0",
+    "cryptography_used_by_new_controls": false,
+    "dont_write_bytecode": true,
+    "implementation": "cpython",
+    "isolated": 1,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "explicit_exit": {
+    "automatic_retries": 0,
+    "exit": 0,
+    "finished_utc": "2026-11-07T09:16:38.841689+00:00",
+    "seconds": 4.567712484000367,
+    "streams": {
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 30706,
+        "sha256": "d3a7afff25af0418119f76294ba91a4f470642d79617d423a55b46b12a097f3a"
+      }
+    },
+    "timed_out": false
+  },
+  "final_candidate_exact_manifest": {
+    "directories": 1155,
+    "files": 4124,
+    "result": "UNCHANGED"
+  },
+  "four_way_record_agreement": true,
+  "full_public_negative_derivations": 0,
+  "layers": {
+    "constructed model input constraints; not authenticated basis": {
+      "REJECTED": 26
+    },
+    "constructed output comparison; not authenticated basis": {
+      "REJECTED": 16
+    },
+    "constructed typed output comparison; not authenticated basis": {
+      "REJECTED": 2
+    },
+    "direct receipt-shape gate before derivation": {
+      "REJECTED": 5
+    },
+    "direct receipt-shape gate only": {
+      "PASS": 1
+    },
+    "direct receipt-shape helper isolation": {
+      "PASS": 1
+    },
+    "exact-type input gate before normalization": {
+      "REJECTED": 6
+    },
+    "exact-type submitted-output gate": {
+      "REJECTED": 2
+    },
+    "independent defining-source inspection": {
+      "PASS": 7
+    },
+    "independent source-model expectations": {
+      "PASS": 48
+    },
+    "source catalogue comparison against pinned source": {
+      "REJECTED": 3
+    }
+  },
+  "new_authenticated_basis_core_controls": 0,
+  "new_public_runs": 0,
+  "pure_source_fixture_limitation": "Retained source-only R1 builder is scaffolding; reviewer changes only new synthetic absent-control premise to None. Expectations derived independently from C/source, not author oracle.",
+  "reviewer_failures": [],
+  "rows": 117,
+  "status": "PASS",
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 30706,
+      "sha256": "d3a7afff25af0418119f76294ba91a4f470642d79617d423a55b46b12a097f3a"
+    }
+  }
+}

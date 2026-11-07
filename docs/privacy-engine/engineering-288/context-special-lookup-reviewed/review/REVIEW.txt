@@ -1,0 +1,199 @@
+FORMAL-LAB[6] — INDEPENDENT REVIEW
+I164-CONTEXT-SPECIAL-LOOKUP-1 and completed Ubuntu public-positive evidence
+Review date: 7 November 2026 (GMT). Reviewer: Formal-Lab[6], separate from the
+Engineering construction author. Implementation and historical evidence unchanged.
+
+VERDICT
+SUPPORTED within the bounded conditional SOURCE-ONLY context-special-lookup
+correspondence contract. No candidate implementation defect demonstrated; no new
+smallest defect witness. This is neither runtime lookup coverage nor qualification
+of physical file effects, complete context-manager execution or readiness.
+
+VERIFIED INPUTS AND RECOVERY
+Host evidence: 6,199,798 bytes, 601 entries, SHA-256
+b7a80f0a7ac9b0d106bbf607cf93814e12f11922ebd8e64a976126765eeaf07f.
+The full gzip CRC/trailer and tar headers were read. All 587 regular files and 14
+directory entries (including the root entry) have safe, unique paths; no symlinks,
+hardlinks or special files. The preparation MANIFEST has 47 declarations, all
+present and byte-verified. It is not a manifest of the later host outputs. The
+exact supplied tar digest and independent member inventory bind those outputs.
+The original preparation ZIP's 4,562,878-byte / 38d7fc4e... bundle identity agrees
+in PREPARED/reservation records, but that ZIP container was not supplied and was
+not reconstructed or claimed independently rehashed. All its declared member
+bytes are present and verified.
+
+Embedded fixed source: 2,672,808 bytes, 34 entries, 33 manifested hashes, SHA-256
+7de018b48462776eb880468aea2a0d3048e4d2668bda2e5f5ec3a5126e250fb5.
+Embedded focused results: 493,709 bytes, 1,291 entries, 1,290 hashes, SHA-256
+2104b28f70680183726f10708c3c91a540722922600437e5bec0dbc6ba059749.
+Both ZIPs passed CRC, exact safe regular membership and every manifested hash.
+The retained 204,417,990-byte / 60-entry launcher dependency and 5,144,527-byte /
+58-entry R1 review were independently re-identified and manifest/CRC verified,
+without replaying their tests or reviews. Their exact identities are in INPUTS.json.
+
+The unchanged 7,152-byte recovery utility was inspected and used only for byte
+recovery. The complete candidate matches its 1,837,333-byte assembled manifest,
+SHA-256 0145fe8c0ae5a2c6c5d71e7b94830f5000ac4a8a990858f0886884437fe5293b:
+4,124 regular files and 1,155 exact directories. R1 remains exactly 4,090 files /
+1,142 directories. All predecessor members, runtime sources and historical bytes
+are unchanged. Final post-control hashing reconfirmed the same exact root.
+The 415,921-byte reviewed producer is an exact prefix of the 429,112-byte new
+producer; six functions are appended, 13,191 bytes. The new adapter is 8,665 bytes.
+Declared changes and all component pins match actual bytes.
+
+SOURCE FINDINGS
+The defining lab_bootstrap.py:23-24 expression is with open(p,'xb') as f. Its
+normal returned expression role is the selected R1 operand; f is not yet bound.
+The pinned v3.12.14 BEFORE_WITH region at bytecodes.c:2488-2515 loads __enter__,
+then __exit__, before the excluded _PyObject_CallNoArgs(enter). The retained
+language reference agrees on this load/load/invoke order. typeobject.c:2163-2177
+uses _PyType_Lookup(Py_TYPE(receiver), name), with optional tp_descr_get binding;
+it is not ordinary instance-attribute access. Descriptor code may execute during
+lookup. No descriptor purity, concrete object identity or callability is proved.
+
+C NULL with an existing error follows the raised-lookup disposition. C NULL
+without that error selects the source TypeError diagnostic path. A found Python
+None is non-NULL and is not a missing method: there is no callability filter at
+this frontier. The model's concrete_value=None records unavailable concrete data,
+not a claim that an actual result was None. Missing-method output requests the
+TypeError diagnostic but leaves diagnostic completion, exact exception type/value
+and formatted bytes unestablished. Conditional replacement roles do not prove
+successful exception allocation or transitive C-library execution.
+
+Both symbolic contexts, both control prefixes and both protected-failure origins
+remain distinct. Binding checks tie the selected operand occurrence to its exact
+source, acquisition/context/instance anchor, helper invocation, owner/token and
+original pending constructor error. R1 normal completion and explicit conditional
+continuity are required. UNESTABLISHED permits only initial unobserved continuation.
+Normal lookup completion preserves the pending original error and terminal=True.
+Missing/raised/catchable-interruption frontiers preserve original and earlier
+cleanup evidence while selecting a qualified replacement. Termination/unobserved
+frontiers retain terminal=None and first-frontier stopping, not an invented unwind.
+After failed exit lookup, the acknowledged earlier enter-result role is not proof
+of live retention; the C decref does not establish physical destruction/cleanup.
+
+The projector preserves prior close/reporting facts, conditional owner continuity,
+dynamic origins, earlier UNKNOWN append/descriptor effects and exact False flags.
+No method invocation, context entry, f binding, file creation/write/flush/fsync,
+helper return, final rethrow, owner finalization, authorization or physical closure
+is established. Source events are semantic model regions, not observed opcodes.
+
+MANDATORY INTEGRATION AND SAVED ACTUAL BASIS
+Read-only inspection verifies new validate -> shape gate -> derive -> fresh inputs
+-> actual unchanged R1 _receipt_shape/_basis/_assemble -> exact saved-byte comparison
+-> new catalogue/rows/receipt -> submitted-byte comparison. R1's thin validate
+wrapper is not called by name; the review does not claim identical thin-wrapper
+instrumentation order. R1 composes the unchanged helper _checked/_receipt_checked
+operations. Those still invoke the actual unchanged deeper write-call public
+validator. The saved call/return records corroborate that path.
+The constructed path calls R1's actual _construct_checked before accepting parent
+output, derives current binding, and compares exact typed projection output. This
+path was inspected, not freshly exercised using an authenticated basis. No supplied
+or serialized dictionary was treated as a fresh authenticated object in this review.
+Both-context declarations are mandatory, and prior receipt fields are exactly
+preserved; the new rows retain UNKNOWN classifications and missing runtime links.
+
+The new layer introduces no monitoring slot. The six retained observer files and
+predecessor monitoring path are byte-identical. The saved native observer targets
+the new _basis code identity and records exactly one returned dictionary. The
+public harness compares assemblies from that actual object and its nested R1/helper
+bases with the pinned receipts. This supports saved-run returned-basis provenance;
+it does not create a reusable live basis in this review. Cooperative CPython limits,
+hostile replacement, cleanup-failure/interruption/termination qualifications persist.
+An owned-hook removal or free slot alone does not prove complete monitoring cleanup.
+
+HOST RECONCILIATION — ONE COMPLETED RUN, NOT REPLAYED
+Recorded attempt: I164-CONTEXT-LOOKUP-FULL-PUBLIC-POSITIVE-1-20261106.
+Workspace and unit are bound by PREPARED, reservation, launch, process and service
+records. PREPARED/PLAN/START-HERE/RECOVERY retain their historical pre-launch status;
+later results do not rewrite those earlier statements. Reservation authorized one
+lookup public invocation and zero retries. Source/receipt/root pins agree throughout.
+
+7 November 2026 GMT chronology:
+07:37:37.527965 PREPARED; 07:37:37.529527 reservation;
+07:37:37.552237 launch receipt; 07:37:39.868459 child launch;
+08:30:33.644200 sole basis capture; 08:30:41.912460 RESULT completion;
+08:30:47.897168 child exit 0; 08:30:47.901335 wrapper exit 0;
+08:30:48.000592 distinct manager success/exited/0 observation.
+No timeout, kill, automatic retry or supervisor failure. Duration 3,188.028876 sec.
+Supervisor PID77029/startticks16734728 and child PID77031/startticks16734961 share
+recorded boot ID 5e86749c-34a6-4454-9740-86474902f13c. Final child_identity=null is
+not a live identity claim; the earlier launch/process records provide the linkage.
+
+262 stdout chunks reproduce log and captured bytes exactly: 99,442 bytes, SHA-256
+f430f305b6fb301ff297324d4cb516b35159c7e7c441c7c84bf286ac36b77f80.
+Stderr is empty. Events, 207 phase snapshots, chunk index, capture metadata and
+explicit exit agree. There are 26 nested public-validator entries/departures, one
+current public validate call, zero R1 thin-wrapper validate calls, one unchanged
+deeper write-call public call and one current basis capture. The 17,806 entries and
+17,806 returns are selected computation events, with zero active/qualified-abrupt
+frames at the last snapshot. They add zero control counts.
+
+Expected and actual-derived lookup receipt bytes are identical: 17,794,442 bytes,
+SHA-256 a34dd110037e9e3ea1216ac0cdbf25b9a7e6e3984a31321f51bb63537e65cbd3.
+Both ordered contexts pass. Saved provenance also matches the exact R1 receipt
+(17,607,505 bytes; 5c56b5f0...458c), helper receipt and deeper public receipt.
+One full public positive is supported. Full public negative derivations: ZERO.
+
+The actual preflight and service profiles agree with the retained comparable
+CPython3.12.14/Linux x86_64 profile: interpreter, eight headers, observer binary,
+and selected Cryptography50.0.0/cffi2.1.1/pycparser3.0 file identities. This is a
+saved profile reconciliation, not a new host probe, installed-wheel authentication,
+complete binary/source-build provenance or equivalence to the retained 50.0.2 smoke.
+No separate libpython file identity is recorded. Runtime lookup remains unobserved.
+
+ACCOUNTING — GROUPS MUST REMAIN SEPARATE
+Engineering focused: 421 corroborated rows =188 PASS/233 REJECTED; exit0, no timeout.
+Individual rows, progress, stdout, RESULT counts, stdout RESULT and 428 stream chunks
+agree, bound to the exact 7de018b4... source ZIP. No author campaign was replayed.
+Two negatives are direct pre-derivation shape gates; other negatives are exact-type,
+source-binding/catalogue or constructed projector/output checks. Source and static
+call-path controls do not authenticate a predecessor. Detailed layer counts are saved.
+
+Fresh reviewer: 117 corroborated controls =57 PASS/60 REJECTED; exit0, no timeout,
+4.567712 seconds supervised. RESULT, individual rows, progress and stdout agree;
+all saved chunks and explicit exit verified. No failed candidate control or partial
+reviewer test attempt. These were independently derived source/model controls in
+one isolated CPython3.12.14 process against the recovered fixed candidate. Installed
+Cryptography50.0.0 was recorded but not used by these new pure controls. Linux/glibc
+differs from the saved Ubuntu runtime; no reviewer-host equivalence is claimed.
+Seven defining-source checks and 48 model/continuity/isolation positives, plus one
+legitimate receipt-shape and one parsed-result isolation positive comprise 57 PASS.
+The 60 rejections comprise: 26 constructed input constraints, 16 constructed output
+comparisons, 2 typed output comparisons, 6 exact-type input gates, 2 exact-type output
+gates, 3 source catalogue comparisons, and 5 direct receipt-shape gates. No fresh
+authenticated-basis core negatives or full public negatives are claimed.
+
+Inherited pure R1 fixture construction was reused only as scaffolding for eight new
+constructed context/prefix/origin premises; expected lookup semantics came from
+independent defining-source inspection, not the author's oracle. New absent-control
+premises use None; historical False-valued fixture bytes remain unchanged. This is
+not runtime evidence or repair of old fixture coverage.
+
+R1's 340 focused checks, one R1 public positive and its 17,801 computation events
+remain separate. Historical 331 reported checks remain unavailable with no credit.
+Helper predecessor 443 host rows and 30 source checks remain separately reused.
+The recording dummy, failed 75-minute run, 3 November18:22:36 UNKNOWN attempt,
+partial/missing records, earlier review failures and all qualified historical groups
+remain as recorded. No counts were combined, reconstructed or silently repaired.
+
+FAILURES AND LIMITS RETAINED
+The separate zero-control launcher-generation SyntaxError/heredoc failure is retained
+verbatim in the host archive. Source preparation's earlier Library materialization
+failure is recorded history. This review's two upstream web reads were unavailable
+(DisabledError); exact included primary source bytes were inspected and pinned,
+without claiming fresh upstream transport authentication or build equivalence.
+R1's five-versus-six function documentation discrepancy and False/None fixture
+qualification carry forward unchanged. No new implementation defect was found.
+
+No further execution is required for this bounded saved-evidence/source verdict.
+Actual runtime lookup/descriptor/reference observations, authenticated constructed
+negative execution, complete transitive paths and physical effects remain gaps;
+none were authorized or inferred here. Full public negative derivations remain zero.
+Any future runtime or authenticated-construction execution is a separately scoped
+task, not a command or authorization in this checkpoint.
+
+Both acquisitions, eleven obligations, four inventory/fourteen lifetime UNKNOWN
+totals, Decision B, retention and allowances remain unchanged. SOURCE-ONLY;
+cumulative envelope UNADOPTED; backup KERNEL-ONLY; streams UNCOMPUTED;
+readiness and final binding BLOCKED; admission DISABLED.

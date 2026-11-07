@@ -1,0 +1,83 @@
+{
+  "chunks": 428,
+  "counts": {
+    "PASS": 188,
+    "REJECTED": 233
+  },
+  "exit": {
+    "automatic_retry": false,
+    "returncode": 0,
+    "seconds": 22.964521023997804,
+    "stdout_chunks": 428,
+    "timed_out": false,
+    "utc": "2026-11-06T14:18:25.194539+00:00"
+  },
+  "layers": {
+    "exact defining-source input pin": {
+      "REJECTED": 1
+    },
+    "exact-type input gate before normalization": {
+      "REJECTED": 24
+    },
+    "exact-type submitted-output gate": {
+      "REJECTED": 8
+    },
+    "independent defining-source oracle": {
+      "PASS": 4
+    },
+    "pre-derivation shape gate only": {
+      "REJECTED": 2
+    },
+    "pre-derivation shape gate only; synthetic receipt": {
+      "PASS": 1
+    },
+    "source artifact identity": {
+      "PASS": 2
+    },
+    "source binding constraints": {
+      "REJECTED": 8
+    },
+    "source binding constraints, not public validation": {
+      "REJECTED": 8
+    },
+    "source-constructed output-comparison core; not authenticated basis": {
+      "REJECTED": 80
+    },
+    "source-constructed projector / independent oracle": {
+      "PASS": 178
+    },
+    "source-constructed projector input": {
+      "REJECTED": 96
+    },
+    "source-derived catalogue comparison": {
+      "REJECTED": 6
+    },
+    "static adapter call-path audit": {
+      "PASS": 1
+    },
+    "static adapter call-path audit; not authenticated-core execution": {
+      "PASS": 1
+    },
+    "static adapter call-path audit; not public execution": {
+      "PASS": 1
+    }
+  },
+  "qualification": "source-constructed model premises; direct shape gates and static call-path inspection, not authenticated-basis or full public negatives",
+  "reconciliation": "421 individual/progress/stdout rows exactly agree; RESULT counts and stdout RESULT agree",
+  "replayed": false,
+  "rows": 421,
+  "source_archive": {
+    "bytes": 2672808,
+    "sha256": "7de018b48462776eb880468aea2a0d3048e4d2668bda2e5f5ec3a5126e250fb5"
+  },
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 107954,
+      "sha256": "79e8f2e3d9530cbfaa0041fbb07ff255975b9715717114f6f65005f355893946"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "Git_operations": 0,
+  "R1_byte_recovery": {
+    "manifest": {
+      "bytes": 1783461,
+      "sha256": "e7e6d8ab8aad1697d1556c823a80fbf7f6b5d282a76790e3e52c2cc4254cf45b"
+    },
+    "method": "byte-only exact files, directories, entry types and hashes; no candidate import",
+    "receipt": {
+      "bytes": 17607505,
+      "sha256": "5c56b5f07619fd566d13f5cb21755915ccb78fb8096617a4ecba0707d214458c"
+    },
+    "root": "/workspace/scratch/3da0de3fef10/lookup-public-preparation-20261106/candidate/retained/r1",
+    "verification": {
+      "directories": 1142,
+      "exact_types_membership_hashes": "PASS",
+      "files": 4090
+    }
+  },
+  "application_runs": 0,
+  "assembled_root": {
+    "directories": 1155,
+    "exact_types_membership_hashes": "PASS",
+    "files": 4124
+  },
+  "candidate_checks_replayed": 0,
+  "expected_receipt": {
+    "bytes": 17794442,
+    "sha256": "a34dd110037e9e3ea1216ac0cdbf25b9a7e6e3984a31321f51bb63537e65cbd3"
+  },
+  "instrumentation_installed": 0,
+  "launcher_syntax": "all new preparation Python modules parsed; no service or public child executed",
+  "offline_inheritance": "exact prior context fields and unaffected top-level fields preserved",
+  "planned_public_call_sites": 1,
+  "preparation_failure": {
+    "candidate_or_public_execution": 0,
+    "cause": "outer shell heredoc delimiter PY collided with the same literal delimiter inside generated command text",
+    "disposition": "Preserved preparation-only failure; candidate, expected receipt and completed421 checks unchanged. Correct generator delimiter, not candidate implementation. No validation replay.",
+    "error": "File <stdin>, line31: SyntaxError: unterminated triple-quoted f-string literal (detected at line39); /bin/bash: -c: line44: unexpected EOF while looking for matching quote",
+    "exit": 1,
+    "files_written_by_failed_Python_script": 0,
+    "stage": "external launcher text generation"
+  },
+  "public_validations": 0,
+  "recording_dummy": "reuse completed recorded qualification; not rerun",
+  "runtime_profile": "matches saved R1 service comparable profile; live host preflight still required",
+  "source_fixed": {
+    "bytes": 2672808,
+    "sha256": "7de018b48462776eb880468aea2a0d3048e4d2668bda2e5f5ec3a5126e250fb5"
+  },
+  "status": "PREPARED",
+  "unchanged_supervisor_observer_runtime_recovery": "byte-identical retained files",
+  "utc": "2026-11-06T15:27:42.162733+00:00"
+}
