@@ -1,0 +1,92 @@
+{
+  "Decision_B": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "actual_admission": false,
+  "allowances": "UNCHANGED",
+  "authenticated_constructed_path_execution": "UNTESTED",
+  "backup": "KERNEL-ONLY",
+  "both_acquisitions_preserved": true,
+  "candidate_changed": false,
+  "computation_events": {
+    "entered": 17812,
+    "meaning": "computation only, zero control credit",
+    "returned": 17812
+  },
+  "confirmed_predecessor_save": "8af23682a1757ea584f04b2b26303e7cb7f91160",
+  "cumulative_envelope": "UNADOPTED",
+  "documentation_finding": {
+    "actual_count": 5,
+    "actual_functions": [
+      "compile_enter_call",
+      "validate_enter_call",
+      "enter_call_binding",
+      "enter_call_projection",
+      "validate_enter_call_projection"
+    ],
+    "after": {
+      "bytes": 440168,
+      "sha256": "a3fb61cb3b1fdcc0df05e6fb770efa6ecd33e5e1487a69f528c09ffc659da3a2"
+    },
+    "before": {
+      "bytes": 429112,
+      "sha256": "8bc637e3cf513327715a295d53bb2b3f6c3d343e509f7e607fb764a1c4018d9b"
+    },
+    "candidate_semantic_defect": false,
+    "claim": "append six new pure-source functions; entire predecessor prefix retained",
+    "claim_file": "source/CHANGES.json",
+    "distinct_from_inherited_R1_five_versus_six": true,
+    "finding": "DOC-ENTER-01",
+    "prefix_bytes": 429112,
+    "severity": "nonblocking documentation count discrepancy",
+    "smallest_reproduction": "AST-parse exact appended bytes after offset 429112; count top-level FunctionDef nodes"
+  },
+  "engineering_controls": {
+    "PASS": 101,
+    "REJECTED": 388,
+    "exit": 0,
+    "layers": "review/focused-record-audit.json; original source/result artifacts unchanged",
+    "reused_not_replayed": true,
+    "rows": 489
+  },
+  "exact_review_verdict": "SUPPORTED within the bounded conditional SOURCE-ONLY enter-call-attempt correspondence contract. No candidate semantic defect demonstrated.",
+  "failures": "Exact review/FAILURES.json and raw original audit failures retained; EVENT-prefix failure stays reported without reconstructed raw records; current incorporation parse failure retained separately",
+  "final_binding": "BLOCKED",
+  "full_public_negative_derivations": 0,
+  "historical_groups": "117 independent/421 Engineering lookup, one lookup public positive, R1 340 and one public positive, helper443/30, unavailable331, failed75-minute and3Nov18:22:36 UNKNOWN remain separate",
+  "host_public": {
+    "actual_basis_captures": 1,
+    "bytes_equal": true,
+    "exit": 0,
+    "new_validate_calls": 1,
+    "positives": 1,
+    "reused_not_replayed": true,
+    "seconds": 3338.2737165039944,
+    "thin_lookup_R1_helper_validate_calls": 0
+  },
+  "independent_controls": {
+    "PASS": 64,
+    "REJECTED": 83,
+    "exit": 0,
+    "layers": "review/independent-reconciliation.json and exact individual rows",
+    "reused_not_replayed": true,
+    "rows": 147
+  },
+  "inventory_unknowns": 4,
+  "lifetime_unknowns": 14,
+  "monitoring": "Cooperative contract; free slot/hook removal does not establish full cleanup or same-process reuse; hostile/repeated-interruption/termination qualifications retained",
+  "next_task_implemented": false,
+  "obligations_preserved": 11,
+  "prior_save_repeated": false,
+  "readiness": "BLOCKED",
+  "retention": "UNCHANGED",
+  "review_identity": {
+    "bytes": 8272994,
+    "sha256": "381bc024997b4c7c136dbb1c656a5dd3ababcb4fefa40dcc04d055334a261995"
+  },
+  "review_library_file_id": "libfile_fde3_f-eeeeeda6c1c48191bede2f043aa4cb96_39c64cf85e608191bb9545db7327fd84",
+  "reviewer": "Formal-Lab[6], separate from Engineering construction",
+  "runtime_arrival_call_outcome_physical_effects": "UNESTABLISHED",
+  "runtime_profile": "CPython3.12.14/Cryptography50.0.0 validation evidence distinct from historical50.0.2 host fixture; no equivalence",
+  "streams": "UNCOMPUTED",
+  "target": "I164-ENTER-CALL-ATTEMPT-1"
+}

@@ -1,0 +1,64 @@
+ASSESSMENT ONLY — proposed smallest next relationship; NOT IMPLEMENTED
+
+Start from the exact authenticated selected enter-call attempt and explicit
+continuation. Model the call-site completion and C result assignment in
+res = _PyObject_CallNoArgs(enter), CPython3.12.14 Python/bytecodes.c:2515.
+Stop immediately before Py_DECREF(enter) at2516. Do not advance to the res==NULL
+test2517, decrement of exit2518, ERROR_IF2519, context entry or binding f.
+
+Defining source: lab_bootstrap.py:23–24, pinned BEFORE_WITH at bytecodes.c:2488–2520.
+compound_stmts.rst:491–500 is supporting protocol context, not a substitute for
+the exact interpreter order. Identities/confirmed Git source paths are in
+provenance/shared-defining-sources.json; all bytes are already retained.
+
+Actual missing implementation (not inferred solely from adjacency):
+extension/code/managed_coverage.py:3604–3607 declares only continuation and
+attempt; 3676 explicitly sets call_outcome/call_result_role=None and
+res_assignment_established=False. Its final exact-output validator3684–3685
+recomputes that same frontier. extension/code/correspondence.py:70–78 makes that
+attempt projection mandatory on its constructed path;80–92 embeds/validates
+only the current relation and retains the explicit outcome/assignment exclusions
+at84. There is no new declaration, result role or mandatory correspondence for
+the selected helper return into res. Existing previous open-return and state/
+handle returns have different source occurrences, callables and result roles;
+they do not supply this selected enter-call relationship. Review independently
+confirms this exact stop. Missing runtime observations are a separate gap.
+
+Proposed bounded scope: both contexts/prefixes and close-versus-append failure
+origins; exact predecessor authentication/selected invocation/owner/token,
+enter/exit symbolic roles and earlier error/effect lineage. A call attempt does
+not imply continuation, successful callability, dispatch/body entry or return.
+Only an explicitly modeled completed C return permits the subsequent res
+assignment in that expression. Carry a non-NULL symbolic returned-object role;
+distinguish a C-NULL result from a Python None object, with neither a concrete
+object identity nor a fabricated method return value. Assignment of a C result
+is not evidence that f was bound or that context entry completed.
+
+Preserve nonnormal/catchable interruption, process termination and unobserved
+frontiers and stop at the first such frontier. Do not conflate a C-NULL return
+with a Python-level normal return, infer an exact exception merely from NULL,
+or claim what happens at later error handling. Original constructor and earlier
+cleanup-error evidence survive replacement/uncertainty. A new conditional error
+must retain its distinct origin and explicit cause/context/suppression unknowns.
+Normal conditional completion retains the original pending outer error under
+the inherited premises; no overall normal-return/final-propagation claim.
+
+Retained inputs suffice for this conditional call-site/result-assignment slice:
+fixed current producer/adapter, independently reviewed predecessor sources and
+receipts, the eight constructed context/prefix/origin premises, and exact C/Python
+source bytes. Do not execute retained controls or treat a prepared receipt as
+an authenticated in-memory basis. Full public or authenticated constructed-path
+execution would require its own bounded execution authorization; the latter
+remains untested for the current milestone.
+
+Deeper helper dispatch/body, guarantees about how _PyObject_CallNoArgs produces
+an error indicator, concrete return values, build-equivalence and runtime
+arrival/physical effects are NOT supplied by this call-site source. Any future
+claim about those requires the exact helper/dispatch defining-source contract
+from the CPython source owner and, for observed execution/build provenance,
+evidence from the qualified runner/operator. No such input is necessary merely
+to propose or construct the conditional call-site assignment slice above.
+
+No implementation, new execution, policy adoption, acquisition or Git operation
+was performed by this assessment. All11 obligations,4/14 UNKNOWN totals,
+DecisionB,retention/allowances and both acquisitions remain. Admission disabled.

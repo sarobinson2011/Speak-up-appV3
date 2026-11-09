@@ -1,0 +1,19 @@
+{
+  "bounded_read_only_search": {
+    "files": 323,
+    "matches": [],
+    "maximum_bytes_per_file": 199999,
+    "terms": [
+      "JSONDecodeError",
+      "Expecting value",
+      "EVENT-prefix",
+      "parsing failure",
+      "parse failure"
+    ]
+  },
+  "evidence_level": "user-reported historical read-only EVENT-prefix parsing failure",
+  "no_reproduction_or_missing_record_reconstruction": true,
+  "not_a_candidate_failure_or_control": true,
+  "raw_failed_parser_traceback_or_exit_recovered": false,
+  "saved_host_stdout": "272 lines with EVENT prefix; strip the six-byte prefix before JSON parsing, independently reconciled without replay"
+}

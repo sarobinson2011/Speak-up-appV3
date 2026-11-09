@@ -1,0 +1,46 @@
+{
+  "appended_bytes": 11056,
+  "appended_functions": [
+    "compile_enter_call",
+    "validate_enter_call",
+    "enter_call_binding",
+    "enter_call_projection",
+    "validate_enter_call_projection"
+  ],
+  "candidate_execution": 0,
+  "documentation_witness": {
+    "actual_functions": [
+      "compile_enter_call",
+      "validate_enter_call",
+      "enter_call_binding",
+      "enter_call_projection",
+      "validate_enter_call_projection"
+    ],
+    "claim": "append six new pure-source functions; entire predecessor prefix retained",
+    "count": 5,
+    "file": "source/CHANGES.json",
+    "implementation_defect": false,
+    "minimal_reproduction": "ast.parse(current_producer_bytes[429112:]) -> five top-level FunctionDef names"
+  },
+  "new_adapter": {
+    "bytes": 8900,
+    "sha256": "4722ba0c7ebaf660310206da52c6ac7c1a0adeb0c4bf278fd0e52245ec9a2942"
+  },
+  "new_producer": {
+    "bytes": 440168,
+    "sha256": "a3fb61cb3b1fdcc0df05e6fb770efa6ecd33e5e1487a69f528c09ffc659da3a2"
+  },
+  "prior_adapter": {
+    "bytes": 8665,
+    "sha256": "8714a2f491eb1d858ac546b93898ff497141a78591d92e8965af5fa991af1e34"
+  },
+  "prior_review_excerpts": "exact verified prior review members",
+  "producer_prefix": {
+    "bytes": 429112,
+    "sha256": "8bc637e3cf513327715a295d53bb2b3f6c3d343e509f7e607fb764a1c4018d9b"
+  },
+  "root_audit": "original recovery audit passed all three exact tree comparisons before stopping at documentation count; final post-control verification will be saved separately",
+  "runtime_interpreter_and_prior_sources": "exact unchanged bytes",
+  "six_observer_files": "exact unchanged",
+  "status": "PASS with documentation-count discrepancy"
+}
