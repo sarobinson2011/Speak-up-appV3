@@ -1,0 +1,92 @@
+{
+  "Decision_B": "UNCHANGED",
+  "SOURCE_ONLY": "UNCHANGED",
+  "actual_admission": false,
+  "allowances": "UNCHANGED",
+  "authenticated_constructed_path_execution": "UNTESTED",
+  "backup": "KERNEL-ONLY",
+  "both_acquisitions_preserved": true,
+  "candidate_changed": false,
+  "computation_events": {
+    "entered": 17819,
+    "meaning": "computation only; zero added control credit",
+    "returned": 17819
+  },
+  "confirmed_predecessor_save": "f50e13d655b65edeb2aafefd1fae5b6384a94373",
+  "cumulative_envelope": "UNADOPTED",
+  "documentation_findings": {
+    "DOC-ENTER-01": "Historical enter-call CHANGES claims six; actual five. Witness and source unchanged. Current enter-return suffix has five and correctly says five.",
+    "R1": "Separate inherited count discrepancy; not merged with DOC-ENTER-01"
+  },
+  "engineering_controls": {
+    "PASS": 197,
+    "REJECTED": 526,
+    "exit": 0,
+    "layers": "engineering/RECONCILIATION.json; source/model, static wiring and shape gates are not full public negatives",
+    "reused_not_replayed": true,
+    "rows": 723
+  },
+  "exact_review_verdict": "SUPPORTED within the bounded conditional SOURCE-ONLY completed-C-return and res-assignment correspondence contract. No candidate defect demonstrated.",
+  "final_binding": "BLOCKED",
+  "full_public_negative_derivations": 0,
+  "history": "Source-first and preparation-only statements remain exact chronology; later host positive and independent support are recorded here, without editing historical statuses. Failed/UNKNOWN/missing attempts and original audit failures remain unchanged.",
+  "host_public": {
+    "actual_basis_captures": 1,
+    "bytes_equal": true,
+    "child_exit": 0,
+    "manager_exit": 0,
+    "new_validate_calls": 1,
+    "positives": 1,
+    "receipt": {
+      "bytes": 18197681,
+      "sha256": "bb6105423c40e1e0c5372d877095fdb0ed6e9d8e502ef2b3b070ebe015d2d997"
+    },
+    "reused_not_replayed": true,
+    "seconds": 3409.0922399639967,
+    "thin_enter_lookup_R1_helper_validate_calls": 0,
+    "total_deeper_validate_entries": 26,
+    "wrapper_exit": 0
+  },
+  "independent_controls": {
+    "PASS": 159,
+    "REJECTED": 94,
+    "exit": 0,
+    "layers": "review/independent-reconciliation.json and 253 unchanged individual rows",
+    "reused_not_replayed": true,
+    "rows": 253
+  },
+  "inventory_unknowns": 4,
+  "lifetime_unknowns": 14,
+  "monitoring": "Cooperative retained contract; owned-hook removal/free slot does not prove complete cleanup, same-process reuse or hostile replacement safety; interruption/termination/alternate-interpreter limits remain.",
+  "next_task_implemented": false,
+  "obligations_preserved": 11,
+  "precise_model_limits": [
+    "C NULL is a completed C return and can be assigned to res; it is not absent return",
+    "Python None is a non-NULL object-case premise",
+    "concrete_value None means unobserved; not a C pointer or observed Python value",
+    "terminal True on normal model progression concerns original pending outer error, not helper C error indicator",
+    "termination/unobserved terminal None; prior established return retained when assignment unestablished",
+    "helper error indicator and deeper guarantees UNKNOWN",
+    "stop before Py_DECREF(enter):2516"
+  ],
+  "prior_save_repeated": false,
+  "readiness": "BLOCKED",
+  "retention": "UNCHANGED",
+  "review_identity": {
+    "bytes": 12048461,
+    "sha256": "a6319e3f539e01f7fe60de778c9c80c1ff405370ade45a120af853dcb543ec7f"
+  },
+  "review_library_file_id": "libfile_fde3_f-d53a35fcea408191a502c425650114a1_39c64cf85e608191bb9545db7327fd84",
+  "review_verification": {
+    "CRC": true,
+    "candidate_or_review_execution": false,
+    "exact_bytes_sha256": true,
+    "manifested_hashes_verified": 325,
+    "safe_unique_regular_membership": 326
+  },
+  "reviewer": "Formal-Lab[6], independent of Engineering construction",
+  "runtime_arrival_physical_effects": "UNESTABLISHED",
+  "runtime_profile": "CPython 3.12.14/Cryptography 50.0.0 validation evidence remains distinct from retained host 50.0.2; no equivalence or new qualification",
+  "streams": "UNCOMPUTED",
+  "target": "I164-ENTER-RETURN-RES-1"
+}

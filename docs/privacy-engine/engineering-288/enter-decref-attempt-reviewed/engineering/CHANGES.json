@@ -1,0 +1,48 @@
+{
+  "changed_components": {
+    "code/correspondence.py": {
+      "after": {
+        "bytes": 9233,
+        "sha256": "85cf0483632c5a22203fcf726b0287272e763cdeebc9bbd9bd6e2c7c7eb9d2f8"
+      },
+      "before": {
+        "bytes": 9168,
+        "sha256": "3efd066c1e11a2cac1a4dcea0f5b2950329f313b9b2acbb6dce1667b4ffb294d"
+      },
+      "meaning": "new mandatory layer delegates through unchanged parent authentication and constructed validator; not executed in this source pass"
+    },
+    "code/managed_coverage.py": {
+      "after": {
+        "bytes": 464085,
+        "sha256": "99505e660a0adf32cdda6c45e9469ca849282914675afb5678eb52eab399388c"
+      },
+      "before": {
+        "bytes": 452888,
+        "sha256": "a3e41b8c14c8c1c25d26b45eb0645b3222bd6a6afb60f7ccc44f7a655ae79a37"
+      },
+      "meaning": "entire predecessor prefix retained; append five new functions"
+    }
+  },
+  "identity": "I164-ENTER-DECREF-ATTEMPT-1",
+  "new_authentication_execution": "UNEXECUTED",
+  "new_check_files": {
+    "tests/focused.py": {
+      "bytes": 18055,
+      "sha256": "af5a66009c740f16311a86e6ab50e11d9a584202a21c154fa41a213982b05607"
+    },
+    "tests/run_once.py": {
+      "bytes": 2477,
+      "sha256": "2b5a061d379c9f4d6976ee8d385abdc2531edbdbc8dd37a615916ba9d889d27b"
+    }
+  },
+  "new_functions": [
+    "compile_enter_decref",
+    "validate_enter_decref",
+    "enter_decref_binding",
+    "enter_decref_projection",
+    "validate_enter_decref_projection"
+  ],
+  "packaging_syntax_inspection": "AST parse only; no candidate import, source/model checks or authentication before saving this source",
+  "parent_producer_prefix_bytes": 452888,
+  "runtime_sources_changed": false
+}

@@ -1,0 +1,926 @@
+{
+  "actual_admission": false,
+  "declarations": [
+    {
+      "classification": "UNKNOWN",
+      "id": "enter-decref:continuation",
+      "meaning": "explicit conditional continuation from assigned res; interval error is not an invented Py_DECREF failure mechanism",
+      "multiplicity": null,
+      "ordinal": null,
+      "source": {
+        "expression": "Py_DECREF(enter);",
+        "file": "Python/bytecodes.c",
+        "line": 2516,
+        "source": {
+          "bytes": 143622,
+          "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+        },
+        "tag": "v3.12.14"
+      }
+    },
+    {
+      "classification": "UNKNOWN",
+      "id": "enter-decref:attempt",
+      "meaning": "selected source-operation attempt only; no macro expansion, completion, call frame or physical effect",
+      "multiplicity": null,
+      "ordinal": null,
+      "source": {
+        "expression": "Py_DECREF(enter);",
+        "file": "Python/bytecodes.c",
+        "line": 2516,
+        "source": {
+          "bytes": 143622,
+          "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+        },
+        "tag": "v3.12.14"
+      }
+    }
+  ],
+  "enter_return_catalogue": {
+    "actual_admission": false,
+    "declarations": [
+      {
+        "classification": "UNKNOWN",
+        "id": "enter-return:continuation",
+        "meaning": "explicit conditional continuation from selected authenticated call attempt; no inferred dispatch/body or runtime arrival",
+        "multiplicity": null,
+        "ordinal": null,
+        "source": {
+          "expression": "_PyObject_CallNoArgs(enter)",
+          "file": "Python/bytecodes.c",
+          "line": 2515,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        }
+      },
+      {
+        "classification": "UNKNOWN",
+        "id": "enter-return:c-return",
+        "meaning": "completed C result distinguishes non-NULL PyObject pointer and C NULL; other frontiers do not establish a completed return",
+        "multiplicity": null,
+        "ordinal": null,
+        "source": {
+          "expression": "_PyObject_CallNoArgs(enter)",
+          "file": "Python/bytecodes.c",
+          "line": 2515,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        }
+      },
+      {
+        "classification": "UNKNOWN",
+        "id": "enter-return:res-assignment",
+        "meaning": "assign the already returned C value to res, or retain the completed return with assignment unestablished; no assignment-failure mechanism invented",
+        "multiplicity": null,
+        "ordinal": null,
+        "source": {
+          "expression": "res = _PyObject_CallNoArgs(enter);",
+          "file": "Python/bytecodes.c",
+          "line": 2515,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        }
+      }
+    ],
+    "enter_call_catalogue": {
+      "actual_admission": false,
+      "declarations": [
+        {
+          "classification": "UNKNOWN",
+          "id": "enter-call:continuation",
+          "meaning": "explicit conditional continuation from both successful lookups past the intervening source operation; no claim about its physical effects or internal failure mechanism",
+          "multiplicity": null,
+          "ordinal": null,
+          "source": {
+            "expression": "DECREF_INPUTS();",
+            "file": "Python/bytecodes.c",
+            "line": 2514,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          }
+        },
+        {
+          "classification": "UNKNOWN",
+          "id": "enter-call:attempt",
+          "meaning": "attempt at the selected C helper call site only; no helper or method-body entry, return, or res assignment",
+          "multiplicity": null,
+          "ordinal": null,
+          "source": {
+            "expression": "_PyObject_CallNoArgs(enter)",
+            "file": "Python/bytecodes.c",
+            "line": 2515,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          }
+        }
+      ],
+      "format": "I164-ENTER-CALL-ATTEMPT-STATIC-1",
+      "guard_branches": {
+        "continuity": [
+          "explicit conditional premise",
+          "UNESTABLISHED"
+        ],
+        "origins": [
+          "protected-close",
+          "protected-append"
+        ],
+        "prefixes": [
+          "control absent",
+          "control construction and callback completed normally"
+        ],
+        "steps": {
+          "enter-call:attempt": [
+            "attempted"
+          ],
+          "enter-call:continuation": [
+            "normal",
+            "raise",
+            "catchable-interruption",
+            "process-termination",
+            "unobserved"
+          ]
+        }
+      },
+      "lookup_catalogue": {
+        "actual_admission": false,
+        "declarations": [
+          {
+            "classification": "UNKNOWN",
+            "id": "lookup:continuation",
+            "method": null,
+            "multiplicity": null,
+            "ordinal": null,
+            "source": {
+              "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+              "site": [
+                24,
+                4,
+                25,
+                54,
+                "With"
+              ],
+              "source": {
+                "bytes": 11481,
+                "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+              }
+            }
+          },
+          {
+            "classification": "UNKNOWN",
+            "id": "lookup:__enter__",
+            "method": "__enter__",
+            "multiplicity": null,
+            "ordinal": null,
+            "source": {
+              "expression": "_PyObject_LookupSpecial(mgr, &_Py_ID(__enter__));",
+              "file": "Python/bytecodes.c",
+              "line": 2492,
+              "source": {
+                "bytes": 143622,
+                "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+              },
+              "tag": "v3.12.14"
+            }
+          },
+          {
+            "classification": "UNKNOWN",
+            "id": "lookup:__exit__",
+            "method": "__exit__",
+            "multiplicity": null,
+            "ordinal": null,
+            "source": {
+              "expression": "_PyObject_LookupSpecial(mgr, &_Py_ID(__exit__));",
+              "file": "Python/bytecodes.c",
+              "line": 2502,
+              "source": {
+                "bytes": 143622,
+                "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+              },
+              "tag": "v3.12.14"
+            }
+          }
+        ],
+        "format": "I164-CONTEXT-SPECIAL-LOOKUP-STATIC-1",
+        "guard_branches": {
+          "continuity": [
+            "explicit conditional premise",
+            "UNESTABLISHED"
+          ],
+          "origins": [
+            "protected-close",
+            "protected-append"
+          ],
+          "prefixes": [
+            "control absent",
+            "control construction and callback completed normally"
+          ],
+          "steps": {
+            "lookup:__enter__": [
+              "found",
+              "missing-method",
+              "raise",
+              "catchable-interruption",
+              "process-termination",
+              "unobserved"
+            ],
+            "lookup:__exit__": [
+              "found",
+              "missing-method",
+              "raise",
+              "catchable-interruption",
+              "process-termination",
+              "unobserved"
+            ],
+            "lookup:continuation": [
+              "normal",
+              "raise",
+              "catchable-interruption",
+              "process-termination",
+              "unobserved"
+            ]
+          }
+        },
+        "parent_catalogue_sha256": "eb60461952f7fcb314d3adeb0f043ecf7adb6f932ef8751703d81c0ad3134089",
+        "preserved_relations": [
+          "open_return_context_operand_correspondence",
+          "helper_open_attempt_correspondence",
+          "write_call_correspondence",
+          "cleanup_loop_exhaustion_correspondence",
+          "cleanup_error_report_correspondence",
+          "exceptional_cleanup_append_correspondence",
+          "launcher_initial_details_correspondence",
+          "client_construction_none_correspondence",
+          "control_construction_revocation_correspondence",
+          "control_exception_revocation_correspondence",
+          "token_registration_correspondence",
+          "stored_failure_revocation_correspondence",
+          "callback_stored_failure_correspondence",
+          "callback_bare_rethrow_correspondence"
+        ],
+        "runtime_chain": null,
+        "source": {
+          "contract": "CPython 3.12.14 BEFORE_WITH and _PyObject_LookupSpecial; conditional source semantics, no new executable-image equivalence claim",
+          "method_order": [
+            "__enter__",
+            "__exit__"
+          ],
+          "missing": "missing-method denotes NULL without a pre-existing lookup error and the source-selected protocol diagnostic disposition. It is not Python None or a proved concrete formatted exception; diagnostic construction/formatting effects remain unestablished.",
+          "next_call_excluded": {
+            "expression": "_PyObject_CallNoArgs(enter)",
+            "file": "Python/bytecodes.c",
+            "line": 2515,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          },
+          "open_call": {
+            "expression": "open(p,'xb')",
+            "site": [
+              24,
+              9,
+              24,
+              21,
+              "Call"
+            ],
+            "source": {
+              "bytes": 11481,
+              "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+            }
+          },
+          "order": [
+            "lookup:continuation",
+            "lookup:__enter__",
+            "lookup:__exit__"
+          ],
+          "pins": {
+            "bytecodes": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "launcher": {
+              "bytes": 11481,
+              "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+            },
+            "typeobject": {
+              "bytes": 328862,
+              "sha256": "77e687a382ef5fbced0be9c99fb722e2531131f4cdd1216994a8a52696c21501"
+            }
+          },
+          "resolution": "lookup on Py_TYPE(receiver), not ordinary instance attribute access; descriptor binding may execute; concrete type, descriptor effects and callability unobserved",
+          "special_lookup": {
+            "expression": "_PyObject_LookupSpecial(PyObject *self, PyObject *attr)\n{\n    PyObject *res;\n\n    res = _PyType_Lookup(Py_TYPE(self), attr);\n    if (res != NULL) {\n        descrgetfunc f;\n        if ((f = Py_TYPE(res)->tp_descr_get) == NULL)\n            Py_INCREF(res);\n        else\n            res = f(res, self, (PyObject *)(Py_TYPE(self)));\n    }\n    return res;\n}\n",
+            "file": "Objects/typeobject.c",
+            "line": 2163,
+            "source": {
+              "bytes": 328862,
+              "sha256": "77e687a382ef5fbced0be9c99fb722e2531131f4cdd1216994a8a52696c21501"
+            },
+            "tag": "v3.12.14"
+          },
+          "steps": [
+            {
+              "allowed": [
+                "normal",
+                "raise",
+                "catchable-interruption",
+                "process-termination",
+                "unobserved"
+              ],
+              "id": "lookup:continuation",
+              "method": null,
+              "normal_outcome": "normal",
+              "source": {
+                "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+                "site": [
+                  24,
+                  4,
+                  25,
+                  54,
+                  "With"
+                ],
+                "source": {
+                  "bytes": 11481,
+                  "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+                }
+              }
+            },
+            {
+              "allowed": [
+                "found",
+                "missing-method",
+                "raise",
+                "catchable-interruption",
+                "process-termination",
+                "unobserved"
+              ],
+              "diagnostic_requested_type": "TypeError",
+              "id": "lookup:__enter__",
+              "method": "__enter__",
+              "normal_outcome": "found",
+              "null_error_guard": "NULL plus existing error -> raised lookup; NULL without existing error -> source TypeError diagnostic path",
+              "source": {
+                "expression": "_PyObject_LookupSpecial(mgr, &_Py_ID(__enter__));",
+                "file": "Python/bytecodes.c",
+                "line": 2492,
+                "source": {
+                  "bytes": 143622,
+                  "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+                },
+                "tag": "v3.12.14"
+              }
+            },
+            {
+              "allowed": [
+                "found",
+                "missing-method",
+                "raise",
+                "catchable-interruption",
+                "process-termination",
+                "unobserved"
+              ],
+              "diagnostic_requested_type": "TypeError",
+              "id": "lookup:__exit__",
+              "method": "__exit__",
+              "normal_outcome": "found",
+              "null_error_guard": "NULL plus existing error -> raised lookup; NULL without existing error -> source TypeError diagnostic path",
+              "source": {
+                "expression": "_PyObject_LookupSpecial(mgr, &_Py_ID(__exit__));",
+                "file": "Python/bytecodes.c",
+                "line": 2502,
+                "source": {
+                  "bytes": 143622,
+                  "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+                },
+                "tag": "v3.12.14"
+              }
+            }
+          ],
+          "stop": "after selected __exit__ lookup result, before either protocol method invocation, context entry or f binding",
+          "with_statement": {
+            "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+            "site": [
+              24,
+              4,
+              25,
+              54,
+              "With"
+            ],
+            "source": {
+              "bytes": 11481,
+              "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+            }
+          }
+        }
+      },
+      "parent_catalogue_sha256": "c4f63267d3094a895943aebb9796b50025b64bc97fd7158d0ab19b5e85972523",
+      "preserved_relations": [
+        "context_special_lookup_correspondence",
+        "open_return_context_operand_correspondence",
+        "helper_open_attempt_correspondence",
+        "write_call_correspondence",
+        "cleanup_loop_exhaustion_correspondence",
+        "cleanup_error_report_correspondence",
+        "exceptional_cleanup_append_correspondence",
+        "launcher_initial_details_correspondence",
+        "client_construction_none_correspondence",
+        "control_construction_revocation_correspondence",
+        "control_exception_revocation_correspondence",
+        "token_registration_correspondence",
+        "stored_failure_revocation_correspondence",
+        "callback_stored_failure_correspondence",
+        "callback_bare_rethrow_correspondence"
+      ],
+      "runtime_chain": null,
+      "source": {
+        "C_argument_expression": "enter",
+        "C_helper": "_PyObject_CallNoArgs",
+        "call_site": {
+          "expression": "_PyObject_CallNoArgs(enter)",
+          "file": "Python/bytecodes.c",
+          "line": 2515,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        },
+        "contract": "CPython 3.12.14 BEFORE_WITH and _PyObject_LookupSpecial; conditional source semantics, no new executable-image equivalence claim",
+        "intervening_operation": {
+          "expression": "DECREF_INPUTS();",
+          "file": "Python/bytecodes.c",
+          "line": 2514,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        },
+        "launcher_operand": {
+          "expression": "open(p,'xb')",
+          "site": [
+            24,
+            9,
+            24,
+            21,
+            "Call"
+          ],
+          "source": {
+            "bytes": 11481,
+            "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+          }
+        },
+        "order": [
+          "enter-call:continuation",
+          "enter-call:attempt"
+        ],
+        "python_explicit_argument_count": 0,
+        "required_lookup_order": [
+          "__enter__",
+          "__exit__"
+        ],
+        "steps": [
+          {
+            "allowed": [
+              "normal",
+              "raise",
+              "catchable-interruption",
+              "process-termination",
+              "unobserved"
+            ],
+            "id": "enter-call:continuation",
+            "meaning": "explicit conditional continuation from both successful lookups past the intervening source operation; no claim about its physical effects or internal failure mechanism",
+            "normal_outcome": "normal",
+            "source": {
+              "expression": "DECREF_INPUTS();",
+              "file": "Python/bytecodes.c",
+              "line": 2514,
+              "source": {
+                "bytes": 143622,
+                "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+              },
+              "tag": "v3.12.14"
+            }
+          },
+          {
+            "allowed": [
+              "attempted"
+            ],
+            "id": "enter-call:attempt",
+            "meaning": "attempt at the selected C helper call site only; no helper or method-body entry, return, or res assignment",
+            "normal_outcome": "attempted",
+            "source": {
+              "expression": "_PyObject_CallNoArgs(enter)",
+              "file": "Python/bytecodes.c",
+              "line": 2515,
+              "source": {
+                "bytes": 143622,
+                "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+              },
+              "tag": "v3.12.14"
+            }
+          }
+        ],
+        "stop": "at _PyObject_CallNoArgs(enter) attempt; before helper or method-body entry, outcome, res assignment, completed context entry or f binding",
+        "with_statement": {
+          "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+          "site": [
+            24,
+            4,
+            25,
+            54,
+            "With"
+          ],
+          "source": {
+            "bytes": 11481,
+            "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+          }
+        }
+      }
+    },
+    "format": "I164-ENTER-RETURN-RES-STATIC-1",
+    "guard_branches": {
+      "continuity": [
+        "explicit conditional premise",
+        "UNESTABLISHED"
+      ],
+      "non_NULL_object_cases": [
+        "opaque",
+        "Python-None"
+      ],
+      "origins": [
+        "protected-close",
+        "protected-append"
+      ],
+      "prefixes": [
+        "control absent",
+        "control construction and callback completed normally"
+      ],
+      "steps": {
+        "enter-return:c-return": [
+          "non-NULL",
+          "NULL",
+          "raise",
+          "catchable-interruption",
+          "process-termination",
+          "unobserved"
+        ],
+        "enter-return:continuation": [
+          "normal",
+          "raise",
+          "catchable-interruption",
+          "process-termination",
+          "unobserved"
+        ],
+        "enter-return:res-assignment": [
+          "assigned",
+          "process-termination",
+          "unobserved"
+        ]
+      }
+    },
+    "parent_catalogue_sha256": "d996dd05d99b97e86a1db8f8b56a0038315e4ea1fcfa1d8952a5fb89607784af",
+    "preserved_relations": [
+      "enter_call_attempt_correspondence",
+      "context_special_lookup_correspondence",
+      "open_return_context_operand_correspondence",
+      "helper_open_attempt_correspondence",
+      "write_call_correspondence",
+      "cleanup_loop_exhaustion_correspondence",
+      "cleanup_error_report_correspondence",
+      "exceptional_cleanup_append_correspondence",
+      "launcher_initial_details_correspondence",
+      "client_construction_none_correspondence",
+      "control_construction_revocation_correspondence",
+      "control_exception_revocation_correspondence",
+      "token_registration_correspondence",
+      "stored_failure_revocation_correspondence",
+      "callback_stored_failure_correspondence",
+      "callback_bare_rethrow_correspondence"
+    ],
+    "runtime_chain": null,
+    "source": {
+      "C_argument_expression": "enter",
+      "C_helper": "_PyObject_CallNoArgs",
+      "assignment": {
+        "expression": "res = _PyObject_CallNoArgs(enter);",
+        "file": "Python/bytecodes.c",
+        "line": 2515,
+        "source": {
+          "bytes": 143622,
+          "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+        },
+        "tag": "v3.12.14"
+      },
+      "call_site": {
+        "expression": "_PyObject_CallNoArgs(enter)",
+        "file": "Python/bytecodes.c",
+        "line": 2515,
+        "source": {
+          "bytes": 143622,
+          "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+        },
+        "tag": "v3.12.14"
+      },
+      "contract": "CPython 3.12.14 BEFORE_WITH and _PyObject_LookupSpecial; conditional source semantics, no new executable-image equivalence claim",
+      "error_indicator_contract": "UNKNOWN; no deeper helper contract or concrete error inferred from C NULL or a non-NULL result",
+      "launcher_operand": {
+        "expression": "open(p,'xb')",
+        "site": [
+          24,
+          9,
+          24,
+          21,
+          "Call"
+        ],
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      },
+      "next_operation_excluded": {
+        "expression": "Py_DECREF(enter);",
+        "file": "Python/bytecodes.c",
+        "line": 2516,
+        "source": {
+          "bytes": 143622,
+          "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+        },
+        "tag": "v3.12.14"
+      },
+      "non_NULL_object_cases": [
+        "opaque",
+        "Python-None"
+      ],
+      "order": [
+        "enter-return:continuation",
+        "enter-return:c-return",
+        "enter-return:res-assignment"
+      ],
+      "steps": [
+        {
+          "allowed": [
+            "normal",
+            "raise",
+            "catchable-interruption",
+            "process-termination",
+            "unobserved"
+          ],
+          "id": "enter-return:continuation",
+          "meaning": "explicit conditional continuation from selected authenticated call attempt; no inferred dispatch/body or runtime arrival",
+          "source": {
+            "expression": "_PyObject_CallNoArgs(enter)",
+            "file": "Python/bytecodes.c",
+            "line": 2515,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          }
+        },
+        {
+          "allowed": [
+            "non-NULL",
+            "NULL",
+            "raise",
+            "catchable-interruption",
+            "process-termination",
+            "unobserved"
+          ],
+          "id": "enter-return:c-return",
+          "meaning": "completed C result distinguishes non-NULL PyObject pointer and C NULL; other frontiers do not establish a completed return",
+          "source": {
+            "expression": "_PyObject_CallNoArgs(enter)",
+            "file": "Python/bytecodes.c",
+            "line": 2515,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          }
+        },
+        {
+          "allowed": [
+            "assigned",
+            "process-termination",
+            "unobserved"
+          ],
+          "id": "enter-return:res-assignment",
+          "meaning": "assign the already returned C value to res, or retain the completed return with assignment unestablished; no assignment-failure mechanism invented",
+          "source": {
+            "expression": "res = _PyObject_CallNoArgs(enter);",
+            "file": "Python/bytecodes.c",
+            "line": 2515,
+            "source": {
+              "bytes": 143622,
+              "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+            },
+            "tag": "v3.12.14"
+          }
+        }
+      ],
+      "stop": "after selected C return and res assignment, or first nonnormal/unobserved frontier; before Py_DECREF(enter) at line2516",
+      "target": "res",
+      "with_statement": {
+        "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+        "site": [
+          24,
+          4,
+          25,
+          54,
+          "With"
+        ],
+        "source": {
+          "bytes": 11481,
+          "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+        }
+      }
+    }
+  },
+  "format": "I164-ENTER-DECREF-ATTEMPT-STATIC-1",
+  "guard_branches": {
+    "continuity": [
+      "explicit conditional premise",
+      "UNESTABLISHED"
+    ],
+    "origins": [
+      "protected-close",
+      "protected-append"
+    ],
+    "prefixes": [
+      "control absent",
+      "control construction and callback completed normally"
+    ],
+    "res_non_NULL_guard": false,
+    "steps": {
+      "enter-decref:attempt": [
+        "attempted",
+        "process-termination",
+        "unobserved"
+      ],
+      "enter-decref:continuation": [
+        "normal",
+        "raise",
+        "catchable-interruption",
+        "process-termination",
+        "unobserved"
+      ]
+    }
+  },
+  "parent_catalogue_sha256": "37d7ded193c9aad3ca8c55931fa5cde612e7f2ad7b211eaa906f30cfe2903215",
+  "preserved_relations": [
+    "enter_return_res_correspondence",
+    "enter_call_attempt_correspondence",
+    "context_special_lookup_correspondence",
+    "open_return_context_operand_correspondence",
+    "helper_open_attempt_correspondence",
+    "write_call_correspondence",
+    "cleanup_loop_exhaustion_correspondence",
+    "cleanup_error_report_correspondence",
+    "exceptional_cleanup_append_correspondence",
+    "launcher_initial_details_correspondence",
+    "client_construction_none_correspondence",
+    "control_construction_revocation_correspondence",
+    "control_exception_revocation_correspondence",
+    "token_registration_correspondence",
+    "stored_failure_revocation_correspondence",
+    "callback_stored_failure_correspondence",
+    "callback_bare_rethrow_correspondence"
+  ],
+  "runtime_chain": null,
+  "source": {
+    "assignment": {
+      "expression": "res = _PyObject_CallNoArgs(enter);",
+      "file": "Python/bytecodes.c",
+      "line": 2515,
+      "source": {
+        "bytes": 143622,
+        "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+      },
+      "tag": "v3.12.14"
+    },
+    "contract": "CPython 3.12.14 BEFORE_WITH and _PyObject_LookupSpecial; conditional source semantics, no new executable-image equivalence claim",
+    "interpretation": "source operation, not an assumed separately observed C function or macro-body execution",
+    "launcher_operand": {
+      "expression": "open(p,'xb')",
+      "site": [
+        24,
+        9,
+        24,
+        21,
+        "Call"
+      ],
+      "source": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      }
+    },
+    "next_operation_excluded": {
+      "expression": "if (res == NULL) {",
+      "file": "Python/bytecodes.c",
+      "line": 2517,
+      "source": {
+        "bytes": 143622,
+        "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+      },
+      "tag": "v3.12.14"
+    },
+    "operand_expression": "enter",
+    "operation": {
+      "expression": "Py_DECREF(enter);",
+      "file": "Python/bytecodes.c",
+      "line": 2516,
+      "source": {
+        "bytes": 143622,
+        "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+      },
+      "tag": "v3.12.14"
+    },
+    "operation_spelling": "Py_DECREF",
+    "order": [
+      "enter-decref:continuation",
+      "enter-decref:attempt"
+    ],
+    "res_classes": [
+      "C-NULL",
+      "non-NULL/opaque",
+      "non-NULL/Python-None"
+    ],
+    "res_non_NULL_guard": false,
+    "steps": [
+      {
+        "allowed": [
+          "normal",
+          "raise",
+          "catchable-interruption",
+          "process-termination",
+          "unobserved"
+        ],
+        "id": "enter-decref:continuation",
+        "meaning": "explicit conditional continuation from assigned res; interval error is not an invented Py_DECREF failure mechanism",
+        "source": {
+          "expression": "Py_DECREF(enter);",
+          "file": "Python/bytecodes.c",
+          "line": 2516,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        }
+      },
+      {
+        "allowed": [
+          "attempted",
+          "process-termination",
+          "unobserved"
+        ],
+        "id": "enter-decref:attempt",
+        "meaning": "selected source-operation attempt only; no macro expansion, completion, call frame or physical effect",
+        "source": {
+          "expression": "Py_DECREF(enter);",
+          "file": "Python/bytecodes.c",
+          "line": 2516,
+          "source": {
+            "bytes": 143622,
+            "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+          },
+          "tag": "v3.12.14"
+        }
+      }
+    ],
+    "stop": "at selected Py_DECREF(enter) source-operation attempt at line2516 or first nonnormal/unobserved frontier; before operation completion/effects and result test at2517",
+    "with_statement": {
+      "expression": "with open(p,'xb') as f:\n        f.write(enc(x));f.flush();os.fsync(f.fileno())",
+      "site": [
+        24,
+        4,
+        25,
+        54,
+        "With"
+      ],
+      "source": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      }
+    }
+  }
+}

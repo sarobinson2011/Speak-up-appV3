@@ -1,0 +1,62 @@
+ASSESSMENT ONLY — selected post-call Py_DECREF(enter) source-operation attempt
+NOT IMPLEMENTED. No new execution is authorized by this assessment.
+
+Proposed smallest relationship: from the exact authenticated completed C return
+and res assignment at CPython 3.12.14 Python/bytecodes.c:2515, require explicit
+conditional continuation and bind the selected symbolic enter role to the
+source-operation attempt Py_DECREF(enter) at line2516. Stop at that attempt,
+before claiming its completion, macro/helper body, reference-count change,
+destruction/finalization or other physical effects; do not enter the res == NULL
+test at2517, exit decrement2518, ERROR_IF2519, context entry or f binding.
+Py_DECREF is described as the retained source operation, not assumed to be a
+separately executed C function with an observed call frame.
+
+Defining sources: lab_bootstrap.py:23–24 and the exact BEFORE_WITH bytes at
+bytecodes.c:2488–2520. The next operation applies in source order after res
+assignment for both NULL and non-NULL result classes: no res-non-NULL guard
+precedes line2516. Python None remains a non-NULL class premise. The decref's
+operand is the authenticated enter lookup role, not res or the exit role.
+The Py_DECREF(enter) at2511 belongs to the failed-exit-lookup branch, which is
+not this occurrence; DECREF_INPUTS() at2514 is another source operation already
+acknowledged in the predecessor and cannot substitute for line2516.
+
+Evidence that this is an implementation gap, not mere source adjacency:
+extension/code/managed_coverage.py:3688–3710 independently compiles exactly three
+stages (continuation, C return, res assignment). Lines3695–3706 pin line2516 only
+as next_operation_excluded and the stopping boundary. Lines3774–3783 expose
+assignment but force post_call_decref_established=False and result_test=False.
+The exact-output validator3786–3787 recomputes only that projection.
+extension/code/correspondence.py:53–61 authenticates the unchanged parent and
+compiles this three-stage catalogue;70–78 mandatorily validates only the current
+constructed return/assignment relation;80–92 embeds that relation in both
+contexts and keeps the explicit post-call-decref exclusion at84. Searches of
+the full actual producer and adapter find no declaration, selected operand role
+mapping or mandatory new relation for the line2516 attempt. Existing reference
+transfers and earlier decref acknowledgements are different source occurrences.
+
+Preserve both contexts, control prefixes and protected failure origins. Bind
+exact predecessor, selected invocation/owner/token, selected enter and distinct
+exit roles, already assigned res (including C NULL), original pending constructor
+error and prior acknowledged/UNKNOWN effects. Assigned res alone cannot prove
+continuation. Unestablished continuation, termination or replacement/interrupt
+frontiers must not become an attempted/completed decrement. Any interval error
+remains distinct; do not invent a Py_DECREF failure mechanism or infer helper
+C-error-indicator guarantees from the previous C result. No observed runtime
+arrival, concrete identity, file effects or cleanup qualification is supplied.
+
+Available inputs suffice for this bounded call-site/source-operation-attempt
+correspondence: fixed producer/adapter, exact source identities in
+provenance/shared-defining-sources.json, current reviewed catalogue, predecessor
+receipt and byte-recoverable root, and retained context/prefix/failure-origin
+premises. Revalidate the actual predecessor when a future construction is
+authorized; do not treat a saved dictionary as an authenticated basis. No new
+acquisition or runtime observation is needed merely to construct this relation.
+
+This does NOT justify modeling the internals or completion of Py_DECREF. Such
+claims require the exact matching CPython 3.12.14 macro/inline/helper definitions
+and applicable build/debug configuration from the interpreter source/build owner,
+and separately qualified runner/operator evidence for observed effects. Those
+inputs are not needed for the proposed bounded attempt-only relationship.
+
+All obligations and authority boundaries remain. Assessment is not implementation
+authorization, independent acceptance, runtime qualification or admission.

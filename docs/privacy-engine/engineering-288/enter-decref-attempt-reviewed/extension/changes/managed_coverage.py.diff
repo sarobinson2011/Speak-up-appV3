@@ -1,0 +1,93 @@
+--- reviewed-return/managed_coverage.py
++++ enter-decref/managed_coverage.py
+@@ -3785,3 +3785,90 @@
+ 
+ def validate_enter_return_projection(cat,case,validated,submitted):
+  status_exact_tree(submitted,'ENTER-RETURN-OUTPUT-TYPE');status_typed_same(submitted,enter_return_projection(cat,case,validated),'ENTER-RETURN-OUTPUT-CORRESPONDENCE');return True
++
++# I164-ENTER-DECREF-ATTEMPT-1. Complete 452,888-byte reviewed prefix preserved.
++def compile_enter_decref(launcher,bytecodes,typeobject,r1,lookup,enter,parent):
++ for value in (r1,lookup,enter,parent):status_exact_tree(value,'ENTER-DECREF-CATALOGUE-TYPE')
++ validate_enter_return(launcher,bytecodes,typeobject,r1,lookup,enter,parent)
++ text=bytecodes.decode();start=text.index('        inst(BEFORE_WITH,');end=text.index('        inst(WITH_EXCEPT_START,',start);block=text[start:end]
++ sequence='            res = _PyObject_CallNoArgs(enter);\n            Py_DECREF(enter);\n            if (res == NULL) {'
++ need(block.count(sequence)==1,'ENTER-DECREF-SOURCE-ORDER')
++ pos=start+block.index(sequence)+len('            res = _PyObject_CallNoArgs(enter);\n');testpos=pos+len('            Py_DECREF(enter);\n')
++ def site(offset,expression):return {'source':copy.deepcopy(parent['source']['assignment']['source']),'file':'Python/bytecodes.c','line':text.count('\n',0,offset)+1,'expression':expression,'tag':'v3.12.14'}
++ operation=site(pos,'Py_DECREF(enter);');status_typed_same(operation,parent['source']['next_operation_excluded'],'ENTER-DECREF-PARENT-BOUNDARY')
++ steps=[{'id':'enter-decref:continuation','source':operation,'allowed':['normal','raise','catchable-interruption','process-termination','unobserved'],'meaning':'explicit conditional continuation from assigned res; interval error is not an invented Py_DECREF failure mechanism'},
++        {'id':'enter-decref:attempt','source':operation,'allowed':['attempted','process-termination','unobserved'],'meaning':'selected source-operation attempt only; no macro expansion, completion, call frame or physical effect'}]
++ return {'format':'I164-ENTER-DECREF-ATTEMPT-STATIC-1','source':{'launcher_operand':copy.deepcopy(parent['source']['launcher_operand']),'with_statement':copy.deepcopy(parent['source']['with_statement']),
++  'assignment':copy.deepcopy(parent['source']['assignment']),'operation':operation,'operand_expression':'enter','operation_spelling':'Py_DECREF','next_operation_excluded':site(testpos,'if (res == NULL) {'),
++  'steps':steps,'order':[x['id'] for x in steps],'res_classes':['C-NULL','non-NULL/opaque','non-NULL/Python-None'],'res_non_NULL_guard':False,
++  'contract':parent['source']['contract'],'interpretation':'source operation, not an assumed separately observed C function or macro-body execution',
++  'stop':'at selected Py_DECREF(enter) source-operation attempt at line2516 or first nonnormal/unobserved frontier; before operation completion/effects and result test at2517'},
++  'enter_return_catalogue':copy.deepcopy(parent),'parent_catalogue_sha256':digest(enc(parent)),
++  'declarations':[{'id':x['id'],'source':copy.deepcopy(x['source']),'meaning':x['meaning'],'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for x in steps],
++  'guard_branches':{'continuity':['explicit conditional premise','UNESTABLISHED'],'prefixes':copy.deepcopy(parent['guard_branches']['prefixes']),'origins':copy.deepcopy(parent['guard_branches']['origins']),'steps':{x['id']:copy.deepcopy(x['allowed']) for x in steps},'res_non_NULL_guard':False},
++  'preserved_relations':['enter_return_res_correspondence',*parent['preserved_relations']],'runtime_chain':None,'actual_admission':False}
++
++def validate_enter_decref(launcher,bytecodes,typeobject,r1,lookup,enter,parent,submitted):
++ status_exact_tree(submitted,'ENTER-DECREF-CATALOGUE-TYPE');status_typed_same(submitted,compile_enter_decref(launcher,bytecodes,typeobject,r1,lookup,enter,parent),'ENTER-DECREF-CATALOGUE-SOURCE');return True
++
++def enter_decref_binding(cat,parent,anchor,continuity):
++ for value in (cat,parent,anchor,continuity):status_exact_tree(value,'ENTER-DECREF-BINDING-TYPE')
++ need(type(continuity) is str and continuity in ('explicit conditional premise','UNESTABLISHED'),'ENTER-DECREF-CONTINUITY')
++ need(parent['kind']=='CONSTRUCTED-ENTER-RETURN-RES' and parent['helper_c_return_completed_in_model'] is True and parent['res_assignment_established'] is True,'ENTER-DECREF-COMPLETED-ASSIGNMENT')
++ pc={'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(parent['instance_anchor']),'parent_result':copy.deepcopy(parent['predecessor_projection']),'binding':copy.deepcopy(parent['binding']),
++  'outcomes':[{k:copy.deepcopy(e[k]) for k in ('stage','outcome','object_case') if k in e} for e in parent['events']]}
++ validate_enter_return_projection(cat['enter_return_catalogue'],pc,pc,parent)
++ need(parent['events'][-1]['stage']=='enter-return:res-assignment' and parent['events'][-1]['outcome']=='assigned','ENTER-DECREF-ASSIGNMENT-FRONTIER')
++ need(parent['binding']['continuity']=='explicit conditional premise','ENTER-DECREF-PARENT-CONTINUITY')
++ need(parent['post_call_decref_established'] is False and parent['result_test_established'] is False,'ENTER-DECREF-PARENT-STOP')
++ scope=parent['scope'];status_typed_same(parent['instance_anchor'],anchor,'ENTER-DECREF-ANCHOR');status_typed_same(scope['instance'],anchor['instance'],'ENTER-DECREF-INSTANCE')
++ need(scope['context']==anchor['context'] and scope['acquisition']==anchor['record']['acquisition'],'ENTER-DECREF-CONTEXT-ACQUISITION')
++ return {'scope':copy.deepcopy(scope),'anchor':copy.deepcopy(anchor),'assignment_occurrence':copy.deepcopy(parent['events'][-1]),'res_assignment':copy.deepcopy(parent['res_assignment']),
++  'res_value_role':copy.deepcopy(parent['res_value_role']),'operand_role':copy.deepcopy(parent['binding']['method_results']['__enter__']),'exit_role':copy.deepcopy(parent['binding']['method_results']['__exit__']),
++  'method_results':copy.deepcopy(parent['binding']['method_results']),'helper_invocation':copy.deepcopy(parent['binding']['helper_invocation']),'references':copy.deepcopy(parent['binding']['references']),
++  'original_constructor_error':copy.deepcopy(parent['original_error_pending_in_outer_handler']),'pending_error_before_operation':copy.deepcopy(parent['last_pending_error_in_model']),
++  'details_role':copy.deepcopy(parent['binding']['details_role']),'cleanup_list':copy.deepcopy(parent['binding']['cleanup_list']),
++  'continuity':continuity,'premise':'conditional selected invocation/owner/token/enter-result continuity; assignment alone establishes no runtime arrival or decrement effects','physical_identity':None}
++
++def enter_decref_projection(cat,case,validated):
++ for value in (cat,case,validated):status_exact_tree(value,'ENTER-DECREF-EXACT-TYPE')
++ keys={'scope','anchor','parent_result','binding','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'ENTER-DECREF-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'ENTER-DECREF-VALIDATED:'+k)
++ p=case['parent_result'];b=case['binding'];scope=case['scope'];oo=case['outcomes'];s=cat['source']
++ status_typed_same(scope,p['scope'],'ENTER-DECREF-SCOPE');status_typed_same(b,enter_decref_binding(cat,p,case['anchor'],b['continuity']),'ENTER-DECREF-EXPECTED-BINDING')
++ need(type(oo) is list and bool(oo),'ENTER-DECREF-OUTCOMES')
++ if b['continuity']=='UNESTABLISHED':status_typed_same(oo,[{'stage':'enter-decref:continuation','outcome':'unobserved'}],'ENTER-DECREF-UNKNOWN-CONTINUITY')
++ events=[];replacement=None;attempted=False;operation=None;last=None
++ for i,step in enumerate(s['steps']):
++  need(i<len(oo),'ENTER-DECREF-MISSING-STEP');row=oo[i];need(type(row) is dict and set(row)=={'stage','outcome'},'ENTER-DECREF-STAGE-FIELDS')
++  need(type(row['stage']) is str and row['stage']==step['id'],'ENTER-DECREF-ORDER');last=row['outcome'];need(type(last) is str and last in step['allowed'],'ENTER-DECREF-OUTCOME')
++  event={'id':b['assignment_occurrence']['id']+'/'+step['id'],'stage':step['id'],'scope':copy.deepcopy(scope),'source':copy.deepcopy(step['source']),
++   'selected_assignment':b['assignment_occurrence']['id'],'helper_invocation':copy.deepcopy(b['helper_invocation']),'owner':copy.deepcopy(b['references']['owner']),'token':copy.deepcopy(b['references']['token']),
++   'operand_role':copy.deepcopy(b['operand_role']),'res_value_role':copy.deepcopy(b['res_value_role']),'exit_role':copy.deepcopy(b['exit_role']),'outcome':last,'runtime_frame':None}
++  events.append(event)
++  if i==1 and last=='attempted':
++   attempted=True;operation={'occurrence':event['id'],'source':copy.deepcopy(s['operation']),'spelling':'Py_DECREF','operand_expression':'enter','operand_role':copy.deepcopy(b['operand_role']),
++    'reference_semantics':'selected symbolic enter-result forwarding, not observed physical identity or a C call-frame claim','macro_expansion':None,'concrete_reference_count':None,'runtime_observation':False}
++  elif not(i==0 and last=='normal'):
++   if last in ('raise','catchable-interruption'):
++    replacement={'role':'conditional-enter-decref-continuation-error','reference':event['id']+'/error','scope':copy.deepcopy(scope),'frontier_stage':step['id'],'source':copy.deepcopy(step['source']),
++     'kind':last,'origin':'conditional continuation interval before established operation attempt; not a concrete Py_DECREF failure mechanism','exact_type':None,'exact_value':None,
++     'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_observation':False}
++   break
++ need(len(oo)==len(events),'ENTER-DECREF-UNREACHED-STEPS')
++ out=copy.deepcopy(p);out.update({'kind':'CONSTRUCTED-ENTER-DECREF-ATTEMPT','binding':copy.deepcopy(b),'predecessor_projection':copy.deepcopy(p),'events':events,
++  'completion':'enter-decref-attempt' if attempted else last+'-frontier','post_call_decref_attempt_established_in_model':attempted,'decref_operation':operation,
++  'post_call_decref_established':False,'decref_completion_established':False,'decref_effects_established':False,'macro_expansion_established':False,'reference_count_change_established':False,
++  'finalization_established':False,'decref_callback_execution_established':False,'physical_release_established':False,'result_test_established':False,'result_error_routing_established':False,
++  'context_manager_entry_established':False,'f_binding_established':False,'last_acknowledged_pending_error_before_decref':copy.deepcopy(p['last_pending_error_in_model']),
++  'replacement_error_in_model':copy.deepcopy(replacement if replacement is not None else p['replacement_error_in_model']),
++  'last_pending_error_in_model':copy.deepcopy(replacement if replacement is not None else p['last_pending_error_in_model']),
++  'terminal_python_exception_in_model':None if last in ('process-termination','unobserved') else True,
++  'pending_error_qualification':'original outer error and prior error evidence retained; conditional continuation error is distinct; helper C error indicator and eventual propagation remain unestablished',
++  'prior_acknowledged_partial_effects':copy.deepcopy(p['current_partial_effects']),'current_partial_effects':'UNKNOWN; earlier append/lookup/reference/call effects remain unresolved; this attempt establishes no decrement effect',
++  'runtime_enter_decref_chain':None,'stop':s['stop']})
++ return out
++
++def validate_enter_decref_projection(cat,case,validated,submitted):
++ status_exact_tree(submitted,'ENTER-DECREF-OUTPUT-TYPE');status_typed_same(submitted,enter_decref_projection(cat,case,validated),'ENTER-DECREF-OUTPUT-CORRESPONDENCE');return True

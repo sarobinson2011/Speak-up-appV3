@@ -1,0 +1,38 @@
+PLANNED, not executed during preparation.
+
+Exactly one new m.validate(candidate, pinned_expected_bytes) invocation:
+new validate -> _receipt_shape -> derive -> inputs -> _basis -> _assemble ->
+full receipt byte comparison. New _basis refreshes exact inputs and invokes the
+actual unchanged return-to-res parent's _receipt_shape, _basis and _assemble,
+comparing its pinned receipt before compiling this layer from retained sources
+and the actual returned parent catalogues. Both context rows are mandatory.
+
+Return-to-res _basis composes enter-call _basis; enter-call composes lookup;
+lookup composes R1. R1 invokes actual helper _checked and _receipt_checked.
+Helper's actual _public_predecessor invokes the deeper write-call public validate.
+The retained deeper authentication/LD-01 monitoring path is unchanged. The thin
+return, enter, lookup, R1 and helper public validate wrappers are NOT invoked.
+Do not claim every wrapper receives a public call. Deeper call counts will be
+recorded from execution; historical counts are not assumed for the new run.
+
+The unchanged native observer captures the exact new _basis returned object by
+code identity. After the sole new public call returns, the harness reads actual
+nested return/enter/lookup/R1/helper bases, invokes their pure assemblies and
+compares every receipt with its pinned bytes. It also assembles the new receipt
+from the same actual basis and compares it byte for byte with expected output,
+covering both contexts. These post-return assemblies do not rerun authentication.
+No saved dictionary, historical PASS or stub is substituted for a returned basis.
+
+Offline preparation imports only fixed producer/adapter definitions, compiles
+catalogues from saved sources/declarations, and calls _assemble with explicit
+expected-output data. Historical parent public-result fields are expected
+serialized values only. No inputs/_basis/derive/public validate or constructed
+path is called during preparation. The offline dictionary is never passed to
+the public run as an authenticated basis or acceptance result.
+
+New authenticated constructed-path execution remains untested and is not planned.
+The harness checks existing observer phase records for zero new-root
+_construct_checked calls; no new instrumentation is installed. A public positive
+checks authenticated declarations/conditional links, not the constructed cases.
+No full public negative derivation or authenticated-core campaign is authorized.
+The 750 focused controls and all prior groups are reused, not rerun.

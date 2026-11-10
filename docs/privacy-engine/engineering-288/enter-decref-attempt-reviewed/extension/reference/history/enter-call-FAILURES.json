@@ -1,0 +1,37 @@
+[
+  {
+    "candidate_control_count": 0,
+    "kind": "documentation finding and reviewer audit exit 1",
+    "qualification": "byte recovery succeeded; root checks completed before six-versus-five assertion; continuation did not replay recovery",
+    "raw": [
+      "recover_candidate.py",
+      "recovery-audit.stdout",
+      "recovery-audit.stderr"
+    ],
+    "record": "recovery-audit.exit.json",
+    "resolution": "finish-byte-audit.exit.json; final-root-audit.json"
+  },
+  {
+    "candidate_control_count": 0,
+    "kind": "reviewer file-layout audit exit 1",
+    "qualification": "missing empty stderr-chunks directory; 489-row supplied audit already saved; no candidate invocation",
+    "raw": [
+      "reconcile_saved.py",
+      "record-audit.stdout",
+      "record-audit.stderr"
+    ],
+    "record": "record-audit.exit.json",
+    "resolution": "record-audit-continuation.exit.json"
+  },
+  {
+    "candidate_control_count": 0,
+    "kind": "historical reported read-only EVENT-prefix parser failure",
+    "qualification": "reported; no raw failed-parser records recovered; not rerun or reconstructed",
+    "record": "reported-parser-failure-evidence.json"
+  },
+  {
+    "candidate_control_count": 0,
+    "kind": "incidental read-only filename probe",
+    "qualification": "rg requested event_filter.c instead of _event_filter.c, exit 2; exact existing _event_filter.c subsequently inspected; no validation or source change"
+  }
+]
