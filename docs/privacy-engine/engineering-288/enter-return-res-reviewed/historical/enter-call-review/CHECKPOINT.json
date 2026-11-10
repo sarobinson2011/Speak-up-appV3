@@ -1,0 +1,223 @@
+{
+  "application_database_session_acquisition_git_actions": 0,
+  "archive_checks": {
+    "host": {
+      "entries": 621,
+      "identity": {
+        "bytes": 7692623,
+        "sha256": "fb367b2210875601b83c2629abae36ce7ee3fb8a54b34f40a89af0f58d5a6c51"
+      },
+      "manifested_hashes": 619
+    },
+    "launcher": {
+      "entries": 60,
+      "identity": {
+        "bytes": 204417990,
+        "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+      },
+      "manifested_hashes": 59
+    },
+    "prior_review": {
+      "entries": 307,
+      "identity": {
+        "bytes": 6633907,
+        "sha256": "aa52620a54fb0511abe00020d5f92c44445601e90010f198519db9dd93ae8f24"
+      },
+      "manifested_hashes": 306
+    },
+    "results": {
+      "entries": 1518,
+      "identity": {
+        "bytes": 583675,
+        "sha256": "23aadc26aa762868e8113230f304ea4e213555f2b06fced5e9dcb0200c4de7c3"
+      },
+      "manifested_hashes": 1517
+    },
+    "source": {
+      "entries": 45,
+      "identity": {
+        "bytes": 4126750,
+        "sha256": "949c9dd72f27be2ec4b1bf271547b62914e49fdd49220b05e3ab9e74892ba3f7"
+      },
+      "manifested_hashes": 44
+    }
+  },
+  "candidate_changes": 0,
+  "documentation_finding": "DOC-ENTER-01: CHANGES says six appended producer functions; exact appended bytes define five. Nonblocking; distinct from inherited R1 discrepancy.",
+  "failure_records": "FAILURES.json",
+  "fresh_execution_environment": {
+    "candidate_python_protocol_execution": false,
+    "cryptography_execution": false,
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "host_equivalence_claim": false,
+    "installed_metadata_only": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.0",
+      "pycparser": "3.0"
+    },
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "full_public_negative_derivations": 0,
+  "implementation": {
+    "appended_bytes": 11056,
+    "appended_functions": [
+      "compile_enter_call",
+      "validate_enter_call",
+      "enter_call_binding",
+      "enter_call_projection",
+      "validate_enter_call_projection"
+    ],
+    "candidate_execution": 0,
+    "documentation_witness": {
+      "actual_functions": [
+        "compile_enter_call",
+        "validate_enter_call",
+        "enter_call_binding",
+        "enter_call_projection",
+        "validate_enter_call_projection"
+      ],
+      "claim": "append six new pure-source functions; entire predecessor prefix retained",
+      "count": 5,
+      "file": "source/CHANGES.json",
+      "implementation_defect": false,
+      "minimal_reproduction": "ast.parse(current_producer_bytes[429112:]) -> five top-level FunctionDef names"
+    },
+    "new_adapter": {
+      "bytes": 8900,
+      "sha256": "4722ba0c7ebaf660310206da52c6ac7c1a0adeb0c4bf278fd0e52245ec9a2942"
+    },
+    "new_producer": {
+      "bytes": 440168,
+      "sha256": "a3fb61cb3b1fdcc0df05e6fb770efa6ecd33e5e1487a69f528c09ffc659da3a2"
+    },
+    "prior_adapter": {
+      "bytes": 8665,
+      "sha256": "8714a2f491eb1d858ac546b93898ff497141a78591d92e8965af5fa991af1e34"
+    },
+    "prior_review_excerpts": "exact verified prior review members",
+    "producer_prefix": {
+      "bytes": 429112,
+      "sha256": "8bc637e3cf513327715a295d53bb2b3f6c3d343e509f7e607fb764a1c4018d9b"
+    },
+    "root_audit": "original recovery audit passed all three exact tree comparisons before stopping at documentation count; final post-control verification will be saved separately",
+    "runtime_interpreter_and_prior_sources": "exact unchanged bytes",
+    "six_observer_files": "exact unchanged",
+    "status": "PASS with documentation-count discrepancy"
+  },
+  "independent_controls": {
+    "FAIL": 0,
+    "PASS": 64,
+    "REJECTED": 83,
+    "authenticated_basis_core_calls": 0,
+    "exit": 0,
+    "fresh_process": true,
+    "public_calls": 0,
+    "reconciliation": "independent-reconciliation.json",
+    "rows": 147,
+    "timed_out": false
+  },
+  "input": {
+    "bytes": 7692623,
+    "filename": "I164-enter-call-attempt-public-1-host-evidence.tar.gz",
+    "included_in_review": true,
+    "library_file_id": "libfile_fde3_f-8045c5eee1488191bcbcf2ac9d65183f_39c64cf85e608191bb9545db7327fd84",
+    "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-8045c5eee1488191bcbcf2ac9d65183f_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+    "retrieved_directly_and_verified": true,
+    "sha256": "fb367b2210875601b83c2629abae36ce7ee3fb8a54b34f40a89af0f58d5a6c51"
+  },
+  "limits": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "acquisitions": "both preserved; distinct identities",
+    "admission": false,
+    "allowances": "UNCHANGED",
+    "backup": "KERNEL-ONLY",
+    "cumulative_envelope": "UNADOPTED",
+    "final_binding": "BLOCKED",
+    "inventory_unknown_totals": 4,
+    "lifetime_unknown_totals": 14,
+    "obligations": 11,
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "streams": "UNCOMPUTED"
+  },
+  "mandatory_constructed_path": "wired; authenticated execution UNEXECUTED",
+  "recovered_root": {
+    "candidate_changes": 0,
+    "manifest": {
+      "bytes": 1909785,
+      "sha256": "e52203074caac97ea857bd32070e66c0f386642dbfe574ab18384168d85f4bb2"
+    },
+    "root": {
+      "directories": 1169,
+      "exact_types_membership_hashes": "PASS",
+      "files": 4169
+    },
+    "source_and_predecessor_files_unchanged": true,
+    "status": "PASS"
+  },
+  "recovery": "RECOVERY.txt and recover_for_inspection.py; byte-only, new destination, no replay",
+  "retained_qualifications": [
+    "cooperative monitoring; free slot/hook removal not complete cleanup",
+    "historical UNKNOWN/missing records remain",
+    "R1 five-versus-six documentation and False/None fixture distinction",
+    "50.0.0 versus historical host 50.0.2; no equivalence",
+    "runtime arrival and physical effects unavailable",
+    "constructed fixtures not runtime observations",
+    "separate observer unjoined"
+  ],
+  "review": "I164-ENTER-CALL-ATTEMPT-1",
+  "reviewer": "Formal-Lab[6] author-independent; reviewer code/report only",
+  "saved_host": {
+    "actual_basis_captures": 1,
+    "child_exit": {
+      "automatic_retries": 0,
+      "child_exit": 0,
+      "child_identity": null,
+      "finished_utc": "2026-11-08T18:12:18.690275+00:00",
+      "kill_sent": false,
+      "outcome_requires_result_reconciliation": true,
+      "scope": "I164-ENTER-CALL-ATTEMPT-FULL-PUBLIC-POSITIVE-1-20261108; exactly one new enter-call public positive; no focused or historical replays",
+      "seconds": 3338.2737165039944,
+      "streams": {
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 103082,
+          "sha256": "4f788d3c2ce8abae0e94aeae4c45a2065edf941c526b5145c5dc945f6496c407"
+        }
+      },
+      "supervisor_failure": null,
+      "termination_requested": null,
+      "timed_out": false
+    },
+    "computation_entries": 17812,
+    "computation_returns": 17812,
+    "event_records": 272,
+    "events_add_control_counts": false,
+    "new_root_public_calls": 1,
+    "progress_snapshots": 216,
+    "public_positives": 1,
+    "receipt": {
+      "bytes": 17989707,
+      "sha256": "7fa6169a8b0e0e8b92b8c5dd71e440f8a211dc1c3a11559a2e515dd008ea98a6"
+    },
+    "reconciliation": "host-record-audit.json",
+    "reviewer_reruns": 0,
+    "thin_lookup_R1_helper_validate_calls": 0,
+    "total_deeper_chain_validate_entries": 26
+  },
+  "stop": "selected _PyObject_CallNoArgs(enter) attempt; before helper dispatch/body, call outcome, res assignment, completed context entry or f binding",
+  "supplied_controls": {
+    "PASS": 101,
+    "REJECTED": 388,
+    "exit": 0,
+    "reconciliation": "focused-record-audit.json",
+    "replayed": false,
+    "rows": 489
+  },
+  "verdict": "SUPPORTED within the bounded conditional SOURCE-ONLY enter-call-attempt correspondence contract; no candidate semantic defect demonstrated"
+}

@@ -1,0 +1,100 @@
+{
+  "RESULT_agreement": true,
+  "chunk_identities": true,
+  "chunks": 766,
+  "counts": {
+    "FAIL": 0,
+    "PASS": 197,
+    "REJECTED": 526
+  },
+  "explicit_exit": {
+    "automatic_retry": false,
+    "returncode": 0,
+    "seconds": 96.88605390799967,
+    "stdout_chunks": 766,
+    "timed_out": false,
+    "utc": "2026-11-09T17:57:55.817473+00:00"
+  },
+  "individual_rows": 723,
+  "layer_counts": {
+    "defining-source identity/semantics": {
+      "REJECTED": 1
+    },
+    "defining-source oracle": {
+      "PASS": 3
+    },
+    "defining-source predecessor catalogue comparison": {
+      "REJECTED": 1
+    },
+    "exact-type input gate before serialization": {
+      "REJECTED": 24
+    },
+    "exact-type semantic-claim gate before serialization": {
+      "REJECTED": 8
+    },
+    "exact-type submitted-output gate before serialization": {
+      "REJECTED": 32
+    },
+    "exact-type submitted-output key gate": {
+      "REJECTED": 8
+    },
+    "pre-derivation shape gate only; not public negative": {
+      "REJECTED": 4
+    },
+    "pre-derivation shape gate only; not public positive": {
+      "PASS": 1
+    },
+    "pure predecessor source-model constraints; no authentication": {
+      "REJECTED": 48
+    },
+    "source artifact identity": {
+      "PASS": 3
+    },
+    "source-derived catalogue comparison": {
+      "PASS": 1,
+      "REJECTED": 8
+    },
+    "source/model independent oracle; no authentication": {
+      "PASS": 186
+    },
+    "source/model input constraints; no authentication": {
+      "REJECTED": 144
+    },
+    "source/model output comparison; no authenticated basis": {
+      "REJECTED": 240
+    },
+    "source/model selected-input comparison; no authenticated basis": {
+      "REJECTED": 8
+    },
+    "static adapter audit; authenticated core UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; authentication UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; public validation UNEXECUTED": {
+      "PASS": 1
+    }
+  },
+  "new_control_replays": 0,
+  "progress_rows": 723,
+  "record_reconciliation_is_not_an_added_control": true,
+  "rows_progress_stdout_exact_agreement": true,
+  "sequence_contiguous": true,
+  "source_archive_unchanged": true,
+  "source_bytes_unchanged": true,
+  "status": "CORROBORATED",
+  "stdout_rows": 723,
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 190408,
+      "sha256": "bad39ba80e4a38ece13edfeb33fedb3edf5845718e7413d2ca0aeb47008ad2d6"
+    }
+  },
+  "streams_reconstructed_exactly": true,
+  "utc": "2026-11-09T17:58:13.194782+00:00"
+}

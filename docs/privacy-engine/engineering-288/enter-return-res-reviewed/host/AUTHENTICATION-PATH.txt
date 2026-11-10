@@ -1,0 +1,39 @@
+PLANNED operations, not executed during preparation
+
+Exactly one new public m.validate(candidate, pinned_expected_bytes) invocation.
+new validate -> _receipt_shape -> derive -> inputs -> _basis. New _basis refreshes
+inputs, then uses actual unchanged enter-call _receipt_shape(saved), _basis(pd)
+and _assemble(returned_pb), comparing complete parent receipt bytes. It compiles
+this slice from exact defining source and actual parent catalogues; new _assemble
+adds mandatory rows in both contexts; new validate compares the full receipt.
+
+Unchanged enter-call _basis composes lookup; lookup composes R1. R1 invokes actual
+helper _checked and _receipt_checked. Helper's actual _public_predecessor invokes
+the deeper write-call public validate. The deeper retained validators and LD-01
+monitoring path remain unchanged. Thin enter-call, lookup, R1 and helper validate
+wrappers are NOT called. Do not say every wrapper was publicly invoked. Actual
+call records will determine deeper counts; historical counts are not assumed.
+
+The retained native observer captures exactly one returned new _basis object
+using exact code identity. After the one public return, the harness reads actual
+nested returned bases, performs unchanged enter/lookup/R1/helper assemblies and
+checks each against the pinned saved parent bytes. It assembles the new receipt
+from that same actual basis and compares bytes against pinned expected output,
+covering both contexts. These additional assemblies do not rerun authentication.
+No serialized dictionary or prior PASS is used as a live authenticated basis.
+
+Preparation's prepare_expected.py loads only fixed pure producer/adapter code,
+compiles catalogue from retained sources and saved parent declarations, and uses
+_assemble with explicitly offline expected-output data. Its stored historical
+parent public-result fields are expected serialized values only. That offline
+dictionary is never passed into the planned run as an authenticated basis.
+Preparation calls no inputs/_basis/derive/public validate/constructed_projection/
+_construct_checked; producer source-consistency functions are pure compilation,
+not a replay of focused campaigns or a public authentication.
+
+The new authenticated constructed path remains UNEXECUTED, including after a
+successful planned public positive. The public receipt carries declarations and
+conditional links with runtime values UNKNOWN. This one positive does not execute
+constructed NULL/non-NULL cases, C helper bodies, actual method dispatch or file
+operations. No authenticated-core campaign or full public negative derivation is
+planned. The 723 source/model controls remain separate and are not rerun.

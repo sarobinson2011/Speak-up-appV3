@@ -1,0 +1,108 @@
+--- reviewed-enter/code/managed_coverage.py
++++ enter-return/code/managed_coverage.py
+@@ -3683,3 +3683,105 @@
+ 
+ def validate_enter_call_projection(cat,case,validated,submitted):
+  status_exact_tree(submitted,'ENTER-CALL-OUTPUT-TYPE');status_typed_same(submitted,enter_call_projection(cat,case,validated),'ENTER-CALL-OUTPUT-CORRESPONDENCE');return True
++
++# I164-ENTER-RETURN-RES-1. The entire reviewed producer prefix remains unchanged.
++def compile_enter_return(launcher,bytecodes,typeobject,r1,lookup,parent):
++ for value in (r1,lookup,parent):status_exact_tree(value,'ENTER-RETURN-CATALOGUE-TYPE')
++ validate_enter_call(launcher,bytecodes,typeobject,r1,lookup,parent)
++ text=bytecodes.decode();start=text.index('        inst(BEFORE_WITH,');end=text.index('        inst(WITH_EXCEPT_START,',start);block=text[start:end]
++ statement='            res = _PyObject_CallNoArgs(enter);'
++ need(block.count(statement)==1,'ENTER-RETURN-ASSIGNMENT-SOURCE')
++ pos=start+block.index(statement);nextpos=pos+len(statement)+1
++ need(text[nextpos:].startswith('            Py_DECREF(enter);\n            if (res == NULL)'), 'ENTER-RETURN-STOP-SOURCE')
++ def site(offset,expression):return {'source':copy.deepcopy(parent['source']['call_site']['source']),'file':'Python/bytecodes.c','line':text.count('\n',0,offset)+1,'expression':expression,'tag':'v3.12.14'}
++ call=site(pos,'_PyObject_CallNoArgs(enter)');status_typed_same(call,parent['source']['call_site'],'ENTER-RETURN-PARENT-SOURCE')
++ assignment=site(pos,statement.strip());excluded=site(nextpos,'Py_DECREF(enter);')
++ steps=[{'id':'enter-return:continuation','source':call,'allowed':['normal','raise','catchable-interruption','process-termination','unobserved'],'meaning':'explicit conditional continuation from selected authenticated call attempt; no inferred dispatch/body or runtime arrival'},
++        {'id':'enter-return:c-return','source':call,'allowed':['non-NULL','NULL','raise','catchable-interruption','process-termination','unobserved'],'meaning':'completed C result distinguishes non-NULL PyObject pointer and C NULL; other frontiers do not establish a completed return'},
++        {'id':'enter-return:res-assignment','source':assignment,'allowed':['assigned','process-termination','unobserved'],'meaning':'assign the already returned C value to res, or retain the completed return with assignment unestablished; no assignment-failure mechanism invented'}]
++ return {'format':'I164-ENTER-RETURN-RES-STATIC-1','source':{'launcher_operand':copy.deepcopy(parent['source']['launcher_operand']),'with_statement':copy.deepcopy(parent['source']['with_statement']),
++  'call_site':call,'assignment':assignment,'next_operation_excluded':excluded,'C_helper':'_PyObject_CallNoArgs','C_argument_expression':'enter','target':'res',
++  'steps':steps,'order':[x['id'] for x in steps],'non_NULL_object_cases':['opaque','Python-None'],
++  'contract':parent['source']['contract'],'error_indicator_contract':'UNKNOWN; no deeper helper contract or concrete error inferred from C NULL or a non-NULL result',
++  'stop':'after selected C return and res assignment, or first nonnormal/unobserved frontier; before Py_DECREF(enter) at line2516'},
++  'enter_call_catalogue':copy.deepcopy(parent),'parent_catalogue_sha256':digest(enc(parent)),
++  'declarations':[{'id':x['id'],'source':copy.deepcopy(x['source']),'meaning':x['meaning'],'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for x in steps],
++  'guard_branches':{'continuity':['explicit conditional premise','UNESTABLISHED'],'prefixes':copy.deepcopy(parent['guard_branches']['prefixes']),'origins':copy.deepcopy(parent['guard_branches']['origins']),'steps':{x['id']:copy.deepcopy(x['allowed']) for x in steps},'non_NULL_object_cases':['opaque','Python-None']},
++  'preserved_relations':['enter_call_attempt_correspondence',*parent['preserved_relations']],'runtime_chain':None,'actual_admission':False}
++
++def validate_enter_return(launcher,bytecodes,typeobject,r1,lookup,parent,submitted):
++ status_exact_tree(submitted,'ENTER-RETURN-CATALOGUE-TYPE');status_typed_same(submitted,compile_enter_return(launcher,bytecodes,typeobject,r1,lookup,parent),'ENTER-RETURN-CATALOGUE-SOURCE');return True
++
++def enter_return_binding(cat,parent,anchor,continuity):
++ for value in (cat,parent,anchor,continuity):status_exact_tree(value,'ENTER-RETURN-BINDING-TYPE')
++ need(type(continuity) is str and continuity in ('explicit conditional premise','UNESTABLISHED'),'ENTER-RETURN-CONTINUITY')
++ need(parent['kind']=='CONSTRUCTED-ENTER-CALL-ATTEMPT' and parent['completion']=='enter-call-attempt' and parent['enter_call_attempt_established_in_model'] is True,'ENTER-RETURN-PARENT-ATTEMPT')
++ need(parent['continuation_past_source_operation_in_model'] is True,'ENTER-RETURN-PARENT-CONTINUATION')
++ need(parent['call_outcome'] is None and parent['call_result_role'] is None and parent['res_assignment_established'] is False,'ENTER-RETURN-PARENT-STOP')
++ need(parent['replacement_error_in_model'] is None and parent['terminal_python_exception_in_model'] is True,'ENTER-RETURN-PARENT-ERROR')
++ status_typed_same(parent['last_pending_error_in_model'],parent['original_error_pending_in_outer_handler'],'ENTER-RETURN-ORIGINAL-PENDING')
++ scope=parent['scope'];status_typed_same(parent['instance_anchor'],anchor,'ENTER-RETURN-ANCHOR');status_typed_same(scope['instance'],anchor['instance'],'ENTER-RETURN-INSTANCE')
++ need(scope['context']==anchor['context'] and scope['acquisition']==anchor['record']['acquisition'],'ENTER-RETURN-CONTEXT-ACQUISITION')
++ pc={'scope':copy.deepcopy(scope),'anchor':copy.deepcopy(anchor),'parent_result':copy.deepcopy(parent['predecessor_projection']),'binding':copy.deepcopy(parent['binding']),'outcomes':[{'stage':e['stage'],'outcome':e['outcome']} for e in parent['events']]}
++ validate_enter_call_projection(cat['enter_call_catalogue'],pc,pc,parent)
++ status_typed_same(pc['outcomes'],[{'stage':'enter-call:continuation','outcome':'normal'},{'stage':'enter-call:attempt','outcome':'attempted'}],'ENTER-RETURN-EXACT-ATTEMPT')
++ need(parent['binding']['continuity']=='explicit conditional premise','ENTER-RETURN-PARENT-CONTINUITY')
++ return {'scope':copy.deepcopy(scope),'anchor':copy.deepcopy(anchor),'attempt':copy.deepcopy(parent['events'][-1]),'call':copy.deepcopy(parent['call']),
++  'helper_invocation':copy.deepcopy(parent['binding']['helper_invocation']),'references':copy.deepcopy(parent['binding']['references']),
++  'method_results':copy.deepcopy(parent['binding']['method_results']),'operand_role':copy.deepcopy(parent['binding']['operand_role']),
++  'original_constructor_error':copy.deepcopy(parent['original_error_pending_in_outer_handler']),'details_role':copy.deepcopy(parent['binding']['details_role']),'cleanup_list':copy.deepcopy(parent['binding']['cleanup_list']),
++  'continuity':continuity,'premise':'conditional selected invocation/owner/token/callable/reference continuity; no established runtime arrival, identity, exclusivity or helper-internal error contract','physical_identity':None}
++
++def enter_return_projection(cat,case,validated):
++ for v in (cat,case,validated):status_exact_tree(v,'ENTER-RETURN-EXACT-TYPE')
++ keys={'scope','anchor','parent_result','binding','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'ENTER-RETURN-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'ENTER-RETURN-VALIDATED:'+k)
++ p=case['parent_result'];b=case['binding'];scope=case['scope'];oo=case['outcomes'];s=cat['source']
++ status_typed_same(scope,p['scope'],'ENTER-RETURN-SCOPE');status_typed_same(b,enter_return_binding(cat,p,case['anchor'],b['continuity']),'ENTER-RETURN-EXPECTED-BINDING')
++ need(type(oo) is list and bool(oo),'ENTER-RETURN-OUTCOMES')
++ if b['continuity']=='UNESTABLISHED':status_typed_same(oo,[{'stage':'enter-return:continuation','outcome':'unobserved'}],'ENTER-RETURN-UNKNOWN-CONTINUITY')
++ events=[];replacement=None;completed=False;assigned=False;value=None;assignment=None;last=None;return_event=None
++ for i,step in enumerate(s['steps']):
++  need(i<len(oo),'ENTER-RETURN-MISSING-STEP');row=oo[i];need(type(row) is dict and type(row.get('stage')) is str and row['stage']==step['id'],'ENTER-RETURN-ORDER')
++  last=row.get('outcome');need(type(last) is str and last in step['allowed'],'ENTER-RETURN-OUTCOME')
++  required={'stage','outcome'}|({'object_case'} if i==1 and last=='non-NULL' else set());need(set(row)==required,'ENTER-RETURN-STAGE-FIELDS')
++  if 'object_case' in row:need(type(row['object_case']) is str and row['object_case'] in s['non_NULL_object_cases'],'ENTER-RETURN-OBJECT-CASE')
++  event={'id':b['attempt']['id']+'/'+step['id'],'stage':step['id'],'scope':copy.deepcopy(scope),'source':copy.deepcopy(step['source']),
++   'selected_attempt':b['attempt']['id'],'helper_invocation':copy.deepcopy(b['helper_invocation']),'owner':copy.deepcopy(b['references']['owner']),'token':copy.deepcopy(b['references']['token']),
++   'enter_role':copy.deepcopy(b['method_results']['__enter__']),'exit_role':copy.deepcopy(b['method_results']['__exit__']),'outcome':last,'runtime_frame':None}
++  if 'object_case' in row:event['object_case']=row['object_case']
++  events.append(event)
++  if i==1 and last in ('non-NULL','NULL'):
++   completed=True;return_event=event
++   value={'kind':'SYMBOLIC-PYOBJECT' if last=='non-NULL' else 'C-NULL','symbol':event['id']+'/C-result','scope':copy.deepcopy(scope),'return_occurrence':event['id'],
++    'C_NULL':last=='NULL','python_value_class':row['object_case'] if last=='non-NULL' else None,'python_object_role':event['id']+'/object' if last=='non-NULL' else None,
++    'concrete_value':None,'runtime_identity':None,'runtime_observation':False,'meaning':'constructed value-class premise only; None concrete_value means unobserved, not Python None or C NULL'}
++  elif i==2 and last=='assigned':
++   need(completed and value is not None,'ENTER-RETURN-ASSIGNMENT-WITHOUT-RETURN');assigned=True
++   assignment={'target':'res','source':copy.deepcopy(s['assignment']),'occurrence':event['id'],'from_return_occurrence':return_event['id'],'value':copy.deepcopy(value),
++    'reference_semantics':'source-level C result forwarding; equal recorded values do not establish observed physical object identity'}
++  elif not(i==0 and last=='normal'):
++   if last in ('raise','catchable-interruption'):
++    replacement={'role':'conditional-enter-return-frontier-error','reference':event['id']+'/error','scope':copy.deepcopy(scope),'frontier_stage':step['id'],'source':copy.deepcopy(step['source']),
++     'kind':last,'origin':'conditional frontier before established C return; no concrete helper or assignment failure mechanism inferred','exact_type':None,'exact_value':None,
++     'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_observation':False}
++   break
++ need(len(oo)==len(events),'ENTER-RETURN-UNREACHED-STEPS')
++ out=copy.deepcopy(p);out.update({'kind':'CONSTRUCTED-ENTER-RETURN-RES','binding':copy.deepcopy(b),'predecessor_projection':copy.deepcopy(p),'events':events,
++  'completion':'res-assigned-'+('NULL' if value['C_NULL'] else 'non-NULL') if assigned else last+'-frontier',
++  'helper_c_return_completed_in_model':completed,'call_outcome':('C-return-NULL' if value['C_NULL'] else 'C-return-non-NULL') if completed else None,
++  'call_result_role':copy.deepcopy(value),'res_assignment_established':assigned,'res_assignment':assignment,'res_value_role':copy.deepcopy(value) if assigned else None,
++  'helper_error_indicator':'UNKNOWN','helper_error_contract_established':False,'C_NULL_implies_python_exception_established':False,
++  'no_replacement_inferred_from_C_result':True,'last_acknowledged_pending_error_before_call':copy.deepcopy(p['last_pending_error_in_model']),
++  'replacement_error_in_model':replacement,'last_pending_error_in_model':copy.deepcopy(replacement if replacement is not None else p['last_pending_error_in_model']),
++  'pending_error_qualification':'original outer-handler error remains retained under conditional continuity; this field does not classify the helper C error indicator, prove absence of a replacement, or select later propagation',
++  'terminal_python_exception_in_model':None if last in ('process-termination','unobserved') else True,
++  'helper_dispatch_entry_established':False,'method_body_entry_established':False,'enter_invocation_established':False,'exit_invocation_established':False,
++  'post_call_decref_established':False,'result_test_established':False,'result_error_routing_established':False,'context_manager_entry_established':False,'f_binding_established':False,
++  'prior_acknowledged_partial_effects':copy.deepcopy(p['current_partial_effects']),'current_partial_effects':'UNKNOWN; prior append/lookup/reference and possible call effects remain unresolved even after modeled res assignment',
++  'runtime_enter_return_chain':None,'stop':s['stop']})
++ return out
++
++def validate_enter_return_projection(cat,case,validated,submitted):
++ status_exact_tree(submitted,'ENTER-RETURN-OUTPUT-TYPE');status_typed_same(submitted,enter_return_projection(cat,case,validated),'ENTER-RETURN-OUTPUT-CORRESPONDENCE');return True

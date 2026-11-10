@@ -1,0 +1,26 @@
+{
+  "actual_count": 5,
+  "actual_functions": [
+    "compile_enter_call",
+    "validate_enter_call",
+    "enter_call_binding",
+    "enter_call_projection",
+    "validate_enter_call_projection"
+  ],
+  "after": {
+    "bytes": 440168,
+    "sha256": "a3fb61cb3b1fdcc0df05e6fb770efa6ecd33e5e1487a69f528c09ffc659da3a2"
+  },
+  "before": {
+    "bytes": 429112,
+    "sha256": "8bc637e3cf513327715a295d53bb2b3f6c3d343e509f7e607fb764a1c4018d9b"
+  },
+  "candidate_semantic_defect": false,
+  "claim": "append six new pure-source functions; entire predecessor prefix retained",
+  "claim_file": "source/CHANGES.json",
+  "distinct_from_inherited_R1_five_versus_six": true,
+  "finding": "DOC-ENTER-01",
+  "prefix_bytes": 429112,
+  "severity": "nonblocking documentation count discrepancy",
+  "smallest_reproduction": "AST-parse exact appended bytes after offset 429112; count top-level FunctionDef nodes"
+}

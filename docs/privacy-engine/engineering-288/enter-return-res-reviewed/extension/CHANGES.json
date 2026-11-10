@@ -1,0 +1,41 @@
+{
+  "historical_documentation": "DOC-ENTER-01 five actual versus six reported remains separate from R1 discrepancy",
+  "intentional_implementation_changes": {
+    "code/correspondence.py": {
+      "after": {
+        "bytes": 9168,
+        "sha256": "3efd066c1e11a2cac1a4dcea0f5b2950329f313b9b2acbb6dce1667b4ffb294d"
+      },
+      "before": {
+        "bytes": 8900,
+        "sha256": "4722ba0c7ebaf660310206da52c6ac7c1a0adeb0c4bf278fd0e52245ec9a2942"
+      },
+      "kind": "new mandatory adapter retaining exact predecessor path; no parent source changes"
+    },
+    "code/managed_coverage.py": {
+      "after": {
+        "bytes": 452888,
+        "sha256": "a3e41b8c14c8c1c25d26b45eb0645b3222bd6a6afb60f7ccc44f7a655ae79a37"
+      },
+      "before": {
+        "bytes": 440168,
+        "sha256": "a3fb61cb3b1fdcc0df05e6fb770efa6ecd33e5e1487a69f528c09ffc659da3a2"
+      },
+      "kind": "append five pure source/model functions; entire 440168-byte prefix unchanged"
+    }
+  },
+  "new_function_count": 5,
+  "new_functions": [
+    "compile_enter_return",
+    "validate_enter_return",
+    "enter_return_binding",
+    "enter_return_projection",
+    "validate_enter_return_projection"
+  ],
+  "new_test_files": [
+    "tests/focused.py"
+  ],
+  "prepared_without_candidate_execution": true,
+  "retained_supervisor": "tests/run_once.py exact predecessor supervisor bytes; not an old campaign replay",
+  "runtime_changes": 0
+}

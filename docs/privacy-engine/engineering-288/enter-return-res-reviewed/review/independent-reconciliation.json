@@ -1,0 +1,103 @@
+{
+  "counts": {
+    "PASS": 159,
+    "REJECTED": 94
+  },
+  "environment": {
+    "cryptography_native_monitoring_application_execution": false,
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "host_equivalence_claim": false,
+    "installed_metadata": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.0",
+      "pycparser": "3.0"
+    },
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "exit": {
+    "no_retry": true,
+    "returncode": 0,
+    "seconds": 53.36316266099948,
+    "streams": {
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 63514,
+        "sha256": "77726bfc45c8615d0459bd674bc8146714ea5e7ee070a4f5514d6b791e2a0efc"
+      }
+    },
+    "timed_out": false,
+    "utc": "2026-11-10T09:49:49.171567+00:00"
+  },
+  "individual_progress_stdout_RESULT_agreement": true,
+  "layers": {
+    "defining source inspection": {
+      "PASS": 3
+    },
+    "defining-source catalogue recomputation": {
+      "REJECTED": 4
+    },
+    "defining-source predecessor recomputation": {
+      "REJECTED": 1
+    },
+    "exact input type gate before normalization": {
+      "REJECTED": 6
+    },
+    "exact output key gate before normalization": {
+      "REJECTED": 2
+    },
+    "exact output type gate before normalization": {
+      "REJECTED": 6
+    },
+    "independent source-model oracle; no authentication": {
+      "PASS": 151
+    },
+    "offline assembly from saved premises; not authenticated basis": {
+      "PASS": 1
+    },
+    "pre-derivation shape gate only": {
+      "PASS": 1,
+      "REJECTED": 3
+    },
+    "predecessor source-model binding checks": {
+      "REJECTED": 2
+    },
+    "source-derived catalogue comparison": {
+      "PASS": 1
+    },
+    "source-model input rejection; constructed premises": {
+      "REJECTED": 40
+    },
+    "source-model output comparison; fixed selected premises": {
+      "REJECTED": 2
+    },
+    "source-model output comparison; no authenticated basis": {
+      "REJECTED": 26
+    },
+    "source-model selected-input comparison; no authentication": {
+      "REJECTED": 2
+    },
+    "static constructed wiring; authenticated execution UNEXECUTED": {
+      "PASS": 1
+    },
+    "static public wiring; saved execution inspected separately": {
+      "PASS": 1
+    }
+  },
+  "qualifications": {
+    "authenticated_constructed_runs": 0,
+    "fresh_expectations": "independent statement/order and outcome table; supplied oracle not run",
+    "full_public_negative_derivations": 0,
+    "historical_campaign_replays": 0,
+    "normal_class_cases": 24,
+    "public_runs": 0,
+    "retained_fixtures": 8,
+    "runtime_helper_database_session_runs": 0
+  },
+  "record_and_byte_audits_add_no_controls": true,
+  "rows": 253,
+  "status": "PASS"
+}

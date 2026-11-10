@@ -1,0 +1,96 @@
+{
+  "chunks": 507,
+  "counts": {
+    "PASS": 101,
+    "REJECTED": 388
+  },
+  "exact_individual_progress_stdout_result_agreement": true,
+  "exit": {
+    "automatic_retry": false,
+    "returncode": 0,
+    "seconds": 24.527916939001443,
+    "stdout_chunks": 507,
+    "timed_out": false,
+    "utc": "2026-11-07T11:41:15.418266+00:00"
+  },
+  "layers": {
+    "exact defining-source input pin": {
+      "REJECTED": 1
+    },
+    "exact-type input gate before serialization": {
+      "REJECTED": 24
+    },
+    "exact-type submitted-output gate before serialization": {
+      "REJECTED": 32
+    },
+    "exact-type submitted-output key gate": {
+      "REJECTED": 8
+    },
+    "independent defining-source oracle": {
+      "PASS": 4
+    },
+    "independent defining-source predecessor comparison": {
+      "REJECTED": 1
+    },
+    "pre-derivation shape gate only; not public negative": {
+      "REJECTED": 4
+    },
+    "pre-derivation shape gate only; not public positive": {
+      "PASS": 1
+    },
+    "source artifact identity": {
+      "PASS": 2
+    },
+    "source-constructed output comparison; no authenticated basis": {
+      "REJECTED": 144
+    },
+    "source-constructed projector / independent oracle": {
+      "PASS": 91
+    },
+    "source-constructed projector input": {
+      "REJECTED": 120
+    },
+    "source-derived catalogue comparison": {
+      "REJECTED": 6
+    },
+    "source/model predecessor constraints; not authenticated-core validation": {
+      "REJECTED": 48
+    },
+    "static adapter audit; authenticated core UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; authentication UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; public validation UNEXECUTED": {
+      "PASS": 1
+    }
+  },
+  "qualification": {
+    "application_runs": 0,
+    "authenticated_basis_core_runs": 0,
+    "full_public_negative_derivations": 0,
+    "full_public_runs": 0,
+    "historical_groups": "117 independent / 421 Engineering / one Ubuntu public positive remain separate",
+    "predecessor_authentication": "UNEXECUTED for new bytes; static wiring checked only",
+    "runtime_protocol_invocations": 0,
+    "source_only": true
+  },
+  "replayed": false,
+  "rows": 489,
+  "source": {
+    "bytes": 4126750,
+    "sha256": "949c9dd72f27be2ec4b1bf271547b62914e49fdd49220b05e3ab9e74892ba3f7"
+  },
+  "status": "PASS",
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 135259,
+      "sha256": "a488ac6c89dc8e928405e255f6ee369bd6a369b39707e4da0b6a2c2ab4cf3b88"
+    }
+  }
+}

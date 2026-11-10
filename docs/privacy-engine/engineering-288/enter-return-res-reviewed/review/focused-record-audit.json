@@ -1,0 +1,105 @@
+{
+  "chunks": 766,
+  "counts": {
+    "PASS": 197,
+    "REJECTED": 526
+  },
+  "exact_individual_progress_stdout_RESULT_agreement": true,
+  "exit": {
+    "automatic_retry": false,
+    "returncode": 0,
+    "seconds": 96.88605390799967,
+    "stdout_chunks": 766,
+    "timed_out": false,
+    "utc": "2026-11-09T17:57:55.817473+00:00"
+  },
+  "layers": {
+    "defining-source identity/semantics": {
+      "REJECTED": 1
+    },
+    "defining-source oracle": {
+      "PASS": 3
+    },
+    "defining-source predecessor catalogue comparison": {
+      "REJECTED": 1
+    },
+    "exact-type input gate before serialization": {
+      "REJECTED": 24
+    },
+    "exact-type semantic-claim gate before serialization": {
+      "REJECTED": 8
+    },
+    "exact-type submitted-output gate before serialization": {
+      "REJECTED": 32
+    },
+    "exact-type submitted-output key gate": {
+      "REJECTED": 8
+    },
+    "pre-derivation shape gate only; not public negative": {
+      "REJECTED": 4
+    },
+    "pre-derivation shape gate only; not public positive": {
+      "PASS": 1
+    },
+    "pure predecessor source-model constraints; no authentication": {
+      "REJECTED": 48
+    },
+    "source artifact identity": {
+      "PASS": 3
+    },
+    "source-derived catalogue comparison": {
+      "PASS": 1,
+      "REJECTED": 8
+    },
+    "source/model independent oracle; no authentication": {
+      "PASS": 186
+    },
+    "source/model input constraints; no authentication": {
+      "REJECTED": 144
+    },
+    "source/model output comparison; no authenticated basis": {
+      "REJECTED": 240
+    },
+    "source/model selected-input comparison; no authenticated basis": {
+      "REJECTED": 8
+    },
+    "static adapter audit; authenticated core UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; authentication UNEXECUTED": {
+      "PASS": 1
+    },
+    "static adapter audit; public validation UNEXECUTED": {
+      "PASS": 1
+    }
+  },
+  "qualifications": {
+    "application_runs": 0,
+    "authenticated_core_runs": 0,
+    "full_public_negative_derivations": 0,
+    "helper_runs": 0,
+    "independent_acceptance": "PENDING",
+    "predecessor_authentication": "UNEXECUTED for new bytes; only static wiring inspected",
+    "previous_groups": "147 independent / 489 Engineering / one Ubuntu public positive preserved separately",
+    "public_runs": 0,
+    "runtime_return_assignment_observations": "UNAVAILABLE",
+    "source_only": true
+  },
+  "replayed": false,
+  "rows": 723,
+  "source": {
+    "bytes": 1820859,
+    "sha256": "76a970d549466fd422b7a60fd20004a5f9adfac356afd20c099d3ba1bc92ffe9"
+  },
+  "status": "PASS",
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 190408,
+      "sha256": "bad39ba80e4a38ece13edfeb33fedb3edf5845718e7413d2ca0aeb47008ad2d6"
+    }
+  }
+}
