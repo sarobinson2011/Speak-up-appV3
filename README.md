@@ -32,6 +32,6 @@ I’m building this to help people. If it’s helped you, taught you something, 
 
 Using it, sharing it, or helping improve it is also appreciated. 👍
 
-**Native ETH on Ethereum mainnet, Base mainnet or Arbitrum One.** Use the same receiving address on any of these networks:
+The jar accepts native ETH on compatible EVM chains.
 
 `0x8cA41B152eDA1C8c4F9df9AF98E07888EDc17416`
