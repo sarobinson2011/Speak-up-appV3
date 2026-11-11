@@ -1,0 +1,249 @@
+{
+  "Python/ceval.c": [
+    {
+      "start": 3,
+      "end": 5,
+      "lines": [
+        "#define _PY_INTERPRETER",
+        "",
+        "#include \"Python.h\""
+      ]
+    },
+    {
+      "start": 45,
+      "end": 68,
+      "lines": [
+        "#if !defined(Py_BUILD_CORE)",
+        "#  error \"ceval.c must be build with Py_BUILD_CORE define for best performance\"",
+        "#endif",
+        "",
+        "#if !defined(Py_DEBUG) && !defined(Py_TRACE_REFS)",
+        "// GH-89279: The MSVC compiler does not inline these static inline functions",
+        "// in PGO build in _PyEval_EvalFrameDefault(), because this function is over",
+        "// the limit of PGO, and that limit cannot be configured.",
+        "// Define them as macros to make sure that they are always inlined by the",
+        "// preprocessor.",
+        "",
+        "#undef Py_DECREF",
+        "#define Py_DECREF(arg) \\",
+        "    do { \\",
+        "        PyObject *op = _PyObject_CAST(arg); \\",
+        "        if (_Py_IsImmortal(op)) { \\",
+        "            break; \\",
+        "        } \\",
+        "        _Py_DECREF_STAT_INC(); \\",
+        "        if (--op->ob_refcnt == 0) { \\",
+        "            destructor dealloc = Py_TYPE(op)->tp_dealloc; \\",
+        "            (*dealloc)(op); \\",
+        "        } \\",
+        "    } while (0)"
+      ]
+    },
+    {
+      "start": 599,
+      "end": 604,
+      "lines": [
+        "    PyThreadState *tstate = _PyThreadState_GET();",
+        "    return _PyEval_EvalFrame(tstate, f->f_frame, throwflag);",
+        "}",
+        "",
+        "#include \"ceval_macros.h\"",
+        ""
+      ]
+    },
+    {
+      "start": 660,
+      "end": 664,
+      "lines": [
+        "",
+        "#if USE_COMPUTED_GOTOS",
+        "/* Import the static jump table */",
+        "#include \"opcode_targets.h\"",
+        "#endif"
+      ]
+    },
+    {
+      "start": 846,
+      "end": 850,
+      "lines": [
+        "#endif",
+        "        {",
+        "",
+        "#include \"generated_cases.c.h\"",
+        ""
+      ]
+    }
+  ],
+  "Python/generated_cases.c.h": [
+    {
+      "start": 3496,
+      "end": 3536,
+      "lines": [
+        "        TARGET(BEFORE_WITH) {",
+        "            PyObject *mgr = stack_pointer[-1];",
+        "            PyObject *exit;",
+        "            PyObject *res;",
+        "            #line 2489 \"Python/bytecodes.c\"",
+        "            /* pop the context manager, push its __exit__ and the",
+        "             * value returned from calling its __enter__",
+        "             */",
+        "            PyObject *enter = _PyObject_LookupSpecial(mgr, &_Py_ID(__enter__));",
+        "            if (enter == NULL) {",
+        "                if (!_PyErr_Occurred(tstate)) {",
+        "                    _PyErr_Format(tstate, PyExc_TypeError,",
+        "                                  \"'%.200s' object does not support the \"",
+        "                                  \"context manager protocol\",",
+        "                                  Py_TYPE(mgr)->tp_name);",
+        "                }",
+        "                goto error;",
+        "            }",
+        "            exit = _PyObject_LookupSpecial(mgr, &_Py_ID(__exit__));",
+        "            if (exit == NULL) {",
+        "                if (!_PyErr_Occurred(tstate)) {",
+        "                    _PyErr_Format(tstate, PyExc_TypeError,",
+        "                                  \"'%.200s' object does not support the \"",
+        "                                  \"context manager protocol \"",
+        "                                  \"(missed __exit__ method)\",",
+        "                                  Py_TYPE(mgr)->tp_name);",
+        "                }",
+        "                Py_DECREF(enter);",
+        "                goto error;",
+        "            }",
+        "            #line 3527 \"Python/generated_cases.c.h\"",
+        "            Py_DECREF(mgr);",
+        "            #line 2515 \"Python/bytecodes.c\"",
+        "            res = _PyObject_CallNoArgs(enter);",
+        "            Py_DECREF(enter);",
+        "            if (res == NULL) {",
+        "                Py_DECREF(exit);",
+        "                if (true) goto pop_1_error;",
+        "            }",
+        "            #line 3536 \"Python/generated_cases.c.h\"",
+        "            STACK_GROW(1);"
+      ]
+    }
+  ],
+  "Python/bytecodes.c": [
+    {
+      "start": 2510,
+      "end": 2518,
+      "lines": [
+        "                }",
+        "                Py_DECREF(enter);",
+        "                goto error;",
+        "            }",
+        "            DECREF_INPUTS();",
+        "            res = _PyObject_CallNoArgs(enter);",
+        "            Py_DECREF(enter);",
+        "            if (res == NULL) {",
+        "                Py_DECREF(exit);"
+      ]
+    }
+  ],
+  "Include/object.h": [
+    {
+      "start": 239,
+      "end": 249,
+      "lines": [
+        "static inline Py_ALWAYS_INLINE int _Py_IsImmortal(PyObject *op)",
+        "{",
+        "#if SIZEOF_VOID_P > 4",
+        "    return _Py_CAST(PY_INT32_T, op->ob_refcnt) < 0;",
+        "#else",
+        "    return op->ob_refcnt == _Py_IMMORTAL_REFCNT;",
+        "#endif",
+        "}",
+        "#define _Py_IsImmortal(op) _Py_IsImmortal(_PyObject_CAST(op))",
+        "",
+        "static inline int Py_IS_TYPE(PyObject *ob, PyTypeObject *type) {"
+      ]
+    }
+  ],
+  "Include/pystats.h": [
+    {
+      "start": 8,
+      "end": 12,
+      "lines": [
+        "",
+        "#ifdef Py_STATS",
+        "",
+        "#define SPECIALIZATION_FAILURE_KINDS 36",
+        ""
+      ]
+    },
+    {
+      "start": 86,
+      "end": 105,
+      "lines": [
+        "extern void _Py_PrintSpecializationStats(int to_file);",
+        "",
+        "#ifdef _PY_INTERPRETER",
+        "",
+        "#define _Py_INCREF_STAT_INC() do { if (_py_stats) _py_stats->object_stats.interpreter_increfs++; } while (0)",
+        "#define _Py_DECREF_STAT_INC() do { if (_py_stats) _py_stats->object_stats.interpreter_decrefs++; } while (0)",
+        "",
+        "#else",
+        "",
+        "#define _Py_INCREF_STAT_INC() do { if (_py_stats) _py_stats->object_stats.increfs++; } while (0)",
+        "#define _Py_DECREF_STAT_INC() do { if (_py_stats) _py_stats->object_stats.decrefs++; } while (0)",
+        "",
+        "#endif",
+        "",
+        "#else",
+        "",
+        "#define _Py_INCREF_STAT_INC() ((void)0)",
+        "#define _Py_DECREF_STAT_INC() ((void)0)",
+        "",
+        "#endif  // !Py_STATS"
+      ]
+    }
+  ],
+  "Include/pyconfig.h": [
+    {
+      "start": 1613,
+      "end": 1633,
+      "lines": [
+        "",
+        "/* Define if you want to build an interpreter with many run-time checks. */",
+        "/* #undef Py_DEBUG */",
+        "",
+        "/* Defined if Python is built as a shared library. */",
+        "#define Py_ENABLE_SHARED 1",
+        "",
+        "/* Define hash algorithm for str, bytes and memoryview. SipHash24: 1, FNV: 2,",
+        "   SipHash13: 3, externally defined: 0 */",
+        "/* #undef Py_HASH_ALGORITHM */",
+        "",
+        "/* Define if you want to enable internal statistics gathering. */",
+        "/* #undef Py_STATS */",
+        "",
+        "/* The version of SunOS/Solaris as reported by `uname -r' without the dot. */",
+        "/* #undef Py_SUNOS_VERSION */",
+        "",
+        "/* Define if you want to enable tracing references for debugging purpose */",
+        "/* #undef Py_TRACE_REFS */",
+        "",
+        "/* assume C89 semantics that RETSIGTYPE is always void */"
+      ]
+    },
+    {
+      "start": 1686,
+      "end": 1689,
+      "lines": [
+        "",
+        "/* The size of `void *', as computed by sizeof. */",
+        "#define SIZEOF_VOID_P 8",
+        ""
+      ]
+    },
+    {
+      "start": 1813,
+      "end": 1815,
+      "lines": [
+        "/* Define if you want to compile in DTrace support */",
+        "/* #undef WITH_DTRACE */",
+        ""
+      ]
+    }
+  ]
+}

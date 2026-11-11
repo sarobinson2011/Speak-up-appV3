@@ -1,0 +1,706 @@
+{
+  "conditional_decisions": {
+    "absent return or unestablished assignment": "not a valid normal-test input; no inferred result",
+    "completed C NULL": "true",
+    "completed non-NULL Python None": "false",
+    "completed non-NULL opaque Python object": "false"
+  },
+  "current_producer": [
+    {
+      "first_line": 3755,
+      "identity": {
+        "bytes": 505497,
+        "sha256": "3eab9cde9fd0f83eee2ffea7b68e2ca8db0596cdf367fa86c112917c6ec7e96d"
+      },
+      "last_line": 3759,
+      "lines": [
+        {
+          "line": 3755,
+          "text": "  if i==1 and last in ('non-NULL','NULL'):"
+        },
+        {
+          "line": 3756,
+          "text": "   completed=True;return_event=event"
+        },
+        {
+          "line": 3757,
+          "text": "   value={'kind':'SYMBOLIC-PYOBJECT' if last=='non-NULL' else 'C-NULL','symbol':event['id']+'/C-result','scope':copy.deepcopy(scope),'return_occurrence':event['id'],"
+        },
+        {
+          "line": 3758,
+          "text": "    'C_NULL':last=='NULL','python_value_class':row['object_case'] if last=='non-NULL' else None,'python_object_role':event['id']+'/object' if last=='non-NULL' else None,"
+        },
+        {
+          "line": 3759,
+          "text": "    'concrete_value':None,'runtime_identity':None,'runtime_observation':False,'meaning':'constructed value-class premise only; None concrete_value means unobserved, not Python None or C NULL'}"
+        }
+      ],
+      "path_in_original_source_archive": "code/managed_coverage.py"
+    },
+    {
+      "first_line": 3901,
+      "identity": {
+        "bytes": 505497,
+        "sha256": "3eab9cde9fd0f83eee2ffea7b68e2ca8db0596cdf367fa86c112917c6ec7e96d"
+      },
+      "last_line": 3902,
+      "lines": [
+        {
+          "line": 3901,
+          "text": " for number,text in [(3496,'TARGET(BEFORE_WITH) {'),(3528,'#line 2515 \"Python/bytecodes.c\"'),(3529,'res = _PyObject_CallNoArgs(enter);'),(3530,'Py_DECREF(enter);'),(3531,'if (res == NULL) {')]:require_line('Python/generated_cases.c.h',number,text)"
+        },
+        {
+          "line": 3902,
+          "text": " for number,text in [(2515,'res = _PyObject_CallNoArgs(enter);'),(2516,'Py_DECREF(enter);'),(2517,'if (res == NULL) {')]:require_line('Python/bytecodes.c',number,text)"
+        }
+      ],
+      "path_in_original_source_archive": "code/managed_coverage.py"
+    },
+    {
+      "first_line": 3934,
+      "identity": {
+        "bytes": 505497,
+        "sha256": "3eab9cde9fd0f83eee2ffea7b68e2ca8db0596cdf367fa86c112917c6ec7e96d"
+      },
+      "last_line": 3950,
+      "lines": [
+        {
+          "line": 3934,
+          "text": "        ('operand','operand_binding','bound',['bound',*front]),('immortal-test','immortal_test',None,['true','false',*front]),"
+        },
+        {
+          "line": 3935,
+          "text": "        ('break','immortal_break','taken',['taken',*front]),('statistics','statistics','no-op',['no-op',*front]),"
+        },
+        {
+          "line": 3936,
+          "text": "        ('decrement-zero-test','decrement_zero_test','nonzero',['nonzero',*front]),('macro-end','macro_end','completed',['completed',*front])]"
+        },
+        {
+          "line": 3937,
+          "text": " steps=[{'id':'decref-fast:'+name,'source':copy.deepcopy(s[origin]),'normal':normal,'allowed':allowed} for name,origin,normal,allowed in specs]"
+        },
+        {
+          "line": 3938,
+          "text": " # Branch order follows the exact parsed body positions; break bypasses the tail of do/while."
+        },
+        {
+          "line": 3939,
+          "text": " need(s['operand_binding']['line']<s['immortal_test']['line']<s['immortal_break']['line']<s['statistics']['line']<s['decrement_zero_test']['line']<s['destructor_call']['line']<s['macro_end']['line'],'DECREF-FAST-SOURCE-ORDER')"
+        },
+        {
+          "line": 3940,
+          "text": " orders={'immortal':['continuation','operand','immortal-test','break','macro-end'],"
+        },
+        {
+          "line": 3941,
+          "text": "         'non-immortal-positive-gt-one':['continuation','operand','immortal-test','statistics','decrement-zero-test','macro-end']}"
+        },
+        {
+          "line": 3942,
+          "text": " return {'format':'I164-DECREF-FAST-COMPLETION-STATIC-1','source':s,'enter_decref_catalogue':copy.deepcopy(parent),'parent_catalogue_sha256':digest(enc(parent)),"
+        },
+        {
+          "line": 3943,
+          "text": "  'configuration_and_C_premises':decref_fast_envelope(),'steps':steps,'branch_orders':{k:['decref-fast:'+x for x in v] for k,v in orders.items()},"
+        },
+        {
+          "line": 3944,
+          "text": "  'branch_guards':{'immortal':{'immortal_predicate':True,'starting_count':'UNOBSERVED; not needed for immortal branch'},'non-immortal-positive-gt-one':{'immortal_predicate':False,'starting_count':'valid positive count > 1; symbolic n, no concrete value'}},"
+        },
+        {
+          "line": 3945,
+          "text": "  'zero_count_route':{'completion':'UNRESOLVED','direct_selected_tp_dealloc':copy.deepcopy(s['destructor_call']),'not_via_header_Py_Dealloc':True,'accepted_as_fast_branch':False},"
+        },
+        {
+          "line": 3946,
+          "text": "  'guard_branches':{'contexts':['SYMBOLIC-U-ONE','SYMBOLIC-U-TWO'],'prefixes':copy.deepcopy(parent['guard_branches']['prefixes']),'origins':copy.deepcopy(parent['guard_branches']['origins']),'continuity':['explicit conditional premise','UNESTABLISHED'],'branch_state':['immortal','non-immortal-positive-gt-one','UNESTABLISHED']},"
+        },
+        {
+          "line": 3947,
+          "text": "  'declarations':[{'id':x['id'],'source':copy.deepcopy(x['source']),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for x in steps],"
+        },
+        {
+          "line": 3948,
+          "text": "  'res_non_NULL_guard':False,'res_classes':copy.deepcopy(parent['source']['res_classes']),'preserved_relations':['enter_decref_attempt_correspondence',*parent['preserved_relations']],"
+        },
+        {
+          "line": 3949,
+          "text": "  'stop':'conditional fast macro completion, or first nonnormal frontier; before bytecodes.c:2517 result test','runtime_chain':None,'actual_admission':False}"
+        },
+        {
+          "line": 3950,
+          "text": ""
+        }
+      ],
+      "path_in_original_source_archive": "code/managed_coverage.py"
+    },
+    {
+      "first_line": 3965,
+      "identity": {
+        "bytes": 505497,
+        "sha256": "3eab9cde9fd0f83eee2ffea7b68e2ca8db0596cdf367fa86c112917c6ec7e96d"
+      },
+      "last_line": 3979,
+      "lines": [
+        {
+          "line": 3965,
+          "text": " need(parent['kind']=='CONSTRUCTED-ENTER-DECREF-ATTEMPT' and parent['completion']=='enter-decref-attempt' and parent['post_call_decref_attempt_established_in_model'] is True,'DECREF-FAST-PARENT-ATTEMPT')"
+        },
+        {
+          "line": 3966,
+          "text": " pc={'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(parent['instance_anchor']),'parent_result':copy.deepcopy(parent['predecessor_projection']),'binding':copy.deepcopy(parent['binding']),'outcomes':[{'stage':e['stage'],'outcome':e['outcome']} for e in parent['events']]}"
+        },
+        {
+          "line": 3967,
+          "text": " validate_enter_decref_projection(cat['enter_decref_catalogue'],pc,pc,parent)"
+        },
+        {
+          "line": 3968,
+          "text": " need(parent['binding']['continuity']=='explicit conditional premise' and parent['decref_completion_established'] is False and parent['result_test_established'] is False,'DECREF-FAST-PARENT-STOP')"
+        },
+        {
+          "line": 3969,
+          "text": " status_typed_same(pc['outcomes'],[{'stage':'enter-decref:continuation','outcome':'normal'},{'stage':'enter-decref:attempt','outcome':'attempted'}],'DECREF-FAST-EXACT-PARENT-ATTEMPT')"
+        },
+        {
+          "line": 3970,
+          "text": " scope=parent['scope'];status_typed_same(parent['instance_anchor'],anchor,'DECREF-FAST-ANCHOR');status_typed_same(scope['instance'],anchor['instance'],'DECREF-FAST-INSTANCE')"
+        },
+        {
+          "line": 3971,
+          "text": " need(scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO') and scope['context']==anchor['context'] and scope['acquisition']==anchor['record']['acquisition'],'DECREF-FAST-CONTEXT-ACQUISITION')"
+        },
+        {
+          "line": 3972,
+          "text": " op=parent['decref_operation'];status_typed_same(op['operand_role'],parent['binding']['method_results']['__enter__'],'DECREF-FAST-ENTER-ROLE')"
+        },
+        {
+          "line": 3973,
+          "text": " return {'scope':copy.deepcopy(scope),'anchor':copy.deepcopy(anchor),'selected_attempt':copy.deepcopy(parent['events'][-1]),'operation':copy.deepcopy(op),"
+        },
+        {
+          "line": 3974,
+          "text": "  'enter_role':copy.deepcopy(op['operand_role']),'exit_role':copy.deepcopy(parent['binding']['exit_role']),'res_value_role':copy.deepcopy(parent['res_value_role']),"
+        },
+        {
+          "line": 3975,
+          "text": "  'references':copy.deepcopy(parent['binding']['references']),'helper_invocation':copy.deepcopy(parent['binding']['helper_invocation']),"
+        },
+        {
+          "line": 3976,
+          "text": "  'original_constructor_error':copy.deepcopy(parent['original_error_pending_in_outer_handler']),'pending_error_before_macro':copy.deepcopy(parent['last_pending_error_in_model']),"
+        },
+        {
+          "line": 3977,
+          "text": "  'details_role':copy.deepcopy(parent['binding']['details_role']),'cleanup_list':copy.deepcopy(parent['binding']['cleanup_list']),"
+        },
+        {
+          "line": 3978,
+          "text": "  'continuity':continuity,'envelope':copy.deepcopy(envelope),'branch':branch,"
+        },
+        {
+          "line": 3979,
+          "text": "  'state_premise':{'scope':copy.deepcopy(scope),'enter_role':copy.deepcopy(op['operand_role']),'guard':copy.deepcopy(cat['branch_guards'].get(branch)),'concrete_count':None,'derived_from_res':False,'runtime_observation':False},"
+        }
+      ],
+      "path_in_original_source_archive": "code/managed_coverage.py"
+    },
+    {
+      "first_line": 4014,
+      "identity": {
+        "bytes": 505497,
+        "sha256": "3eab9cde9fd0f83eee2ffea7b68e2ca8db0596cdf367fa86c112917c6ec7e96d"
+      },
+      "last_line": 4033,
+      "lines": [
+        {
+          "line": 4014,
+          "text": "  if name=='decref-fast:macro-end':completed=True"
+        },
+        {
+          "line": 4015,
+          "text": " need(len(oo)==len(events),'DECREF-FAST-UNREACHED-STEPS')"
+        },
+        {
+          "line": 4016,
+          "text": " uncertain=last in ('interruption','process-termination','unobserved')"
+        },
+        {
+          "line": 4017,
+          "text": " out=copy.deepcopy(p);out.update({'kind':'CONSTRUCTED-DECREF-FAST-COMPLETION','binding':copy.deepcopy(b),'predecessor_projection':copy.deepcopy(p),'events':events,"
+        },
+        {
+          "line": 4018,
+          "text": "  'completion':('immortal-macro-complete' if b['branch']=='immortal' else 'nonzero-macro-complete') if completed else last+'-frontier',"
+        },
+        {
+          "line": 4019,
+          "text": "  'conditional_fast_completion_in_model':completed,'conditional_macro_body_entered_in_model':any(e['stage']=='decref-fast:operand' and e['outcome']=='bound' for e in events),"
+        },
+        {
+          "line": 4020,
+          "text": "  'new_model_claims':{'immortal_predicate_result':predicate,'break_from_do_while_in_model':break_taken,'interpreter_return_established':False,"
+        },
+        {
+          "line": 4021,
+          "text": "   'decrement_and_nonzero_test_in_model':decrement,'count_relation':{'before':'n','premise':'valid positive n > 1 and non-immortal','after':'n - 1','nonzero':True,'same_selected_enter_role':copy.deepcopy(b['enter_role']),'selected_attempt':b['selected_attempt']['id'],'before_symbol':b['selected_attempt']['id']+'/conditional-count-before','after_symbol':b['selected_attempt']['id']+'/conditional-count-after','concrete_values':None} if decrement else None,"
+        },
+        {
+          "line": 4022,
+          "text": "   'macro_completion_in_model':completed,'destructor_invocation_in_model':False,'destructor_skipped_by_completed_fast_branch':completed,'zero_count_completion':False},"
+        },
+        {
+          "line": 4023,
+          "text": "  'legacy_attempt_flags_scope':'Unchanged predecessor-stage/unqualified flags are not new physical-effect claims; new conditional model facts are confined to new_model_claims and conditional_fast_completion_in_model',"
+        },
+        {
+          "line": 4024,
+          "text": "  'runtime_macro_arrival':None,'runtime_decrement_completion':None,'physical_reference_count_effects':None,'qualified_binary_correspondence':False,"
+        },
+        {
+          "line": 4025,
+          "text": "  'decref_effects_established':False,'reference_count_change_established':False,'physical_release_established':False,'finalization_established':False,'decref_callback_execution_established':False,"
+        },
+        {
+          "line": 4026,
+          "text": "  'result_test_established':False,'result_error_routing_established':False,'context_manager_entry_established':False,'f_binding_established':False,"
+        },
+        {
+          "line": 4027,
+          "text": "  'replacement_error_in_model':copy.deepcopy(replacement if replacement is not None else p['replacement_error_in_model']),"
+        },
+        {
+          "line": 4028,
+          "text": "  'last_pending_error_in_model':copy.deepcopy(replacement if replacement is not None else p['last_pending_error_in_model']),"
+        },
+        {
+          "line": 4029,
+          "text": "  'last_acknowledged_pending_error_before_macro':copy.deepcopy(p['last_pending_error_in_model']),"
+        },
+        {
+          "line": 4030,
+          "text": "  'pending_error_at_frontier':'UNESTABLISHED' if uncertain else 'conditional retained lineage; helper error indicator remains UNKNOWN',"
+        },
+        {
+          "line": 4031,
+          "text": "  'terminal_python_exception_in_model':None if uncertain else True,'C_primitive_python_exception_established':False,'Python_unwind_established':False,"
+        },
+        {
+          "line": 4032,
+          "text": "  'current_partial_effects':'UNKNOWN; inherited effects and any incomplete macro stage remain unresolved; modeled fast completion does not establish physical effects',"
+        },
+        {
+          "line": 4033,
+          "text": "  'prior_acknowledged_partial_effects':copy.deepcopy(p['current_partial_effects']),'stop':cat['stop']})"
+        }
+      ],
+      "path_in_original_source_archive": "code/managed_coverage.py"
+    }
+  ],
+  "defining_sources": [
+    {
+      "first_line": 23,
+      "identity": {
+        "bytes": 11481,
+        "sha256": "245d4f36d687834aeee064a60d4414b15f7b8babfdb5dec192aa995d93af2b78"
+      },
+      "last_line": 25,
+      "lines": [
+        {
+          "line": 23,
+          "text": "def write_new(p,x):"
+        },
+        {
+          "line": 24,
+          "text": "    with open(p,'xb') as f:"
+        },
+        {
+          "line": 25,
+          "text": "        f.write(enc(x));f.flush();os.fsync(f.fileno())"
+        }
+      ],
+      "path_in_original_source_archive": "source-evidence/lab_bootstrap.py"
+    },
+    {
+      "first_line": 2515,
+      "identity": {
+        "bytes": 143622,
+        "sha256": "f8c050621f1498d953d4898aaf29457e154620fec7f8bb987b4d3fde6f5a1d84"
+      },
+      "last_line": 2521,
+      "lines": [
+        {
+          "line": 2515,
+          "text": "            res = _PyObject_CallNoArgs(enter);"
+        },
+        {
+          "line": 2516,
+          "text": "            Py_DECREF(enter);"
+        },
+        {
+          "line": 2517,
+          "text": "            if (res == NULL) {"
+        },
+        {
+          "line": 2518,
+          "text": "                Py_DECREF(exit);"
+        },
+        {
+          "line": 2519,
+          "text": "                ERROR_IF(true, error);"
+        },
+        {
+          "line": 2520,
+          "text": "            }"
+        },
+        {
+          "line": 2521,
+          "text": "        }"
+        }
+      ],
+      "path_in_original_source_archive": "reference/cpython-3.12.14/bytecodes.c"
+    },
+    {
+      "first_line": 3496,
+      "identity": {
+        "bytes": 195111,
+        "sha256": "579706b9011997eed918fb546bd9382e8416d8cba3f9e87282aa5fa472c08b29"
+      },
+      "last_line": 3500,
+      "lines": [
+        {
+          "line": 3496,
+          "text": "        TARGET(BEFORE_WITH) {"
+        },
+        {
+          "line": 3497,
+          "text": "            PyObject *mgr = stack_pointer[-1];"
+        },
+        {
+          "line": 3498,
+          "text": "            PyObject *exit;"
+        },
+        {
+          "line": 3499,
+          "text": "            PyObject *res;"
+        },
+        {
+          "line": 3500,
+          "text": "            #line 2489 \"Python/bytecodes.c\""
+        }
+      ],
+      "path_in_original_source_archive": "reference/resolution/source/Python/generated_cases.c.h"
+    },
+    {
+      "first_line": 3528,
+      "identity": {
+        "bytes": 195111,
+        "sha256": "579706b9011997eed918fb546bd9382e8416d8cba3f9e87282aa5fa472c08b29"
+      },
+      "last_line": 3539,
+      "lines": [
+        {
+          "line": 3528,
+          "text": "            #line 2515 \"Python/bytecodes.c\""
+        },
+        {
+          "line": 3529,
+          "text": "            res = _PyObject_CallNoArgs(enter);"
+        },
+        {
+          "line": 3530,
+          "text": "            Py_DECREF(enter);"
+        },
+        {
+          "line": 3531,
+          "text": "            if (res == NULL) {"
+        },
+        {
+          "line": 3532,
+          "text": "                Py_DECREF(exit);"
+        },
+        {
+          "line": 3533,
+          "text": "                if (true) goto pop_1_error;"
+        },
+        {
+          "line": 3534,
+          "text": "            }"
+        },
+        {
+          "line": 3535,
+          "text": "            #line 3536 \"Python/generated_cases.c.h\""
+        },
+        {
+          "line": 3536,
+          "text": "            STACK_GROW(1);"
+        },
+        {
+          "line": 3537,
+          "text": "            stack_pointer[-1] = res;"
+        },
+        {
+          "line": 3538,
+          "text": "            stack_pointer[-2] = exit;"
+        },
+        {
+          "line": 3539,
+          "text": "            DISPATCH();"
+        }
+      ],
+      "path_in_original_source_archive": "reference/resolution/source/Python/generated_cases.c.h"
+    },
+    {
+      "first_line": 56,
+      "identity": {
+        "bytes": 88767,
+        "sha256": "29640a033f373391a5b000253f74a7a1bc3182265412c0b40a76c4615acd1fda"
+      },
+      "last_line": 68,
+      "lines": [
+        {
+          "line": 56,
+          "text": "#undef Py_DECREF"
+        },
+        {
+          "line": 57,
+          "text": "#define Py_DECREF(arg) \\"
+        },
+        {
+          "line": 58,
+          "text": "    do { \\"
+        },
+        {
+          "line": 59,
+          "text": "        PyObject *op = _PyObject_CAST(arg); \\"
+        },
+        {
+          "line": 60,
+          "text": "        if (_Py_IsImmortal(op)) { \\"
+        },
+        {
+          "line": 61,
+          "text": "            break; \\"
+        },
+        {
+          "line": 62,
+          "text": "        } \\"
+        },
+        {
+          "line": 63,
+          "text": "        _Py_DECREF_STAT_INC(); \\"
+        },
+        {
+          "line": 64,
+          "text": "        if (--op->ob_refcnt == 0) { \\"
+        },
+        {
+          "line": 65,
+          "text": "            destructor dealloc = Py_TYPE(op)->tp_dealloc; \\"
+        },
+        {
+          "line": 66,
+          "text": "            (*dealloc)(op); \\"
+        },
+        {
+          "line": 67,
+          "text": "        } \\"
+        },
+        {
+          "line": 68,
+          "text": "    } while (0)"
+        }
+      ],
+      "path_in_original_source_archive": "reference/resolution/source/Python/ceval.c"
+    }
+  ],
+  "frontiers": "First nonnormal continuation/evaluation frontier ends the modeled sequence; retain replacement-error origins, termination/unobserved uncertainty, inherited UNKNOWN partial effects. Do not invent Python exceptions inside C primitives.",
+  "gap": "The existing source anchor verifies the spelling of line2517, but does not model its evaluation. The producer ends at macro-end and explicitly leaves result_test_established false; mandatory rows and receipt limits likewise end before the test. There is no current continuation/res-pointer-comparison outcome relation.",
+  "implementation_or_execution_authorized_here": false,
+  "mandatory_adapter": [
+    {
+      "first_line": 56,
+      "identity": {
+        "bytes": 9654,
+        "sha256": "62f619cb10b3d7158f4b0997027a6df0484aaceff6d2523113e062b5a6a43acf"
+      },
+      "last_line": 65,
+      "lines": [
+        {
+          "line": 56,
+          "text": "def _basis(data):"
+        },
+        {
+          "line": 57,
+          "text": " fresh=inputs(data['root']);p=fresh['parent_module'];pd=fresh['parent_data']"
+        },
+        {
+          "line": 58,
+          "text": " # Unchanged parent's substantive authentication and actual returned basis, then"
+        },
+        {
+          "line": 59,
+          "text": " # exact parent receipt comparison. No saved dictionary substitutes for this call."
+        },
+        {
+          "line": 60,
+          "text": " p._receipt_shape(fresh['saved']);pb=p._basis(pd)"
+        },
+        {
+          "line": 61,
+          "text": " require(fresh['saved']==p.enc(p._assemble(pb)),'DECREF-FAST-PREDECESSOR-STALE-OR-ALTERED-RECEIPT')"
+        },
+        {
+          "line": 62,
+          "text": " public={'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(fresh['saved']),'actual_admission':False}"
+        },
+        {
+          "line": 63,
+          "text": " r=fresh['root'];c=fresh['coverage'];ss=source_files(r)"
+        },
+        {
+          "line": 64,
+          "text": " returned=pb['parent_basis'];enter=returned['parent_basis'];lookup=enter['parent_basis'];r1=lookup['parent_basis']"
+        },
+        {
+          "line": 65,
+          "text": " cat=c.compile_decref_fast((r/'source-evidence/lab_bootstrap.py').read_bytes(),(r/'reference/cpython-3.12.14/bytecodes.c').read_bytes(),(r/'reference/cpython-3.12.14/typeobject.c').read_bytes(),r1['catalogue'],lookup['catalogue'],enter['catalogue'],returned['catalogue'],pb['catalogue'],ss)"
+        }
+      ],
+      "path_in_original_source_archive": "code/correspondence.py"
+    },
+    {
+      "first_line": 76,
+      "identity": {
+        "bytes": 9654,
+        "sha256": "62f619cb10b3d7158f4b0997027a6df0484aaceff6d2523113e062b5a6a43acf"
+      },
+      "last_line": 85,
+      "lines": [
+        {
+          "line": 76,
+          "text": "def _construct_checked(basis,case):"
+        },
+        {
+          "line": 77,
+          "text": " exact(case,'DECREF-FAST-CONSTRUCTED-TYPE');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-DECREF-FAST-COMPLETION','DECREF-FAST-CONSTRUCTED-SHAPE')"
+        },
+        {
+          "line": 78,
+          "text": " require(case['context'] in CONTEXTS,'DECREF-FAST-CONTEXT');row=next(r for r in basis['prior']['contexts'] if r['context']==case['context']);anchor=row['enter_decref_attempt_correspondence']['instance_anchor'];same(case['anchor'],anchor,'DECREF-FAST-CONSTRUCTED-ANCHOR')"
+        },
+        {
+          "line": 79,
+          "text": " same({k:case['parent_case'].get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'DECREF-FAST-PARENT-INVOCATION')"
+        },
+        {
+          "line": 80,
+          "text": " parent=basis['parent_module']._construct_checked(basis['parent_basis'],case['parent_case'])['projection'];same(case['parent_output'],parent,'DECREF-FAST-VALIDATED-PARENT')"
+        },
+        {
+          "line": 81,
+          "text": " c=basis['fresh']['coverage'];cat=basis['catalogue'];ss=basis['source_files'];b=case['binding']"
+        },
+        {
+          "line": 82,
+          "text": " binding=c.decref_fast_binding(cat,parent,anchor,b['continuity'],b['branch'],b['envelope'],ss);same(b,binding,'DECREF-FAST-BINDING')"
+        },
+        {
+          "line": 83,
+          "text": " v={'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(anchor),'parent_result':parent,'binding':binding,'outcomes':copy.deepcopy(case['outcomes'])}"
+        },
+        {
+          "line": 84,
+          "text": " c.validate_decref_fast_projection(cat,case['projection'],v,case['output'],ss)"
+        },
+        {
+          "line": 85,
+          "text": " return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'projection':c.decref_fast_projection(cat,case['projection'],v,ss),'runtime_observation':False}"
+        }
+      ],
+      "path_in_original_source_archive": "code/correspondence.py"
+    },
+    {
+      "first_line": 87,
+      "identity": {
+        "bytes": 9654,
+        "sha256": "62f619cb10b3d7158f4b0997027a6df0484aaceff6d2523113e062b5a6a43acf"
+      },
+      "last_line": 101,
+      "lines": [
+        {
+          "line": 87,
+          "text": "def _assemble(basis):"
+        },
+        {
+          "line": 88,
+          "text": " out=copy.deepcopy(basis['prior']);out['format']='I164-DECREF-FAST-COMPLETION-1';out['prior_enter_decref_components']=out.pop('extension_components');out['prior_enter_decref_receipt']=copy.deepcopy(PARENT_RECEIPT)"
+        },
+        {
+          "line": 89,
+          "text": " out['extension_components']={n:identity((basis['fresh']['root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}"
+        },
+        {
+          "line": 90,
+          "text": " for ctx,row in zip(out['contexts'],_rows(basis)):ctx[RELATION]=copy.deepcopy(row)"
+        },
+        {
+          "line": 91,
+          "text": " out['new_decref_fast_completion_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','stop':basis['catalogue']['stop'],'effective_macro':'ceval.c:56-68 local override','branches':['immortal','non-immortal-positive-gt-one'],"
+        },
+        {
+          "line": 92,
+          "text": "  'branch_state_from_res':False,'runtime_arrival':'UNAVAILABLE','actual_completion_established':False,'physical_effects_established':False,'zero_count_destructor_completion':'UNRESOLVED','qualified_binary_correspondence':False,'deeper_helper_error_indicator':'UNKNOWN',"
+        },
+        {
+          "line": 93,
+          "text": "  'result_test_established':False,'context_manager_entry_established':False,'f_binding_established':False,'complete_repetition_coverage':False,'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}"
+        },
+        {
+          "line": 94,
+          "text": " return out"
+        },
+        {
+          "line": 95,
+          "text": "def derive(root=ROOT):return _assemble(_basis(inputs(root)))"
+        },
+        {
+          "line": 96,
+          "text": "def _receipt_shape(saved):"
+        },
+        {
+          "line": 97,
+          "text": " require(type(saved) is bytes,'DECREF-FAST-RECEIPT-BYTES');r=json.loads(saved)"
+        },
+        {
+          "line": 98,
+          "text": " require(type(r) is dict and r.get('format')=='I164-DECREF-FAST-COMPLETION-1' and type(r.get('contexts')) is list and len(r['contexts'])==2,'DECREF-FAST-RECEIPT-SHAPE')"
+        },
+        {
+          "line": 99,
+          "text": " require([x.get('context') for x in r['contexts']]==list(CONTEXTS) and all(RELATION in x and 'enter_decref_attempt_correspondence' in x for x in r['contexts']),'DECREF-FAST-MANDATORY-RELATIONS');return r"
+        },
+        {
+          "line": 100,
+          "text": "def validate(root,saved):"
+        },
+        {
+          "line": 101,
+          "text": " _receipt_shape(saved);result=derive(root);require(saved==enc(result),'DECREF-FAST-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'actual_admission':False}"
+        }
+      ],
+      "path_in_original_source_archive": "code/correspondence.py"
+    }
+  ],
+  "method": "Read-only retained source/AST inspection; no candidate imports, execution, preprocessing, compilation or new tests.",
+  "minimum_missing_input_for_this_conditional_SOURCE_ONLY_relation": null,
+  "not_supplied_by_retained_inputs": "Observed runtime arrival/object state, qualified executable-to-source/build mapping, physical effects and zero-count/direct tp_dealloc completion. These remain unavailable qualifications, not a prerequisite for this conditional source-only pointer-test slice.",
+  "official_revision": "2abcf904b8dac8c999d2b3aac76681abb333798a",
+  "premises": "Retained defined-C/null-pointer comparison semantics and explicit continuation/storage continuity. Python None is a non-NULL object; concrete_value null placeholders are unobserved values, not C NULL. Do not infer helper error-indicator guarantees or actual exception values.",
+  "proposed_relationship": "Evaluate the C pointer equality res == NULL, preserving the selected res/enter/exit roles, invocation, instance, acquisition, owner/token, context/prefix/failure-origin and earlier pending-error/effect lineage.",
+  "proposed_start": "Actual authenticated selected fast-branch completion, either supported branch, with original completed res assignment lineage. Require explicit continuation and selected res storage/value continuity; macro completion alone is insufficient.",
+  "proposed_stop": "Immediately after the selected test outcome/branch decision, before true-branch Py_DECREF(exit) at bytecodes.c:2518/generated_cases.c.h:3532, and before false-branch STACK_GROW at generated_cases.c.h:3536 or any stack store/dispatch. No error routing, context entry or f binding.",
+  "retained_inputs_suffice": true,
+  "status": "ONE UNFINISHED SOURCE-SUPPORTED RELATION; assessment only"
+}
