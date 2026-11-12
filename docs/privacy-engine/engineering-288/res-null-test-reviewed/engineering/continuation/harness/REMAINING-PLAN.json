@@ -1,0 +1,4461 @@
+[
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 16,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "789b09f960e8d9735e51b74e913c1d28105ba2791c916ad8a3ecc79450f11870"
+      },
+      "fixture_name": "16/1-control-absent-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "16/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 146
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "17/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 147
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "17/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 148
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "17/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 149
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "17/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 150
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "17/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 151
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": null,
+      "failure_origin": "protected-close",
+      "fixture": 17,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "e357d71a83cd3f6f18d41577c9eb136b0914f30cf01c30e7e4349af9a6f3c5e6"
+      },
+      "fixture_name": "17/1-control-absent-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "17/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 152
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "18/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 153
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "18/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 154
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "18/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 155
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "18/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 156
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "18/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 157
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 18,
+      "fixture_identity": {
+        "bytes": 1771500,
+        "sha256": "ddebe5bad9cd57e346e4b0516c86005553961b2ceeb90dffc0e70a6089e818d1"
+      },
+      "fixture_name": "18/1-control-normal-protected-append/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "18/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 158
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "19/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 159
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "19/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 160
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "19/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 161
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "19/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 162
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "19/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 163
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 19,
+      "fixture_identity": {
+        "bytes": 1771590,
+        "sha256": "42891859b18d1e1933f3f19bccd44d8857bf5eb16b697a1232bd39412af7c348"
+      },
+      "fixture_name": "19/1-control-normal-protected-append/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "19/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 164
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "20/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 165
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "20/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 166
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "20/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 167
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "20/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 168
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "20/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 169
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-append",
+      "fixture": 20,
+      "fixture_identity": {
+        "bytes": 1768160,
+        "sha256": "5a8972ea5535e53beb6ea2bac741e0986b9774b9260fb5620dbe746a0cf35c0c"
+      },
+      "fixture_name": "20/1-control-normal-protected-append/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "20/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 170
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "21/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 171
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "21/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 172
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "21/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 173
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "21/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 174
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "21/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 175
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 21,
+      "fixture_identity": {
+        "bytes": 1768934,
+        "sha256": "0917262254fc606bacdd87881444b31b9a90ce525760975f30676a6260ccfba5"
+      },
+      "fixture_name": "21/1-control-normal-protected-close/opaque",
+      "group": "matrix",
+      "python_value_class": "opaque",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "21/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 176
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "22/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 177
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "22/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 178
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "22/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 179
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "22/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 180
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "22/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 181
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": false,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 22,
+      "fixture_identity": {
+        "bytes": 1769024,
+        "sha256": "ac7a807c1e1b95d756b24120db6769b4379391c4adc3397bfd6c013b2915a729"
+      },
+      "fixture_name": "22/1-control-normal-protected-close/Python-None",
+      "group": "matrix",
+      "python_value_class": "Python-None",
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "22/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 182
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "23/immortal/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 183
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "23/immortal/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 184
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "immortal",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "23/immortal/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 185
+  },
+  {
+    "assertion_AST_sha256": "36039167049e486baa71dd9ca33a12cc604bd5885a93948eb24596fa20a50b72",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 157,
+      "end_line": 99,
+      "file": "tests/focused.py",
+      "line": 99
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "normal comparison accepted"
+    },
+    "layer": "pure model output comparison; no authenticated basis",
+    "name": "23/non-immortal-positive-gt-one/normal comparison accepted",
+    "original_call_source": "check(label+'/normal comparison accepted',lambda:c.validate_res_null_projection(cat,v,v,out,files),'pure model output comparison; no authenticated basis')",
+    "original_sequence": 186
+  },
+  {
+    "assertion_AST_sha256": "7f0aa792707a54fcc670aced6aaaeb45098ba4bd6117f7286c787a10af3f4b29",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 804,
+      "end_line": 100,
+      "file": "tests/focused.py",
+      "line": 100
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "independent outcome and preserved lineage oracle"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "23/non-immortal-positive-gt-one/independent outcome and preserved lineage oracle",
+    "original_call_source": "check(label+'/independent outcome and preserved lineage oracle',lambda:out['res_null_test_outcome'] is expected and out['res_null_test_completed_in_model'] is True and out['res_value_role']==p['res_value_role'] and out['predecessor_projection']==fp and out['binding']['assignment']==p['res_assignment'] and out['last_pending_error_in_model']==fp['last_pending_error_in_model'] and out['helper_error_indicator']=='UNKNOWN' and out['terminal_python_exception_in_model'] is True and out['current_partial_effects'].startswith('UNKNOWN') and all(out[k] is False for k in ['exit_decref_attempt_established','stack_operations_established','dispatch_established','context_manager_entry_established','f_binding_established','physical_release_established','qualified_binary_correspondence','actual_admission']))",
+    "original_sequence": 187
+  },
+  {
+    "assertion_AST_sha256": "c683871656ca52d15a25785011474160ab8e795afad35bae024b0d55282c1887",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 182,
+      "end_line": 101,
+      "file": "tests/focused.py",
+      "line": 101
+    },
+    "case": {
+      "C_NULL": true,
+      "branch": "non-immortal-positive-gt-one",
+      "context": "SYMBOLIC-U-TWO",
+      "control_completed": true,
+      "failure_origin": "protected-close",
+      "fixture": 23,
+      "fixture_identity": {
+        "bytes": 1765609,
+        "sha256": "d08c9f724bc55d4a77ec28ec2127db152e6e103fc1d32fc1734911f27416be9f"
+      },
+      "fixture_name": "23/1-control-normal-protected-close/NULL",
+      "group": "matrix",
+      "python_value_class": null,
+      "stage": "opposite comparison result"
+    },
+    "layer": "pure model output comparison",
+    "name": "23/non-immortal-positive-gt-one/opposite comparison result",
+    "original_call_source": "reject(label+'/opposite comparison result',lambda:c.validate_res_null_projection(cat,v,v,change(out,('res_null_test_outcome',),not expected),files),'pure model output comparison')",
+    "original_sequence": 188
+  },
+  {
+    "assertion_AST_sha256": "6da8f5227bfce578abe1443ad70c409e4cf98280e23aa6b4789941b43cc330ee",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 1,
+      "end_column": 174,
+      "end_line": 105,
+      "file": "tests/focused.py",
+      "line": 105
+    },
+    "case": {
+      "group": "overall",
+      "stage": "matrix aggregate"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "48 class variants cover both contexts prefixes origins fast branches and three result classes",
+    "original_call_source": "check('48 class variants cover both contexts prefixes origins fast branches and three result classes',lambda:len(coverage)==48 and len(fixtures)==24 and len(occurrences)==8)",
+    "original_sequence": 189
+  },
+  {
+    "assertion_AST_sha256": "f080c48480d380829cbd045de22d0a1de9fb740018e363c5d8cc00f3382b6525",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 200,
+      "end_line": 110,
+      "file": "tests/focused.py",
+      "line": 110
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "unavailable outcome",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/continuation unavailable has no outcome",
+    "original_call_source": "check(ctx+'/'+premise+' unavailable has no outcome',lambda:z['res_null_test_outcome'] is None and z['res_null_test_completed_in_model'] is False and z['terminal_python_exception_in_model'] is None)",
+    "original_sequence": 190
+  },
+  {
+    "assertion_AST_sha256": "e869379d75d7f15a1a1b77a347643fe9409c952c75822bb9aae817c7b8bf82b0",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 34,
+      "end_column": 135,
+      "end_line": 111,
+      "file": "tests/focused.py",
+      "line": 111
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false comparison",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-ONE/continuation unavailable cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' unavailable cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 191
+  },
+  {
+    "assertion_AST_sha256": "97e9cb2ce420bece49f87b0a8b086c50485b7b929966ccdc7d88611386aeffbc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 36,
+      "end_column": 133,
+      "end_line": 112,
+      "file": "tests/focused.py",
+      "line": 112
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "omitted premise",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-ONE/continuation omitted cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' omitted cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 192
+  },
+  {
+    "assertion_AST_sha256": "f080c48480d380829cbd045de22d0a1de9fb740018e363c5d8cc00f3382b6525",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 200,
+      "end_line": 110,
+      "file": "tests/focused.py",
+      "line": 110
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "unavailable outcome",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/res_storage_continuity unavailable has no outcome",
+    "original_call_source": "check(ctx+'/'+premise+' unavailable has no outcome',lambda:z['res_null_test_outcome'] is None and z['res_null_test_completed_in_model'] is False and z['terminal_python_exception_in_model'] is None)",
+    "original_sequence": 193
+  },
+  {
+    "assertion_AST_sha256": "e869379d75d7f15a1a1b77a347643fe9409c952c75822bb9aae817c7b8bf82b0",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 34,
+      "end_column": 135,
+      "end_line": 111,
+      "file": "tests/focused.py",
+      "line": 111
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false comparison",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-ONE/res_storage_continuity unavailable cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' unavailable cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 194
+  },
+  {
+    "assertion_AST_sha256": "97e9cb2ce420bece49f87b0a8b086c50485b7b929966ccdc7d88611386aeffbc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 36,
+      "end_column": 133,
+      "end_line": 112,
+      "file": "tests/focused.py",
+      "line": 112
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "omitted premise",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-ONE/res_storage_continuity omitted cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' omitted cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 195
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "conditional_fast_completion_in_model"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-ONE/missing predecessor conditional_fast_completion_in_model",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 196
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "helper_c_return_completed_in_model"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-ONE/missing predecessor helper_c_return_completed_in_model",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 197
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_assignment_established"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-ONE/missing predecessor res_assignment_established",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 198
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_assignment"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-ONE/missing predecessor res_assignment",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 199
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_value_role"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-ONE/missing predecessor res_value_role",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 200
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "raise",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/0/raise",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 201
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "raise",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/raise/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 202
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "catchable-interruption",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/0/catchable-interruption",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 203
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "catchable-interruption",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/catchable-interruption/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 204
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "process-termination",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/0/process-termination",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 205
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "process-termination",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/process-termination/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 206
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "unobserved",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/0/unobserved",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 207
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "unobserved",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/unobserved/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 208
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "interruption",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/1/interruption",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 209
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "interruption",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/interruption/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 210
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "process-termination",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/1/process-termination",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 211
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "process-termination",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/process-termination/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 212
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "unobserved",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/1/unobserved",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 213
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "unobserved",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-ONE/unobserved/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 214
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "scope",
+          "invocation"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('scope', 'invocation')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 215
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "scope",
+          "acquisition"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('scope', 'acquisition')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 216
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "anchor",
+          "context"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('anchor', 'context')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 217
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 3,
+        "path": [
+          "binding",
+          "res_storage_role",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'res_storage_role', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 218
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 4,
+        "path": [
+          "binding",
+          "res_storage_role",
+          "assignment_occurrence"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'res_storage_role', 'assignment_occurrence')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 219
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 5,
+        "path": [
+          "binding",
+          "res_value_role",
+          "C_NULL"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'res_value_role', 'C_NULL')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 220
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 6,
+        "path": [
+          "binding",
+          "enter_role"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'enter_role')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 221
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 7,
+        "path": [
+          "binding",
+          "references",
+          "owner",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'references', 'owner', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 222
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 8,
+        "path": [
+          "binding",
+          "references",
+          "token",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'references', 'token', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 223
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 9,
+        "path": [
+          "binding",
+          "original_constructor_error",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'original_constructor_error', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 224
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 10,
+        "path": [
+          "binding",
+          "selected_fast_completion",
+          "id"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'selected_fast_completion', 'id')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 225
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 11,
+        "path": [
+          "binding",
+          "fast_branch"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'fast_branch')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 226
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 12,
+        "path": [
+          "binding",
+          "assignment",
+          "from_return_occurrence"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('binding', 'assignment', 'from_return_occurrence')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 227
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 13,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 228
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 14,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 229
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 15,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 230
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 16,
+        "path": [
+          "outcomes",
+          1,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('outcomes', 1, 'outcome')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 231
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 17,
+        "path": [
+          "outcomes",
+          1,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-ONE/input ('outcomes', 1, 'outcome')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 232
+  },
+  {
+    "assertion_AST_sha256": "9768d8baeb5712a5980fc81766b332810c080d7ea5f7d135367784e5ca8aaf05",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 2,
+      "end_column": 175,
+      "end_line": 123,
+      "file": "tests/focused.py",
+      "line": 123
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "coordinated lineage"
+      }
+    },
+    "layer": "pure selected-input comparison; no authenticated basis",
+    "name": "SYMBOLIC-U-ONE/coordinated submitted lineage versus fixed selected input",
+    "original_call_source": "reject(ctx+'/coordinated submitted lineage versus fixed selected input',lambda:c.res_null_projection(cat,q,v,files),'pure selected-input comparison; no authenticated basis')",
+    "original_sequence": 233
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "res_null_test_outcome"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('res_null_test_outcome',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 234
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "res_null_test_completed_in_model"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('res_null_test_completed_in_model',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 235
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "terminal_python_exception_in_model"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('terminal_python_exception_in_model',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 236
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 3,
+        "path": [
+          "new_model_claims",
+          "branch_body_entered"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('new_model_claims', 'branch_body_entered')",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 237
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 4,
+        "path": [
+          "exit_decref_attempt_established"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('exit_decref_attempt_established',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 238
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 5,
+        "path": [
+          "stack_operations_established"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('stack_operations_established',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 239
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 6,
+        "path": [
+          "runtime_test_arrival"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('runtime_test_arrival',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 240
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 7,
+        "path": [
+          "helper_error_indicator"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-ONE/output ('helper_error_indicator',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 241
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 242
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "outcomes",
+          0,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact input ('outcomes', 0, 'outcome')",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 243
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "binding",
+          "references"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact input ('binding', 'references')",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 244
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "completion"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact output ('completion',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 245
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "events"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact output ('events',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 246
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "new_model_claims"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-ONE/exact output ('new_model_claims',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 247
+  },
+  {
+    "assertion_AST_sha256": "97ccfbeb84c98288798e255f54341742cf20a7cfbd6152acd183b41fafb86ddc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 104,
+      "end_column": 233,
+      "end_line": 130,
+      "file": "tests/focused.py",
+      "line": 130
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "subclass literal key"
+      }
+    },
+    "layer": "exact key types before normalization",
+    "name": "SYMBOLIC-U-ONE/subclass literal key",
+    "original_call_source": "reject(ctx+'/subclass literal key',lambda:c.validate_res_null_projection(cat,v,v,q,files),'exact key types before normalization')",
+    "original_sequence": 248
+  },
+  {
+    "assertion_AST_sha256": "be80740aa297f5b7c5436ee2071be694712df761854f8e417442df728b2ba774",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 2,
+      "end_column": 169,
+      "end_line": 132,
+      "file": "tests/focused.py",
+      "line": 132
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "direct returned projection mutation"
+      }
+    },
+    "layer": "pure model output comparison after direct returned mutation",
+    "name": "SYMBOLIC-U-ONE/direct returned projection mutation",
+    "original_call_source": "reject(ctx+'/direct returned projection mutation',lambda:c.validate_res_null_projection(cat,v,v,r,files),'pure model output comparison after direct returned mutation')",
+    "original_sequence": 249
+  },
+  {
+    "assertion_AST_sha256": "0f9398abe142c886bc51481c7cf7cc126f9afbe0a88c05583cd7ee325c76ca54",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 2,
+      "end_column": 131,
+      "end_line": 133,
+      "file": "tests/focused.py",
+      "line": 133
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "pristine expectations isolated"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/pristine expectations isolated",
+    "original_call_source": "check(ctx+'/pristine expectations isolated',lambda:v==before_v and cat==before_cat and c.res_null_projection(cat,v,v,files)==out)",
+    "original_sequence": 250
+  },
+  {
+    "assertion_AST_sha256": "58e2ba9fd026c2b06ed474f66aa9e0e80b6ddf710510f5e04157cfea71284c20",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 2,
+      "end_column": 186,
+      "end_line": 135,
+      "file": "tests/focused.py",
+      "line": 135
+    },
+    "case": {
+      "context": "SYMBOLIC-U-ONE",
+      "group": "per-context",
+      "stage": {
+        "claim": "returned binding isolation"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-ONE/returned binding isolation",
+    "original_call_source": "check(ctx+'/returned binding isolation',lambda:c.res_null_binding(cat,fp,v['anchor'],'explicit conditional premise','explicit conditional premise',files)==v['binding'] and v==before_v)",
+    "original_sequence": 251
+  },
+  {
+    "assertion_AST_sha256": "f080c48480d380829cbd045de22d0a1de9fb740018e363c5d8cc00f3382b6525",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 200,
+      "end_line": 110,
+      "file": "tests/focused.py",
+      "line": 110
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "unavailable outcome",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/continuation unavailable has no outcome",
+    "original_call_source": "check(ctx+'/'+premise+' unavailable has no outcome',lambda:z['res_null_test_outcome'] is None and z['res_null_test_completed_in_model'] is False and z['terminal_python_exception_in_model'] is None)",
+    "original_sequence": 252
+  },
+  {
+    "assertion_AST_sha256": "e869379d75d7f15a1a1b77a347643fe9409c952c75822bb9aae817c7b8bf82b0",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 34,
+      "end_column": 135,
+      "end_line": 111,
+      "file": "tests/focused.py",
+      "line": 111
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false comparison",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-TWO/continuation unavailable cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' unavailable cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 253
+  },
+  {
+    "assertion_AST_sha256": "97e9cb2ce420bece49f87b0a8b086c50485b7b929966ccdc7d88611386aeffbc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 36,
+      "end_column": 133,
+      "end_line": 112,
+      "file": "tests/focused.py",
+      "line": 112
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "omitted premise",
+        "premise": "continuation"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-TWO/continuation omitted cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' omitted cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 254
+  },
+  {
+    "assertion_AST_sha256": "f080c48480d380829cbd045de22d0a1de9fb740018e363c5d8cc00f3382b6525",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 3,
+      "end_column": 200,
+      "end_line": 110,
+      "file": "tests/focused.py",
+      "line": 110
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "unavailable outcome",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/res_storage_continuity unavailable has no outcome",
+    "original_call_source": "check(ctx+'/'+premise+' unavailable has no outcome',lambda:z['res_null_test_outcome'] is None and z['res_null_test_completed_in_model'] is False and z['terminal_python_exception_in_model'] is None)",
+    "original_sequence": 255
+  },
+  {
+    "assertion_AST_sha256": "e869379d75d7f15a1a1b77a347643fe9409c952c75822bb9aae817c7b8bf82b0",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 34,
+      "end_column": 135,
+      "end_line": 111,
+      "file": "tests/focused.py",
+      "line": 111
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false comparison",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-TWO/res_storage_continuity unavailable cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' unavailable cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 256
+  },
+  {
+    "assertion_AST_sha256": "97e9cb2ce420bece49f87b0a8b086c50485b7b929966ccdc7d88611386aeffbc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 36,
+      "end_column": 133,
+      "end_line": 112,
+      "file": "tests/focused.py",
+      "line": 112
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "omitted premise",
+        "premise": "res_storage_continuity"
+      }
+    },
+    "layer": "pure model constraints; no authenticated basis",
+    "name": "SYMBOLIC-U-TWO/res_storage_continuity omitted cannot compare",
+    "original_call_source": "reject(ctx+'/'+premise+' omitted cannot compare',lambda q=q:c.res_null_projection(cat,q,q,files))",
+    "original_sequence": 257
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "conditional_fast_completion_in_model"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-TWO/missing predecessor conditional_fast_completion_in_model",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 258
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "helper_c_return_completed_in_model"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-TWO/missing predecessor helper_c_return_completed_in_model",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 259
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_assignment_established"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-TWO/missing predecessor res_assignment_established",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 260
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_assignment"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-TWO/missing predecessor res_assignment",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 261
+  },
+  {
+    "assertion_AST_sha256": "ae97c9d70fc80a5e141ac1afbb70169706e368ace30e637e7aada611887d0fcb",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 20,
+      "end_column": 233,
+      "end_line": 114,
+      "file": "tests/focused.py",
+      "line": 114
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "predecessor_field": "res_value_role"
+      }
+    },
+    "layer": "predecessor premise gate; no inferred comparison outcome",
+    "name": "SYMBOLIC-U-TWO/missing predecessor res_value_role",
+    "original_call_source": "reject(ctx+'/missing predecessor '+k,lambda q=q:c.res_null_binding(cat,q,v['anchor'],'explicit conditional premise','explicit conditional premise',files),'predecessor premise gate; no inferred comparison outcome')",
+    "original_sequence": 262
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "raise",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/0/raise",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 263
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "raise",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/raise/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 264
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "catchable-interruption",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/0/catchable-interruption",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 265
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "catchable-interruption",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/catchable-interruption/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 266
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "process-termination",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/0/process-termination",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 267
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "process-termination",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/process-termination/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 268
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "unobserved",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/0/unobserved",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 269
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "unobserved",
+        "stage_index": 0
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/unobserved/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 270
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "interruption",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/1/interruption",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 271
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "interruption",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/interruption/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 272
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "process-termination",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/1/process-termination",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 273
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "process-termination",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/process-termination/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 274
+  },
+  {
+    "assertion_AST_sha256": "5e77dabaa5aa170a8262fc4fb06f55551b160c27a8e46ef17f74561b6c6adcaf",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 4,
+      "end_column": 484,
+      "end_line": 118,
+      "file": "tests/focused.py",
+      "line": 118
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "legitimate",
+        "frontier": "unobserved",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/1/unobserved",
+    "original_call_source": "check(ctx+'/'+str(index)+'/'+frontier,lambda z=z,uncertain=uncertain:z['res_null_test_outcome'] is None and not z['res_null_test_completed_in_model'] and z['terminal_python_exception_in_model'] is (None if uncertain else True) and z['original_error_pending_in_outer_handler']==fp['original_error_pending_in_outer_handler'] and z['conditional_fast_completion_in_model'] is True and z['C_primitive_python_exception_established'] is False and z['Python_unwind_established'] is False)",
+    "original_sequence": 275
+  },
+  {
+    "assertion_AST_sha256": "cb11e330a6d8e19477c2ad159ab293926db271874a9cb23e102f50a6ec0122ee",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 4,
+      "end_column": 208,
+      "end_line": 119,
+      "file": "tests/focused.py",
+      "line": 119
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "false outcome",
+        "frontier": "unobserved",
+        "stage_index": 1
+      }
+    },
+    "layer": "pure model output comparison at first nonnormal frontier",
+    "name": "SYMBOLIC-U-TWO/unobserved/false outcome",
+    "original_call_source": "reject(ctx+'/'+frontier+'/false outcome',lambda q=q,z=z:c.validate_res_null_projection(cat,q,q,change(z,('res_null_test_outcome',),False),files),'pure model output comparison at first nonnormal frontier')",
+    "original_sequence": 276
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "scope",
+          "invocation"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('scope', 'invocation')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 277
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "scope",
+          "acquisition"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('scope', 'acquisition')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 278
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "anchor",
+          "context"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('anchor', 'context')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 279
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 3,
+        "path": [
+          "binding",
+          "res_storage_role",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'res_storage_role', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 280
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 4,
+        "path": [
+          "binding",
+          "res_storage_role",
+          "assignment_occurrence"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'res_storage_role', 'assignment_occurrence')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 281
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 5,
+        "path": [
+          "binding",
+          "res_value_role",
+          "C_NULL"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'res_value_role', 'C_NULL')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 282
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 6,
+        "path": [
+          "binding",
+          "enter_role"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'enter_role')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 283
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 7,
+        "path": [
+          "binding",
+          "references",
+          "owner",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'references', 'owner', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 284
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 8,
+        "path": [
+          "binding",
+          "references",
+          "token",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'references', 'token', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 285
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 9,
+        "path": [
+          "binding",
+          "original_constructor_error",
+          "symbol"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'original_constructor_error', 'symbol')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 286
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 10,
+        "path": [
+          "binding",
+          "selected_fast_completion",
+          "id"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'selected_fast_completion', 'id')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 287
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 11,
+        "path": [
+          "binding",
+          "fast_branch"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'fast_branch')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 288
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 12,
+        "path": [
+          "binding",
+          "assignment",
+          "from_return_occurrence"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('binding', 'assignment', 'from_return_occurrence')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 289
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 13,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 290
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 14,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 291
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 15,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 292
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 16,
+        "path": [
+          "outcomes",
+          1,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('outcomes', 1, 'outcome')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 293
+  },
+  {
+    "assertion_AST_sha256": "75c946acc10ec0f717ac8edbee4155604d3ff3ac2a2cb9dd997222291dfb1e86",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 148,
+      "end_line": 121,
+      "file": "tests/focused.py",
+      "line": 121
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 17,
+        "path": [
+          "outcomes",
+          1,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "pure model lineage/order/guard comparison",
+    "name": "SYMBOLIC-U-TWO/input ('outcomes', 1, 'outcome')",
+    "original_call_source": "reject(ctx+'/input '+repr(path),lambda q=q:c.res_null_projection(cat,q,q,files),'pure model lineage/order/guard comparison')",
+    "original_sequence": 294
+  },
+  {
+    "assertion_AST_sha256": "9768d8baeb5712a5980fc81766b332810c080d7ea5f7d135367784e5ca8aaf05",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 2,
+      "end_column": 175,
+      "end_line": 123,
+      "file": "tests/focused.py",
+      "line": 123
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "coordinated lineage"
+      }
+    },
+    "layer": "pure selected-input comparison; no authenticated basis",
+    "name": "SYMBOLIC-U-TWO/coordinated submitted lineage versus fixed selected input",
+    "original_call_source": "reject(ctx+'/coordinated submitted lineage versus fixed selected input',lambda:c.res_null_projection(cat,q,v,files),'pure selected-input comparison; no authenticated basis')",
+    "original_sequence": 295
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "res_null_test_outcome"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('res_null_test_outcome',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 296
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "res_null_test_completed_in_model"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('res_null_test_completed_in_model',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 297
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "terminal_python_exception_in_model"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('terminal_python_exception_in_model',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 298
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 3,
+        "path": [
+          "new_model_claims",
+          "branch_body_entered"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('new_model_claims', 'branch_body_entered')",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 299
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 4,
+        "path": [
+          "exit_decref_attempt_established"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('exit_decref_attempt_established',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 300
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 5,
+        "path": [
+          "stack_operations_established"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('stack_operations_established',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 301
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 6,
+        "path": [
+          "runtime_test_arrival"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('runtime_test_arrival',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 302
+  },
+  {
+    "assertion_AST_sha256": "b29c87e3c1e0263317b1313c394c93816d2dc5d0b888ae5f303c21c2f7b5642e",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 159,
+      "end_line": 125,
+      "file": "tests/focused.py",
+      "line": 125
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 7,
+        "path": [
+          "helper_error_indicator"
+        ]
+      }
+    },
+    "layer": "pure model output comparison",
+    "name": "SYMBOLIC-U-TWO/output ('helper_error_indicator',)",
+    "original_call_source": "reject(ctx+'/output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'pure model output comparison')",
+    "original_sequence": 303
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "outcomes"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact input ('outcomes',)",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 304
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "outcomes",
+          0,
+          "outcome"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact input ('outcomes', 0, 'outcome')",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 305
+  },
+  {
+    "assertion_AST_sha256": "98e30dae18715221b634e12f23100fe3b37c89e38a6db6252a8513453bb888d9",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 24,
+      "end_column": 151,
+      "end_line": 127,
+      "file": "tests/focused.py",
+      "line": 127
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "binding",
+          "references"
+        ]
+      }
+    },
+    "layer": "exact input types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact input ('binding', 'references')",
+    "original_call_source": "reject(ctx+'/exact input '+repr(path),lambda q=q:c.res_null_projection(cat,q,v,files),'exact input types before normalization')",
+    "original_sequence": 306
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 0,
+        "path": [
+          "completion"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact output ('completion',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 307
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 1,
+        "path": [
+          "events"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact output ('events',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 308
+  },
+  {
+    "assertion_AST_sha256": "f2d32d5e34dd898754e513a829d12db42c90fddd94e1009abda0e15c55fc846b",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 3,
+      "end_column": 176,
+      "end_line": 129,
+      "file": "tests/focused.py",
+      "line": 129
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "mutation_index": 2,
+        "path": [
+          "new_model_claims"
+        ]
+      }
+    },
+    "layer": "exact output types before normalization",
+    "name": "SYMBOLIC-U-TWO/exact output ('new_model_claims',)",
+    "original_call_source": "reject(ctx+'/exact output '+repr(path),lambda path=path,val=val:c.validate_res_null_projection(cat,v,v,change(out,path,val),files),'exact output types before normalization')",
+    "original_sequence": 309
+  },
+  {
+    "assertion_AST_sha256": "97ccfbeb84c98288798e255f54341742cf20a7cfbd6152acd183b41fafb86ddc",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 104,
+      "end_column": 233,
+      "end_line": 130,
+      "file": "tests/focused.py",
+      "line": 130
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "subclass literal key"
+      }
+    },
+    "layer": "exact key types before normalization",
+    "name": "SYMBOLIC-U-TWO/subclass literal key",
+    "original_call_source": "reject(ctx+'/subclass literal key',lambda:c.validate_res_null_projection(cat,v,v,q,files),'exact key types before normalization')",
+    "original_sequence": 310
+  },
+  {
+    "assertion_AST_sha256": "be80740aa297f5b7c5436ee2071be694712df761854f8e417442df728b2ba774",
+    "assertion_kind": "reject",
+    "callsite": {
+      "column": 2,
+      "end_column": 169,
+      "end_line": 132,
+      "file": "tests/focused.py",
+      "line": 132
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "direct returned projection mutation"
+      }
+    },
+    "layer": "pure model output comparison after direct returned mutation",
+    "name": "SYMBOLIC-U-TWO/direct returned projection mutation",
+    "original_call_source": "reject(ctx+'/direct returned projection mutation',lambda:c.validate_res_null_projection(cat,v,v,r,files),'pure model output comparison after direct returned mutation')",
+    "original_sequence": 311
+  },
+  {
+    "assertion_AST_sha256": "0f9398abe142c886bc51481c7cf7cc126f9afbe0a88c05583cd7ee325c76ca54",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 2,
+      "end_column": 131,
+      "end_line": 133,
+      "file": "tests/focused.py",
+      "line": 133
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "pristine expectations isolated"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/pristine expectations isolated",
+    "original_call_source": "check(ctx+'/pristine expectations isolated',lambda:v==before_v and cat==before_cat and c.res_null_projection(cat,v,v,files)==out)",
+    "original_sequence": 312
+  },
+  {
+    "assertion_AST_sha256": "58e2ba9fd026c2b06ed474f66aa9e0e80b6ddf710510f5e04157cfea71284c20",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 2,
+      "end_column": 186,
+      "end_line": 135,
+      "file": "tests/focused.py",
+      "line": 135
+    },
+    "case": {
+      "context": "SYMBOLIC-U-TWO",
+      "group": "per-context",
+      "stage": {
+        "claim": "returned binding isolation"
+      }
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "SYMBOLIC-U-TWO/returned binding isolation",
+    "original_call_source": "check(ctx+'/returned binding isolation',lambda:c.res_null_binding(cat,fp,v['anchor'],'explicit conditional premise','explicit conditional premise',files)==v['binding'] and v==before_v)",
+    "original_sequence": 313
+  },
+  {
+    "assertion_AST_sha256": "6e5b7ce9249a0f0862c2ded3fbed4f25889998b0f7e0e887e546870f9cbc8a9c",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 1,
+      "end_column": 83,
+      "end_line": 137,
+      "file": "tests/focused.py",
+      "line": 137
+    },
+    "case": {
+      "group": "overall",
+      "stage": "returned catalogue isolation"
+    },
+    "layer": "pure source/model oracle; no authentication",
+    "name": "returned catalogue isolation",
+    "original_call_source": "check('returned catalogue isolation',lambda:c.res_null_catalogue(fast,files)==cat)",
+    "original_sequence": 314
+  },
+  {
+    "assertion_AST_sha256": "baec9347a96d4f3675206a8cf40afef805f3513538ab98289fedb05c0f305e60",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 1,
+      "end_column": 147,
+      "end_line": 138,
+      "file": "tests/focused.py",
+      "line": 138
+    },
+    "case": {
+      "group": "overall",
+      "stage": "new authentication paths remain unexecuted"
+    },
+    "layer": "execution guard; no acceptance claim for unexecuted paths",
+    "name": "new authentication paths remain unexecuted",
+    "original_call_source": "check('new authentication paths remain unexecuted',lambda:GUARD['forbidden_calls']==0,'execution guard; no acceptance claim for unexecuted paths')",
+    "original_sequence": 315
+  },
+  {
+    "assertion_AST_sha256": "0f81dfed9e40f93863070bc680927e914bbda078a519607442986f95307539ac",
+    "assertion_kind": "check",
+    "callsite": {
+      "column": 1,
+      "end_column": 207,
+      "end_line": 139,
+      "file": "tests/focused.py",
+      "line": 139
+    },
+    "case": {
+      "group": "overall",
+      "stage": "fixed source bytes unchanged after pass"
+    },
+    "layer": "source preservation",
+    "name": "fixed source bytes unchanged after pass",
+    "original_call_source": "check('fixed source bytes unchanged after pass',lambda:all({'bytes':len((ROOT/n).read_bytes()),'sha256':hashlib.sha256((ROOT/n).read_bytes()).hexdigest()}==pin for n,pin in m.items()),'source preservation')",
+    "original_sequence": 316
+  }
+]

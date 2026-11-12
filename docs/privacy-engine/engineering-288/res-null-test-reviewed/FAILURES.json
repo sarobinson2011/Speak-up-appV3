@@ -1,0 +1,27 @@
+{
+  "Engineering_timeout": "145 corroborated rows;600.2042828569993seconds/-9;missing final RESULT and child FAILURE remain missing. Continuation does not repair or relabel the timeout.",
+  "campaigns_replayed": 0,
+  "candidate_implementation_changes": 0,
+  "historical": "All original FAILURES.json, statuses, missing final records, source-first chronology, DOC-ENTER-01 and separate inherited R1 discrepancy remain unchanged.",
+  "new_source_or_model_checks": 0,
+  "reviewer_read_only_reconciliation": {
+    "candidate_execution": 0,
+    "cause": "Reviewer expected batch-specific group without case/callsite; actual index uses continuation and includes case/callsite",
+    "completed_candidate_controls_replayed": 0,
+    "correction": "New reconcile_focused_corrected.py checks the actual exact schema and passes",
+    "error": "AssertionError at combined-index equality",
+    "explicit_exit": 1,
+    "raw_stream": "tool traceback was not a separately captured stream; no reconstruction claimed",
+    "script": "reconcile_focused.py"
+  },
+  "this_preparation": [
+    {
+      "cause": "Generic intake initially assumed a flat MANIFEST; prior preparation uses CHECKPOINT.members",
+      "error": "KeyError: There is no item named 'MANIFEST.json' in the prior preparation archive",
+      "exit": 1,
+      "raw_record": "provenance/preparation-intake-failure.txt",
+      "resolution": "Read actual format and verify exact CHECKPOINT membership/hashes; no candidate execution or campaign replay",
+      "scope": "Read-only packaging intake"
+    }
+  ]
+}

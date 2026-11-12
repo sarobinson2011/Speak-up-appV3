@@ -1,0 +1,74 @@
+{
+  "Engineering_continuation": {
+    "PASS": 54,
+    "REJECTED": 117,
+    "all_exits": 0,
+    "batches": 5,
+    "rows": 171
+  },
+  "Engineering_plan_coverage": {
+    "PASS": 135,
+    "REJECTED": 181,
+    "meaning": "316 unique planned IDs across two separate attempts; not a single successful campaign",
+    "not_one_successful_campaign": true,
+    "rows": 316
+  },
+  "Engineering_timeout": {
+    "campaign_status": "TIMED_OUT_INCOMPLETE",
+    "child_FAILURE": "MISSING",
+    "chunks": 146,
+    "corroborated_rows": 145,
+    "counts": {
+      "PASS": 81,
+      "REJECTED": 64
+    },
+    "exit": {
+      "automatic_retry": false,
+      "captured_chunks": 146,
+      "returncode": -9,
+      "seconds": 600.2042828569993,
+      "timed_out": true,
+      "utc": "2026-11-11T12:00:53.853213+00:00"
+    },
+    "final_RESULT": "MISSING"
+  },
+  "Ubuntu_public_positive": {
+    "EVENT_rows": 286,
+    "actual_basis_captures": 1,
+    "child_exit": 0,
+    "child_finished_utc": "2026-11-11T15:28:12.866215+00:00",
+    "child_seconds": 3564.5549862799817,
+    "computation_events_add_controls": false,
+    "exact_receipt_bytes_both_contexts": true,
+    "manager": "success/exited/0",
+    "positives": 1,
+    "progress_snapshots": 230,
+    "receipt": {
+      "bytes": 19046155,
+      "sha256": "1fbbea61a963361dd0369aefa97f6b2954bc9a5099dd891fbc02e9f239620e6e"
+    },
+    "selected_computation_entries_returns": 17846,
+    "stdout_chunks": 285,
+    "wrapper_exit": 0
+  },
+  "historical_groups": "Prior151/399/one-positive; older184/eight/750/one-positive; all earlier groups, failed and UNKNOWN attempts remain separate.",
+  "independent": {
+    "PASS": 79,
+    "REJECTED": 80,
+    "exit": 0,
+    "layers": "Exact independent rows retain their actual pure-model/source/type/row/output-comparison layers; no authenticated constructed calls.",
+    "record": "review/audits/independent-reconciliation.json",
+    "rows": 159
+  },
+  "new_candidate_controls": 0,
+  "new_independent_reviews": 0,
+  "new_public_runs": 0,
+  "reviewer_read_only_reconciliation": {
+    "campaign_replay": 0,
+    "candidate_controls": 0,
+    "corrected_exit": 0,
+    "first_exit": 1,
+    "missing_raw_stream": "not reconstructed",
+    "record": "review/FAILURES.json"
+  }
+}

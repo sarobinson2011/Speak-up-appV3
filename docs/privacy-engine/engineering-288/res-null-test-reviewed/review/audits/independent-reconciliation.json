@@ -1,0 +1,113 @@
+{
+  "authenticated_constructed_path": "UNEXECUTED",
+  "completed_controls": 159,
+  "counts": {
+    "FAIL": 0,
+    "PASS": 79,
+    "REJECTED": 80
+  },
+  "environment": {
+    "adapter": {
+      "bytes": 10053,
+      "sha256": "b0b36c61bd24130648fc55b97a9331c0fedbdf95479a6fdf3429d600406fdee5"
+    },
+    "cryptography_distribution": "50.0.0",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "producer": {
+      "bytes": 519785,
+      "sha256": "414e30bea79178fbf4ecfebc4519fb7eaa41e5df48b80f0126686a53f0f12633"
+    },
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "scope": "pure-source/model, no public authentication or application/helper execution"
+  },
+  "exit": {
+    "automatic_retry": false,
+    "exit": 0,
+    "seconds": 168.83761904700077,
+    "timed_out": false,
+    "utc": "2026-11-11T15:57:33.797337+00:00"
+  },
+  "fresh_public_runs": 0,
+  "full_public_negative_derivations": 0,
+  "individual_progress_stdout_RESULT_exact_agreement": true,
+  "layers": {
+    "direct binding-return isolation": {
+      "PASS": 2
+    },
+    "direct catalogue-return isolation": {
+      "PASS": 1
+    },
+    "direct declaration-return isolation": {
+      "PASS": 1
+    },
+    "direct-return expectation isolation and repeat derivation": {
+      "PASS": 2
+    },
+    "exact input type before normalization": {
+      "REJECTED": 8
+    },
+    "fresh matrix coverage, not runtime occurrence coverage": {
+      "PASS": 1
+    },
+    "pure mandatory-row comparison after direct return mutation": {
+      "REJECTED": 1
+    },
+    "pure mandatory-row comparison; no authentication": {
+      "PASS": 1
+    },
+    "pure mandatory-row output comparison": {
+      "REJECTED": 4
+    },
+    "pure output comparison after direct returned-object mutation": {
+      "REJECTED": 2
+    },
+    "pure predecessor-completion/assignment gate": {
+      "REJECTED": 10
+    },
+    "pure submitted-output comparison; fixed conditional premises": {
+      "REJECTED": 16
+    },
+    "pure-model binding correspondence to unchanged parent fixture": {
+      "REJECTED": 2
+    },
+    "pure-model comparison derivation with independent source oracle": {
+      "PASS": 48
+    },
+    "pure-model first-nonnormal/error lineage": {
+      "PASS": 14
+    },
+    "pure-model order/binding/comparison constraints; changed case and selected input": {
+      "REJECTED": 24
+    },
+    "pure-model output comparison; fixed conditional premises": {
+      "PASS": 2
+    },
+    "pure-model premise gate": {
+      "REJECTED": 8
+    },
+    "pure-model uncertainty derivation": {
+      "PASS": 4
+    },
+    "read-only defining source": {
+      "PASS": 1
+    },
+    "retained pure fast-projection output comparison, not authentication": {
+      "REJECTED": 2
+    },
+    "source-derived catalogue comparison": {
+      "PASS": 1
+    },
+    "source-derived catalogue submitted comparison": {
+      "REJECTED": 3
+    },
+    "static source inspection only": {
+      "PASS": 1
+    }
+  },
+  "parent_setup_credit": 0,
+  "status": "PASS",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

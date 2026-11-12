@@ -1,0 +1,170 @@
+{
+  "completed_checks_replayed_by_review": 0,
+  "continuation": {
+    "batches": [
+      {
+        "batch": "batch-01",
+        "chunks": 2,
+        "counts": {
+          "REJECTED": 1
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 2,
+          "returncode": 0,
+          "seconds": 352.41819712699726,
+          "timed_out": false,
+          "utc": "2026-11-11T12:40:14.676803+00:00"
+        },
+        "rows": 1,
+        "setup_credit": 0,
+        "setup_identity": {
+          "bytes": 6459892,
+          "sha256": "5150afe385a204f605b3060c14d25a3c5d4550b55073811e05b8225c8ac8befb"
+        }
+      },
+      {
+        "batch": "batch-02",
+        "chunks": 44,
+        "counts": {
+          "PASS": 28,
+          "REJECTED": 14
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 44,
+          "returncode": 0,
+          "seconds": 248.82851974499863,
+          "timed_out": false,
+          "utc": "2026-11-11T12:44:45.098480+00:00"
+        },
+        "rows": 42,
+        "setup_credit": 0,
+        "setup_identity": {
+          "bytes": 6467803,
+          "sha256": "a8fcebcbb2cadc54d54b7020b22d3e38fcc32b9f28a03ddc721dd6862ce207c2"
+        }
+      },
+      {
+        "batch": "batch-03",
+        "chunks": 70,
+        "counts": {
+          "PASS": 12,
+          "REJECTED": 51
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 70,
+          "returncode": 0,
+          "seconds": 177.8556337810005,
+          "timed_out": false,
+          "utc": "2026-11-11T12:48:03.081532+00:00"
+        },
+        "rows": 63,
+        "setup_credit": 0,
+        "setup_identity": {
+          "bytes": 6467803,
+          "sha256": "a8fcebcbb2cadc54d54b7020b22d3e38fcc32b9f28a03ddc721dd6862ce207c2"
+        }
+      },
+      {
+        "batch": "batch-04",
+        "chunks": 64,
+        "counts": {
+          "PASS": 11,
+          "REJECTED": 51
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 64,
+          "returncode": 0,
+          "seconds": 173.77897995899912,
+          "timed_out": false,
+          "utc": "2026-11-11T12:51:16.578748+00:00"
+        },
+        "rows": 62,
+        "setup_credit": 0,
+        "setup_identity": {
+          "bytes": 6467803,
+          "sha256": "a8fcebcbb2cadc54d54b7020b22d3e38fcc32b9f28a03ddc721dd6862ce207c2"
+        }
+      },
+      {
+        "batch": "batch-05",
+        "chunks": 4,
+        "counts": {
+          "PASS": 3
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 4,
+          "returncode": 0,
+          "seconds": 10.507848532000935,
+          "timed_out": false,
+          "utc": "2026-11-11T12:51:50.861698+00:00"
+        },
+        "rows": 3,
+        "setup_credit": 0,
+        "setup_identity": {
+          "bytes": 6467803,
+          "sha256": "a8fcebcbb2cadc54d54b7020b22d3e38fcc32b9f28a03ddc721dd6862ce207c2"
+        }
+      }
+    ],
+    "corroborated_rows": 171,
+    "counts": {
+      "PASS": 54,
+      "REJECTED": 117
+    },
+    "layers": {
+      "exact input types before normalization": 6,
+      "exact key types before normalization": 2,
+      "exact output types before normalization": 6,
+      "execution guard; no acceptance claim for unexecuted paths": 1,
+      "predecessor premise gate; no inferred comparison outcome": 10,
+      "pure model constraints; no authenticated basis": 8,
+      "pure model lineage/order/guard comparison": 36,
+      "pure model output comparison": 31,
+      "pure model output comparison after direct returned mutation": 2,
+      "pure model output comparison at first nonnormal frontier": 14,
+      "pure model output comparison; no authenticated basis": 14,
+      "pure selected-input comparison; no authenticated basis": 2,
+      "pure source/model oracle; no authentication": 38,
+      "source preservation": 1
+    }
+  },
+  "full_public_negative_derivations": 0,
+  "individual_progress_stdout_exact": true,
+  "original_assertion_ASTs_match_fixed_source": true,
+  "setup_credit": 0,
+  "source": {
+    "bytes": 3779700,
+    "sha256": "280bf68065066e3da79f86ef85d68ea7f03a98e93ec02b078077a63eb1507667"
+  },
+  "status": "PASS",
+  "timeout_attempt": {
+    "campaign_status": "TIMED_OUT_INCOMPLETE",
+    "child_FAILURE": "MISSING",
+    "chunks": 146,
+    "corroborated_rows": 145,
+    "counts": {
+      "PASS": 81,
+      "REJECTED": 64
+    },
+    "exit": {
+      "automatic_retry": false,
+      "captured_chunks": 146,
+      "returncode": -9,
+      "seconds": 600.2042828569993,
+      "timed_out": true,
+      "utc": "2026-11-11T12:00:53.853213+00:00"
+    },
+    "final_RESULT": "MISSING"
+  },
+  "unique_plan_coverage": {
+    "PASS": 135,
+    "REJECTED": 181,
+    "not_one_successful_campaign": true,
+    "rows": 316
+  }
+}
