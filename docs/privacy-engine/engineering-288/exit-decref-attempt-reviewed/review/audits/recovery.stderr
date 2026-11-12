@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/ace5c9b2f18b/exit-decref-review/recover_bytes.py", line 41, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/ace5c9b2f18b/exit-decref-review/recover_bytes.py", line 38, in main
+    assert (root/'reference/res-null/correspondence.py').read_bytes()==(parent/'code/correspondence.py').read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/ace5c9b2f18b/exit-decref-review/candidate/reference/res-null/correspondence.py'

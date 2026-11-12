@@ -1,0 +1,146 @@
+--- reviewed-res-null/correspondence.py
++++ exit-decref-attempt/correspondence.py
+@@ -1,15 +1,15 @@
+-"""Conditional res == NULL comparison after selected fast-branch completion. No application/protocol execution.
++"""Conditional selected Py_DECREF(exit) attempt after completed true comparison. No application/protocol execution.
+ 
+-The full public path retains the unchanged enter-decref authentication and byte comparison.
++The full public path retains the unchanged res-null authentication and byte comparison.
+ It requires separate execution authorization; saved receipts are not live bases.
+ """
+ import copy,hashlib,json,os,stat,types
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parents[1]
+ CONTEXTS=('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO')
+-RELATION='res_null_test_correspondence'
+-PARENT_MANIFEST={'bytes':2160284,'sha256':'d8448dba5b98fa05fbc65644c33c5949fb322240003f12dea8efabd386d4bc8d'}
+-PARENT_RECEIPT={'bytes':18704175,'sha256':'a583e239a2f6b9a2b1658f0d8d9718f3e5528ecffef95b735ca3ccc479f1b6ae'}
++RELATION='exit_decref_attempt_correspondence'
++PARENT_MANIFEST={'bytes':2260614,'sha256':'96942689c3066bda9a80629672dc877850598658d44964dfa6119f824c37060d'}
++PARENT_RECEIPT={'bytes':19046155,'sha256':'1fbbea61a963361dd0369aefa97f6b2954bc9a5099dd891fbc02e9f239620e6e'}
+ def identity(b):return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+ def enc(v):return (json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+ def require(ok,code):
+@@ -31,25 +31,25 @@
+  walk(v)
+ def same(a,b,code):exact(a,code);exact(b,code);require(enc(a)==enc(b),code)
+ def parent_root(root):
+- root=Path(root);base=root/'retained/fast'
+- for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'RES-NULL-ROOT-TYPE')
+- raw=(root/'reference/fast/ASSEMBLED-ROOT-MANIFEST.json').read_bytes();require(identity(raw)==PARENT_MANIFEST,'RES-NULL-PARENT-MANIFEST')
++ root=Path(root);base=root/'retained/res-null'
++ for p in (root,root/'retained',base):require(stat.S_ISDIR(p.lstat().st_mode),'EXIT-DECREF-ROOT-TYPE')
++ raw=(root/'reference/res-null/ASSEMBLED-ROOT-MANIFEST.json').read_bytes();require(identity(raw)==PARENT_MANIFEST,'EXIT-DECREF-PARENT-MANIFEST')
+  manifest=json.loads(raw);expected=set(manifest);dirs={p.as_posix() for n in expected for p in Path(n).parents if p.as_posix()!='.'};found=set();seen=set()
+  def walk(path):
+   for e in os.scandir(path):
+    p=Path(e.path);n=p.relative_to(base).as_posix();mode=e.stat(follow_symlinks=False).st_mode
+-   if stat.S_ISDIR(mode):require(n in dirs,'RES-NULL-UNDECLARED-DIR');seen.add(n);walk(p)
+-   else:require(stat.S_ISREG(mode) and n in expected,'RES-NULL-UNDECLARED-ENTRY');found.add(n)
+- walk(base);require(found==expected and seen==dirs,'RES-NULL-EXACT-MEMBERSHIP')
+- for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'RES-NULL-PARENT-BYTES:'+n)
++   if stat.S_ISDIR(mode):require(n in dirs,'EXIT-DECREF-UNDECLARED-DIR');seen.add(n);walk(p)
++   else:require(stat.S_ISREG(mode) and n in expected,'EXIT-DECREF-UNDECLARED-ENTRY');found.add(n)
++ walk(base);require(found==expected and seen==dirs,'EXIT-DECREF-EXACT-MEMBERSHIP')
++ for n,pin in manifest.items():require(identity((base/n).read_bytes())==pin,'EXIT-DECREF-PARENT-BYTES:'+n)
+  return base
+ def inputs(root=ROOT):
+  root=Path(root);base=parent_root(root);pins=json.loads((root/'provenance/component-pins.json').read_bytes())
+  for n,pin in pins.items():
+-  p=root/n;require(stat.S_ISREG(p.lstat().st_mode) and identity(p.read_bytes())==pin,'RES-NULL-COMPONENT-PIN:'+n)
+- saved=(root/'reference/fast/actual-receipt.json').read_bytes();require(identity(saved)==PARENT_RECEIPT,'RES-NULL-PARENT-RECEIPT')
+- p=module(base/'code/correspondence.py','_res_null_reviewed_fast');pd=p.inputs(base)
+- return {'root':root,'parent_root':base,'parent_module':p,'parent_data':pd,'saved':saved,'coverage':module(root/'code/managed_coverage.py','_res_null_producer')}
++  p=root/n;require(stat.S_ISREG(p.lstat().st_mode) and identity(p.read_bytes())==pin,'EXIT-DECREF-COMPONENT-PIN:'+n)
++ saved=(root/'reference/res-null/actual-receipt.json').read_bytes();require(identity(saved)==PARENT_RECEIPT,'EXIT-DECREF-PARENT-RECEIPT')
++ p=module(base/'code/correspondence.py','_exit_decref_reviewed_res_null');pd=p.inputs(base)
++ return {'root':root,'parent_root':base,'parent_module':p,'parent_data':pd,'saved':saved,'coverage':module(root/'code/managed_coverage.py','_exit_decref_producer')}
+ def source_files(root):
+  root=Path(root);names=json.loads((root/'reference/resolution/source-index.json').read_bytes())
+  return {n:(root/'reference/resolution/source'/n).read_bytes() for n in names}
+@@ -58,61 +58,61 @@
+  # Actual unchanged predecessor authentication, returned basis and receipt comparison.
+  # No saved receipt or constructed dictionary substitutes for this path.
+  p._receipt_shape(fresh['saved']);pb=p._basis(pd)
+- require(fresh['saved']==p.enc(p._assemble(pb)),'RES-NULL-PREDECESSOR-STALE-OR-ALTERED-RECEIPT')
++ require(fresh['saved']==p.enc(p._assemble(pb)),'EXIT-DECREF-PREDECESSOR-STALE-OR-ALTERED-RECEIPT')
+  public={'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(fresh['saved']),'actual_admission':False}
+  r=fresh['root'];c=fresh['coverage'];ss=source_files(r)
+- decref=pb['parent_basis'];returned=decref['parent_basis'];enter=returned['parent_basis'];lookup=enter['parent_basis'];r1=lookup['parent_basis']
+- cat=c.compile_res_null((r/'source-evidence/lab_bootstrap.py').read_bytes(),(r/'reference/cpython-3.12.14/bytecodes.c').read_bytes(),(r/'reference/cpython-3.12.14/typeobject.c').read_bytes(),r1['catalogue'],lookup['catalogue'],enter['catalogue'],returned['catalogue'],decref['catalogue'],pb['catalogue'],ss)
++ fast=pb['parent_basis'];decref=fast['parent_basis'];returned=decref['parent_basis'];enter=returned['parent_basis'];lookup=enter['parent_basis'];r1=lookup['parent_basis']
++ cat=c.compile_exit_decref((r/'source-evidence/lab_bootstrap.py').read_bytes(),(r/'reference/cpython-3.12.14/bytecodes.c').read_bytes(),(r/'reference/cpython-3.12.14/typeobject.c').read_bytes(),r1['catalogue'],lookup['catalogue'],enter['catalogue'],returned['catalogue'],decref['catalogue'],fast['catalogue'],pb['catalogue'],ss)
+  return {'fresh':fresh,'parent_module':p,'parent_basis':pb,'parent_public':public,'prior':json.loads(fresh['saved']),'catalogue':cat,'source_files':ss}
+ 
+ def declaration_rows(prior,cat,parent_validation):
+  # Pure row construction; execution of this helper is not authentication.
+- for x in (prior,cat,parent_validation):exact(x,'RES-NULL-ROW-TYPE')
+- require(tuple(x['context'] for x in prior['contexts'])==CONTEXTS,'RES-NULL-CONTEXTS');rows=[]
++ for x in (prior,cat,parent_validation):exact(x,'EXIT-DECREF-ROW-TYPE')
++ require(tuple(x['context'] for x in prior['contexts'])==CONTEXTS,'EXIT-DECREF-CONTEXTS');rows=[]
+  for ctx in prior['contexts']:
+-  parent=ctx['decref_fast_completion_correspondence']
++  parent=ctx['res_null_test_correspondence']
+   rows.append({'context':ctx['context'],'declaration':copy.deepcopy(cat),'instance_anchor':copy.deepcopy(parent['instance_anchor']),'scope':copy.deepcopy(parent['scope']),'reference_basis':copy.deepcopy(parent['reference_basis']),'session_binding':copy.deepcopy(parent['session_binding']),
+    'predecessor_receipt':copy.deepcopy(PARENT_RECEIPT),'predecessor_validation':copy.deepcopy(parent_validation),
+    'conditional_links':[{'declaration':s['id'],'source':copy.deepcopy(s['source']),'invocation':None,'frame':None,'observed_value':None} for s in cat['declarations']],
+    'classification':'UNKNOWN','multiplicity':None,'ordinal':None,'actual_invocation_count':None,'runtime_chain':None,'observer_join':None,'separate_observer':copy.deepcopy(parent['separate_observer']),
+-   'stop':cat['stop'],'test_outcome':None,'branch_body_entered':False,'runtime_arrival':None,'qualified_binary_correspondence':False,'actual_admission':False})
++   'stop':cat['stop'],'comparison_outcome':None,'exit_decref_attempt':None,'decrement_completion':False,'runtime_arrival':None,'qualified_binary_correspondence':False,'actual_admission':False})
+  return rows
+ 
+ def validate_declaration_rows(prior,cat,parent_validation,submitted):
+- exact(submitted,'RES-NULL-ROW-OUTPUT-TYPE')
+- same(submitted,declaration_rows(prior,cat,parent_validation),'RES-NULL-MANDATORY-ROW-COMPARISON');return True
++ exact(submitted,'EXIT-DECREF-ROW-OUTPUT-TYPE')
++ same(submitted,declaration_rows(prior,cat,parent_validation),'EXIT-DECREF-MANDATORY-ROW-COMPARISON');return True
+ 
+ def _rows(basis):return declaration_rows(basis['prior'],basis['catalogue'],basis['parent_public'])
+ 
+ def _construct_checked(basis,case):
+- exact(case,'RES-NULL-CONSTRUCTED-TYPE');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-RES-NULL-TEST','RES-NULL-CONSTRUCTED-SHAPE')
+- require(case['context'] in CONTEXTS,'RES-NULL-CONTEXT');row=next(r for r in basis['prior']['contexts'] if r['context']==case['context']);anchor=row['decref_fast_completion_correspondence']['instance_anchor'];same(case['anchor'],anchor,'RES-NULL-CONSTRUCTED-ANCHOR')
+- same({k:case['parent_case'].get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'RES-NULL-PARENT-INVOCATION')
+- parent=basis['parent_module']._construct_checked(basis['parent_basis'],case['parent_case'])['projection'];same(case['parent_output'],parent,'RES-NULL-VALIDATED-PARENT')
++ exact(case,'EXIT-DECREF-CONSTRUCTED-TYPE');require(type(case) is dict and set(case)=={'kind','context','anchor','invocation','parent_case','parent_output','binding','outcomes','projection','output'} and case['kind']=='CONSTRUCTED-EXIT-DECREF-ATTEMPT','EXIT-DECREF-CONSTRUCTED-SHAPE')
++ require(case['context'] in CONTEXTS,'EXIT-DECREF-CONTEXT');row=next(r for r in basis['prior']['contexts'] if r['context']==case['context']);anchor=row['res_null_test_correspondence']['instance_anchor'];same(case['anchor'],anchor,'EXIT-DECREF-CONSTRUCTED-ANCHOR')
++ same({k:case['parent_case'].get(k) for k in ('context','anchor','invocation')},{k:case[k] for k in ('context','anchor','invocation')},'EXIT-DECREF-PARENT-INVOCATION')
++ parent=basis['parent_module']._construct_checked(basis['parent_basis'],case['parent_case'])['projection'];same(case['parent_output'],parent,'EXIT-DECREF-VALIDATED-PARENT')
+  c=basis['fresh']['coverage'];cat=basis['catalogue'];ss=basis['source_files'];b=case['binding']
+- binding=c.res_null_binding(cat,parent,anchor,b['continuation'],b['res_storage_continuity'],ss);same(b,binding,'RES-NULL-BINDING')
++ binding=c.exit_decref_binding(cat,parent,anchor,b['continuation'],b['exit_role_continuity'],ss);same(b,binding,'EXIT-DECREF-BINDING')
+  v={'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(anchor),'parent_result':parent,'binding':binding,'outcomes':copy.deepcopy(case['outcomes'])}
+- c.validate_res_null_projection(cat,case['projection'],v,case['output'],ss)
+- return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'projection':c.res_null_projection(cat,case['projection'],v,ss),'runtime_observation':False}
++ c.validate_exit_decref_projection(cat,case['projection'],v,case['output'],ss)
++ return {'kind':case['kind'],'context':case['context'],'anchor':copy.deepcopy(anchor),'projection':c.exit_decref_projection(cat,case['projection'],v,ss),'runtime_observation':False}
+ 
+ def constructed_projection(data,case):return _construct_checked(_basis(data),case)
+ 
+ def _assemble(basis):
+- out=copy.deepcopy(basis['prior']);out['format']='I164-RES-NULL-TEST-1';out['prior_decref_fast_components']=out.pop('extension_components');out['prior_decref_fast_receipt']=copy.deepcopy(PARENT_RECEIPT)
++ out=copy.deepcopy(basis['prior']);out['format']='I164-EXIT-DECREF-ATTEMPT-1';out['prior_res_null_components']=out.pop('extension_components');out['prior_res_null_receipt']=copy.deepcopy(PARENT_RECEIPT)
+  out['extension_components']={n:identity((basis['fresh']['root']/'code'/n).read_bytes()) for n in ('managed_coverage.py','correspondence.py')}
+  for ctx,row in zip(out['contexts'],_rows(basis)):ctx[RELATION]=copy.deepcopy(row)
+- out['new_res_null_test_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','stop':basis['catalogue']['stop'],
+-  'C_NULL_is_Python_None':False,'runtime_arrival':'UNAVAILABLE','actual_comparison_established':False,'physical_effects_established':False,'zero_count_destructor_completion':'UNRESOLVED','qualified_binary_correspondence':False,'deeper_helper_error_indicator':'UNKNOWN',
+-  'branch_body_entered':False,'exit_decref_attempt_established':False,'stack_operations_established':False,'dispatch_established':False,'context_manager_entry_established':False,'f_binding_established':False,'complete_repetition_coverage':False,
++ out['new_exit_decref_attempt_limits']={'static_conditional_slice':True,'runtime_chain':'UNAVAILABLE','stop':basis['catalogue']['stop'],
++  'C_NULL_is_Python_None':False,'runtime_arrival':'UNAVAILABLE','actual_exit_decref_attempt_established':False,'physical_effects_established':False,'zero_count_destructor_completion':'UNRESOLVED','qualified_binary_correspondence':False,'deeper_helper_error_indicator':'UNKNOWN',
++  'decrement_completion_established':False,'exit_refcount_effects_established':False,'exit_destructor_invocation_established':False,'error_routing_established':False,'stack_operations_established':False,'dispatch_established':False,'context_manager_entry_established':False,'f_binding_established':False,'complete_repetition_coverage':False,
+   'all_eleven_obligations_preserved':True,'inventory_unknown_totals':4,'lifetime_unknown_totals':14,'Decision_B':'UNCHANGED','retention':'UNCHANGED','allowances':'UNCHANGED','SOURCE_ONLY':'UNCHANGED','cumulative_envelope':'UNADOPTED','backup':'KERNEL-ONLY','streams':'UNCOMPUTED','readiness':'BLOCKED','final_binding':'BLOCKED','actual_admission':False}
+  return out
+ 
+ def derive(root=ROOT):return _assemble(_basis(inputs(root)))
+ 
+ def _receipt_shape(saved):
+- require(type(saved) is bytes,'RES-NULL-RECEIPT-BYTES');r=json.loads(saved)
+- require(type(r) is dict and r.get('format')=='I164-RES-NULL-TEST-1' and type(r.get('contexts')) is list and len(r['contexts'])==2,'RES-NULL-RECEIPT-SHAPE')
+- require([x.get('context') for x in r['contexts']]==list(CONTEXTS) and all(RELATION in x and 'decref_fast_completion_correspondence' in x for x in r['contexts']),'RES-NULL-MANDATORY-RELATIONS');return r
++ require(type(saved) is bytes,'EXIT-DECREF-RECEIPT-BYTES');r=json.loads(saved)
++ require(type(r) is dict and r.get('format')=='I164-EXIT-DECREF-ATTEMPT-1' and type(r.get('contexts')) is list and len(r['contexts'])==2,'EXIT-DECREF-RECEIPT-SHAPE')
++ require([x.get('context') for x in r['contexts']]==list(CONTEXTS) and all(RELATION in x and 'res_null_test_correspondence' in x for x in r['contexts']),'EXIT-DECREF-MANDATORY-RELATIONS');return r
+ 
+ def validate(root,saved):
+- _receipt_shape(saved);result=derive(root);require(saved==enc(result),'RES-NULL-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'actual_admission':False}
++ _receipt_shape(saved);result=derive(root);require(saved==enc(result),'EXIT-DECREF-STALE-OR-ALTERED-RECEIPT');return {'result':'PASS','contexts':list(CONTEXTS),'receipt':identity(saved),'actual_admission':False}

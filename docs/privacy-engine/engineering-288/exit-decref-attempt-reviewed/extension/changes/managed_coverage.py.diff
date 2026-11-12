@@ -1,0 +1,128 @@
+--- reviewed-res-null/managed_coverage.py
++++ exit-decref-attempt/managed_coverage.py
+@@ -4169,3 +4169,125 @@
+ def validate_res_null_projection(cat,case,validated,submitted,files):
+  status_exact_tree(submitted,'RES-NULL-OUTPUT-TYPE')
+  status_typed_same(submitted,res_null_projection(cat,case,validated,files),'RES-NULL-OUTPUT-CORRESPONDENCE');return True
++
++# I164-EXIT-DECREF-ATTEMPT-1. Complete 519785-byte predecessor prefix retained.
++def exit_decref_sources(files):
++ s=res_null_sources(files);sites={}
++ specs=[('Python/bytecodes.c',2502,'exit = _PyObject_LookupSpecial(mgr, &_Py_ID(__exit__));'),('Python/bytecodes.c',2503,'if (exit == NULL) {'),('Python/bytecodes.c',2517,'if (res == NULL) {'),('Python/bytecodes.c',2518,'Py_DECREF(exit);'),('Python/bytecodes.c',2519,'ERROR_IF(true, error);'),('Python/generated_cases.c.h',3498,'PyObject *exit;'),('Python/generated_cases.c.h',3531,'if (res == NULL) {'),('Python/generated_cases.c.h',3532,'Py_DECREF(exit);'),('Python/generated_cases.c.h',3533,'if (true) goto pop_1_error;')]
++ for name,line,text in specs:
++  need(files[name].decode().splitlines()[line-1].strip()==text,'EXIT-DECREF-DEFINING-SOURCE:'+name+':'+str(line))
++  sites[(name,line)]={'file':name,'line':line,'expression':text,'identity':copy.deepcopy(s['definition_identities'][name]),'revision':s['revision']}
++ return {'revision':s['revision'],'definition_identities':copy.deepcopy(s['definition_identities']),
++  'guard':sites[('Python/bytecodes.c',2517)],'generated_guard':sites[('Python/generated_cases.c.h',3531)],
++  'operation':sites[('Python/bytecodes.c',2518)],'generated_operation':sites[('Python/generated_cases.c.h',3532)],
++  'exit_lookup':sites[('Python/bytecodes.c',2502)],'exit_lookup_null_guard':sites[('Python/bytecodes.c',2503)],'exit_storage_declaration':sites[('Python/generated_cases.c.h',3498)],
++  'excluded_error_routing':sites[('Python/bytecodes.c',2519)],'generated_excluded_error_routing':sites[('Python/generated_cases.c.h',3533)],
++  'operand':'exit: exact selected successful __exit__ lookup-result role; not enter or res',
++  'C_semantics':s['C_semantics'],'definition_context':'Inherited conditional local ceval override; attempt only, no macro expansion or completed effect',
++  'stop':'selected Py_DECREF(exit) source-operation attempt or first nonnormal frontier; before decrement completion/effects, error routing and false-branch operations'}
++
++def exit_decref_catalogue(parent,files):
++ status_exact_tree(parent,'EXIT-DECREF-PARENT-CATALOGUE-TYPE')
++ need(type(parent) is dict and parent.get('format')=='I164-RES-NULL-TEST-STATIC-1','EXIT-DECREF-PARENT-CATALOGUE')
++ status_typed_same(parent,res_null_catalogue(parent['fast_catalogue'],files),'EXIT-DECREF-PARENT-INDEPENDENT-SOURCE');s=exit_decref_sources(files)
++ steps=[{'id':'exit-decref:continuation','source':copy.deepcopy(s['operation']),'normal':'normal','allowed':['normal','raise','catchable-interruption','process-termination','unobserved']},
++        {'id':'exit-decref:attempt','source':copy.deepcopy(s['operation']),'normal':'attempted','allowed':['attempted','interruption','process-termination','unobserved']}]
++ return {'format':'I164-EXIT-DECREF-ATTEMPT-STATIC-1','source':s,'res_null_catalogue':copy.deepcopy(parent),'parent_catalogue_sha256':digest(enc(parent)),
++  'steps':steps,'order':[x['id'] for x in steps],
++  'guard_branches':{'contexts':copy.deepcopy(parent['guard_branches']['contexts']),'prefixes':copy.deepcopy(parent['guard_branches']['prefixes']),'origins':copy.deepcopy(parent['guard_branches']['origins']),'fast_branches':copy.deepcopy(parent['guard_branches']['fast_branches']),
++   'comparison_required':True,'continuation':['explicit conditional premise','UNESTABLISHED'],'exit_role_continuity':['explicit conditional premise','UNESTABLISHED']},
++  'required_predecessor_facts':['res_null_test_completed_in_model','res_null_test_outcome','conditional_fast_completion_in_model','helper_c_return_completed_in_model','res_assignment_established'],
++  'no_false_branch':'Completed false comparison, including non-NULL Python None, cannot supply this relation.',
++  'declarations':[{'id':x['id'],'source':copy.deepcopy(x['source']),'classification':'UNKNOWN','multiplicity':None,'ordinal':None} for x in steps],
++  'preserved_relations':['res_null_test_correspondence',*parent['preserved_relations']],
++  'stop':s['stop'],'runtime_chain':None,'actual_admission':False}
++
++def compile_exit_decref(launcher,bytecodes,typeobject,r1,lookup,enter,returned,decref,fast,res_null,files):
++ validate_res_null(launcher,bytecodes,typeobject,r1,lookup,enter,returned,decref,fast,files,res_null)
++ return exit_decref_catalogue(res_null,files)
++
++def validate_exit_decref(launcher,bytecodes,typeobject,r1,lookup,enter,returned,decref,fast,res_null,files,submitted):
++ status_exact_tree(submitted,'EXIT-DECREF-CATALOGUE-TYPE')
++ status_typed_same(submitted,compile_exit_decref(launcher,bytecodes,typeobject,r1,lookup,enter,returned,decref,fast,res_null,files),'EXIT-DECREF-CATALOGUE-SOURCE');return True
++
++def exit_decref_binding(cat,parent,anchor,continuation,exit_continuity,files):
++ for v in (cat,parent,anchor,continuation,exit_continuity):status_exact_tree(v,'EXIT-DECREF-BINDING-TYPE')
++ status_typed_same(cat,exit_decref_catalogue(cat['res_null_catalogue'],files),'EXIT-DECREF-INDEPENDENT-CATALOGUE')
++ need(type(parent) is dict and parent.get('kind')=='CONSTRUCTED-RES-NULL-TEST','EXIT-DECREF-PARENT-KIND')
++ for k in cat['required_predecessor_facts']:need(parent.get(k) is True,'EXIT-DECREF-MISSING-TRUE-PREDECESSOR:'+k)
++ for value,label in [(continuation,'CONTINUATION'),(exit_continuity,'EXIT-CONTINUITY')]:need(type(value) is str and value in ('explicit conditional premise','UNESTABLISHED'),'EXIT-DECREF-'+label)
++ p=parent['predecessor_projection'];pc={'scope':copy.deepcopy(parent['scope']),'anchor':copy.deepcopy(parent['instance_anchor']),'parent_result':copy.deepcopy(p),'binding':copy.deepcopy(parent['binding']),'outcomes':[{'stage':e['stage'],'outcome':e['outcome']} for e in parent['events']]}
++ validate_res_null_projection(cat['res_null_catalogue'],pc,pc,parent,files)
++ need(parent['completion']=='res-null-true' and parent['events'][-1]['stage']=='res-null:comparison' and parent['events'][-1]['outcome']=='true','EXIT-DECREF-TRUE-COMPARISON')
++ need(parent['exit_decref_attempt_established'] is False and parent['result_error_routing_established'] is False,'EXIT-DECREF-PARENT-FRONTIER')
++ scope=parent['scope'];status_typed_same(parent['instance_anchor'],anchor,'EXIT-DECREF-ANCHOR');status_typed_same(scope['instance'],anchor['instance'],'EXIT-DECREF-INSTANCE')
++ need(scope['context']==anchor['context'] and scope['context'] in ('SYMBOLIC-U-ONE','SYMBOLIC-U-TWO') and scope['acquisition']==anchor['record']['acquisition'],'EXIT-DECREF-CONTEXT-ACQUISITION')
++ b=parent['binding'];value=b['res_value_role'];need(value['C_NULL'] is True and value['kind']=='C-NULL' and value['python_value_class'] is None and value['python_object_role'] is None,'EXIT-DECREF-C-NULL-NOT-PYTHON-NONE')
++ # Follow the retained embedding to the selected successful lookup; do not infer object identity.
++ lookup=parent
++ for kind in ('CONSTRUCTED-RES-NULL-TEST','CONSTRUCTED-DECREF-FAST-COMPLETION','CONSTRUCTED-ENTER-DECREF-ATTEMPT','CONSTRUCTED-ENTER-RETURN-RES','CONSTRUCTED-ENTER-CALL-ATTEMPT'):
++  need(lookup['kind']==kind,'EXIT-DECREF-LOOKUP-EMBEDDING');status_typed_same(lookup['scope'],scope,'EXIT-DECREF-LOOKUP-SCOPE');lookup=lookup['predecessor_projection']
++ need(lookup['kind']=='CONSTRUCTED-CONTEXT-SPECIAL-LOOKUP' and lookup['lookup_completed_in_model']['__exit__'] is True,'EXIT-DECREF-SUCCESSFUL-EXIT-LOOKUP')
++ status_typed_same(lookup['scope'],scope,'EXIT-DECREF-LOOKUP-SCOPE')
++ role=b['exit_role'];status_typed_same(role,lookup['method_roles']['__exit__'],'EXIT-DECREF-EXACT-LOOKUP-ROLE')
++ e=lookup['events'][-1];need(e['stage']=='lookup:__exit__' and e['outcome']=='found' and role['method']=='__exit__' and role['lookup_occurrence']==e['id'],'EXIT-DECREF-LOOKUP-OCCURRENCE')
++ need(role['source']['line']==2502 and role['source']['file']=='Python/bytecodes.c' and role['source']['source']==cat['source']['exit_lookup']['identity'],'EXIT-DECREF-LOOKUP-ORIGIN')
++ status_typed_same(role['scope'],scope,'EXIT-DECREF-ROLE-SCOPE');status_typed_same(parent['events'][-1]['exit_role'],role,'EXIT-DECREF-COMPARISON-EXIT-ROLE')
++ for k in ('owner','token'):
++  status_typed_same(e[k],b['references'][k],'EXIT-DECREF-LOOKUP-'+k);status_typed_same(e[k]['scope'],scope,'EXIT-DECREF-REFERENCE-SCOPE')
++ return {'scope':copy.deepcopy(scope),'anchor':copy.deepcopy(anchor),'comparison':copy.deepcopy(parent['events'][-1]),'comparison_result':True,
++  'operand_role':copy.deepcopy(role),'selected_lookup':copy.deepcopy(e),'enter_role':copy.deepcopy(b['enter_role']),'res_value_role':copy.deepcopy(value),'res_storage_role':copy.deepcopy(b['res_storage_role']),
++  'exit_storage_role':{'role':'C local exit storage','symbol':scope['invocation']+'/BEFORE_WITH/exit-storage','scope':copy.deepcopy(scope),'declaration':copy.deepcopy(cat['source']['exit_storage_declaration']),'lookup_occurrence':role['lookup_occurrence'],'runtime_address':None},
++  'references':copy.deepcopy(b['references']),'helper_invocation':copy.deepcopy(b['helper_invocation']),'fast_branch':b['fast_branch'],
++  'original_constructor_error':copy.deepcopy(parent['original_error_pending_in_outer_handler']),'pending_error_before_attempt':copy.deepcopy(parent['last_pending_error_in_model']),
++  'details_role':copy.deepcopy(b['details_role']),'cleanup_list':copy.deepcopy(b['cleanup_list']),
++  'continuation':continuation,'exit_role_continuity':exit_continuity,'C_semantics':cat['source']['C_semantics'],'runtime_observation':False,'physical_identity':None}
++
++def exit_decref_projection(cat,case,validated,files):
++ for v in (cat,case,validated):status_exact_tree(v,'EXIT-DECREF-EXACT-TYPE')
++ keys={'scope','anchor','parent_result','binding','outcomes'}
++ need(type(case) is dict and type(validated) is dict and set(case)==set(validated)==keys,'EXIT-DECREF-CASE-FIELDS')
++ for k in keys:status_typed_same(case[k],validated[k],'EXIT-DECREF-VALIDATED:'+k)
++ p=case['parent_result'];b=case['binding'];scope=case['scope'];oo=case['outcomes']
++ need(type(b) is dict and {'continuation','exit_role_continuity'}<=set(b),'EXIT-DECREF-MISSING-PREMISE')
++ status_typed_same(scope,p['scope'],'EXIT-DECREF-SCOPE')
++ status_typed_same(b,exit_decref_binding(cat,p,case['anchor'],b['continuation'],b['exit_role_continuity'],files),'EXIT-DECREF-EXPECTED-BINDING')
++ need(type(oo) is list and bool(oo),'EXIT-DECREF-OUTCOMES')
++ unresolved=b['continuation']=='UNESTABLISHED' or b['exit_role_continuity']=='UNESTABLISHED'
++ if unresolved:status_typed_same(oo,[{'stage':'exit-decref:continuation','outcome':'unobserved'}],'EXIT-DECREF-UNESTABLISHED-PREMISE')
++ steps=cat['steps'][:1] if unresolved else cat['steps'];events=[];replacement=None;attempt=None;last=None
++ for i,step in enumerate(steps):
++  need(i<len(oo),'EXIT-DECREF-MISSING-STEP');row=oo[i]
++  need(type(row) is dict and set(row)=={'stage','outcome'} and type(row['stage']) is str and row['stage']==step['id'],'EXIT-DECREF-ORDER')
++  last=row['outcome'];need(type(last) is str and last in step['allowed'],'EXIT-DECREF-OUTCOME')
++  event={'id':b['comparison']['id']+'/'+step['id'],'stage':step['id'],'source':copy.deepcopy(step['source']),'generated_source':copy.deepcopy(cat['source']['generated_operation']),
++   'scope':copy.deepcopy(scope),'owner':copy.deepcopy(b['references']['owner']),'token':copy.deepcopy(b['references']['token']),'comparison_occurrence':b['comparison']['id'],
++   'operand_role':copy.deepcopy(b['operand_role']),'exit_storage_role':copy.deepcopy(b['exit_storage_role']),'res_value_role':copy.deepcopy(b['res_value_role']),'outcome':last,'runtime_observation':False}
++  events.append(event)
++  if last!=step['normal']:
++   if last in ('raise','catchable-interruption'):
++    need(i==0,'EXIT-DECREF-NO-INVENTED-C-EXCEPTION')
++    replacement={'role':'conditional-post-comparison-continuation-error','reference':event['id']+'/error','scope':copy.deepcopy(scope),'kind':last,
++     'origin':'explicit interval frontier before selected source-operation attempt, not an exception inside Py_DECREF','exact_type':None,'exact_value':None,'existing_cause':'UNKNOWN','existing_context':'UNKNOWN','existing_suppression':'UNKNOWN','runtime_observation':False}
++   break
++  if i==1:attempt=copy.deepcopy(event)
++ need(len(oo)==len(events),'EXIT-DECREF-UNREACHED-STEPS')
++ uncertain=last in ('interruption','process-termination','unobserved');out=copy.deepcopy(p)
++ out.update({'kind':'CONSTRUCTED-EXIT-DECREF-ATTEMPT','binding':copy.deepcopy(b),'predecessor_projection':copy.deepcopy(p),'events':events,
++  'completion':'exit-decref-attempt' if attempt is not None else last+'-frontier','exit_decref_attempt':attempt,'exit_decref_attempt_in_model':attempt is not None,
++  'new_model_claims':{'selected_exit_decref_attempt':attempt is not None,'decrement_completion':False,'physical_effects':False},
++  'legacy_flags_scope':'Inherited exit_decref_attempt_established remains False; new conditional fact is exit_decref_attempt_in_model only.',
++  'exit_decref_attempt_established':False,'exit_decref_completion_established':False,'exit_refcount_effects_established':False,'exit_destructor_invocation_established':False,'exit_macro_expansion_established':False,
++  'result_error_routing_established':False,'stack_operations_established':False,'dispatch_established':False,'context_manager_entry_established':False,'f_binding_established':False,'runtime_exit_decref_arrival':None,
++  'replacement_error_in_model':copy.deepcopy(replacement if replacement is not None else p['replacement_error_in_model']),
++  'last_pending_error_in_model':copy.deepcopy(replacement if replacement is not None else p['last_pending_error_in_model']),
++  'last_acknowledged_pending_error_before_attempt':copy.deepcopy(p['last_pending_error_in_model']),
++  'pending_error_at_frontier':'UNESTABLISHED' if uncertain else 'conditional retained lineage; helper error indicator remains UNKNOWN',
++  'terminal_python_exception_in_model':None if uncertain else True,'C_primitive_python_exception_established':False,'Python_unwind_established':False,
++  'current_partial_effects':'UNKNOWN; acknowledged earlier effects persist; an attempted source operation establishes no physical effects or their absence',
++  'prior_acknowledged_partial_effects':copy.deepcopy(p['current_partial_effects']),'stop':cat['stop']})
++ return out
++
++def validate_exit_decref_projection(cat,case,validated,submitted,files):
++ status_exact_tree(submitted,'EXIT-DECREF-OUTPUT-TYPE')
++ status_typed_same(submitted,exit_decref_projection(cat,case,validated,files),'EXIT-DECREF-OUTPUT-CORRESPONDENCE');return True

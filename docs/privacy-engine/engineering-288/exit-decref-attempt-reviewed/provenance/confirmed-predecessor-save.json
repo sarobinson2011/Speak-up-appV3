@@ -1,0 +1,403 @@
+{
+  "SOURCE_ONLY": "UNCHANGED",
+  "accounting": {
+    "Engineering_continuation": {
+      "PASS": 54,
+      "REJECTED": 117,
+      "all_exits": 0,
+      "batches": 5,
+      "rows": 171
+    },
+    "Engineering_plan_coverage": {
+      "PASS": 135,
+      "REJECTED": 181,
+      "meaning": "316 unique planned IDs across two separate attempts; not a single successful campaign",
+      "not_one_successful_campaign": true,
+      "rows": 316
+    },
+    "Engineering_timeout": {
+      "campaign_status": "TIMED_OUT_INCOMPLETE",
+      "child_FAILURE": "MISSING",
+      "chunks": 146,
+      "corroborated_rows": 145,
+      "counts": {
+        "PASS": 81,
+        "REJECTED": 64
+      },
+      "exit": {
+        "automatic_retry": false,
+        "captured_chunks": 146,
+        "returncode": -9,
+        "seconds": 600.2042828569993,
+        "timed_out": true,
+        "utc": "2026-11-11T12:00:53.853213+00:00"
+      },
+      "final_RESULT": "MISSING"
+    },
+    "Ubuntu_public_positive": {
+      "EVENT_rows": 286,
+      "actual_basis_captures": 1,
+      "child_exit": 0,
+      "child_finished_utc": "2026-11-11T15:28:12.866215+00:00",
+      "child_seconds": 3564.5549862799817,
+      "computation_events_add_controls": false,
+      "exact_receipt_bytes_both_contexts": true,
+      "manager": "success/exited/0",
+      "positives": 1,
+      "progress_snapshots": 230,
+      "receipt": {
+        "bytes": 19046155,
+        "sha256": "1fbbea61a963361dd0369aefa97f6b2954bc9a5099dd891fbc02e9f239620e6e"
+      },
+      "selected_computation_entries_returns": 17846,
+      "stdout_chunks": 285,
+      "wrapper_exit": 0
+    },
+    "historical_groups": "Prior151/399/one-positive; older184/eight/750/one-positive; all earlier groups, failed and UNKNOWN attempts remain separate.",
+    "independent": {
+      "PASS": 79,
+      "REJECTED": 80,
+      "exit": 0,
+      "layers": "Exact independent rows retain their actual pure-model/source/type/row/output-comparison layers; no authenticated constructed calls.",
+      "record": "review/audits/independent-reconciliation.json",
+      "rows": 159
+    },
+    "new_candidate_controls": 0,
+    "new_independent_reviews": 0,
+    "new_public_runs": 0,
+    "reviewer_read_only_reconciliation": {
+      "campaign_replay": 0,
+      "candidate_controls": 0,
+      "corrected_exit": 0,
+      "first_exit": 1,
+      "missing_raw_stream": "not reconstructed",
+      "record": "review/FAILURES.json"
+    }
+  },
+  "acquisitions": 0,
+  "actual_admission": false,
+  "backup": "KERNEL-ONLY",
+  "before_commit": "18f94ee24bf148c0570df7db650f310defbb056e",
+  "command_file": {
+    "bytes": 1559948,
+    "sha256": "3c0b6ab00087473bfafaf83d1e3a7a50b8b1edbb92e6ee63c30fc165ba350b9b"
+  },
+  "commit": "dc0851dae241ffaaf7ed84e75830f672981c020e",
+  "confirmed_predecessor": "18f94ee24bf148c0570df7db650f310defbb056e",
+  "cumulative_envelope": "UNADOPTED",
+  "database_connections": 0,
+  "evidence_directory": "/home/steve/dev/Engineering-288-execution/I164-reviewed-res-null-test-git-20261112T083937Z-7ddabedb",
+  "external_evidence": {
+    "focused_results": {
+      "filename": "I164-res-null-test-1-continuation-results.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 1968442,
+        "sha256": "aa44b33e29783c6b48e684894d513a6f6a4d1f5b7bcd643d1367037b0631b17b"
+      },
+      "library_file_id": "libfile_fde3_f-9963b81b73948191992629c4c16a14dc_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-9963b81b73948191992629c4c16a14dc_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "independent_review": {
+      "filename": "I164-res-null-test-1-independent-review.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 7465629,
+        "sha256": "aec7858850cab8b679502de3eaf4a3c8fbd7d4a26648ee8bfb17e090a269563b"
+      },
+      "library_file_id": "libfile_fde3_f-8673c13dd47081918c44984e2e903c9d_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-8673c13dd47081918c44984e2e903c9d_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "large_recovery_dependency": {
+      "filename": "I164-helper-open-persistent-host-launcher-review-2.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 204417990,
+        "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+      },
+      "library_file_id": "libfile_fde3_f-f9fd72efc654819194987af266042001_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-f9fd72efc654819194987af266042001_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "primary_host": {
+      "filename": "I164-res-null-test-public-1-host-evidence.tar.gz",
+      "git_included": false,
+      "identity": {
+        "bytes": 23682326,
+        "sha256": "e20093f20368ff130a6c64d6a634fc993b43a05b1e65b01ec6a4e54a58902101"
+      },
+      "library_file_id": "libfile_fde3_f-9fd2f48060608191982d6a4292de1ad5_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-9fd2f48060608191982d6a4292de1ad5_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_byte_recovery": {
+      "filename": "I164-helper-open-persistent-host-launcher-review-2.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 204417990,
+        "sha256": "b0a8a98f2485699ae484432daa4afcf3c5c442bc45241338973a90499242c07c"
+      },
+      "library_file_id": "libfile_fde3_f-f9fd72efc654819194987af266042001_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-f9fd72efc654819194987af266042001_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_confirmed_save": {
+      "filename": "SEND-TO-ANCHOR-git-decref-fast-completion.json",
+      "git_included": false,
+      "identity": {
+        "bytes": 13854,
+        "sha256": "06b643f836730a76ce71fb3a8b589c5379f473f115bf9b5eeba9feb2ffc9d62c"
+      },
+      "library_file_id": "libfile_fde3_f-a0f7a047ceb48191a442ecc82e22ed72_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-a0f7a047ceb48191a442ecc82e22ed72_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_independent_review": {
+      "filename": "I164-decref-fast-completion-1-independent-review.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 6672179,
+        "sha256": "8005cfca697e699efec2629d930b3cf8be36ea508c3f06981b5c596a7860dc03"
+      },
+      "library_file_id": "libfile_fde3_f-b484b73ce35c8191bf107ff3c334dee8_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-b484b73ce35c8191bf107ff3c334dee8_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_primary_host": {
+      "filename": "I164-decref-fast-completion-public-1-host-evidence.tar.gz",
+      "git_included": false,
+      "identity": {
+        "bytes": 17223047,
+        "sha256": "0eba64a9a1b94b7d471c5cf42770f4df49a6f28b24e3cb1d305906549ef94a91"
+      },
+      "library_file_id": "libfile_fde3_f-9927c6e8a61881918d9f857dafeda2e6_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-9927c6e8a61881918d9f857dafeda2e6_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_prior_save_preparation": {
+      "filename": "I164-enter-decref-attempt-1-reviewed-git-preparation.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 1635566,
+        "sha256": "be565e59aa372385f9f8ca703fc168da6b3c72ecde976c223a037b8f7315b12a"
+      },
+      "library_file_id": "libfile_fde3_f-f643713c41ec819182207556fa01368c_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-f643713c41ec819182207556fa01368c_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_results": {
+      "filename": "I164-decref-fast-completion-1-results.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 500099,
+        "sha256": "055631d9a8371119b951b590fbeacef5844dbfa9b0193e555514c01e38e0786b"
+      },
+      "library_file_id": "libfile_fde3_f-90ea251b9aec819195539e2274ef6610_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-90ea251b9aec819195539e2274ef6610_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_reviewed_parent_dependency": {
+      "filename": "I164-enter-decref-attempt-1-independent-review.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 14770776,
+        "sha256": "64da0f90c126e0e696d20924e1337dc40b10cac17db1322a5b5841c71be435ed"
+      },
+      "library_file_id": "libfile_fde3_f-f2d99afb9d6081919c0ba602a5339a1b_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-f2d99afb9d6081919c0ba602a5339a1b_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_reviewed_preparation": {
+      "filename": "I164-decref-fast-completion-1-reviewed-git-preparation.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 2905321,
+        "sha256": "55c025faf1724be6979dc5276aa6ed1be0dd9d133efd60e8653d3a721bc2d6be"
+      },
+      "library_file_id": "libfile_fde3_f-e7b57e847c288191a9cb98d3b19e2483_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-e7b57e847c288191a9cb98d3b19e2483_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_source": {
+      "filename": "I164-decref-fast-completion-1-source.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 4657612,
+        "sha256": "e7f864a4296e4c7e3176acfd7b8dec609df95b3e6d2720793f43ab9bc9e25141"
+      },
+      "library_file_id": "libfile_fde3_f-f601e7a57b34819196fbd8ab461f68d3_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-f601e7a57b34819196fbd8ab461f68d3_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "prior_source_resolution": {
+      "filename": "I164-decref-public-source-resolution-1.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 855812,
+        "sha256": "7c923beaa6070ffd1dcdf12307026f99e5d52f7877142c51a358ae3da4f20616"
+      },
+      "library_file_id": "libfile_fde3_f-65247e0b80608191850960848173f849_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-65247e0b80608191850960848173f849_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "reviewed_parent_host": {
+      "filename": "I164-decref-fast-completion-public-1-host-evidence.tar.gz",
+      "git_included": false,
+      "identity": {
+        "bytes": 17223047,
+        "sha256": "0eba64a9a1b94b7d471c5cf42770f4df49a6f28b24e3cb1d305906549ef94a91"
+      },
+      "library_file_id": "libfile_fde3_f-9927c6e8a61881918d9f857dafeda2e6_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-9927c6e8a61881918d9f857dafeda2e6_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "source": {
+      "filename": "I164-res-null-test-1-source.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 3779700,
+        "sha256": "280bf68065066e3da79f86ef85d68ea7f03a98e93ec02b078077a63eb1507667"
+      },
+      "library_file_id": "libfile_fde3_f-4be7af487cac819189678acd4dc81981_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-4be7af487cac819189678acd4dc81981_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    },
+    "timeout_results": {
+      "filename": "I164-res-null-test-1-results.zip",
+      "git_included": false,
+      "identity": {
+        "bytes": 197874,
+        "sha256": "6e0f8fc9dafc4d638b419cda5e130f354cbbbba46d29ecd93dbf4c271d1a82ee"
+      },
+      "library_file_id": "libfile_fde3_f-82a7b2bafb60819196a41f0a33d9a633_39c64cf85e608191bb9545db7327fd84",
+      "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-82a7b2bafb60819196a41f0a33d9a633_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+      "verification_basis": "identity recorded in verified review and retained input provenance; direct byte verification scope is in preparation-byte-audit.json; host verifies compact payload only"
+    }
+  },
+  "final_binding": "BLOCKED",
+  "finished_utc": "2026-11-12T08:39:51.334780+00:00",
+  "host_history_verification": "PENDING host preflight: current main equals origin/main and confirmed predecessor is an ancestor; preserve later commits.",
+  "host_save_status": "CONFIRMED",
+  "implementation": "UNCHANGED; exact reviewed producer/adapter and source history",
+  "independent_verdict_exact": "SUPPORTED within the bounded conditional SOURCE-ONLY res == NULL comparison contract. No candidate defect demonstrated; no smallest defect witness. Candidate bytes remain fixed. This is not runtime occurrence coverage, qualified-binary correspondence, readiness or admission support.",
+  "inventory_unknowns": 4,
+  "lifetime_unknowns": 14,
+  "limits": {
+    "Decision_B": "UNCHANGED",
+    "SOURCE_ONLY": "UNCHANGED",
+    "admission": "DISABLED",
+    "allowances": "UNCHANGED",
+    "authenticated_constructed_path": "UNEXECUTED",
+    "backup": "KERNEL-ONLY",
+    "both_acquisitions": "PRESERVED; no cross-acquisition joins",
+    "cumulative_envelope": "UNADOPTED",
+    "current_frontier": "Conditional line2517 comparison only; line2518 attempt not implemented",
+    "final_binding": "BLOCKED",
+    "full_public_negative_derivations": 0,
+    "inventory_UNKNOWN": 4,
+    "lifetime_UNKNOWN": 14,
+    "monitoring": "A free slot does not establish complete monitoring cleanup; interruption/hostile replacement qualifications persist",
+    "obligations": 11,
+    "profiles": "CPython3.12.14 / Cryptography50.0.0 source/model and saved Ubuntu profile distinct from retained50.0.2 laboratory evidence; no equivalence or new qualification",
+    "qualified_binary_correspondence": "UNESTABLISHED",
+    "readiness": "BLOCKED",
+    "retention": "UNCHANGED",
+    "runtime_arrival_effects": "UNESTABLISHED",
+    "streams": "UNCOMPUTED",
+    "zero_count_destructor_completion": "UNRESOLVED"
+  },
+  "matching_save_search": "No exact matching receipt or preparation found in available Library filename searches. Host command rechecks local receipts and already-committed reviewed selections before any save.",
+  "milestone": "I164-RES-NULL-TEST-1",
+  "next_task": "Assessment only; no new implementation or validation.",
+  "next_task_implemented": false,
+  "obligations_preserved": 11,
+  "pipeline_runs": 0,
+  "pipeline_scope": "No pipeline command invoked; skip-ci commit marker retained; no remote workflow qualification claimed",
+  "prefix": "docs/privacy-engine/engineering-288/res-null-test-reviewed",
+  "prior_milestones": [
+    {
+      "already_saved": true,
+      "prefix": "docs/privacy-engine/engineering-288/decref-fast-completion-reviewed",
+      "save_repeated": false,
+      "selection_manifest": {
+        "bytes": 144055,
+        "sha256": "3bed5cfc702573941244baf9c8286d57e30f41c147d0f971224ae589b65c8ab3"
+      },
+      "verified_files": 889
+    }
+  ],
+  "push_performed": true,
+  "push_status": "CONFIRMED",
+  "readiness": "BLOCKED",
+  "readme_after": {
+    "bytes": 63,
+    "sha256": "3827df87e1212a4904a35ebbbac203c108002bfba036b3d872f3ea7478f48e5b"
+  },
+  "readme_before": {
+    "bytes": 63,
+    "sha256": "3827df87e1212a4904a35ebbbac203c108002bfba036b3d872f3ea7478f48e5b"
+  },
+  "remote_main": "dc0851dae241ffaaf7ed84e75830f672981c020e",
+  "repo": "/home/steve/dev/Speak-up-appV3",
+  "review_identity": {
+    "bytes": 7465629,
+    "filename": "I164-res-null-test-1-independent-review.zip",
+    "library_file_id": "libfile_fde3_f-8673c13dd47081918c44984e2e903c9d_39c64cf85e608191bb9545db7327fd84",
+    "link": "https://chatgpt.com/library?file_id=libfile_fde3_f-8673c13dd47081918c44984e2e903c9d_39c64cf85e608191bb9545db7327fd84&account_id=personal",
+    "sha256": "aec7858850cab8b679502de3eaf4a3c8fbd7d4a26648ee8bfb17e090a269563b"
+  },
+  "review_runs": 0,
+  "runtime_changes": 0,
+  "seconds": 13.450762268999824,
+  "selection": {
+    "bytes": 4082019,
+    "files": 690,
+    "manifest": {
+      "bytes": 112386,
+      "sha256": "8eb1113d8554cff0e20f586568e89adfba0264a680e3660479be976d1a5d9de7"
+    }
+  },
+  "session_operations": 0,
+  "status": "PASS",
+  "streams": "UNCOMPUTED",
+  "synchronized_history": {
+    "confirmed_predecessor": "18f94ee24bf148c0570df7db650f310defbb056e",
+    "later_commits_preserved": true,
+    "main": "18f94ee24bf148c0570df7db650f310defbb056e",
+    "origin_main_observed": "18f94ee24bf148c0570df7db650f310defbb056e",
+    "parent_for_new_commit": "18f94ee24bf148c0570df7db650f310defbb056e",
+    "predecessor_is_ancestor": true
+  },
+  "test_runs": 0,
+  "tree": "246edff29171038b72d055909a1f65309ecd8d15",
+  "unrelated_after": {
+    "index": {
+      "bytes": 1959564,
+      "sha256": "3f704c8ef12b46615e79e7b354efdb9097e97cc04d7f248f1f993e409f38f647"
+    },
+    "status": {
+      "bytes": 13465,
+      "sha256": "ea5dcd46edb4441a3623663f86e7c1f5373fa7236e9a6d1e1ae2e15eef727300"
+    },
+    "unstaged_diff": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "unrelated_before": {
+    "index": {
+      "bytes": 1959564,
+      "sha256": "3f704c8ef12b46615e79e7b354efdb9097e97cc04d7f248f1f993e409f38f647"
+    },
+    "status": {
+      "bytes": 13465,
+      "sha256": "ea5dcd46edb4441a3623663f86e7c1f5373fa7236e9a6d1e1ae2e15eef727300"
+    },
+    "unstaged_diff": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "meaning": "Export of stable saved records only; result/exit qualifications preserved",
+  "observed_utc": "2026-11-12T12:45:55.564960+00:00",
+  "omitted_recoverable_roots": [
+    "candidate",
+    "recovered-helper",
+    "inputs/prerun.zip",
+    "inputs/progress.zip"
+  ],
+  "status": {
+    "child_exit": {
+      "automatic_retries": 0,
+      "child_exit": 0,
+      "child_identity": null,
+      "finished_utc": "2026-11-12T11:35:25.242623+00:00",
+      "kill_sent": false,
+      "outcome_requires_result_reconciliation": true,
+      "scope": "I164-EXIT-DECREF-ATTEMPT-FULL-PUBLIC-POSITIVE-1-20261112; exactly one new exit-decref-attempt public positive; no focused or historical replays",
+      "seconds": 3605.1901991289997,
+      "streams": {
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 111502,
+          "sha256": "9a1e2b65bd57f8d6d38acc29f484814772e826e1753d2e53d2d49915930b71fd"
+        }
+      },
+      "supervisor_failure": null,
+      "termination_requested": null,
+      "timed_out": false
+    },
+    "latest_event": {
+      "abrupt_or_None_qualified": 0,
+      "active": 0,
+      "entered": 17857,
+      "event": "computation-progress",
+      "meaning": "Actual selected source-function events; return is not acceptance or runtime execution evidence",
+      "returned": 17857,
+      "seconds": 3592.496999205003,
+      "sequence": 230,
+      "utc": "2026-11-12T11:35:12.672419+00:00"
+    },
+    "latest_verified_computation": {
+      "abrupt_or_None_qualified": 0,
+      "active": 0,
+      "entered": 17857,
+      "event": "computation-progress",
+      "meaning": "Actual selected source-function events; return is not acceptance or runtime execution evidence",
+      "returned": 17857,
+      "seconds": 3592.496999205003,
+      "sequence": 230,
+      "utc": "2026-11-12T11:35:12.672419+00:00"
+    },
+    "manager_observation": {
+      "EXIT_CODE": "exited",
+      "EXIT_STATUS": "0",
+      "SERVICE_RESULT": "success",
+      "meaning": "Service-manager observation only; distinct from supervisor child exit and public result",
+      "utc": "2026-11-12T11:35:25.353824+00:00"
+    },
+    "original_child_alive": false,
+    "partial_event_record": false,
+    "public_result": "PASS",
+    "records": "/srv/Engineering-288-execution/steve/I164-exit-decref-attempt-public-1-20261112/validation",
+    "service": {
+      "ActiveState": "inactive",
+      "ExecMainCode": "0",
+      "ExecMainStatus": "0",
+      "LoadState": "not-found",
+      "MainPID": "0",
+      "Result": "success",
+      "SubState": "dead",
+      "query_exit": 0
+    },
+    "service_exit": {
+      "exit": 0,
+      "meaning": "Service wrapper only; public result and supervisor/manager exits remain separate",
+      "utc": "2026-11-12T11:35:25.246980+00:00"
+    },
+    "status": "COMPLETED \u2014 saved records agree"
+  }
+}

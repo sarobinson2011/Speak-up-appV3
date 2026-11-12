@@ -1,0 +1,350 @@
+{
+  "Engineering": {
+    "batches": [
+      {
+        "batch": "source-rows",
+        "chunks": 58,
+        "counts": {
+          "PASS": 15,
+          "REJECTED": 40
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 58,
+          "returncode": 0,
+          "seconds": 37.92755735300034,
+          "timed_out": false,
+          "utc": "2026-11-12T08:56:55.529966+00:00"
+        },
+        "layers": {
+          "defining-source byte/line gate": 2,
+          "defining-source oracle": 1,
+          "defining-source oracle independent of submitted catalogue": 1,
+          "exact source preservation": 1,
+          "execution guard; not acceptance of deferred paths": 1,
+          "fixed source preservation": 1,
+          "independent source-derived catalogue comparison": 13,
+          "pre-derivation shape gate only": 4,
+          "pre-derivation shape gate only; not public validation": 1,
+          "pure mandatory-row comparison": 21,
+          "pure mandatory-row comparison after direct returned mutation": 1,
+          "pure mandatory-row comparison; no authenticated basis": 1,
+          "pure source/model oracle; no authentication": 2,
+          "source preservation": 1,
+          "static integration only; authenticated constructed path UNEXECUTED": 1,
+          "static integration only; authentication UNEXECUTED": 1,
+          "static integration; no receipt derivation": 1,
+          "static shape audit": 1
+        },
+        "raw_progress_stdout_result_exact": true,
+        "rows": 55
+      },
+      {
+        "batch": "matrix-one",
+        "chunks": 96,
+        "counts": {
+          "PASS": 19,
+          "REJECTED": 24
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 96,
+          "returncode": 0,
+          "seconds": 354.61470772799976,
+          "timed_out": false,
+          "utc": "2026-11-12T09:03:06.826595+00:00"
+        },
+        "layers": {
+          "constructed alternative coverage; fast branches are alternatives, not duplicate runtime occurrences": 1,
+          "execution guard; not acceptance of deferred paths": 1,
+          "fixed source preservation": 1,
+          "pure output correspondence; conditional model only": 8,
+          "pure source/model oracle; no authentication": 8,
+          "pure submitted-output comparison": 8,
+          "pure true-predecessor gate; legitimate opaque/Python-None comparison": 16
+        },
+        "raw_progress_stdout_result_exact": true,
+        "rows": 43
+      },
+      {
+        "batch": "matrix-two",
+        "chunks": 101,
+        "counts": {
+          "PASS": 19,
+          "REJECTED": 24
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 101,
+          "returncode": 0,
+          "seconds": 356.389527629,
+          "timed_out": false,
+          "utc": "2026-11-12T09:09:18.650118+00:00"
+        },
+        "layers": {
+          "constructed alternative coverage; fast branches are alternatives, not duplicate runtime occurrences": 1,
+          "execution guard; not acceptance of deferred paths": 1,
+          "fixed source preservation": 1,
+          "pure output correspondence; conditional model only": 8,
+          "pure source/model oracle; no authentication": 8,
+          "pure submitted-output comparison": 8,
+          "pure true-predecessor gate; legitimate opaque/Python-None comparison": 16
+        },
+        "raw_progress_stdout_result_exact": true,
+        "rows": 43
+      },
+      {
+        "batch": "mutations-one",
+        "chunks": 80,
+        "counts": {
+          "PASS": 13,
+          "REJECTED": 61
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 80,
+          "returncode": 0,
+          "seconds": 258.1906219130001,
+          "timed_out": false,
+          "utc": "2026-11-12T09:13:49.305815+00:00"
+        },
+        "layers": {
+          "exact dictionary-key type before normalization": 1,
+          "exact output types before normalization": 3,
+          "exact type/selected-input gate before serialization": 4,
+          "execution guard; not acceptance of deferred paths": 1,
+          "fixed source preservation": 1,
+          "pure continuation/continuity gate": 2,
+          "pure first-nonnormal/order gate": 7,
+          "pure new-layer lineage/operand/order comparison": 18,
+          "pure output comparison after direct returned mutation": 1,
+          "pure predecessor gate": 5,
+          "pure required-premise gate": 2,
+          "pure selected-parent binding comparison": 1,
+          "pure selected-parent comparison; no authentication": 1,
+          "pure source/model oracle; no authentication": 11,
+          "pure submitted-output comparison": 9,
+          "pure submitted-output comparison at nonnormal frontier": 7
+        },
+        "raw_progress_stdout_result_exact": true,
+        "rows": 74
+      },
+      {
+        "batch": "mutations-two",
+        "chunks": 87,
+        "counts": {
+          "PASS": 13,
+          "REJECTED": 61
+        },
+        "exit": {
+          "automatic_retry": false,
+          "captured_chunks": 87,
+          "returncode": 0,
+          "seconds": 268.38932387800014,
+          "timed_out": false,
+          "utc": "2026-11-12T09:18:33.851434+00:00"
+        },
+        "layers": {
+          "exact dictionary-key type before normalization": 1,
+          "exact output types before normalization": 3,
+          "exact type/selected-input gate before serialization": 4,
+          "execution guard; not acceptance of deferred paths": 1,
+          "fixed source preservation": 1,
+          "pure continuation/continuity gate": 2,
+          "pure first-nonnormal/order gate": 7,
+          "pure new-layer lineage/operand/order comparison": 18,
+          "pure output comparison after direct returned mutation": 1,
+          "pure predecessor gate": 5,
+          "pure required-premise gate": 2,
+          "pure selected-parent binding comparison": 1,
+          "pure selected-parent comparison; no authentication": 1,
+          "pure source/model oracle; no authentication": 11,
+          "pure submitted-output comparison": 9,
+          "pure submitted-output comparison at nonnormal frontier": 7
+        },
+        "raw_progress_stdout_result_exact": true,
+        "rows": 74
+      }
+    ],
+    "campaigns_replayed": 0,
+    "counts": {
+      "PASS": 79,
+      "REJECTED": 210
+    },
+    "rows": 289
+  },
+  "Ubuntu_public_positive": {
+    "attempt": "I164-EXIT-DECREF-ATTEMPT-FULL-PUBLIC-POSITIVE-1-20261112",
+    "child_exit": {
+      "automatic_retries": 0,
+      "child_exit": 0,
+      "child_identity": null,
+      "finished_utc": "2026-11-12T11:35:25.242623+00:00",
+      "kill_sent": false,
+      "outcome_requires_result_reconciliation": true,
+      "scope": "I164-EXIT-DECREF-ATTEMPT-FULL-PUBLIC-POSITIVE-1-20261112; exactly one new exit-decref-attempt public positive; no focused or historical replays",
+      "seconds": 3605.1901991289997,
+      "streams": {
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 111502,
+          "sha256": "9a1e2b65bd57f8d6d38acc29f484814772e826e1753d2e53d2d49915930b71fd"
+        }
+      },
+      "supervisor_failure": null,
+      "termination_requested": null,
+      "timed_out": false
+    },
+    "chunks": {
+      "stderr": 0,
+      "stdout": 285
+    },
+    "event_rows": 286,
+    "fresh_public_runs": 0,
+    "last_computation": {
+      "abrupt_or_None_qualified": 0,
+      "active": 0,
+      "entered": 17857,
+      "event": "computation-progress",
+      "meaning": "Actual selected source-function events; return is not acceptance or runtime execution evidence",
+      "returned": 17857,
+      "seconds": 3592.496999205003,
+      "sequence": 230,
+      "utc": "2026-11-12T11:35:12.672419+00:00"
+    },
+    "manager_exit": {
+      "EXIT_CODE": "exited",
+      "EXIT_STATUS": "0",
+      "SERVICE_RESULT": "success",
+      "meaning": "Service-manager observation only; distinct from supervisor child exit and public result",
+      "utc": "2026-11-12T11:35:25.353824+00:00"
+    },
+    "public_positives": 1,
+    "receipt": {
+      "bytes": 19445228,
+      "sha256": "1414c7b617767cc9e8f375f9e576da2de78cf928194600896994aae6882d6a1f"
+    },
+    "snapshots": 230,
+    "wrapper_exit": {
+      "exit": 0,
+      "meaning": "Service wrapper only; public result and supervisor/manager exits remain separate",
+      "utc": "2026-11-12T11:35:25.246980+00:00"
+    }
+  },
+  "accounting_rule": "All groups remain separate; source/model negatives retain their exact layers. The two corrected read-only reviewer failures add zero candidate-control credit. Missing historical streams/final records remain missing.",
+  "authenticated_constructed_path": "UNEXECUTED",
+  "full_public_negative_derivations": 0,
+  "historical_parent": {
+    "Ubuntu_public_positives": 1,
+    "continuation": {
+      "PASS": 54,
+      "REJECTED": 117,
+      "all_exits": 0,
+      "batches": 5,
+      "rows": 171
+    },
+    "independent_rows": 159,
+    "timeout": {
+      "campaign_status": "TIMED_OUT_INCOMPLETE",
+      "child_FAILURE": "MISSING",
+      "chunks": 146,
+      "corroborated_rows": 145,
+      "counts": {
+        "PASS": 81,
+        "REJECTED": 64
+      },
+      "exit": {
+        "automatic_retry": false,
+        "captured_chunks": 146,
+        "returncode": -9,
+        "seconds": 600.2042828569993,
+        "timed_out": true,
+        "utc": "2026-11-11T12:00:53.853213+00:00"
+      },
+      "final_RESULT": "MISSING"
+    }
+  },
+  "independent": {
+    "all_raw_progress_stdout_exact": true,
+    "counts": {
+      "PASS": 47,
+      "REJECTED": 143
+    },
+    "exit": {
+      "exit_code": 0,
+      "finished_utc": "2026-11-12T13:10:16.003681+00:00",
+      "seconds": 239.2445605239991,
+      "timed_out": false
+    },
+    "layers": {
+      "conditional matrix coverage, not runtime counts": 1,
+      "exact input type before normalization / selected binding": 8,
+      "exact input-key type before normalization": 2,
+      "exact output type/comparison": 6,
+      "pure conditional-premise gate": 4,
+      "pure exact premise value gate": 4,
+      "pure first-nonnormal/error-lineage derivation": 14,
+      "pure first-nonnormal/order rejection": 14,
+      "pure lineage/operand/order comparison": 26,
+      "pure mandatory-row comparison": 1,
+      "pure mandatory-row comparison; no authenticated basis": 8,
+      "pure mandatory-row expectation isolation": 1,
+      "pure mandatory-row output comparison": 1,
+      "pure model result isolation": 2,
+      "pure output comparison after mutating actual returned object": 2,
+      "pure output-comparison validator": 2,
+      "pure predecessor fact gate": 10,
+      "pure required-premise gate": 4,
+      "pure returned binding isolation": 2,
+      "pure selected-parent binding comparison": 2,
+      "pure selected-parent scope comparison": 2,
+      "pure selected-true-predecessor gate; source-backed non-NULL premise": 32,
+      "pure source-catalogue isolation": 1,
+      "pure submitted-output comparison": 14,
+      "pure uncertainty derivation": 4,
+      "pure-model derivation with independent source oracle": 16,
+      "read-only defining source": 1,
+      "source-derived catalogue comparison": 1,
+      "static integration inspection only": 1,
+      "submitted catalogue versus defining source": 4
+    },
+    "rows": 190
+  },
+  "new_candidate_checks": 0,
+  "new_public_validations": 0,
+  "new_reviews": 0,
+  "reviewer_audit_failures": [
+    {
+      "actual_extra": [
+        "EXPORT-STATUS.json",
+        "EXPORT-MANIFEST.json"
+      ],
+      "error": "AssertionError",
+      "exit_code": 1,
+      "raw_stream": "Tool-returned traceback not separately captured as a file; not reconstructed.",
+      "reviewer_error": "Expected EXPORT.json rather than actual EXPORT-STATUS.json; read-only harness assumption. No candidate check executed. Original script retained.",
+      "stage": "pre-extraction exact extra export membership"
+    },
+    {
+      "corrected_audit_exit": {
+        "exit_code": 0,
+        "timeout": false
+      },
+      "error": "FileNotFoundError: reference/res-null/correspondence.py; correct path is reference/res-null/code/correspondence.py",
+      "exit": {
+        "exit_code": 1,
+        "seconds": 40.260524730001634,
+        "timeout": false
+      },
+      "original_raw_files": [
+        "recovery.stdout",
+        "recovery.stderr"
+      ],
+      "recovery_replayed": false,
+      "scope": "Post-recovery preservation audit; no candidate validation/control"
+    }
+  ]
+}

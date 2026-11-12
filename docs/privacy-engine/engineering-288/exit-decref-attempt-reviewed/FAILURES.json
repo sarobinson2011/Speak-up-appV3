@@ -1,0 +1,50 @@
+{
+  "candidate_implementation_changes": 0,
+  "completed_campaigns_replayed": 0,
+  "historical": "DOC-ENTER-01, separate R1 discrepancy, failed/UNKNOWN attempts, incomplete1300progress/165stdout and all other earlier qualifications remain unchanged through pinned predecessors.",
+  "preserved_review_failures": "review/FAILURES.json, original reviewer scripts, audit stdout/stderr/exits and corrections retained unchanged; no replay",
+  "raw_tool_streams": "These two inspection misses are concise records of tool-returned messages, not reconstructed raw process logs.",
+  "reviewer_failures": [
+    {
+      "actual_extra": [
+        "EXPORT-STATUS.json",
+        "EXPORT-MANIFEST.json"
+      ],
+      "error": "AssertionError",
+      "exit_code": 1,
+      "raw_stream": "Tool-returned traceback not separately captured as a file; not reconstructed.",
+      "reviewer_error": "Expected EXPORT.json rather than actual EXPORT-STATUS.json; read-only harness assumption. No candidate check executed. Original script retained.",
+      "stage": "pre-extraction exact extra export membership"
+    },
+    {
+      "corrected_audit_exit": {
+        "exit_code": 0,
+        "timeout": false
+      },
+      "error": "FileNotFoundError: reference/res-null/correspondence.py; correct path is reference/res-null/code/correspondence.py",
+      "exit": {
+        "exit_code": 1,
+        "seconds": 40.260524730001634,
+        "timeout": false
+      },
+      "original_raw_files": [
+        "recovery.stdout",
+        "recovery.stderr"
+      ],
+      "recovery_replayed": false,
+      "scope": "Post-recovery preservation audit; no candidate validation/control"
+    }
+  ],
+  "this_preparation_read_only_misses": [
+    {
+      "exit": 1,
+      "meaning": "Source ZIP contains the source closure and index, not that assessment document at the guessed path. Read actual producer envelope and defining files; no candidate execution.",
+      "path": "reference/resolution/SELECTORS.json"
+    },
+    {
+      "exit": 1,
+      "meaning": "Actual unchanged source record is top-level CHANGES.json. Read it there; no candidate execution.",
+      "path": "changes/CHANGES.json"
+    }
+  ]
+}

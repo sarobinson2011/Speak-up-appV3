@@ -1,0 +1,106 @@
+{
+  "previous_recovery_exit": {
+    "exit_code": 1,
+    "timeout": false,
+    "seconds": 40.260524730001634
+  },
+  "qualification": "Byte recovery completed; original final audit used reference/res-null/correspondence.py instead of reference/res-null/code/correspondence.py. No candidate validation executed. Recovery not repeated.",
+  "roots": {
+    "assembled": {
+      "files": 4963,
+      "directories": 1264,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "res_null": {
+      "files": 4729,
+      "directories": 1238,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "fast": {
+      "files": 4500,
+      "directories": 1216,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "decref": {
+      "files": 4271,
+      "directories": 1197,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "return": {
+      "files": 4222,
+      "directories": 1183,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "enter": {
+      "files": 4169,
+      "directories": 1169,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "lookup": {
+      "files": 4124,
+      "directories": 1155,
+      "exact_types_membership_hashes": "PASS"
+    },
+    "r1": {
+      "files": 4090,
+      "directories": 1142,
+      "exact_types_membership_hashes": "PASS"
+    }
+  },
+  "status": "PASS",
+  "prefix_bytes": 519785,
+  "appended_functions": [
+    "exit_decref_sources",
+    "exit_decref_catalogue",
+    "compile_exit_decref",
+    "validate_exit_decref",
+    "exit_decref_binding",
+    "exit_decref_projection",
+    "validate_exit_decref_projection"
+  ],
+  "declared_changes": {
+    "appended_function_count": 7,
+    "appended_functions": [
+      "exit_decref_sources",
+      "exit_decref_catalogue",
+      "compile_exit_decref",
+      "validate_exit_decref",
+      "exit_decref_binding",
+      "exit_decref_projection",
+      "validate_exit_decref_projection"
+    ],
+    "changed_implementation": {
+      "code/correspondence.py": {
+        "after": {
+          "bytes": 10337,
+          "sha256": "ff6b1ba9d619ea9b771538049596f39ca2985f498276ca994ffcbc3d6df1aed7"
+        },
+        "before": {
+          "bytes": 10053,
+          "sha256": "b0b36c61bd24130648fc55b97a9331c0fedbdf95479a6fdf3429d600406fdee5"
+        },
+        "runtime_source": false
+      },
+      "code/managed_coverage.py": {
+        "after": {
+          "bytes": 534138,
+          "sha256": "9ffae100e35b4a5ee21393d72fb1520ad72b0b5ced9cd6f96b9c83624bae00a0"
+        },
+        "before": {
+          "bytes": 519785,
+          "sha256": "414e30bea79178fbf4ecfebc4519fb7eaa41e5df48b80f0126686a53f0f12633"
+        },
+        "runtime_source": false
+      }
+    },
+    "identity": "I164-EXIT-DECREF-ATTEMPT-1",
+    "predecessor_unchanged": true,
+    "preserved_producer_prefix": {
+      "bytes": 519785,
+      "sha256": "414e30bea79178fbf4ecfebc4519fb7eaa41e5df48b80f0126686a53f0f12633"
+    },
+    "runtime_changes": 0
+  },
+  "source_resolution_files_unchanged": 183,
+  "runtime_and_actual_parent_unchanged": true
+}
